@@ -1,0 +1,89 @@
+---
+sidebar: sidebar
+permalink: <file_name>.html
+keywords: keyword1, keyword2, keyword3, keyword4, keyword5
+summary: A summary.
+---
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+= Acquisition unit setup
+
+[.lead]
+You must install an acquisition unit to acquire information from your enterprise environment for use in Cloud Insights.
+
+toc::[]
+
+== Before you begin
+
+Before you install the acquisition unit, ensure that your server or VM meets operating system, CPU, memory, and disk space requirements.
+
+IMPORTANT: Sizing for the acquisition unit has multiple dependencies, such as data source type and size, number of assets in your environment, and more. The following sizing requirements should be thought of as guidelines only.
+
+=== Acquisition Unit Requirements
+
+[cols=2*,options="header",cols="25,75"]
+|===
+|Component
+|Requirement
+|Operating system
+|Windows: A computer or VM running 64-bit Microsoft Windows Server 2008 R2, 2012, 2012 R2, or 2016 with the latest service pack
+
+Linux: TBD
+|CPU
+|4 CPU cores
+|Memory
+|16 GB RAM
+|Available disk space
+|40 GB
+|Network
+|100 Mbps /1 Gbps Ethernet connection, static IP address, IP connectivity to all FC devices, and a required port to the Cloud Insights instance (80 or 443).
+|Permissions
+|Local Administrator or Sudo permissions on the AU server
+|Virus scan
+|If installing on a Windows server/VM: During the installation of the AU software you must completely disable all virus scanners. Following installation, the paths used by the AU software must be excluded from virus scanning.
+|===
+
+== Acquisition unit installation
+=== About this task
+An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the acquisition unit software on a server or VM to collect data for Cloud Insights.
+
+
+At least one port needs to be open and available between the acquisition unit (AU) server/VM and the Cloud Insights tenant in order to forward information to the server. You can validate the connection by opening a Web browser on the acquisition unit computer and directing it to your Cloud Insights tenant:
+
+ https://< tenant URL >:< acquisition_port >
+
+The default acquisition port is 443. If the connection is successful, you will see a response page indicating an open and available port between the acquisition unit and the Cloud Insights instance.
+
+=== Installing an Acquisition Unit on Linux
+
+.Steps
+. Log in to the acquisition unit server/ VM using an account with sudo privileges.
+. Navigate to the directory where the installation files are located and type the following command:
+ sudo unzip <filename>.zip
+. Run the installation script:
+ sudo ./<install folder>/oci-install.sh
+. Read the License Agreement, accept it, and follow the prompts to install the acquisition unit.
+
+=== Installing an Acquisition Unit on Windows
+.Steps
+. Log in to the acquisition unit server using an account with administrator privileges.
+. Double-click the .MSI file to start the installation.
+. Click Next to read and accept the terms of the License Agreement, and click Next.
+. Select to install the acquisition unit on a local hard drive or the entire feature on a local hard drive. Click Next.
+. In the Configure window, set the parameters that are specific to your site. When finished, click Next.
+. Click Install to start the installation.
++
+When the installation is complete, a final window appears. Click the Start Remote Acquisition Service box to start the acquisition unit, and click Finish to end this operation.
+
+=== Additional Steps (TBD)
+Tenant URL: The acquisition unit uses this to open a communications link with your Cloud Insights tenant.
+
+Acquisition Unit Name: unique name that identifies the acquisition unit.
+
+Secured Acquisition Port (HTTPS) - Port used by the acquisition unit to send environment change information to your Cloud Insights tenant. This setting must be the same on all acquisition units that talk to your tenant.
