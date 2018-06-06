@@ -65,9 +65,10 @@ The default acquisition port is 443. If the connection is successful, you will s
 .Steps
 . Log in to the acquisition unit server/ VM using an account with sudo privileges.
 . Navigate to the directory where the installation files are located and type the following command:
++
  sudo unzip <filename>.zip
 . Run the installation script:
- sudo ./<install folder>/oci-install.sh
++ sudo ./<install folder>/oci-install.sh
 . Read the License Agreement, accept it, and follow the prompts to install the acquisition unit.
 
 === Installing an Acquisition Unit on Windows
