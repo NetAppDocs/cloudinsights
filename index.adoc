@@ -12,4 +12,45 @@ summary: Welcome to the documentation portal for Cloud Insights.
 :imagesdir: ./media/
 :keywords: OnCommand, Insight, documentation, help
 
+[.lead]
 Cloud Insights provides intelligent operations and business insights across the enterprise, enabling the rationalization and optimization of costs, risk reduction, and advanced troubleshooting and analytics across the multi-vendor infrastructure of systems, networks, and storage.
+
+toc::[]
+
+== Steps for installing customer/tenant 
+
+.Steps
+. Customer signs up
+. QA Push installer image into cluster. 1 time
+.. Place holder for steps, from Zach’s test plan
+. QA Create their tenant
+.. Place holder for steps
+.. Placeholder for Pradeep 
+.. Dependency for AUTH0 id
+. QA Edit the password for acquisition in the tenant’s monolith
+.. Place holder for steps to change password
+. QA provide detail to customer with “AU password” via email
+.. Requirements for AU – cpu, mem, disk, access rights…
+.. Simple usage doc
+.. Other??
+. Customer goes to AU page within Tenant, and downloads the AU Linux installer
+. Customer moves AU installer to a VM or host that will run the AU
+. Customer unzips AU linux installer
+. Customer runs installer, as “sudo” or “sudo su –“
+. Customer prompted for 
+.. AU name (default is the host name where AU is being installed)
+.. Prompt for Port – Keep as 443
+.. Tenant domain name (FQDN)
+.. AU password (provided previously)
+.. Request to restore key set or generate new key
+.. On First install ALWAYS answer “Generate New Key”
+.. AU should be running at this point 
+.	Customer Confirm AU is running via “systemctl status acquisition” command
+.	Customer can review AU logs, /var/netapp/oci/acq/acq.log
+.	QA to review acq.log on monolith
+.. Ask customer to send acq.log if they are not getting
+.. AI – Zach.  To check on getting logs automatically, look into yanking AU log bundle, IBG-13622 P3
+. Customer can access the Tenant webUI to create Data Collectors
+.  
+. Pradeep – tenant name & title  “OnCommand Insight 7.3”
+. 
