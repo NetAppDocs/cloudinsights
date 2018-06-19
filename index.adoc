@@ -20,16 +20,22 @@ summary: Welcome to the documentation portal for Cloud Insights.
 :imagesdir: ./media/
 :keywords: OnCommand, Insight, documentation, help
 
-Cloud Insights provides intelligent operations and business insights across the enterprise, enabling the rationalization and optimization of costs, risk reduction, and advanced troubleshooting and analytics across the multi-vendor infrastructure of systems, networks, and storage.
+Cloud Insights provides intelligent operations and business insight across the enterprise, enabling the rationalization and optimization of costs, risk reduction, and advanced troubleshooting and analytics across the multi-vendor infrastructure of systems, networks, and storage.
 
 toc::[]
 
 == Setup and Collect data
 
-. Deploy first preview build to preview cluster
-. Create tenants for a small number of customers: (need info from whoever manages Auth0)
-. Customer account owner invites user to visit the site (for preview we will send tenant link)
-. Tenant owner / admin sets up AU for his server (using workarounds)
+. Sign in / Sign up at http://cloud.netapp.com
+. Create tenant
+. Customer account owner invites users to access the tenant 
++
+The Account owner assigns a role to each user.  Users with the Administrator role can invite other users as well.
++ 
+Once a user accepts the invitation, he or she will need to sign up on the NetApp Cloud Portal using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud insights tenant.
+. Tenant owner / admin sets up an Acquisition Unit for their tenant.
++
+An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the acquisition unit software on a server or VM to collect data for Cloud Insights.
 . Tenant owner / admin adds data collectors
 . Tenant to troubleshoot data collector failures (data collector details page refactor, June)
 
