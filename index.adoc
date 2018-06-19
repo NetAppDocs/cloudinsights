@@ -11,7 +11,7 @@ summary: Welcome to the documentation portal for Cloud Insights.
 :linkattrs:
 :imagesdir: ./media/
 
-= Getting Started with Cloud Insights
+= Cloud Insights
 
 :hardbreaks:
 :nofooter:
@@ -24,32 +24,4 @@ Cloud Insights provides intelligent operations and business insight across the e
 
 toc::[]
 
-== Setup and Collect data
-
-. Sign in / Sign up at http://cloud.netapp.com
-. Create tenant
-. Customer account owner invites users to access the tenant 
-+
-The Account owner assigns a role to each user.  Users with the Administrator role can invite other users as well.
-+ 
-Once a user accepts the invitation, he or she will need to sign up on the NetApp Cloud Portal using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud insights tenant.
-. Tenant owner / admin sets up an Acquisition Unit for their tenant.
-+
-An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the acquisition unit software on a server or VM to collect data for Cloud Insights.
-. Tenant owner / admin adds data collectors
-. Tenant to troubleshoot data collector failures (data collector details page refactor, June)
-
-== Find the Data You Want
-
-. applies patch to fix data collector on behalf of DevOps (NetApp only)
-. Customer searches assets and views data on landing page
-. Customer builds dashboards
-. Customer uses annotation and annotation rules to categorize data 
-
-== Monitoring and Alerting
-
-. Customer uses threshold to monitor performance:
-. Customer creates performance policies (policy list / editor, June)
-. Customer visits landing page to see violations in context (June)
-. Customer does troubleshooting on expert view
-
+link:task_getting_started_cloud_insights.html [Getting Started] 
