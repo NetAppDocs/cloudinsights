@@ -1,7 +1,8 @@
 ---
 sidebar: sidebar
 permalink: task_getting_started_with_cloud_insights.html
-summary: getting started with Cloud Insights.
+summary: Getting started with Cloud Insights.
+keywords: invite, roles, data collector, acquisition unit, AU
 ---
 :toc: macro
 :hardbreaks:
@@ -24,7 +25,14 @@ toc::[]
 
 == Setup and Collect data
 
-If you haven't already done so, sign in at http://cloud.netapp.com and go to your Cloud Insights tenant.
+After you have signed up for Cloud Insights, you must do the following in order to begin collecting data.
+
+. Invite users and assign roles
+. Install at least one Acquisition Unit
+. Add data collectors
+
+
+Let's get started. If you haven't already done so, sign in at http://cloud.netapp.com and go to your Cloud Insights tenant.
 
 === Inviting users to access the tenant
 
@@ -43,12 +51,12 @@ Users will have 14 days to accept the invitation. Once a user accepts the invita
 
 An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the acquisition unit software on a server or VM to collect data for Cloud Insights.
 
-link:Task-Configure-acquisition-unit.html[Configuring an Acquisition Unit]
+You may set up as many acquisition units as needed. For example, you may want different acquisition units collecting data from data centers in different regions.
+
+For instructions on setting up an Acquisition Unit, see link:Task-Configure-acquisition-unit.html[Configuring an Acquisition Unit].
 
 === Adding data collectors
 
-TBD
+TBD: link to data collector topic
 
-=== Troubleshooting data collector failures
-
-TBD
+Information on link:task_troubleshooting_data_collector_failures.html[troubleshooting data collector failures].
