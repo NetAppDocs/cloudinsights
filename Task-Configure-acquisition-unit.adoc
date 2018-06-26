@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
-permalink: Tash-Configure-acquisition-unit.html
-keywords: acquisition, AU, keyword3, keyword4, keyword5
+permalink: Task_Configure_acquisition_unit.html
+keywords: acquisition, Authorization Unit, keyword3, keyword4, keyword5
 summary: A summary.
 ---
 :toc: macro
@@ -12,10 +12,11 @@ summary: A summary.
 :linkattrs:
 :imagesdir: ./media/
 
-= Acquisition unit installation instructions
+= Acquisition Unit Installation Instructions
 
 [.lead]
-Talk about the acquisition unit
+Acquisition Units collect data from devices in the data center using modules called Data Collectors.
+
 
 .Before you begin
 You must have received the Acquisition unit password in email from NetApp
@@ -24,14 +25,15 @@ You must have received the Acquisition unit password in email from NetApp
 
 .Steps
 . Answer the following prompts:
-.. AU name (default is the host name where AU is being installed)
+.. Authorization Unit name (default is the host name where Authorization Unit is being installed)
 .. Prompt for Port – Keep as 443
 .. Tenant domain name (FQDN)
-.. AU password (provided previously)
+.. Authorization Unit password (provided previously)
 .. Restore key set or generate new key
 ... On First install ALWAYS answer “Generate New Key”
-. Confirm AU is running using the following command:
+. Confirm Authorization Unit is running using the following command:
 +
 “systemctl status acquisition”
-. After you finish
-Customers can access the Acquisition Unit logs at /var/netapp/oci/acq/acq.log
+
+.After you finish
+You can access the Acquisition Unit logs at /var/netapp/oci/acq/acq.log
