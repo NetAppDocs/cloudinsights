@@ -1,7 +1,7 @@
   <html>
     <head>
       <meta charset="utf-8">
-      <title>Cloud Insights OnboardingCloud InsightsAcquisition unit installation instructionsGetting Started with Cloud Insights</title>
+      <title>Cloud Insights OnboardingCloud InsightsAcquisition unit installation instructions</title>
       <style>
         #wrapper {width: 960px; margin: 0 auto;}
         /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -446,81 +446,57 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     <body>
       <div id="wrapper">
         <div class="article">
-          <h1 id="__asciidoctor-preview-0__">Getting Started with Cloud Insights</h1>
-<div id="preamble">
-<div class="sectionbody">
-<!-- toc disabled -->
+          <h1 id="__asciidoctor-preview-0__">Acquisition unit installation instructions</h1>
+<div id="__asciidoctor-preview-1__" class="paragraph lead">
+<p>Talk about the acquisition unit</p>
 </div>
-<div id="toc" class="toc">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_setup_and_collect_data">Setup and Collect data</a>
-<ul class="sectlevel2">
-<li><a href="#_inviting_users_to_access_the_tenant">Inviting users to access the tenant</a></li>
-<li><a href="#_setting_up_an_acquisition_unit_to_collect_data">Setting up an Acquisition Unit to collect data.</a></li>
-<li><a href="#_adding_data_collectors">Adding data collectors</a></li>
-<li><a href="#_troubleshooting_data_collector_failures">Troubleshooting data collector failures</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_setup_and_collect_data">Setup and Collect data</h2>
-<div class="sectionbody">
 <div id="__asciidoctor-preview-2__" class="paragraph">
-<p>If you haven&#8217;t already done so, sign in at <a href="http://cloud.netapp.com" class="bare">http://cloud.netapp.com</a> and go to your Cloud Insights tenant.</p>
+<div class="title">Before you begin</div>
+<p>You must have received the Acquisition unit password in email from NetApp</p>
 </div>
-<div class="sect2">
-<h3 id="_inviting_users_to_access_the_tenant">Inviting users to access the tenant</h3>
-<div id="__asciidoctor-preview-3__" class="paragraph">
-<p>The Account Owner invites users to access the tenant, and assigns a role to each user.  Users with the Administrator role can invite other users as well.</p>
-</div>
-<div id="__asciidoctor-preview-4__" class="paragraph">
-<p>To Invite a user, in the Cloud Insights tenant, click on <strong>Admin &gt; Account Management</strong> and follow these steps:</p>
-</div>
-<div id="__asciidoctor-preview-5__" class="olist arabic">
+<div id="__asciidoctor-preview-3__" class="olist arabic">
+<div class="title">Steps</div>
 <ol class="arabic">
 <li>
-<p>Click the <strong>[+User]</strong> button</p>
+<p>Answer the following prompts:</p>
+<div id="__asciidoctor-preview-4__" class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>AU name (default is the host name where AU is being installed)</p>
 </li>
 <li>
-<p>Enter the email addresses for the users you wish to invite.</p>
+<p>Prompt for Port – Keep as 443</p>
 </li>
 <li>
-<p>Assign a <strong>Role</strong> to these users. Note that all of the users in the email list will receive this Role.</p>
+<p>Tenant domain name (FQDN)</p>
 </li>
 <li>
-<p>When finished, click <strong>[Invite]</strong>.</p>
-<div id="__asciidoctor-preview-6__" class="paragraph">
-<p>Users will have 14 days to accept the invitation. Once a user accepts the invitation, he or she will be taken to the NetApp Cloud Portal, where they will <a href="task_cloud_insights_onboarding_1.html">sign up</a> using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access the Cloud insights tenant.</p>
+<p>AU password (provided previously)</p>
+</li>
+<li>
+<p>Restore key set or generate new key</p>
+<div id="__asciidoctor-preview-5__" class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>On First install ALWAYS answer “Generate New Key”</p>
+</li>
+</ol>
 </div>
 </li>
 </ol>
 </div>
+</li>
+<li>
+<p>Confirm AU is running using the following command:</p>
+<div id="__asciidoctor-preview-6__" class="paragraph">
+<p>“systemctl status acquisition”</p>
 </div>
-<div class="sect2">
-<h3 id="_setting_up_an_acquisition_unit_to_collect_data">Setting up an Acquisition Unit to collect data.</h3>
-<div id="__asciidoctor-preview-7__" class="paragraph">
-<p>An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the acquisition unit software on a server or VM to collect data for Cloud Insights.</p>
-</div>
-<div id="__asciidoctor-preview-8__" class="paragraph">
-<p><a href="Task-Configure-acquisition-unit.html">Configuring an Acquisition Unit</a></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_adding_data_collectors">Adding data collectors</h3>
-<div id="__asciidoctor-preview-9__" class="paragraph">
-<p>TBD</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_troubleshooting_data_collector_failures">Troubleshooting data collector failures</h3>
-<div id="__asciidoctor-preview-10__" class="paragraph">
-<p>TBD</p>
-</div>
-</div>
-</div>
+</li>
+<li>
+<p>After you finish<br>
+Customers can access the Acquisition Unit logs at /var/netapp/oci/acq/acq.log</p>
+</li>
+</ol>
 </div>
         </div>
       </div>
