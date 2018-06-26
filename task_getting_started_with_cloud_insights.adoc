@@ -1,11 +1,12 @@
 ---
 sidebar: sidebar
 permalink: task_getting_started_with_cloud_insights.html
-summary: getting started with Cloud Insights.
+summary: Getting started with Cloud Insights.
+keywords: invite, roles, data collector, acquisition unit, AU
 ---
 :toc: macro
 :hardbreaks:
-:toclevels: 1
+:toclevels: 2
 :nofooter:
 :icons: font
 :linkattrs:
@@ -24,27 +25,39 @@ toc::[]
 
 == Setup and Collect data
 
-. Sign in / Sign up at http://cloud.netapp.com
-. Create tenant
-. Customer account owner invites users to access the tenant
-+
-The Account owner invites and assigns a role to each user.  Users with the Administrator role can invite other users as well.
-+
-Once a user accepts the invitation, he or she will be taken to the NetApp Cloud Portal, where they will sign up using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud insights tenant.
-+
-TBD: Link to more Invitation info
+After you have signed up for Cloud Insights, you must do the following in order to begin collecting data.
 
-. Tenant owner / admin sets up an Acquisition Unit for their tenant.
-+
-An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the acquisition unit software on a server or VM to collect data for Cloud Insights.
-+
-TBD: Link to AU Install instructions/downloads
+. Invite users and assign roles
+. Install at least one Acquisition Unit
+. Add data collectors
 
-. Tenant owner / admin adds data collectors
-+
-More info on data collectors
 
-. Tenant to troubleshoot data collector failures (data collector details page refactor, June)
-+
-TBD: troubleshooting info
+Let's get started. If you haven't already done so, sign in at http://cloud.netapp.com and go to your Cloud Insights tenant.
 
+=== Inviting users to access the tenant
+
+The Account Owner invites users to access the tenant, and assigns a role to each user.  Users with the Administrator role can invite other users as well.
+
+To Invite a user, in the Cloud Insights tenant, click on *Admin > Account Management* and follow these steps:
+
+. Click the *[+User]* button
+. Enter the email addresses for the users you wish to invite.
+. Assign a *Role* to these users. Note that all of the users in the email list will receive this Role.
+. When finished, click *[Invite]*.
++
+Users will have 14 days to accept the invitation. Once a user accepts the invitation, he or she will be taken to the NetApp Cloud Portal, where they will link:task_cloud_insights_onboarding_1.html[sign up] using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access the Cloud Insights tenant.
+
+=== Setting up an Acquisition Unit to collect data.
+
+An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights.
+
+You may set up as many Acquisition Units as needed. For example, you may want different Acquisition Units collecting information from data centers in different regions.
+
+For instructions on setting up an Acquisition Unit, see link:Task-Configure-acquisition-unit.html[Configuring an Acquisition Unit].
+
+=== Adding data collectors
+
+TBD: link to data collector topic
+
+Related topics:
+link:task_troubleshooting_data_collector_failures.html[Troubleshooting data collector failures].
