@@ -45,13 +45,13 @@ To Invite a user, in the Cloud Insights tenant, click on *Admin > Account Manage
 . Assign a *Role* to these users. Note that all of the users in the email list will receive this Role.
 . When finished, click *[Invite]*.
 +
-Users will have 14 days to accept the invitation. Once a user accepts the invitation, he or she will be taken to the NetApp Cloud Portal, where they will link:task_cloud_insights_onboarding_1.html[sign up] using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access the Cloud insights tenant.
+Users will have 14 days to accept the invitation. Once a user accepts the invitation, he or she will be taken to the NetApp Cloud Portal, where they will link:task_cloud_insights_onboarding_1.html[sign up] using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access the Cloud Insights tenant.
 
 === Setting up an Acquisition Unit to collect data.
 
-An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the acquisition unit software on a server or VM to collect data for Cloud Insights.
+An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights.
 
-You may set up as many acquisition units as needed. For example, you may want different acquisition units collecting data from data centers in different regions.
+You may set up as many Acquisition Units as needed. For example, you may want different Acquisition Units collecting information from data centers in different regions.
 
 For instructions on setting up an Acquisition Unit, see link:Task-Configure-acquisition-unit.html[Configuring an Acquisition Unit].
 
@@ -59,4 +59,5 @@ For instructions on setting up an Acquisition Unit, see link:Task-Configure-acqu
 
 TBD: link to data collector topic
 
-Information on link:task_troubleshooting_data_collector_failures.html[troubleshooting data collector failures].
+Related topics:
+link:task_troubleshooting_data_collector_failures.html[Troubleshooting data collector failures].
