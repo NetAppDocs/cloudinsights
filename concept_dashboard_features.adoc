@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: concept_dashboard_features.html
+summary: Dashboard features and concepts.
+keywords: dashboard, widget, custom, concepts,
+---
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+= Dashboard Features
+
+[.lead]
+Dashboards and widgets allow great flexibility in how data is displayed. Here are some concepts to help you get the most from your custom dashboards. Each concept is explained in greater detail in the following sections.
+
+////
+•	*Variables*
+Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting each widget to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
++
+Multiple queries and/or expressions
+Each time series widget (line, spline, area, or stacked area charts) can have up to five queries and/or expressions to determine what data to display, allowing you to compare different sets of data on a single chart. For example, you can have a line chart showing IOPS for both Storage and VM's, or a single chart comparing Throughput and Latency for all Storage Pools.
+////
+
+•	*Widget Placement and Size*
+All dashboard widgets can be positioned and sized according to your needs for each particular dashboard. 
+
+•	*Rollup and Grouping*
+Data displayed in each widget is rolled up from the data points collected. You can choose to roll up this data in one of several ways:
++
+*Avg*: rolls up data as the average of the underlying data
++
+*Max*: rolls up data to the maximum of the underlying data
++
+*Min*: rolls up data to the minimum of the underlying data
++
+*Sum*: rolls up data as the sum of the underlying data
++
+By default, all of the underlying data is rolled up into a single entry (All) on the chart or table. You can choose to roll up data for a specific attribute instead, such as Data Center or Tier, to distribute the underlying data into desired groups. Your widget will display data for only the attributes you select.
++
+You can group data in a table widget according to the attribute you choose. For example, you might choose to group your table by Data Center. Groups can be expanded or collapsed at will.
++
+Performance data in a table is rolled up in the group header according to the rollup method you set in the widget (average, max, min, or sum).
++
+Table widgets can be sorted by any column, and columns can be moved or resized as needed.
+
+•	*Top / Bottom*
+Use this to limit the result set in chart widgets, to select whether to display the top N results in your widget, or the bottom N results. You can choose this option when data is either not rolled up or is rolled up by a specific attribute.
+
+•	*Override dashboard time*
+By default, most widgets you add to a dashboard show data according to the dashboard's time range setting (3h, 24h, 3d, 7d, 30d or custom range). However, you can override this time setting in individual widgets to force them to show data in a specific time context, regardless of the dashboard's time setting.
