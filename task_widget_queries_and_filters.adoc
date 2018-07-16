@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
-permalink: task_display_widget_legends.html
-summary: Displaying legends on dashboard widgets.
-keywords: dashboard, widget, legends
+permalink: task_widget_queries_and_filters.html
+summary: Queries and Filters in dashboard widgets.
+keywords: dashboard, widget, queries, query, filter
 ---
 :toc: macro
 :hardbreaks:
@@ -13,6 +13,8 @@ keywords: dashboard, widget, legends
 :imagesdir: ./media/
 
 = Dashboard widget queries and filters
+
+== Queries
 The Query in a dashboard widget is a powerful tool for managing the display of your data. Here are some things to note about widget queries.
 
 Some widgets can have up to five queries. Each query will plot its own set of lines or graphs in the widget. Setting rollup, grouping, top/bottom results, etc. on one query does not affect any other queries for the widget.
@@ -31,24 +33,40 @@ Table
 Bar chart
 Box plot
 Scatter plot
-Filtering in dashboard queries
+
+== Filtering in dashboard queries
 You can filter using any of the following to refine your search in any text field in the query:
 
 An asterisk enables you to search for everything. For example,
+
 vol*rhel
+
 displays all resources that start with "vol" and end with "rhel".
+
 The question mark enables you to search for a specific number of characters. For example,
+
 BOS-PRD??-S12
+
 displays BOS-PRD12-S12, BOS-PRD13-S12, and so on.
+
 The OR operator enables you to specify multiple entities. For example,
+
 FAS2240 OR CX600 OR FAS3270
+
 finds multiple storage models.
+
 The NOT operator allows you to exclude text from the search results. For example,
+
 NOT EMC*
+
 finds everything that does not start with "EMC". You can use
+
 NOT *
+
 to display fields that contain null values.
+
 If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.
 
-Identifying objects returned by queries and filters
+== Identifying objects returned by queries and filters
+
 The objects returned by queries and filters look similar to those shown in the following illustration. Objects with 'tags' assigned to them are annotations while the objects without tags are performance counters or object attributes.
