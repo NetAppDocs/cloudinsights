@@ -221,7 +221,7 @@ This example illustrates the concept of Primary and Secondary axes in a chart wi
 +
 The IOPS line is displayed on the chart, with its scale shown on the left.
 
-. Click *[+Add]* to add a second line to the chart. For this line, choose _Latency - Total_ for the metric.
+. Click *[+Query]* to add a second line to the chart. For this line, choose _Latency - Total_ for the metric.
 +
 Notice that the line is displayed flat at the bottom of the chart. This is because it is being drawn _at the same scale_ as the IOPS line.
 
@@ -231,7 +231,7 @@ The Latency line is now drawn at its own scale, which is displayed on the right 
 
 == Expressions in widgets
 
-In a dashboard, any timeseries widget (line, spline, area, stacked area) allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives us visibility into the "system" or "overhead" IOPS that occur in our environment--those IOPS that are not from reading or writing data.
+In a dashboard, any timeseries widget (line, spline, area, stacked area) allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
 
 === Expressions Example: Read IOPS percentage
 
@@ -245,31 +245,31 @@ This data can be shown in a line graph on your dashboard. To do this, follow the
 
 . Create a new dashboard, or open an existing dashboard in edit mode.
 
-. Add a widget to the dashboard. Choose Area chart.
+. Add a widget to the dashboard. Choose *Area chart*.
 +
-The widget opens in edit mode. By default, a query is displayed showing IOPS - Total for Storage assets. If desired, select a different asset type.
+The widget opens in edit mode. By default, a query is displayed showing _IOPS - Total_ for _Storage_ assets. If desired, select a different asset type.
 
-. Click the Convert to Expression button.
+. Click the *Convert to Expression* button.
 +
-The current query is converted to Expression mode. Notice that you cannot change the asset type while in Expression mode. Notice that while you are in Expression mode, the button changes to Revert to Query. Click this if you wish to switch back to Query mode at any time. Be aware that switching between modes will reset fields to their defaults.
+The current query is converted to Expression mode. Notice that you cannot change the asset type while in Expression mode. Notice that while you are in Expression mode, the button changes to *Revert to Query*. Click this if you wish to switch back to Query mode at any time. Be aware that switching between modes will reset fields to their defaults.
 +
 For now, stay in Expression mode.
 
-. The IOPS - Total metric is now in the alphabetic variable field "a". In the "b" variable field, click Select and choose IOPS - Read.
+. The *IOPS - Total* metric is now in the alphabetic variable field "*a*". In the "*b*" variable field, click *Select* and choose *IOPS - Read*.
 +
-You can add up to a total of five alphabetic variables for your expression by clicking the + button following the variable fields. For our Read Percentage example, we only need Total IOPS ("a") and Read IOPS ("b").
+You can add up to a total of five alphabetic variables for your expression by clicking the + button following the variable fields. For our Read Percentage example, we only need Total IOPS ("*a*") and Read IOPS ("*b*").
 
-. In the Expression field, you use the letters corresponding to each variable to build your expression. We know that Read Percentage = (Read IOPS / Total IOPS) x 100, so we would write this expression as:
+. In the *Expression* field, you use the letters corresponding to each variable to build your expression. We know that Read Percentage = (Read IOPS / Total IOPS) x 100, so we would write this expression as:
 
  (b / a) * 100
 
-. The Label field identifies the expression. Change the label to "Read Percentage", or something equally meaningful for you.
+. The *Label* field identifies the expression. Change the label to "Read Percentage", or something equally meaningful for you.
 
-. Change the Units field to "%" or "Percent".
+. Change the *Units* field to "%" or "Percent".
 +
 The chart displays the IOPS Read percentage over time for the chosen storage devices. If desired, you can set a filter, or choose a different rollup method. Be aware that if you select Sum as the rollup method, all percentage values are added together, which potentially may go higher than 100%.
 
-. Click Save to save the chart to your dashboard.
+. Click *Save* to save the chart to your dashboard.
 +
 You can also use expressions in Line chart, Spline chart, or Stacked Area chart widgets.
 
@@ -291,7 +291,7 @@ This data can then be shown in a line graph on your dashboard. To do this, follo
 +
 The widget opens in edit mode. By default, a query is displayed showing _IOPS - Total_ for _Storage_ assets. If desired, select a different asset type.
 
-. Click the button to create a copy of the query.
+. Click the *[+Query]* button to create a copy of the query.
 +
 A duplicate of the query is added below the original.
 
