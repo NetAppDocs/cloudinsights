@@ -229,6 +229,8 @@ Notice that the line is displayed flat at the bottom of the chart. This is becau
 +
 The Latency line is now drawn at its own scale, which is displayed on the right side of the chart.
 
+image::SecondaryAxisExplained.png[]
+
 == Expressions in widgets
 
 In a dashboard, any timeseries widget (line, spline, area, stacked area) allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
