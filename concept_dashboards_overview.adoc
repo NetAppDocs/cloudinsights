@@ -1,0 +1,71 @@
+---
+sidebar: sidebar
+permalink: concept_dashboards_overview.html
+summary: Overview of dashboards in Cloud Insights.
+keywords: dashboard, widget, custom, view, data
+---
+
+= Dashboards Overview
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Insights provides users the flexibility to create operational views of infrastructure data, by allowing you to create custom dashboards with a variety of widgets, each of which provides extensive flexibility in displaying and charting your data.
+
+IMPORTANT: The examples in these sections are for explanation purposes only and do not cover every possible scenario. The concepts and steps herein can be used to create your own dashboards to highlight the data specific to your particular needs.
+
+toc::[]
+
+== Creating a Dashboard
+
+You create a custom dashboard in one of two places:
+
+•	*Dashboards > [+New dashboard]*
+
+•	*Dashboards > Show all dashboards >* click the *[+Dashboard]* button
+
+== Dashboard Controls
+
+The Dashboard screen has several controls:
+
+•	*Time selector*: allows you to view dashboard data for a range of time from 3 hours up to 90 days by use of the custom date range selector. You can choose to override this global time range in individual widgets.
+
+•	*Edit button*: Selecting "Edit" will enable Edit mode, which allows you to make changes to the dashboard. New dashboards open in Edit mode by default.
+
+•	*Save button*: Allows you to save, rename or delete the dashboard.
+
+//•	Variable button: Variables can be added to dashboards. Changing the variable updates all of your widgets at once. For more information on variables, see Custom Dashboard concepts
+
+•	*Widget button*, which allows you to add any number of tables, charts, or other widgets to the dashboard.
++
+Widgets can be resized and relocated to different positions within the dashboard, to give you the best view of your data according to your current needs.
+
+== Widget types
+
+You can choose from the following widget types:
+
+* *Table widget*: A table displaying data according to filters and columns you choose. Table data can be combined in groups that can be collapsed and expanded.
+
+* *Line, Spline, Area, Stacked Area charts*: These are time-series chart widgets on which you can display performance and other data over time.
+
+* *Single value widget*: A widget allowing you to display a single value that can be derived either directly from a counter or calculated using a query or expression. For example, you can display the sum of total IOPS for all storage in your environment as a single value at the top of your dashboard.
+
+* *Bar chart*: A chart to display top or bottom N values, for example, Top 10 storages by capacity or bottom 5 volumes by IOPS.
+
+* *Box Plot chart*: A plot of the min, max, median, and the range between lower and upper quartile of data in a single chart.
+
+* *Scatter Plot chart*: Plots related data as points, for example, IOPS and latency. In this example, you would quickly see assets with high latency and low IOPS.
+
+* *Pie chart*: a traditional pie chart to display data as a piece of the total.
+
+* *Note widget*: Up to 1000 characters of free text.
+
+For more detailed explanations of these and other Dashboard Features, link:concept_dashboard_features.html[click here].
+
+For example dashboards, link:TBD.html[click here].
