@@ -19,6 +19,18 @@ You create annotations and assign them to assets you monitor. Annotations
 are notes that provide information about an asset, such as physical location, end
 of life, storage tier, or volume service levels.
 
+== Defining annotations
+
+Using annotations, you can add custom business-specific data that matches
+your business needs to assets. While Cloud Insights provides a set of
+default annotations, such as asset life cycle (birthday or end of life),
+building or data center location, and tier you might find that you want to
+view data in other ways.
+
+The data in custom annotations supplements device data already collected,
+such as switch manufacturer, number of ports, and performance statistics.
+The data you add using annotations is not discovered by Cloud Insights.
+
 == Manually assigning annotations to assets
 
 .Before you begin
@@ -51,7 +63,7 @@ To automatically assign annotations to assets based on criteria that you define,
 === Default storage annotation rules
 
 [.lead]
-To expedite the assignment of storage annotations to your resources, OnCommand Insight includes 21 default annotation rules, which associate a tier level with a storage tier model. All of your storage resources are automatically associated with a tier upon acquisition of the assets in your environment.
+To expedite the assignment of storage annotations to your resources, Cloud Insights includes 21 default annotation rules, which associate a tier level with a storage tier model. All of your storage resources are automatically associated with a tier upon acquisition of the assets in your environment.
 The default annotation rules apply a tier annotations in the following way:
 
 Tier 1, storage quality tier::
@@ -64,7 +76,9 @@ You can edit the default settings of these rules to match your tier requirements
 === Creating annotation rules
 [.lead]
 As an alternative to manually applying annotations to individual assets, you can automatically apply annotations to multiple assets using annotation rules. Annotations set manually on an individual asset pages take precedence over rule-based annotations when Insight evaluates the annotation rules.
+
 .Before you begin
+
 You must have created a query for the annotation rule.
 
 .About this task
