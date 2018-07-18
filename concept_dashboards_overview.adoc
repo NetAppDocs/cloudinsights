@@ -1,11 +1,12 @@
 ---
 sidebar: sidebar
-permalink: concept_dashboard_overview.html
+permalink: concept_dashboards_overview.html
 summary: Overview of dashboards in Cloud Insights.
 keywords: dashboard, widget, custom, view, data
 ---
 
 = Dashboards Overview
+
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -17,7 +18,7 @@ keywords: dashboard, widget, custom, view, data
 [.lead]
 Cloud Insights provides users the flexibility to create operational views of infrastructure data, by allowing you to create custom dashboards with a variety of widgets, each of which provides extensive flexibility in displaying and charting your data.
 
-IMPORTANT: The examples in this section are for explanation purposes only and do not cover every possible scenario. The concepts and steps herein can be used to create your own dashboards to highlight the data specific to your particular needs.
+IMPORTANT: The examples in these sections are for explanation purposes only and do not cover every possible scenario. The concepts and steps herein can be used to create your own dashboards to highlight the data specific to your particular needs.
 
 toc::[]
 
@@ -25,11 +26,11 @@ toc::[]
 
 You create a custom dashboard in one of two places:
 
-•	*Dashboards => +New dashboard*
+•	*Dashboards > []+New dashboard]*
 
-•	*Dashboards => Show all dashboards =>* click the *[+Dashboard]* button
+•	*Dashboards > Show all dashboards >* click the *[+Dashboard]* button
 
-== Dashboard features
+== Dashboard Controls
 
 The Dashboard screen has several controls:
 
@@ -49,18 +50,22 @@ Widgets can be resized and relocated to different positions within the dashboard
 
 You can choose from the following widget types:
 
-Table widget: A table displaying data according to filters and columns you choose. Table data can be combined in groups that can be collapsed and expanded.
+* *Table widget*: A table displaying data according to filters and columns you choose. Table data can be combined in groups that can be collapsed and expanded.
 
-Line, Spline, Area, Stacked Area charts: These are time-series chart widgets on which you can display performance and other data over time.
+* *Line, Spline, Area, Stacked Area charts*: These are time-series chart widgets on which you can display performance and other data over time.
 
-Single value widget: A widget allowing you to display a single value that can be derived either directly from a counter or calculated using a query or expression. For example, you can display the sum of total IOPS for all storage in your environment as a single value at the top of your dashboard.
+* *Single value widget*: A widget allowing you to display a single value that can be derived either directly from a counter or calculated using a query or expression. For example, you can display the sum of total IOPS for all storage in your environment as a single value at the top of your dashboard.
 
-Bar chart: A chart to display top or bottom N values, for example, Top 10 storages by capacity or bottom 5 volumes by IOPS.
+* *Bar chart*: A chart to display top or bottom N values, for example, Top 10 storages by capacity or bottom 5 volumes by IOPS.
 
-Box Plot chart: A plot of the min, max, median, and the range between lower and upper quartile of data in a single chart.
+* *Box Plot chart*: A plot of the min, max, median, and the range between lower and upper quartile of data in a single chart.
 
-Scatter Plot chart: Plots related data as points, for example, IOPS and latency. In this example, you would quickly see assets with high latency and low IOPS.
+* *Scatter Plot chart*: Plots related data as points, for example, IOPS and latency. In this example, you would quickly see assets with high latency and low IOPS.
 
-Pie chart: a traditional pie chart to display data as a piece of the total.
+* *Pie chart*: a traditional pie chart to display data as a piece of the total.
 
-Note widget: Up to 1000 characters of free text.
+* *Note widget*: Up to 1000 characters of free text.
+
+For more detailed explanations of these and other Dashboard Features, link::concept_dashboard_features.html[click here].
+
+For example dashboards, link::TBD.html[click here].
