@@ -4,6 +4,9 @@ permalink: task_dashboard_example_VM_performance.html
 summary: Dashboard example highlighting virtual machine performance.
 keywords: dashboard, widget, custom, example, virtual machine, vm, performance
 ---
+
+= Dashboard Example: Virtual Machine Performance
+
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -12,10 +15,8 @@ keywords: dashboard, widget, custom, example, virtual machine, vm, performance
 :linkattrs:
 :imagesdir: ./media/
 
-= Dashboard Example: Virtual Machine Performance
-
 [.lead]
-There are many challenges facing IT operations today. Administrators are being asked to do more with less, and having full visibility into your dynamic data centers is a must. In this example, we will show you how to create a dashboard with widgets that give you operational insights into the virtual machine (VM) performance in your environment. By following this example, and creating widgets to target your own specific needs, you will be able to visualize backend storage performance compared to frontend virtual machine performance, or view VM latency versus I/O demand.
+There are many challenges facing IT operations today. Administrators are being asked to do more with less, and having full visibility into your dynamic data centers is a must. In this example, we will show you how to create a dashboard with widgets that give you operational insights into the virtual machine (VM) performance in your environment. By following this example, and creating widgets to target your own specific needs, you can do things like visualizing backend storage performance compared to frontend virtual machine performance, or viewing VM latency versus I/O demand.
 
 //Custom dashboards allow to you to prioritize efforts and identify resource availability. You can respond to the ebb and flow of workloads and minimize the time to detect and remediate emerging issues. Custom dashboards allow you the flexibility to create prioritized views into business-critical infrastructure, and are useful for identifying performance availability across multi-vendor technologies.
 
@@ -108,6 +109,12 @@ Next we will add a chart showing VM Throughput for each Application associated w
 
 . Select Virtual Machine and choose Throughput - Total. Set any filters you wish, or leave Filter by empty. For Roll up, choose "Max" and select by "Application" or "Name". Show the Top 10 applications. Display this data as a Line Chart, and leave Y-Axis as Primary.
 
-Click Save to add this widget to the dashboard.
-You can move widgets by holding down the mouse button anywhere in the top of the widget and dragging to a new location. You can resize widgets by dragging the lower-right corner. Be sure to Save the dashboard after you make your changes.
+. Click *[Save]* to add this widget to the dashboard.
+
+You can move widgets on the dashboard by holding down the mouse button anywhere in the top of the widget and dragging it to a new location. 
+
+You can resize widgets by dragging the lower-right corner. 
+
+Be sure to *[Save]* the dashboard after you make your changes.
+
 Your final VM Performance Dashboard will look like this:
