@@ -16,7 +16,7 @@ keywords: dashboard, widget, custom, concepts,
 :imagesdir: ./media/
 
 [.lead]
-Dashboards and widgets allow great flexibility in how data is displayed. Here are some concepts to help you get the most from your custom dashboards. Each concept is explained in greater detail in the following sections.
+Dashboards and widgets allow great flexibility in how data is displayed. Here are some concepts to help you get the most from your custom dashboards. 
 
 toc::[]
 
@@ -130,7 +130,7 @@ If you enclose a filter string in double quotes, Insight treats everything betwe
 
 The objects returned by queries and filters look similar to those shown in the following illustration. Objects with 'tags' assigned to them are annotations while the objects without tags are performance counters or object attributes.
 
-image:ObjectsReturnedByFilters.png[Objects returned by filters]
+image::ObjectsReturnedByFilters.png[Objects returned by filters]
 
 
 == Roll up and Aggregation
@@ -232,7 +232,7 @@ Notice that the line is displayed flat at the bottom of the chart. This is becau
 +
 The Latency line is now drawn at its own scale, which is displayed on the right side of the chart.
 
-image:SecondaryAxisExplained.png[Secondary Axis example]
+image::SecondaryAxisExplained.png[Secondary Axis example]
 
 == Expressions in widgets
 
@@ -322,4 +322,4 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 
 . Click *Save* to save the chart to your dashboard.
 
-==
+
