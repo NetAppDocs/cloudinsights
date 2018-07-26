@@ -49,17 +49,19 @@ The *New dashboard* page opens.
 +
 The Edit Widget dialog opens. The default name is "Widget 1" and the default data displayed is for all storages in your environment.
 
+image:VMDashboard-TableWidget1.png[]
+
 . We can customize this widget. In the Name field at the top, delete "Widget 1" and enter "Virtual Machine Performance table".
 
 . Click the asset type drop-down and change _Storage_ to _Virtual Machine_.
 +
 The table data changes to show all virtual machines in your environment. For now, the table only shows the VM names.
 
-. Let's add a few columns to the table. Click the Gear icon on the right and select _Data Center_, _Storage name_, and _IOPS - Total_. You can also try typing the name into the search to quickly display the desired field.
+. Let's add a few columns to the table. Click the Gear icon on the right and select _Hypervisor name_, _IOPS - Total_, and _Latency - Total_. You can also try typing the name into the search to quickly display the desired field.
 +
 These columns are now displayed in the table. You can sort the table by any of these columns. Note that the columns are displayed in the order in which they were added to the widget.
 
-. For this exercise we will exclude VMs that are not actively in use, so let's filter out anything with less than 10 total IOPS. Click the *[+]* button next to *Filter by* and select _IOPS - Total_. Click on *Any* and enter "10" in the *from* field. Leave the *to* field empty.
+. For this exercise we will exclude VMs that are not actively in use, so let's filter out anything with less than 10 total IOPS. Click the *[+]* button next to *Filter by* and select _IOPS - Total_. Click on *Any* and enter "10" in the *from* field. Leave the *to* field empty. Click outsude the filter field or press Enter to set the filter.
 +
 The table now shows only VMs with 10 or more total IOPS.
 
@@ -67,25 +69,29 @@ The table now shows only VMs with 10 or more total IOPS.
 +
 The table rows are now grouped according to your setting. You can expand and collapse the groups as needed. Grouped rows show rolled up data for each of the columns. Some columns allow you to choose the roll up method for that column.
 
+image:VMDashboard-TableWidgetGroup.png[]
+
 . When you have customized the table widget to your satisfaction, click the *[Save]* button.
 +
 The table widget is saved to the dashboard.
 
 You can resize the widget on the dashboard by dragging the lower-right corner. Make the widget wider to show all the columns clearly. Click *Save* to save the current dashboard.
 
-Next we will add some charts to show our VM Performance. Let's create a line chart comparing VM latency with Storage latency.
+Next we will add some charts to show our VM Performance. Let's create a line chart comparing VM latency with VMDK latency.
 
 . If necessary, click the *Edit* icon on the dashboard to enable Edit mode.
 
 . Click the *[Add widget]* icon and select _Line Chart_ to add a new line chart widget to the dashboard.
 
-. The *Edit Widget* dialog opens. Name this widget "VM vs Storage Max Latency"
+. The *Edit Widget* dialog opens. Name this widget "VM / VMDK Max Latency"
 
 . Select *Virtual Machine* and choose _Latency - Max_. Set any filters you wish, or leave *Filter by* empty. For *Roll up*, choose _Sum_ by _All_. Display this data as a _Line Chart_, and leave _Y-Axis_ as _Primary_.
 
-. Click the *[+Query]* button to add a second data line. For this line, select _Storage_ and _Latency - Max_. Set any filters you wish, or leave *Filter by* empty. For *Roll up*, choose _Sum_ by _All_. Display this data as a _Line Chart_, and leave _Y-Axis_ as _Primary_.
+. Click the *[+Query]* button to add a second data line. For this line, select _VMDK_ and _Latency - Max_. Set any filters you wish, or leave *Filter by* empty. For *Roll up*, choose _Sum_ by _All_. Display this data as a _Line Chart_, and leave _Y-Axis_ as _Primary_.
 
 . Click *[Save]* to add this widget to the dashboard.
+
+image:VMDashboard-LineChartVMLatency.png[]
 
 Next we will add a chart showing VM Read, Write and Total IOPS in a single chart.
 
@@ -98,6 +104,10 @@ Next we will add a chart showing VM Read, Write and Total IOPS in a single chart
 . Click the *[+Query]* button to add a second data line. For this line, select *Virtual Machine* and choose _IOPS - Read_.
 
 . Click the *[+Query]* button to add a third data line. For this line, select *Virtual Machine* and choose _IOPS - Write_.
+
+. Click *Show legend* to display a legend for this widget on the dashboard.
+
+image:VMDashboard-AreaChartVMIOPS.png[]
 
 . Click *[Save]* to add this widget to the dashboard.
 
