@@ -1,0 +1,23 @@
+---
+sidebar: sidebar
+permalink: concept_determining_data_source_acq_status.html
+summary: Data Source acquisition status
+keywords: data source, collector, acquisition, status
+---
+
+= Determining data source acquisition status
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/ 
+
+[.lead]
+Because data sources are the primary source of information for Insight, it is imperative that you ensure that they remain in a running state.
+
+Data source status is displayed in the upper right corner of any asset page as the message "Acquired N minutes ago", where N indicates the most recent acquisition time of the asset's data source(s). The acquisition time/date is also displayed.
+
+Clicking on the message displays a table with data source name, status, and last successful acquisition time. Clicking on the data source name link in the table takes you to the data source detail page for that data source.
