@@ -1,0 +1,325 @@
+---
+sidebar: sidebar
+permalink: concept_dashboard_features.html
+summary: Dashboard features and concepts.
+keywords: dashboard, widget, custom, concepts,
+---
+
+= Dashboard Features
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Dashboards and widgets allow great flexibility in how data is displayed. Here are some concepts to help you get the most from your custom dashboards. 
+
+toc::[]
+
+////
+•	*Variables*
+Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting each widget to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
++
+Multiple queries and/or expressions
+Each time series widget (line, spline, area, or stacked area charts) can have up to five queries and/or expressions to determine what data to display, allowing you to compare different sets of data on a single chart. For example, you can have a line chart showing IOPS for both Storage and VM's, or a single chart comparing Throughput and Latency for all Storage Pools.
+////
+
+==	Widget Placement and Size
+All dashboard widgets can be positioned and sized according to your needs for each particular dashboard.
+
+////
+•	*Rollup and Grouping*
+Data displayed in each widget is rolled up from the data points collected. You can choose to roll up this data in one of several ways:
++
+*Avg*: rolls up data as the average of the underlying data
++
+*Max*: rolls up data to the maximum of the underlying data
++
+*Min*: rolls up data to the minimum of the underlying data
++
+*Sum*: rolls up data as the sum of the underlying data
++
+By default, all of the underlying data is rolled up into a single entry (All) on the chart or table. You can choose to roll up data for a specific attribute instead, such as Data Center or Tier, to distribute the underlying data into desired groups. Your widget will display data for only the attributes you select.
++
+You can group data in a table widget according to the attribute you choose. For example, you might choose to group your table by Data Center. Groups can be expanded or collapsed at will.
++
+Performance data in a table is rolled up in the group header according to the rollup method you set in the widget (average, max, min, or sum).
++
+Table widgets can be sorted by any column, and columns can be moved or resized as needed.
+
+•	*Top / Bottom*
+Use this to limit the result set in chart widgets, to select whether to display the top N results in your widget, or the bottom N results. You can choose this option when data is either not rolled up or is rolled up by a specific attribute.
+
+•	*Override dashboard time*
+By default, most widgets you add to a dashboard show data according to the dashboard's time range setting (3h, 24h, 3d, 7d, 30d or custom range). However, you can override this time setting in individual widgets to force them to show data in a specific time context, regardless of the dashboard's time setting.
+////
+
+== Displaying Widget Legends
+
+Widgets on dashboards can be displayed with or without legends. Legends in widgets can be turned on or off on a dashboard by either of the following methods:
+
+. When creating or editing the widget itself, check the *Legends* checkbox and save the widget.
+. With the dashboard in Edit mode, click the *Options* button on the widget and check the *Legends* checkbox in the menu.
+
+As you edit and change the data displayed in the widget, the legend for that widget is updated dynamically.
+
+When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page.
+
+== Dashboard widget queries and filters
+
+=== Queries
+The Query in a dashboard widget is a powerful tool for managing the display of your data. Here are some things to note about widget queries.
+
+Some widgets can have up to five queries. Each query will plot its own set of lines or graphs in the widget. Setting rollup, grouping, top/bottom results, etc. on one query does not affect any other queries for the widget.
+
+You can click on the eye icon to temporarily hide a query. The widget display updates automatically when you hide or show a query. This allows you to check your displayed data for individual queries as you build your widget.
+
+The following widget types can have multiple queries:
+
+* Area chart
+* Stacked area chart
+* Line chart
+* Spline chart
+* Single value widget
+
+The remaining widget types can have only a single query:
+
+* Table
+* Bar chart
+* Box plot
+* Scatter plot
+
+=== Filtering in dashboard queries
+You can filter using any of the following to refine your search in any text field in the query:
+
+An asterisk enables you to search for everything. For example,
+
+vol*rhel
+
+displays all resources that start with "vol" and end with "rhel".
+
+The question mark enables you to search for a specific number of characters. For example,
+
+BOS-PRD??-S12
+
+displays BOS-PRD12-S12, BOS-PRD13-S12, and so on.
+
+The OR operator enables you to specify multiple entities. For example,
+
+FAS2240 OR CX600 OR FAS3270
+
+finds multiple storage models.
+
+The NOT operator allows you to exclude text from the search results. For example,
+
+NOT EMC*
+
+finds everything that does not start with "EMC". You can use
+
+NOT *
+
+to display fields that contain null values.
+
+If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.
+
+=== Identifying objects returned by queries and filters
+
+The objects returned by queries and filters look similar to those shown in the following illustration. Objects with 'tags' assigned to them are annotations while the objects without tags are performance counters or object attributes.
+
+image::ObjectsReturnedByFilters.png[Objects returned by filters]
+
+
+== Roll up and Aggregation
+
+=== Roll up
+
+Data displayed in a widget is rolled up from the underlying data points collected during acquisition. For example, if you have a line chart widget showing Storage IOPS over time, you might want to see a separate line for each of your data centers, for a quick comparison. You can choose to roll up this data in one of several ways:
+
+* *Avg*: displays each line as the _average_ of the underlying data.
+* *Max*: displays each line as the _maximum_ of the underlying data.
+* *Min*: displays each line as the _minimum_ of the underlying data.
+* *Sum*: displays each line as the _sum_ of the underlying data.
+
+.Steps
+
+To set the roll up method, do the following.
+
+. In your widget's query, choose an asset type (for example, _Storage_) and metric (such as _IOPS - Total_).
+
+. For *Roll up*, choose a roll up method (such as _Avg_) and select an attribute or annotation by which to roll up the data (for example, _Data Center_).
++
+The widget updates automatically and shows a line for each of your data centers.
+
+You can also choose to roll up _all_ of the underlying data into the chart or table. In this case, you will get a single line for each query in the widget, which will show the average, min, max or sum of the chosen metric for all of the underlying assets.
+
+If you have set a filter for the query, the data that is rolled up is based on the filtered data.
+
+Note that when you choose to roll up a widget by any field (for example, _Model_), you will still need to Filter by that field in order to properly display the data for that field on the chart or table.
+
+=== Aggregating data
+
+You can further align your time-series charts (line, area, etc.) by aggregating data points into minute, hour, or day buckets before that data is subsequently rolled up by attribute (if chosen). You can choose to aggregate data points according to their _Avg, Max, Min, or Sum_, or by the _Last_ data point collected during the chosen interval. To choose an aggregation method, click on *More options* in the widget's query section.
+
+The minimum allowed interval is ten minutes. A small interval combined with a long time range may result in an "Aggregation interval resulted in too many data points." warning. You might see this if you have a small interval and increase the dashboard time frame to 7 days. In this case, Insight will temporarily increase the aggregation interval to 1 hour until you select a smaller time frame.
+
+You can also aggregate data in the bar chart widget and single-value widget.
+
+Most asset counters aggregate to _Avg_ by default. Some counters aggregate to _Max, Min_, or _Sum_ by default. For example, port errors aggregate to _Sum_ by default, where storage IOPS aggregate to _Avg_.
+
+== Showing Top/Bottom Results
+
+In a chart widget, you can show either the *Top* or *Bottom* results for rolled up data, and choose the number of results shown. In a table widget, you can select the number of rows displayed and sort by any column.
+
+=== Chart widget top/bottom
+
+In a chart widget, when you choose to rollup data by a specific attribute, you have the option of viewing either the top N or bottom N results. Note that you cannot choose the top or bottom results when you choose to rollup by _all_ attributes.
+
+You can choose which results to display by choosing either *Top* or *Bottom* in the query's *Show* field, and selecting a value from the list provided.
+
+=== Table widget show entries
+
+In a table widget, you can select the number of results shown in the table results. You can choose from 5, 10, 20, or 50 results. You are not given the option to choose top or bottom results because the table allows you to sort ascending or descending by any column on demand.
+
+You can choose the number of results to show in the table on the dashboard by selecting a value from the query's *Show entries* field.
+
+== Grouping in Table Widget
+
+Data in a table widget can be grouped by any available attribute, allowing you to see an overview of your data, and to drill-down into it for more detail. Metrics in the table are rolled up for easy viewing in each collapsed row.
+
+Table widgets allow you to group your data based on the attributes you set. For example, you might want your table to show total storage IOPS grouped by the data centers in which those storages live. Or you might want to display a table of virtual machines grouped according to the hypervisor that hosts them. From the list, you can expand each group to view the assets in that group.
+
+Grouping is only available in the Table widget type.
+
+=== Performance data roll up
+
+If you include a column for performance data (for example, _IOPS - Total_) in a table widget, when you choose to group the data you can then choose a roll up method for that column. The default roll up method is to display the average (_avg_) of the underlying data in the group row. You can also choose to display the sum, minimum, or maximum of the data.
+
+== Overriding Dashboard Time in Individual widgets
+
+You can override the main dashboard time frame setting in individual widgets. These widgets will display data based on their set time frame, not the dashboard time frame.
+
+To override the dashboard time and force a widget to use a its own time frame, in the widget's edit mode set the *Override dashboard time* to On (check the box), and select a time frame for the widget. *Save* the widget to the dashboard.
+
+The widget will display its data according to the time frame set for it, regardless of the time frame you select on the dashboard itself.
+
+The time frame you set for one widget will not affect any other widgets on the dashboard.
+
+== Primary and Secondary Axis
+
+Different metrics use different units of measurements for the data they report in a chart. For example, when looking at IOPS, the unit of measurement is the number of I/O operations per second of time (IO/s), while Latency is purely a measure of time (milliseconds, microseconds, seconds, etc.). When charting both metrics on a single line chart using a single set a values for the Y-Axis, the latency numbers (typically a handful of milliseconds) are charted on the same scale with the IOPS (typically numbering in the thousands), and the latency line gets lost at that scale.
+
+But it is possible to chart both sets of data on a single meaningful graph, by setting one unit of measurement on the primary (left-side) Y-axis, and the other unit of measurement on the secondary (right-side) Y-axis. Each metric is charted at its own scale.
+
+.Steps
+
+This example illustrates the concept of Primary and Secondary axes in a chart widget.
+
+. Create or open a dashboard. Add a line chart, spline chart, area chart or stacked area chart widget to the dashboard.
+
+. Select an asset type (for example _Storage_) and choose _IOPS - Total_ for your first metric. Set any filters you like, and choose a roll-up method if desired.
++
+The IOPS line is displayed on the chart, with its scale shown on the left.
+
+. Click *[+Query]* to add a second line to the chart. For this line, choose _Latency - Total_ for the metric.
++
+Notice that the line is displayed flat at the bottom of the chart. This is because it is being drawn _at the same scale_ as the IOPS line.
+
+. In the Latency query, select *Y-Axis: Secondary*.
++
+The Latency line is now drawn at its own scale, which is displayed on the right side of the chart.
+
+image::SecondaryAxisExplained.png[Secondary Axis example]
+
+== Expressions in widgets
+
+In a dashboard, any timeseries widget (line, spline, area, stacked area) allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
+
+=== Expressions Example: Read IOPS percentage
+
+In this example, we want to show Read IOPS as a percentage of Total IOPS. You can think of this as the following formula:
+
+    Read Percentage = (Read IOPS / Total IOPS) x 100
+
+This data can be shown in a line graph on your dashboard. To do this, follow these steps:
+
+.Steps
+
+. Create a new dashboard, or open an existing dashboard in edit mode.
+
+. Add a widget to the dashboard. Choose *Area chart*.
++
+The widget opens in edit mode. By default, a query is displayed showing _IOPS - Total_ for _Storage_ assets. If desired, select a different asset type.
+
+. Click the *Convert to Expression* button.
++
+The current query is converted to Expression mode. Notice that you cannot change the asset type while in Expression mode. Notice that while you are in Expression mode, the button changes to *Revert to Query*. Click this if you wish to switch back to Query mode at any time. Be aware that switching between modes will reset fields to their defaults.
++
+For now, stay in Expression mode.
+
+. The *IOPS - Total* metric is now in the alphabetic variable field "*a*". In the "*b*" variable field, click *Select* and choose *IOPS - Read*.
++
+You can add up to a total of five alphabetic variables for your expression by clicking the + button following the variable fields. For our Read Percentage example, we only need Total IOPS ("*a*") and Read IOPS ("*b*").
+
+. In the *Expression* field, you use the letters corresponding to each variable to build your expression. We know that Read Percentage = (Read IOPS / Total IOPS) x 100, so we would write this expression as:
+
+ (b / a) * 100
+
+. The *Label* field identifies the expression. Change the label to "Read Percentage", or something equally meaningful for you.
+
+. Change the *Units* field to "%" or "Percent".
++
+The chart displays the IOPS Read percentage over time for the chosen storage devices. If desired, you can set a filter, or choose a different rollup method. Be aware that if you select Sum as the rollup method, all percentage values are added together, which potentially may go higher than 100%.
+
+. Click *Save* to save the chart to your dashboard.
++
+You can also use expressions in Line chart, Spline chart, or Stacked Area chart widgets.
+
+=== Expressions example: "System" I/O
+
+Example 2: Among the metrics collected from data sources are read, write, and total IOPS. However, the total number of IOPS reported by a data source sometimes includes "system" IOPS, which are those IO operations that are not a direct part of data reading or writing. This system I/O can also be thought of as "overhead" I/O, necessary for proper system operation but not directly related to data operations.
+
+To show these system I/Os, you can subtract read and write IOPS from the total IOPS reported from acquisition. The formula might look like this:
+
+    System IOPS = Total IOPS - (Read IOPS + Write IOPS)
+
+This data can then be shown in a line graph on your dashboard. To do this, follow these steps:
+
+.Steps
+
+. Create a new dashboard, or open an existing dashboard in edit mode.
+
+. Add a widget to the dashboard. Choose *Line chart*.
++
+The widget opens in edit mode. By default, a query is displayed showing _IOPS - Total_ for _Storage_ assets. If desired, select a different asset type.
+
+. Click the *[+Query]* button to create a copy of the query.
++
+A duplicate of the query is added below the original.
+
+. In the second query, click the *Convert to Expression* button.
++
+The current query is converted to Expression mode. Click *Revert to Query* if you wish to switch back to Query mode at any time. Be aware that switching between modes will reset fields to their defaults.
++
+For now, stay in Expression mode.
+
+. The _IOPS - Total_ metric is now in the alphabetic variable field "*a*". Click on _IOPS - Total_ and change it to _IOPS - Read_.
+
+. In the "*b*" variable field, click *Select* and choose _IOPS - Write_.
+
+. In the *Expression* field, you use the letters corresponding to each variable to build your expression. We would write our expression simply as:
+
+  a + b
++
+In the Display section, choose *Area chart* for this expression.
+
+. The *Label* field identifies the expression. Change the label to "System IOPS", or something equally meaningful for you.
++
+The chart displays the total IOPS as a line chart, with an area chart showing the combination of read and write IOPS below that. The gap between the two shows the IOPS that are not directly related to data read or write operations. These are your "system" IOPS.
+
+. Click *Save* to save the chart to your dashboard.
+
+

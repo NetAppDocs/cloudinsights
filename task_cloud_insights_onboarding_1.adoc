@@ -3,17 +3,12 @@ sidebar: sidebar
 permalink: task_cloud_insights_onboarding_1.html
 summary: Signing up for Cloud Insights and creating a tenant.
 ---
-:toc: macro
-:hardbreaks:
-:toclevels: 2
-:nofooter:
-:icons: font
-:linkattrs:
-:imagesdir: ./media/
 
 = Cloud Insights Onboarding
 
+:toc: macro
 :hardbreaks:
+:toclevels: 2
 :nofooter:
 :icons: font
 :linkattrs:
@@ -25,17 +20,19 @@ Before you can start working with Cloud Insights, you must sign up on the NetApp
 
 toc::[]
 
-== Signing up on NetApp Cloud Central
+== Creating your NetApp Cloud Central account
 
 To sign up for access to NetApp's cloud services, go to https://cloud.netapp.com[NetApp Cloud Central^] and click *Sign Up*.
 
-Enter a valid email address and choose a password.
-Enter your company name, and your full name.
-Accept the terms and conditions and click *Sign Up*.
+* Enter a valid email address and choose a password.
+* Enter your company name, and your full name.
+* Accept the terms and conditions and click *Sign Up*.
 
 You will then be taken to NetApp's cloud offerings page.
 
-== What if I already have a NetApp Cloud login?
+On the Cloud offerings page, choose *Go to Cloud Data Services*.
+
+=== What if I already have a NetApp Cloud login?
 
 If you already have a NetApp Cloud Central account, simply choose *Log In* on the https://cloud.netapp.com[NetApp Cloud Central^] portal page.
 
@@ -47,11 +44,15 @@ On the Cloud offerings page, choose *Go to Cloud Data Services*.
 
 If this is your first time logging in to Cloud Insights, under the Cloud Insights offering, click on *Start Free Trial*, which will kick off a free, 14-day trial of Cloud Insights. All Cloud Insights features are available during the trial period.
 
-You will be prompted to answer a few questions about your environment and request a name for your tenant. Cloud Insights will then create your company's tenant based on your responses. Once the tenant has been created, you will be automatically logged in to it.
+You will be prompted to answer a few questions and request a name for your tenant. Cloud Insights will then create your company's tenant based on your responses.
 
 NOTE: If the requested tenant name is already in use, you will be offered suggestions for a new name. You may choose one of these or enter a different name.
 
-After the free trial has ended, Cloud Insights will use the features based on your current license.
+Tenant creation takes a few moments to complete. During this time, you will be asked a few additional questions about your environment and what you'd like to get out of Cloud Insights. Your answers are voluntary but will help shape the Cloud Insights service.
+
+Once the creation of your tenant is complete, you will be automatically logged in to it.
+
+After the free trial has ended, Cloud Insights will use the features based on your current subscription.
 
 == Sign in and go
 
@@ -64,3 +65,9 @@ You can also open a browser directly to your Cloud Insights tenant URL:
 The URL will also be included in each user's invitation email for simple access and bookmarking.  If you are not already logged in to Cloud Central, you will be prompted to log in.
 
 NOTE: New users must still sign up for access to Cloud Central before they can access their tenant URL.
+
+== Logging Out
+
+To log out of Cloud Insights, click your *User Name* and select *Log Out*. You will be taken back to the Cloud Central sign in screen.
+
+NOTE: Logging out of Cloud Insights logs you out of Cloud Central. You will also be logged out of other NetApp Cloud services that use the Cloud Central sign-in.
