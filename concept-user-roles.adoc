@@ -1,0 +1,57 @@
+---
+different
+sidebar: sidebar
+permalink: accounts.html
+keywords: roles, users, guest, user, administrator
+summary: There are multiple user accounts with different permission levels.
+---
+
+= User accounts
+
+[.lead]
+Cloud Insights provides four user accounts, Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels.
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+The following illustration identifies the permissions granted to each user account.
+
+image::user-roles-fig.png
+
+You use an account that has Administrator privileges to create or modify user accounts. Each user account is assigned one of the following permission levels.
+* Guest can view asset pages, dashboards, queries and run queries.
+* User can perform all guest-level privileges, and create, modify or delete, dashboards, queries, annotations, annotation rules, and applications.  Users cannot create modify or delete policies.
+* Admins and Account Owner can perform all functions including adding new users and managing data collectors.
+
+The Account Owner is created when you register for Cloud Insights.
+
+Best practice is to limit the number of users with Administrator permissions <or Privs...get the wording straight> . The greatest number of accounts should be user or guest accounts.
+
+== Creating user accounts
+New accounts are initiated by sending a request for an account.
+
+.Before you begin
+* Install your Cloud Insights licenses.
+* Allocate a unique user name for each user.
+* Determine what passwords to use.
+* Understand the user roles you will be assigning.
+
+.Steps
+. Log into Cloud Insights
+. In the menu, click *Admin > Account Manager*
++
+The User Management screen is displayed. The screen contains a list of all of the accounts on the system.
+. Click *+ User*
++
+The Invite User screen is displayed.
+. Enter an email address or multiple addresses for invitations.
++
+*Note:* When you enter multiple addresses, they are all created with the same role. You can only set multiple users to the same role.
+. Enter the user's e-mail address.
+. Select the user role.
+. Click *Invite*
