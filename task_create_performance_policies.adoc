@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: task_create_performance_policies.html
+keywords: performance policy, performance, thresholds, alerts, preference, delete
+summary: You create performance policies to set thresholds that trigger alerts to notify you about issues related to the resources in your environment. For example, you can create a performance policy to alert you when the total utilization for storage pools is greater than 60%.
+---
+
+= Alerting with performance policies
+
+[.lead]
+You create performance policies to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a performance policy to alert you when the total utilization for storage pools is greater than 60%.
+
+You can create performance policies for the following objects:
+[cols=6*]
+|===
+|Datastore|Disk|Hypervisor|Internal volume|Port|Qtree
+|Storage|Storage node|Storage pool |VMDK|VM| Volume
+|===
+
+== Creating a performance policy
+
+You can create performance policies with thresholds for metrics associated with the objects you are monitoring. By default, performance policies apply to all objects of the specified type when you create them. You can create an annotation to include only a specific asset or a set of assets in the performance policy.
+
+.Before you begin
+
+When using an annotation in a performance policy, the annotation must exist before the policy is created.
+
+.About this task
+
+You create a performance policy that provides notification when one or more devices you are monitoring exceeds a threshold you set. Your system might already contain a global policy that meets your needs or a policy using annotations might also work if you annotate your devices.
+
+.Steps
+. In the Cloud Insights menu bar, click *Manage > Performance Policies*
++
+The Performance Policies page is displayed. Policies are organized by object, and are evaluated in the order in which they appear in the list.
+. In the Performance Policies page, Click *+Performance Policy*
++
+The *Add Policy* dialog is displayed.
+.  In the *Policy* name field, enter a name for the policy.
++
+You must use a name that is unique among all policy names for the object. For example, you cannot have two policies named "Latency" for an internal volume; however, you can have a "Latency" policy for an internal volume and another "Latency" policy for a different volume. The best practice is to always use a unique name for any policy, regardless of the object type.
+. From the *Apply to Objects of Type* of type list, select the type of object to which the policy applies.
++
+When you select *Port*, you must include the object the port is connected  to.
+. From the *With annotation list*, select an annotation type, if applicable, and enter a value for the annotation in the *Value box* to apply the policy only to objects that have this particular annotation set.
+. From the *Apply After a Window of* select when an alert is raised to indicate a threshold violation.
++
+*First occurrence* triggers an alert when a threshold is exceeded for the first time. All other options trigger an alert when the threshold is crossed once and is continuously crossed for at least the specified amount of time.
+. From the *With severity* list, select the severity for the violation.
+.
++
+By default, email alerts on policy violations are sent to the recipients in the global email list. You can override these settings so that alerts for a particular policy are sent to specific recipients.
+. In the *Create alert if* section, select a performance counter and an operator, and then enter a value to create a threshold.
++
+Click *+Threshold* to add additional counters for your policy.
+. Click *Save* to save the new policy.
+. Ensure the order of the policy is correct. To change the order, use the Edit menu for the policy.
