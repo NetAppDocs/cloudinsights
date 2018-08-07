@@ -1,0 +1,56 @@
+collector---
+different
+sidebar: sidebar
+permalink: audit.html
+keywords: audit, users, activities
+summary: Audit provides a view of system and user activities in the Cloud Insights system.
+---
+
+[.lead]
+
+To identify unexpected changes, you can view an audit trail of the Cloud Insights system and its user activities.
+
+Cloud Insights generates audit entries for changes that impact the system or users. These changes include:
+
+    * Logging in
+    * Authorizing or unauthorizing a path
+    * Updating an authorized path
+    * Setting global policies or thresholds
+    * Adding or removing a data collector
+    * Starting or stopping a data collector
+    * Updating data collector properties
+    * Adding, editing, or deleting a task
+    * Removing an application group
+    * Identifying or changing the identification for a device
+
+Use the following steps to access the Audit system:
+
+.Steps
+
+. In the Cloud Insights menu, click *Admin > Audit*
++
+The Audit page is displayed, providing the following details for each audit entry:
+
+* *Time* - Date and time that the changes were made
+* *User* - User account's role, (guest, user, or administrator)
+* *IP* - IP address associated with the audit entry
+* *Action* - Type of activity in the audit entry
+* *Details* - Details of the audit entry
+
+When there is a user activity that affects a resource, such as a data collector or an application, the details include a link to the resource's landing page.
+
+*Note* When a data collector is deleted, the user activity details related to the data collector no longer contain a link to the data collector's landing page.
+
+== Displaying audit entries
+
+There are a number of different ways to view audit entries:
+
+* You can display audit entries by choosing a particular time period (1 hour, 3 hours, 24 hours, 3 days, and 7 days), with Cloud Insights showing a maximum number of 1000 violations for the selected time period.
+
+* You can click a page number below the table to browse through data by page if there is more data than fits on a single page.
+
+* You change the sort order of the columns in a table to either ascending (up arrow) or descending (down arrow) by clicking the arrow in the column header; to return to the default sort order, click any other column header.
++
+By default, the table displays the entries in descending order.
+
+* You can use the filter box to show only the entries you want in the table.
