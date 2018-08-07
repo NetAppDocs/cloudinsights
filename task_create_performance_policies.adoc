@@ -11,16 +11,11 @@ summary: You create performance policies to set thresholds that trigger alerts t
 You create performance policies to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a performance policy to alert you when the total utilization for storage pools is greater than 60%.
 
 You can create performance policies for the following objects:
-[cols=2*, cols="50,50"]
+[cols=6*]
 |===
-|Datastore |Disk
-|Hypervisor|Internal volume
-|Port|Qtree
-|Storage|Storage node
-|Storage pool|VMDK
-|Virtual machine|Volume
+|Datastore|Disk|Hypervisor|Internal volume|Port|Qtree
+|Storage|Storage node|Storage pool |VMDK|VM| Volume
 |===
-
 
 == Creating a performance policy
 
