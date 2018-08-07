@@ -11,6 +11,7 @@ summary: You create performance policies to set thresholds that trigger alerts t
 You create performance policies to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a performance policy to alert you when the total utilization for storage pools is greater than 60%.
 
 You can create performance policies for the following objects:
+
 [cols=6*]
 |===
 |Datastore|Disk|Hypervisor|Internal volume|Port|Qtree
@@ -39,6 +40,7 @@ The *Add Policy* dialog is displayed.
 .  In the *Policy* name field, enter a name for the policy.
 +
 You must use a name that is unique among all policy names for the object. For example, you cannot have two policies named "Latency" for an internal volume; however, you can have a "Latency" policy for an internal volume and another "Latency" policy for a different volume. The best practice is to always use a unique name for any policy, regardless of the object type.
+
 . From the *Apply to Objects of Type* of type list, select the type of object to which the policy applies.
 +
 When you select *Port*, you must include the object the port is connected  to.
@@ -52,6 +54,8 @@ When you select *Port*, you must include the object the port is connected  to.
 By default, email alerts on policy violations are sent to the recipients in the global email list. You can override these settings so that alerts for a particular policy are sent to specific recipients.
 . In the *Create alert if* section, select a performance counter and an operator, and then enter a value to create a threshold.
 +
+
 Click *+Threshold* to add additional counters for your policy.
+
 . Click *Save* to save the new policy.
 . Ensure the order of the policy is correct. To change the order, use the Edit menu for the policy.
