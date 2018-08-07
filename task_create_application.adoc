@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: task_create_application.html
+summary: You create annotation rules to automatically apply annotations to multiple assets based on criteria that you define.
+keywords: application, create application,
+---
+
+= Creating Applications
+
+[.lead]
+To track data associated with specific applications running in your environment, you can define the applications in Cloud Insights.
+
+.Before you begin
+If you want to associate the application with a business entity, you must create the business entity before you define the application.
+
+.About this task
+You can associate applications with the following assets: hosts, virtual machines, volumes, internal volumes, qtrees, shares, and hypervisors.
+
+.Steps
+. In the Cloud Insights menu, click *Manage > Applications*.
+. Click *+Application*.
++
+The Add Application dialog box displays.
+
+.. Enter a unique name for the application.
+.. Select a priority for the application.
+.. Click *Save*.
+
+.After you finish
+After defining an application, you can assign it to a host, virtual machine, volume, internal volume, or hypervisor.
+
+== Assigning applications to assets
+
+This procedure assigns the application to host as an example.
+
+.Steps
+. Locate the asset to which you want to apply the application:
+.. Click *Queries > New Query > Host*.
+.. Click the check box on the left of the Host you want to associate with the application.
+.. Click *Bulk Actions > Add Application*.
