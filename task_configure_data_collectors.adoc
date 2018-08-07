@@ -28,15 +28,20 @@ You configure Data Collectors in your Cloud Insights environment to collect data
 . From the Cloud Insights menu, click *Admin > Data Collectors*
 +
 The system displays the available Data Collectors arranged by vendor.
-. Click *+ Collector* for the vendor and select the data collector you want to configure.
-+
-In the dialog box you can configure the data collector and add a new Acquisition Unit. For help adding a new Acquisition Unit, see link:<task_configure_acquisition_unit>.html[Configuring acquisition units]
-+ The system displays the Add Collector screen
+. Click *+ Collector* for the vendor. If presented with a list of data collector models, select the model you want to configure.
+
++ The system displays the *Add Collector* screen
 . Enter a name for the data collector.
 + Names can contain can contain letters (a-z), numbers (0-9), dashes (-), underscores (_), apostrophes ('), and periods (.).
-. Enter the Acquisition Unit to associate with this data collector.
-. Click *Continue*
-. Enter the required fields in the Configuration screen.
+
+. Select the Acquisition Unit to associate with this data collector.
++
+You must have at least one Acquisition Unit configured in order to collect data. For help adding a new Acquisition Unit, see link:task_configure_acquisition_unit.html[Configuring acquisition units]
+
+. Enter the required fields in the Configuration section.
+
 . Click *Test Configuration* to verify that the data collector is properly configured.
 +
-Some Data Collectors have an advanced configuration option. Enter advanced configuration information as required.
+Some Data Collectors have an *Advanced Configuration* option. Enter advanced configuration information in these fields as required.
+
+. Click *Add Collector* to save the configuration and add the data collector to your Cloud Insights tenant.
