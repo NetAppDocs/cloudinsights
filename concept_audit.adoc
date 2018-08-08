@@ -1,13 +1,22 @@
-collector---
+---
 different
 sidebar: sidebar
-permalink: audit.html
+permalink: concept_audit.html
 keywords: audit, users, activities
 summary: Audit provides a view of system and user activities in the Cloud Insights system.
 ---
 
-[.lead]
+= Auditing
 
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
 To identify unexpected changes, you can view an audit trail of the Cloud Insights system and its user activities.
 
 Cloud Insights generates audit entries for changes that impact the system or users. These changes include:
@@ -47,10 +56,8 @@ There are a number of different ways to view audit entries:
 
 * You can display audit entries by choosing a particular time period (1 hour, 3 hours, 24 hours, 3 days, and 7 days), with Cloud Insights showing a maximum number of 1000 violations for the selected time period.
 
-* You can click a page number below the table to browse through data by page if there is more data than fits on a single page.
-
-* You change the sort order of the columns in a table to either ascending (up arrow) or descending (down arrow) by clicking the arrow in the column header; to return to the default sort order, click any other column header.
+* You change the sort order of the columns in a table to either ascending (up arrow) or descending (down arrow) by clicking the arrow in the column header.
 +
-By default, the table displays the entries in descending order.
+By default, the table displays the entries in descending time order.
 
 * You can use the filter box to show only the entries you want in the table.
