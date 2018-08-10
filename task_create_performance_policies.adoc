@@ -43,13 +43,12 @@ You must use a name that is unique among all policy names for the object. For ex
 
 . From the *Apply to Objects of Type* of type list, select the type of object to which the policy applies.
 +
-When you select *Port*, you must include the object the port is connected  to.
+Select *Virtual Machine*, to create a policy for a virtual .
 . From the *With annotation list*, select an annotation type, if applicable, and enter a value for the annotation in the *Value box* to apply the policy only to objects that have this particular annotation set.
 . From the *Apply After a Window of* select when an alert is raised to indicate a threshold violation.
 +
 *First occurrence* triggers an alert when a threshold is exceeded for the first time. All other options trigger an alert when the threshold is crossed once and is continuously crossed for at least the specified amount of time.
 . From the *With severity* list, select the severity for the violation.
-.
 +
 By default, email alerts on policy violations are sent to the recipients in the global email list. You can override these settings so that alerts for a particular policy are sent to specific recipients.
 . In the *Create alert if* section, select a performance counter and an operator, and then enter a value to create a threshold.
