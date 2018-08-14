@@ -18,7 +18,7 @@ keywords: query, queries, create
 [.lead]
 You can create a query to enable you to search the assets in your environment at a granular level. Queries enable you to slice data by adding filters and then sorting the results to view inventory and performance data in one view.
 
-For example, you can create a query for volumes, add a filter to find particular storages associated with the selected volume, add a filter to find a particular annotation, such as _Tier 1_, on the selected storages, and finally add another filter to find all storages with _IOPS - Read (IO/s)_ greater than 25. When the results are displayed, you can then sort the columns of information associated with the query in ascending or descending order.
+For example, you can create a query for volumes, add a filter to find particular storages associated with the selected volume, add a filter to find a particular annotation (such as _Tier 1_) on the selected storages, and finally add another filter to find all storages with _IOPS - Read (IO/s)_ greater than 25. When the results are displayed, you can then sort the columns of information associated with the query in ascending or descending order.
 
 When a new data collector is added which acquires assets, or any annotation or application assignments are made, you can query for those assets, annotations, or applications after the queries are indexed, which occurs at a regularly scheduled interval.
 
@@ -28,48 +28,50 @@ When a new data collector is added which acquires assets, or any annotation or a
 . Click *Select Resource Type* and select a type of asset.
 +
 When a resource is selected for a query, a number of default columns are automatically displayed; you can remove these columns or add new ones at any time.
+
 . In the Name text box, type the name of the asset or type a portion of text to filter through the asset names.
+
 . You can use any of the following alone or combined to refine your search in any text box on the New Query page:
 +
 * An asterisk enables you to search for everything. For example,
---
+[listing]
 vol*rhel
---
 +
 displays all resources that start with "vol" and end with "rhel".
 +
 * The question mark enables you to search for a specific number of characters. For example,
---
+[listing]
 BOS-PRD??-S12
---
 +
 displays _BOS-PRD12-S12_, _BOS-PRD13-S12_, and so on.
 +
 * The OR operator enables you to specify multiple entities. For example,
---
+[listing]
 FAS2240 OR CX600 OR FAS3270
---
 +
 finds multiple storage models.
 +
 * The NOT operator allows you to exclude text from the search results. For example,
---
+[listing]
 NOT EMC*
---
 +
 finds everything that does not start with "EMC". You can use
---
+[listing]
 NOT *
---
 +
 to display fields that contain no value.
+
 . Click image:tbd.png[CHECK] to display the assets.
-. To add a criteria, click  image:tbd.png[MORE] , and do either of the following:
+
+. To add a criteria, click image:tbd.png[MORE], and do either of the following:
+
 .. Type to search for a specific criteria and then select it.
+
 .. Scroll down the list and select a criteria.
+
 . Enter a range of values if you choose a performance metric like _IOPS - Read (IO/s)_.
 +
-Default annotations provided by Cloud Insights are indicated by image:tbd.png[TAG] It is possible to have annotations with duplicate names.
+Default annotations provided by Cloud Insights are indicated by image:tbd.png[TAG]. It is possible to have annotations with duplicate names.
 +
 A column is added to the Query results list for the criteria and the results of the query in the list updates.
 +
