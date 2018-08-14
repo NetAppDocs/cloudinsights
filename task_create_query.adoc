@@ -34,7 +34,7 @@ When a resource is selected for a query, a number of default columns are automat
 . You can use any of the following alone or combined to refine your search in any text box on the New Query page:
 +
 * An asterisk enables you to search for everything. For example,
-[listing]
+[source]
 vol*rhel
 +
 displays all resources that start with "vol" and end with "rhel".
@@ -79,6 +79,7 @@ Optionally, you can click image:tbd.png[COLUMNS] to remove an annotation or perf
 For example, if your query shows maximum latency and maximum throughput for datastores and you want to show only maximum latency in the query results list, click this button, and clear the _Throughput - Max_ check box. The _Throughput - Max (MB/s)_ column is removed from the Query results list.
 +
 NOTE: Depending on the number of columns displayed in the query results table, you may not be able to view additional added columns. You can remove one or more columns until your desired columns become visible.
+
 . Click *Save*, enter a name for the query, and click *Save* again.
 
 If you have an account with an administrator role, you can create dashboards. A dashboard can comprise any of the widgets from the Widget Library, several of which let you represent query results in a dashboard. For more information about dashboards, see the topics under Dashboards.
