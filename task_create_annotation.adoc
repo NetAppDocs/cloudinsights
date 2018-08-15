@@ -16,21 +16,15 @@ summary: This topic describes how to create an annotation.
 :imagesdir: ./media/
 
 [.lead]
-You create annotations and assign them to assets you monitor. Annotations
-are notes that provide information about an asset, such as physical location, end
-of life, storage tier, or volume service levels.
+You create annotations and assign them to assets you monitor. Annotations are notes that provide information about an asset, such as physical location, end of life, storage tier, or volume service levels.
 
-== Defining annotations
+You can assign annotations either manually or by defining and applying link:task_create_annotation_rules.html[annotation rules].
 
-Using annotations, you can add custom business-specific data that matches
-your business needs to assets. While Cloud Insights provides a set of
-default annotations, such as asset life cycle (birthday or end of life),
-building or data center location, and tier you might find that you want to
-view data in other ways.
+== Defining annotations 
 
-The data in custom annotations supplements device data already collected,
-such as switch manufacturer, number of ports, and performance statistics.
-The data you add using annotations is not discovered by Cloud Insights.
+Using annotations, you can add custom business-specific data that matches your business needs to assets. While Cloud Insights provides a set of default annotations, such as asset life cycle (birthday or end of life), building or data center location, and tier, you might find that you want to view data in other ways.
+
+The data in custom annotations supplements device data already collected, such as switch manufacturer, number of ports, and performance statistics. The data you add using annotations is not discovered by Cloud Insights.
 
 toc::[]
 
@@ -38,8 +32,7 @@ toc::[]
 
 .Before you begin
 * List any industry terminology to which environment data must be associated.
-* List corporate terminology to which environment data must be associated, which
-is not already being tracked using the business entities.
+* List corporate terminology to which environment data must be associated, which is not already being tracked using the business entities.
 * Identify any default annotation types that you might be able to use.
 * Identify which custom annotations you need to create.
 You need to create the annotation before it can be assigned to an asset.
@@ -54,40 +47,8 @@ Use the following steps to create an annotation.
 For example, enter the following to create a text annotation that defines the
 physical location of an asset in Data Center 4:
 
-.Steps
-. Enter a name for the annotation (Location)
-. Enter a description of what the annotation is describing (Physical location is Data Center 4)
+. Enter a name for the annotation (such as "Location")
+. Enter a description of what the annotation is describing (such as "Physical location is Data Center 4")
 . Enter the 'type' of annotation it is (Text).
 
-== Assigning annotations using annotation rules
-[.lead]
-To automatically assign annotations to assets based on criteria that you define, you configure annotation rules. Cloud Insights assigns the annotations to assets based on these rules. Cloud Insights also provides two default annotation rules, which you can modify to suit your needs or remove if you do not want to use them.
 
-=== Creating annotation rules
-[.lead]
-As an alternative to manually applying annotations to individual assets, you can automatically apply annotations to multiple assets using annotation rules. Annotations set manually on an individual asset pages take precedence over rule-based annotations when Insight evaluates the annotation rules.
-
-.Before you begin
-
-You must have created a query for the annotation rule.
-
-.About this task
-Although you can edit the annotation types while you are creating the rules, you should have defined the types ahead of time.
-
-.Steps
-
-. Click *Manage > Annotation rules*
-+
-The Annotation Rules page displays the list of existing annotation rules.
-. Click *+ Add*.
-. Do the following:
-.. In the *Name* box, enter a unique name that describes the rule.
-+
-This name will appear in the Annotation Rules page.
-.. Click *Query* and select the query that is used to apply the annotation to assets.
-.. Click *Annotation* and select the annotation you want to apply.
-.. Click *Value* and select a value for the annotation.
-+
-For example, if you choose Birthday as the annotation, you specify a date for the value.
-.. Click *Save*
-.. Click *Run all rules* if you want to run all the rules immediately; otherwise, the rules are run at a regularly scheduled interval.
