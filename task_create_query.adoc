@@ -25,16 +25,20 @@ When a new data collector is added which acquires assets, or any annotation or a
 .Steps
 . Log in to your Cloud Insights tenant.
 . Click *Queries* and select *+New Query*.
-. Click *Select Resource Type* and select a type of asset.
+. Click *Search For...* and select a type of asset.
 +
 When a resource is selected for a query, a number of default columns are automatically displayed; you can remove these columns or add new ones at any time.
 
-. In the Name text box, type the name of the asset or type a portion of text to filter through the asset names.
+. In the *Name* text box, type the name of the asset or type a portion of text to filter through the asset names. Hit "enter" or click outside the box to apply the filter. Leave this field empty to return all results.
 
-. You can use any of the following alone or combined to refine your search in any text box on the New Query page:
-+
+. You can add additional filters by clicking on the *+* button next to the current filter.
+
+=== Refining your filter
+
+ou can use any of the following alone or combined to refine your search in any text box on the New Query page:
+
 * An asterisk enables you to search for everything. For example,
-[source]
+[listing]
 vol*rhel
 +
 displays all resources that start with "vol" and end with "rhel".
@@ -82,4 +86,4 @@ NOTE: Depending on the number of columns displayed in the query results table, y
 
 . Click *Save*, enter a name for the query, and click *Save* again.
 
-If you have an account with an administrator role, you can create dashboards. A dashboard can comprise any of the widgets from the Widget Library, several of which let you represent query results in a dashboard. For more information about dashboards, see the topics under Dashboards.
+If you have an account with an administrator role, you can create dashboards. A dashboard can comprise any of the widgets from the Widget Library, several of which let you represent query results in a dashboard. For more information about dashboards, see the topics under link:concept_dashboards_overview.html[Dashboards].
