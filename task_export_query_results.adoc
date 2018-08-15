@@ -24,21 +24,23 @@ You can export the results of any query to a .CSV file, which will allow you to 
 +
 The Queries page is displayed.
 . Click a query.
-. Click image:ExportButton.png[Export Button] to export query results to a.CSV file.
-. Do one of the following:
-.. Click Open with and then OK to open the file with Microsoft Excel and save the file to a specific location.
-.. Click Save file and then OK to save the file to your Downloads folder.
+. Click image:ExportButton.png[Export Button] to export the query results to a .CSV file.
 
-All of the object attributes for the columns currently selected for display are exported to the file, regardless of whether those attributes are currently being displayed. 
+. When prompted, do one of the following:
+
+.. Click *Open with* and then *OK* to open the file with Microsoft Excel and save the file to a specific location.
+.. Click *Save file* and then *OK* to save the file to your Downloads folder.
+
+All of the attributes for the objects in the columns currently selected for display are exported to the file, regardless of whether those attributes are being displayed. 
 
 When exporting query results, be aware that all rows in the results table will be exported, not just those selected or displayed on the screen, up to a maximum of 10,000 rows.
 
 Note: When a comma appears in an asset name, the export encloses the name in quotes, preserving the asset name and the proper .csv format.
 
 When opening an exported .CSV file with Excel, if you have an object name or other field that is in the format NN:NN (two digits followed by a colon followed by two more digits), Excel will sometimes interpret that name as a Time format, instead of Text format. This can result in Excel displaying incorrect values in those columns. For example, an object named "81:45" would show in Excel as "81:45:00".
-+
+
 To work around this, import the .CSV into Excel using the following steps:
-+
+
 . Open a new sheet in Excel.
 . On the "Data" tab, choose "From Text".
 . Locate the desired .CSV file and click "Import".
