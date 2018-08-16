@@ -38,7 +38,7 @@ The following examples show downsampling in action. The first illustration shows
 
 Since we are choosing a time range of less than 7 days and we have less than 1,000 data points to chart, the data displayed is actual data. No downsampling occurs.
 
-image:tbd.png[No Downsampled chart]
+image:Charts_NoDownsample.png[No Downsampling]
 
 However, if you are viewing data by choosing either 30d on the asset page time selector, or by setting a custom time range of more than 7 days (or in the event that Cloud Insights has collected more than 1,000 data samples for the time period chosen), the data is downsampled before being displayed. When you zoom in on a downsampled chart, the display continues to show the approximated data.
 
@@ -46,7 +46,7 @@ NOTE: When you zoom in on a downsampled chart, the zoom is a digital zoom. The d
 
 You can see this in the following illustration, where the time range is first set to 30d, and the chart is then zoomed in to show the same 24-hour period as above.
 
-image:tbd.png[Downsampling]
+image:Charts_Downsampled.png[Downsampling]
 
 The downsampled charts are showing the same 24-hour period as the "actual" charts above, so the lines follow the same general shape, allowing you to quickly spot interesting peaks or valleys in your performance data.
 
