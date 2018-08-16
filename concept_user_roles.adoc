@@ -29,16 +29,18 @@ You use an account that has Administrator privileges to create or modify user ac
 
 The Account Owner is created when you register for Cloud Insights. Only an Account Owner can assign the Account Owner role to another user. There must always be at least one Account Owner for a tenant.
 
-Best practice is to limit the number of users with Administrator permissions. <or Privs...get the wording straight.> The greatest number of accounts should be user or guest accounts.
+Best practice is to limit the number of users with Administrator permissions. The greatest number of accounts should be user or guest accounts.
+// <or Privs...get the wording straight.> 
 
 == Creating user accounts
-New accounts are initiated by <sending a request for an account> inviting users to access the tenant.
+New accounts are initiated by inviting users to access the tenant.
+// <sending a request for an account> 
 
 .Before you begin
 * Install your Cloud Insights licenses.
 * If a user you wish to invite already has an account on the NetApp Cloud Portal, you should send the invite to the email address they used for that account.
-<* Allocate a unique user name for each user.>
-<* Determine what passwords to use.>
+// <* Allocate a unique user name for each user.>
+// <* Determine what passwords to use.>
 * Understand the user roles you will be assigning.
 
 .Steps
@@ -60,3 +62,15 @@ The Invite User screen is displayed.
 The invitation is sent to the user. 
 +
 Users will have 14 days to accept the invitation. Once a user accepts the invitation, he or she will be taken to the NetApp Cloud Portal, where they will sign up using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access the Cloud Insights tenant.
+
+== Modifying a User's Role
+
+To change a user's role:
+. Log in as an Administrator or an Account Owner and go to *Admin > Account Management*.
+. Select a new role from the drop-down for the user. 
+
+== Deactivating a User's Account
+
+To deactivate a user's account:
+. Log in as an Administrator or an Account Owner and go to *Admin > Account Management*.
+. Click on the "three dot" menu to the right of the user and select *Deactivate*.
