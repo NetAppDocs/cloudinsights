@@ -16,13 +16,14 @@ keywords:
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights retains your data for 90 days. Because that means the potential for tens of thousands of data points to be processed for charts and tables, data may be downsampled before being displayed. 
-+
-Downsampling provides a statistical approximation of your data in charts, giving you an efficient overview of data without having to display every data point, while maintaining an accurate view of your collected data.
+Cloud Insights time-to-live (TTL) for data is 90 days. Because Cloud Insights retains your data for 90 days, there is potential for tens of thousands of data points to be processed for charts and tables, data may be downsampled before being displayed. 
+
+*Downsampling* provides a statistical approximation of your data in charts, giving you an efficient overview of data without having to display every data point, while maintaining an accurate view of your collected data.
 
 === Why is downsampling needed?
 
-Cloud Insights time-to-live (TTL) for data is 90 days. Therfore a large amount of processing is needed to prepare data for display in charts and graphs. In order to allow charts to display quickly and efficiently, data is downsampled in a manner that keeps the overall shape of a chart without needing to process every single data point for that chart.
+Because a large amount of processing is needed to prepare data for display in charts and graphs, in order to allow charts to display quickly and efficiently, data is downsampled in a manner that keeps the overall shape of a chart without needing to process every single data point for that chart.
+
 Note: No actual data is lost during downsampling. You can choose to view actual data for your chart instead of downsampled data by following the steps illustrated below.
 
 === How downsampling works
