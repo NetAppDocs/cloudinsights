@@ -25,16 +25,19 @@ The steps in this guide can also be applied to other vendor's storage systems. Y
 
 Queries provide search at a granular level, based on user-selected criteria. Using a query allows you to search for Internal volumes in your environment that contain the NetApp root aggregate.
 
-. Steps
+.Steps
 . Create a query to identify NetApp root aggregates in your environment: Click *Queries > New Query > Select Resource Type* (?)
 . Click *storage Pool*
 . Enter the name for the root aggregate
 +
 This example uses "aggr0" for the name. When creating an aggregate, only the following requirements for the name must be followed:
++
 .. It must begin with either a letter or an underscore (_).
 .. It can contain only letters, digits, and underscores.
 .. It can be 250 characters or less.
-In most cases, the aggregate is name aggr0, aggr_0, or something similar. It might require an iterative process to identify all of the NetApp root aggregates in your environment.
++
+In most cases, the aggregate is named +_aggr0_, _aggr_0_, or something similar. It might require an iterative process to identify all of the NetApp root aggregates in your environment.
+
 . Click *Save* and enter a name for the new query.
 +
 As mentioned before, this might be an iterative process and require multiple queries to identify all of the NetApp root aggregates.
@@ -51,9 +54,9 @@ You must have identified all of the root aggregates you want to exclude from the
 
 . In the Cloud Insights menu, click *Manage > Annotations*
 . Click *Add*
-.. Enter the name for the annotation: *RootAggr*
-.. Enter a description of the annotation: *Remove root aggregate from "High I/O Density" report*
-.. Enter the type of annotation: *Boolean*
+. Enter the name for the annotation: *RootAggr*
+. Enter a description of the annotation: *Remove root aggregate from "High I/O Density" report*
+. Enter the type of annotation: *Boolean*
 . Click *Save*
 
 == Create an annotation rule to automate excluding specific aggregates from your I/O density report
@@ -66,7 +69,8 @@ You must have created and saved a query that identifies the NetApp root aggregat
 . In the Cloud Insights toolbar, Click *Manage > Annotation rules*
 . Click *Add*
 +
-The Add Rule dialog displays:
+The *Add Rule* dialog displays. 
++
 .. In the Name box, enter a unique name that describes the rule: *"RootAggrExclude"*
 .. Click Query and select the Query that Insight should use to apply the annotation rule to: *"Aggregate0"*
 .. Click Annotation and select: *"Root agg exclude"*
