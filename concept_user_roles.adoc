@@ -18,9 +18,37 @@ Cloud Insights provides four user accounts, Account Owner, Administrator, User, 
 :linkattrs:
 :imagesdir: ./media/
 
-The following illustration identifies the permissions granted to each user account.
+The following table identifies the permissions granted to each user account:
 
-image::user-roles-fig.png[]
+[cols=6*, options=header]
+
+|===
+|Menu
+|Function
+|Account Owner
+|Admin
+|User
+|Guest
+|Admin |Acquisition units - Add/Remove |Yes |Yes |No |No
+|Admin|Data Collectors - Add/Modify/Remove |Yes |Yes |No |No
+|Admin|Health Page - View |Yes |Yes |No |No
+|Admin|Audit Page - View |Yes |Yes |No |No
+|Account|Account/Users - Invite/Modify/Deactivate |Yes |Yes |No |No
+|Dashboards|Dashboards - Create/Modify/Delete |Yes |Yes |Yes |No
+|Dashboards|Dashboards - View |Yes |Yes |Yes |Yes
+|Queries|Queries - Create/Modify/Delete |Yes |Yes |Yes |No
+|Queries|Queries - View/Run |Yes |Yes |Yes |Yes
+|Manage|Polocies - Create/Modify/Delete |Yes |Yes |No |No
+|Manage|Policies - View |Yes |Yes |Yes |No
+|Manage|Annotation - Create/Modify/Delete/Assign |Yes |Yes |Yes |No
+|Manage|Annotation - View |Yes |Yes |Yes |No
+|Manage|Annotation Rules - Create/Modify/Delete |Yes |Yes |Yes |No
+|Manage|Annotation Rules - View |Yes |Yes |Yes |No
+|Manage|Applications - Create/Modify/Delete |Yes |Yes |Yes |No
+|Manage|Applications - View |Yes |Yes |Yes |No
+|   -  |Asset Pages - Modify |Yes |Yes |Yes |No
+|   -  |Asset Pages - View |Yes |Yes |Yes |Yes
+|===
 
 You use an account that has Administrator privileges to create or modify user accounts. Each user account is assigned one of the following permission levels.
 * _Guest_ can view asset pages, dashboards, and queries, and can run queries.
