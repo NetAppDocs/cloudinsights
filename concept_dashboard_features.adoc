@@ -198,11 +198,24 @@ Grouping is only available in the Table widget type.
 
 If you include a column for performance data (for example, _IOPS - Total_) in a table widget, when you choose to group the data you can then choose a roll up method for that column. The default roll up method is to display the average (_avg_) of the underlying data in the group row. You can also choose to display the sum, minimum, or maximum of the data.
 
+== Dashboard time range selector
+
+You can select the time range for your dashboard data. Only data relevant to the selected time range will be displayed in widgets on the dashboard.  You can select from the following time ranges:
+
+* Last 3 Hours
+* Last 24 Hours (this is the default)
+* Last 3 Days
+* Last 7 Days
+* Last 30 Days
+* Custom time range
++
+The Custom time range allows you to select up to 31 consecutive days. You can also set the Start Time and End Time of day for this range. The default Start Time is 12:00 AM on the first day selected and the default End Time is 11:59 PM on the last day selected. Clicking *Apply* will apply the custom time range to the dashboard.
+
 == Overriding Dashboard Time in Individual widgets
 
-You can override the main dashboard time frame setting in individual widgets. These widgets will display data based on their set time frame, not the dashboard time frame.
+You can override the main dashboard time range setting in individual widgets. These widgets will display data based on their set time frame, not the dashboard time frame.
 
-To override the dashboard time and force a widget to use a its own time frame, in the widget's edit mode set the *Override dashboard time* to On (check the box), and select a time frame for the widget. *Save* the widget to the dashboard.
+To override the dashboard time and force a widget to use its own time frame, in the widget's edit mode set the *Override dashboard time* to *On* (check the box), and select a time range for the widget. *Save* the widget to the dashboard.
 
 The widget will display its data according to the time frame set for it, regardless of the time frame you select on the dashboard itself.
 
