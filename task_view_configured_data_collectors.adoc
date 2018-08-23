@@ -3,17 +3,17 @@ sidebar: sidebar
 permalink: task_view_configured_data_collectors.html
 keywords: acquisition, AU, data collector, collector
 summary: A summary.
+
 ---
 
-= Managing data collectors
 
 [.lead]
 
-The Installed Data Collectors page provides access to the data collectors that have 
-been configured for Cloud Insights. From this page you can determine the status of data 
-collectors and perform management functions on data collectors.
+The Installed Data Collectors page provides access to the data collectors that have been configured for Cloud Insights. 
 
-== Viewing data collector status
+toc:[]
+
+= Viewing data collector status
 
 To view data collector status you access the installed data collector screen:
 
@@ -32,7 +32,7 @@ from the a device. Action that can be performed on this screen include:
 * Change data collector credentials  
 * Clone data collectors
 
-=== Controlling Data Collector polling
+== Controlling Data Collector polling
 
 After making a change to a data collector, you might want it to poll immediately to check 
 your changes, or you might want to postpone the data collection on a data collector for one, 
@@ -48,7 +48,7 @@ three, or five days while you work on a problem.
 Bulk actions can be performed simultaneously on multiple Data Collectors. Select the data 
 collectors, and chose the action to perform from the *Bulk Action* menu. 
 
-=== Editing data collector information 
+== Editing data collector information 
 
 You can edit existing data collector setup information. 
 
@@ -63,7 +63,7 @@ The Edit Collector dialog is opened.
 . Enter the changes and click *Test Configuration* to test the new configuration or click 
 *Save* to save the configuration. 
 
-=== Cloning a data collector
+== Cloning data collectors
 
 Using the clone facility, you can quickly add a data source that has the same credentials 
 and attributes as another data source. Cloning allows you to easily configure multiple 
@@ -79,6 +79,7 @@ instances of the same device type.
 The Clone Data Collector dialog is displayed.
 . Enter new information in the required fields. 
 . Click *Clone* 
+
 .After you finish 
- The clone operation copies all other attributes and settings to create the new data 
- collector. 
+
+ The clone operation copies all other attributes and settings to create the new data collector. 
