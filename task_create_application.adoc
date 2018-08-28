@@ -10,15 +10,14 @@ keywords: application, create application,
 [.lead]
 To track data associated with specific applications running in your environment, you can define the applications in Cloud Insights.
 
-.Before you begin
-If you want to associate the application with a business entity, you must create the business entity before you define the application.
+//.Before you begin
+//If you want to associate the application with a business entity, you must create the business entity before you define the application.
 
 .About this task
 You can associate applications with the following assets: hosts, virtual machines, volumes, internal volumes, qtrees, shares, and hypervisors.
 
 .Steps
 . In the Cloud Insights menu, click *Manage > Applications*.
-. Click *+Application*.
 +
 The Add Application dialog box displays.
 
@@ -31,10 +30,18 @@ After defining an application, you can assign it to a host, virtual machine, vol
 
 == Assigning applications to assets
 
-This procedure assigns the application to host as an example.
+This procedure assigns the application to a host as an example. You can assign host, virtual machine, volume, or internal volumes to an application. 
 
 .Steps
-. Locate the asset to which you want to apply the application:
-.. Click *Queries > New Query > Host*.
-.. Click the check box on the left of the Host you want to associate with the application.
-.. Click *Bulk Actions > Add Application*.
+. Locate the asset to which you want to assigny the application:
+. Click *Queries > New Query > Host*.
+. Click the check box on the left of the Host you want to associate with the application.
+. Click *Bulk Actions > Add Application*.
++
+A list of application is displayed.
+. Select the Application you are assigning the asset to. 
+
+.After you finish
+After assigning the host to the application you can assign the remaining assets to the application. To access the landing page for the application, click *Manage > Application* and selecting the application you created. 
+
+
