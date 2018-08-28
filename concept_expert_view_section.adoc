@@ -51,7 +51,7 @@ Shows the assets that are depleted of system resources due to this asset.
 The Expert View section of an asset page displays several metrics based on the time period selected for the asset. Each metric is displayed in its own performance chart. You can add or remove metrics and related assets from the charts depending on what data you want to see.
 
 |===
-| Metric | Description
+| *Metric* | *Description*
 | BB credit zero Rx, Tx | Number of times the receive/transmit buffer-to-buffer credit count transitioned to zero during the sampling period. This metric represents the number of times the attached port had to stop transmitting because this port was out of credits to provide.
 | BB credit zero duration Tx | Time in milliseconds during which the transmit BB credit was zero during the sampling interval.
 | Cache hit ratio (Total, Read, Write) % | Percentage of requests that result in cache hits. The higher the number of hits versus accesses to the volume, the better is the performance. This column is empty for storage arrays that do not collect cache hit information.
