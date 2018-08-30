@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: concept_asset_violation_section.html
+summary: Overview of the asset page Viol;ations section in Cloud Insights.
+keywords: asset, landing page, violations
+---
+
+= Asset Page Violations section
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can use the Violations section of an asset page to see the violations, if any, that occur in your environment as a result of a performance policy assigned to an asset. Performance policies monitor thresholds and enable you to detect a violation of a threshold immediately, identify the implication, and analyze the impact and root cause of the problem in a manner that enables rapid and effective correction.
+
+The following example shows a Violations section that displays on an asset page for a hypervisor:
+
+image:ViolationTable.png[Violations Table]
+
+The Violations section enables you to view and manage any of the violations that occur in your network as the result of a performance policy assigned to an asset.
+
+.Steps
+. Locate an asset page by doing either of the following:
++
+* Type the name of the asset in the Search area, and then select the asset from the list.
++
+* In a dashboard widget, click on the name of an asset.
++
+* Query for a set of assets and select on from the results list.
++
+The asset page displays. The Violations section displays the time the violation occurred and a description of the threshold that was crossed, along with a hyperlink to the asset on which the violation occurred (for example "2 violations for ds-30 with Latency - Total > 50").
+
+You can perform any of the following optional tasks:
+* Use the filter box to show only specific violations.
+* Change the sort order of the columns in a table to either ascending (up arrow) or descending (down arrow) by clicking the arrow in the column header.
+* Click the asset name in any description to display its asset page; a red circle indicates issues that need further investigation.
+* You can click the performance policy, which displays the Edit Policy dialog box, to review the performance policy and make changes to the policy if necessary.
+
+If you determine the issue is no longer a cause for concern, click the "three dots" menu on the right and select "Dismiss Violation" to remove a violation from the list.
