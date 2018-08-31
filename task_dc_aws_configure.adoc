@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: concept_audit.html
+keywords: data collector, AWS EC2, 
+summary: Configuring AWS EC2 data collector.
+---
+
+[.lead]
+
+Cloud Insights uses the Amazon AWS EC2 data collector  to collect inventory and performance data. 
+
+.Before you begin
+
+* You must have the IAM Access Key ID 
+* You must have the Secret Access Key for your Amazon AWS EC2 cloud account
+
+Access keys consist of an access key ID (for example, AKIAIOSFODNN7EXAMPLE) and a secret access key (for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY). You use access keys to sign programmatic requests that you make to AWS if you use the AWS SDKs, REST, or Query API operations. 
+
+Enter data into the data source fields accourng to the table below:
+
+*Configuration*
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|AWS Region|Choose AWS region
+|AWS IAM Access Key ID|Enter AWS IAM Access Key ID
+|I understand AWS bills me for API requests
+|===
+
+*Advanced Configuration*
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|Inventory Poll Interval (min)|(default 60 min)
+|HTTP connection and socket timeout (sec)|(default 300 sec)
+|Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
+|Performance Poll Interval (sec)|(default 1800 seconds)
+|===
+
+.Related Information
+
+* https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html [Managing Access Keys for IAM Users^]
+
+
+
