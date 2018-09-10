@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: task_dc_VMware.html
+keywords: data collector, VMware, 
+summary: Configuring VMware  data collector.
+---
+
+[.lead]
+
+Cloud Insights uses the WMware data collector to collect inventory and performance data. 
+
+.Before you begin
+
+The following information is required to configure this data collector. 
+
+* Virtual Center IP Address
+* User Name and password to access the Virtual Center
+
+
+
+*Setup and connection*
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|Name|Unique name for VM
+|Acquisition unit|Name of acquisition unit
+|===
+
+*Configuration*
+
+[cols=1*, options="header", cols"50,50"]
+|===
+|Virtual center IP Address | 
+|*User Name* 
+|Acquisition unit|Acquisition unit data will be collected from.
+|Password|
+|===
+
+
