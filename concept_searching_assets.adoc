@@ -54,6 +54,7 @@ When you use the NOT operator, all the documents that contain the term after NOT
 +
 You can use the symbol *!* instead of the word NOT.
 
+////
 == Prefix and suffix search
 
 As soon as you start typing a search string, the search engine does a prefix and suffix search to find the best match.
@@ -61,6 +62,7 @@ As soon as you start typing a search string, the search engine does a prefix and
 Exact matches are given a higher score than a prefix or suffix match. The score is calculated based on the distance of the search term from the actual search result. For example, we have three storages: "aurora", "aurora1", and "aurora11". Searching for "aur" will return all three storages. However, the search result for "aurora" will have the highest score because it has the closest distance to the prefix search string.
 
 The search engine also searches for terms in reverse order, which allows you to perform a suffix search. For example, when you type "345" in the search box, the search engine searches for "345".
+////
 
 Search is case-insensitive.
 
@@ -73,24 +75,23 @@ The UI displays the search results across categories, with the three top results
 
 The following table provides a list of indexed terms that can be added to the search string.
 
-|==
+TBD: Format the following information in a table:
+|===
 |Category	|Indexed terms
-Storage	
-
-"storage"
-name
-vendor
-model
-StoragePool	
-"storagepool"
-name
-name of the storage
-IP addresses of the storage
-serial number of the storage
-storage vendor
-storage model
-names for all associated internal volumes
-names for all associated disks
+|Storage	|"storage"
+||name
+||vendor
+||model
+|StoragePool|"storagepool"
+||name
+||name of the storage
+||IP addresses of the storage
+||serial number of the storage
+||storage vendor
+||storage model
+||names for all associated internal volumes
+||names for all associated disks
+|===
 Internal Volume	
 "internalvolume"
 name
