@@ -1,0 +1,73 @@
+---
+sidebar: sidebar
+permalink: task_dc_vmware_configure.html
+keywords: data collector, VMware, 
+summary: Configuring VMware  data collector.
+---
+
+[.lead]
+
+The data collector for VMware vSphere (Web Services) collects ESX Host information and requires read-only privileges on all objects within the Virtual Center. 
+
+*Terminology*
+
+Cloud Insights acquires the following inventory information from the VMware vSphere data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Virtual disk|Disk
+|Host|Host
+|Virtual machine|Virtual machine
+|Data store|Data store
+|LUN|LUN
+|Fibre channel port|Port
+|===
+*Note* 
+ These are common terminology mappings only and might not represent every case for this data collector. 
+.Before you begin
+
+The following information is required to configure this data collector:
+
+* Virtual Center IP Address
+* User Name and Password used to access the Virtual Center 
+* Read-only privileges on all objects within the Virtual Center.
+* SDK access on the Virtual Center server
+* Verify that the SDK is enabled by entering telnet <vc_ip> 443.
+
+*Setup and connection*
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|Name|Unique name for VM
+|Acquisition unit|Name of acquisition unit
+|===
+
+*Configuration*
+
+[cols=2*,  cols"50,50"]
+|===
+|Virtual center IP Address | User name
+|Password|
+|===
+
+*Advanced configuration* 
+
+In the advanced configuration screen, check the *VM Performance* box to collect performance data. Inventory collection is enableds by default. The following fields can be configured:
+
+[cols=2*,  cols"50,50"]
+|===
+|Inventory poll interval (min)  | 20 (default)
+|Connection Timeout (ms)|60000
+|Filter VMs |Select CLUSTER, DATA CENTER, or ESX HOST 
+|Filter device list|Create a filter list
+|Number of retries | 3 (default)
+|Communication port| 443 (default)
+|Performance poll interval|300 sec (default) 
+|===
+
+
+
+
+
