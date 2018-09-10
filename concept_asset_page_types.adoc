@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: concept_asset_page_types.html
+summary: Asset pages can be displayed for most object types.
+keywords: asset page, objects
+---
+
+= Types of Asset Pages
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Asset pages summarize the current status of an asset and contain links to additional information about the asset and its related assets.
+
+Cloud Insights provides asset pages for the following assets:
+* Virtual machine
+* Volume
+* Internal volume
+* Physical host
+* Storage pool
+* Storage
+* Datastore
+* Hypervisor
+* Application
+* Storage node
+* Qtree
+* Disk
+* VMDK
+* Port
+* Switch
+* Fabric
+* Object storage (for example, Atmos, Centera, Amazon S3)
+* Zone
+
+Mapping and Masking information can be viewed in tables on Zone, Volume, VM, and Host/Hypervisor asset pages.
+
+Note: Summary information is available for object storage assets; however, you can only access this information from the Data sources detail page.
