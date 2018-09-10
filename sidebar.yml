@@ -20,8 +20,11 @@ entries:
           - title: Research data collector errors
             url: /task_research_failed_collector.html
           - title: Data collector reference
-            url: /task_dc_aws_configure
-            url: /task_dc_vmware_configure.html
+            entries:
+              - title: AWS
+                url: /task_dc_aws_configure.html
+              - title: VMWare
+                url: /task_dc_vmware_configure.html
       - title: User Accounts and Roles
         url: /concept_user_roles.html
       - title: Switching to Other Cloud Central Products
