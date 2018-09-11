@@ -69,107 +69,108 @@ Search is case-insensitive.
 == Search using indexed terms
 Searches that match more of the indexed terms result in higher scores.
 
-The search string is split into separate search terms by space. For example, the search string "storage aurora netapp" is split into three keywords: "storage", "aurora", and "netapp". The search is performed using all three terms. The documents that match most of these terms will have the highest score. The more information you provide, the better are the search results. For example, you can search for a storage by its name and mode.
+The search string is split into separate search terms by space. For example, the search string "storage aurora netapp" is split into three keywords: "storage", "aurora", and "netapp". The search is performed using all three terms. The documents that match most of these terms will have the highest score. The more information you provide, the better are the search results. For example, you can search for a storage by its name and model.
 
-The UI displays the search results across categories, with the three top results per category. If you did not find a document that you were expecting, you can include more terms in the search string to improve the search results.
+The UI displays the search results across categories, with the three top results per category. If you did not find an object that you were expecting, you can include more terms in the search string to improve the search results.
 
 The following table provides a list of indexed terms that can be added to the search string.
 
-TBD: Format the following information in a table:
 |===
-|Category	|Indexed terms
-|Storage	|"storage"
-||name
-||vendor
-||model
-|StoragePool|"storagepool"
-||name
-||name of the storage
-||IP addresses of the storage
-||serial number of the storage
-||storage vendor
-||storage model
-||names for all associated internal volumes
-||names for all associated disks
+|Category |Indexed terms
+
+|Storage |"storage"
+| |name
+| |vendor
+| |model
+
+|StoragePool |"storagepool"
+| |name
+| |name of the storage
+| |IP addresses of the storage
+| |serial number of the storage
+| |storage vendor
+| |storage model
+| |names for all associated internal volumes
+| |names for all associated disks
+
+|Internal Volume |"internalvolume"
+| |name
+| |name of the storage
+| |IP addresses of the storage
+| |serial number of the storage
+| |storage vendor
+| |storage model
+| |name of the storage pool
+| |names of all associated shares
+| |names of all associated applications //and business entities
+
+|Volume |"volume"
+| |name
+| |label
+| |names of all internal volumes
+| |name of the storage pool
+| |name of the storage
+| |IP addresses of the storage
+| |serial number of the storage
+| |storage vendor
+| |storage model
+
+|Storage Node |"storagenode"
+| |name
+| |name of the storage
+| |IP addresses of the storage
+| |serialnumber of the storage
+| |storage vendor
+| |storage model
+
+|Host |"host"
+| |name
+| |IP addresses
+| |names of all associated applications and business entities
+
+|Datastore |"datastore"
+| |name
+| |virtual center IP
+| |names of all volumes
+| |names of all internal volumes
+
+|Virtual Machines |"virtualmachine"
+| |name
+| |DNS name
+| |IP addresses
+| |name of the host
+| |IP addresses of the host
+| |names of all datastores
+| |names of all associated applications //and business entities
+
+|Switches (regular and NPV) |"switch"
+| |IP address
+| |wwn
+| |name
+| |serial number
+| |model
+| |domain ID
+| |name of the fabric
+| |wwn of the fabric
+
+|Application |"application"
+| |name
+| |tenant
+| |line of business
+| |business unit
+| |project
+
+|Tape |"tape"
+| |IP address
+| |name
+| |serial number
+| |vendor
+
+|Port |"port"
+| |wwn
+| |name
+
+|Fabric |"fabric"
+| |wwn
+| |name
 |===
-Internal Volume	
-"internalvolume"
-name
-name of the storage
-IP addresses of the storage
-serial number of the storage
-storage vendor
-storage model
-name of the storage pool
-names of all associated shares
-names of all associated applications and business entities
-Volume	
-"volume"
-name
-label
-names of all internal volumes
-name of the storage pool
-name of the storage
-IP addresses of the storage
-serial number of the storage
-storage vendor
-storage model
-Storage Node	
-"storagenode"
-name
-name of the storage
-IP addresses of the storage
-serialnumber of the storage
-storage vendor
-storage model
-Host	
-"host"
-name
-IP addresses
-names of all associated applications and business entities
-Datastore	
-"datastore"
-name
-virtual center IP
-names of all volumes
-names of all internal volumes
-Virtual Machines	
-"virtualmachine"
-name
-DNS name
-IP addresses
-name of the host
-IP addresses of the host
-names of all datastores
-names of all associated applications and business entities
-Switches (regular and NPV)	
-"switch"
-IP address
-wwn
-name
-serial number
-model
-domain ID
-name of the fabric
-wwn of the fabric
-Application	
-"application"
-name
-tenant
-line of business
-business unit
-project
-Tape	
-"tape"
-IP address
-name
-serial number
-vendor
-Port	
-"port"
-wwn
-name
-Fabric	
-"fabric"
-wwn
-name
