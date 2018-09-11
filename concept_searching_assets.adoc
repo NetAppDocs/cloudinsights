@@ -84,93 +84,93 @@ vendor
 model
 
 |StoragePool |"storagepool"
-| |name
-| |name of the storage
-| |IP addresses of the storage
-| |serial number of the storage
-| |storage vendor
-| |storage model
-| |names for all associated internal volumes
-| |names for all associated disks
+name
+name of the storage
+IP addresses of the storage
+serial number of the storage
+storage vendor
+storage model
+names for all associated internal volumes
+names for all associated disks
 
 |Internal Volume |"internalvolume"
-| |name
-| |name of the storage
-| |IP addresses of the storage
-| |serial number of the storage
-| |storage vendor
-| |storage model
-| |name of the storage pool
-| |names of all associated shares
-| |names of all associated applications //and business entities
+name
+name of the storage
+IP addresses of the storage
+serial number of the storage
+storage vendor
+storage model
+name of the storage pool
+names of all associated shares
+names of all associated applications and business entities
 
 |Volume |"volume"
-| |name
-| |label
-| |names of all internal volumes
-| |name of the storage pool
-| |name of the storage
-| |IP addresses of the storage
-| |serial number of the storage
-| |storage vendor
-| |storage model
+name
+label
+names of all internal volumes
+name of the storage pool
+name of the storage
+IP addresses of the storage
+serial number of the storage
+storage vendor
+storage model
 
 |Storage Node |"storagenode"
-| |name
-| |name of the storage
-| |IP addresses of the storage
-| |serialnumber of the storage
-| |storage vendor
-| |storage model
+name
+name of the storage
+IP addresses of the storage
+serialnumber of the storage
+storage vendor
+storage model
 
 |Host |"host"
-| |name
-| |IP addresses
-| |names of all associated applications and business entities
+name
+IP addresses
+names of all associated applications and business entities
 
 |Datastore |"datastore"
-| |name
-| |virtual center IP
-| |names of all volumes
-| |names of all internal volumes
+name
+virtual center IP
+names of all volumes
+names of all internal volumes
 
 |Virtual Machines |"virtualmachine"
-| |name
-| |DNS name
-| |IP addresses
-| |name of the host
-| |IP addresses of the host
-| |names of all datastores
-| |names of all associated applications //and business entities
+name
+DNS name
+IP addresses
+name of the host
+IP addresses of the host
+names of all datastores
+names of all associated applications //and business entities
 
 |Switches (regular and NPV) |"switch"
-| |IP address
-| |wwn
-| |name
-| |serial number
-| |model
-| |domain ID
-| |name of the fabric
-| |wwn of the fabric
+IP address
+wwn
+name
+serial number
+model
+domain ID
+name of the fabric
+wwn of the fabric
 
 |Application |"application"
-| |name
-| |tenant
-| |line of business
-| |business unit
-| |project
+name
+tenant
+line of business
+business unit
+project
 
 |Tape |"tape"
-| |IP address
-| |name
-| |serial number
-| |vendor
+IP address
+name
+serial number
+vendor
 
 |Port |"port"
-| |wwn
-| |name
+wwn
+name
 
 |Fabric |"fabric"
-| |wwn
-| |name
+wwn
+name
 |===
