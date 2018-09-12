@@ -6,10 +6,8 @@ keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll 
 ---
 
 = Dashboard Features
-
 :toc: macro
 :hardbreaks:
-:toclevels: 3
 :nofooter:
 :icons: font
 :linkattrs:
@@ -20,6 +18,9 @@ Dashboards and widgets allow great flexibility in how data is displayed. Here ar
 
 toc::[]
 
+==	Widget Placement and Size
+All dashboard widgets can be positioned and sized according to your needs for each particular dashboard.
+
 ////
 •	*Variables*
 Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting each widget to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
@@ -27,9 +28,6 @@ Variables allow you to change the data displayed in some or all widgets on a das
 Multiple queries and/or expressions
 Each time series widget (line, spline, area, or stacked area charts) can have up to five queries and/or expressions to determine what data to display, allowing you to compare different sets of data on a single chart. For example, you can have a line chart showing IOPS for both Storage and VM's, or a single chart comparing Throughput and Latency for all Storage Pools.
 ////
-
-==	Widget Placement and Size
-All dashboard widgets can be positioned and sized according to your needs for each particular dashboard.
 
 ////
 •	*Rollup and Grouping*
