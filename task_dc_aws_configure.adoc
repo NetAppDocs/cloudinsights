@@ -1,16 +1,15 @@
 ---
 sidebar: sidebar
 permalink: task_dc_aws_configure.html
-keywords: data collector, AWS EC2, Amazon
+keywords: data collector, AWS EC2, 
 summary: Configuring AWS EC2 data collector.
 ---
-
 = Configuring the Amazon AWS EC2 data collector
-
 
 [.lead]
 
-Cloud Insights uses the Amazon AWS EC2 data collector to collect inventory and performance data.  
+Cloud Insights uses the Amazon AWS EC2 data collector to collect inventory and performance data. 
+
 
 .Before you begin
 
@@ -23,7 +22,7 @@ Access keys consist of an access key ID (for example, AKIAIOSFODNN7EXAMPLE) and 
 
 These keys are provided with your contract.   
 
-Enter data into the data source fields according to the table below:
+Enter data into the data collector fields according to the table below:
 
 *Configuration*
 
@@ -33,7 +32,7 @@ Enter data into the data source fields according to the table below:
 |AWS Region|Choose AWS region
 |AWS IAM Access Key ID|Enter AWS IAM Access Key ID
 |AWS IAM Secret Access Key|Enter AWS IAM Secret Access Key 
-|I understand AWS bills me for API requests|heck this to verify your understanding that AWS bills you for API requests made by Insight polling
+|I understand AWS bills me for API requests|Check this to verify your understanding that AWS bills you for API requests made by Insight polling.
 |===
 
 *Advanced Configuration*
@@ -41,10 +40,10 @@ Enter data into the data source fields according to the table below:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|Inventory Poll Interval (min)|(default 60 min)
-|HTTP connection and socket timeout|(default 300 sec)
+|Inventory Poll Interval (min)|Default is 60 minutes
+|HTTP connection and socket timeout|Default is 300 seconds
 |Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
-|Performance Poll Interval|(default 1800 seconds)
+|Performance Poll Interval|Default is 1800 seconds
 |===
 
 == Mapping AWS tags to Cloud Insights annotations
