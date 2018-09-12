@@ -107,7 +107,7 @@ Latency - Total is charted along the X-axis of the chart.
 +
 IOPS - Total is charted along the Y-axis in the chart. VMs with higher latency display on the right side of the chart. Only the top 100 highest-latency VMs are displayed, because the Top by X-axis setting is current.
 +
-image:tbd.png[ScatterPlot example 1]
+image:ScatterplotExample1.png[ScatterPlot example 1]
 
 . Now reverse the order of the counters by setting the first counter to IOPS - Total and the second to Latency - Total.
 +
@@ -115,7 +115,7 @@ Latency- Total is now charted along the Y-axis in the chart, and IOPS - Total al
 +
 Note that because we haven't changed the Top by X-Axis setting, the widget now displays the top 100 highest-IOPS VMs, since this is what is currently plotted along the X-axis.
 +
-image:tbd.png[ScatterPlot example 2]
+image:ScatterplotExample2.png[ScatterPlot example 2]
 
 You can choose for the chart to display the Top N by X-axis, Top N by Y-axis, Bottom N by X-axis, or Bottom N by Y-axis. In our final example, the chart is displaying the Top 100 VMs that have the highest total IOPS. If we change it to Top by Y-axis, the chart will once again display the top 100 VMs that have the highest total latency.
 
