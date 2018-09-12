@@ -5,11 +5,21 @@ keywords: data collector, VMware,
 summary: Configuring VMware  data collector.
 ---
 
+= Configuring the VMware VSphere data collector 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
 [.lead]
 
 The data collector for VMware vSphere (Web Services) collects ESX Host information and requires read-only privileges on all objects within the Virtual Center. 
 
-*Terminology*
+== Terminology
 
 Cloud Insights acquires the following inventory information from the VMware vSphere data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
@@ -25,6 +35,7 @@ Cloud Insights acquires the following inventory information from the VMware vSph
 |===
 *Note* 
  These are common terminology mappings only and might not represent every case for this data collector. 
+
 .Before you begin
 
 The following information is required to configure this data collector:
@@ -35,7 +46,7 @@ The following information is required to configure this data collector:
 * SDK access on the Virtual Center server
 * Verify that the SDK is enabled by entering telnet <vc_ip> 443.
 
-*Setup and connection*
+== Setup and connection
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -44,7 +55,7 @@ The following information is required to configure this data collector:
 |Acquisition unit|Name of acquisition unit
 |===
 
-*Configuration*
+== Configuration
 
 [cols=2*,  cols"50,50"]
 |===
@@ -52,9 +63,9 @@ The following information is required to configure this data collector:
 |Password|
 |===
 
-*Advanced configuration* 
+== Advanced configuration 
 
-In the advanced configuration screen, check the *VM Performance* box to collect performance data. Inventory collection is enabled by default. The following fields can be configured:
+In the advanced configuration screen, check the *VM Performance* box to collect performance data. Inventory collection is enableds by default. The following fields can be configured:
 
 [cols=2*,  cols"50,50"]
 |===
