@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: task_dc_hds_NAS_configure.html
+keywords: data collector, HDS HNAS, HDS NAS
+summary: Configuring HDS NAS (HNAS) data collector.
+---
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+= Configuring the HDS NAS (HNAS) data collector
+
+[.lead] 
+
+The HDS NAS (HNAS) data collector is an inventory and configuration data collector that  support discovery of HDS NAS clusters. Cloud Insights supports discovering NFS and CIFS shares, file systems (Internal Volumes), and spans (Storage Pools).
+
+This data collector is SSH based, so the acquisition unit that hosts it needs to be able to initiate SSH sessions to TCP 22 on the HNAS itself, or the Systems Management Unit (SMU) that the cluster is connected to.
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the HNAS data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Tier|Disk Group
+|Cluster|Storage
+|Node|Storage Node
+|Spanl|Storage Pool
+|Files System|Internal Volume
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data source. 
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|HNAS Host|IP address or fully-qualified domain name of HNAS Management Host
+|User Name|User name for HNAS CLI
+|Password|Password used for HNAS CLI
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 30 minutes. 
+|SSH Banner Wait Timeout (sec)|SSH banner wait timeout. The default is 15 seconds.
+|SSH Command Timeout (sec)|SSH command timeout. The default is 30 seconds.
+|===
