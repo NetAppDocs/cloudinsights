@@ -5,15 +5,15 @@ keywords: data collector, VMware,
 summary: Configuring VMware  data collector.
 ---
 
-= Configuring the VMware VSphere data collector 
-
 :toc: macro
 :hardbreaks:
-:toclevels: 1
+:toclevels: 2
 :nofooter:
 :icons: font
 :linkattrs:
 :imagesdir: ./media/
+
+= Configuring the VMware VSphere data collector 
 
 [.lead]
 
@@ -57,25 +57,29 @@ The following information is required to configure this data collector:
 
 == Configuration
 
-[cols=2*,  cols"50,50"]
+[cols=2*, options="header", cols"50,50"]
 |===
-|Virtual center IP Address | User name
-|Password|
+|Field|Description
+|Virtual center IP Address |IP address of the Virtual Center
+|User name |User name used to access the Virtual Center 
+|Password|Password used to access the Virtual Center 
 |===
 
 == Advanced configuration 
 
-In the advanced configuration screen, check the *VM Performance* box to collect performance data. Inventory collection is enableds by default. The following fields can be configured:
+In the advanced configuration screen, check the *VM Performance* box to collect performance data. Inventory collection is enableds by default. 
+The following fields can be configured:
 
 [cols=2*,  cols"50,50"]
 |===
-|Inventory poll interval (min)  | 20 (default)
-|Connection Timeout (ms)|60000
+|Field|Description
+|Inventory poll interval (min)  | Deafult is 20
+|Connection Timeout (ms)|Deafult is 60000
 |Filter VMs |Select CLUSTER, DATA CENTER, or ESX HOST 
 |Filter device list|Create a filter list
-|Number of retries | 3 (default)
-|Communication port| 443 (default)
-|Performance poll interval|300 sec (default) 
+|Number of retries | Deafult is 3 
+|Communication port| Deafult is 443 
+|Performance poll interval (sec)|Deafult is 300  
 |===
 
 

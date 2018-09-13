@@ -7,6 +7,9 @@ summary: Cloud Insights provides multiple user accounts with different permissio
 
 = User accounts
 
+[.lead]
+
+Cloud Insights provides four user accounts, Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels.
 
 :toc: macro
 :hardbreaks:
@@ -14,17 +17,13 @@ summary: Cloud Insights provides multiple user accounts with different permissio
 :nofooter:
 :icons: font
 :linkattrs:
-:imagesdir:./media/
-
-[.lead]
-
-Cloud Insights provides four user accounts, Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels.
+:imagesdir: ./media/
 
 == Permission levels
 
 The following illustration identifies the permissions granted to each user account.
 
-image::media/user-roles-fig.png
+image:user-roles-fig.png[]
 
 You use an account that has Administrator privileges to create or modify user accounts. Each user account is assigned one of the following permission levels.
 * Guest can view asset pages, dashboards, queries and run queries.
@@ -37,7 +36,7 @@ Best practice is to limit the number of users with Administrator permissions.  T
 
 == Creating user accounts
 
-Creating a new user account is achieved through Cloud Central. A user can respond to the invitation sent through email, but if the user does not have an account with Cloud Central, the user needs to sign up with Cloud Central so that they can accept the invitation.�
+Creating a new user account is achieved through Cloud Central. A user can respond to the invitation sent through email, but if the user does not have an account with Cloud Central, the user needs to sign up with Cloud Central so that they can accept the invitation.
 
 .Before you begin
 
@@ -64,4 +63,4 @@ The Invite User screen is displayed.
 . Click *Invite*
 +
 The invitation is sent to the user. Users will have 14 days to accept the invitation. Once a user accepts the invitation, he or she will be taken to the NetApp Cloud Portal, where they will sign up using the email address in the invitation.
-If they have an existing account for that email address, they can simply sign in and will then be able to access the Cloud Insights tenant.�
+If they have an existing account for that email address, they can simply sign in and will then be able to access the Cloud Insights tenant.

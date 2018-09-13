@@ -24,7 +24,7 @@ Cloud Insights acquires counters and metrics using names that sometimes differ f
 
 When searching for the right metric or counter for your dashboard widget, keep in mind that the metric you want could be under a different name from the one you are thinking of. While drop-down lists in Cloud Insights are usually alphabetical, sometimes a term may not show up in the list where you think it should. For example, terms like "raw capacity" and "used capacity" do not appear together in most lists.
 
-*Best practice*: Use the search feature in fields such as Filter by or places like the column selector to find what you are looking for. For example, searching for "cap" will show all metrics with "capacity" in their names, no matter where they occurs in the list. You can then easily select the metrics you want from that shorter list.
+*Best practice*: Use the search feature in fields such as Filter by or places like the column selector to find what you are looking for. For example, searching for "cap" will show all metrics with "capacity" in their names, no matter where they occur in the list. You can then easily select the metrics you want from that shorter list.
 
 Here are a few alternative phrases you can try when searching for metrics:
 
@@ -98,25 +98,25 @@ Changing the order of counters in a scatterplot widget changes the axes on which
 This example will create a scatter plot that will allow you to see under-performing VMs that have high latency compared to low IOPS.
 
 .Steps
-. Create or open a dashboard in edit mode and add a Scatter Plot Chart widget.
-. Select an asset type, for example, Virtual Machine.
-. Select the first counter you wish to plot. For this example, select Latency - Total.
+. Create or open a dashboard in edit mode and add a *Scatter Plot Chart* widget.
+. Select an asset type, for example, _Virtual Machine_.
+. Select the first counter you wish to plot. For this example, select _Latency - Total_.
 +
-Latency - Total is charted along the X-axis of the chart.
-. Select the second counter you wish to plot. For this example, select IOPS - Total .
+_Latency - Total_ is charted along the X-axis of the chart.
+. Select the second counter you wish to plot. For this example, select _IOPS - Total_.
 +
-IOPS - Total is charted along the Y-axis in the chart. VMs with higher latency display on the right side of the chart. Only the top 100 highest-latency VMs are displayed, because the Top by X-axis setting is current.
+_IOPS - Total_ is charted along the Y-axis in the chart. VMs with higher latency display on the right side of the chart. Only the top 100 highest-latency VMs are displayed, because the *Top by X-axis* setting is current.
 +
-image:tbd.png[ScatterPlot example 1]
+image:ScatterplotExample1.png[ScatterPlot example 1]
 
-. Now reverse the order of the counters by setting the first counter to IOPS - Total and the second to Latency - Total.
+. Now reverse the order of the counters by setting the first counter to _IOPS - Total_ and the second to _Latency - Total_.
 +
-Latency- Total is now charted along the Y-axis in the chart, and IOPS - Total along the X-axis. VMs with higher IOPS now display on the right side of the chart.
+_Latency- Total_ is now charted along the Y-axis in the chart, and _IOPS - Total_ along the X-axis. VMs with higher IOPS now display on the right side of the chart.
 +
-Note that because we haven't changed the Top by X-Axis setting, the widget now displays the top 100 highest-IOPS VMs, since this is what is currently plotted along the X-axis.
+Note that because we haven't changed the *Top by X-Axis* setting, the widget now displays the top 100 highest-IOPS VMs, since this is what is currently plotted along the X-axis.
 +
-image:tbd.png[ScatterPlot example 2]
+image:ScatterplotExample2.png[ScatterPlot example 2]
 
-You can choose for the chart to display the Top N by X-axis, Top N by Y-axis, Bottom N by X-axis, or Bottom N by Y-axis. In our final example, the chart is displaying the Top 100 VMs that have the highest total IOPS. If we change it to Top by Y-axis, the chart will once again display the top 100 VMs that have the highest total latency.
+You can choose for the chart to display the Top N by X-axis, Top N by Y-axis, Bottom N by X-axis, or Bottom N by Y-axis. In our final example, the chart is displaying the Top 100 VMs that have the highest total IOPS. If we change it to *Top by Y-axis*, the chart will once again display the top 100 VMs that have the highest total latency.
 
-Note that in a scatterplot chart, you can click on a point to open the asset page for that resource.
+Note that in a scatterplot chart, you can click on a point to drill down to the asset page for that resource.

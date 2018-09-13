@@ -1,0 +1,61 @@
+---
+sidebar: 
+sidebar
+permalink: task_dc_na_solidfire.html
+summary: Configure NetApp SolidFire data collector
+keywords: data collector, queries, create
+---
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+= NetApp SolidFire data collector
+
+[.lead]
+
+The NetApp SolidFire data collector supports inventory and performance collection from both iSCSI and Fibre Channel SolidFire configurations. 
+
+The SolidFire data collector utilizes the SolidFire REST API. The acquisition unit where the data collector resides needs to be able to initiate HTTPS connections to TCP port 443 on the SolidFire cluster management IP address. The data collector needs credentials capable of making REST API queries on the SolidFire cluster.
+
+== Terminalogy 
+
+Cloud Insights acquires the following inventory information from the NetApp SolidFire data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Drive|Disk
+|Cluster|Storage
+|Node|Storage Node
+|Volume|Volume
+|Fibre channel port|Port
+|Volume Access Group, LUN Assignment| Volume Map
+|iSCSI Session|Volume Mask
+|===
+Note: These are common terminology mappings only and might not represent every case for this data collector.
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Management Virtual IP Address (MVIP) |Management Virtual IP address of the SolidFire Cluster 
+|User Name |Name used to log into the SolidFire cluster
+|Password |Password used to log into the SolidFire cluster 
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Connection Type |Choose connection type
+|Communication Port |Port used for NetApp API
+|Inventory Poll Interval (min) |Default is 20 minutes
+|Performance Poll Interval (sec)|Default is 300 seconds
+|===
