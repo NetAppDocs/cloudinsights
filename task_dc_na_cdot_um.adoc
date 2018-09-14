@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_cdot_um.html
+keywords: data collector, ontap, clustered ontap, UM
+summary: Configuring clustered data ontap for Unified Manager data collector.
+---
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+= Clustered Data ONTAP for Unified Manager data collector
+
+[.lead]
+
+This data collector collects clustered Data ONTAP 8.1.x data from the Unified Manager (UM) 6.0+ database. Using this data collector, Cloud Insights discovers all clusters configured and populated in UM. For efficiency, Cloud Insights  does not call ZAPIs on the cluster itself. Performance is not supported in this data collector.
+
+== Configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Unified Manager IP| IP address or fully-qualified domain name of the Unified Manager
+|User Name |User name for the Unified Manager
+|Password|Password for the Unified Manager
+|Port|Port used for communication with the Unified Manager (default 3306)
+|===
+
+== Advanced Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min) | 15 mibnutes (default)
+|Exclude Clusters |Comma-separated list of cluster IPs to exclude
+|===

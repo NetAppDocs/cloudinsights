@@ -5,19 +5,22 @@ keywords: acquisition, AU, data collector, collector
 summary: A summary.
 ---
 
-= Configuring Data Collectors
-
+= Data Collector Reference
 
 [.lead]
-You configure Data Collectors in your Cloud Insights environment to collect data from devices in the data center.
+You configure Data Collectors in your Cloud Insights environment to collect data from devices in the data center. All data collectors are configured using the basic steps below. Available fields will vary according to vendor and model.
+
+Use the menu on the left to find vendor-specific data collector information. You can also search this documentation for vendor or model.
+
+== Configuring Data collectors
 
 .Before you begin
+* You must have Account owner or Admin privileges to configure data collectors. 
 * You must have configured an Acquisition Unit before you can start collecting data.
 * You need credentials for the devices from which you are collecting data.
 +
 Device network addresses, account information, and passwords are required for all devices you are collecting data from.
 
-Use the following steaps to configure Data Collectors.
 .Steps
 . From the Cloud Insights menu, click *Admin > Data Collectors*
 +

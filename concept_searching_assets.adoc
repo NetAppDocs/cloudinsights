@@ -54,6 +54,7 @@ When you use the NOT operator, all the documents that contain the term after NOT
 +
 You can use the symbol *!* instead of the word NOT.
 
+////
 == Prefix and suffix search
 
 As soon as you start typing a search string, the search engine does a prefix and suffix search to find the best match.
@@ -61,28 +62,28 @@ As soon as you start typing a search string, the search engine does a prefix and
 Exact matches are given a higher score than a prefix or suffix match. The score is calculated based on the distance of the search term from the actual search result. For example, we have three storages: "aurora", "aurora1", and "aurora11". Searching for "aur" will return all three storages. However, the search result for "aurora" will have the highest score because it has the closest distance to the prefix search string.
 
 The search engine also searches for terms in reverse order, which allows you to perform a suffix search. For example, when you type "345" in the search box, the search engine searches for "345".
+////
 
 Search is case-insensitive.
 
 == Search using indexed terms
 Searches that match more of the indexed terms result in higher scores.
 
-The search string is split into separate search terms by space. For example, the search string "storage aurora netapp" is split into three keywords: "storage", "aurora", and "netapp". The search is performed using all three terms. The documents that match most of these terms will have the highest score. The more information you provide, the better are the search results. For example, you can search for a storage by its name and mode.
+The search string is split into separate search terms by space. For example, the search string "storage aurora netapp" is split into three keywords: "storage", "aurora", and "netapp". The search is performed using all three terms. The documents that match most of these terms will have the highest score. The more information you provide, the better are the search results. For example, you can search for a storage by its name and model.
 
-The UI displays the search results across categories, with the three top results per category. If you did not find a document that you were expecting, you can include more terms in the search string to improve the search results.
+The UI displays the search results across categories, with the three top results per category. If you did not find an object that you were expecting, you can include more terms in the search string to improve the search results.
 
 The following table provides a list of indexed terms that can be added to the search string.
 
-|==
-|Category	|Indexed terms
-Storage	
+|===
+|Category |Indexed terms
 
-"storage"
+|Storage |"storage"
 name
 vendor
 model
-StoragePool	
-"storagepool"
+
+|StoragePool |"storagepool"
 name
 name of the storage
 IP addresses of the storage
@@ -91,8 +92,8 @@ storage vendor
 storage model
 names for all associated internal volumes
 names for all associated disks
-Internal Volume	
-"internalvolume"
+
+|Internal Volume |"internalvolume"
 name
 name of the storage
 IP addresses of the storage
@@ -101,9 +102,10 @@ storage vendor
 storage model
 name of the storage pool
 names of all associated shares
-names of all associated applications and business entities
-Volume	
-"volume"
+names of all associated applications 
+//and business entities
+
+|Volume |"volume"
 name
 label
 names of all internal volumes
@@ -113,36 +115,38 @@ IP addresses of the storage
 serial number of the storage
 storage vendor
 storage model
-Storage Node	
-"storagenode"
+
+|Storage Node |"storagenode"
 name
 name of the storage
 IP addresses of the storage
 serialnumber of the storage
 storage vendor
 storage model
-Host	
-"host"
+
+|Host |"host"
 name
 IP addresses
-names of all associated applications and business entities
-Datastore	
-"datastore"
+names of all associated applications 
+//and business entities
+
+|Datastore |"datastore"
 name
 virtual center IP
 names of all volumes
 names of all internal volumes
-Virtual Machines	
-"virtualmachine"
+
+|Virtual Machines |"virtualmachine"
 name
 DNS name
 IP addresses
 name of the host
 IP addresses of the host
 names of all datastores
-names of all associated applications and business entities
-Switches (regular and NPV)	
-"switch"
+names of all associated applications 
+//and business entities
+
+|Switches (regular and NPV) |"switch"
 IP address
 wwn
 name
@@ -151,24 +155,25 @@ model
 domain ID
 name of the fabric
 wwn of the fabric
-Application	
-"application"
+
+|Application |"application"
 name
 tenant
 line of business
 business unit
 project
-Tape	
-"tape"
+
+|Tape |"tape"
 IP address
 name
 serial number
 vendor
-Port	
-"port"
+
+|Port |"port"
 wwn
 name
-Fabric	
-"fabric"
+
+|Fabric |"fabric"
 wwn
 name
+|===

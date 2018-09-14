@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: concept_asset_user_data_section.html
-summary: TheUser Data section of an asset page allows you to assign annotations or applications to the current asset.
+summary: The User Data section of an asset page allows you to assign annotations or applications to the current asset.
 keywords: asset page, user data, applications, annotations
 ---
 
@@ -16,25 +16,21 @@ keywords: asset page, user data, applications, annotations
 :imagesdir: ./media/
 
 [.lead]
-The User Data section of an asset page displays and enables you to change any user-defined data such as applications, business entities, and annotations.
-
-The following shows an example of what might display in the User Data section of a virtual machine asset page when an application, business entity, and annotation are assigned to the asset:
-
+The User Data section of an asset page displays and enables you to change any user-defined data such as applications and annotations.
 
 == Using the User Data section to assign or modify applications
 
-You can assign applications running in your environment to certain assets (host, virtual machines, volumes, internal volumes, and hypervisors). The User Data section enables you to change the application assigned to an asset or assign an application or additional applications to an asset.
+You can assign applications running in your environment to certain assets (host, virtual machines, volumes, internal volumes, qtrees, and hypervisors). The User Data section enables you to add, change, or remove the applications assigned to an asset. For all of these asset types except for volumes, you can assign more than one application.
 
 .Steps
-. Locate an asset page by doing either of the following:
-.. On the Insight toolbar, click , type in the name of the asset, and then select the asset from the list.
-.. Click Dashboards, select Assets Dashboard, locate an asset name, and click it.
+. Locate an asset page by doing any of the following:
+.. Query for a list of assets and then select one from the list.
+.. On a Dashboard, locate an asset name and click it.
+.. Perform a search and choose an asset from the results.
 +
-The asset page displays. You can do the following:
-+
-* To view the asset page for the application, click the application's name.
+The asset page displays. The User Data section of the page shows currently-assigned applications or annotations.
 
-To change the application assigned, or to assign an application or additional applications, drop down the Application list and select the application(s) you want to assign to the asset. You can type to search for an application, or select one from the list.
+To change the application assigned, or to assign an application or additional applications, drop down the *Application* list and select the application(s) you want to assign to the asset. You can type to search for an application, or select one from the list.
 
 // If you choose an application that is associated with a business entity, the business entity is automatically assigned to the asset. In this case, when you place your cursor over the business entity name, the word derived displays. If you want to maintain the entity for only the asset and not the associated application, you can manually override the assignment of the application.
 
@@ -42,7 +38,7 @@ To remove an application, drop down the application list and un-check the applic
 
 == Using the User Data section to assign or modify annotations
 
-When customizing OnCommand Insight to track data for your corporate requirements, you can define specialized notes, called annotations, and assign them to your assets. The User Data section of an asset page displays annotations assigned to an asset and also enables you to change the annotations assigned to that asset.
+When customizing Cloud Insights to track data for your corporate requirements, you can define specialized notes called annotations, and assign them to your assets. The User Data section of an asset page displays annotations assigned to an asset and also enables you to change the annotations assigned to that asset.
 
 .Steps
 
