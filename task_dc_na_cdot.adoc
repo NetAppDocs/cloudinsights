@@ -4,13 +4,6 @@ permalink: task_dc_na_cdot.html
 keywords: data collector, ontap, clustered ontap
 summary: Configuring clustered data ontap data collector.
 ---
-
-= Configuring the Clustered Data ONTAP data collector
-
-[.lead]
-
-This data collector is used for storage systems using Clustered Data ONTAP, and requires an administrator account used for read-only API calls.
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -34,7 +27,6 @@ Cloud Insights acquires the following inventory information from the Clustered D
 |LUN |Volume
 |Volume|Internal Volume
 |===
-Storage
 
 == Requirements
 
@@ -62,6 +54,4 @@ The following requirements are required to collect data with this data collector
 |===
 |Field|Description
 |Communication Port|Port used for NetApp API
-|Inventory Poll Interval (min) |Default is 20 minutes
-|Performance Poll Interval (sec)|Default is  300 seconds
 |===

@@ -1,0 +1,62 @@
+sidebar: sidebar
+permalink: task_dc_emc_Isilon.html
+keywords: data collector, isilon, EMC, DELL
+summary: Configuring DELL EMC Isilon data collector.
+---
+
+= DELL EMC Isilon data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+The Isilon SSH data collector collects inventory and performance from EMC Isilon scale-out NAS storage. 
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the Isilon data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Drive|Disk
+|Cluster|Storage
+|Node|Storage Node
+|File Systemp|Internal Volume
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data source. 
+
+== Requirements
+
+You need the follwoing information to configure this data collector:
+
+* Administrator permissions to the Isilon storage
+* Validated access by using _telnet_ to port 22
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|IP address|The IP address or fully-qualified domain name of the Isilon cluster 
+|User Name|User name for the Isilon cluster
+|Password|Password used for the Isilon cluster
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|Inventory Poll Interval (min)|	Interval between inventory polls. The default is 20 minutes. 
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds.
+|SSH Process Wait Timeout|SSH process timeout period. The default is 60 seconds.
+|SSH Port|SSH service port 
+|===
