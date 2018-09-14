@@ -1,8 +1,6 @@
 ---
-sidebar: 
-sidebar
-permalink: 
-task_dc_na_solidfire.html
+sidebar: sidebar
+permalink: task_dc_na_solidfire.html
 summary: Configure NetApp SolidFire data collector
 keywords: data collector, queries, create
 ---
@@ -21,7 +19,8 @@ keywords: data collector, queries, create
 
 The NetApp SolidFire data collector supports inventory and performance collection from both iSCSI and Fibre Channel SolidFire configurations. 
 
-The SolidFire data collector utilizes the SolidFire REST API. The acquisition unit where the data collector resides  needs to be able to initiate HTTPS connections to TCP port 443 on the SolidFire cluster management IP address. The data collector needs credentials capable of making REST API queries on the SolidFire cluster.
+
+The SolidFire data collector utilizes the SolidFire REST API. The acquisition unit where the data collector resides needs to be able to initiate HTTPS connections to TCP port 443 on the SolidFire cluster management IP address. The data collector needs credentials capable of making REST API queries on the SolidFire cluster.
 
 == Terminalogy 
 
@@ -55,8 +54,8 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Inventory Poll Interval (min) |Interval between inventory polls (default 60 minutes) 
-|TCP Port |TCP Port used to connect to SolidFire Server (default 443 )
-|Connection Timeout (sec) |Connection timeout (default 60 seconds)
-|Performance Poll Interval (sec)|Interval between performance polls (default 300 seconds)
+|Connection Type |Choose connection type
+|Communication Port |Port used for NetApp API
+|Inventory Poll Interval (min) |Default is 20 minutes
+|Performance Poll Interval (sec)|Default is 300 seconds
 |===

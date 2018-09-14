@@ -1,0 +1,109 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_7mode.html
+keywords: data collector, 7-mode, NetApp
+summary: Configuring NetApp 7-mode data collector.
+---
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+= NetApp Data ONTAP operating in 7-Mode data collector
+
+[.lead]
+
+For storage systems using Data ONTAP software operating in 7-Mode, you should use the ONTAPI data source, which uses the CLI to obtain capacity numbers. 
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the NetApp 7-mode data collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Disk|Disk
+|Raid Group|Disk Group
+|Filer|Storage
+|Filer|Storage Node
+|Aggregate|Storage Pool
+|LUN|Volume
+|Volume|Internal Volume
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Requirements 
+
+You need the following to configure this data collector:
+
+* IP addresses of the FAS storage controller and partner
+* User name and password for the controller and the partner
+* FCP license and mapped or masked volumes required for Cloud Insights discovery
+* CIFS or NFS licenses and CIFS shares or NFS exports required for Cloud Insights NAS discovery
+* Access validation
++Use telnet to access the FAS controller from the Cloud Insights server,  using the user name and password.
+
+== Configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Address of storage system|IP address or fully-qualified domain name for the NetApp storage system
+|User Name|User name for the NetApp storage system
+|Password|Password for the NetApp storage system
+|Address of HA Partner in Cluster|IP address or fully-qualified domain name for the HA Partner
+|User Name of HA Partner in Cluster|User name for the HA partner
+|Password of HA Partner Filer in Cluster|Password for the  HA Partner 
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 20 minutes.
+|Connection Type|Choose connection type
+|Connection Port|Port used for NetApp API
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds. 
+|===
+
+== Storage systems connection
+
+As an alternative to using the default administrative user for this data collector, you can configure a user with administrative rights directly on the NetApp storage systems so that this data collector can acquire data from NetApp storage systems.
+
+Connecting to NetApp storage systems requires that the user, who is specified when acquiring the main pfiler (on which the storage system exist), meet the following conditions:
+
+* The user must be on vfiler0 (root filer/pfiler).
++ 
+Storage systems are acquired when acquiring the main pfiler.
+
+* The following commands define the user role capabilities:
+** "api-*": Use this to allow Cloud Insights to execute all NetApp storage API commands. 
++
+This command is required to use the ZAPI.
+
+** "login-http-admin": Use this to allow Cloud Insights to connect to the NetApp storage via HTTP. This command is required to use the ZAPI.
+
+** "security-api-vfiler": Use this to allow Cloud Insights to execute NetApp storage API commands to retrieve vFiler unit information.
+
+** "cli-options": For "options" command and used for partner IP and enabled licenses.
+
+** "cli-lun": Access these command for managing LUNs. Displays the status (LUN path, size, online/offline state, and shared state) of the given LUN or class of LUNs.
+** "cli-df": For "df -s", "df -r", "df -A -r" commands and used to display free space.
+** "cli-ifconfig": For "ifconfig -a" command and used for getting filer IP address.
+** "cli-rdfile": For "rdfile /etc/netgroup" command and used for getting netgroups.
+** "cli-date": For "date" command and used to get full date for getting Snapshot copies.
+** "cli-snap": For "snap list" command and used for getting Snapshot copies.
+
+If cli-date or cli-snap permissions are not provided, acquisition can finish, but Snapshot copies are not reported.
+
+To acquire a 7-Mode data source successfully and generate no warnings on the storage system, you should use one of the following command strings to define your user roles. The second string listed here is a streamlined version of the first:
+
+_login-http-admin,api-*,security-api-vfile,cli-rdfile,cli-options,cli-df,cli-lun,cli-ifconfig,cli-date,cli-snap,_
+or 
+_login-http-admin,api-*,security-api-vfile,cli-*_
