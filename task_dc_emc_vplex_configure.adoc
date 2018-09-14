@@ -1,0 +1,76 @@
+---
+sidebar: sidebar
+permalink: task_dc_emc_vplex_configure.html
+keywords: data collector, VPLEX, EMC 
+summary: Configuring VPLEX data collector.
+---
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+= Configuring the EMC VNX data collector
+
+[.lead] 
+
+For configuration, this data source requires an IP address of the VPLEX server and an administrative level domain account.
+
+== Terminology
+
+Cloud Insightst acquires the following inventory information from the VPLEX data collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Cluster|Storage
+|Engine|Storage Node
+|Device, System Extend|Backend Storage Pool
+|Virtual Volume|Volume
+|Front-End Port, Back-End Port|Port
+|Distributed Device|Storage Synchronization
+|Storage View|Volume Map, Volume Mask
+|Storage Volume|Backend LUN
+|ITLs|Backend Path
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data source.
+
+== Requirements
+
+* An IP address of the VPLEX server
+* Administrative level domain account for the VPLEX server
+* Validate access: Verify by using telnet to port 443. For a port other than the default port, with any browser use HTTPS://<ip>:<port>
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|IP address of VPLEX Management Console|IP address or fully-qualified domain name of the VPLEX Management Console
+|User Name|User name for VPLEX CLI
+|Password|Password used for VPLEX CLI
+|Performance Remote IP Address of VPLEX Management Console|Performance Remote IP address of the VPLEX Management Console
+|Performance Remote User Name|Performance Remote user name of VPLEX Management Console
+|Performance Remote Password|Performance Remote Password of VPLEX Management Console
+[cols=2*, options="header", cols"50,50"]
+|===
+
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Communication Port|Port used for VPLEX CLI
+|Inventory Poll Interval (min)|	Interval between inventory polls. The default is 20 minutes.
+|Connection timeout (sec)|Connection timeout. The default is 60 seconds.
+|Number of Retries|Number of inventory retry attempts
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 600 seconds.
+|Performance SSH Process Wait Timeout (sec).| SSH process timeout. The default is 600 seconds.
+|SSH Banner Wait Timeout (sec).|SSH banner wait timeout. The default is 20 seconds.
+|Number of Retries|Number of performance retry attempts
+|===
