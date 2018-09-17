@@ -1,7 +1,8 @@
+---
 sidebar: sidebar
 permalink: task_dc_emc_celerra_configure.html
-keywords: data collector, Celerra data, EMC, DELL
-summary: Configuring DELL EMC Celerra data data collector.
+keywords: data collector, Celerra, EMC, DELL
+summary: Configuring DELL EMC Celerra data collector.
 ---
 
 = DELL EMC Celerra data collector
@@ -16,7 +17,7 @@ summary: Configuring DELL EMC Celerra data data collector.
 
 [.lead]
 
-The Celerra (SSH) data source collects inventory information from Celerra storage. For configuration, this data source requires the IP address of the storage processors and a read-only user name and password.
+The Celerra (SSH) data collector collects inventory information from Celerra storage. For configuration, this data collector requires the IP address of the storage processors and a read-only user name and password.
 
 == Terminology 
 
@@ -26,14 +27,14 @@ Cloud Insights acquires the following inventory information from the Celerra dat
 |===
 |Vendor/Model Term|Cloud Insights Term 
 |Celerra Network Server/Celerra Storage Pool|Storage Pool
-|File SystemInternal Volume
+|File System|Internal Volume
 |Data Mover|Controller
 |File System mounted on a data mover|File Share
 |CIFS and NFS Exports|Share
 |Disk Volume|Backend LUN
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data source. 
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
 
 == Requirements
 
@@ -58,8 +59,8 @@ You need the following to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description 
-|nventory Poll Interval (minutes)|Interval between inventory polls. The default is 20 minutes. 
-|SSH Process Wait Timeout (sec)|SSH process timeout The default is 600 seconds. 
+|Inventory Poll Interval (minutes)|Interval between inventory polls. The default is 20 minutes. 
+|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 600 seconds. 
 |Number of Retries|Number of inventory retry attempts
-|SSH Banner Wait Timeout (sec)|SSH banner wait timeout The default is 20 seconds. 
+|SSH Banner Wait Timeout (sec)|SSH banner wait timeout. The default is 20 seconds. 
 |===
