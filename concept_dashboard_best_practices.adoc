@@ -20,7 +20,7 @@ Tips and tricks to help you get the most out of the powerful features of dashboa
 
 == Finding the Right Metric
 
-Cloud Insights acquires counters and metrics using names that sometimes differ from data source to data source.
+Cloud Insights acquires counters and metrics using names that sometimes differ from data collector to data collector.
 
 When searching for the right metric or counter for your dashboard widget, keep in mind that the metric you want could be under a different name from the one you are thinking of. While drop-down lists in Cloud Insights are usually alphabetical, sometimes a term may not show up in the list where you think it should. For example, terms like "raw capacity" and "used capacity" do not appear together in most lists.
 
@@ -67,7 +67,7 @@ This is not a comprehensive list. These are examples of possible search terms on
 
 The assets you can reference in widget filters and searches vary from asset type to asset type.
 
-In dashboards and landing pahes, the asset type around which you are building your widget determines the other asset type counters for which you can filter or add a column. Keep the following in mind when building your widget:
+In dashboards and asset pages, the asset type around which you are building your widget determines the other asset type counters for which you can filter or add a column. Keep the following in mind when building your widget:
 
 |===
 This asset type / counter:	| Can be filtered for under these assets:
@@ -90,9 +90,9 @@ This is not a comprehensive list.
 
 *Best practice*: If you are filtering for a particular asset type that does not appear in the list, try building your query around an alternate asset type.
 
-== Scatterplot Example: Knowing your Axis
+== Scatter Plot Example: Knowing your Axis
 
-Changing the order of counters in a scatterplot widget changes the axes on which the data is displayed.
+Changing the order of counters in a scatter plot widget changes the axes on which the data is displayed.
 
 .About this task
 This example will create a scatter plot that will allow you to see under-performing VMs that have high latency compared to low IOPS.
@@ -119,4 +119,4 @@ image:ScatterplotExample2.png[ScatterPlot example 2]
 
 You can choose for the chart to display the Top N by X-axis, Top N by Y-axis, Bottom N by X-axis, or Bottom N by Y-axis. In our final example, the chart is displaying the Top 100 VMs that have the highest total IOPS. If we change it to *Top by Y-axis*, the chart will once again display the top 100 VMs that have the highest total latency.
 
-Note that in a scatterplot chart, you can click on a point to drill down to the asset page for that resource.
+Note that in a scatter plot chart, you can click on a point to drill down to the asset page for that resource.
