@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: task_dc_huawei_configure.html
+keywords: data collector, Huawei, OceanStor, Dorado 
+summary: Configuring Huawei OceanStor (REST/HTTPS) data collector.
+---
+
+= Huawei OceanStor data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+Cloud Insights uses the Huawei OceanStor (REST/HTTPS) data collector to discover inventory for Huawei OceanStor and OceanStor Dorado storage.
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|OceanStor Host IP Address|IP address or fully-qualified domain name of the OceanStor Device Manager
+|User Name|Name used to log into the OceanStor Device Manager
+|Password|Password used to log into the OceanStor Device Manager
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|TCP Port|TCP Port used to connect to OceanStor Device Manager. The default is 8088.
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 60 minutes.
+|Connection Timeout (sec)|Connection timeout. The default is 60 seconds.
+|===
