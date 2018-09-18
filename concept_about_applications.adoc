@@ -12,7 +12,7 @@ Understanding the applications used in your company's environment helps you to k
 
 Before you can track data associated with the applications running in your environment, you must first define those applications and associate them with the appropriate assets. You can associate applications with the following assets: hosts, virtual machines, volumes, internal volumes, qtrees, shares, and hypervisors. 
 
-This topic  provides and example of tracking the usage of virtual machines that the Marketing Team uses for its Exchange email.
+This topic provides an example of tracking the usage of virtual machines that the Marketing Team uses for its Exchange email.
 
 You might want to create a table similar to the following to identify applications used in your environment and track whos uses the applications.
 
@@ -25,9 +25,9 @@ You might want to create a table similar to the following to identify applicatio
 
 The table shows that that Marketing Team uses the Exchange application. We want to track their virtual machine utilization for Exchange, so that we can predict when we will need to add more storage.  We can associate the Exchange application with all of Marketing's VM's: 
 
-. Create an application name Exchange
+. Create an application named Exchange
 . Create a query for virtual machines.
 +
-Assuming that the Marketing's VMs are have a name containing "mkt", you can create a query with "mkt".
-. Select the VMs
-. Asssign the VMs to the Exchange application.
+Assuming the Marketing VM’s all have a name containing the string “mkt”, create your query to filter VM name for “mkt”.
+. Select the VMs.
+. Associate the VMs with the Exchange application using Bulk Actions > Add Applications. 
