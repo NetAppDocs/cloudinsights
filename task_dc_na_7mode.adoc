@@ -17,7 +17,7 @@ summary: Configuring NetApp 7-mode data collector.
 
 [.lead]
 
-For storage systems using Data ONTAP software operating in 7-Mode, you should use this data collector, which uses the CLI to obtain capacity numbers. 
+For storage systems using Data ONTAP software operating in 7-Mode, you should use the ONTAPI data source, which uses the CLI to obtain capacity numbers. 
 
 == Terminology
 
@@ -35,19 +35,18 @@ Cloud Insights acquires the following inventory information from the NetApp 7-mo
 |Volume|Internal Volume
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data collector. 
+Note: These are common terminology mappings only and might not represent every case for this data collector.
 
 == Requirements 
 
-You need the following to configure this data collector:
+You need the following to configure and use this data collector:
 
 * IP addresses of the FAS storage controller and partner
 * User name and password for the controller and the partner
 * FCP license and mapped or masked volumes required for Cloud Insights discovery
 * CIFS or NFS licenses and CIFS shares or NFS exports required for Cloud Insights NAS discovery
 * Access validation
-+
-Use telnet to access the FAS controller from the Authorization Unit,  using the user name and password.
++Use telnet to access the FAS controller from the Cloud Insights server,  using the user name and password.
 
 == Configuration 
 
@@ -94,7 +93,7 @@ This command is required to use the ZAPI.
 
 ** "cli-options": For "options" command and used for partner IP and enabled licenses.
 
-** "cli-lun": Access these commands for managing LUNs. Displays the status (LUN path, size, online/offline state, and shared state) of the given LUN or class of LUNs.
+** "cli-lun": Access these command for managing LUNs. Displays the status (LUN path, size, online/offline state, and shared state) of the given LUN or class of LUNs.
 ** "cli-df": For "df -s", "df -r", "df -A -r" commands and used to display free space.
 ** "cli-ifconfig": For "ifconfig -a" command and used for getting filer IP address.
 ** "cli-rdfile": For "rdfile /etc/netgroup" command and used for getting netgroups.
@@ -105,6 +104,6 @@ If cli-date or cli-snap permissions are not provided, acquisition can finish, bu
 
 To acquire a 7-Mode data source successfully and generate no warnings on the storage system, you should use one of the following command strings to define your user roles. The second string listed here is a streamlined version of the first:
 
-_login-http-admin,api-*,security-api-vfile,cli-rdfile,cli-options,cli-df,cli-lun,cli-ifconfig,cli-date,cli-snap,_
-or 
-_login-http-admin,api-*,security-api-vfile,cli-*_
+* login-http-admin,api-*,security-api-vfile,cli-rdfile,cli-options,cli-df,cli-lun,cli-ifconfig,cli-date,cli-snap,_
+ 
+* login-http-admin,api-* ,security-api-vfile,cli- 
