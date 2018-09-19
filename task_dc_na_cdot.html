@@ -1,0 +1,68 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_cdot.html
+keywords: data collector, ontap, clustered ontap
+summary: Configuring clustered data ontap data collector.
+---
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+= Configuring the Clustered Data ONTAP data collector
+
+[.lead]
+
+This data collector is used for storage systems using Clustered Data ONTAP, and requires an administrator account used for read-only API calls.
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the Clustered Data ONTAP data collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Disk|Disk
+|Raid Group|Disk Group
+|Cluster|Storage
+|Node|Storage Node
+|Aggregate|Storage Pool
+|LUN |Volume
+|Volume|Internal Volume
+|===
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Requirements
+
+The following requirements are required to collect data with this data collector:
+
+* You must have access to an Administrator account used for read-only API calls.
+* Target IP is the cluster management LIF
+* FCP license and mapped/masked volumes required for Cloud Insights discovery
+* CIFS and/or NFS license and CIFS shares or NFS exports required for Insight NAS discovery
+* Access validation: Telnet or SSH to the cluster management LIF from the the system hosting Cloud Insights using the username and password. 
+
+== Configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|NetApp Management IP |IP address or fully-qualified domain name of the NetApp cluster
+|User Name |User name for NetApp cluster
+|Password |Password for NetApp cluster 
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Communication Port|Port used for NetApp API
+|Inventory Poll Interval (min) |nterval between inventory polls (default 20 minutes)
+|Performance Poll Interval (sec)|Interval between performance polls (default 300 seconds)
+|===
