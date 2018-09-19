@@ -1,12 +1,12 @@
 ---
 sidebar: sidebar
-permalink: task_research_failed_collector.html
-keywords: data collector, changes, failures, errors, troubleshooting
+permalink: concept_audit.html
+keywords: data collectort, c hanges, failures
 summary: Data collector errors need to be researched and corrected to ensure the continued collection of data.
 ---
 
 [.lead]
-If a data collector has failure message with a High or Medium Impact, you need to research this problem using the data collector summary page with its linked information.
+If a data collector has failure message and a High or Medium Impact, you need to research this problem using the data collector summary page with its linked information.
 
 = Researching a failed data collector
 
@@ -19,11 +19,10 @@ Use the following steps to determine the cause of failed data collectors. Data C
 . On the Summary page, check the Comments area to read any notes left by another engineer who might also be investigating this failure.
 . Note any performance messages.
 //. If there is a patch being applied to this data collector, click link to check the patch page to see if that has caused the problem.
-. Move your mouse pointer over the segments of the Event timeline graph to display additional information.
-. Select an error message for a Device and displayed below the Event timeline and click the Error details icon that displays to the right of the message.
+. Move your mouse pointer over the segments of the Event Timeline graph to display additional information.
+. Select an error message for a Device and displayed below the Event Timeline and click the Error details icon that displays to the right of the message.
 +
 The Error details include the text of the error message, most likely causes, information in use, and suggestions of what can be tried to correct the problem.
 
-. In the Devices reported by this data collector area, you might filter the list to display only devices of interest, and you can click the linked Name of a device to display the asset page for that device.
 . In the Devices reported by this data collector area, you might filter the list to display only devices of interest, and you can click the linked *Name* of a device to display the asset page for that device.
 . When you return to the data collector summary page, check the *Most Recent Changes* area at the bottom of the page to see if recent changes could have caused the problem.
