@@ -30,11 +30,11 @@ Cloud Insights acquires the following inventory information from the Clustered D
 
 == Requirements
 
-The following requirements are required to collect data with this data collector:
+You need the following to configure this data collector:
 
 * You must have access to an Administrator account used for read-only API calls.
-* Target IP is the cluster management LIF
-* FCP license and mapped/masked volumes required for Cloud Insights discovery
+* The IP address of the cluster management LIF
+* An FCP license and mapped/masked volumes are required for Cloud Insights discovery
 * CIFS and/or NFS license and CIFS shares or NFS exports required for Insight NAS discovery
 * Access validation: Telnet or SSH to the cluster management LIF from the the system hosting Cloud Insights using the username and password. 
 
