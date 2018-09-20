@@ -27,6 +27,14 @@ entries:
         url: /task_configure_data_collectors.html
       - title: AWS
         url: /task_dc_aws_configure.html
+      - title: Brocade
+        entries:
+      - title: Brocade Enterprise Fabric Connectivity Manager
+        url: /task_dc_brocade_EFCM_configure.html
+      - title: Brocade FC Switch
+        url: /task_dc_brocade_FC_Switch_configure.html
+        entries:
+          - title:
       - title: Dell EMC
         entries:
           - title: Celerra
@@ -45,19 +53,31 @@ entries:
             url: /task_dc_emc_vnxe_configure.html
           - title: XtremIO
             url: /task_dc_emc_xio_configure.html
+      - title: IBM
+        entries:
+          - title: IBM DS6xxx and DS8xxx
+            url: /task_dc_IBM_DS_configure.html
+          - title: IBM PowerVM
+            url: /task_dc_IBM_pwr_vm.html
+          - title: IBM San Volume Controller
+            url: /task_dc_IBM_SVC.html
+          - title: IBM XIV
+            url: /task_dc_IBM_XIV.html       
       - title: NetApp
         entries:
           - title: Clustered Data ONTAP
             url: /task_dc_na_cdot.html 
-          - title: Unified Manager
-            url: /task_dc_na_cdot_um.html
+          - title: Data ONTAP 7-mode
+            url: /task_dc_na_7mode
           - title: E-Series
             url: /task_dc_na_eseries.html
           - title: SolidFire
             url: /task_dc_na_solidfire.html
+      - title: OceanStor
+        url: /task_dc_huawei_configure.html
       - title: VMWare
         url: /task_dc_vmware_configure.html
-  - title: Dashboards
+  - title: Creating Dashboards
     entries:
       - title: Dashboard Overview
         url: /concept_dashboards_overview.html
@@ -69,7 +89,7 @@ entries:
             url: /task_dashboard_example_VM_performance.html
       - title: Dashboard Best Practices
         url: /concept_dashboard_best_practices.html
-  - title: Queries
+  - title: Working with Queries
     entries:
       - title: Querying Assets
         url: /concept_querying_assets.html
@@ -93,7 +113,7 @@ entries:
         url: /task_create_annotation.html
       - title: Using Annotation Rules
         url: /task_create_annotation_rules.html
-  - title: Applications
+  - title: Working with Applications
     entries:
       - title: Application Concepts
         url: /concept_about_applications.html
@@ -115,6 +135,8 @@ entries:
     entries:
       - title: Asset Page Overview
         url: /concept_asset_page_overview.html
+      - title: In-Context Filtering for Objects 
+        url: /concept_in_context_filters.html
       - title: Summary & Topology Sections
         url: /concept_asset_summary_section.html
       - title: Expert View Section
