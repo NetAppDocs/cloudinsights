@@ -4,7 +4,8 @@ permalink: concept_in_context_filters.html
 summary: You can filter for objects that are related directly to the current asset.
 keywords: Assets, landing page, filtering, context, related
 ---
-= Filtering for In-Context Objects
+
+= Filtering for Objects In-Context
 
 :toc: macro
 :hardbreaks:
@@ -15,31 +16,30 @@ keywords: Assets, landing page, filtering, context, related
 :imagesdir: ./media/
 
 [.lead]
-When configuring a widget on an asset's landing page, you can set filters to show only objects directly related to the current asset.
+When configuring a widget on an asset's landing page, you can set _in-context_ filters to show only objects directly related to the current asset. 
 
-Many widgets on an asset landing page allow you to filter for only objects related to the current asset. In a filter drop-down, object types that displays a link icon image:LinkIcon.png[Link Icon] can be filtered to only display objects related to the current asset.
+Many widgets on an asset landing page allow you to filter for only objects related to the current asset. In a filter drop-down, object types that displays a link icon image:LinkIcon.png[Link Icon] can be filtered in-context to the current asset.
 
-For example, on a Storage asset page, we can add a Bar Chart widget to show volumes with top IOPS on that storage. By default, when you add a widget, _all_ volumes in your environment are displayed. 
+For example, on a Storage asset page, you can add a Bar Chart widget to show internal volumes with top IOPS only on that storage. By default, when you add a widget, _all_ internal volumes in your environment are displayed. 
 
-To show only volumes on the current storage asset, do the following:
+To show only internal volumes on the current storage asset, do the following:
 
 .steps
 . Open an asset page for any *Storage* asset. 
 . Click *Edit* to open the asset page in Edit mode.
-* Click *Add Widget* and select _Bar Chart_.
-* Select *Volume* for the object type to display on the bar chart.
+. Click *Add Widget* and select _Bar Chart_.
+. Select *Internal Volume* for the object type to display on the bar chart. Notice that the internal volume object type has a link icon image:LinkIcon.png[Link Icon] beside it. The "linked" icon is enabled by default.
++
+image:LinkingObjects.png[bar chart volumes]
+. Choose _IOPS - Total_ and set any additional filters you like.
+. Collapse the *Roll Up* field by clicking the [X] beside it. She *Show* field is displayed.
+. Choose to show Top 10.
+. Save the widget. 
++
+The bar chart shows only the internal volumes that reside on the current storage asset. 
+
+The widget will be displayed on the asset pages for all storage objects. When the in-context link is enabled in the widget, the bar chart shows data for internal volumes related only to the currently-displayed storage asset.
+
+To unlink the object data, edit the widget and click the link icon next to the object type. The link becomes disabled and the chart displays data for _all_ objects in your environment.
 
 
-
-
-image:tbd.png[bar chart volumes]
-
-////
-Only objects that have the link icon in the asset type drop-down can be linked
-Confluence page with relationships tables - Also in Edwin's test plan.
-
-***
-Example: Storage asset page, includes table of volumes on that storage. I want to add a bar-chart to show volumes with top IOPS. When I add a bar chart, by default the chart includes ALL volumes.  If I click the link, only the volumes on that storage will show up.
-***
-////
-Asset Pages now include tables (as in 7.3.x). Each table contains certain default columns
