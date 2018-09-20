@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: concept_in_context_filters.html
+summary: You can filter for objects that are related directly to the current asset.
+keywords: Assets, landing page, filtering, context, related
+---
+= Filtering for In-Context Objects
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+When configuring a widget on an asset's landing page, you can set filters to show only objects directly related to the current asset.
+
+Many widgets on an asset landing page allow you to filter for only objects related to the current asset. In a filter drop-down, object types that displays a link icon image:LinkIcon.png[Link Icon] can be filtered to only display objects related to the current asset.
+
+For example, on a Storage asset page, we can add a Bar Chart widget to show volumes with top IOPS on that storage. By default, when you add a widget, _all_ volumes in your environment are displayed. 
+
+To show only volumes on the current storage asset, do the following:
+
+.steps
+. Open an asset page for any *Storage* asset. 
+. Click *Edit* to open the asset page in Edit mode.
+* Click *Add Widget* and select _Bar Chart_.
+* Select *Volume* for the object type to display on the bar chart.
+
+
+
+
+image:tbd.png[bar chart volumes]
+
+////
+Only objects that have the link icon in the asset type drop-down can be linked
+Confluence page with relationships tables - Also in Edwin's test plan.
+
+***
+Example: Storage asset page, includes table of volumes on that storage. I want to add a bar-chart to show volumes with top IOPS. When I add a bar chart, by default the chart includes ALL volumes.  If I click the link, only the volumes on that storage will show up.
+***
+////
+Asset Pages now include tables (as in 7.3.x). Each table contains certain default columns
