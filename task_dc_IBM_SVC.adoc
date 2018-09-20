@@ -23,7 +23,7 @@ The list of supported devices includes models such as the SVC, the v7000, the v5
 
 == Terminology
 
-Cloud Insights acquires inventory and performance data from the supported device. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the IBM SVC data source. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data source, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -32,7 +32,7 @@ Cloud Insights acquires inventory and performance data from the supported device
 |Cluster|Storage
 |Node|Storage Node
 |Mdisk Group|Storage Pool
-|Vdisk|Volume
+Vdisk|Volume
 |Mdisk|	Backend LUN
 |===
 
@@ -55,12 +55,13 @@ Note: No third-party software needs to be installed.
 
 * SVC Console, which is mandatory for any SVC cluster and required for the SVC discovery foundation package. 
 * Administrative access level required only for copying performance files from cluster nodes to the config node.
-Note: Because this access level is not required for the SVC
-foundation discovery package, the SVC foundation user might not work
-successfully. 
++
+Note: Because this access level is not required for the SVC foundation discovery package, the SVC foundation user might not work successfully. 
+
 * A private and public SSH key must be generated for this user, and the private key stored so that it is accessible from the Acquisition Unit. If the SVC foundation user has the proper permissions, then the same user and key works. The same SSH key can be used for inventory and performance data. 
 * Enable data collection by connecting to the SVC cluster by SSH and running: _svctask startstats -interval 1_
-Note: Alternatively, enable data collection using the SVC the management user interface.
++
+Note: Alternatively, enable data collection using the SVC  management user interface.
 
 == Configuration
 
