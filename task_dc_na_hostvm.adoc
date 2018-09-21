@@ -18,16 +18,16 @@ summary: NetApp Host and VM File Systems data collector.
 
 [.lead] 
 
-You can use the NetApp Host and VM File Systems data collector to retrieve file system details and storage resource mappings for all Microsoft Windows host and VM (virtual machine) file systems and for all supported Linux VMs (those that are virtually mapped only) existing in the Insight server that are annotated with the configured Compute Resource Group (CRG).
+Use the NetApp Host and VM File Systems data collector to retrieve file system details and storage resource mappings for Microsoft Windows host and VM file systems and for supported Linux VMs that are annotated with the configured Compute Resource Group (CRG).
 
-== General Requirements
+== General Requirementssource
 
 *  Use the support matrix to verify that your host or virtual machine operating system is supported. 
 * To verify that links from file systems to storage resources are created, check that the relevant storage or virtualization vendor type and version report the volume or virtual disk identification data required.
 
 == Microsoft Windows Requirements 
 
-* This data source uses Window Management Instrumentation (WMI) data structures to retrieve data. 
+* This data collector uses Window Management Instrumentation (WMI) data structures to retrieve data. 
 +
 This service must be operational and available remotely. In particular, port 135 must be accessible and must be opened if behind a firewall.
 
@@ -36,7 +36,7 @@ This service must be operational and available remotely. In particular, port 135
 
 == Linux Requirements
 
-* This data source uses a Secure Shell (SSH) connection to execute commands on Linux VMs. 
+* This data collector uses a Secure Shell (SSH) connection to execute commands on Linux VMs. 
 +
 The SSH service must be operational and available remotely. In particular, port 22 must be accessible and must be opened if behind a firewall.
 
@@ -48,9 +48,9 @@ You must use the same password to log in to SSH and to answer any sudo password 
 
 * You should annotate a group of hosts and virtual machines that have common operating system credentials using the same Compute Resource Group annotation. 
 +
-Each group has an instance of this data source discovering file system details from those hosts and virtual machines. 
+Each group has an instance of this data collector discovering file system details from those hosts and virtual machines. 
 
-* If you have an instance of this data source for which the success rate is low (for example, Cloud Insights is discovering file system details for only 50 of 1000 hosts and virtual machines in a group), you should move the hosts and virtual machines for which discovery is successful into a separate Compute Resource Group.
+* If you have an instance of this data collector for which the success rate is low (for example, Cloud Insights is discovering file system details for only 50 of 1000 hosts and virtual machines in a group), you should move the hosts and virtual machines for which discovery is successful into a separate Compute Resource Group.
 
 == Configuration
 
@@ -59,7 +59,7 @@ Each group has an instance of this data source discovering file system details f
 |Field|Description
 |User Name|Operating system user with appropriate rights to retrieve file system data. For For Windows operating system users, this must include the domain prefix.
 |Password|Password for the operating system user
-|Compute Resource Group|Annotation value used to flag host and virtual machines for the data source discovers file systems.
+|Compute Resource Group|Annotation value used to flag host and virtual machines for the data collector discovers file systems.
 
 A blank value indicates that the data collector discovers file systems for all hosts and virtual machines not currently annotated with a Compute Resource Group.
 |===
