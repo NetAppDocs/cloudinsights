@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: task_dc_OpenStack.html
+keywords: data collector, openstack, OpenStack 
+summary: OpenStack data collector.
+---
+
+= OpenStack data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead] 
+
+The OpenStack (REST API / KVM) data collector acquires inventory data for all OpenStack instances, and optionally, VM performance data. 
+
+== Requirements
+
+The OpenStack Ceilometer module must be installed and configured for performance collection. Configuring the Ceilometer is done by editing the nova.conf file for each hypervisor and then restarting the Nova Compute service on each hypervisor. The option name changes for different releases of OpenStack:
+
+* Icehouse
+* Juno
+* Kilo
+* Liberty
+* Mitaka
+* Newton
+* Newton
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+| OpenStack Controller IP Address|IP address or fully-qualified domain name of the OpenStack Controller 
+|OpenStack Administrator|User name for an OpenStack Admin
+|OpenStack Password|Password used for the OpenStack Admin
+|OpenStack Administrator Tenant|OpenStack Administrator Tenant name
+|KVM Sudo User|KVM Sudo User name
+|Choose 'Password' or 'OpenSSH Key File' to specify credential type|Credential type used to connect to the device via SSH
+|Full Path to Inventory Private Key|Full Path to Inventory Private Key
+|KVM Sudo Password |KVM Sudo Password
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Enable hypervisor inventory discovery through SSH|Check this to enable hypervisor inventory discovery through SSH 
+|OpenStack Admin URL port|OpenStack Admin URL port
+|Use HTTPS|Check to use secure HTTP
+|HTTP Connection Timeout (sec)|Timeout for HTTP connection. The default is 300 seconds.
+|SSH Port|Port used for SSH
+|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 30 seconds.
+|SSH Process Retries|Number of inventory retry attempts
+|Inventory Poll Interval (min)|Interval between inventory polls.  The default is 20 minutes.
+|===
+
