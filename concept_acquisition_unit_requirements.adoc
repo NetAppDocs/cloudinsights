@@ -1,0 +1,33 @@
+---
+sidebar: sidebar
+permalink: concept_acquisition_unit_requirements.html
+summary: The server or VM you use as your Acquisition Unit must meet minimum requirements
+keywords: AU, acquisition unit, RAU, requirements
+---
+
+= Acquisition Unit Requirements
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You must install an Acquisition Unit (AU) in order to acquire information your data collectors. Before you install the Acquisition Unit, you should ensure that your environment meets operating system, CPU, memory, and disk space requirements.
+
+|===
+|Component | Requirement
+|Operating system	
+|A computer running a licensed version of Red Hat Enterprise Linux 7.3 or 7.4, CentOS 7.2 or 7.5, or Oracle Enterprise Linux 7.5, that is running no other application-level software. A dedicated server is recommended.
+|CPU	|4 CPU cores
+|Memory	|16 GB RAM
+|Available disk space	|40 GB
+For Linux, disk space should be allocated in this manner:
+/opt/netapp 25 GB
+/var/log/netapp 25 GB
+|Network	|100 Mbps /1 Gbps Ethernet connection, static IP address, IP connectivity to all FC devices, and a required port to the OnCommand Insight server (80 or 443).
+|Permissions	|Sudo permissions on the RAU server
+|===
