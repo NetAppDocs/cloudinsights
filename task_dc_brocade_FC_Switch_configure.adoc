@@ -5,7 +5,7 @@ keywords: data collector, Brocade, FC switch,
 summary: Configuring Brocade FC Switch data collector.
 ---
 
-= Brocade FC Switch data collector
+= Configuring the Brocade FC Switch data collector
 
 :toc: macro
 :hardbreaks:
@@ -29,8 +29,9 @@ Cloud Insights acquires the following inventory information from the Brocade FC 
 |Switch|Switch
 |Port|Port
 |Virtual Fabric, Physical Fabric|Fabric
-|Zone|ZoneLogical Switch
-|Logical Switch|Share
+|Zone|Zone
+|Logical Switch|Logical Switch
+|Virtual Volume|Volume
 |LSAN Zone|IVR Zone
 |===
 
@@ -51,9 +52,9 @@ Note: These are common terminology mappings only and might not represent every c
 |User Name|User name for the switch
 |Password|Password for the switch
 |SNMP |	SNMP version
-|SNMP Community String	SNMP read-only community string used to access the switch
-|SNMP User Name|SNMP version protocol user name (applies only to SNMP v3)
-|SNMP Password|SNMP version protocol password (applies only to SNMP v3)
+|SNMP Community String|SNMP read-only community string used to access the switch
+|SNMP User Name|SNMP user name
+|SNMP Password|SNMP password
 |===
 
 == Advanced configuration
@@ -61,6 +62,7 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
+|Fabric name|
 |Inventory Poll Interval (min)| Interval between inventory polls. The default is 15 minutes.
 |Exclude Devices|Comma-separated list of device IDs to exclude from polling
 |Timeout (sec)|Connection timeout (default 30 seconds) 
