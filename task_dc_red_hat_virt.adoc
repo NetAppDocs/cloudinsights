@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: task_dc_red_hat_virt.html
+keywords: data collector, Red Hat Virtualization
+summary: Configuring Red Hat Virtualization data collector.
+---
+
+= Red Hat Virtualization data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead] 
+
+Cloud Insights uses the Red Hat Virtualization data collector to gather inventory data from virtualized Linux and Microsoft Windows workloads.   
+
+== Terminology
+
+For each asset type acquired by Cloud Insights, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Disk (SSD)|Disk
+|Cluster|Storage
+|Controller|Storage Node
+|Volume|Volume
+|LUN Map|Volume Map
+|Initiator,Target|Volume Mask
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector.
+
+== Requirements
+
+* RHEV Server IP Address
+* User name
+* Password
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|RHEV Server IP Address|IP address of the storage system 
+|User name |User name with admin privileges 
+|Password for the admin privileged account|Password
+|===
+
+== Advanced configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|HTTPS Communication Port|443
+|Connection type|Choose HTTP or HTTPS 
+|Inventory poll interval (min)|The default is 20 minutes
+|Connection Timeout (sec)|The default is 60
+|===
