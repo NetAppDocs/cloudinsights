@@ -17,7 +17,7 @@ summary: Configuring Huawei OceanStor (REST/HTTPS) data collector.
 
 [.lead]
 
-Cloud Insights uses the Huawei OceanStor (REST/HTTPS) data collector to discover inventory for Huawei OceanStor and OceanStor Dorado storage.
+Cloud Insights uses the Huawei OceanStor (REST/HTTPS) data collector to discover inventory and performance for Huawei OceanStor and OceanStor Dorado storage.
 
 == Configuration
 
@@ -37,4 +37,5 @@ Cloud Insights uses the Huawei OceanStor (REST/HTTPS) data collector to discover
 |TCP Port|TCP Port used to connect to OceanStor Device Manager. The default is 8088.
 |Inventory Poll Interval (min)|Interval between inventory polls. The default is 60 minutes.
 |Connection Timeout (sec)|Connection timeout. The default is 60 seconds.
+|Performance poll interval (sec).| The default is 300 seconds.
 |===
