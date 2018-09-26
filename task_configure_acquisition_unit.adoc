@@ -16,26 +16,46 @@ summary: A summary.
 :imagesdir: ./media/
 
 [.lead]
-THESE INSTRUCTIONS ARE BEING UPDATED. CHECK BACK SOON.
+An Acquisition Unit is a server or virtual machine that you configure to collect data from devices in the data center using modules called Data Collectors. You must install at least one Acquisition Unit in order to begin collecting data. 
 
-Acquisition Units collect data from devices in the data center using modules called Data Collectors.
+You can add an Acquisition Unit from  either of these places:
 
-.Before you begin
-You must have received the Acquisition unit password in email from NetApp
+* If you do not have at least one data collector configured, go to *Admin > Data Collectors* and choose one from the choices displayed.
 
-.About this task
-
-.Steps
-. Answer the following prompts:
-.. Authorization Unit name (default is the host name where Authorization Unit is being installed)
-.. Prompt for Port – Keep as 443
-.. Tenant domain name (FQDN)
-.. Authorization Unit password (provided previously)
-.. Restore key set or generate new key
-... On First install ALWAYS answer “Generate New Key”
-. Confirm Authorization Unit is running using the following command:
+* You can click on *Admin > Data Collectors* and select the *Acquisition Units* page. Click on the *+Acquisition Unit* button.
 +
-“systemctl status acquisition”
+The *Add Acquisition Unit* dialog is displayed.
 
-.After you finish
-You can access the Acquisition Unit logs at /var/netapp/oci/acq/acq.log
+If you do not already have an Acquisition Unit configured, the first time you add a data collector you will be prompted to add one. You can also configure an Acquisition Unit by clicking on *Admin > Data Collectors* and going to the *Acquisition Units* page. 
+
+The *Add Acquisition Unit* dialog provides commands specific to your environment. You can choose to install the Acquisition Unit on either a Linux or Windows system. You can click the _Versions Supported_ information button for details on supported operating systems.
+
+The instructions presented vary depending on whether you are installing on Linux or Windows. The steps below must be run on the Acquisition Unit server or VM.
+
+== Installing a Linux Acquisition Unit
+
+.Steps for Linux Acquisition Unit - No Proxy
+. Log in to your Cloud Insights environment. You must log in as an Administrator or Account Owner.
+. Open the *Add Acquisition Unit* dialog by either of the methods above.
+. Choose *Linux*.  
+. Verify that your server or VM meets the minimum requirements shown. You can view more detailed Acquisition Unit requirements link:concept_acquisition_unit_requirements.html[here].
+. Verify your server or VM is running one of the supported operating system versions.
+. Copy the Installation Instructions command displayed in the dialog into a terminal window on the server or VM. The command contains a key unique to your environment that is good for 24 hours and for a single Acquisition Unit only.
+
+.Steps for Linux Acquisition Unit - With Proxy
+. If you use a proxy, you must set your proxy environment variables before executing the steps above. Click on the *+* next to "Have a Proxy Server?" to expand the proxy instructions.
+. Copy the proxy command shown in the dialog into a terminal on the server or VM. _Before executing the command_, make sure each variable is set to the proper value for your environment.
+. When your variables are correct, execute the proxy command.
+. _In the same terminal window_, execute the Acquisition Unit installation steps above.
+
+== Installing a Windows Acquisition Unit
+
+.Steps for Windows Acquisition Unit - No Proxy
+. Log in to your Cloud Insights environment. You must log in as an Administrator or Account Owner.
+. Open the *Add Acquisition Unit* dialog by either of the methods above.
+. Choose *Windows*.  
+. Verify that your server or VM meets the minimum requirements shown. You can view more detailed Acquisition Unit requirements link:concept_acquisition_unit_requirements.html[here].
+. Verify your server or VM is running one of the supported operating system versions.
+
+. REMAINING STEPS TBD
+
