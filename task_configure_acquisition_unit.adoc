@@ -41,10 +41,14 @@ The steps below must be run on the Acquisition Unit server or VM.
 . Verify that your server or VM meets the minimum requirements shown. You can view more detailed Acquisition Unit requirements link:concept_acquisition_unit_requirements.html[here].
 . Verify your server or VM is running one of the supported operating system versions.
 . Copy the Installation Instructions command displayed in the dialog into a terminal window on the server or VM. The command contains a key unique to your environment that is good for 24 hours and for a single Acquisition Unit only.
++
+You can click on the _Copy to Clipboard_ icon to easily copy the command from the dialog.
 
 .Steps for Linux Acquisition Unit - With Proxy
 . If you use a proxy, you must set your proxy environment variables before executing the steps above. Click on the *+* next to "Have a Proxy Server?" to expand the proxy instructions.
 . Copy the proxy command shown in the dialog into a terminal on the server or VM. _Before executing the command_, make sure each variable is set to the proper value for your environment.
++
+You can click on the _Copy to Clipboard_ icon to easily copy the command from the dialog.
 . When your variables are correct, execute the proxy command.
 . _In the same terminal window_, execute the Acquisition Unit installation steps above.
 

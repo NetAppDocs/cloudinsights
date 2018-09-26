@@ -7,13 +7,12 @@ summary: A summary.
 
 = Configuring Data Collectors
 
-
 [.lead]
 You configure Data Collectors in your Cloud Insights environment to collect data from devices in the data center.
 
 .Before you begin
 
-* You must have Account owner or Admin privileges to configure data collectors. 
+* You must have Account Owner or Admin privileges to configure data collectors. 
 * You must have configured an Acquisition Unit before you can start collecting data.
 * You need credentials for the devices from which you are collecting data.
 +
@@ -24,15 +23,19 @@ Device network addresses, account information, and passwords are required for al
 +
 The system displays the available Data Collectors arranged by vendor.
 
-. Click *+ Collector* on the required vendor and select the data collector to configure.
+. Do one of the following:
++
+* To add a new data collector, click *+ Collector* on the required vendor.
++
+* To modify an existing data collector, click the _Installed Data Collectors_ tab and select a data collector to modify.
 +
 In the dialog box you can configure the data collector and add an Acquisition Unit.
 . Enter a name for the data collector.
 +
 Names can contain can contain letters (a-z), numbers (0-9), dashes (-), underscores (_), apostrophes ('), and periods (.).
-. Enter the Acquisition Unit to associate with this data collector.
+. Enter the *Acquisition Unit* to associate with this data collector.
 . Enter the required fields in the Configuration screen.
 . Click *Advanced Configuration* to add additional configuration fields. (Not all data collectors require advanced configuration.)
 . Click *Test Configuration* to verify that the data collector is properly configured.
 
-For help adding a new Acquisition Unit, see link:<task_configure_acquisition_unit>.html[Configuring acquisition units]
+For help adding a new Acquisition Unit, see link:task_configure_acquisition_unit.html[Configuring acquisition units]
