@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_dc_brocade_net_advisor.html
-keywords: data collector, Brocade, EFCM,  
-summary: Configuring Brocade data collector.
+keywords: data collector, Brocade, BNA  
+summary: Configuring Brocade BNA collector.
 ---
 
-= Brocade Network Advisor data collector
+= Brocade Network advisor data collector
 
 :toc: macro
 :hardbreaks:
@@ -40,20 +40,20 @@ Note: These are common terminology mappings only and might not represent every c
 
 The following are required to configure this data collector: 
 
-* 
+* Brocade Network Advisor Server IP address
+* User name and password to an administrator account
+* Unique name for the collector
+* Acquisition unit associated with this data collector 
 
 == Configuration
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Switch IP|IP address or fully-qualified domain name of the EFC Server
+|Brocade Network Advisor Server IP|IP address of the Network Advisor Server
 |User Name|User name for the switch
-|Password|Password for the switch
-|SNMP |	SNMP version
-|SNMP Community String	SNMP read-only community string used to access the switch
-|SNMP User Name|SNMP version protocol user name (applies only to SNMP v3)
-|SNMP Password|SNMP version protocol password (applies only to SNMP v3)
+|User Name|Administrator user name
+|Password|Administrator password
 |===
 
 == Advanced configuration
@@ -61,11 +61,11 @@ The following are required to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Switch IP|IP address or fully-qualified domain name of the EFC Server
-|User Name|User name for the switch
+|Connection type|HTTPS or HTTP
+|TCP Port|443
 |Password|Password for the switch
-|SNMP |	SNMP version
-|SNMP Community String	SNMP read-only community string used to access the switch
-|SNMP User Name|SNMP version protocol user name (applies only to SNMP v3)
-|SNMP Password|SNMP version protocol password (applies only to SNMP v3)
+|Inventory poll interval (min) |The default is 40
+|Connection time out (sec)|The default is 60
+|Report Access Gateway|Check to include devices in Access Gateway mode
+|Performance Poll Interval (sec)|The default is 1800
 |===
