@@ -30,12 +30,48 @@ At any time during your trial period, you can subscribe to Cloud Insights. To su
 
 NOTE: You must be an Account Owner or Administrator in order to subscribe to Cloud Insights. Additionally, you must have an Amazon Web Services (AWS) account with the same email address as your Cloud Insights Account Owner or Administrator login.
 
+Cloud Insights will display a banner when your free trial is nearing its end. Within that banner is a link to the Subscription page. Non-Admin users will see the banner but will not be able to go to the Subscription page.
+
+If your free trial has expired and you have not yet subscribed to Cloud Insights, you will have limited functionality until you subscribe. Your data will still be collected for 14 days after the end of your trial, in order to ensure non-interrupted flow until your subscription is active. After 14 days, if you have not subscribed, Cloud Insights will stop collecting data.
+
+
+
+Can extend only once.
+
+When expired, user can ONLY see "you are expired" admin > subscription page.
+Admin sees subscription calculator and "Subscribe Now" page.
+When trial expired, Cloud Insights still collects data for 14 days, to allow customer time to subscribe.
+All functions are disabled (Admin can get to DC and Subscription pages)
+Admin can delete or modify existing data (DC), but not create.
+
+Subscribe Now button takes you to AWS subscribe page
+
+Data Collector MU's are rounded up. 
+Total MU's is also rounded up. 
+DC MU's may be more than total MU's because of this rounding
+(Edwin's example - 138 when add all DC MU's, but Total used is 137)
+
+Info entered in the calculator is NOT saved and populated in the AWS subscribe page
+
+Once subscribed on AWS, takes us back to the gateway
+
+Must complete subscription flow within one hour
+Message (token expired, go to setup and complete subscription) - can I see exact message?
+
+
 
 == Subscription Mode
+
 
 Notes:
 Cancel subscription (within 48 hours) - Amazon
 Go to Support Page (Amazon) to cancel subscription
+
+View Data Collector details on subscription page
+Count of MU's per data collector
+Count may not match "Total" MU's
+Can delete data collectors in this list
+
 
 
 == What is a *Managed Unit*?
