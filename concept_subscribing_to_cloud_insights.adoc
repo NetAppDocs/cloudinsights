@@ -26,7 +26,7 @@ Ther are two modes of access to Cloud Insights:
 == Trial Mode
 When you sign up for Cloud Insights and your instance is active, you enter into a free, 14-day Trial of Cloud Insights. During this trial you can explore all the features that Cloud Insights has to offer. 
 
-At any time during your trial period, you can subscribe to Cloud Insights. To subscribe, go to *Admin > Subscribe*.
+At any time during your trial period, you can subscribe to Cloud Insights. When you subscribe, you will be taken to the Amazon Web Services (AWS) Cloud Insights subscription page.
 
 NOTE: You must be an Account Owner or Administrator in order to subscribe to Cloud Insights. Additionally, you must have an Amazon Web Services (AWS) account with the same email address as your Cloud Insights Account Owner or Administrator login.
 
@@ -34,30 +34,23 @@ Cloud Insights will display a banner when your free trial is nearing its end. Wi
 
 If your free trial has expired and you have not yet subscribed to Cloud Insights, you will have limited functionality until you subscribe. Your data will still be collected for 14 days after the end of your trial, in order to ensure non-interrupted flow until your subscription is active. After 14 days, if you have not subscribed, Cloud Insights will stop collecting data.
 
+To subscribe, go to *Admin > Subscribe*. In addition to the *Subscribe Now* button, you will be able to see your installed data collectors and calculate your estimated pricing.
 
+=== Estimate Your Subscription 
 
-Can extend only once.
+The Subscription Calculator gives you an estimated monthly Cloud Insights cost based on the number of hosts and amount of raw storage capacity being reported by your data collectors. The current values are pre-populated in the _Hosts_ and _Raw Capacity_ fields. You can enter different values to assist you with planning for estimated future growth.
 
-When expired, user can ONLY see "you are expired" admin > subscription page.
-Admin sees subscription calculator and "Subscribe Now" page.
-When trial expired, Cloud Insights still collects data for 14 days, to allow customer time to subscribe.
-All functions are disabled (Admin can get to DC and Subscription pages)
-Admin can delete or modify existing data (DC), but not create.
+Your estimated cost will change based on whether you select a subscription term of 12 months or 36 months. The 36-month term includes a discounted cost per Managed Unit.
 
-Subscribe Now button takes you to AWS subscribe page
+NOTE: The calculator is for estimation only. Your final pricing will be set when you subscribe. 
 
-Data Collector MU's are rounded up. 
-Total MU's is also rounded up. 
-DC MU's may be more than total MU's because of this rounding
-(Edwin's example - 138 when add all DC MU's, but Total used is 137)
+// Can extend only once.
 
-Info entered in the calculator is NOT saved and populated in the AWS subscribe page
+Clicking on the *Subscribe Now* button takes you to the AWS Cloud Insights subscription page, where you can complete your subscription. Note that values you entered in the calculator are not populated in the AWS subscription page; you will need to re-enter your values on this page.
 
-Once subscribed on AWS, takes us back to the gateway
+When your AWS subscription is complete, you will be taken back to the Cloud Central login screen. When you log in to Cloud Insights again, your subscription will be active.
 
-Must complete subscription flow within one hour
-Message (token expired, go to setup and complete subscription) - can I see exact message?
-
+NOTE: You must complete the AWS subscription process flow within one hour of starting it. If you do not complete it within on hour, you will need to re-start the AWS subscription.
 
 
 == Subscription Mode
@@ -73,11 +66,20 @@ Count may not match "Total" MU's
 Can delete data collectors in this list
 
 
-
 == What is a *Managed Unit*?
 
 A Managed Unit (MU) is the unit of measurement by which Cloud Insights is priced. Managed Unit use is calculated based on the number of _hosts_ and amount of _raw storage capacity_ being managed in your infrastructure environment.
 
 * 1 Managed Unit = 1 host (any virtual or physical machine)
 * 1 Managed Unit = 5 TB of raw storage capacity
+
+=== Installed Data Collectors
+
+Data Collector MU's are rounded up. 
+Total MU's is also rounded up. 
+DC MU's may be more than total MU's because of this rounding
+(Edwin's example - 138 when add all DC MU's, but Total used is 137)
+
+
+
 
