@@ -28,7 +28,7 @@ In order to collect data from Amazon AWS EC2 devices, you must have the followin
 
 Access keys consist of an access key ID (for example, AKIAIOSFODNN7EXAMPLE) and a secret access key (for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY). You use access keys to sign programmatic requests that you make to AWS if you use the AWS SDKs, REST, or Query API operations. 
 
-These keys are provided with your contract.   
+These keys are provided with your contract from Amazon.   
 
 
 
@@ -50,10 +50,10 @@ Enter data into the data collector fields according to the table below:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|Inventory Poll Interval (min)|(default 60 min)
-|HTTP connection and socket timeout|(default 300 sec)
+|Inventory Poll Interval (min)|The default is 60
+|HTTP connection and socket timeout (sec)|The default is 300
 |Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
-|Performance Poll Interval|(default 1800 seconds)
+|Performance Poll Interval (sec)|The default is 1800
 |===
 
 == Mapping AWS tags to Cloud Insights annotations

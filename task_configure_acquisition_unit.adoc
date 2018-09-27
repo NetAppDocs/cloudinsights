@@ -22,15 +22,15 @@ You can add an Acquisition Unit from  either of these places:
 
 * If you do not have at least one data collector configured, go to *Admin > Data Collectors* and choose one from the choices displayed.
 
-* You can click on *Admin > Data Collectors* and select the *Acquisition Units* page. Click on the *+Acquisition Unit* button.
+* You can also click on *Admin > Data Collectors* and select the _Acquisition Units_ page. Click on the *+Acquisition Unit* button.
 +
-The *Add Acquisition Unit* dialog is displayed.
+In both cases, the *Add Acquisition Unit* dialog is displayed.
 
-If you do not already have an Acquisition Unit configured, the first time you add a data collector you will be prompted to add one. You can also configure an Acquisition Unit by clicking on *Admin > Data Collectors* and going to the *Acquisition Units* page. 
+image:AddAcqDialog.png[Add Acquisition Unit dialog]
 
-The *Add Acquisition Unit* dialog provides commands specific to your environment. You can choose to install the Acquisition Unit on either a Linux or Windows system. You can click the _Versions Supported_ information button for details on supported operating systems.
+You can choose to install the Acquisition Unit on either a Linux or Windows system. You can click the _Versions Supported_ information button for details on supported operating systems. The instructions presented vary depending on whether you are installing on Linux or Windows. 
 
-The instructions presented vary depending on whether you are installing on Linux or Windows. The steps below must be run on the Acquisition Unit server or VM.
+The steps below must be run on the Acquisition Unit server or VM.
 
 == Installing a Linux Acquisition Unit
 
@@ -41,10 +41,14 @@ The instructions presented vary depending on whether you are installing on Linux
 . Verify that your server or VM meets the minimum requirements shown. You can view more detailed Acquisition Unit requirements link:concept_acquisition_unit_requirements.html[here].
 . Verify your server or VM is running one of the supported operating system versions.
 . Copy the Installation Instructions command displayed in the dialog into a terminal window on the server or VM. The command contains a key unique to your environment that is good for 24 hours and for a single Acquisition Unit only.
++
+You can click on the _Copy to Clipboard_ icon to easily copy the command from the dialog.
 
 .Steps for Linux Acquisition Unit - With Proxy
 . If you use a proxy, you must set your proxy environment variables before executing the steps above. Click on the *+* next to "Have a Proxy Server?" to expand the proxy instructions.
 . Copy the proxy command shown in the dialog into a terminal on the server or VM. _Before executing the command_, make sure each variable is set to the proper value for your environment.
++
+You can click on the _Copy to Clipboard_ icon to easily copy the command from the dialog.
 . When your variables are correct, execute the proxy command.
 . _In the same terminal window_, execute the Acquisition Unit installation steps above.
 
