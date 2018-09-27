@@ -19,9 +19,19 @@ keywords: subscribe, trial, sunscription, contract
 [.lead]
 At any point during your free trial of Cloud Insights, you can subscribe. Subscribing to Cloud Insights ensures uninterrupted access to your data as well as extended product link:https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[support] options.
 
-Ther are two modes of access to Cloud Insights:
+////
+There are two modes of access to Cloud Insights:
 * Trial Mode
 * Subscription Mode
+////
+
+
+== What is a *Managed Unit*?
+A Managed Unit (MU) is the unit of measurement by which Cloud Insights is priced. Managed Unit use is calculated based on the number of _hosts_ and amount of _raw storage capacity_ being managed in your infrastructure environment.
+
+* 1 Managed Unit = 1 host (any virtual or physical machine)
+* 1 Managed Unit = 5 TB of raw storage capacity
+
 
 == Trial Mode
 When you sign up for Cloud Insights and your instance is active, you enter into a free, 14-day Trial of Cloud Insights. During this trial you can explore all the features that Cloud Insights has to offer. 
@@ -55,7 +65,6 @@ NOTE: You must complete the AWS subscription process flow within one hour of sta
 
 == Subscription Mode
 
-
 Notes:
 Cancel subscription (within 48 hours) - Amazon
 Go to Support Page (Amazon) to cancel subscription
@@ -66,19 +75,13 @@ Count may not match "Total" MU's
 Can delete data collectors in this list
 
 
-== What is a *Managed Unit*?
-
-A Managed Unit (MU) is the unit of measurement by which Cloud Insights is priced. Managed Unit use is calculated based on the number of _hosts_ and amount of _raw storage capacity_ being managed in your infrastructure environment.
-
-* 1 Managed Unit = 1 host (any virtual or physical machine)
-* 1 Managed Unit = 5 TB of raw storage capacity
-
 === Installed Data Collectors
 
 Data Collector MU's are rounded up. 
 Total MU's is also rounded up. 
 DC MU's may be more than total MU's because of this rounding
 (Edwin's example - 138 when add all DC MU's, but Total used is 137)
+
 
 
 
