@@ -9,37 +9,99 @@ entries:
         entries:
           - title: Overview
             url: /task_getting_started_with_cloud_insights.html
+          - title: Acquisition Unit Requirements
+            url: /concept_acquisition_unit_requirements.html
           - title: Configuring an Acquisition Unit
             url: /task_configure_acquisition_unit.html            
+          - title: Configuring Data Collectors
+            url: /task_configure_data_collectors.html
           - title: Determining Data Collector Acquisition Status
             url: /concept_determining_data_collector_acq_status.html
           - title: Manage Configured Data Collectors
             url: /task_view_configured_data_collectors.html
           - title: Research data collector errors
             url: /task_research_failed_collector.html
-          - title: Data collector reference
-            entries:
-              - title: Data Collector Overview
-                url: /task_configure_data_collectors.html
-              - title: NetApp
-                entries:
-                  - title: Clustered Data OnTap
-                    url: /task_dc_na_cdot.html 
-                  - title: Clustered Data OnTap Unified Manager
-                    url: /task_dc_na_cdot_um.html
-                  - title: E-Series
-                    url: /task_dc_na_eseries.html
-                  - title: SolidFire
-                    url: /task_dc_na_solidfire.html
-              - title: AWS
-                url: /task_dc_aws_configure.html
-              - title: VMWare
-                url: /task_dc_vmware_configure.html
       - title: User Accounts and Roles
         url: /concept_user_roles.html
       - title: Switching to Other Cloud Central Products
         url: /concept_other_cloud_products.html
-  - title: Dashboards
+  - title: Data Collector Vendor Reference
+    entries:
+      - title: Vendor Reference Overview
+        url: /concept_data_collector_reference.html
+      - title: AWS
+        url: /task_dc_aws_configure.html
+      - title: BROADCOM
+        entries:
+          - title: Brocade Enterprise Fabric Connectivity Manager
+            url: /task_dc_brocade_EFCM_configure.html
+          - title: Brocade FC Switch
+            url: /task_dc_brocade_FC_Switch_configure.html
+          - title: Brocade Network Advisor
+            url: /task_dc_brocade_net_advisor     
+      - title: Cisco
+        url: /task_dc_cisco_fc_switch.html
+      - title: Dell EMC
+        entries:
+          - title: Celerra
+            url: /task_dc_emc_celerra_configure.html 
+          - title: CLARiiON
+            url: /task_dc_emc_clariion_configure.html
+          - title: Data Domain
+            url: /task_dc_emc_datadomain_configure.html
+          - title: Isilon
+            url: /task_dc_emc_isilon_configure.html
+          - title: RecoverPoint
+            url: /task_dc_emc_RecoverPoint_configure.html 
+          - title: VNX
+            url: /task_dc_emc_vnx_configure.html
+          - title: VNXe
+            url: /task_dc_emc_vnxe_configure.html
+          - title:
+            url: /task_dc_emc_vplex_configure.html
+          - title: XtremIO
+            url: /task_dc_emc_xio_configure.html
+      - title: Hitachi Data Systems
+        entries:
+          - title: HDS HiCommand Device Manager HP Command View AE
+            url: /task_dc_hds_hicomm_configure.html
+          - title: HDS HNAS
+            url: /task_dc_hds_NAS_configure.html
+      - title: IBM
+        entries:
+          - title: IBM DS6xxx and DS8xxx
+            url: /task_dc_IBM_DS_configure.html
+          - title: IBM PowerVM
+            url: /task_dc_IBM_pwr_vm.html
+          - title: IBM San Volume Controller
+            url: /task_dc_IBM_SVC.html
+          - title: IBM XIV
+            url: /task_dc_IBM_XIV.html       
+      - title: NetApp
+        entries:
+          - title: Clustered Data ONTAP
+            url: /task_dc_na_cdot.html 
+          - title: Data ONTAP 7-mode
+            url: /task_dc_na_7mode.html
+          - title: E-Series
+            url: /task_dc_na_eseries.html
+          - title: Host and VM File System
+            url: /task_dc_na_hostvm.html
+          - title: SolidFire
+            url: /task_dc_na_solidfire.html
+      - title: OceanStor
+        url: /task_dc_huawei_configure.html
+      - title: OpenStack
+        url: /task_dc_OpenStack.html
+      - title: Oracle
+        url: /task_dc_oracl_zfs_configure.html
+      - title: Pure Storage
+        url: /task_dc_pure_configure.html
+      - title: Red Hat
+        url: /task_dc_red_hat_virt.html
+      - title: VMWare
+        url: /task_dc_vmware_configure.html
+  - title: Creating Dashboards
     entries:
       - title: Dashboard Overview
         url: /concept_dashboards_overview.html
@@ -51,7 +113,7 @@ entries:
             url: /task_dashboard_example_VM_performance.html
       - title: Dashboard Best Practices
         url: /concept_dashboard_best_practices.html
-  - title: Queries
+  - title: Working with Queries
     entries:
       - title: Querying Assets
         url: /concept_querying_assets.html
@@ -75,7 +137,7 @@ entries:
         url: /task_create_annotation.html
       - title: Using Annotation Rules
         url: /task_create_annotation_rules.html
-  - title: Applications
+  - title: Working with Applications
     entries:
       - title: Application Concepts
         url: /concept_about_applications.html
@@ -97,6 +159,8 @@ entries:
     entries:
       - title: Asset Page Overview
         url: /concept_asset_page_overview.html
+      - title: In-Context Filtering for Objects 
+        url: /concept_in_context_filters.html
       - title: Summary & Topology Sections
         url: /concept_asset_summary_section.html
       - title: Expert View Section

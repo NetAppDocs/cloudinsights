@@ -1,10 +1,11 @@
+---
 sidebar: sidebar
 permalink: task_dc_emc_RecoverPoint_configure.html
 keywords: data collector, RecoverPoint, EMC, DELL
 summary: Configuring DELL EMC RecoverPoint data collector.
 ---
 
-= DELL EMC RecoverPoint data collector
+= Dell EMC RecoverPoint data collector
 
 :toc: macro
 :hardbreaks:
@@ -16,7 +17,7 @@ summary: Configuring DELL EMC RecoverPoint data collector.
 
 [.lead]
 
-The EMC RecoverPoint data collector gathers inventory information from EMC recoverPoint storage. For configuration, the data collector requires the IP address of the storage processors and a read-only user name and password.
+The EMC RecoverPoint data collector gathers inventory information from EMC RecoverPoint storage. For configuration, the data collector requires the IP address of the storage processors and a read-only user name and password.
 
 The EMC RecoverPoint data collector gathers the volume-to-volume replication relationships that RecoverPoint coordinates across other storage arrays. Cloud Insights shows a storage array for each RecoverPoint cluster, and collects inventory data for nodes and storage ports on that cluster. No storage pool or volume data is collected. 
 
@@ -43,7 +44,7 @@ The following information is required to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description 
-|TCP Port|TCP Port used to connect to Recoverpoint cluster
+|TCP Port|TCP Port used to connect to RecoverPoint cluster
 |Inventory Poll Interval (minutes)|Interval between inventory polls. The default is 20 minutes.
 |Excluded Clusters|Comma-separated list of cluster IDs or names to exclude when polling.
 |===

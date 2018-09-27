@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: task_dc_emc_datadomain.html
+permalink: task_dc_emc_datadomain_configure.html
 keywords: data collector, Data Domain, EMC, DELL
 summary: Configuring DELL EMC Data Domain data collector.
 ---
@@ -17,7 +17,7 @@ summary: Configuring DELL EMC Data Domain data collector.
 
 [.lead]
 
-This data collector gathers storage and configuration information from DELL EMC Data Domain deduplication storage systems. To add the data collector, you must use specific configuration instructions and commands and be aware of data collector requirements and usage recommendations.
+This data collector gathers inventory and performance information from DELL EMC Data Domain deduplication storage systems. To configure this data collector, there are specific configuration instructions and usage recommendations you must follow. 
 
 == Terminology
 
@@ -34,7 +34,7 @@ Cloud Insights acquires the following inventory information from the Data Domain
 |NFS and CIFS share|FileShare
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data source.
+Note: These are common terminology mappings only and might not represent every case for this data colletor.
 
 == Requirements
 
@@ -58,6 +58,6 @@ You need the following information to configgure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description 
-|Inventory Poll Interval (min)|Interval between inventory polls. The default is 20 minutes. 
-|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 180 seconds.
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 20. 
+|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 180.
 |SSH Port|SSH service port 

@@ -5,6 +5,8 @@ keywords: data collector, Brocade, FC switch,
 summary: Configuring Brocade FC Switch data collector.
 ---
 
+= Configuring the Brocade FC Switch data collector
+
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -13,7 +15,6 @@ summary: Configuring Brocade FC Switch data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-= Configuring the Brocade FC Switch data collector
 
 [.lead] 
 
@@ -28,12 +29,13 @@ Cloud Insights acquires the following inventory information from the Brocade FC 
 |Switch|Switch
 |Port|Port
 |Virtual Fabric, Physical Fabric|Fabric
-|Zone|ZoneLogical Switch
-|Logical Switch|Share
+|Zone|Zone
+|Logical Switch|Logical Switch
+|Virtual Volume|Volume
 |LSAN Zone|IVR Zone
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data source.
+Note: These are common terminology mappings only and might not represent every case for this data collector.
 
 == Requirements
 
@@ -50,9 +52,9 @@ Note: These are common terminology mappings only and might not represent every c
 |User Name|User name for the switch
 |Password|Password for the switch
 |SNMP |	SNMP version
-|SNMP Community String	SNMP read-only community string used to access the switch
-|SNMP User Name|SNMP version protocol user name (applies only to SNMP v3)
-|SNMP Password|SNMP version protocol password (applies only to SNMP v3)
+|SNMP Community String|SNMP read-only community string used to access the switch
+|SNMP User Name|SNMP user name
+|SNMP Password|SNMP password
 |===
 
 == Advanced configuration
@@ -60,19 +62,20 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Inventory Poll Interval (min)| Interval between inventory polls. The default is 15 minutes.
+|Fabric name|Fabric name to be reported by the data collector. Leave blank to report the fabric name as WWN. 
+|Inventory Poll Interval (min)| Interval between inventory polls. The default is 15.
 |Exclude Devices|Comma-separated list of device IDs to exclude from polling
-|Timeout (sec)|Connection timeout (default 30 seconds) 
+|Timeout (sec)|Connection timeout. The default is 30. 
 |Banner Wait Timeout (sec)|SSHAdmin Domains Active 	Select if using Admin Domainsbanner wait timeout. The default is 5 seconds.
 |Admin Domains Active|Select if using Admin Domains
-|Retrieve MPR Data|Select to acquire routing data from your multiprotocol router (Enable Trapping 
+|Retrieve MPR Data|Select to acquire routing data from your multiprotocol router. 
 |Enable Trapping|Select to enable acquisition upon receiving an SNMP trap from the device. If you select enable trapping, you must also activate SNMP.
-|Minimum Time Between Traps (sec)|Minimum time between acquisition attempts triggered by traps (default 10 seconds)
+|Minimum Time Between Traps (sec)|Minimum time between acquisition attempts triggered by traps. The default is 10.
 |Discover all switches in the fabric|Select to discover all switches in the fabric
 |Choose Favoring HBA vs. Zone Aliases|Choose whether to favor HBA or zone aliases 
-|Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds.
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300.
 |SNMP Auth Protocol|SNMP authentication protocol (SNMP v3 only)
 |SNMP Privacy Password|SNMP privacy password (SNMP v3 only)
 |SNMP Retries|Number of SNMP retry attempts
-|SNMP Timeout (ms)|SNMP timeout. The default is 5000 ms.
+|SNMP Timeout (ms)|SNMP timeout. The default is 5000.
 |===

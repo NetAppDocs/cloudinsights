@@ -59,7 +59,7 @@ By default, most widgets you add to a dashboard show data according to the dashb
 
 == Displaying Widget Legends
 
-Widgets on dashboards can be displayed with or without legends. Legends in widgets can be turned on or off on a dashboard by either of the following methods:
+Most widgets on dashboards can be displayed with or without legends. Legends in widgets can be turned on or off on a dashboard by either of the following methods:
 
 . When creating or editing the widget itself, check the *Legends* checkbox and save the widget.
 . With the dashboard in Edit mode, click the *Options* button on the widget and check the *Legends* checkbox in the menu.
@@ -171,7 +171,7 @@ Most asset counters aggregate to _Avg_ by default. Some counters aggregate to _M
 
 == Showing Top/Bottom Results
 
-In a chart widget, you can show either the *Top* or *Bottom* results for rolled up data, and choose the number of results shown. In a table widget, you can select the number of rows displayed and sort by any column.
+In a chart widget, you can show either the *Top* or *Bottom* results for rolled up data, and choose the number of results shown from the drop-down list provided. In a table widget, you can sort by any column.
 
 === Chart widget top/bottom
 
@@ -211,14 +211,15 @@ Those columns are now displayed in the table.
 The table now shows all VMs with Total IOPS greater than or equal to 1. Notice that there is no grouping in the table. All VMs are shown.
 . Click the *Group by [+]* button.
 +
-Because All is selected as the grouping method by default, all VMs are moved into a single group named "All".
+You can group by any attribute or annotation shown. Choose _All_ to display all VMs in a single group.
 +
-Above the _IOPS - Total_ column is now a *Roll up* option. The default roll up method is _Avg_. This means that the number shown for the group is the average of all the Total IOPS reported for each VM inside the group. You can choose to roll this column up by _Avg, Sum, Min_ or _Max_. Each column that you display that contains performance metrics can be rolled up individually.
+Any column header for a performance metric displays a "three dot" menu containing a *Roll up* option. The default roll up method is _Avg_. This means that the number shown for the group is the average of all the Total IOPS reported for each VM inside the group. You can choose to roll this column up by _Avg, Sum, Min_ or _Max_. Any column that you display that contains performance metrics can be rolled up individually.
++
+image:TableRollUp.png[Roll Up]
+
 . Click _All_ and select _Hypervisor name_.
 +
 The VM list is now grouped by Hypervisor. You can expand each hypervisor to view the VMs hosted by it.
-+
-image:tbd.png[Grouping Example]
 
 . Click *Save* to save the table to the dashboard. You can resize or move the widget as desired.
 
@@ -297,9 +298,9 @@ This data can be shown in a line graph on your dashboard. To do this, follow the
 +
 The widget opens in edit mode. By default, a query is displayed showing _IOPS - Total_ for _Storage_ assets. If desired, select a different asset type.
 
-. Click the *Convert to Expression* button.
+. Click the *Convert to Expression* link on the right.
 +
-The current query is converted to Expression mode. Notice that you cannot change the asset type while in Expression mode. Notice that while you are in Expression mode, the button changes to *Revert to Query*. Click this if you wish to switch back to Query mode at any time. Be aware that switching between modes will reset fields to their defaults.
+The current query is converted to Expression mode. Notice that you cannot change the asset type while in Expression mode. While you are in Expression mode, the link changes to *Revert to Query*. Click this if you wish to switch back to Query mode at any time. Be aware that switching between modes will reset fields to their defaults.
 +
 For now, stay in Expression mode.
 
