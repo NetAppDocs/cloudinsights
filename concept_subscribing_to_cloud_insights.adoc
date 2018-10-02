@@ -26,19 +26,22 @@ Flow:
 
 Subscribing to Cloud Insights ensures uninterrupted access to your data as well as extended product link:https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[support] options. You can subscribe to Cloud Insights at any point during your free trial.
 
+=== Pricing
 Cloud Insights is priced by *Managed Unit*. Managed Unit use is calculated based on the number of *hosts* and amount of *raw storage capacity* being managed in your infrastructure environment.
 
 * 1 Managed Unit = 1 host (any virtual or physical machine)
 * 1 Managed Unit = 2 TB of raw storage capacity
 
-== Trial Mode
+== In Trial Mode
 When you sign up for Cloud Insights and your site (also known as _instance_ or _tenant_) is active, you enter into a free, 14-day Trial of Cloud Insights. During this trial you can explore all the features that Cloud Insights has to offer. 
 
 At any time during your trial period, you can subscribe to Cloud Insights. When you subscribe, you will be taken to the Amazon Web Services (AWS) Cloud Insights subscription page.
 
 NOTE: You must be an Account Owner or Administrator in order to subscribe to Cloud Insights. Additionally, you must have an Amazon Web Services (AWS) account with the same email address as your Cloud Insights Account Owner or Administrator login.
 
-Cloud Insights will display a banner when your free trial is nearing its end. Within that banner is a link to the Subscription page. Non-Admin users will see the banner but will not be able to go to the Subscription page.
+Cloud Insights will display a banner when your free trial is nearing its end. Within that banner is a link to the *Admin > Subscribe* page. Non-Admin users will see the banner but will not be able to go to the Subscription page.
+
+=== My Trial has Expired
 
 If your free trial has expired and you have not yet subscribed to Cloud Insights, you will have limited functionality until you subscribe. Your data will still be collected for 14 days after the end of your trial, in order to ensure non-interrupted flow until your subscription is active. After 14 days, if you have not subscribed, Cloud Insights will stop collecting data.
 
@@ -62,15 +65,11 @@ NOTE: You must complete the AWS subscription process within one hour of starting
 
 NOTE: If you choose to cancel your Cloud Insights subscription, you must do so within 48 hours of subscribing. You can cancel your subscription from the AWS Support page. 
 
-== Subscription Mode
+== In Subscription Mode
 
 Once your subscription is active, you can view your subscription status and Managed Unit usage on the *Admin > Subscription* page.
 
-
-
 image:tbd.png[Subscription status]
-
-
 
 View Data Collector details on subscription page
 Count of MU's per data collector
