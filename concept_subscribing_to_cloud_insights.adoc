@@ -41,8 +41,13 @@ If your free trial has expired and you have not yet subscribed to Cloud Insights
 
 To subscribe, go to *Admin > Subscribe*. In addition to the *Subscribe Now* button, you will be able to see your installed data collectors and calculate your estimated pricing.
 
-=== Estimate Your Subscription Cost
+=== Pricing
+Cloud Insights is priced by *Managed Unit*. Managed Unit use is calculated based on the number of *hosts* and amount of *raw storage capacity* being managed in your infrastructure environment.
 
+* 1 Managed Unit = 1 host (any virtual or physical machine)
+* 1 Managed Unit = 2 TB of raw storage capacity
+
+=== Estimate Your Subscription Cost
 The Subscription Calculator gives you an estimated monthly Cloud Insights cost based on the number of hosts and amount of raw storage capacity being reported by your data collectors. The current values are pre-populated in the _Hosts_ and _Raw Capacity_ fields. You can enter different values to assist you with planning for estimated future growth.
 
 Your estimated cost will change based on whether you select a subscription term of 12 months or 36 months. The 36-month term includes a discounted cost per Managed Unit.
@@ -50,12 +55,6 @@ Your estimated cost will change based on whether you select a subscription term 
 NOTE: The calculator is for estimation only. Your final pricing will be set when you subscribe. 
 
 // Can extend only once.
-
-=== Pricing
-Cloud Insights is priced by *Managed Unit*. Managed Unit use is calculated based on the number of *hosts* and amount of *raw storage capacity* being managed in your infrastructure environment.
-
-* 1 Managed Unit = 1 host (any virtual or physical machine)
-* 1 Managed Unit = 2 TB of raw storage capacity
 
 == Subscribing
 Clicking on the *Subscribe Now* button opens the AWS Cloud Insights subscription page, where you can complete your subscription. Note that values you entered in the calculator are not populated in the AWS subscription page; you will need to re-enter your values on this page.
