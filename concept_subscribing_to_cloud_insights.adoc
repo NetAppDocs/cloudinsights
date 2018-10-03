@@ -86,11 +86,14 @@ NOTE: Storage capacity Managed Unit count is rounded up to the nearest Managed U
 
 Warnings are displayed when your Managed Unit usage exceeds 80%, 90%, and 100% of your total subscribed amount:
 
-* When your Managed Unit usage exceeds *80%* of your total subscribed amount, a warning banner is displayed. No action is necessary.
-* When your Managed Unit usage exceeds *90%* of your total subscribed amount, a warning banner is displayed. You may want to increase your subscribed Managed Unit count.
-* When your Managed Unit usage exceeds *100%* of your total subscribed amount, an error banner is displayed and you will have limited functionality until you do one of the following:
+|===
+When your usage exceeds: | This happens / Recommended action:
+|*80%* | A warning banner is displayed. No action is necessary.
+| *90%* | A warning banner is displayed. You may want to increase your subscribed Managed Unit count.
+| *100%*| An error banner is displayed and you will have limited functionality until you do one of the following:
 ** Modify your subscribtion to increase the subscribed Managed Unit count
 ** Remove Data Collectors so that your Managed Unit usage drops below your subscribed amount
+|===
 
 === Installed Data Collectors
 
