@@ -23,7 +23,7 @@ Cloud Insights uses the Oracle ZFS Storage Appliance data collector to gather in
 
 == Terminology
 
-Cloud Insights acquires inventory information with the ceph data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires inventory information with the Oracle ZFS data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -50,7 +50,7 @@ Note: These are common terminology mappings only and might not represent every c
 |Field | Description
 |ZFS Controller-1 Hostname|Host name for storage controller 1 
 |ZFS Controller-2 Hostname|Host name for storage controller 2 
-|User name|User name for the ceph storage system administrator user account
+|User name|User name for the storage system administrator user account
 |Password|Password for the administrator user account
 |===
 
@@ -61,8 +61,8 @@ Note: These are common terminology mappings only and might not represent every c
 |Field | Description
 |TCP port|215
 |Connection type|HTTPS 
-|Inventory poll interval|The default is port 60 seconds
+|Inventory poll interval|The default is 60 seconds
 |Connection Timeout (sec)|The default is 60 seconds
-|Performance Poll Interval (sec)|The default is 300. 
+|Performance Poll Interval (sec)|The default is 300 seconds. 
 
 |===
