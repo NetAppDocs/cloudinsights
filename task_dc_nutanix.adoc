@@ -19,7 +19,7 @@ summary: Configuring Nutanix data collector.
 
 [.lead] 
 
-Lead?
+This data collector acquires performance and inventory data from the Nutanix NX series platforms. 
 
 == Terminology
 
@@ -40,17 +40,16 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-* An IP address of each XtremIO Management Server
-* Administrator user name and password for the XtremIO 
+* Administrator user name and password
 
 == Configuration
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|XMS Host|IP address or fully-qualified domain name of the XtremIO Management Server
-|User name|User name for the XtremIO Management Server
-|Password|Password for the XtremIO Management Server
+|The Prism External IP address |IP address of the external IP address 
+|User name|User name for the Nutanix admin account
+|Password|Password for the Nutanix admin account
 |===
 
 == Advanced configuration 
@@ -58,8 +57,8 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|TCP port|TCP Port used to connect to XTremIO Management Server. The default is 443. 
+|TCP port| 9440 
 |Inventory poll interval (min)|Interval between inventory polls. The default is 60 minutes.
 |Connection timeout (sec)|Connection timeout The default is 60 seconds. 
-|Performance poll interval(sec)|Interval between performance polls. The default is 300 seconds.
+|Storage performance poll interval(sec)|The default is 300 seconds.
 |===
