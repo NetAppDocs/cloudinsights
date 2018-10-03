@@ -74,16 +74,24 @@ Once your subscription is active, you can view your subscription status and Mana
 image:Subscription_Status.png[Subscription Status]
 
 You can see the following:
-* Total Managed Unit count included in your subscription
+* Total subscribed Managed Unit count
 * Contract term (12 or 36 months), including expiration date
 * Managed Unit current usage, including breakdown counts for hosts and raw storage capacity
 NOTE: Storage capacity Managed Unit count is rounded up to the nearest Managed Unit.
 
+=== What Happens if I Exceed My Subscribed Usage?
 
+Warnings are displayed when your Managed Unit usage exceeds 80%, 90%, and 100% of your total subscribed amount:
+
+* When your Managed Unit usage exceeds *80%* of your total subscribed amount, a warning banner is displayed. No action is necessary.
+* When your Managed Unit usage exceeds *90%* of your total subscribed amount, a warning banner is displayed. You may want to increase your subscribed Managed Unit count.
+* When your Managed Unit usage exceeds *100%* of your total subscribed amount, an error banner is displayed and you will have limited functionality until you do one of the following:
+** Modify your subscribtion to increase the subscribed Managed Unit count
+** Remove Data Collectors so that your Managed Unit usage drops below your subscribed amount
 
 === Installed Data Collectors
 
-You can also see your Data Collectors installed, and the count of Managed Units for each.
+You can also see the Data Collectors installed in your site, and the count of Managed Units for each.
 
  View Data Collector details on subscription page
  Count of MU's per data collector
