@@ -18,11 +18,6 @@ keywords: subscribe, trial, sunscription, contract
 
 [.lead]
 
- Flow:
- * Sign Up for Cloud Insights
- * Start free trial & explore Cloud Insights
- * Subscribe to Cloud Insights
-
 Cloud Insights gives you a free 14-day trial so you can explore the features with your own data before subscribing. Subscribing to Cloud Insights ensures uninterrupted access to your data as well as extended product link:https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[support] options. You can subscribe to Cloud Insights at any point during your free trial.
 
 == Trial Version
@@ -98,17 +93,15 @@ Warnings are displayed when your Managed Unit usage exceeds 80%, 90%, and 100% o
 === Installed Data Collectors
 THIS SECTION IN PROGRESS
 
-You can see the Data Collectors installed in your site, and the count of Managed Units for each.
+Click on the *Data Collectors* button to expand the list of installed Data Collectors. 
 
- View Data Collector details on subscription page
- Count of MU's per data collector
- Count may not match "Total" MU's
- Can delete data collectors in this list
+image:Subscription_Data_Collectors.png[Data Collectors]
 
- Data Collector MU's are rounded up. 
- Total MU's is also rounded up. 
- DC MU's may be more than total MU's because of this rounding
- (Edwin's example - 138 when add all DC MU's, but Total used is 137)
+The Data Collectors section shows the Data Collectors installed in your site and the count of Managed Units for each.
+
+NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the status section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The Status section reflects your actual Managed Unit count for your subscription.
+
+In the event that your usage is nearing or exceeding your subscruibed amount, you can delete data collectors in this list by clicking on the "three dots" menu and selecting *Delete*.
 
 === Canceling a Subscription
 If you choose to cancel your Cloud Insights subscription, you must do so within 48 hours of subscribing. You can cancel your subscription from the AWS Support page. Your Cloud Insights site will display a message that your subscription is expired.
