@@ -1,0 +1,76 @@
+---
+sidebar: sidebar
+permalink: task_dc_hp_3par.html
+keywords: data collector, 3PAR, HP, HP 3PAR 
+summary: Configuring task_dc_fujitsu_ data collector.
+---
+
+= 3PAR InServ data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead] 
+
+Cloud Insights uses the 3PAR InServ (Firmware 2.2.2+, SSH) data collector to discover inventory and performance for HP 3PAR StoreServ storage arrays.
+
+== Terminology 
+
+Cloud Insights acquires the following inventory information from the 3PAR InServ data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Physical Disk|Disk
+|Storage System|Storage
+|Controller Node|Storage Node
+|Common Provisioning Group|Storage Pool
+|Virtual Volume|Volume
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector.
+
+== Requirements
+
+The following are required to configure this data colledtor: 
+
+* For inventory, read-only user name and password to the InServ Server
+* For performance, read-write user name and password to the InServ Server
+* Validated access by using telnet to port 22 
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Cluster IP|IP address or fully-qualified domain name of the InServ cluster
+|User Name|User name for the InServ Server
+|Password|Password used for the InServ Server
+|SMI-S Host IP|IP address of the SMI-S Provider Host
+|SMI-S User Name|User name for the SMI-S Provider Host
+|SMI-S Password|Password used for the SMI-S Provider Host
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 40 minutes. 
+|Exclude Devices|Comma-separated list of device IPs to exclude
+|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 60 seconds. 
+|Number of SSH Retries|Number of SSH retry attempts
+|SSH Banner Wait Timeout (sec)|SSH banner wait timeout.  The default is 20 seconds. 
+|SMI-S Port|Port used by SMI-S Provider Host
+|Protocol|Protocol used to connect to the SMI-S provider
+|SMI-S Password|Password used for the SMI-S Provider Host
+|SMI-S namespace|SMI-S namespace
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds.
+|Number of SMI-S Connection Retries|Number of SMI-S connection retry attempts
+|===
