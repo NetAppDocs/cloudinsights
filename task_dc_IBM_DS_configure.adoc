@@ -17,11 +17,13 @@ summary: Configuring IBM_DS data collector.
 
 [.lead]
 
-The IBM DS (CLI) data collector supports DS6xxx and DS8xxx devices. DS3xxx, DS4xxx, and DS5xxx devices are supported by the NetApp E-Series data collector. You should refer to the Cloud Insights support matrix for supported models and firmware versions.
+The IBM DS (CLI) data collector supports inventory and performance data acquisition for DS6xxx and DS8xxx devices.
+
+DS3xxx, DS4xxx, and DS5xxx devices are supported by the link:<task_dc_na_eseries>.html[NetApp E-Series data collector]. You should refer to the Cloud Insights support matrix for supported models and firmware versions.
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the VNXe data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the IBM DS data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 
 [cols=2*, options="header", cols"50,50"]
@@ -33,7 +35,7 @@ Cloud Insights acquires the following inventory information from the VNXe data c
 |Fixed Block Volume|Volume
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data collector. 
+Note: These are common terminology mappings only and might not represent every case for this data collecor. 
 
 == Requirements 
 
@@ -60,10 +62,10 @@ You need the following to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Inventory Poll Interval (min) |Interval between inventory polls Default is 40 minutes
+|Inventory Poll Interval (min) |Interval between inventory polls (min). The default is 40.
 |Storage Display Name| Name of the IBM DS storage array
 |Inventory Exclude Devices|Comma-separated list of device serial numbers to exclude from inventory collection
-|Performance Poll Interval (sec)|The default is 300 seconds.
+|Performance Poll Interval (sec)|The default is 300.
 |Performance Filter Type|Include: Data collected only from devices on list. Exclude: No data from these devices is collected
 |Performance Filter Device List|Comma-separated list of device IDs to include or exclude from performance collection
 |===

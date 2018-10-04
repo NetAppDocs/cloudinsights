@@ -4,7 +4,6 @@ permalink: task_dc_hds_NAS_configure.html
 keywords: data collector, HDS HNAS, HDS NAS
 summary: Configuring HDS NAS (HNAS) data collector.
 ---
-
 = HDS NAS (HNAS) data collector
 
 :toc: macro
@@ -16,11 +15,10 @@ summary: Configuring HDS NAS (HNAS) data collector.
 :imagesdir: ./media/
 
 
+
 [.lead] 
 
-The HDS NAS (HNAS) data collector is an inventory and configuration data collector that  support discovery of HDS NAS clusters. Cloud Insights supports discovering NFS and CIFS shares, file systems (Internal Volumes), and spans (Storage Pools).
-
-This data collector is SSH based, so the acquisition unit that hosts it needs to be able to initiate SSH sessions to TCP 22 on the HNAS itself, or the Systems Management Unit (SMU) that the cluster is connected to.
+The HDS NAS (HNAS) data collector is an inventory and configuration data collector that  supports discovery of HDS NAS clusters. Cloud Insights supports discovering NFS and CIFS shares, file systems (Internal Volumes), and spans (Storage Pools).
 
 == Terminology
 
@@ -37,6 +35,11 @@ Cloud Insights acquires the following inventory information from the HNAS data c
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Requirements 
+
+This data collector is SSH based, so the AU that hosts it must be able to initiate SSH sessions to TCP 22 on the HNAS itself, or the Systems Management Unit (SMU) that the cluster is connected to.
+
 
 == Configuration
 

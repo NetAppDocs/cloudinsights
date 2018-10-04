@@ -16,7 +16,9 @@ keywords: email, notifications, signature, recipient, list
 :imagesdir: ./media/
 
 [.lead]
-In order to receive notifications for performance policy threshold violations, you first must configure a global email recipient list.
+You can configure a global email list of recipients for notification of performance policy threshold violations. 
+
+You can override the global list for any policy when you configure the policy.
 
 To add recipients to the global email list, click on *Admin > Notifications*, and enter email addresses for the recipients separated by commas. Emails sent as alerts from performance policy threshold violations will be sent to all recipients on the list. You can override the global list for a link:https://docs.netapp.com/us-en/cloudinsights/task_create_performance_policies.html[specific policy] when you configure that policy.
 

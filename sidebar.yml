@@ -13,6 +13,8 @@ entries:
             url: /concept_acquisition_unit_requirements.html
           - title: Configuring an Acquisition Unit
             url: /task_configure_acquisition_unit.html            
+          - title: Configuring Data Collectors
+            url: /task_configure_data_collectors.html
           - title: Determining Data Collector Acquisition Status
             url: /concept_determining_data_collector_acq_status.html
           - title: Manage Configured Data Collectors
@@ -23,18 +25,20 @@ entries:
         url: /concept_user_roles.html
       - title: Switching to Other Cloud Central Products
         url: /concept_other_cloud_products.html
-  - title: Data collector reference
+  - title: Data Collector Vendor Reference
     entries:
-      - title: Data Collector Overview
-        url: /task_configure_data_collectors.html
+      - title: Vendor Reference Overview
+        url: /concept_data_collector_reference.html
       - title: AWS
         url: /task_dc_aws_configure.html
-      - title: Brocade
+      - title: BROADCOM
         entries:
           - title: Brocade Enterprise Fabric Connectivity Manager
             url: /task_dc_brocade_EFCM_configure.html
           - title: Brocade FC Switch
             url: /task_dc_brocade_FC_Switch_configure.html
+          - title: Brocade Network Advisor
+            url: /task_dc_brocade_net_advisor     
       - title: Cisco
         url: /task_dc_cisco_fc_switch.html
       - title: Dell EMC
@@ -57,12 +61,18 @@ entries:
             url: /task_dc_emc_vplex_configure.html
           - title: XtremIO
             url: /task_dc_emc_xio_configure.html
+      - title: Hewlett Packard
+        entries:
+          - title: HP 3PAR StoreServ 
+            url: /task_dc_hp_3par.html 
       - title: Hitachi Data Systems
         entries:
           - title: HDS HiCommand Device Manager HP Command View AE
             url: /task_dc_hds_hicomm_configure.html
           - title: HDS HNAS
             url: /task_dc_hds_NAS_configure.html
+      - title: Infinidat
+        url: /task_dc_infinidat_ifbx_configure.html
       - title: IBM
         entries:
           - title: IBM DS6xxx and DS8xxx
@@ -72,25 +82,36 @@ entries:
           - title: IBM San Volume Controller
             url: /task_dc_IBM_SVC.html
           - title: IBM XIV
-            url: /task_dc_IBM_XIV.html       
+            url: /task_dc_IBM_XIV.html 
+      - title: Lenovo
       - title: NetApp
         entries:
           - title: Clustered Data ONTAP
             url: /task_dc_na_cdot.html 
           - title: Data ONTAP 7-mode
-            url: /task_dc_na_7mode
+            url: /task_dc_na_7mode.html
           - title: E-Series
             url: /task_dc_na_eseries.html
           - title: Host and VM File System
             url: /task_dc_na_hostvm.html
           - title: SolidFire
             url: /task_dc_na_solidfire.html
+      - title: Nutanix
+        url: /task_dc_nutanix_configure.html
       - title: OceanStor
         url: /task_dc_huawei_configure.html
       - title: OpenStack
         url: /task_dc_OpenStack.html
+      - title: Oracle
+        url: /task_dc_oracl_zfs_configure.html
+      - title: Pure Storage
+        url: /task_dc_pure_configure.html
+      - title: Red Hat
+        url: /task_dc_red_hat_virt.html
       - title: VMWare
         url: /task_dc_vmware_configure.html
+  - title: Subscribing to Cloud Insights
+    url: /concept_subscribing_to_cloud_insights.html
   - title: Creating Dashboards
     entries:
       - title: Dashboard Overview
@@ -161,7 +182,7 @@ entries:
         url: /concept_asset_violation_section.html
       - title: Hints and Tips to Search for Assets
         url: /concept_searching_assets.html
-#  - title: How-to Guides
+#  - title: How-To Guides
 #    entries:
 #      - title: Ensuring IO density data describes only internal data volumes
 #        url: /task_io_density_report_no_root.html
