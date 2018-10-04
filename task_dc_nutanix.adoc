@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: task_dc_nutanix_configure.html
-keywords: data collector, Nutanix 
+keywords: data collector, Nutanix, NX Series 
 summary: Configuring Nutanix data collector.
 ---
 
@@ -21,9 +21,12 @@ summary: Configuring Nutanix data collector.
 
 This data collector acquires performance and inventory data from the Nutanix NX series platforms. 
 
+
 == Terminology
 
-Cloud Insights acquires the following inventory information from the Nutanix data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data source, keep the following terminology in mind:
+//not sure this is true
+
+Cloud Insights acquires the following inventory information from the Nutanix data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -36,10 +39,12 @@ Cloud Insights acquires the following inventory information from the Nutanix dat
 |Initiator,Target|Volume Mask
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data source.
+Note: These are common terminology mappings only and might not represent every case for this data collector.
 
 == Requirements
 
+* The external data services IP address for the cluster. 
+=======
 * Administrator user name and password
 
 == Configuration
@@ -47,9 +52,10 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|The Prism External IP address |IP address of the external IP address 
-|User name|User name for the Nutanix admin account
-|Password|Password for the Nutanix admin account
+
+|Prism External IP Address|The external data services IP address for the cluster
+|User name|User name for the Admin account
+|Password|Password for the Admin account
 |===
 
 == Advanced configuration 
@@ -57,7 +63,8 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|TCP port| 9440 
+
+|TCP port|TCP Port used to connect to Nutanix array. The default is 9440. 
 |Inventory poll interval (min)|Interval between inventory polls. The default is 60 minutes.
 |Connection timeout (sec)|Connection timeout The default is 60 seconds. 
 |Storage performance poll interval(sec)|The default is 300 seconds.
