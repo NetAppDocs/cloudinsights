@@ -4,6 +4,7 @@ permalink: task_dc_emc_vplex_configure.html
 keywords: data collector, VPLEX, EMC 
 summary: Configuring VPLEX data collector.
 ---
+= Configuring the EMC VPLEX data collector
 
 :toc: macro
 :hardbreaks:
@@ -13,11 +14,10 @@ summary: Configuring VPLEX data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-= Configuring the EMC VNX data collector
 
 [.lead] 
 
-For configuration, this data source requires an IP address of the VPLEX server and an administrative level domain account.
+For configuration, this data collector requires an IP address of the VPLEX server and an administrative level domain account.
 
 == Terminology
 
@@ -37,7 +37,7 @@ Cloud Insightst acquires the following inventory information from the VPLEX data
 |ITLs|Backend Path
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data source.
+Note: These are common terminology mappings only and might not represent every case for this data collector.
 
 == Requirements
 
@@ -53,7 +53,7 @@ Note: These are common terminology mappings only and might not represent every c
 |IP address of VPLEX Management Console|IP address or fully-qualified domain name of the VPLEX Management Console
 |User Name|User name for VPLEX CLI
 |Password|Password used for VPLEX CLI
-|Performance Remote IP Address of VPLEX Management Console|Performance Remote IP address of the VPLEX Management Console
+|Performance Remote IP Address|Performance Remote IP address of the VPLEX Management Console
 |Performance Remote User Name|Performance Remote user name of VPLEX Management Console
 |Performance Remote Password|Performance Remote Password of VPLEX Management Console
 [cols=2*, options="header", cols"50,50"]
@@ -66,11 +66,11 @@ Note: These are common terminology mappings only and might not represent every c
 |===
 |Field|Description
 |Communication Port|Port used for VPLEX CLI
-|Inventory Poll Interval (min)|	Interval between inventory polls. The default is 20 minutes.
-|Connection timeout (sec)|Connection timeout. The default is 60 seconds.
-|Number of Retries|Number of inventory retry attempts
+|Inventory Poll Interval (min)|The default is 20 minutes.
+|Connection timeout (sec)|The default is 60 seconds.
+|Number of connection retries|The default is 3.
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 600 seconds.
 |Performance SSH Process Wait Timeout (sec).| SSH process timeout. The default is 600 seconds.
-|SSH Banner Wait Timeout (sec).|SSH banner wait timeout. The default is 20 seconds.
-|Number of Retries|Number of performance retry attempts
+|SSH Banner Wait Timeout (sec).|The default is 20 seconds.
+|Number of Retries|The default is 2. 
 |===
