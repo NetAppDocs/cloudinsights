@@ -23,7 +23,7 @@ Cloud Insights gives you a free 14-day trial so you can explore the features in 
 == Trial Version
 When you sign up for Cloud Insights and your environment is active, you enter into a free, 14-day Trial of Cloud Insights. During this trial you can explore all the features that Cloud Insights has to offer. 
 
-At any time during your trial period, you can subscribe to Cloud Insights. When you subscribe, you will be taken to the Amazon Web Services (AWS) Marketplace Cloud Insights link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[product page].
+At any time during your trial period, you can subscribe to Cloud Insights. When you subscribe, you will be taken to the Amazon Web Services (AWS) Marketplace link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[product page] for Cloud Insights.
 
 NOTE: You must be an Account Owner or Administrator in order to subscribe to Cloud Insights. Additionally, you must have an Amazon Web Services (AWS) account.
 
@@ -48,7 +48,7 @@ The Subscription Calculator gives you an estimated monthly Cloud Insights cost b
 
 Your estimated cost will change based on whether you select a subscription term of 12 months or 36 months. The 36-month term includes a discounted cost per Managed Unit.
 
-NOTE: The calculator is for estimation only. Your final pricing will be set when you subscribe. 
+NOTE: The calculator is for estimation only. Your final pricing will be set in the AWS Marketplace page. 
 
 image:Subscription_Example.png[Subscription status]
 
@@ -58,15 +58,15 @@ image:Subscription_Example.png[Subscription status]
 
 You must have an existing Cloud Insights trial environment before subscribing in AWS, in order to complete the subscription process successfully. 
 
-Clicking on the *Subscribe Now* button opens the AWS Cloud Insights subscription page, where you can complete your subscription. Note that values you entered in the calculator are not populated in the AWS subscription page; you will need to enter the total Managed Units count on this page.
+Clicking on the link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[*Subscribe Now*] button opens the AWS Cloud Insights subscription page, where you can complete your subscription. Note that values you entered in the calculator are not populated in the AWS subscription page; you will need to enter the total Managed Units count on this page.
 
 After you have entered the total Managed Units count and chosen either 12-month or 36-month subscription term, click on *Set Up Your Account* to finish the subscription process.
 
-After the AWS subscription process is complete, you will be taken back to your Cloud Insights site. Or, if the site is no longer active (for example, you have logged out), you will be taken to the Cloud Central sign-in page. When you sign in to Cloud Insights again, your subscription will be active. 
+After the AWS subscription process is complete, you will be taken back to your Cloud Insights environment. Or, if the environment is no longer active (for example, you have logged out), you will be taken to the Cloud Central sign-in page. When you sign in to Cloud Insights again, your subscription will be active. 
 
-NOTE: You must complete the AWS subscription process within one hour of starting it. If you do not complete it within on hour, you will need to re-start the AWS subscription.
+NOTE: After clicking on *Set Up Your account* on the AWS Marketplace page, you must complete the AWS subscription process within one hour. If you do not complete it within one hour, you will need to click on *Set Up Your Account* again to complete the process.
 
-If there is a problem and the Subscription process fails to complete correctly, you will still see the "Trial Version" banner when you log into your site. In this event, you can go to *Admin > Subscribe* and go through the subscription process again.
+If there is a problem and the Subscription process fails to complete correctly, you will still see the "Trial Version" banner when you log into your environment. In this event, you can go to *Admin > Subscribe* and go through the subscription process again.
 
 == Subscription Mode
 Once your subscription is active, you can view your subscription status and Managed Unit usage on the *Admin > Subscription* page.
@@ -91,7 +91,7 @@ Warnings are displayed when your Managed Unit usage exceeds 80%, 90%, and 100% o
 | *90%* | A warning banner is displayed. You may want to increase your subscribed Managed Unit count.
 | *100%*| An error banner is displayed and you will have limited functionality until you do one of the following:
 * Modify your subscribtion to increase the subscribed Managed Unit count
-* Remove Data Collectors so that your Managed Unit usage drops below your subscribed amount
+* Remove Data Collectors so that your Managed Unit usage is at or below your subscribed amount
 |===
 
 === Installed Data Collectors
@@ -100,14 +100,14 @@ Click on the *Data Collectors* button to expand the list of installed Data Colle
 
 image:Subscription_Data_Collectors.png[Data Collectors]
 
-The Data Collectors section shows the Data Collectors installed in your site and the count of Managed Units for each.
+The Data Collectors section shows the Data Collectors installed in your environment and the count of Managed Units for each.
 
 NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the status section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The Status section reflects your actual Managed Unit count for your subscription.
 
 In the event that your usage is nearing or exceeding your subscribed amount, you can delete data collectors in this list by clicking on the "three dots" menu and selecting *Delete*.
 
 === Canceling a Subscription
-If you choose to cancel your Cloud Insights subscription, you must do so within 48 hours of subscribing. You can cancel your subscription from the AWS Support page. Your Cloud Insights site will display a message that your subscription is expired.
+Cancellation of a subscription can be requested in the AWS Marketplace. For a cancelled subscription, Cloud Insights will display a message that your subscription is expired.
 
 To subscribe again, go to *Admin > Subscribe* and choose *Renew Subscription*.
 
