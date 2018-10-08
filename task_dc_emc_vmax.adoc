@@ -5,7 +5,10 @@ keywords: data collector, Celerra, EMC, DELL
 summary: Configuring DELL EMC VMAX data collector.
 ---
 
+
+
 =  Solutions Enabler with SMI-S Performance data collector
+
 
 :toc: macro
 :hardbreaks:
@@ -21,7 +24,7 @@ Cloud Insights discovers Symmetrix storage arrays by using Solutions Enabler sym
 
 == Requirements
 
-Before configuring this data source, you should ensure that Cloud  Insights has TCP connectivity to port 2707 on the existing Solutions Enabler server. Cloud  Insights discovers all the Symmetrix arrays that are "Local" to this server, as seen in "symcfg list" output from that server. 
+Before configuring this data source, you should ensure that Cloud Insights has TCP connectivity to port 2707 on the existing Solutions Enabler server. Cloud  Insights discovers all the Symmetrix arrays that are "Local" to this server, as seen in "symcfg list" output from that server. 
 
 * The EMC Solutions Enabler (CLI) with SMI-S provider application must be installed and the version must match or be earlier than the version running on the Solutions Enabler Server. 
 * A properly configured {installdir}\EMC\SYMAPI\config\netcnfg file is required. This file defines service names for Solutions Enabler servers, as well as the access method (SECURE / NOSECURE /ANY). 
@@ -73,7 +76,7 @@ Note: These are common terminology mappings only and might not represent every c
 |Inventory Exclude Devices|Comma-separated list of device IDs to include or exclude 
 |Connection Caching|Choose connection caching method:
 
-* LOCAL means that the Cloud  Insights Acquisition service is running on the Solutions Enabler server, which has Fibre Channel connectivity to the Symmetrix arrays you seek to discover, and has access to gatekeeper volumes. This might be seen in some Remote Acquisition Unit (RAU) configurations.
+* LOCAL means that the Cloud Insights Acquisition service is running on the Solutions Enabler server, which has Fibre Channel connectivity to the Symmetrix arrays you seek to discover, and has access to gatekeeper volumes. This might be seen in some Remote Acquisition Unit (RAU) configurations.
 * REMOTE_CACHED is the default and should be used in most cases. This uses the NETCNFG file settings to connect using IP to the Solutions Enabler server, which must have Fibre Channel connectivity to the Symmetrix arrays you seek to discover, and has access to Gatekeeper volumes.
 * In the event that REMOTE_CACHED options make CLI commands fail, use the REMOTE option. Keep in mind that it will slow down the acquisition process (possibly to hours or even days in extreme cases). The NETCNFG file settings are still used for an IP connection to the Solutions Enabler server that has Fibre Channel connectivity to the Symmetrix arrays being discovered.
 
