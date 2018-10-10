@@ -32,16 +32,13 @@ Cloud Insights acquires the following inventory and performance information from
 
 [cols=2*, options="header", cols"50,50"]
 |===
-|Vendor/Model Term|Cloud Insights Term 
-|Drive|Disk
-|InfiniBox|Storage
-|Node|Storage Node
-|Pool|Storage Pool
-|Volume|Volume
-|FC Port|Port
-|Filesystem|Internal Volume
-|Filesystem|FileShare
-|Filesystem Exports|Share
+|Vendor/Model Term | Cloud Insights Term
+|Storage Pool|Storage Pool
+|Container|Internal Volume
+|Node|Controller
+|Share|File Share
+|Nutanix Distributed File System (NDFS)|Share
+|Volume Group|Backend LUN
 |===
 
 == Configuration
