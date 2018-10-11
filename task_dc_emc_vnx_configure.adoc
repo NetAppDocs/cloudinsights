@@ -5,6 +5,8 @@ keywords: data collector, VNX, EMC
 summary: Configuring VNX data collector.
 ---
 
+= Configuring the EMC VNX data collector
+
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -13,11 +15,16 @@ summary: Configuring VNX data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-= Configuring the EMC VNX data collector
-
 [.lead] 
 
-For configuration, the EMC VNX (SSH) data collector requires the IP address of the Control Station and a read-only username and password.
+The EMC VNX (SSH) data collector gathers performance and inventory data from the VNX storage system.
+
+== Requirements
+
+The following are require to use the data collector:
+* IP address of the Control Station 
+* The username and password to a read-only account
+* Access validation: Verify SSH access using PuTTY
 
 == Configuration
 
@@ -29,14 +36,6 @@ For configuration, the EMC VNX (SSH) data collector requires the IP address of t
 |Password |Password for the VNX Control Station
 |===
 
-== Requirements
-
-You need the following to configure the  VNX (SSH) data collector: 
-
-* An IP address of the Control Station
-* Read-only username and password.
-* Access validation: Verify SSH access using PuTTY.
-
 == Advanced configiration
 
 [cols=2*, options="header", cols"50,50"]
@@ -45,7 +44,7 @@ You need the following to configure the  VNX (SSH) data collector:
 |Inventory Poll Interval (min)|The default is 40 minutes. 
 |Command Retry Attempts|Number of command retry attempts
 |Password |Password for the VNX Control Station
-|External Process Timeout for Inventory (sec)| VNX external process timeout for inventory. The default is 1800 seconds.)
+|External Process Timeout for Inventory (sec)| VNX external process timeout for inventory. The default is 1800.
 |Performance Poll Interval (sec).	Interval between performance polls.|The default is 300 seconds.
 |External Process Timeout for Performance (sec).|The default is 1800 seconds. 
 |===
