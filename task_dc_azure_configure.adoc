@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: task_dc_azure_configure.html
+keywords: data collector, azure, 
+summary: Configuring Azure compute data collector.
+
+= Configuring the Azure compute data collector
+
+---
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+
+Cloud Insights uses the Azure compute data collector to acquire inventory and performance data from Azure compute instances. 
+
+
+.Before you begin
+
+You need  the following information to configure this data collector.
+
+* A unique name for the data collector
+* Acquisition unit name 
+
+== Configuration
+
+Enter data into the data collector fields according to the table below:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|Azure Service Principal Client ID|Sign-in ID to Azure 
+|Azure tenant ID|Microsoft tenant ID
+|Azure Service Principal Authentication Key|Login authentication key 
+|I understand Microsoft bills me for API requests|Check this to verify your understanding that Microsoft bills you for API requests made by Insight polling.
+|===
+
+== Advanced Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|Inventory Poll Interval (min)|The default is 60
+|HTTP connection and socket timeout (sec)|The default is 300
+|Performance Poll Interval (sec)|The default is 300
+|===
+
