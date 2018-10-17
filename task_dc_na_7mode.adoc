@@ -5,6 +5,8 @@ keywords: data collector, 7-mode, NetApp
 summary: Configuring NetApp 7-mode data collector.
 ---
 
+= NetApp Data ONTAP operating in 7-Mode data collector
+
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -13,11 +15,11 @@ summary: Configuring NetApp 7-mode data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-= NetApp Data ONTAP operating in 7-Mode data collector
+
 
 [.lead]
 
-For storage systems using Data ONTAP software operating in 7-Mode, you should use the ONTAPI data source, which uses the CLI to obtain capacity numbers. 
+For storage systems using Data ONTAP software operating in 7-Mode, you should use the ONTAPI data collector, which uses the CLI to obtain performance and capacity data. 
 
 == Terminology
 
@@ -102,7 +104,7 @@ This command is required to use the ZAPI.
 
 If cli-date or cli-snap permissions are not provided, acquisition can finish, but Snapshot copies are not reported.
 
-To acquire a 7-Mode data source successfully and generate no warnings on the storage system, you should use one of the following command strings to define your user roles. The second string listed here is a streamlined version of the first:
+To acquire a 7-Mode data collector successfully and generate no warnings on the storage system, you should use one of the following command strings to define your user roles. The second string listed here is a streamlined version of the first:
 
 * login-http-admin,api-*,security-api-vfile,cli-rdfile,cli-options,cli-df,cli-lun,cli-ifconfig,cli-date,cli-snap,_
  

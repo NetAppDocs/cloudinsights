@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: task_dc_ceph_configure.html
+keywords: data collector, ceph
+summary: Configuring ceph data collector.
+---
+
+= ceph storage data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead] 
+
+Cloud Insights uses the ceph data collector to discover inventory data from ceph storage the  storage platform.
+
+== Terminology
+
+Cloud Insights acquires inventory information with the ceph data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Pool|Storage Pool
+|FileSystem|Internal Volume
+|OSD|Backend LUN
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data source.
+
+== Requirements
+
+* The ceph administrator IP address 
+* Administrator user name and password
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|Seph admin IP address|Ip address for the for the ceph storage
+|User name|User name for the ceph storage system administrator user account
+|Password|Password for the administrator user account
+|===
+
+== Advanced configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|Inventory poll interval (min)|Interval between inventory polls. The default is 60 minutes.
+|SSH process wait timeout (sec)|Connection timeout. The default is 60 seconds. 
+|SSH port|The default is port 22. .
+|===

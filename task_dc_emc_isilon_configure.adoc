@@ -5,7 +5,7 @@ keywords: data collector, isilon, EMC, DELL
 summary: Configuring DELL EMC Isilon data collector.
 ---
 
-= DELL EMC Isilon data collector
+= Dell EMC Isilon data collector
 
 :toc: macro
 :hardbreaks:
@@ -17,7 +17,7 @@ summary: Configuring DELL EMC Isilon data collector.
 
 [.lead]
 
-The Isilon SSH data collector collects inventory and performance from EMC Isilon scale-out NAS storage. 
+Cloud Insights uses the Isilon SSH data collector to acquire  inventory and performance data from EMC Isilon scale-out NAS storage. 
 
 == Terminology
 
@@ -32,11 +32,11 @@ Cloud Insights acquires the following inventory information from the Isilon data
 |File Systemp|Internal Volume
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data source. 
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
 
 == Requirements
 
-You need the follwoing information to configure this data collector:
+You need the following information to configure this data collector:
 
 * Administrator permissions to the Isilon storage
 * Validated access by using _telnet_ to port 22
@@ -56,8 +56,8 @@ You need the follwoing information to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description 
-|Inventory Poll Interval (min)|	Interval between inventory polls. The default is 20 minutes. 
-|Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds.
-|SSH Process Wait Timeout|SSH process timeout period. The default is 60 seconds.
+|Inventory Poll Interval (min)|	Interval between inventory polls. The default is 20. 
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300.
+|SSH Process Wait Timeout|SSH process timeout period. The default is 60.
 |SSH Port|SSH service port 
 |===

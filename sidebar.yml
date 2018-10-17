@@ -9,8 +9,12 @@ entries:
         entries:
           - title: Overview
             url: /task_getting_started_with_cloud_insights.html
+          - title: Acquisition Unit Requirements
+            url: /concept_acquisition_unit_requirements.html
           - title: Configuring an Acquisition Unit
             url: /task_configure_acquisition_unit.html            
+          - title: Configuring Data Collectors
+            url: /task_configure_data_collectors.html
           - title: Determining Data Collector Acquisition Status
             url: /concept_determining_data_collector_acq_status.html
           - title: Manage Configured Data Collectors
@@ -21,20 +25,22 @@ entries:
         url: /concept_user_roles.html
       - title: Switching to Other Cloud Central Products
         url: /concept_other_cloud_products.html
-  - title: Data collector reference
+  - title: Data Collector Vendor Reference
     entries:
-      - title: Data Collector Overview
-        url: /task_configure_data_collectors.html
+      - title: Vendor Reference Overview
+        url: /concept_data_collector_reference.html
       - title: AWS
         url: /task_dc_aws_configure.html
-      - title: Brocade
+      - title: BROADCOM
         entries:
-      - title: Brocade Enterprise Fabric Connectivity Manager
-        url: /task_dc_brocade_EFCM_configure.html
-      - title: Brocade FC Switch
-        url: /task_dc_brocade_FC_Switch_configure.html
-        entries:
-          - title:
+          - title: Brocade FC Switch
+            url: /task_dc_brocade_FC_Switch_configure.html
+          - title: Brocade Network Advisor
+            url: /task_dc_brocade_BNA.html 
+      - title: ceph
+        url: /task_dc_ceph_configure.html
+      - title: Cisco
+        url: /task_dc_cisco_fc_switch.html
       - title: Dell EMC
         entries:
           - title: Celerra
@@ -43,18 +49,44 @@ entries:
             url: /task_dc_emc_clariion_configure.html
           - title: Data Domain
             url: /task_dc_emc_datadomain_configure.html
+          - title: Dell Compellent
+            url: /task_dc_Dell_Compellent.adoc
           - title: Isilon
             url: /task_dc_emc_isilon_configure.html
           - title: RecoverPoint
             url: /task_dc_emc_RecoverPoint_configure.html 
+          - title: Symmetrix
+            url: /task_dc_emc_vmax.html   
           - title: VNX
             url: /task_dc_emc_vnx_configure.html
           - title: VNXe
             url: /task_dc_emc_vnxe_configure.html
+          - title: VPLEX
+            url: /task_dc_emc_vplex_configure.html
           - title: XtremIO
             url: /task_dc_emc_xio_configure.html
+      - title: Fujitsu
+        url: /task_dc_fujitsu_configure.html
+      - title: Hewlett Packard
+        entries:
+          - title: HPE 3PAR
+            url: /task_dc_hp_3par.html
+          - title: HP Command View AE
+            url: /task_dc_hp_cmdview_configure.html
+      - title: Hitachi Data Systems
+        entries:
+          - title: HDS HiCommand Device Manager HP Command View AE
+            url: /task_dc_hds_hicomm_configure.html
+          - title: HDS HNAS
+            url: /task_dc_hds_NAS_configure.html
+      - title: Infinidat
+        url: /task_dc_infinidat_ifbx_configure.html
+      - title: Huawei
+        url: /task_dc_huawei_configure.html
       - title: IBM
         entries:
+          - title: IBM DS4000
+            url: /task_dc_ibm_ds4000.html
           - title: IBM DS6xxx and DS8xxx
             url: /task_dc_IBM_DS_configure.html
           - title: IBM PowerVM
@@ -62,21 +94,37 @@ entries:
           - title: IBM San Volume Controller
             url: /task_dc_IBM_SVC.html
           - title: IBM XIV
-            url: /task_dc_IBM_XIV.html       
+            url: /task_dc_IBM_XIV.html 
+      - title: Lenovo
+        url: /task_dc_lenovo_configure.html
+      - title: Microsoft
+        url: /task_dc_azure_configure.html
       - title: NetApp
         entries:
-          - title: Clustered Data ONTAP
+          - title: Clusted Data ONTAP
             url: /task_dc_na_cdot.html 
           - title: Data ONTAP 7-mode
-            url: /task_dc_na_7mode
+            url: /task_dc_na_7mode.html
           - title: E-Series
             url: /task_dc_na_eseries.html
+          - title: Host and VM File System
+            url: /task_dc_na_hostvm.html
           - title: SolidFire
             url: /task_dc_na_solidfire.html
-      - title: OceanStor
-        url: /task_dc_huawei_configure.html
+      - title: Nutanix
+        url: /task_dc_nutanix_configure.html
+      - title: OpenStack
+        url: /task_dc_OpenStack.html
+      - title: Oracle
+        url: /task_dc_oracl_zfs_configure.html
+      - title: Pure Storage
+        url: /task_dc_pure_configure.html
+      - title: Red Hat
+        url: /task_dc_red_hat_virt.html
       - title: VMWare
         url: /task_dc_vmware_configure.html
+  - title: Subscribing to Cloud Insights
+    url: /concept_subscribing_to_cloud_insights.html
   - title: Creating Dashboards
     entries:
       - title: Dashboard Overview
@@ -147,17 +195,23 @@ entries:
         url: /concept_asset_violation_section.html
       - title: Hints and Tips to Search for Assets
         url: /concept_searching_assets.html
-#  - title: How-to Guides
-#    entries:
+  - title: How-To Guides
+    entries:
+       - title: Minimizing risk in thin provisioning
+         url: /task_h2_minrisk_thin.html
 #      - title: Ensuring IO density data describes only internal data volumes
 #        url: /task_io_density_report_no_root.html
   - title: Reference & Support
     entries:
-      - title: Support
+      - title: Requesting Support
         url: /concept_requesting_support.html
-      - title: FAQ
-        url: /TBD.html
-      - title: Cloud Insights Release Notes
-        url: /TBD.html
+      - title: Data Collector Support Matrix
+        url: /reference_data_collector_support_matrix.html
+      - title: Object Icon Reference
+        url: /reference_object_icons.html
+#      - title: FAQ
+#        url: /TBD.html
+#      - title: Cloud Insights Release Notes
+#        url: /TBD.html
       
       

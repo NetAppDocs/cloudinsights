@@ -5,6 +5,8 @@ keywords: data collector, HDS HiCommand, HDS
 summary: Configuring HDS HiCommand Device Manager data collector.
 ---
 
+= HDS HiCommand Device Manager data collector
+
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -13,7 +15,7 @@ summary: Configuring HDS HiCommand Device Manager data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-= Configuring the HDS HiCommand Device Manager data collector
+
 
 [.lead] 
 
@@ -38,7 +40,7 @@ Note: These are common terminology mappings only and might not represent every c
 
 .Before you begin
 
-You must have the following in order to collect inventory information:
+You must have the following in order to collect inventory data:
 
 * IP address of the HiCommand Device Manager server
 * Read-only user name and password for the HiCommand Device Manager software and peer privileges
@@ -53,12 +55,12 @@ The following requirements must be met in order to collect performance data:
 * HDS USP, USP V, and VSP performance 
 ** Performance Monitor must be licensed.
 ** Monitoring switch must be enabled. 
-** The Export Tool (Export.exe) must be copied to the Cloud Insights server.
+** The Export Tool (Export.exe) must be copied to the Cloud Insights AU.
 ** The Export Tool version must match the microcode version of the target array.
 
 * AMS performance:
 ** Performance Monitor must be licensed.
-** The Storage Navigator Modular 2 (SNM2) CLI utility needs to be installed on the Cloud Insights server. 
+** The Storage Navigator Modular 2 (SNM2) CLI utility needs to be installed on the Cloud Insights AU. 
 
 == Configuration
 
@@ -96,11 +98,11 @@ Note: In HDS USP, USP V, and VSP, any disk can belong to more than one array gro
 |Field|Description
 |HiCommand Server Port |Port used for the HiCommand Device Manager 
 |HTTPs Enabled|Select to enable HTTPs
-|Inventory Poll Interval (min)|	Interval between inventory polls The default is 40 minutes  
+|Inventory Poll Interval (min)|	Interval between inventory polls. The default is 40.  
 |Choose 'Exclude' or 'Include' to specify a list|Specify whether to include or exclude the array list below when collecting data.
 |Exclude or Include Devices|Comma-separated list of device ID's or array names to include or exclude
 |Query Host Manager|Select to query host manager
-|HTTP Timeout (sec)|HTTP connection timeout (default 60 seconds) 
-|Performance Polling Interval (sec)|Interval between performance polls. The default is  300 seconds.
-|Export timeout in seconds|Export utility timeout. The default is 300 seconds.
+|HTTP Timeout (sec)|HTTP connection timeout The default is 60. 
+|Performance Polling Interval (sec)|Interval between performance polls. The default is 300.
+|Export timeout in seconds|Export utility timeout. The default is 300.
 |===

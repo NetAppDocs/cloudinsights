@@ -4,7 +4,17 @@ permalink: task_dc_aws_configure.html
 keywords: data collector, AWS EC2, 
 summary: Configuring AWS EC2 data collector.
 ---
-= Configuring the Amazon AWS EC2 data collector
+
+= Amazon AWS EC2 data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
 
 [.lead]
 
@@ -20,11 +30,13 @@ In order to collect data from Amazon AWS EC2 devices, you must have the followin
 
 Access keys consist of an access key ID (for example, AKIAIOSFODNN7EXAMPLE) and a secret access key (for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY). You use access keys to sign programmatic requests that you make to AWS if you use the AWS SDKs, REST, or Query API operations. 
 
-These keys are provided with your contract.   
+These keys are provided with your contract from Amazon.   
+
+
+
+== Configuration
 
 Enter data into the data collector fields according to the table below:
-
-*Configuration*
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -35,15 +47,15 @@ Enter data into the data collector fields according to the table below:
 |I understand AWS bills me for API requests|Check this to verify your understanding that AWS bills you for API requests made by Insight polling.
 |===
 
-*Advanced Configuration*
+== Advanced Configuration
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|Inventory Poll Interval (min)|Default is 60 minutes
-|HTTP connection and socket timeout|Default is 300 seconds
+|Inventory Poll Interval (min)|The default is 60
+|HTTP connection and socket timeout (sec)|The default is 300
 |Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
-|Performance Poll Interval|Default is 1800 seconds
+|Performance Poll Interval (sec)|The default is 1800
 |===
 
 == Mapping AWS tags to Cloud Insights annotations
@@ -53,6 +65,7 @@ The AWS EC2 data collector includes an option that allows you to populate Cloud 
 Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if you create an annotation named "OWNER" in Cloud Insights, and tags named "OWNER", "Owner", and "owner" in AWS, all of the AWS variations of "owner" will map to Cloud Insight's "OWNER" annotation. 
 
 .Related Information
+
 * https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[Managing Access Keys for IAM Users^]
 
 

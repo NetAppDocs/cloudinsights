@@ -5,7 +5,7 @@ keywords: data collector, EMC, clariion
 summary: Configuring DELL EMC Clariion.
 ---
 
-= DELL EMC CLARiiON (NaviCLI) data collector
+= Dell EMC CLARiiON (NaviCLI) data collector
 
 :toc: macro
 :hardbreaks:
@@ -17,18 +17,13 @@ summary: Configuring DELL EMC Clariion.
 
 [.lead]
 
-Before configuring this data source, make sure that the EMC Navisphere CLI is installed on the target device and on the Cloud Insights  server. The Navisphere CLI version must match the firmware version on the controller. For performance data collection, statistics logging must be turned on.
+Cloud Insights uses the Dell EMC CLARiiON (NaviCLI) data collector to  acquire inventory and performance data.
 
 
-
-== NaviSphere command line interface syntax
-
-naviseccli.exe -h <IP address> -user <user> -password <password> -scope
-<scope,use 0 for global scope> -port <use 443 by default> command
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the EMC CLARiiON data collector. For each asset type acquired by Clous Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the EMC CLARiiON data collector. For each asset type acquired by Cloud  Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -48,10 +43,15 @@ The following requirements must be met in order to collect data:
 
 * An IP address of each CLARiiON storage processor
 * Read-only Navisphere username and password to the CLARiiON arrays
-* NaviCLI must be installed on the Insight server/RAU
-* Access validation: Run NaviCLI from the Insight server to each array using the above username and password.
+* NaviCLI must be installed on the Cloud Insights AU
+* Access validation: Run NaviCLI from the Cloud Insights AU to each array using the username and password.
 * NaviCLI version should correspond with the newest FLARE code on your array
-* For performance, statistics logging must be turned on.
+* For performance, statistics logging must be enabled.
+
+== NaviSphere command line interface syntax
+
+naviseccli.exe -h <IP address> -user <user> -password <password> -scope
+<scope,use 0 for global scope> -port <use 443 by default> command
 
 == Configuration
 
@@ -61,7 +61,7 @@ The following requirements must be met in order to collect data:
 |CLARiiON storage|IP address or fully-qualified domain name of the CLARiiON Storage
 |User Name |Name used to log into the CLARiiON storage device. 
 |Password|Password used to log into the CLARiiON storage device. 
-|CLI Path|Full path to the _navicli.exe_ OR _naviseccli.exe_ executable
+|CLI Path|Full path to the _navicli.exe_ OR _naviseccli.exe_  executable
 |===
 
 == Advanced Configuration
@@ -70,7 +70,7 @@ The following requirements must be met in order to collect data:
 |===
 |Field |Description
 |Inventory Poll Interval (min)|Interval between inventory polls. Default is 40 minutes.
-|Use Secure Client |Select to use the _navseccl_ secure client (i)
+|Use Secure Client |Select to use the _naviseccli_ secure client (i)
 |Scope|The secure client scope. The default is Global.
 |CLARiiON CLI Port|Port used for CLARiiON CLI
 |Inventory External Process Timeout (sec)|External process timeout. The default is 1800 seconds)

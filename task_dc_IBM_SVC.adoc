@@ -5,6 +5,8 @@ keywords: IBM, SVC,SAN
 summary: Configuring IBM SAN Volume Controller data collector.
 ---
 
+= IBM San Volume Controller data collector
+
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -13,17 +15,17 @@ summary: Configuring IBM SAN Volume Controller data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-= Configuring the IBM San Volume Controller data collector
+
 
 [.lead]
 
-The IBM San Volume Controller (SVC) data collector collects inventory and performance data using SSH, supporting a variety of devices that run the SVC operating system.
+The IBM San Volume Controller (SVC) data collector acquires inventory and performance data using SSH, supporting a variety of devices that run the SVC operating system.
 
 The list of supported devices includes models such as the SVC, the v7000, the v5000, and the v3700. Refer to the Insight data collector  support matrix for supported models and firmware versions.
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the IBM SVC data source. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data source, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the IBM SVC data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -36,7 +38,7 @@ Vdisk|Volume
 |Mdisk|	Backend LUN
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data source. 
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
 
 == Inventory Requirements
 
