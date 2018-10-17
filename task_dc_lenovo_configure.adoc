@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_dc_nutanix_configure.html
-keywords: data collector, Nutanix, NX Series 
-summary: Configuring Nutanix data collector.
+permalink: task_dc_lenovo_configure.html
+keywords: data collector,Lenovo, HX Series 
+summary: Configuring Lenovo data collector.
 ---
 
-= Nutanix data collector
+= Lenovo data collector
 
 :toc: macro
 :hardbreaks:
@@ -19,11 +19,11 @@ summary: Configuring Nutanix data collector.
 
 [.lead] 
 
-Cloud Insights uses the Nutanix data collector to discover inventory and performance date for Nutanix storage systems.
+Cloud Insights uses the Lenovo data collector to discover inventory and performance date for Lenovo HX storage systems.
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the Nutanix data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the Lenovo data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -38,8 +38,10 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-* The external data services IP address for the cluster. 
+* Prism External IP Address 
 * Administrator user name and password
+* Unique name for the data collector
+* Acquisition unit name
 
 == Configuration
 
@@ -56,8 +58,8 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|TCP port|TCP Port used to connect to Nutanix array. The default is  9440. 
+|TCP port|TCP Port used to connect to array. The default is  9440. 
 |Inventory poll interval (min)|Interval between inventory polls. The default is 60 minutes.
 |Connection timeout (sec)|Connection timeout The default is 60 seconds. 
-|Performance poll interval(sec)|Interval between performance polls. The default is 300 seconds.
+|Performance poll interval (sec)|Interval between performance polls. The default is 300 seconds.
 |===

@@ -49,6 +49,8 @@ entries:
             url: /task_dc_emc_clariion_configure.html
           - title: Data Domain
             url: /task_dc_emc_datadomain_configure.html
+          - title: Dell Compellent
+            url: /task_dc_Dell_Compellent.adoc
           - title: Isilon
             url: /task_dc_emc_isilon_configure.html
           - title: RecoverPoint
@@ -79,6 +81,8 @@ entries:
             url: /task_dc_hds_NAS_configure.html
       - title: Infinidat
         url: /task_dc_infinidat_ifbx_configure.html
+      - title: Huawei
+        url: /task_dc_huawei_configure.html
       - title: IBM
         entries:
           - title: IBM DS4000
@@ -92,6 +96,9 @@ entries:
           - title: IBM XIV
             url: /task_dc_IBM_XIV.html 
       - title: Lenovo
+        url: /task_dc_lenovo_configure.html
+      - title: Microsoft
+        url: /task_dc_azure_configure.html
       - title: NetApp
         entries:
           - title: Clusted Data ONTAP
@@ -106,8 +113,6 @@ entries:
             url: /task_dc_na_solidfire.html
       - title: Nutanix
         url: /task_dc_nutanix_configure.html
-      - title: OceanStor
-        url: /task_dc_huawei_configure.html
       - title: OpenStack
         url: /task_dc_OpenStack.html
       - title: Oracle
@@ -190,8 +195,10 @@ entries:
         url: /concept_asset_violation_section.html
       - title: Hints and Tips to Search for Assets
         url: /concept_searching_assets.html
-#  - title: How-To Guides
-#    entries:
+  - title: How-To Guides
+    entries:
+       - title: Minimizing risk in thin provisioning
+         url: /task_h2_minrisk_thin.html
 #      - title: Ensuring IO density data describes only internal data volumes
 #        url: /task_io_density_report_no_root.html
   - title: Reference & Support
@@ -200,6 +207,8 @@ entries:
         url: /concept_requesting_support.html
       - title: Data Collector Support Matrix
         url: /reference_data_collector_support_matrix.html
+      - title: Object Icon Reference
+        url: /reference_object_icons.html
 #      - title: FAQ
 #        url: /TBD.html
 #      - title: Cloud Insights Release Notes
