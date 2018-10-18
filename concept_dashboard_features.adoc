@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_dashboard_features.html
 summary: Dashboard features and concepts.
-keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, expressions
+keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, expressions, timeseries
 ---
 
 = Dashboard Features
@@ -280,7 +280,7 @@ image::SecondaryAxisExplained.png[Secondary Axis example]
 
 == Expressions in widgets
 
-In a dashboard, any timeseries widget (line, spline, area, stacked area) allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
+In a dashboard, any time series widget (line, spline, area, stacked area) allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
 
 === Expressions Example: Read IOPS percentage
 
