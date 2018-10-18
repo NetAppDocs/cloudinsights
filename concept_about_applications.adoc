@@ -14,7 +14,7 @@ Before you can track data associated with the applications running in your envir
 
 This topic provides an example of tracking the usage of virtual machines that the Marketing Team uses for its Exchange email.
 
-You might want to create a table similar to the following to identify applications used in your environment and track whos uses the applications.
+You might want to create a table similar to the following to identify applications used in your environment and note the group or business unit using each applications.
 
 [cols=5*,options="header]
 |===
@@ -23,11 +23,12 @@ You might want to create a table similar to the following to identify applicatio
 |NetApp|Data Storage|Marketing|Sales Events|Exchange, Oracle Shared DataBase, BlastOff Event Planner
 |===
 
-The table shows that that Marketing Team uses the Exchange application. We want to track their virtual machine utilization for Exchange, so that we can predict when we will need to add more storage.  We can associate the Exchange application with all of Marketing's VM's: 
+The table shows that that Marketing Team uses the Exchange application. We want to track their virtual machine utilization for Exchange, so that we can predict when we will need to add more storage.  We can associate the Exchange application with all of Marketing's virtual machines: 
 
-. Create an application named Exchange
+. Create an application named _Exchange_
 . Create a query for virtual machines.
 +
-Assuming the Marketing VM’s all have a name containing the string “mkt”, create your query to filter VM name for “mkt”.
+Assuming the Marketing team's VMs all have a name containing the string “mkt”, create your query to filter VM name for “mkt”.
 . Select the VMs.
-. Associate the VMs with the Exchange application using Bulk Actions > Add Applications. 
+. Associate the VMs with the _Exchange_ application using *Bulk Actions > Add Applications*. 
+
