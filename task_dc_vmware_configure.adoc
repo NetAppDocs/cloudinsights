@@ -5,8 +5,6 @@ keywords: data collector, VMware,
 summary: Configuring VMware  data collector.
 ---
 
-= VMware VSphere data collector 
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,10 +13,11 @@ summary: Configuring VMware  data collector.
 :linkattrs:
 :imagesdir: ./media/
 
+= Configuring the VMware VSphere data collector 
 
 [.lead]
 
-The data collector for VMware vSphere (Web Services) collects ESX Host information and requires read-only privileges on all objects within the Virtual Center. 
+The data collector for VMware vSphere collects ESX Host information and requires read-only privileges on all objects within the Virtual Center. 
 
 == Terminology
 
@@ -52,7 +51,7 @@ The following information is required to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|Name|Unique name for data collector
+|Name|Unique name for the data collector
 |Acquisition unit|Name of acquisition unit
 |===
 
@@ -68,7 +67,7 @@ The following information is required to configure this data collector:
 
 == Advanced configuration 
 
-In the advanced configuration screen, check the *VM Performance* box to collect performance data. Inventory collection is enabled by default. 
+In the advanced configuration screen, check the *VM Performance* box to collect performance data. Inventory collection is enableds by default. 
 The following fields can be configured:
 
 [cols=2*,  cols"50,50"]
