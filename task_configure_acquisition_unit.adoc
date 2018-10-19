@@ -18,24 +18,20 @@ summary: A summary.
 [.lead]
 An Acquisition Unit is a server or virtual machine that you configure to collect data from devices in the data center using modules called Data Collectors. You must install at least one Acquisition Unit in order to begin collecting data. 
 
-You can add a LINUX Acquisition Unit using the following steps:
 
-* If you do not have at least one data collector configured, go to *Admin > Data Collectors > Acquisition Units* and choose one from the choices displayed.
+This procedure describe how to configure Acquisition units and describes 
 
 * You can also click on *Admin > Data Collectors > Acquisition Unit + Acquisition Unit* 
- * and select the _Acquisition Units_ page. 
-+
-In both cases, the *Add Acquisition Unit* dialog is displayed.
+ 
+
 
 image:AddAcqDialog.png[Add Acquisition Unit dialog]
 
 
-The steps below must be run on the Acquisition Unit server or VM.
 
 == Setting proxy environment variables
 
 For environments that use a proxy, you must set the proxy environment variables before you install the Acquisition Unit. The instructions for configuring the proxy are provided on the _Add Acquisition Unit_  dialog. 
-
 
 . Click + in Have a Proxy Server?
 . Copy the commands to a text editor and set your proxy variables as needed.
@@ -55,15 +51,15 @@ For environments that use a proxy, you must set the proxy environment variables 
 +
 The system displays the _Add Acquisition Unit_ dialog.
 
-* Verify that the server or VM hosting the Acquisition Unit meets the minimum requirements. 
+The command contains a key unique to your environment that is good for 24 hours and for a single Acquisition Unit only. The command must be executed within 24 hours and can only be executed on a single server.
+
+* Verify that the server or VM hosting the Acquisition Unit meets the minimum system requirements. 
 * Verify that the server is running a supported version of Linux.
 . Click *Linux*.  
 
-. Copy the Installation Instructions command displayed in the dialog into a terminal window on the server or VM. The command contains a key unique to your environment that is good for 24 hours and for a single Acquisition Unit only.
+. Copy the Installation Instructions command displayed in the dialog into a terminal window on the server or VM that will host the Acquisition unit.  
 +
 You can click on the _Copy to Clipboard_ icon to easily copy the command from the dialog.
-
-
 
 
 //== Installing a Windows Acquisition Unit
