@@ -19,13 +19,13 @@ summary: A summary.
 An Acquisition Unit is a server or virtual machine that you configure to collect data from devices in the data center using modules called Data Collectors. You must install at least one Acquisition Unit in order to begin collecting data. 
 
 
-This procedure describe how to configure Acquisition units and describes 
+This procedure describes how to configure Acquisition units and describes additional steps required when your environment uses a proxy. 
 
-* You can also click on *Admin > Data Collectors > Acquisition Unit + Acquisition Unit* 
+
  
 
 
-image:AddAcqDialog.png[Add Acquisition Unit dialog]
+
 
 
 
@@ -51,8 +51,12 @@ For environments that use a proxy, you must set the proxy environment variables 
 +
 The system displays the _Add Acquisition Unit_ dialog.
 
-The command contains a key unique to your environment that is good for 24 hours and for a single Acquisition Unit only. The command must be executed within 24 hours and can only be executed on a single server.
+image:AddAcqDialog.png[Add Acquisition Unit dialog]
 
+. Click *LINUX*
++ A command is displayed
+
+The command contains a key unique to your environment that is good for 24 hours and for a single Acquisition Unit only. 
 * Verify that the server or VM hosting the Acquisition Unit meets the minimum system requirements. 
 * Verify that the server is running a supported version of Linux.
 . Click *Linux*.  
