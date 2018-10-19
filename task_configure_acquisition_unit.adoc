@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: task_configure_acquisition_unit.html
-keywords: acquisition, Authorization Unit, keyword3, keyword4, keyword5
+keywords: acquisition, Acquisition Unit, AU, Acquisition
 summary: A summary.
 ---
 
@@ -18,48 +18,71 @@ summary: A summary.
 [.lead]
 An Acquisition Unit is a server or virtual machine that you configure to collect data from devices in the data center using modules called Data Collectors. You must install at least one Acquisition Unit in order to begin collecting data. 
 
-You can add an Acquisition Unit from  either of these places:
+You can add a LINUX Acquisition Unit using the following steps:
 
-* If you do not have at least one data collector configured, go to *Admin > Data Collectors* and choose one from the choices displayed.
+* If you do not have at least one data collector configured, go to *Admin > Data Collectors > Acquisition Units* and choose one from the choices displayed.
 
-* You can also click on *Admin > Data Collectors* and select the _Acquisition Units_ page. Click on the *+Acquisition Unit* button.
+* You can also click on *Admin > Data Collectors > Acquisition Unit + Acquisition Unit* 
+ * and select the _Acquisition Units_ page. 
 +
 In both cases, the *Add Acquisition Unit* dialog is displayed.
 
 image:AddAcqDialog.png[Add Acquisition Unit dialog]
 
-You can choose to install the Acquisition Unit on either a Linux or Windows system. You can click the _Versions Supported_ information button for details on supported operating systems. The instructions presented vary depending on whether you are installing on Linux or Windows. 
 
 The steps below must be run on the Acquisition Unit server or VM.
 
+== Setting proxy environment variables
+
+For environments that use a proxy, you must set the proxy environment variables before you install the Acquisition Unit. The instructions for configuring the proxy are provided on the _Add Acquisition Unit_  dialog. 
+
+
+. Click + in Have a Proxy Server?
+. Copy the commands to a text editor and set your proxy variables as needed.
+. Run the edited command in a terminal.
+. Install the Acquisition Unit software.
+
 == Installing a Linux Acquisition Unit
 
-.Steps for Linux Acquisition Unit - No Proxy
-. Log in to your Cloud Insights environment. You must log in as an Administrator or Account Owner.
-. Open the *Add Acquisition Unit* dialog by either of the methods above.
-. Choose *Linux*.  
-. Verify that your server or VM meets the minimum requirements shown. You can view more detailed Acquisition Unit requirements link:concept_acquisition_unit_requirements.html[here].
-. Verify your server or VM is running one of the supported operating system versions.
+.Before you begin
+
+* If your system is using a proxy, you must set the proxy environment variables before the acquisition unit is installed. For more information, see <<Setting proxy environment variables>>. 
+
+.Steps for Linux Acquisition Unit Installation 
+
+. Log in as Administrator or Account Owner to your Cloud Insights environment. 
+. Click *Admin > Data Collectors > Acquisition Units > +Acquisition Unit* 
++
+The system displays the _Add Acquisition Unit_ dialog.
+
+* Verify that the server or VM hosting the Acquisition Unit meets the minimum requirements. 
+* Verify that the server is running a supported version of Linux.
+. Click *Linux*.  
+
 . Copy the Installation Instructions command displayed in the dialog into a terminal window on the server or VM. The command contains a key unique to your environment that is good for 24 hours and for a single Acquisition Unit only.
 +
 You can click on the _Copy to Clipboard_ icon to easily copy the command from the dialog.
 
-.Steps for Linux Acquisition Unit - With Proxy
-. If you use a proxy, you must set your proxy environment variables before executing the steps above. Click on the *+* next to "Have a Proxy Server?" to expand the proxy instructions.
-. Copy the proxy command shown in the dialog into a terminal on the server or VM. _Before executing the command_, make sure each variable is set to the proper value for your environment.
-+
-You can click on the _Copy to Clipboard_ icon to easily copy the command from the dialog.
-. When your variables are correct, execute the proxy command.
-. _In the same terminal window_, execute the Acquisition Unit installation steps above.
 
-== Installing a Windows Acquisition Unit
 
-.Steps for Windows Acquisition Unit - No Proxy
-. Log in to your Cloud Insights environment. You must log in as an Administrator or Account Owner.
-. Open the *Add Acquisition Unit* dialog by either of the methods above.
-. Choose *Windows*.  
-. Verify that your server or VM meets the minimum requirements shown. You can view more detailed Acquisition Unit requirements link:concept_acquisition_unit_requirements.html[here].
-. Verify your server or VM is running one of the supported operating system versions.
 
-. REMAINING STEPS TBD
+//== Installing a Windows Acquisition Unit
 
+//.Before you begin
+
+//* If your system is using a proxy, you must set the proxy environment variables before the acquisition unit is installed. For more information, see <<Setting proxy environment variables>>. 
+
+//.Steps for Windows Acquisition Unit 
+
+//. Log in as Administrator or Account Owner to your Cloud Insights environment. 
+// . Open the *Add Acquisition Unit* dialog by either of the methods above.
+//. Choose *Windows*.  
+//. Verify that your server or VM meets the minimum requirements shown. You can view more detailed Acquisition Unit requirements link:concept_acquisition_unit_requirements.html[here].
+//. Verify your server or VM is running one of the supported operating system versions.
+
+//. REMAINING STEPS TBD
+
+.After you finish
+
+* Click *Admin > Data Collectors > Acquisition units* to check the status of Acquisition Units. 
+* You can access the Acquisition Unit logs at /var/netapp/oci/acq/acq.log
