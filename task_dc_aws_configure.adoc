@@ -1,12 +1,12 @@
 ---
 sidebar: sidebar
 permalink: task_dc_aws_configure.html
-keywords: data collector, AWS EC2, 
-summary: Configuring AWS EC2 data collector.
+keywords: data collector, EC2, 
+summary: Configuring Amazon EC2 data collector.
+
+= Configuring the Amazon EC2 data collector
+
 ---
-
-= Amazon AWS EC2 data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -18,17 +18,17 @@ summary: Configuring AWS EC2 data collector.
 
 [.lead]
 
-Cloud Insights uses the Amazon AWS EC2 data collector to collect inventory and performance data. 
+Cloud Insights uses the Amazon EC2 data collector to acquire inventory and performance data from EC2 instances. 
 
 
 .Before you begin
 
-In order to collect data from Amazon AWS EC2 devices, you must have the following information: 
+In order to collect data from Amazon EC2 devices, you must have the following information: 
 
 * You must have the IAM Access Key ID 
-* You must have the Secret Access Key for your Amazon AWS EC2 cloud account
+* You must have the Secret Access Key for your Amazon EC2 cloud account
 
-Access keys consist of an access key ID (for example, AKIAIOSFODNN7EXAMPLE) and a secret access key (for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY). You use access keys to sign programmatic requests that you make to AWS if you use the AWS SDKs, REST, or Query API operations. 
+Access keys consist of an access key ID (for example, AKIAIOSFODNN7EXAMPLE) and a secret access key (for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY). You use access keys to sign programmatic requests that you make to EC@ if you use the Amanzon EC2 SDKs, REST, or Query API operations. 
 
 These keys are provided with your contract from Amazon.   
 
@@ -58,11 +58,11 @@ Enter data into the data collector fields according to the table below:
 |Performance Poll Interval (sec)|The default is 1800
 |===
 
-== Mapping AWS tags to Cloud Insights annotations
+== Mapping Amazon tags to Cloud Insights annotations
 
-The AWS EC2 data collector includes an option that allows you to populate Cloud Insights annotations with tags configured on AWS. The annotations must be named exactly as the AWS tags. Cloud Insights will always populate same-named text-type annotations, and will make a "best attempt" to populate annotations of other types (number, boolean, etc). If your annotation is of a different type and the data collector fails to populate it, it may be necessary to remove the annotation and re-create it as a text type.
+The Amazon EC2 data collector includes an option that allows you to populate Cloud Insights annotations with tags configured on EC2. The annotations must be named exactly as the EC2 tags. Cloud Insights will always populate same-named text-type annotations, and will make a "best attempt" to populate annotations of other types (number, boolean, etc). If your annotation is of a different type and the data collector fails to populate it, it may be necessary to remove the annotation and re-create it as a text type.
 
-Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if you create an annotation named "OWNER" in Cloud Insights, and tags named "OWNER", "Owner", and "owner" in AWS, all of the AWS variations of "owner" will map to Cloud Insight's "OWNER" annotation. 
+Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if you create an annotation named "OWNER" in Cloud Insights, and tags named "OWNER", "Owner", and "owner" in EC2, all of the EC2 variations of "owner" will map to Cloud Insight's "OWNER" annotation. 
 
 .Related Information
 
