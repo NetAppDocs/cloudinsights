@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: task_dc_emc_scaleio_configure.html
+keywords: data collector, scaleIO, EMC, DELL
+summary: Configuring DELL EMC ScaleIO data collector.
+---
+
+= DELL EMC ScaleIO data collector
+
+[.lead]
+
+The ScaleIO data collector collects inventory information from ScaleIO storage. For configuration, this data collector requires the ScaleIO gateway address and an admin user name and password.
+
+== Terminology 
+
+Cloud Insights acquires the following inventory information from the Celerra data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Celerra Network Server/Celerra Storage Pool|Storage Pool
+|File System|Internal Volume
+|Data Mover|Controller
+|File System mounted on a data mover|File Share
+|CIFS and NFS Exports|Share
+|Disk Volume|Backend LUN
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|ScaleIO|IP address or fully-qualified domain name of the ScaleIO
+|User Name|Admin user name used to log in to the ScaleIO device
+|Password|Password used to log in to the ScaleIO device
+|===
+
+== Advanced configuration
+
+Click the Inventory check box to enable inventory collection.
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|HTTPS port|443
+|Inventory poll interval (min)|The default is 60. 
+|Connection Timeout (sec)|The default is 60 seconds. 
+|===
