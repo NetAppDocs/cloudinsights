@@ -5,15 +5,7 @@ keywords: data collector, Celerra, EMC, DELL
 summary: Configuring DELL EMC Celerra data collector.
 ---
 
-= Configuring the Dell EMC Celerra data collector
-
-:toc: macro
-:hardbreaks:
-:toclevels: 1
-:nofooter:
-:icons: font
-:linkattrs:
-:imagesdir: ./media/
+= DELL EMC Celerra data collector
 
 [.lead]
 
@@ -61,6 +53,6 @@ You need the following to configure this data collector:
 |Field|Description 
 |Inventory Poll Interval (minutes)|Interval between inventory polls. The default is 20 minutes. 
 |SSH Process Wait Timeout (sec)|SSH process timeout. The default is 600 seconds. 
-|Number of Retries|Number of inventory retry attempts
+|Number of Retries|Number of inventory retry attempts. The default is 2.
 |SSH Banner Wait Timeout (sec)|SSH banner wait timeout. The default is 20 seconds. 
 |===
