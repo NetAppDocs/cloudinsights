@@ -42,17 +42,17 @@ The following are required to configure this data colledtor:
 
 * For inventory, read-only user name and password to the InServ Server
 * For performance, read-write user name and password to the InServ Server
-* Validated access by using telnet to port 22 
+
 
 == Configuration
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Cluster IP|IP address or fully-qualified domain name of the InServ cluster
+|Storage IP address|Storage IP address or fully-qualified domain name of the InServ cluster
 |User Name|User name for the InServ Server
 |Password|Password used for the InServ Server
-|SMI-S Host IP|IP address of the SMI-S Provider Host
+|SMI-S Host IP address|IP address of the SMI-S Provider Host
 |SMI-S User Name|User name for the SMI-S Provider Host
 |SMI-S Password|Password used for the SMI-S Provider Host
 |===
@@ -63,14 +63,14 @@ The following are required to configure this data colledtor:
 |===
 |Field|Description
 |Inventory Poll Interval (min)|Interval between inventory polls. The default is 40 minutes. 
-|Exclude Devices|Comma-separated list of device IPs to exclude
+|Excluded Devices|Comma-separated list of device IPs to exclude
 |SSH Process Wait Timeout (sec)|SSH process timeout. The default is 60 seconds. 
 |Number of SSH Retries|Number of SSH retry attempts
 |SSH Banner Wait Timeout (sec)|SSH banner wait timeout.  The default is 20 seconds. 
 |SMI-S Port|Port used by SMI-S Provider Host
 |Protocol|Protocol used to connect to the SMI-S provider
 |SMI-S Password|Password used for the SMI-S Provider Host
-|SMI-S namespace|SMI-S namespace
+|SMI-S namespace|SMI-S namespace. The default path is root/PG_InterOp. 
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds.
 |Number of SMI-S Connection Retries|Number of SMI-S connection retry attempts
 |===
