@@ -23,8 +23,6 @@ toc::[]
 All dashboard widgets can be positioned and sized according to your needs for each particular dashboard.
 
 ////
-•	*Variables*
-Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting each widget to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
 +
 Multiple queries and/or expressions
 Each time series widget (line, spline, area, or stacked area charts) can have up to five queries and/or expressions to determine what data to display, allowing you to compare different sets of data on a single chart. For example, you can have a line chart showing IOPS for both Storage and VM's, or a single chart comparing Throughput and Latency for all Storage Pools.
@@ -369,4 +367,84 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 
 . Click *Save* to save the chart to your dashboard.
 
+== *Variables*
 
+Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting each widget to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
+
+.Before you begin
+The example below requires the *City* annotation (also called City attribute) to be set on multiple storage assets. For best results, set different cities on different storages. See the link:https://docs.netapp.com/us-en/cloudinsights/task_defining_annotations.html[Annotations] topics for more information on using annotations.
+
+.About this task
+Variables provide a quick and simple way of filtering the data shown in some or all of the widgets on a custom dashboard. The following steps will guide you to creating widgets that use variables, and show you how to use them on your dashboard.
+
+.Steps
+. Click on *Dashboards > +New Dashboard*.
+. Before adding widgets, we want to define the variables we will use to filter the dashboard data. Click on the *Add Variable* button.
++
+The list of attributes is displayed.
+. Let's say we want to set the dashboard to filter based on City. Select the _City_ attribute from the list.
++
+The $city variable field is created and added to the dashboard.
+. Next, we must tell our widgets to use this variable. The simplest way to illustrate this is to add a table widget showing the _City_ column. Click on the *Add Widget* button and select the _Table_ widget.
+. First, add the _City_ column to the table by selecting it from the "gear" button.
++
+City is a list-type attribute, so it contains a list of previously-defined choices. You may also choose text, boolean, or date-type attributes.
+. Next, click the *Filter by +* button and choose _City_.
+. Click _Any_ to view the possible filter choices for City. Notice that the list now includes "*$city*" at the top, in addition to any previously-available choices. Select _$city_ to use this dashboard variable.
++
+The _$city_ choice only appears here if it was defined previously on the main dashboard page. If the variable was not previously defined, only the existing choices for the filter will be shown. Only variables that are applicable to the selected attribute type will be displayed in the drop-down for that filter.
+. *Save* the widget.
+. On the dashboard page, click on _Any_ next to the _$city_ variable, and select the city or cities you want to see.
++
+Your table widget updates to show only the cities you selected. You can change the values in the _$city_ variable at will, and all widgets on your dashboard that are set to use the $city variable will refresh automatically to show only data for the values you selected.
+
+Be sure to *Save* your dashboard when you have it configured as you want it.
+
+=== More on dashboard variables
+Dashboard variables come in several types, can be used across different fields, and must follow rules for naming. These concepts are explained here.
+
+==== Variable types
+
+A variable can be one the following types:
+
+* *Text*: Alphanumeric string. This is the default variable type.
+* *Numerical*: a number or range of numbers.
+* *Boolean*: Use for fields with values of True/False, Yes/No, 0/1, etc. For the boolean variable, the choices are Yes, No, None, Any.
+* *Date*: A date or range of dates.
+
+==== "Generic" variables
+
+You can set a generic or universal variable by clicking the *Variable* button and selecting one of the types listed above. These types are always shown at the top of the drop-down list. The variable is given a default name, for example "$var1", and is not tied to a specific annotation or attribute.
+
+Configuring a generic variable allows you to use that variable in widgets to filter for any field of that type. For example, if you have a table widget showing Name, Alias, and Vendor (which are all text-type attributes), and "$var1" is a text-type variable, you can set filters for each of those fields in the widget to use the $var1 variable. You can set other widgets to use $var1 for those or any text fields.
+
+On your dashboard page, setting $var1 to a value (for example "NetApp") will filter all of those fields in all widgets that are set to use that variable. In this way, you can update multiple widgets at once to highlight dashboard data you choose at will.
+
+Because generic variables can be used for any field of that type, you can change the name of a generic variable without changing its functionality.
+
+Note: All variables are treated as "generic" variables, even those you create for a specific attribute, because all configured variables of a type are shown when you set a filter for any attributes or annotations of that type. However, best practice is to create a generic variable when you will use it to filter for a value across multiple fields, as in the Name/Alias/Vendor example above.
+
+==== Variable naming
+
+Variables names:
+
+* Must always be prefixed with a "$". This is added automatically when you configure a variable.
+* Cannot contain any special characters; only the letters a-z and the digits 0-9 are allowed.
+* Cannot be longer than 20 characters, including the "$" symbol.
+* Are not case-sensitive: $CityName and $cityname are the same variable.
+* Cannot be the same as an existing variable name.
+* Cannot be only the "$" symbol.
+
+==== Widgets that use variables
+
+Variables can be used with the following widgets:
+
+* Area Chart
+* Bar Chart
+* Box Plot Chart
+* Line Chart
+* Scatter Plot Chart
+* Single Value Widget
+* Spline Chart
+* Stacked Area Chart
+* Table Widget
