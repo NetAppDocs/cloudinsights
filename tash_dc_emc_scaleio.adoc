@@ -13,17 +13,12 @@ The ScaleIO data collector collects inventory information from ScaleIO storage. 
 
 == Terminology 
 
-Cloud Insights acquires the following inventory information from the Celerra data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the ScaleIO data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Vendor/Model Term|Cloud Insights Term 
-|Celerra Network Server/Celerra Storage Pool|Storage Pool
-|File System|Internal Volume
-|Data Mover|Controller
-|File System mounted on a data mover|File Share
-|CIFS and NFS Exports|Share
-|Disk Volume|Backend LUN
+|x|x
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collector. 
@@ -47,5 +42,5 @@ Click the Inventory check box to enable inventory collection.
 |Field|Description 
 |HTTPS port|443
 |Inventory poll interval (min)|The default is 60. 
-|Connection Timeout (sec)|The default is 60 seconds. 
+|Connection Timeout (sec)|The default is 60. 
 |===
