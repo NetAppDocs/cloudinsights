@@ -367,7 +367,8 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 
 . Click *Save* to save the chart to your dashboard.
 
-=== *Variables*
+== *Variables*
+
 Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting each widget to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
 
 .Before you begin
@@ -399,18 +400,19 @@ Your table widget updates to show only the cities you selected. You can change t
 
 Be sure to *Save* your dashboard when you have it configured as you want it.
 
-==== More on dashboard variables
+=== More on dashboard variables
 Dashboard variables come in several types, can be used across different fields, and must follow rules for naming. These concepts are explained here.
 
-===== Variable types
+==== Variable types
 
 A variable can be one the following types:
+
 * *Text*: Alphanumeric string. This is the default variable type.
 * *Numerical*: a number or range of numbers.
 * *Boolean*: Use for fields with values of True/False, Yes/No, 0/1, etc. For the boolean variable, the choices are Yes, No, None, Any.
 * *Date*: A date or range of dates.
 
-===== "Generic" variables
+==== "Generic" variables
 
 You can set a generic or universal variable by clicking the *Variable* button and selecting one of the types listed above. These types are always shown at the top of the drop-down list. The variable is given a default name, for example "$var1", and is not tied to a specific annotation or attribute.
 
@@ -422,8 +424,10 @@ Because generic variables can be used for any field of that type, you can change
 
 Note: All variables are treated as "generic" variables, even those you create for a specific attribute, because all configured variables of a type are shown when you set a filter for any attributes or annotations of that type. However, best practice is to create a generic variable when you will use it to filter for a value across multiple fields, as in the Name/Alias/Vendor example above.
 
-===== Variable naming
+==== Variable naming
+
 Variables names:
+
 * Must always be prefixed with a "$". This is added automatically when you configure a variable.
 * Cannot contain any special characters; only the letters a-z and the digits 0-9 are allowed.
 * Cannot be longer than 20 characters, including the "$" symbol.
@@ -431,7 +435,8 @@ Variables names:
 * Cannot be the same as an existing variable name.
 * Cannot be only the "$" symbol.
 
-===== Widgets that use variables
+==== Widgets that use variables
+
 Variables can be used with the following widgets:
 
 * Area Chart
