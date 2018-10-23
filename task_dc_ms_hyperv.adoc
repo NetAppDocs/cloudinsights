@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: task_dc_ms_hypv_configure.html
+keywords: data collector, Microsoft, Hyper-V
+summary: Configuring Microsoft Hyper-V data collector.
+---
+
+= Microsoft Hyper-V data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+For configuration, the Microsoft Hyper-V (WMI) data collector requires the IP address or the resolvable DNS name for the physical host (hypervisor).
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the Microsoft Hyper-V (WMI). For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Virtual Hard Disk|Virtual Disk
+|Host|Host
+|Virtual Machine|Virtual Machine
+|Cluster Shared Volumes (CSV), Partition Volume|Data Store
+|Internet SCSI Device, Multi Path SCSI LUN|LUN
+|Fiber Channel Port|Port
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collectior. 
+
+== Requirements
+
+The following are required to configure this data collector:
+
+* Administrative-level user account
+* Windows Management Instrumentation (WMI) command, which is the default that is installed by Windows.
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Physical Host IP Address|The IP address or fully-qualified domain name for the physical host (hypervisor)
+|User Name|Administrator user name for the hypervisor
+|Password|Password for the hypervisor 
+|NT Domain|The DNS name used by the nodes in the cluster
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min)|The default is 20 minutes.
+|Connection Timeout (ms)|The default is 60000 ms. 
+|===
