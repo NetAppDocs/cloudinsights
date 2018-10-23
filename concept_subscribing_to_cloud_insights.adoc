@@ -79,7 +79,7 @@ The Subscription status page displays the following:
 * Contract term (12 or 36 months), including expiration date
 * Managed Unit current usage, including breakdown counts for hosts and raw storage capacity
 
-NOTE: Storage capacity Managed Unit count is rounded up to the nearest Managed Unit.
+NOTE: The Raw Capacity Managed Unit count reflects a sum of the total raw capacity in the environment and is rounded up to the nearest Managed Unit. 
 
 === What Happens if I Exceed My Subscribed Usage?
 
@@ -100,7 +100,7 @@ Click on the *View Data Collectors* button to expand the list of installed Data 
 
 image:Subscription_Data_Collectors.png[Data Collectors]
 
-The Data Collectors section shows the Data Collectors installed in your environment and the count of Managed Units for each.
+The Data Collectors section shows the Data Collectors installed in your environment and the count of Managed Units for each. 
 
 NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the status section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The Status section reflects your actual Managed Unit count for your subscription.
 
