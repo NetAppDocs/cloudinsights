@@ -17,7 +17,7 @@ summary: Configuring Infinidat InfiniBox data collector.
 
 [.lead]
 
-The Infinidat InfiniBox (HTTP) data collector is used to collect performance and inventory information from the Infinidat InfiniBox storage system.
+The Infinidat InfiniBox (HTTP) data collector is used to collect inventory  information from the Infinidat InfiniBox storage system.
 
 == Terminology
 
@@ -26,12 +26,11 @@ Cloud Insights acquires the following inventory information from the Infinidat I
 [cols=2*, options="header", cols"50,50"]
 |===
 |Vendor/Model Term|Cloud Insights Term 
-|Storage Pool|Storage Ppool
+|Storage Pool|Storage Pool
 |Node|Controller
 |Filesystem|Internal Volume
 |Filesystem|File Share
 |Filesystem Exports|Share
-|Disk Volume|Backend LUN
 |===
 
 == Configuration
