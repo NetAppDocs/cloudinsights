@@ -100,7 +100,11 @@ entries:
       - title: Lenovo
         url: /task_dc_lenovo_configure.html
       - title: Microsoft
-        url: /task_dc_azure_configure.html
+        entries:
+          - title: Azure
+            url: /task_dc_azure_configure.html
+          - title: Hyper-V
+            url: /task_dc_ms_hypv_configure.html
       - title: NetApp
         entries:
           - title: Clusted Data ONTAP
