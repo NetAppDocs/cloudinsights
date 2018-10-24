@@ -5,7 +5,7 @@ keywords: data collector, cisco, FC, cisco FC
 summary: Configuring Cisco FC Switch data collector.
 ---
 
-= Cisco FC Switch Firmware 2.0+ (SNMP) data collector
+= Cisco MDS Fabric Switches data collector
 
 :toc: macro
 :hardbreaks:
@@ -18,7 +18,7 @@ summary: Configuring Cisco FC Switch data collector.
 
 [.lead] 
 
-Cloud Insights uses the Cisco FC Switch Firmware 2.0+ (SNMP) data collector to discover inventory for Cisco MDS Fibre Channel switches as well as a variety of Cisco Nexus FCoE switches on which the FC service is enabled. 
+Cloud Insights uses the Cisco MDS Fabric Switches data collector to discover inventory for Cisco MDS Fabric Switches as well as a variety of Cisco Nexus FCoE switches on which the FC service is enabled. 
 
 Additionally, you can discover many models of Cisco devices running in NPV mode with this data collector. 
 
@@ -45,7 +45,6 @@ Note: These are common terminology mappings only and might not represent every c
 * An IP address of one switch in the fabric or individual switches 
 * Chassis discovery, to enable fabric discovery 
 * If using SNMP V2, read-only community string
-* Access validation using the snmpwalk utility to the switch (see <install_path>\bin\)
 
 == Configuration 
 
@@ -53,7 +52,7 @@ Note: These are common terminology mappings only and might not represent every c
 |===
 |Field|Description
 |Cisco Switch IP|IP address or fully-qualified domain name of the switch 
-|SNMP Version|SNMP version v2 or later is required for performance acquisition
+|SNMP Version|Select V1, V2, or V3. V2 or later is required for performance acquisition.
 |SNMP Community String|SNMP read-only community string used to access the switch (not applicable for SNMP v3)
 |User Name|User name for the switch (SNMP v3 only)
 |Password|Password used for the switch (SNMPv3 only)
@@ -67,17 +66,18 @@ Note: These are common terminology mappings only and might not represent every c
 |Inventory Poll Interval (min)|Interval between inventory polls (default 40 minutes) 
 |SNMP Auth Protocol|SNMP authentication protocol (SNMPv3 only) 
 |SNMP Privacy Protocol|SNMP privacy protocol (SNMPv3 only)
+|SNMP Privacy Password|SNMP Privacy Password
 |SNMP Retries|Number of SNMP retry attempts
 |SNMP Timeout (ms)|SNMP timeout (default 5000 ms)
 |Enable Trapping|Select to enable trapping. If you enable trapping, you must also activate SNMP notifications. 
 |Minimum Time Between Traps (sec)|Minimum time between acquisition attempts triggered by traps (default 10 seconds)
 |Discover All Fabric Switches|Select to discover all switches in the fabric
-|Exclude Devices|Comma-separated list of device IPs to exclude from polling 
-|Include Devices|Comma-separated list of device IPs to include in polling
+|Excluded Devices|Comma-separated list of device IPs to exclude from polling 
+|Included Devices|Comma-separated list of device IPs to include in polling
 |Check Device Type|Select to accept only those devices that explicitly advertise themselves as Cisco devices
-|Primary Alias Type|Provide a first preference for resolution of the alias. Choose from the following: 
+|First Alias Type|Provide a first preference for resolution of the alias. Choose from the following: 
 
-*Device Alias*
+*Device Alais*
 This is a user-friendly name for a port WWN (pWWN) that can be used in all configuration commands, as required. All switches in the Cisco MDS 9000 Family support Distributed Device Alias Services (device aliases). 
 
 *None*
@@ -88,8 +88,8 @@ A description to help identify the port in a list of ports.
 
 *Zone Alias (all)*
 A user-friendly name for a port that can be used only for the active configuration. This is the default. 
-|Secondary Alias Type|Provide a second preference for resolution of the alias
-|Tertiary Alias Type|Provide a third preference for resolution of the alias
+|Second Alias Type|Provide a second preference for resolution of the alias
+|Third Alias Type|Provide a third preference for resolution of the alias
 |Enable SANTap Proxy Mode Support|Select if your Cisco switch is using SANTap in proxy mode. If you are using EMC RecoverPoint, then you are probably using SANTap.
 |Performance Poll Interval (sec)|Interval between performance polls (default 300 seconds) 
 |===
