@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_dc_hds_hicomm_configure.html
-keywords: data collector, HDS HiCommand, HDS 
+keywords: data collector, Hitachi Vantara Command Suite, Hitachi 
 summary: Configuring HDS HiCommand Device Manager data collector.
 ---
 
-= HDS HiCommand Device Manager data collector
+= Hitachi Vantara Command Suite data collector
 
 :toc: macro
 :hardbreaks:
@@ -19,11 +19,11 @@ summary: Configuring HDS HiCommand Device Manager data collector.
 
 [.lead] 
 
-The HDS HiCommand and HiCommand Lite data collectors support the HiCommand Device Manager server. Cloud Insights communicates with the HiCommand Device Manager server using the standard HiCommand API.
+The Hitachi Vantara Command Suite data collector supports the HiCommand Device Manager server. Cloud Insights communicates with the HiCommand Device Manager server using the standard HiCommand API.
 
 == Terminology 
 
-Cloud Insights acquires the following inventory information from the HDS HiCommand and HiCommand Lite data sources. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the Hitachi Vantara Command Suite data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -32,7 +32,7 @@ Cloud Insights acquires the following inventory information from the HDS HiComma
 |Journal Pool|Disk Group
 |Storage Array|Storage
 |Port Controller|Storage Node
-|Array Group, DP Pool|Storage Pool
+|Array Group, HDS Pool|Storage Pool
 |Logical Unit, LDEV|Volume
 |===
 
@@ -44,9 +44,6 @@ You must have the following in order to collect inventory data:
 
 * IP address of the HiCommand Device Manager server
 * Read-only user name and password for the HiCommand Device Manager software and peer privileges
-* Validate access: 
-** Log in to the HiCommand Device Manager software using peer user name and password.
-** Verify access to the HiCommand Device Manager API: _telnet <HiCommand Device_Manager_server_ip> 2001_ 
 
 == Performance requirements 
 
