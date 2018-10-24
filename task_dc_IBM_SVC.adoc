@@ -5,7 +5,7 @@ keywords: IBM, SVC,SAN
 summary: Configuring IBM SAN Volume Controller data collector.
 ---
 
-= IBM San Volume Controller data collector
+= Configuring the IBM San Volume Controller data collector
 
 :toc: macro
 :hardbreaks:
@@ -19,13 +19,13 @@ summary: Configuring IBM SAN Volume Controller data collector.
 
 [.lead]
 
-The IBM San Volume Controller (SVC) data collector acquires inventory and performance data using SSH, supporting a variety of devices that run the SVC operating system.
+The IBM SAN Volume Controller (SVC) data collector collects inventory and performance data using SSH, supporting a variety of devices that run the SVC operating system.
 
-The list of supported devices includes models such as the SVC, the v7000, the v5000, and the v3700. Refer to the Insight data collector  support matrix for supported models and firmware versions.
+The list of supported devices includes models such as the SVC, the v7000, the v5000, and the v3700. Refer to the Cloud Insights support matrix for supported models and firmware versions.
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the IBM SVC data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the IBM SVC data source. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data source, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -34,8 +34,8 @@ Cloud Insights acquires the following inventory information from the IBM SVC dat
 |Cluster|Storage
 |Node|Storage Node
 |Mdisk Group|Storage Pool
-Vdisk|Volume
-|Mdisk|	Backend LUN
+|Vdisk|Volume
+|Mdisk|Backend LUNs and paths
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collector. 
@@ -48,7 +48,7 @@ Note: These are common terminology mappings only and might not represent every c
 If you are reusing an existing keypair, you must convert them from Putty format to OpenSSH format.
 
 * Public key installed on the SVC cluster
-* Private key needs to be identified in the data collector
+* Private key needs to be identified in the Acquisition Unit.
 * Access validation: Open ssh session to the SVC cluster using the private key
 
 Note: No third-party software needs to be installed. 
@@ -70,7 +70,7 @@ Note: Alternatively, enable data collection using the SVC  management user inter
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Cluster/s IP |IP address or fully-qualified domain name of the SVC storage 
+|Cluster's IP |IP address or fully-qualified domain name of the SVC storage 
 |'Password' or 'OpenSSH Key File'|Credential type used to connect to the device via SSH
 |Inventory User Name|User name for the SVC CLI
 |Inventory Password|Password for the SVC CLI
