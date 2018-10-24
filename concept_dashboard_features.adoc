@@ -431,7 +431,7 @@ Variables names:
 * Must always be prefixed with a "$". This is added automatically when you configure a variable.
 * Cannot contain any special characters; only the letters a-z and the digits 0-9 are allowed.
 * Cannot be longer than 20 characters, including the "$" symbol.
-* Are not case-sensitive: $CityName and $cityname are the same variable.
+* Are case-sensitive: $CityName and $cityname are different variables.
 * Cannot be the same as an existing variable name.
 * Cannot be only the "$" symbol.
 
