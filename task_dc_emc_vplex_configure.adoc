@@ -4,6 +4,7 @@ permalink: task_dc_emc_vplex_configure.html
 keywords: data collector, VPLEX, EMC 
 summary: Configuring VPLEX data collector.
 ---
+
 = Configuring the EMC VPLEX data collector
 
 :toc: macro
@@ -17,7 +18,7 @@ summary: Configuring VPLEX data collector.
 
 [.lead] 
 
-For configuration, this data collector requires an IP address of the VPLEX server and an administrative level domain account.
+This data collector acquires inventory and performance data from EMC VPLEX storage systems. For  configuration, the data collector requires an IP address of the VPLEX server and an administrative level domain account.
 
 == Terminology
 
@@ -56,7 +57,6 @@ Note: These are common terminology mappings only and might not represent every c
 |Performance Remote IP Address|Performance Remote IP address of the VPLEX Management Console
 |Performance Remote User Name|Performance Remote user name of VPLEX Management Console
 |Performance Remote Password|Performance Remote Password of VPLEX Management Console
-[cols=2*, options="header", cols"50,50"]
 |===
 
 
