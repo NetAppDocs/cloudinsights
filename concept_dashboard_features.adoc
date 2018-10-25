@@ -367,9 +367,10 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 
 . Click *Save* to save the chart to your dashboard.
 
+
 == Variables
 
-Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting each widget to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
+Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting one or more widgets to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
 
 .Before you begin
 The example below requires the *City* annotation (also called City attribute) to be set on multiple storage assets. For best results, set different cities on different storages. See the link:https://docs.netapp.com/us-en/cloudinsights/task_defining_annotations.html[Annotations] topics for more information on using annotations.
@@ -379,12 +380,13 @@ Variables provide a quick and simple way of filtering the data shown in some or 
 
 .Steps
 . Click on *Dashboards > +New Dashboard*.
-. Before adding widgets, we want to define the variables we will use to filter the dashboard data. Click on the *Add Variable* button.
+. Before adding widgets, you must define the variables we will use to filter the dashboard data. Click on the *Add Variable* button.
 +
 The list of attributes is displayed.
 . Let's say we want to set the dashboard to filter based on City. Select the _City_ attribute from the list.
 +
-The $city variable field is created and added to the dashboard.
+The $city variable field is created and added to the dashboard. Variables used by the dashboard are displayed above any widgets.
+
 . Next, we must tell our widgets to use this variable. The simplest way to illustrate this is to add a table widget showing the _City_ column. Click on the *Add Widget* button and select the _Table_ widget.
 . First, add the _City_ column to the table by selecting it from the "gear" button.
 +
@@ -414,7 +416,7 @@ A variable can be one the following types:
 
 ==== "Generic" variables
 
-You can set a generic or universal variable by clicking the *Variable* button and selecting one of the types listed above. These types are always shown at the top of the drop-down list. The variable is given a default name, for example "$var1", and is not tied to a specific annotation or attribute.
+You can set a generic or universal variable by clicking the *Add Variable* button and selecting one of the types listed above. These types are always shown at the top of the drop-down list. The variable is given a default name, for example "$var1", and is not tied to a specific annotation or attribute.
 
 Configuring a generic variable allows you to use that variable in widgets to filter for any field of that type. For example, if you have a table widget showing Name, Alias, and Vendor (which are all text-type attributes), and "$var1" is a text-type variable, you can set filters for each of those fields in the widget to use the $var1 variable. You can set other widgets to use $var1 for those or any text fields.
 
