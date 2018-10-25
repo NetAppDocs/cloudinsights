@@ -18,22 +18,22 @@ keywords: AU, acquisition unit, trioubleshooting
 [.lead]
 Here you will find suggestions for troubleshooting problems with Acquisition Units on a Linux server. 
 
-Install:
-
 |===
-|Problem: | Check this: 
+|*Problem:* | *Try this:* 
 |Server Requirements not met | Ensure that your Acquisition Unit server or VM meets minimum link:concept_acquisition_unit_requirements.html[requirements]
 |Network Requirements not met |Ensure that your Acquisition Unit server/VM can access your Cloud Insights environment (<environment-name>.c01.cloudinsights.netapp.com) through SSL connection over port 443 
 |Proxy Server not configured properly | Follow the link:task_configure_acquisition_unit.html#Setting_proxy_environment_variables[instructions] under “Have a Proxy Server?” in the Add an Acquisition Unit box. 
 |Linux: missing library / file not found| Ensure that your Linux Acquisition Unit server/VM has all necessary libraries. For example, you must have the _unzip_ library installed on the server. To install the _unzip_ library, run the command _*sudo yum install unzip*_ before running the Acquisition Unit install script
-|Permissions installing| Login as sudo user
+|Permission issues| Be sure you are logged in as a user with _sudo_ permissions
 
-Acquisition Not Running Issues:
-•	Gather the acq.log from /opt/netapp/cloudinsights/acq/logs (Linux)
-•	Restart the Acquisition Service: sudo cloudinsights-service.sh restart acquisition
+|Acquisition Not Running:
+| Gather the acq.log from /opt/netapp/cloudinsights/acq/logs (Linux)
+Restart the Acquisition Service: sudo cloudinsights-service.sh restart acquisition
+|Data Collection Issues:
+|Get an Error Report from the Data Collector landing page, go to the drop down next to the “Edit” icon and select “Error Report”
+|===
 
-Data Collection Issues:
-•	Get an Error Report from the Data Collector landing page, go to the drop down next to the “Edit” icon and select “Error Report”
-
+////
 Moving Data Collectors to Different Acquisition Units:
 •	What is the proper process for a customer to do this?  They have to retype their passwords or go into the security admin tool to transfer the keys?
+////
