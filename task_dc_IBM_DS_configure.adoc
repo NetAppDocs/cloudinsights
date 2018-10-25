@@ -19,7 +19,7 @@ summary: Configuring IBM_DS data collector.
 
 The IBM DS (CLI) data collector supports inventory and performance data acquisition for DS6xxx and DS8xxx devices.
 
-DS3xxx, DS4xxx, and DS5xxx devices are supported by the link:<https://docs.netapp.com/us-en/cloudinsights/task_dc_na_eseries.html>[NetApp E-Series data collector]. You should refer to the Cloud Insights support matrix for supported models and firmware versions.
+DS3xxx, DS4xxx, and DS5xxx devices are supported by the <task_dc_na_eseries.html>[NetApp E-Series data collector]. You should refer to the Cloud Insights support matrix for supported models and firmware versions.
 
 == Terminology
 
@@ -33,6 +33,7 @@ Cloud Insights acquires the following inventory information from the IBM DS data
 |Storage Image|Storage
 |Extent Pool|Storage Node
 |Fixed Block Volume|Volume
+|Host FC Initiator (Mapped)|Volume Mask
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collecor. 
