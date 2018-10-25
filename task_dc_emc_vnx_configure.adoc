@@ -17,14 +17,28 @@ summary: Configuring VNX data collector.
 
 [.lead] 
 
-The EMC VNX (SSH) data collector gathers performance and inventory data from the VNX storage system.
+For configuration, the EMC VNX (SSH) data collector requires the IP address of the Control Station and a read-only username and password.
 
-== Requirements
+== Terminology
 
-The following are require to use the data collector:
-* IP address of the Control Station 
-* The username and password to a read-only account
-* Access validation: Verify SSH access using PuTTY
+Cloud Insights acquires the following inventory information from the EMC VNX data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Disk|Disk
+|Disk Folder|Disk Group
+|File system|Internal Volume
+|Storage|Storage
+|Storage Processor|Storage Node
+|Storage Pool, RAID Group|Storage Pool
+|LUN|Volume
+|Data Mover|Controller
+|File System mounted on a data mover|File Share
+|CIFS and NFS Exports|Share
+|Disk Volume|Backend LUN
+|===
+
 
 == Configuration
 
@@ -36,15 +50,22 @@ The following are require to use the data collector:
 |Password |Password for the VNX Control Station
 |===
 
+== Requirements
+
+You need the following to configure the  VNX (SSH) data collector: 
+
+* An IP address of the Control Station
+* Read-only username and password.
+
 == Advanced configiration
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Inventory Poll Interval (min)|The default is 40 minutes. 
-|Command Retry Attempts|Number of command retry attempts
-|Password |Password for the VNX Control Station
-|External Process Timeout for Inventory (sec)| VNX external process timeout for inventory. The default is 1800.
-|Performance Poll Interval (sec).	Interval between performance polls.|The default is 300 seconds.
-|External Process Timeout for Performance (sec).|The default is 1800 seconds. 
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 40 minutes. 
+|VNX SSH Process Wait Timeout|VNX SSH process timeout (default 600 seconds)
+|Celerra Command Retry Attempts|Number of Celerra command retry attempts
+|CLARiiON External Process Timeout for Inventory (sec)| CLARiiON external process timeout for inventory. The default is 1800 seconds.)
+|Performance Poll Interval (sec).|Interval between performance polls. The default is 300 seconds.
+|CLARiiON External Process Timeout for Performance (sec).|CLARiiON external process timeout for performance.The default is 1800 seconds. 
 |===
