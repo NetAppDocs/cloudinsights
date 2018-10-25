@@ -28,9 +28,9 @@ Cloud Insights acquires the following inventory information from the Data Domain
 |Vendor/Model Term|Cloud Insights Term 
 |Disk|Disk
 |Array|Storage
-|Port|Port
+|FC Port|Port
 |File System|Internal Volume
-|Quota|Quot
+|Quota|Quota
 |NFS and CIFS share|FileShare
 |===
 
@@ -38,10 +38,9 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-You need the following information to configure this data collector:
+You need the following information to configgure this data collector:
 
 * Read-only user name and password to the Data Domain storage 
-* Validated access by using _telnet_ to port 22
 
 == Configuration
 
