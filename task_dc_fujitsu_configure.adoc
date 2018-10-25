@@ -29,7 +29,8 @@ Cloud Insights acquires the following inventory information from the Fujitsu Ete
 |Disk|Disk
 |Storage|Storage
 |Thin Pool, Flexible Tier Pool, Raid Group|Storage Pool
-|Standard Volume, Snap Data Volume (SDV), Snap Data Pool Volume (SDPV), Thin Provisioning Volume (TPV)|Volume
+|Standard Volume, Snap Data Volume (SDV), Snap Data Pool Volume (SDPV), Thin Provisioning Volume (TPV), Flexible Tier Volume (FTV), Wide Striping Volume (WSV)|Volume
+|Channel adapter|Controller
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collectior. 
@@ -40,7 +41,6 @@ The following are required to configure this data collector:
 
 * An IP address of the Eternus storage, which cannot be comma delimited 
 * Administration-level user name and password 
-* Access validation by using SSH to the configured IP and logging in 
 * Ensure that the page scroll is disabled
 
 == Configuration

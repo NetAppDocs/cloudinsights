@@ -367,9 +367,10 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 
 . Click *Save* to save the chart to your dashboard.
 
+
 == Variables
 
-Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting each widget to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
+Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting one or more widgets to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
 
 .Before you begin
 The example below requires the *City* annotation (also called City attribute) to be set on multiple storage assets. For best results, set different cities on different storages. See the link:https://docs.netapp.com/us-en/cloudinsights/task_defining_annotations.html[Annotations] topics for more information on using annotations.
@@ -379,12 +380,13 @@ Variables provide a quick and simple way of filtering the data shown in some or 
 
 .Steps
 . Click on *Dashboards > +New Dashboard*.
-. Before adding widgets, we want to define the variables we will use to filter the dashboard data. Click on the *Add Variable* button.
+. Before adding widgets, you must define the variables we will use to filter the dashboard data. Click on the *Add Variable* button.
 +
 The list of attributes is displayed.
 . Let's say we want to set the dashboard to filter based on City. Select the _City_ attribute from the list.
 +
-The $city variable field is created and added to the dashboard.
+The $city variable field is created and added to the dashboard. Variables used by the dashboard are displayed above any widgets.
+
 . Next, we must tell our widgets to use this variable. The simplest way to illustrate this is to add a table widget showing the _City_ column. Click on the *Add Widget* button and select the _Table_ widget.
 . First, add the _City_ column to the table by selecting it from the "gear" button.
 +
@@ -414,7 +416,7 @@ A variable can be one the following types:
 
 ==== "Generic" variables
 
-You can set a generic or universal variable by clicking the *Variable* button and selecting one of the types listed above. These types are always shown at the top of the drop-down list. The variable is given a default name, for example "$var1", and is not tied to a specific annotation or attribute.
+You can set a generic or universal variable by clicking the *Add Variable* button and selecting one of the types listed above. These types are always shown at the top of the drop-down list. The variable is given a default name, for example "$var1", and is not tied to a specific annotation or attribute.
 
 Configuring a generic variable allows you to use that variable in widgets to filter for any field of that type. For example, if you have a table widget showing Name, Alias, and Vendor (which are all text-type attributes), and "$var1" is a text-type variable, you can set filters for each of those fields in the widget to use the $var1 variable. You can set other widgets to use $var1 for those or any text fields.
 
@@ -431,7 +433,7 @@ Variables names:
 * Must always be prefixed with a "$". This is added automatically when you configure a variable.
 * Cannot contain any special characters; only the letters a-z and the digits 0-9 are allowed.
 * Cannot be longer than 20 characters, including the "$" symbol.
-* Are not case-sensitive: $CityName and $cityname are the same variable.
+* Are case-sensitive: $CityName and $cityname are different variables.
 * Cannot be the same as an existing variable name.
 * Cannot be only the "$" symbol.
 
@@ -448,3 +450,41 @@ Variables can be used with the following widgets:
 * Spline Chart
 * Stacked Area Chart
 * Table Widget
+* Pie Chart
+
+=== Understanding "$this" variables
+
+Special variables on an asset's landing page allow you to easily showcase additional information that is directly related to the current asset. These special variables have names beginning with '$this".
+
+. About this task
+To use the "$this" variables in widgets on your asset's landing page, follow the steps below. For this example, we will add a *table widget*.
+
+NOTE: "$this" variables are only valid for an asset's landing page. They are not available for other dashboards. The available "$this" variables varies according to asset type.
+
+.Steps
+. Navigate to the landing page for an asset of your choosing. For this example, let's choose a Virtual Machine (VM) asset page. Query or search for a VM and click on the link to go to that VM's asset page.
++
+The asset page for the VM opens.
+. Click *Edit* to switch to edit mode, and click the *Add Widget* button. Choose the *Table* widget.
++
+The Table widget opens for editing. By default, all storages are shown in the table.
+. We want to show all virtual machines. Click on the asset selector and change _Storage_ to _Virtual Machine_.
++
+All virtual machines are now shown in the table.
+. Click on the gear button and add the _Hypervisor Name_ column to the table.
++
+The hypervisor name is shown for each VM in the table.
+. We only care about the hypervisor that hosts the current VM. Click on the *Filter by* field's *+* button and select _Hypervisor Name_.
+. Click on _Any_ and select the *$this.host.name* variable. Press Enter or click off the field to apply the filter.
++
+The table now shows all the VM's hosted by the current VM's hypervisor. 
+. Click *Save* to save the widget. 
+. Click *Save* to save the asset page.
+
+.Result
+
+The table that you created for this VM asset page will be displayed for any VM asset page you display. The use of the _$this.host.name_ variable in the widget means that only the VM's owned by the _current assets's_ hypervisor will be displayed in the table.
+
+You can also apply link:concept_in_context_filters.html[*in-context filters*] to asset page widgets to accomplish a similar result.
+
+

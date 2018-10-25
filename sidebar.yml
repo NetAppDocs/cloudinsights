@@ -19,8 +19,8 @@ entries:
             url: /concept_determining_data_collector_acq_status.html
           - title: Manage Configured Data Collectors
             url: /task_view_configured_data_collectors.html
-          - title: Research data collector errors
-            url: /task_research_failed_collector.html
+#          - title: Research data collector errors
+#            url: /task_research_failed_collector.html
       - title: User Accounts and Roles
         url: /concept_user_roles.html
       - title: Switching to Other Cloud Central Products
@@ -50,7 +50,7 @@ entries:
           - title: Data Domain
             url: /task_dc_emc_datadomain_configure.html
           - title: Dell Compellent
-            url: /task_dc_Dell_Compellent.adoc
+            url: /task_dc_Dell_Compellent.html
           - title: Isilon
             url: /task_dc_emc_isilon_configure.html
           - title: RecoverPoint
@@ -74,7 +74,7 @@ entries:
           - title: HPE 3PAR
             url: /task_dc_hp_3par.html
           - title: HP Command View AE
-            url: /task_dc_hp_cmdview_configure.html
+            url: /task_dc_HP_Enterprise_Command_View_configure.html
       - title: Hitachi Data Systems
         entries:
           - title: HDS HiCommand Device Manager HP Command View AE
@@ -87,6 +87,8 @@ entries:
         url: /task_dc_huawei_configure.html
       - title: IBM
         entries:
+          - title: IBM CS
+            url: /task_dc_ibm_cs_configure.html
           - title: IBM DS4000
             url: /task_dc_ibm_ds4000.html
           - title: IBM DS6xxx and DS8xxx
@@ -207,6 +209,14 @@ entries:
 #         url: /task_h2_minrisk_thin.html
 #      - title: Ensuring IO density data describes only internal data volumes
 #        url: /task_io_density_report_no_root.html
+  - title: Troubleshooting
+    entries:
+      - title: Troubleshooting Overview
+        url: /concept_troubleshooting_overview.html
+      - title: Troubleshooting Linux Acquisition Unit Problems
+        url: /task_troubleshooting_linux_acquisition_unit_problems.html
+      - title: Researching Data Collector Errors
+        url: /task_research_failed_collector.html
   - title: Reference & Support
     entries:
       - title: Requesting Support
