@@ -27,6 +27,7 @@ Install:
 |Proxy Server not configured properly | Follow the link:task_configure_acquisition_unit.html#Setting_proxy_environment_variables[instructions] under “Have a Proxy Server?” in the Add an Acquisition Unit box. 
 |Linux: missing library / file not found| Ensure that your Linux Acquisition Unit server/VM has all necessary libraries. For example, you must have the _unzip_ library installed on the server. To install the _unzip_ library, run the command _*sudo yum install unzip*_ before running the Acquisition Unit install script
 |Permissions installing| Login as sudo user
+|===
 
 Acquisition Not Running Issues:
 •	Gather the acq.log from /opt/netapp/cloudinsights/acq/logs (Linux)
