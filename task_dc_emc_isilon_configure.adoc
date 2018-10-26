@@ -29,7 +29,7 @@ Cloud Insights acquires the following inventory information from the Isilon data
 |Drive|Disk
 |Cluster|Storage
 |Node|Storage Node
-|File Systemp|Internal Volume
+|File System|Internal Volume
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collector. 
@@ -39,7 +39,6 @@ Note: These are common terminology mappings only and might not represent every c
 You need the following information to configure this data collector:
 
 * Administrator permissions to the Isilon storage
-* Validated access by using _telnet_ to port 22
 
 == Configuration
 
@@ -59,5 +58,5 @@ You need the following information to configure this data collector:
 |Inventory Poll Interval (min)|	Interval between inventory polls. The default is 20. 
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300.
 |SSH Process Wait Timeout|SSH process timeout period. The default is 60.
-|SSH Port|SSH service port 
+|SSH Port|SSH service port. The default is 22. 
 |===

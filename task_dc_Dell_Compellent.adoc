@@ -20,35 +20,6 @@ summary: Configuring Dell Compellemt data collector.
 
 Cloud Insights uses this data collector to discover inventory and performance information for the Dell Compellent Storage Center storage arrays. This data collector uses the Dell Java API.
 
-== Terminology
-
-Cloud Insights acquires the following inventory information from the Dell Compellent data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
-
-[cols=2*, options="header", cols"50,50"]
-|===
-|Field|Description
-|Disk|Disk
-|Disk Folder|Disk Group---
-sidebar: sidebar
-permalink: task_dc_Dell_Compellent.html
-keywords: data collector, Dell, compellent 
-summary: Configuring Dell Compellemt data collector.
----
-
-= Dell Compellemt Storage Center data collector
-
-:toc: macro
-:hardbreaks:
-:toclevels: 2
-:nofooter:
-:icons: font
-:linkattrs:
-:imagesdir: ./media/
-
-
-[.lead] 
-
-Cloud Insights uses this data collector to discover inventory and performance information for the Dell Compellent Storage Center storage arrays. This data collector uses the Dell Java API.
 
 == Terminology
 
@@ -59,12 +30,6 @@ Cloud Insights acquires the following inventory information from the Dell Compel
 |Field|Description
 |Disk|Disk
 |Disk Folder|Disk Group
-|Storage Center|Storage
-|Controller|Storage Node
-|Storage Type|Storage Pool
-|Volume|Volume
-|Fiber Channel I/O Port|Port
-|===
 |Storage Center|Storage
 |Controller|Storage Node
 |Storage Type|Storage Pool
@@ -95,5 +60,5 @@ Note: These are common terminology mappings only and might not represent every c
 |===
 |Field|Description
 |Poll Interval (min)|Interval between inventory polls. The  default is 60 minutes. 
-|Performance Poll Interval (up to 3600 seconds)|Interval between performance polls. The default is 300 seconds. 
+|Performance Poll Interval (up to 3600 seconds)|Interval between performance polls. The default is 3600 seconds. 
 |===
