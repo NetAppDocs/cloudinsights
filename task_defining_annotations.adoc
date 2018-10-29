@@ -45,24 +45,12 @@ The following table lists the default annotation types. You can edit any of thes
 |Description
 |Type
 |Alias|User-friendly name for a resource|Text
-|Birthday|Date device was/will be brought online|Date
-|Building|Physical location of assets|List
-|City|Municipality location of assets|List
-|Compute Resource Group|Group assignment used by the Host and VM Filesystems data collector|List
-|Continent|Geographic location of assets|List
-|Country|National location of assets|List
+|Compute Resource Group|Group assignment used by host/VM collection datasource|List
 |Data Center|Physical location|List
-|Direct Attached|Indicates (Yes or No) if a storage resource is connected directly to hosts|Boolean
-|End of Life |Date when a device will be taken offline|Date
-|Fabric Alias|User-friendly name for a fabric|Text
-|Floor|Location of a device on a floor of a building (hosts, storage arrays, switches, and tapes)|List
-|Hot|Devices under heavy use on a regular basis or at the threshold of capacity|Boolean
-|Note|Comments associated with a resource|Test
-|Rack|Rack in which the resource resides|List
-|SAN|Logical partition of the network for hosts, storage arrays, tapes, switches, and applications.|List
+|Hot|Over-utilized devices|Boolean
+|Note|Comments associated with a resource|Text
 |Service Level|A set of supported service levels that you can assign to resources. Provides an ordered options list for internal volumes, qtree, and volumes. Edit service levels to set performance policies for different levels.|List
-|State/Province|State or province where the resource is located.|List
-|Sunset|Threshold set after which no new allocations can be made to that device. Useful for planned migrations and other pending network changes.|Date
+|Sunset|No new allocations past this date.|Date
 |Switch Level|Predefined options for setting up categories for switches. Typically, these designations remain for the life of the device, although you can edit them. Available only for switches.|List
 |Tier|Can be used to define different levels of service within your environment. Tiers can define the type of level, such as speed needed (for example, gold or silver). This feature is available only on internal volumes, qtrees, storage arrays, storage pools, and volumes.|List
 |Violation Severity|Rank (for example, major) of a violation (for example, missing host ports or missing redundancy), in a hierarchy of highest to lowest importance.|List
