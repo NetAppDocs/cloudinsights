@@ -66,34 +66,6 @@ For environments that use a proxy, you must set the proxy environment variables 
 . Run the edited command in a terminal.
 . Install the Acquisition Unit software.
 
-== Adding a Linux Acquisition Unit
-
-.Before you begin
-
-* If your system is using a proxy, you must set the proxy environment variables before the acquisition unit is installed. For more information, see <<Setting proxy environment variables>>. 
-
-.Steps for Linux Acquisition Unit Installation 
-
-. Log in as Administrator or Account Owner to your Cloud Insights environment. 
-. Click *Admin > Data Collectors > Acquisition Units > +Acquisition Unit* 
-+
-The system displays the _Add Acquisition Unit_ dialog.
-
-image:AddAcqDialog.png[Add Acquisition Unit dialog]
-
-. Click *LINUX*
-
-* Verify that the server or VM hosting the Acquisition Unit meets the minimum system requirements. 
-* Verify that the server is running a supported version of Linux.
-
-. Copy the Installation command displayed in the dialog into a terminal window on the server or VM that will host the Acquisition unit.  
-+
-You can click on the _Copy to Clipboard_ icon to easily copy the command from the dialog.
-
-. Execute the command in the Bash shell. 
-
-The command contains a key unique to your environment that is good for 24 hours and for a single Acquisition Unit only. 
-
 .After you finish
 
 * Click *Admin > Data Collectors > Acquisition units* to check the status of Acquisition Units. 
