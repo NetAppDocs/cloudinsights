@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: concept_faq.html
+keywords:  FAQ, Frequently asked questions, performance, troubleshooting
+summary: A summary.
+---
+
+= Performance Troubleshooting
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+This FAQ answers common questions about Cloud Insights performance troubleshooting.
+
+== How can I create a list of all the greedy resources in my environment?
+
+Cloud Insights's correlation analytics help with identification of greedy and degraded resources for a “specified” service path. The correlation feature's generated analysis is performed in real time while viewing each object. The analysis provided greatly reduces the time necessary for troubleshooting performance issues and identifying root cause. Exploring generated violations of defined performance policies are one point of entry to discovering greedy or degraded resources. Cloud Insights's anomaly detection capabilities may also be used as a more proactive approach to identifying an application infrastructure's greedy or degraded resources before they become service disruptions. Both widgets and dashboards using the latest query capability help to filter, sort and visualize resources with higher than expected IOPS (greedy), Utilization or Latency.
+
+== Can Cloud Insights give one place to diagnose performance problems?
+
+Yes. Performance Troubleshooting in Cloud Insights can be approached in multiple ways. Cloud Insights has a number of alerting methods possible. SNMP, Syslog and emailed Alerts are used commonly. Emailed Alerts allow users to quickly click and launch to the impacted resources within Cloud Insights. A global search window allows administrators to simply type in a resource name to begin analyzing the situation.
+
+Cloud Insights's Violation Dashboard allows users to prioritize efforts based on the number of events, the duration and the time of day. An example of various alerting types would be Latency, IOPS, Utilization, Severity, business unit or even assCloud Insightsated application.
+
+Cloud Insights's correlation analytics helps administrators compare objects assCloud Insightsated with the impacted resource and determines their impact to IOPS, Latency, Utilization, CPU and BB credits.
+
+Cloud Insights's latest advances in anomaly detection and ethernet monitoring provide a more aggressive and proactive approach to detecting deviating resource behaviors before they become service disruptions or outages.
+
+Cloud Insights's Query technology and Widget dashboards allows for pinpoint specifics in organized views that targets problem areas within the Datacenter.
+
+== Can Cloud Insights help with my 7-mode to cDOT migrations?
+
+Yes, Cloud Insights provides an invaluable understanding for existing workload demand and post migration validations. Cloud Insights’s role in modernizing today’s datacenter allows for change management simulations, pre-migration optimization planning and defining the right tier of service. Cloud Insights effortlessly collects and correlates the business impact across thousands of NFS shares and Fibre channel paths in multi-vendor environments with just a few clicks. From migration to tech refreshes, Cloud Insights is providing a pathway to reliable, right-sized migrations and mitigating unplanned service disruptions.
+
+
+== How “real time” is Cloud Insights performance monitoring?
+
+Cloud Insights is considered near-real-time for both on-premises and hybrid cloud data center management. While polling of data sources can be configured to occur more often, most users don’t get significant analytical benefit from having a performance collection interval for most devices of less than 5 minutes. More frequent collection can put unnecessary burden on the objects under management and the analyses performed. Of course, there may be circumstances where a more granular collection is required, and fortunately Cloud Insights allows complete flexibility including configurable device inventory and performance polling intervals to suit your specific data center environment needs.
+
+== Why is my "Total" different from my "Read" plus "Write"?
+
+In some instances, you may notice that the Total for a counter is not equal to the sum of Reads plus Writes for that counter. There are a few instances where this could happen.
+
+IOPS: In addition to reads and writes, a storage array or other asset will process internal operations unrelated to the workload data flow. These are sometimes referred to as "system", "metadata", or simply "other" operations, and can be attributed to internal processes such as snapshots, deduplication, or space reallocation. In these cases, to find the amount of system operations for a given asset, subtract the sum of Read and Write IOPS from the Total IOPS. The sum of Read plus Write IOPS is the total IOPS directly related to your data flow.
+
+Latency: The total response time (latency) for an operation can sometimes be reported as less than the write response time, because the total response time is a time-weighted average. I/O workloads will often consist of more read than write operations, with the writes typically observing larger latencies. For example, if a workload performed 10 read operations with an average latency of 5ms, and 5 write operations with an average latency of 10ms, the total weighted average latency will be calculated as the number of reads times the average read latency, plus the number of writes times the average write latency, divided by the total number of I/O operations, e.g. (10 * 5 + 5 * 10) / (10 + 5) = 6.33ms.

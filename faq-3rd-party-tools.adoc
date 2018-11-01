@@ -1,0 +1,51 @@
+---
+sidebar: sidebar
+permalink: concept_faq.html
+keywords:  FAQ, 3rd party tools, BMC
+summary: A summary.
+---
+
+= Integrating Insight With Other Tools
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+This FAQ answers common questions about integration of Cloud Insights  with other tools.
+
+Can Cloud Insights  integrate with other tools and what integration points are available?
+
+Yes, Cloud Insights  is an extensible (wide open) solution allowing for Integrations with 3rd party orchestration, business management, change control and ticketing systems as well as custom CMDB integrations. Cloud Insights ’s fully published RESTful API and open MySQL database primary points of integration allow simple and effective movement of data and allow users to gain seamless access to their data.
+What is the Insight BMC Connector?
+
+The Cloud Insights  Connector for BMC integrates the Cloud Insights  Data Warehouse (DWH) and the BMC Atrium Configuration Management Database (CMDB). The Insight Connector for BMC maps physical and logical stored data about network storage systems (for example, storage units, host storage services, VS Storage Service, and VM Storage Service) and their relationships with devices (hosts, storage switches, and tapes) and imports them into the BMC CMDB as configuration items and relationships. You can find more information about the Cloud Insights  Connector for BMC on the NetApp Support Site.
+Does Cloud Insights  work with SCOM or VROPs?
+
+Yes, Cloud Insights  complements a number of business management solutions and is considered an authoritative source for Storage, Compute, Hypervisor and Fabric information for the data center. Cloud Insights  customers leverage Cloud Insights ’s RESTful API and Extensible MySQL database to enhance numerous applications like BMC’s Remedy, ServiceNow, SCOM, Vrops, and Splunk, to name a few. Cloud Insights  extends integrations by importing information from almost any source of record and/or by sending the captured environmental metrics to popular 3rd party Monitoring, Ticketing, CMDB billing & orchestration systems.
+Can Cloud Insights  work with cloud services I already use or am considering using?
+
+Yes, Cloud Insights ’s management of both traditional on-premise and agile hybrid cloud environments provides visibility when determining the best, most cost-effective platform for your business service’s needs. Cloud Insights  can be leveraged for pre- and post-migration analysis, helping identify workloads that are suitable for the cloud. Historical capacity trending, performance and cost are all necessary in order to select the appropriate cloud service. Service Design Workshops leveraging Cloud Insights ’s I/O density and other metrics can also help you answer questions like whether you optimized your environment and if the cloud makes sense. Cloud Insights  continues to expand its coverage with support for NetApp Private Storage, Cloud ONTAP, Amazon S3 and Openstack KVM. Cloud Insights  continues to play a vital role in NetApp’s Cloud management campaign, especially in areas where visibility into Capacity Planning, Performance, Service Quality and Chargeback are important.
+Can Cloud Insights  open incidents in our incident management solution?
+
+Yes, Cloud Insights  violation events can be triggered and sent via SNMP as a trap or via Syslog to a server, and some by RESTful API. Details contained within the provided events can be interpreted by many 3rd party incident management and ticketing solutions.
+Can you allocate resources to a business unit or departments?
+
+Yes, Cloud Insights  incorporates a method of metadata tagging called Annotations. Business Units, Lines of Business, Tenants, and Projects can be assigned to data center resources for richer business context around assets, capacity planning, troubleshooting and reporting.
+Does Cloud Insights  work with Work Flow Automator (WFA)?
+
+Cloud Insights 's integration capabilities with 3rd party CMDB, Billing and Orchestration technologies are a key value to its success, and WFA is no exception. NetApp’s Professional Services have performed a number of successful Integrations that exist today with WFA workflows and Cloud Insights  . There is a WFA connector available for download for Cloud Insights  on the NetApp Automation Storefront.
+How long are the Cloud Insights  retention times for performance data?
+
+The Cloud Insights  server holds 90 days of near-real-time performance as well as the current (point in time) inventory (Logical and Physical constructs).
+
+Cloud Insights  performance polling intervals are user-configurable. Storage performance is typically configured for every 5 minutes for most vendors. Each day, performance/inventory data is sent to the Cloud Insights  data warehouse (DWH) for long term historical and forecast reporting. DWH transforms this data into summarized data (Hourly, Daily, Monthly rollup data). Our ability to track “changes” e.g. monitored environmental history for Storage/Compute /fabric configuration/mappings, has no defined limit today.
+
+Data Warehouse retains historical data based on the data marts and granularity of the data.
+Are there any performance planning reports?
+
+Yes, There are several reports provided with Cloud Insights  and there are many others available in our Professional Services catalog, based on use case. The Data Warehouse module also comes with a suite of Cognos report authoring tools that allow users to create their own reports. There is also a complement of community-generated reporting templates and other downloads available from the NetApp Automation Storefront.
