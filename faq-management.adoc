@@ -1,0 +1,23 @@
+---
+sidebar: sidebar
+permalink: concept_faq.html
+keywords:  FAQ, Frequently asked questions, management
+summary: A summary.
+---
+
+= Managing your environment
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+This FAQ answers common questions about managing Cloud Insights environments.
+
+== Can I give access to Cloud Insights to a specific user, while restricting the view to only certain resources (ie. SVM and related volumes, VMs, servers)?
+
+Cloud Insights provides role-based access. For example, access to Reporting is controlled through Cloud Insights's Data Warehouse reporting. Reports can be scheduled, emailed as PDF, HTML or CSV, or to a file share or even a URL requiring the user to authenticate before viewing. User-based access is granted in the form of Admins, Users and Guests. Active directory/ldap support is also available.

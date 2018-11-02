@@ -1,0 +1,35 @@
+---
+sidebar: sidebar
+permalink: concept_faq.html
+keywords:  FAQ, Frequently asked questions Data ONTAP Storage IOPS 
+summary: A summary.
+---
+
+= IOPS numbers from Data ONTAP storage systems 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+This FAQ answers common questions about how IOPS numbers are derived from Data ONTAP storage systems.
+
+== How storage IOPS are derived from Data ONTAP storage systems
+
+* Storage Array level IOPS are aggregated from the Internal Volumes IOPS
+* Storage Node level IOPS include meta-data OPS
+* Storage Pool level IOPS excludes meta-data OPS; only measures the disks
+* Internal Volume level IOPS include Read + Write OPS (operations) + Other OPS
+
+== Question - How can the Aggregate IOPS be sometimes higher than Node IOPS?
+
+Before CDOT 8.3.1 Node IOPS are made up of protocol IOPS. In CDOT 8.3.1. and later, they are made up of system constituents metrics. They include 'only' requests for data, request that come through the front door, but do not include backend tasks like snapmirrors, dedupe, and so on. On the other hand these tasks do produce disk IOPS, therefore Aggregate IOPS. Hence you might see Aggregate IOPS higher than the Node IOPS.
+
+== Question - How is Meta data or Other OPS calculated
+
+Other OPS = Total - (Read + Write)

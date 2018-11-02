@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: concept_faq.html
+keywords:  FAQ, Frequently asked questions, general questions, questions
+summary: A summary.
+---
+
+= Scale and Ease of Use
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+This FAQ answers common questions about Cloud Insights scaling and ease of use.
+
+== How does Cloud Insights scale?
+
+Cloud Insights is a leader with respect to interoperability and the number of assets it can acquire with a minimal footprint. At its core, Cloud Insights requires 2 virtual or physical servers: one for the Operational Server which discovers all the data center assets, and one for its consolidated Data Warehouse for long term historical reporting. Cloud Insights's enterprise coverage supports hundreds of arrays, tens of thousands of Virtual Machines, 100,000 Fibre Channel paths and 10,000+ fibre channel ports, all in a single server instance.
+
+== How many people are needed to manage the Cloud Insights application?
+
+Cloud Insights can be managed by a single person. But Cloud Insights has capabilities that can used by multiple personas within the business environment, each with different roles, each with different reporting, troubleshooting or analytics needs. All efforts are made to minimize tool maintenance--from health and notification menus displaying configuration problems, to automatic discovery of Physical Hosts attached to a fabric. Flexible annotations bring business context to the ecosystem data for all types of users. From Storage, Fabric, and Virtualization Administrators to Capacity Planners, Business Analysts and Executives, Cloud Insights brings the sharing of information across business silos and technologies together in a single pane of glass.
+Does Cloud Insights support custom reporting?
+
+Yes. Cloud Insights provides reporting via the IBM Cognos business intelligence tool, which allows you to create your own fully-customized reports from data collected in Cloud Insights's Data Warehouse.
+
+== How easy is it to create custom reports?
+
+Cloud Insights reporting offers features for both novice and advanced users. Cloud Insights provides a number of report authoring capabilities including “drag and drop” report authoring and SQL query-based reporting for the more advanced user or professional service engagement. Cloud Insights’s built-in business Intelligence solution (IBM Cognos) avoids common mistakes such as double counting capacity. With a complement of out of the box reports, widgets, queries and dashboards there are offerings to fit anyone’s reporting requirements.
+
+Customers can also find downloadable reporting templates available from the Cloud Insights community store.
+
+==Can Cloud Insights show performance and availability with "traffic light" simplicity?
+
+Yes. Cloud Insights Data Warehouse and Reporting allow for reports with color enhancements--e.g. red/yellow/green “conditional styling” of values. Generating a colored font or background in a report can be implemented both by end users and Professional Services. Cloud Insightss widget libraries allow business specific performance metrics to be displayed in dashboards.
