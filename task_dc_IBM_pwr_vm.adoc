@@ -40,10 +40,13 @@ Note: These are common terminology mappings only and might not represent every c
 
 The following requirements must be met to configure and use this data collector:
 
-* User name and password that provide access to HMC through SSH
+* IP address of the Hardware Management Console (HMC)
+* User name and password that provide access to Hardware Management Console (HMC) through SSH
 * View permission on all management systems and logical partition security domains
 +
 The user must also have View permission on HMC configurations and the ability to collect VPD information for the HMC console security grouping. The user must also be allowed Virtual IO Server Command access under the Logical Partition security grouping. It is a best practice to start from a role of an operator and then remove all roles. Read-only users on the HMC do not have privileges to run proxied commands on AIX hosts.
+
+* Port requirement SSH-22
 
 == Configuration 
 

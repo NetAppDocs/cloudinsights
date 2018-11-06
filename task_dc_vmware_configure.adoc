@@ -7,7 +7,6 @@ summary: Configuring VMware  data collector.
 
 = Configuring the VMware VSphere data collector 
 
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -35,18 +34,21 @@ Cloud Insights acquires the following inventory information from the VMware vSph
 |LUN|LUN
 |Fibre channel port|Port
 |===
-*Note* 
- These are common terminology mappings only and might not represent every case for this data collector. 
+These are common terminology mappings only and might not represent every case for this data collector. 
 
-.Before you begin
+== Requirements
 
 The following information is required to configure this data collector:
 
-* Virtual Center IP Address
-* User Name and Password used to access the Virtual Center 
-* Read-only privileges on all objects within the Virtual Center.
-* SDK access on the Virtual Center server
-* Verify that the SDK is enabled by entering telnet <vc_ip> 443.
+* IP address of the Virtual Center server 
+* Read-only username and password in Virtual Center 
+* We require read only privileges on all objects within Virtual Center. 
+* SDK access on the Virtual Center server – normally already setup. 
+* 3rd party software installed on OnCommand Insight Server / RAU: none 
+* Port requirements: http-80 https-443 
+* Validate access: 
+** Log into Virtual Center Client using above username and password 
+** Verify SDK enabled: telnet <vc_ip> 443 
 
 == Setup and connection
 

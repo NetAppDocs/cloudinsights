@@ -26,21 +26,20 @@ For each asset type acquired by Cloud Insights, the most common terminology used
 [cols=2*, options="header", cols"50,50"]
 |===
 |Vendor/Model Term | Cloud Insights Term
-|Disk (SSD)|Disk
-|Cluster|Storage
-|Controller|Storage Node
-|Volume|Volume
-|LUN Map|Volume Map
-|Initiator,Target|Volume Mask
+|Disk|Virtual Disk
+|Host|Host
+|Virtual Machine|Virtual Machine
+|Storage Domain|Data Store
+|Logical Unit|LUN
 |===
-
+ 
 Note: These are common terminology mappings only and might not represent every case for this data collector.
 
 == Requirements
 
-* RHEV Server IP Address
-* User name
-* Password
+* IP address of the RHEV server over port 443 via REST API 
+* Read-only username and password 
+* RHEV Version 3.0+  
 
 == Configuration
 
@@ -57,8 +56,7 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|HTTPS Communication Port|443
-|Connection type|Choose HTTP or HTTPS 
-|Inventory poll interval (min)|The default is 20 minutes
-|Connection Timeout (sec)|The default is 60
+|HTTPS Communication Port|Port used for HTTPS communication to RHEV
+|Inventory poll interval (min)|The default is 20 minutes.
+|Connection Timeout (sec)|The default is 60. 
 |===
