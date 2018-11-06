@@ -42,8 +42,11 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-* An IP address of the VPLEX server
+* An IP address of the VPLEX Management Console
 * Administrative level domain account for the VPLEX server
+* Port 443 (HTTPS).  Requires outbound connectivity to TCP port 443 on the VPLEX management station. 
+* For performance, read-only username and password for ssh/scp access.
+* For performance, port 22 is required.   
 
 
 == Configuration

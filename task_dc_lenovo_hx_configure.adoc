@@ -25,6 +25,7 @@ The following information is required to configure this data collector:
 
 * A unique name for the data collector
 * The acquisition unit associated with the data collector
+* TCP Port requirement 9440
 
 == Terminology
 
@@ -56,7 +57,7 @@ Cloud Insights acquires the following inventory and performance information from
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|TCP Port|TCP Port used to connect to Lenovo HX. The  default is 9440.
+|TCP Port|TCP Port used to connect to Lenovo HX. The default is 9440.
 |Inventory Poll Interval|Interval between inventory polls. The default is 60 minutes. 
 |Connection Timeout|Connection timeout. The default is 60 seconds.
 |===
