@@ -40,7 +40,10 @@ Cloud Insights acquires inventory and performance data from the Clustered Data O
 The following are requirements to configure and use this data collector:
 
 * You must have access to an Administrator account used for read-only API calls.
-* Target IP is the cluster management LIF.
+* Username (with read-only role name to ontapi application to the default Vserver) and password to log into NetApp cluster)
+* Port requirements: 80 or 433
+* License requirements:
+** FCP license and mapped/masked volumes required for discovery 
 
 == Configuration 
 
@@ -59,5 +62,5 @@ The following are requirements to configure and use this data collector:
 |Field|Description
 |Communication Port|Port used for NetApp API
 |Inventory Poll Interval (min) |Default is 60 minutes.
-|Performance Poll Interval (sec)|Default is  900 seconds.
+|Performance Poll Interval (sec)|Default is 900 seconds.
 |===

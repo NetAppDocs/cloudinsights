@@ -5,8 +5,6 @@ keywords: IBM, XIV,SAN
 summary: Configuring IBM XIV data collector.
 ---
 
-= IBM XIV data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,15 +13,19 @@ summary: Configuring IBM XIV data collector.
 :linkattrs:
 :imagesdir: ./media/
 
+= Configuring the IBM XIV data collector
 
 [.lead]
 
-IBM XIV (CLI) data collector uses the XIV command-line interface to collect inventory data while performance collection is accomplished by making SMI-S calls to the XIV array, which runs a SMI-S provider on port 5989. 
+IBM XIV (CLI) data collector uses the XIV command-line interface to collect inventory data while performance collection is accomplished by making SMI-S calls to the XIV array, which runs a SMI-S provider on port 7778. 
 
 == Terminology
 
 [cols=2*, options="header", cols"50,50"]
 |===
+|Vendor/Model Term | Cloud Insights Term
+|Disk|Disk
+|
 |Vendor/Model Term | Cloud Insights Term
 |Disk|Disk
 |Storage System|Storage
@@ -35,11 +37,25 @@ IBM XIV (CLI) data collector uses the XIV command-line interface to collect inve
 
 The following requirements must be met to configure and use this data collector:
 
-* Port requirement: TCP port 5989
+* Port requirement: TCP port 7778
 * Read-only user name and password
 * The XIV CLI must be installed on the AU
-* Access validation: Log in to the XIV user interface from the AU
-using the user name and password.
+
+== Performance requirements 
+
+The following are requirements for performance collection:
+
+* SMI-S Agent 1.4 or higher 
+
+* SMI-S compatible CIMService running on array.  Most XIV arrays have a CIMServer installed by default. 
+
+* User login must be provided for the CIMServer.  The login must have full read access to the array configuration and properties. 
+
+* SMI-S namespace.  Default is root/ibm.  This is configurable in the CIMServer. 
+
+* Port Requirements: 5988 for HTTP, 5989 for HTTPS. 
+
+*  Refer to the following link on how to create an account for SMI-S performance collection: http://publib.boulder.ibm.com/infocenter/tivihelp/v4r1/index.jsp?topic=%2Fcom.ibm.tpc_V41.doc%2Ffqz0_t_adding_cim_agent.html
 
 == Configuration 
 
@@ -65,7 +81,7 @@ using the user name and password.
 |SMI-S Namespace|SMI-S namespace
 |Username|User name for the SMI-S Provider Host
 |Password|Password for the SMI-S Provider Host
-Performance Poll Interval (sec)|Interval between performance polls.  The default is 300 seconds.
+|Performance Poll Interval (sec)|Interval between performance polls.  The default is 300 seconds.
 |Number of SMI-S Connection Retries|Number of SMI-S connection retry attempts. 
 |===
 

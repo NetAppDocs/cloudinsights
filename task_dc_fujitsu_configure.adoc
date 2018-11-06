@@ -40,8 +40,9 @@ Note: These are common terminology mappings only and might not represent every c
 The following are required to configure this data collector:
 
 * An IP address of the Eternus storage, which cannot be comma delimited 
-* Administration-level user name and password 
-* Ensure that the page scroll is disabled
+* SSH Administration-level user name and password 
+* Port 22 
+* Ensure that the page scroll is disabled (clienv-show-more-scroll disable)
 
 == Configuration
 
