@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: task_h2_perf_policy.html
+keywords: performance policy, how to, policy 
+summary: Creating performance policy.
+---
+
+= How to use performance policies to monitor resources 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead] 
+
+You create performance policies to set thresholds that trigger alerts to notify you about issues related to resources in your network.
+
+For example, you can create a performance policy to alert you when the total capacity used in a storage pool is greater than 60 GB.
+
+== Creating a performance policy
+
+The following steps describe how to create a performance policy that alerts when a Tier 1 Datastore exceeds 600 GB of Capacity used.
+
+.Steps
+
+. Open Cloud Insights
+. Click *Manage > Performance policies*
++
+Policies are organized by object, and are evaluated in the order in which they appear in the list for each object. 
+. Click *+ Performance Policy*.
+.. Add a policy name
+.. Add the object type (Datastore)
+.. With annotation = Tier
+.. Annotation value = Tier 1
+.. Apply After a Window of = First Occurrence
+.. With Severity = Warning
+.. Email recipients can be a global list or a specific list for each policy
+.. Create the threshold = Capacity-used > 600 GB
+.. Check the box to configure the policy to stop processing after the first alert. 
+
+== Monitoring performance policy violations
+
+Performance policy violations can be viewed using the Violations Dashboard. The dashboard lists all the violations that occur in your network and enables you to easily identify issues you should address.
+
+Click *Dashboard > Violoations* to access the Violations Dashboard.
+
+You can filter violations by device, policy name, date, time, severity, and so on. 
+
+Click the Time column to  
+
+Clicking the Violation ID or the device highlighted in the Description field opens the Asset page of the device that generated the violation. 
+
+In the Asset page the violations section lists all of the violations that have occurred for the asset. In the expert view, select metrics to provide a visual display of the violations. 
+
+=== Violation notifications
+
+You can configure performance policies to send e-mail notification when policy breaches occurr. 
+
+To add recipients to the global email list, click  *Admin > Notifications*, and enter email addresses for the recipients separated by commas. Emails sent as alerts from performance policy threshold violations are sent to all recipients on the list. You can override the global list for a specific policy when you configure the policy.
+
+
+
