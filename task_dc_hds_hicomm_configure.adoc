@@ -38,12 +38,15 @@ Cloud Insights acquires the following inventory information from the Hitachi Van
 
 Note: These are common terminology mappings only and might not represent every case for this data collector. 
 
-.Before you begin
+== Inventory Requirements
 
 You must have the following in order to collect inventory data:
 
 * IP address of the HiCommand Device Manager server
 * Read-only user name and password for the HiCommand Device Manager software and peer privileges
+* Port requirements: 2001 (http) or 2443 (https)
+* Log into HiCommand Device Manager software using username and password 
+* Verify access to HiCommand Device Manager http://<HDS HiCommand Device Manager IP Address>:2001/service/StorageManager 
 
 == Performance requirements 
 
@@ -56,6 +59,7 @@ The following requirements must be met in order to collect performance data:
 ** The Export Tool version must match the microcode version of the target array.
 
 * AMS performance:
+** NetApp strongly recommends creating a dedicated service account on AMS arrays for Cloud Insights to use to retrieve performance data. Storage Navigator only allows a user account one concurrent login to the array. Having Cloud Insights use the same user account as management scripts or HiCommand may result in Cloud Insights, management scripts, or HiCommand being unable to communicate to the array due to the one concurrent user account login limit
 ** Performance Monitor must be licensed.
 ** The Storage Navigator Modular 2 (SNM2) CLI utility needs to be installed on the Cloud Insights AU. 
 
@@ -83,7 +87,7 @@ The following requirements must be met in order to collect performance data:
 * Password: Password for the storage
 |Choose Tuning Manager for Performance |Override other performance options
 |Tuning Manager Host|IP address or fully-qualified domain name of tuning manager
-|Tuning Manager Port|Port used for Tuning Manager
+|Tuning Manager Port|Port used for Tuning Manager (Default is 22015)
 |Tuning Manager Username|User name for Tuning Manager
 |Tuning Manager Password|Password for Tuning Manager
 |===

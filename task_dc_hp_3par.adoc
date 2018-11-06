@@ -38,10 +38,12 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-The following are required to configure this data colledtor: 
+The following are required to configure this data colletor: 
 
 * For inventory, read-only user name and password to the InServ Server
 * For performance, read-write user name and password to the InServ Server
+* Port requirements: 22 (inventory collection), 5988 or 5989 (performance collection) [Note: 3PAR Performance is supported for InServ OS 3.x+]
+* For performance collection confirm that SMI-S is enabled by logging into the 3PAR array via SSH.
 
 
 == Configuration
