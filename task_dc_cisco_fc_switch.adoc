@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_dc_cisco_fc_switch.html
 keywords: data collector, cisco, FC, cisco FC 
-summary: Configuring Cisco FC Switch data collector.
+summary: Configuring Cisco MDS Fablic Switch data collector.
 ---
 
 = Cisco MDS Fabric Switches data collector
@@ -45,6 +45,7 @@ Note: These are common terminology mappings only and might not represent every c
 * An IP address of one switch in the fabric or individual switches 
 * Chassis discovery, to enable fabric discovery 
 * If using SNMP V2, read-only community string
+* Port 161 is used to access the device 
 
 == Configuration 
 
