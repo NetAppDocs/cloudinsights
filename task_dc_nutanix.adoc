@@ -5,7 +5,7 @@ keywords: data collector, Nutanix, NX Series
 summary: Configuring Nutanix data collector.
 ---
 
-= Nutanix data collector
+= Nutanix NX data collector
 
 :toc: macro
 :hardbreaks:
@@ -19,7 +19,7 @@ summary: Configuring Nutanix data collector.
 
 [.lead] 
 
-Cloud Insights uses the Nutanix data collector to discover inventory and performance date for Nutanix storage systems.
+Cloud Insights uses the Nutanix data collector to discover inventory and performance data for Nutanix NX storage systems.
 
 == Terminology
 
@@ -40,6 +40,7 @@ Note: These are common terminology mappings only and might not represent every c
 
 * The external data services IP address for the cluster. 
 * Administrator user name and password
+* Port requirement: HTTPS 443
 
 == Configuration
 
@@ -56,7 +57,7 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|TCP port|TCP Port used to connect to Nutanix array. The default is  9440. 
+|TCP port|TCP Port used to connect to Nutanix array. The default is 9440. 
 |Inventory poll interval (min)|Interval between inventory polls. The default is 60 minutes.
 |Connection timeout (sec)|Connection timeout The default is 60 seconds. 
 |Performance poll interval(sec)|Interval between performance polls. The default is 300 seconds.
