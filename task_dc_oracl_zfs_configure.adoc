@@ -23,7 +23,7 @@ Cloud Insights uses the Oracle ZFS Storage Appliance data collector to gather in
 
 == Terminology
 
-Cloud Insights acquires inventory information with the Oracle ZFS data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires inventory information with the ceph data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -31,18 +31,20 @@ Cloud Insights acquires inventory information with the Oracle ZFS data collector
 |Disk (SSD)|Disk
 |Cluster|Storage
 |Controller|Storage Node
-|Volume|Volume
+|LUN|Volume
 |LUN Map|Volume Map
 |Initiator,Target|Volume Mask
+|Share|Internal Volume
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data collector.
+Note: These are common terminology mappings only and might not represent every case for this data source.
 
 == Requirements
 
 * Host names for the ZFS Controller-1 and the ZFS Controller-2 
 * Administrator user name and password
-
+* Port requirement: 215 HTTP/HTTPS
+ 
 == Configuration
 
 [cols=2*, options="header", cols"50,50"]
@@ -59,10 +61,10 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|TCP port|215
+|TCP port|The default is 215
 |Connection type|HTTPS 
-|Inventory poll interval|The default is 60 seconds
+|Inventory poll interval|The default is port 60 seconds
 |Connection Timeout (sec)|The default is 60 seconds
-|Performance Poll Interval (sec)|The default is 300 seconds. 
+|Performance Poll Interval (sec)|The default is 300. 
 
 |===
