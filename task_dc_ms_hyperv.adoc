@@ -34,14 +34,17 @@ Cloud Insights acquires the following inventory information from the Microsoft H
 |Fiber Channel Port|Port
 |===
 
-Note: These are common terminology mappings only and might not represent every case for this data collectior. 
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
 
 == Requirements
 
 The following are required to configure this data collector:
 
+* IP address of Clustering group node
+* Local Administrator user & password on the hypervisor 
 * Administrative-level user account
 * Windows Management Instrumentation (WMI) command, which is the default that is installed by Windows.
+* Port requirements: Port 135 via WMI & Dynamic TCP ports assigned 1024-65535 for Windows 2003 and older and 49152-65535 for Windows 2008. 
 
 == Configuration
 

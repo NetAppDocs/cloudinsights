@@ -3,10 +3,10 @@ sidebar: sidebar
 permalink: task_dc_azure_configure.html
 keywords: data collector, azure, 
 summary: Configuring Azure compute data collector.
----
 
 = Configuring the Azure compute data collector
 
+---
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -20,13 +20,14 @@ summary: Configuring Azure compute data collector.
 
 Cloud Insights uses the Azure compute data collector to acquire inventory and performance data from Azure compute instances. 
 
-
-.Before you begin
+== Requirements
 
 You need  the following information to configure this data collector.
 
-* A unique name for the data collector
-* Acquisition unit name 
+* Port requirement: 443 HTTPS
+* Azure Management Rest IP (management.azure.com) 
+* Azure service principal client ID (user account)
+* Azure service principal authentication key (user password) 
 
 == Configuration
 
