@@ -18,11 +18,58 @@ keywords: support, knowledgebase, documentation, community, chat, videos, help, 
 [.lead]
 NetApp provides support for Cloud Insights in a variety of ways. Extensive free self-support options are available 24x7, such as knowledgebase (KB) articles or the NetApp community. Customers with a paid Cloud Insights subscription can contact our knowledgeable Support Engineers via chat, phone, or web ticket.
 
+toc::[]
+
 You can access support options in Cloud Insights by clicking on *Help > Support*. The support options available to you depend on whether you are in Trial mode or Subscription mode.
 
-== Self-support:
+image:SupportPageExample.png[Support Page]
 
-These options are available in Trial mode and are available for free 24x7:
+== Activating support entitlement and accessing support
+
+Once you have access to Cloud Insights Service shortly after subscribing in the AWS marketplace, it is strongly recommended that you activate support entitlement. Activating support entitlement enables you to access technical support over online chat, web ticketing system, and phone. The default support level is self-service until registration is completed.
+
+=== Activating support entitlement
+
+During the initial subscription process with Cloud Insights Service for AWS, your Cloud Insights instance will generate a 20-digit NetApp serial number starting with "950". This NetApp serial number represents the Cloud Insights subscription associated to your AWS account. You must register the NetApp serial number to activate support entitlement. We offer 2 options for support registration: 
+
+. User with pre-existing NetApp Support Site (NSS) SSO account (e.g. current NetApp customer)
+. New NetApp customer with no pre-existing NetApp Support Site (NSS) SSO account 
+
+==== Option 1: Steps for a user with a pre-existing NetApp Support Site (NSS) SSO account
+
+.Steps
+. Navigate to the NetApp registration website https://register.netapp.com
+. Select “already registered as NetApp customer” and select “Cloud Insights Service” as the Product Line.  Provide your serial number and AWS customer id by referring to the “Help > Support” menu within the Cloud Insight’s user interface:
++
+image:SupportPage_SN_Section.png[SN_Screen]
+
+. Complete the Existing Customer Registration form and click *Submit*.
++
+image:ExistingCustomerRegExample1.png[existing customer form]
+
+. If no errors occur, user will be directed to a “Registration Submitted Successfully” page. The email address associated with the NSS SSO username used for registration will receive an email within a couple minutes stating “your product is now eligible for support”.
+. This is a onetime registration for the AWS subscription and NetApp serial number. 
+
+==== Option 2: Steps for a new NetApp customer with no pre-existing NetApp Support Site (NSS) SSO account
+
+.Steps
+. Navigate to the NetApp registration website https://register.netapp.com
+. Select “not a registered NetApp customer” and complete the required information in example form below:
+
+image:NewCustomerRegExample.png[new customer form]
+
+. Select “Cloud Insights Service” as the Product Line.  Provide your serial number and AWS customer id by referring to the “Help > Support” menu within the Cloud Insight’s user interface:
+
+image:SupportPage_SN_Section.png[SN_Screen]
+
+. If no errors occur, user will be directed to a “Registration Submitted Successfully” page. The email address associated with the NSS SSO username used for registration will receive an email within a few hours stating “your product is now eligible for support”. 
+. As a new NetApp customer, you will also need to create a NetApp Support Site (NSS) user account for future registrations and access to support portal for technical support chat and web ticketing. This link is located at https://mysupport.netapp.com/eservice/public/now.do. You can provide your newly registered Cloud Insights serial number to expedite the process.
+. This is a one-time registration for the AWS subscription and NetApp serial number. Any new Cloud Insights subscription and serial number requires registration as well.
+
+
+== Self-Service Support:
+
+These support options are available in Trial mode and are available for free 24x7:
 
 * *link:https://kb.netapp.com[Knowledgebase]*
 +
@@ -42,7 +89,7 @@ There is also a link to provide link:mailto:ng-cloudinsights-customerfeedback@ne
 
 In addition to the self-support options above, if you have a Cloud Insights paid subscription, you can work with a NetApp Support Engineer to resolve your problem.  
 
-NOTE: You must register in order to activate support for NetApp Cloud products. To register, go to NetApp's link:https://register.netapp.com[Cloud Data Services Support Registration].
+NOTE: You must register in order to <<Activating support entitlement and accessing support,activate support>> for NetApp Cloud products. To register, go to NetApp's link:https://register.netapp.com[Cloud Data Services Support Registration].
 
 It is highly recommended that you check the box to allow a NetApp Support Engineer access to your Cloud Insights environment during your support session. This will allow the engineer to troubleshoot the problem and help you resolve it quickly. When your issue is resolved or your support session has ended, you can un-check the box. 
 
@@ -54,8 +101,14 @@ You can request support by any of the following methods. You must have an active
 
 You can also request sales support by clicking on the link:https://www.netapp.com/us/forms/sales-contact.aspx[*Contact Sales*] link.
 
-image:SupportPageExample.png[Support Page]
+Your Cloud Insights serial number is visible within the service from the *Help > Support* menu.  If you are experiencing issues accessing the service and have registered a serial number with NetApp previously, you can also view your list of Cloud Insights serial numbers from the NetApp Support Site as follows:
+
+*	Login to mysupport.netapp.com
+*	From the Products > My Products menu tab, use Product Family “SaaS Cloud Insights” to locate all your registered serial numbers:
+
+image:Support_View_SN.png[View Support SN]
 
 == Cloud Insights Data Collector Support Matrix
 
 You can view or download information and details about supported Data Collectors in the link:CloudInsightsDataCollectorSupportMatrix.pdf[*Cloud Insights Data Collector Support Matrix*, role="external"].
+

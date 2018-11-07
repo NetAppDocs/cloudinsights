@@ -39,6 +39,14 @@ Cloud Insights acquires the following inventory information from the EMC VNX dat
 |Disk Volume|Backend LUN
 |===
 
+== Requirements
+
+You need the following to configure the VNX (SSH) data collector: 
+
+* VNX IP address & Credentials to the Celerra Control Station.
+* Read-only username and password.
+* The data collector is able to run NaviCLI/NaviSecCLI commands against the backend array utilizing the DART OS NAS heads
+
 
 == Configuration
 
@@ -50,12 +58,6 @@ Cloud Insights acquires the following inventory information from the EMC VNX dat
 |Password |Password for the VNX Control Station
 |===
 
-== Requirements
-
-You need the following to configure the  VNX (SSH) data collector: 
-
-* An IP address of the Control Station
-* Read-only username and password.
 
 == Advanced configiration
 
