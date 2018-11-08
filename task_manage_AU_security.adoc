@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: task_au_security_management.html
+summary: Managing AU security
+---
+
+= Acquisition Unit Security Management
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+:keywords: OnCommand, Insight, documentation, help, onboarding, getting started
+
+[.lead]
+
+The securityadmin tool allows you to manage security options on the Acquisition Unit. Security management includes managing keys and passwords, saving and restoring security configurations you create or restoring configurations to the default settings. 
+
+.Before you begin 
+
+You must have admin privileges to perform security configuration tasks.
+
+.About this task
+
+You use the securityadmin tool to manage security: 
+/bin/xx-securityadmin.sh
+
+.Steps
+
+. Perform a remote login to the server hostying the AU.
+. Start the security admin tool in interactive mode (-i).
++
+The system requests login credentials.
+
+. Enter the user name and password for an account with "Admin" credentials.
+
+. Select AU ? Doubtful
++
+The following options are displayed
+
+
+Backup::
+Creates a backup zip file of the vault containing all passwords and keys and places the file in a location specified by the user, or in the following default location:
+Linux - /var/log/netapp/oci/backup/vault (wrong)
+
+Restore::
+Restores the zip backup of the vault that was created. Once restored, keys are reverted to values existing at the time of the backup creation. 
+
+Change Encryption Keys::
+Change the AU encryption keys used to encrypt or decrypt device passwords. 
+*Note:* When you change encryption keys, you should backup your new security configuration so that you can restore it after an upgrade or installation. 
+
+Reset to Defaults::
+Resets encryption keys to default values. Default values are those provided during installation.
+
+
+
+
+
+
+
+
+
+
