@@ -20,6 +20,7 @@ Here you will find suggestions for troubleshooting problems with Acquisition Uni
 
 |===
 |*Problem:* | *Try this:* 
+|Installation fails on SELinux|When the AU is installed on SELinux, SELinux should be either disabled or set to permissive mode. Once the installation is complete, enforcing mode can be enabled.   
 |Server Requirements not met | Ensure that your Acquisition Unit server or VM meets minimum link:concept_acquisition_unit_requirements.html[requirements]
 |Network Requirements not met |Ensure that your Acquisition Unit server/VM can access your Cloud Insights environment (<environment-name>.c01.cloudinsights.netapp.com) through SSL connection over port 443 
 |Proxy Server not configured properly | Follow the link:task_configure_acquisition_unit.html#Setting_proxy_environment_variables[instructions] under “Have a Proxy Server?” in the Add an Acquisition Unit box. 
