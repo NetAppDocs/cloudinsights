@@ -46,10 +46,12 @@ image::add_acq_linux.png[]
 
 * Click *Admin > Data Collectors > Acquisition units* to check the status of Acquisition Units. 
 * You can access the Acquisition Unit logs at /var/log/netapp/cloudinsights/acq/acq.log
-* Use the following script to control the Acquisition Unit:
-** cloudinsights-service.sh (stop, start, restart, check the status)
+* Use the following script to stop, start, restart, or check the status the Acquisition Unit:
++
+ cloudinsights-service.sh
 * Use the following script to uninstall the Acquisition Unit:
-** cloudinsights-uninstall.sh
++
+ cloudinsights-uninstall.sh
 * For troubleshooting AU installation errors, see link:<task_troubleshooting_linux_acquisition_unit_problems>.html[Troubleshooting Linux AU]
 
 == Setting proxy environment variables
