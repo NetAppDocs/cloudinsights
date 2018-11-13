@@ -20,22 +20,59 @@ After you have signed up for Cloud Insights, you must do the following in order 
 . Install at least one Acquisition Unit
 . Add data collectors
 
-If you haven't already done so, sign in at http://cloud.netapp.com and go to your Cloud Insights tenant.
+If you haven't already done so, sign in at http://cloud.netapp.com and go to your Cloud Insights environment. When you first log into your new environment, Cloud Insights will walk you through setting up your first data collector and acquisition unit. The steps will be as follows:
 
-== Setting up an Acquisition Unit to collect data.
+== Watch a Quick Video
 
-An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights.
+When you log in to your environment for the first time, you will be rpesented with a short video explaining the steps you will go through to begin collecting data.
 
-You may set up as many Acquisition Units as needed. For example, you may want different Acquisition Units collecting information from data centers in different regions.
+== Selecting a Data Collector
 
-Instructions for link:task_configure_acquisition_unit.html[*setting up an Acquisition Unit*].
+Data collectors discover information from your data sources, such as storage devices, network switches, and virtual machines. The information gathered is used for analysis, validation, monitoring and troubleshooting. 
 
+You will be asked to choose from among the vendors and models available. Select your first data collector from the choices. 
+
+== Setting up an Acquisition Unit
+
+An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights. A single Acquisition Unit can be used for multiple data collectors.
+
+* Follow the link:task_configure_acquisition_unit.html[instructions] displayed to configure your Acquisition Unit.
+
+You may set up additional acquisition units later if needed. For example, you may want different Acquisition Units collecting information from data centers in different regions. 
+
+== Configuring the Data Collector.
+
+You will next be asked to fill out the data collector fields presented:
+
+* Give the data collector a unique and meaningful name
+* Enter the user name and password to connect to the data collector, as appropriate
+* Fill in the other mandatory fields
+* Click *Save* to save the data collector
+
+You will be able to configure additional data collectors later.
+
+== Choosing a starting Dashboard
+
+Depending on the type of initial data collector you selected to configure (storage, switch, etc.), you will be presented with a list of example dashboards from which to choose. Select a starting dashboard from the choices.
+
+You can import additional dashboards later.
+
+== That's all there is to it
+
+When you are finished selecting your starting dashboard, click *Finish*. Your environment will begin to collect data. 
+
+NOTE: Please allow up to 30 minutes for the dashboard to start displaying data. Some data collectors require 2 poll periods (usually 15 minutes each) before any meaningful data can be displayed.
+
+If your initial configuration walkthrough process is interrupted (for example, if you close the browser window), you may need to start the process again from the beginning. 
+
+////
 == Adding data collectors
 
 Data collectors discover information from your data sources, such as storage devices, network switches, and virtual machines. The information gathered is used for analysis, validation, monitoring and troubleshooting. You need to link:task_configure_data_collectors.html[configure your data collectors] before Cloud Insights can gather data from them.
+////
 
 Related topics:
-Data collector link:https://docs.netapp.com/us-en/cloudinsights/task_getting_started_with_cloud_insights.html[*configuration*]
+Data collector link:https://docs.netapp.com/us-en/cloudinsights/task_configure_data_collectors.html[*configuration*]
 Vendor-specific link:concept_data_collector_reference.html[*Data Collector reference*]
 Troubleshooting link:task_research_failed_collector.html[*Data Collector failures*] 
 Data Collector link:reference_data_collector_support_matrix.html[*support matrix*]
