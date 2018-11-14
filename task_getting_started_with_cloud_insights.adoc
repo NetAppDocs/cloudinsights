@@ -15,43 +15,47 @@ keywords: invite, roles, data collector, acquisition unit, AU
 :linkattrs:
 :imagesdir: ./media/
 
-After you have signed up for Cloud Insights, you must do the following in order to begin collecting and managing data.
+After you have signed up for Cloud Insights and log in to your environment for the first time, you will be guided through the following steps in order to begin collecting and managing data. 
 
-== Watch a Quick Video
+== See How It Works
 
-When you log in to your environment for the first time, you will be presented with a short video explaining the steps you will go through to begin collecting data.
+The first thing you see after logging in the first time is a short video explaining how Cloud Insights collects data. 
+
+When you are finished watching the video, click *Continue* to proceed to the next step.
 
 == Select a Data Collector
 
 Data collectors discover information from your data sources, such as storage devices, network switches, and virtual machines. The information gathered is used for analysis, validation, monitoring and troubleshooting. 
 
-You will be asked to choose from among the vendors and models available. Select your first data collector from the choices. 
+Select your first data collector from the supported vendors and models available. You will be taken to the next step.
 
-== Set up an Acquisition Unit
+== Install an Acquisition Unit
 
 An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights. A single Acquisition Unit can be used for multiple data collectors.
 
-* Follow the link:task_configure_acquisition_unit.html[instructions] displayed to configure your Acquisition Unit.
+* Follow the link:task_configure_acquisition_unit.html[instructions] displayed to install your Acquisition Unit.
 
 You may set up additional acquisition units later if needed. For example, you may want different Acquisition Units collecting information from data centers in different regions. 
 
-== Configure the Data Collector.
+== Configure the Data Collector
 
 You will next be asked to fill out the data collector fields presented:
 
 * Give the data collector a unique and meaningful name
 * Enter the user name and password to connect to the device, as appropriate
-* Fill in the other mandatory fields
+* Fill in any other mandatory fields
 * Click *Test Connection* to test the connection to the device
-* Click *Add Data Collector* to save the data collector
+* Click *Add Collector* to save the data collector
 
 You will be able to configure additional data collectors later.
 
-== Choose a starting Dashboard
+== Add Dashboards
 
-Depending on the type of initial data collector you selected to configure (storage, switch, etc.), you will be presented with a list of example dashboards from which to choose. Select a starting dashboard from the choices.
+Depending on the type of initial data collector you selected to configure (storage, switch, etc.), you will be presented with a list of example dashboards from which to choose. Select one or more dashboards from the Dashboard Gallery and click *Add Dashboards*.
 
-You can import additional dashboards later.
+NOTE: The first alphabetical dashboard will be set as your environment's link:concept_dashboards_overview.html#setting-a-dashboard-as-your-home-page[home page]. 
+
+You can import additional dashboards later, or link:concept_dashboards_overview.html[create your own].
 
 == That's all there is to it
 
