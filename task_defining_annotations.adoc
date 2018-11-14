@@ -89,14 +89,17 @@ Text:: This creates a field that allows free-form text. For example, you might e
 +
 With a text-type annotation, you can also include a hyperlink. Hyperlinks must follow one of the following formats:
 +
-* Direct link, not formatting: 
+* Direct link, no formatting:
++
  http://www.netapp.com
  https://clouddocs.netapp.com
 
 * Link with text formatting:
++
  [Your Text Here](http://cloud.netapp.com)
  
 * Link to a page (for example a dashboard) in your environment:
++
  [Your Text Here](#/dashboards/<dashboardID>)
 
 NOTE: After you set the type and save your changes, you cannot change the type of the annotation. If you need to change the type, you have to delete the annotation and create a new one.
