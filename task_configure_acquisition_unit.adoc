@@ -27,6 +27,7 @@ This topic describes how to add Acquisition Units and describes additional steps
 
 * If your system is using a proxy, you must set the proxy environment variables before the acquisition unit is installed. For more information, see <<Setting proxy environment variables>>.
 * You must have an unzip program to unzip the downloaded files.
+* Be sure your server or VM meets the minimum link:concept_acquisition_unit_requirements.html[requirements].
 
 .Steps for Linux Acquisition Unit Installation 
 
@@ -46,10 +47,15 @@ image::add_acq_linux.png[]
 
 * Click *Admin > Data Collectors > Acquisition units* to check the status of Acquisition Units. 
 * You can access the Acquisition Unit logs at /var/log/netapp/cloudinsights/acq/acq.log
-* Use the following script to control the Acquisition Unit:
-** cloudinsights-service.sh (stop, start, restart, check the status)
+* Use the following script to stop, start, restart, or check the status the Acquisition Unit:
++
+ cloudinsights-service.sh
+ 
 * Use the following script to uninstall the Acquisition Unit:
-** cloudinsights-uninstall.sh
++
+ cloudinsights-uninstall.sh
+ 
+* For troubleshooting AU installation errors, see link:task_troubleshooting_linux_acquisition_unit_problems.html[Troubleshooting Linux AU]
 
 == Setting proxy environment variables
 
