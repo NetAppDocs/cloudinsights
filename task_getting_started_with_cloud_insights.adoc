@@ -15,27 +15,64 @@ keywords: invite, roles, data collector, acquisition unit, AU
 :linkattrs:
 :imagesdir: ./media/
 
-After you have signed up for Cloud Insights, you must do the following in order to begin collecting and managing data.
+After you have signed up for Cloud Insights and log in to your environment for the first time, you will be guided through the following steps in order to begin collecting and managing data. 
 
-. Install at least one Acquisition Unit
-. Add data collectors
+== See How It Works
 
-If you haven't already done so, sign in at http://cloud.netapp.com and go to your Cloud Insights tenant.
+The first thing you see after logging in the first time is a short video explaining how Cloud Insights collects data. 
 
-== Setting up an Acquisition Unit to collect data.
+When you are finished watching the video, click *Continue* to proceed to the next step.
 
-An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights.
+== Select a Data Collector
 
-You may set up as many Acquisition Units as needed. For example, you may want different Acquisition Units collecting information from data centers in different regions.
+Data collectors discover information from your data sources, such as storage devices, network switches, and virtual machines. The information gathered is used for analysis, validation, monitoring and troubleshooting. 
 
-Instructions for link:task_configure_acquisition_unit.html[*setting up an Acquisition Unit*].
+Select your first data collector from the supported vendors and models available. You will be taken to the next step.
 
+== Install an Acquisition Unit
+
+An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights. A single Acquisition Unit can be used for multiple data collectors.
+
+* Follow the link:task_configure_acquisition_unit.html[instructions] displayed to install your Acquisition Unit.
+
+You may set up additional acquisition units later if needed. For example, you may want different Acquisition Units collecting information from data centers in different regions. 
+
+== Configure the Data Collector
+
+You will next be asked to fill out the data collector fields presented:
+
+* Give the data collector a unique and meaningful name
+* Enter the user name and password to connect to the device, as appropriate
+* Fill in any other mandatory fields
+* Click *Test Connection* to test the connection to the device
+* Click *Add Collector* to save the data collector
+
+You will be able to configure additional data collectors later.
+
+== Add Dashboards
+
+Depending on the type of initial data collector you selected to configure (storage, switch, etc.), you will be presented with a list of example dashboards from which to choose. Select one or more dashboards from the Dashboard Gallery and click *Add Dashboards*. 
+
+The first dashboard in your selected dashboards list will be set as your environment's link:concept_dashboards_overview.html#setting-a-dashboard-as-your-home-page[home page]. You can change the home page from the *Dashboards > Show All Dashboards* list. 
+
+You can import additional dashboards later, or link:concept_dashboards_overview.html[create your own].
+
+== That's all there is to it
+
+After you complete the initial setup process, your environment will begin to collect data. 
+
+NOTE: Please allow up to 30 minutes for your dashboards to start displaying data. Some data collectors require 2 poll periods (usually 15 minutes each) before any meaningful data can be displayed.
+
+If your initial setup process is interrupted (for example, if you close the browser window), you may need to start the process again from the beginning. 
+
+////
 == Adding data collectors
 
 Data collectors discover information from your data sources, such as storage devices, network switches, and virtual machines. The information gathered is used for analysis, validation, monitoring and troubleshooting. You need to link:task_configure_data_collectors.html[configure your data collectors] before Cloud Insights can gather data from them.
+////
 
 Related topics:
-Data collector link:https://docs.netapp.com/us-en/cloudinsights/task_getting_started_with_cloud_insights.html[*configuration*]
+Data collector link:https://docs.netapp.com/us-en/cloudinsights/task_configure_data_collectors.html[*configuration*]
 Vendor-specific link:concept_data_collector_reference.html[*Data Collector reference*]
 Troubleshooting link:task_research_failed_collector.html[*Data Collector failures*] 
 Data Collector link:reference_data_collector_support_matrix.html[*support matrix*]
