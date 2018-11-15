@@ -17,11 +17,11 @@ summary: CDOT collector
 
 [.lead]
 
-This data collector acquires inventory and performance data from storage systems running Clustered Data ONTAP using read-only API calls from an administrator account.
+This data collector acquires inventory and performance data from storage systems running ONTAP Data management software using read-only API calls from an administrator account.
 
 == Terminology
 
-Cloud Insights acquires inventory and performance data from the Clustered Data ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires inventory and performance data from the ONTAP Data management software data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -43,7 +43,7 @@ The following are requirements to configure and use this data collector:
 * Target IP is the cluster management LIF.
 * FCP license and mapped/masked volumes required for Cloud Insights discovery.
 * CIFS and/or NFS license and CIFS shares or NFS exports required for Cloud Insights NAS discovery.
-* Access validation: Telnet or SSH to the cluster management LIF from the acquisition unit, using the username and password.�
+* Access validation: Telnet or SSH to the cluster management LIF from the acquisition unit, using the username and password.
 
 == Configuration 
 
