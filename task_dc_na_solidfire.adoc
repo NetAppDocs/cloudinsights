@@ -21,7 +21,7 @@ The NetApp SolidFire All-Flash Array data collector supports inventory and perfo
 
 The SolidFire data collector utilizes the SolidFire REST API. The acquisition unit where the data collector resides needs to be able to initiate HTTPS connections to TCP port 443 on the SolidFire cluster management IP address. The data collector needs credentials capable of making REST API queries on the SolidFire cluster.
 
-== Terminalogy 
+== Terminology 
 
 Cloud Insights acquires the following inventory information from the NetApp SolidFire All-Flash Array data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
@@ -43,7 +43,7 @@ Note: These are common terminology mappings only and might not represent every c
 The following are requirements forconfiguring this data collector:
 
 * Management Virtual IP Address 
-* Read-only username & credentials  
+* Read-only username and credentials  
 * Port 443 
 
 == Configuration
