@@ -44,15 +44,16 @@ Note: These are common terminology mappings only and might not represent every c
 You need the following to configure and use this data collector:
 
 * IP addresses of the FAS storage controller and partner.
-* A custom admin level username and password for controller and partner controller.
-* The user must have at minimum the following role capabilities for 7-Mode:
+* Port 443
+* A custom admin level username and password for controller and partner controller with the following role capabilities for 7-Mode:
 ** "api-*": Use this to allow OnCommand Insight to execute all NetApp storage API commands. 
 ** "login-http-admin": Use this to allow OnCommand Insight to connect to the NetApp storage via HTTP. 
-* "security-api-vfiler": Use this to allow OnCommand Insight to execute NetApp storage API commands to retrieve vFiler unit information. 
-* "cli-options": Use this to read storage system options. 
-* " cli-lun": Access these commands for managing LUNs. Displays the status (LUN path, size, online/offline state, and shared state) of the given LUN or class of LUNs. 
-* "cli-df": Use this to display free disk space. 
-* "cli-ifconfig": Use this to display interfaces and IP addresses. 
+** "security-api-vfiler": Use this to allow OnCommand Insight to execute NetApp storage API commands to retrieve vFiler unit information. 
+** "cli-options": Use this to read storage system options. 
+** "cli-lun": Access these commands for managing LUNs. Displays the status (LUN path, size, online/offline state, and shared state) of the given LUN or class of LUNs. 
+** "cli-df": Use this to display free disk space. 
+** "cli-ifconfig": Use this to display interfaces and IP addresses. 
+
 == Configuration 
 
 [cols=2*, options="header", cols"50,50"]
