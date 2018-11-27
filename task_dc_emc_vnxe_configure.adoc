@@ -23,6 +23,7 @@ The DELL EMC VNXe data collector provides inventory support for VNXe unified sto
 
 * The VNXe data collector is CLI based; you must install the Unisphere for VNXe CLI, (uemcli.exe) onto the acquisition unit where your VNXe data collector resides. 
 * uemcli.exe uses HTTPS as the transport protocol, so the acquisition unit will need to be able to initiate HTTPS connections to the VNXe. 
+* IP address or fully-qualified domain name of the VNXe device
 * You must have at least a read-only user for use by the data collector. 
 * IP address of the managing Solutions enabler server.
 * HTTPS on Port 443 is required 
