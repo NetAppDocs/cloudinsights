@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_configure_acquisition_unit.html
 keywords:  Acquisition Unit, AU, install, configure, Linux
-summary: A summary.
+summary: 
 ---
 
 = Adding Acquisition Units
@@ -63,5 +63,7 @@ For environments that use a proxy, you must set the proxy environment variables 
 
 . Click + in Have a Proxy Server?
 . Copy the commands to a text editor and set your proxy variables as needed.
++
+NOTE: Proxy variables cannot contain special characters. Use only use only upper- and lower-case letters and numeric characters for variables. 
 . Run the edited command in a terminal.
 . Install the Acquisition Unit software.

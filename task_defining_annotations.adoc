@@ -21,9 +21,7 @@ Using annotations to help monitor your environment includes the following high-l
 + 
 For example, if an asset is being leased and the lease expires within two months, you might want to apply an end-of-life annotation to the asset. This helps prevent others from using that asset for an extended time. 
 
-* Creating rules to automatically
-apply annotations to multiple assets of the same type.
-* Using the annotation import utility to import annotations.
+* Creating rules to automatically apply annotations to multiple assets of the same type.
 * Filter assets by their annotations.
 
 == Default annotation types
@@ -86,24 +84,42 @@ If you select the Add new values on the fly option when you create this list, wh
 Number:: This creates a field where the user assigning the annotation can enter a number. For example, if the annotation type is "Floor", the user could select the Value Type of "number" and enter the floor number.
 
 Text:: This creates a field that allows free-form text. For example, you might enter "Language" as the annotation type, select "Text" as the value type, and enter a language as a value.
++
+With a text-type annotation, you can also include a hyperlink. Hyperlinks support the following formats:
++
+* Direct link, no formatting:
++
+ http://www.netapp.com
+ https://clouddocs.netapp.com
++
+* Link with text formatting:
++
+ [Your Text Here](http://cloud.netapp.com)
++ 
+* Link to a page (for example a dashboard) in your environment:
++
+ [Your Text Here](#/dashboards/<dashboardID>)
+ 
++
+Values will show as hyperlinks on the query results page and in table widgets.
 
 NOTE: After you set the type and save your changes, you cannot change the type of the annotation. If you need to change the type, you have to delete the annotation and create a new one.
 
-. If you select List as the annotation type, do the following: 
-.. Select *Add new values on the fly* if you want the ability to add more values to the annotation when on an asset page, which creates a flexible list.
+If you select List as the annotation type, do the following: 
+
+. Select *Add new values on the fly* if you want the ability to add more values to the annotation when on an asset page, which creates a flexible list.
 +
 For example, suppose you are on an asset page and the asset has the City annotation with the values Detroit, Tampa, and Boston. If you selected the Add new values on the fly option, you can add additional values to City like San Francisco and Chicago directly on the asset page instead of having to go to the Annotations page to add them. If you do not choose this option, you cannot add new annotation values when applying the annotation; this creates a fixed list.
 
-.. Enter a value and description in *Value* and  *Description* fields. 
+. Enter a value and description in *Value* and  *Description* fields. 
 
-.. Click *+Add+* to add additional values. 
+. Click *+Add+* to add additional values. 
 
-.. Click the Trash icon to delete a value.
+. Click the Trash icon to delete a value.
 
 . Click *Save* 
 +
 Your annotations appear in the list on the Annotations page.
-
-.After you finish 
+ 
 In the web UI, the annotation is available immediately for use. 
 
