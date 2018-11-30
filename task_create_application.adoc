@@ -8,57 +8,45 @@ keywords: application, create application,
 = Creating Applications
 
 [.lead]
+
 To track data associated with specific applications running in your environment, you can define the applications in Cloud Insights.
 
-//.Before you begin
-//If you want to associate the application with a business entity, you must create the business entity before you define the application.
+.Before you begin
+
+If you want to associate the application with a business entity, you must create the business entity before you define the application.
 
 .About this task
-You can associate applications with the following assets: hosts, virtual machines, volumes, internal volumes, qtrees, shares, and hypervisors.
+
+Cloud Insights allows you to track data from assets associated with applications for things like usage or cost reporting. 
 
 .Steps
-. In the Cloud Insights menu, click *Manage > Applications*.
+.
+In the Cloud Insights menu, click *Manage > Applications*.
 +
-The *Add Application* dialog box displays.
+The Add Application dialog box displays.
 
 .. Enter a unique name for the application.
 .. Select a priority for the application.
 .. Click *Save*.
 
+.After you finish
+
+After defining an application, it  can be assigned to assets.
+
 == Assigning applications to assets
 
-After defining an application, you can assign it to a host, virtual machine, volume, internal volume, qtree, or hypervisor. The procedure below assigns the application to a host as an example: 
+This procedure assigns the application to a host as an example. You can assign host, virtual machine, volume, or internal volumes to an application. 
 
 .Steps
-. Locate the asset to which you want to assign the application:
-. Click *Queries > New Query > Host*.
+
+. Locate the asset to which you want to assign to the application:
+. Click *Queries > +New Query* and search for Host.
 . Click the check box on the left of the Host you want to associate with the application.
 . Click *Bulk Actions > Add Application*.
-+
-A list of applications is displayed.
-. Select the application you are assigning the asset to. 
+. Select the Application you are assigning the asset to. 
 
-You can assign any additional assets to the application using the steps above. 
+.After you finish
 
-To access the landing page for the new application, click *Manage > Application* and select the application you created. The asset landing page will show you details about the application, including associated assets.
-
-
-== Editing or deleting applications
-You might want to change an application's priority, the business entity associated with an application, or the status of volume sharing.
-
-.Steps
-. Click *Manage > Applications*.
-. To edit the Application, click the "three dots" menu to the right of the application and select *Edit*.
-+
-The Edit Application dialog box displays.
-
-. Click Priority and select a different priority.
-
-NOTE: You cannot change the application's name.
-
-. Click *Save*.
-
-. To delete the Application when no longer needed, click the "three dots" menu for the Application and select *Delete*.
-
+After assigning the host to the application you can assign the remaining assets to the application. To access the landing page for the application, click *Manage > Application* and select the application you created. 
 
 
