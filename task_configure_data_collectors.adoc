@@ -2,17 +2,18 @@
 sidebar: sidebar
 permalink: task_configure_data_collectors.html
 keywords: acquisition, AU, data collector, collector
-summary: A summary.
+summary: Configure data collectors
 ---
 
 = Configuring Data Collectors
+
 
 [.lead]
 You configure Data Collectors in your Cloud Insights environment to collect data from devices in the data center.
 
 .Before you begin
 
-* You must have Account Owner or Admin privileges to configure data collectors. 
+* You must have Account owner or Admin privileges to configure data collectors. 
 * You must have configured an Acquisition Unit before you can start collecting data.
 * You need credentials for the devices from which you are collecting data.
 +
@@ -21,20 +22,17 @@ Device network addresses, account information, and passwords are required for al
 .Steps
 . From the Cloud Insights menu, click *Admin > Data Collectors*
 +
-The system displays the Installed Data Collectors.
+The system displays the available Data Collectors arranged by vendor.
 
-. Click *Available Data Collectiors*. 
-. Click *+ Collector* in the tile for the vendor collector you want to configure.
-. Click the collector you want to configure.
+. Click *+ Collector* on the required vendor and select the data collector to configure.
 +
-The system displays the Add Collector dialog box.
-
-.. Enter a unique name for the data collector.
+In the dialog box you can configure the data collector and add an Acquisition Unit.
+. Enter a name for the data collector.
 +
 Names can contain can contain letters (a-z), numbers (0-9), dashes (-), underscores (_), apostrophes ('), and periods (.).
-.. Enter the *Acquisition Unit* to associate with this data collector.
-.. Enter the required fields in the Configuration screen.
-.. Click *Advanced Configuration* to add additional configuration fields. (Not all data collectors require advanced configuration.)
-.. Click *Test Configuration* to verify that the data collector is properly configured.
+. Enter the Acquisition Unit to associate with this data collector.
+. Enter the required fields in the Configuration screen.
+. Click *Advanced Configuration* to add additional configuration fields. (Not all data collectors require advanced configuration.)
+. Click *Test Configuration* to verify that the data collector is properly configured.
 
-For help adding a new Acquisition Unit, see link:task_configure_acquisition_unit.html[Configuring acquisition units]
+For help adding a new Acquisition Unit, see link:<task_configure_acquisition_unit>.html[Configuring acquisition units]
