@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: task_identify_orphaned_capacity.html
+keywords: orphaned, unused, configured but unused
+summary: Identifying orphaned capacity 
+---
+
+= Identifying orphaned capacity
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+Orphaned capacity is defined by configuration or by performance. Storage orphaned by configuration occurs when storage is allocated to a host, but configuration errors result in the host not able to access the storage. Orphaned by performance results when the storage is correctly configured to be accessed by a host, but there is no storage traffic.
+
+You can identify orphaned storage using Cloud Insights.  Create a query to identify the volumes or <what else look at Kurt's blog>  that have not reported I/O data over an extended period of time.
+
+
+Orphaned 
+
+. Performance characteristics, such as utilization, or IOPS, of Arrays, disk pools, disks, volumes
+
+. to identify resources that are under utilized or not used at all. These assets might 
+
+
+
+
+
+
+.Steps
+
+. In the Cloud Insights menu, click *Queries > New Query*
+. In the `Search For` menu, select Volumes
+. Click *+ > Is Active* 
+. Click *Any* and change it to *No*
++The system displays volumes that have had no I/O for 'some period of time"

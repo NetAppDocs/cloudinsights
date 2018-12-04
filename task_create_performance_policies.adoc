@@ -2,10 +2,18 @@
 sidebar: sidebar
 permalink: task_create_performance_policies.html
 keywords: performance policy, performance, thresholds, alerts, preference, delete
-summary: You create performance policies to set thresholds that trigger alerts to notify you about issues related to the resources in your environment. For example, you can create a performance policy to alert you when the total utilization for storage pools is greater than 60%.
+summary: Create performance policies to set thresholds
 ---
 
 = Alerting with performance policies
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
 
 [.lead]
 You create performance policies to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a performance policy to alert you when the total utilization for storage pools is greater than 60%.
@@ -53,4 +61,4 @@ By default, email alerts on policy violations are sent to the recipients in the 
 +
 Click *+Threshold* to add additional counters for your policy.
 . Click *Save* to save the new policy.
-. If there are multiple policies for specific asset types, you can change the order that policies are evalueted. Use the Edit menu to change the policy order.
+. If there are multiple policies for specific asset types, you can change the order that policies are evaluated. Use the Edit menu to change the policy order.
