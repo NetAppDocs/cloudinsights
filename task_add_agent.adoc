@@ -35,12 +35,14 @@ This topic describes how to add Cloud Secure agents and describes steps required
 +
 The system displays the _Add Agent_ dialog.
 
-image:add_agent_csecure.png[]
+image::add-agent-csecure.png[]
 
 . Select the operating system you are installing the agent on.
 . Verify that the Agent server meets the minimum system requirements. 
 . Verify that the Agent server is running a supported version of Linux, click _Versions Supported (i)_.
-image::add_agent.png[]
+
+image::add-agent.png[]
+
 . Copy the installation command displayed in the dialog into a terminal window on the Agent serverand execute the command.  
 
 .After you finish
@@ -48,7 +50,7 @@ image::add_agent.png[]
 * Click *Admin > Data Collectors* to check the status of the Agent.
 * Installation directory: /opt/netapp/cloud-secure
 * You can access the logs at /opt/netapp/cloud-secure/logs 
-* Use the following script to control the Cloud Secure service
+* Use the following script to control the Cloud Secure service:
 ** cloud-secure-agent-service.sh --help
 * Use the following script to uninstall the Agent:
 ** cloud-secure-agent-uninstall.sh
