@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: concept_forensic.html
+keywords:  data collector, Secure
+summary: Forensic content
+---
+
+= Forensic Pages
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+The Forensic page provides access to the User, Entity, Community, and User Activity pages. 
+
+Filtering:: Each page can be filtered 
+
+Communities:: lists the communities in the created in the environment. 
+
+////(Community_23 means that the community has been accessed 23 times.////
+
+Alerts:: Displays alert entries or a check box when there are no alerts. 
+
+Users Count:: Displays the number of users that are part of the community. Click the numeric value to display the users.  
+
+Entities Count:: Displays the number of entities that are part of the community.
+
+== Entities Page
+
+The entities page contains information about the entities that have been accessed:
+
+Name:: Name of the entity that has been accessed. Click Name to view and "Entity Profile", "User and Community" and an Entity Behaviour 
+
+Type:: File, directory, or symbolic link that has been accessed.
+
+Communites:: When more than one user accesses the same Entity, a community if created. 
+
+//is this (above) correct//
+
+Path:: Path to the entity
+
+Last Acccessed:: When the entity was last accessed. 
+
+== Users page
+
+The Users page provides information about users in the system
+
+Name:: Name of the user that has accessed. Click Name to view and "Use4r Profile", "???
+
+Alerts:: Displays alert entries or a check box when there are no alerts for the user. 
+
