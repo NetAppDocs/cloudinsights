@@ -49,16 +49,21 @@ You can edit existing data collector setup information.
 
 .Steps
 
-. In the Cloud Insights menu, click *Admin > Data Collectors*
-. Click *Installed Data Collectors*
-. Select the check box to the left of the data collector(s) you want to change.
-. In the options menu to the right of the selected data collector, click *Edit*. 
+. In the Cloud Insights menu, click *Admin > Data Collectors* to open the list of installed Data Collectors.
+//. Select the check box to the left of the data collector you want to change.
+. In the options menu to the right of the data collector you want to modify, click *Edit*. 
 +
 The Edit Collector dialog is opened.
 
 . Enter the changes and click *Test Configuration* to test the new configuration or click *Save* to save the configuration. 
 
-NOTE: To bulk-edit information for multiple data collectors, the data collectors selected must be the same type and on the same Acquisition Unit.
+You can also edit information for multiple data collectors:
+
+. Select the check box to the left of the data collectors you want to change.
+. Click the *Bulk Actions* button and choose *Edit* to open the Edit data Collector dialog.
+. Modify the fields as above.
++
+NOTE: The data collectors selected must be the same vendor and model, and reside on the same Acquisition Unit. When editing multiple data collectors, the *Test Configuration* button is disabled.
 
 == Cloning data collectors
 
