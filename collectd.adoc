@@ -1,0 +1,116 @@
+---
+sidebar: sidebar
+permalink: task_config_collectd.html
+keywords: collectd, configure, plugin
+summary: 
+---
+
+= OCI write plugin for collectd
+
+[.lead]
+
+The OCI collectd write plugin is a publishing extension for collectd, an open source statistic gathering daemon. With this extension all configured collectd metrics are automatically published to OCI server. This plugin allows monitoring of servers and applications.
+
+.System Requirements
+
+* Python 2.7 is required
+* Internet access is required for installation
+* SELinux is not supported
+* Supported Linux distributions and versions
+** RHEL/CentOS 7
+** Amazon AMI
+** Ubuntu LTS 16.04
+** Debian 9
+** SUSE Linux Enterprise Server 12
+
+== OCI token configuration
+
+Running the following command returns a token used to configure collectd.
+
+_curl -k -XPOST --data '{"description": "Collectd OCI integration", "integrations": ["*"]}' -H 'Content-Type: application/json' -u<username>:<password> https://<OCI server>/rest/v1/integrationAgents_
+
+Save the token from the JSON output as --token parameter to _setup.py_ installaion script.
+
+.Code block
+
+{
+  "tokenId": "c32526dc-6573-42e5-ad6c-cbe6ff808800",
+  "self": "/rest/v1/integrationAgents/c32526dc-6573-42e5-ad6c-cbe6ff808800",
+  "description": "Collectd OCI integration",
+  "lastReportedTime": "1970-01-01T00:00:00+0000",
+  "integrations": 
+  [
+    "*"
+  ],
+  "createdTime": "2018-02-22T05:59:43+0000"
+}
+
+== Installation
+
+* Download installation script, place it on the host and execute it:
+
+wget https://raw.githubusercontent.com/NetApp/OCI_collectd/master/src/setup.py
+chmod +x setup.py
+sudo ./setup.py --host-name <OCI server> --token <token>
+
+* For more details
+
+_sudo ./setup.py --help_
+
+== Plugin specific configuration 
+
+.Code block
+
+LoadPlugin python
+<Plugin python>
+    ModulePath "/usr/share/collectd/collectd-oci-plugin"
+    LogTraces true
+    Interactive false
+    Import "oci"
+    Encoding "utf-8"
+    <Module oci>
+        host "10.97.120.180"
+        token "b3569d68-63bd-4c2e-ab5d-2f236fc86673"
+        report_interval "60"
+        failed_report_queue_size "0"
+        aggregation_type "average"
+        plugins "cpu,memory"
+        logging_level "info"
+    </Module>
+</Plugin>
+
+== Usage
+
+Once the plugin is configured correctly, restart collectd to load the new configuration.
+
+For systemd as system and service manager, _sudo systemctl restart collectd_
+Otherise, sudo /etc/init.d/collectd restart
+
+From now on your collectd metrics will be published to OCI server. 
+
+== Troubleshooting
+
+OCI plugin logs into /var/log/collectd_oci.log. You can update the logging_level for debugging purpose. The OCI collectd plugin log can be filtered for OCI plugin events using grep:
+
+_grep "[NetAppOnCommandInsightPlugin]" /var/log/collectd_oci.log_
+
+== Contributing
+
+. Create your fork by clicking Fork button on top of the page.
+. Download your repository: git clone https://github.com/NetApp/OCI_collectd.git
+. Create your feature branch: git checkout -b my-new-feature
+. Commit your changes: git commit -am 'My new feature description'
+. Push to the branch: git push origin my-new-feature
+. Submit a pull request
+
+== License 
+
+The MIT License (MIT)
+
+Copyright (c) 2018. All Rights Reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
