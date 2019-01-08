@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: task_add_agent.html
-keywords:  data collector, Secure, agent, Cloud Secure
+keywords:  data collector, Secure
 summary: Adding Cloud Secure agents
 ---
 
@@ -17,41 +17,40 @@ summary: Adding Cloud Secure agents
 
 [.lead]
 
-Cloud Secure uses agents to collect file and user access data from devices in the data center. 
+Cloud Secure collects device data using one or more agents. Agents connect to devices in your environment and collect data that is sent to Cloud Secure for analysis. 
 
-This topic describes how to add Cloud Secure agents and describes steps required when your environment uses a proxy. 
+This topic describes the steps required to add agents to Cloud Secure. 
 
-== Adding a Cloud Secure Agent 
+== Adding a Cloud Secure Agent
 
 .Before you begin
 
-* You must have an unzip program to unzip the downloaded files.
-* Any other pre-requisites? 
+* Are there any prerequisites? 
 
 .Steps for Installation 
 
 . Log in as Administrator or Account Owner to your Cloud Secure environment. 
-. Click *Admin > Agents >*
-+
+. Click *Admin > Data Collectors > Agent > +Agents*
 The system displays the _Add Agent_ dialog.
 
-image::add-agent-csecure.png[]
+image::add-agent-csecure.png[Not the correct Image - will replace when available] 
 
 . Select the operating system you are installing the agent on.
 . Verify that the Agent server meets the minimum system requirements. 
-. Verify that the Agent server is running a supported version of Linux, click *Versions Supported (i)*.
+. Verify that the Agent server is running a supported version of Linux, click _Versions Supported (i)_.
 
-image::add-agent.png[]
+image::add-agent.png[Need new image - will replace when available]
 
-. Click *Install* to start the installation. 
-
-(I recall a button being mentioned here)
+. Copy the installation command displayed in the dialog into a terminal window on the Agent server and execute the command.  
 
 .After you finish
 
 * Click *Admin > Data Collectors* to check the status of the Agent.
-* Installation directory: /opt/netapp/cloud-secure
-* You can access the logs at /opt/netapp/cloud-secure/logs 
++
+There is normally a delay before the agent status is displayed. 
+
+* The installation directory is /opt/netapp/cloud-secure
+* The logs directiory is /opt/netapp/cloud-secure/logs 
 * Use the following script to control the Cloud Secure service:
 ** cloud-secure-agent-service.sh --help
 * Use the following script to uninstall the Agent:
