@@ -18,19 +18,52 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
-*November 2018:*
+=== *January 2019*
+
+==== Managed Unit Breakdown on Subscription Page
+
+For each data collector listed on the *Admin > Subscription* page, you can now see a breakdown of Managed Unit (MU) counts for hosts and storage, as well as the total.
+
+
+=== *December 2018*
+
+==== Improvement of UI Load Time
+
+* The initial loading time for the Cloud Insights user interface (UI) has been significantly improved. Refresh time for the UI also benefits from this improvement in circumstances where metadata is loaded.
+
+==== Bulk Edit Data Collectors
+
+* You can edit information for multiple data collectors at the same time. On the *Admin > Data Collectors* page, select the data collectors to modify by checking the box to the left of each and click the *Bulk Actions* button. Choose *Edit* and modify the necessary fields.
++
+The data collectors selected must be the same vendor and model, and reside on the same Acquisition Unit.
+
+==== Support and Subscription pages are Available During Onboarding
+
+* During the onboarding workflow, you can navigate to the *Help > Support* and *Admin > Subscription* pages. Returning from those pages returns you to the onboarding workflow, providing you have not closed the browser tab.
+
+=== *November 2018*
+
+==== Subscribe through NetApp Sales or AWS Marketplace
 
 * Cloud Insights subscription and billing is now available directly through NetApp. This is in addition to the self-serve subscription available through AWS Marketplace. A new *Contact Sales* link is presented on the *Admin > Subscription* page. For customers whose environments have or are expected to have 1,000 or more Managed Units (MUs), it is recommended to contact NetApp sales via the Contact Sales link.
 
-* Text-type annotations can now include hyperlinks.
+==== Text Annotation Hyperlinks
+
+* Text-type annotations can now include hyperlinks. 
+
+==== Onboarding Walkthrough
 
 * Cloud Insights now features an onboarding walkthrough for the first user (administrator or account owner) to log in to a new environment. The walkthrough takes you through installing an Acquisition Unit, configuring an initial data collector, and selecting one or more useful dashboards.
 
+==== Import Dashboards from the Gallery
+
 * In addition to selecting dashboards during onboarding, you can import dashboards via *Dashboards > Show All Dashboards* and clicking *+From Gallery*.
 
-//* You can now configure a Windows server or VM for Cloud Insights acquisition.
+==== Duplicating Dashboards
 
 * The ability to duplicate a dashboard has been added to the dashboard list page as a choice in the options menu for each dashboard, and on a dashboard's main page itself from the _Save_ menu.
+
+==== Cloud Central products menu
 
 * The menu allowing you to switch to other NetApp Cloud Central products has moved to the upper right corner of the screen.
 

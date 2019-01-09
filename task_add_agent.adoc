@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: task_add_agent.html
-keywords:  data collector, Secure
-summary: Adding Cloud Secure agents
+keywords:  agent, CloudSecure
+summary: Adding CloudSecure agents
 ---
 
 = Agent installation
@@ -17,40 +17,47 @@ summary: Adding Cloud Secure agents
 
 [.lead]
 
-Cloud Secure uses agents to collect file and user access data from devices in the data center. 
+CloudSecure collects device data using one or more agents. Agents connect to devices in your environment and collect data that is sent to CloudSecure for analysis. 
 
-This topic describes how to add Cloud Secure agents and describes steps required when your environment uses a proxy. 
+This topic describes the steps required to add agents to CloudSecure. 
 
-== Adding a Cloud Secure Agent
+== Adding a CloudSecure Agent
 
 .Before you begin
 
-* You must have an unzip program to unzip the downloaded files.
-* Any other pre-requisites? 
+* A Docker image must be installed on the VM hosting the Agent. 
+** RHEL and CentOS Agent systems should always have the docker-ce package installed. Users should not install the docker-client-xx or docker-common-xx native RHEL docker packages since these do not support the docker run cli format that CloudSecure supports. 
+* OpenJDK java is required. 
+* The IBM-Java package, found in some RHEL versions must be uninstalled. 
+* The ”sudo su –' command is required for  installation, running scripts, and uninstall.  
 
 .Steps for Installation 
 
-. Log in as Administrator or Account Owner to your Cloud Secure environment. 
-. Click *Admin > Agents >  ?
+. Log in as Administrator or Account Owner to your CloudSecure environment. 
+. Click *Admin > Data Collectors > Agent > +Agents*
 +
-The system displays the _Add Agent_ dialog.
+The _Add Agent Operating System_ dialog is displayed.
 
-image::add-agent-csecure.png[]
+image::cs-add-agent-1.png[Not the correct Image - will replace when available] 
 
 . Select the operating system you are installing the agent on.
 . Verify that the Agent server meets the minimum system requirements. 
 . Verify that the Agent server is running a supported version of Linux, click _Versions Supported (i)_.
 
-image::add-agent.png[]
+image::cs-add-agent-2.png[Need new image - will replace when available]
 
-. Copy the installation command displayed in the dialog into a terminal window on the Agent serverand execute the command.  
+. Click the copy to Clipboard icon to copy the installation command. 
+. Run the installation command.   
 
 .After you finish
 
 * Click *Admin > Data Collectors* to check the status of the Agent.
-* Installation directory: /opt/netapp/cloud-secure
-* You can access the logs at /opt/netapp/cloud-secure/logs 
-* Use the following script to control the Cloud Secure service:
++
+There is normally a delay before the agent status is displayed. 
+
+* The installation directory is /opt/netapp/cloud-secure
+* The logs directiory is /opt/netapp/cloud-secure/logs 
+* Use the following script to control the CloudSecure service:
 ** cloud-secure-agent-service.sh --help
 * Use the following script to uninstall the Agent:
 ** cloud-secure-agent-uninstall.sh
