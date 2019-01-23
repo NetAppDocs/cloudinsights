@@ -61,3 +61,47 @@ For environments that use a proxy, you must set the proxy environment variables 
 + Note: Restrictions on special characters in proxy username and password fields:  '%' and '!' are allowed in the  username filed. ':', '%', and '!' are allowed in the password field. 
 . Run the edited command in a terminal using the Bash shell.
 . Install the Acquisition Unit software.
+
+
+
+== Adding a Windows Acquisition Unit
+
+.Before you begin
+
+* If your system is using a proxy, you must set the proxy environment variables before the acquisition unit is installed. For more information, see <<Setting proxy environment variables>>.
+* You must have an unzip program to unzip the downloaded files.
+
+.Steps for Windows Acquisition Unit Installation 
+
+. Log in as Administrator or Account Owner to your Cloud Insights environment. 
+. Click *Admin > Data Collectors > Acquisition Units > +Acquisition Unit* 
++
+The system displays the _Add Acquisition Unit_ dialog.
+
+[.thumb]
+image::add_acq_linux.png[]
+
+. Verify that the server or VM hosting the Acquisition Unit meets the minimum system requirements. 
+. Verify that the server is running a supported version of Linux, click _Versions Supported (i)_.
+
+. Copy the Installation command displayed in the dialog into a terminal window on the server or VM that will host the Acquisition unit.  
+. Execute the command in the Bash shell. 
+
+.After you finish
+
+* Click *Admin > Data Collectors > Acquisition units* to check the status of Acquisition Units. 
+* You can access the Acquisition Unit logs at /var/log/netapp/cloudinsights/acq/acq.log
+* Use the following script to control the Acquisition Unit:
+** cloudinsights-service.sh (stop, start, restart, check the status)
+* Use the following script to uninstall the Acquisition Unit:
+** cloudinsights-uninstall.sh
+
+== Setting proxy environment variables
+
+For environments that use a proxy, you must set the proxy environment variables before you add the Acquisition Unit. The instructions for configuring the proxy are provided on the _Add Acquisition Unit_  dialog. 
+
+. Click + in Have a Proxy Server?
+. Copy the commands to a text editor and set your proxy variables as needed.
++ Note: Restrictions on special characters in proxy username and password fields:  '%' and '!' are allowed in the  username filed. ':', '%', and '!' are allowed in the password field. 
+. Run the edited command in a terminal using the Bash shell.
+. Install the Acquisition Unit software.
