@@ -77,3 +77,30 @@ The following are required to configure this data colletor:
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds.
 |Number of SMI-S Connection Retries|Number of SMI-S connection retry attempts
 |===
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+////
+error: "Cache server is waiting for the system manager"
+Customer can take action.  What can customer do about this scenario?
+////
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: "showsys" command doesn't return any result.
+|Run "showsys" and "showversion -a" command and check if the version is supported by 3par.
+
+==== Performance
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: Failed to connect or login.  provider initialization failed.
+|An all-numeric array name causes problems with SMI-S server. Try changing the array name.
+|Error: SMI-S user configured does not have any domain
+|Grant appropriate domain privileges to the configured SMI-S user
+|===
