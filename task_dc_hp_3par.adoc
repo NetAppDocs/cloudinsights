@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_dc_hp_3par.html
 keywords: data collector, 3PAR, HP, HP 3PAR 
-summary: Configuring task_dc_fujitsu_ data collector.
+summary: Configuring task_dc_fujitsu_ data collector. 
 ---
 
 = 3PAR InServ data collector
@@ -91,7 +91,7 @@ Customer can take action.  What can customer do about this scenario?
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
-|Error: "showsys" command doesn't return any result.
+|"showsys" command doesn't return any result.
 |Run "showsys" and "showversion -a" command and check if the version is supported by 3par.
 |===
 
@@ -100,8 +100,8 @@ Customer can take action.  What can customer do about this scenario?
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
-|Error: Failed to connect or login.  provider initialization failed.
-|An all-numeric array name causes problems with SMI-S server. Try changing the array name.
-|Error: SMI-S user configured does not have any domain
+|Failed to connect or login. Provider initialization failed.
+|An all-numeric array name can cause problems with SMI-S server. Try changing the array name.
+|SMI-S user configured does not have any domain
 |Grant appropriate domain privileges to the configured SMI-S user
 |===
