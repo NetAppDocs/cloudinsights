@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_add_agent.html
-keywords:  agent, CloudSecure
-summary: Adding CloudSecure agents
+keywords:  agent, Cloud Secure
+summary: Adding Cloud Secure agents
 ---
 
-= Agent installation
+= Agent Installation
 
 :toc: macro
 :hardbreaks:
@@ -17,48 +17,63 @@ summary: Adding CloudSecure agents
 
 [.lead]
 
-CloudSecure collects device data using one or more agents. Agents connect to devices in your environment and collect data that is sent to CloudSecure for analysis. 
-
-This topic describes the steps required to add agents to CloudSecure. 
-
-== Adding a CloudSecure Agent
+Cloud Secure collects device data using one or more agents. Agents connect to devices in your environment and collect data that is sent to the Cloud Secure SaaS layer for analysis. 
 
 .Before you begin
 
-* A Docker image must be installed on the VM hosting the Agent. 
-** RHEL and CentOS Agent systems should always have the docker-ce package installed. Users should not install the docker-client-xx or docker-common-xx native RHEL docker packages since these do not support the docker run cli format that CloudSecure supports. 
-* OpenJDK java is required. 
-* The IBM-Java package, found in some RHEL versions must be uninstalled. 
-* The ”sudo su –' command is required for  installation, running scripts, and uninstall.  
+* The Docker CE package must be installed on the VM hosting the agent. 
+For installation instructions, see 
+** https://docs.docker.com/install/linux/docker-ce/centos/
+** https://getstart.blog/2018/03/24/docker-ce-installation-on-red-hat-7/
+
+
+
+* Users should not install the Docker-client-xx or Docker-common-xx native RHEL Docker packages since these do not support the 'docker run cli' format that Cloud Secure supports. To uninstall this package, see: 
+** https://docs.docker.com/install/linux/docker-ce/centos/#install-from-a-package
+* OpenJDK Java is required. See  https://openjdk.java.net/install/ for installation instructions.  
+* The IBM Java package, found in some RHEL versions, must be uninstalled.
+** Verify the Java version: yum info "java"
+** $ sudo update-alternatives --remove "java" "/usr/lib/jvm/jdk[version]/bin/java" (NOTE: not sure about this command)
+* The 'sudo su –' command is required for installation, running scripts, and uninstall.  
+
 
 .Steps for Installation 
 
-. Log in as Administrator or Account Owner to your CloudSecure environment. 
-. Click *Admin > Data Collectors > Agent > +Agents*
+. Log in as Administrator or Account Owner to your Cloud  Secure environment. 
+. Click *Admin > Data Collectors > Agents > +Agent*
++ 
+The system displays the Add an Agent screen:
 +
-The _Add Agent Operating System_ dialog is displayed.
+image::Add-agent-1.png[]
 
-image::cs-add-agent-1.png[Not the correct Image - will replace when available] 
+. Select the operating system on which you are installing the agent.
 
-. Select the operating system you are installing the agent on.
-. Verify that the Agent server meets the minimum system requirements. 
-. Verify that the Agent server is running a supported version of Linux, click _Versions Supported (i)_.
+. Verify that the agent server meets the minimum system requirements. 
 
-image::cs-add-agent-2.png[Need new image - will replace when available]
+. Verify that the agent server is running a supported version of Linux, click _Versions Supported (i)_.
++
+image::add-agent-2.png[] 
 
-. Click the copy to Clipboard icon to copy the installation command. 
-. Run the installation command.   
+
+. Click the Copy to Clipboard icon to copy the installation command. 
+. Run the installation command in a terminal window.  
+
+. The system displays the following message when the installation completes successfully:
++ 
+*New agent detected*
 
 .After you finish
 
-* Click *Admin > Data Collectors* to check the status of the Agent.
-+
-There is normally a delay before the agent status is displayed. 
+* You need to configure a User Directory Connector.  link:task_config_user_dir_connect.html[Configure User Directory Connector]
+* You need to configure one or more Data Collectors.  
+link:task_add_collector_svm.html[Configure Data Collector]  
 
 * The installation directory is /opt/netapp/cloud-secure
 * The logs directiory is /opt/netapp/cloud-secure/logs 
-* Use the following script to control the CloudSecure service:
+* Use the following script to control the Cloud Secure service:
 ** cloud-secure-agent-service.sh --help
-* Use the following script to uninstall the Agent:
+* Use the following script to uninstall the agent:
 ** cloud-secure-agent-uninstall.sh
+
+
 

@@ -1,0 +1,83 @@
+---
+sidebar: sidebar
+permalink: task_add_collector_svm.html
+keywords:  data collector, ONTAP, NetApp, SVM
+summary: Adding data collectors
+---
+
+= Configuring the NetApp ONTAP Data Collector 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+Cloud Secure uses data collectors to collect file and user access data from devices. 
+
+
+.Steps for Configuration 
+
+. Log in as Administrator or Account Owner to your Cloud Secure environment. 
+. Click *Admin > Data Collectors > +Data Collectors* 
++
+The system displays the available Data Collectors. 
+
+. You can chose to view the data collectors in a grid of tiles, or in a list. 
+
+. Click *+Monitor* in the *NetApp ONTAP* tile  or click the Data Collector name. 
+. Click the *NETAPP> ONTAP SVM* in the tile or click *ONTAP SVM* from the list.
++ 
+The system displays the Add SVM configuration page. Enter the required data for each field. 
+
+[caption=]
+.Configuration
+[cols=2*, cols"50,50"]
+[Options=header]
+|===
+|Name |Field
+|Name |Unique name for the Data Collector
+|Agent|Select a configured agent from the list or click *Add Agent* to configure an Agent. See link:<concept_agent_requirements>.html[Agent requirements] and 
+link:<task_add_agent>.html[Configuring an Agent] for configuration information.
+|Continue|Click Continue after you have selected an Agent
+|SVM Management IP Address|Management IP Address
+|Username|User name to access the SVM
+|Password|Password 
+|Password|SVM Password
+|===
+
+[caption=]
+.Advanced Configuration 
+[cols=2*, cols"50,50"]
+[Options=header]
+|===
+|Name |Field
+|Protocol| HTTPS
+|Ports | 443
+|===
+
+[caption=]
+.Custom NFS Export Policies and CIFS Shares
+[cols=2*, cols"50,50"]
+[Options=header]
+|===
+|Name |Field
+|NFS Export Policies| All included or All excluded
+|Policy 1 | Included or Excluded
+|Policy 2 | Included or Excluded
+|Policy 3 | Included or Excluded
+|Newly added NFS Export Policies | Include or exclude
+|CIFS Shares|All included or All excluded
+|Share 1 |Included or Excluded
+|Share 2 |Included or Excluded
+|Share 3 |Included or Excluded
+|Newly added CIFS Shares | Include or exclude
+|===
+
+.After you finish
+
+Click *Test Configuration* to check the status of the collector you configured.
