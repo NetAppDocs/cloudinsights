@@ -63,12 +63,15 @@ For environments that use a proxy, you must set the proxy environment variables 
 . Install the Acquisition Unit software.
 
 
-== Reinstalling and Acquisition Unit
+== Reinstalling an Acquisition Unit
 
 To re-install an Acquisition Unit on the same server/VM, you must follow these steps:
 
-* You must have a temporary Acquisition Unit configured before re-installing an Acquisition Unit.
+.Before you begin
 
+You must have a temporary Acquisition Unit configured before re-installing an Acquisition Unit.
+
+.Steps
 . Log in to the Acquisition Unit server/VM and uninstall the AU software.
 . Log into your Cloud Insights environment and go to *Admin > Data Collectors*. 
 . For each data collector, click the Options menu on the right and select _Edit_. Assign the data collector to the temporary Acquisition Unit and click *Save*.
