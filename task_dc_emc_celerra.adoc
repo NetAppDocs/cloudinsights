@@ -56,3 +56,18 @@ You need the following to configure this data collector:
 |Number of Retries|Number of inventory retry attempts. The default is 2.
 |SSH Banner Wait Timeout (sec)|SSH banner wait timeout. The default is 20 seconds. 
 |===
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: Unable to proceed while DART update in progress
+|Possible solution: Pause the data collector and wait for the DART upgrade to complete before attempting another acquisition request.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
