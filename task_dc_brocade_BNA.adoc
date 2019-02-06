@@ -68,3 +68,17 @@ The following are required to configure this data collector:
 |Report Access Gateway|Check to include devices in Access Gateway mode
 |Performance Poll Interval (sec)|The default is 1800
 |===
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Receive a message that more than 1 node is logged into the Access Gateway port, or data collector fails to discover Access Gateway device.| Check that the NPV device is operating correctly and that all connected WWNs are expected. Do not directly acquire the NPV device. Instead, acquisition of the core fabric switch will collect the NPV device data.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
