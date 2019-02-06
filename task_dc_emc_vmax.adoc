@@ -91,3 +91,34 @@ Note: These are common terminology mappings only and might not represent every c
 |Performance Filter Device List|Comma-separated list of device IDs to include or exclude
 |RPO Polling Interval (sec)|Interval between RPO polls (default 300 seconds) 
 |===
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: The feature being requested is not currently licensed
+|Install the SYMAPI server license.
+|Error: No devices were found
+|Make sure Symmetrix devices are configured to be managed by the the Solutions Enabler server:
+  - Run symcfg list -v to see the list of configured Symmetrix devices.
+|Error: A requested network service was not found in the service file
+|Make sure the Solutions Enabler Service Name is defined the netcnfg file for Solutions Enabler. This file is usually located under SYMAPI\config\ in the Solutions Enabler client installation.
+|Error: The remote client/server handshake failed
+|Check the most recent storsrvd.log* files on the Solutions Enabler host we are trying to discover.
+|Error: Common name in client certificate not valid
+|Edit the _hosts_ file on the Solutions Enabler server so that the Acquisition Unit's hostname resolves to the IP address as reported in the storsrvd.log on the Solutions Enabler server.
+|Error: The function could not obtain memory
+|Make sure there is enough free memory available in the system to execute Solutions Enabler
+|Error: Solutions Enabler was unable to serve all data required.
+|Investigate the health status and load profile of Solutions Enabler
+|Error:
+•	The "symcfg list -tdev" CLI command may return incorrect data when collected with Solutions Enabler 7.x from a Solutions Enabler server 8.x.
+•	The "symcfg list -srp" CLI command may return incorrect data when collected with Solutions Enabler 8.1.0 or earlier from a Solutions Enabler server 8.3 or later.
+|Be sure you are using the same Solutions Enabler major release 
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
