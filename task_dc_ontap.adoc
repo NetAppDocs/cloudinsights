@@ -84,10 +84,13 @@ Some things to try if you encounter problems with this data collector:
 |Communication fails with SSLException|AU ais attempting to send SSL to a plaintext port on a filer. Check whether the ZAPI port accepts SSL, or use a different port.
 |Additional Connection errors:
 
-* ZAPI response has error code 13001, “database  is not open”
-* ZAPI error code is 60 and response contains “API did not finish on time”
-* ZAPI response contains “initialize_session() returned NULL environment”
-* ZAPI error code is 14007 and response contains “Node is not healthy”
+ZAPI response has error code 13001, “database  is not open”
+  
+ZAPI error code is 60 and response contains “API did not finish on time”
+  
+ZAPI response contains “initialize_session() returned NULL environment”
+  
+ZAPI error code is 14007 and response contains “Node is not healthy”
 
 |Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
 |===
@@ -95,6 +98,7 @@ Some things to try if you encounter problems with this data collector:
 ==== Performance
 [cols=2*, options="header", cols"50,50"]
 |===
+|Problem:|Try this:
 |“Failed to collect performance from ZAPI” error|This is usually due to perf stat not running. Try the following command on each node:
 System node systemshell -node * -command “spmctl -h cmd –stop; spmctl -h cmd –exec”
 |===
