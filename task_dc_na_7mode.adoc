@@ -141,9 +141,9 @@ Also check if the ONTAP version is supported by Cloud Insights and verify if the
 |ZAPI returns "cluster role is not cluster_mgmt LIF"|AU needs to talk to cluster management IP. Check the IP and change to a different IP if necessary
 |Error: “7 Mode filers are not supported”| This can happen if you use this data collector to discover 7 mode filer. Change IP to point to cdot filer instead. 
 |ZAPI command fails after retry| AU has communication problem with the cluster. Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
-|AU failed to connect to ZAPI|check IP/port connectivity and assert ZAPI configuration.  
+|AU failed to connect to ZAPI|Check IP/port connectivity and assert ZAPI configuration.  
 |AU failed to connect to ZAPI via HTTP| Check whether ZAPI port accepts plaintext. If AU tries to send plaintext to an SSL socket, the communication fails.
-|Communication fails with SSLException|AU ais attempting to send SSL to a plaintext port on a filer. Check whether the ZAPI port accepts SSL, or use a different port.
+|Communication fails with SSLException|AU is attempting to send SSL to a plaintext port on a filer. Check whether the ZAPI port accepts SSL, or use a different port.
 |Additional Connection errors:
 
 ZAPI response has error code 13001, “database  is not open”
