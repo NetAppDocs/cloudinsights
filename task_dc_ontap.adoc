@@ -83,10 +83,12 @@ Some things to try if you encounter problems with this data collector:
 |AU failed to connect to ZAPI via HTTP| Check whether ZAPI port accepts plaintext. If AU tries to send plaintext to an SSL socket, the communication fails.
 |Communication fails with SSLException|AU ais attempting to send SSL to a plaintext port on a filer. Check whether the ZAPI port accepts SSL, or use a different port.
 |Additional Connection errors:
+
 * ZAPI response has error code 13001, “database  is not open”
 * ZAPI error code is 60 and response contains “API did not finish on time”
 * ZAPI response contains “initialize_session() returned NULL environment”
 * ZAPI error code is 14007 and response contains “Node is not healthy”
+
 |Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
 |===
 
