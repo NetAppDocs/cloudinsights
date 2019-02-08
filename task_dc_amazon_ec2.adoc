@@ -68,5 +68,27 @@ Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if
 
 * https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[Managing Access Keys for IAM Users^]
 
+== Collecting from AWS Child Accounts
+
+Cloud Insights supports collection of child accounts for AWS within a single AWS data collector. Configuration for this collection is performed in the AWS environment:
+* You must configure each child account to have an AWS Role that allows the master account ID to access EC2 details from the children account. 
+* Each child account must have this role assignment _with the same string_. 
+* This role assignment string must be entered into the Cloud Insights AWS Data Collector config.
+
+*_Commented Out:_*
+There is a hidden field for Cross Accounts Configuration File.  The text file is placed on the AU, and the Acquisition service must be able to access the file.  The format of the file should be one AWS account per line.
+*_Commented Out:_*
+
+Please see the following for information on configuring your environment to allow Cloud Insights to collect from AWS child accounts:
+
+link:https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html[Tutorial: Delegate Access Across AWS Accounts Using IAM Roles]
+
+link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_aws-accounts.html[AWS Setup: Providing Access to an IAM User in Another AWS Account That You Own]
+
+link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[Creating a Role to Delegate Permissions to an IAM User]
+
+            
+
+
 
 
