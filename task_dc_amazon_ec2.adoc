@@ -74,7 +74,7 @@ Cloud Insights supports collection of child accounts for AWS within a single AWS
 
 * You must configure each child account to have an AWS Role that allows the master account ID to access EC2 details from the children account. 
 * Each child account must have this role assignment _with the same string_. 
-* This role assignment string must be entered into the Cloud Insights AWS Data Collector config.
+* Enter this role assignment string into the Cloud Insights AWS Data Collector *Advanced Configuration* section, in the *Cross Account Role* field.
 
 *_Commented Out:_*
 There is a hidden field for Cross Accounts Configuration File.  The text file is placed on the AU, and the Acquisition service must be able to access the file.  The format of the file should be one AWS account per line.
