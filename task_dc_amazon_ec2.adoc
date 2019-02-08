@@ -68,6 +68,10 @@ Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if
 
 * https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[Managing Access Keys for IAM Users^]
 
+== Include Extra Regions
+
+In the AWS Data Collector *Advanced Configuration* section, you can set the *Include extra regions* field to include additional region data. By default, this field is set to *_us-./*_*, which collects on all US AWS regions.  To collect on _all_ regions, set this field to  *_./*_* to collect on all regions.  The field can be used to include additional regions.  If the field is empty the data collector will collect on assets specified in the “AWS Region” field in the data collector Configuration. 
+
 == Collecting from AWS Child Accounts
 
 Cloud Insights supports collection of child accounts for AWS within a single AWS data collector. Configuration for this collection is performed in the AWS environment:
