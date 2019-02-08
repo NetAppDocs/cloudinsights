@@ -70,7 +70,8 @@ Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if
 
 == Include Extra Regions
 
-In the AWS Data Collector *Advanced Configuration* section, you can set the *Include extra regions* field to include additional region data. By default, this field is set to *_us-.*_*, which collects on all US AWS regions.  To collect on _all_ regions, set this field to  *_.*_* to collect on all regions.  The field can be used to include additional regions.  If the field is empty the data collector will collect on assets specified in the “AWS Region” field in the data collector Configuration. 
+In the AWS Data Collector *Advanced Configuration* section, you can set the *Include extra regions* field to include additional region data. By default, this field is set to "us-.*", which collects on all US AWS regions.  To collect on _all_ regions, set this field to  ".*". 
+If the *Include extra regions* field is empty, the data collector will collect on assets specified in the “AWS Region” field AS specified in the Configuration section. 
 
 == Collecting from AWS Child Accounts
 
@@ -79,6 +80,10 @@ Cloud Insights supports collection of child accounts for AWS within a single AWS
 * You must configure each child account to have an AWS Role that allows the master account ID to access EC2 details from the children account. 
 * Each child account must have this role assignment _with the same string_. 
 * Enter this role assignment string into the Cloud Insights AWS Data Collector *Advanced Configuration* section, in the *Cross account role* field.
+
+Best Practice: It is highly recommended to assign the AWS predefined _AmazonEC2ReadOnlyAccess_ policy to the ECS master account. 
+
+Best Practice: The user configured in the data source should have at least the predefined _AWSOrganizationsReadOnlyAccess_ policy assigned, in order to query AWS. 
 
 ////
 *_Commented Out:_*
