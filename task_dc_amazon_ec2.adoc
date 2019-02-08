@@ -70,7 +70,7 @@ Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if
 
 == Include Extra Regions
 
-In the AWS Data Collector *Advanced Configuration* section, you can set the *Include extra regions* field to include additional region data. By default, this field is set to _"us-.*"_, which collects on all US AWS regions.  To collect on _all_ regions, set this field to  _".*"_. 
+In the AWS Data Collector *Advanced Configuration* section, you can set the *Include extra regions* field to include additional region data. By default, this field is set to *_us-.*_*, which collects on all US AWS regions.  To collect on _all_ regions, set this field to  *_.*_*. 
 If the *Include extra regions* field is empty, the data collector will collect on assets specified in the “AWS Region” field AS specified in the Configuration section. 
 
 == Collecting from AWS Child Accounts
