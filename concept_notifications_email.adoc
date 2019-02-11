@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_notifications_email.html
 summary: Adding email addresses for notifications.
-keywords: email, notifications, signature, recipient, list
+keywords: email, notifications, signature, recipient, list, subscription
 ---
 
 = Configuring Email Notifications
@@ -16,9 +16,9 @@ keywords: email, notifications, signature, recipient, list
 :imagesdir: ./media/
 
 [.lead]
-You can configure a global email list of recipients for notification of performance policy threshold violations. 
+You can configure a global email list of recipients for notification of performance policy threshold violations. You can also configure an email list specifically for subscription-related notifications.
 
-You can override the global list for any policy when you configure the policy.
+== Global Recipient List
 
 To add recipients to the global email list, click on *Admin > Notifications*, and enter email addresses for the recipients separated by commas. Emails sent as alerts from performance policy threshold violations will be sent to all recipients on the list. You can override the global list for a link:https://docs.netapp.com/us-en/cloudinsights/task_create_performance_policies.html[specific policy] when you configure that policy.
 
@@ -26,6 +26,33 @@ If you make a mistake, you can click on [x] to remove a recipient from the list.
 
 You can also add an optional signature block that will be attached to the email notifications sent.
 
-[.thumb]
-image:Notification1.png[Email Addresses]
+NOTE: You can override the global list for any policy when you configure the policy.
 
+== Subscription Notification Recipients
+
+Notifications fopr subscription-related events can be sent to any or all of the following:
+
+* All Account Owners
+* All Administrators
+* Additional Email Addresses
+
+Notifications will be sent when ecvents such as the following occur:
+
+Informational notifications:
+
+* Your trial ends in two days
+* Your subscription has been updated
+* Your subscription will expire in 3 months
+
+Critical notifications:
+
+* Your trial subscription has ended
+* Your trial account will stop collecting data in 48 hours
+* Your trial account will be deleted after 48 hours
+* Your subscription will expire in 1 month
+* Your subscription has expired
+* Your account will stop collecting data in 48 hours
+* Your account will be deleted after 48 hours
+
+[.thumb]
+image:New_Notification_Page.jpg[Email Addresses]
