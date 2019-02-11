@@ -23,7 +23,7 @@ The OpenStack (REST API / KVM) data collector acquires inventory data for all Op
 == Requirements
 
 * IP address of the OpenStack controller 
-* OpenStack admin role credential & sudo access to the Linux KVM hypervisor 
+* OpenStack admin role credential and sudo access to the Linux KVM hypervisor. If you are not using the admin account or admin equivalent privileges, you will need to use trial and error to identify the default policies to relax for your data collector userid.  
 * The OpenStack Ceilometer module must be installed and configured for performance collection. Configuring the Ceilometer is done by editing the nova.conf file for each hypervisor and then restarting the Nova Compute service on each hypervisor. The option name changes for different releases of OpenStack:
 ** Icehouse
 ** Juno
@@ -31,13 +31,13 @@ The OpenStack (REST API / KVM) data collector acquires inventory data for all Op
 ** Liberty
 ** Mitaka
 ** Newton
-** Newton
+** Ocata
 * For CPU stats, “compute_monitors=ComputeDriverCPUMonitor” needs to be turned on in /etc/nova/nova.conf on compute nodes. 
 * Port requirements:
 ** 5000 for http and 13000 for https, for the Keystone service 
 ** 22 for KVM SSH 
 ** 8774 for Nova Compute Service 
-* 8776 for Cinder Block Service 
+** 8776 for Cinder Block Service 
 ** 8777 for Ceilometer Performance Service 
 ** 9292 for Glance Image Service 
 *Note* The port binds to the specific service, and the service may run on the controller or another host in larger environments. 

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_faq.html
 keywords:  FAQ, Frequently asked questions, general questions, questions
-summary: A summary.
+summary: 
 ---
 
 = Frequently asked questions about Cloud Insights
@@ -21,7 +21,7 @@ This FAQ answers common general questions about Cloud Insights.
 
 == When was Cloud Insights introduced? 
 
-Cloud Insights is based the most mature infrastructure monitoring products in the industry today with over a decade in active development. Formerly known as Onaro or SANscreen, the SANScreen name was changed when joining the OnCommand Portfolio suite of products and is now referred to as Cloud Insights, or more commonly Insight or Cloud Insights.
+Cloud Insights is based on the most mature infrastructure monitoring products in the industry today with over a decade in active development. Formerly known as Onaro or SANscreen, the SANScreen name was changed when joining the OnCommand Portfolio suite of products and is now referred to as Cloud Insights, or more commonly Insight or Cloud Insights.
 
 == How long will Cloud Insights take to deploy in my environment?
 
@@ -33,23 +33,27 @@ Cloud Insights is 100% agentless and does not require the use of agents, taps or
 
 == How does Cloud Insights discover and connect to devices?
 
-Cloud Insights setup leverages the native APIs and protocols often already present in the data center environment, with no need of agents or probes. SSH, HTTP, SMIS and CLI are just a few examples. Where device element managers already exist (such as EMC’s Unisphere, for example), Cloud Insights will communicate to the element manager(s) to capture the existing environmental data. Most device discoveries require only an IP address and read-only username and password. These device discoveries can be “one-to-many”, such as with Cloud Insights’s VMware data source. By discovering the VMware vCenter, Cloud Insights in turn discovers all of its ESXi hosts and their assCloud Insightsated VM’s, all with a single IP address and credential.
+Cloud Insights setup leverages the native APIs and protocols often already present in the data center environment, with no need of agents or probes. SSH, HTTP, SMIS and CLI are just a few examples. Where device element managers already exist (such as Dell EMC’s Unisphere, for example), Cloud Insights communicates to the element manager(s) to capture the existing environmental data. Most device discoveries require only an IP address and read-only username and password. These device discoveries can be “one-to-many”, such as with Cloud Insights’s VMware data collector. By discovering the VMware vCenter, Cloud Insights in turn discovers all of its ESXi hosts and their associated VM’s, all with a single IP address and credential.
 
-== Does Cloud Insights require Professional Services? Is that available, and what do they offer?
+== Does Cloud Insights require Professional Services? Is that available, and what do they offer? 
+//what do we say about professional servcies
 
 For moderately-sized environments we recommend *Professional Services* for deployment, configuration, and integrations, as well as a wide variety of custom reporting and data validation possibilities. A short discussion with the Cloud Insights team and account engagement manager can help determine what services will benefit you the most.
 
 == How often does Cloud Insights release updates for new features and improvements?
 
-Product updates and Service Packs are available for multiple versions of Cloud Insights. Major or minor releases are typically provided every few months, with service packs including new device support and firmware released more frequently. Both are available on the support.netapp.com download site. Certain updates such as new disk models that come out more frequently from manufacturers are pushed out automatically to the Cloud Insights software. Additionally, Cloud Insights data source device collection can be patched on site immediately after a development fix or update.
+//should the focus be continuous updates? 
+Product updates and Service Packs are available for multiple versions of Cloud Insights. Major or minor releases are typically provided every few months, with service packs including new device support and firmware released more frequently. Both are available on the support.netapp.com download site. Certain updates such as new disk models that come out more frequently from manufacturers are pushed out automatically to the Cloud Insights software. Additionally, Cloud Insights data collector device collection can be patched on site immediately after a development fix or update.
 
-== How does the Cloud Insights management team prioritize requests for new data sources?
+== How does the Cloud Insights management team prioritize requests for new data collectors?
 
-Cloud Insights’s Product Management team actively tracks all customer enhancement and interoperability feature requests (IFR’s). Each request is detailed, evaluated for feasibility and prioritized based on customer demand and overall strategic business impact. Once accepted, requests are sized based on level of effort and scheduled for future development. The agile nature of the Cloud Insightss development process routinely allows for new data sources to be made available outside regular scheduled release cycles. NetApp account representatives can assist in customer inquiries and in submitting new requests on your behalf. Data sources can be patched on site, without the need to upgrade Cloud Insights.
+Cloud Insights’s Product Management team actively tracks all customer enhancement and interoperability feature requests (IFR’s). Each request is detailed, evaluated for feasibility and prioritized based on customer demand and overall strategic business impact. Once accepted, requests are sized based on level of effort and scheduled for future development. The agile nature of the Cloud Insightss development process routinely allows for new data collectors to be made available outside regular scheduled release cycles. NetApp account representatives can assist in customer inquiries and in submitting new requests on your behalf. data collectors can be patched on site, without the need to upgrade Cloud Insights.
 
 == My company runs completely on Linux. Will Cloud Insights work on Linux?
 
-Yes, Cloud Insights supports both Red Hat Enterprise Linux 7 and CentOS 7, as well as 64-bit Windows Server 2008 R2, 2012, or 2012 R2 with the latest service pack platforms. Be aware that Cognos (IBM's reporting tool used by Cloud Insights in conjunction with the Data Warehouse) is only supported on Windows, so if you are using Cloud Insights for reporting, you will need to run the reporting tool on a Windows server. The Cloud Insights Installation Guide lists the server requirements for each Cloud Insights component.
+Yes, Cloud Insights supports both Red Hat Enterprise Linux 7 and CentOS 7, as well as 64-bit Windows Server 2008 R2, 2012, or 2012 R2 with the latest service pack platforms. 
+
+//Be aware that Cognos (IBM's reporting tool used by Cloud Insights in conjunction with the Data Warehouse) is only supported on Windows, so if you are using Cloud Insights for reporting, you will need to run the reporting tool on a Windows server. The Cloud Insights Installation Guide lists the server requirements for each Cloud Insights component.
 
 == Is Cloud Insights suitable for secure environments without internet access?
 

@@ -17,16 +17,15 @@ keywords: subscribe, trial, sunscription, contract, raw capacity
 :keywords: OnCommand, Insight, documentation, help, onboarding, getting started
 
 Getting started with Cloud Insights is as easy as three simple steps:
+
 * Sign up for an account on link:https://cloud.netapp.com/[*NetApp Cloud Central*] to get access to all of NetApp's Cloud offerings.
-* Register for a *free trial* of Cloud Insights to explore the features available.
-* *Subscribe* to Cloud Insights for on-going, uninterrupted access to your data.
+* Register for a link:https://cloud.netapp.com/cloud-insights[*free trial*] of Cloud Insights to explore the features available.
+* *Subscribe* to Cloud Insights for on-going, uninterrupted access to your data via link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales] direct or link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[AWS Marketplace].
 
 == Trial Version
 When you sign up for Cloud Insights and your environment is active, you enter into a free, 14-day trial of Cloud Insights. During this trial you can explore all the features that Cloud Insights Standard Edition has to offer, in your own environment.   
 
-At any time during your trial period, you can subscribe to Cloud Insights. When you subscribe, you will be taken to the Amazon Web Services (AWS) Marketplace link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[*product page*] for Cloud Insights. Subscribing to Cloud Insights ensures uninterrupted access to your data as well as extended link:https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[*product support*] options. 
-
-NOTE: You must be an Account Owner or Administrator in order to subscribe to Cloud Insights. Additionally, you must have an Amazon Web Services (AWS) account.
+At any time during your trial period, you can subscribe to Cloud Insights. Subscribing to Cloud Insights ensures uninterrupted access to your data as well as extended link:https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[*product support*] options. 
 
 Cloud Insights displays a banner when your free trial is nearing its end. Within that banner is a _View Subscription_ link, which opens the *Admin > Subscription* page. Non-Admin users will see the banner but will not be able to go to the Subscription page.
 
@@ -36,7 +35,7 @@ NOTE: If you need additional time to evaluate Cloud Insights and your trial is s
 
 If your free trial has expired and you have not yet subscribed to Cloud Insights, you will have limited functionality until you subscribe.  
 
-To subscribe, go to *Admin > Subscription*. In addition to the *Subscribe Now* button, you will be able to see your installed data collectors and calculate your estimated pricing.
+To subscribe, go to *Admin > Subscription*. In addition to the *Subscribe* buttons, you will be able to see your installed data collectors and calculate your estimated pricing. For a typical environment, you can click the self-serve AWS Marketplace *Subscribe Now* button. If your environment includes or is expected to include 1,000 or more Managed Units, you can *Contact NetApp Sales* to subscribe. See <<how-do-i-subscribe,below>> for more details.
 
 === Pricing
 Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts* and amount of *unformatted capacity* being managed in your infrastructure environment.
@@ -49,29 +48,39 @@ The Subscription Calculator gives you an estimated list price monthly Cloud Insi
 
 Your estimated list price cost will change based on whether you select a subscription term of 12 months or 36 months. The 36-month term includes a discounted cost per Managed Unit.
 
-NOTE: The calculator is for estimation only. Your final pricing will be set in the AWS Marketplace page.
+NOTE: The calculator is for estimation only. Your exact pricing will be set when you subscribe.
 //or in a conversation with your NetApp sales representative. 
 
 //image:Subscription_Example.png[Subscription status]
 
 == How Do I Subscribe?
 
-You must have an existing Cloud Insights trial environment before subscribing in AWS, in order to complete the subscription process successfully. 
+Cloud Insights subscription is available via muliple channels:
 
-Clicking on the link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[*Subscribe Now*] button opens the AWS Cloud Insights subscription page, where you can complete your subscription. Note that values you entered in the calculator are not populated in the AWS subscription page; you will need to enter the total Managed Units count on this page.
+=== Subscribe via NetApp Sales direct
+
+If your expected Managed Unit count is 1,000 or greater, you can click on the link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[*Contact Sales*] button to subscribe though the NetApp Sales Team.  
+
+You must provide your Cloud Insights *Serial Number* to your NetApp sales representative so that your paid subscription can be applied to your Cloud Insights environment. The Serial Number uniquely identifies your Cloud Insights trial environment and can be found above the "Contact Sales" button on the *Admin > Subscription* page..
+
+=== Self-Subscribe via AWS Marketplace
+
+NOTE: You must be an Account Owner or Administrator in order to apply an AWS Marketplace subscription to your existing Cloud Insights trial account. Additionally, you must have an Amazon Web Services (AWS) account.  
+
+Clicking on the *Subscribe Now* button opens the AWS link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[Cloud Insights] subscription page, where you can complete your subscription. Note that values you entered in the calculator are not populated in the AWS subscription page; you will need to enter the total Managed Units count on this page.
 
 After you have entered the total Managed Units count and chosen either 12-month or 36-month subscription term, click on *Set Up Your Account* to finish the subscription process.
 
-After the AWS subscription process is complete, you will be taken back to your Cloud Insights environment. Or, if the environment is no longer active (for example, you have logged out), you will be taken to the Cloud Central sign-in page. When you sign in to Cloud Insights again, your subscription will be active. 
+Once the AWS subscription process is complete, you will be taken back to your Cloud Insights environment. Or, if the environment is no longer active (for example, you have logged out), you will be taken to the Cloud Central sign-in page. When you sign in to Cloud Insights again, your subscription will be active. 
 
 NOTE: After clicking on *Set Up Your account* on the AWS Marketplace page, you must complete the AWS subscription process within one hour. If you do not complete it within one hour, you will need to click on *Set Up Your Account* again to complete the process.
 
-If there is a problem and the subscription process fails to complete correctly, you will still see the "Trial Version" banner when you log into your environment. In this event, you can go to *Admin > Subscription* and go through the subscription process again.
+If there is a problem and the subscription process fails to complete correctly, you will still see the "Trial Version" banner when you log into your environment. In this event, you can go to *Admin > Subscription* and repeat the subscription process.
 
 == Subscription Mode
 Once your subscription is active, you can view your subscription status and Managed Unit usage on the *Admin > Subscription* page.
 
-image:Subscription_Status.png[Subscription Status]
+image:SubscriptionSummary.png[Subscription Status]
 
 The Subscription status page displays the following:
 
@@ -90,7 +99,7 @@ Warnings are displayed when your Managed Unit usage exceeds 80%, 90%, and 100% o
 |*80%* | An informational banner is displayed. No action is necessary.
 | *90%* | A warning banner is displayed. You may want to increase your subscribed Managed Unit count.
 | *100%*| An error banner is displayed and you will have limited functionality until you do one of the following:
-* Modify your subscribtion to increase the subscribed Managed Unit count
+* Modify your subscription to increase the subscribed Managed Unit count
 * Remove Data Collectors so that your Managed Unit usage is at or below your subscribed amount
 |===
 
@@ -105,3 +114,7 @@ The Data Collectors section shows the Data Collectors installed in your environm
 NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the status section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The Status section reflects your actual Managed Unit count for your subscription.
 
 In the event that your usage is nearing or exceeding your subscribed amount, you can delete data collectors in this list by clicking on the "three dots" menu and selecting *Delete*.
+
+== Subscribe Directly and Skip the Trial
+
+You can also subscribe to Cloud Insights directly from the link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[AWS Marketplace], without first creating a trial environment. Once your subscription is complete and your environment is set up, you will immediately be subscribed.

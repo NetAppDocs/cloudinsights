@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_configure_acquisition_unit.html
 keywords:  Acquisition Unit, AU, install, configure, Linux
-summary: A summary.
+summary:
 ---
 
 = Adding Acquisition Units
@@ -27,19 +27,20 @@ This topic describes how to add Acquisition Units and describes additional steps
 
 * If your system is using a proxy, you must set the proxy environment variables before the acquisition unit is installed. For more information, see <<Setting proxy environment variables>>.
 * You must have an unzip program to unzip the downloaded files.
-* Be sure your server or VM meets the minimum link:concept_acquisition_unit_requirements.html[requirements].
 
 .Steps for Linux Acquisition Unit Installation 
 
 . Log in as Administrator or Account Owner to your Cloud Insights environment. 
 . Click *Admin > Data Collectors > Acquisition Units > +Acquisition Unit* 
 +
-The system displays the _Add Acquisition Unit_ dialog.
+The system displays the _Add Acquisition Unit_ dialog. Choose Linux.
 
-image::add_acq_linux.png[]
+[.thumb]
+image::add_acq_linux1.png[]
 
 . Verify that the server or VM hosting the Acquisition Unit meets the minimum system requirements. 
 . Verify that the server is running a supported version of Linux, click _Versions Supported (i)_.
+
 . Copy the Installation command displayed in the dialog into a terminal window on the server or VM that will host the Acquisition unit.  
 . Execute the command in the Bash shell. 
 
@@ -47,21 +48,88 @@ image::add_acq_linux.png[]
 
 * Click *Admin > Data Collectors > Acquisition units* to check the status of Acquisition Units. 
 * You can access the Acquisition Unit logs at /var/log/netapp/cloudinsights/acq/acq.log
-* Use the following script to stop, start, restart, or check the status the Acquisition Unit:
-+
- cloudinsights-service.sh
- 
+* Use the following script to control the Acquisition Unit:
+** cloudinsights-service.sh (stop, start, restart, check the status)
 * Use the following script to uninstall the Acquisition Unit:
-+
- cloudinsights-uninstall.sh
- 
-* For troubleshooting AU installation errors, see link:task_troubleshooting_linux_acquisition_unit_problems.html[Troubleshooting Linux AU]
+** cloudinsights-uninstall.sh
 
+=== Setting proxy environment variables
+
+For environments that use a proxy, you must set the proxy environment variables before you add the Acquisition Unit. The instructions for configuring the proxy are provided on the _Add Acquisition Unit_  dialog. 
+
+. Click + in Have a Proxy Server?
+. Copy the commands to a text editor and set your proxy variables as needed.
++ Note: Restrictions on special characters in proxy username and password fields:  '%' and '!' are allowed in the  username filed. ':', '%', and '!' are allowed in the password field. 
+. Run the edited command in a terminal using the Bash shell.
+. Install the Acquisition Unit software.
+
+
+== Adding a Windows Acquisition Unit
+
+.Steps for Windows Acquisition Unit Installation 
+
+. Log in to the Acquisition Unit server/VM as a user with Administrator permissions.
+. On that server, open a browser window and log in to your Cloud Insights environment as Administrator or Account Owner. 
+. Click *Admin > Data Collectors > Acquisition Units > +Acquisition Unit* .
++
+The system displays the _Add Acquisition Unit_ dialog. Choose Windows.
+
+[.thumb]
+image::add_acq_windows.png[]
+
+. Verify that the server or VM hosting the Acquisition Unit meets the minimum system requirements. 
+. Verify that the server is running a supported version of Windows click _Versions Supported (i)_.
+
+. Click the *Download Installer (Windows 64-bit)* button. 
+
+. Copy the Installation command snippet in the dialog and paste it into a command prompt window on the Acquisition Unit server. You can click the clipboard icon to copy the full command to the clipboard.
++
+The snippet installs the Acquisition Unit software on the server. 
+
+.After you finish
+
+* Click *Admin > Data Collectors > Acquisition units* to check the status of Acquisition Units. 
+* You can access the Acquisition Unit log in <install dir>\Cloud Insights\Acquisition Unit\log\acq.log
+
+////
+* Use the following script to control the Acquisition Unit:
+** cloudinsights-service.sh (stop, start, restart, check the status)
+* Use the following script to uninstall the Acquisition Unit:
+** cloudinsights-uninstall.sh
+////
+
+////
 == Setting proxy environment variables
 
 For environments that use a proxy, you must set the proxy environment variables before you add the Acquisition Unit. The instructions for configuring the proxy are provided on the _Add Acquisition Unit_  dialog. 
 
 . Click + in Have a Proxy Server?
 . Copy the commands to a text editor and set your proxy variables as needed.
-. Run the edited command in a terminal.
++ Note: Restrictions on special characters in proxy username and password fields:  '%' and '!' are allowed in the  username filed. ':', '%', and '!' are allowed in the password field. 
+. Run the edited command in a terminal using the Bash shell.
 . Install the Acquisition Unit software.
+////
+
+== Reinstalling an Acquisition Unit
+
+To re-install an Acquisition Unit on the same server/VM, you must follow these steps:
+
+.Before you begin
+
+You must have a temporary Acquisition Unit configured on a separate server/VM before re-installing an Acquisition Unit.
+
+.Steps
+. Log in to the Acquisition Unit server/VM and uninstall the AU software.
+. Log into your Cloud Insights environment and go to *Admin > Data Collectors*. 
+. For each data collector, click the Options menu on the right and select _Edit_. Assign the data collector to the temporary Acquisition Unit and click *Save*.
++
+You can also select multiple data collectors of the same type and click the *Bulk Actions* button. Choose _Edit_ and assign the data collectors to the temporary Acquisition Unit.
+
+. After all of the data collectors have been moved to the temporary Acquisition Unit, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
+
+. Click the Options button to the right of the Acquisition Unit you wish to re-install, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
+
+. You can now re-install the Acquisition Unit software on the original server/VM. Click *+Acquisition Unit* and follow the instructions above to install the Acquisition Unit.  
+
+. Once the Acquisition Unit has been re-installed, assign your data collectors back to the Acquisition Unit.
+
