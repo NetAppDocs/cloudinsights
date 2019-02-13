@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: task_dc_OpenStack.html
+permalink: task_dc_openstack.html
 keywords: data collector, openstack, OpenStack 
 summary: OpenStack data collector.
 ---
@@ -65,9 +65,9 @@ The OpenStack (REST API / KVM) data collector acquires inventory data for all Op
 |Enable hypervisor inventory discovery through SSH|Check this to enable hypervisor inventory discovery through SSH 
 |OpenStack Admin URL port|OpenStack Admin URL port
 |Use HTTPS|Check to use secure HTTP
-|HTTP Connection Timeout (sec)|Timeout for HTTP connection. The default is 300 seconds.
+//|HTTP Connection Timeout (sec)|Timeout for HTTP connection. The default is 300 seconds.
 |SSH Port|Port used for SSH
-|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 30 seconds.
+//|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 30 seconds.
 |SSH Process Retries|Number of inventory retry attempts
 |Inventory Poll Interval (min)|Interval between inventory polls.  The default is 20 minutes.
 |===
