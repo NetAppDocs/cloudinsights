@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: task_dc_HP_Enterprise_Command_View.html
+permalink: task_dc_hpe_commandview.html
 keywords: data collector, HP Command View, HP 
 summary: Configuring HP Enterprise Command View data collector.
 ---
@@ -98,7 +98,7 @@ Note: In HDS USP, USP V, and VSP, any disk can belong to more than one array gro
 |Choose 'Exclude' or 'Include' to specify a list|Specify whether to include or exclude the array list below when collecting data.
 |Exclude or Include Devices|Comma-separated list of device ID's or array names to include or exclude
 |Query Host Manager|Select to query host manager
-|HTTP Timeout (sec)|HTTP connection timeout The default is 60. 
+//|HTTP Timeout (sec)|HTTP connection timeout The default is 60. 
 |Performance Polling Interval (sec)|Interval between performance polls. The default is 300.
-|Export timeout in seconds|Export utility timeout. The default is 300.
+//|Export timeout in seconds|Export utility timeout. The default is 300.
 |===
