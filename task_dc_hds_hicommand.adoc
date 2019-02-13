@@ -187,7 +187,7 @@ Some things to try if you encounter problems with this data collector:
 * Run the command “set=STONAVM_HOME=.”
 * Run the command “auunitref”
 * Confirm that the command output contains details of the array with IP
-* If the output does not contain the array details then register the array with Storage Navigator CLI
+* If the output does not contain the array details then register the array with Storage Navigator CLI:
     - Open Command prompt and change directory to the configured path
     - Run the command “set=STONAVM_HOME=.”
     - Run command “auunitaddauto -ip ${ip}”. Replace ${ip} with real IP
