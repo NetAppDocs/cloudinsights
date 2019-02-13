@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: task_dc_IBM_pwr_vm.html
+permalink: task_dc_ibm_powervm.html
 keywords: IBM, powerVM, 
 summary: Configuring IBM PowerVM data collector.
 ---
@@ -66,7 +66,7 @@ The user must also have View permission on HMC configurations and the ability to
 |Inventory Poll Interval (min)|Interval between inventory polls. The default is 20 minutes. 
 |SSH Port|Port used for SSH to the PowerVM
 |Password|Password used for the Hardware Management Console
-|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 600 seconds.
+//|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 600 seconds.
 |Number of Retries|Number of inventory retry attempts
 |Exclude Devices|Comma-separated list of device IDs or display names to exclude
 |===
