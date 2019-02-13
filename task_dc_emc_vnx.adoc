@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: task_dc_emc_vnx_configure.html
+permalink: task_dc_emc_vnx.html
 keywords: data collector, VNX, EMC 
 summary: Configuring VNX data collector.
 ---
@@ -65,9 +65,9 @@ You need the following to configure the VNX (SSH) data collector:
 |===
 |Field|Description
 |Inventory Poll Interval (min)|Interval between inventory polls. The default is 40 minutes. 
-|VNX SSH Process Wait Timeout|VNX SSH process timeout (default 600 seconds)
+//|VNX SSH Process Wait Timeout|VNX SSH process timeout (default 600 seconds)
 |Celerra Command Retry Attempts|Number of Celerra command retry attempts
-|CLARiiON External Process Timeout for Inventory (sec)| CLARiiON external process timeout for inventory. The default is 1800 seconds.)
+//|CLARiiON External Process Timeout for Inventory (sec)| CLARiiON external process timeout for inventory. The default is 1800 seconds.)
 |Performance Poll Interval (sec).|Interval between performance polls. The default is 300 seconds.
-|CLARiiON External Process Timeout for Performance (sec).|CLARiiON external process timeout for performance.The default is 1800 seconds. 
+//|CLARiiON External Process Timeout for Performance (sec).|CLARiiON external process timeout for performance.The default is 1800 seconds. 
 |===
