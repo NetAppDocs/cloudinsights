@@ -79,7 +79,7 @@ Note: These are common terminology mappings only and might not represent every c
 * In the event that REMOTE_CACHED options make CLI commands fail, use the REMOTE option. Keep in mind that it will slow down the acquisition process (possibly to hours or even days in extreme cases). The NETCNFG file settings are still used for an IP connection to the Solutions Enabler server that has Fibre Channel connectivity to the Symmetrix arrays being discovered.
 
 *Note:* This setting does not change Cloud Insights behavior with respect to the arrays listed as REMOTE by the "symcfg list" output. Cloud Insights gathers data only on devices shown as LOCAL by this command.
-|CLI Timeout (sec)|CLI process timeout (default 7200 seconds)
+//|CLI Timeout (sec)|CLI process timeout (default 7200 seconds)
 |SMI-S Host IP|IP address of the SMI-S Provider Host
 |SMI-S Port|Port used by SMI-S Provider Host 
 |Protocol|Protocol used to connect to the SMI-S provider
