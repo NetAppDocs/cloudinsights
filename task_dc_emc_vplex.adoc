@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: task_dc_emc_vplex_configure.html
+permalink: task_dc_emc_vplex.html
 keywords: data collector, VPLEX, EMC 
 summary: Configuring VPLEX data collector.
 ---
@@ -70,11 +70,11 @@ Note: These are common terminology mappings only and might not represent every c
 |Field|Description
 |Communication Port|Port used for VPLEX CLI. The default is 443. 
 |Inventory Poll Interval (min)|The default is 20 minutes.
-|Connection timeout (sec)|The default is 60 seconds.
+//|Connection timeout (sec)|The default is 60 seconds.
 |Number of connection retries|The default is 3.
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 600 seconds.
-|Performance SSH Process Wait Timeout (sec).| SSH process timeout. The default is 600 seconds.
-|SSH Banner Wait Timeout (sec).|The default is 20 seconds.
+//|Performance SSH Process Wait Timeout (sec).| SSH process timeout. The default is 600 seconds.
+//|SSH Banner Wait Timeout (sec).|The default is 20 seconds.
 |Number of Retries|The default is 2. 
 |===
 
