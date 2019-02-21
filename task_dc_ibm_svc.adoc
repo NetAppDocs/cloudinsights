@@ -74,13 +74,13 @@ Note: Alternatively, enable data collection using the SVC  management user inter
 |===
 |Field|Description
 |Cluster's IP |IP address or fully-qualified domain name of the SVC storage 
-|'Password' or 'OpenSSH Key File'|Credential type used to connect to the device via SSH
+//|'Password' or 'OpenSSH Key File'|Credential type used to connect to the device via SSH
 |Inventory User Name|User name for the SVC CLI
 |Inventory Password|Password for the SVC CLI
-|Full Path to Inventory Private Key|Full path to the Inventory private key file
-|Performance User Name|User name for the SVC CLI for performance collection
-|Performance User|Name 	User name for the SVC CLI for performance collection
-|Full Path to Performance Private Key|Full path to the Performance private key file
+//|Full Path to Inventory Private Key|Full path to the Inventory private key file
+//|Performance User Name|User name for the SVC CLI for performance collection
+//|Performance User|Name 	User name for the SVC CLI for performance collection
+//|Full Path to Performance Private Key|Full path to the Performance private key file
 |===
 
 == Advanced configuration
@@ -89,11 +89,11 @@ Note: Alternatively, enable data collection using the SVC  management user inter
 |===
 |Field|Description
 |Inventory Poll Interval (min)|Interval between inventory polls. The default is 40 minutes.
-|Exclude Devices|Comma-separated list of device IDs to exclude from inventory collection
+//|Exclude Devices|Comma-separated list of device IDs to exclude from inventory collection
 //|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 200 seconds. 
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds). 
 |Performance Exclude Devices|Comma-separated list of device IDs to exclude from performance collection
 //|Performance SSH Process Wait Timeout (sec)|SSH process timeout. The default is 200 seconds.
-|Performance User|Name 	User name for the SVC CLI for performance collection
-|To clean up dumped stats files|Select to clean up dumped stats files
+//|Performance User|Name 	User name for the SVC CLI for performance collection
+|To clean up dumped stats files|Select this checkbox to clean up dumped stats files
 |===

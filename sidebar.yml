@@ -47,10 +47,6 @@ entries:
         url: /task_dc_cisco_fc_switch.html
       - title: Dell EMC
         entries:
-          - title: Celerra
-            url: /task_dc_emc_celerra.html 
-          - title: CLARiiON
-            url: /task_dc_emc_clariion.html
           - title: Data Domain
             url: /task_dc_emc_datadomain.html
           - title: Dell Compellent
@@ -61,12 +57,16 @@ entries:
             url: /task_dc_emc_recoverpoint.html
           - title: ScaleIO
             url: /task_dc_emc_scaleio.html
-          - title: Symmetrix
-            url: /task_dc_emc_vmax.html   
-          - title: VNX
-            url: /task_dc_emc_vnx.html
-          - title: VNXe
-            url: /task_dc_emc_vnxe.html
+          - title: Unity (VNXe)
+            url: /task_dc_emc_unity.html
+          - title: VMAX/PowerMax 
+            url: /task_dc_emc_vmax_powermax.html   
+          - title: VNX Block (Clariion)
+            url: /task_dc_emc_vnx_block.html
+          - title: VNX File (Celerra)
+            url: /task_dc_emc_vnx_file.html 
+          - title: VNX Unified
+            url: /task_dc_emc_vnx_unified.html
           - title: VPLEX
             url: /task_dc_emc_vplex.html
           - title: XtremIO
@@ -75,14 +75,14 @@ entries:
         url: /task_dc_fujitsu.html
       - title: Hewlett Packard
         entries:
-          - title: HPE 3PAR
+          - title: HP 3PAR StoreServ
             url: /task_dc_hp_3par.html
           - title: HP Command View AE
             url: /task_dc_hpe_commandview.html
       - title: Hitachi Data Systems
         entries:
-          - title: HDS HiCommand Device Manager HP Command View AE
-            url: /task_dc_hds_hicomm_configure.html
+          - title: HDS Command Suite
+            url: /task_dc_hds_commandsuite.html
           - title: HDS HNAS
             url: /task_dc_hds_nas.html
       - title: Infinidat
@@ -129,8 +129,8 @@ entries:
         url: /task_dc_openstack.html
       - title: Oracle
         url: /task_dc_oracle_zfs.html
-      - title: Pure Storage
-        url: /task_dc_pure.html
+      - title: Pure Storage Flasharray
+        url: /task_dc_pure_flasharray.html
       - title: Red Hat
         url: /task_dc_redhat_virtualization.html
       - title: VMWare

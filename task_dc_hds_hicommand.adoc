@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_dc_hds_hicommand.html
+permalink: task_dc_hds_commandsuite.html
 keywords: data collector, Hitachi Vantara Command Suite, Hitachi 
-summary: Configuring HDS HiCommand Device Manager data collector.
+summary: Configuring HDS Command Suite Device Manager data collector.
 ---
 
-= Hitachi Vantara Command Suite data collector
+= Hitachi Command Suite data collector
 
 :toc: macro
 :hardbreaks:
@@ -19,7 +19,7 @@ summary: Configuring HDS HiCommand Device Manager data collector.
 
 [.lead] 
 
-The Hitachi Vantara Command Suite data collector supports the HiCommand Device Manager server. Cloud Insights communicates with the HiCommand Device Manager server using the standard HiCommand API.
+The Hitachi Command Suite data collector supports the HiCommand Device Manager server. Cloud Insights communicates with the HiCommand Device Manager server using the standard HiCommand API.
 
 == Terminology 
 
@@ -85,6 +85,7 @@ The following requirements must be met in order to collect performance data:
 * Account Authentication Valid: Select to choose valid account authentication
 * User Name: User name for the storage
 * Password: Password for the storage
+
 |Choose Tuning Manager for Performance |Override other performance options
 |Tuning Manager Host|IP address or fully-qualified domain name of tuning manager
 |Tuning Manager Port|Port used for Tuning Manager (Default is 22015)
@@ -97,17 +98,19 @@ Note: In HDS USP, USP V, and VSP, any disk can belong to more than one array gro
 
 |===
 |Field|Description
+|Connection Type|HTTPS or HTTP, also displays the default port
 |HiCommand Server Port |Port used for the HiCommand Device Manager 
-|HTTPs Enabled|Select to enable HTTPs
+//|HTTPs Enabled|Select to enable HTTPs
 |Inventory Poll Interval (min)|	Interval between inventory polls. The default is 40.  
 |Choose 'Exclude' or 'Include' to specify a list|Specify whether to include or exclude the array list below when collecting data.
-|Exclude or Include Devices|Comma-separated list of device ID's or array names to include or exclude
-|Query Host Manager|Select to query host manager
-|HTTP Timeout (sec)|HTTP connection timeout The default is 60. 
-|Performance Polling Interval (sec)|Interval between performance polls. The default is 300.
+|Filter device List|Comma-separated list of device ID's or array names to include or exclude
+//|Query Host Manager|Select to query host manager
+//|HTTP Timeout (sec)|HTTP connection timeout The default is 60. 
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300.
 |Export timeout in seconds|Export utility timeout. The default is 300.
 |===
 
+////
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
@@ -194,3 +197,4 @@ Some things to try if you encounter problems with this data collector:
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+////

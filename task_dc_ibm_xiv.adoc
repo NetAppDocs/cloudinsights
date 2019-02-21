@@ -19,15 +19,12 @@ summary: Configuring IBM XIV/A9000 data collector.
 
 [.lead]
 
-IBM XIV (CLI) data collector uses the XIV command-line interface to collect inventory data while performance collection is accomplished by making SMI-S calls to the XIV array, which runs a SMI-S provider on port 7778. 
+IBM XIV and A9000 (CLI) data collector uses the XIV command-line interface to collect inventory data while performance collection is accomplished by making SMI-S calls to the XIV/A9000 array, which runs a SMI-S provider on port 7778. 
 
 == Terminology
 
 [cols=2*, options="header", cols"50,50"]
 |===
-|Vendor/Model Term | Cloud Insights Term
-|Disk|Disk
-|
 |Vendor/Model Term | Cloud Insights Term
 |Disk|Disk
 |Storage System|Storage
@@ -64,10 +61,11 @@ The following are requirements for performance collection:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|IP address|IP address or fully-qualified domain name of the XIV storage 
+|XIV IP address|IP address or fully-qualified domain name of the XIV storage 
 |User Name |User name for the XIV storage
 |Password|Password for the XIV storage
-|XIV CLI|Full path to the XIV CLI directory 
+|Full Path to XIV CLI Directory|Full path to the folder containing the XIV CLI 
+|SMI-S Host IP Address|IP address of the SMI-S host
 |===
 
 == Advanced configuration
@@ -77,13 +75,14 @@ The following are requirements for performance collection:
 |Field|Description
 |Inventory Poll Interval (min)|Interval between inventory polls. The default is 40 minutes. 
 //|CLI Process Wait Timeout (sec)|CLI process timeout.  The default is 7200000 ms.
-|SMI-S Host IP|IP address of the SMI-S Provider Host
-|SMI-S Port|Port used by SMI-S Provider Host
-|SMI-S Protocol|Protocol used to connect to the SMI-S provider
-|SMI-S Namespace|SMI-S namespace
+//|SMI-S Host IP|IP address of the SMI-S Provider Host
+//|SMI-S Port|Port used by SMI-S Provider Host
+|SMI-S Protocol|Protocol used to connect to the SMI-S provider. Also displays the default port.
+|Override SMI-S Port|If blank, use the default port in the Connection Type field, otherwise enter the connection port to use
+//|SMI-S Namespace|SMI-S namespace
 |Username|User name for the SMI-S Provider Host
 |Password|Password for the SMI-S Provider Host
 |Performance Poll Interval (sec)|Interval between performance polls.  The default is 300 seconds.
-|Number of SMI-S Connection Retries|Number of SMI-S connection retry attempts. 
+//|Number of SMI-S Connection Retries|Number of SMI-S connection retry attempts. 
 |===
 
