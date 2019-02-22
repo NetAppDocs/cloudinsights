@@ -61,8 +61,8 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|TCP port|The default is 215
-|Connection type|HTTPS 
+|Connection Type |HTTPS or HTTP, also displays the default port
+|Override Connection Port |If blank, use the default port in the Connection Type field, otherwise enter the connection port to use
 |Inventory poll interval|The default is port 60 seconds
 //|Connection Timeout (sec)|The default is 60 seconds
 |Performance Poll Interval (sec)|The default is 300. 
