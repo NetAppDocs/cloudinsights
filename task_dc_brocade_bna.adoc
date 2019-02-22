@@ -60,8 +60,8 @@ The following are required to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Connection type|HTTPS or HTTP
-|TCP Port|443
+|Connection Type|HTTPS (default port 443) or HTTP (default port 80)
+|Override Connection Port |If blank, use the default port in the Connection Type field, otherwise enter the connection port to use
 |Password|Password for the switch
 |Inventory poll interval (min) |The default is 40
 //|Connection timeout (sec)|The default is 60
