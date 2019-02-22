@@ -5,7 +5,7 @@ keywords: data collector, ontap, clustered ontap
 summary: CDOT collector
 --- 
 
-= ONTAP Data management data collector
+= ONTAP Data Management data collector
 
 :toc: macro
 :hardbreaks:
@@ -60,7 +60,8 @@ The following are requirements to configure and use this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Communication Port|Port used for NetApp API
+|Connection Type |HTTPS or HTTP, also displays the default port
+|Override Connection Port |If blank, use the default port in the Connection Type field, otherwise enter the connection port to use
 |Inventory Poll Interval (min) |Default is 20 minutes.
 |Performance Poll Interval (sec)|Default is  300 seconds.
 |===
