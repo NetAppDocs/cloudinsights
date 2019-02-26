@@ -18,24 +18,10 @@ keywords: email, notifications, signature, recipient, list, subscription
 [.lead]
 You can configure a global email list of recipients for notification of performance policy threshold violations. You can also configure an email list specifically for subscription-related notifications.
 
+== Subscription Notification Recipients
+
 [.thumb]
 image:SubscriptionNotificationSection.png[Subscription Email Notifications]
-//image:GlobalMonitorNotificationSection.png[Monitors Email Notifications]
-image:PerformancePolicyNotificationSection.png[Performance Policy Email Notifications]
-
-//image:New_Notification_Page.jpg[Email Addresses]
-
-== Global Recipient List
-
-To add recipients to the global email list, click on *Admin > Notifications*, and enter email addresses for the recipients separated by commas. Emails sent as alerts from performance policy threshold violations will be sent to all recipients on the list. 
-
-If you make a mistake, you can click on [x] to remove a recipient from the list.
-
-You can also add an optional signature block that will be attached to the email notifications sent.
-
-NOTE: You can override the global list for a link:task_create_performance_policies.html[specific policy] when you configure that policy.
-
-== Subscription Notification Recipients
 
 You can choose to have email notifications sent for subscription-related events to any or all of the following recipients:
 
@@ -78,4 +64,21 @@ Account will stop collecting data in 48 hours
 Account will be deleted after 48 hours|Contact link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp sales] to purchase a subscription
 |===
 
+
+
+== Global Recipient List
+
+[.thumb]
+image:PerformancePolicyNotificationSection.png[Performance Policy Email Notifications]
+
+To add recipients to the global email list, click on *Admin > Notifications*, and enter email addresses for the recipients separated by commas. Emails sent as alerts from performance policy threshold violations will be sent to all recipients on the list. 
+
+If you make a mistake, you can click on [x] to remove a recipient from the list.
+
+You can also add an optional signature block that will be attached to the email notifications sent.
+
+NOTE: You can override the global list for a link:task_create_performance_policies.html[specific policy] when you configure that policy.
+
+
+//image:GlobalMonitorNotificationSection.png[Monitors Email Notifications]
 
