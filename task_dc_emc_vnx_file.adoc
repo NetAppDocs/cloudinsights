@@ -1,19 +1,19 @@
 ---
 sidebar: sidebar
-permalink: task_dc_emc_celerra.html
-keywords: data collector, Celerra, EMC, DELL
+permalink: task_dc_emc_vnx_file.html
+keywords: data collector, Celerra, EMC, DELL, VNX File
 summary: Configuring DELL EMC Celerra data collector.
 ---
 
-= DELL EMC Celerra Unified Storage System data collector
+= DELL EMC VNX File (formerly Celerra Unified Storage System) data collector
 
 [.lead]
 
-This data collector acquires inventory information from the Celerra Unified Storage System. For configuration, this data collector requires the IP address of the storage processors and a read-only user name and password.
+This data collector acquires inventory information from the VNX File Storage System. For configuration, this data collector requires the IP address of the storage processors and a read-only user name and password.
 
 == Terminology 
 
-Cloud Insights acquires the following inventory information from the Celerra data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the VNX File data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -41,9 +41,9 @@ You need the following to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description 
-|Address of Celerra|IP address or fully-qualified domain name of the Celerra device
-|User Name|Name used to log in to the Celerra device
-|Password|Password used to log in to the Celerra device
+|VNX File IP Address|IP address or fully-qualified domain name of the VNX File device
+|User Name|Name used to log in to the VNX File device
+|Password|Password used to log in to the VNX File device
 |===
 
 == Advanced configuration
@@ -53,10 +53,11 @@ You need the following to configure this data collector:
 |Field|Description 
 |Inventory Poll Interval (minutes)|Interval between inventory polls. The default is 20 minutes. 
 //|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 600 seconds. 
-|Number of Retries|Number of inventory retry attempts. The default is 2.
+//|Number of Retries|Number of inventory retry attempts. The default is 2.
 //|SSH Banner Wait Timeout (sec)|SSH banner wait timeout. The default is 20 seconds. 
 |===
 
+////
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
@@ -70,4 +71,4 @@ Some things to try if you encounter problems with this data collector:
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
-
+////

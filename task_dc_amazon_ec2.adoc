@@ -53,7 +53,7 @@ Enter data into the data collector fields according to the table below:
 |===
 |Field | Description
 |Inventory Poll Interval (min)|The default is 60
-|HTTP connection and socket timeout (sec)|The default is 300
+//|HTTP connection and socket timeout (sec)|The default is 300
 |Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
 |Performance Poll Interval (sec)|The default is 1800
 |===
@@ -83,11 +83,6 @@ Cloud Insights supports collection of child accounts for AWS within a single AWS
 
 Best Practice: It is highly recommended to assign the AWS predefined _AmazonEC2ReadOnlyAccess_ policy to the ECS master account. Also, the user configured in the data source should have at least the predefined _AWSOrganizationsReadOnlyAccess_ policy assigned, in order to query AWS. 
 
-////
-*_Commented Out:_*
-There is a hidden field for Cross Accounts Configuration File.  The text file is placed on the AU, and the Acquisition service must be able to access the file.  The format of the file should be one AWS account per line.
-*_Commented Out^_*
-////
 
 Please see the following for information on configuring your environment to allow Cloud Insights to collect from AWS child accounts:
 
@@ -97,8 +92,11 @@ link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_
 
 link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[Creating a Role to Delegate Permissions to an IAM User]
 
-            
+           
+////
+== Troubleshooting
 
-
+Information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+////
 
 
