@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_dc_emc_vmax.html
-keywords: data collector, Celerra, EMC, DELL
-summary: Configuring Dell EMC VMAX Family data collector.
+permalink: task_dc_emc_vmax_powermax.html
+keywords: data collector, EMC, DELL, vmax, powermax
+summary: Configuring Dell EMC VMAX and PowerMax Family of Devices data collector.
 ---
 
-=  Dell EMC VMAX Family of Devices data collector
+=  Dell EMC VMAX and PowerMax Family of Devices data collector
 
 :toc: macro
 :hardbreaks:
@@ -17,11 +17,11 @@ summary: Configuring Dell EMC VMAX Family data collector.
 
 [.lead]
 
-Cloud Insights discovers Symmetrix storage arrays by using Solutions Enabler symcli commands in conjunction with an existing Solutions Enabler server in your environment. The existing Solutions Enabler server has connectivity to the Symmetrix storage array through access to gatekeeper volumes. 
+Cloud Insights discovers EMC VMAX and PowerMax storage arrays by using Solutions Enabler symcli commands in conjunction with an existing Solutions Enabler server in your environment. The existing Solutions Enabler server has connectivity to the VMAX/PowerMax storage array through access to gatekeeper volumes. 
 
 == Requirements
 
-Before configuring this data collector, you should ensure that Cloud  Insights has TCP connectivity to port 2707 on the existing Solutions Enabler server. Cloud  Insights discovers all the Symmetrix arrays that are "Local" to this server, as seen in "symcfg list" output from that server. 
+Before configuring this data collector, you should ensure that Cloud Insights has TCP connectivity to port 2707 on the existing Solutions Enabler server. Cloud Insights discovers all the Symmetrix arrays that are "Local" to this server, as seen in "symcfg list" output from that server. 
 
 * The EMC Solutions Enabler (CLI) with SMI-S provider application must be installed and the version must match or be earlier than the version running on the Solutions Enabler Server. 
 * A properly configured {installdir}\EMC\SYMAPI\config\netcnfg file is required. This file defines service names for Solutions Enabler servers, as well as the access method (SECURE / NOSECURE /ANY). 
@@ -32,12 +32,12 @@ Before configuring this data collector, you should ensure that Cloud  Insights h
 * Solutions Enabler Server 6.5X requirements: 
 ** MI-S provider 3.3.1 for SMIS-S V1.2 installed
 ** After install, run \Program Files\EMC\SYMCLI\bin>stordaemon start storsrvd
-* The UNISPHERE for VMAX application must be running and collecting statistics for the Symmetrix VMAX storage arrays that are managed by the SMI-S Provider installation
+* The UNISPHERE for VMAX application must be running and collecting statistics for the EMC VMAX and PowerMax sstorage arrays that are managed by the SMI-S Provider installation
 * Access validation: Verify that the SMI-S provider is running: telnet <se_server> 5988
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the EMC Solutions Enabler data source. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the EMC VMAX/PowerMax data source. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -61,7 +61,8 @@ Note: These are common terminology mappings only and might not represent every c
 |===
 |Field|Description
 |Service Name|Service name as specified in _netcnfg_ file 
-|Full path to CLI|Full path to the Symmetrix CLI 
+|Full path to CLI|Full path to the folder containing the Symmetrix CLI 
+|SMI-S Host IP Address| IP address of the SMI-S host
 |===
 
 == Advanced Configuration
@@ -69,9 +70,9 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Inventory Poll Interval (min)|Interval between inventory polls.  The default is 40 minutes. 
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 40 minutes. 
 |Choose 'Exclude' or 'Include' to specify a list|Specify whether to include or exclude the array list below when collecting data.
-|Inventory Exclude Devices|Comma-separated list of device IDs to include or exclude 
+|Inventory Filter Device List|Comma-separated list of device IDs to include or exclude 
 |Connection Caching|Choose connection caching method:
 
 * LOCAL means that the Cloud  Insights Acquisition service is running on the Solutions Enabler server, which has Fibre Channel connectivity to the Symmetrix arrays you seek to discover, and has access to gatekeeper volumes. This might be seen in some Remote Acquisition Unit (RAU) configurations.
@@ -79,19 +80,23 @@ Note: These are common terminology mappings only and might not represent every c
 * In the event that REMOTE_CACHED options make CLI commands fail, use the REMOTE option. Keep in mind that it will slow down the acquisition process (possibly to hours or even days in extreme cases). The NETCNFG file settings are still used for an IP connection to the Solutions Enabler server that has Fibre Channel connectivity to the Symmetrix arrays being discovered.
 
 *Note:* This setting does not change Cloud Insights behavior with respect to the arrays listed as REMOTE by the "symcfg list" output. Cloud Insights gathers data only on devices shown as LOCAL by this command.
+
+|SMI-S Protocol|Protocol used to connect to the SMI-S provider. Also displays the default port used.
+|Override SMIS-Port|If blank, use the default port in the Connection Type field, otherwise enter the connection port to use
+
 //|CLI Timeout (sec)|CLI process timeout (default 7200 seconds)
-|SMI-S Host IP|IP address of the SMI-S Provider Host
-|SMI-S Port|Port used by SMI-S Provider Host 
-|Protocol|Protocol used to connect to the SMI-S provider
-|SMI-S Namespace|Interoperability namespace that the SMI-S provider is configured to use 
+//|SMI-S Host IP|IP address of the SMI-S Provider Host
+//|SMI-S Port|Port used by SMI-S Provider Host 
+//|SMI-S Namespace|Interoperability namespace that the SMI-S provider is configured to use 
 |SMI-S User Name|User name for the SMI-S Provider Host
 |SMI-S Password|User name for the SMI-S Provider Host
-|Performance Polling Interval (sec) 	Interval between performance polls (default 1000 seconds)
-|Performance Filter Type 	Specify whether to include or exclude the array list below when collecting performance data
+|Performance Polling Interval (sec) |Interval between performance polls (default 1000 seconds)
+|hoose 'Exclude' or 'Include' to specify a list| Specify whether to include or exclude the array list below when collecting performance data
 |Performance Filter Device List|Comma-separated list of device IDs to include or exclude
-|RPO Polling Interval (sec)|Interval between RPO polls (default 300 seconds) 
+//|RPO Polling Interval (sec)|Interval between RPO polls (default 300 seconds) 
 |===
 
+////
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
@@ -122,3 +127,4 @@ Some things to try if you encounter problems with this data collector:
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+////

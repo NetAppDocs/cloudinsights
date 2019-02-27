@@ -53,7 +53,7 @@ Enter data into the data collector fields according to the table below:
 |===
 |Field | Description
 |Inventory Poll Interval (min)|The default is 60
-|HTTP connection and socket timeout (sec)|The default is 300
+//|HTTP connection and socket timeout (sec)|The default is 300
 |Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
 |Performance Poll Interval (sec)|The default is 1800
 |===
@@ -68,5 +68,10 @@ Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if
 
 * https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[Managing Access Keys for IAM Users^]
 
+////
+== Troubleshooting
+
+Information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+////
 
 

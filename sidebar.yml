@@ -40,81 +40,81 @@ entries:
           - title: Brocade FC Switch
             url: /task_dc_brocade_fc_switch.html
           - title: Brocade Network Advisor
-            url: /task_dc_brocade_BNA.html 
+            url: /task_dc_brocade_bna.html 
       - title: Ceph
         url: /task_dc_ceph_storage.html
       - title: Cisco
         url: /task_dc_cisco_fc_switch.html
       - title: Dell EMC
         entries:
-          - title: Celerra
-            url: /task_dc_emc_celerra.html 
-          - title: CLARiiON
-            url: /task_dc_emc_clariion.html
           - title: Data Domain
-            url: /task_dc_emc_datadomain_configure.html
+            url: /task_dc_emc_datadomain.html
           - title: Dell Compellent
-            url: /task_dc_Dell_Compellent.html
+            url: /task_dc_dell_compellent.html
           - title: Isilon
-            url: /task_dc_emc_isilon_configure.html
+            url: /task_dc_emc_isilon.html
           - title: RecoverPoint
-            url: /task_dc_emc_RecoverPoint_configure.html
+            url: /task_dc_emc_recoverpoint.html
           - title: ScaleIO
-            url: /task_dc_emc_scaleio_configure.html
-          - title: Symmetrix
-            url: /task_dc_emc_vmax.html   
-          - title: VNX
-            url: /task_dc_emc_vnx_configure.html
-          - title: VNXe
-            url: /task_dc_emc_vnxe_configure.html
+            url: /task_dc_emc_scaleio.html
+          - title: Unity (VNXe)
+            url: /task_dc_emc_unity.html
+          - title: VMAX/PowerMax 
+            url: /task_dc_emc_vmax_powermax.html   
+          - title: VNX Block (Clariion)
+            url: /task_dc_emc_vnx_block.html
+          - title: VNX File (Celerra)
+            url: /task_dc_emc_vnx_file.html 
+          - title: VNX Unified
+            url: /task_dc_emc_vnx_unified.html
           - title: VPLEX
-            url: /task_dc_emc_vplex_configure.html
+            url: /task_dc_emc_vplex.html
           - title: XtremIO
-            url: /task_dc_emc_xio_configure.html
+            url: /task_dc_emc_xio.html
       - title: Fujitsu
-        url: /task_dc_fujitsu_configure.html
+        url: /task_dc_fujitsu.html
       - title: Hewlett Packard
         entries:
-          - title: HPE 3PAR
+          - title: HP 3PAR StoreServ
             url: /task_dc_hp_3par.html
           - title: HP Command View AE
-            url: /task_dc_HP_Enterprise_Command_View.html
+            url: /task_dc_hpe_commandview.html
       - title: Hitachi Data Systems
         entries:
-          - title: HDS HiCommand Device Manager HP Command View AE
-            url: /task_dc_hds_hicomm_configure.html
+          - title: HDS Command Suite
+            url: /task_dc_hds_commandsuite.html
           - title: HDS HNAS
-            url: /task_dc_hds_NAS_configure.html
+            url: /task_dc_hds_nas.html
       - title: Infinidat
-        url: /task_dc_infinidat_ifbx_configure.html
+        url: /task_dc_infinidat_infinibox.html
       - title: Huawei
-        url: /task_dc_huawei_configure.html
+        url: /task_dc_huawei_oceanstor.html
       - title: IBM
         entries:
           - title: IBM CS
-            url: /task_dc_ibm_cs_configure.html
+            url: /task_dc_ibm_cs.html
           - title: IBM DS4000
             url: /task_dc_ibm_ds4000.html
           - title: IBM DS6xxx and DS8xxx
-            url: /task_dc_IBM_DS_configure.html
+            url: /task_dc_ibm_ds.html
           - title: IBM PowerVM
-            url: /task_dc_IBM_pwr_vm.html
+            url: /task_dc_ibm_powervm.html
           - title: IBM San Volume Controller
-            url: /task_dc_IBM_SVC.html
+            url: /task_dc_ibm_svc.html
           - title: IBM XIV
-            url: /task_dc_IBM_XIV.html 
+            url: /task_dc_ibm_xiv.html 
       - title: Lenovo
-        url: /task_dc_lenovo_configure.html
+        url: /task_dc_lenovo.html
       - title: Microsoft
         entries:
           - title: Azure
-            url: /task_dc_azure_configure.html
+            url: /task_dc_ms_azure.html
           - title: Hyper-V
             url: /task_dc_ms_hyperv.html
       - title: NetApp
         entries:
           - title: ONTAP Data Management Software 
-            url: /task_dc_na_cdot.html 
+            url: /task_dc_na_ontap.html 
           - title: Data ONTAP 7-mode
             url: /task_dc_na_7mode.html
           - title: E-Series
@@ -124,17 +124,17 @@ entries:
           - title: SolidFire
             url: /task_dc_na_solidfire.html
       - title: Nutanix
-        url: /task_dc_nutanix_configure.html
+        url: /task_dc_nutanix.html
       - title: OpenStack
-        url: /task_dc_OpenStack.html
+        url: /task_dc_openstack.html
       - title: Oracle
-        url: /task_dc_oracl_zfs_configure.html
-      - title: Pure Storage
-        url: /task_dc_pure_configure.html
+        url: /task_dc_oracle_zfs.html
+      - title: Pure Storage Flasharray
+        url: /task_dc_pure_flasharray.html
       - title: Red Hat
-        url: /task_dc_red_hat_virt.html
+        url: /task_dc_redhat_virtualization.html
       - title: VMWare
-        url: /task_dc_vmware_configure.html
+        url: /task_dc_vmware.html
   - title: Subscribing to Cloud Insights
     url: /concept_subscribing_to_cloud_insights.html
   - title: Creating Dashboards

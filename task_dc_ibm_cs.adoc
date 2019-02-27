@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_dc_nutanix.html
-keywords: data collector, Nutanix, NX Series 
-summary: Configuring Nutanix data collector.
+permalink: task_dc_ibm_cs.html
+keywords: data collector, IBM CS, CS Series 
+summary: Configuring IBM CS data collector.
 ---
 
-= Nutanix NX data collector
+= IBM CS data collector
 
 :toc: macro
 :hardbreaks:
@@ -19,15 +19,15 @@ summary: Configuring Nutanix data collector.
 
 [.lead] 
 
-Cloud Insights uses the Nutanix data collector to discover inventory and performance data for Nutanix NX storage systems.
+Cloud Insights uses this data collector to discover inventory and performance data for IBM CS storage systems.
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the Nutanix data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the IBM CS data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
-|Vendor/Model Term | Cloud Insights Term
+|Vendor/Model Term |Cloud Insights Term
 |Storage Pool|Storage Pool
 |Nutanix Container|Internal Volume
 |Nutanix Container|File Share
@@ -38,9 +38,9 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-* The external data services IP address for the cluster. 
+* The external data services IP address for the cluster 
 * Administrator user name and password
-* Port requirement: HTTPS 443
+* Port 9440 
 
 == Configuration
 
@@ -57,7 +57,7 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|TCP port|TCP Port used to connect to Nutanix array. The default is 9440. 
+|TCP port|TCP Port used to connect to the IBM CS array. The default is 9440. 
 |Inventory poll interval (min)|Interval between inventory polls. The default is 60 minutes.
 //|Connection timeout (sec)|Connection timeout The default is 60 seconds. 
 |Performance poll interval(sec)|Interval between performance polls. The default is 300 seconds.
