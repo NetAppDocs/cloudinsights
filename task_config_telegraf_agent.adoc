@@ -1,0 +1,105 @@
+---
+sidebar: sidebar
+permalink: task_config_telegraf_agent.html
+keywords: telegraf, installation, install, agent, telegraf agent
+summary: 
+---
+
+= Configuration
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+ //link:<file_name>.html#<section-name-using-dashes-and-all-lower-case>[Link text]
+
+[.lead]
+This topic provides instructions for installing Telegraf on the following operating systems:
+
+
+* link<<installing-telegraf-on-rhel-and- centos>>[RedHat and CentOS Installation]
+* <installing-telegraf-on-ubuntu-debian>[Debian and Ubuntu Installation]
+* <installing-telegraf-on-mac>[MacOS Installation]
+* <<Install Telegraf on Windows>>[Windows Installation]
+
+
+== Install Telegraf on Windows
+
+
+To complete the installation of Telegraph on Windows, you install the Telegraf software and customize the configuration file. 
+
+.Steps to install Telegraph:
+
+. Create the the following directory:  C:\Program Files\Telegraf 
++ 
+When you install in a different location, specify the -config parameter with the new location. 
+
+. Place the Telegraf.exe and the Telegraf.conf files into C:\Program Files\Telegraf.
+
+. Edit the configuration file to meet your requirements.
+
+. Verify that Telegraph is working properly:
++ 
+C: \"Program Files"\Telegraf\telegraf.exe --config C: \"Program Files"\Telegraf\telegraf.conf --test
+
+Use the following commands to perform telegraf functions:
+
+* Install telegraf as a service: 
++
+telegraf.exe --service install	
+
+* Remove the telegraf service
++
+telegraf.exe --service uninstall
+
+* Start the telegraf service
++
+telegraf.exe --service start	
+
+* Stop the telegraf service
++ 
+telegraf.exe --service stop
+
+== Install Telegraf on RHEL and CentOS
+
+
+.Steps to install Telegraph:
+
+. Install the latest stable version of Telegraf using the yum package manager:
++
+cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
+  [influxdb]
+  name = InfluxDB Repository - RHEL \$releasever
+  baseurl = https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
+  enabled = 1
+  gpgcheck = 1
+  gpgkey = https://repos.influxdata.com/influxdb.key
+  EOF
+  
+. Once repository is added to the yum configuration, install and start the Telegraf service:
++ 
+sudo yum install telegraf
+sudo service telegraf start
+
+. If your operating system is using systemd (CentOS 7+ and RHEL 7+)
++
+sudo yum install telegraf
+sudo systemctl start telegraf
+
+=== RHEL and CentOS Configuration
+
+To create a configuration file with default input and output plugins. Every plugin is included in this file, but most are commented out:
+
+telegraf config > telegraf.conf
+
+To create a configuration file with specific inputs and outputs: 
+
+telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
+
+== Troubleshooting macOS Installations  
+
+== Troubleshooting Kubernetes Installations
