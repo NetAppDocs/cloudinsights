@@ -21,7 +21,7 @@ Here you will find suggestions for troubleshooting problems with Acquisition Uni
 |===
 |*Problem:* | *Try this:* 
 |AU status on the *Admin > Data Collectors* page in the *Acquisition Units* tab displays "Certificate Expired” or “Certificate Revoked” .
-|Click on the menu and select *Restore Connection*. Follow the instructions to restore your Acquisition Unit:
+|Click on the menu to the right of the AU and select *Restore Connection*. Follow the instructions to restore your Acquisition Unit:
 1. Issue the given command on the AU server/VM to stop the Acquisition Unit service. You can click the clipboard icon in the command window to quickly copy the command to the clipboard.
 2. Copy the displayed token and paste it into a new file named "token".
 3. Place this file in the /var/lib/netapp/cloudinsights/acq/conf/ folder.
