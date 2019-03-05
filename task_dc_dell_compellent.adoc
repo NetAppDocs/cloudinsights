@@ -50,7 +50,7 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Address of Enterprise Manager|IP address of the Compellent Enterprise Manager server
+|Enterprise Manager IP Address|IP address of the Compellent Enterprise Manager server
 |Port|Port used for communication with of the Compellent Enterprise Manager server
 |User Name|User name for the Compellent Enterprise Manager server 
 |Password|Password used for the Compellent Enterprise Manager server
@@ -61,6 +61,11 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Poll Interval (min)|Interval between inventory polls. The  default is 60 minutes. 
-|Performance Poll Interval (up to 3600 seconds)|Interval between performance polls. The default is 300 seconds. 
+|Inventory Poll Interval (min)|Interval between inventory polls. The  default is 60 minutes. 
+|Performance Poll Interval (min)|Interval between performance polls. The default is 300 seconds. 
 |===
+
+== Troubleshooting
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
