@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: task_dc_dell_xc_series.html
+keywords: data collector, Dell, compellent 
+summary: Configuring Dell Compellemt data collector.
+---
+
+= Dell XC Series data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead] 
+
+Cloud Insights uses this data collector to discover inventory and performance information for the Dell XC Series storage arrays. 
+
+////
+== Terminology
+
+Cloud Insights acquires the following inventory information from the Dell Xc Series data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Disk|Disk
+|Disk Folder|Disk Group
+|Storage Center|Storage
+|Controller|Storage Node
+|Storage Type|Storage Pool
+|Volume|Volume
+|Fiber Channel I/O Port|Port
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector.
+
+== Requirements
+ 
+* Administrator credentials for the Dell Compellent Enterprise Manager server
+* IP address of the Compellent Enterprise Manager server
+////
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Prism External IP Address|IP address of the XC server
+|User Name|User name for the XC server 
+|Password|Password used for the XC server
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|TCP Port|Port used for TCP communication with the XC server
+|Inventory Poll Interval (min)|Interval between inventory polls. The  default is 60 minutes. 
+|Performance Poll Interval (min)|Interval between performance polls. The default is 300 seconds. 
+|===
+
+== Troubleshooting
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
