@@ -39,20 +39,24 @@ entries:
         url: /task_dc_ms_azure.html
       - title: Broadcom
         entries:
-          - title: Brocade FC Switch
-            url: /task_dc_brocade_fc_switch.html
           - title: Brocade Network Advisor
             url: /task_dc_brocade_bna.html 
+          - title: Fibre Channel Switch
+            url: /task_dc_brocade_fc_switch.html
       - title: Ceph
         url: /task_dc_ceph_storage.html
       - title: Cisco
         url: /task_dc_cisco_fc_switch.html
+      - title: Dell 
+        entries:
+          - title: Compellent Storage
+            url: /task_dc_dell_compellent.html
+          - title: XC series
+            url: /task_dc_dell_xc_series.html
       - title: Dell EMC
         entries:
           - title: Data Domain
             url: /task_dc_emc_datadomain.html
-          - title: Dell Compellent
-            url: /task_dc_dell_compellent.html
           - title: Isilon
             url: /task_dc_emc_isilon.html
           - title: RecoverPoint
@@ -75,6 +79,8 @@ entries:
             url: /task_dc_emc_xio.html
       - title: Fujitsu
         url: /task_dc_fujitsu_eternus.html
+      - title: Google Cloud Platform
+        url: /task_dc_google_cloud.html
       - title: HP Enterprise
         entries:
           - title: HP 3PAR StoreServ
@@ -83,9 +89,9 @@ entries:
             url: /task_dc_hpe_commandview.html
       - title: Hitachi Data Systems
         entries:
-          - title: HDS Command Suite
+          - title: Command Suite
             url: /task_dc_hds_commandsuite.html
-          - title: HDS HNAS
+          - title: NAS Platform
             url: /task_dc_hds_nas.html
       - title: Infinidat
         url: /task_dc_infinidat_infinibox.html
@@ -93,36 +99,38 @@ entries:
         url: /task_dc_huawei_oceanstor.html
       - title: IBM
         entries:
-          - title: IBM CS
+          - title: CS Series
             url: /task_dc_ibm_cs.html
-          - title: IBM DS4000
-            url: /task_dc_ibm_ds4000.html
-          - title: IBM DS6xxx and DS8xxx
-            url: /task_dc_ibm_ds.html
-          - title: IBM PowerVM
+#         - title: IBM DS4000
+#            url: /task_dc_ibm_ds4000.html
+          - title: PowerVM
             url: /task_dc_ibm_powervm.html
-          - title: IBM San Volume Controller
+           - title: IBM SAN Volume Controller
             url: /task_dc_ibm_svc.html
-          - title: IBM XIV
+          - title: System Storage DS8000 Series
+            url: /task_dc_ibm_ds.html
+         - title: XIV and A9000 Storage
             url: /task_dc_ibm_xiv.html 
       - title: Lenovo
         url: /task_dc_lenovo.html
       - title: Microsoft
-        entries:
-          - title: Hyper-V
-            url: /task_dc_ms_hyperv.html
+        url: /task_dc_ms_hyperv.html
       - title: NetApp
         entries:
-          - title: ONTAP Data Management Software 
-            url: /task_dc_na_ontap.html 
-          - title: Data ONTAP 7-mode
+          - title: Cloud Volumes
+            url: /task_dc_na_cloud_volumes.html
+          - title: Data ONTAP 7-Mode
             url: /task_dc_na_7mode.html
           - title: E-Series
             url: /task_dc_na_eseries.html
           - title: Host and VM File System
             url: /task_dc_na_hostvm.html
-          - title: SolidFire
+          - title: ONTAP Data Management Software 
+            url: /task_dc_na_ontap.html 
+          - title: SolidFire All-Flash Array
             url: /task_dc_na_solidfire.html
+          - title: StorageGrid
+            url: /task_dc_na_storagegrid.html
       - title: Nutanix
         url: /task_dc_nutanix.html
       - title: OpenStack
