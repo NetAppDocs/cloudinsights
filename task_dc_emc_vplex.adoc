@@ -78,7 +78,7 @@ Note: These are common terminology mappings only and might not represent every c
 |Number of Retries|The default is 2. 
 |===
 
-////
+
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
@@ -95,11 +95,11 @@ Some things to try if you encounter problems with this data collector:
 
 [cols=2*, options="header", cols"50,50"]
 |===
+|Problem:|Try this:
 |Error: VPLEX performance for version below 5.3 is not supported.
 |Upgrade VPLEX to 5.3 or above
 |Error: No enough data collected.
-|Possible solutions: 
-•	Check collection timestamp in log file and modify polling interval accordingly
+|•	Check collection timestamp in log file and modify polling interval accordingly
 •	Wait for longer time
 |Error: Perpetual Log files not being updated.
 |Please contact EMC support to enable updating the perpetual log files
@@ -108,10 +108,9 @@ Some things to try if you encounter problems with this data collector:
 |Error: Performance Remote IP address of VPLEX Management Console is not configured.
 |Edit the data source to set Performance Remote IP address of VPLEX Management Console.
 |Error: No performance data reported from director
-|Possible solutions: 
-•	Check that the system performance monitors are running correctly
+|•	Check that the system performance monitors are running correctly
 •	Please contact EMC support to enable updating the system performance monitor log files
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
-////
+

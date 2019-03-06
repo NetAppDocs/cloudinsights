@@ -5,7 +5,7 @@ keywords: IBM, SVC,SAN
 summary: Configuring IBM SAN Volume Controller data collector.
 ---
 
-= Configuring the IBM San Volume Controller data collector
+= Configuring the IBM SAN Volume Controller data collector
 
 :toc: macro
 :hardbreaks:
@@ -25,7 +25,7 @@ The list of supported devices includes models such as the SVC, the v7000, the v5
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the IBM SVC data source. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data source, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the IBM SVC data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -97,3 +97,9 @@ Note: Alternatively, enable data collection using the SVC  management user inter
 //|Performance User|Name 	User name for the SVC CLI for performance collection
 |To clean up dumped stats files|Select this checkbox to clean up dumped stats files
 |===
+
+           
+== Troubleshooting
+
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+

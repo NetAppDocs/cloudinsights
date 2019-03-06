@@ -60,3 +60,23 @@ Note: These are common terminology mappings only and might not represent every c
 //|SSH process wait timeout (sec)|Connection timeout. The default is 60 seconds. 
 |SSH port|The default is port 22. 
 |===
+
+           
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Command missing
+|Verify that the user has permissions to run the commands noted below on the device
+* Verify that the ceph adminstration tools are installed, please run the following command: rpm -q ceph-common.x86_64
+* Verify credentials used in the wizard match device credentials 
+|Invalid configuration
+|* Verify that the pools are configured in the system, try running the following command: ceph osd lspools -f json-pretty
+* Verify credentials used in the wizard match device credentials
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].

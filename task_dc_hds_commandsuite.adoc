@@ -46,7 +46,7 @@ You must have the following in order to collect inventory data:
 * Read-only user name and password for the HiCommand Device Manager software and peer privileges
 * Port requirements: 2001 (http) or 2443 (https)
 * Log into HiCommand Device Manager software using username and password 
-* Verify access to HiCommand Device Manager http://<HDS HiCommand Device Manager IP Address>:2001/service/StorageManager 
+* Verify access to HiCommand Device Manager http://<HiCommand_Device_Manager_IP>:2001/service/StorageManager 
 
 == Performance requirements 
 
@@ -110,7 +110,7 @@ Note: In HDS USP, USP V, and VSP, any disk can belong to more than one array gro
 |Export timeout in seconds|Export utility timeout. The default is 300.
 |===
 
-////
+
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
@@ -120,12 +120,12 @@ Some things to try if you encounter problems with this data collector:
 |===
 |Problem:|Try this:
 |Error: User does not have enough permission
-|Use a different user account that has more privilege or increase the privilege of user account configured in the data source
+|Use a different user account that has more privilege or increase the privilege of user account configured in the data collector
 |Error: Storages list is empty. Either devices are not configured or the user does not have enough permission
 |*	Use DeviceManager to check if the devices are configured.
 * Use a different user account that has more privilege, or increase the privilege of the  user account
 |Error: HDS storage array was not refreshed for some days
-|Investigate why this array is not being refreshed in HDS HiCommand / HP CommandView AE.
+|Investigate why this array is not being refreshed in HDS HiCommand.
 |===
 
 ==== Performance
@@ -135,58 +135,51 @@ Some things to try if you encounter problems with this data collector:
 |Error:
 * Error executing export utility
 * Error executing external command
-|Possible solutions:
-* Confirm that Export Utility is installed on the Cloud Insights Acquisition Unit
-* Confirm that Export Utility location is correct in the datasource configuration
-* Confirm that the IP of the USP/R600 array is correct in the configuration of the datasource
-* Confirm that the User name and password are correct in the configuration of the datasource
+|* Confirm that Export Utility is installed on the Cloud Insights Acquisition Unit
+* Confirm that Export Utility location is correct in the data collector configuration
+* Confirm that the IP of the USP/R600 array is correct in the configuration of the data collector
+* Confirm that the User name and password are correct in the configuration of the data collector
 * Confirm that Export Utility version is compatible with storage array micro code version
-* From the Cloud Insights Acquisition Unit, open a CMD
-* Change the directory to the configured installation directory
-* Try to make a connection with the configured storage array by executing batch file runWin.bat
+* From the Cloud Insights Acquisition Unit, open a CMD prompt and do the following:
+- Change the directory to the configured installation directory
+- Try to make a connection with the configured storage array by executing batch file runWin.bat
 |Error: Export tool login failed for target IP
-|Possible solutions: 
-* Confirm that username/password is correct
-* Create a user ID mainly for this HDS datasource
-* Confirm that no other datasources are configured to acquire this array
+|* Confirm that username/password is correct
+* Create a user ID mainly for this HDS data collector
+* Confirm that no other data collectors are configured to acquire this array
 |Error: Export tools logged "Unable to get time range for monitoring".
-|Possible solutions:
-* Confirm performance monitoring is enabled on the array.
+|* Confirm performance monitoring is enabled on the array.
 * Try invoking the export tools outside of Cloud Insights to confirm the problem lies outside of Cloud Insights.
 |Error:
 * Configuration error: Storage Array not supported by Export Utility
 * Configuration error: Storage Array not supported by Storage Navigator Modular CLI
-|Possible solutions:
-* Configure only supported storage arrays.
+|* Configure only supported storage arrays.
 * Use “Filter Device List” to exclude unsupported storage arrays.
 |Error:
 * Error executing external command
 * Configuration error: Storage Array not reported by Inventory
 * Configuration error:export folder does not contains jar files
-|Possible solution:
-* Check Export utility location.
-* Check if Storage Array in question is configured in Hi Command server
+|* Check Export utility location.
+* Check if Storage Array in question is configured in HiCommand server
 * Set Performance poll interval as multiple of 60 seconds.
 |Error:
 * Error Storage navigator CLI
 * Error executing auperform command
 * Error executing external command
-|Possible solution:
-* Confirm that Storage Navigator Modular CLI is installed on the Cloud Insights Acquisition Unit
-* Confirm that Storage Navigator Modular CLI location is correct in the data source configuration
-* Confirm that the IP of the WMS/SMS/SMS array is correct in the configuration of the data source
-* Confirm that Storage Navigator Modular CLI version is compatible with micro code version of storage array configured in the data source
-* From the Cloud Insights Acquisition Unit, open a CMD
-* Change the directory to the configured installation directory
-* Try to make a connection with the configured storage array by executing following command “auunitref.exe”
+|* Confirm that Storage Navigator Modular CLI is installed on the Cloud Insights Acquisition Unit
+* Confirm that Storage Navigator Modular CLI location is correct in the data collector configuration
+* Confirm that the IP of the WMS/SMS/SMS array is correct in the configuration of the data collector
+* Confirm that Storage Navigator Modular CLI version is compatible with micro code version of storage array configured in the data collector
+* From the Cloud Insights Acquisition Unit, open a CMD prompt and do the following:
+- Change the directory to the configured installation directory
+- Try to make a connection with the configured storage array by executing following command “auunitref.exe”
 |Error: Configuration error: Storage Array not reported by Inventory
-|Check if Storage Array in question is configured in Hi Command server
+|Check if Storage Array in question is configured in HiCommand server
 |Error:
 * No Array is registered with the Storage Navigator Modular 2 CLI
 * Array is not registered with the Storage Navigator Modular 2 CLI
 * Configuration error: Storage Array not registered with StorageNavigator Modular CLI
-|Possible solution:
-* Open Command prompt and change directory to the configured path
+|* Open Command prompt and change directory to the configured path
 * Run the command “set=STONAVM_HOME=.”
 * Run the command “auunitref”
 * Confirm that the command output contains details of the array with IP
@@ -197,4 +190,4 @@ Some things to try if you encounter problems with this data collector:
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
-////
+
