@@ -110,6 +110,17 @@ For environments that use a proxy, you must set the proxy environment variables 
 . Install the Acquisition Unit software.
 ////
 
+== Uninstalling an Acquisition Unit
+
+To uninstall the Acquisition Unit software, do the following:
+
+==== Uninstalling a Windows AU
+
+. Go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
+. Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
+On the Acquisition Unit server/VM, open Control Panel and choose *Uninstall a Program*. Select the Cloud Insights Acquisition Unit program for removal.
+. Click Uninstall and follow the prompts.
+
 == Reinstalling an Acquisition Unit
 
 To re-install an Acquisition Unit on the same server/VM, you must follow these steps:
