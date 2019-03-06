@@ -27,12 +27,22 @@ The system displays the available Data Collectors arranged by vendor.
 . Click *+ Collector* on the required vendor and select the data collector to configure.
 +
 In the dialog box you can configure the data collector and add an Acquisition Unit.
-. Enter a name for the data collector.
+
+. Enter a name for the data collector. Names can contain the following characters:
+
+* letter (a-z)
+* number (0-9)
+* hyphen (-)
+* underscore (_)
+* period (.)
+* space ( )
 +
-Names can contain can contain letters (a-z), numbers (0-9), and underscores (_).
+
+Names may not begin or end with a space, period, or hyphen.
+
 . Enter the Acquisition Unit to associate with this data collector.
 . Enter the required fields in the Configuration screen.
 . Click *Advanced Configuration* to add additional configuration fields. (Not all data collectors require advanced configuration.)
 . Click *Test Configuration* to verify that the data collector is properly configured.
 
-For help adding a new Acquisition Unit, see link:<task_configure_acquisition_unit>.html[Configuring acquisition units]
+For help adding a new Acquisition Unit, see link:task_configure_acquisition_unit.html[Configuring acquisition units]

@@ -1,5 +1,5 @@
 entries:
-  - title: Cloud Insights Documentation
+  - title: Cloud Insights documentation
     url: /index.html
   - title: What's New
     url: /concept_whats_new.html
@@ -35,22 +35,30 @@ entries:
         url: /concept_data_collector_reference.html
       - title: AWS
         url: /task_dc_amazon_ec2.html
-      - title: BROADCOM
+      - title: Azure
+        url: /task_dc_ms_azure.html
+      - title: Broadcom
         entries:
-          - title: Brocade FC Switch
-            url: /task_dc_brocade_fc_switch.html
           - title: Brocade Network Advisor
             url: /task_dc_brocade_bna.html 
+          - title: Fibre Channel Switch
+            url: /task_dc_brocade_fc_switch.html
       - title: Ceph
         url: /task_dc_ceph_storage.html
       - title: Cisco
         url: /task_dc_cisco_fc_switch.html
+      - title: Dell 
+        entries:
+          - title: Compellent Storage
+            url: /task_dc_dell_compellent.html
+          - title: XC series
+            url: /task_dc_dell_xc_series.html
       - title: Dell EMC
         entries:
           - title: Data Domain
             url: /task_dc_emc_datadomain.html
-          - title: Dell Compellent
-            url: /task_dc_dell_compellent.html
+#          - title: Dell Compellent
+#            url: /task_dc_dell_compellent.html
           - title: Isilon
             url: /task_dc_emc_isilon.html
           - title: RecoverPoint
@@ -72,8 +80,10 @@ entries:
           - title: XtremIO
             url: /task_dc_emc_xio.html
       - title: Fujitsu
-        url: /task_dc_fujitsu.html
-      - title: Hewlett Packard
+        url: /task_dc_fujitsu_eternus.html
+      - title: Google Cloud
+        url: /task_dc_google_cloud.html
+      - title: HP Enterprise
         entries:
           - title: HP 3PAR StoreServ
             url: /task_dc_hp_3par.html
@@ -107,12 +117,12 @@ entries:
         url: /task_dc_lenovo.html
       - title: Microsoft
         entries:
-          - title: Azure
-            url: /task_dc_ms_azure.html
           - title: Hyper-V
             url: /task_dc_ms_hyperv.html
       - title: NetApp
         entries:
+          - title: Cloud Volumes
+            url: /task_dc_na_cloud_volumes.html
           - title: ONTAP Data Management Software 
             url: /task_dc_na_ontap.html 
           - title: Data ONTAP 7-mode
@@ -123,13 +133,15 @@ entries:
             url: /task_dc_na_hostvm.html
           - title: SolidFire
             url: /task_dc_na_solidfire.html
+          - title: StorageGrid
+            url: /task_dc_na_storagegrid.html
       - title: Nutanix
         url: /task_dc_nutanix.html
       - title: OpenStack
         url: /task_dc_openstack.html
       - title: Oracle
         url: /task_dc_oracle_zfs.html
-      - title: Pure Storage Flasharray
+      - title: Pure
         url: /task_dc_pure_flasharray.html
       - title: Red Hat
         url: /task_dc_redhat_virtualization.html
