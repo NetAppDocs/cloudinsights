@@ -118,10 +118,12 @@ To uninstall the Acquisition Unit software, do the following:
 . Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
 
 *Windows:*
+
 . On the Acquisition Unit server/VM, open Control Panel and choose *Uninstall a Program*. Select the Cloud Insights Acquisition Unit program for removal.
 . Click Uninstall and follow the prompts.
 
 *Linux:*
+
 . Run the following command: sudo cloudinsights-uninstall.sh
 . For help with uninstall, run: sudo cloudinsights-uninstall.sh --help
 
