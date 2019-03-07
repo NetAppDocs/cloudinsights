@@ -1,0 +1,75 @@
+---
+sidebar: sidebar
+permalink: task_dc_google_cloud.html
+summary: Configure NetApp StorageGrid data collector
+keywords: data collector, queries, create
+---
+
+= NetApp Google Cloud Platform data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead]
+
+This data collector supports inventory collection from Google Cloud Platform configurations. 
+
+////
+The SolidFire data collector utilizes the SolidFire REST API. The acquisition unit where the data collector resides needs to be able to initiate HTTPS connections to TCP port 443 on the SolidFire cluster management IP address. The data collector needs credentials capable of making REST API queries on the SolidFire cluster.
+
+== Terminology 
+
+Cloud Insights acquires the following inventory information from the NetApp SolidFire All-Flash Array data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Drive|Disk
+|Cluster|Storage
+|Node|Storage Node
+|Volume|Volume
+|Fibre channel port|Port
+|Volume Access Group, LUN Assignment| Volume Map
+|iSCSI Session|Volume Mask
+|===
+Note: These are common terminology mappings only and might not represent every case for this data collector.
+
+== Requirements 
+
+The following are requirements for configuring this data collector:
+
+* Management Virtual IP Address 
+* Read-only username and credentials  
+* Port 443 
+////
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Project ID |Project ID for the Google Cloud Platform configuration
+|Client ID |Client ID for the Google Cloud Platform configuration
+|Copy and paste the contents of your Google Credential File here|Copy your Google credentials for the Cloud Platform account to this field
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min) |Default is 60 minutes
+|===
+
+           
+== Troubleshooting
+
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+

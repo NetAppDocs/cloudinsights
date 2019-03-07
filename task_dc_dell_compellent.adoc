@@ -64,3 +64,18 @@ Note: These are common terminology mappings only and might not represent every c
 |Poll Interval (min)|Interval between inventory polls. The  default is 60 minutes. 
 |Performance Poll Interval (up to 3600 seconds)|Interval between performance polls. The default is 300 seconds. 
 |===
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|"Configuration error" with error message “Could not communicate with the device: Connection timed out.”
+|* Check ip address
+* Check User name and password
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].

@@ -64,3 +64,45 @@ The following are requirements to configure and use this data collector:
 |Inventory Poll Interval (min) |Default is 60 minutes.
 |Performance Poll Interval (sec)|Default is 900 seconds.
 |===
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Receive 401 HTTP response or 13003 ZAPI error code and ZAPI returns “Insufficient privileges” or “not authorized for this command”| Check username and password, and user privileges/permissions.
+|Cluster version is < 8.1| Cluster minimum supported version is 8.1. Upgrade to minimum supported version.
+|ZAPI returns "cluster role is not cluster_mgmt LIF"|AU needs to talk to cluster management IP. Check the IP and change to a different IP if necessary
+|Error: “7 Mode filers are not supported”| This can happen if you use this data collector to discover 7 mode filer. Change IP to point to cdot filer instead. 
+|ZAPI command fails after retry| AU has communication problem with the cluster. Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+|AU failed to connect to ZAPI via HTTP| Check whether ZAPI port accepts plaintext. If AU tries to send plaintext to an SSL socket, the communication fails.
+|Communication fails with SSLException|AU is attempting to send SSL to a plaintext port on a filer. Check whether the ZAPI port accepts SSL, or use a different port.
+|Additional Connection errors:
+
+ZAPI response has error code 13001, “database  is not open”
+  
+ZAPI error code is 60 and response contains “API did not finish on time”
+  
+ZAPI response contains “initialize_session() returned NULL environment”
+  
+ZAPI error code is 14007 and response contains “Node is not healthy”
+
+|Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+|===
+
+==== Performance
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|“Failed to collect performance from ZAPI” error|This is usually due to perf stat not running. Try the following command on each node:
+
+> _system node systemshell -node * -command “spmctl -h cmd –stop; spmctl -h cmd –exec”_
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
+

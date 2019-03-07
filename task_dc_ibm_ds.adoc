@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: task_dc_ibm_ds.html
 keywords: data collector, IBM DS6xxx, IBM DS6xxx, IBM, IBM DS
-summary: Configuring IBM_DS data collector.
+summary: Configuring System Storage DS8000 Series data collector.
 ---
 
-= IBM DS6xxx and DS8xxx data collector
+= IBM System Storage DS8000 Series data collector
 
 :toc: macro
 :hardbreaks:
@@ -71,7 +71,7 @@ You need the following to configure this data collector:
 |Performance Filter Device List|Comma-separated list of device IDs to include or exclude from performance collection
 |===
 
-////
+
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
@@ -81,14 +81,12 @@ Some things to try if you encounter problems with this data collector:
 |===
 |Problem:|Try this:
 |Error containing: CMUC00192E, CMUC00191E or CMUC00190E
-| Possible solution: 
-* Verify credentials and IP address entered.
-* Try to communicate with the array through web management console https://${ip}:8452/DS8000/Console.  Replace the ${ip} with data source configured IP.
+|* Verify credentials and IP address entered.
+* Try to communicate with the array through web management console https://${ip}:8452/DS8000/Console.  Replace the ${ip} with data collector configured IP.
 |Error:
 * Cannot run program
 * Error executing command
-|Possible solutions:
-* From Cloud Insights Acquisition Unit Open a CMD
+|* From Cloud Insights Acquisition Unit Open a CMD
 * Open CLI.CFG file in CLI's home dir/lib and check property JAVA_INSTALL, edit the value to match your environment
 * Display Java version installed on this machine, typing: "java -version"
 * Ping the IP address of the IBM Storage device specified in CLI command issued.
@@ -96,5 +94,5 @@ Some things to try if you encounter problems with this data collector:
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
-////
+
 
