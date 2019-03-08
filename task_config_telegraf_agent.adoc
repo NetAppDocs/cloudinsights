@@ -5,7 +5,7 @@ keywords: telegraf, installation, install, agent, telegraf agent
 summary: 
 ---
 
-= Configuration
+= Configuring an Agent to Collect Data
 
 :toc: macro
 :hardbreaks:
@@ -16,20 +16,28 @@ summary:
 :imagesdir: ./media/
 
 
- //link:<file_name>.html#<section-name-using-dashes-and-all-lower-case>[Link text]
+//link:<file_name>.html#<section-name-using-dashes-and-all-lower-case>[Link text]
 
 [.lead]
+This Topic Is Under Construction
+
 This topic provides instructions for installing Telegraf on the following operating systems:
 
+* Windows
+* RHEL / CentOS
+* Ubuntu / Debian
+* MacOS
+* Kubernetes
 
-* link<<installing-telegraf-on-rhel-and- centos>>[RedHat and CentOS Installation]
+////
+* link<<installing-telegraf-on-rhel-and-centos>>[RedHat and CentOS Installation]
 * <installing-telegraf-on-ubuntu-debian>[Debian and Ubuntu Installation]
 * <installing-telegraf-on-mac>[MacOS Installation]
 * <<Install Telegraf on Windows>>[Windows Installation]
-
+* Kubernetes
+////
 
 == Install Telegraf on Windows
-
 
 To complete the installation of Telegraph on Windows, you install the Telegraf software and customize the configuration file. 
 
@@ -67,7 +75,6 @@ telegraf.exe --service stop
 
 == Install Telegraf on RHEL and CentOS
 
-
 .Steps to install Telegraph:
 
 . Install the latest stable version of Telegraf using the yum package manager:
@@ -101,7 +108,25 @@ To create a configuration file with specific inputs and outputs:
 
 telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
 
-== Troubleshooting macOS Installations  
+== Install Telegraf on RHEL and CentOS
+Coming Soon
 
-== Troubleshooting Kubernetes Installations
+== Install Telegraf on MacOS
+Coming Soon
+
+== Install Telegraf on Kubernetes
+Coming Soon
+
+
+== Troubleshooting Agent Installation
+Coming Soon
+
+=== Troubleshooting RHEL/CentOS  Installations  
+
+=== Troubleshooting Windows Installations
+
+=== Troubleshooting macOS Installations  
+
+=== Troubleshooting Kubernetes Installations
+
 
