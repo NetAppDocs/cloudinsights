@@ -19,7 +19,9 @@ summary:
 //link:<file_name>.html#<section-name-using-dashes-and-all-lower-case>[Link text]
 
 [.lead]
-This Topic Is Under Construction
+*This Topic Is Under Construction*
+
+Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into Telegraf by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from Telegraf to Cloud Insights. 
 
 This topic provides instructions for installing Telegraf on the following operating systems:
 
