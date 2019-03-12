@@ -88,11 +88,7 @@ When you install in a different location, specify the -config parameter with the
 . Verify that Telegraph is working properly:
 + 
 C: \"Program Files"\Telegraf\telegraf.exe --config C: \"Program Files"\Telegraf\telegraf.conf --test
-////
 
-After the Agent is installed, you can use the following commands to perform telegraf functions:
-
-////
 * Install telegraf as a service: 
 +
 telegraf.exe --service install	
