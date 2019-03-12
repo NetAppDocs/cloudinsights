@@ -39,9 +39,13 @@ To install a Cloud Insights agent, regardless of the platform you are using, you
 . Log into the host you will use for your Agent. 
 . Log in to your Cloud Insights site and go to *Admin > Data Collectors*.
 . Click on *+Data Collector* and choose a data collector to install. There are several types of data collectors:
-.. Host (Windows, Linux, MacOS, etc.)
-.. Service (integration with a wide variety of agent-collected plugins)
-.. Infrastructure (collector from storage, switch, cloud platform, etc.). Infrastructure collection is done with an link:task_configure_acquisition_unit.html[Acquisition Unit] instead of an Agent.
++
+* *Host* (Windows, Linux, MacOS, etc.)
++
+* *Service* (integration with a wide variety of agent-collected plugins)
++
+* *Infrastructure* (collects from storage, switch, cloud platform, etc.). Infrastructure collection is done with an link:task_configure_acquisition_unit.html[Acquisition Unit] instead of an Agent.
+
 . Choose the appropriate platform for your host (Windows, Linux, MacOS, etc.)
 . Follow the remaining steps for each platform below
 
