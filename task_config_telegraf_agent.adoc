@@ -23,32 +23,46 @@ summary:
 
 Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into Telegraf by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from Telegraf to Cloud Insights. 
 
-This topic provides instructions for installing Telegraf on the following operating systems:
-
-* Windows
-* RHEL / CentOS
-* Ubuntu / Debian
-* MacOS
-* Kubernetes
-
-////
-* link<<installing-telegraf-on-rhel-and-centos>>[RedHat and CentOS Installation]
-* <installing-telegraf-on-ubuntu-debian>[Debian and Ubuntu Installation]
-* <installing-telegraf-on-mac>[MacOS Installation]
-* <<Install Telegraf on Windows>>[Windows Installation]
-* Kubernetes
-////
 
 == Installing an Agent
 
-=== Install Telegraf on Windows
-These steps are performed from the UI instructions.
+This topic provides instructions for installing the Cloud Insights Agent on the following platforms:
 
-To complete the installation of Telegraph on Windows, you install the Telegraf software and customize the configuration file. 
+* Windows
+* RHEL or CentOS
+* Ubuntu or Debian
+* MacOS
+* Kubernetes
 
-.Steps to install Telegraph:
+To install a Cloud Insights agent, regardless of the platform you are using, you must first do the following:
+
+. Log into the host you will use for your Agent. 
+. Log in to your Cloud Insights site and go to *Admin > Data Collectors*.
+. Click on *+Data Collector*.
+. Choose the appropriate platform for your host (Windows, Linux, MacOS, etc.)
+. Follow the remaining steps for each platform below
+
+NOTE: Once you have installed the agent on a host, you do not need to install the agent again on that host. 
+
+
+=== Windows
+To install the agent on a Windows host, you first install the agent software and then customize the configuration file. 
+
+.Pre-requisites:
+
+* PowerShell must be installed, and you must have Administrative permissions for the PowerShell command
+* At least one Agent Access Key configured
 
 image:AgentInstallWindows.png[Windows Agent Install]
+
+.Steps to install agent on Windows:
+
+. Select Windows from the Platform drop-down.
+. Choose an Agent Access Key.
+. If you have not already installed an agent on this host:
+.. Open a PowerShell window 
+
+
 
 ////
 . Create the the following directory:  C:\Program Files\Telegraf 
@@ -116,14 +130,14 @@ After the agent is installed, you can use the following commands to start/stop t
 * sudo service telegraf start
 * sudo service telegraf stop
 
-. If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+If your operating system is using systemd (CentOS 7+ and RHEL 7+):
 
 * sudo systemctl start telegraf
 * sudo systemctl stop telegraf
 
 ==== RHEL and CentOS Configuration
 
-To create a configuration file with default input and output plugins. Every plugin is included in this file, but most are commented out:
+To create a configuration file with default input and output plugins, run the following command. Every plugin is included in this file, but most are commented out:
 
 telegraf config > telegraf.conf
 
