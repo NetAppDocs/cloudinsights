@@ -48,6 +48,9 @@ To complete the installation of Telegraph on Windows, you install the Telegraf s
 
 .Steps to install Telegraph:
 
+image:AgentInstallWindows.png[Windows Agent Install]
+
+////
 . Create the the following directory:  C:\Program Files\Telegraf 
 + 
 When you install in a different location, specify the -config parameter with the new location. 
@@ -59,8 +62,9 @@ When you install in a different location, specify the -config parameter with the
 . Verify that Telegraph is working properly:
 + 
 C: \"Program Files"\Telegraf\telegraf.exe --config C: \"Program Files"\Telegraf\telegraf.conf --test
+////
 
-Use the following commands to perform telegraf functions:
+After the Agent is installed, you can use the following commands to perform telegraf functions:
 
 * Install telegraf as a service: 
 +
@@ -79,10 +83,12 @@ telegraf.exe --service start
 telegraf.exe --service stop
 
 === Install Telegraf on RHEL and CentOS
-These steps are performed from the UI instructions.
 
 .Steps to install Telegraph:
 
+image:AgentInstallRHELCentOS.png[Red Hat/CentOS Agent Install]
+
+////
 . Install the latest stable version of Telegraf using the yum package manager:
 +
 cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
@@ -103,6 +109,17 @@ sudo service telegraf start
 +
 sudo yum install telegraf
 sudo systemctl start telegraf
+////
+
+After the agent is installed, you can use the following commands to start/stop the service:
+
+* sudo service telegraf start
+* sudo service telegraf stop
+
+. If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+
+* sudo systemctl start telegraf
+* sudo systemctl stop telegraf
 
 ==== RHEL and CentOS Configuration
 
@@ -114,8 +131,13 @@ To create a configuration file with specific inputs and outputs:
 
 telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
 
+
 === Install Telegraf on Debian and Ubuntu
-Coming Soon
+
+.Steps to install Telegraph:
+
+image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
+
 
 === Install Telegraf on MacOS
 Coming Soon
