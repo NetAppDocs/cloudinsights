@@ -39,12 +39,18 @@ This topic provides instructions for installing Telegraf on the following operat
 * Kubernetes
 ////
 
-== Install Telegraf on Windows
+== Installing an Agent
+
+=== Install Telegraf on Windows
+These steps are performed from the UI instructions.
 
 To complete the installation of Telegraph on Windows, you install the Telegraf software and customize the configuration file. 
 
 .Steps to install Telegraph:
 
+image:AgentInstallWindows.png[Windows Agent Install]
+
+////
 . Create the the following directory:  C:\Program Files\Telegraf 
 + 
 When you install in a different location, specify the -config parameter with the new location. 
@@ -56,8 +62,9 @@ When you install in a different location, specify the -config parameter with the
 . Verify that Telegraph is working properly:
 + 
 C: \"Program Files"\Telegraf\telegraf.exe --config C: \"Program Files"\Telegraf\telegraf.conf --test
+////
 
-Use the following commands to perform telegraf functions:
+After the Agent is installed, you can use the following commands to perform telegraf functions:
 
 * Install telegraf as a service: 
 +
@@ -75,10 +82,13 @@ telegraf.exe --service start
 + 
 telegraf.exe --service stop
 
-== Install Telegraf on RHEL and CentOS
+=== Install Telegraf on RHEL and CentOS
 
 .Steps to install Telegraph:
 
+image:AgentInstallRHELCentOS.png[Red Hat/CentOS Agent Install]
+
+////
 . Install the latest stable version of Telegraf using the yum package manager:
 +
 cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
@@ -99,8 +109,19 @@ sudo service telegraf start
 +
 sudo yum install telegraf
 sudo systemctl start telegraf
+////
 
-=== RHEL and CentOS Configuration
+After the agent is installed, you can use the following commands to start/stop the service:
+
+* sudo service telegraf start
+* sudo service telegraf stop
+
+. If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+
+* sudo systemctl start telegraf
+* sudo systemctl stop telegraf
+
+==== RHEL and CentOS Configuration
 
 To create a configuration file with default input and output plugins. Every plugin is included in this file, but most are commented out:
 
@@ -110,19 +131,51 @@ To create a configuration file with specific inputs and outputs:
 
 telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
 
-== Install Telegraf on RHEL and CentOS
+
+=== Install Telegraf on Debian and Ubuntu
+
+.Steps to install Telegraph:
+
+image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
+
+
+=== Install Telegraf on MacOS
 Coming Soon
 
-== Install Telegraf on MacOS
+=== Install Telegraf on Kubernetes
 Coming Soon
 
-== Install Telegraf on Kubernetes
-Coming Soon
+== Uninstalling an Agent
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Platform:|Instructions to uninstall:
+|Windows|Open Settings and click on Apps. Locate and click on the Cloud Insights program, and select Uninstall.
+If you have edited any configuration files in <location TBD>, those files will remain after uninstall. You can either save these for future reference, or delete them if they are no longer needed.
+|Debian / Ununtu| Run the following command:  sudo apt-get remove telegraf
+If you have edited any configuration files in the /etc/telegraf/telegraf.d folder, those files will remain after uninstall. You can either save these for future reference, or delete them if they are no longer needed.
+|Red Hat / CentOS| Run the following command:  sudo yum remove telegraf
+If you have edited any configuration files in the /etc/telegraf/telegraf.d folder, those files will remain after uninstall. You can either save these for future reference, or delete them if they are no longer needed.
+|MacOS| TBD
+|Kubernetes| TBD
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
 
 
 == Troubleshooting Agent Installation
-Coming Soon
 
+Some things to try if you encounter problems setting up an agent:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|I already have an agent in my environment| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. |
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
+////
 === Troubleshooting RHEL/CentOS  Installations  
 
 === Troubleshooting Windows Installations
@@ -130,5 +183,6 @@ Coming Soon
 === Troubleshooting macOS Installations  
 
 === Troubleshooting Kubernetes Installations
+////
 
 
