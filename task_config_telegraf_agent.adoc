@@ -39,7 +39,9 @@ This topic provides instructions for installing Telegraf on the following operat
 * Kubernetes
 ////
 
-== Install Telegraf on Windows
+== Installing an Agent
+
+=== Install Telegraf on Windows
 
 To complete the installation of Telegraph on Windows, you install the Telegraf software and customize the configuration file. 
 
@@ -75,7 +77,7 @@ telegraf.exe --service start
 + 
 telegraf.exe --service stop
 
-== Install Telegraf on RHEL and CentOS
+=== Install Telegraf on RHEL and CentOS
 
 .Steps to install Telegraph:
 
@@ -100,7 +102,7 @@ sudo service telegraf start
 sudo yum install telegraf
 sudo systemctl start telegraf
 
-=== RHEL and CentOS Configuration
+==== RHEL and CentOS Configuration
 
 To create a configuration file with default input and output plugins. Every plugin is included in this file, but most are commented out:
 
@@ -110,14 +112,33 @@ To create a configuration file with specific inputs and outputs:
 
 telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
 
-== Install Telegraf on RHEL and CentOS
+=== Install Telegraf on RHEL and CentOS
 Coming Soon
 
-== Install Telegraf on MacOS
+=== Install Telegraf on MacOS
 Coming Soon
 
-== Install Telegraf on Kubernetes
+=== Install Telegraf on Kubernetes
 Coming Soon
+
+== Uninstalling an Agent
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Platform:|Instructions to uninstall:
+|Windows|Open Settings and click on Apps. Locate and click on the Cloud Insights program, and select Uninstall.
+If you have edited any configuration files in <location TBD>, those files will remain after uninstall. You can either save these for future reference, or delete them if they are no longer needed.
+|Debian / Ununtu| Run the following command:  sudo apt-get remove telegraf
+If you have edited any configuration files in the /etc/telegraf/telegraf.d folder, those files will remain after uninstall. You can either save these for future reference, or delete them if they are no longer needed.
+|Red hat / CentOS| Run the following command:  sudo yum remove telegraf
+If you have edited any configuration files in the /etc/telegraf/telegraf.d folder, those files will remain after uninstall. You can either save these for future reference, or delete them if they are no longer needed.
+|MacOS| TBD
+|Kubernetes| TBD
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
+. Open Control 
 
 
 == Troubleshooting Agent Installation
