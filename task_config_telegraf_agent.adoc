@@ -88,6 +88,7 @@ C: \"Program Files"\Telegraf\telegraf.exe --config C: \"Program Files"\Telegraf\
 
 After the Agent is installed, you can use the following commands to perform telegraf functions:
 
+////
 * Install telegraf as a service: 
 +
 telegraf.exe --service install	
@@ -95,14 +96,13 @@ telegraf.exe --service install
 * Remove the telegraf service
 +
 telegraf.exe --service uninstall
+////
 
-* Start the telegraf service
-+
-telegraf.exe --service start	
+After the agent is installed, you can use the following commands to start/stop the service:
 
-* Stop the telegraf service
-+ 
-telegraf.exe --service stop
+* telegraf.exe --service start	
+* telegraf.exe --service stop
+
 
 === Install Telegraf on RHEL and CentOS
 
