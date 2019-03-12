@@ -21,7 +21,7 @@ summary:
 [.lead]
 *This Topic Is Under Construction*
 
-Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into Telegraf by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from Telegraf to Cloud Insights. 
+The Cloud Insights Agent is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights. 
 
 
 == Installing an Agent
@@ -38,11 +38,14 @@ To install a Cloud Insights agent, regardless of the platform you are using, you
 
 . Log into the host you will use for your Agent. 
 . Log in to your Cloud Insights site and go to *Admin > Data Collectors*.
-. Click on *+Data Collector*.
+. Click on *+Data Collector* and choose a data collector to install. There are several types of data collectors:
+.. Host (Windows, Linux, MacOS, etc.)
+.. Service (integration with a wide variety of agent-collected plugins)
+.. Infrastructure (collector from storage, switch, cloud platform, etc.). Infrastructure collection is done with an link:task_configure_acquisition_unit.html[Acquisition Unit] instead of an Agent.
 . Choose the appropriate platform for your host (Windows, Linux, MacOS, etc.)
 . Follow the remaining steps for each platform below
 
-NOTE: Once you have installed the agent on a host, you do not need to install the agent again on that host. 
+NOTE: Once you have installed an agent on a host, you do not need to install an agent again on that host. 
 
 
 === Windows
@@ -60,7 +63,12 @@ image:AgentInstallWindows.png[Windows Agent Install]
 . Select Windows from the Platform drop-down.
 . Choose an Agent Access Key.
 . If you have not already installed an agent on this host:
-.. Open a PowerShell window 
+.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+.. Open a PowerShell window as administrator
+.. Paste the command into the PowerShell window and press Enter.
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service.
+. In you have already installed an agent on this host, you can skip the previous step
+. Click *Finish* or *Continue*
 
 
 
