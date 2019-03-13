@@ -5,7 +5,7 @@ keywords: telegraf, installation, install, apache
 summary: apache telegraf configuration
 ---
 
-= Configuration
+= Apache Data Collector
 
 :toc: macro
 :hardbreaks:
@@ -27,5 +27,17 @@ This data collector allows collection of data from Apache servers in your enviro
 * Typically, the Apache _mod_status_ module is configured to expose a page at the '/server-status?auto' location of the Apache server. The _ExtendedStatus_ option must be enabled in order to collect all available fields. For information about how to configure your server, see the Apache module documentation: https://httpd.apache.org/docs/2.4/mod/mod_status.html#enable
 
 == Configuration
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Apache.
++
+If you haven't configured an Agent for collection, you are prompted to link:cloudinsights/task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+
+. Follow the instructions in the Apache Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
+
+image:ApacheDCConfigLinux.png[Apache configuration]
+
 
 == Troubleshooting
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page.
