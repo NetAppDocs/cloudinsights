@@ -85,19 +85,19 @@ For collecting Kubernetes metrics, the best practice is to deploy the Telegraf a
 
 To manually generate the Kubernetes access token, run the following in a Bash shell:
 
-> SECRET=$(sudo kubectl --namespace kube-system describe sa default |grep Tokens |awk '{print $2}')
+ SECRET=$(sudo kubectl --namespace kube-system describe sa default |grep Tokens |awk '{print $2}')
 
-> TOKEN=$(sudo kubectl --namespace kube-system describe secrets $SECRET |grep ^token |awk '{print $2}')
+ TOKEN=$(sudo kubectl --namespace kube-system describe secrets $SECRET |grep ^token |awk '{print $2}')
 
 To verify that the access token works as needed, run the following to confirm the kubelet API is accessible:
 
-> curl -v -X GET -H "Authorization: Bearer $TOKEN" https://10.197.122.81:10250/stats/summary
+ curl -v -X GET -H "Authorization: Bearer $TOKEN" https://10.197.122.81:10250/stats/summary
 
 To the required access token file, run the following:
 
-> mkdir -p /var/run/secrets/kubernetes.io/serviceaccount/
+ mkdir -p /var/run/secrets/kubernetes.io/serviceaccount/
 
-> echo -n $TOKEN | sudo tee /var/run/secrets/kubernetes.io/serviceaccount/token
+ echo -n $TOKEN | sudo tee /var/run/secrets/kubernetes.io/serviceaccount/token
 
 By default, the Kubernetes input plugin configuration provided by CloudInsights is set up to look for the required access token file in the location used above. After performing the steps above, restart the Telegraf agent for the changes to take effect.
 
