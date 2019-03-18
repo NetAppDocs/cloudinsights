@@ -42,7 +42,7 @@ To install a Cloud Insights agent, regardless of the platform you are using, you
 +
 * *Host* (Windows, Linux, MacOS, etc.)
 +
-* *Service* (integration with a wide variety of agent-collected plugins)
+* *Service* (integration with a wide variety of agent-collected plugins). : Agents are configured and run as a service for RHEL/CentOS, Ubuntu/Debian, macOS, and Windows. For Kubernetes platforms, the agent in configured as a DaemonSet.
 +
 * *Infrastructure* (collects from storage, switch, cloud platform, etc.). Infrastructure collection is done with an link:task_configure_acquisition_unit.html[Acquisition Unit] instead of an Agent.
 
@@ -104,7 +104,7 @@ After the agent is installed, you can use the following commands to start/stop t
 * telegraf.exe --service stop
 
 
-=== Install Telegraf on RHEL and CentOS
+=== RHEL and CentOS
 
 .Steps to install Telegraph:
 
@@ -153,8 +153,30 @@ To create a configuration file with specific inputs and outputs:
 
 telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
 
+==== Uninstalling the Agent
 
-=== Install Telegraf on Debian and Ubuntu
+To uninstall the agent on RHEL/CentOS, in a Bash terminal, run the following:
+
+. Stop the Telegraf service using the following command:
++
+> systemctl stop telegraf
++
+For systems without systemd support, run:
++
+>/etc/init.d/telegraf stop
+
+. remove the Telegraf package:
++
+> yum remove telegraf
+
+. remove any configuration or log files that may be left behind:
++
+> rm -rf /etc/telegraf*
++
+> rm -rf /var/log/telegraf*
+
+
+=== Debian and Ubuntu
 
 .Steps to install Telegraph:
 
