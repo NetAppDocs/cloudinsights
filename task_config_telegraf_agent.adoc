@@ -55,7 +55,7 @@ NOTE: Once you have installed an agent on a host, you do not need to install an 
 
 
 === Windows
-To install the agent on a Windows host, you first install the agent software and then customize the configuration file. 
+To install the agent on a Windows host, you first install the agent software and then customize the configuration file as needed. 
 
 image:AgentInstallWindows.png[Windows Agent Install]
 
@@ -66,14 +66,14 @@ image:AgentInstallWindows.png[Windows Agent Install]
 
 .Steps to install agent on Windows:
 
-. Select Windows from the Platform drop-down.
+. If prompted, select Windows from the Platform drop-down.
 . Choose an Agent Access Key.
 . If you have not already installed an agent on this host:
 .. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a PowerShell window as administrator
+.. Open a PowerShell window 
 .. Paste the command into the PowerShell window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service.
-. In you have already installed an agent on this host, you can skip the previous step
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. In you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 
@@ -108,10 +108,22 @@ After the agent is installed, you can use the following commands to start/stop t
 
 === RHEL and CentOS
 
-.Steps to install the Telegraf agent:
+.Steps to install agent on RHEL/CentOS:
 
+image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 
-image:AgentInstallRHELCentOS.png[Red Hat/CentOS Agent Install]
+.Pre-requisites:
+The following commands must be available: curl, sudo, ping, and dmidecode.
+
+. If prompted, select RHEL/CentOS from the Platform drop-down.
+. Choose an Agent Access Key.
+. If you have not already installed an agent on this host:
+.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+.. Open a Bash window 
+.. Paste the command into the Bash window and press Enter.
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. In you have already installed an agent on this host, you can skip the previous step.
+. Click *Finish* or *Continue*
 
 ////
 . Install the latest stable version of Telegraf using the yum package manager:
@@ -165,11 +177,11 @@ To uninstall the agent on RHEL/CentOS, in a Bash terminal, run the following:
 > systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
 > /etc/init.d/telegraf stop (for systems without systemd support)
 
-. remove the Telegraf package:
+. Remove the Telegraf package:
 +
 > yum remove telegraf
 
-. remove any configuration or log files that may be left behind:
+. Remove any configuration or log files that may be left behind:
 +
 > rm -rf /etc/telegraf*
 > rm -rf /var/log/telegraf*
@@ -177,17 +189,23 @@ To uninstall the agent on RHEL/CentOS, in a Bash terminal, run the following:
 
 === Debian and Ubuntu
 
-.Steps to install Telegraph:
+.Steps to install agent on Ubuntu/Debian:
 
 image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 
-////
-Ubuntu/Debian (from Bash terminal):
-`systemctl stop telegraf` to stop the Telegraf service (for systems without systemd support, run `/etc/init.d/telegraf stop` instead)
-`dpkg -r telegraf` to remove the Telegraf package
-`rm -rf /etc/telegraf*` to remove any configuration files that may be left behind
-`rm -rf /var/log/telegraf*` to remove any log files that may be left behind
-////
+.Pre-requisites:
+The following commands must be available: curl, sudo, ping, and dmidecode.
+
+
+. If prompted, select Ubuntu/Debian from the Platform drop-down.
+. Choose an Agent Access Key.
+. If you have not already installed an agent on this host:
+.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+.. Open a Bash window 
+.. Paste the command into the Bash window and press Enter.
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. In you have already installed an agent on this host, you can skip the previous step.
+. Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
 
@@ -199,7 +217,7 @@ If your operating system is using systemd:
 > sudo systemctl start telegraf
 > sudo systemctl stop telegraf
 
-==== Ubunto and Debian Configuration
+==== Ubuntu and Debian Configuration
 
 To create a configuration file with default input and output plugins, run the following command. Every plugin is included in this file, but most are commented out:
 
@@ -215,22 +233,85 @@ To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
 
 . Stop the Telegraf service using the following command:
 +
-> systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+> systemctl stop telegraf (If your operating system is using systemd
 > /etc/init.d/telegraf stop (for systems without systemd support)
 
-. remove the Telegraf package:
+. Remove the Telegraf package:
 +
 > dpkg -r telegraf
 
-. remove any configuration or log files that may be left behind:
+. Remove any configuration or log files that may be left behind:
 +
 > rm -rf /etc/telegraf*
 > rm -rf /var/log/telegraf*
 
 
 
-=== MacOS
-Coming Soon
+=== macOS
+.Steps to install agent on macOS:
+
+//image:AgentInstallMacOS.png[MacOS Agent Install]
+
+.Pre-requisites:
+The "curl" command must be available.
+
+
+. If prompted, select macOS from the Platform drop-down.
+. Choose an Agent Access Key.
+. If you have not already installed an agent on this host:
+.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+.. Open a Bash window 
+.. Paste the command into the Bash window and press Enter.
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. In you have already installed an agent on this host, you can skip the previous step.
+. Click *Finish* or *Continue*
+
+After the agent is installed, you can use the following commands to start/stop the service:
+
+> sudo service telegraf start
+> sudo service telegraf stop
+
+If your operating system is using systemd:
+
+> sudo systemctl start telegraf
+> sudo systemctl stop telegraf
+
+==== macOS Configuration
+
+////
+macOS (from Bash terminal):
+`brew services stop telegraf` to stop the Telegraf service
+`brew remove telegraf` to remove the Telegraf package
+`rm -rf /usr/local/etc/telegraf*` to remove any configuration files that may be left behind
+`rm -rf /usr/local/var/log/telegraf.*` to remove any log files that may be left behind
+////
+
+To create a configuration file with default input and output plugins, run the following command. Every plugin is included in this file, but most are commented out:
+
+> telegraf config > telegraf.conf
+
+To create a configuration file with specific inputs and outputs: 
+
+> telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
+
+==== Uninstalling the Agent
+
+To uninstall the agent on macOS, in a Bash terminal, run the following:
+
+. Stop the Telegraf service using the following command:
++
+> brew services stop telegraf
+
+. Remove the Telegraf package:
++
+> brew remove telegraf
+
+. Remove any configuration or log files that may be left behind:
++
+> rm -rf /usr/local/etc/telegraf*
+> rm -rf /usr/local/var/log/telegraf.*
+
+
 
 === Install Telegraf on Kubernetes
 Coming Soon
