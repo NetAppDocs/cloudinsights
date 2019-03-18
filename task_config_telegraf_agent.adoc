@@ -89,21 +89,21 @@ When you install in a different location, specify the -config parameter with the
 
 . Verify that Telegraph is working properly:
 + 
-> C: \"Program Files"\Telegraf\telegraf.exe --config C: \"Program Files"\Telegraf\telegraf.conf --test
+ C: \"Program Files"\Telegraf\telegraf.exe --config C: \"Program Files"\Telegraf\telegraf.conf --test
 
 * Install telegraf as a service: 
 +
-> telegraf.exe --service install	
+ telegraf.exe --service install	
 
 * Remove the telegraf service
 +
->telegraf.exe --service uninstall
+telegraf.exe --service uninstall
 ////
 
 After the agent is installed, you can use the following commands to start/stop the service:
 
-> telegraf.exe --service start	
-> telegraf.exe --service stop
+ telegraf.exe --service start	
+ telegraf.exe --service stop
 
 
 === RHEL and CentOS
@@ -128,7 +128,7 @@ The following commands must be available: curl, sudo, ping, and dmidecode.
 ////
 . Install the latest stable version of Telegraf using the yum package manager:
 +
-> cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
+ cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
   [influxdb]
   name = InfluxDB Repository - RHEL \$releasever
   baseurl = https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
@@ -139,34 +139,34 @@ The following commands must be available: curl, sudo, ping, and dmidecode.
   
 . Once repository is added to the yum configuration, install and start the Telegraf service:
 + 
-sudo yum install telegraf
-sudo service telegraf start
+ sudo yum install telegraf
+ sudo service telegraf start
 
 . If your operating system is using systemd (CentOS 7+ and RHEL 7+)
 +
-sudo yum install telegraf
-sudo systemctl start telegraf
+ sudo yum install telegraf
+ sudo systemctl start telegraf
 ////
 
 After the agent is installed, you can use the following commands to start/stop the service:
 
-> sudo service telegraf start
-> sudo service telegraf stop
+ sudo service telegraf start
+ sudo service telegraf stop
 
 If your operating system is using systemd (CentOS 7+ and RHEL 7+):
 
-> sudo systemctl start telegraf
-> sudo systemctl stop telegraf
+ sudo systemctl start telegraf
+ sudo systemctl stop telegraf
 
 ==== RHEL and CentOS Configuration
 
 To create a configuration file with default input and output plugins, run the following command. Every plugin is included in this file, but most are commented out:
 
-> telegraf config > telegraf.conf
+ telegraf config > telegraf.conf
 
 To create a configuration file with specific inputs and outputs: 
 
-> telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
+ telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
 
 ==== Uninstalling the Agent
 
@@ -174,17 +174,17 @@ To uninstall the agent on RHEL/CentOS, in a Bash terminal, run the following:
 
 . Stop the Telegraf service using the following command:
 +
-> systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
-> /etc/init.d/telegraf stop (for systems without systemd support)
+ systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+ /etc/init.d/telegraf stop (for systems without systemd support)
 
 . Remove the Telegraf package:
 +
-> yum remove telegraf
+ yum remove telegraf
 
 . Remove any configuration or log files that may be left behind:
 +
-> rm -rf /etc/telegraf*
-> rm -rf /var/log/telegraf*
+ rm -rf /etc/telegraf*
+ rm -rf /var/log/telegraf*
 
 
 === Debian and Ubuntu
@@ -209,23 +209,23 @@ The following commands must be available: curl, sudo, ping, and dmidecode.
 
 After the agent is installed, you can use the following commands to start/stop the service:
 
-> sudo service telegraf start
-> sudo service telegraf stop
+ sudo service telegraf start
+ sudo service telegraf stop
 
 If your operating system is using systemd:
 
-> sudo systemctl start telegraf
-> sudo systemctl stop telegraf
+ sudo systemctl start telegraf
+ sudo systemctl stop telegraf
 
 ==== Ubuntu and Debian Configuration
 
 To create a configuration file with default input and output plugins, run the following command. Every plugin is included in this file, but most are commented out:
 
-> telegraf config > telegraf.conf
+ telegraf config > telegraf.conf
 
 To create a configuration file with specific inputs and outputs: 
 
-> telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
+ telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
 
 ==== Uninstalling the Agent
 
@@ -268,13 +268,13 @@ The "curl" command must be available.
 
 After the agent is installed, you can use the following commands to start/stop the service:
 
-> sudo service telegraf start
-> sudo service telegraf stop
+ sudo service telegraf start
+ sudo service telegraf stop
 
 If your operating system is using systemd:
 
-> sudo systemctl start telegraf
-> sudo systemctl stop telegraf
+ sudo systemctl start telegraf
+ sudo systemctl stop telegraf
 
 ==== macOS Configuration
 
@@ -288,11 +288,11 @@ macOS (from Bash terminal):
 
 To create a configuration file with default input and output plugins, run the following command. Every plugin is included in this file, but most are commented out:
 
-> telegraf config > telegraf.conf
+ telegraf config > telegraf.conf
 
 To create a configuration file with specific inputs and outputs: 
 
-> telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
+ telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
 
 ==== Uninstalling the Agent
 
@@ -300,16 +300,16 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 
 . Stop the Telegraf service using the following command:
 +
-> brew services stop telegraf
+ brew services stop telegraf
 
 . Remove the Telegraf package:
 +
-> brew remove telegraf
+ brew remove telegraf
 
 . Remove any configuration or log files that may be left behind:
 +
-> rm -rf /usr/local/etc/telegraf*
-> rm -rf /usr/local/var/log/telegraf.*
+ rm -rf /usr/local/etc/telegraf*
+ rm -rf /usr/local/var/log/telegraf.*
 
 
 
