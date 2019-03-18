@@ -40,7 +40,7 @@ For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a Daem
 
 Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to these components. In such cases, an additional manual step may be required.  As an example, for OpenShift, you may need to create a _SecurityContextConstraint_ to grant the telegraf-user ServiceAccount access to these components.
 
-...
+----
     apiVersion: v1
     kind: SecurityContextConstraints
     metadata:
@@ -77,13 +77,13 @@ Some variants of Kubernetes, such as OpenShift, implement an added level of secu
     users:
     - system:serviceaccount:monitoring:telegraf-user
     groups: []
-...
+----
     
 === Configuring the Input Plugin
 
-For collecting Kubernetes metrics, the best practice is to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment of interest itself.  The installation instructions provided for the Kubernetes platform will do just that if run on one of the Kubernetes nodes in the cluster.  The pods in which the Telegraf agents run need to have access to a valid Kubernetes access token file in order to use the required kubelet API.  If one wants to configure a Telegraf agent running outside the Kubernetes cluster of interest, one needs to manually generate this Kubernetes access token file, and configure the Telegraf agent to use this access token file.
+For collecting Kubernetes metrics, the best practice is to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment of interest itself.  Cloud Insights does this if run on one of the Kubernetes nodes in the cluster. The pods in which the Telegraf agents run need to have access to a valid Kubernetes access token file in order to use the required kubelet API. To configure a Telegraf agent running outside the Kubernetes cluster of interest, you must manually generate this Kubernetes access token file, and configure the Telegraf agent to use this access token file.
 
-To manually generate the Kubernetes access token, one can run the following in a Bash shell:
+To manually generate the Kubernetes access token, run the following in a Bash shell:
 
 > SECRET=$(sudo kubectl --namespace kube-system describe sa default |grep Tokens |awk '{print $2}')
 
@@ -99,7 +99,7 @@ To the required access token file, run the following:
 
 > echo -n $TOKEN | sudo tee /var/run/secrets/kubernetes.io/serviceaccount/token
 
-By default, the Kubernetes input plugin configuration provided by CloudInsights is set up to look for the required access token file in the location used above.  After performing the steps above, restart the Telegraf agent for the changes to take effect.
+By default, the Kubernetes input plugin configuration provided by CloudInsights is set up to look for the required access token file in the location used above. After performing the steps above, restart the Telegraf agent for the changes to take effect.
 
 
 == Troubleshooting
