@@ -30,8 +30,98 @@ If you have an agent already configured, select the appropriate Operating System
 
 image:KubernetesDCConfigLinux.png[Kubernetes configuration]
 
+== Configuring an Agent to Collect Data from Kubernetes
+
+For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet. The pods in which the agents run need to have access to the following:
+
+* hostPath
+* configMap
+* secrets
+
+Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to these components. In such cases, an additional manual step may be required.  As an example, for OpenShift, you may need to create a _SecurityContextConstraint_ to grant the telegraf-user ServiceAccount access to these components.
+
+...
+    apiVersion: v1
+    kind: SecurityContextConstraints
+    metadata:
+      name: telegraf-hostaccess
+      creationTimestamp:
+      annotations:
+        kubernetes.io/description: telegraf-hostaccess allows hostpath volume mounts for restricted SAs.
+      labels:
+        app: ci-telegraf
+    priority: 10
+    allowPrivilegedContainer: false
+    defaultAddCapabilities: []
+    requiredDropCapabilities: []
+    allowedCapabilities: []
+    allowedFlexVolumes: []
+    allowHostDirVolumePlugin: true
+    volumes:
+    - hostPath
+    - configMap
+    - secret
+    allowHostNetwork: false
+    allowHostPorts: false
+    allowHostPID: false
+    allowHostIPC: false
+    seLinuxContext:
+      type: MustRunAs
+    runAsUser:
+      type: RunAsAny
+    supplementalGroups:
+      type: RunAsAny
+    fsGroup:
+      type: RunAsAny
+    readOnlyRootFilesystem: false
+    users:
+    - system:serviceaccount:monitoring:telegraf-user
+    groups: []
+...
+    
+=== Configuring the Input Plugin
+
+For collecting Kubernetes metrics, the best practice is to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment of interest itself.  The installation instructions provided for the Kubernetes platform will do just that if run on one of the Kubernetes nodes in the cluster.  The pods in which the Telegraf agents run need to have access to a valid Kubernetes access token file in order to use the required kubelet API.  If one wants to configure a Telegraf agent running outside the Kubernetes cluster of interest, one needs to manually generate this Kubernetes access token file, and configure the Telegraf agent to use this access token file.
+
+To manually generate the Kubernetes access token, one can run the following in a Bash shell:
+
+> SECRET=$(sudo kubectl --namespace kube-system describe sa default |grep Tokens |awk '{print $2}')
+
+> TOKEN=$(sudo kubectl --namespace kube-system describe secrets $SECRET |grep ^token |awk '{print $2}')
+
+To verify that the access token works as needed, run the following to confirm the kubelet API is accessible:
+
+> curl -v -X GET -H "Authorization: Bearer $TOKEN" https://10.197.122.81:10250/stats/summary
+
+To the required access token file, run the following:
+
+> mkdir -p /var/run/secrets/kubernetes.io/serviceaccount/
+
+> echo -n $TOKEN | sudo tee /var/run/secrets/kubernetes.io/serviceaccount/token
+
+By default, the Kubernetes input plugin configuration provided by CloudInsights is set up to look for the required access token file in the location used above.  After performing the steps above, restart the Telegraf agent for the changes to take effect.
 
 
 == Troubleshooting
+
+Symptom:
+I ran the Kubernetes agent installer command, but I do not see a Telegraf agent pod running via:
+
+sudo kubectl --namespace monitoring get pods
+
+Troubleshooting Steps:
+
+Check if there were any errors deploying the DaemonSet:
+
+sudo kubectl --namespace monitoring get ds telegraf-ds
+
+If there are errors related to SecurityContextConstraints, do the following:
+Delete the Telegraf DamonSet
+
+sudo kubectl --namespace monitoring delete ds telegraf-ds
+
+Create the necessary SecurityContextConstraint (see "Configuring Agent to Collect Data" section)
+Re-run the installer command
+
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page.
