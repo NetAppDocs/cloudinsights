@@ -172,7 +172,6 @@ To uninstall the agent on RHEL/CentOS, in a Bash terminal, run the following:
 . remove any configuration or log files that may be left behind:
 +
 > rm -rf /etc/telegraf*
-+
 > rm -rf /var/log/telegraf*
 
 
@@ -182,8 +181,55 @@ To uninstall the agent on RHEL/CentOS, in a Bash terminal, run the following:
 
 image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 
+////
+Ubuntu/Debian (from Bash terminal):
+`systemctl stop telegraf` to stop the Telegraf service (for systems without systemd support, run `/etc/init.d/telegraf stop` instead)
+`dpkg -r telegraf` to remove the Telegraf package
+`rm -rf /etc/telegraf*` to remove any configuration files that may be left behind
+`rm -rf /var/log/telegraf*` to remove any log files that may be left behind
+////
 
-=== Install Telegraf on MacOS
+After the agent is installed, you can use the following commands to start/stop the service:
+
+> sudo service telegraf start
+> sudo service telegraf stop
+
+If your operating system is using systemd:
+
+> sudo systemctl start telegraf
+> sudo systemctl stop telegraf
+
+==== Ubunto and Debian Configuration
+
+To create a configuration file with default input and output plugins, run the following command. Every plugin is included in this file, but most are commented out:
+
+> telegraf config > telegraf.conf
+
+To create a configuration file with specific inputs and outputs: 
+
+> telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
+
+==== Uninstalling the Agent
+
+To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
+
+. Stop the Telegraf service using the following command:
++
+> systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+> /etc/init.d/telegraf stop (for systems without systemd support)
+
+. remove the Telegraf package:
++
+> dpkg -r telegraf
+
+. remove any configuration or log files that may be left behind:
++
+> rm -rf /etc/telegraf*
+> rm -rf /var/log/telegraf*
+
+
+
+=== MacOS
 Coming Soon
 
 === Install Telegraf on Kubernetes
