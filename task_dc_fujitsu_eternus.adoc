@@ -62,3 +62,31 @@ The following are required to configure this data collector:
 |Inventory Poll Interval (min)|The default is 20 minutes.
 //|SSH Process Wait Timeout (sec)|SSH process timeout. The   default is 600 seconds.  
 |===
+
+== Troubleshooting
+
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|"Error retrieving data" with error messages “Error Finding Prompt CLI” or “Error finding prompt at the end of shell results” 
+|Likely caused by: Storage system has page scrolling enabled.
+Possible solution:
+* Try to disable page scrolling by running the following command: 
+ set clienv-show-more -scroll disable 
+|"Connecting error" with error messages “Failed to instantiate an SSH connection to storage” or “Failed to instantiate a connection to VirtualCenter”
+|Likely causes: 
+* Incorrect credentials.
+* Incorrect IP address.
+* Network problem.
+* Storage may be down or unresponsive.
+Possible solutions:
+* Verify credentials and IP address entered.
+* Try to communicate with storage using SSH Client.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+

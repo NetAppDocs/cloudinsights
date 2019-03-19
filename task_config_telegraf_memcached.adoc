@@ -5,7 +5,7 @@ keywords: telegraf, installation, install, memcached
 summary: 
 ---
 
-= Configuration
+= Memcached Data Collector
 
 :toc: macro
 :hardbreaks:
@@ -18,8 +18,19 @@ summary:
 [.lead]
 Under construction
 
+Cloud Insights uses this data collector to gather metrics from Memcached.
+
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Memcached.
++
+If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+
+. Follow the instructions in the Apache Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
+
+image:MemcachedDCConfigLinux.png[Apache configuration]
 
 
 == Troubleshooting
 
-
+Additional information may be found from the link:concept_requesting_support.html[Support] page.
