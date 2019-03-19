@@ -91,12 +91,12 @@ The snippet installs the Acquisition Unit software on the server.
 * Click *Admin > Data Collectors > Acquisition units* to check the status of Acquisition Units. 
 * You can access the Acquisition Unit log in <install dir>\Cloud Insights\Acquisition Unit\log\acq.log
 
-////
 * Use the following script to control the Acquisition Unit:
-** cloudinsights-service.sh (stop, start, restart, check the status)
-* Use the following script to uninstall the Acquisition Unit:
-** cloudinsights-uninstall.sh
-////
++
+ cloudinsights-service.sh (stop, start, restart, check the status)
+//* Use the following script to uninstall the Acquisition Unit:
+//** cloudinsights-uninstall.sh
+
 
 ////
 == Setting proxy environment variables
