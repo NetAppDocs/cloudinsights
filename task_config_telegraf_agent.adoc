@@ -84,12 +84,12 @@ After the agent is installed, you can use the following commands to start/stop t
 
 To uninstall the agent on Windows, do the following in a PowerShell window:
 
-Stop and Delete the Telegraf service:
-
+. Stop and Delete the Telegraf service:
++
  Stop-Service telegraf
  sc.exe delete telegraf
  
-Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
+. Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
 
 
 === RHEL and CentOS
@@ -189,42 +189,30 @@ If your operating system is not using systemd:
  sudo service telegraf stop
 
 
-////
-==== Ubuntu and Debian Configuration
-
-To create a configuration file with default input and output plugins, run the following command. Every plugin is included in this file, but most are commented out:
-
- telegraf config > telegraf.conf
-
-To create a configuration file with specific inputs and outputs: 
-
- telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
-////
-
 ==== Uninstalling the Agent
 
 To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
 
 . Stop the Telegraf service using the following command:
 +
-> systemctl stop telegraf (If your operating system is using systemd)
-> /etc/init.d/telegraf stop (for systems without systemd support)
+ systemctl stop telegraf (If your operating system is using systemd)
+ /etc/init.d/telegraf stop (for systems without systemd support)
 
 . Remove the Telegraf package:
 +
-> dpkg -r telegraf
+ dpkg -r telegraf
 
 . Remove any configuration or log files that may be left behind:
 +
-> rm -rf /etc/telegraf*
-> rm -rf /var/log/telegraf*
+ rm -rf /etc/telegraf*
+ rm -rf /var/log/telegraf*
 
 
 
 === macOS
 .Steps to install agent on macOS:
 
-//image:AgentInstallMacOS.png[MacOS Agent Install]
+image:AgentInstallMacOS.png[MacOS Agent Install]
 
 .Pre-requisites:
 The "curl" command must be available.
@@ -268,7 +256,7 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 === Kubernetes
 .Steps to install agent on Kubernetes:
 
-//image:AgentInstallKube.png[Kubernetes Agent Install]
+image:AgentInstallKube.png[Kubernetes Agent Install]
 
 .Pre-requisites:
 * The following commands must be available: curl, sudo
