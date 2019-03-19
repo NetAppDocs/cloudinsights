@@ -19,8 +19,6 @@ summary:
 //link:<file_name>.html#<section-name-using-dashes-and-all-lower-case>[Link text]
 
 [.lead]
-*This Topic Is Under Construction*
-
 The Cloud Insights Agent is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights. 
 
 Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.8/[Telegraf] as its agent for collection of Service integration data.
@@ -248,24 +246,6 @@ After the agent is installed, you can use the following commands to start/stop t
  brew services stop telegraf
 
 
-////
-==== macOS Configuration
-
-macOS (from Bash terminal):
-`brew services stop telegraf` to stop the Telegraf service
-`brew remove telegraf` to remove the Telegraf package
-`rm -rf /usr/local/etc/telegraf*` to remove any configuration files that may be left behind
-`rm -rf /usr/local/var/log/telegraf.*` to remove any log files that may be left behind
-
-To create a configuration file with default input and output plugins, run the following command. Every plugin is included in this file, but most are commented out:
-
- telegraf config > telegraf.conf
-
-To create a configuration file with specific inputs and outputs: 
-
- telegraf --input-filter <pluginname>[:<pluginname>] --output-filter <outputname>[:<outputname>] config > telegraf.conf
-////
-
 ==== Uninstalling the Agent
 
 To uninstall the agent on macOS, in a Bash terminal, run the following:
@@ -286,8 +266,59 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 
 
 === Kubernetes
-Coming Soon
+.Steps to install agent on Kubernetes:
 
+//image:AgentInstallKube.png[Kubernetes Agent Install]
+
+.Pre-requisites:
+* The following commands must be available: curl, sudo
+
+. If prompted, select Kubernetes from the Platform drop-down.
+. Choose an Agent Access Key.
+. If you have not already installed an agent on this host:
+.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+.. Open a Bash window 
+.. Paste the command into the Bash window and press Enter.
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. In you have already installed an agent on this host, you can skip the previous step.
+. Click *Finish* or *Continue*
+
+After the agent is installed, you can use the following commands:
+
+Generate the Telegraf DaemonSet YAML:
+
+ kubectl --namespace monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml
+ 
+Start/Stop the Telegraf service:
+
+ kubectl --namespace monitoring apply -f /tmp/telegraf-ds.yaml 
+ kubectl --namespace monitoring delete ds telegraf-ds
+
+
+==== Uninstalling the Agent
+
+To uninstall the agent on Kubernetes, do the following:
+
+If the monitoring namespace is being used solely for Telegraf:
+
+ kubectl delete ns monitoring
+ 
+If the monitoring namespace is being used for other purposes in addition to Telegraf:
+
+Stop and delete the Telegraf service:
+
+ kubectl --namespace monitoring delete ds telegraf-ds 
+ 
+Delete the Telegraf ConfigMap and ServiceAccount:
+
+ kubectl --namespace monitoring delete cm telegraf-conf 
+ kubectl --namespace monitoring delete sa telegraf-user 
+ 
+Delete the Telegraf ClusterRole and ClusterERolebinding:
+
+ kubectl --namespace monitoring delete clusterrole endpoint-access 
+ kubectl --namespace monitoring delete clusterrolebinding endpoint-access 
+ 
 ////
 == Uninstalling an Agent
 
@@ -305,7 +336,7 @@ If you have edited any configuration files in the /etc/telegraf/telegraf.d folde
 |===
 ////
 
-Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information may be found from the link:concept_requesting_support.html[Support] page.
 
 
 == Troubleshooting Agent Installation
