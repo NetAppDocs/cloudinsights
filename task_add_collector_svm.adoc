@@ -19,6 +19,23 @@ summary: Adding data collectors
 
 Cloud Secure uses data collectors to collect file and user access data from devices. 
 
+.Before you begin
+
+* An Agent must be configured before you can configure data collectors. See link:task_add_agent.html[Configuring an agent] for instructions. 
+
+* You need the SVM management IP address.
+* You need a username and password to access the SVM.
+
+The permissions required to use this data collector include the following:
+
+* security login role create -vserver vs1 -role carole -cmddirname DEFAULT -access none
+* security login role create -vserver vs1 -role carole -cmddirname "network interface" -access readonly
+* security login role create -vserver vs1 -role carole -cmddirname version -access readonly
+* security login role create -vserver vs1 -role carole -cmddirname volume -access readonly
+* security login role create -vserver vs1 -role carole -cmddirname vserver -access readonly
+* security login role create -vserver vs1 -role carole -cmddirname "vserver fpolicy" -access all  
+* security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver vs1
+ 
 
 .Steps for Configuration 
 
@@ -29,8 +46,7 @@ The system displays the available Data Collectors.
 
 . You can chose to view the data collectors in a grid of tiles, or in a list. 
 
-. Click *+Monitor* in the *NetApp ONTAP* tile  or click the Data Collector name. 
-. Click the *NETAPP> ONTAP SVM* in the tile or click *ONTAP SVM* from the list.
+. Click *+Monitor* in the *NetApp ONTAP SVM* tile.  
 + 
 The system displays the Add SVM configuration page. Enter the required data for each field. 
 
@@ -39,44 +55,45 @@ The system displays the Add SVM configuration page. Enter the required data for 
 [cols=2*, cols"50,50"]
 [Options=header]
 |===
-|Name |Field
+|*Name* |*Field*
 |Name |Unique name for the Data Collector
-|Agent|Select a configured agent from the list or click *Add Agent* to configure an Agent. See link:<concept_agent_requirements>.html[Agent requirements] and 
-link:<task_add_agent>.html[Configuring an Agent] for configuration information.
-|Continue|Click Continue after you have selected an Agent
+|Agent|Select a configured agent from the list or click *Add Agent* to configure an Agent. See link:concept_agent_requirements.html[Agent requirements] and 
+link:task_add_agent.html[Configuring an Agent] for configuration information.
 |SVM Management IP Address|Management IP Address
 |Username|User name to access the SVM
-|Password|Password 
 |Password|SVM Password
 |===
 
-[caption=]
-.Advanced Configuration 
-[cols=2*, cols"50,50"]
-[Options=header]
-|===
-|Name |Field
-|Protocol| HTTPS
-|Ports | 443
-|===
+// [caption=]
+//Advanced Configuration 
+//[cols=2*, cols"50,50"]
+//[Options=header]
+//|===
+//|*Name* |*Field*
+//|Protocol| HTTPS
+//|Ports | 443
+//|===
 
-[caption=]
-.Custom NFS Export Policies and CIFS Shares
-[cols=2*, cols"50,50"]
-[Options=header]
-|===
-|Name |Field
-|NFS Export Policies| All included or All excluded
-|Policy 1 | Included or Excluded
-|Policy 2 | Included or Excluded
-|Policy 3 | Included or Excluded
-|Newly added NFS Export Policies | Include or exclude
-|CIFS Shares|All included or All excluded
-|Share 1 |Included or Excluded
-|Share 2 |Included or Excluded
-|Share 3 |Included or Excluded
-|Newly added CIFS Shares | Include or exclude
-|===
+// [caption=]
+//.Custom NFS Export Policies and CIFS Shares
+//[cols=2*, cols"50,50"]
+//[Options=header]
+//|===
+//|*Name* |*Field*
+//|NFS Export Policies| All included or All excluded
+//|Policy 1 | Included or Excluded
+//|Policy 2 | Included or Excluded
+//|Policy 3 | Included or Excluded
+//|Newly added NFS Export Policies | Include or exclude
+//|CIFS Shares|All included or All excluded
+//|Share 1 |Included or Excluded
+//|Share 2 |Included or Excluded
+//|Share 3 |Included or Excluded
+//|Newly added CIFS Shares | Include or exclude
+//|===
+
+
+
 
 .After you finish
 

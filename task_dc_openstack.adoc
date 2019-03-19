@@ -72,3 +72,18 @@ The OpenStack (REST API / KVM) data collector acquires inventory data for all Op
 |Inventory Poll Interval (min)|Interval between inventory polls.  The default is 20 minutes.
 |===
 
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|"Configuration error" with error messages start with “Policy doesn't allow” or “You are not authorized”
+| * Check ip address
+* Check User name and password
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
