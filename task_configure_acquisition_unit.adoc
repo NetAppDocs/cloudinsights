@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_configure_acquisition_unit.html
-keywords:  Acquisition Unit, AU, install, configure, Linux
+keywords:  Acquisition Unit, AU, install, configure, Linux, add, remove, uninstall, delete, deleting, move, moving
 summary:
 ---
 
-= Adding Acquisition Units
+= Configuring Acquisition Units
 
 :toc: macro
 :hardbreaks:
@@ -91,12 +91,12 @@ The snippet installs the Acquisition Unit software on the server.
 * Click *Admin > Data Collectors > Acquisition units* to check the status of Acquisition Units. 
 * You can access the Acquisition Unit log in <install dir>\Cloud Insights\Acquisition Unit\log\acq.log
 
-////
 * Use the following script to control the Acquisition Unit:
-** cloudinsights-service.sh (stop, start, restart, check the status)
-* Use the following script to uninstall the Acquisition Unit:
-** cloudinsights-uninstall.sh
-////
++
+ cloudinsights-service.sh (stop, start, restart, check the status)
+//* Use the following script to uninstall the Acquisition Unit:
+//** cloudinsights-uninstall.sh
+
 
 ////
 == Setting proxy environment variables
@@ -109,6 +109,32 @@ For environments that use a proxy, you must set the proxy environment variables 
 . Run the edited command in a terminal using the Bash shell.
 . Install the Acquisition Unit software.
 ////
+
+== Uninstalling an Acquisition Unit
+
+To uninstall the Acquisition Unit software, do the following:
+
+*Windows:*
+
+. On the Acquisition Unit server/VM, open Control Panel and choose *Uninstall a Program*. Select the Cloud Insights Acquisition Unit program for removal.
+. Click Uninstall and follow the prompts.
+
+*Linux:*
+
+. On the Acquisition Unit server/VM, run the following command: 
+
+ sudo cloudinsights-uninstall.sh -p
+ 
+. For help with uninstall, run: 
+
+ sudo cloudinsights-uninstall.sh --help
+
+*Both:*
+
+. After uninstalling the AU software, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
+. Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
+
+
 
 == Reinstalling an Acquisition Unit
 
