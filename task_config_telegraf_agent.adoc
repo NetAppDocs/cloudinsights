@@ -165,7 +165,6 @@ image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 .Pre-requisites:
 The following commands must be available: curl, sudo, ping, and dmidecode.
 
-
 . If prompted, select Ubuntu/Debian from the Platform drop-down.
 . Choose an Agent Access Key.
 . If you have not already installed an agent on this host:
@@ -217,7 +216,6 @@ image:AgentInstallMacOS.png[MacOS Agent Install]
 .Pre-requisites:
 The "curl" command must be available.
 
-
 . If prompted, select macOS from the Platform drop-down.
 . Choose an Agent Access Key.
 . If you have not already installed an agent on this host:
@@ -259,8 +257,11 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
 .Pre-requisites:
-* The following commands must be available: curl, sudo
 
+The following commands must be available: curl, sudo
+
+. If prompted, select macOS from the Platform drop-down.
+. Choose an Agent Access Key.
 . If prompted, select Kubernetes from the Platform drop-down.
 . Choose an Agent Access Key.
 . If you have not already installed an agent on this host:
