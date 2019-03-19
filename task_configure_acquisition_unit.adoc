@@ -114,9 +114,6 @@ For environments that use a proxy, you must set the proxy environment variables 
 
 To uninstall the Acquisition Unit software, do the following:
 
-. Go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
-. Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
-
 *Windows:*
 
 . On the Acquisition Unit server/VM, open Control Panel and choose *Uninstall a Program*. Select the Cloud Insights Acquisition Unit program for removal.
@@ -126,11 +123,17 @@ To uninstall the Acquisition Unit software, do the following:
 
 . On the Acquisition Unit server/VM, run the following command: 
 
- sudo cloudinsights-uninstall.sh
+ sudo cloudinsights-uninstall.sh -p
  
 . For help with uninstall, run: 
 
  sudo cloudinsights-uninstall.sh --help
+
+*Both:*
+
+. After uninstalling the AU software, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
+. Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
+
 
 
 == Reinstalling an Acquisition Unit
