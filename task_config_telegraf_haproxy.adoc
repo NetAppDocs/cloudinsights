@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_config_telegraf_haproxy.html
 keywords: telegraf, installation, install, haproxy
-summary: kubernetes
+summary: HAProxy data collector configuration
 ---
 
 = HAProxy Data Collector
@@ -20,7 +20,7 @@ Under construction
 
 Cloud Insights uses this data collector to gather metrics from HAProxy.
 
-. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose HaProxy.
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose HAProxy.
 +
 If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
 +
