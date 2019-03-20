@@ -18,7 +18,8 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
-=== *February 2019*
+
+=== *March 2019*
 
 ==== Email Notifications for Subscription-related Events
 
@@ -28,18 +29,30 @@ You can select recipients for email link:concept_notifications_email.html[notifi
 * All Administrators
 * Additional Email Addresses that you specify
 
+==== Additional Dashboards
+
+* The following new AWS-focused link:concept_import_from_dashboard_gallery.html[dashboards] have been added to the gallery and are available for import:
+ ** AWS Admin - Which EC2 are in high demand?
+ **	AWS EC2 Instance Performance by Region 
+
+
+=== *February 2019*
+
+==== Collecting from AWS Child Accounts
+
+* Cloud Insights supports link:task_dc_amazon_ec2.html#collecting_from_aws_child_accounts[collection from AWS child accounts] within a single data collector. Your AWS environment must be configured to allow Cloud Insights to collect from child accounts.
+
+==== Data Collector Naming 
+
+* Data Collector names can now include periods (.), hyphens (-), and spaces ( ) in addition to letters, numbers, and underscores. Names may not begin or end with a space, period, or hyphen.
+
+
 ==== Acquisition Unit for Windows
 
 * You can configure a Cloud Insights Acquisition Unit on a Windows server/VM. Review the Windows link:concept_acquisition_unit_requirements.html[pre-requisites] before installing the link:task_configure_acquisition_unit.html[Acquisition Unit software].
 
 
 === *January 2019*
-
-////
-==== "Subscription ID" is now "Subscription Name"
-
-* On the *Admin > Subscription* and *Help > Support* pages, the field for "NetApp Subscription ID" has been renamed to "NetApp Subscription Name" for readability.  The data in the field remains as it was.
-////
 
 ==== "Owner" field is more readable
 
@@ -93,22 +106,6 @@ The data collectors selected must be the same vendor and model, and reside on th
 * The menu allowing you to switch to other NetApp Cloud Central products has moved to the upper right corner of the screen.
 
 
-////
-•	Windows AU support
-•	IBG-15020: Allow quote characters in the invited user's email
-•	[IBG-15082] Invite email - add note for Cloud Central account sign up
-•	US35338: SaaS Gateway: Navigation to switch to other cloud products
-•	US35261: Google Cloud Platform VM inventory
-•	IBG-15085: Tenant service issues on upgrade of FAILED_CREATION
-•	IBG-145072: updating raw capacity to unformatted capacity
-•	Duplicating dashboard
-
-•	[IBG-15042] Remove suffix from site name
-•	IBG-15045: fix au deadlock in FilteredRemoteAppender
-•	Billing: Subscription Update Job for all subscriptions
-•	reshuffle persistent volumes and persistent volume claims
-•	tweak mem size for level2 tenant profile
-////
 
 
 
