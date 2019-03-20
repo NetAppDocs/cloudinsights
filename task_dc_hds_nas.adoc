@@ -13,11 +13,11 @@ summary: Configuring HDS NAS (HNAS) data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-= Configuring the HDS NAS (HNAS) data collector
+= Configuring the Hitachi Vantara NAS data collector
 
 [.lead] 
 
-The HDS NAS (HNAS) data collector is an inventory and configuration data collector that  supports discovery of HDS NAS clusters. Cloud Insights supports discovering NFS and CIFS shares, file systems (Internal Volumes), and spans (Storage Pools).
+The Hitachi Vantara NAS data collector is an inventory and configuration data collector that  supports discovery of HDS NAS clusters. Cloud Insights supports discovering NFS and CIFS shares, file systems (Internal Volumes), and spans (Storage Pools).
 
 == Terminology
 
@@ -63,3 +63,24 @@ Note: These are common terminology mappings only and might not represent every c
 //|SSH Banner Wait Timeout (sec)|SSH banner wait timeout. The default is 15 seconds.
 //|SSH Command Timeout (sec)|SSH command timeout. The default is 30 seconds.
 |===
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|"Error connecting" with error messages “Error setting up shell channel:”or “Error opening shell channel”
+|Likely caused by network connectivity issues or SSH is misconfigured. Confirm connection with alternate SSH client
+|"Timeout" or “Error retrieving data" with error messages “Command: XXX has timed out."
+|* Try the command with alternate SSH client
+* Increase timeout
+|"Error connecting " or “Invalid login credentials" with error messages “Could not communicate with the device:"
+|* Check IP address
+* Check user name and password
+* Confirm connection with alternate SSH client
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].

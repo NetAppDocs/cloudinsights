@@ -1,0 +1,135 @@
+---
+sidebar: sidebar
+permalink: task_config_telegraf_kubernetes.html
+keywords: telegraf, installation, install, kubernetes
+summary: Kubernetes data collector configuration
+---
+
+= Kubernetes Data Collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Under construction
+
+Cloud Insights uses this data collector to gather metrics from Kubernetes.
+
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Kubernetes.
++
+If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+
+. Follow the instructions in the Kubernetes Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for installing the Kubernetes data collector on the Kubernetes platform:
+
+image:KubernetesDCConfigKube.png[Kubernetes configuration]
+
+== Configuring an Agent to Collect Data from Kubernetes
+
+For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet. The pods in which the agents run need to have access to the following:
+
+* hostPath
+* configMap
+* secrets
+
+These Kubernetes objects are automatically created as part of the Kubernetes agent install command provided in the Cloud Insights UI. Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to these components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).
+
+//In such cases, an additional manual step may be required.  As an example, for OpenShift, you may need to create a _SecurityContextConstraint_ to grant the telegraf-user ServiceAccount access to these components.
+
+----
+    apiVersion: v1
+    kind: SecurityContextConstraints
+    metadata:
+      name: telegraf-hostaccess
+      creationTimestamp:
+      annotations:
+        kubernetes.io/description: telegraf-hostaccess allows hostpath volume mounts for restricted SAs.
+      labels:
+        app: ci-telegraf
+    priority: 10
+    allowPrivilegedContainer: false
+    defaultAddCapabilities: []
+    requiredDropCapabilities: []
+    allowedCapabilities: []
+    allowedFlexVolumes: []
+    allowHostDirVolumePlugin: true
+    volumes:
+    - hostPath
+    - configMap
+    - secret
+    allowHostNetwork: false
+    allowHostPorts: false
+    allowHostPID: false
+    allowHostIPC: false
+    seLinuxContext:
+      type: MustRunAs
+    runAsUser:
+      type: RunAsAny
+    supplementalGroups:
+      type: RunAsAny
+    fsGroup:
+      type: RunAsAny
+    readOnlyRootFilesystem: false
+    users:
+    - system:serviceaccount:monitoring:telegraf-user
+    groups: []
+----
+    
+=== Configuring the Input Plugin
+
+For collecting Kubernetes metrics, the best practice is to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment of interest itself. The Cloud Insights agent install command does this if run on one of the Kubernetes nodes in the cluster. The pods in which the Telegraf agents run need to have access to a valid Kubernetes access token file in order to use the required kubelet API. To configure a Telegraf agent running outside the Kubernetes cluster of interest, you must manually generate this Kubernetes access token file, and configure the Telegraf agent to use this access token file.
+
+To manually generate the Kubernetes access token, run the following in a Bash shell:
+
+ SECRET=$(sudo kubectl --namespace kube-system describe sa default |grep Tokens |awk '{print $2}')
+
+ TOKEN=$(sudo kubectl --namespace kube-system describe secrets $SECRET |grep ^token |awk '{print $2}')
+
+To verify that the access token works as needed, run the following to confirm the kubelet API is accessible:
+
+ curl -v -X GET -H "Authorization: Bearer $TOKEN" https://10.197.122.81:10250/stats/summary
+
+To create the required access token file, run the following:
+
+ mkdir -p /var/run/secrets/kubernetes.io/serviceaccount/
+
+ echo -n $TOKEN | sudo tee /var/run/secrets/kubernetes.io/serviceaccount/token
+
+By default, the Kubernetes input plugin configuration provided by CloudInsights is set up to look for the required access token file in the location used above. After performing the steps above, restart the Telegraf agent for the changes to take effect.
+
+
+== Troubleshooting
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|I ran the Kubernetes agent installer command, but I do not see a Telegraf agent pod running via:
+
+ sudo kubectl --namespace monitoring get pods
+
+|Check if there were any errors deploying the DaemonSet:
+
+ sudo kubectl --namespace monitoring describe ds telegraf-ds
+
+If there are errors related to SecurityContextConstraints, do the following:
+
+1. Generate the Telegraf DaemonSet YAML
+
+ sudo kubectl --namespace monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml
+
+2. Stop the Telegraf service
+
+ sudo kubectl --namespace monitoring delete ds telegraf-ds
+
+3. Create the necessary SecurityContextConstraint (see "Configuring Agent to Collect Data" section)
+
+4. Re-create the Telegraf DaemonSet
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page.

@@ -77,7 +77,7 @@ naviseccli.exe -h <IP address> -user <user> -password <password> -scope
 //|Performance External process timeout (sec)|External process timeout. The default is 1800 seconds.
 |===
 
-////
+
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
@@ -90,8 +90,7 @@ Some things to try if you encounter problems with this data collector:
 •	Agent Not Running
 •	Failed to find naviseccli
 •	Failed to execute any command
-|Possible solutions:
-•	Confirm that NaviSphere CLI is installed on the Cloud Insight Acquisition Unit
+|•	Confirm that NaviSphere CLI is installed on the Cloud Insight Acquisition Unit
 •	You have not selected the "Use secure client" option in the data collector configuration wizard and do not have a non-secure version of Naviphere CLI installed.
 •	Confirm that NaviSphere CLI installation directory is correct in the data collector configuration
 •	Confirm that the IP of the VNX block storage is correct in the data collector configuration:
@@ -102,16 +101,14 @@ Some things to try if you encounter problems with this data collector:
 |Error: 4.29 emc235848 emc241018 getall Failed to parse host alias info
 |This is likely caused by a FLARE 29 corruption issue of the host initiator database on the array itself. See EMC knowledge base articles: emc235848, emc241018. You can also check https://now.netapp.com/Knowledgebase/solutionarea.asp?id=kb58128
 |Error: Unable to retrieve Meta LUNs. Error Executing java -jar navicli.jar
-|Possible Solutions:
-•	Modify the data collector configuration to use the secure client (recommended)
+|•	Modify the data collector configuration to use the secure client (recommended)
 •	Install navicli.jar in the CLI path to navicli.exe OR naviseccli.exe
 •	Note: navicli.jar is deprecated as of EMC Navisphere version 6.26
 •	The navicli.jar may be available on http://powerlink.emc.com
 |Error: Storage Pools not reporting disks on Service Processor at configured IP address
 |Configure the data collector with both Service Processor IPs, separated by a comma
 |Error: Revision mismatch error
-|Possible solutions: 
-•	This is usually caused by updating the firmware on the VNX block storage device, but not updating the installation of NaviCLI.exe. This also might be caused by having different devices with different firmwares, but only one CLI installed (with a different firmware version).
+|•	This is usually caused by updating the firmware on the VNX block storage device, but not updating the installation of NaviCLI.exe. This also might be caused by having different devices with different firmwares, but only one CLI installed (with a different firmware version).
 •	Verify that the device and the host are both running identical versions of the software:
     -	From the Cloud Insights Acquisition Unit, open a command line window
     -	Change the directory to the configured installation directory
@@ -119,9 +116,8 @@ Some things to try if you encounter problems with this data collector:
     -	Look for the version number on the first couple of lines. Example: “Agent Rev:           6.16.2 (0.1)”
     -	Look for and compare the version on the first line. Example: “Navisphere CLI Revision 6.07.00.04.07”
 |Error: Unsupported Configuration - No Fibre Channel Ports
-|Possible solution: The device is not configured with any Fibre Channel ports. Currently, only FC configurations are supported.  Verify this version/firmware is supported.
+|The device is not configured with any Fibre Channel ports. Currently, only FC configurations are supported.  Verify this version/firmware is supported.
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
-////
 
