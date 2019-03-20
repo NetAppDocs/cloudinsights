@@ -19,14 +19,12 @@ summary:
 //link:<file_name>.html#<section-name-using-dashes-and-all-lower-case>[Link text]
 
 [.lead]
-The Cloud Insights Agent is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights. 
-
-Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.8/[Telegraf] as its agent for collection of Service integration data.
+Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.8/[Telegraf] as its agent for collection of Service integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights. 
 
 
 == Installing an Agent
 
-This topic provides instructions for installing the Cloud Insights Agent on the following platforms:
+This topic provides instructions for installing the Telegraf agent on the following platforms:
 
 * <<Windows>>
 * <<RHEL and CentOS>>
@@ -34,9 +32,9 @@ This topic provides instructions for installing the Cloud Insights Agent on the 
 * <<macOS>>
 * <<Kubernetes>>
 
-To install a Cloud Insights agent, regardless of the platform you are using, you must first do the following:
+To install an agent, regardless of the platform you are using, you must first do the following:
 
-. Log into the host you will use for your Agent. 
+. Log into the host you will use for your agent. 
 . Log in to your Cloud Insights site and go to *Admin > Data Collectors*.
 . Click on *+Data Collector* and choose a data collector to install. There are several types of data collectors:
 +
