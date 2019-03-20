@@ -30,9 +30,9 @@ If you have an agent already configured, select the appropriate Operating System
 
 . Follow the instructions in the HAProxy Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
 
-//image:KubernetesDCConfigLinux.png[Kubernetes configuration]
+image:HAProxyDCConfigLinux.png[HAProxy configuration]
 
-== Configurarion
+== Configuration
 
 Telegraf's plugin for HAProxy relies on HAProxy Stats enablement. This is a configuration built into HAProxy but it is not enabled out of the box. When enabled, HAProxy will expose an HTML endpoint that can be viewed on your browser or scraped for extraction of status of all HAProxy configurations.
 
