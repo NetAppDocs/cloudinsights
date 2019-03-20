@@ -53,11 +53,9 @@ Enabling and exposing the 'mod_status' modules involves two steps:
 
 
 ==== Enabling module:
-The loading of modules is controlled by the config file under '/usr/local/apache/conf/httpd.conf'. Uncomment the line:
+The loading of modules is controlled by the config file under '/usr/local/apache/conf/httpd.conf'. Edit the config file and uncomment the following lines:
 
  LoadModule status_module modules/mod_status.so
-
-Make sure also that the following line is uncommented:
 
  Include conf/extra/httpd-info.conf
 
