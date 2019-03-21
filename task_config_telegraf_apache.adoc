@@ -24,7 +24,7 @@ NOTE: This topic is considered Preview documentation and is subject to change.
 
 .Pre-requisites
 
-* You must have Apache set up and properly running on your servers
+* You must have your Apache HTTP Server set up and properly running
 * You must have sudo or administrator permissions on your agent host/VM
 * Typically, the Apache _mod_status_ module is configured to expose a page at the '/server-status?auto' location of the Apache server. The _ExtendedStatus_ option must be enabled in order to collect all available fields. For information about how to configure your server, see the Apache module documentation: https://httpd.apache.org/docs/2.4/mod/mod_status.html#enable
 
@@ -40,7 +40,7 @@ If you have an agent already configured, select the appropriate Operating System
 
 image:ApacheDCConfigLinux.png[Apache configuration]
 
-== Apache Configuration
+== Setup
 
 Telegraf's plugin for Apache's HTTP Server relies on the 'mod_status' module to be enabled. When this is enabled, Apache's HTTP Server will expose an HTML endpoint that can be viewed on your browser or scraped for extraction of status of all Apache's HTTP Server configuration.
 
