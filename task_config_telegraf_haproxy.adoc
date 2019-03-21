@@ -32,7 +32,7 @@ If you have an agent already configured, select the appropriate Operating System
 
 image:HAProxyDCConfigLinux.png[HAProxy configuration]
 
-== Configuration
+== Setup
 
 Telegraf's plugin for HAProxy relies on HAProxy Stats enablement. This is a configuration built into HAProxy but it is not enabled out of the box. When enabled, HAProxy will expose an HTML endpoint that can be viewed on your browser or scraped for extraction of status of all HAProxy configurations.
 
