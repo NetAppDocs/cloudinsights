@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: task_config_telegraf_flink.html
+keywords: telegraf, installation, install, flink
+summary: Flink data collector configuration
+---
+
+= Flink Data Collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Under construction
+
+Cloud Insights uses this data collector to gather metrics from Flink.
+
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Flink.
++
+If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+
+. Follow the instructions in the Flink Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Windows:
+
+//image:FlinkDCConfigWindows.png[Flink configuration]
+
+== Setup
+
+A full Flink deployment involves the following components:
+
+JobManager: The Flink master. Coordinates a series of TaskManagers (slaves). In a High Availability setup, system will have more than one JobManager.
+TaskManager: The Flink slaves. This is where Flink operators get executed.
+The Flink plugin is based on the telegraf's Jolokia plugin. As such as a requirement to gather info from all Flink components, JMX needs to be configured and exposed via Jolokia on all components.
+
+==== Compatibility
+Configuration was developed against Flink version 1.7.0.
+
+==== Setting Up
+
+===== Jolokia Agent Jar
+For all individual components, a version the Jolokia agent jar file must be downloaded. The version tested against was link:https://jolokia.org/download.html[Jolokia agent 1.6.0]. 
+
+Instructions below assume that downloaded jar file (jolokia-jvm-1.6.0-agent.jar) is placed under location '/opt/flink/lib/'.
+
+===== JobManager
+To configure JobManager to expose the Jolokia API, you can setup the following environment variable on your nodes then restart the JobManager:
+
+ export FLINK_ENV_JAVA_OPTS="-javaagent:/opt/flink/lib/jolokia-jvm-1.6.0-agent.jar=port=8778,host=0.0.0.0"
+
+You can choose a different port for Jolokia (8778). If you have an internal IP to lock Jolokia onto you can replace the "catch all" 0.0.0.0 by your own IP. Notice this IP needs to be accessible from the telegraf plugin. 
+
+===== TaskManager
+To configure TaskManager(s) to expose the Jolokia API, you can setup the following environment variable on your nodes then restart the TaskManager:
+
+ export FLINK_ENV_JAVA_OPTS="-javaagent:/opt/flink/lib/jolokia-jvm-1.6.0-agent.jar=port=8778,host=0.0.0.0"
+
+You can choose a different port for Jolokia (8778). If you have an internal IP to lock Jolokia onto you can replace the "catch all" 0.0.0.0 by your own IP. Notice this IP needs to be accessible from the telegraf plugin. 
+
+== Troubleshooting
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page.
