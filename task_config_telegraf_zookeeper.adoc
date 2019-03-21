@@ -16,9 +16,11 @@ summary: Apache Zookeeper data collector configuration
 :imagesdir: ./media/
 
 [.lead]
-Under construction
-
 Cloud Insights uses this data collector to gather metrics from Apache Zookeeper.
+
+NOTE: This topic is considered Preview documentation and is subject to change.
+
+== Installation
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Apache Zookeeper.
 +
@@ -28,4 +30,13 @@ If you have an agent already configured, select the appropriate Operating System
 
 . Follow the instructions in the Apache Zookeeper Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
 
-//image:KubernetesDCConfigLinux.png[Kubernetes configuration]
+image:ZookeeperDCConfigLinux.png[Zookeeper configuration]
+
+== Setup
+
+Information may be found in the link:https://zookeeper.apache.org/[Zookeeper] documentation.
+
+
+== Troubleshooting
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page.
