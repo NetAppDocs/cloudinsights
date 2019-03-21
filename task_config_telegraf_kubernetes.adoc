@@ -30,7 +30,13 @@ If you have an agent already configured, select the appropriate Operating System
 
 image:KubernetesDCConfigKube.png[Kubernetes configuration]
 
-== Configuring an Agent to Collect Data from Kubernetes
+== Setup
+The Telegraf input plugin for Kubernetes collects metrics through the /stats/summary endpoint of the kubelet REST API.
+
+==== Compatibility
+Configuration was developed against Kubernetes version 1.9.1.
+
+==== Configuring an Agent to Collect Data from Kubernetes
 
 For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet. The pods in which the agents run need to have access to the following:
 
@@ -81,7 +87,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
     groups: []
 ----
     
-=== Configuring the Input Plugin
+==== Setting Up
 
 For collecting Kubernetes metrics, the best practice is to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment of interest itself. The Cloud Insights agent install command does this if run on one of the Kubernetes nodes in the cluster. The pods in which the Telegraf agents run need to have access to a valid Kubernetes access token file in order to use the required kubelet API. To configure a Telegraf agent running outside the Kubernetes cluster of interest, you must manually generate this Kubernetes access token file, and configure the Telegraf agent to use this access token file.
 
