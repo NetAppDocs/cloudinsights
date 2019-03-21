@@ -1,0 +1,88 @@
+---
+sidebar: sidebar
+permalink: task_config_telegraf_docker.html
+keywords: telegraf, installation, install, docker
+summary: Docker data collector configuration
+---
+
+= Docker Data Collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Insights uses this data collector to gather metrics from Docker.
+
+NOTE: This topic is considered Preview documentation and is subject to change.
+
+== Installation
+
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Docker.
++
+If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+
+. Follow the instructions in the Docker Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
+
+//image:DockerDCConfigLinux.png[Docker configuration]
+
+== Setup
+
+The Telegraf input plugin for Docker collects metrics through a specified UNIX socket or a TCP endpoint.
+
+==== Compatibility
+Configuration was developed against Docker version 1.12.6.
+
+==== Setting Up
+
+===== Accessing Docker through a UNIX socket
+If the Telegraf agent is running on baremetal, add the telegraf Unix user to the docker Unix group by running the following:
+
+ sudo usermod -aG docker telegraf
+
+If the Telegraf agent is running within a Kubernetes pod, expose the Docker Unix socket by mapping the socket into the pod as a volume and then mounting that volume to /var/run/docker.sock.  For example, add the following to the PodSpec:
+
+-----
+volumes:
+...
+- name: docker-sock
+hostPath:
+path: /var/run/docker.sock
+type: File
+-----
+
+Then, add the following to the Container:
+
+-----
+volumeMounts:
+...
+- name: docker-sock
+mountPath: /var/run/docker.sock
+-----
+
+Note that the Cloud Insights installer provided for the Kubernetes platform takes care of this mapping automatically.
+
+===== Access Docker through a TCP endpoint
+
+By default, Docker uses port 2375 for unencrypted access and port 2376 for encrypted access. 
+
+== Troubleshooting
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|I do not see my Docker metrics in Cloud Insights after following the instructions on the configuration page.
+|Check the Telegraf agent logs to see if it reports the following error:
+
+ E! Error in plugin [inputs.docker]: Got permission denied while trying to connect to the Docker daemon socket
+
+If it does, take the necessary steps to provide the Telegraf agent access to the Docker Unix socket as specified above.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page.
