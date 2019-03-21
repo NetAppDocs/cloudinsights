@@ -39,7 +39,7 @@ Telegraf's plugin for HAProxy relies on HAProxy Stats enablement. This is a conf
 ==== Compatibility:
 Configuration was developed against HAProxy version 1.9.4.
 
-==== Enabling Stats Collection:
+==== Setting Up:
 
 To enable stats, edit your haproxy configuration file and add the the following lines after the 'defaults' section, using your own user/password and/or haproxy URL:
 
