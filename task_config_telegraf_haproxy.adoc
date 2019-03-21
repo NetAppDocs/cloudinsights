@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_config_telegraf_haproxy.html
 keywords: telegraf, installation, install, haproxy
-summary: kubernetes
+summary: HAProxy data collector configuration
 ---
 
 = HAProxy Data Collector
@@ -16,16 +16,75 @@ summary: kubernetes
 :imagesdir: ./media/
 
 [.lead]
-Under construction
-
 Cloud Insights uses this data collector to gather metrics from HAProxy.
 
-. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose HaProxy.
+NOTE: This topic is considered Preview documentation and is subject to change.
+
+== Installation
+
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose HAProxy.
 +
 If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
 +
 If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
 
-. Follow the instructions in the Apache Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
+. Follow the instructions in the HAProxy Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
 
-//image:KubernetesDCConfigLinux.png[Kubernetes configuration]
+image:HAProxyDCConfigLinux.png[HAProxy configuration]
+
+== Configuration
+
+Telegraf's plugin for HAProxy relies on HAProxy Stats enablement. This is a configuration built into HAProxy but it is not enabled out of the box. When enabled, HAProxy will expose an HTML endpoint that can be viewed on your browser or scraped for extraction of status of all HAProxy configurations.
+
+==== Compatibility:
+Configuration was developed against HAProxy version 1.9.4.
+
+==== Enabling Stats Collection:
+
+To enable stats, edit your haproxy configuration file and add the the following lines after the 'defaults' section, using your own user/password and/or haproxy URL:
+
+----
+stats enable
+stats auth myuser:mypassword
+stats uri  /haproxy?stats
+----
+
+The following is a simplified example configuration file with stats enabled:
+
+----
+global
+  daemon
+  maxconn 256
+ 
+defaults
+  mode http
+  stats enable
+  stats uri /haproxy?stats
+  stats auth myuser:mypassword
+  timeout connect 5000ms
+  timeout client 50000ms
+  timeout server 50000ms
+ 
+frontend http-in
+  bind *:80
+  default_backend servers
+ 
+frontend http-in9080
+  bind *:9080
+  default_backend servers_2
+ 
+backend servers
+  server server1 10.128.0.55:8080 check ssl verify none
+  server server2 10.128.0.56:8080 check ssl verify none
+ 
+backend servers_2  
+  server server3 10.128.0.57:8080 check ssl verify none
+  server server4 10.128.0.58:8080 check ssl verify none
+----
+
+For complete and up to date instructions, see the link:https://cbonte.github.io/haproxy-dconv/1.8/configuration.html#4-stats%20enable[HAProxy documentation].
+
+
+== Troubleshooting
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page.
