@@ -23,9 +23,6 @@ Device network addresses, account information, and passwords are required for al
 
 Data collector credentials are encrypted when entered in Cloud Insights, and are sent to the Acquisition Unit (AU) encrypted first by the public key of the AU, and then encrypted over HTTPS. Encrypted values are decrypted when the AU uses them to communicate with devices & software. 
 
-NOTE: Not all devices require passwords. Some data collectors don't allow for entering any credentials, while others (for example, Amazon ECS or Google Compute) have other encrypted fields, but not “Password” apecifically.
-
-
 ////
 Credentials are encrypted and stored in the database (encrypted) when entered.
 They are sent to the AU encrypted over HTTPS.
