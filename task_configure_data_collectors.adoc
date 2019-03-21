@@ -19,12 +19,25 @@ You configure Data Collectors in your Cloud Insights environment to collect data
 +
 Device network addresses, account information, and passwords are required for all devices you are collecting data from.
 
+=== Credential Security
+
+Data collector credentials are encrypted when entered in Cloud Insights, and are sent to the Acquisition Unit (AU) encrypted first by the public key of the AU, and then encrypted over HTTPS. Encrypted values are decrypted when the AU uses them to communicate with devices & software. 
+
+////
+Credentials are encrypted and stored in the database (encrypted) when entered.
+They are sent to the AU encrypted over HTTPS.
+
+On the AU (presumably in the customer environment), encrypted values are decrypted where they are used to communicate with devices & software. Communication with devices is done with a variety of protocols. Some are more secure than others, but we use what is available for any particular device.
+////
+
+=== Configuring the Data Collector
+
 .Steps
 . From the Cloud Insights menu, click *Admin > Data Collectors*
 +
 The system displays the available Data Collectors arranged by vendor.
 
-. Click *+ Collector* on the required vendor and select the data collector to configure.
+. Click *+ Collector* on the required data collector vendor and model.
 +
 In the dialog box you can configure the data collector and add an Acquisition Unit.
 
