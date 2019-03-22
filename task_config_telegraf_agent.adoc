@@ -1,0 +1,316 @@
+---
+sidebar: sidebar
+permalink: task_config_telegraf_agent.html
+keywords: telegraf, installation, install, agent, telegraf agent
+summary: 
+---
+
+= Configuring an Agent to Collect Data
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.8/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights. 
+
+NOTE: This topic is considered Preview documentation and is subject to change.
+
+== Installing an Agent
+
+This topic provides instructions for installing the Telegraf agent on the following platforms:
+
+* <<Windows>>
+* <<RHEL and CentOS>>
+* <<Debian and Ubuntu>>
+* <<macOS>>
+* <<Kubernetes>>
+
+To install an agent, regardless of the platform you are using, you must first do the following:
+
+. Log into the host you will use for your agent. 
+. Log in to your Cloud Insights site and go to *Admin > Data Collectors*.
+. Click on *+Data Collector* and choose a data collector to install. There are several types of data collectors:
++
+* *Host* (Windows, Linux, macOS, etc.)
++
+* *Service* (integration with a wide variety of agent-collected plugins). Agents are configured and run as a service for RHEL/CentOS, Ubuntu/Debian, macOS, and Windows. For Kubernetes platforms, the agent in configured as a DaemonSet.
++
+* *Infrastructure* (collects from storage, switch, cloud platform, etc.). Infrastructure collection is done with an link:task_configure_acquisition_unit.html[Acquisition Unit] instead of an Agent.
+
+. Choose the appropriate platform for your host (Windows, Linux, macOS, etc.)
+. Follow the remaining steps for each platform below
+
+NOTE: Once you have installed an agent on a host, you do not need to install an agent again on that host. 
+
+
+=== Windows
+To install the agent on a Windows host, you first install the agent software and then customize the configuration file as needed. 
+
+image:AgentInstallWindows.png[Windows Agent Install]
+
+.Pre-requisites:
+
+* PowerShell must be installed
+* You must have at least one Agent Access Key configured
+
+.Steps to install agent on Windows:
+
+. If prompted, select Windows from the Platform drop-down.
+. Choose an Agent Access Key.
+. If you have not already installed an agent on this host:
+.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+.. Open a PowerShell window 
+.. Paste the command into the PowerShell window and press Enter.
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. In you have already installed an agent on this host, you can skip the previous step.
+. Click *Finish* or *Continue*
+
+
+After the agent is installed, you can use the following commands to start/stop the service:
+
+  Start-Service telegraf
+  Stop-Service telegraf
+
+====Uninstalling the Agent
+
+To uninstall the agent on Windows, do the following in a PowerShell window:
+
+. Stop and Delete the Telegraf service:
++
+ Stop-Service telegraf
+ sc.exe delete telegraf
+ 
+. Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
+
+
+=== RHEL and CentOS
+
+.Steps to install agent on RHEL/CentOS:
+
+image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
+
+.Pre-requisites:
+
+* The following commands must be available: curl, sudo, ping, and dmidecode
+* You must have at least one Agent Access Key configured
+
+. If prompted, select RHEL/CentOS from the Platform drop-down.
+. Choose an Agent Access Key.
+. If you have not already installed an agent on this host:
+.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+.. Open a Bash window 
+.. Paste the command into the Bash window and press Enter.
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. In you have already installed an agent on this host, you can skip the previous step.
+. Click *Finish* or *Continue*
+
+After the agent is installed, you can use the following commands to start/stop the service:
+
+If your operating system is using systemd (CentOS 7+ and RHEL 7+):
+
+ sudo systemctl start telegraf
+ sudo systemctl stop telegraf
+
+If your operating system is not using systemd (CentOS 7+ and RHEL 7+):
+
+ sudo service telegraf start
+ sudo service telegraf stop
+
+
+==== Uninstalling the Agent
+
+To uninstall the agent on RHEL/CentOS, in a Bash terminal, do the following:
+
+. Stop the Telegraf service using the following command:
++
+ systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+ /etc/init.d/telegraf stop (for systems without systemd support)
+
+. Remove the Telegraf package:
++
+ yum remove telegraf
+
+. Remove any configuration or log files that may be left behind:
++
+ rm -rf /etc/telegraf*
+ rm -rf /var/log/telegraf*
+
+
+=== Debian and Ubuntu
+
+.Steps to install agent on Ubuntu/Debian:
+
+image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
+
+.Pre-requisites:
+
+* The following commands must be available: curl, sudo, ping, and dmidecode
+* You must have at least one Agent Access Key configured
+
+. If prompted, select Ubuntu/Debian from the Platform drop-down.
+. Choose an Agent Access Key.
+. If you have not already installed an agent on this host:
+.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+.. Open a Bash window 
+.. Paste the command into the Bash window and press Enter.
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. In you have already installed an agent on this host, you can skip the previous step.
+. Click *Finish* or *Continue*
+
+After the agent is installed, you can use the following commands to start/stop the service:
+
+If your operating system is using systemd:
+
+ sudo systemctl start telegraf
+ sudo systemctl stop telegraf
+
+If your operating system is not using systemd:
+
+ sudo service telegraf start
+ sudo service telegraf stop
+
+
+==== Uninstalling the Agent
+
+To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
+
+. Stop the Telegraf service using the following command:
++
+ systemctl stop telegraf (If your operating system is using systemd)
+ /etc/init.d/telegraf stop (for systems without systemd support)
+
+. Remove the Telegraf package:
++
+ dpkg -r telegraf
+
+. Remove any configuration or log files that may be left behind:
++
+ rm -rf /etc/telegraf*
+ rm -rf /var/log/telegraf*
+
+
+
+=== macOS
+.Steps to install agent on macOS:
+
+image:AgentInstallMacOS.png[MacOS Agent Install]
+
+.Pre-requisites:
+
+* The "curl" command must be available
+* You must have at least one Agent Access Key configured
+
+. If prompted, select macOS from the Platform drop-down.
+. Choose an Agent Access Key.
+. If you have not already installed an agent on this host:
+.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+.. Open a Bash window 
+.. Paste the command into the Bash window and press Enter.
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. In you have already installed an agent on this host, you can skip the previous step.
+. Click *Finish* or *Continue*
+
+After the agent is installed, you can use the following commands to start/stop the service:
+
+ brew services start telegraf
+ brew services stop telegraf
+
+
+==== Uninstalling the Agent
+
+To uninstall the agent on macOS, in a Bash terminal, run the following:
+
+. Stop the Telegraf service using the following command:
++
+ brew services stop telegraf
+
+. Remove the Telegraf package:
++
+ brew remove telegraf
+
+. Remove any configuration or log files that may be left behind:
++
+ rm -rf /usr/local/etc/telegraf*
+ rm -rf /usr/local/var/log/telegraf.*
+
+
+
+=== Kubernetes
+.Steps to install agent on Kubernetes:
+
+image:AgentInstallKubernetes.png[Kubernetes Agent Install]
+
+.Pre-requisites:
+
+* The following commands must be available: curl and sudo
+* You must have at least one Agent Access Key configured
+
+The following commands must be available: curl, sudo
+
+. If prompted, select macOS from the Platform drop-down.
+. Choose an Agent Access Key.
+. If prompted, select Kubernetes from the Platform drop-down.
+. Choose an Agent Access Key.
+. If you have not already installed an agent on this host:
+.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+.. Open a Bash window 
+.. Paste the command into the Bash window and press Enter.
+.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. In you have already installed an agent on this host, you can skip the previous step.
+. Click *Finish* or *Continue*
+
+After the agent is installed, you can use the following commands:
+
+Generate the Telegraf DaemonSet YAML:
+
+ kubectl --namespace monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml
+ 
+Start/Stop the Telegraf service:
+
+ kubectl --namespace monitoring apply -f /tmp/telegraf-ds.yaml 
+ kubectl --namespace monitoring delete ds telegraf-ds
+
+
+==== Uninstalling the Agent
+
+To uninstall the agent on Kubernetes, do the following:
+
+If the monitoring namespace is being used solely for Telegraf:
+
+ kubectl delete ns monitoring
+ 
+If the monitoring namespace is being used for other purposes in addition to Telegraf:
+
+Stop and delete the Telegraf service:
+
+ kubectl --namespace monitoring delete ds telegraf-ds 
+ 
+Delete the Telegraf ConfigMap and ServiceAccount:
+
+ kubectl --namespace monitoring delete cm telegraf-conf 
+ kubectl --namespace monitoring delete sa telegraf-user 
+ 
+Delete the Telegraf ClusterRole and ClusterERolebinding:
+
+ kubectl --namespace monitoring delete clusterrole endpoint-access 
+ kubectl --namespace monitoring delete clusterrolebinding endpoint-access 
+ 
+
+== Troubleshooting Agent Installation
+
+Some things to try if you encounter problems setting up an agent:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. |
+|I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].

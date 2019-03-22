@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: task_config_telegraf_nginx.html
+keywords: telegraf, installation, install, nginx
+summary: Nginx data collector configuration
+---
+
+= Nginx Data Collector
+
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead]
+Cloud Insights uses this data collector to gather metrics from Nginx.
+
+NOTE: This topic is considered Preview documentation and is subject to change.
+
+== Installation 
+
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Nginx.
++
+If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+
+. Follow the instructions in the Nginx Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
+
+image:NginxDCConfigLinux.png[Linux Nginx Configuration]
+
+== Setup
+
+Information may be found in the https://docs.nginx.com/?_ga=2.49247590.1936344549.1553193912-324974249.1553193912[Nginx documentation].
+
+== Troubleshooting
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page.

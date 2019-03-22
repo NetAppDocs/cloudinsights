@@ -53,7 +53,7 @@ Enter data into the data collector fields according to the table below:
 |===
 |Field | Description
 |Inventory Poll Interval (min)|The default is 60
-|HTTP connection and socket timeout (sec)|The default is 300
+//|HTTP connection and socket timeout (sec)|The default is 300
 |Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
 |Performance Poll Interval (sec)|The default is 1800
 |===
@@ -67,6 +67,35 @@ Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if
 .Related Information
 
 * https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[Managing Access Keys for IAM Users^]
+
+== Include Extra Regions
+
+In the AWS Data Collector *Advanced Configuration* section, you can set the *Include extra regions* field to include additional regions, separated by comma or semi-colon. By default, this field is set to *_us-.*_*, which collects on all US AWS regions.  To collect on _all_ regions, set this field to  *_.*_*. 
+If the *Include extra regions* field is empty, the data collector will collect on assets specified in the *AWS Region* field as specified in the *Configuration* section. 
+
+== Collecting from AWS Child Accounts
+
+Cloud Insights supports collection of child accounts for AWS within a single AWS data collector. Configuration for this collection is performed in the AWS environment:
+
+* You must configure each child account to have an AWS Role that allows the master account ID to access EC2 details from the children account. 
+* Each child account must have the role name configured as the same string. 
+* Enter this role name string into the Cloud Insights AWS Data Collector *Advanced Configuration* section, in the *Cross account role* field.
+
+Best Practice: It is highly recommended to assign the AWS predefined _AmazonEC2ReadOnlyAccess_ policy to the ECS master account. Also, the user configured in the data source should have at least the predefined _AWSOrganizationsReadOnlyAccess_ policy assigned, in order to query AWS. 
+
+
+Please see the following for information on configuring your environment to allow Cloud Insights to collect from AWS child accounts:
+
+link:https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html[Tutorial: Delegate Access Across AWS Accounts Using IAM Roles]
+
+link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_aws-accounts.html[AWS Setup: Providing Access to an IAM User in Another AWS Account That You Own]
+
+link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[Creating a Role to Delegate Permissions to an IAM User]
+
+           
+== Troubleshooting
+
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
 
 
 

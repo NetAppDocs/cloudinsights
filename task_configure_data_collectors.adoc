@@ -19,20 +19,43 @@ You configure Data Collectors in your Cloud Insights environment to collect data
 +
 Device network addresses, account information, and passwords are required for all devices you are collecting data from.
 
+=== Credential Security
+
+Data collector credentials are encrypted when entered in Cloud Insights, and are sent to the Acquisition Unit (AU) encrypted first by the public key of the AU, and then encrypted over HTTPS. Encrypted values are decrypted when the AU uses them to communicate with devices & software. 
+
+////
+Credentials are encrypted and stored in the database (encrypted) when entered.
+They are sent to the AU encrypted over HTTPS.
+
+On the AU (presumably in the customer environment), encrypted values are decrypted where they are used to communicate with devices & software. Communication with devices is done with a variety of protocols. Some are more secure than others, but we use what is available for any particular device.
+////
+
+=== Configuring the Data Collector
+
 .Steps
 . From the Cloud Insights menu, click *Admin > Data Collectors*
 +
 The system displays the available Data Collectors arranged by vendor.
 
-. Click *+ Collector* on the required vendor and select the data collector to configure.
+. Click *+ Collector* on the required data collector vendor and model.
 +
 In the dialog box you can configure the data collector and add an Acquisition Unit.
-. Enter a name for the data collector.
+
+. Enter a name for the data collector. Names can contain the following characters:
+
+* letter (a-z)
+* number (0-9)
+* hyphen (-)
+* underscore (_)
+* period (.)
+* space ( )
 +
-Names can contain can contain letters (a-z), numbers (0-9), dashes (-), underscores (_), apostrophes ('), and periods (.).
+
+Names may not begin or end with a space, period, or hyphen.
+
 . Enter the Acquisition Unit to associate with this data collector.
 . Enter the required fields in the Configuration screen.
 . Click *Advanced Configuration* to add additional configuration fields. (Not all data collectors require advanced configuration.)
 . Click *Test Configuration* to verify that the data collector is properly configured.
 
-For help adding a new Acquisition Unit, see link:<task_configure_acquisition_unit>.html[Configuring acquisition units]
+For help adding a new Acquisition Unit, see link:task_configure_acquisition_unit.html[Configuring acquisition units]

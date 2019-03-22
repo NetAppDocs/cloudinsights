@@ -66,8 +66,8 @@ Note: These are common terminology mappings only and might not represent every c
 |Fabric name|Fabric name to be reported by the data collector. Leave blank to report the fabric name as WWN. 
 |Inventory Poll Interval (min)| Interval between inventory polls. The default is 15.
 |Excluded Devices|Comma-separated list of device IDs to exclude from polling
-|Timeout (sec)|Connection timeout. The default is 30. 
-|Banner Wait Timeout (sec)|SSHAdmin Domains Active 	Select if using Admin Domainsbanner wait timeout. The default is 5 seconds.
+//|Timeout (sec)|Connection timeout. The default is 30. 
+//|Banner Wait Timeout (sec)|SSHAdmin Domains Active 	Select if using Admin Domainsbanner wait timeout. The default is 5 seconds.
 |Admin Domains Active|Select if using Admin Domains
 |Retrieve MPR Data|Select to acquire routing data from your multiprotocol router. 
 |Enable Trapping|Select to enable acquisition upon receiving an SNMP trap from the device. If you select enable trapping, you must also activate SNMP.
@@ -78,5 +78,21 @@ Note: These are common terminology mappings only and might not represent every c
 |SNMP Auth Protocol|SNMP authentication protocol (SNMP v3 only)
 |SNMP Privacy Password|SNMP privacy password (SNMP v3 only)
 |SNMP Retries|Number of SNMP retry attempts
-|SNMP Timeout (ms)|SNMP timeout. The default is 5000.
+//|SNMP Timeout (ms)|SNMP timeout. The default is 5000.
 |===
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: “Cloud Insights received Invalid Chassis Role” |Check that the user configured in this data source has been granted the chassis role permission.
+|Error: "Mismatched Chassis IP Address" |Change the data source configuration to use chassis IP address.
+|Receive a message that more than 1 node is logged into the Access Gateway port| Check that the NPV device is operating correctly and that all connected WWNs are expected. Do not directly acquire the NPV device. Instead, acquisition of the core fabric switch will collect the NPV device data.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
