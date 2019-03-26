@@ -1,0 +1,128 @@
+---
+sidebar: sidebar
+permalink: alert_data.html
+keywords:  alert, Critical, Warning, Low, Synopsis, Time range, Start time, End time, user 
+summary: alert 
+---
+
+= Alerts
+
+[Lead]
+
+The Alert page shows all alerts generated in Cloud Secure. Each alert provides the following information:
+
+* Detected 
++
+The number of days since the alert was reported and the date and time of the alert. 
+
+ 
+* Status shows the following:
+
+** New - no action has been taken. 
+** In Progress - set by an administrator
+** Resolved - set by an administrator
+** Dismissed - set by an administrator 
++
+An administrator manages the status of an alert. To change an alert status: 
+
+. Hover over the status
+. Click the pencil icon
+. Select the new status for the alert
+. Enter text into the Add a Note section
+
+
+* Severity
+
+The severity of a alert can be one of the following: 
+
+** Critical 
+** Warning 
+** Low
+
+
+* Synopsis 
+
+Synopsis describes the activity that raised the alert and the user performing the activity. 
+
+Click the Synopsis to get detailed information about the alert, including:
+
+* Alert details 
+* Impact of the alert showing Communities, Users, and Entities impacted. 
+* A link to the User's User Activity log. 
+* Profile of the user performing the operation. 
+
+== Filter options 
+
+
+The Alert page shows the following for each alert:
+
+* Detected
+You can filter alerts, to define and monitor status, and to specify any action taken against the alert.
+
+* Detected shows the time the alert was generated. The default filter shows all alerts in the past 31 days. This can be modified to show a date range of up to 31 days. 
+
+To modify the date range do the following:
+
+. Click *Filter by > Detected*
+. Click the blank Time/Date Range
+. Select a date range in the Month dialog
+. Enter a Start and End time 
+. Click *Apply*
+
+
+
+
+
+
+
+
+== Alert Severity 
+
+The severity of alerts you see in Cloud Secure are described in the following:
+
+* Critical 
+* Warning
+* Low
+
+
+== Alert Details 
+
+The Alert Details contains a description of the activity that raised the alert and a link to detailed user and alert information:
+
+* Alert Details provides the following information:
+
+** Date and time the activity was detected.
+
+//** The policy that the user violated 
+
+** The severity of the violation
+
+** The status of the violation. To change an alert status: 
+
+. Hover over the status
+. Click the pencil icon
+. Select the new status for the alert
+. Enter text into the Add a Note section
+
+* Impact describes the action taken to resolve the alert, the number of communities, users, and entities affected, and a link to the link:<forensic_user_actv_data>.html[User activity data] of the specific user.
+
+* User Profile providing the following user information:
+
+** User name
+
+** Email address
+
+** Manager’s name
+
+** Phone numbers
+
+** Location of the user
+
+
+
+
+
+
+
+
+
