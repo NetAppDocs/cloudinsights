@@ -5,7 +5,7 @@ summary: Adding email addresses for notifications.
 keywords: email, notifications, signature, recipient, list, subscription
 ---
 
-= Configuring Email Notifications
+= Configuring Monitor Notifications
 
 :toc: macro
 :hardbreaks:
@@ -16,8 +16,7 @@ keywords: email, notifications, signature, recipient, list, subscription
 :imagesdir: ./media/
 
 [.lead]
-You can configure an email list for subscription-related notifications, as well as a global email list of recipients for notification of performance policy threshold violations. 
-//You can also configure a global email list of recipients for monitor-related notifications.
+You can configure an email list for subscription-related notifications, as well as a global email list of recipients for notification of Monitor-related violations. 
 
 To configure notification email recipient settings, go to the *Admin > Notifications* page. 
 
@@ -68,7 +67,7 @@ Account will stop collecting data in 48 hours
 Account will be deleted after 48 hours|Contact link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp sales] to purchase a subscription
 |===
 
-
+////
 == Global Recipient List for Performance Policy Notifications
 
 [.thumb]
@@ -81,7 +80,7 @@ If you make a mistake, you can click on [x] to remove a recipient from the list.
 You can also add an optional signature block that will be attached to the email notifications sent.
 
 NOTE: You can override the global list for a link:task_create_performance_policies.html[specific policy] when you configure that policy.
-
+////
 
 ////
 == Global Recipient List for Monitor Notifications
@@ -96,4 +95,4 @@ You can choose to have email notifications sent for monitor-related events to an
 * All Account Owners
 * All Administrators
 * Additional Email Addresses that you specify
-////
+
