@@ -26,7 +26,7 @@ Because of the varied nature of the ingested data, Cloud Insights makes its best
 
 * For meta-data that it knows, Cloud Insights attaches a meaningful name and categorizes the metric or counter as "Stable". Stable metrics will have names that use "Title Case", with individual words separated by space ( ), such as _IOs In Progress_.
 
-* For data that it might know but isn't 100% certain, it keeps the source-determined name and assigns it to the "Guess" category. Guess metrics will appear with lower-case names, with individual words separated by an underscore (_), such as _virtual_machine_io_.
+* For data that it might know but isn't 100% certain, it keeps the source-determined name and assigns it to the "Guess" category. Guess metrics will appear with lower-case names, with individual words separated by an underscore (__), such as _virtual_machine_io_.
 
 All metrics gathered by Telegraf data collectors can be used in dashboard widgets. In the case of "Guess" metrics, you are given a choice of how to display the values for each metric you include (As-Is, Sum, Delta, etc.). These link:telegraf-data-display-options[display options] are explained below.
 
