@@ -35,10 +35,17 @@ NOTE: If you need additional time to evaluate Cloud Insights and your trial is s
 
 If your free trial has expired and you have not yet subscribed to Cloud Insights, you will have limited functionality until you subscribe.  
 
-To subscribe, go to *Admin > Subscription*. In addition to the *Subscribe* buttons, you will be able to see your installed data collectors and calculate your estimated pricing. For a typical environment, you can click the self-serve AWS Marketplace *Subscribe Now* button. If your environment includes or is expected to include 1,000 or more Managed Units, you can *Contact NetApp Sales* to subscribe. See <<how-do-i-subscribe,below>> for more details.
+To subscribe, go to *Admin > Subscription*. On this page you can view your subscription options, view or modify your managed units, and calculate your estimated pricing. Subscription options include the following:
+
+* *Basic Edition* gives you 7 days of data retention and access to Cloud Insights basic features
+* *Standard Edition* gives you everything included in Basic Edition, plus an increase to 90 days of data retention as well as access to NetApp Technical Support.
+
+If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for *Volume Pricing* and will be prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
+
+image:Subscription_Basic_Standard.png[Subscription Options]
 
 === Pricing
-Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts* and amount of *unformatted capacity* being managed in your infrastructure environment.
+Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts or virtual machines* and amount of *unformatted capacity* being managed in your infrastructure environment.
 
 * 1 Managed Unit = 1 host (any virtual or physical machine)
 * 1 Managed Unit = 2 TB of unformatted capacity of physical or virtual disks
