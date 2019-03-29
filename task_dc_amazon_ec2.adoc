@@ -52,9 +52,13 @@ Enter data into the data collector fields according to the table below:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
+|Include Extra Regions| Specify additional regions to include in polling. 
+|Cross Account Role|Role for gathering data
 |Inventory Poll Interval (min)|The default is 60
+|Choose 'Exclude' or 'Include' to Apply to Filter VMs by Tags|You can choose VMs to filter in or out of polling
+|Tag Keys and Values on which to Filter VMs|Keys for VMs to include or exclude from polling
 //|HTTP connection and socket timeout (sec)|The default is 300
-|Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
+//|Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
 |Performance Poll Interval (sec)|The default is 1800
 |===
 
