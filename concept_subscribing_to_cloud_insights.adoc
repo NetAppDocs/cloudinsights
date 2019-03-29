@@ -35,12 +35,12 @@ NOTE: If you need additional time to evaluate Cloud Insights and your trial is s
 
 If your free trial has expired and you have not yet subscribed to Cloud Insights, you will have limited functionality until you subscribe.  
 
+==== Subscription Options
+
 To subscribe, go to *Admin > Subscription*. On this page you can view your subscription options, view or modify your managed units, and calculate your estimated pricing. Subscription options include the following:
 
-* *Basic Edition* gives you 7 days of data retention and access to Cloud Insights basic features
+* *Basic Edition* is free and gives you 7 days of data retention and access to Cloud Insights basic features
 * *Standard Edition* gives you everything included in Basic Edition, plus an increase to 90 days of data retention as well as access to NetApp Technical Support.
-
-If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for *Volume Pricing* and will be prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
 
 image:Subscription_Basic_Standard.png[Subscription Options]
 
@@ -50,8 +50,10 @@ Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calc
 * 1 Managed Unit = 1 host (any virtual or physical machine)
 * 1 Managed Unit = 2 TB of unformatted capacity of physical or virtual disks
 
+If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for *Volume Pricing* and will be prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
+
 === Estimate Your Subscription Cost
-The Subscription Calculator gives you an estimated list price monthly Cloud Insights cost based on the number of hosts and amount of unformatted capacity being reported by your data collectors. The current values are pre-populated in the _Hosts_ and _Unformatted Capacity_ fields. You can enter different values to assist you with planning for estimated future growth.
+The Subscription Calculator gives you an estimated list-price monthly Cloud Insights cost based on the number of hosts and amount of unformatted capacity being reported by your data collectors. The current values are pre-populated in the _Hosts_ and _Unformatted Capacity_ fields. You can enter different values to assist you with planning for estimated future growth.
 
 Your estimated list price cost will change based on whether you select a subscription term of 12 months or 36 months. The 36-month term includes a discounted cost per Managed Unit.
 
@@ -66,9 +68,9 @@ Cloud Insights subscription is available via muliple channels:
 
 === Subscribe via NetApp Sales direct
 
-If your expected Managed Unit count is 1,000 or greater, you can click on the link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[*Contact Sales*] button to subscribe though the NetApp Sales Team.  
+If your Managed Unit count is less than 1,000, you can choose to subscribe to either Basic or Standard Edition. Clicking on the Standard Edition button will give you the choice to subscribe via NetApp Sales, or <<self-subscribe-via-aws-marketplace,self-subscribe>> via AWS Marketplace.
 
-You must provide your Cloud Insights *Serial Number* to your NetApp sales representative so that your paid subscription can be applied to your Cloud Insights environment. The Serial Number uniquely identifies your Cloud Insights trial environment and can be found above the "Contact Sales" button on the *Admin > Subscription* page..
+If your expected Managed Unit count is 1,000 or greater, choose Standard Edition and click on the link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[*Contact Sales*] button to subscribe though the NetApp Sales Team. You must provide your Cloud Insights *Serial Number* to your NetApp sales representative so that your paid subscription can be applied to your Cloud Insights environment. The Serial Number uniquely identifies your Cloud Insights trial environment and can be found above the "Contact Sales" button on the *Admin > Subscription* page.
 
 === Self-Subscribe via AWS Marketplace
 
