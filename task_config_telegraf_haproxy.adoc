@@ -89,15 +89,14 @@ For complete and up to date instructions, see the link:https://cbonte.github.io/
 
 The following objects and their counters are collected:
 
-Object: HAProxy Frontend
+|==
+Object: |Identifiers:|Attributes|datapoints:
+HAProxy Frontend
+a |* Namespace
+* Address
+* Proxy
 
-Identifiers: 
-  * Namespace
-  * Address
-  * Proxy
-
-Attributes: 
-  * Node IP
+|  * Node IP
   * Node Name
   * Proxy ID
   * Mode
@@ -107,8 +106,7 @@ Attributes:
   * Sessions Limit
   * Status
 
-Datapoints: 
-  * Bytes In
+|  * Bytes In
   * Bytes Out
   * Cache Hits
   * Cache Lookups
@@ -140,7 +138,7 @@ Datapoints:
   * Sessions Max
   * Sessions Total
   * Requests Rewrites
-
+|===
 
 Object: HAProxy Server
 
