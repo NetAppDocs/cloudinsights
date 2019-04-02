@@ -94,11 +94,11 @@ The following objects and their counters are collected:
 |Object: |Identifiers:|Attributes: |Datapoints:
 |HAProxy Frontend
 
-a |* Namespace
+|* Namespace
 * Address
 * Proxy
 
-a |  * Node IP
+|  * Node IP
   * Node Name
   * Proxy ID
   * Mode
@@ -108,7 +108,7 @@ a |  * Node IP
   * Sessions Limit
   * Status
 
-a |  * Bytes In
+|  * Bytes In
   * Bytes Out
   * Cache Hits
   * Cache Lookups
@@ -141,13 +141,13 @@ a |  * Bytes In
   * Sessions Total
   * Requests Rewrites
 
-a |HAProxy Server
-a |
+|HAProxy Server
+|
 * Namespace
 * Address
 * Proxy
 * Server
-a |
+|
 * Node IP
 * Node Name
 * Check Time to Finish
@@ -163,7 +163,7 @@ a |
 * Server id
 * Status
 * Weight
-a |
+|
 * Active Servers
 * Backup Servers
 * Bytes In
@@ -199,12 +199,12 @@ a |
 * Requests Redispatches
 * Requests Retries
 * Requests Rewrites
-a |HAProxy Backend
-a |
+|HAProxy Backend
+|
 * Namespace
 * Address
 * Proxy
-a |
+|
 * Node IP
 * Node Name
 * Proxy ID
@@ -216,7 +216,7 @@ a |
 * Sessions Limit
 * Status
 * Weight
-a |
+|
 * Active Servers
 * Backup Servers
 * Bytes In
