@@ -85,6 +85,190 @@ backend servers_2
 For complete and up to date instructions, see the link:https://cbonte.github.io/haproxy-dconv/1.8/configuration.html#4-stats%20enable[HAProxy documentation].
 
 
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object: |Identifiers:|Attributes: |Datapoints:
+|HAProxy Frontend
+|* Namespace
+* Address
+* Proxy
+
+|  * Node IP
+  * Node Name
+  * Proxy ID
+  * Mode
+  * Process id
+  * Sessions Rate Limit
+  * Server id
+  * Sessions Limit
+  * Status
+
+|  * Bytes In
+  * Bytes Out
+  * Cache Hits
+  * Cache Lookups
+  * Compression Bytes Bypassed
+  * Compression Bytes In
+  * Compression Bytes Out
+  * Compression Responses
+  * Connection Rate
+  * Connection Rate Max
+  * Connections Total
+  * Requests Denied by Connection Rule
+  * Requests Denied by Security Concerns
+  * Responses Denied by Security Concerns
+  * Requests Denied by Session Rule
+  * Requests Errors
+  * Responses 1xx
+  * Responses 2xx
+  * Responses 3xx
+  * Responses 4xx
+  * Responses 5xx
+  * Responses Other
+  * Requests Intercepted
+  * Sessions Rate
+  * Sessions Rate Max
+  * Requests Rate
+  * Requests Rate Max
+  * Requests Total
+  * Sessions
+  * Sessions Max
+  * Sessions Total
+  * Requests Rewrites
+|===
+
+Object: HAProxy Server
+
+Identifiers: 
+  * Namespace
+  * Address
+  * Proxy
+  * Server
+
+Attributes: 
+  * Node IP
+  * Node Name
+  * Check Time to Finish
+  * Check Fall Configuration
+  * Check Health Value
+  * Check Rise Configuration
+  * Check Status
+  * Proxy ID
+  * Last Change Time
+  * Last Session Time
+  * Mode
+  * Process id
+  * Server id
+  * Status
+  * Weight
+
+Datapoints: 
+  * Active Servers
+  * Backup Servers
+  * Bytes In
+  * Bytes Out
+  * Check Downs
+  * Check Fails
+  * Client Aborts
+  * Connections
+  * Connection Average Time
+  * Downtime Total
+  * Denied Responses
+  * Connection Errors
+  * Response Errors
+  * Responses 1xx
+  * Responses 2xx
+  * Responses 3xx
+  * Responses 4xx
+  * Responses 5xx
+  * Responses Other
+  * Server Selected Total
+  * Queue Current
+  * Queue Max
+  * Queue Average Time
+  * Sessions per Second
+  * Sessions per Second Max
+  * Connection Reuse
+  * Response Time Average
+  * Sessions
+  * Sessions Max
+  * Server Transfer Aborts
+  * Sessions Total
+  * Sessions Total Time Average
+  * Requests Redispatches
+  * Requests Retries
+  * Requests Rewrites
+
+
+Object: HAProxy Backend
+
+Identifiers: 
+  * Namespace
+  * Address
+  * Proxy
+
+Attributes: 
+  * Node IP
+  * Node Name
+  * Proxy ID
+  * Last Change Time
+  * Last Session Time
+  * Mode
+  * Process id
+  * Server id
+  * Sessions Limit
+  * Status
+  * Weight
+
+Datapoints: 
+  * Active Servers
+  * Backup Servers
+  * Bytes In
+  * Bytes Out
+  * Cache Hits
+  * Cache Lookups
+  * Check Downs
+  * Client Aborts
+  * Compression Bytes Bypassed
+  * Compression Bytes In
+  * Compression Bytes Out
+  * Compression Responses
+  * Connections
+  * Connection Average Time
+  * Downtime Total
+  * Requests Denied by Security Concerns
+  * Responses Denied by Security Concerns
+  * Connection Errors
+  * Response Errors
+  * Responses 1xx
+  * Responses 2xx
+  * Responses 3xx
+  * Responses 4xx
+  * Responses 5xx
+  * Responses Other
+  * Server Selected Total
+  * Queue Current
+  * Queue Max
+  * Queue Average Time
+  * Sessions per Second
+  * Sessions per Second Max
+  * Requests Total
+  * Connection Reuse
+  * Response Time Average
+  * Sessions
+  * Sessions Max
+  * Server Transfer Aborts
+  * Sessions Total
+  * Sessions Total Time Average
+  * Requests Redispatches
+  * Requests Retries
+  * Requests Rewrites
+
+
 == Troubleshooting
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page.
