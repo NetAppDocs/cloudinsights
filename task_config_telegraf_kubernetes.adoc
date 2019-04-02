@@ -22,6 +22,8 @@ NOTE: This topic is considered Preview documentation and is subject to change.
 
 == Installation
 
+BEST PRACTICE: It is strongly recommended to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform on which to install the agent.
+
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Kubernetes.
 +
 If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
