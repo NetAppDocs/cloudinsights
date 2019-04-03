@@ -36,6 +36,38 @@ If you have an agent already configured, select the appropriate Operating System
 
 Information may be found in the http://activemq.apache.org/getting-started.html[ActiveMQ documentation]
 
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|ActiveMQ Queue
+
+|Namespace
+Queue
+Port
+Server
+
+|Node Name
+Node IP
+Node UUID
+
+|Consumer Count
+Dequeue Count
+Enqueue Count
+Queue Size
+
+|ActiveMQ
+
+|
+|
+|
+|===
+
+
 == Troubleshooting
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page.
