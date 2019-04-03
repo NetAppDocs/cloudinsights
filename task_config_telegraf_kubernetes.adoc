@@ -115,6 +115,69 @@ To create the required access token file, run the following:
 
 By default, the Kubernetes input plugin configuration provided by CloudInsights is set up to look for the required access token file in the location used above. After performing the steps above, restart the Telegraf agent for the changes to take effect.
 
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|K8s Container
+
+|Namespace
+Pod
+Container
+Cluster
+
+|K8s Node
+
+|CPU Nanoseconds
+Memory Major Page Faults
+Memory Resident Set Size (RSS)
+Memory Working Set
+Root Filesystem Available
+Root Filesystem Capacity
+Root Filesystem Used
+
+|K8s Node
+
+|K8s Node
+Cluster
+
+|
+|CPU Used Nanocores
+CPU Used Nanoseconds
+Filesystem Available
+Filesystem Total
+Filesystem Used
+Memory Available
+Memory Major Page Faults
+Memory Page Faults
+Memory Resident Set Size (RSS)
+Memory Working Set
+Network RX Errors (per sec)
+Network RX Bytes (per sec)
+Network TX Errors (per sec)
+Network TX Bytes (per sec)
+Image Filesystem Available
+Image Filesystem Used
+
+|K8s Pod
+
+|Namespace
+Pod
+Cluster
+
+|K8s Node
+Node Name
+Node IP
+
+|Network TX Bytes (per sec)
+Network TX Errors (per sec)
+Network RX Bytes (per sec)
+Network RX Errors (per sec)
+|===
 
 == Troubleshooting
 
