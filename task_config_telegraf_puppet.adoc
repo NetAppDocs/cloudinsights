@@ -36,6 +36,51 @@ If you have an agent already configured, select the appropriate Operating System
 
 Information may be found in the https://puppet.com/docs[Puppet documentation]
 
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+|Puppet Agent
+
+|Namespace
+Node UUID
+
+|Node Name
+Location
+Node IP
+Version Configstring
+Version Puppet
+
+|Changes Total
+Events Failure
+Events Success
+Events Total
+Resources Changed
+Resources Failed
+Resources Failed To Restart
+Resources Outofsync
+Resources Restarted
+Resources Scheduled
+Resources Skipped
+Resources Total
+Time Anchor
+Time Configretrieval
+Time Cron
+Time Exec
+Time File
+Time Filebucket
+Time Lastrun
+Time Package
+Time Schedule
+Time Service
+Time Sshauthorizedkey
+Time Total
+Time User
+|===
+
 == Troubleshooting
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page.

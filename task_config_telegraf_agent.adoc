@@ -48,6 +48,7 @@ To install an agent, regardless of the platform you are using, you must first do
 
 NOTE: Once you have installed an agent on a host, you do not need to install an agent again on that host. 
 
+TIP: Once you have installed an agent on a server/VM, Cloud Insights collects metrics from that system in addition to collecting from any data collectors you configure. These metrics are gathered as link:task_config_telegraf_node.html["Node" metrics].
 
 === Windows
 To install the agent on a Windows host, you first install the agent software and then customize the configuration file as needed. 

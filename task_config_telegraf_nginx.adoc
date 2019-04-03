@@ -39,6 +39,32 @@ image:NginxDCConfigLinux.png[Linux Nginx Configuration]
 
 Information may be found in the https://docs.nginx.com/?_ga=2.49247590.1936344549.1553193912-324974249.1553193912[Nginx documentation].
 
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|Nginx
+
+|Namespace
+Server
+
+|Node IP
+Node Name
+Port
+
+|Accepts
+Active
+Handled
+Reading
+Requests
+Waiting
+Writing
+|===
+
 == Troubleshooting
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page.

@@ -36,6 +36,63 @@ image:PostgreSQLDCConfigLinux.png[PostgreSQL configuration]
 
 Information may be found in the link:https://www.postgresql.org/docs/[PostgreSQL documentation].
 
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|PostgreSQL Server
+
+|Namespace
+Database
+Server
+
+|Node Name
+Node IP
+
+|Buffers Allocated
+Buffers Backend
+Buffers Backend File Sync
+Buffers Checkpoint
+Buffers Clean
+Checkpoints Sync Time
+Checkpoints Write Time
+Checkpoints Requests
+Checkpoints Timed
+Max Written Clean
+
+|PostgreSQL Database
+
+|Namespace
+Database
+Server
+
+|Database OID
+Node Name
+Node IP
+
+|Blocks Read Time
+Blocks Write Time
+Blocks Hits
+Blocks Reads
+Conflicts 
+Deadlocks
+Client Number
+Temp Files Bytes
+Temp Files Number
+Rows Deleted
+Rows Fetched
+Rows Inserted
+Rows Returned
+Rows Updated
+Transactions Committed
+Transactions Rollbacked
+|===
+
+
 
 == Troubleshooting
 
