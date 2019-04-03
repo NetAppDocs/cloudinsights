@@ -36,6 +36,43 @@ image:CouchbaseDCConfigWindows.png[Couchbase configuration]
 
 Information may be found in the link:https://docs.couchbase.com/home/index.html[Couchbase documentation].
 
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|Couchbase Node
+
+|Namespace
+Cluster
+Couchbase Node Hostname
+
+|Node Name
+Node IP
+
+|Memory Free
+Memory Total
+
+|Couchbase Bucket
+
+|Namespace
+Bucket
+Cluster
+
+|Node Name
+Node IP
+
+|Data Used
+Data Fetches
+Disk Used
+Item Count
+Memory Used
+Operations Per Second
+Quota Used
+|===
 
 == Troubleshooting
 
