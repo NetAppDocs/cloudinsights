@@ -65,7 +65,7 @@ For environments that use a proxy, you must set the proxy environment variables 
 
 === Proxy Endpoint Configuration
 
-The Acquisition Unit application uses 2-way/mutual authentication to connect to the Cloud Insights server, which means the client’s certificate needs to be passed all the way to the Cloud Insights server in order to be authenticated. To accomplish this, the proxy should be set up to forward the http request to the Cloud Insights server without decrypting the data.
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server, which means the client certificate must be passed all the way to the Cloud Insights server in order to be authenticated. To accomplish this, the proxy should be set up to forward the http request to the Cloud Insights server without decrypting the data.
 
 When configuring the SSL passthrough, you must add the following endpoints to the https exception list:
 
