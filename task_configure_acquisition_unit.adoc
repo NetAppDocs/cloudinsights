@@ -63,6 +63,26 @@ For environments that use a proxy, you must set the proxy environment variables 
 . Run the edited command in a terminal using the Bash shell.
 . Install the Acquisition Unit software.
 
+=== Proxy Endpoint Configuration
+
+The Acquisition Unit application uses 2-way/mutual authentication to connect to the Cloud Insights server, which means the client’s certificate needs to be passed all the way to the Cloud Insights server in order to be authenticated. To accomplish this, the proxy should be set up to forward the http request to the Cloud Insights server without decrypting the data.
+
+When configuring the SSL passthrough, you must add the following endpoints to the https exception list:
+
+ https://aulogin.oci.cloud.netapp.com
+ https://<tenantID>.oci.cloud.netapp.com
+
+////
+ https://aulogin.<domain>
+ https://<tenantUUID>.<domain>
+
+The second URL can be found in the acq.log, which is located at the following location.
+
+ Windows: <installation location>/Cloud Insights/Acquisition Unit/log/acq.log
+ Linux: /var/log/netapp/cloudinsights/acq/acq.log
+
+The URl can be found by searching the .log for “Attempting to verify server at: https://<tenantUUID>.oci.cloud.netapp.com”
+////
 
 == Adding a Windows Acquisition Unit
 
