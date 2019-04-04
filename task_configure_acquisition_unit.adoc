@@ -65,9 +65,9 @@ For environments that use a proxy, you must set the proxy environment variables 
 
 === Proxy Configuration
 
-The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server, which means the client certificate must be passed all the way to the Cloud Insights server in order to be authenticated. To accomplish this, the proxy should be set up to forward the http request to the Cloud Insights server without decrypting the data.
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
 
-The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall situated between the Acquisition Unit server and Cloud Insights, you will need these endpoints when configuring your firewall rules:
+The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
 
  https://aulogin.<Cloud Insights Domain>
  https://<your-tenant-ID>.<Cloud Insights Domain>
@@ -127,9 +127,9 @@ The snippet installs the Acquisition Unit software on the server.
 
 === Proxy Configuration
 
-The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server, which means the client certificate must be passed all the way to the Cloud Insights server in order to be authenticated. To accomplish this, the proxy should be set up to forward the http request to the Cloud Insights server without decrypting the data.
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
 
-The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall situated between the Acquisition Unit server and Cloud Insights, you will need these endpoints when configuring your firewall rules:
+The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
 
  https://aulogin.<Cloud Insights Domain>
  https://<your-tenant-ID>.<Cloud Insights Domain>
