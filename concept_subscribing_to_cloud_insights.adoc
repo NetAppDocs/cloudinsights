@@ -37,12 +37,16 @@ If your free trial has expired and you have not yet subscribed to Cloud Insights
 
 == Subscription Options
 
+////
 To subscribe, go to *Admin > Subscription*. On this page you can view your subscription options, view or modify your managed units, and calculate your estimated pricing. Subscription options include the following:
 
 * *Basic Edition* is free and gives you 7 days of data retention and access to Cloud Insights basic features
 * *Standard Edition* gives you everything included in Basic Edition, plus an increase to 90 days of data retention as well as access to NetApp Technical Support.
+////
 
-image:Subscription_Basic_Standard.png[Subscription Options]
+To subscribe, go to *Admin > Subscription*. In addition to the *Subscribe* buttons, you will be able to see your installed data collectors and calculate your estimated pricing. For a typical environment, you can click the self-serve AWS Marketplace *Subscribe Now* button. If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for Volume Pricing. You are prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
+
+image:Subscribe_NonVolume.png[Subscription Options]
 
 === Pricing
 Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts or virtual machines* and amount of *unformatted capacity* being managed in your infrastructure environment.
@@ -64,11 +68,11 @@ NOTE: The calculator is for estimation only. Your exact pricing will be set when
 
 == How Do I Subscribe?
 
-If your Managed Unit count is less than 1,000, you can choose to subscribe to either Basic or Standard Edition. Clicking on the Standard Edition button will give you the choice to subscribe via NetApp Sales, or <<self-subscribe-via-aws-marketplace,self-subscribe>> via AWS Marketplace.
+If your Managed Unit count is less than 1,000, you can subscribe via NetApp Sales, or <<self-subscribe-via-aws-marketplace,self-subscribe>> via AWS Marketplace.
 
 === Subscribe via NetApp Sales direct
 
-If your expected Managed Unit count is 1,000 or greater, choose Standard Edition and click on the link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[*Contact Sales*] button to subscribe though the NetApp Sales Team. 
+If your expected Managed Unit count is 1,000 or greater, click on the link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[*Contact Sales*] button to subscribe though the NetApp Sales Team. 
 
 You must provide your Cloud Insights *Serial Number* to your NetApp sales representative so that your paid subscription can be applied to your Cloud Insights environment. The Serial Number uniquely identifies your Cloud Insights trial environment and can be found above the "Contact Sales" button on the *Admin > Subscription* page.
 
@@ -93,7 +97,7 @@ image:Subscription_Summary.png[Subscription Status]
 
 The Subscription status page displays the following:
 
-* Current subscription (Trial, Basic, Standard) 
+* Current subscription (Trial or Standard Edition) 
 * Contract term (12 or 36 months) and expiration date
 * Managed Unit current usage, including breakdown counts for hosts and capacity
 * Link to modify your subscription 
