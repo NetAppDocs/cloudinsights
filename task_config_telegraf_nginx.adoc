@@ -37,7 +37,9 @@ image:NginxDCConfigLinux.png[Linux Nginx Configuration]
 
 == Setup
 
-Information may be found in the https://docs.nginx.com/?_ga=2.49247590.1936344549.1553193912-324974249.1553193912[Nginx documentation].
+Nginx metric collection requires that Nginx link:http://nginx.org/en/docs/http/ngx_http_stub_status_module.html[http_stub_status_module] be enabled. 
+
+Additional information may be found in the link:http://nginx.org/en/docs/[Nginx documentation].
 
 == Objects and Counters
 
