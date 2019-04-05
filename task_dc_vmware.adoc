@@ -78,11 +78,11 @@ The following fields can be configured:
 |===
 |Field|Description
 |Inventory poll interval (min)  | Deafult is 20
-//|Connection Timeout (ms)|Deafult is 60000
+//|Connection Timeout (ms)|Default is 60000
 |Filter VMs |Select CLUSTER, DATACENTER, or ESX HOST, or you can choose to filter by TAG 
 |Choose 'Exclude' or 'Include' to Specify a List|Create a filter list (CLUSTER, DATACENTER, or ESX_HOST only). 
-|Number of retries | Deafult is 3 
-|Communication port| Deafult is 443 
+|Number of retries | Default is 3 
+|Communication port| Default is 443 
 
 |Tag Keys and Values on which to Filter VMs|Click *+ Filter Tag* to choose which VMs (and associated disks) to include/exclude by filtering for keys and values that match keys and values of tags on the VM. Tag Key is required, Tag Value is optional. When Tag Value is empty, the VM is filtered as long as it matches the Tag Key.
 Tag filtering is only available in VSphere 6.0 Beta or later.
