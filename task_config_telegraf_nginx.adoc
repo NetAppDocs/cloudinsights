@@ -37,7 +37,89 @@ image:NginxDCConfigLinux.png[Linux Nginx Configuration]
 
 == Setup
 
-Information may be found in the https://docs.nginx.com/?_ga=2.49247590.1936344549.1553193912-324974249.1553193912[Nginx documentation].
+Nginx metric collection depends on Nginx link:http://nginx.org/en/docs/http/ngx_http_stub_status_module.html[http_stub_status_module to be enabled[. 
+
+The example below shows the instructions for setting up Nginx monitoring on Linux:
+
+. If you already have a URL enabled to provide Nginx metrics, go directly to step 5
+
+. The status module is enabled if you see with-http_stub_status_module as output from the following command:
+
+ nginx -V 2>&1 | grep -o with-http_stub_status_module 
+
+. If the above command returns no output, you must compile Nginx from source using the –with-http_stub_status_module as a configuration parameter. For example:
+
+###
+> wget http://nginx.org/download/nginx-1.15.9.tar.gz
+> tar xfz nginx-1.15.9.tar.gz
+> cd nginx-1.15.9/
+> ./configure --with-http_stub_status_module
+> make
+> make install
+###
+
+
+. After verifying the module is enabled, modify the Nginx configuration to set up a locally accessible URL (for example, /nginx_status) for the status page. In one of the referenced config files, find the main server block and modify as above to configure Nginx metrics reporting.  
+
+server {
+listen <PORT NUMBER>;
+Please specify actual machine IP address, and refrain from using a loopback address (i.e. localhost or 127.0.0.1)
+server_name <IP ADDRESS>;
+location /nginx_status {
+stub_status on;
+access_log off;
+allow <IP ADDRESS>;
+deny all;
+}
+}
+
+Step 5 : Reload the configurations
+
+
+
+nginx -s reload
+
+Step 6: Copy the contents below into a new .conf file under /etc/telegraf/telegraf.d/. For example, copy the contents to /etc/telegraf/telegraf.d/cloudinsights-<service>.conf.
+
+
+
+
+[[inputs.nginx]]
+# USER-ACTION: Provide Nginx status url
+# Please specify actual machine IP address where nginx_status is enabled, and refrain from using a loopback address (i.e. localhost or 127.0.0.1).
+urls = ["http://<INSERT_NGINX_ADDRESS>:<INSERT_NGINX_PORT>/nginx_status"]
+insecure_skip_verify = true
+[inputs.nginx.tags]
+CloudInsights = "true"
+# USER-ACTION: In case of namespace clash (e.g. two nginx instances with same address), disambiguate with 'Namespace' value
+Namespace = "default"
+
+
+
+[[outputs.http]]
+url = "https://anjaniv.oci.cloud.netapp.com/rest/v1/integrations/raw/telegraf"
+insecure_skip_verify = true
+data_format = "json"
+namepass = ["nginx"]
+tagexclude = ["CloudInsights"]
+[outputs.http.headers]
+Content-Type = "application/json"
+X-CloudInsights-IntegrationAccessKey = "1f7d23f1-7c60-4957-a0c1-3cc8c22b249c"
+X-CloudInsights-IntegrationId = "nginx"
+[outputs.http.tagpass]
+CloudInsights = ["true"]
+
+
+
+Step 7: Review and verify the contents of the configuration file.
+
+Step 8: Replace <INSERT_NGINX_ADDRESS> with the applicable Nginx address. Please specify a real machine address, and refrain from using a loopback address.
+
+Step 9: Replace <INSERT_NGINX_PORT> with the applicable Nginx port. 
+
+Step 10: Restart the Telegraf service.
+
+Additional information may be found in the https://docs.nginx.com/?_ga=2.49247590.1936344549.1553193912-324974249.1553193912[Nginx documentation].
 
 == Objects and Counters
 
