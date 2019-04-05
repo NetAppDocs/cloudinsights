@@ -55,7 +55,7 @@ Enter data into the data collector fields according to the table below:
 |Include Extra Regions| Specify additional regions to include in polling. 
 |Cross Account Role|Role for gathering data
 |Inventory Poll Interval (min)|The default is 60
-|Choose 'Exclude' or 'Include' to Apply to Filter VMs by Tags|You can choose to filter specific VMs in or out of collection/reporting/gathering of data. 
+|Choose 'Exclude' or 'Include' to Apply to Filter VMs by Tags|Specify whether to include or exclude VM's by Tags when collecting data. 
 |Tag Keys and Values on which to Filter VMs|Click *+Device* to choose which VMs (and associated disks) to include/exclude by filtering for keys and values that match keys and values of tags on the VM. Tag Key is required, Tag Value is optional. When Tag Value is empty, the VM is filtered as long as it matches the Tag Key.
 //|HTTP connection and socket timeout (sec)|The default is 300
 //|Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
