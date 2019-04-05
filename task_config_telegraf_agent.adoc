@@ -78,7 +78,7 @@ After the agent is installed, you can use the following commands to start/stop t
   Start-Service telegraf
   Stop-Service telegraf
 
-====Uninstalling the Agent
+==== Uninstalling the Agent
 
 To uninstall the agent on Windows, do the following in a PowerShell window:
 
@@ -194,7 +194,6 @@ To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
 +
  rm -rf /etc/telegraf*
  rm -rf /var/log/telegraf*
-
 
 
 === macOS
