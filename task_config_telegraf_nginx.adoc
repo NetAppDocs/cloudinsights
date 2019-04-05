@@ -49,15 +49,12 @@ The example below shows the instructions for setting up Nginx monitoring on Linu
 
 . If the above command returns no output, you must compile Nginx from source using the –with-http_stub_status_module as a configuration parameter. For example:
 
-###
-> wget http://nginx.org/download/nginx-1.15.9.tar.gz
-> tar xfz nginx-1.15.9.tar.gz
-> cd nginx-1.15.9/
-> ./configure --with-http_stub_status_module
-> make
-> make install
-###
-
+ > wget http://nginx.org/download/nginx-1.15.9.tar.gz
+ > tar xfz nginx-1.15.9.tar.gz
+ > cd nginx-1.15.9/
+ > ./configure --with-http_stub_status_module
+ > make
+ > make install
 
 . After verifying the module is enabled, modify the Nginx configuration to set up a locally accessible URL (for example, /nginx_status) for the status page. In one of the referenced config files, find the main server block and modify as above to configure Nginx metrics reporting.  
 
