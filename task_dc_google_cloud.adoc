@@ -38,7 +38,7 @@ This data collector supports inventory collection from Google Compute cloud plat
 |Field|Description
 |Inventory Poll Interval (min) |Default is 60 minutes
 
-|Choose 'Exclude' or 'Include' to Apply to Filter VMs by Labels|Specify whether to include or exclude VM's by Labels when collecting data. 
+|Choose 'Exclude' or 'Include' to Apply to Filter VMs by Labels|Specify whether to include or exclude VM's by Labels when collecting data. If ‘Include’ is selected, the Label Key field can not be empty.
 |Label Keys and Values on which to Filter VMs|Click *+ Filter Label* to choose which VMs (and associated disks) to include/exclude by filtering for keys and values that match keys and values of labels on the VM. Label Key is required, Label Value is optional. When Label Value is empty, the VM is filtered as long as it matches the Label Key.
 
 |===
