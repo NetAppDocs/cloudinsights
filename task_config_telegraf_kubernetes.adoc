@@ -205,8 +205,8 @@ If there are errors related to SecurityContextConstraints, do the following:
 3. Create the necessary SecurityContextConstraint (see "Configuring Agent to Collect Data" section)
 
 4. Re-create the Telegraf DaemonSet
-|Problem: I've configured Telegraf to obtain information about my Kubernetes cluster, but I don't see any information in the Cloud Insights UI. I observe "invalid header field value" errors in the Telegraf log file pertaining to the kubernetes input plugin I configured. 
-|Try this: Ensure the referenced bearer_token file does not have a trailing newline. To verify, run the following command, and confirm that it returns 0: 
+|I configured Telegraf to obtain information about my Kubernetes cluster, but I don't see any information in Cloud Insights. I see "invalid header field value" errors in the Telegraf log file pertaining to the kubernetes input plugin I configured. 
+|Ensure the referenced bearer_token file does not have a trailing newline. To verify, run the following command, and confirm that it returns 0: 
 
  tail -c1 <bearer_token_file> |wc -l
  
