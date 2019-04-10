@@ -37,23 +37,43 @@ Select your first data collector from the supported vendors and models available
 
 == Install an Acquisition Unit
 
-An Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights. A single Acquisition Unit can be used for multiple data collectors.
+If you selected an _Infrastructure_ data collector, an Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights. A single Acquisition Unit can be used for multiple data collectors.
 
 * Follow the link:task_configure_acquisition_unit.html[instructions] displayed to install your Acquisition Unit.
 
 You may set up additional acquisition units later if needed. For example, you may want different Acquisition Units collecting information from data centers in different regions. 
 
-== Configure the Data Collector
+== Configure the Data Collector - Infrastructure
 
-You will next be asked to fill out the data collector fields presented:
+For _Infrastructure_ data collectors, you will be asked to fill out the data collector fields presented:
 
-* Give the data collector a unique and meaningful name
-* Enter the user name and password to connect to the device, as appropriate
-* Fill in any other mandatory fields
-* Click *Test Connection* to test the connection to the device
-* Click *Add Collector* to save the data collector
+* Give the data collector a unique and meaningful name.
+* Enter the user name and password to connect to the device, as appropriate.
+* Fill in any other mandatory fields - Don't forget to fil in any required _Advanced Configuration_ fields as well.
+* Click *Test Connection* to test the connection to the device.
+* Click *Add Collector* to save the data collector.
 
 You will be able to configure additional data collectors later.
+
+== Configure the Data Collector - Services and Hosts
+
+=== Hosts:
+
+For _Host_ data collectors, choose a platform (MacOS, Linux, Windows) to install a Cloud Insights Agent.
+
+* Choose an Agent Access Key. Data Collectors can be grouped by using different Keys for different groupings (by location or platform, for example).
+* Open a terminal or command window on the agent host or VM, and paste the displayed command to install the agent. 
+* When installation is complete, click *Finish*.
+
+=== Services:
+
+For _Service_ data collectors, click on a tile to open the instructions page for that service.
+
+* Choose a platform and an Agent Access Key.
+* If you don't have an agent installed on that platform, follow the instructions to install the agent.
+* Click *Continue* to open the data collector instruction page.
+* Follow the instructions to configure the data collector.
+* When configuration is complete, click *Finish*.
 
 == Add Dashboards
 
