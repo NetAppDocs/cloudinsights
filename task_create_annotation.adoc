@@ -41,13 +41,36 @@ Use the following steps to create an annotation.
 . In the Cloud Insights menu, click *Manage > Annotations*
 . Click *+ Annotation* to create a new annotation.
 . Enter a Name, Description, and type for the new annotation.
-+
+
 For example, enter the following to create a text annotation that defines the physical location of an asset in Data Center 4:
 
-.Steps
 . Enter a name for the annotation, such as "Location"
 . Enter a description of what the annotation is describing, such as "Physical location is Data Center 4"
 . Enter the 'type' of annotation it is, such as "Text".
+
+== Manually assigning annotations to assets
+
+Assigning annotations to assets helps you sort, group, and report on assets in ways that are relevant to your business. Although you can assign annotations to assets of a particular type automatically using annotation rules, you can assign annotations to an individual asset by using its asset page.
+
+. Before you begin
+* You must have created the annotation you want to assign.
+.Steps
+. Log in to your Cloud Insights environment.
+. Locate the asset to which you want to apply the annotation by doing either of the following:
+.. Click the asset in the Assets Dashboard.
+.. In the Search field, type the type of or name of the asset, and then select the asset from the list that displays.
+. The asset page displays.
+
+. In the User Data section of the asset page, click Annotations.
+. The Add Annotation dialog box displays.
+. Click Annotation and select an annotation from the list.
+. Click Value and do either of the following, depending on type of annotation you selected:
+.. If the annotation type is list, date, or Boolean, select a value from the list.
+.. If the annotation type is text, type a value.
+. Click Save.
+
+If you want to change the value of the annotation after you assign it, click and select a different value.
+If the annotation is of list type for which the _Add values dynamically upon annotation assignment_ option is selected, you can type to add a new value in addition to selecting an existing value.
 
 == Assigning annotations using annotation rules
 
