@@ -27,9 +27,8 @@ Using annotations, you can add custom business-specific data that matches your b
 
 The data in custom annotations supplements device data already collected, such as switch manufacturer, number of ports, and performance statistics. The data you add using annotations is not discovered by Cloud Insights.
 
-== Manually assigning annotations to assets
-
 .Before you begin
+
 * List any industry terminology to which environment data must be associated.
 * List corporate terminology to which environment data must be associated.
 * Identify any default annotation types that you might be able to use.
@@ -38,12 +37,13 @@ The data in custom annotations supplements device data already collected, such a
 Use the following steps to create an annotation.
 
 .Steps
+
 . In the Cloud Insights menu, click *Manage > Annotations*
 . Click *+ Annotation* to create a new annotation.
 . Enter a Name, Description, and type for the new annotation.
-
++
 For example, enter the following to create a text annotation that defines the physical location of an asset in Data Center 4:
-
++
 . Enter a name for the annotation, such as "Location"
 . Enter a description of what the annotation is describing, such as "Physical location is Data Center 4"
 . Enter the 'type' of annotation it is, such as "Text".
@@ -53,8 +53,11 @@ For example, enter the following to create a text annotation that defines the ph
 Assigning annotations to assets helps you sort, group, and report on assets in ways that are relevant to your business. Although you can assign annotations to assets of a particular type automatically using annotation rules, you can assign annotations to an individual asset by using its asset page.
 
 . Before you begin
+
 * You must have created the annotation you want to assign.
+
 .Steps
+
 . Log in to your Cloud Insights environment.
 . Locate the asset to which you want to apply the annotation by doing either of the following:
 .. Click the asset in the Assets Dashboard.
