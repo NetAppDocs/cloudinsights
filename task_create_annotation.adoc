@@ -59,28 +59,24 @@ Assigning annotations to assets helps you sort, group, and report on assets in w
 .Steps
 
 . Log in to your Cloud Insights environment.
-. Locate the asset to which you want to apply the annotation by doing either of the following:
-** Click the asset in the Assets Dashboard.
-** In the Search field, type the type of or name of the asset, and then select the asset from the list that displays.
-. The asset page displays.
-
-. In the User Data section of the asset page, click Annotations.
+. Locate the asset to which you want to apply the annotation.
+** You can locate assets by querying, choosing from a dashoard widget, or search. When you have located the asset you want, click the link to open the asset's landing page.
+. On the asset page, in the User Data section, click *+ Annotation*.
 . The Add Annotation dialog box displays.
-. Click Annotation and select an annotation from the list.
+. Select an annotation from the list.
 . Click Value and do either of the following, depending on type of annotation you selected:
-.. If the annotation type is list, date, or Boolean, select a value from the list.
-.. If the annotation type is text, type a value.
-. Click Save.
+** If the annotation type is list, date, or Boolean, select a value from the list.
+** If the annotation type is text, type a value.
+. Click *Save*.
 
-If you want to change the value of the annotation after you assign it, click and select a different value.
-If the annotation is of list type for which the _Add values dynamically upon annotation assignment_ option is selected, you can type to add a new value in addition to selecting an existing value.
+If you want to change the value of the annotation after you assign it, click the annotation field and select a different value.
+If the annotation is of list type for which the _Add new values on the fly_ option is selected, you can type a new value in addition to selecting an existing value.
 
 == Assigning annotations using annotation rules
 
 To automatically assign annotations to assets based on criteria that you define, you configure annotation rules. Cloud Insights assigns the annotations to assets based on these rules. Cloud Insights also provides two default annotation rules, which you can modify to suit your needs or remove if you do not want to use them.
 
 === Default storage annotation rules
-
 
 To expedite the assignment of storage annotations to your resources, Cloud Insights includes 21 default annotation rules, which associate a tier level with a storage tier model. All of your storage resources are automatically associated with a tier upon acquisition of the assets in your environment.
 
