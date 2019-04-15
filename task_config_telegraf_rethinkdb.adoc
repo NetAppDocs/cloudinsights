@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_config_telegraf_netstat.html
-keywords: telegraf, installation, install, netstat
-summary: Netstat data collector configuration
+permalink: task_config_telegraf_rethinkdb.html
+keywords: telegraf, installation, install, redis
+summary: Redis data collector configuration
 ---
 
-= Netstat Data Collector
+= RethinkDB Data Collector
 
 :toc: macro
 :hardbreaks:
@@ -15,28 +15,29 @@ summary: Netstat data collector configuration
 :linkattrs:
 :imagesdir: ./media/
 
-
-
 [.lead]
-Cloud Insights uses this data collector to gather Netstat metrics.
+Cloud Insights uses this data collector to gather metrics from RethinkDB. 
 
 NOTE: This topic is considered Preview documentation and is subject to change.
 
 
 == Installation 
 
-. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Netstat.
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose RethinkDB.
 +
 If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
 +
 If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
 
-. Follow the instructions in the Netstat Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Windows:
+. Follow the instructions in the RethinkDB Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. 
 
-image:NetstatDCConfigWindows.png[Windows Netstat Configuration]
+image:RethinkDBDCConfigWindows.png[RethinkDB Data Collector Configuration]
 
 == Setup
 
+Information may be found in the link:https://www.rethinkdb.com/docs/[RethinkDB documentation].
+
+////
 == Objects and Counters
 
 The following objects and their counters are collected:
@@ -44,15 +45,16 @@ The following objects and their counters are collected:
 [cols="<.<,<.<,<.<,<.<"]
 |===
 |Object:|Identifiers:|Attributes: |Datapoints:
-|Netstat
 
-|Node UUID
+|RethinkDB
 
-|Node IP
-Node Name
+|Namespace
+Server
 
 |
+|
 |===
+////
 
 == Troubleshooting
 
