@@ -1,0 +1,73 @@
+---
+sidebar: sidebar
+permalink: task_dc_emc_vnx_file.html
+keywords: data collector, Celerra, EMC, DELL, VNX File
+summary: Configuring DELL EMC Celerra data collector.
+---
+
+= DELL EMC VNX File (formerly Celerra Unified Storage System) data collector
+
+[.lead]
+
+This data collector acquires inventory information from the VNX File Storage System. For configuration, this data collector requires the IP address of the storage processors and a read-only user name and password.
+
+== Terminology 
+
+Cloud Insights acquires the following inventory information from the VNX File data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Celerra Network Server/Celerra Storage Pool|Storage Pool
+|File System|Internal Volume
+|Data Mover|Controller
+|File System mounted on a data mover|File Share
+|CIFS and NFS Exports|Share
+|Disk Volume|Backend LUN
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Requirements
+
+You need the following to configure this data collector:
+
+* The IP address of the storage processor 
+* Read-only user name and password 
+* SSH port 22 
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|VNX File IP Address|IP address or fully-qualified domain name of the VNX File device
+|User Name|Name used to log in to the VNX File device
+|Password|Password used to log in to the VNX File device
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|Inventory Poll Interval (minutes)|Interval between inventory polls. The default is 20 minutes. 
+//|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 600 seconds. 
+//|Number of Retries|Number of inventory retry attempts. The default is 2.
+//|SSH Banner Wait Timeout (sec)|SSH banner wait timeout. The default is 20 seconds. 
+|===
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: Unable to proceed while DART update in progress
+|Possible solution: Pause the data collector and wait for the DART upgrade to complete before attempting another acquisition request.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].

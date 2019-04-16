@@ -1,0 +1,67 @@
+---
+sidebar: sidebar
+permalink: task_config_telegraf_mongodb.html
+keywords: telegraf, installation, install, MongoDB
+summary: MongoDB data collector configuration
+---
+
+= MongoDB Data Collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Insights uses this data collector to gather metrics from MongoDB.
+
+NOTE: This topic is considered Preview documentation and is subject to change.
+
+== Installation
+
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose MongoDB.
++
+If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+
+. Follow the instructions in the MongoDB Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
+
+image:MongoDBDCConfigLinux.png[MongoDB configuration]
+
+== Setup 
+
+Information may be found in the link:https://docs.mongodb.com/[MongoDB documentation].
+
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|MongoDB
+
+|Namespace
+Hostname
+
+|
+|
+|MongoDB Database
+
+|Namespace
+Hostname
+Database name
+
+|
+|
+|===
+
+
+== Troubleshooting
+
+Information may be found from the link:concept_requesting_support.html[Support] page.
