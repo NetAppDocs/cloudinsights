@@ -18,16 +18,49 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== *April 2019*
+
+==== Reduced Acquisition Unit System Requirements
+
+* The system CPU and memory requirements for the Acquisition Unit (AU) software have been reduced. The new requirements are:
+
+|===
+|*Component*|*Old Requirement*|*New requirement*
+|CPU Cores|4|2
+|Memory|16GB|8GB
+|===
+
+
+==== Additional Platforms Supported
+
+* The following platforms have been added to those currently link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[supported for Cloud Insights]:
+
+|===
+|Linux|Windows
+|CentOS 7.3 64-bit
+CentOS 7.4 64-bit
+CentOS 7.6 64-bit
+Debian 9 64-bit
+Oracle Enterprise Linux 7.5 64 bit
+Red Hat Enterprise Linux  7.3 64-bit
+Red Hat Enterprise Linux  7.4 64-bit
+Red Hat Enterprise Linux  7.6 64-bit
+Ubuntu Server 18.04 LTS
+|Microsoft Windows 10 64-bit
+Microsoft Windows Server 2008 R2
+Microsoft Windows Server 2016
+Microsoft Windows Server 2019
+|===
 
 === *March 2019*
 
 ==== Email Notifications for Subscription-related Events
 
-You can select recipients for email link:concept_notifications_email.html[notifications] when subscription-related events occur, such as upcoming trial expiration or subscribed account changes. You can choose recipients for these notifications from among following:
+* You can select recipients for email link:concept_notifications_email.html[notifications] when subscription-related events occur, such as upcoming trial expiration or subscribed account changes. You can choose recipients for these notifications from among following:
 
-* All Account Owners
-* All Administrators
-* Additional Email Addresses that you specify
+** All Account Owners
+** All Administrators
+** Additional Email Addresses that you specify
 
 ==== Additional Dashboards
 
