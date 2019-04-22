@@ -37,12 +37,7 @@ image:MonitorExample1.png[Storage IOPS Monitor Example]
 
 . In the Cloud Insights menu bar, click *Alerts > Monitors*
 +
-The Monitors page is displayed. Currently configured monitors are listed, showing the following:
-
-* Monitor Name
-* Status 
-* Object type being monitored
-* Conditions of the Monitor
+The Monitors page is displayed. Currently configured monitors are listed. 
 
 . To add a monitor, Click *+ Monitor*. To modify an existing monitor, click the monitor name in the list.
 +
@@ -68,9 +63,25 @@ You can choose to trigger an alert the moment a threshold is breached, or wait u
 +
 Your new monitor is added to the list of active Monitors.
 
+=== Monitor List
+
+The Monitor page lists the currently configured monitors, showing the following:
+
+* Monitor Name
+* Status 
+* Object type being monitored
+* Conditions of the Monitor
+
+You can choose to temporarily suspend monitoring of an object type by clicking the menu to the right of the monitor and selecting *Pause*. When you are ready to resume monitoring, click *Resume*.
+
+You can copy a monitor by selecting *Duplicate* from the menu. You can then modify the new monitor and change the object, filter, or copnditions.
+
+If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
+
 === More Information
 
 * link:concept_notifications_email.adoc[Email Alerting] for Monitors
 * link:tbd[Viewing and Dismissing Alerts]
+
 
 
