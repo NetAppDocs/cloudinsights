@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: task_create_monitor.html
+keywords: performance policy, performance, thresholds, alerts, preference, delete
+summary: Create monitors to alert on performance or inventory thresholds
+---
+
+= Alerting with Monitors
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You create monitors to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a monitor to alert you when the total utilization for storage pools is greater than 60%.
+
+////
+You can create monitors for the following objects:
+[cols=6*]
+|===
+|Datastore|Disk|Hypervisor|Internal volume|Port|Qtree
+|Storage|Storage node|Storage pool |VMDK|VM| Volume
+|===
+////
+
+== Creating a performance policy
+
+You can create monitors with thresholds for metrics associated with the objects you are monitoring. By default, monitors apply to all objects of the specified type when you create them. You can create an annotation to include only a specific asset or a set of assets in a monitor.
+
+.Before you begin
+
+When using an annotation in a monitor, the annotation must exist before the monitor is created.
+
+.About this task
+
+You create a monitor that provides notification when one or more devices exceeds a threshold you set. 
+
+.Steps
+
+==== Create the Monitor and Choose an Object Type to Minotor
+
+. In the Cloud Insights menu bar, click *Alerts > Monitors*
++
+The Monitors page is displayed. Currently configured monitors are listed.
+
+. To add a monitor, Click *+ Monitor*
++
+The *Add Monitor* dialog is displayed.
+. In the drop-down, choose an object type to monitor.
+
+==== Define the conditions of the monitor. 
+
+. 
