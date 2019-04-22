@@ -33,9 +33,7 @@ In the example, below, we will create a Monitor to give a Warning alert when Sto
 
 image:MonitorExample1.png[Storage IOPS Monitor Example]
 
-.Steps
-
-==== Create the Monitor and Choose an Object Type to Monitor
+=== Create the Monitor and Choose an Object Type to Monitor
 
 . In the Cloud Insights menu bar, click *Alerts > Monitors*
 +
@@ -49,7 +47,7 @@ The *Add Monitor* dialog is displayed.
 You can set filters to narrow down which storage objects to monitor.
 
 
-==== Define the Conditions of the Monitor. 
+=== Define the Conditions of the Monitor. 
 
 . Choose which counter or metric to monitor. For our example, choose _IOPS - Total_, and select "Greater Than" (>).
 . For the _Warning_ level, enter 3500. The dashed line indicating this Warning level displays.
