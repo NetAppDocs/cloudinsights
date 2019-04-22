@@ -30,14 +30,19 @@ To view and manage alerts, do the following.
 ** *IsActive*: Specifies whether the alert is on-going or is over
 ** *Duration*: How long the alert lasted
 ** *Severity*: The level of monitored threshold that triggered the alert (Warning or Critical)
-** *Status*: New or In Process
-** *Monitor*: The name of the Monitor that triggered the alert
+** *Status*: All alerts are created as _New_. Investigators may choose to mark an alert _In Process_ while they are looking into it. 
+** *Monitor*: The name of the Monitor that triggered the alert. Click this link to open the link:task_create_monitor.html[Monitor Configuration] page.
+
+You can manage a alert by clicking the menu to the right of the alert and choosing one of the following:
+
+* *In Process* to indicate that the alert is under investigation or otherwise needs to be kept open
+* *Dismiss* to remove the alert from the list of active alerts.
 
 You can click on an Alert ID to open the Alert Landing Page.
 
 === Alert Landing Page
 
-The Alert Landing Page provides more detail about the alert, including a Summary, an Expert View showing graphs related to the alert data, any Related Assets, and Comments entered by alert investigators.
+The Alert Landing Page provides additional detail about the alert, including a _Summary_, an _Expert View_ showing graphs related to the object's data, any _Related Assets_, and _Comments_ entered by alert investigators.
 
 //image:AlertSamplePage.png[Alert Example]
 
