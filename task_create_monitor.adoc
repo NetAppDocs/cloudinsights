@@ -51,13 +51,21 @@ The *Add Monitor* dialog is displayed.
 You can set filters to narrow down which storage objects to monitor.
 
 
-==== Define the conditions of the monitor. 
+==== Define the Conditions of the Monitor. 
 
-. Choose which counter to monitor. For our example, choose _IOPS - Total_, and choose "Greater Than" (>).
-. For the _Warning_ level, enter 2500. The dashed line indicating this Warning level displays.
-. For the _Critical_ level, enter 4000. The dashed line indicating this Critical level displays.
+. Choose which counter or metric to monitor. For our example, choose _IOPS - Total_, and select "Greater Than" (>).
+. For the _Warning_ level, enter 3500. The dashed line indicating this Warning level displays.
+. For the _Critical_ level, enter 4600. The dashed line indicating this Critical level displays.
 +
 The graph displays historical data. The Warning and Critical level lines on the graph are a visual representation of the Monitor, so you can easily see when the Monitor might trigger an alert in each case. 
-. You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning 
+
+. For the occurence interval, choose _Continuously_ for a period of _15 Minutes_.
++
+You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
+
+. Give the Monitor a meaningful name and click *Save*.
++
+Your new monitor is added to the list of active Monitors.
+
 
 
