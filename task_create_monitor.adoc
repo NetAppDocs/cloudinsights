@@ -27,8 +27,6 @@ You can create monitors for the following objects:
 |===
 ////
 
-== Creating a performance policy
-
 You can create monitors with thresholds for metrics associated with the objects you are monitoring. When the monitored threshold is reached or exceeded, Cloud Insights creates an alert. A threshold can have both a _Warning_ and a _Critical_ alert level. In any Monitor, Warning level threshold is optional, Critical threshold is required.
 
 In the example, below, we will create a Monitor to give a Warning alert when Storage total IOPS reaches 3,500, and a Critical alert when IOPS exceeds 4,600. We only want to be alerted when the threshold is breached for at least 15 continuous minutes.
