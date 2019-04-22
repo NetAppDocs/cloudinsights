@@ -29,19 +29,15 @@ You can create monitors for the following objects:
 
 == Creating a performance policy
 
-You can create monitors with thresholds for metrics associated with the objects you are monitoring. By default, monitors apply to all objects of the specified type when you create them. You can create an annotation to include only a specific asset or a set of assets in a monitor.
+You can create monitors with thresholds for metrics associated with the objects you are monitoring. When the monitored threshold is reached or exceeded, Cloud Insights creates an alert. A threshold can have both a _Warning_ and a _Critical_ alert level. In any Monitor, Warning level threshold is optional, Critical threshold is required.
 
-.Before you begin
+In the example, below, we will create a Monitor to give a Warning alert when Storage total IOPS reaches 3,500, and a Critical alert when IOPS exceeds 4,600. We only want to be alerted when the threshold is breached for at least 15 continuous minutes.
 
-When using an annotation in a monitor, the annotation must exist before the monitor is created.
-
-.About this task
-
-You create a monitor that provides notification when one or more devices exceeds a threshold you set. 
+image:MonitorExample1.png[Storage IOPS Monitor Example]
 
 .Steps
 
-==== Create the Monitor and Choose an Object Type to Minotor
+==== Create the Monitor and Choose an Object Type to Monitor
 
 . In the Cloud Insights menu bar, click *Alerts > Monitors*
 +
@@ -50,8 +46,18 @@ The Monitors page is displayed. Currently configured monitors are listed.
 . To add a monitor, Click *+ Monitor*
 +
 The *Add Monitor* dialog is displayed.
-. In the drop-down, choose an object type to monitor.
+. In the drop-down, choose an object type to monitor. For our example, choose _Storage_.
++
+You can set filters to narrow down which storage objects to monitor.
+
 
 ==== Define the conditions of the monitor. 
 
-. 
+. Choose which counter to monitor. For our example, choose _IOPS - Total_, and choose "Greater Than" (>).
+. For the _Warning_ level, enter 2500. The dashed line indicating this Warning level displays.
+. For the _Critical_ level, enter 4000. The dashed line indicating this Critical level displays.
++
+The graph displays historical data. The Warning and Critical level lines on the graph are a visual representation of the Monitor, so you can easily see when the Monitor might trigger an alert in each case. 
+. You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning 
+
+
