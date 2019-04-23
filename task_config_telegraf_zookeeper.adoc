@@ -36,6 +36,36 @@ image:ZookeeperDCConfigLinux.png[Zookeeper configuration]
 
 Information may be found in the link:https://zookeeper.apache.org/[Zookeeper] documentation.
 
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|ZooKeeper
+
+|Namespace
+Server
+
+|State
+Node IP
+Node Name
+Port
+
+|Approximate Data Size
+Average Latency
+Ephemerals Count
+Max File Descriptor Count
+Max Latency
+Min Latency
+Number Of Alive Connections
+Open File Descriptor Count
+Outstanding Requests
+Watch Count
+Znode Count
+|===
 
 == Troubleshooting
 

@@ -21,6 +21,8 @@ Cloud Insights uses this data collector to gather metrics from ActiveMQ.
 
 NOTE: This topic is considered Preview documentation and is subject to change.
 
+== Installation
+
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose ActiveMQ.
 +
 If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
@@ -35,6 +37,32 @@ If you have an agent already configured, select the appropriate Operating System
 == Setup
 
 Information may be found in the http://activemq.apache.org/getting-started.html[ActiveMQ documentation]
+
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|ActiveMQ Queue
+
+|Namespace
+Queue
+Port
+Server
+
+|Node Name
+Node IP
+Node UUID
+
+|Consumer Count
+Dequeue Count
+Enqueue Count
+Queue Size
+|===
+
 
 == Troubleshooting
 
