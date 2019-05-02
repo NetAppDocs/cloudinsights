@@ -66,7 +66,7 @@ To prevent double counting do not include ESX servers, only monitor the VMs.
 //An updated version of this report is available at the NetApp Storage Automation Store.
 
 === Data Sources
-The Data Sources report shows all the data sources that are installed on your site, the status of the data source (success/failure), and status messages. The report provides information about where to start troubleshooting data sources. Failed data sources impact the accuracy of Insight reporting and the general usability of the product.
+The Data Sources report shows all the data sources that are installed on your site, the status of the data source (success/failure), and status messages. The report provides information about where to start troubleshooting data sources. Failed data sources impact the accuracy of reporting and the general usability of the product.
 
 === ESX vs VM Performance
 The ESX vs VM Performance report provides a comparison of ESX servers and VMs, showing average and peak IOPs, throughput, and latency and utilizations for ESX servers and VMs. To prevent double counting, exclude the ESX servers; only include the VMs.
@@ -93,8 +93,8 @@ The Mapped but not Masked Volumes report lists the volumes whose logical unit nu
 === NetApp Capacity and Performance
 The NetApp Capacity and Performance report provides global data for allocated, utilized, and committed capacity with trending and performance data for NetApp capacity.
 
-=== OCI Scorecard
-The OCI Scorecard report provides a summary and general status of all assets discovered by OnCommand Insight. Status is indicated with green, yellow, and red flags:
+=== Scorecard
+The Scorecard report provides a summary and general status of all assets acquired by Cloud Insights. Status is indicated with green, yellow, and red flags:
 
 * Green indicates normal condition
 * Yellow indicates a potential issue in the environment
