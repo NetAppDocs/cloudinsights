@@ -63,6 +63,32 @@ For environments that use a proxy, you must set the proxy environment variables 
 . Run the edited command in a terminal using the Bash shell.
 . Install the Acquisition Unit software.
 
+=== Proxy Configuration
+
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
+
+The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
+
+ https://aulogin.<Cloud Insights Domain>
+ https://<your-tenant-ID>.<Cloud Insights Domain>
+ 
+For example:
+ 
+ https://aulogin.c01.cloudinsights.netapp.com
+ https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
+
+
+////
+ https://aulogin.<domain>
+ https://<tenantUUID>.<domain>
+
+The second URL can be found in the acq.log, which is located at the following location.
+
+ Windows: <installation location>/Cloud Insights/Acquisition Unit/log/acq.log
+ Linux: /var/log/netapp/cloudinsights/acq/acq.log
+
+The URl can be found by searching the .log for “Attempting to verify server at: https://<tenantUUID>.oci.cloud.netapp.com”
+////
 
 == Adding a Windows Acquisition Unit
 
@@ -91,12 +117,27 @@ The snippet installs the Acquisition Unit software on the server.
 * Click *Admin > Data Collectors > Acquisition units* to check the status of Acquisition Units. 
 * You can access the Acquisition Unit log in <install dir>\Cloud Insights\Acquisition Unit\log\acq.log
 
-* Use the following script to control the Acquisition Unit:
+* Use the following script to stop, start, restart, or check the status of the Acquisition Unit:
 +
- cloudinsights-service.sh (stop, start, restart, check the status)
+ cloudinsights-service.sh 
+ 
 //* Use the following script to uninstall the Acquisition Unit:
+
 //** cloudinsights-uninstall.sh
 
+=== Proxy Configuration
+
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
+
+The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
+
+ https://aulogin.<Cloud Insights Domain>
+ https://<your-tenant-ID>.<Cloud Insights Domain>
+ 
+For example:
+ 
+ https://aulogin.c01.cloudinsights.netapp.com
+ https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
 
 ////
 == Setting proxy environment variables

@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_config_telegraf_couchbase.html
-keywords: telegraf, installation, install, couchbase
-summary: Couchbase data collector configuration
+permalink: task_config_telegraf_consul.html
+keywords: telegraf, installation, install, consul
+summary: Consul data collector configuration
 ---
 
-= Couchbase Data Collector
+= Consul Data Collector
 
 :toc: macro
 :hardbreaks:
@@ -16,24 +16,27 @@ summary: Couchbase data collector configuration
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights uses this data collector to gather metrics from Couchbase.
+Cloud Insights uses this data collector to gather metrics from Consul.
+
+NOTE: This topic is considered Preview documentation and is subject to change.
 
 == Installation
 
-. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Couchbase.
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Consul.
 +
 If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
 +
 If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
 
-. Follow the instructions in the Couchbase Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. 
+. Follow the instructions in the Consul Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. 
 
-image:CouchbaseDCConfigWindows.png[Couchbase configuration]
+//image:ConsulDCConfigWindows.png[Consul configuration]
 
 == Setup
 
-Information may be found in the link:https://docs.couchbase.com/home/index.html[Couchbase documentation].
+Information may be found in the link:https://www.consul.io/docs/index.html[Consul documentation].
 
+////
 == Objects and Counters
 
 The following objects and their counters are collected:
@@ -71,6 +74,8 @@ Memory Used
 Operations Per Second
 Quota Used
 |===
+
+////
 
 == Troubleshooting
 
