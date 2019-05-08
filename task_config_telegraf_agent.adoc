@@ -19,7 +19,7 @@ summary:
 [.lead]
 Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.8/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights. 
 
-NOTE: This topic is considered Preview documentation and is subject to change.
+//NOTE: This topic is considered Preview documentation and is subject to change.
 
 == Installing an Agent
 
@@ -78,7 +78,7 @@ After the agent is installed, you can use the following commands to start/stop t
   Start-Service telegraf
   Stop-Service telegraf
 
-====Uninstalling the Agent
+==== Uninstalling the Agent
 
 To uninstall the agent on Windows, do the following in a PowerShell window:
 
@@ -194,7 +194,6 @@ To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
 +
  rm -rf /etc/telegraf*
  rm -rf /var/log/telegraf*
-
 
 
 === macOS

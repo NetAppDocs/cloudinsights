@@ -18,16 +18,67 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== *May 2019*
+
+==== Integration with Services via Telegraf
+
+In addition to acquisition of data from infrastructure devices such as switches and storage, Cloud Insights now collects data from a variety of Operating Systems and Services, using link:task_config_telegraf_agent.html[Telegraf as its agent] for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams. Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights.
+
+Documentation for currently supported integrations can be found in the menu to the left under *Services Data Collector Reference*.
+
+==== Storage Virtual Machine Assets 
+
+* Storage Virtual Machines (SVMs) are available as assets in Cloud Insights. SVMs have their own Asset Landing Pages, and can be displayed and used in searches, queries, and filters. SVMs can also be used in dashboard widgets as well as associated with annotations.
+
+==== Reduced Acquisition Unit System Requirements
+
+* The system CPU and memory requirements for the Acquisition Unit (AU) software have been reduced. The new requirements are:
+
+|===
+|*Component*|*Old Requirement*|*New Requirement*
+|CPU Cores|4|2
+|Memory|16 GB|8 GB
+|===
+
+==== Additional Platforms Supported
+
+* The following platforms have been added to those currently link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[supported for Cloud Insights]:
+
+|===
+|Linux|Windows
+|CentOS 7.3 64-bit
+CentOS 7.4 64-bit
+CentOS 7.6 64-bit
+Debian 9 64-bit
+Red Hat Enterprise Linux  7.3 64-bit
+Red Hat Enterprise Linux  7.4 64-bit
+Red Hat Enterprise Linux  7.6 64-bit
+Ubuntu Server 18.04 LTS
+|Microsoft Windows 10 64-bit
+Microsoft Windows Server 2008 R2
+Microsoft Windows Server 2019
+|===
+
+
+=== *April 2019*
+
+==== Filter Virtual Machines by Tags
+
+When configuring the following data collectors, you can filter to include or exclude virtual machines from data collection according to their Tags or Labels. 
+
+* link:task_dc_amazon_ec2.html#advanced-configuration[Amazon EC2]
+* link:task_dc_ms_azure.html#advanced-configuration[Azure]
+* link:task_dc_google_cloud.html#advanced_configuration[Google Cloud Platform]
 
 === *March 2019*
 
 ==== Email Notifications for Subscription-related Events
 
-You can select recipients for email link:concept_notifications_email.html[notifications] when subscription-related events occur, such as upcoming trial expiration or subscribed account changes. You can choose recipients for these notifications from among following:
+* You can select recipients for email link:concept_notifications_email.html[notifications] when subscription-related events occur, such as upcoming trial expiration or subscribed account changes. You can choose recipients for these notifications from among following:
 
-* All Account Owners
-* All Administrators
-* Additional Email Addresses that you specify
+** All Account Owners
+** All Administrators
+** Additional Email Addresses that you specify
 
 ==== Additional Dashboards
 

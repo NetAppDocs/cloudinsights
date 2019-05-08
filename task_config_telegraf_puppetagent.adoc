@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_config_telegraf_puppet.html
+permalink: task_config_telegraf_puppetagent.html
 keywords: telegraf, installation, install, Puppet
 summary: Puppet data collector configuration
 ---
 
-= Puppet Data Collector
+= Puppet Agent Data Collector
 
 :toc: macro
 :hardbreaks:
@@ -17,9 +17,9 @@ summary: Puppet data collector configuration
 
 [.lead]
 
-Cloud Insights uses this data collector to gather metrics from Puppet.
+Cloud Insights uses this data collector to gather metrics from Puppet Agent.
 
-NOTE: This topic is considered Preview documentation and is subject to change.
+== Installation
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Puppet.
 +
