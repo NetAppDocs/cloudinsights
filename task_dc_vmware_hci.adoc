@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: task_dc_vmware_hci.html
 keywords: data collector, VMware, hci
-summary: Configuring VMware for NetApp HCI data collector.
+summary: Configuring NetApp HCI Virtual Center data collector.
 ---
 
-= Configuring the VMware for NetApp HCI data collector 
+= Configuring the NetApp HCI Virtual Center data collector 
 
 :toc: macro
 :hardbreaks:
@@ -18,11 +18,11 @@ summary: Configuring VMware for NetApp HCI data collector.
 
 [.lead]
 
-The VMWare for HCI data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Virtual Center. 
+The HCI Virtual Center data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Virtual Center. 
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the VMware for HCI data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
