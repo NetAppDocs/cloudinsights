@@ -22,6 +22,8 @@ The HCI Virtual Center data collector collects NetApp HCI Host information and r
 
 NOTE: This information is considered Preview documentation and is subject to change.
 
+This data collector acquires from the *HCI Virtual Center only*. To collect data from the storage system, you must also configure the link:task_dc_na_storagegrid.html[NetApp StorageGrid] data collector.
+
 == Terminology
 
 Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
