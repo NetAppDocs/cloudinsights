@@ -31,7 +31,7 @@ You can create monitors for the following objects:
 
 When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have both a _Warning_ and a _Critical_ alert level. In any Monitor, Warning level threshold is optional, Critical threshold is required.
 
-In the example, below, we will create a Monitor to give a Warning alert when Storage total IOPS reaches 3,500, and a Critical alert when IOPS exceeds 4,600. We only want to be alerted when the threshold is breached for at least 15 continuous minutes.
+In the example below, we will create a Monitor to give a Warning alert when Storage total IOPS reaches 3,500, and a Critical alert when IOPS exceeds 4,600. We only want to be alerted when the threshold is breached for at least 15 continuous minutes.
 
 image:MonitorExample1.png[Storage IOPS Monitor Example]
 
