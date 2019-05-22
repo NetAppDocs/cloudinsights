@@ -44,15 +44,14 @@ These are common terminology mappings only and might not represent every case fo
 
 The following information is required to configure this data collector:
 
-* IP address of the Virtual Center server 
-* Read-only username and password in Virtual Center 
-* We require read only privileges on all objects within Virtual Center. 
-* SDK access on the Virtual Center server – normally already setup. 
-* 3rd party software installed on OnCommand Insight Server / RAU: none 
-* Port requirements: http-80 https-443 
+* IP address of the HCI Management server 
+* Read-only username and password for the HCI Management server 
+* We require read only privileges on all objects within the HCI Virtual Center. 
+* SDK access on the HCI Management server – normally already setup. 
+* Port requirements: http-80 https-8443 
 * Validate access: 
-** Log into Virtual Center Client using above username and password 
-** Verify SDK enabled: telnet <vc_ip> 443 
+** Log into HCI Management server using above username and password 
+** Verify SDK enabled: telnet <vc_ip> 8443 
 
 == Setup and connection
 
@@ -108,16 +107,16 @@ Some things to try if you encounter problems with this data collector:
 |Problem:|Try this:
 |Error: Include list to filter VMs cannot be empty
 |If Include List is selected, please list valid DataCenter, Cluster, or Host names to filter VMs
-|Error: Failed to instantiate a connection to VirtualCenter at IP
+|Error: Failed to instantiate a connection to Virtual Center at IP
 |Possible solutions:
 
 * Verify credentials and IP address entered.
-* Try to communicate with Virtual Center using VMware Infrastructure Client.
+* Try to communicate with Virtual Center using HCI Management Infrastructure Client.
 * Try to communicate with Virtual Center using Managed Object Browser (e.g MOB).
 |Error: VirtualCenter at IP has non-conform certificate that JVM requires
 |Possible solutions:
 
-* Recommended: Re-generate certificate for Virtual Center by using stronger (e.g. 1024-bit) RSA key.
+* Recommended: Re-generate certificate for HCI Virtual Center by using stronger (e.g. 1024-bit) RSA key.
 * Not Recommended: Modify the JVM java.security configuration to leverage the constraint jdk.certpath.disabledAlgorithms to allow 512-bit RSA key. See JDK 7 update 40 release notes at "http://www.oracle.com/technetwork/java/javase/7u40-relnotes-2004172.html"
 |===
 
