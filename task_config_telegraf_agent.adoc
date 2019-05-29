@@ -218,9 +218,13 @@ image:AgentInstallMacOS.png[MacOS Agent Install]
 
 After the agent is installed, you can use the following commands to start/stop the service:
 
+ sudo launchctl start telegraf
+ sudo launchctl stop telegraf 
+
+Or, if Telegraf was installed using Homebrew:
+
  brew services start telegraf
  brew services stop telegraf
-
 
 ==== Uninstalling the Agent
 
@@ -233,6 +237,11 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 . Remove the Telegraf package:
 +
  brew remove telegraf
++
+Or, if Telegraf was installed using Homebrew:
++
+ brew services stop telegraf
+ brew uninstall telegraf
 
 . Remove any configuration or log files that may be left behind:
 +
