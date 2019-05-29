@@ -3,10 +3,12 @@ entries:
     url: /index.html
   - title: What's New
     url: /concept_whats_new.html
-  - title: Getting started
+
+  - title: Signing Up for Cloud Insights
+    url: /task_cloud_insights_onboarding_1.html
+
+  - title: Getting Started
     entries:
-      - title: Onboarding
-        url: /task_cloud_insights_onboarding_1.html
       - title: Collecting Data
         entries:
           - title: Overview
@@ -14,7 +16,9 @@ entries:
           - title: Acquisition Unit Requirements
             url: /concept_acquisition_unit_requirements.html
           - title: Configuring an Acquisition Unit
-            url: /task_configure_acquisition_unit.html            
+            url: /task_configure_acquisition_unit.html 
+          - title: Configuring an Agent
+            url: /task_config_telegraf_agent.html
           - title: Configuring Data Collectors
             url: /task_configure_data_collectors.html
           - title: Determining Data Collector Acquisition Status
@@ -29,7 +33,8 @@ entries:
         url: /concept_user_roles.html
       - title: Switching to Other Cloud Central Products
         url: /concept_other_cloud_products.html
-  - title: Data Collector Vendor Reference
+        
+  - title: Infrastructure Data Collector Reference
     entries:
       - title: Vendor Reference Overview
         url: /concept_data_collector_reference.html
@@ -130,8 +135,6 @@ entries:
             url: /task_dc_na_7mode.html
           - title: E-Series
             url: /task_dc_na_eseries.html
-          - title: Host and VM File System
-            url: /task_dc_na_hostvm.html
           - title: SolidFire
             url: /task_dc_na_solidfire.html
           - title: StorageGrid
@@ -148,8 +151,133 @@ entries:
         url: /task_dc_redhat_virtualization.html
       - title: VMWare
         url: /task_dc_vmware.html
+        
+  - title: Services Data Collector Reference
+    entries:
+      - title: Display Options
+        url: /concept_telegraf_display_options.html
+      - title: Host/Node
+        url: /task_config_telegraf_node.html
+      - title: ActiveMQ
+        url: /task_config_telegraf_activemq.html
+#      - title: aerospike
+#        url: task_config_telegraf_aerospike.html
+      - title: Apache
+        url: /task_config_telegraf_apache.html
+#      - title: cloudwatch
+#        url: task_config_telegraf_cloudwatch.html
+#      - title: bitbucket
+#        url: task_config_telegraf_bitbucket.html
+#      - title: cassandra
+#        url: task_config_telegraf_cassandra.html
+      - title: Consul 
+        url: /task_config_telegraf_consul.html
+      - title: Couchbase
+        url: /task_config_telegraf_couchbase.html
+      - title: CouchDB
+        url: /task_config_telegraf_couchdb.html
+#      - title: dcos
+#        url: task_config_telegraf_dcos.html
+      - title: Docker
+        url: /task_config_telegraf_docker.html
+      - title: Elasticsearch
+        url: /task_config_telegraf_elasticsearch.html
+#      - title: fibaro
+#        url: task_config_telegraf_fibaro.html
+      - title: Flink
+        url: /task_config_telegraf_flink.html
+#      - title: fluentd
+#        url: task_config_telegraf_fluentd.html
+#      - title: graylog
+#        url: task_config_telegraf_graylog.html
+      - title: Hadoop
+        url: /task_config_telegraf_hadoop.html
+      - title: HAProxy
+        url: /task_config_telegraf_haproxy.html
+#      - title: http
+#        url: task_config_telegraf_http.html
+#      - title: icinga2
+#        url: task_config_telegraf_icinga2.html
+#      - title: influxdbv2
+#        url: task_config_telegraf_influxdbv2.html
+      - title: Java
+        url: /task_config_telegraf_jvm.html
+#      - title: jboss
+#        url: task_config_telegraf_jboss.html
+      - title: Kafka
+        url: /task_config_telegraf_kafka.html
+#      - title: kapacitor
+#        url: task_config_telegraf_kapacitor.html
+      - title: Kibana
+        url: /task_config_telegraf_kibana.html
+      - title: Kubernetes
+        url: /task_config_telegraf_kubernetes.html
+#      - title: mailchimp
+#        url: task_config_telegraf_mailchimp.html
+      - title: Memcached
+        url: /task_config_telegraf_memcached.html
+#      - title: mesos
+#        url: task_config_telegraf_mesos.html
+      - title: MongoDB
+        url: /task_config_telegraf_mongodb.html
+      - title: MySQL
+        url: /task_config_telegraf_mysql.html
+      - title: Netstat
+        url: /task_config_telegraf_netstat.html
+      - title: Nginx
+        url: /task_config_telegraf_nginx.html
+#      - title: nvidia_smi
+#        url: task_config_telegraf_nvidia_smi.html
+#      - title: openldap
+#        url: task_config_telegraf_openldap.html
+      - title: OpenZFS
+        url: task_config_telegraf_openzfs.html
+#      - title: pgbouncer
+#        url: task_config_telegraf_pgbouncer.html
+#      - title: postfix
+#        url: task_config_telegraf_postfix.html
+      - title: PostgreSQL
+        url: /task_config_telegraf_postgresql.html
+#      - title: powerdns
+#        url: task_config_telegraf_powerdns.html
+#      - title: prometheus
+#        url: task_config_telegraf_prometheus.html
+      - title: Puppet
+        url: /task_config_telegraf_puppetagent.html
+#      - title: rabbitmq
+#        url: task_config_telegraf_rabbitmq.html
+      - title: Redis
+        url: /task_config_telegraf_redis.html
+      - title: RethinkDB
+        url: task_config_telegraf_rethinkdb.html
+#      - title: riak
+#        url: task_config_telegraf_riak.html
+#      - title: salesforce
+#        url: task_config_telegraf_salesforce.html
+#      - title: solr
+#        url: task_config_telegraf_solr.html
+#      - title: sqlserver
+#        url: task_config_telegraf_sqlserver.html
+#      - title: statsd
+#        url: task_config_telegraf_statsd.html
+#      - title: tomcat
+#        url: task_config_telegraf_tomcat.html
+#      - title: twemproxy
+#        url: task_config_telegraf_twemproxy.html
+#      - title: varnish
+#        url: task_config_telegraf_varnish.html
+#      - title: vsphere
+#        url: task_config_telegraf_vsphere.html
+#      - title: webhooks
+#        url: task_config_telegraf_webhooks.html
+#      - title: weblogic
+#        url: task_config_telegraf_weblogic.html
+      - title: Zookeeper
+        url: task_config_telegraf_zookeeper.html
+        
   - title: Subscribing to Cloud Insights
     url: /concept_subscribing_to_cloud_insights.html
+    
   - title: Creating Dashboards
     entries:
       - title: Dashboard Overview
