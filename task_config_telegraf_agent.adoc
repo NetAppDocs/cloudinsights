@@ -51,7 +51,6 @@ NOTE: Once you have installed an agent on a host, you do not need to install an 
 TIP: Once you have installed an agent on a server/VM, Cloud Insights collects metrics from that system in addition to collecting from any data collectors you configure. These metrics are gathered as link:task_config_telegraf_node.html["Node" metrics].
 
 === Windows
-To install the agent on a Windows host, you first install the agent software and then customize the configuration file as needed. 
 
 image:AgentInstallWindows.png[Windows Agent Install]
 
@@ -92,14 +91,14 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
 
 === RHEL and CentOS
 
-.Steps to install agent on RHEL/CentOS:
-
 image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 
 .Pre-requisites:
 
 * The following commands must be available: curl, sudo, ping, and dmidecode
 * You must have at least one Agent Access Key configured
+
+.Steps to install agent on RHEL/CentOS:
 
 . If prompted, select RHEL/CentOS from the Platform drop-down.
 . Choose an Agent Access Key.
@@ -145,14 +144,14 @@ To uninstall the agent on RHEL/CentOS, in a Bash terminal, do the following:
 
 === Ubuntu and Debian
 
-.Steps to install agent on Debian or Ubuntu:
-
 image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 
 .Pre-requisites:
 
 * The following commands must be available: curl, sudo, ping, and dmidecode
 * You must have at least one Agent Access Key configured
+
+.Steps to install agent on Debian or Ubuntu:
 
 . If prompted, select Ubuntu/Debian from the Platform drop-down.
 . Choose an Agent Access Key.
@@ -197,7 +196,6 @@ To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
 
 
 === macOS
-.Steps to install agent on macOS:
 
 image:AgentInstallMacOS.png[MacOS Agent Install]
 
@@ -205,6 +203,8 @@ image:AgentInstallMacOS.png[MacOS Agent Install]
 
 * The "curl" command must be available
 * You must have at least one Agent Access Key configured
+
+.Steps to install agent on macOS:
 
 . If prompted, select macOS from the Platform drop-down.
 . Choose an Agent Access Key.
@@ -221,10 +221,12 @@ After the agent is installed, you can use the following commands to start/stop t
  sudo launchctl start telegraf
  sudo launchctl stop telegraf 
 
+////
 Or, if Telegraf was installed using Homebrew:
 
  brew services start telegraf
  brew services stop telegraf
+////
 
 ==== Uninstalling the Agent
 
@@ -232,17 +234,26 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 
 . Stop the Telegraf service using the following command:
 +
- brew services stop telegraf
+// brew services stop telegraf
+ sudo launchctl stop telegraf 
 
+. Copy the Uninstall command to /tmp and execute it:
++
+ cp /Applications/telegraf.app/scripts/uninstall /tmp
+ sudo /tmp/uninstall
+
+////
 . Remove the Telegraf package:
 +
  brew unpin telegraf
  brew remove telegraf
 +
+
 Or, if Telegraf was installed using Homebrew:
 +
  brew services stop telegraf
  brew uninstall telegraf
+////
 
 . Remove any configuration or log files that may be left behind:
 +
@@ -251,7 +262,6 @@ Or, if Telegraf was installed using Homebrew:
 
 
 === Kubernetes
-.Steps to install agent on Kubernetes:
 
 image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
@@ -259,6 +269,8 @@ image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
 * The following commands must be available: curl and sudo
 * You must have at least one Agent Access Key configured
+
+.Steps to install agent on Kubernetes:
 
 . If prompted, select Kubernetes from the Platform drop-down.
 . Choose an Agent Access Key.
