@@ -1,0 +1,101 @@
+---
+sidebar: sidebar
+permalink: task_config_telegraf_kapacitor.html
+keywords: telegraf, installation, install, kapacitor
+summary: kapacitor configuration
+---
+
+= Kapacitor Data Collector 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead]
+
+Cloud Insights uses this data collector to gather metrics from influxdata Kapacitor. 
+
+== Installation
+
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Kapacitor.
++
+If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+
+. Follow the instructions in the Kapacitor Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data.
+
+
+== Setup
+
+Setup information can be found in the https://docs.influxdata.com/kapacitor/v1.5/[Kapacitor documentation] 
+
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object|Identifiers|Attributes|Datapoints:
+
+|Kapacitor
+
+
+|Namespace
+Node Name
+Node IP
+
+
+
+|OS Architecture
+OS Name
+OS Version
+Runtime Specification
+Runtime Specification Vendor
+Runtime Specification Version
+Uptime
+Kapacitor Version
+Runtime VM Name
+Runtime VM Vendor
+Runtime VM Version
+
+
+|Allocated Bytes
+Buck Hash System 
+Frees
+GC System 
+GCC PU Fraction
+Heap Allocation 
+Heap Idle 
+Heap Use 
+Heap Objects
+Heap Released 
+Heap System 
+Last GC (ns)
+Look Ups
+Mallocs
+Mcache In Use 
+Mcache System 
+Mspan In Use 
+Mspan System 
+Next GC (ns)
+Num GC
+Other System 
+Pause Total (ns)
+Stack In Use 
+Stack System 
+System Bytes
+Total Allocated Bytes
+Average Execution Time (ns)
+Errors
+|===
+
+
+== Troubleshooting
+

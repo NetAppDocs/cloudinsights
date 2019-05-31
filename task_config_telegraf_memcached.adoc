@@ -1,0 +1,98 @@
+---
+sidebar: sidebar
+permalink: task_config_telegraf_memcached.html
+keywords: telegraf, installation, install, memcached
+summary: Memcached data collector configuration
+---
+
+= Memcached Data Collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Insights uses this data collector to gather metrics from Memcached.
+
+== Installation
+
+. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Memcached.
++
+If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+
+. Follow the instructions in the Memcached Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Windows:
+
+image:MemcachedDCConfigWindows.png[Memcached configuration]
+
+== Setup
+
+Information may be found in the link:https://github.com/memcached/memcached/wiki[Memcached wiki].
+
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|Memcached
+
+|Namespace
+Server
+
+|Node IP
+Node Name
+
+|Accepting Connections
+Handled Authentication Requests
+Failed Authentications
+Bytes Used
+Bytes Read (per sec)
+Bytes Written (per sec)
+CAS Badval
+CAS Hits
+CAS Misses
+Flush Reqs (per sec)
+Get Reqs (per sec)
+Set Reqs (per sec)
+Touch Reqs (per sec)
+Connection Yields (per sec)
+Connection Structures
+Open Connections
+Current Stored Items
+Decr Requests Hits (per sec)
+Decr Requests Misses (per sec)
+Delete Requests Hits (per sec)
+Delete Requests Misses (per sec)
+Items Evicted
+Valid Evictions
+Expired Items
+Get Hits (per sec)
+Get Misses (per sec)
+Used Hash Bytes
+Hash Is Expanding
+Hash Power Level
+Incr Requests Hits (per sec)
+Incr Requests Misses (per sec)
+Server Max Bytes
+Listen Disabled Num
+Reclaimed
+Worker Threads Count
+Total Opened Connections
+Total Items Stored
+Touch Hits
+Touch Misses
+Server Uptime
+|===
+
+
+== Troubleshooting
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page.
