@@ -1,0 +1,112 @@
+---
+sidebar: sidebar
+permalink: concept_forensic.html
+keywords:  Forensic, user, entity, community 
+summary: Forensic overview
+---
+:history: Review 1/17, 
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+= Forensic information
+
+[.lead]
+
+The Forensic view provides access to the User, Entity, Community, and User Activity views. 
+//*You use these to understand the relationship between entity access and user activities.* 
+
+== Examining User Information 
+
+Click *Forensic > User* to access the User view. 
+
+This view provides:
+
+* Name of the user 
+* Alerts that have been raised by the user's activities
+* Number of communities user is a member 
+* Location of the user
+* Last entity accessed by the user
+
+Click the user name to access more detailed information in the link:forensic_user_details.html[User Overview] 
+
+== Examining Entity Information 
+
+Click *Forensic > Entity* to access the Entity view.
+
+This view provides: 
+
+Entity Profile::
+Describes details including:
+
+* Entity name 
+* Entity Type
+//* Alerts that have been raised *CHECK THIS*
+* Community relationship with entity
+* Entity path
+* Last accessed time
+* Entity size
+
+Click the entity name to access more detailed information in the link:forensic_entity_details.html[Entity Details]
+
+
+== Examining Communities Information
+
+
+Click *Forensic > Communities* to access the the Communities view. 
+
+This view provides: 
+
+* Community names
+* Alerts raised against the community
+* User count for the community
+* Entity count for the community
+
+Click or search a Community name to access the Community details page. 
+
+Community Profile:: 
+Lists the community users locations and the other closest communities.  
+
+Community Behaviour::  
+Shows the number of entities accessed and shows read, write, and metea data access operations.
+
+User and Entities::
+Identifies total users and total entities in the community. 
+
+Community Analysis::
+
+* Community user trend
+* Operations performed on entities
+* Alert trend
+
+Click the community name to access more detailed information in the link:forensic_community_details.html[Community Details]
+
+== Examining User Activity Information
+
+Click *Forensic > User Activity* to access the the User Activity view.
+
+For each user being monitored, this view describes:
+
+* Entity access time
+* User who accessed the entity with a link to the user overview 
+
+* Activity performed:
+** Read
+** Write
+** Create
+** Rename
+//delete?
+* Entity path
+* Entity type 
+* Access location
+Click the user name to access more detailed information in the link:forensic_user_details.html[Entity Details]
+
+
+
+
+
+
