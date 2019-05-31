@@ -18,8 +18,7 @@ summary: MongoDB data collector configuration
 [.lead]
 Cloud Insights uses this data collector to gather metrics from MongoDB.
 
-NOTE: This topic is considered Preview documentation and is subject to change.
-
+== Installation
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose MongoDB.
 +
@@ -34,6 +33,32 @@ image:MongoDBDCConfigLinux.png[MongoDB configuration]
 == Setup 
 
 Information may be found in the link:https://docs.mongodb.com/[MongoDB documentation].
+
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|MongoDB
+
+|Namespace
+Hostname
+
+|
+|
+|MongoDB Database
+
+|Namespace
+Hostname
+Database name
+
+|
+|
+|===
+
 
 == Troubleshooting
 
