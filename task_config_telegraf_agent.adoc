@@ -62,12 +62,11 @@ image:AgentInstallWindows.png[Windows Agent Install]
 
 . If prompted, select Windows from the Platform drop-down.
 . Choose an Agent Access Key.
-. If you have not already installed an agent on this host:
-.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a PowerShell window 
-.. Paste the command into the PowerShell window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. In you have already installed an agent on this host, you can skip the previous step.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a PowerShell window 
+. Paste the command into the PowerShell window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 
@@ -100,12 +99,11 @@ image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 
 . If prompted, select RHEL/CentOS from the Platform drop-down.
 . Choose an Agent Access Key.
-. If you have not already installed an agent on this host:
-.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a Bash window 
-.. Paste the command into the Bash window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. In you have already installed an agent on this host, you can skip the previous step.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a Bash window 
+. Paste the command into the Bash window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
@@ -152,12 +150,11 @@ image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 
 . If prompted, select Ubuntu/Debian from the Platform drop-down.
 . Choose an Agent Access Key.
-. If you have not already installed an agent on this host:
-.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a Bash window 
-.. Paste the command into the Bash window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. In you have already installed an agent on this host, you can skip the previous step.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a Bash window 
+. Paste the command into the Bash window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
@@ -261,12 +258,11 @@ The following commands must be available: curl, sudo
 . Choose an Agent Access Key.
 . If prompted, select Kubernetes from the Platform drop-down.
 . Choose an Agent Access Key.
-. If you have not already installed an agent on this host:
-.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a Bash window 
-.. Paste the command into the Bash window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. In you have already installed an agent on this host, you can skip the previous step.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a Bash window 
+. Paste the command into the Bash window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands:
