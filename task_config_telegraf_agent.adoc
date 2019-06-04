@@ -50,8 +50,6 @@ NOTE: Once you have installed an agent on a host, you do not need to install an 
 
 
 === Windows
-To install the agent on a Windows host, you first install the agent software and then customize the configuration file as needed. 
-
 image:AgentInstallWindows.png[Windows Agent Install]
 
 .Pre-requisites:
@@ -89,13 +87,13 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
 
 === RHEL and CentOS
 
-.Steps to install agent on RHEL/CentOS:
-
 image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 
 .Pre-requisites:
 
 * The following commands must be available: curl, sudo, ping, and dmidecode
+
+.Steps to install agent on RHEL/CentOS:
 
 . If prompted, select RHEL/CentOS from the Platform drop-down.
 . Choose an Agent Access Key.
@@ -140,13 +138,13 @@ To uninstall the agent on RHEL/CentOS, in a Bash terminal, do the following:
 
 === Ubuntu and Debian
 
-.Steps to install agent on Debian or Ubuntu:
-
 image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 
 .Pre-requisites:
 
 * The following commands must be available: curl, sudo, ping, and dmidecode
+
+.Steps to install agent on Debian or Ubuntu:
 
 . If prompted, select Ubuntu/Debian from the Platform drop-down.
 . Choose an Agent Access Key.
@@ -191,7 +189,6 @@ To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
 
 
 === macOS
-.Steps to install agent on macOS:
 
 image:AgentInstallMacOS.png[MacOS Agent Install]
 
@@ -199,7 +196,8 @@ image:AgentInstallMacOS.png[MacOS Agent Install]
 
 * The "curl" command must be available
 
-.Steps
+.Steps to install agent on macOS:
+
 . If prompted, select macOS from the Platform drop-down.
 . Choose an Agent Access Key.
 . Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
@@ -244,8 +242,6 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 
 
 === Kubernetes
-.Steps to install agent on Kubernetes:
-
 image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
 .Pre-requisites:
@@ -253,6 +249,8 @@ image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 * The following commands must be available: curl and sudo
 
 The following commands must be available: curl, sudo
+
+.Steps to install agent on Kubernetes:
 
 . If prompted, select macOS from the Platform drop-down.
 . Choose an Agent Access Key.
