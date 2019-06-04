@@ -207,12 +207,13 @@ image:AgentInstallMacOS.png[MacOS Agent Install]
 * You must have at least one Agent Access Key configured
 
 . If prompted, select macOS from the Platform drop-down.
+
 . Choose an Agent Access Key.
-. If you have not already installed an agent on this host:
-.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a Bash window 
-.. Paste the command into the Bash window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a Bash window 
+. Paste the command into the Bash window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
 . If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 7 above.
 . Click *Finish* or *Continue*
 
