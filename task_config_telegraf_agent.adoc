@@ -213,24 +213,24 @@ image:AgentInstallMacOS.png[MacOS Agent Install]
 .. Open a Bash window 
 .. Paste the command into the Bash window and press Enter.
 .. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. In you have already installed an agent on this host, you can skip the previous step.
+. If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 7 above.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
 
- brew services start telegraf
- brew services stop telegraf
-
+ sudo launchctl start telegraf
+ sudo launchctl stop telegraf
 
 ==== Uninstalling the Agent
 
 To uninstall the agent on macOS, in a Bash terminal, run the following:
 
-////
+
 . Stop the Telegraf service using the following command:
 +
- brew services stop telegraf
+ sudo launchctl stop telegraf
 
+////
 . Remove the Telegraf package:
 +
  brew remove telegraf
@@ -239,6 +239,7 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 . Copy the Uninstall command to /tmp and execute it:
 
  cp /Applications/telegraf.app/scripts/uninstall /tmp
+ 
  sudo /tmp/uninstall
 
 
