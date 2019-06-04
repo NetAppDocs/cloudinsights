@@ -213,7 +213,7 @@ image:AgentInstallMacOS.png[MacOS Agent Install]
 . Open a Bash window 
 . Paste the command into the Bash window and press Enter.
 . The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 7 above.
+. If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 5 above.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
