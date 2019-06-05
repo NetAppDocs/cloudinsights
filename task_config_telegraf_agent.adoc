@@ -19,7 +19,7 @@ summary:
 [.lead]
 Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.8/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights. 
 
-NOTE: This topic is considered Preview documentation and is subject to change.
+//NOTE: This topic is considered Preview documentation and is subject to change.
 
 == Installing an Agent
 
@@ -48,6 +48,7 @@ To install an agent, regardless of the platform you are using, you must first do
 
 NOTE: Once you have installed an agent on a host, you do not need to install an agent again on that host. 
 
+TIP: Once you have installed an agent on a server/VM, Cloud Insights collects metrics from that system in addition to collecting from any data collectors you configure. These metrics are gathered as link:task_config_telegraf_node.html["Node" metrics].
 
 === Windows
 image:AgentInstallWindows.png[Windows Agent Install]
@@ -187,7 +188,6 @@ To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
  rm -rf /var/log/telegraf*
 
 
-
 === macOS
 
 image:AgentInstallMacOS.png[MacOS Agent Install]
@@ -224,6 +224,7 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 ////
 . Remove the Telegraf package:
 +
+ brew unpin telegraf
  brew remove telegraf
 ////
 
@@ -240,7 +241,6 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
  rm -rf /usr/local/var/log/telegraf.*
 
 
-
 === Kubernetes
 image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
@@ -248,12 +248,6 @@ image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
 * The following commands must be available: curl and sudo
 
-The following commands must be available: curl, sudo
-
-.Steps to install agent on Kubernetes:
-
-. If prompted, select macOS from the Platform drop-down.
-. Choose an Agent Access Key.
 . If prompted, select Kubernetes from the Platform drop-down.
 . Choose an Agent Access Key.
 . Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.

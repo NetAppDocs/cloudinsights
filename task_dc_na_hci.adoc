@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_dc_vmware.html
-keywords: data collector, VMware, 
-summary: Configuring VMware  data collector.
+permalink: task_dc_na_hci.html
+keywords: data collector, VMware, hci
+summary: Configuring NetApp HCI Virtual Center data collector.
 ---
 
-= Configuring the VMware VSphere data collector 
+= Configuring the NetApp HCI Virtual Center data collector 
 
 :toc: macro
 :hardbreaks:
@@ -18,11 +18,15 @@ summary: Configuring VMware  data collector.
 
 [.lead]
 
-The data collector for VMware vSphere collects ESX Host information and requires read-only privileges on all objects within the Virtual Center. 
+The HCI Virtual Center data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Virtual Center. 
+
+NOTE: This information is considered Preview documentation and is subject to change.
+
+This data collector acquires from the *HCI Virtual Center only*. To collect data from the storage system, you must also configure the link:task_dc_na_solidfire.html[NetApp SolidFire] data collector.
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the VMware vSphere data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -64,9 +68,9 @@ The following information is required to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Virtual center IP Address |IP address of the Virtual Center
-|User name |User name used to access the Virtual Center 
-|Password|Password used to access the Virtual Center 
+|HCI Management IP Address |IP address of the HCI Management server
+|User name |User name used to access the HCI Management server
+|Password|Password used to access the HCI Management server
 |===
 
 == Advanced configuration 
@@ -85,7 +89,7 @@ The following fields can be configured:
 
 |Choose 'Exclude' or 'Include' to Specify a List|Create a filter list (CLUSTER, DATACENTER, and/or ESX_HOST) 
 |Number of retries | Default is 3 
-|Communication port| Default is 443 
+|HCI Management port| Default is 8443 
 
 //|Tag Keys and Values on which to Filter VMs|Click *+ Filter Tag* to choose which VMs (and associated disks) to include/exclude by filtering for keys and values that match keys and values of tags on the VM. Tag Key is required, Tag Value is optional. When Tag Value is empty, the VM is filtered as long as it matches the Tag Key.
 //Tag filtering is only available in VSphere 6.0 Beta or later.

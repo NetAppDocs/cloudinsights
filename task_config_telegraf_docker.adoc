@@ -18,8 +18,6 @@ summary: Docker data collector configuration
 [.lead]
 Cloud Insights uses this data collector to gather metrics from Docker.
 
-NOTE: This topic is considered Preview documentation and is subject to change.
-
 == Installation
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Docker.
@@ -72,6 +70,295 @@ Note that the Cloud Insights installer provided for the Kubernetes platform take
 ===== Access Docker through a TCP endpoint
 
 By default, Docker uses port 2375 for unencrypted access and port 2376 for encrypted access. 
+
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|Docker
+
+|Namespace
+Docker Engine
+
+|Node Name
+Node IP
+Node UUID
+Docker Version
+
+|Memory
+Containers
+Containers Paused
+Containers Running
+Containers Stopped
+CPUs
+Go Routines
+Images
+Listener Events
+Used File Descriptors
+
+|Docker Container
+
+|Namespace
+Container Name
+Docker Engine
+
+|K8s Container Hash
+K8s Container Ports
+K8s Container Restart Count
+K8s Container Termination Message Path
+K8s Container Termination Message Policy
+K8s Pod Termination Grace Period
+Container Image
+Container Status
+Container Version
+Node Name
+K8s Container Log Path
+K8s Container Name
+K8s Docker Type
+K8s Pod Name
+K8s Pod Namespace
+K8s Pod UID
+K8s Sandbox ID
+Node IP
+Node UUID
+Docker Version
+K8s IO Config Seen
+K8s IO Config Source
+OpenShift IO SCC
+K8s Description
+K8s Display Name
+OpenShift Tags
+Kompose Service
+Pod Template Hash
+Controller Revision Hash
+Pod Template Generation
+License
+Schema Build Date
+Schema License
+Schema Name
+Schema URL
+Schema VCS URL
+Schema Vendor
+Schema Version
+Schema Schema Version
+Maintainer
+Customer Pod
+K8s StatefulSet Pod Name
+Tenant
+Webconsole
+Architecture
+Authoritative Source URL
+Build Date
+RH Build Host
+RH Component
+Distribution Scope
+Install
+Release
+Run
+Summary
+Uninstall
+VCS Ref
+VCS Type
+Vendor
+Version
+
+|Memory Anonymous Active
+Cache Active
+Cache
+Container ID
+Hierarchal Memory Limit
+Memory Anonymous Inactive
+Cache Inactive
+Memory Limit
+Memory Mapped
+Max Usage
+Page Faults
+Major Page Faults
+Paged In
+Paged Out
+Resident Set Size
+Resident Set Size Huge
+Total Memory Anonymous Active
+Total Cache Active
+Total Cache
+Total Memory Anonymous Inactive
+Total Cache Inactive
+Total Memory Mapped
+Total Page Faults
+Total Major Page Faults
+Total Paged In
+Total Paged Out
+Total Resident Set Size
+Total Resident Set Size Huge
+Total Unevictable
+Unevictable
+Total Usage
+Usage
+Exit Code
+OOM Killed
+PID
+Started At
+
+|Docker Container Disk
+
+|Namespace
+Container Name
+Device
+Docker Engine
+
+|K8s Container Hash
+K8s Container Ports
+K8s Container Restart Count
+K8s Container Termination Message Path
+K8s Container Termination Message Policy
+K8s Pod Termination Grace Period
+Container Image
+Container Status
+Container Version
+Node Name
+K8s Container Log Path
+K8s Container Name
+K8s Docker Type
+K8s Pod Name
+K8s Pod Namespace
+K8s Pod UID
+K8s Sandbox ID
+Node IP
+Node UUID
+Docker Version
+K8s Config Seen
+K8s Config Source
+OpenShift SCC
+K8s Description
+K8s Display Name
+OpenShift Tags
+Schema Schema Version
+Pod Template Hash
+Controller Revision Hash
+Pod Template Generation
+Kompose Service
+Schema Build Date
+Schema License
+Schema Name
+Schema Vendor
+Customer Pod
+K8s StatefulSet Pod Name
+Tenant
+Webconsole
+Build Date
+License
+Vendor
+Architecture
+Authoritative Source URL
+RH Build Host
+RH Component
+Distribution Scope
+Install
+Maintainer
+Release
+Run
+Summary
+Uninstall
+VCS Ref
+VCS Type
+Version
+Schema URL
+Schema VCS URL
+Schema Version
+Container ID
+
+|Service Recursive Async
+Service Recursive Read
+Service Recursive Sync
+Service Recursive Total
+Service Recursive Write
+Serviced Recursive Async
+Serviced Recursive Read
+Serviced Recursive Sync
+Serviced Recursive Total
+Serviced Recursive Write
+
+|Docker Container CPU
+
+|Namespace
+Container Name
+CPU
+Docker Engine
+
+|K8s Container Hash
+K8s Container Ports
+K8s Container Restart Count
+K8s Container Termination Message Path
+K8s Container Termination Message Policy
+K8s Pod Termination Grace Period
+K8s Config Seen
+K8s Config Source
+OpenShift SCC
+Container Image
+Container Status
+Container Version
+Node Name
+K8s Container Log Path
+K8s Container name
+K8s Docker Type
+K8s Pod Name
+K8s Pod Namespace
+K8s Pod UID
+K8s Sandbox ID
+Node IP
+Node UUID
+Docker Version
+K8s Description
+K8s Display Name
+OpenShift Tags
+Schema Version
+Pod Template Hash
+Controller Revision Hash
+Pod Template Generation
+Kompose Service
+Schema Build Date
+Schema License
+Schema Name
+Schema Vendor
+Customer Pod
+K8s StatefulSet Pod Name
+Tenant
+Webconsole
+Build Date
+License
+Vendor
+Architecture
+Authoritative Source URL
+RH Build Host
+RH Component
+Distribution Scope
+Install
+Maintainer
+Release
+Run
+Summary
+Uninstall
+VCS Ref
+VCS Type
+Version
+Schema URL
+Schema VCS URL
+Schema Version
+Container ID
+
+|Throttling Periods
+Throttling Throttled Periods
+Throttling Throttled Time
+Kernel Mode Usage
+User Mode Usage
+Usage Percentage
+Usage Total
+Usage Total
+|===
 
 == Troubleshooting
 

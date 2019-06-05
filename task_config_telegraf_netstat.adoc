@@ -20,9 +20,6 @@ summary: Netstat data collector configuration
 [.lead]
 Cloud Insights uses this data collector to gather Netstat metrics.
 
-NOTE: This topic is considered Preview documentation and is subject to change.
-
-
 == Installation 
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Netstat.
@@ -37,6 +34,22 @@ image:NetstatDCConfigWindows.png[Windows Netstat Configuration]
 
 == Setup
 
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+|Netstat
+
+|Node UUID
+
+|Node IP
+Node Name
+
+|
+|===
 
 == Troubleshooting
 
