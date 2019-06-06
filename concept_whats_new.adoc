@@ -18,6 +18,14 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== *June 2019*
+
+==== New Infrastructure Data Collector: NetApp HCI
+
+* link:task_dc_na_hci.html[NetApp HCI Virtual Center] has been added as an Infrastructure data collector. The HCI Virtual Center data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Virtual Center.
+
+Note that the HCI data collector acquires from the HCI Virtual Center only. To collect data from the storage system, you must also configure the NetApp link:task_dc_na_solidfire[SolidFire] data collector.
+
 === *May 2019*
 
 ==== New Service Data Collector: Kapacitor
