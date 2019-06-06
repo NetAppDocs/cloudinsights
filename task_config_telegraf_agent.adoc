@@ -232,13 +232,13 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 
 . Remove the Telegraf package:
 +
+ brew unpin telegraf
  brew remove telegraf
 
 . Remove any configuration or log files that may be left behind:
 +
  rm -rf /usr/local/etc/telegraf*
  rm -rf /usr/local/var/log/telegraf.*
-
 
 
 === Kubernetes
@@ -305,7 +305,7 @@ Some things to try if you encounter problems setting up an agent:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
-|I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. |
+|I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. 
 |I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
 |===
 
