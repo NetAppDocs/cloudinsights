@@ -194,13 +194,15 @@ Setup and Troubleshooting information can be found on the link:task_config_teleg
 
 == MacOS Memory Usage
 
-Cloud Insights and macOS report different numbers for memory usage. Both telegraf and the Mac activity monitor use metrics gathered from _vm_stat_, however the total memory usage is calculated differently for each. 
+Cloud Insights (via Telegraf) and macOS report different numbers for memory usage. Both Telegraf and the Mac activity monitor use metrics gathered from _vm_stat_, however the total memory usage is calculated differently for each. 
 
-Telegraf calculates _Memory Used Total_ as follows, where _Memory Available Total_ is derived from the sum of "Pages free" and "Pages inactive" in _vm_stat_: 
+*Telegraf* calculates _Memory Used Total_ as follows:
 
  Memory Used Total = Memory Total - Memory Available Total 
 
-Mac's activity monitor, on the other hand, calculates Memory Used as follows: 
+Where _Memory Available Total_ is derived from the sum of "Pages free" and "Pages inactive" in _vm_stat_.
+
+*Mac activity monitor*, on the other hand, calculates Memory Used as follows: 
 
  Memory Used = App Memory + Wired Memory + Compressed 
 
