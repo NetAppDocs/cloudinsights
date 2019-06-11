@@ -206,6 +206,8 @@ Where _Memory Available Total_ is derived from the sum of "Pages free" and "Page
 
  Memory Used = App Memory + Wired Memory + Compressed 
 
-Where _App Memory_ is derived from the difference between “Anonymous pages” and “Pages purgeable” in _vm_stat_,  
-_Wired Memory_ is derived from “Pages wired down” in _vm_stat_, and
-_Compressed_ is derived from “Pages occupied by compressor” in _vm_stat_.
+Where:
+
+* _App Memory_ is derived from the difference between “Anonymous pages” and “Pages purgeable” in _vm_stat_,  
+* _Wired Memory_ is derived from “Pages wired down” in _vm_stat_, and
+* _Compressed_ is derived from “Pages occupied by compressor” in _vm_stat_.
