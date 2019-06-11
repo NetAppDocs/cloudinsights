@@ -191,3 +191,23 @@ Packets Sent
 == Setup
 
 Setup and Troubleshooting information can be found on the link:task_config_telegraf_agent.html[Configuring an Agent] page.
+
+== MacOS Memory Usage
+
+Cloud Insights (via Telegraf) and macOS report different numbers for memory usage. Both Telegraf and the Mac activity monitor use metrics gathered from _vm_stat_, however the total memory usage is calculated differently for each. 
+
+*Telegraf* calculates _Memory Used Total_ as follows:
+
+ Memory Used Total = Memory Total - Memory Available Total 
+
+Where _Memory Available Total_ is derived from the sum of "Pages free" and "Pages inactive" in _vm_stat_.
+
+*The Mac activity monitor*, on the other hand, calculates Memory Used as follows: 
+
+ Memory Used = App Memory + Wired Memory + Compressed 
+
+Where:
+
+* _App Memory_ is derived from the difference between “Anonymous pages” and “Pages purgeable” in _vm_stat_,  
+* _Wired Memory_ is derived from “Pages wired down” in _vm_stat_, and
+* _Compressed_ is derived from “Pages occupied by compressor” in _vm_stat_.
