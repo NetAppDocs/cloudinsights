@@ -18,19 +18,19 @@ summary: Kubernetes data collector configuration
 [.lead]
 Cloud Insights uses this data collector to gather metrics from Kubernetes.
 
-NOTE: This topic is considered Preview documentation and is subject to change.
-
 == Installation
 
 TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Kubernetes.
 +
-If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
-+
-If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+Select the Operating System or Platform on which the Telegraf agent is installed. 
 
-. Follow the instructions in the Kubernetes Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for installing the Kubernetes data collector on the Kubernetes platform:
+. If you haven't already installed an Agent for collection, or you wish to install an Agent for a different Operating System or Platform, click _Show Instructions_ to expand the link:task_config_telegraf_agent.html[Agent installation] instructions.
+
+. Select the Agent Access Key for use with this data collector. You can add a new Agent Access Key by clicking the *+ Agent Access Key* button. Best practice: Use a different Agent Access Key only when you want to group data collectors, for example, by OS/Platform.
+
+. Follow the configuration steps to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. 
 
 image:KubernetesDCConfigKube.png[Kubernetes configuration]
 
@@ -115,6 +115,69 @@ To create the required access token file, run the following:
 
 By default, the Kubernetes input plugin configuration provided by CloudInsights is set up to look for the required access token file in the location used above. After performing the steps above, restart the Telegraf agent for the changes to take effect.
 
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|K8s Container
+
+|Namespace
+Pod
+Container
+Cluster
+
+|K8s Node
+
+|CPU Nanoseconds
+Memory Major Page Faults
+Memory Resident Set Size (RSS)
+Memory Working Set
+Root Filesystem Available
+Root Filesystem Capacity
+Root Filesystem Used
+
+|K8s Node
+
+|K8s Node
+Cluster
+
+|
+|CPU Used Nanocores
+CPU Used Nanoseconds
+Filesystem Available
+Filesystem Total
+Filesystem Used
+Memory Available
+Memory Major Page Faults
+Memory Page Faults
+Memory Resident Set Size (RSS)
+Memory Working Set
+Network RX Errors (per sec)
+Network RX Bytes (per sec)
+Network TX Errors (per sec)
+Network TX Bytes (per sec)
+Image Filesystem Available
+Image Filesystem Used
+
+|K8s Pod
+
+|Namespace
+Pod
+Cluster
+
+|K8s Node
+Node Name
+Node IP
+
+|Network TX Bytes (per sec)
+Network TX Errors (per sec)
+Network RX Bytes (per sec)
+Network RX Errors (per sec)
+|===
 
 == Troubleshooting
 
@@ -142,6 +205,11 @@ If there are errors related to SecurityContextConstraints, do the following:
 3. Create the necessary SecurityContextConstraint (see "Configuring Agent to Collect Data" section)
 
 4. Re-create the Telegraf DaemonSet
+|I configured Telegraf to obtain information about my Kubernetes cluster, but I don't see any information in Cloud Insights. I see "invalid header field value" errors in the Telegraf log file pertaining to the kubernetes input plugin I configured. 
+|Ensure the referenced bearer_token file does not have a trailing newline. To verify, run the following command, and confirm that it returns 0: 
+
+ tail -c1 <bearer_token_file> |wc -l
+ 
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page.

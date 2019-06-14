@@ -20,8 +20,6 @@ summary: Apache data collector configuration
 [.lead]
 This data collector allows collection of data from Apache servers in your environment.
 
-NOTE: This topic is considered Preview documentation and is subject to change.
-
 .Pre-requisites
 
 * You must have your Apache HTTP Server set up and properly running
@@ -32,11 +30,13 @@ NOTE: This topic is considered Preview documentation and is subject to change.
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Apache.
 +
-If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
-+
-If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+Select the Operating System or Platform on which the Telegraf agent is installed. 
 
-. Follow the instructions in the Apache Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
+. If you haven't already installed an Agent for collection, or you wish to install an Agent for a different Operating System or Platform, click _Show Instructions_ to expand the link:task_config_telegraf_agent.html[Agent installation] instructions.
+
+. Select the Agent Access Key for use with this data collector. You can add a new Agent Access Key by clicking the *+ Agent Access Key* button. Best practice: Use a different Agent Access Key only when you want to group data collectors, for example, by OS/Platform.
+
+. Follow the configuration steps to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. 
 
 image:ApacheDCConfigLinux.png[Apache configuration]
 
@@ -82,6 +82,62 @@ ExtendedStatus On
 ----
 
 For detailed instructions on the 'mod_status' module, see the link:https://httpd.apache.org/docs/2.4/mod/mod_status.html#enable[Apache documentation]
+
+== Objects and Counters
+
+The following objects and their counters are collected:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|Apache
+
+|Namespace
+Server
+
+|Node IP
+Node Name
+Port
+Parent Server Config Generation
+Parent Server MPM Generation
+Server Uptime
+Is Stopping
+
+|Busy Workers
+Bytes per Request
+Bytes per Second
+CPU Children System
+CPU Children User
+CPU Load
+CPU System
+CPU User
+Asynchronous Connections Closing
+Asynchronous Connections Keep Alive
+Asynchronous Connections Writing
+Connections Total
+Duration per Request
+Idle Workers
+Load Average (last 1m)
+Load Average (last 15m)
+Load Average (last 5m)
+Processes
+Requests per Second
+Total Accesses
+Total Duration
+Total KBytes
+Scoreboard Closing
+Scoreboard DNS Lookups
+Scoreboard Finishing
+Scoreboard Idle Cleanup
+Scoreboard Keep Alive
+Scoreboard Logging
+Scoreboard Open
+Scoreboard Reading
+Scoreboard Sending
+Scoreboard Starting
+Scoreboard Waiting
+|===
 
 
 == Troubleshooting

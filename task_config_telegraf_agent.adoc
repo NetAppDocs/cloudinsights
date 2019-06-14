@@ -19,7 +19,7 @@ summary:
 [.lead]
 Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.8/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights. 
 
-NOTE: This topic is considered Preview documentation and is subject to change.
+//NOTE: This topic is considered Preview documentation and is subject to change.
 
 == Installing an Agent
 
@@ -48,27 +48,24 @@ To install an agent, regardless of the platform you are using, you must first do
 
 NOTE: Once you have installed an agent on a host, you do not need to install an agent again on that host. 
 
+TIP: Once you have installed an agent on a server/VM, Cloud Insights collects metrics from that system in addition to collecting from any data collectors you configure. These metrics are gathered as link:task_config_telegraf_node.html["Node" metrics].
 
 === Windows
-To install the agent on a Windows host, you first install the agent software and then customize the configuration file as needed. 
-
 image:AgentInstallWindows.png[Windows Agent Install]
 
 .Pre-requisites:
 
 * PowerShell must be installed
-* You must have at least one Agent Access Key configured
 
 .Steps to install agent on Windows:
 
 . If prompted, select Windows from the Platform drop-down.
 . Choose an Agent Access Key.
-. If you have not already installed an agent on this host:
-.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a PowerShell window 
-.. Paste the command into the PowerShell window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. In you have already installed an agent on this host, you can skip the previous step.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a PowerShell window 
+. Paste the command into the PowerShell window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 
@@ -77,7 +74,7 @@ After the agent is installed, you can use the following commands to start/stop t
   Start-Service telegraf
   Stop-Service telegraf
 
-====Uninstalling the Agent
+==== Uninstalling the Agent
 
 To uninstall the agent on Windows, do the following in a PowerShell window:
 
@@ -91,23 +88,21 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
 
 === RHEL and CentOS
 
-.Steps to install agent on RHEL/CentOS:
-
 image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 
 .Pre-requisites:
 
 * The following commands must be available: curl, sudo, ping, and dmidecode
-* You must have at least one Agent Access Key configured
+
+.Steps to install agent on RHEL/CentOS:
 
 . If prompted, select RHEL/CentOS from the Platform drop-down.
 . Choose an Agent Access Key.
-. If you have not already installed an agent on this host:
-.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a Bash window 
-.. Paste the command into the Bash window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. In you have already installed an agent on this host, you can skip the previous step.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a Bash window 
+. Paste the command into the Bash window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
@@ -144,23 +139,21 @@ To uninstall the agent on RHEL/CentOS, in a Bash terminal, do the following:
 
 === Ubuntu and Debian
 
-.Steps to install agent on Debian or Ubuntu:
-
 image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 
 .Pre-requisites:
 
 * The following commands must be available: curl, sudo, ping, and dmidecode
-* You must have at least one Agent Access Key configured
+
+.Steps to install agent on Debian or Ubuntu:
 
 . If prompted, select Ubuntu/Debian from the Platform drop-down.
 . Choose an Agent Access Key.
-. If you have not already installed an agent on this host:
-.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a Bash window 
-.. Paste the command into the Bash window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. In you have already installed an agent on this host, you can skip the previous step.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a Bash window 
+. Paste the command into the Bash window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
@@ -195,44 +188,52 @@ To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
  rm -rf /var/log/telegraf*
 
 
-
 === macOS
-.Steps to install agent on macOS:
 
 image:AgentInstallMacOS.png[MacOS Agent Install]
 
 .Pre-requisites:
 
 * The "curl" command must be available
-* You must have at least one Agent Access Key configured
+
+.Steps to install agent on macOS:
 
 . If prompted, select macOS from the Platform drop-down.
 . Choose an Agent Access Key.
-. If you have not already installed an agent on this host:
-.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a Bash window 
-.. Paste the command into the Bash window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. In you have already installed an agent on this host, you can skip the previous step.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a Bash window 
+. Paste the command into the Bash window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 5 above.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
 
- brew services start telegraf
- brew services stop telegraf
-
+ sudo launchctl start telegraf
+ sudo launchctl stop telegraf
 
 ==== Uninstalling the Agent
 
 To uninstall the agent on macOS, in a Bash terminal, run the following:
 
+
 . Stop the Telegraf service using the following command:
 +
- brew services stop telegraf
+ sudo launchctl stop telegraf
 
+////
 . Remove the Telegraf package:
 +
+ brew unpin telegraf
  brew remove telegraf
+////
+
+. Copy the Uninstall command to /tmp and execute it:
+
+ cp /Applications/telegraf.app/scripts/uninstall /tmp
+ 
+ sudo /tmp/uninstall
+
 
 . Remove any configuration or log files that may be left behind:
 +
@@ -240,29 +241,20 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
  rm -rf /usr/local/var/log/telegraf.*
 
 
-
 === Kubernetes
-.Steps to install agent on Kubernetes:
-
 image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
 .Pre-requisites:
 
 * The following commands must be available: curl and sudo
-* You must have at least one Agent Access Key configured
 
-The following commands must be available: curl, sudo
-
-. If prompted, select macOS from the Platform drop-down.
-. Choose an Agent Access Key.
 . If prompted, select Kubernetes from the Platform drop-down.
 . Choose an Agent Access Key.
-. If you have not already installed an agent on this host:
-.. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-.. Open a Bash window 
-.. Paste the command into the Bash window and press Enter.
-.. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. In you have already installed an agent on this host, you can skip the previous step.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a Bash window 
+. Paste the command into the Bash window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands:
@@ -309,7 +301,7 @@ Some things to try if you encounter problems setting up an agent:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
-|I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. |
+|I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. 
 |I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
 |===
 
