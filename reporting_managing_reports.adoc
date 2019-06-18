@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: reporting_managing_reports.html
+summary: Customizing report output and delivery, copying reports to the clipboard, opening reports (XML).
+keywords: reporting, cognos, data warehouse, dwh, managing, customizing, copying
+---
+
+= Managing Reports
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+For each report, you can select the More link in the Actions column, and access all of the report operations, such as setting report properties, scheduling reports, or emailing reports. Administrators have more management options available than other users.
+
+=== Customizing a report's output format and delivery
+You can customize the format and delivery method of reports.
+
+.Steps
+
+. Open the OnCommand Insight Reporting Portal and select the report you want to customize and click *[...]*.
+
+image:ReportCustomizationMenu.png[Report Customization Menu]
+
+. Click Properties > Schedule
+
+image:ReportSchedule.png[Scheduling a Report]
+
+. You can set the following options:
+** Schedule when you want reports to run.
+** Format the report output.
+** Delivery: print, save, or email the report.
+** Languages define the language the report is delivered in.
+
+. Click *Create* to produce the report using the selections you made.
