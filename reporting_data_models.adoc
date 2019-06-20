@@ -55,18 +55,21 @@ If you are new to capacity reporting, you should start with this data model beca
 
 ==== File System Utilization data model
 Enables you to answer questions about file system utilization. This data model provides visibility about capacity utilization by hosts at the file system level. Administrators can determine allocated and used capacity per file system, determine the type of file system, and identify trending statistics by file system type. You can answer the following questions using this data model:
+
 * What is the size of the file system?
 * Where is the data kept and how is it accessed, for example, local or SAN?
 * What are the historical trends for the file system capacity? Then, based on this, what can we anticipate for future needs?
 
 ====  Internal Volume Capacity data model
 Enables you to answer questions about internal volume used capacity, allocated capacity, and capacity usage over time:
+
 * Which internal volumes have a utilization higher than a predefined threshold?
 * Which internal volumes are in danger of running out of capacity based on a trend?
 * What is the used capacity versus the allocated capacity on our internal volumes?
 
 ==== Port Capacity data model
 Enables you to answer questions about switch port connectivity, port status, and port speed over time. You can answer questions similar the following to help you plan for purchases of new switches:
+
 * How can I create a port consumption forecast that predicts resource (port) availability (according to data center, switch vendor and port speed)?
 * Which ports are likely to run out of capacity, providing data speed, data center, vendor and number of Host and storage ports?
 * What are the switch port capacity trends over time?
@@ -76,6 +79,7 @@ Enables you to answer questions about switch port connectivity, port status, and
 
 ==== Qtree Capacity data model
 Enables you to trend qtree utilization (with data such as used versus allocated capacity) over time. You can view the information by different dimensions—for example, by business entity, application, tier, and service level. You can answer the following questions using this data model:
+
 * What is the used capacity for qtrees versus the limits set per application or business entity?
 * What are the trends of our used and free capacity so that we can do capacity planning?
 * Which business entities are using the most capacity?
@@ -83,6 +87,7 @@ Enables you to trend qtree utilization (with data such as used versus allocated 
 
 ==== VM Capacity data model
 Enables you to report your virtual environment and its capacity usage. This data model lets you report on changes in capacity usage over time for VMs and data stores. The data model also provides thin provisioning and virtual machine chargeback data.
+
 * How can I determine capacity chargeback based on capacity provisioned to VMs and data stores?
 * What capacity is not used by VMs and which portion of unused is free, orphaned, or other?
 * What do we need to purchase based on consumption trends?
@@ -91,6 +96,7 @@ Capacities in the VM Capacity data model are taken from virtual disks (VMDKs). T
 
 ==== Volume Capacity data model
 Enables you to analyze all aspects of the volumes in your environment and organize data by vendor, model, tier, service level, and data center. You can view the capacity related to orphaned volumes, unused volumes, and protection volumes (used for replication). You can also see different volume technologies (iSCSI or FC), and compare virtual volumes to non-virtual volumes for array virtualization issues. You can answer questions similar to the following with this data model:
+
 * Which volumes have a utilization higher than a predefined threshold?
 * What is the trend in my data center for orphan volume capacity?
 * How much of my data center capacity is virtualized or thin provisioned?
@@ -115,6 +121,7 @@ Reports using the Chargeback data model might display different values than thos
 
 === Inventory data model
 Enables you to answer questions about inventory resources including hosts, storage systems, switches, disks, tapes, qtrees, quotas, virtual machines and servers, and generic devices. The Inventory data model includes several submarts that enable you to view information about replications, FC paths, iSCSI paths, NFS paths, and violations. The Inventory data model does not include historical data. Questions you can answer with this data mart could include the following:
+
 * What assets do I have and where are they?
 * Who is using the assets?
 * What types of devices do I have and what are components of those devices?
@@ -132,6 +139,7 @@ Enables you to answer questions about inventory resources including hosts, stora
 
 === Performance data model
 Enables you to answer questions about performance for volumes, application volumes, internal volumes, switches, applications, VMs, VMDKs, ESX versus VM, hosts, and application nodes. Using this data model, you can create reports that answer several types of performance management questions:
+
 * What volumes or internal volumes have not been used or accessed during a specific period?
 * Can we pinpoint any potential misconfiguration for storage for an application (unused)?
 * What was the overall access behavior pattern for an application?
@@ -139,6 +147,7 @@ Enables you to answer questions about performance for volumes, application volum
 * Could we use cheaper storage for an application currently running without impact to application performance?
 * What are the applications that are producing more accesses to currently configured storage?
 When you use the switch performance tables, you can obtain the following information:
+
 * Is my host traffic through connected ports balanced?
 * Which switches or ports are exhibiting a high number of errors?
 * What are the most used switches based on port performance?
@@ -148,6 +157,7 @@ When you use the switch performance tables, you can obtain the following informa
 * Which devices are producing traffic on a specific switch (for example, which devices are responsible for use of a highly utilized switch)?
 * What is the throughput for a specific business unit in our environment?
 When you use the disk performance tables, you can obtain the following information:
+
 * What is the throughput for a specified storage pool based on disk performance data?
 * What is the highest used storage pool?
 * What is the average disk utilization for a specific storage?
@@ -161,6 +171,7 @@ The Performance data model includes information that helps you determine the app
 
 === Storage Efficiency data model
 Enables you to track the storage efficiency score and potential over time. This data model stores measurements of not only the provisioned capacity, but also the amount that is used or consumed (the physical measurement). For example, when thin provisioning is enabled, OnCommand Insight indicates how much capacity is taken from the device. You can also use this model to determine efficiency when deduplication is enabled. You can answer various questions using the Storage Efficiency data mart:
+
 * What is our storage efficiency savings as a result of implementing thin provisioning and deduplication technologies?
 * What are the storage savings across data centers?
 * Based on historical capacity trends, when do we need to purchase additional storage?
