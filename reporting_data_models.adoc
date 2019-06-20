@@ -42,6 +42,7 @@ Enables you to answer questions about storage capacity, file system utilization,
 
 ==== Storage and Storage Pool Capacity data model
 Enables you to answer questions about storage capacity resource planning, including storage and storage pools, and includes both physical and virtual storage pool data. This simple data model can help you answer questions related to capacity on the floor and the capacity usage of storage pools by tier and data center over time.
+
 If you are new to capacity reporting, you should start with this data model because it is a simpler, targeted data model. You can answer questions similar to the following using this data model:
 
 * What is the projected date for reaching the capacity threshold of 80% of my physical storage?
@@ -92,6 +93,7 @@ Enables you to report your virtual environment and its capacity usage. This data
 * What capacity is not used by VMs and which portion of unused is free, orphaned, or other?
 * What do we need to purchase based on consumption trends?
 * What are my storage efficiency savings achieved by using storage thin provisioning and deduplication technologies?
+
 Capacities in the VM Capacity data model are taken from virtual disks (VMDKs). This means that the provisioned size of a VM using the VM Capacity data model is the size of its virtual disks. This is different from the provisioned capacity in the Virtual Machines view in OnCommand Insight, which shows the provisioned size for the VM itself.
 
 ==== Volume Capacity data model
@@ -104,6 +106,7 @@ Enables you to analyze all aspects of the volumes in your environment and organi
 
 === Chargeback data model
 Enables you to answer questions about used capacity and allocated capacity on storage resources (volumes, internal volumes, and qtrees). This data model provides storage capacity chargeback and accountability information by hosts, application, and business entities, and includes both current and historical data. Report data can be categorized by service level and storage tier.
+
 You can use this data model to generate chargeback reports by finding the amount of capacity that is used by a business entity. This data model enables you to create unified reporting of multiple protocols (including NAS, SAN, FC, and iSCSI).
 
 * For storage without internal volumes, chargeback reports show chargeback by volumes.
@@ -112,6 +115,7 @@ You can use this data model to generate chargeback reports by finding the amount
 ** If business entities are not assigned to volumes but assigned to qtrees, chargeback reports show chargeback by qtrees.
 ** If business entities are not assigned to volumes and not assigned to qtrees, chargeback reports show the internal volume.
 ** The decision whether to show chargeback by volume, qtree or internal volume is made per each internal volume, so it is possible for different internal volumes in the same storage pool to show chargeback at different levels.
+
 Capacity facts are purged after a default time interval. For details, see Data Warehouse processes.
 
 Reports using the Chargeback data model might display different values than those reports using the Storage Capacity data model.
@@ -146,6 +150,7 @@ Enables you to answer questions about performance for volumes, application volum
 * Are tiered volumes assigned appropriately for a given application?
 * Could we use cheaper storage for an application currently running without impact to application performance?
 * What are the applications that are producing more accesses to currently configured storage?
+
 When you use the switch performance tables, you can obtain the following information:
 
 * Is my host traffic through connected ports balanced?
@@ -156,6 +161,7 @@ When you use the switch performance tables, you can obtain the following informa
 * What is the performance utilization for last X days for one specified host, storage system, tape, or switch?
 * Which devices are producing traffic on a specific switch (for example, which devices are responsible for use of a highly utilized switch)?
 * What is the throughput for a specific business unit in our environment?
+
 When you use the disk performance tables, you can obtain the following information:
 
 * What is the throughput for a specified storage pool based on disk performance data?
@@ -167,6 +173,7 @@ When you use the disk performance tables, you can obtain the following informati
 * Is my virtual environment performing optimally?
 * Which VMDKs are reporting the highest workloads?
 * How can I use the performance reported from VMDs mapped to different datastores to make decisions about re-tiering.
+
 The Performance data model includes information that helps you determine the appropriateness of tiers, storage misconfigurations for applications, and last access times of volumes and internal volumes. This data model provides data such as response times, IOPs, throughput, number of writes pending, and accessed status.
 
 === Storage Efficiency data model
