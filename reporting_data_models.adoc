@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: reporting_data_models.html
-summary: Using the data models provided with OnCommand Insight Reporting, you can use report authoring tools to design and schedule reports.
+summary: Using the data models provided with Cloud Insights Reporting, you can use report authoring tools to design and schedule reports.
 keywords: reporting, cognos, data warehouse, dwh, data model
 ---
 
@@ -177,7 +177,7 @@ When you use the disk performance tables, you can obtain the following informati
 The Performance data model includes information that helps you determine the appropriateness of tiers, storage misconfigurations for applications, and last access times of volumes and internal volumes. This data model provides data such as response times, IOPs, throughput, number of writes pending, and accessed status.
 
 === Storage Efficiency data model
-Enables you to track the storage efficiency score and potential over time. This data model stores measurements of not only the provisioned capacity, but also the amount that is used or consumed (the physical measurement). For example, when thin provisioning is enabled, OnCommand Insight indicates how much capacity is taken from the device. You can also use this model to determine efficiency when deduplication is enabled. You can answer various questions using the Storage Efficiency data mart:
+Enables you to track the storage efficiency score and potential over time. This data model stores measurements of not only the provisioned capacity, but also the amount that is used or consumed (the physical measurement). For example, when thin provisioning is enabled, Cloud Insights indicates how much capacity is taken from the device. You can also use this model to determine efficiency when deduplication is enabled. You can answer various questions using the Storage Efficiency data mart:
 
 * What is our storage efficiency savings as a result of implementing thin provisioning and deduplication technologies?
 * What are the storage savings across data centers?
