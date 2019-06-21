@@ -94,7 +94,7 @@ Enables you to report your virtual environment and its capacity usage. This data
 * What do we need to purchase based on consumption trends?
 * What are my storage efficiency savings achieved by using storage thin provisioning and deduplication technologies?
 
-Capacities in the VM Capacity data model are taken from virtual disks (VMDKs). This means that the provisioned size of a VM using the VM Capacity data model is the size of its virtual disks. This is different from the provisioned capacity in the Virtual Machines view in OnCommand Insight, which shows the provisioned size for the VM itself.
+Capacities in the VM Capacity data model are taken from virtual disks (VMDKs). This means that the provisioned size of a VM using the VM Capacity data model is the size of its virtual disks. This is different from the provisioned capacity in the Virtual Machines view in Cloud Insights, which shows the provisioned size for the VM itself.
 
 ==== Volume Capacity data model
 Enables you to analyze all aspects of the volumes in your environment and organize data by vendor, model, tier, service level, and data center. You can view the capacity related to orphaned volumes, unused volumes, and protection volumes (used for replication). You can also see different volume technologies (iSCSI or FC), and compare virtual volumes to non-virtual volumes for array virtualization issues. You can answer questions similar to the following with this data model:
@@ -121,7 +121,7 @@ Capacity facts are purged after a default time interval. For details, see Data W
 Reports using the Chargeback data model might display different values than those reports using the Storage Capacity data model.
 
 * For storage arrays that are not NetApp storage systems, the data from both data models is the same.
-* For NetApp and Celerra storage systems, the Chargeback data model uses a single layer (of volumes, internal volumes, or qtrees) to base its charges, while the Storage Capacity data model uses multiple layers (of volumes and internal volumes) to base its charges.
+* For NetApp and Dell/EMC VNX storage systems, the Chargeback data model uses a single layer (of volumes, internal volumes, or qtrees) to base its charges, while the Storage Capacity data model uses multiple layers (of volumes and internal volumes) to base its charges.
 
 === Inventory data model
 Enables you to answer questions about inventory resources including hosts, storage systems, switches, disks, tapes, qtrees, quotas, virtual machines and servers, and generic devices. The Inventory data model includes several submarts that enable you to view information about replications, FC paths, iSCSI paths, NFS paths, and violations. The Inventory data model does not include historical data. Questions you can answer with this data mart could include the following:
