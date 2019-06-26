@@ -497,5 +497,27 @@ You can easily duplicate an existing dashboard from the dashboard page itself or
 * To duplicate a dashboard from the list page, click the "three dots" menu to the right of the dashboard and select *Duplicate*. The dashboard is created with the current dashboard name appended with "copy", "copy 2", etc. 
 ////
 
+== Auto-Refresh and TV Mode
 
+=== Auto-Refresh
+
+Dashboards are configured to automatically refresh widgets at a time interval determined by the Dashboard Time Range selected. By default, the dashboard time range is 24 hours, which corresponds to an auto-refresh interval of five minutes.
+
+Additional refresh rates based on selected dashboard time ranges:
+
+|==
+|Dashboard Time Range|Auto-Refresh Interval
+|3 Hours|1 Minute
+|24 Hours|5 Minutes
+|3 days|10 Minutes
+|7 days|1 Hour 
+|30 days|1 Hour 
+|Custom Time Range|No Auto-Refresh
+|===
+
+Note that Cloud Insights polls data collectors at intervals that may not correspond to the auto-refresh interval, so dashboard widgets may not reflect changes immediately. For example, most infrastructure data collectors poll their devices at 15-minute intervals. If your auto-refresh interval is 5 minutes, widgets may not show data changes for up to three auto-refresh intervals.
+
+To paus automatic widget refreshing, click the *Pause* button. 
+
+== TV Mode
 
