@@ -16,11 +16,11 @@ summary: Kubernetes data collector configuration
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights uses this data collector to gather metrics from Kubernetes.
+Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Container metrics. You can expand collection to include StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress by <<Installing the kube-state-metrics server>>. 
 
 == Installation
 
-TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.
+TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.   
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Kubernetes.
 +
@@ -130,7 +130,7 @@ Pod
 Container
 Cluster
 
-|K8s Node
+|Kubernetes Node
 
 |CPU Nanoseconds
 Memory Major Page Faults
@@ -140,9 +140,9 @@ Root Filesystem Available
 Root Filesystem Capacity
 Root Filesystem Used
 
-|K8s Node
+|Kubernetes Node
 
-|K8s Node
+|Kubernetes Node
 Cluster
 
 |
@@ -163,13 +163,13 @@ Network TX Bytes (per sec)
 Image Filesystem Available
 Image Filesystem Used
 
-|K8s Pod
+|Kubernetes Pod
 
 |Namespace
 Pod
 Cluster
 
-|K8s Node
+|Kubernetes Node
 Node Name
 Node IP
 
@@ -178,6 +178,26 @@ Network TX Errors (per sec)
 Network RX Bytes (per sec)
 Network RX Errors (per sec)
 |===
+
+== Installing the kube-state-metrics server
+
+When you install the kube-state-metrics server you can enable colletction of the following KuberStatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress. 
+
+Use the following steps to install the kube-state-metrics server:
+
+.Steps
+
+. Copy the yaml files from https://github.com/kubernetes/kube-state-metrics/tree/master/kubernetes
+
+. 
+
+
+
+
+
+
+
+
 
 == Troubleshooting
 
