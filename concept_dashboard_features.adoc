@@ -517,7 +517,16 @@ Additional refresh rates based on selected dashboard time ranges:
 
 Note that Cloud Insights polls data collectors at intervals that may not correspond to the auto-refresh interval, so dashboard widgets may not reflect changes immediately. For example, most infrastructure data collectors poll their devices at 15-minute intervals. If your auto-refresh interval is 5 minutes, widgets may not show data changes for up to three auto-refresh intervals.
 
-To paus automatic widget refreshing, click the *Pause* button. 
+To pause automatic dashboard refreshing, click the *Pause* button. 
+
+Auto-Refresh will occur for every widget based on the chosen interval, regardless of whether that widget is configured to override dashboard time.
 
 == TV Mode
+TV Mode allows Cloud Insights to display a dashboard or landing page on screen indefinitely. Combined with Auto-Refresh, this allows constant, near-real-time display of data.
 
+To enable TV Mode, click the *TV Mode* button image:tvmodebutton.png[TV Mode Button]. With TV Mode enabled, the following changes occur:
+
+* The left-side Cloud Insights navigation menu is hidden.
+* A button is displayed in the upper-left corner of the display that, when clicked, disabled TV Mode and returns the navigation menu.
+* The dashboard and widgets cannot be edited
+* If Auto-Refresh is enabled (which is the default state), the dashboard widgets will refresh at the specified refresh interval as noted above.
