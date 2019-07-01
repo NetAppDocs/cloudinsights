@@ -32,7 +32,8 @@ Select the Operating System or Platform on which the Telegraf agent is installed
 
 . Follow the configuration steps to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. 
 
-image:KubernetesDCConfigKube.png[Kubernetes configuration]
+//image:KubernetesDCConfigKube.png[Kubernetes configuration]
+image:kubernetesdatacollectorConfig.png[Kubernetes Configuration]
 
 == Setup
 The Telegraf input plugin for Kubernetes collects metrics through the /stats/summary endpoint of the kubelet REST API.
@@ -133,9 +134,12 @@ Cluster
 |Kubernetes Node
 
 |CPU Nanoseconds
+CPU Usage Nanocores
 Memory Major Page Faults
 Memory Resident Set Size (RSS)
 Memory Working Set
+Memory Page Faults
+Memory Usage
 Root Filesystem Available
 Root Filesystem Capacity
 Root Filesystem Used
@@ -152,6 +156,7 @@ Filesystem Available
 Filesystem Total
 Filesystem Used
 Memory Available
+Memory Usage 
 Memory Major Page Faults
 Memory Page Faults
 Memory Resident Set Size (RSS)
@@ -160,8 +165,9 @@ Network RX Errors (per sec)
 Network RX Bytes (per sec)
 Network TX Errors (per sec)
 Network TX Bytes (per sec)
-Image Filesystem Available
-Image Filesystem Used
+Runtime Image Filesystem Available
+Runtime Image Filesystem Used
+Runtime Image Filesystem Capacity 
 
 |Kubernetes Pod
 
