@@ -106,7 +106,7 @@ To manually generate the Kubernetes access token, run the following in a Bash sh
 
 To verify that the access token works as needed, run the following to confirm the kubelet API is accessible:
 
- curl -v -X GET -H "Authorization: Bearer $TOKEN" https://10.197.122.81:10250/stats/summary
+ curl -v -X GET -H "Authorization: Bearer $TOKEN" https://<KUBELET_ADDRESS>:<KUBELET_PORT>/stats/summary
 
 To create the required access token file, run the following:
 
@@ -193,16 +193,11 @@ Use the following steps to install the kube-state-metrics server:
 
 .Steps
 
-. Copy the yaml files from https://github.com/kubernetes/kube-state-metrics/tree/master/kubernetes
+. Create a temporary folder (for example, _/tmp/kube-state-yaml-files/_) and copy the .yaml files from https://github.com/kubernetes/kube-state-metrics/tree/master/kubernetes to this folder. 
 
-. 
+. Run the following command to apply the .yaml files needed for installing kube-state-metrics:
 
-
-
-
-
-
-
+ kubectl apply -f /tmp/kube-state-yaml-files/
 
 
 == Troubleshooting
