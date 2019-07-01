@@ -65,7 +65,7 @@ image:AgentInstallWindows.png[Windows Agent Install]
 . Open a PowerShell window 
 . Paste the command into the PowerShell window and press Enter.
 . The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you have already installed an agent on this host, you can skip the previous step.
+// . If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 
@@ -102,7 +102,7 @@ image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 . Open a Bash window 
 . Paste the command into the Bash window and press Enter.
 . The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you have already installed an agent on this host, you can skip the previous step.
+// . If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
@@ -153,7 +153,7 @@ image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 . Open a Bash window 
 . Paste the command into the Bash window and press Enter.
 . The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you have already installed an agent on this host, you can skip the previous step.
+// . If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
@@ -248,13 +248,15 @@ image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
 * The following commands must be available: curl and sudo
 
+.Steps to install agent on Kubernetes:
+
 . If prompted, select Kubernetes from the Platform drop-down.
 . Choose an Agent Access Key.
 . Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
 . Open a Bash window 
 . Paste the command into the Bash window and press Enter.
 . The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you have already installed an agent on this host, you can skip the previous step.
+// . If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, run the following commands to ensure proper collection of data:
