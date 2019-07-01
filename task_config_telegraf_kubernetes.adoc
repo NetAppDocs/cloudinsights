@@ -105,7 +105,7 @@ To manually generate the Kubernetes access token, run the following in a Bash sh
 
 To verify that the access token works as needed, run the following to confirm the kubelet API is accessible:
 
- curl -v -X GET -H "Authorization: Bearer $TOKEN" https://10.197.122.81:10250/stats/summary
+ curl -v -X GET -H "Authorization: Bearer $TOKEN" https://<KUBELET_ADDRESS>:<KUBELET_PORT>/stats/summary
 
 To create the required access token file, run the following:
 
