@@ -259,13 +259,11 @@ image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 // . If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
-After the agent is installed, run the following commands to ensure proper collection of data:
-
-Generate the Telegraf DaemonSet YAML:
+After the agent is installed, generate the Telegraf DaemonSet YAML:
 
  kubectl --namespace monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml
- 
-Stop and Start the Telegraf service:
+
+You can use the following commands to stop and start the Telegraf service:
 
  kubectl --namespace monitoring delete ds telegraf-ds
  kubectl --namespace monitoring apply -f /tmp/telegraf-ds.yaml 
@@ -291,7 +289,7 @@ Delete the Telegraf ConfigMap and ServiceAccount:
  kubectl --namespace monitoring delete cm telegraf-conf 
  kubectl --namespace monitoring delete sa telegraf-user 
  
-Delete the Telegraf ClusterRole and ClusterERolebinding:
+Delete the Telegraf ClusterRole and ClusterRolebinding:
 
  kubectl --namespace monitoring delete clusterrole endpoint-access 
  kubectl --namespace monitoring delete clusterrolebinding endpoint-access 
