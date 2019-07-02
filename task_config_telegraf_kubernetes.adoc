@@ -124,14 +124,14 @@ The following objects and their counters are collected:
 |===
 |Object:|Identifiers:|Attributes: |Datapoints:
 
-|K8s Container
+|Kubernetes Container
 
 |Namespace
 Pod
 Container
 Cluster
 
-|K8s Node
+|Kubernetes Node
 
 |CPU Nanoseconds
 CPU Usage Nanocores
@@ -144,9 +144,9 @@ Root Filesystem Available
 Root Filesystem Capacity
 Root Filesystem Used
 
-|K8s Node
+|Kubernetes Node
 
-|K8s Node
+|Kubernetes Node
 Cluster
 
 |
@@ -169,13 +169,13 @@ Runtime Image Filesystem Available
 Runtime Image Filesystem Used
 Runtime Image Filesystem Capacity 
 
-|K8s Pod
+|Kubernetes Pod
 
 |Namespace
 Pod
 Cluster
 
-|K8s Node
+|Kubernetes Node
 Node Name
 Node IP
 
@@ -183,6 +183,21 @@ Node IP
 Network TX Errors (per sec)
 Network RX Bytes (per sec)
 Network RX Errors (per sec)
+
+|Kubernetes Pod Volume
+|Volume
+Pod
+Cluster
+Namespace
+|Kubernetes Node
+Node Name
+Node UUID
+Node IP
+Node OS
+|Available
+Capacity
+Used
+
 |===
 
 == Installing the kube-state-metrics server
