@@ -132,6 +132,11 @@ Container
 Cluster
 
 |Kubernetes Node
+Node Name
+Node OS
+Node UUID
+Node IP
+
 
 |CPU Nanoseconds
 CPU Usage Nanocores
@@ -149,7 +154,11 @@ Root Filesystem Used
 |Kubernetes Node
 Cluster
 
-|
+|Node Name
+Node OS
+Node UUID
+Node IP
+
 |CPU Used Nanocores
 CPU Used Nanoseconds
 Filesystem Available
@@ -178,6 +187,8 @@ Cluster
 |Kubernetes Node
 Node Name
 Node IP
+Node OS
+Node UUID
 
 |Network TX Bytes (per sec)
 Network TX Errors (per sec)
@@ -194,6 +205,7 @@ Node Name
 Node UUID
 Node IP
 Node OS
+
 |Available
 Capacity
 Used
