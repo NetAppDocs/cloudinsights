@@ -16,21 +16,21 @@ summary: Kubernetes data collector configuration
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Container metrics. You can expand collection to include StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress by <<Installing the kube-state-metrics server>>. 
+Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Container metrics. 
+
+// You can expand collection to include StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress by <<Installing the kube-state-metrics server>>. 
 
 == Installation
 
-TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.   
+TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Kubernetes.
 +
-Select the Operating System or Platform on which the Telegraf agent is installed. 
+If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
 
-. If you haven't already installed an Agent for collection, or you wish to install an Agent for a different Operating System or Platform, click _Show Instructions_ to expand the link:task_config_telegraf_agent.html[Agent installation] instructions.
-
-. Select the Agent Access Key for use with this data collector. You can add a new Agent Access Key by clicking the *+ Agent Access Key* button. Best practice: Use a different Agent Access Key only when you want to group data collectors, for example, by OS/Platform.
-
-. Follow the configuration steps to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. 
+. Follow the instructions in the Kubernetes Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for installing the Kubernetes data collector on the Kubernetes platform:
 
 //image:KubernetesDCConfigKube.png[Kubernetes configuration]
 image:kubernetesdatacollectorConfig.png[Kubernetes Configuration]
@@ -131,7 +131,7 @@ Pod
 Container
 Cluster
 
-|Kubernetes Node
+|K8s Node
 
 |CPU Nanoseconds
 CPU Usage Nanocores
@@ -144,9 +144,9 @@ Root Filesystem Available
 Root Filesystem Capacity
 Root Filesystem Used
 
-|Kubernetes Node
+|K8s Node
 
-|Kubernetes Node
+|K8s Node
 Cluster
 
 |
@@ -169,13 +169,13 @@ Runtime Image Filesystem Available
 Runtime Image Filesystem Used
 Runtime Image Filesystem Capacity 
 
-|Kubernetes Pod
+|K8s Pod
 
 |Namespace
 Pod
 Cluster
 
-|Kubernetes Node
+|K8s Node
 Node Name
 Node IP
 
