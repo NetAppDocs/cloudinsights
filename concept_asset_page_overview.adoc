@@ -63,3 +63,21 @@ The Custom time range allows you to select up to 31 consecutive days. You can al
 == Add Custom Widgets
 
 You can add your own widgets to any asset page.  Widgets you add will appear on asset pages for all objects of that type. For example, adding a custom widget to a storage asset page will display that widget on asset pages for all storage assets.
+
+== Auto-Refresh and TV Mode
+
+Any asset page can be displayed in link:concept_dashboard_features.adoc#auto-refresh-and-tv-mode[*TV Mode*], which gives a continuous, uncluttered display of any Cloud Insights page. Charts and tables on the asset page are link:concept_dashboard_features.adoc#auto-refresh-and-tv-mode[*Auto-Refreshed*] at an interval determined by the current asset page time range:
+
+|===
+|If Your page Time Range is:|The Auto-Refresh Interval is:
+|3 Hours|1 Minute
+|24 Hours|5 Minutes
+|3 days|10 Minutes
+|7 days|1 Hour 
+|30 days|1 Hour 
+|===
+
+Auto-refresh can be paused and resumed at any time. 
+
+You cannot edit an asset page while TV Mode is enabled. To edit the page, disable TV Mode by pressing ESC or clicking the image:tvmodebutton.png[TV Mode Button].
+
