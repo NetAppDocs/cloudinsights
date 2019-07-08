@@ -501,7 +501,7 @@ You can easily duplicate an existing dashboard from the dashboard page itself or
 
 === Auto-Refresh
 
-Dashboards are configured to automatically refresh widgets at a time interval determined by the Dashboard Time Range selected. By default, the dashboard time range is 24 hours, which corresponds to an auto-refresh interval of five minutes.
+Dashboards are configured to automatically refresh widgets at a time interval determined by the Time Range selected. By default, the dashboard time range is 24 hours, which corresponds to an auto-refresh interval of five minutes.
 
 Additional refresh rates based on selected dashboard time ranges:
 
@@ -519,9 +519,9 @@ Note that Cloud Insights polls data collectors at intervals that may not corresp
 
 To pause automatic dashboard refreshing, click the *Pause* button. 
 
-Auto-Refresh will occur for every widget based on the chosen interval, regardless of whether that widget is configured to override dashboard time.
+Auto-Refresh will occur for every widget based on the chosen interval, regardless of whether that widget is configured to override dashboard time. Auto-Refresh is available for all widget types except the Note widget.
 
-== TV Mode
+=== TV Mode
 TV Mode allows Cloud Insights to display a dashboard or landing page on screen indefinitely. Combined with Auto-Refresh, this allows constant, near-real-time display of data.
 
 To enable TV Mode, click the *TV Mode* button image:tvmodebutton.png[TV Mode Button]. With TV Mode enabled, the following changes occur:
