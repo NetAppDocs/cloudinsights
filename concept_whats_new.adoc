@@ -20,12 +20,12 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === *July 2019*
 
-==== TV Mode and Dashboard Auto-Refresh
+==== TV Mode and Auto-Refresh
 
-*link:concept_dashboard_features.html#auto-refresh-and-tv-mode[TV Mode]* gives you an uncluttered, *Auto-Refreshing* display for constant, near-real-time viewing of any dashboard or landing page. Data is automatically refreshed according to the dashboard time range selected.
+*link:concept_dashboard_features.html#auto-refresh-and-tv-mode[TV Mode]* gives you an uncluttered, *Auto-Refreshing* display for constant, near-real-time viewing of any dashboard or asset landing page. Data in widgets and tables is automatically refreshed according to the dashboard or landing page time range selected.
 
 |===
-|If Your Dashboard Time Range is:|The Auto-Refresh Interval is:
+|If Your page Time Range is:|The Auto-Refresh Interval is:
 |3 Hours|1 Minute
 |24 Hours|5 Minutes
 |3 days|10 Minutes
@@ -33,6 +33,7 @@ NetApp is continually improving and enhancing its products and services. Here ar
 |30 days|1 Hour 
 |===
 
+Auto-Refresh occurs for every widget on a dashboard based on the chosen interval, regardless of whether that widget is configured to override dashboard time. Auto-Refresh is available whether TV Mode is active or not, and can be paused and resumed at any time. Landing page charts and tables are all subject to Auto-Refresh according to the page time range chosen.
 
 === *June 2019*
 
