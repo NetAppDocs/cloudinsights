@@ -227,6 +227,675 @@ Use the following steps to install the kube-state-metrics server:
  kubectl apply -f /tmp/kube-state-yaml-files/
 
 
+=== kube-state-metrics Counters
+
+=== cronjob Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+| Object | Identifiers | Attributes | Datapoints
+
+|kube_cronjob_info|cronjob-namespace|cronjob-name|schedule,  
+concurrency_policy
+
+|kube_cronjob_labels
+|namespace|cronjob_name
+cronjob_labels|cronjob
+
+|kube_cronjob_created|cronjob-namesapce
+|cronjob-name|xx
+
+|kube_cronjob_next_schedule_time|cronjob-namesapce|cronjob-name|xx
+
+|kube_cronjob_status_active|cronjob-namesapce
+|cronjob-name|xx
+
+|kube_cronjob_status_last_schedule_time|cronjob-namesapce|time|xx
+
+|kube_cronjob_spec_suspend|cronjob-name 
+cronjob-namespace||
+
+|kube_cronjob_spec_starting_deadline_seconds|cronjob-name 
+cronjob-namespace|
+|===
+
+
+=== DaemonSet Metrics
+
+[cols=4 ,options="header",cols"25,25,25,25"]
+|===
+|Object|Identifiers|Attributes|Datapoints
+|kube_daemonset_created|daemonset-name|daemonset-namespace|xx
+|kube_daemonset_status_current_number_scheduled|daemonset-name|daemonset-namespace|xx
+
+|kube_daemonset_status_desired_number_scheduled| deamonset_name| daemonset-namespace|xxx
+|kube_daemonset_status_number_available|deamonset_name|daemonset-namespace|
+|kube_daemonset_status_number_misscheduled|deamonset_name| daemonset-namespace|xx
+|kube_daemonset_status_number_ready|deamonset_name|daemonset-namespace|xx
+|kube_daemonset_status_number_unavailable|deamonset_name|daemonset-namespace|xx
+
+|kube_daemonset_updated_number_scheduled|deamonset_name|daemonset-namespace|
+|kube_daemonset_metadata_generation|||
+|kube_daemonset_metadata_generation|||
+|kube_daemonset_labels|||
+|===
+
+=== Deployment Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+|Object|Identifiers|Attributes|Datapoints
+|kube_deployment_status_replicas|deployment-name|deployment-namespace|Gauge
+|kube_deployment_status_replicas_available|deployment-name|deployment-namespace|Gauge
+|kube_deployment_status_replicas_unavailable|deployment-name|deployment-namespace|Gauge
+|kube_deployment_status_replicas_updated|deployment-name|deployment-namespace|Gauge
+|kube_deployment_status_observed_generation|deployment-name|deployment-namespace|Gauge
+|kube_deployment_spec_replicas|Gauge 	deployment-name|deployment-namespace|Gauge
+|kube_deployment_spec_paused|deployment-name|deployment-namespace|Gauge
+|kube_deployment_spec_strategy_rollingupdate_max_unavailable|deployment-name|deployment-namespace|Gauge
+|kube_deployment_spec_strategy_rollingupdate_max_surge|deployment-name|deployment-namespace|Gauge
+|kube_deployment_metadata_generation|deployment-name|deployment-namespace|Gauge
+|kube_deployment_labels|deployment-name|deployment-namespace|Gauge
+|kube_deployment_created|deployment-name|deployment-namespace|Gauge
+|===
+
+=== Endpoint Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+| Object | Identifiers | Attributes | Datapoints
+|kube_endpoint_address_not_ready|endpoint-name|endpoint-namespace|Gauge
+|kube_endpoint_address_available|endpoint-name|endpoint-namespace|Gauge
+|kube_endpoint_info|endpoint-name|endpoint-namespace|Gauge
+|kube_endpoint_labels|endpoint-name|endpoint-namespace|Gauge
+|kube_endpoint_created|endpoint-name|endpoint-namespace
+endpoint_label|Gauge
+|===
+
+=== Horizontal Pod Autoscaler Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+| Object | Identifiers | Attributes | Datapoints
+|kube_hpa_metadata_generation|hpa, namespace|hpa-name, hpa-namespace|Gauge
+|kube_hpa_spec_max_replicas|hpa, namespace|hpa-name, hpa-namespace|Gauge
+|kube_hpa_spec_min_replicas|hpa, namespace|hpa-name, hpa-namespace|Gauge
+|kube_hpa_status_current_replicas|hpa, namespace|hpa-name, hpa-namespace|Gauge
+|kube_hpa_status_desired_replicas|hpa, namespace|hpa-name, hpa-namespace|Gauge
+|kube_hpa_status_condition|hpa, namespace|hpa-name, hpa-namespace|Gauge
+|kube_hpa_status_condition|hpa, namespace|hpa-name, hpa-namespace|Gauge
+|===
+
+=== Ingress Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+| Object |Identifiers |Attributes|Datapoints
+|kube_ingress_info|ingress
+namespace|ingress-name
+ingress-namespace
+|Gauge
+|kube_ingress_labels|ingress
+namespace
+ingress-name
+label_INGRESS_LABEL|ingress-name
+ingress-namespace INGRESS_LABEL|Gauge
+|kube_ingress_created|endpoint-name|endpoint-namespace|Gauge
+|kube_ingress_metadata_resource_version|ingress
+namespace
+resource_version|ingress-name
+ingress-namespace
+resource_version|Gauge
+|kube_ingress_path|ingress, namespace host, path, service_name service_port|ingress-name ingress-namespace ingress-host ingress-path service name for path 
+service port for path|Gauge
+|===
+
+=== Job Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+|Object|Identifiers|Attributes|Datapoints
+|kube_job_info|job_name namespace|job-name job-namespace|Gauge
+|kube_job_labels |job_name namespace label_JOB_LABEL|job-name job-namespace JOB_LABEL|Gauge
+|kube_job_owner |job_name namespace label_JOB_LABEL|job-name job-namespace JOB_LABEL|Gauge
+|kube_job_spec_parallelism|job_name namespace|job-name job-namespace|Gauge
+|kube_job_spec_completions|job_name namespace|job-name job-namespace|Gauge
+|kube_job_spec_active_deadline_seconds|job_name namespace|job-name job-namespace|Gauge 
+|kube_job_status_active |job_name namespace|job-name job-namespace|Gauge
+|kube_job_status_succeeded|job_name namespace|job-name job-namespace|Gauge
+|kube_job_status_failed|job_name namespace|job-name job-namespace|Gauge
+|kube_job_status_start_time|job_name namespace|job-name job-namespace|Gauge
+|kube_job_status_completion_time|job_name namespace|job-name job-namespace|Gauge
+|kube_job_complete|job_name namespace|job-name job-namespace|Gauge
+|kube_job_failed|job_name namespace|job-name job-namespace|Gauge
+|kube_job_created|job_name namespace|job-name job-namespace|Gauge
+|===
+
+
+=== LimitRange Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+|Object | Identifiers | Attributes | Datapoints
+|kube_limitrange|limitrange name
+namespace resource name constraint
+|Resource Name: 
+Pod
+Container
+PersistentVolumeClaim |Gauge
+|kube_limitrange_created|limitrange name
+namespace||Gauge
+
+|kube_limitrange_annotations
+|limitrange-name
+limitrange-namespace
+LIMITRANGE_ANNOTATION|
+|Gauge
+|===
+
+=== Namespace Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+|Object | Identifiers | Attributes | Datapoints
+|kube_namespace_status_phase| namespace-name |status:
+Active
+Terminating|Gauge
+|kube_namespace_labels|namespace-name
+namespace label||Gauge 
+|kube_namespace_annotations |namespace-name|ns_annotation|Gauge
+|kube_namespace_created|namespace-name|| Gauge | 
+|===
+
+=== Node Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+|Object | Identifiers | Attributes | Datapoints
+|kube_node_info|
+node-address
+kernel version
+os-image-name
+container-runtime-and-version-combination
+kubelet version
+kubeproxy-version
+provider_id||Gauge
+
+|kube_node_labels|
+Unknown||Gauge
+
+|kube_node_spec_unschedulable|node-address||Gauge
+|kube_node_spec_taint|node-address|taint-key
+taint-value
+taint-effect|Gauge
+
+|kube_node_status_capacity|node-address|Phase:
+Pending
+Running
+Terminated
+|Gauge
+|kube_node_status_allocatable|node-address
+resource-name|resource unit|Gauge
+
+|kube_node_status_condition|node-address||
+
+|kube_node_created|node address||Gauge
+|===
+
+=== Persistent Volume Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+|Object | Identifiers | Attributes | Datapoints
+|kube_persistentvolume_capacity_bytes|pv-name||Gauge
+
+|kube_persistentvolume_status_phase|pv name|phase: Bound
+Failed
+Pending
+Available
+Released|
+
+|kube_persistentvolume_labels|persistentvolume-name
+PERSISTENTVOLUME_LABEL||Gauge
+|kube_persistentvolume_info|pv-name
+storageclass-name||Gauge
+|===
+
+=== Persistant Volume Claim Metrics
+
+|===
+|Object | Identifiers | Attributes | Datapoints
+
+|kube_persistentvolumeclaim_access_mode|access_mode
+namespace
+persistentvolumeclaim||Gauge
+
+|kube_persistentvolumeclaim_info|persistentvolumeclaim-namespace
+persistentvolumeclaim-name
+persistentvolumeclaim-access-mode|
+|Gauge
+
+|kube_persistentvolumeclaim_labels|persistentvolumeclaim-namespace persistentvolumeclaim-name
+PERSISTENTVOLUMECLAIM_LABEL||Gauge
+
+|kube_persistentvolumeclaim_status_phase
+|persistentvolumeclaim-namespace persistentvolumeclaim-name
+||Gauge
+
+|kube_persistentvolumeclaim_resource_requests_storage_bytes|persistentvolumeclaim-namespace persistentvolumeclaim-name
+||Gauge
+
+|kube_persistentvolumeclaim_annotations
+|persistentvolumeclaim-namespace persistentvolumeclaim-name
+PERSISTENTVOLUMECLAIM_ANNOTATION
+||Gauge
+|===
+
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+|Object | Identifiers | Attributes | Datapoints
+
+|kube pod info
+|pod name
+pod namespace|
+host ip
+pod ip
+node name
+uid
+|Gauge
+
+
+|kube pod start time
+|pod name 
+pod namespace
+|
+|Gauge
+
+|kube_pod_completion_time
+|pod name 
+pod namespace
+||Gauge
+
+|kube_pod_owner|
+pod name 
+pod namespace
+|owner_kind
+owner_name
+owner_is_controller
+|Gauge
+
+|kube_pod_labels
+|pod name 
+pod namespace
+|label pod label
+|Gauge
+
+|kube_pod_status_phase
+|pod-name
+pod-namespace
+|Condition:  true false unknown
+|Gauge
+
+|kube_pod_container_info
+|container name
+pod name
+|image name
+image id
+container id
+|Gauge
+
+|kube pod container status waiting
+|container-name
+pod-name
+pod-namespace
+||Gauge
+
+|kube_pod_container_status_waiting_reason
+|container-name
+pod-name
+pod-namespace
+|Container Creating:
+Crash Loop Back Off
+Err Image Pull
+Image Pull BackOff
+Create Container Config Error
+Invalid Image Name
+Create Container Error
+|Gauge
+
+|kube_pod_container_status_running
+|container-name
+pod-name
+pod-namespace
+|
+|Gauge
+
+|kube_pod_container_status_terminated
+|container-name
+pod-name
+pod-namespace
+|Reason: 
+OOMKilled
+Error
+Completed
+ContainerCannotRun
+DeadlineExceeded
+|Gauge
+
+|kube_pod_container_status_last_terminated_reason
+|container-name
+pod-name
+pod-namespace
+|Reason: 
+OOMKilled
+Error
+Completed
+ContainerCannotRun
+DeadlineExceeded
+|Gauge
+
+|kube_pod_container_status_ready
+|container-name
+pod-name
+pod-namespace
+|
+|Gauge
+
+|kube_pod_container_status_restarts_total
+|container-name
+pod-name
+pod-namespace
+|
+|Counter
+
+|kube_pod_container_resource_requests_cpu_cores
+|container-name
+pod-name
+pod-namespace
+node-name
+|
+|Gauge
+
+|kube_pod_container_resource_requests
+|container-name
+pod-name
+pod-namespace
+node-name
+|resource=<resource-name
+unit=<resource-unit
+|Gauge
+
+|kube_pod_container_resource_requests_memory_bytes
+|container-name
+pod-name
+pod-namespace
+node-name
+|
+|Gauge
+
+|kube_pod_container_resource_limits
+|container-name
+pod-name
+pod-namespace
+node-name
+|resource-name
+resource-unit 
+|Gauge
+
+|kube_pod_container_resource_limits_memory_bytes
+|container-name
+pod-name
+pod-namespace
+node-name
+|
+|Gauge
+
+|kube_pod_created
+|pod-name
+pod-namespace
+||Gauge
+
+|kube_pod_init_container_info
+|container-name
+pod-name
+pod-namespace
+|image-name
+image-id
+containerid
+|Gauge
+
+|kube_pod_init_container_status_waiting
+|container-name
+pod-name
+pod-namespace
+||Gauge
+
+|kube_pod_init_container_status_waiting_reason
+|container-name
+pod-name
+pod-namespace 
+|ContainerCreating:  
+CrashLoopBackOff
+ErrImagePull
+ImagePullBackOff
+CreateContainerConfigError
+|Gauge
+
+|kube_pod_init_container_status_running
+|container-name
+pod-name
+pod-namespace 
+||Gauge
+
+
+|kube_pod_init_container_status_terminated
+|container-name
+pod-name
+pod-namespace 
+|
+|Gauge
+
+|kube_pod_init_container_status_terminated_reason
+|container-name
+pod-name
+pod-namespace 
+|Reaseon:
+OOMKilled
+Error
+Completed
+ContainerCannotRun
+DeadlineExceeded
+|Gauge
+
+|kube_pod_init_container_status_last_terminated_reason
+|container-name
+pod-name
+pod-namespace
+|Reason:
+OOMKilled
+Error
+Completed
+ContainerCannotRun
+DeadlineExceeded
+|Gauge
+
+|kube_pod_init_container_status_ready
+|container-name
+pod-name
+pod-namespace
+|
+|Gauge
+
+|kube_pod_init_container_status_restarts_total
+|container-name
+pod-name
+pod-namespace
+|
+|Counter
+
+|kube_pod_init_container_resource_requests
+|container-name
+pod-name
+pod-namespace
+node-name 
+|resource-name
+resource-unit
+|Gauge
+
+|kube_pod_init_container_resource_limits
+|container-name
+pod-name
+pod-namespace
+node-name 
+|resource-name
+resource-unit
+|Gauge
+
+|kube_pod_spec_volumes_persistentvolumeclaims_info
+|pod-name
+pod-namespace
+volume-name
+|persistentvolumeclaim-claimname
+|Gauge
+
+|kube_pod_spec_volumes_persistentvolumeclaims_readonly 
+|pod-name
+pod-namespace
+volume-name
+|persistentvolumeclaim-claimname
+|Gauge
+
+|kube_pod_status_scheduled_time
+|pod-name
+pod-namespace
+|
+|Gauge
+|===
+
+=== Pod Disruption Budget Metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+|Object | Identifiers | Attributes | Datapoints
+
+|kube_poddisruptionbudget_created|pdb-name
+pdb-namespace||Gauge
+
+|kube_poddisruptionbudget_status_current_healthy|pdb-name
+pdb-namespace||Gauge
+
+|kube_poddisruptionbudget_status_desired_healthy
+|pdb-name
+pdb-namespace||Gauge
+
+|kube_poddisruptionbudget_status_pod_disruptions_allowed
+|pdb-name
+pdb-namespace||Gauge
+
+|kube_poddisruptionbudget_status_expected_pods
+|pdb-name
+pdb-namespace||Gauge
+
+|kube_poddisruptionbudget_status_observed_generation
+|pdb-name
+pdb-namespace||Gauge
+
+|kube_poddisruptionbudget_annotations
+|PODDISRUPTIONBUDGET_ANNOTATION
+poddisruptionbudget-name
+ poddisruptionbudget-namespace||Gauge
+|===
+ 
+=== ReplicaSet metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+|Object | Identifiers | Attributes | Datapoints
+
+|kube_replicaset_status_replicas|replicaset-name
+replicaset-namespace||Gauge
+
+|kube_replicaset_status_fully_labeled_replicas |replicaset-name
+replicaset-namespace||Gauge
+
+|kube_replicaset_status_ready_replicas
+|replicaset-name
+replicaset-namespace||Gauge
+
+|kube_replicaset_status_observed_generation|replicaset-name
+replicaset-namespace||Gauge
+
+|kube_replicaset_spec_replicas
+|replicaset-name
+replicaset-namespace||Gauge
+
+|kube_replicaset_metadata_generation
+|replicaset-name
+replicaset-namespace||Gauge
+
+|kube_replicaset_labels
+|replicaset-name
+replicaset-namespace||Gauge
+
+|kube_replicaset_created
+|replicaset-name
+replicaset-namespace||Gauge
+
+|kube_replicaset_owner
+|replicaset-name
+replicaset-namespace
+owner kind
+owner name
+whether owner is controller||Gauge
+
+|kube_replicaset_annotations
+|replicaset-name
+replicaset-namespace
+REPLICASET_ANNOTATION||Gauge
+
+|===
+
+=== ReplicationController metrics
+
+[cols="<.<,<.<,<.<,<.<"]
+
+|===
+|Object | Identifiers | Attributes | Datapoints
+
+|kube_replicationcontroller_status_replicas
+|replicationcontroller-name
+replicationcontroller-namespace||Gauge
+
+|kube_replicationcontroller_status_fully_labeled_replicas 	
+|replicationcontroller-name
+replicationcontroller-namespace||Gauge
+
+|kube_replicationcontroller_status_ready_replicas
+|replicationcontroller-name
+replicationcontroller-namespace||Gauge
+
+|kube_replicationcontroller_status_available_replicas |replicationcontroller-name
+replicationcontroller-namespace||Gauge
+
+|kube_replicationcontroller_status_observed_generation
+|replicationcontroller-name
+replicationcontroller-namespace||Gauge
+|===
+
 == Troubleshooting
 
 [cols=2*, options="header", cols"50,50"]
