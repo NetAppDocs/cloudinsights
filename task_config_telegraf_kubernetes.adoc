@@ -16,7 +16,9 @@ summary: Kubernetes data collector configuration
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights uses this data collector to gather metrics from Kubernetes.
+Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Container metrics. 
+
+// You can expand collection to include StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress by <<Installing the kube-state-metrics server>>. 
 
 == Installation
 
@@ -24,13 +26,11 @@ TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet with
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Kubernetes.
 +
-Select the Operating System or Platform on which the Telegraf agent is installed. 
+If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
++
+If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
 
-. If you haven't already installed an Agent for collection, or you wish to install an Agent for a different Operating System or Platform, click _Show Instructions_ to expand the link:task_config_telegraf_agent.html[Agent installation] instructions.
-
-. Select the Agent Access Key for use with this data collector. You can add a new Agent Access Key by clicking the *+ Agent Access Key* button. Best practice: Use a different Agent Access Key only when you want to group data collectors, for example, by OS/Platform.
-
-. Follow the configuration steps to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. 
+. Follow the instructions in the Kubernetes Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for installing the Kubernetes data collector on the Kubernetes platform:
 
 image:KubernetesDCConfigKube.png[Kubernetes configuration]
 
@@ -105,7 +105,7 @@ To manually generate the Kubernetes access token, run the following in a Bash sh
 
 To verify that the access token works as needed, run the following to confirm the kubelet API is accessible:
 
- curl -v -X GET -H "Authorization: Bearer $TOKEN" https://10.197.122.81:10250/stats/summary
+ curl -v -X GET -H "Authorization: Bearer $TOKEN" https://<KUBELET_ADDRESS>:<KUBELET_PORT>/stats/summary
 
 To create the required access token file, run the following:
 
