@@ -65,7 +65,7 @@ image:AgentInstallWindows.png[Windows Agent Install]
 . Open a PowerShell window 
 . Paste the command into the PowerShell window and press Enter.
 . The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you have already installed an agent on this host, you can skip the previous step.
+// . If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 
@@ -102,7 +102,7 @@ image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 . Open a Bash window 
 . Paste the command into the Bash window and press Enter.
 . The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you have already installed an agent on this host, you can skip the previous step.
+// . If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
@@ -153,7 +153,7 @@ image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 . Open a Bash window 
 . Paste the command into the Bash window and press Enter.
 . The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you have already installed an agent on this host, you can skip the previous step.
+// . If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
 After the agent is installed, you can use the following commands to start/stop the service:
@@ -248,25 +248,26 @@ image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
 * The following commands must be available: curl and sudo
 
+.Steps to install agent on Kubernetes:
+
 . If prompted, select Kubernetes from the Platform drop-down.
 . Choose an Agent Access Key.
 . Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
 . Open a Bash window 
 . Paste the command into the Bash window and press Enter.
 . The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you have already installed an agent on this host, you can skip the previous step.
+// . If you have already installed an agent on this host, you can skip the previous step.
 . Click *Finish* or *Continue*
 
-After the agent is installed, you can use the following commands:
-
-Generate the Telegraf DaemonSet YAML:
+After the agent is installed, generate the Telegraf DaemonSet YAML:
 
  kubectl --namespace monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml
- 
-Start/Stop the Telegraf service:
 
- kubectl --namespace monitoring apply -f /tmp/telegraf-ds.yaml 
+You can use the following commands to stop and start the Telegraf service:
+
  kubectl --namespace monitoring delete ds telegraf-ds
+ kubectl --namespace monitoring apply -f /tmp/telegraf-ds.yaml 
+ 
 
 
 ==== Uninstalling the Agent
@@ -288,7 +289,7 @@ Delete the Telegraf ConfigMap and ServiceAccount:
  kubectl --namespace monitoring delete cm telegraf-conf 
  kubectl --namespace monitoring delete sa telegraf-user 
  
-Delete the Telegraf ClusterRole and ClusterERolebinding:
+Delete the Telegraf ClusterRole and ClusterRolebinding:
 
  kubectl --namespace monitoring delete clusterrole endpoint-access 
  kubectl --namespace monitoring delete clusterrolebinding endpoint-access 
