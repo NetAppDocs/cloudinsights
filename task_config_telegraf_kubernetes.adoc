@@ -16,9 +16,9 @@ summary: Kubernetes data collector configuration
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights uses this data collector to gather metrics from Kubernetes.
+Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Container metrics. 
 
-NOTE: This topic is considered Preview documentation and is subject to change.
+// You can expand collection to include StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress by <<Installing the kube-state-metrics server>>. 
 
 == Installation
 
@@ -105,7 +105,7 @@ To manually generate the Kubernetes access token, run the following in a Bash sh
 
 To verify that the access token works as needed, run the following to confirm the kubelet API is accessible:
 
- curl -v -X GET -H "Authorization: Bearer $TOKEN" https://10.197.122.81:10250/stats/summary
+ curl -v -X GET -H "Authorization: Bearer $TOKEN" https://<KUBELET_ADDRESS>:<KUBELET_PORT>/stats/summary
 
 To create the required access token file, run the following:
 
@@ -205,6 +205,11 @@ If there are errors related to SecurityContextConstraints, do the following:
 3. Create the necessary SecurityContextConstraint (see "Configuring Agent to Collect Data" section)
 
 4. Re-create the Telegraf DaemonSet
+|I configured Telegraf to obtain information about my Kubernetes cluster, but I don't see any information in Cloud Insights. I see "invalid header field value" errors in the Telegraf log file pertaining to the kubernetes input plugin I configured. 
+|Ensure the referenced bearer_token file does not have a trailing newline. To verify, run the following command, and confirm that it returns 0: 
+
+ tail -c1 <bearer_token_file> |wc -l
+ 
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page.
