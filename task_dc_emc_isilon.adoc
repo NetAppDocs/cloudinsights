@@ -1,0 +1,87 @@
+---
+sidebar: sidebar
+permalink: task_dc_emc_isilon.html
+keywords: data collector, isilon, EMC, DELL
+summary: Configuring DELL EMC Isilon data collector.
+---
+
+= Dell EMC Isilon data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+Cloud Insights uses the Isilon SSH data collector to acquire  inventory and performance data from EMC Isilon scale-out NAS storage. 
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the Isilon data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Drive|Disk
+|Cluster|Storage
+|Node|Storage Node
+|File System|Internal Volume
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Requirements
+
+You need the following information to configure this data collector:
+
+* Administrator permissions to the Isilon storage
+* IP address of the Isilon cluster
+* SSH access to port 22
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|IP address|The IP address or fully-qualified domain name of the Isilon cluster 
+|User Name|User name for the Isilon cluster
+|Password|Password used for the Isilon cluster
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|Inventory Poll Interval (min)|	Interval between inventory polls. The default is 20. 
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300.
+//|SSH Process Wait Timeout|SSH process timeout period. The default is 60.
+|SSH Port|SSH service port. The default is 22. 
+|===
+
+           
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|"Invalid login credentials" with error messages “Commands not enabled for role-based administration require root user access”
+|* Verify that the user has permissions to run the following commands on the device:
+  > isi version osrelease
+  > isi status -q
+  > isi status -n
+  > isi devices -d %s
+  > isi license
+* Verify credentials used in the wizard are matching device credentials
+|"Internal Error" with error messages “Command <Your command> run failed with permission: <Your current permission>. Sudo command run permission issue”
+|Verify that the user has sudo permissions to run the following command on the device
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
