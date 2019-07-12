@@ -18,6 +18,19 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== *June 2019*
+
+==== Cloud Insights Editions
+
+Cloud Insights is available in different Editions to fit your budget and business needs. Existing NetApp customers with an active NetApp support account can enjoy 7 days of data retention and access to NetApp data collectors with the free *Basic Edition*, or get increased data retention, access to all supported data collectors, expert technical support and more with *Standard Edition*. For more information on available features, see NetApp's link:https://cloud.netapp.com/cloud-insights[Cloud Insights] site.
+
+==== New Infrastructure Data Collector: NetApp HCI
+
+* link:task_dc_na_hci.html[NetApp HCI Virtual Center] has been added as an Infrastructure data collector. The HCI Virtual Center data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Virtual Center.
+
+Note that the HCI data collector acquires from the HCI Virtual Center only. To collect data from the storage system, you must also configure the NetApp link:task_dc_na_solidfire[SolidFire] data collector.
+
+
 === *May 2019*
 
 ==== New Service Data Collector: Kapacitor
@@ -30,7 +43,6 @@ In addition to acquisition of data from infrastructure devices such as switches 
 
 Documentation for currently supported integrations can be found in the menu to the left under *Services Data Collector Reference*.
 
- 
 
 ==== Storage Virtual Machine Assets 
 

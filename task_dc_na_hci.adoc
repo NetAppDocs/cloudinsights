@@ -20,8 +20,6 @@ summary: Configuring NetApp HCI Virtual Center data collector.
 
 The HCI Virtual Center data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Virtual Center. 
 
-NOTE: This information is considered Preview documentation and is subject to change.
-
 This data collector acquires from the *HCI Virtual Center only*. To collect data from the storage system, you must also configure the link:task_dc_na_solidfire.html[NetApp SolidFire] data collector.
 
 == Terminology
@@ -35,7 +33,7 @@ Cloud Insights acquires the following inventory information from this data colle
 |Host|Host
 |Virtual machine|Virtual machine
 |Data store|Data store
-|LUN|LUN
+|LUN|Volume
 |Fibre channel port|Port
 |===
 These are common terminology mappings only and might not represent every case for this data collector. 
@@ -44,14 +42,14 @@ These are common terminology mappings only and might not represent every case fo
 
 The following information is required to configure this data collector:
 
-* IP address of the Virtual Center server 
-* Read-only username and password in Virtual Center 
-* We require read only privileges on all objects within Virtual Center. 
-* SDK access on the Virtual Center server – normally already setup. 
-* 3rd party software installed on OnCommand Insight Server / RAU: none 
+* IP address of the HCI Management server  
+* Read-only username and password for the HCI Management server
+* We require read only privileges on all objects in the HCI Virtual Center. 
+* SDK access on the HCI Management server – normally already set up. 
+//* 3rd party software installed on HCI Management server / RAU: none 
 * Port requirements: http-80 https-443 
 * Validate access: 
-** Log into Virtual Center Client using above username and password 
+** Log into the HCI Management server using above username and password 
 ** Verify SDK enabled: telnet <vc_ip> 443 
 
 == Setup and connection
