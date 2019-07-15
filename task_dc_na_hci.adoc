@@ -42,14 +42,14 @@ These are common terminology mappings only and might not represent every case fo
 
 The following information is required to configure this data collector:
 
-* IP address of the Virtual Center server 
-* Read-only username and password in Virtual Center 
-* We require read only privileges on all objects within Virtual Center. 
-* SDK access on the Virtual Center server – normally already setup. 
-* 3rd party software installed on OnCommand Insight Server / RAU: none 
+* IP address of the HCI Management server  
+* Read-only username and password for the HCI Management server
+* We require read only privileges on all objects in the HCI Virtual Center. 
+* SDK access on the HCI Management server – normally already set up. 
+//* 3rd party software installed on HCI Management server / RAU: none 
 * Port requirements: http-80 https-443 
 * Validate access: 
-** Log into Virtual Center Client using above username and password 
+** Log into the HCI Management server using above username and password 
 ** Verify SDK enabled: telnet <vc_ip> 443 
 
 == Setup and connection
