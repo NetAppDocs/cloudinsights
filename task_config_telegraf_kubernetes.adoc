@@ -36,7 +36,7 @@ If you have an agent already configured, select the appropriate Operating System
 image:kubernetesdatacollectorConfig.png[Kubernetes Configuration]
 
 == Setup
-The Telegraf input plugin for Kubernetes collects metrics through the /stats/summary endpoint of the kubelet REST API.
+The Telegraf input plugin for Kubernetes collects metrics through the /stats/summary endpoint of the kubelet REST API as well as the kube-state-metrics server (if it exists).
 
 ==== Compatibility
 Configuration was developed against Kubernetes version 1.9.1.
