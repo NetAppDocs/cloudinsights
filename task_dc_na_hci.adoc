@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: task_dc_na_hci.html
 keywords: data collector, VMware, hci
-summary: Configuring NetApp HCI Virtual Center data collector.
+summary: Configuring NetApp HCI Management server data collector.
 ---
 
-= Configuring the NetApp HCI Virtual Center data collector 
+= Configuring the NetApp HCI Management server data collector 
 
 :toc: macro
 :hardbreaks:
@@ -18,9 +18,9 @@ summary: Configuring NetApp HCI Virtual Center data collector.
 
 [.lead]
 
-The HCI Virtual Center data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Virtual Center. 
+The HCI Management server data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Management server. 
 
-This data collector acquires from the *HCI Virtual Center only*. To collect data from the storage system, you must also configure the link:task_dc_na_solidfire.html[NetApp SolidFire] data collector.
+This data collector acquires from the *HCI Management server only*. To collect data from the storage system, you must also configure the link:task_dc_na_solidfire.html[NetApp SolidFire] data collector.
 
 == Terminology
 
@@ -44,7 +44,7 @@ The following information is required to configure this data collector:
 
 * IP address of the HCI Management server  
 * Read-only username and password for the HCI Management server
-* We require read only privileges on all objects in the HCI Virtual Center. 
+* We require read only privileges on all objects in the HCI Management server. 
 * SDK access on the HCI Management server – normally already set up. 
 //* 3rd party software installed on HCI Management server / RAU: none 
 * Port requirements: http-80 https-443 
@@ -66,7 +66,7 @@ The following information is required to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|HCI Management IP Address |IP address of the HCI Management server
+|HCI Management server IP Address |IP address of the HCI Management server
 |User name |User name used to access the HCI Management server
 |Password|Password used to access the HCI Management server
 |===
