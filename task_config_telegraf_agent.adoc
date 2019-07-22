@@ -267,7 +267,11 @@ After the agent is installed, generate the Telegraf DaemonSet YAML:
 You can use the following commands to stop and start the Telegraf service:
 
  kubectl --namespace monitoring delete ds telegraf-ds
- kubectl --namespace monitoring apply -f /tmp/telegraf-ds.yaml 
+ kubectl --namespace monitoring delete ds telegraf-rs 
+ 
+ kubectl --namespace monitoring apply -f /tmp/telegraf-ds.yaml
+kubectl --namespace monitoring apply -f /tmp/telegraf-rs.yaml
+
  
 ==== Configuring the Agent to Collect Data from Kubernetes
 
