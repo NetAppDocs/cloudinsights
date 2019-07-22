@@ -39,7 +39,7 @@ image:NetstatGuessWidgetExample.png[Guess Metrics Example]
 
 === Telegraf Data Display Options
 
-Cloud Insights provides different display options for _Guess_ metrics collected using Telegraf. When adding these metrics to a widget, you are presented with a drop-down giving the data display choices:
+Cloud Insights provides different display options for metrics collected using Telegraf. When adding these metrics to a widget, you are presented with a drop-down giving the data display choices:
 
 None::
 Data is displayed as is, with no manipulation.
@@ -59,4 +59,6 @@ Delta value divided by the time range since the previous observation.
 Cumulative Rate::
 Cumulative value divided by the time range since the previous observation.
  
+image:TransformOptions.png[Transform Options]
+
 
