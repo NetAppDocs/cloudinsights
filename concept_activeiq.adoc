@@ -1,11 +1,35 @@
 ---
 sidebar: sidebar
 permalink: concept_activeiq.html
-keywords: 
+keywords: ActiveIQ, risks
 summary: Cloud Insights can collect data from NetApp ActiveIQ
 ---
 
 = ActiveIQ
 
 [.lead]
-Active IQ provides a series of visualizations, analytics, and other support related services to NetApp customers and their hardware / software systems. The supported use cases are primarily focused on trouble shooting systems but also extend into optimization and predictive analysis related to the customers device estate.   
+NetApp link:https://www.netapp.com/us/products/data-infrastructure-management/active-iq.aspx[Active IQ] provides a series of visualizations, analytics, and other support-related services to NetApp customers for their hardware / software systems. The data reported by Active IQ can enhance troubleshooting of system problems and also provide insight into optimization and predictive analysis related to your device estate.   
+
+Cloud Insights collects the *Risks* for any NetApp Clustered Data OnTap storage system that is monitored and reported by Active IQ. You do not need to configure Cloud Insights to collect this information; any risks reported for the relevant storage systems are collected automatically by Cloud Insights as part of its data acquisition of those devices. 
+
+The risks reported are shown in Cloud Insights on the relevant _storage_ and _storage node_ asset landing pages, in the "Risks" table. The table shows Risk Detail, Category of risk, and Potential Impact of the risk, and also provides a link to the Active IQ page for the relevant storage node (Active IQ account sign-in required).
+
+image:AIQ_Risks_Table_Example.png[Active IQ Risks Table]
+
+An count of risks reported is also shown in the landing page's Summary widget, with a link to the relevant Active IQ page.
+
+image:AIQ_Summary_Example.png[Storage Page Summary]
+
+=== Opening the Active IQ page
+
+When clicking on the link to an Active IQ page, if you are not currently signed in to your Active IQ account, you must perform the following steps to view the Active IQ page for the relevant storage node.
+
+. In the Cloud Insights Summary widget or Risks table, click the "Active IQ' link.
+. Sign in to your Active IQ account. You are taken to the Active IQ Home Page.
+. In Cloud Insights, click the Active IQ link again.
+. You are taken directly to the relevant storage node page in Active IQ.
+
+=== Querying for Risks
+
+In Cloud Insights, you can add the *Object Risks* column to a storage or storage node query. If the returned result includes Active IQ-Monitored storage systems, the Object Risks column will display the number of risks for the storage system or node.
+
