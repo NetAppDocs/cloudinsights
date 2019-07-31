@@ -30,12 +30,13 @@ Because of the varied nature of the ingested data, Cloud Insights makes its best
 
 All metrics gathered by Telegraf data collectors can be used in dashboard widgets. For all telegraf metrics, you are given a choice of how you want to *Transform* the values: None, Sum, Delta, etc.. These link:telegraf-data-display-options[display options] are explained below.
 
-Widget example with _Stable_ metrics:
-image:ElasticNodeWidgetExample.png[Stable Metrics Example]
+//Widget example with _Stable_ metrics:
+//image:ElasticNodeWidgetExample.png[Stable Metrics Example]
 
-Widget example with _Guess_ metrics:
-image:NetstatGuessWidgetExample.png[Guess Metrics Example]
+//Widget example with _Guess_ metrics:
+//image:NetstatGuessWidgetExample.png[Guess Metrics Example]
 
+image:TransformOptions.png[Transform Options]
 
 === Telegraf Data Display Options
 
@@ -59,6 +60,6 @@ Delta value divided by the time range since the previous observation.
 Cumulative Rate::
 Cumulative value divided by the time range since the previous observation.
  
-image:TransformOptions.png[Transform Options]
+
 
 
