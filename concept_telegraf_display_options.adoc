@@ -28,7 +28,7 @@ Because of the varied nature of the ingested data, Cloud Insights makes its best
 
 * For data that it might know but isn't 100% certain, it keeps the source-determined name and assigns it to the "Guess" category. Guess metrics will appear with lower-case names, with individual words separated by an underscore (___), such as _virtual_machine_io_. "Guess" data cannot be used in filters or grouping.
 
-All metrics gathered by Telegraf data collectors can be used in dashboard widgets. In the case of "Guess" metrics, you are given a choice of how to display the values for each metric you include (As-Is, Sum, Delta, etc.). These link:telegraf-data-display-options[display options] are explained below.
+All metrics gathered by Telegraf data collectors can be used in dashboard widgets. For all telegraf metrics, you are given a choice of how you want to *Transform* the values: None, Sum, Delta, etc.. These link:telegraf-data-display-options[display options] are explained below.
 
 Widget example with _Stable_ metrics:
 image:ElasticNodeWidgetExample.png[Stable Metrics Example]
@@ -39,9 +39,9 @@ image:NetstatGuessWidgetExample.png[Guess Metrics Example]
 
 === Telegraf Data Display Options
 
-Cloud Insights provides different display options for _Guess_ metrics collected using Telegraf. When adding these metrics to a widget, you are presented with a drop-down giving the data display choices:
+Cloud Insights provides different display options for metrics collected using Telegraf. When adding these metrics to a widget, you are presented with a drop-down giving the data display choices:
 
-As Is::
+None::
 Data is displayed as is, with no manipulation.
 
 Rate::
@@ -59,4 +59,6 @@ Delta value divided by the time range since the previous observation.
 Cumulative Rate::
 Cumulative value divided by the time range since the previous observation.
  
+image:TransformOptions.png[Transform Options]
+
 
