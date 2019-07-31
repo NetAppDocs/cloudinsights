@@ -20,6 +20,17 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === *July 2019*
 
+==== Dashboard Improvements
+
+Dashboards and Widgets have been improved with the following changes:
+
+* In addition to Sum, Min, Max, and Avg, *Count* is now an option for roll up in Single-Value widgets. When rolling up by “Count”, Cloud Insights checks if an object is active or not, and only adds the active ones to the count. The resulting number is subject to aggregation and filters.  
+
+* In the Single-Value widget, you now have a choice to display the resulting number with 0, 1, 2, 3, or 4 decimal places.
+
+* *Transform* option is available for Services integration data now in all time-series widgets for all metrics. For any services integration (telegraf) counter or metric in time-series widgets (Line, Spline, Area, Stacked Area), you are given a choice of how you want to link:telegraf-data-display-options[Transform] the values: None (display value as-is), Sum, Delta, Cumulative, etc. 
+
+
 ==== Collecting Kube-State-Metrics
 
 The link:task_config_telegraf_kubernetes.html[Kubernetes Data Collector] now collects objects and counters from the kube-state-metrics plugin, greatly expanding the number and scope of metrics available for monitoring in Cloud Insights.
