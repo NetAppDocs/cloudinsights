@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: task_dc_hpe_nimble.html
+keywords: data collector, HP Nimble, HP, HPE
+summary: Configuring HPE Nimble data collector.
+---
+
+= HPE Nimble data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead] 
+
+The HPE Nimble data collector supports inventory and performance data for HPE Nimble storage arrays. 
+
+== Terminology 
+
+Cloud Insights acquires the following inventory information from the HPE Nimble data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Array|Storage
+|Disk|Disk
+|Volume|Volume
+|Pool|Storage Pool
+|Initiator|Storage Host Alias
+|Controller|Storage Node
+|Fibre Channel Interface|Controller
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Requirements
+
+You must have the following in order to collect data from the Nimble storage array:
+
+* The array must be installed and configured, and reachable from the client through its fully qualified domain name (FQDN) or array management IP address.
+* The array must be running NimbleOS 2.3.x or later.
+* You must have a valid user name and password to the array.
+* Port 5392 must be open on the array.
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Array Management IP Address|Fully qualified domain name (FQDN) or array management IP address.
+|User Name|User name for the Nimble array
+|Password|Password for the Nimble array
+|===
+
+
+== Advanced configuration
+
+|===
+|Field|Description
+|Port|Port used by Nimble REST API. The default is 5392.
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 60 minutes.
+|===
+
+Note: The default performance poll interval is 300 seconds and can not be changed. This is the only interval supported by Nimble.
+
