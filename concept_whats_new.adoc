@@ -38,6 +38,16 @@ Dashboards and Widgets have been improved with the following changes:
 * *Transform* option is available for Services integration data now in all time-series widgets for all metrics. For any services integration (Telegraf) counter or metric in time-series widgets (Line, Spline, Area, Stacked Area), you are given a choice of how you want to link:concept_telegraf_display_options.html[Transform the values]. None (display value as-is), Sum, Delta, Cumulative, etc. 
 
 
+==== Basic Edition Downgrade
+
+Downgrade to Basic Edition fails with an error message if there is no available NetApp device configured that has successfully completed a poll in the last 7 days.  
+
+=== Line Chart Enhancements
+
+Line charts show an axis label and units when a single counter is being plotted. 
+
+
+
 ==== Collecting Kube-State-Metrics
 
 The link:task_config_telegraf_kubernetes.html[Kubernetes Data Collector] now collects objects and counters from the kube-state-metrics plugin, greatly expanding the number and scope of metrics available for monitoring in Cloud Insights.
