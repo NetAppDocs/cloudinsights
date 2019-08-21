@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: task_dc_na_hci.html
 keywords: data collector, VMware, hci
-summary: Configuring NetApp HCI Virtual Center data collector.
+summary: Configuring NetApp HCI Management server data collector.
 ---
 
-= Configuring the NetApp HCI Virtual Center data collector 
+= Configuring the NetApp HCI Management server data collector 
 
 :toc: macro
 :hardbreaks:
@@ -18,9 +18,9 @@ summary: Configuring NetApp HCI Virtual Center data collector.
 
 [.lead]
 
-The HCI Virtual Center data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Virtual Center. 
+The NetApp HCI Management server data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Management server. 
 
-This data collector acquires from the *HCI Virtual Center only*. To collect data from the storage system, you must also configure the link:task_dc_na_solidfire.html[NetApp SolidFire] data collector.
+This data collector acquires from the *NetApp HCI Management server only*. To collect data from the storage system, you must also configure the link:task_dc_na_solidfire.html[NetApp SolidFire] data collector.
 
 == Terminology
 
@@ -42,14 +42,14 @@ These are common terminology mappings only and might not represent every case fo
 
 The following information is required to configure this data collector:
 
-* IP address of the HCI Management server  
-* Read-only username and password for the HCI Management server
-* We require read only privileges on all objects in the HCI Virtual Center. 
-* SDK access on the HCI Management server – normally already set up. 
-//* 3rd party software installed on HCI Management server / RAU: none 
+* IP address of the NetApp HCI Management server  
+* Read-only username and password for the NetApp HCI Management server
+* We require read only privileges on all objects in the NetApp HCI Management server. 
+* SDK access on the NetApp HCI Management server – normally already set up. 
+//* 3rd party software installed on NetApp HCI Management server / RAU: none 
 * Port requirements: http-80 https-443 
 * Validate access: 
-** Log into the HCI Management server using above username and password 
+** Log into the NetApp HCI Management server using above username and password 
 ** Verify SDK enabled: telnet <vc_ip> 443 
 
 == Setup and connection
@@ -66,9 +66,9 @@ The following information is required to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|HCI Management IP Address |IP address of the HCI Management server
-|User name |User name used to access the HCI Management server
-|Password|Password used to access the HCI Management server
+|NetApp HCI Management server IP Address |IP address of the NetApp HCI Management server
+|User name |User name used to access the NetApp HCI Management server
+|Password|Password used to access the NetApp HCI Management server
 |===
 
 == Advanced configuration 
@@ -110,7 +110,7 @@ Some things to try if you encounter problems with this data collector:
 |Possible solutions:
 
 * Verify credentials and IP address entered.
-* Try to communicate with Virtual Center using VMware Infrastructure Client.
+* Try to communicate with Virtual Center using Infrastructure Client.
 * Try to communicate with Virtual Center using Managed Object Browser (e.g MOB).
 |Error: VirtualCenter at IP has non-conform certificate that JVM requires
 |Possible solutions:
