@@ -34,7 +34,7 @@ You can leave any field empty if it doesn't apply for your business entity.
 
 . If you have previously entered a value for a field, you can select that value from the drop-down. You do not need to type it in again.
 
-NOTE: The selected values must compose a unique total business entity. For example, if you already have a business entoty with the values _A / B / C / D_ in that order, you can not create another business entity with those values in that order. You can, however, create a business entity with those values in a different order.
+NOTE: The selected values must compose a unique total business entity. For example, if you already have a business entity with the values _A / B / C / D_ in that order, you can not create another business entity with those values in that order. You can, however, create a business entity with those values in a different order.
 
 == Applying a Business Entity to an Object
 
@@ -52,5 +52,14 @@ The easiest way to apply a business entity to an object or objects is through a 
 
 You can also apply a business entity to an individual object by navigating to the object's asset landing page and clicking on *+Annotation) in the User Data section.
 
-NOTE: An object can have only one business entity. 
+You can also configure an link:task_create_annotation_rules.html[Annotation Rule] to apply business entities to objects.
+
+NOTE: An object can have only one business entity associated with it. 
+
+== Removing a Business Entity from an object
+
+To remove a business entity from an object or objects, query for and select the object(s), click *Bulk Actions* and select _Remove Annotation_. Select the Business Entity annotation and click *Delete*.
+
+
+
 
