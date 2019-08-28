@@ -42,8 +42,9 @@ Enter data into the data collector fields according to the table below:
 |===
 |Field | Description
 |AWS Region|Choose AWS region
-|AWS IAM Access Key ID|Enter AWS IAM Access Key ID
-|AWS IAM Secret Access Key|Enter AWS IAM Secret Access Key 
+|IAM Role|AWS IAM Role if running on EC2 instance to retrieve IAM temporary access key, secret and token. Required if you do not use IAM Access Key ID and Secret Access Key fields.
+|AWS IAM Access Key ID|Enter AWS IAM Access Key ID. Required if you do not use IAM Role.
+|AWS IAM Secret Access Key|Enter AWS IAM Secret Access Key. Required if you do not use IAM Role.
 |I understand AWS bills me for API requests|Check this to verify your understanding that AWS bills you for API requests made by Cloud Insights polling.
 |===
 
