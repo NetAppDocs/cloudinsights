@@ -28,6 +28,7 @@ In order to collect data from Amazon EC2 devices, you must have the following in
 
 * You must have the IAM Access Key ID 
 * You must have the Secret Access Key for your Amazon EC2 cloud account
+* You must have the "list organization" privilege
 * Port 433 HTTPS
 * EC2 Instances can be reported as a Virtual Machine, or (less naturally) a Host. EBS Volumes can be reported as both a VirtualDisk used by the VM, as well as a DataStore providing the Capacity for the VirtualDisk.
 
