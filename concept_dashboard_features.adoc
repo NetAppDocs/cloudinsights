@@ -470,18 +470,25 @@ You can easily duplicate an existing dashboard from the dashboard page itself or
 
 == Formatting Gauge Widgets
 
-The Solid Gauge, Bullet Gauge, and Single-Value widgets allow you to set values for _Warning_ and/or _Critical_ levels, which determine the color in which the widget displays. Additionally, in the Single-Value widget, you can choose to have "In Range" values (those below _Warning_ level) shown with either green or white background.
+The Solid and Bullet Gauge widgets allow you to set thresholds for _Warning_ and/or _Critical_ levels, providing clear representation of the data you specify. 
 
 image:Gauge Widget Formatting.png[Format settings for Gauge Widget]
 
-To set formatting for these widgets, first choose whether to highlight values above or below your thresholds. In this example, we want to highlight values greater than (>) the threshold levels.
+To set formatting for these widgets, follow these steps:
 
-Choose a value for the "Warning" level. When the widget displays values above this level, it displays the gauge in orange. 
+. Choose  whether you want to highlight values greater than (>) or less than (<) your thresholds. In this example, we will highlight values greater than (>) the threshold levels.
 
-Choose a value for the "Critical" level. Values above this level will cause the gauge to display in red.
+. Choose a value for the "Warning" threshold. When the widget displays values above this level, it displays the gauge in orange. 
 
-You can optionally choose a minimum and maximum value for the gauge. Values below minimum will not display the gauge. Values above maximum will display a full gauge. If you do not choose minimum or maximum values, the widget selects optimal min and max based on the value.
+. Choose a value for the "Critical" threshold. Values above this level will cause the gauge to display in red.
 
-image:SVW-Formatted.png[Single-Value Widget with Formatting, width=374]
+You can optionally choose a minimum and maximum value for the gauge. Values below minimum will not display the gauge. Values above maximum will display a full gauge. If you do not choose minimum or maximum values, the widget selects optimal min and max based on the widget's value.
+
 image:Gauge-Solid.png[Solid/Traditional Gauge, width=374]
 image:Gauge-Bullet.png[Bullet Gauge, width=374]
+
+== Formatting Single-Value Widget
+
+in the Single-Value widget, in addition to setting Warning (orange) and Critical (red) thresholds, you can choose to have "In Range" values (those below Warning level) shown with either green or white background.
+
+image:SVW-Formatted.png[Single-Value Widget with Formatting, width=374]
