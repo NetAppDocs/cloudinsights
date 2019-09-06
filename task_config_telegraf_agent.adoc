@@ -261,8 +261,7 @@ image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
 After the agent is installed, generate the Telegraf DaemonSet YAML and ReplicaSet YAML:
 
- kubectl --namespace monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml
- 
+ kubectl --namespace monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml 
  kubectl --namespace monitoring get rs telegraf-rs -o yaml > /tmp/telegraf-rs.yaml
 
 You can use the following commands to stop and start the Telegraf service:
