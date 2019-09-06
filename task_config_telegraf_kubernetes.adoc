@@ -22,7 +22,7 @@ Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Cont
 
 == Installation
 
-TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.
+TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet and a ReplicaSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Kubernetes.
 +
@@ -33,7 +33,7 @@ If you have an agent already configured, select the appropriate Operating System
 . Follow the instructions in the Kubernetes Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for installing the Kubernetes data collector on the Kubernetes platform:
 
 //image:KubernetesDCConfigKube.png[Kubernetes configuration]
-image:kubernetesdatacollectorConfig.png[Kubernetes Configuration]
+image:KubernetesDCConfig.png[Kubernetes Configuration]
 
 == Setup
 The Telegraf input plugin for Kubernetes collects metrics through the /stats/summary endpoint of the kubelet REST API as well as the kube-state-metrics server (if it exists).
@@ -43,7 +43,7 @@ Configuration was developed against Kubernetes version 1.9.1.
 
 ==== Configuring an Agent to Collect Data from Kubernetes
 
-For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet. The pods in which the agents run need to have access to the following:
+For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet and a ReplicaSet. The pods in which the agents run need to have access to the following:
 
 * hostPath
 * configMap
@@ -94,7 +94,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
     
 ==== Setting Up
 
-For collecting Kubernetes metrics, the best practice is to deploy the Telegraf agent as a DaemonSet within the Kubernetes environment of interest itself. The Cloud Insights agent install command does this if run on one of the Kubernetes nodes in the cluster. With the DaemonSet that is created, you can simply specify the "$HOSTIP" environment variable for <INSERT_KUBELET_ADDRESS> in the telegraf-conf ConfigMap. 
+For collecting Kubernetes metrics, the best practice is to deploy the Telegraf agent as a DaemonSet and a ReplicaSet within the Kubernetes environment of interest itself. The Cloud Insights agent install command does this if run on one of the Kubernetes nodes in the cluster. With the DaemonSet that is created, you can simply specify the "$HOSTIP" environment variable for <INSERT_KUBELET_ADDRESS> in the telegraf-conf ConfigMap. 
 
 The pods in which the Telegraf agents run need to have access to a valid Kubernetes access token file in order to use the required kubelet API. To configure a Telegraf agent running outside the Kubernetes cluster of interest, you must manually generate this Kubernetes access token file, and configure the Telegraf agent to use this access token file.
 
