@@ -18,9 +18,9 @@ summary: Configuring NetApp HCI Management server data collector.
 
 [.lead]
 
-The HCI Management server data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Management server. 
+The NetApp HCI Management server data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Management server. 
 
-This data collector acquires from the *HCI Management server only*. To collect data from the storage system, you must also configure the link:task_dc_na_solidfire.html[NetApp SolidFire] data collector.
+This data collector acquires from the *NetApp HCI Management server only*. To collect data from the storage system, you must also configure the link:task_dc_na_solidfire.html[NetApp SolidFire] data collector.
 
 == Terminology
 
@@ -42,14 +42,14 @@ These are common terminology mappings only and might not represent every case fo
 
 The following information is required to configure this data collector:
 
-* IP address of the HCI Management server  
-* Read-only username and password for the HCI Management server
-* We require read only privileges on all objects in the HCI Management server. 
-* SDK access on the HCI Management server – normally already set up. 
-//* 3rd party software installed on HCI Management server / RAU: none 
+* IP address of the NetApp HCI Management server  
+* Read-only username and password for the NetApp HCI Management server
+* We require read only privileges on all objects in the NetApp HCI Management server. 
+* SDK access on the NetApp HCI Management server – normally already set up. 
+//* 3rd party software installed on NetApp HCI Management server / RAU: none 
 * Port requirements: http-80 https-443 
 * Validate access: 
-** Log into the HCI Management server using above username and password 
+** Log into the NetApp HCI Management server using above username and password 
 ** Verify SDK enabled: telnet <vc_ip> 443 
 
 == Setup and connection
@@ -66,9 +66,10 @@ The following information is required to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|HCI Management server IP Address |IP address of the HCI Management server
-|User name |User name used to access the HCI Management server
-|Password|Password used to access the HCI Management server
+|Management server IP Address |IP address of the NetApp HCI Management server
+|Management Node IP address|IP address of the NetApp HCI Management node (mNode)
+|User name |User name used to access the NetApp HCI Management server
+|Password|Password used to access the NetApp HCI Management server
 |===
 
 == Advanced configuration 
@@ -79,15 +80,16 @@ The following fields can be configured:
 [cols=2*,  cols"50,50"]
 |===
 |Field|Description
-|Inventory poll interval (min)  | Deafult is 20
+|Inventory poll interval (min) | Deafult is 20
 //|Connection Timeout (ms)|Default is 60000
-|Filter VMs |Select CLUSTER, DATACENTER, or ESX HOST
+|Filter VMs by|Select CLUSTER, DATACENTER, or ESX HOST
 
 //or you can choose to filter by TAG 
 
-|Choose 'Exclude' or 'Include' to Specify a List|Create a filter list (CLUSTER, DATACENTER, and/or ESX_HOST) 
-|Number of retries | Default is 3 
-|HCI Management port| Default is 8443 
+|Choose 'Exclude' or 'Include' to Specify a List|Create a filter list  
+|Filter Device List|Comma Separated list of devices for Filtering by ESX_HOST, CLUSTER, and DATACENTER Only
+//|Number of retries | Default is 3 
+//|HCI Management port| Default is 8443 
 
 //|Tag Keys and Values on which to Filter VMs|Click *+ Filter Tag* to choose which VMs (and associated disks) to include/exclude by filtering for keys and values that match keys and values of tags on the VM. Tag Key is required, Tag Value is optional. When Tag Value is empty, the VM is filtered as long as it matches the Tag Key.
 //Tag filtering is only available in VSphere 6.0 Beta or later.
@@ -110,7 +112,7 @@ Some things to try if you encounter problems with this data collector:
 |Possible solutions:
 
 * Verify credentials and IP address entered.
-* Try to communicate with Virtual Center using VMware Infrastructure Client.
+* Try to communicate with Virtual Center using Infrastructure Client.
 * Try to communicate with Virtual Center using Managed Object Browser (e.g MOB).
 |Error: VirtualCenter at IP has non-conform certificate that JVM requires
 |Possible solutions:
