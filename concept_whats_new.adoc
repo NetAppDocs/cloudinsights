@@ -18,17 +18,44 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+
+=== *August 2019*
+
+
+==== All vs. Available Data Collectors
+
+When adding data collectors to your environment, you can set a filter to show only the data collectors available to you based on your subscription level, or all data collectors. 
+
+////
+
+==== Business Entity Annotations
+
+_Business Entity_ is now an annotation type provided by Cloud Insights, which can be used for monitoring and reporting of assets in your business hierarchy. An example business entity annotation might have a value of <Tenant>.<Line_of_Business>.<Business_Unit>.<Project>. An example might look like "Netapp.Cloud Services.Saas.Cloud Insights".
+////
+
+
+==== ActiveIQ Integration
+
+Cloud Insights collects data from NetApp ActiveIQ, which provides a series of visualizations, analytics, and other support related services to NetApp customers and their hardware / software systems. Cloud Insights integrates with ONTAP Data Management systems. See link:concept_activeiq.html[Active IQ] for more information.
+
+
 === *July 2019*
 
 ==== Dashboard Improvements
 
 Dashboards and Widgets have been improved with the following changes:
 
-* In addition to Sum, Min, Max, and Avg, *Count* is now an option for roll up in Single-Value widgets. When rolling up by “Count”, Cloud Insights checks if an object is active or not, and only adds the active ones to the count. The resulting number is subject to aggregation and filters.  
+* In addition to Sum, Min, Max, and Avg, *Count* is now an option for roll up in Single-Value widgets. When rolling up by “Count”, Cloud Insights checks if an object is active or not, and only adds the active ones to the count. The resulting number is subject to aggregation and filters. 
 
 * In the Single-Value widget, you now have a choice to display the resulting number with 0, 1, 2, 3, or 4 decimal places.
 
+* Line charts show an axis label and units when a single counter is being plotted. 
+
 * *Transform* option is available for Services integration data now in all time-series widgets for all metrics. For any services integration (Telegraf) counter or metric in time-series widgets (Line, Spline, Area, Stacked Area), you are given a choice of how you want to link:concept_telegraf_display_options.html[Transform the values]. None (display value as-is), Sum, Delta, Cumulative, etc. 
+
+==== Downgrading to Basic Edition
+
+Downgrade to Basic Edition fails with an error message if there is no available NetApp device configured that has successfully completed a poll in the last 7 days.
 
 
 ==== Collecting Kube-State-Metrics
