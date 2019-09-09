@@ -35,7 +35,7 @@ If you have an agent already configured, select the appropriate Operating System
 //image:KubernetesDCConfigKube.png[Kubernetes configuration]
 image:KubernetesDCConfig.png[Kubernetes Configuration]
 
-Note that there are two different config maps that need updating: _telegraf-conf_ for the daemonset and _telegraf-conf-rs_ for the kube-state-metrics data.
+Note that there are two different config maps that need updating: _telegraf-conf_ for the DaemonSet and _telegraf-conf-rs_ for the ReplicaSet. The latter is used to obtain kube-state-metrics data.
 
 == Setup
 The Telegraf input plugin for Kubernetes collects metrics through the /stats/summary endpoint of the kubelet REST API as well as the kube-state-metrics server (if it exists).
