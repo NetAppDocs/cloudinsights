@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar
-permalink: task_configure_data_collectors.html
+permalink: task_config_cs_data_collectors.html
 keywords: acquisition, AU, data collector, collector
 summary: Configure data collectors
 ---
@@ -45,7 +45,7 @@ You must install at least one Cloud Insights Agent to begin collecting Operating
 In addition to collecting data from Services, each agent also acts as a data collector for the VM/host on which it is installed. The data collected is presented as "Node" data in dashboard widgets or queries.
 
 . Click on the platform type of the VM or host (i.e. the Node) from which you access Cloud Insights.
-. Choose an link:concept_agent_access_key.html[Agent Access Key]. 
+. Choose an Agent Access Key. 
 . Copy the displayed command to the clipboard. You can click the clipboard icon to quickly copy the command.
 . Open a terminal/command window on the agent VM/host and paste the command. Press Enter to execute the command.
 . After the agent is installed, click *Finish*. The agent begins collecting data.
@@ -61,7 +61,7 @@ It may take up to two poll periods before data for the Node is displayed in dash
 
 . Click on a Services data collector.
 . Choose an agent operating system or platform. If you have not installed an agent for the platform, follow the instructions to do so.
-. Choose an link:concept_agent_access_key.html[Agent Access Key]. 
+. Choose an Agent Access Key. 
 . Click *Continue*.
 . Follow the instructions for configuring the data collector. You can click the clipboard icon to quickly copy the commands or code snippets displayed.
 . Once the data collector is configured properly, click *Finish*. 
