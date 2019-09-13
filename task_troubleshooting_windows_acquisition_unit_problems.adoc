@@ -20,9 +20,25 @@ Here you will find suggestions for troubleshooting problems with Acquisition Uni
 
 |===
 |*Problem:* | *Try this:* 
+|AU status on the *Admin > Data Collectors* page in the *Acquisition Units* tab displays "Certificate Expired” or “Certificate Revoked” .
+|Click on the menu to the right of the AU and select *Restore Connection*. Follow the instructions to restore your Acquisition Unit:
+1. Issue the given command on the AU server/VM to stop the Acquisition Unit service. You can click the clipboard icon in the command window to quickly copy the command to the clipboard.
+2. Copy the displayed token and paste it into a new file named "token".
+3. Place this file in the c:\Program Files\Cloud Insights\Acquisition Unit\conf\ folder.
+4. Use the given command to start the Acquisition Unit service.
+
+|Server Requirements not met | Ensure that your Acquisition Unit server or VM meets minimum link:concept_acquisition_unit_requirements.html[requirements]
+|Network Requirements not met |Ensure that your Acquisition Unit server/VM can access your Cloud Insights environment (<environment-name>.c01.cloudinsights.netapp.com) through SSL connection over port 443 
+|Proxy Server not configured properly | Verify your proxy settings, and uninstall/re-install the Acquisition Unit software if necessary to enter the correct proxy settings. 
+//Follow the link:task_configure_acquisition_unit.html#Setting_proxy_environment_variables[instructions] under “Have a Proxy Server?” in the Add an Acquisition Unit box. 
+|Permission issues| Be sure you are logged in as a user with administrator permissions
+
+|Acquisition Not Running
+|You can find information in the acq.log in the _<install directory>\Cloud Insights\Acquisition Unit\log_ folder.
+Restart the Acquisition via Windows Services
+|Data Collection Issues
+|Generate an Error Report from the Data Collector landing page. Click the drop down next to the “Edit” icon and select “Error Report”
 |===
 
-////
-Moving Data Collectors to Different Acquisition Units:
-•	What is the proper process for a customer to do this?  They have to retype their passwords or go into the security admin tool to transfer the keys?
-////
+
+

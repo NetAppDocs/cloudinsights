@@ -26,9 +26,9 @@ Use the NetApp Host and VM File Systems data collector to retrieve file system d
 * Each group has an instance of this data source discovering file system details from those hosts and virtual machines. 
 * If you have an instance of this data source for which the success rate is low (for example, Cloud Insights is discovering file system details for only 50 of 1000 hosts and virtual machines in a group), you should move the hosts and virtual machines for which discovery is successful into a separate Compute Resource Group.
 
-* FC-connected hosts MUST be successfully resolved by Auto Host Resolution before they can be acquired by the Host FSLU data source. 
+//* FC-connected hosts MUST be successfully resolved by Auto Host Resolution before they can be acquired by the Host FSLU data source. 
 
-* Auto Host Resolution must be able to extract and parse a hostname from the information provided by the switch (port alias, zone or SRM) before host FSLU can be deployed.  It is mandatory that the switch environment be evaluated for accuracy (or even the mere presence/availability of this information) prior to attempting auto resolution. 
+//* Auto Host Resolution must be able to extract and parse a hostname from the information provided by the switch (port alias, zone or SRM) before host FSLU can be deployed.  It is mandatory that the switch environment be evaluated for accuracy (or even the mere presence/availability of this information) prior to attempting auto resolution. 
 
 * The Cloud Insights administrator must have knowledge of the general OS type (Windows, Linux, etc.) running on each host, so that the proper Compute Resource Group annotation can be applied to a given group. 
 
