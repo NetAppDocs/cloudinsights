@@ -107,6 +107,7 @@ After you create an IAM role, you can attach it when you create a new EC2 instan
 
 After you attach the IAM role _InstanceEc2ReadOnly_ to an EC2 instance, you will be able to retrieve the temporary credential through instance metadata by IAM role name and use it to access AWS resources by any application running on this EC2 instance.
 
+Note: IAM role can be used only when the Acquisition Unit is running in an AWS instance.
            
 == Troubleshooting
 
