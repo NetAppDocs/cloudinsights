@@ -98,8 +98,15 @@ Note: Alternatively, enable data collection using the SVC  management user inter
 |To clean up dumped stats files|Select this checkbox to clean up dumped stats files
 |===
 
-           
 == Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: "The command cannot be initiated because it was not run on the configuration node."
+|The command must be executed on the configuration node. 
+|===
 
 Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
 
