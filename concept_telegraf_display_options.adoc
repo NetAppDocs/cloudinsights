@@ -6,7 +6,7 @@ summary: Telegraf data display options
 ---
 
 
-= Telegraf Data Display Options
+= Telegraf Integration Data
 
 :toc: macro
 :hardbreaks:
@@ -18,10 +18,34 @@ summary: Telegraf data display options
 
 
 [.lead]
-This Topic Is Under Construction
+The Cloud Insights Telegraf data collectors are powerful tools for gathering source-reported metrics from your data sources. 
 
-Cloud Insights provides different display options for data you collect using Telegraf. 
+////
+=== Categorizing Telegraf Data
 
+Because of the varied nature of the ingested data, Cloud Insights makes its best attempt to categorize the data in meaningful ways. To do this, it examines the meta-data (data about the data) that is gathers.
+
+* For meta-data that it knows, Cloud Insights attaches a meaningful name and categorizes the metric or counter as "Stable". Stable metrics will have names that use "Title Case", with individual words separated by space ( ), such as _IOs In Progress_.
+
+* For data that it might know but isn't 100% certain, it keeps the source-determined name and assigns it to the "Guess" category. Guess metrics will appear with lower-case names, with individual words separated by an underscore (___), such as _virtual_machine_io_. "Guess" data cannot be used in filters or grouping.
+
+All metrics gathered by Telegraf data collectors can be used in dashboard widgets. In Time-Series widgets (Line, Spline, Area, Stacked Area), you are given a choice of how you want to *Transform* the values: None, Sum, Delta, etc.. These link:telegraf-data-display-options[display options] are explained below.
+
+//Widget example with _Stable_ metrics:
+//image:ElasticNodeWidgetExample.png[Stable Metrics Example]
+
+//Widget example with _Guess_ metrics:
+//image:NetstatGuessWidgetExample.png[Guess Metrics Example]
+
+image:TransformOptions.png[Transform Options]
+
+=== Telegraf Data Display Options
+////
+
+Cloud Insights provides different transform options for metrics collected using Telegraf. When adding these metrics to a widget, you are presented with a drop-down giving the transform choices:
+
+None::
+Data is displayed as is, with no manipulation.
 
 Rate::
 Current value divided by the time range since the previous observation.
@@ -38,3 +62,6 @@ Delta value divided by the time range since the previous observation.
 Cumulative Rate::
 Cumulative value divided by the time range since the previous observation.
  
+
+
+

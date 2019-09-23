@@ -18,16 +18,152 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== *September 2019*
+
+==== New Gauge Widgets
+
+Two new widgets are available for displaying single-value data on your dashboards in eye-catching colors based on thresholds you specify. You can display values using either a *Solid Gauge* or *Bullet Gauge*. Values that land inside the Warning range are displayed in orange. Values in the Critical range are displayed in red. Values below the Warning threshold are displayed in green.
+
+image:Gauge-Solid.png[Solid/Traditional Gauge]
+image:Gauge-Bullet.png[Bullet Gauge]
+
+=== Conditional Color Formatting for Single Value Widget
+
+You can now display the Single-Value widget with a colored background based on thresholds you set.
+
+//image:SVW-Formatted.png[Single-Value Widget with Formatting]
+image:Single-Value Widgets - Formatted.png[Single-Value widgets with formatting]
+
+==== Invite Users During Onboarding
+
+At any point during the onboarding process, you can click on Admin > User Management > +User to invite additional users to your Cloud Insights environment. Be aware that users with _Guest_ or _User_ roles will see greater benefit once onboarding is complete and data has been collected.
+
+==== Data Collector Detail Page improvement
+
+The data collector detail page has been improved to display errors in a more readable format. Errors are now displayed in a separate table on the page, with each error displayed on a separate line in the case of multiple errors for the data collector.
+
+
+=== *August 2019*
+
+==== All vs. Available Data Collectors
+
+When adding data collectors to your environment, you can set a filter to show only the data collectors available to you based on your subscription level, or all data collectors. 
+
+////
+
+==== Business Entity Annotations
+
+_Business Entity_ is now an annotation type provided by Cloud Insights, which can be used for monitoring and reporting of assets in your business hierarchy. An example business entity annotation might have a value of <Tenant>.<Line_of_Business>.<Business_Unit>.<Project>. An example might look like "Netapp.Cloud Services.Saas.Cloud Insights".
+////
+
+
+==== ActiveIQ Integration
+
+Cloud Insights collects data from NetApp ActiveIQ, which provides a series of visualizations, analytics, and other support related services to NetApp customers and their hardware / software systems. Cloud Insights integrates with ONTAP Data Management systems. See link:concept_activeiq.html[Active IQ] for more information.
+
+
+=== *July 2019*
+
+==== Dashboard Improvements
+
+Dashboards and Widgets have been improved with the following changes:
+
+* In addition to Sum, Min, Max, and Avg, *Count* is now an option for roll up in Single-Value widgets. When rolling up by “Count”, Cloud Insights checks if an object is active or not, and only adds the active ones to the count. The resulting number is subject to aggregation and filters. 
+
+* In the Single-Value widget, you now have a choice to display the resulting number with 0, 1, 2, 3, or 4 decimal places.
+
+* Line charts show an axis label and units when a single counter is being plotted. 
+
+* *Transform* option is available for Services integration data now in all time-series widgets for all metrics. For any services integration (Telegraf) counter or metric in time-series widgets (Line, Spline, Area, Stacked Area), you are given a choice of how you want to link:concept_telegraf_display_options.html[Transform the values]. None (display value as-is), Sum, Delta, Cumulative, etc. 
+
+==== Downgrading to Basic Edition
+
+Downgrade to Basic Edition fails with an error message if there is no available NetApp device configured that has successfully completed a poll in the last 7 days.
+
+
+==== Collecting Kube-State-Metrics
+
+The link:task_config_telegraf_kubernetes.html[Kubernetes Data Collector] now collects objects and counters from the kube-state-metrics plugin, greatly expanding the number and scope of metrics available for monitoring in Cloud Insights.
+
+=== *June 2019*
+
+==== Cloud Insights Editions
+
+Cloud Insights is available in different Editions to fit your budget and business needs. Existing NetApp customers with an active NetApp support account can enjoy 7 days of data retention and access to NetApp data collectors with the free *Basic Edition*, or get increased data retention, access to all supported data collectors, expert technical support and more with *Standard Edition*. For more information on available features, see NetApp's link:https://cloud.netapp.com/cloud-insights[Cloud Insights] site.
+
+==== New Infrastructure Data Collector: NetApp HCI
+
+* link:task_dc_na_hci.html[NetApp HCI Virtual Center] has been added as an Infrastructure data collector. The HCI Virtual Center data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Virtual Center.
+
+Note that the HCI data collector acquires from the HCI Virtual Center only. To collect data from the storage system, you must also configure the NetApp link:task_dc_na_solidfire[SolidFire] data collector.
+
+
+=== *May 2019*
+
+==== New Service Data Collector: Kapacitor
+
+* link:task_config_telegraf_kapacitor.html[Kapacitor] has been added as a data collector for services.
+
+==== Integration with Services via Telegraf
+
+In addition to acquisition of data from infrastructure devices such as switches and storage, Cloud Insights now collects data from a variety of Operating Systems and Services, using link:task_config_telegraf_agent.html[Telegraf as its agent] for collection of integration data. Telegraf is a plugin-driven agent that can be used to collect and report metrics. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams. 
+
+Documentation for currently supported integrations can be found in the menu to the left under *Services Data Collector Reference*.
+
+
+==== Storage Virtual Machine Assets 
+
+* Storage Virtual Machines (SVMs) are available as assets in Cloud Insights. SVMs have their own Asset Landing Pages, and can be displayed and used in searches, queries, and filters. SVMs can also be used in dashboard widgets as well as associated with annotations.
+
+==== Reduced Acquisition Unit System Requirements
+
+* The system CPU and memory requirements for the Acquisition Unit (AU) software have been reduced. The new requirements are:
+
+|===
+|*Component*|*Old Requirement*|*New Requirement*
+|CPU Cores|4|2
+|Memory|16 GB|8 GB
+|===
+
+==== Additional Platforms Supported
+
+* The following platforms have been added to those currently link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[supported for Cloud Insights]:
+
+|===
+|Linux|Windows
+|CentOS 7.3 64-bit
+CentOS 7.4 64-bit
+CentOS 7.6 64-bit
+Debian 9 64-bit
+Red Hat Enterprise Linux  7.3 64-bit
+Red Hat Enterprise Linux  7.4 64-bit
+Red Hat Enterprise Linux  7.6 64-bit
+Ubuntu Server 18.04 LTS
+|Microsoft Windows 10 64-bit
+Microsoft Windows Server 2008 R2
+Microsoft Windows Server 2019
+|===
+
+
+=== *April 2019*
+
+==== Filter Virtual Machines by Tags
+
+When configuring the following data collectors, you can filter to include or exclude virtual machines from data collection according to their Tags or Labels. 
+
+* link:task_dc_amazon_ec2.html#advanced-configuration[Amazon EC2]
+* link:task_dc_ms_azure.html#advanced-configuration[Azure]
+* link:task_dc_google_cloud.html#advanced_configuration[Google Cloud Platform]
 
 === *March 2019*
 
 ==== Email Notifications for Subscription-related Events
 
-You can select recipients for email link:concept_notifications_email.html[notifications] when subscription-related events occur, such as upcoming trial expiration or subscribed account changes. You can choose recipients for these notifications from among following:
+* You can select recipients for email link:concept_notifications_email.html[notifications] when subscription-related events occur, such as upcoming trial expiration or subscribed account changes. You can choose recipients for these notifications from among following:
 
-* All Account Owners
-* All Administrators
-* Additional Email Addresses that you specify
+** All Account Owners
+** All Administrators
+** Additional Email Addresses that you specify
 
 ==== Additional Dashboards
 
