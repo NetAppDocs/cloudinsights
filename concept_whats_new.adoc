@@ -18,12 +18,44 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== *September 2019*
+
+==== New Gauge Widgets
+
+Two new widgets are available for displaying single-value data on your dashboards in eye-catching colors based on thresholds you specify. You can display values using either a *Solid Gauge* or *Bullet Gauge*. Values that land inside the Warning range are displayed in orange. Values in the Critical range are displayed in red. Values below the Warning threshold are displayed in green.
+
+image:Gauge-Solid.png[Solid/Traditional Gauge]
+image:Gauge-Bullet.png[Bullet Gauge]
+
+=== Conditional Color Formatting for Single Value Widget
+
+You can now display the Single-Value widget with a colored background based on thresholds you set.
+
+//image:SVW-Formatted.png[Single-Value Widget with Formatting]
+image:Single-Value Widgets - Formatted.png[Single-Value widgets with formatting]
+
+==== Invite Users During Onboarding
+
+At any point during the onboarding process, you can click on Admin > User Management > +User to invite additional users to your Cloud Insights environment. Be aware that users with _Guest_ or _User_ roles will see greater benefit once onboarding is complete and data has been collected.
+
+==== Data Collector Detail Page improvement
+
+The data collector detail page has been improved to display errors in a more readable format. Errors are now displayed in a separate table on the page, with each error displayed on a separate line in the case of multiple errors for the data collector.
+
 
 === *August 2019*
+
+==== All vs. Available Data Collectors
+
+When adding data collectors to your environment, you can set a filter to show only the data collectors available to you based on your subscription level, or all data collectors. 
+
+////
 
 ==== Business Entity Annotations
 
 _Business Entity_ is now an annotation type provided by Cloud Insights, which can be used for monitoring and reporting of assets in your business hierarchy. An example business entity annotation might have a value of <Tenant>.<Line_of_Business>.<Business_Unit>.<Project>. An example might look like "Netapp.Cloud Services.Saas.Cloud Insights".
+////
+
 
 ==== ActiveIQ Integration
 
