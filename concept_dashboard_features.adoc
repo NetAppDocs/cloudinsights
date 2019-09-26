@@ -22,47 +22,15 @@ toc::[]
 ==	Widget Placement and Size
 All dashboard widgets can be positioned and sized according to your needs for each particular dashboard.
 
-////
-+
-Multiple queries and/or expressions
-Each time series widget (line, spline, area, or stacked area charts) can have up to five queries and/or expressions to determine what data to display, allowing you to compare different sets of data on a single chart. For example, you can have a line chart showing IOPS for both Storage and VM's, or a single chart comparing Throughput and Latency for all Storage Pools.
-////
 
-////
-•	*Rollup and Grouping*
-Data displayed in each widget is rolled up from the data points collected. You can choose to roll up this data in one of several ways:
-+
-*Avg*: rolls up data as the average of the underlying data
-+
-*Max*: rolls up data to the maximum of the underlying data
-+
-*Min*: rolls up data to the minimum of the underlying data
-+
-*Sum*: rolls up data as the sum of the underlying data
-+
-By default, all of the underlying data is rolled up into a single entry (All) on the chart or table. You can choose to roll up data for a specific attribute instead, such as Data Center or Tier, to distribute the underlying data into desired groups. Your widget will display data for only the attributes you select.
-+
-You can group data in a table widget according to the attribute you choose. For example, you might choose to group your table by Data Center. Groups can be expanded or collapsed at will.
-+
-Performance data in a table is rolled up in the group header according to the rollup method you set in the widget (average, max, min, or sum).
-+
-Table widgets can be sorted by any column, and columns can be moved or resized as needed.
-
-•	*Top / Bottom*
-Use this to limit the result set in chart widgets, to select whether to display the top N results in your widget, or the bottom N results. You can choose this option when data is either not rolled up or is rolled up by a specific attribute.
-
-•	*Override dashboard time*
-By default, most widgets you add to a dashboard show data according to the dashboard's time range setting (3h, 24h, 3d, 7d, 30d or custom range). However, you can override this time setting in individual widgets to force them to show data in a specific time context, regardless of the dashboard's time setting.
-////
 
 == Displaying Widget Legends
 
 Most widgets on dashboards can be displayed with or without legends. Legends in widgets can be turned on or off on a dashboard by either of the following methods:
 
-. When editing the widget, check the *Show Legends* checkbox and save the widget.
-. When displaying the dashboard, click the *Options* button on the widget and select *Show Legends* in the menu.
+* When displaying the dashboard, click the *Options* button on the widget and select *Show Legends* in the menu.
 
-As you edit and change the data displayed in the widget, the legend for that widget is updated dynamically.
+As the data displayed in the widget changes, the legend for that widget is updated dynamically.
 
 When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page.
 
@@ -140,6 +108,9 @@ Data displayed in a widget is rolled up from the underlying data points collecte
 * *Max*: displays each line as the _maximum_ of the underlying data.
 * *Min*: displays each line as the _minimum_ of the underlying data.
 * *Sum*: displays each line as the _sum_ of the underlying data.
+* *Count*: displays a _count_ of objects that have reported data within the specified time frame (5 minute, 1 hour, or entire time window). 
+
+// You can choose to include _all_ objects that have reported data, or only those objects whose data is reported as _Not Null_. 
 
 .Steps
 
@@ -151,7 +122,7 @@ To set the roll up method, do the following.
 +
 The widget updates automatically and shows a line for each of your data centers.
 
-You can also choose to roll up _all_ of the underlying data into the chart or table. In this case, you will get a single line for each query in the widget, which will show the average, min, max or sum of the chosen metric for all of the underlying assets.
+You can also choose to roll up _all_ of the underlying data into the chart or table. In this case, you will get a single line for each query in the widget, which will show the average, min, max, sum, or count of the chosen metric for all of the underlying assets.
 
 If you have set a filter for the query, the data that is rolled up is based on the filtered data.
 
@@ -497,5 +468,27 @@ You can easily duplicate an existing dashboard from the dashboard page itself or
 * To duplicate a dashboard from the list page, click the "three dots" menu to the right of the dashboard and select *Duplicate*. The dashboard is created with the current dashboard name appended with "copy", "copy 2", etc. 
 ////
 
+== Formatting Gauge Widgets
 
+The Solid and Bullet Gauge widgets allow you to set thresholds for _Warning_ and/or _Critical_ levels, providing clear representation of the data you specify. 
 
+image:Gauge Widget Formatting.png[Format settings for Gauge Widget]
+
+To set formatting for these widgets, follow these steps:
+
+. Choose  whether you want to highlight values greater than (>) or less than (<) your thresholds. In this example, we will highlight values greater than (>) the threshold levels.
+
+. Choose a value for the "Warning" threshold. When the widget displays values greater than this level, it displays the gauge in orange. 
+
+. Choose a value for the "Critical" threshold. Values greater than this level will cause the gauge to display in red.
+
+You can optionally choose a minimum and maximum value for the gauge. Values below minimum will not display the gauge. Values above maximum will display a full gauge. If you do not choose minimum or maximum values, the widget selects optimal min and max based on the widget's value.
+
+image:Gauge-Solid.png[Solid/Traditional Gauge, width=374]
+image:Gauge-Bullet.png[Bullet Gauge, width=374]
+
+== Formatting Single-Value Widget
+
+in the Single-Value widget, in addition to setting Warning (orange) and Critical (red) thresholds, you can choose to have "In Range" values (those below Warning level) shown with either green or white background.
+
+image:Single-Value Widgets.png[Single-Value Widget with and without Formatting]

@@ -26,9 +26,9 @@ Use the NetApp Host and VM File Systems data collector to retrieve file system d
 * Each group has an instance of this data source discovering file system details from those hosts and virtual machines. 
 * If you have an instance of this data source for which the success rate is low (for example, Cloud Insights is discovering file system details for only 50 of 1000 hosts and virtual machines in a group), you should move the hosts and virtual machines for which discovery is successful into a separate Compute Resource Group.
 
-* FC-connected hosts MUST be successfully resolved by Auto Host Resolution before they can be acquired by the Host FSLU data source. 
+//* FC-connected hosts MUST be successfully resolved by Auto Host Resolution before they can be acquired by the Host FSLU data source. 
 
-* Auto Host Resolution must be able to extract and parse a hostname from the information provided by the switch (port alias, zone or SRM) before host FSLU can be deployed.  It is mandatory that the switch environment be evaluated for accuracy (or even the mere presence/availability of this information) prior to attempting auto resolution. 
+//* Auto Host Resolution must be able to extract and parse a hostname from the information provided by the switch (port alias, zone or SRM) before host FSLU can be deployed.  It is mandatory that the switch environment be evaluated for accuracy (or even the mere presence/availability of this information) prior to attempting auto resolution. 
 
 * The Cloud Insights administrator must have knowledge of the general OS type (Windows, Linux, etc.) running on each host, so that the proper Compute Resource Group annotation can be applied to a given group. 
 
@@ -78,30 +78,3 @@ A blank value indicates that the data collector discovers file systems for all h
 |Field|Description
 |Inventory poll interval (min)|Interval between inventory polls. The default is 360 minutes.
 |===
-
-     
-== Troubleshooting
-Some things to try if you encounter problems with this data collector:
-
-==== Inventory
-
-[cols=2*, options="header", cols"50,50"]
-|===
-|Problem:|Try this:
-|“All devices failed" or “Partial Success” with error message “No hosts or VMs discovered in Compute Resource group ” or “No hosts or VMs discovered in default Compute Resource group.”
-|Generate an error report, open the ASUP*zip, navigate to the acq directory, open the foundation_*zip, navigate to the timestamp directory (e.g. 1405708269094, NOT root) and examine the log_foundation_*_failed_targets.csv for details regarding which specific Hosts and VMs failed, and why.
-|“UNSUPPORTED_AU_OS” or “UNSUPPORTED_OS”
-|Consult the Cloud Insights Data Collector support matrix, remove unsupported Hosts and VMs from the Compute Resource Group.
-|“CONNECT_FAILED”
-|Make sure of the following:
-* Hosts and VMs are up and reachable from the Acquisition Unit
-* WMI is running and not blocked by a firewall on each Windows Host and VM
-* WMI is configured to allow remote access using the configured credentials on each Windows Host and VM.
-|“CREDENTIAL_FAILED”
-|* Remove Hosts and VMs that don't honor the configured credential from the Compute Resource Group
-* Create additional Host and VM File Systems datasources and Compute Resource Groups for additional credentials as appropriate.
-|"Configuration error" with error message “Windows Host and VM discovery from Linux acquisition units is not implemented.”
-|Move the NetApp Host and VM File Systems datasource to a Windows based Acquisition Unit in order to discover Windows and Linux targets.
-|===
-
-Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
