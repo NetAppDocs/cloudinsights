@@ -41,11 +41,11 @@ Here are some of the key features available in Basic and Standard Edition:
 |Key Feature |Basic Edition |Standard Edition
 
 |Data Retention|7 Days|90 Days
-|Infrastructure & Storage Metrics|NetApp Data Collectors Only|All Available Data Collectors
+|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor
+|VM Metrics|NetApp Only|Multi-Vendor
+|Cloud Metrics|NetApp Only|Multi-Vendor
+|Metrics from Over 50 Services|NetApp Only|Multi-Vendor
 |Customizable Dashboards|&check;|&check;
-|VM Metrics|-|&check;
-|Cloud Metrics|-|&check; 
-|Metrics from Over 50 Services|-|&check; 
 |===
 
 
@@ -84,7 +84,8 @@ To subscribe, go to *Admin > Subscription*. On this page you can view your subsc
 
 To subscribe, go to *Admin > Subscription*. In addition to the *Subscribe* buttons, you will be able to see your installed data collectors and calculate your estimated pricing. For a typical environment, you can click the self-serve AWS Marketplace *Subscribe Now* button. If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for Volume Pricing. 
 
-image:Subscribe_Volume.png[Subscription Options]
+//image:Subscribe_Volume.png[Subscription Options]
+image:SubscribeTodayScreen.png[Subscription Options]
 
 === Pricing
 Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts or virtual machines* and amount of *unformatted capacity* being managed in your infrastructure environment.
