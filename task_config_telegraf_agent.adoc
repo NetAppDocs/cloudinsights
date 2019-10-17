@@ -85,6 +85,20 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
  
 . Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
 
+=== Upgrading the Agent
+
+To upgrade the telegraf agent, do the following:
+* Stop and remove the telegraf service:
+
+ Stop-Service telegraf
+ sc.exe delete telegraf
+
+* Remove the SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf key from the registry
+* Remove C:\Program Files\telegraf\telegraf.conf
+* Remove C:\Program Files\telegraf\telegraf.exe
+* link:Windows[Install the new agent].
+
+
 
 === RHEL and CentOS
 
@@ -399,18 +413,6 @@ To upgrade the telegraf agent, do the following:
 
 THIS SECTION UNDER CONSTRUCTION
 
-=== Upgrading the Telegraf Agent on Windows
-
-To upgrade the telegraf agent, do the following:
-* Stop and remove the telegraf service:
-
- Stop-Service telegraf
- sc.exe delete telegraf
-
-* Remove the SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf key from the registry
-* Remove C:\Program Files\telegraf\telegraf.conf
-* Remove C:\Program Files\telegraf\telegraf.exe
-* link:Windows[Install the new agent].
 
 
 
