@@ -383,9 +383,10 @@ Delete the Telegraf ClusterRole and ClusterRolebinding:
  kubectl --namespace monitoring delete clusterrole endpoint-access 
  kubectl --namespace monitoring delete clusterrolebinding endpoint-access 
  
- == Upgrading the Telegraf Agent
  
- Upgrading The Telegraf Agent
+== Upgrading the Telegraf Agent
+ 
+Upgrading The Telegraf Agent
 
 Kubernetes
 •	Run `kubectl --namespace monitoring delete ds telegraf-ds`
