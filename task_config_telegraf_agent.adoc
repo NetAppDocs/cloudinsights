@@ -383,6 +383,41 @@ Delete the Telegraf ClusterRole and ClusterRolebinding:
  kubectl --namespace monitoring delete clusterrole endpoint-access 
  kubectl --namespace monitoring delete clusterrolebinding endpoint-access 
  
+ == Upgrading the Telegraf Agent
+ 
+ Upgrading The Telegraf Agent
+
+Kubernetes
+•	Run `kubectl --namespace monitoring delete ds telegraf-ds`
+•	Run `kubectl --namespace monitoring delete rs telegraf-rs`
+•	Follow “Steps to install agent on Kubernetes”
+
+RHEL an CentOS
+•	Run `systemctl stop telegraf` or `/etc/init.d/telegraf stop`
+•	Run `yum remove telegraf`
+•	Follow “Steps to install agent on RHEL/CentOS”
+
+Ubuntu and Debian
+•	Run `systemctl stop telegraf` or `/etc/init.d/telegraf stop`
+•	Run `dpkg -r telegraf`
+•	Follow “Steps to install agent on Ubuntu/Debian”
+
+macOS
+•	Run `sudo launchctl stop telegraf`
+•	Run cp /Applications/telegraf.app/scripts/uninstall /tmp
+•	Run sudo /tmp/uninstall
+•	Follow “Steps to install agent on macOS”
+
+Windows
+•	Run `Stop-Service telegraf`
+•	Run `sc.exe delete telegraf`
+•	Remove the SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf key from the registry
+•	Remove C:\Program Files\telegraf\telegraf.conf
+•	Remove C:\Program Files\telegraf\telegraf.exe
+•	Follow “Steps to install agent on Windows”
+
+ 
+ 
 
 == Troubleshooting Agent Installation
 
