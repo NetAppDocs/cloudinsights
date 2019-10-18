@@ -1,0 +1,65 @@
+---
+sidebar: sidebar
+permalink: concept_cs_agent_requirements.html
+summary: The server or VM you use as your Agent must meet minimum requirements
+keywords: cloud secure, agent, Linux, requirements, docker, browsers, permissions, Network
+---
+
+= Cloud Secure Agent Requirements 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You must install an Agent in order to acquire information from your data collectors. Before you install the Agent, you should ensure that your environment meets operating system, CPU, memory, and disk space requirements.
+
+[cols=2*,options="header",cols="36,60"]
+|===
+//[cols=2*,options="header",cols="25,75"]
+|Component| Linux Requirement
+//| Windows Requirement
+|Operating system	
+|A computer running a licensed version Red Hat Enterprise Linux or CentOS 7.2 to 7.5. This computer should be running no other application-level software. A dedicated server is recommended.
+|Privileges|The 'sudo' privilege is required for installation, running scripts, and uninstall.
+
+|Docker Version 17.06.1-ce or later| The https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwi1g_C23NjkAhVTi1wKHWq9AH0QFjAAegQIBhAC&url=https%3A%2F%2Fdocs.docker.com%2Finstall%2F&usg=AOvVaw23bYHzhZz0sXgwi24ZUms0[Docker CE package] must be installed on the VM hosting the agent. 
+
+The Docker-client-xx or Docker-common-xx native RHEL Docker packages are not supported. They do not support the `docker run` CLI format that Cloud Secure supports. 
+|Java Version 1.8.0_71 or later|https://openjdk.java.net/[OpenJDK Java is required]. 
+|Memory	|16 GB RAM 
+|Available disk space	|Disk space should be allocated in this manner:
+50 GB available for the root partition
+25 GB available space for INSTALL on /opt/netapp and 5 GB for UPGRADE 
+25 GB available space for INSTALL on/var/log/netapp and 5 GB for UPGRADE
+If these memory requirements are not met, the Install command aborts. 
+|Network|100 Mbps / 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Cloud Secure instance (80 or 443).
+
+When a firewall is enabled, you must have an exception defined to allow TCP traffic for the port using the Data ONTAP Data Collector.
+
+For example on a RHEL7.x Agent system, use the following steps:
+
+`firewall-cmd --permanent --zone=public --add-port=35001/tcp` 
+`firewall-cmd --permanent --zone=public --add-port=35002/tcp`
+`firewall-cmd --reload`
+
+(assuming the ports are 35001 and 35002) 
+
+*Note:* The agent requires ports from 35000 to 55000 to be open when using the default installation. 
+
+Use a command similar to the following to verify that the ports are open:
+`iptables-save \| grep 35001 -A IN_public_allow -p tcp -m tcp --dport 35001 -m conntrack --ctstate NEW -j ACCEPT`
+
+The port number can be obtained from the docker ps command output:  
+`docker ps`
+
+//firewall-cmd reload
+
+// Supported browsers a
+// * Internet Explorer 11 
+// * Firefox ESR 60 
+// * Chrome latest nightly (73.0)
