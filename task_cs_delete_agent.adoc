@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: task_cs_delete_agent.html
+keywords: agent, Cloud Secure, delete agent
+summary: Deleting Cloud Secure agents
+---
+
+= Deleting a Cloud Secure Agent
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+
+When you delete a Cloud Secure Agent, all of the data collectors associated with the Agent are deleted. 
+
+== Deleting an Agent
+
+[IMPORTANT]
+
+Deleting an Agant deletes all of the Data Collectors associated with the Agent. If you plan to configure the data collectors with a different agent you should create a backup of the Data Collector configurations before you delete the Agent.
+
+.Steps to delete an Agent:
+
+. `sudo cloudsecure-agent-uninstall.sh`
+
+. Click *Admin > Data Collectors > Agents*
++
+The system displatys the list of configured Agents.
+
+. Click the options menu for the Agent you are deleting.
+
+. Click *Delete*. 
