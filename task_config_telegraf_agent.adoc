@@ -94,9 +94,9 @@ To upgrade the telegraf agent, do the following:
  Stop-Service telegraf
  sc.exe delete telegraf
 
-. Remove the SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf key from the registry
-. Remove C:\Program Files\telegraf\telegraf.conf
-. Remove C:\Program Files\telegraf\telegraf.exe
+. Remove the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
+. Remove _C:\Program Files\telegraf\telegraf.conf_
+. Remove _C:\Program Files\telegraf\telegraf.exe_
 . link:Windows[Install the new agent].
 
 
@@ -165,7 +165,7 @@ or
 
  yum remove telegraf
 
-. * link:rhel-and-centos[Install the new agent].
+. link:rhel-and-centos[Install the new agent].
 
 
 
