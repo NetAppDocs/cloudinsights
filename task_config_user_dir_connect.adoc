@@ -1,0 +1,124 @@
+---
+sidebar: sidebar
+permalink: task_config_user_dir_connect.html
+keywords: collector, configure, LDAP, Active Directory 
+summary: Configuring Cloud Secure User Directory Collector 
+---
+
+= Configuring a User Directory Collector 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You configure Cloud Secure to collect user attributes from Active Directory servers.     
+
+.Before you begin
+
+* You must be a Cloud Insights Administrator or Account Owner to perform this task. 
+* You must have the IP address of the server hosting the Active Directory server.
+* An Agent must be configured before you configure a User Directory connector. 
+
+.Steps to Configure a User Directory Collector
+
+. In the Cloud Secure menu, click: 
+*Admin > Data Collectors > User Directory Collectors > + User Directory Collector*
++
+The system displays the Add User Directory screen.
+
+Configure the User Directory Collector by entering the required data in the following tables:
+
+[cols=2*, cols"30,70"]
+[Options=header]
+|===
+|Name|Description
+|User Directory Name |Unique name for the user directory
+|Agent|Select a configured agent from the list
+|Server|IP address of server hosting the active directory
+|Forest Name|Forest level of the directory structure
+|Bind DN|User permitted to search the directory
+|BIND password|Directory server password
+|Protocol|ldap, ldaps, ldap-start-tls
+|Ports|Select port
+|===
+
+Enter the following Directory Server required attributes:
+
+[cols=2*, cols"50,50"]
+[Options=header]
+|===
+|Attributes |Attribute name in Directory Server
+|Display Name|name
+|SID|objectsid
+|User Name|sAMAccountName
+|===
+
+Click Include Optional Attributes to add any of the following attributes:
+
+[cols=2*, cols"50,50"]
+[Options=header]
+|===
+|Attributes |Attribute Name in Directory Server
+|Email Address|mail
+|Telephone Number|telephonenumber
+|Role|title
+|Country|co
+|State|state
+|Department|department
+|Photo|thumbnailphoto
+|ManagerDN|manager
+|Groups|memberOf
+|===
+
+
+//Removed based on review comments
+//Enter the following user search parameters in the Advanced Configuration attributes table: 
+
+//[cols=2*, cols"50,50"]
+//[Options=header]
+//|===
+//|*Base DN*|*Query* 
+//|Attributes //|(&(objectCategory=person)(objectClass=user))
+//|Email Address|mail
+//|Phone|telephoneNumber
+//|Country|Country
+//|State|state
+//|Department|department
+//|Photo|thumbnailPhoto
+//
+//|===
+
+== Testing Your User Directory Collector Configuration 
+
+You can validate LDAP User Permissions and Attribute Definitions using the following procedures:
+
+* Use the following command to validate Cloud Secure LDAP user permission:
++
+`ldapsearch -o ldif-wrap=no -LLL -x -b "dc=netapp,dc=com" -h 10.235.40.29 -p 389 -D Administrator@netapp.com -W`
+
+* Use AD Explorer to navigate an AD database, view object properties and attributes, view permissions, view an object's schema, execute sophisticated searches that you can save and re-execute. 
+
+** Install AD explorer https://docs.microsoft.com/en-us/sysinternals/downloads/adexplorer
+** Connect to the AD server using the username/password of the AD directory server.
+
+
+
+== Troubleshooting User Directory Collector Configuration Errors
+
+The following table describes known problems and resolutions that can occur during collector configuration:
+
+[cols=2*,  cols"50,50"]
+[options="header"]
+|===
+|Problem: | Resolution:
+|Adding a User Directory connector results in the ‘Error’ state.|Ensure you have provided valid values for the required fields (Server, forest-name, bind-DN, bind-Password).
+Ensure bind-DN input is always provided as ‘Administrator@<domain_forest_name>’ or as a user account with domain admin privileges.
+|The optional attributes of domain user are not appearing in the Cloud Secure User Profile page.|Ensure you  have used the AD domain user ‘Attribute Editor’ to enter the optional attributes. 
+|===
+
