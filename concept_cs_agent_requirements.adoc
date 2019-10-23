@@ -68,11 +68,14 @@ The port number can be obtained from the docker ps command output:
 `docker ps`
 `firewall-cmd reload`
 |Agent outbound URLs (port 433)|
-https://*.preview.cloudsecure.netapp.com/
-https://gateway.preview.cloudsecure.netapp.com/
-agentlogin.preview.cloudsecure.netapp.com (used for getting the jwt token using certificates)
-376015418222.dkr.ecr.us-east-1.amazonaws.com (used to pull docker images from ecr)
-prod-us-east-1-starport-layer-bucket.s3.amazonaws.com (used to download docker image digest)
+* https://<tenant id>.cs01.cloudinsights.netapp.com
+** You can get tenant ID from the product URL. For example: https://ab1234.cs01.cloudinsights.netapp.com
+* You can use a boarder range to specify the tenant ID: https://*.cs01.cloudinsights.netapp.com/
+* https://gateway.c01.cloudinsights.netapp.com
+* agentlogin.cs01.cloudinsights.netapp.com
+# agentlogin.preview.cloudsecure.netapp.com (used for getting the jwt token using certificates)
+# 376015418222.dkr.ecr.us-east-1.amazonaws.com (used to pull docker images from ecr)
+# prod-us-east-1-starport-layer-bucket.s3.amazonaws.com (used to download docker image digest)
 |===
   
 // Supported browsers a
