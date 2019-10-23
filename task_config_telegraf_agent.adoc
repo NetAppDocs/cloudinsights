@@ -83,7 +83,9 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
  Stop-Service telegraf
  sc.exe delete telegraf
  
-. Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
+. Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files. 
+
+. Remove the SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf key from the registry.  
 
 
 === RHEL and CentOS
