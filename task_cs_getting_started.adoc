@@ -1,0 +1,44 @@
+---
+sidebar: sidebar
+permalink: task_cs_getting_started.html
+keywords: collectors, data collectors, configure, introduction, browsers 
+summary: general description requirements to get started
+---
+
+= Getting Started with Cloud Secure
+
+There are configuration tasks that need to be completed before you can start using Cloud Secure to monitor user activity. 
+
+//not complete? 4/17 
+
+The Cloud Secure system uses an agent to collect access data from storage systems and user information from  Directory Services servers.
+
+//not complete? 4/17
+
+You need to configure the following before you can start collecting data:
+
+[cols="2*"]
+|===
+|Task|Related information
+| Configure an Agent a| link:concept_agent_requirements.html[Agent Requirements] 
+
+link:task_add_agent.html[Add Agent]
+|Configure a User Directory Connector|link:task_config_user_dir_connect.html[Add User Directory Connector]
+|Configure data collectors a| Click *Admin>Data Collectors*
+
+Click the data collector you want to configure. 
+
+See the Data Collector Vendor Reference section of the documentation. 
+|Create  Users Accounts| link:concept_user_roles.html[Manage User Accounts]
+//|Configure notifications of events for users.|link:task_config_notifications.html[Configure Notifications]
+
+//|Supported browsers a|
+//* Internet Explorer 11 
+//* Firefox ESR 60 
+//* Chrome latest nightly (73.0)
+// Removed per QA comments 5/9/19
+
+
+
+
+
