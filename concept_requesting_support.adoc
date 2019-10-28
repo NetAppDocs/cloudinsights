@@ -21,49 +21,57 @@ toc::[]
 
 You can access support options in Cloud Insights by clicking on *Help > Support*. The support options available to you depend on whether you are in Trial mode or Subscription mode.
 
-image:SupportPageExample.png[Support Page]
+//image:SupportPageExample.png[Support Page]
+image:SupportPageExample-NA.png[Support page]
 
 == Activating support entitlement
 
 //Once you have access to Cloud Insights Service shortly after subscribing in the AWS marketplace, it is strongly recommended that you activate support entitlement. Activating support entitlement enables you to access technical support over online chat, web ticketing system, and phone. The default support level is self-service until registration is completed.
 
-Cloud Insights Service offers self-service and email support when running in trial mode. Once you have subscribed to the service after the trial period, it is strongly recommended that you activate support entitlement. Activating support entitlement enables you to access technical support over the online chat, the web ticketing system, and the phone. The default support mode is self-service until registration is completed. See link:#obtaining-support-information[details] below.
+Cloud Insights offers self-service and email support when running in trial mode. Once you have subscribed to the service, it is strongly recommended that you activate support entitlement. Activating support entitlement enables you to access technical support over the online chat, the web ticketing system, and the phone. The default support mode is self-service until registration is completed. See link:#obtaining-support-information[details] below.
 
-During the initial subscription process with Cloud Insights Service for AWS, your Cloud Insights instance will generate a 20-digit NetApp serial number starting with "950". This NetApp serial number represents the Cloud Insights subscription associated with your AWS account. You must register the NetApp serial number to activate support entitlement. We offer two options for support registration: 
+During the initial subscription process, your Cloud Insights instance will generate a 20-digit NetApp serial number starting with "950". This NetApp serial number represents the Cloud Insights subscription associated with your account. You must register the NetApp serial number to activate support entitlement. We offer two options for support registration: 
 
 . User with pre-existing NetApp Support Site (NSS) SSO account (e.g. current NetApp customer)
 . New NetApp customer with no pre-existing NetApp Support Site (NSS) SSO account 
 
-==== Option 1: Steps for a user with a pre-existing NetApp Support Site (NSS) SSO account
+==== Option 1: Steps for a user with a pre-existing NetApp Support Site (NSS) SSO account 
 
 .Steps
+
 . Navigate to the NetApp registration website https://register.netapp.com
-. Select “already registered as NetApp customer” and select “Cloud Insights Service” as the Product Line.  Provide your serial number and AWS customer id by referring to the “Help > Support” menu within the Cloud Insight’s user interface:
+
+. Select “I am already registered as NetApp Customer” and choose _Cloud Insights_ as the Product Line. Select your Billing Provider (NetApp or AWS) and provide your Serial Number and your NetApp Subscription Name or AWS Customer ID by referring to the “Help > Support” menu within the Cloud Insights user interface:
 +
-image:SupportPage_SN_Section.png[SN_Screen]
+image:SupportPage_SN_Section-NA.png[SN_Screen]
 
 . Complete the Existing Customer Registration form and click *Submit*.
 +
-image:ExistingCustomerRegExample1.png[existing customer form]
+image:ExistingCustomerRegExample.png[existing customer form]
 
 . If no errors occur, user will be directed to a “Registration Submitted Successfully” page. The email address associated with the NSS SSO username used for registration will receive an email within a couple minutes stating “your product is now eligible for support”.
-. This is a onetime registration for the AWS subscription and NetApp serial number. 
+
+. This is a onetime registration for the Cloud Insights NetApp serial number. 
 
 ==== Option 2: Steps for a new NetApp customer with no pre-existing NetApp Support Site (NSS) SSO account
 
 .Steps
+
 . Navigate to the NetApp registration website https://register.netapp.com
-. Select “not a registered NetApp customer” and complete the required information in example form below:
+
+. Select “I am not a registered NetApp Customer” and complete the required information in example form below:
 
 image:NewCustomerRegExample.png[new customer form]
 
-. Select “Cloud Insights Service” as the Product Line.  Provide your serial number and AWS customer id by referring to the “Help > Support” menu within the Cloud Insight’s user interface:
-
-image:SupportPage_SN_Section.png[SN_Screen]
+. Select _Cloud Insights_ as the Product Line. Select your Billing Provider (NetApp or AWS) and provide your Serial Number and your NetApp Subscription Name or AWS Customer ID by referring to the “Help > Support” menu within the Cloud Insights user interface:
++
+image:SupportPage_SN_Section-NA.png[SN_Screen]
 
 . If no errors occur, user will be directed to a “Registration Submitted Successfully” page. The email address associated with the NSS SSO username used for registration will receive an email within a few hours stating “your product is now eligible for support”. 
+
 . As a new NetApp customer, you will also need to create a NetApp Support Site (NSS) user account for future registrations and access to support portal for technical support chat and web ticketing. This link is located at https://mysupport.netapp.com/eservice/public/now.do. You can provide your newly registered Cloud Insights serial number to expedite the process.
-. This is a one-time registration for the AWS subscription and NetApp serial number. Any new Cloud Insights subscription and serial number requires registration as well.
+
+. This is a one-time registration for the Cloud Insights NetApp serial number. 
 
 == Obtaining Support Information
 
@@ -83,7 +91,7 @@ Clicking on the Documentation link takes you to this documentation center.
 
 * *link:https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS[Community]*
 +
-Clicking on the community link takes you to the Netapp Cloud Insights community, where you can connect with peers and experts.
+Clicking on the community link takes you to the NetApp Cloud Insights community, where you can connect with peers and experts.
 
 There is also a link to provide link:mailto:ng-cloudinsights-customerfeedback@netapp.com[*Feedback*] to help us improve Cloud Insights.
 
