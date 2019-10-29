@@ -18,9 +18,9 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
-=== *October 2019*
+=== October 2019
 
-==== *Reporting*
+==== Reporting
 
 link:reporting_overview.html[*Cloud Insights Reporting*] is a business intelligence tool that enables you to view pre-defined reports or create custom reports. With Reporting you can perform the following tasks:
 
@@ -43,7 +43,7 @@ Cloud Insights Reporting can generate custom reports for areas like chargeback, 
 
 Reporting is available with Cloud Insights *Premium Edition*.
 
-==== *Active IQ Enhancements*
+==== Active IQ Enhancements
 
 link:concept_activeiq.html[Active IQ Risks] are now available as objects that can be queried as well as used in dashboard table widgets. The following Risks object attributes are included:
 * Category
@@ -56,7 +56,7 @@ link:concept_activeiq.html[Active IQ Risks] are now available as objects that ca
 * Storage Node
 * UI Category
 
-=== *September 2019*
+=== September 2019
 
 ==== New Gauge Widgets
 
@@ -81,7 +81,7 @@ At any point during the onboarding process, you can click on Admin > User Manage
 The data collector detail page has been improved to display errors in a more readable format. Errors are now displayed in a separate table on the page, with each error displayed on a separate line in the case of multiple errors for the data collector.
 
 
-=== *August 2019*
+=== August 2019
 
 ==== All vs. Available Data Collectors
 
@@ -100,7 +100,7 @@ _Business Entity_ is now an annotation type provided by Cloud Insights, which ca
 Cloud Insights collects data from NetApp ActiveIQ, which provides a series of visualizations, analytics, and other support related services to NetApp customers and their hardware / software systems. Cloud Insights integrates with ONTAP Data Management systems. See link:concept_activeiq.html[Active IQ] for more information.
 
 
-=== *July 2019*
+=== July 2019
 
 ==== Dashboard Improvements
 
@@ -123,7 +123,7 @@ Downgrade to Basic Edition fails with an error message if there is no available 
 
 The link:task_config_telegraf_kubernetes.html[Kubernetes Data Collector] now collects objects and counters from the kube-state-metrics plugin, greatly expanding the number and scope of metrics available for monitoring in Cloud Insights.
 
-=== *June 2019*
+=== June 2019
 
 ==== Cloud Insights Editions
 
@@ -136,7 +136,7 @@ Cloud Insights is available in different Editions to fit your budget and busines
 Note that the HCI data collector acquires from the HCI Virtual Center only. To collect data from the storage system, you must also configure the NetApp link:task_dc_na_solidfire[SolidFire] data collector.
 
 
-=== *May 2019*
+=== May 2019
 
 ==== New Service Data Collector: Kapacitor
 
@@ -183,7 +183,7 @@ Microsoft Windows Server 2019
 |===
 
 
-=== *April 2019*
+=== April 2019
 
 ==== Filter Virtual Machines by Tags
 
@@ -193,7 +193,7 @@ When configuring the following data collectors, you can filter to include or exc
 * link:task_dc_ms_azure.html#advanced-configuration[Azure]
 * link:task_dc_google_cloud.html#advanced_configuration[Google Cloud Platform]
 
-=== *March 2019*
+=== March 2019
 
 ==== Email Notifications for Subscription-related Events
 
@@ -210,7 +210,7 @@ When configuring the following data collectors, you can filter to include or exc
  **	AWS EC2 Instance Performance by Region 
 
 
-=== *February 2019*
+=== February 2019
 
 ==== Collecting from AWS Child Accounts
 
@@ -226,7 +226,7 @@ When configuring the following data collectors, you can filter to include or exc
 * You can configure a Cloud Insights Acquisition Unit on a Windows server/VM. Review the Windows link:concept_acquisition_unit_requirements.html[pre-requisites] before installing the link:task_configure_acquisition_unit.html[Acquisition Unit software].
 
 
-=== *January 2019*
+=== January 2019
 
 ==== "Owner" field is more readable
 
@@ -237,7 +237,7 @@ When configuring the following data collectors, you can filter to include or exc
 * For each data collector listed on the *Admin > Subscription* page, you can now see a breakdown of Managed Unit (MU) counts for hosts and storage, as well as the total.
 
 
-=== *December 2018*
+=== December 2018
 
 ==== Improvement of UI Load Time
 
@@ -253,7 +253,7 @@ The data collectors selected must be the same vendor and model, and reside on th
 
 * During the onboarding workflow, you can navigate to the *Help > Support* and *Admin > Subscription* pages. Returning from those pages returns you to the onboarding workflow, providing you have not closed the browser tab.
 
-=== *November 2018*
+=== November 2018
 
 ==== Subscribe through NetApp Sales or AWS Marketplace
 
