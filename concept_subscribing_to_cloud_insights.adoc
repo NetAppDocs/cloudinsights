@@ -39,27 +39,27 @@ NOTE: The features, data retention times, and objects or metrics collected in Cl
 
 ADD PREMIUM:
 
-Here are some of the key features available in Basic and Standard Edition:
+Here are some of the key features available in Basic, Standard, and Premium Edition:
 
 [cols=".<,.^,.^"]
 |===
 |Key Feature |Basic Edition |Standard Edition|Premium
-
-|Data Retention|7 Days|90 Days
-|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor
-|VM Metrics|NetApp Only|Multi-Vendor
-|Cloud Metrics|NetApp Only|Multi-Vendor
-|Metrics from Over 50 Services|NetApp Only|Multi-Vendor
+|Data Retention|7 Days|90 Days|13 Months
+|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor|Multi-Vendor
 |Customizable Dashboards|&check;|&check;
+|VM, Cloud, & Service Metrics| - |&check;|&check;
+|Monitors and Alerting| - |&check;|&check;
+|Cloud Secure User Data Access Auditing| - | - |&check;
+|Cloud Secure Insider Threat Detection| - | - |&check;
+|Business Intelligence and Reporting| - | - |&check;
 |===
 
 [cols=".<,.^,.^"]
 |===
 |Service & Support|Basic Edition |Standard Edition|Premium Edition
-
 |Community Forums|&check; |&check; 
 |Online Documentation & Knowledgebase|&check; |&check; 
-|Technical Support|-|&check; 
+|Live Chat & Technical Support|-|&check; 
 |===
 
 While using Cloud Insights, if you see a padlock icon image:padlock.png[Padlock], it means the feature is not available in your current Edition, or is available in a limited form. Upgrade for full access to the feature.
@@ -82,7 +82,8 @@ If your free trial has expired and you have not yet subscribed to Cloud Insights
 To subscribe, go to *Admin > Subscription*. In addition to the *Subscribe* buttons, you will be able to see your installed data collectors and calculate your estimated pricing. For a typical environment, you can click the self-serve AWS Marketplace *Subscribe Now* button. If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for Volume Pricing. 
 
 //image:Subscribe_Volume.png[Subscription Options]
-image:SubscribeTodayScreen.png[Subscription Options]
+//image:SubscribeTodayScreen.png[Subscription Options]
+image:SubscriptionCompareTable.png[Subscription Options]
 
 === Pricing
 Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts or virtual machines* and amount of *unformatted capacity* being managed in your infrastructure environment.
