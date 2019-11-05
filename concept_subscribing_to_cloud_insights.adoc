@@ -28,16 +28,16 @@ The features and functionality available to you in Cloud Insights depend on the 
 
 * *Basic Edition* is free and available to existing NetApp customers with an active NetApp support account.
 +
-NOTE: The features, data retention times, and objects or metrics collected in Cloud Insights Basic Edition are subject to change with or without notice. 
+WARNING: Inactive Cloud Insights free Basic Edition environments are deleted and their resources are reclaimed. An environment is considered inactive if there is no user activity for 90 consecutive days. 
++
+NOTE: The features, data retention times, and objects or metrics collected in Cloud Insights Basic Edition are subject to change with or without notice.  
 
 * *Standard Edition* is available via subscription and offers all the features of Basic Edition plus more.
 
-* *Premium Edition* TBD
+* *Premium Edition* offers additional benefits such as Business Intelligence and Reporting, as well as Cloud Secure Auditing and Threat Detection.
 
 
 === Key Features
-
-ADD PREMIUM:
 
 Here are some of the key features available in Basic, Standard, and Premium Edition:
 
@@ -99,9 +99,6 @@ The Subscription Calculator gives you an estimated list-price monthly Cloud Insi
 Your estimated list price cost will change based on whether you select a subscription term of 12 months or 36 months. The 36-month term includes a discounted cost per Managed Unit.
 
 NOTE: The calculator is for estimation only. Your exact pricing will be set when you subscribe.
-//or in a conversation with your NetApp sales representative. 
-
-//image:Subscription_Example.png[Subscription status]
 
 == How Do I Subscribe?
 
@@ -111,7 +108,7 @@ If your Managed Unit count is less than 1,000, you can subscribe via NetApp Sale
 
 If your expected Managed Unit count is 1,000 or greater, click on the link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[*Contact Sales*] button to subscribe though the NetApp Sales Team. 
 
-You must provide your Cloud Insights *Serial Number* to your NetApp sales representative so that your paid subscription can be applied to your Cloud Insights environment. The Serial Number uniquely identifies your Cloud Insights trial environment and can be found above the "Contact Sales" button on the *Admin > Subscription* page.
+You must provide your Cloud Insights *Serial Number* to your NetApp sales representative so that your paid subscription can be applied to your Cloud Insights environment. The Serial Number uniquely identifies your Cloud Insights trial environment and can be found on the *Admin > Subscription* page.
 
 === Self-Subscribe via AWS Marketplace
 
@@ -134,9 +131,9 @@ image:Subscription_Summary.png[Subscription Status ]
 
 The Subscription status page displays the following:
 
-* Current subscription (Trial or Standard Edition) 
-* Contract term (12 or 36 months) and expiration date
-* Managed Unit current usage, including breakdown counts for hosts and capacity
+* Current subscription or Edition 
+* Contract term and expiration date
+* Current Managed Unit usage, including breakdown counts for hosts and capacity
 * Link to modify your subscription 
 
 NOTE: The Unformatted Capacity Managed Unit count reflects a sum of the total raw capacity in the environment and is rounded up to the nearest Managed Unit. 
