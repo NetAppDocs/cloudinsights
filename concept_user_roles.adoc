@@ -67,10 +67,16 @@ If they have an existing account for that email address, they can simply sign in
 
 == Single Sign-On (SSO)
 
-In addition to inviting users, administrators who are federated for their corporate domain environment can enable *Single Sign-On* (SSO) access for all users in that domain, without having to invite them individually. With SSO enabled, any user with the domain email address can log into Cloud Insights.
+In addition to inviting users, administrators can enable *Single Sign-On* (SSO) access to Cloud Insights for all users in that domain, without having to invite them individually. With SSO enabled, any user with the domain email address can log into Cloud Insights.
+
+NOTE: SSO is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. On the *Admin > User Management* page, click the *Configure SSO* button. Once configured, administrators can then enable SSO user login.
 
 When an administrator enables SSO, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
 
-Occasionally, an administrator will want to promote a single user out of the default SSO role (for example, to make them an administrator). They can accomplish this on the *Admin > User Management* page by clicking on the "three-dot" menu for the user and selecting *Assign Role*.
+Occasionally, an administrator will want to promote a single user out of the default SSO role (for example, to make them an administrator). They can accomplish this on the *Admin > User Management* page by clicking on the right-side menu for the user and selecting *Assign Role*.
 
-NOTE: Users who are assigned an explicit role in this way will continue to have access to Cloud Insights even if SSO is disabled.
+NOTE: Users who are assigned an explicit role in this way will continue to have access to Cloud Insights even if SSO is subsequently disabled.
+
+
+
+
