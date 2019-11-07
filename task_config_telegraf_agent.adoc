@@ -137,7 +137,7 @@ If your operating system is not using systemd (CentOS 7+ and RHEL 7+):
 
 To uninstall the agent on RHEL/CentOS, in a Bash terminal, do the following:
 
-. Stop the Telegraf service using the following command:
+. Stop the Telegraf service:
 +
  systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
  /etc/init.d/telegraf stop (for systems without systemd support)
@@ -204,7 +204,7 @@ If your operating system is not using systemd:
 
 To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
 
-. Stop the Telegraf service using the following command:
+. Stop the Telegraf service:
 +
  systemctl stop telegraf (If your operating system is using systemd)
  /etc/init.d/telegraf stop (for systems without systemd support)
@@ -263,7 +263,7 @@ After the agent is installed, you can use the following commands to start/stop t
 
 To uninstall the agent on macOS, in a Bash terminal, run the following:
 
-. Stop the Telegraf service using the following command:
+. Stop the Telegraf service:
 +
  sudo launchctl stop telegraf
 
