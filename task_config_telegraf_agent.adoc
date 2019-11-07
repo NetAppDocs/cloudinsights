@@ -78,7 +78,7 @@ After the agent is installed, you can use the following commands to start/stop t
 
 To uninstall the agent on Windows, do the following in a PowerShell window:
 
-. Stop and Delete the Telegraf service:
+. Stop and delete the Telegraf service:
 +
  Stop-Service telegraf
  sc.exe delete telegraf
@@ -89,14 +89,14 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
 
 To upgrade the telegraf agent, do the following:
 
-. Stop and remove the telegraf service:
+. Stop and delete the telegraf service:
 
  Stop-Service telegraf
  sc.exe delete telegraf
 
-. Remove the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
-. Remove _C:\Program Files\telegraf\telegraf.conf_
-. Remove _C:\Program Files\telegraf\telegraf.exe_
+. Delete the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
+. Delete _C:\Program Files\telegraf\telegraf.conf_
+. delete _C:\Program Files\telegraf\telegraf.exe_
 . link:Windows[Install the new agent].
 
 
@@ -142,7 +142,7 @@ To uninstall the agent on RHEL/CentOS, in a Bash terminal, do the following:
  systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
  /etc/init.d/telegraf stop (for systems without systemd support)
 
-. Remove the Telegraf package:
+. Remove the Telegraf agent:
 +
  yum remove telegraf
 
@@ -157,11 +157,10 @@ To upgrade the telegraf agent, do the following:
 
 . Stop the telegraf service:
 
- systemctl stop telegraf
-or
- /etc/init.d/telegraf stop
+ systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+ /etc/init.d/telegraf stop (for systems without systemd support)
  
-. Uninstall the previous telegraf agent:
+. Remove the previous telegraf agent:
 
  yum remove telegraf
 
@@ -210,7 +209,7 @@ To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
  systemctl stop telegraf (If your operating system is using systemd)
  /etc/init.d/telegraf stop (for systems without systemd support)
 
-. Remove the Telegraf package:
+. Remove the Telegraf agent:
 +
  dpkg -r telegraf
 
@@ -226,11 +225,10 @@ To upgrade the telegraf agent, do the following:
 
 . Stop the telegraf service:
 
- systemctl stop telegraf
-or 
- /etc/init.d/telegraf stop
+ systemctl stop telegraf (If your operating system is using systemd)
+ /etc/init.d/telegraf stop (for systems without systemd support)
 
-. Uninstall the previous telegraf agent:
+. Remove the previous telegraf agent:
 
  dpkg -r telegraf
 
@@ -276,10 +274,9 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
  brew remove telegraf
 ////
 
-. Copy the Uninstall command to /tmp and execute it:
+. Uninstall the telegraf agent:
 
  cp /Applications/telegraf.app/scripts/uninstall /tmp
- 
  sudo /tmp/uninstall
 
 . Remove any configuration or log files that may be left behind:
@@ -424,24 +421,24 @@ Use the following links to access information for the kube state metrics counter
 
 To uninstall the agent on Kubernetes, do the following:
 
-If the monitoring namespace is being used solely for Telegraf:
+. If the monitoring namespace is being used solely for Telegraf:
 
  kubectl delete ns monitoring
  
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 
-Stop and delete the Telegraf service:
+. Stop and delete the Telegraf service:
 
  kubectl --namespace monitoring delete ds telegraf-ds 
  kubectl --namespace monitoring delete rs telegraf-rs
  
-Delete the Telegraf ConfigMap and ServiceAccount:
+. Delete the Telegraf ConfigMap and ServiceAccount:
 
  kubectl --namespace monitoring delete cm telegraf-conf 
  kubectl --namespace monitoring delete cm telegraf-conf-rs
  kubectl --namespace monitoring delete sa telegraf-user 
  
-Delete the Telegraf ClusterRole and ClusterRolebinding:
+. Delete the Telegraf ClusterRole and ClusterRolebinding:
 
  kubectl --namespace monitoring delete clusterrole endpoint-access 
  kubectl --namespace monitoring delete clusterrolebinding endpoint-access 
