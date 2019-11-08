@@ -17,7 +17,7 @@ summary:
 
 
 [.lead]
-Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.9/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights. 
+Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.9/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
 //NOTE: This topic is considered Preview documentation and is subject to change.
 
@@ -97,7 +97,7 @@ To upgrade the telegraf agent, do the following:
 . Delete the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
 . Delete _C:\Program Files\telegraf\telegraf.conf_
 . Delete _C:\Program Files\telegraf\telegraf.exe_
-. link:Windows[Install the new agent].
+. link:#windows[Install the new agent].
 
 
 
@@ -164,7 +164,7 @@ To upgrade the telegraf agent, do the following:
 
  yum remove telegraf
 
-. link:rhel-and-centos[Install the new agent].
+. link:#rhel-and-centos[Install the new agent].
 
 
 
@@ -232,7 +232,7 @@ To upgrade the telegraf agent, do the following:
 
  dpkg -r telegraf
 
-. link:ubuntu-and-debian[Install the new agent].
+. link:#ubuntu-and-debian[Install the new agent].
 
 
 === macOS
@@ -298,7 +298,7 @@ To upgrade the telegraf agent, do the following:
  cp /Applications/telegraf.app/scripts/uninstall /tmp
  sudo /tmp/uninstall
 
-. link:macos[Install the new agent].
+. link:#macos[Install the new agent].
 
 
 === Kubernetes
@@ -448,12 +448,27 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 To upgrade the telegraf agent, do the following:
 
-. Remove the current the telegraf services:
+. Remove the current the telegraf deployments:
 
  kubectl --namespace monitoring delete ds telegraf-ds
  kubectl --namespace monitoring delete rs telegraf-rs
 
-. link:kubernetes[Install the new agent].
+. Back up the existing configurations:
+
+ kubectl --namespace monitoring get cm telegraf-conf -o yaml > /tmp/telegraf-conf.yaml
+ kubectl --namespace monitoring get cm telegraf-conf-rs -o yaml > /tmp/telegraf-conf-rs.yaml
+ 
+. link:#kubernetes[Install the new agent].
+
+. Re-apply the configurations:
+
+ kubectl --namespace monitoring apply -f /tmp/telegraf-conf.yaml --force
+ kubectl --namespace monitoring apply -f /tmp/telegraf-conf-rs.yaml --force
+ 
+. Restart all telegraf pods. Run the following command for each telegraf pod:
+
+ kubectl --namespace monitoring delete pod <Telegraf_pod>
+
 
 
 == Troubleshooting Agent Installation
