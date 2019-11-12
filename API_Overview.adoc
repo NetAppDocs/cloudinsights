@@ -45,7 +45,7 @@ The initial set is ALL, DATA_COLLECTION, ASSETS.
 
 For example, to retrieve storages assets,
 
-curl https://<tenant_host_name>/rest/v1/assets/storages -H “X-CloudInsights-ApiKey: $API_TOKEN”
+curl https://<tenant_host_name>/rest/v1/assets/storages -H 'X-CloudInsights-ApiKey: $API_TOKEN'
 
 where the API_TOKEN is saved from the API access key creation.
 
