@@ -71,7 +71,7 @@ In addition to inviting users, administrators can enable *Single Sign-On* (SSO) 
 
 NOTE: SSO is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. On the *Admin > User Management* page, click the *Configure SSO* button. Once configured, administrators can then enable SSO user login.
 +
-TBD: DO WE NEED TO TALK ABOUT FEDERATION OR EXPLAIN IT?
+SSO configuration requires link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory, using open standards such as Security Assertion Markup Language 2.0 (SAML) and OpenID Connect (OIDC).
 
 When an administrator enables SSO, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
 
