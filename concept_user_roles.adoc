@@ -71,15 +71,14 @@ In addition to inviting users, administrators can enable *Single Sign-On* (SSO) 
 
 NOTE: SSO is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory, using open standards such as Security Assertion Markup Language 2.0 (SAML) and OpenID Connect (OIDC). 
 
-To confirgure SSO, on the *Admin > User Management* page, click the *Configure SSO* button. Once configured, administrators can then enable SSO user login. When an administrator enables SSO, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
+To configure SSO, on the *Admin > User Management* page, click the *Configure SSO* button. Once configured, administrators can then enable SSO user login. When an administrator enables SSO, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
 
-TBD: ADD IMAGE
+link:UserManagementWithSSO.png[User Management with SSO]
 
 Occasionally, an administrator will want to promote a single user out of the default SSO role (for example, to make them an administrator). They can accomplish this on the *Admin > User Management* page by clicking on the right-side menu for the user and selecting _Assign Role_. Users who are assigned an explicit role in this way continue to have access to Cloud Insights even if SSO is subsequently disabled. 
 
 If the user no longer requires the elevated role, you can click the menu to _Remove User_. The user will be removed from the list. If SSO is enabled, the user can continue log in to Cloud Insights through SSO, with the default role.
 
-TBD: TALK ABOUT "SHOW SSO USERS" CHECKBOX?
+You can choose to hide SSO users by checking off the *Show SSO Users* cehckbox. image:ShowSSOUsersCheckbox[Show SSO users]
 
-TBD: ADD IMAGE OF USER PAGE?
 
