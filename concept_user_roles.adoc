@@ -73,12 +73,12 @@ NOTE: SSO is available in Cloud Insights Premium Edition, and must be configured
 
 To configure SSO, on the *Admin > User Management* page, click the *Configure SSO* button. Once configured, administrators can then enable SSO user login. When an administrator enables SSO, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
 
-link:UserManagementWithSSO.png[User Management with SSO]
+image:UserManagementWithSSO.png[User Management with SSO]
 
 Occasionally, an administrator will want to promote a single user out of the default SSO role (for example, to make them an administrator). They can accomplish this on the *Admin > User Management* page by clicking on the right-side menu for the user and selecting _Assign Role_. Users who are assigned an explicit role in this way continue to have access to Cloud Insights even if SSO is subsequently disabled. 
 
 If the user no longer requires the elevated role, you can click the menu to _Remove User_. The user will be removed from the list. If SSO is enabled, the user can continue log in to Cloud Insights through SSO, with the default role.
 
-You can choose to hide SSO users by checking off the *Show SSO Users* checkbox. image:ShowSSOUsersCheckbox[Show SSO users]
+You can choose to hide SSO users by checking off the *Show SSO Users* checkbox. image:ShowSSOUsersCheckbox.png[Show SSO users]
 
 
