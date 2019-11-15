@@ -34,7 +34,7 @@ The Account Owner is created when you register for Cloud Insights.
 
 Best practice is to limit the number of users with Administrator permissions. The greatest number of accounts should be user or guest accounts.
 
-== Creating accounts
+== Creating Accounts by Inviting Users
 
 Creating a new user account is achieved through Cloud Central. A user can respond to the invitation sent through email, but if the user does not have an account with Cloud Central, the user needs to sign up with Cloud Central so that they can accept the invitation.
 
@@ -47,7 +47,7 @@ Creating a new user account is achieved through Cloud Central. A user can respon
 .Steps
 
 . Log into Cloud Insights
-. In the menu, click *Admin > Account Manager*
+. In the menu, click *Admin > User Management*
 +
 The User Management screen is displayed. The screen contains a list of all of the accounts on the system.
 . Click *+ User*
@@ -65,7 +65,7 @@ The *Invite User* screen is displayed.
 The invitation is sent to the user. Users will have 14 days to accept the invitation. Once a user accepts the invitation, he or she will be taken to the NetApp Cloud Portal, where they will sign up using the email address in the invitation.
 If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud Insights environment.
 
-== Single Sign-On (SSO)
+== Single Sign-On (SSO) Accounts
 
 In addition to inviting users, administrators can enable *Single Sign-On* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights.
 
