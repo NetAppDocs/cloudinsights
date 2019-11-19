@@ -34,7 +34,7 @@ entries:
       - title: Switching to Other Cloud Central Products
         url: /concept_other_cloud_products.html
         
-  - title: Infrastructure Data Collector Reference
+  - title: Data Collector Reference - Infrastructure
     entries:
       - title: Vendor Reference Overview
         url: /concept_data_collector_reference.html
@@ -94,6 +94,8 @@ entries:
             url: /task_dc_hp_3par.html
           - title: HP Command View AE
             url: /task_dc_hpe_commandview.html
+          - title: HPE Nimble
+            url: /task_dc_hpe_nimble.html
       - title: Hitachi Data Systems
         entries:
           - title: HDS Command Suite
@@ -135,11 +137,11 @@ entries:
             url: /task_dc_na_7mode.html
           - title: E-Series
             url: /task_dc_na_eseries.html
-          - title: Host and VM File System
-            url: /task_dc_na_hostvm.html
+          - title: NetApp HCI Management Server
+            url: /task_dc_na_hci.html
           - title: SolidFire
             url: /task_dc_na_solidfire.html
-          - title: StorageGrid
+          - title: StorageGRID
             url: /task_dc_na_storagegrid.html
       - title: Nutanix
         url: /task_dc_nutanix.html
@@ -154,7 +156,7 @@ entries:
       - title: VMWare
         url: /task_dc_vmware.html
         
-  - title: Services Data Collector Reference
+  - title: Data Collector Reference - Services
     entries:
       - title: Display Options
         url: /concept_telegraf_display_options.html
@@ -172,7 +174,7 @@ entries:
 #        url: task_config_telegraf_bitbucket.html
 #      - title: cassandra
 #        url: task_config_telegraf_cassandra.html
-      - title: Consul
+      - title: Consul 
         url: /task_config_telegraf_consul.html
       - title: Couchbase
         url: /task_config_telegraf_couchbase.html
@@ -196,8 +198,6 @@ entries:
         url: /task_config_telegraf_hadoop.html
       - title: HAProxy
         url: /task_config_telegraf_haproxy.html
-#      - title: http
-#        url: task_config_telegraf_http.html
 #      - title: icinga2
 #        url: task_config_telegraf_icinga2.html
 #      - title: influxdbv2
@@ -208,8 +208,8 @@ entries:
 #        url: task_config_telegraf_jboss.html
       - title: Kafka
         url: /task_config_telegraf_kafka.html
-#      - title: kapacitor
-#        url: task_config_telegraf_kapacitor.html
+      - title: Kapacitor
+        url: task_config_telegraf_kapacitor.html
       - title: Kibana
         url: /task_config_telegraf_kibana.html
       - title: Kubernetes
@@ -308,7 +308,7 @@ entries:
         url: /task_query_assign_multiple_applicationss.html
       - title: Copying table values to the Clipboard
         url: /task_query_copy_table_values.html
-  - title: All About Annotations
+  - title: Working with Annotations
     entries:
       - title: Defining Annotations
         url: /task_defining_annotations.html
@@ -350,6 +350,65 @@ entries:
         url: /concept_asset_violation_section.html
       - title: Hints and Tips to Search for Assets
         url: /concept_searching_assets.html
+
+  - title: Reporting
+    entries:
+      - title: Reporting Overview
+        url: /reporting_overview.html
+      - title: Using Pre-Defined Reports
+        url: /reporting_predefined_reports.html
+      - title: Storage Manager Dashboard
+        url: /reporting_storage_manager_dashboard.html
+#      - title: Creating an Example Report
+#        url: /reporting_create_example.html
+      - title: Managing Reports
+        url: /reporting_managing_reports.html
+      - title: Custom Reports
+        url: /reporting_creating_custom_reports.html
+#      - title: Data Models
+#        url: /reporting_data_model.html
+  
+  - title: Cloud Secure (Preview Documentation)
+    entries:
+      - title: About Cloud Secure
+        url: /cs_intro.html
+      - title: Getting Started
+        entries: 
+          - title: Getting Started With Cloud Secure
+            url: /task_cs_getting_started.html
+          - title: Cloud Secure Agent Requirements
+            url: /concept_cs_agent_requirements.html
+          - title: Configuring a Cloud Secure Agent
+            url: /task_cs_add_agent.html
+          - title: Deleting a Cloud Secure Agent
+            url: /task_cs_delete_agent.html 
+          - title: Configuring a User Directory Collector 
+            url: /task_config_user_dir_connect.html
+          - title: Configuring an Active Directory Collector
+            url: /task_config_user_dir_connect.html
+          - title: Configuring NetApp Data Collectors
+            entries: 
+              - title: Configuring the ONTAP SVM Data Collector
+                url: /task_add_collector_svm.html
+              - title: Configuring the Cloud ONTAP Data Collector
+                url: /task_config_cs_incloud.html
+      - title: Viewing Cloud Secure Forensic Data 
+        entries: 
+          - title: Alerts
+            url: /alert_data.html
+          - title: General Forensic Views
+            url: /concept_forensic.html
+          - title: Forensic User Overview
+            url: /forensic_user_overview.html
+          - title: Forensic Entity Detail
+            url: /forensic_entity_detail.html
+          - title: Forensic Community Detail 
+            url: /forensic_community_overview.html
+          - title: Forensic Activity History
+            url: /forensic_activity_history.html          
+
+  - title: Active IQ
+    url: /concept_activeiq.html
 #  - title: How-To Guides
 #    entries:
 #       - title: Minimizing risk in thin provisioning

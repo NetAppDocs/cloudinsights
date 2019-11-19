@@ -1,0 +1,79 @@
+---
+sidebar: sidebar
+permalink: forensic_entity_data.html
+keywords: Forensic, entity, entity, entity access, last entity, entity size
+summary: Forensic entity data
+---
+
+= Forensic Entity Data
+
+toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+// 4/17 This topic is incomplete UI changes are not available. I no longer know if there are live links in the UI. 
+
+
+
+[Lead]
+
+Use the Entities page to identify entities that have been accessed and determine if any of the entities are related to alerts raised by Cloud Secure. 
+
+== Examining Entity Access Data  
+
+Click *Forensic > Entities* to access the Entities page. The page describes the following activity details:
+
+
+* Entity name with a link to the link:forensic_entity_detail.html[Forensic Entities Detail] page
+* Type of entity it is:
+** File, directory, or object 
+* The path to the entity
+* The size of the entity
+* The device name
+* Community count 
+* last accessed 
+* Last accessed by
+
+* Any alerts raised against the entity: 
+** Represents a critical alert
+** Represents a warning alert
+** Represents an alert that has been corrected.
+* The number of communities the entity is a member of 
+
+//with a link to the link:<forensic_community_detail>.html[Communities Overview]
+
+
+* When the entity was last accessed 
+
+//with a link to the link:<forensic_user_detail>.html[User Overview]
+
+
+== Filtering Forensic Entity Data
+
+You can filter the entity data by the following
+
+* Alerts - the severity of the alert 
+* Community Relationship With Entity - the number of communities related to the entity
+
+* Entity Path 
+
+* Last Entity Accessed can be filtered by a numerical value.
+
+All fields can be set to ascending or descending order.
+
+Click *Search for* and select an entity to access the link:forensic_entity_detail.html[Forensic Entity Detail]. 
+
+Click the clock icon to select the range of time for data you want to view. You can also use Custom to specify a custom data range. 
+
+//Is there a limit to the amount of days you can collect. 
+
+
+
+
+
+
+

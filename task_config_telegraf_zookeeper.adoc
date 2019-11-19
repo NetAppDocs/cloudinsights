@@ -22,17 +22,21 @@ Cloud Insights uses this data collector to gather metrics from Apache Zookeeper.
 
 . From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Apache Zookeeper.
 +
-If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
-+
-If you have an agent already configured, select the appropriate Operating System or Platform and click *Continue*.
+Select the Operating System or Platform on which the Telegraf agent is installed. 
 
-. Follow the instructions in the Apache Zookeeper Configuration screen to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. The example below shows the instructions for Linux:
+. If you haven't already installed an Agent for collection, or you wish to install an Agent for a different Operating System or Platform, click _Show Instructions_ to expand the link:task_config_telegraf_agent.html[Agent installation] instructions.
+
+. Select the Agent Access Key for use with this data collector. You can add a new Agent Access Key by clicking the *+ Agent Access Key* button. Best practice: Use a different Agent Access Key only when you want to group data collectors, for example, by OS/Platform.
+
+. Follow the configuration steps to configure the data collector. The instructions vary depending on the type of Operating System or Platform you are using to collect data. 
 
 image:ZookeeperDCConfigLinux.png[Zookeeper configuration]
 
 == Setup
 
-Information may be found in the link:https://zookeeper.apache.org/[Zookeeper] documentation.
+At a minimum, you need to whitelist the Zookeeper four letter server commands mntr, srvr, and stat.
+You can enable these commands using the following format: 4lw.commands.whitelist=mntr, srvr, stat in the zoo.cfg file.
+There may be other four letter commands that are required in your configuration. See the link:https://zookeeper.apache.org/[Zookeeper] documentation for more information. 
 
 == Objects and Counters
 
