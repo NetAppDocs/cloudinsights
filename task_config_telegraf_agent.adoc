@@ -272,6 +272,7 @@ You can use the following commands to stop and start the Telegraf service:
  kubectl --namespace monitoring apply -f /tmp/telegraf-ds.yaml 
  kubectl --namespace monitoring apply -f /tmp/telegraf-rs.yaml
  
+[#configuring-kubernetes-agent]
 ==== Configuring the Agent to Collect Data from Kubernetes
 
 For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet and a ReplicaSet. The pods in which the agents run need to have access to the following:
