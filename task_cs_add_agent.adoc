@@ -1,0 +1,238 @@
+---
+sidebar: sidebar
+permalink: task_cs_add_agent.html
+keywords: agent, Cloud Secure, installation
+summary: Adding Cloud Secure agents
+---
+
+= Cloud Secure Agent Installation
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+Cloud Secure collects user activity data using one or more agents. Agents connect to devices in your environment and collect data that is sent to the Cloud Secure SaaS layer for analysis. 
+
+== Before You Begin
+
+* The sudo privilege is required for installation, running scripts, and uninstall. 
+
+* The Docker CE package must be installed on the VM hosting the agent. 
++ 
+To determine if the Docker CE package is installed, use the following command:   
+`sudo rpm -qa |grep -i docker-ce`
+If the package is installed, the command returns the package name, for example:  
+docker-ce-18.03.1.ce-1.el7.centos.x86_64
+
+* The Docker-client-xx or Docker-common-xx native RHEL Docker packages are not supported. These packages do not support the `docker run cli` format that Cloud Secure supports. 
++ 
+Use the following commands to determine if these packages are installed: 
+`sudo rpm -qa | grep -i docker-client`
+`sudo rpm -qa  |grep -i docker-common` 
+
+== Steps to Install Docker
+
+. Install the required dependencies:
+`sudo yum install yum-utils device-mapper-persistent-data lvm2`
+
+. Add docker stable repository to your system:
+`sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo`
+
+. To use the latest version of Docker CE, enable repositories that are disabled by default:
+`sudo yum-config-manager --enable docker-ce-edge`
+
+. Install the latest version of Docker CE using the following command:
+`sudo yum install docker-ce`
+(Version must be higher than 17.06)
+
+. Start Docker
+`sudo systemctl start docker`
+
+. Use the following command to automatically start Docker on system reboot:
+`sudo systemctl enable docker`
+
+== Docker Installation Reference
+
+For additional installation information, see: 
+* https://docs.docker.com/install/linux/docker-ce/centos/
+* https://getstart.blog/2018/03/24/docker-ce-installation-on-red-hat-7/
+//sysctl start docker
+
+== Steps to Install Docker on a VM Without Full Access to the Internet
+
+.Steps 
+. Uninstall existing docker installation:
++
+`sudo rpm -qa | grep docker`
+`sudo rpm -e <rpms>`
+
+. Install Docker-ce
+
+.. Download all required rpms and copy them to the VM on which the agent is to be installed.
++
+https://download.docker.com/linux/centos/docker-ce.repo
+`sudo yum-config-manager --add-repo <repo_file>`
+https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-18.09.0-3.el7.x86_64.rpm
+https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-cli-18.09.0-3.el7.x86_64.rpm
+https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
+`sudo rpm -i <rpms>`
+`sudo systemctl enable docker`
+`sudo systemctl start docker`
+
+== Java Requirement 
+
+OpenJDK Java is required. Use the following command to determine if OpenJDK Java is installed: 
+`sudo rpm -qa|grep -i openjdk`  
+
+Install OpenJDK Java using the following command: 
+`sudo yum install -y java-1.8.0-openjdk`
+
+The IBM Java package, found in some RHEL versions, must be uninstalled. Use the following command to verify the Java version: 
+`sudo java -` (or) `sudo rpm -qa | grep -I java`
+If the command returns information similar to 'IBM J9 VM (build 2.9.x)' you need to remove the package: 
+`sudo update-alternatives --remove java /usr/lib/jvm/jdk[version]/bin/java`
+
+== Steps to Install an Agent from a Non-Root Account
+
+You can perform an installation from a non-Root user account using the following steps:
+
+. Add a local user and set the password: (where username is the name you choose)
+ `sudo useradd username` 
+ `sudo passwd username password` (enter the password for the local user)
+
+. Uncomment the following lines in /etc/sudoers
+
+* %wheel ALL=(ALL) ALL
+* %wheel ALL=(ALL) NOPASSWD: ALL
+
+. Add the local user you created to the wheel group: 
+ `sudo usermod -aG wheel username`
+
+. Create an installation folder in the local user's home directory and install the Cloud Secure Agent from within the folder:
+ `sudo cd /home/username/`
+ `sudo mkdir install; cd install/`
+
+. Install the Cloud Secure Agent using the Curl command taken from the Web UI. 
++
+Provide a -k in the Curl command if your RHEL platform performs a strict certificate check. For CentOS systems, the -k option is not required.
+
+////
+
+[mylocal1@contrail-eng-kirana-kirana-nane-vm12 install]$ token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJvbmV0aW1lVG9rZW5JZCI6IjkwYTVjOWQzLTkxOWQtNGY5OC05NzU2LTI0YmQyYTEzMmU2YiIsImRvY2tlclJlcG9zaXRvcnkiOiJvY2ktcmVnaXN0cnkub2NpLmNsb3VkLm5hbmUub3BlbmVuZ2xhYi5uZXRhcHAuY29tOjUwMDAiLCJyb2xlcyI6WyJhZG1pbiJdLCJzZXJ2ZXJVcmwiOiJodHRwczovL2F2NDE3Mi5kZXYuY2xvdWRzZWN1cmUubmV0YXBwLmNvbSIsImlzcyI6Im9jaSIsImV4cCI6MTU1OTU1OTc4MiwibG9naW4iOiJhZ2VudC5lNGE4NTNiMS03Nzk3LTQ0MDYtOWVmNC03ZDg5YzExZWU0MzYiLCJpYXQiOjE1NTk1NTI1ODIsInV1aWQiOiJlNGE4NTNiMS03Nzk3LTQ0MDYtOWVmNC03ZDg5YzExZWU0MzYiLCJ0ZW5hbnQiOiI3M2NhN2MzMi01YzhlLTQ5OTQtYWQ2YS02NTU0MTAzOTJhZTkiLCJhZ2VudExvZ2luVXJsIjoiaHR0cHM6Ly9hZ2VudGxvZ2luLmRldi5jbG91ZHNlY3VyZS5uZXRhcHAuY29tIn0.9M9ioV_QxjeI58G9qL3_P6RPXxytnoqDL_i7EACnq0LGHIcGRkqSLZyDW7MJabPu' installerName=cloudsecure-linux-agent-installer-1.0.zip && curl -k -H "Authorization: Bearer $token" -o $installerName https://av4172.dev.cloudsecure.netapp.com/rest/v1/agents/installers/linux/1.0 && unzip $installerName -d . && chmod 755 -Rf . && sudo /bin/bash -c "TOKEN=$token ./cloudsecure-agent-install.sh"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 39.1M  100 39.1M    0     0  26.7M      0  0:00:01  0:00:01 --:--:-- 26.8M
+Archive:  cloudsecure-linux-agent-installer-1.0.zip
+  inflating: ./cloudsecure-agent-install.sh
+setup cloud secure agent directory ownership
+Updating ownership for directory /var/log/netapp/cloudsecure/agent.
+Updating ownership for directory /var/log/netapp/cloudsecure/backup/vault.
+Updating ownership for directory /opt/netapp/cloudsecure.
+Updating ownership for directory /var/lib/netapp/cloudinsights.
+Setting systemd services for cloudsecure-agent.
+Starting CloudSecure Agent services.
+                      Welcome to CloudSecure (R) 1.0.0
+                      Agent           
+Installation:       /opt/netapp/cloudsecure/agent
+  Installation logs:  /var/log/netapp/cloudsecure/install
+  Agent Logs:         /opt/netapp/cloudsecure/agent/logs
+
+  To uninstall:
+    sudo cloudsecure-agent-uninstall.sh --help
+
+[mylocal1@contrail-eng-name-name-nane-vm12 install]$ cd /opt/netapp/cloudsecure/agent/logs
+////
+
+
+== Steps to Install Agent 
+
+. Log in as Administrator or Account Owner to your Cloud Secure environment. 
+. Click *Admin > Data Collectors > Agents > +Agent*
++ 
+The system displays the Add an Agent page:
++
+image::Add-agent-1.png[]
+
+. Select the operating system on which you are installing the agent.
+
+. Verify that the agent server meets the minimum system requirements. 
+
+. To verify that the agent server is running a supported version of Linux, click _Versions Supported (i)_.
++
+image::add-agent-2.png[] 
+
+
+. Click the Copy to Clipboard icon to copy the installation command. 
+. Run the installation command in a terminal window.  
+
+. The system displays the following message when the installation completes successfully:
++ 
+image::new-agent-detect.png[]
+
+//cd /var NEW
+//Grep /var/
+
+.After You Finish
+
+. Verify that the agent is installed using the following command:
+`sudo grep -irn register agent.log`
+
+. You need to configure a link:task_config_user_dir_connect.html[User Directory Collector].
+. You need to configure one or more Data Collectors.  
+
+== Files Created During Installation
+
+* Installation directory: 
++
+/opt/netapp/cloudsecure/agent
+
+* Installation logs: 
++
+/var/log/netapp/cloudsecure/install
+/opt/netapp/cloud-secure/logs 
+
+* Agent Logs:         
+
+* You can use the following command to verify the agent installed correctly: 
+`sudo grep -irn register /opt/netapp/cloudsecure/agent/logs/agent.log`
+
+* Use the following script to control the Cloud Secure service:
+`sudo cloud-secure-agent-service.sh --help`
+
+* Use the following script to uninstall the agent:
+`sudo cloud-secure-agent-uninstall.sh`
+
+== Network Configuration
+
+Use the following commands to open ports to be used by Cloud Secure. 
+
+.Steps
+
+. `sudo firewall-cmd --permanent --zone=public --add-port=35001-35100/tcp` 
+. `sudo firewall-cmd --reload` 
+. `sudo iptables-save | grep 35001`
++
+sample output: 
+. -A IN_public_allow -p tcp -m tcp --dport 35001 -m conntrack -ctstate NEW -j ACCEPT 
+
+== Troubleshooting Agent Installation Errors
+
+Known problems and their resolutions are described in the following table. 
+
+[cols=2*, options="header", cols"30,70"]
+
+|===
+|Problem: | Resolution:
+|Agent installation fails with "File name too long" errror|To correct this error use the sh shell to run the command. 
+|Agent installation fails to create the ~/agent/logs folder and the install.log file provides no relevant information.|This error occurs during bootstrapping of the agent. The error is not logged in log files because it occurs before logger is initialized. 
+The error is redirected to standard output, and is visible in the service log using the `journalctl -u cloudsecure-agent.service` command. This command can be used for troubleshooting the issue further.
+|Agent installation fails with ‘This linux distribution is not supported. Exiting the installation’.|The supported platforms for Cloud Secure 1.0.0 are RHEL 7.x / CentOS 7.x. Ensure that you are not installing the agent on a RHEL 6.x or CentOS 6.x system.
+
+|===
+
