@@ -85,6 +85,8 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
  
 . Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
 
+.  Remove the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
+
 ==== Upgrading the Agent
 
 To upgrade the telegraf agent, do the following:
