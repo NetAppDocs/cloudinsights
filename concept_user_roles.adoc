@@ -9,7 +9,7 @@ summary: Cloud Insights provides multiple user accounts with different permissio
 
 [.lead]
 
-Cloud Insights provides four user accounts: Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels. Users are either link:#creating-accounts-by-inviting-users[invited] to Cloud Insights and assigned a specific role, or can sign in via link:#single-sign-on-(sso)-accounts[Single Sign-On (SSO)] with a default role.
+Cloud Insights provides four user accounts: Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels. Users are either link:#creating-accounts-by-inviting-users[invited] to Cloud Insights and assigned a specific role, or can sign in via link:#single-sign-on-(sso)-accounts[Single Sign-On (SSO)] with a default role. SSO is available as a feature in Cloud Insights Premium Edition.
 
 :toc: macro
 :hardbreaks:
@@ -62,6 +62,8 @@ The invitation is sent to the user. Users will have 14 days to accept the invita
 If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud Insights environment.
 
 == Single Sign-On (SSO) Accounts
+
+NOTE: This documentation is Preview documentation. Information and instructions are subject to change.
 
 In addition to inviting users, administrators can enable *Single Sign-On* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights.
 
