@@ -1,0 +1,55 @@
+---
+sidebar: sidebar
+permalink: API_Overview.html
+keywords: API, customer API,  premium
+---
+
+= Cloud Insights API (Preview Documentation)
+
+[.lead]
+The Cloud Insights API allows customers to implement business workflows using data collected by Cloud Insights. 
+
+ 
+== Requirements for Customer API access
+* An API Access Token model is used to grant access. Each token is void of a username or password. 
+
+* API Token management is performed by Cloud Insights users with the Administrator role. 
+
+
+== Integrating Cloud Insights With Other Tools 
+
+Cloud Insights is an extensible (wide open) solution allowing for Integrations with 3rd party orchestration, business management, change control and ticketing systems as well as custom CMDB integrations. Cloud Insight’s RESTful API and open MySQL database are primary points of integration that allow simple and effective movement of data and allow users to gain seamless access to their data
+
+== Allocating Resources to Business Units or Departments
+
+Cloud Insights incorporates a method of metadata tagging called Annotations. Business Units, Lines of Business, Tenants, and Projects can be assigned to data center resources for richer business context around assets, capacity planning, troubleshooting and reporting.
+
+//== API return style
+
+
+//== Categories
+
+//[cols=3*, options="header",cols="20,20,60"]
+//|===
+//|Column Name|Type|Description
+//|Categories|VARCHAR(1023)|The categories allowed for API key access. Comma-separated string value. Only when the categories defined by method matches the value here, the access is permitted.
+
+//The initial set is ALL, DATA_COLLECTION, ASSETS. 
+
+//|===
+
+
+
+== Examples 
+
+
+For example, to retrieve storages assets,
+
+curl https://<tenant_host_name>/rest/v1/assets/storages -H 'X-CloudInsights-ApiKey: $API_TOKEN'
+
+where the API_TOKEN is saved from the API access key creation.
+
+
+
+
+
