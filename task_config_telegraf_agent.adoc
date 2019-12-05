@@ -17,7 +17,7 @@ summary:
 
 
 [.lead]
-Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.9/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metric, events, and logs from the agent to Cloud Insights. 
+Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.9/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
 //NOTE: This topic is considered Preview documentation and is subject to change.
 
@@ -78,12 +78,29 @@ After the agent is installed, you can use the following commands to start/stop t
 
 To uninstall the agent on Windows, do the following in a PowerShell window:
 
-. Stop and Delete the Telegraf service:
+. Stop and delete the Telegraf service:
 +
  Stop-Service telegraf
  sc.exe delete telegraf
  
 . Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
+
+.  Remove the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
+
+==== Upgrading the Agent
+
+To upgrade the telegraf agent, do the following:
+
+. Stop and delete the telegraf service:
+
+ Stop-Service telegraf
+ sc.exe delete telegraf
+
+. Delete the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
+. Delete _C:\Program Files\telegraf\telegraf.conf_
+. Delete _C:\Program Files\telegraf\telegraf.exe_
+. link:#windows[Install the new agent].
+
 
 
 === RHEL and CentOS
@@ -122,12 +139,12 @@ If your operating system is not using systemd (CentOS 7+ and RHEL 7+):
 
 To uninstall the agent on RHEL/CentOS, in a Bash terminal, do the following:
 
-. Stop the Telegraf service using the following command:
+. Stop the Telegraf service:
 +
  systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
  /etc/init.d/telegraf stop (for systems without systemd support)
 
-. Remove the Telegraf package:
+. Remove the Telegraf agent:
 +
  yum remove telegraf
 
@@ -135,6 +152,22 @@ To uninstall the agent on RHEL/CentOS, in a Bash terminal, do the following:
 +
  rm -rf /etc/telegraf*
  rm -rf /var/log/telegraf*
+
+==== Upgrading the Agent
+
+To upgrade the telegraf agent, do the following:
+
+. Stop the telegraf service:
+
+ systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+ /etc/init.d/telegraf stop (for systems without systemd support)
+ 
+. Remove the previous telegraf agent:
+
+ yum remove telegraf
+
+. link:#rhel-and-centos[Install the new agent].
+
 
 
 === Ubuntu and Debian
@@ -173,12 +206,12 @@ If your operating system is not using systemd:
 
 To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
 
-. Stop the Telegraf service using the following command:
+. Stop the Telegraf service:
 +
  systemctl stop telegraf (If your operating system is using systemd)
  /etc/init.d/telegraf stop (for systems without systemd support)
 
-. Remove the Telegraf package:
+. Remove the Telegraf agent:
 +
  dpkg -r telegraf
 
@@ -186,6 +219,22 @@ To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:
 +
  rm -rf /etc/telegraf*
  rm -rf /var/log/telegraf*
+
+
+==== Upgrading the Agent
+
+To upgrade the telegraf agent, do the following:
+
+. Stop the telegraf service:
+
+ systemctl stop telegraf (If your operating system is using systemd)
+ /etc/init.d/telegraf stop (for systems without systemd support)
+
+. Remove the previous telegraf agent:
+
+ dpkg -r telegraf
+
+. link:#ubuntu-and-debian[Install the new agent].
 
 
 === macOS
@@ -216,8 +265,7 @@ After the agent is installed, you can use the following commands to start/stop t
 
 To uninstall the agent on macOS, in a Bash terminal, run the following:
 
-
-. Stop the Telegraf service using the following command:
+. Stop the Telegraf service:
 +
  sudo launchctl stop telegraf
 
@@ -228,17 +276,31 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
  brew remove telegraf
 ////
 
-. Copy the Uninstall command to /tmp and execute it:
+. Uninstall the telegraf agent:
 
  cp /Applications/telegraf.app/scripts/uninstall /tmp
- 
  sudo /tmp/uninstall
-
 
 . Remove any configuration or log files that may be left behind:
 +
  rm -rf /usr/local/etc/telegraf*
  rm -rf /usr/local/var/log/telegraf.*
+
+
+==== Upgrading the Agent
+
+To upgrade the telegraf agent, do the following:
+
+. Stop the telegraf service:
+
+ sudo launchctl stop telegraf
+
+. Uninstall the previous telegraf agent:
+
+ cp /Applications/telegraf.app/scripts/uninstall /tmp
+ sudo /tmp/uninstall
+
+. link:#macos[Install the new agent].
 
 
 === Kubernetes
@@ -322,6 +384,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
     - system:serviceaccount:monitoring:telegraf-user
     groups: []
 ----
+
 ==== Installing the kube-state-metrics server
 
 When you install the kube-state-metrics server you can enable colletction of the following Kubernetes objects: StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress. 
@@ -330,7 +393,7 @@ Use the following steps to install the kube-state-metrics server:
 
 .Steps
 
-. Create a temporary folder (for example, _/tmp/kube-state-yaml-files/_) and copy the .yaml files from https://github.com/kubernetes/kube-state-metrics/tree/master/kubernetes to this folder. 
+. Create a temporary folder (for example, _/tmp/kube-state-yaml-files/_) and copy the .yaml files from https://github.com/kubernetes/kube-state-metrics/tree/master/examples/standard to this folder. 
 
 . Run the following command to apply the .yaml files needed for installing kube-state-metrics:
 
@@ -361,28 +424,54 @@ Use the following links to access information for the kube state metrics counter
 
 To uninstall the agent on Kubernetes, do the following:
 
-If the monitoring namespace is being used solely for Telegraf:
+. If the monitoring namespace is being used solely for Telegraf:
 
  kubectl delete ns monitoring
  
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 
-Stop and delete the Telegraf service:
+. Stop and delete the Telegraf service:
 
  kubectl --namespace monitoring delete ds telegraf-ds 
  kubectl --namespace monitoring delete rs telegraf-rs
  
-Delete the Telegraf ConfigMap and ServiceAccount:
+. Delete the Telegraf ConfigMap and ServiceAccount:
 
  kubectl --namespace monitoring delete cm telegraf-conf 
  kubectl --namespace monitoring delete cm telegraf-conf-rs
  kubectl --namespace monitoring delete sa telegraf-user 
  
-Delete the Telegraf ClusterRole and ClusterRolebinding:
+. Delete the Telegraf ClusterRole and ClusterRolebinding:
 
  kubectl --namespace monitoring delete clusterrole endpoint-access 
  kubectl --namespace monitoring delete clusterrolebinding endpoint-access 
  
+==== Upgrading the Agent
+
+To upgrade the telegraf agent, do the following:
+
+. Remove the current the telegraf deployments:
+
+ kubectl --namespace monitoring delete ds telegraf-ds
+ kubectl --namespace monitoring delete rs telegraf-rs
+
+. Back up the existing configurations:
+
+ kubectl --namespace monitoring get cm telegraf-conf -o yaml > /tmp/telegraf-conf.yaml
+ kubectl --namespace monitoring get cm telegraf-conf-rs -o yaml > /tmp/telegraf-conf-rs.yaml
+ 
+. link:#kubernetes[Install the new agent].
+
+. Re-apply the configurations:
+
+ kubectl --namespace monitoring apply -f /tmp/telegraf-conf.yaml --force
+ kubectl --namespace monitoring apply -f /tmp/telegraf-conf-rs.yaml --force
+ 
+. Restart all telegraf pods. Run the following command for each telegraf pod:
+
+ kubectl --namespace monitoring delete pod <Telegraf_pod>
+
+
 
 == Troubleshooting Agent Installation
 
