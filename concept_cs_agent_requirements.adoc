@@ -78,7 +78,33 @@ You can get the tenant ID from the product URL. For example: https://ab1234.cs01
 # 376015418222.dkr.ecr.us-east-1.amazonaws.com (used to pull docker images from ecr)
 # prod-us-east-1-starport-layer-bucket.s3.amazonaws.com (used to download docker image digest)
 |===
-  
+
+== Cloud Network Access Rules
+
+[cols=5*,options="header",cols="36,60"]
+|===
+|Protocol|Port|	Destination	|Direction|	Description
+|TCP|443|<tenant id>.cs01.cloudinsights.netapp.com 
+<tenant id>.c01.cloudinsights.netapp.com 
+<tenant id>.c02.cloudinsights.netapp.com|Outbound|Access to Cloud Insights
+|TCP|443|gateway.c01.cloudinsights.netapp.com
+agentlogin.cs01.cloudinsights.netapp.com|Outbound|Access to authentication services
+|===
+
+== In-network rules
+
+[cols=5*,options="header",cols="36,60"]
+|===
+|Protocol|Port|	Destination	|Direction|	Description
+|TCP|389(LDAP)
+636 (LDAPs / start-tls) |LDAP Server URL|Outbound|Connect to LDAP
+|TCP|443|SVM Management IP Address|Outbound|API communication with ONTAP
+|TCP|35000 - 55000|SVM data LIF IP Addresses|Inbound/Outbound|Communication with ONTAP for Fpolicy events
+|TCP|35000 - 55000|TODO|Inbound & Outbound|	Cloud Volume ONTAP (CVO)
+|===
+
+
+
 // Supported browsers a
 // * Internet Explorer 11 
 // * Firefox ESR 60 
