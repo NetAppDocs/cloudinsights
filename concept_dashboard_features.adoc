@@ -32,7 +32,7 @@ Most widgets on dashboards can be displayed with or without legends. Legends in 
 
 As the data displayed in the widget changes, the legend for that widget is updated dynamically.
 
-When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page.
+When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page. If the legend displays "all", clicking the link will display a query page corresponding to the first query in the widget.
 
 == Dashboard widget queries and filters
 
@@ -492,3 +492,5 @@ image:Gauge-Bullet.png[Bullet Gauge, width=374]
 in the Single-Value widget, in addition to setting Warning (orange) and Critical (red) thresholds, you can choose to have "In Range" values (those below Warning level) shown with either green or white background.
 
 image:Single-Value Widgets.png[Single-Value Widget with and without Formatting]
+
+Clicking the link in either a single-value widget or a gauge widget will display a query page corresponding to the first query in the widget.
