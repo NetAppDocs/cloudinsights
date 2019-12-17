@@ -19,11 +19,9 @@ summary:
 [.lead]
 Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.9/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
-//NOTE: This topic is considered Preview documentation and is subject to change.
-
 == Installing an Agent
 
-This topic provides instructions for installing the Telegraf agent on the following platforms:
+If you are installing a Service data collector and have not yet configured an Agent, you are prompted to first install an Agent for the appropriate Operating System. This topic provides instructions for installing the Telegraf agent on the following Operating Systems:
 
 * <<Windows>>
 * <<RHEL and CentOS>>
@@ -59,7 +57,6 @@ image:AgentInstallWindows.png[Windows Agent Install]
 
 .Steps to install agent on Windows:
 
-. If prompted, select Windows from the Platform drop-down.
 . Choose an Agent Access Key.
 . Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
 . Open a PowerShell window 
@@ -84,6 +81,8 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
  sc.exe delete telegraf
  
 . Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
+
+.  Remove the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
 
 ==== Upgrading the Agent
 
@@ -111,7 +110,6 @@ image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 
 .Steps to install agent on RHEL/CentOS:
 
-. If prompted, select RHEL/CentOS from the Platform drop-down.
 . Choose an Agent Access Key.
 . Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
 . Open a Bash window 
@@ -178,7 +176,6 @@ image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 
 .Steps to install agent on Debian or Ubuntu:
 
-. If prompted, select Ubuntu/Debian from the Platform drop-down.
 . Choose an Agent Access Key.
 . Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
 . Open a Bash window 
@@ -245,7 +242,6 @@ image:AgentInstallMacOS.png[MacOS Agent Install]
 
 .Steps to install agent on macOS:
 
-. If prompted, select macOS from the Platform drop-down.
 . Choose an Agent Access Key.
 . Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
 . Open a Bash window 
@@ -310,7 +306,6 @@ image:AgentInstallKubernetes.png[Kubernetes Agent Install]
 
 .Steps to install agent on Kubernetes:
 
-. If prompted, select Kubernetes from the Platform drop-down.
 . Choose an Agent Access Key.
 . Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
 . Open a Bash window 

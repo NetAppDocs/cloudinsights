@@ -18,6 +18,36 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== December 2019
+
+==== Trial period extended
+
+New users who sign up for a free trial of Cloud Insights now have 30 days to evaluate the product. This is an increase from the previous 14-day trial period.
+
+==== Managed Unit calculation
+
+The calculation of Managed Units (MUs) in Cloud Insights has been changed to the following:
+
+* 1 Managed Unit = 2 hosts (any virtual or physical machine)
+* 1 Managed Unit = 4 TB of unformatted capacity of physical or virtual disks
+
+This change effectively doubles the environment capacity that you can monitor using your existing Cloud Insights subscription.
+
+=== November 2019
+
+////
+==== Single Sign-On (SSO)
+
+In addition to inviting users, administrators can enable link:#single-sign-on-(sso)-accounts[Single Sign-On (SSO)] access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights.
+
+SSO is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory.  
+////
+
+==== Editions Feature Comparison Table
+
+The *Admin > Subscription* page link:concept_subscribing_to_cloud_insights.html#key-features[comparison table] has been updated to list the feature sets available in Basic, Standard, and Premium Editions of Cloud Insights. NetApp is constantly improving its Cloud Services, so check this page often to find the Edition that's right for your evolving business needs.
+
+
 === October 2019
 
 ==== Reporting
