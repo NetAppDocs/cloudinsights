@@ -124,6 +124,8 @@ The widget updates automatically and shows a line for each of your data centers.
 
 You can also choose to roll up _all_ of the underlying data into the chart or table. In this case, you will get a single line for each query in the widget, which will show the average, min, max, sum, or count of the chosen metric for all of the underlying assets.
 
+Clicking the legend for any widget whose data is rolled up by "All" opens a query page showing the results of the first query used in the widget.
+
 If you have set a filter for the query, the data that is rolled up is based on the filtered data.
 
 Note that when you choose to roll up a widget by any field (for example, _Model_), you will still need to Filter by that field in order to properly display the data for that field on the chart or table.
