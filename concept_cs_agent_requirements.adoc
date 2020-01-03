@@ -69,7 +69,6 @@ The port number can be obtained from the docker ps command output:
 `firewall-cmd reload`
 |Agent outbound URLs (port 433)|
 * https://<tenant id>.cs01.cloudinsights.netapp.com
-+
 You can get the tenant ID from the product URL. For example: https://ab1234.cs01.cloudinsights.netapp.com
 * You can use a boarder range to specify the tenant ID: https://*.cs01.cloudinsights.netapp.com/
 * https://gateway.c01.cloudinsights.netapp.com
