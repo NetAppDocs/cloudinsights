@@ -23,14 +23,14 @@ You must link:task_cs_add_agent.html[install an Agent] in order to acquire infor
 |Component|Linux Requirement
 |Operating system|A computer running a licensed version of one of the following:
 
-* Red Hat Enterprise Linux 7.2 64-bit
-* Red Hat Enterprise Linux 7.2 64-bit KVM
-* Red Hat Enterprise Linux 7.5 64-bit
-* Red Hat Enterprise Linux 7.5 64-bit KVM
-* CentOS 7.2 64-bit
-* CentOS 7.2 64-bit KVM
-* CentOS 7.5 64-bit
-* CentOS 7.5 64-bit KVM
+Red Hat Enterprise Linux 7.2 64-bit
+Red Hat Enterprise Linux 7.2 64-bit KVM
+Red Hat Enterprise Linux 7.5 64-bit
+Red Hat Enterprise Linux 7.5 64-bit KVM
+CentOS 7.2 64-bit
+CentOS 7.2 64-bit KVM
+CentOS 7.5 64-bit
+CentOS 7.5 64-bit KVM
 
 This computer should be running no other application-level software. A dedicated server is recommended.
 |Commands|The 'sudo su –' command is required for installation, running scripts, and uninstall.
@@ -71,9 +71,9 @@ The port number can be obtained from the docker ps command output:
 * https://<tenant id>.cs01.cloudinsights.netapp.com
 +
 You can get the tenant ID from the product URL. For example: https://ab1234.cs01.cloudinsights.netapp.com
-* You can use a boarder range to specify the tenant ID: https://*.cs01.cloudinsights.netapp.com/
-* https://gateway.c01.cloudinsights.netapp.com
-* agentlogin.cs01.cloudinsights.netapp.com
+You can use a boarder range to specify the tenant ID: https://*.cs01.cloudinsights.netapp.com/
+https://gateway.c01.cloudinsights.netapp.com
+agentlogin.cs01.cloudinsights.netapp.com
 # agentlogin.preview.cloudsecure.netapp.com (used for getting the jwt token using certificates)
 # 376015418222.dkr.ecr.us-east-1.amazonaws.com (used to pull docker images from ecr)
 # prod-us-east-1-starport-layer-bucket.s3.amazonaws.com (used to download docker image digest)
