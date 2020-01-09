@@ -18,6 +18,31 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+
+=== January 2020
+
+==== Auto-Refresh and TV Mode
+
+Dashboards and asset landing pages now *link:concept_dashboard_features.html#auto-refresh-and-tv-mode[Auto-Refresh]* to display near-real-time data in widgets, charts, and tables. Data is automatically refreshed according to the page time range selected.
+
+|===
+|If Your Page Time Range is:|The Auto-Refresh Interval is:
+|3 Hours|1 Minute
+|24 Hours|5 Minutes
+|3 days|10 Minutes
+|7 days|1 Hour 
+|30 days|1 Hour 
+|===
+
+Auto-Refresh occurs for every widget on a dashboard at the set interval, regardless of whether that widget is configured to override dashboard time. Auto-Refresh can be paused and resumed at any time. 
+
+*link:concept_dashboard_features.html#auto-refresh-and-tv-mode[TV Mode]* allows for constant viewing of a dashboard or asset page, ignoring normal Cloud Insights idle-time logout. With TV Mode enabled, the following changes occur:
+
+* The left-side Cloud Insights navigation menu is hidden, maximizing screen space for a clean display.
+* A button image:tvmodebutton.png[TV Mode Button] is displayed in the upper-left corner of the display that, when clicked, disables TV Mode and returns the navigation menu.
+* The dashboard or landing page cannot be edited.
+* If Auto-Refresh is enabled (the default state), dashboard widgets, or landing page charts and tables, will refresh at the specified  interval as noted above.
+
 === December 2019
 
 ==== Business Entity can be used in filters
