@@ -1,0 +1,110 @@
+---
+sidebar: sidebar
+permalink: concept_cs_agent_requirements.html
+summary: The server or VM you use as your Agent must meet minimum requirements
+keywords: agent, Linux, requirements, docker, browsers, permissions, Network
+---
+
+= Agent Requirements 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You must link:task_cs_add_agent.html[install an Agent] in order to acquire information from your data collectors. Before you install the Agent, you should ensure that your environment meets operating system, CPU, memory, and disk space requirements.
+
+[cols=2*,options="header",cols="36,60"]
+|===
+|Component|Linux Requirement
+|Operating system|A computer running a licensed version of one of the following:
+
+Red Hat Enterprise Linux 7.2 64-bit
+Red Hat Enterprise Linux 7.2 64-bit KVM
+Red Hat Enterprise Linux 7.5 64-bit
+Red Hat Enterprise Linux 7.5 64-bit KVM
+CentOS 7.2 64-bit
+CentOS 7.2 64-bit KVM
+CentOS 7.5 64-bit
+CentOS 7.5 64-bit KVM
+
+This computer should be running no other application-level software. A dedicated server is recommended.
+|Commands|The 'sudo su –' command is required for installation, running scripts, and uninstall.
+
+|Docker | The Docker CE package must be installed on the VM hosting the agent. 
+The agent systems should always have the Docker CE package installed. Users should not install the Docker-client-xx or Docker-common-xx native RHEL Docker packages since these do not support the 'docker run' CLI format that Cloud Secure supports. 
+|Java |OpenJDK Java is required. 
+|CPU	|2 CPU cores 
+|Memory	|16 GB RAM 
+|Available disk space	|Disk space should be allocated in this manner:
+50 GB available for the root partition
+/opt/netapp 5 GB
+/var/log/netapp 5 GB
+|Network|100 Mbps 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Cloud Secure instance (80 or 443).
+
+When a firewall is enabled, you must have an exception defined to allow TCP traffic for the port using the Data ONTAP Data Collector.
+
+For example on a RHEL7.x Agent system, use the following steps:
+
+`firewall-cmd --permanent --zone=public --add-port=35001/tcp` 
+
+`firewall-cmd --permanent --zone=public --add-port=35002/tcp`
+
+`firewall-cmd --reload`
+
+(assuming the ports are 35001 and 35002) 
+
+*Note:* The agent requires ports from 35000 to 55000 to be open when using the default installation. 
+
+Use a command similar to the following to verify that the ports are open:
+
+`iptables-save` \| grep 35001 -A IN_public_allow -p tcp -m tcp --dport 35001 -m conntrack --ctstate NEW -j ACCEPT
+
+The port number can be obtained from the docker ps command output:  
+`docker ps`
+`firewall-cmd reload`
+|Agent outbound URLs (port 433)|
+* https://<tenant id>.cs01.cloudinsights.netapp.com
++
+You can get the tenant ID from the product URL. For example: https://ab1234.cs01.cloudinsights.netapp.com
+You can use a boarder range to specify the tenant ID: https://*.cs01.cloudinsights.netapp.com/
+https://gateway.c01.cloudinsights.netapp.com
+agentlogin.cs01.cloudinsights.netapp.com
+# agentlogin.preview.cloudsecure.netapp.com (used for getting the jwt token using certificates)
+# 376015418222.dkr.ecr.us-east-1.amazonaws.com (used to pull docker images from ecr)
+# prod-us-east-1-starport-layer-bucket.s3.amazonaws.com (used to download docker image digest)
+|===
+
+== Cloud Network Access Rules
+
+[cols=5*,options="header"]
+|===
+|Protocol|Port|	Destination	|Direction|	Description
+|TCP|443|<tenant id>.cs01.cloudinsights.netapp.com 
+<tenant id>.c01.cloudinsights.netapp.com 
+<tenant id>.c02.cloudinsights.netapp.com|Outbound|Access to Cloud Insights
+|TCP|443|gateway.c01.cloudinsights.netapp.com
+agentlogin.cs01.cloudinsights.netapp.com|Outbound|Access to authentication services
+|===
+
+== In-network rules
+
+[cols=5*,options="header"]
+|===
+|Protocol|Port|	Destination	|Direction|	Description
+|TCP|389(LDAP)
+636 (LDAPs / start-tls) |LDAP Server URL|Outbound|Connect to LDAP
+|TCP|443|SVM Management IP Address|Outbound|API communication with ONTAP
+|TCP|35000 - 55000|SVM data LIF IP Addresses|Inbound/Outbound|Communication with ONTAP for Fpolicy events
+|===
+
+link:task_cs_add_agent.html[Configure an Agent]
+
+// Supported browsers a
+// * Internet Explorer 11 
+// * Firefox ESR 60 
+// * Chrome latest nightly (73.0)6

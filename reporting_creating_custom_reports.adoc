@@ -1,0 +1,80 @@
+---
+sidebar: sidebar
+permalink: reporting_creating_custom_reports.html
+summary: Using report authoring tools to create custom ("ad-hoc") reports
+keywords: reporting, cognos, data warehouse, dwh, ad-hoc, custom
+---
+
+= Creating Custom Reports
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can use the report authoring tools to create custom reports. After creating reports, you can save them and run them on a regular schedule. The results of reports can be automatically sent by email to yourself and others.
+
+NOTE: The Reporting feature is available in Cloud Insights link:concept_subscribing_to_cloud_insights.html[Premium Edition].
+
+The examples in this section show the following process, which can be used for any of the Cloud Insights Reporting data models:
+
+* Identifying a question to be answered with a report
+* Determining the data needed to support the results
+* Selecting data elements for the report
+
+Before designing your custom report, you need to complete some prerequisite tasks. If you do not complete these, reports could be inaccurate or incomplete.
+
+For example, if you do not finish the device identification process, your capacity reports will not be accurate. Or, if you do not finish setting annotations (such as tiers, business units, and data centers), your custom reports might not accurately report data across your domain or might show "N/A" for some data points.
+
+Before you design your reports, complete the following tasks:
+
+* Configure all link:task_configure_data_collectors.html[data collectors] properly. 
+* Enter annotations (such as tiers, data centers, and business units) on devices and resources in your environment. It is beneficial to have annotations stable before generating reports, because Cloud Insights Reporting collects historical information.
+//* Configure OnCommand Insight Data Warehouse to accept the data from the OnCommand Insight server in the Extract, Transform, and Load (ETL) process.
+
+=== Report Creation Process
+
+The process of creating custom (also called "ad hoc") reports involves several tasks:
+
+* Plan the results of your report.
+* Identify data to support your results.
+* Select the data model (for example, Chargeback data model, Inventory data model, and so on) that contains the data.
+* Select data elements for the report.
+* Optionally format, sort, and filter report results.
+
+==== Planning the Results of Your Custom Report
+
+Before you open the report authoring tools, you might want to plan the results you want from the report. With report authoring tools, you can create reports easily and might not need a great deal of planning; however, it is a good idea to get a sense from the report requestor about the report requirements.
+
+* Identify the exact question you want to answer. For example:
+** How much capacity do I have left?
+** What are the chargeback costs per business unit?
+** What is the capacity by tier to ensure that business units are aligned at the proper tier of storage?
+** How can I forecast power and cooling requirements? (Add customized metadata by adding annotations to resources.)
+* Identify the data elements that you need to support the answer.
+* Identify the relationships between data that you want to see in the answer. Do not include illogical relationships in your question, for example, “I want to see the ports that relate to capacity.”
+* Identify any calculations needed on data.
+* Determine what types of filtering are needed to limit the results.
+* Determine if you need to use current or historical data.
+* Determine if you need to set access privileges on reports to limit the data to specific audiences.
+* Identify how the report will be distributed. For example, should it be emailed on a set schedule or included in the Team content folder area?
+* Determine who will maintain the report. This might affect the complexity of the design.
+* Create a mockup of the report.
+
+==== Tips for designing reports
+Several tips might be helpful when you are designing reports.
+
+* Determine whether you need to use current or historical data. 
++
+Most reports only need to report on the latest data available in the Cloud Insights.
+
+* Cloud Insights Reporting provides historical information on capacity and performance, but not on inventory.
+* Everybody sees all data; however, you might need to limit data to specific audiences.
++
+To segment the information for different users, you can create reports and set access permissions on them.
+

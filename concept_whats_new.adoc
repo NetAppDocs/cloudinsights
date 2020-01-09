@@ -18,7 +18,8 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
-=== *October 2019*
+
+=== January 2020
 
 ==== Auto-Refresh and TV Mode
 
@@ -42,8 +43,83 @@ Auto-Refresh occurs for every widget on a dashboard at the set interval, regardl
 * The dashboard or landing page cannot be edited.
 * If Auto-Refresh is enabled (the default state), dashboard widgets, or landing page charts and tables, will refresh at the specified  interval as noted above.
 
+=== December 2019
 
-=== *September 2019*
+==== Business Entity can be used in filters
+
+Business Entity annotations can be used in filters for queries, widgets, performance policies, and landing pages.
+
+==== Drill-down available for Single-Value and Gauge widgets, and any widgets rolled to by "All"
+
+Clicking the value in a single-value or gauge widget opens a query page showing the results of the first query used in the widget. Additionally, clicking the legend for any widget whose data is rolled up by "All" will also open a query page showing the results of the first query used in the widget.
+
+==== Trial period extended
+
+New users who sign up for a free trial of Cloud Insights now have 30 days to evaluate the product. This is an increase from the previous 14-day trial period.
+
+==== Managed Unit calculation
+
+The calculation of Managed Units (MUs) in Cloud Insights has been changed to the following:
+
+* 1 Managed Unit = 2 hosts (any virtual or physical machine)
+* 1 Managed Unit = 4 TB of unformatted capacity of physical or virtual disks
+
+This change effectively doubles the environment capacity that you can monitor using your existing Cloud Insights subscription.
+
+=== November 2019
+
+////
+==== Single Sign-On (SSO)
+
+In addition to inviting users, administrators can enable link:#single-sign-on-(sso)-accounts[Single Sign-On (SSO)] access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights.
+
+SSO is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory.  
+////
+
+==== Editions Feature Comparison Table
+
+The *Admin > Subscription* page link:concept_subscribing_to_cloud_insights.html#key-features[comparison table] has been updated to list the feature sets available in Basic, Standard, and Premium Editions of Cloud Insights. NetApp is constantly improving its Cloud Services, so check this page often to find the Edition that's right for your evolving business needs.
+
+
+=== October 2019
+
+==== Reporting
+
+link:reporting_overview.html[*Cloud Insights Reporting*] is a business intelligence tool that enables you to view pre-defined reports or create custom reports. With Reporting you can perform the following tasks:
+
+* Run a pre-defined report
+* Create a custom report
+* Customize the report format and delivery method
+* Schedule reports to run automatically
+* Email reports
+* Use colors to represent thresholds on data
+
+Cloud Insights Reporting can generate custom reports for areas like chargeback, consumption analysis, and forecasting, and can help answer questions such as the following:
+
+* What inventory do I have?
+* Where is my inventory?
+* Who is using our assets?
+* What is the chargeback for allocated storage for a business unit?
+* How long until I need to acquire additional storage capacity?
+* Are business units aligned along the proper storage tiers?
+* How is storage allocation changing over a month, quarter, or year?
+
+Reporting is available with Cloud Insights *Premium Edition*.
+
+==== Active IQ Enhancements
+
+link:concept_activeiq.html[Active IQ Risks] are now available as objects that can be queried as well as used in dashboard table widgets. The following Risks object attributes are included:
+* Category
+* Mitigation Category
+* Potential Impact
+* Risk Detail
+* Severity
+* Source
+* Storage
+* Storage Node
+* UI Category
+
+=== September 2019
 
 ==== New Gauge Widgets
 
@@ -52,7 +128,7 @@ Two new widgets are available for displaying single-value data on your dashboard
 image:Gauge-Solid.png[Solid/Traditional Gauge]
 image:Gauge-Bullet.png[Bullet Gauge]
 
-=== Conditional Color Formatting for Single Value Widget
+==== Conditional Color Formatting for Single Value Widget
 
 You can now display the Single-Value widget with a colored background based on thresholds you set.
 
@@ -68,7 +144,7 @@ At any point during the onboarding process, you can click on Admin > User Manage
 The data collector detail page has been improved to display errors in a more readable format. Errors are now displayed in a separate table on the page, with each error displayed on a separate line in the case of multiple errors for the data collector.
 
 
-=== *August 2019*
+=== August 2019
 
 ==== All vs. Available Data Collectors
 
@@ -87,7 +163,7 @@ _Business Entity_ is now an annotation type provided by Cloud Insights, which ca
 Cloud Insights collects data from NetApp ActiveIQ, which provides a series of visualizations, analytics, and other support related services to NetApp customers and their hardware / software systems. Cloud Insights integrates with ONTAP Data Management systems. See link:concept_activeiq.html[Active IQ] for more information.
 
 
-=== *July 2019*
+=== July 2019
 
 ==== Dashboard Improvements
 
@@ -110,8 +186,7 @@ Downgrade to Basic Edition fails with an error message if there is no available 
 
 The link:task_config_telegraf_kubernetes.html[Kubernetes Data Collector] now collects objects and counters from the kube-state-metrics plugin, greatly expanding the number and scope of metrics available for monitoring in Cloud Insights.
 
-
-=== *June 2019*
+=== June 2019
 
 ==== Cloud Insights Editions
 
@@ -124,7 +199,7 @@ Cloud Insights is available in different Editions to fit your budget and busines
 Note that the HCI data collector acquires from the HCI Virtual Center only. To collect data from the storage system, you must also configure the NetApp link:task_dc_na_solidfire[SolidFire] data collector.
 
 
-=== *May 2019*
+=== May 2019
 
 ==== New Service Data Collector: Kapacitor
 
@@ -171,7 +246,7 @@ Microsoft Windows Server 2019
 |===
 
 
-=== *April 2019*
+=== April 2019
 
 ==== Filter Virtual Machines by Tags
 
@@ -181,7 +256,7 @@ When configuring the following data collectors, you can filter to include or exc
 * link:task_dc_ms_azure.html#advanced-configuration[Azure]
 * link:task_dc_google_cloud.html#advanced_configuration[Google Cloud Platform]
 
-=== *March 2019*
+=== March 2019
 
 ==== Email Notifications for Subscription-related Events
 
@@ -198,7 +273,7 @@ When configuring the following data collectors, you can filter to include or exc
  **	AWS EC2 Instance Performance by Region 
 
 
-=== *February 2019*
+=== February 2019
 
 ==== Collecting from AWS Child Accounts
 
@@ -214,7 +289,7 @@ When configuring the following data collectors, you can filter to include or exc
 * You can configure a Cloud Insights Acquisition Unit on a Windows server/VM. Review the Windows link:concept_acquisition_unit_requirements.html[pre-requisites] before installing the link:task_configure_acquisition_unit.html[Acquisition Unit software].
 
 
-=== *January 2019*
+=== January 2019
 
 ==== "Owner" field is more readable
 
@@ -225,7 +300,7 @@ When configuring the following data collectors, you can filter to include or exc
 * For each data collector listed on the *Admin > Subscription* page, you can now see a breakdown of Managed Unit (MU) counts for hosts and storage, as well as the total.
 
 
-=== *December 2018*
+=== December 2018
 
 ==== Improvement of UI Load Time
 
@@ -241,7 +316,7 @@ The data collectors selected must be the same vendor and model, and reside on th
 
 * During the onboarding workflow, you can navigate to the *Help > Support* and *Admin > Subscription* pages. Returning from those pages returns you to the onboarding workflow, providing you have not closed the browser tab.
 
-=== *November 2018*
+=== November 2018
 
 ==== Subscribe through NetApp Sales or AWS Marketplace
 

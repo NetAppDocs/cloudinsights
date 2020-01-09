@@ -32,7 +32,7 @@ Most widgets on dashboards can be displayed with or without legends. Legends in 
 
 As the data displayed in the widget changes, the legend for that widget is updated dynamically.
 
-When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page.
+When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page. If the legend displays "all", clicking the link will display a query page corresponding to the first query in the widget.
 
 == Dashboard widget queries and filters
 
@@ -108,7 +108,7 @@ Data displayed in a widget is rolled up from the underlying data points collecte
 * *Max*: displays each line as the _maximum_ of the underlying data.
 * *Min*: displays each line as the _minimum_ of the underlying data.
 * *Sum*: displays each line as the _sum_ of the underlying data.
-* *Count*: displays a _count_ of objects that have reported data within the specified time frame (5 minute, 1 hour, or entire time window). 
+* *Count*: displays a _count_ of objects that have reported data within the specified time frame. You can choose the _Entire Time Window_ as determined by the dashboard time range (or the widget time range, if set to override the dashboard time), or a _Custom Time Window_ that you select.
 
 // You can choose to include _all_ objects that have reported data, or only those objects whose data is reported as _Not Null_. 
 
@@ -123,6 +123,8 @@ To set the roll up method, do the following.
 The widget updates automatically and shows a line for each of your data centers.
 
 You can also choose to roll up _all_ of the underlying data into the chart or table. In this case, you will get a single line for each query in the widget, which will show the average, min, max, sum, or count of the chosen metric for all of the underlying assets.
+
+Clicking the legend for any widget whose data is rolled up by "All" opens a query page showing the results of the first query used in the widget.
 
 If you have set a filter for the query, the data that is rolled up is based on the filtered data.
 
@@ -528,3 +530,4 @@ in the Single-Value widget, in addition to setting Warning (orange) and Critical
 
 image:Single-Value Widgets.png[Single-Value Widget with and without Formatting]
 
+Clicking the link in either a single-value widget or a gauge widget will display a query page corresponding to the first query in the widget.
