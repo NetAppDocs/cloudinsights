@@ -20,6 +20,12 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === January 2020
 
+==== Single Sign-On (SSO)
+
+With Cloud Insights Premium Edition, administrators can enable *link:concept_user_roles.html#single-sign-on-sso-accounts[Single Sign-On]* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights.
+
+NOTE: SSO is only available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory.
+
 ==== Simplified "Getting Started with Cloud Insights" process
 
 The process for getting started using Cloud Insights has been simplified to make your first-time setup smoother and easier. Simply select an initial data collector and follow the instructions. Cloud Insights will walk you through configuring the data collector and any agent or acquisition unit required. In most cases it will even import one or more initial dashboards so you can start gaining insight into your environment quickly (but please allow up to 30 minutes for Cloud Insights to collect meaningful data).
