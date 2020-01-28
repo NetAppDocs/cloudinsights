@@ -46,27 +46,6 @@ The agent systems should always have the Docker CE package installed. Users shou
 /var/log/netapp 5 GB
 |Network|100 Mbps 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Cloud Secure instance (80 or 443).
 
-When a firewall is enabled, you must have an exception defined to allow TCP traffic for the port using the Data ONTAP Data Collector.
-
-For example on a RHEL7.x Agent system, use the following steps:
-
-`firewall-cmd --permanent --zone=public --add-port=35001/tcp` 
-
-`firewall-cmd --permanent --zone=public --add-port=35002/tcp`
-
-`firewall-cmd --reload`
-
-(assuming the ports are 35001 and 35002) 
-
-*Note:* The agent requires ports from 35000 to 55000 to be open when using the default installation. 
-
-Use a command similar to the following to verify that the ports are open:
-
-`iptables-save` \| grep 35001 -A IN_public_allow -p tcp -m tcp --dport 35001 -m conntrack --ctstate NEW -j ACCEPT
-
-The port number can be obtained from the docker ps command output:  
-`docker ps`
-`firewall-cmd reload`
 |Agent outbound URLs (port 433)|
 * https://<tenant id>.cs01.cloudinsights.netapp.com
 +
