@@ -28,6 +28,20 @@ NOTE: SSO is only available in Cloud Insights Premium Edition, and must be confi
 
 === January 2020
 
+==== Feature Tutorials Progress Bar
+
+The feature tutorials checklist has been moved to the top banner and now features a progress indicator. Tutorials are available for each user until dismissed, and are always available in Cloud Insights link:concept_feature_tutorials.html[documentation].
+
+image:TutorialProgress.png[Tutorial Checklist Progress]
+
+==== Acquisition Unit Changes
+
+When installing an Acquisition Unit (AU) on a host or VM that has the same name as an already-installed AU, Cloud Insights assures a unique name by appending the AU name with "_1", "_2", etc. This is also the case when uninstalling and reinstalling an AU from the same VM without first removing it from Cloud Insights. Want a different AU name altogether? No problem; AU's can be renamed after installation.
+
+==== Optimized Time Aggregation in Widgets
+ 
+In widgets, you can choose between an _Optimized_ time aggregation interval or a _Custom_ interval that you set. Optimized aggregation automatically selects the right time interval based on the selected dashboard time range (or widget time range, if overriding the dashboard time). The interval dynamically changes as the dashboard or widget time range is changed.
+
 ==== Simplified "Getting Started with Cloud Insights" process
 
 The process for getting started using Cloud Insights has been simplified to make your first-time setup smoother and easier. Simply select an initial data collector and follow the instructions. Cloud Insights will walk you through configuring the data collector and any agent or acquisition unit required. In most cases it will even import one or more initial dashboards so you can start gaining insight into your environment quickly (but please allow up to 30 minutes for Cloud Insights to collect meaningful data).
