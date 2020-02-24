@@ -28,7 +28,7 @@ When adding a new data collector, or after editing an existing data collector, C
 * 2nd poll: initial performance data to establish a baseline
 * 3rd poll: performance data including deltas
 
-The 2nd poll occurs within 15 seconds of the inventory poll. The 3rd poll happens between 1 second and the configured performance poll interval (typically 15 minutes). Polling then proceeds according to the configured intervals.
+The 2nd poll occurs immediately after completion of the inventory poll. The 3rd poll happens 15 seconds after completion of the 2nd poll. Polling then proceeds according to the configured inventory and performance intervals.
 
 Previously, the initial performance polls took place only at the configured (i.e. 15 minute) poll intervals, meaning it would take up to 30 minutes before meaningful data was acquired from a new data collector.
 
