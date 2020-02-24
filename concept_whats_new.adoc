@@ -25,7 +25,7 @@ NetApp is continually improving and enhancing its products and services. Here ar
 When adding a new data collector, or after editing an existing data collector, Cloud Insights initiates three polls:
 
 * 1st poll: inventory data
-* 2nd poll: initial performance data to esablish a baseline
+* 2nd poll: initial performance data to establish a baseline
 * 3rd poll: performance data including deltas
 
 The 2nd and 3rd polls occur within 15 seconds of the previous poll. Polling then proceeds according to the intervals that were set during data collector configuration (typically 15 minutes for performance).
