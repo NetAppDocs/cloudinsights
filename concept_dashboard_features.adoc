@@ -500,6 +500,25 @@ Clicking the link in either a single-value widget or a gauge widget will display
 
 == TV Mode and Auto-Refresh
 
+Data in widgets on Dashboards and Landing Pages auto-refresh according a refresh interval determined by the Dashboard Time Range selected (or widget time range, if set to override the dashboard time). The refresh interval is based on whether the widget is time-series widget (line, spline, area, stacked area chart) or non-time-series (all other charts).
+
+|---
+|Dashboard Time Range|Time-Series Refresh Interval|Non-Time-Series Refresh Interval
+|Last 3 Hours|30 Second|5 Minute
+|Last 24 Hours|5 Minute|10 Minute
+|Last 3 Days|15 Minute|15 Minute
+|Last 7 Days|1 Hour|1 Hour
+|Last 30 Days|2 Hour|2 Hour
+
+Auto-refresh keeps your widget data current. When combined with *TV Mode*, this allows for near-real-time display of data on a dashboard. TV Mode provides an uncluttered display of your dashboard; the navigation menu is hidden, providing more screen real estate for your data display. TV Mode ignores typical Cloud Insights timeouts, leaving the display live until logged out manually.
+
+NOTE: Because NetApp Cloud Central has it's own user login timeout of 7 days, Cloud Insights must log out with that event as well. You can simply log in again and your dashboard will continue to display.
+
+* To activate TV Mode, click the image:ActivateTVMode.png[TV Mode] button.
+* To disable TV Mode, click the *Exit* button in the upper left of the screen. image:ExitTVMode.png[Exit Button]
+
+
+
 Pause/Resume button
 Enable/Disable
 Time Range/Refresh Interval
