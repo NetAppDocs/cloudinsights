@@ -24,7 +24,7 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 Previously, after configuring a new data collector, Cloud Insights would poll the data collector immediately to gather _inventory_ data, but would wait until the configured performance poll interval (typically 15 minutes) to gather initial _performance_ data. It would then wait for another interval before initiating the second performance poll, which meant it would take up to _30 minutes_ before meaningful data was acquired from a new data collector.
 
-Data collector link:task_configure_data_collectors.html[polling] has been greatly improved, such that the initial performance poll occurs immediately after the inventory poll, with the second performance poll occurring within a few seconds after that. This allows Cloud Insights to begin showing useful data on dashboards and graphs within a very short time.
+Data collector link:task_configure_data_collectors.html[polling] has been greatly improved, such that the initial performance poll occurs immediately after the inventory poll, with the second performance poll occurring within a few seconds after completion of the first performance poll. This allows Cloud Insights to begin showing useful data on dashboards and graphs within a very short time.
 
 This poll behavior also occurs after editing the configuration of an existing data collector.
 
