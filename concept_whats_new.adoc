@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: concept_whats_new.html
-summary: New features and functionlity in Cloud Insights.
+summary: New features and functionlity in Cloud Insights. 
 keywords: features
 ---
 
@@ -20,6 +20,17 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === February 2020
 
+==== API with Premium Edition
+
+Cloud Insights Premium Edition comes with a link:concept_about_api.html[powerful API] that can be used to integrate Cloud Insights with other applications, such as CMDB’s or other ticketing systems. 
+
+Detailed, Swagger-based information is found in *Admin > API Acccess*, under the *API Documentation* link. Swagger provides a brief description and usage information for the API, and allows you to try each API out in your environment.
+
+The Cloud Insights API uses Access Tokens to provide permission-based access to categories of API, such as ASSETS or COLLECTION. 
+
+image:API_Documentation.png[API Documentation] 
+
+
 ==== Initial Polling After Adding A Data Collector
 
 Previously, after configuring a new data collector, Cloud Insights would poll the data collector immediately to gather _inventory_ data, but would wait until the configured performance poll interval (typically 15 minutes) to gather initial _performance_ data. It would then wait for another interval before initiating the second performance poll, which meant it would take up to _30 minutes_ before meaningful data was acquired from a new data collector.
@@ -27,6 +38,7 @@ Previously, after configuring a new data collector, Cloud Insights would poll th
 Data collector link:task_configure_data_collectors.html[polling] has been greatly improved, such that the initial performance poll occurs immediately after the inventory poll, with the second performance poll occurring within a few seconds after completion of the first performance poll. This allows Cloud Insights to begin showing useful data on dashboards and graphs within a very short time.
 
 This poll behavior also occurs after editing the configuration of an existing data collector.
+
 
 ==== Easier Widget Duplication 
 
@@ -42,6 +54,10 @@ With Cloud Insights Premium Edition, administrators can enable *link:concept_use
 NOTE: SSO is only available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory.
 
 === January 2020
+
+==== Swagger documentation for REST API
+
+Swagger explains each available REST API in Cloud Insights, as well as its usage and syntax. Information on Cloud Insights APIs is available in link:http://docs.netapp.com/us-en/cloudinsights/API_Overview.html[documentation].
 
 ==== Feature Tutorials Progress Bar
 
