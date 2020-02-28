@@ -46,6 +46,8 @@ The following are required to configure this data collector:
 * Windows Management Instrumentation (WMI) command, which is the default that is installed by Windows.
 * Port requirements: Port 135 via WMI & Dynamic TCP ports assigned 1024-65535 for Windows 2003 and older and 49152-65535 for Windows 2008. 
 
+NOTE: You must install a Windows Acquisition Unit for the Hyper-V data collector. This data collector will not work with a Linux Acquisition Unit.
+
 == Configuration
 
 [cols=2*, options="header", cols"50,50"]
