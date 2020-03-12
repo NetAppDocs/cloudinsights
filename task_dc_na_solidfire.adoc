@@ -72,5 +72,15 @@ The following are requirements for configuring this data collector:
            
 == Troubleshooting
 
+When SolidFire reports an error it is displayed in Cloud Insights as follows:
+
+_An error message was received from a SolidFire device while trying to retrieve data. The call was <method> (<parameterString> ). The error message from the device was (check the device manual): <message>_
+
+Where:
+
+•	The <method> is an HTTP method, such as GET or PUT.
+•	The <parameterString> is a comma separated list of parameters that were included in the REST call.
+•	The <message> is whatever the device returned as the error message.
+
 Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
 
