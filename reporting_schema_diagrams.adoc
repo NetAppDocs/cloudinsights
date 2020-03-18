@@ -1,0 +1,210 @@
+---
+sidebar: sidebar
+permalink: reporting_schema_diagrams.html
+keywords: Schema, DB Schema, premium
+summary: DWH Schema Diagrams
+---
+
+= Cloud Insights Data Warehouse Schema Diagrams
+
+:toc: macro
+:hardbreaks:
+:toclevekls: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+
+This document provides the schema diagrams for the Data Warehouse Database. You can also download a file containing the link:ci_reporting_database_schema.pdf[schema tables].
+
+NOTE: The Reporting feature is available in Cloud Insights link:concept_subscribing_to_cloud_insights.html[Premium Edition]. 
+
+//The schema diagrams are organized by
+
+== Inventory Datamart
+
+The following images describe the inventory datamart.
+
+=== Storage
+
+image:storage.png[]
+
+=== Storage Node
+
+image:storage_node.png[]
+
+=== SAN Fabric
+
+image:fabric.png[]
+
+=== Port Connectivity
+
+image:connectivity.png[]
+
+=== VM
+
+image:vm.png[]
+
+=== NAS
+
+image:nas.png[]
+
+=== Paths and Violations
+
+image:logical.png[]
+
+=== Annotations
+
+image:annotations.png[]
+
+=== Applications
+
+image:apps_annot.png[]
+
+=== Storage and Storage Pool Capacity
+
+image:Storage_and_Storage_Pool_Capacity_Fact.png[]
+
+=== Volume Capacity 
+
+image:Volume_Capacity.jpg[]
+
+=== VM Capacity 
+
+image:VM_Capacity_Fact.png[]
+
+=== Internal Volume Capacity 
+
+image:Internal_Volume_Capacity_Fact.png[]
+
+=== Qtree Capacity 
+
+image:Qtree_Capacity_Fact.png[]
+
+=== Storage Capacity Efficiency 
+
+image:efficiency.png[]
+
+=== Storage and Storage Pool Capacity 
+
+image:Storage_and_Storage_Pool_Capacity_Fact.png[]
+
+=== File System Utilization
+
+image:fs_util.png[]
+
+=== Port Capacity
+
+image:ports.png[]
+
+=== Chargeback 
+
+image:Chargeback_Fact.png[]
+
+=== Disk Group Capacity 
+
+image:Disk_Group_Capacity.png[]
+
+
+== Performance Datamart
+
+The following images describe the performance datamart.
+
+=== Application Volume Hourly Performance
+
+image:application_performance_fact.png[]
+
+=== Internal Volume Hourly Performance
+
+image:host_performance_fact.png[]
+
+=== Internal Volume Hourly Performance
+
+image:internal_volume_performance_fact.png[]
+
+=== Internal Volume Daily Performance
+
+image:internal_volume_daily_performance_fact.png[]
+
+
+=== Volume Hourly Performance 
+
+image:vmdk_hourly_performance_fact.png[]
+
+=== Volume Daily Performance 
+
+image:volume_daily_performance_fact.png[]
+
+
+=== Qtree Daily Performance 
+
+image:QtreeDailyPerformanceFact.png[]
+
+
+=== Switch Hourly Performance for Host
+
+image:switch_performance_for_host_hourly_fact.png[]
+
+=== Switch Hourly Performance for Port
+
+image:switch_performance_for_port_hourly_fact.png[]
+
+=== Switch Hourly Performance for Storage 
+
+image:switch_performance_for_storage_hourly_fact.png[]
+
+
+=== Switch Hourly Performance for Tape 
+
+image:switch_performance_for_tape_hourly_fact.png[]
+
+=== VM Performance
+
+image:vm_hourly_performance_fact.png[]
+
+=== VM Daily Performance for Host 
+
+image:vm_daily_performance_fact.png[]
+
+=== VM Hourly Performance for Host
+
+image:vm_hourly_performance_fact.png[]
+
+
+=== VM Daily Performance for Host
+
+image:vm_daily_performance_fact.png[]
+
+=== VM Hourly Performance for Host
+
+image:vm_hourly_performance_fact.png[]
+
+=== VMDK Daily Performance
+
+image:vmdk_daily_performance_fact.png[]
+
+=== VMDK Hourly Performance
+
+image:vmdk_hourly_performance_fact.png[]
+
+//=== Storage Node Daily Performance
+
+//image:storage_node_daily_performance_fact.jpg[]
+
+=== Storage Node Hourly Performance
+
+image:storage_node_hourly_performance_fact.png[]
+
+=== Disk Daily Performance
+
+image:disk_daily_performance_fact.png[]
+
+=== Disk Hourly Performance
+
+image:disk_hourly_performance_fact.png[]
+
+
+

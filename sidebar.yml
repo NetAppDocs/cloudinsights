@@ -7,8 +7,13 @@ entries:
   - title: Signing Up for Cloud Insights
     url: /task_cloud_insights_onboarding_1.html
 
+  - title: Security
+    url: /security_overview.html
+
   - title: Getting Started
     entries:
+      - title: Feature Tutorials
+        url: /concept_feature_tutorials.html
       - title: Collecting Data
         entries:
           - title: Overview
@@ -34,7 +39,7 @@ entries:
       - title: Switching to Other Cloud Central Products
         url: /concept_other_cloud_products.html
         
-  - title: Infrastructure Data Collector Reference
+  - title: Data Collector Reference - Infrastructure
     entries:
       - title: Vendor Reference Overview
         url: /concept_data_collector_reference.html
@@ -124,6 +129,8 @@ entries:
         url: /task_dc_lenovo.html
       - title: Microsoft
         entries:
+          - title: Azure NetApp Files
+            url: /task_dc_ms_anf.html
           - title: Hyper-V
             url: /task_dc_ms_hyperv.html
       - title: NetApp
@@ -156,7 +163,7 @@ entries:
       - title: VMWare
         url: /task_dc_vmware.html
         
-  - title: Services Data Collector Reference
+  - title: Data Collector Reference - Services
     entries:
       - title: Display Options
         url: /concept_telegraf_display_options.html
@@ -308,7 +315,7 @@ entries:
         url: /task_query_assign_multiple_applicationss.html
       - title: Copying table values to the Clipboard
         url: /task_query_copy_table_values.html
-  - title: All About Annotations
+  - title: Working with Annotations
     entries:
       - title: Defining Annotations
         url: /task_defining_annotations.html
@@ -322,6 +329,8 @@ entries:
         url: /concept_about_applications.html
       - title: Configuring Applications
         url: /task_create_application.html
+  - title: Working with APIs
+    url: /API_Overview.html
   - title: Performance Policies and Alerts
     entries:
       - title: Alerting with Performance Policies
@@ -350,6 +359,70 @@ entries:
         url: /concept_asset_violation_section.html
       - title: Hints and Tips to Search for Assets
         url: /concept_searching_assets.html
+
+  - title: Reporting
+    entries:
+      - title: Reporting Overview
+        url: /reporting_overview.html
+      - title: Using Pre-Defined Reports
+        url: /reporting_predefined_reports.html
+      - title: Storage Manager Dashboard
+        url: /reporting_storage_manager_dashboard.html
+#      - title: Creating an Example Report
+#        url: /reporting_create_example.html
+      - title: Managing Reports
+        url: /reporting_managing_reports.html
+      - title: Custom Reports
+        url: /reporting_creating_custom_reports.html
+#      - title: Data Models
+#        url: /reporting_data_model.html
+      - title: Schema Diagrams
+        url: /reporting_schema_diagrams.html
+      - title: Schema Tables
+        url: /reference_schemas.html
+        
+  
+  - title: Cloud Secure 
+    entries:
+      - title: About Cloud Secure
+        url: /cs_intro.html
+      - title: Getting Started
+        entries: 
+          - title: Getting Started With Cloud Secure
+            url: /task_cs_getting_started.html
+          - title: Cloud Secure Agent Requirements
+            url: /concept_cs_agent_requirements.html
+          - title: Configuring a Cloud Secure Agent
+            url: /task_cs_add_agent.html
+          - title: Deleting a Cloud Secure Agent
+            url: /task_cs_delete_agent.html 
+          - title: Configuring a User Directory Collector 
+            url: /task_config_user_dir_connect.html
+          - title: Configuring an Active Directory Collector
+            url: /task_config_user_dir_connect.html
+          - title: Configuring NetApp Data Collectors
+            entries: 
+              - title: Configuring the ONTAP SVM Data Collector
+                url: /task_add_collector_svm.html
+              - title: Configuring the Cloud ONTAP Data Collector
+                url: /task_config_cs_incloud.html
+      - title: Viewing Cloud Secure Forensic Data 
+        entries: 
+          - title: Alerts
+            url: /alert_data.html
+          - title: General Forensic Views
+            url: /concept_forensic.html
+          - title: Forensic User Overview
+            url: /forensic_user_overview.html
+          - title: Forensic Entity Detail
+            url: /forensic_entity_detail.html
+          - title: Forensic Community Detail 
+            url: /forensic_community_overview.html
+          - title: Forensic Activity History
+            url: /forensic_activity_history.html          
+
+  - title: Active IQ
+    url: /concept_activeiq.html
 #  - title: How-To Guides
 #    entries:
 #       - title: Minimizing risk in thin provisioning

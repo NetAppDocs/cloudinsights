@@ -36,14 +36,13 @@ This topic describes how to add Acquisition Units and describes additional steps
 The system displays the _Install Acquisition Unit_ dialog. Choose Linux.
 
 [.thumb]
-image::AU_Install_Linux.png[Linux AU Install]
-//image::add_acq_linux1.png[]
+image:NewLinuxAUInstall.png[Linux AU Instructions]
 
-. Verify that the server or VM hosting the Acquisition Unit meets the minimum system requirements. 
-. Verify that the server is running a supported version of Linux, click _Versions Supported (i)_.
+. Verify that the server or VM hosting the Acquisition Unit meets the recommended system requirements. 
+. Verify that the server is running a supported version of Linux. Click _OS Versions Supported (i)_ for a list of supported versions.
 
-. Copy the Installation command displayed in the dialog into a terminal window on the server or VM that will host the Acquisition unit.  
-. Execute the command in the Bash shell. 
+. Copy the Installation command snippet in the dialog into a terminal window on the server or VM that will host the Acquisition unit.  
+. Paste and execute the command in the Bash shell. 
 
 .After you finish
 
@@ -102,17 +101,20 @@ The URl can be found by searching the .log for “Attempting to verify server at
 The system displays the _Install Acquisition Unit_ dialog. Choose Windows.
 
 [.thumb]
-image::AU_Install_Windows.png[Windows AU Install]
-//image::add_acq_windows.png[]
+image::NewWindowsAUInstall.png[Windows AU Install]
 
-. Verify that the server or VM hosting the Acquisition Unit meets the minimum system requirements. 
-. Verify that the server is running a supported version of Windows click _Versions Supported (i)_.
+. Verify that the server or VM hosting the Acquisition Unit meets the recommended system requirements. 
+. Verify that the server is running a supported version of Windows. Click _OS Versions Supported (i)_ for a list of supported versions.
 
 . Click the *Download Installer (Windows 64-bit)* button. 
 
-. Copy the Installation command snippet in the dialog and paste it into a command prompt window on the Acquisition Unit server. You can click the clipboard icon to copy the full command to the clipboard.
-+
-The snippet installs the Acquisition Unit software on the server. 
+. Copy the Access Key. You will need this during the Installation.
+
+. On the Acquisition Unit server/VM, execute the downloaded installer.
+
+. Paste the Access Key into the installation wizard when prompted.
+
+. During installation, you will be presented with the opportunity to provide your proxy server settings.
 
 .After you finish
 
@@ -141,17 +143,7 @@ For example:
  https://aulogin.c01.cloudinsights.netapp.com
  https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
 
-////
-== Setting proxy environment variables
 
-For environments that use a proxy, you must set the proxy environment variables before you add the Acquisition Unit. The instructions for configuring the proxy are provided on the _Add Acquisition Unit_  dialog. 
-
-. Click + in Have a Proxy Server?
-. Copy the commands to a text editor and set your proxy variables as needed.
-+ Note: Restrictions on special characters in proxy username and password fields:  '%' and '!' are allowed in the  username filed. ':', '%', and '!' are allowed in the password field. 
-. Run the edited command in a terminal using the Bash shell.
-. Install the Acquisition Unit software.
-////
 
 == Uninstalling an Acquisition Unit
 
@@ -176,7 +168,6 @@ To uninstall the Acquisition Unit software, do the following:
 
 . After uninstalling the AU software, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
 . Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
-
 
 
 == Reinstalling an Acquisition Unit
