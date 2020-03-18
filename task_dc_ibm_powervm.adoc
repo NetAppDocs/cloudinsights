@@ -42,13 +42,13 @@ The following requirements must be met to configure and use this data collector:
 
 * IP address of the Hardware Management Console (HMC)
 * User name and password that provide access to Hardware Management Console (HMC) through SSH
+* Port requirement SSH-22
 * View permission on all management systems and logical partition security domains
 +
 The user must also have View permission on HMC configurations and the ability to collect VPD information for the HMC console security grouping. The user must also be allowed Virtual IO Server Command access under the Logical Partition security grouping. It is a best practice to start from a role of an operator and then remove all roles. Read-only users on the HMC do not have privileges to run proxied commands on AIX hosts.
 
 * IBM best practice is to have the devices monitored by two or more HMCs. Be aware that this may cause OnCommand Insight to report duplicated devices, therefore it is highly recommended to add redundant devices to the "Exclude Devices" list in the Advanced Configuration for this data collector.
 
-* Port requirement SSH-22
 
 == Configuration 
 
