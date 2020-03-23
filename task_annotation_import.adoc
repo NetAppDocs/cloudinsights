@@ -1,0 +1,56 @@
+---
+sidebar: sidebar
+permalink: task_annotation_import.html
+keywords: annotations, import, api
+summary: You can import annotaitons using the Cloud Insights API.
+---
+
+= Annotation Import via API
+
+:toc: macro
+:hardbreaks: 
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead]
+
+Importing and Exporting user data
+The import and export functions allow you to export annotations, annotation rules, queries, performance policies, and custom dashboards to one file. This file can then be imported into different OnCommand Insight servers.
+
+The export and import functions are supported only between servers that are running the same version of OnCommand Insight.
+
+To Export or Import user data, Click on Admin and select Setup, then choose the Import/Export user data tab.
+
+During the import operation, data is added, merged, or replaced, depending on the objects and object types that are being imported.
+
+Annotation Types
+Adds an annotation if no annotation with the same name exists in the target system.
+Merges an annotation if the annotation type is a list, and an annotation with the same name exists in the target system.
+Replaces an annotation if the annotation type is anything other than a list, and an annotation with the same name exists in the target system.
+Note: If an annotation with the same name but with a different type exists in the target system, the import fails. If objects depend on the failed annotation, those objects may show incorrect or unwanted information. You must check all annotation dependencies after the import operation is complete.
+Annotation Rules
+Adds an annotation rule if no annotation rule with the same name exists in the target system.
+Replaces an annotation rule if an annotation rule with the same name exists in the target system.
+Note: Annotation rules are dependent on both queries and annotations. You must check all the annotation rules for accuracy after the import operation is complete.
+Policies
+Adds a policy if no policy with the same name exists in the target system.
+Replaces a policy if a policy with the same name exists in the target system.
+Note: Policies may be out of order after the import operation is complete. You must check the policy order after the import.
+Policies that are dependent on annotations may fail if the annotations are incorrect. You must check all the annotation dependencies after the import.
+
+Queries
+Adds a query if no query with the same name exists in the target system.
+Replaces a query if a query with the same name exists in the target system, even if the resource type of the query is different.
+Note: If the resource type of a query is different, after the import, any dashboard widgets that use that query may display unwanted or incorrect results. You must check all query-based widgets for accuracy after the import.
+Queries that are dependent on annotations may fail if the annotations are incorrect. You must check all the annotation dependencies after the import.
+
+Dashboards
+Adds a dashboard if no dashboard with the same name exists in the target system.
+Replaces a dashboard if a dashboard with the same name exists in the target system, even if the resource type of the query is different.
+Note: You must check all query-based widgets in dashboards for accuracy after the import.
+If the source server has multiple dashboards with the same name, they are all exported. However, only the first one will be imported to the target server. To avoid errors during import, you should ensure that your dashboards have unique names before exporting them.
