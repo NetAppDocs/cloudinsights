@@ -31,10 +31,11 @@ To Import user data, *TBD: REST API command?*
 
 === .CSV File Format
 
-The format of the CSV file is following:
+The format of the CSV file is as follows. Use a separate row for each annotation or application. Sections in square brackets [] are optional:
 
-                     ,                       , <Annotation Type>  [, <Annotation Type>  ...] [, Application]   [, Tenant]   [, Line_Of_Business]   [, Business_Unit]   [, Project] 
+[Object Type] , [Object Name or ID] , Annotation Type  [, Annotation Type,  ...] [, Application] [, Tenant] [, Line_Of_Business] [, Business_Unit] [, Project] 
 
+////
 <Object Type Value 1>, <Object Name or Key 1>, <Annotation Value> [, <Annotation Value> ...] [, <Application>] [, <Tenant>] [, <Line_Of_Business>] [, <Business_Unit>] [, <Project>] 
 
 <Object Type Value 2>, <Object Name or Key 2>, <Annotation Value> [, <Annotation Value> ...] [, <Application>] [, <Tenant>] [, <Line_Of_Business>] [, <Business_Unit>] [, <Project>] 
@@ -44,13 +45,11 @@ The format of the CSV file is following:
 ... 
 
 <Object Type Value N>, <Object Name or Key N>, <Annotation Value> [, <Annotation Value> ...] [, <Application>] [, <Tenant>] [, <Line_Of_Business>] [, <Business_Unit>] [, <Project>]
-
-
-During the import operation, data is added, merged, or replaced, depending on the objects and object types that are being imported.
+////
 
 === Import Behavior
 
-While importing, keep in mind the following behaviors.
+During the import operation, data is added, merged, or replaced, depending on the objects and object types that are being imported. While importing, keep in mind the following behaviors.
 
 * Adds an annotation or application if none exists with the same name in the target system.
 * Merges an annotation if the annotation type is a list, and an annotation with the same name exists in the target system.
