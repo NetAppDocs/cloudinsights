@@ -69,26 +69,14 @@ The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud In
 
 The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
 
- https://aulogin.<Cloud Insights Domain>
- https://<your-tenant-ID>.<Cloud Insights Domain>
+* Acquisition unit login URL: https://aulogin.<Cloud Insights Domain>
+* Cloud Insights site name (also called Tenant):  https://<Tenant Name>.<Cloud Insights Domain>
  
 For example:
  
  https://aulogin.c01.cloudinsights.netapp.com
- https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
+ https://nane1234.c01.cloudinsights.netapp.com
 
-
-////
- https://aulogin.<domain>
- https://<tenantUUID>.<domain>
-
-The second URL can be found in the acq.log, which is located at the following location.
-
- Windows: <installation location>/Cloud Insights/Acquisition Unit/log/acq.log
- Linux: /var/log/netapp/cloudinsights/acq/acq.log
-
-The URl can be found by searching the .log for “Attempting to verify server at: https://<tenantUUID>.oci.cloud.netapp.com”
-////
 
 == Adding a Windows Acquisition Unit
 
