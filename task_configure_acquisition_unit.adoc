@@ -70,13 +70,14 @@ The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud In
 The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
 
 * Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
-* Cloud Insights site name (also called the tenant): _<Tenant Name>.<Cloud Insights Domain>_
+* Cloud Insights site: _<Site Name>.<Cloud Insights Domain>_
  
 For example:
  
  https://aulogin.c01.cloudinsights.netapp.com
  https://nane1234.c01.cloudinsights.netapp.com
 
+INFO: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
 
 == Adding a Windows Acquisition Unit
 
