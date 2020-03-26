@@ -506,7 +506,7 @@ Clicking the link in either a single-value widget or a gauge widget will display
 
 Most widgets on a dashboard allow you to specify the Units in which to display values, for example KB/s, Thousands, Percentage, Milliseconds (ms), etc. In many cases, Cloud Insights knows the best format for the data based on the metadata (data about the data) that is being ingested. In cases where the best format is not known, you can set the format you want.
 
-In the example below, the data selected for the widget is known to be IO Operations per Second (IOPS), so the Base Unit is autommatically selected as 'IO/s'. The Y-axis on the graph shows 'IO/s' is the base unit, and all values are displayed in terms of that base unit.
+In the example below, the data selected for the widget is known to be input/output operations per second (IOPS), so the Base Unit is autommatically selected as 'IO/s'. The Y-axis on the graph shows 'IO/s' is the base unit, and all values are displayed in terms of that base unit.
 
 image:WidgetBaseUnitKnown.png[Widget with known base unit]
 
