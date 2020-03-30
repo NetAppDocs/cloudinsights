@@ -19,7 +19,7 @@ summary: You can import annotaitons and applications using the Cloud Insights AP
 
 [.lead]
 
-Cloud Insights includes an API for importing annotations or applications from a CSV file, and attaching them to objects you specify.
+Cloud Insights includes an API for importing annotations or applications from a CSV file, and assigning them to objects you specify.
 
 NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*. 
 
@@ -27,21 +27,18 @@ NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*.
 
 === Importing
 
-To Import user data, *TBD: REST API command?*
+The *Admin > API Access* links contain documentation for the link:#API_Overview.html[*Assets/Import*] API. This documentation contains information on the .CSV file format. 
+
+image:api_assets_import.png[Import API]
 
 === .CSV File Format
 
-The format of the CSV file is as follows. Use a separate row for each annotation or application. Sections in square brackets [] are optional:
+The general format of the CSV file is as follows. The first line of the file defines the import fields and specifies the order of the fields. This is followed by separate lines for each annotation or application. You do not need to define every field. However, the subsequent annotation lines must follow the same order as the definition line.
 
-*THIS SECTION TBD: 
-CSV first line defines the fields to be imported?  Verify this.
+ [Object Type] , [Object Name or ID] , Annotation Type [, Annotation Type,  ...] [, Application] [, Tenant] [, Line_Of_Business] [, Business_Unit] [, Project] 
 
-Create examples for scenarios for these:
-(annotation with object, annotation without object, application with and without object, BE example)*
-
-
- [Object Type] , [Object Name or ID] , Annotation Type  [, Annotation Type,  ...] [, Application] [, Tenant] [, Line_Of_Business] [, Business_Unit] [, Project] 
-
+See the API Documentation for examples of .CSV files.
+ 
 ////
 <Object Type Value 1>, <Object Name or Key 1>, <Annotation Value> [, <Annotation Value> ...] [, <Application>] [, <Tenant>] [, <Line_Of_Business>] [, <Business_Unit>] [, <Project>] 
 
@@ -86,37 +83,8 @@ The following object types can be annotated.
 |Share|id-><id> or <Storage Name>-><Internal Volume Name>-><Share Name>-><Protocol>[-><Qtree Name (optional in case of default Qtree)>]
 |===
 
-________________________________________
-Examples of the CSV files:
 
-a) Adding an application and a business entity (N/A.N/A.Corporate IT.N/A) to a host and virtual machine
-, , Application, Business_Unit 
-Host, 12.23.45.67, ERP, Corporate IT 
-VM, id->780975491767428698, Sales, Dev Ops 
-
-b) Adding 'Tier' annotation on volumes and internal volumes
-, , Tier 
-Volume, Sym123445->023F, Gold 
-Volume, Sym123445->012A, Gold 
-InternalVolume, Sym1234555->INT1, Silver 
-InternalVolume, id->1076, Bronze 
-
-c) Removing application from volumes
-, , Application 
-Volume, Sym123445->023F, 
-Volume, id->1076, 
-
-________________________________________
-
-Note: When no valid Application Priority is specified, then the Application Priority defaults to:
-•	Medium when an Application is created.
-•	Previous Application Priority when an existing Application is updated.
-Application Priority is undefined when:
-•	No Application_Priority column is defined
-•	Application_Priority column is defined, but cell value is empty
-•	Application_Priority column is defined, cell value is non-empty, but contains an unrecognized priority
-
-•	TBD: ONLY FOR OCI? The user can import a csv file and execute the API for the annotation assignment -
+//•	TBD: ONLY FOR OCI? The user can import a csv file and execute the API for the annotation assignment -
 
 
 ////
