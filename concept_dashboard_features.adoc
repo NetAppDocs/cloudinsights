@@ -502,109 +502,134 @@ image:Single-Value Widgets.png[Single-Value Widget with and without Formatting]
 Clicking the link in either a single-value widget or a gauge widget will display a query page corresponding to the first query in the widget.
 
 
-== Displaying Values in Different Units
+== Choosing the Unit for Displaying Data
 
-Most widgets on a dashboard allow you to specify the Units in which to display values, for example IO/s, Thousands, Percentage, Milliseconds (ms), etc. In many cases, Cloud Insights knows the best format for the data based on the metadata (data about the data) that is being ingested. In cases where the best format is not known, you can set the format you want.
+Most widgets on a dashboard allow you to specify the Units in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc. In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, you can set the format you want.
 
-In the example below, the data selected for the widget is known to be input/output operations per second (IOPS), so the Base Unit is autommatically selected as 'IO/s'. The Y-axis on the graph shows 'IO/s' is the base unit, and all values are displayed in terms of that base unit.
+In the line chart example below, the data selected for the widget is known to be in _bytes_ (the base IEC Data unit: see the table below), so the Base Unit is automatically selected as 'byte (B)'. However, the data values are large enough to be presented as gibibytes (GiB), so Cloud Insights by default auto-formats the values as GiB. The Y-axis on the graph shows 'GiB' as the display unit, and all values are displayed in terms of that unit.
 
-image:WidgetBaseUnitKnown.png[Widget with known base unit]
+//image:WidgetBaseUnitKnown.png[Widget with known base unit]
+image:used_memory_in_bytes.png[Base Unit Byte shown in Gigabytes,width=640]
 
-In this example, the data is displayed in Whole Number format. You can choose another format in which to display the values. Since the base unit is a simple numeric in this case, you can choose from among the supported numerical formats: whole number, thousand, million, billion, or trillion. The Y-Axis label and values change according to the format you choose, as shown below.
+If you want to display the graph in a different unit, you can choose another format in which to display the values. Since the base unit in this example is _byte_, you can choose from among the supported "byte-based" formats: bit (b), byte (B), kibibyte (KiB), mebibyte (MiB), gibibyte (GiB). The Y-Axis label and values change according to the format you choose.
 
-image:WidgetBaseUnitKnown-Formatted.png[Choosing to display values as 'thousand']
+//image:WidgetBaseUnitKnown-Formatted.png[Choosing to display values as 'thousand']
+image:used_memory_in_bytes_gb.png[Choosing a display unit,width=640]
 
-In cases where the base unit is not known, you can assign a unit from among the available units, or type in your own. 
+In cases where the base unit is not known, you can assign a unit from among the link:#available-units[available units], or type in your own. Once you assign a base unit, you can then select to display the data in one of the appropriate supported formats. 
 
-=== Table of Available Units
+//image:WidgetBaseUnitNotKnown.png[Base unit unknown]
+image:bits_per_second.png[Choose your own base unit,width=320] 
+
+To clear out your settings and start again, click on *Reset Defaults*.  
+
+=== A word about Auto-Format
+
+Most metrics are reported by data collectors in the smallest unit, for example as a whole number such as 1,234,567,890 bytes. By default, Cloud Insights will automatically format the value for the most readable display, e.g. 1.23bn (billion) bytes. If you choose instead to display this as millions (m), the value will show as 1,234m. If you choose to display as trillion, it will show .001t.
+
+NOTE: Cloud Insights uses American English number naming standards. American "billion" is equivalent to "thousand million".
+
+////
+Depending on the widget and the range of values displayed, Cloud Insights will typically use the highest value as the basis for auto-formatting the units. So if your range goes from one million (1,000,000) to one billion (1,000,000,000), your chart might auto-format to the billion (bn) level, which means lower values might display as .001bn.
+////
+
+=== Widgets with multiple queries
+
+If you have a time-series widget (i.e. line, spline, area, stacked area) that has two queries where both are plotted the primary Y-Axis, the base unit is not shown at the top of the Y-Axis.  However, if your widget has a query on the primary Y-Axis and a query on the secondary Y-Axis, the base units for each are shown.
+
+image:UnitsOnPrimaryAnd SecondaryYAxis.png[Units on both Y-Axes]
+
+If your widget has three or more queries, base units are not shown on the Y-Axis.
+
+
+=== Available Units
 
 The following table shows all the available units by category. 
 
 |===
-|Group|Unit|Label
-|CPU|nanocores|ncores
-||microcores|μcores
-||millicores|mcores
-||cores|cores
-||kilocores|Kcores
-||megacores|Mcores
-||gigacores|Gcores
-||teracores|Tcores
-||petacores|Pcores
-||exacores|Ecores
-|||
-|Currency|cent|¢
-||dollar|$
-|||
-|Data (IEC)|bit|b
-||byte|B
-||kibibyte|KiB
-||mebibyte|MiB
-||gibibyte|GiB
-||tebibyte|TiB
-||pebibyte|PiB
-||exbibyte|EiB
-|||
-|Data Rate (IEC)|bit/sec|b/s
-||byte/sec|B/s
-||kibibyte/sec|KiB/s
-||mebibyte/sec|MiB/s
-||gibibyte/sec|GiB/s
-||tebibyte/sec|TiB/s
-||pebibyte/sec|PiB/s
-|||
-|Data (Metric)|kilobyte|KB
-||megabyte|MB
-||gigabyte|GB
-||terabyte|TB
-||petabyte|PB
-||exabyte|EB
-|||
-|Data Rate (Metric)|kilobyte/sec|KB/s
-||megabyte/sec|MB/s
-||gigabyte/sec|GB/s
-||terabyte/sec|TB/s
-||petabyte/sec|PB/s
-||exabyte/sec|EB/s
-|||
-|Decimal|whole number|
-||thousand|k
-||million|m
-||bilion|bn
-||trillion|t
-|Frequency|hertz|Hz
-||kilohertz|kHz
-||megahertz|mHz
-||gigahertz|gHz
-|||
-|IEC|kibi|Ki
-||mebi|Mi
-||gibi|Gi
-||tebi|Ti
-||pebi|Pi
-||exbi|Ei
-|||
-|Percentage|percentage|%
-|||
-|Temperature|celsius|°C
-||fahrenheit|°F
-|||
-|Throughput|I/O ops/sec|IO/s
-||ops/sec|ops/s
-||requests/sec|reqs/s
-||reads/sec|rds/s
-||writes/sec|wrs/s
-||ops/min|ops/m
-||reads/min|rds/m
-||writes/min|wrs/m
-|||
-|Time|nanosecond|ns
-||microsecond|μs
-||millisecond|ms
-||second|sec
-||minute|min
-||hour|hr
+*Category*|*Units*
+|Currency|cent
+dollar
+
+|Data(IEC)|bit
+byte
+kibibyte
+mebibyte
+gibibyte
+tebibyte
+pebibyte
+exbibyte
+
+|DataRate(IEC)|bit/sec
+byte/sec
+kibibyte/sec
+mebibyte/sec
+gibibyte/sec
+tebibyte/sec
+pebibyte/sec
+
+|Data(Metric)|kilobyte
+megabyte
+gigabyte
+terabyte
+petabyte
+exabyte
+
+|DataRate(Metric)|kilobyte/sec
+megabyte/sec
+gigabyte/sec
+terabyte/sec
+petabyte/sec
+exabyte/sec
+
+|IEC|kibi
+mebi
+gibi
+tebi
+pebi
+exbi
+
+|Decimal|wholenumber
+thousand
+million
+bilion
+trillion
+
+|Percentage|percentage
+
+|Time|nanosecond
+microsecond
+millisecond
+second
+minute
+hour
+
+|Temperature|celsius
+fahrenheit
+
+|Frequency|hertz
+kilohertz
+megahertz
+gigahertz
+
+|CPU|nanocores
+microcores
+millicores
+cores
+kilocores
+megacores
+gigacores
+teracores
+petacores
+exacores
+
+|Throughput|I/Oops/sec
+ops/sec
+requests/sec
+reads/sec
+writes/sec
+ops/min
+reads/min
+writes/min
 |===
-
-
 
