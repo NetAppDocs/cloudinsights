@@ -44,6 +44,7 @@ Note: These are common terminology mappings only and might not represent every c
 
 * IP address of each SVC cluster
 * Port 22 available 
+////
 * Public and private key pair that you either generate with Cloud Insights or reuse a keypair already in use on your SVC
 +
 If you are reusing an existing keypair, you must convert them from Putty format to OpenSSH format.
@@ -51,8 +52,9 @@ If you are reusing an existing keypair, you must convert them from Putty format 
 * Public key installed on the SVC cluster
 * Private key needs to be identified in the Acquisition Unit.
 * Access validation: Open ssh session to the SVC cluster using the private key
+////
 
-Note: No third-party software needs to be installed. 
+//Note: No third-party software needs to be installed. 
 
 == Performance Requirements
 
@@ -61,7 +63,7 @@ Note: No third-party software needs to be installed.
 +
 Note: Because this access level is not required for the SVC foundation discovery package, the SVC foundation user might not work successfully. 
 
-* A private and public SSH key must be generated for this user, and the private key stored so that it is accessible from the Acquisition Unit. If the SVC foundation user has the proper permissions, then the same user and key works. The same SSH key can be used for inventory and performance data. 
+//* A private and public SSH key must be generated for this user, and the private key stored so that it is accessible from the Acquisition Unit. If the SVC foundation user has the proper permissions, then the same user and key works. The same SSH key can be used for inventory and performance data. 
 * Enable data collection by connecting to the SVC cluster by SSH and running: _svctask startstats -interval 1_
 +
 Note: Alternatively, enable data collection using the SVC  management user interface.
@@ -73,7 +75,7 @@ Note: Alternatively, enable data collection using the SVC  management user inter
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Cluster's IP |IP address or fully-qualified domain name of the SVC storage 
+|Cluster IP Addresses |IP addresses or fully-qualified domain names of the SVC storage 
 //|'Password' or 'OpenSSH Key File'|Credential type used to connect to the device via SSH
 |Inventory User Name|User name for the SVC CLI
 |Inventory Password|Password for the SVC CLI
@@ -92,7 +94,7 @@ Note: Alternatively, enable data collection using the SVC  management user inter
 //|Exclude Devices|Comma-separated list of device IDs to exclude from inventory collection
 //|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 200 seconds. 
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds). 
-|Performance Exclude Devices|Comma-separated list of device IDs to exclude from performance collection
+//|Performance Exclude Devices|Comma-separated list of device IDs to exclude from performance collection
 //|Performance SSH Process Wait Timeout (sec)|SSH process timeout. The default is 200 seconds.
 //|Performance User|Name 	User name for the SVC CLI for performance collection
 |To clean up dumped stats files|Select this checkbox to clean up dumped stats files
