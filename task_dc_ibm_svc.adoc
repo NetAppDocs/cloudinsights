@@ -40,11 +40,24 @@ Cloud Insights acquires the following inventory information from the IBM SVC dat
 
 Note: These are common terminology mappings only and might not represent every case for this data collector. 
 
-== Inventory Requirements
+=== Inventory Requirements
+* IP address of each SVC cluster
+* Port 22 available
+* Read-only user name and password 
 
+=== Performance Requirements
+* SVC Console, which is mandatory for any SVC cluster and required for the SVC discovery foundation package.
+* Credentials will require administrative access level only for copying performance files from cluster nodes to the config node. 
+* Administrator-level user name and password
++
+Note: Admin level is not required for the SVC inventory-only discovery, but is required for performance collection. 
+
+* Enable data collection by connecting to the SVC cluster by SSH and running: _svctask startstats -interval 1_
+* Note: Alternatively, enable data collection using the SVC management user interface.
+
+////
 * IP address of each SVC cluster
 * Port 22 available 
-////
 * Public and private key pair that you either generate with Cloud Insights or reuse a keypair already in use on your SVC
 +
 If you are reusing an existing keypair, you must convert them from Putty format to OpenSSH format.
@@ -52,7 +65,6 @@ If you are reusing an existing keypair, you must convert them from Putty format 
 * Public key installed on the SVC cluster
 * Private key needs to be identified in the Acquisition Unit.
 * Access validation: Open ssh session to the SVC cluster using the private key
-////
 
 //Note: No third-party software needs to be installed. 
 
@@ -69,6 +81,7 @@ Note: Because this access level is not required for the SVC foundation discovery
 Note: Alternatively, enable data collection using the SVC  management user interface.
 
 * Port Requirement: 22
+////
 
 == Configuration
 
