@@ -44,6 +44,7 @@ Note: These are common terminology mappings only and might not represent every c
 
 * IP address of each SVC cluster
 * Port 22 available 
+////
 * Public and private key pair that you either generate with Cloud Insights or reuse a keypair already in use on your SVC
 +
 If you are reusing an existing keypair, you must convert them from Putty format to OpenSSH format.
@@ -51,6 +52,7 @@ If you are reusing an existing keypair, you must convert them from Putty format 
 * Public key installed on the SVC cluster
 * Private key needs to be identified in the Acquisition Unit.
 * Access validation: Open ssh session to the SVC cluster using the private key
+////
 
 //Note: No third-party software needs to be installed. 
 
@@ -61,7 +63,7 @@ If you are reusing an existing keypair, you must convert them from Putty format 
 +
 Note: Because this access level is not required for the SVC foundation discovery package, the SVC foundation user might not work successfully. 
 
-* A private and public SSH key must be generated for this user, and the private key stored so that it is accessible from the Acquisition Unit. If the SVC foundation user has the proper permissions, then the same user and key works. The same SSH key can be used for inventory and performance data. 
+//* A private and public SSH key must be generated for this user, and the private key stored so that it is accessible from the Acquisition Unit. If the SVC foundation user has the proper permissions, then the same user and key works. The same SSH key can be used for inventory and performance data. 
 * Enable data collection by connecting to the SVC cluster by SSH and running: _svctask startstats -interval 1_
 +
 Note: Alternatively, enable data collection using the SVC  management user interface.
