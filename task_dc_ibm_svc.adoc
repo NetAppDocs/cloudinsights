@@ -16,7 +16,6 @@ summary: Configuring IBM SAN Volume Controller data collector.
 :imagesdir: ./media/
 
 
-
 [.lead]
 
 The IBM SAN Volume Controller (SVC) data collector collects inventory and performance data using SSH, supporting a variety of devices that run the SVC operating system.
@@ -47,8 +46,10 @@ Note: These are common terminology mappings only and might not represent every c
 
 === Performance Requirements
 * SVC Console, which is mandatory for any SVC cluster and required for the SVC discovery foundation package.
-* Credentials will require administrative access level only for copying performance files from cluster nodes to the config node. 
+Credentials will require administrative access level only for copying performance files from cluster nodes to the config node. 
 * Administrator-level user name and password
++
+Credentials will require administrative access level only for copying performance files from cluster nodes to the config node. 
 +
 Note: Admin level is not required for the SVC inventory-only discovery, but is required for performance collection. 
 
