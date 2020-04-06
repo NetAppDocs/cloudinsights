@@ -26,10 +26,10 @@ The default time range for dashboards is now 3 Hours instead of 24 hours. Note t
 
 ==== Optimized Aggregation Times
 
-Optimized time aggregation in time-series widgets (Line, Spline, Area, and Stacked Area charts) is more frequent for 3-hour and 24-hour dashboard/widget time ranges, allowing for faster charting of data. 
+Optimized time aggregation intervals in time-series widgets (Line, Spline, Area, and Stacked Area charts) is more frequent for 3-hour and 24-hour dashboard/widget time ranges, allowing for faster charting of data. 
 
-* 3 hour time range optimizes for 10-second aggregation
-* 24 hour time range optimizes for 1 minute aggregation
+* 3 hour time range optimizes to 1 minute aggregation interval. Previously was 5 minute.
+* 24 hour time range optimizes to 30 minute aggregation interval. Previously was 1 hour.
 
 You can still override the optimized aggregation by setting a custom interval.
 
