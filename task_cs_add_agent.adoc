@@ -42,7 +42,7 @@ Use the following commands to determine if these packages are installed:
 `sudo yum install yum-utils device-mapper-persistent-data lvm2`
 
 . Add docker stable repository to your system:
-`sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo`
+`sudo yum-config-manager --add-repo \https://download.docker.com/linux/centos/docker-ce.repo`
 
 . To use the latest version of Docker CE, enable repositories that are disabled by default:
 `sudo yum-config-manager --enable docker-ce-edge`
@@ -76,14 +76,16 @@ For additional installation information, see:
 
 .. Download all required rpms and copy them to the VM on which the agent is to be installed.
 +
+----
 https://download.docker.com/linux/centos/docker-ce.repo
-`sudo yum-config-manager --add-repo <repo_file>`
+sudo yum-config-manager --add-repo <repo_file>
 https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-18.09.0-3.el7.x86_64.rpm
 https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-cli-18.09.0-3.el7.x86_64.rpm
 https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
-`sudo rpm -i <rpms>`
-`sudo systemctl enable docker`
-`sudo systemctl start docker`
+sudo rpm -i <rpms>
+sudo systemctl enable docker
+sudo systemctl start docker
+----
 
 == Java Requirement 
 
@@ -183,7 +185,7 @@ image::new-agent-detect.png[]
 . Verify that the agent is installed using the following command:
 `sudo grep -irn register agent.log`
 
-. You need to configure a link:task_config_user_dir_connect.html[User Directory Collector].
+. You need to configure a link:task_config_user_dir_connect.html[User Directory Collector ].
 . You need to configure one or more Data Collectors.  
 
 == Files Created During Installation
