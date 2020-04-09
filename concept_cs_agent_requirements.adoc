@@ -48,9 +48,9 @@ The agent systems should always have the Docker CE package installed. Users shou
 
 |Agent outbound URLs (port 433)|
 * \https://<tenant id>.cs01.cloudinsights.netapp.com
-+
 You can get the tenant ID from the product URL. For example: \https://ab1234.cs01.cloudinsights.netapp.com
-You can use a broader range to specify the tenant ID: \https://*.cs01.cloudinsights.netapp.com/ https://gateway.c01.cloudinsights.netapp.com
+You can use a broader range to specify the tenant ID: \https://*.cs01.cloudinsights.netapp.com/
+\https://gateway.c01.cloudinsights.netapp.com
 agentlogin.cs01.cloudinsights.netapp.com
 # agentlogin.preview.cloudsecure.netapp.com (used for getting the jwt token using certificates)
 # 376015418222.dkr.ecr.us-east-1.amazonaws.com (used to pull docker images from ecr)
