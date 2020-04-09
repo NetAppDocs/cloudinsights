@@ -100,11 +100,11 @@ You can validate LDAP User Permissions and Attribute Definitions using the follo
 
 * Use the following command to validate Cloud Secure LDAP user permission:
 +
-`ldapsearch -o ldif-wrap=no -LLL -x -b "dc=netapp,dc=com" -h 10.235.40.29 -p 389 -D Administrator@netapp.com -W`
+`ldapsearch -o ldif-wrap=no -LLL -x -b "dc=netapp,dc=com" -h 10.235.40.29 -p 389 -D \Administrator@netapp.com -W`
 
 * Use AD Explorer to navigate an AD database, view object properties and attributes, view permissions, view an object's schema, execute sophisticated searches that you can save and re-execute. 
 
-** Install AD explorer https://docs.microsoft.com/en-us/sysinternals/downloads/adexplorer
+** Install AD explorer \https://docs.microsoft.com/en-us/sysinternals/downloads/adexplorer
 ** Connect to the AD server using the username/password of the AD directory server.
 
 
