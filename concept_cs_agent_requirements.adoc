@@ -47,14 +47,20 @@ The agent systems should always have the Docker CE package installed. Users shou
 |Network|100 Mbps 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Cloud Secure instance (80 or 443).
 
 |Agent outbound URLs (port 433)|
+
 * \https://<tenant id>.cs01.cloudinsights.netapp.com
 You can get the tenant ID from the product URL. For example: \https://ab1234.cs01.cloudinsights.netapp.com
-You can use a broader range to specify the tenant ID: \https://*.cs01.cloudinsights.netapp.com/
-\https://gateway.c01.cloudinsights.netapp.com
-agentlogin.cs01.cloudinsights.netapp.com
+
+* You can use a broader range to specify the tenant ID: \https://*.cs01.cloudinsights.netapp.com/
+
+* \https://gateway.c01.cloudinsights.netapp.com
+* \https://agentlogin.cs01.cloudinsights.netapp.com
+
+////
 # agentlogin.preview.cloudsecure.netapp.com (used for getting the jwt token using certificates)
 # 376015418222.dkr.ecr.us-east-1.amazonaws.com (used to pull docker images from ecr)
 # prod-us-east-1-starport-layer-bucket.s3.amazonaws.com (used to download docker image digest)
+////
 |===
 
 == Cloud Network Access Rules
