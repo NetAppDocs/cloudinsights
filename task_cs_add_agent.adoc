@@ -42,7 +42,7 @@ Use the following commands to determine if these packages are installed:
 `sudo yum install yum-utils device-mapper-persistent-data lvm2`
 
 . Add docker stable repository to your system:
-`sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo`
+`sudo yum-config-manager --add-repo \https://download.docker.com/linux/centos/docker-ce.repo`
 
 . To use the latest version of Docker CE, enable repositories that are disabled by default:
 `sudo yum-config-manager --enable docker-ce-edge`
