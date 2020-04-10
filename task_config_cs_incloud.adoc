@@ -52,7 +52,7 @@ Use the following steps to configure the client (AWS EC2 RHEL or CentOS 7.2/7.5 
 
 . Install wget, install unzip native Linux packages.
 
-. Install selinux (dependency package for the docker-ce)
+. Install selinux (dependency package for the docker-ce):
 +
 `wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.68-1.el7.noarch.rpm`  
 +
@@ -101,7 +101,7 @@ Use the following steps to configure the client (AWS EC2 RHEL or CentOS 7.2/7.5 
 
 . Paste the Agent Installation command into the RHEL EC2 instance you are logged in to.
 + 
-This installs the Cloud Secure agent, providing all of the link:<concept_agent_requirements>.html[Agent Prerequisites] are met. 
+This installs the Cloud Secure agent, providing all of the link:concept_cs_agent_requirements.html[Agent Prerequisites] are met. 
 
 == Add a NetApp ONTAP data collector 
 
