@@ -23,7 +23,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 
 * This data collector is supported on Data ONTAP 9.1 and later versions. 
 
-* An Agent link:task_add_agent.html[must be configured] before you can configure data collectors. 
+* An Agent link:task_cs_add_agent.html[must be configured] before you can configure data collectors. 
 
 * A separate subnet must be used for FPolicy traffic.
 
@@ -67,7 +67,7 @@ clustershell::> `network interface modify -lif <SVM_data_LIF_name> -firewall-pol
 
 * When a firewall is enabled, you must have an exception defined to allow TCP traffic for the port using the Data ONTAP Data Collector. 
 +
-See link:concept_agent_requirements.html[Agent requirements] for configuration information. This applies to on-premise Agents and Agents installed in the Cloud.  
+See link:concept_cs_agent_requirements.html[Agent requirements] for configuration information. This applies to on-premise Agents and Agents installed in the Cloud.  
 
 * When an Agent is installed in an AWS EC2 instance to monitor a Cloud ONTAP SVM, the Agent and Storage must be in the same VPC. If they are in separate VPCs, there must be a valid route between the VPC’s.
 
@@ -105,7 +105,7 @@ The system displays the ONTAP SVM configuration page. Enter the required data fo
 |===
 |Name |Field
 |Name |Unique name for the Data Collector
-|Agent|Select a configured agent from the list or click *Add Agent* to configure an Agent. See link:concept_agent_requirements.html[Agent requirements] and link:task_add_agent.html[Agent Installation] for configuration information.
+|Agent|Select a configured agent from the list or click *Add Agent* to configure an Agent. See link:concept_cs_agent_requirements.html[Agent requirements] and link:task_cs_add_agent.html[Agent Installation] for configuration information.
 |SVM Management IP Address|Management IP Address
 |Username|User name to access the SVM
 |Password|SVM Password
