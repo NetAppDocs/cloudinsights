@@ -183,8 +183,8 @@ image::new-agent-detect.png[]
 
 .After You Finish
 
-. Verify that the agent is installed using the following command:
-`sudo grep -irn register agent.log`
+//. Verify that the agent is installed using the following command:
+//`sudo grep -irn register agent.log`
 
 . You need to configure a link:task_config_user_dir_connect.html[User Directory Collector ].
 . You need to configure one or more Data Collectors.  
@@ -205,11 +205,11 @@ image::new-agent-detect.png[]
 * You can use the following command to verify the agent installed correctly: 
 `sudo grep -irn register /opt/netapp/cloudsecure/agent/logs/agent.log`
 
-* Use the following script to control the Cloud Secure service:
-`sudo cloud-secure-agent-service.sh --help`
+//* Use the following script to control the Cloud Secure service:
+//`sudo cloud-secure-agent-service.sh --help`
 
 * Use the following script to uninstall the agent:
-`sudo cloud-secure-agent-uninstall.sh`
+`sudo cloudsecure-agent-uninstall.sh`
 
 == Network Configuration
 
