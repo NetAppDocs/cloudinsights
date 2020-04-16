@@ -100,6 +100,7 @@ The IBM Java package, found in some RHEL versions, must be uninstalled. Use the 
 If the command returns information similar to 'IBM J9 VM (build 2.9.x)' you need to remove the package: 
 `sudo update-alternatives --remove java /usr/lib/jvm/jdk[version]/bin/java`
 
+////
 == Steps to Install an Agent from a Non-Root Account
 
 You can perform an installation from a non-Root user account using the following steps:
@@ -123,9 +124,9 @@ You can perform an installation from a non-Root user account using the following
 . Install the Cloud Secure Agent using the Curl command taken from the Web UI. 
 +
 Provide a -k in the Curl command if your RHEL platform performs a strict certificate check. For CentOS systems, the -k option is not required.
-
 ////
 
+////
 [mylocal1@contrail-eng-kirana-kirana-nane-vm12 install]$ token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJvbmV0aW1lVG9rZW5JZCI6IjkwYTVjOWQzLTkxOWQtNGY5OC05NzU2LTI0YmQyYTEzMmU2YiIsImRvY2tlclJlcG9zaXRvcnkiOiJvY2ktcmVnaXN0cnkub2NpLmNsb3VkLm5hbmUub3BlbmVuZ2xhYi5uZXRhcHAuY29tOjUwMDAiLCJyb2xlcyI6WyJhZG1pbiJdLCJzZXJ2ZXJVcmwiOiJodHRwczovL2F2NDE3Mi5kZXYuY2xvdWRzZWN1cmUubmV0YXBwLmNvbSIsImlzcyI6Im9jaSIsImV4cCI6MTU1OTU1OTc4MiwibG9naW4iOiJhZ2VudC5lNGE4NTNiMS03Nzk3LTQ0MDYtOWVmNC03ZDg5YzExZWU0MzYiLCJpYXQiOjE1NTk1NTI1ODIsInV1aWQiOiJlNGE4NTNiMS03Nzk3LTQ0MDYtOWVmNC03ZDg5YzExZWU0MzYiLCJ0ZW5hbnQiOiI3M2NhN2MzMi01YzhlLTQ5OTQtYWQ2YS02NTU0MTAzOTJhZTkiLCJhZ2VudExvZ2luVXJsIjoiaHR0cHM6Ly9hZ2VudGxvZ2luLmRldi5jbG91ZHNlY3VyZS5uZXRhcHAuY29tIn0.9M9ioV_QxjeI58G9qL3_P6RPXxytnoqDL_i7EACnq0LGHIcGRkqSLZyDW7MJabPu' installerName=cloudsecure-linux-agent-installer-1.0.zip && curl -k -H "Authorization: Bearer $token" -o $installerName https://av4172.dev.cloudsecure.netapp.com/rest/v1/agents/installers/linux/1.0 && unzip $installerName -d . && chmod 755 -Rf . && sudo /bin/bash -c "TOKEN=$token ./cloudsecure-agent-install.sh"
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
