@@ -45,9 +45,7 @@ The following are requirements to configure and use this data collector:
 * CIFS and/or NFS license and CIFS shares or NFS exports required for Cloud Insights NAS discovery.
 * Access validation: Telnet or SSH to the cluster management LIF from the acquisition unit, using the username and password.
 
-* For Clustered ONTAP you need the IP cluster management LIF or the management IP of the cluster.
-+
-Requires username (with read-only role name to ontapi application to the default Vserver, see below) and password to log into NetApp cluster.
+* For Clustered ONTAP you need the IP cluster management LIF or the management IP of the cluster. Additionally, requires username (with read-only role name to ontapi application to the default Vserver, see below) and password to log into NetApp cluster.
 +
 To create a read-only user account (may be slightly different on different ONTAP versions):
 +
