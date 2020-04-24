@@ -47,9 +47,7 @@ The following are requirements to configure and use this data collector:
 
 * For Clustered ONTAP you need the IP cluster management LIF or the management IP of the cluster. Additionally, requires username (with read-only role name to ontapi application to the default Vserver, see below) and password to log into NetApp cluster.
 +
-To create a read-only user account (may be slightly different on different ONTAP versions):
-+
-++ Log into the NetApp storage system by using an SSH client and run the following command (case sensitive) and use your own user account variables:
+To create a read-only user account (may be slightly different on different ONTAP versions), log into the NetApp storage system by using an SSH client and run the following command (case sensitive) and use your own user account variables:
 +
  security login role create -role test -cmddirname DEFAULT -access readonly
  security login create - user-or-group-name useraccount -application ontap -authmethod password -role test-vserver storagename
