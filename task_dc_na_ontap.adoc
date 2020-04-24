@@ -39,11 +39,22 @@ Cloud Insights acquires inventory and performance data from the ONTAP Data manag
 
 The following are requirements to configure and use this data collector:
 
-* You must have access to an Administrator account used for read-only API calls.
+* You must have access to an account used for read-only API calls.
 * Target IP is the cluster management LIF.
 * FCP license and mapped/masked volumes required for Cloud Insights discovery.
 * CIFS and/or NFS license and CIFS shares or NFS exports required for Cloud Insights NAS discovery.
 * Access validation: Telnet or SSH to the cluster management LIF from the acquisition unit, using the username and password.
+
+* For Clustered ONTAP you need the IP cluster management LIF or the management IP of the cluster.
++
+Requires username (with read-only role name to ontapi application to the default Vserver, see below) and password to log into NetApp cluster.
++
+To create a read-only user account (may be slightly different on different ONTAP versions):
++
+++ Log into the NetApp storage system by using an SSH client and run the following command (case sensitive) and use your own user account variables:
++
+ security login role create -role test -cmddirname DEFAULT -access readonly
+ security login create - user-or-group-name useraccount -application ontap -authmethod password -role test-vserver storagename
 
 == Configuration 
 
