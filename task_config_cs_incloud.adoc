@@ -105,21 +105,29 @@ This installs the Cloud Secure agent, providing all of the link:concept_cs_agent
 
 == Add a NetApp ONTAP data collector 
 
-. Click *Admin>Data Collectors>Data Collectors>+Data Collector* and specify the NetApp ONTAP SVM data collector.   
+. Click *Admin > Data Collectors > Data Collectors > +Data Collector* and specify the NetApp ONTAP Cloud Volumes data collector. Enter the required information in the fields.
 
-. Configure the data collector 
-.. Provide a name
-.. Agent name is the agent configured in the cloud
-.. SVM management IP Address
-.. Usename 
-.. Password
+[caption=]
+.Configuration
+[cols=2*, cols"50,50"]
+[Options=header]
+|===
+|Name |Field
+|Name |Unique name for the Data Collector
+|Agent|Select a configured agent from the list or click *Add Agent* to configure an Agent. See link:concept_cs_agent_requirements.html[Agent requirements] and link:task_cs_add_agent.html[Agent Installation] for configuration information.
+|SVM Management IP Address|Management IP Address
+|Username|User name to access the SVM
+|Password|SVM Password
+|Enter complete share names to exclude|Comma-separated list of shares to exclude from event collection
+|Enter complete volume names to exclude|Comma-separated list of volumes to exclude from event collection
+|===
 
 .. Click *Add Collector*
 
 . Verify the Agent Server is running using the 
 `docker ps` command and a `docker logs <docker_image_id>` file. 
 +
-All of the SVM data collector's service status should be in the 'running' state.
+All of the data collector's service status should be in the 'running' state.
 
 // .. Identify an NFS client (in the same VPC subnet as the Agent and Cloud ONTAP) 
  
@@ -130,7 +138,7 @@ All of the SVM data collector's service status should be in the 'running' state.
 //‘yum install -y nfs-utils’  
 
 //.. NFS mount the volume / qtree container that was created in the SVM. 
-
+////
 
 
 
