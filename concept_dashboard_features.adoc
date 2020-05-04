@@ -621,3 +621,37 @@ reads/min
 writes/min
 |===
 
+== Dashboard Groups
+
+=== Grouping 
+
+Grouping allows you to view and manage related dashboards. For example, you can have a dashboard group dedicated to the storage in your environment.Dashboard groups are managed on the *Dashboards > Show All Dashboards* page.
+
+image:DashboardGroupsExample.png[Dashboard Grouping]
+
+Two groups ar shown by default:
+
+* *All Dashboards* lists all the dashboards that have been created, regardless of owner
+* *My Dashboards* lists only those dashboards created by the current user
+
+The number of dashboards contained in each group is shown next to the group name.
+
+To create a new group, click the *"+" Create New Dashboard Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
+
+To add dashboards to the group, click the _All Dashboards_ group to show all dashboards in your environment and do one of the following:
+
+* To add a single dashboard, click the menu to the right of the dashboard and select _Add to Group_.
+* To add multiple dashboards to a group, select them by clicking the checkbox next to each dashboard, then click the *Bulk Actions* button and select _Add to Group_.
+
+Remove dashboards from the current group in the same manner by selecting _Remove From Group_. You can not remove dashboards from the _All Dashboards_ or _My Dashboards_ group. 
+
+NOTE: Removing a dashboard from a group does not delete the dashboard from Cloud Insights. To completely remove a dashboard, select the dashboard and click _Delete_. This removes it from any groups to which it belonged and it is no longer available to any user.
+
+=== Pinning
+
+You can further manage your dashboards by pinning favorite ones to the top of your groups. To pin a dashboard, simply click the thumbtack button displayed when you hover over a dashboard in any list. 
+
+Pinning a dashboard pins it to the top of the current group, as well as any other groups containing that dashboard. 
+
+NOTE: Pinning a dashboard moves it to the top of your groups only. It does not pin it to the top of another user's groups.
+
