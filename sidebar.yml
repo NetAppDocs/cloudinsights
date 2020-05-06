@@ -12,6 +12,8 @@ entries:
 
   - title: Getting Started
     entries:
+      - title: Feature Tutorials
+        url: /concept_feature_tutorials.html
       - title: Collecting Data
         entries:
           - title: Overview
@@ -57,8 +59,6 @@ entries:
         url: /task_dc_cisco_fc_switch.html
       - title: Dell 
         entries:
-          - title: Compellent Storage
-            url: /task_dc_dell_compellent.html
           - title: XC series
             url: /task_dc_dell_xc_series.html
       - title: Dell EMC
@@ -127,6 +127,8 @@ entries:
         url: /task_dc_lenovo.html
       - title: Microsoft
         entries:
+          - title: Azure NetApp Files
+            url: /task_dc_ms_anf.html
           - title: Hyper-V
             url: /task_dc_ms_hyperv.html
       - title: NetApp
@@ -307,7 +309,7 @@ entries:
         url: /task_export_query_results.html
       - title: Modifying or Deleting a Query
         url: /task_modify_delete_query.html
-      - title: Assigning Multiple Applications/Annotations to Objects
+      - title: Assigning Multiple Applications/annotations to Objects
         url: /task_query_assign_multiple_applicationss.html
       - title: Copying table values to the Clipboard
         url: /task_query_copy_table_values.html
@@ -319,12 +321,16 @@ entries:
         url: /task_create_annotation.html
       - title: Using Annotation Rules
         url: /task_create_annotation_rules.html
+      - title: Importing Annotations with API
+        url: /task_annotation_import.html
   - title: Working with Applications
     entries:
       - title: Application Concepts
         url: /concept_about_applications.html
       - title: Configuring Applications
         url: /task_create_application.html
+  - title: Working with APIs
+    url: /API_Overview.html
   - title: Performance Policies and Alerts
     entries:
       - title: Alerting with Performance Policies
@@ -362,16 +368,21 @@ entries:
         url: /reporting_predefined_reports.html
       - title: Storage Manager Dashboard
         url: /reporting_storage_manager_dashboard.html
-#      - title: Creating an Example Report
-#        url: /reporting_create_example.html
+      - title: Creating an Example Report
+        url: /reporting_create_example.html
       - title: Managing Reports
         url: /reporting_managing_reports.html
       - title: Custom Reports
         url: /reporting_creating_custom_reports.html
-#      - title: Data Models
-#        url: /reporting_data_model.html
+      - title: Data Models
+        url: /reporting_data_model.html
+      - title: Schema Diagrams
+        url: /reporting_schema_diagrams.html
+      - title: Schema Tables
+        url: /reference_schemas.html
+        
   
-  - title: Cloud Secure (Preview Documentation)
+  - title: Cloud Secure 
     entries:
       - title: About Cloud Secure
         url: /cs_intro.html
@@ -386,8 +397,6 @@ entries:
           - title: Deleting a Cloud Secure Agent
             url: /task_cs_delete_agent.html 
           - title: Configuring a User Directory Collector 
-            url: /task_config_user_dir_connect.html
-          - title: Configuring an Active Directory Collector
             url: /task_config_user_dir_connect.html
           - title: Configuring NetApp Data Collectors
             entries: 

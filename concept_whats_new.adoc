@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: concept_whats_new.html
-summary: New features and functionlity in Cloud Insights.
+summary: New features and functionlity in Cloud Insights. 
 keywords: features
 ---
 
@@ -18,7 +18,113 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== April 2020
+
+==== New Dashboard Time Range Choices
+
+Time range choices for dashboards and other Cloud insights pages now include _Last 1 Hour_ and _Last 15 Minutes_.
+
+==== Cloud Secure Updates
+
+Cloud Insights includes the following recent Cloud Secure changes.
+
+*	Better file and folder metadata change recognition to detect if the user changed Permission, Owner, or Group Ownership.
+
+* Export user activity report to CSV.
+
+Cloud Secure monitors and audits all user access operations on files and folders. Activity auditing allows you to comply with internal security policies, meet external compliance requirements such as PCI, GDPR, and HIPAA, and conduct data breach and security incident investigations.
+
+
+==== Default Dashboard Time
+
+The default time range for dashboards is now 3 Hours instead of 24 hours. 
+
+==== Optimized Aggregation Times
+
+Optimized link:concept_dashboard_features.html#aggregating-data[time aggregation] intervals in time-series widgets (Line, Spline, Area, and Stacked Area charts) are more frequent for 3-hour and 24-hour dashboard/widget time ranges, allowing for faster charting of data. 
+
+* 3 hour time range optimizes to a 1 minute aggregation interval. Previously this was 5 minutes.
+* 24 hour time range optimizes to a 30 minute aggregation interval. Previously this was 1 hour.
+
+You can still override the optimized aggregation by setting a custom interval.
+
+
+==== Display Unit Auto-Format
+
+In most widgets, Cloud Insights knows the base unit in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc., and now link:concept_dashboard_features.html#choosing-the-unit-for-displaying-data[automatically formats] the widget to the most readable unit. For example, a data value of 1,234,567,890 bytes would be auto formatted to 1.23bn (billion). In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, or in widgets where you want to override the automatic formatting, you can choose the format you want.
+
+image:used_memory_in_bytes_gb.png[Auto Format in Widgets,width=480]
+
+
+==== Import Annotations Using API
+
+With Cloud Insights Premium Edition's powerful API, you can now link:task_annotation_import.html[import annotations] and assign them to objects using a .CSV file. You can also import applications and assign business entities in the same way.
+
+image:api_assets_import.png[Importing Annotations]
+
+
+
+==== Simpler Widget Selector
+
+Adding widgets to dashboards and asset landing pages is easier with a new widget selector that shows all widget types in a single all-at-once view, so the user no longer needs to scroll through a list of widget types to find the one they want to add. Related widgets are color-coordinated and grouped by proximity in the new selector.
+
+image:NewWidgetPicker.png[New widget selector]
+
+
+=== February 2020
+
+==== API with Premium Edition
+
+Cloud Insights Premium Edition comes with a link:API_Overview.html[powerful API] that can be used to integrate Cloud Insights with other applications, such as CMDB’s or other ticketing systems. 
+
+Detailed, Swagger-based information is found in *Admin > API Acccess*, under the *API Documentation* link. Swagger provides a brief description and usage information for the API, and allows you to try each API out in your environment.
+
+The Cloud Insights API uses Access Tokens to provide permission-based access to categories of API, such as ASSETS or COLLECTION. 
+
+image:API_Documentation.png[API Documentation] 
+
+
+==== Initial Polling After Adding A Data Collector
+
+Previously, after configuring a new data collector, Cloud Insights would poll the data collector immediately to gather _inventory_ data, but would wait until the configured performance poll interval (typically 15 minutes) to gather initial _performance_ data. It would then wait for another interval before initiating the second performance poll, which meant it would take up to _30 minutes_ before meaningful data was acquired from a new data collector.
+
+Data collector link:task_configure_data_collectors.html[polling] has been greatly improved, such that the initial performance poll occurs immediately after the inventory poll, with the second performance poll occurring within a few seconds after completion of the first performance poll. This allows Cloud Insights to begin showing useful data on dashboards and graphs within a very short time.
+
+This poll behavior also occurs after editing the configuration of an existing data collector.
+
+
+==== Easier Widget Duplication 
+
+It is easier than ever to create a copy of a widget on a dashboard or landing page. In dashboard Edit mode, click the menu on the widget and select *Duplicate*. The widget editor is launched, pre-filled with the original widget's configuration and with a “copy” suffix in the widget name. You can easily make any necessary changes and Save the new widget. The widget will be placed at the bottom of your dashboard, and you can position it as needed. Remember to Save your dashboard when all changes are complete.
+
+image:DuplicateWidget.png[Duplicate a widget]
+
+
+==== Single Sign-On (SSO)
+
+With Cloud Insights Premium Edition, administrators can enable *link:concept_user_roles.html#single-sign-on-sso-accounts[Single Sign-On]* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights using their corporate credentials.
+
+NOTE: SSO is only available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory.
+
 === January 2020
+
+==== Swagger documentation for REST API
+
+Swagger explains each available REST API in Cloud Insights, as well as its usage and syntax. Information on Cloud Insights APIs is available in link:http://docs.netapp.com/us-en/cloudinsights/API_Overview.html[documentation].
+
+==== Feature Tutorials Progress Bar
+
+The feature tutorials checklist has been moved to the top banner and now features a progress indicator. Tutorials are available for each user until dismissed, and are always available in Cloud Insights link:concept_feature_tutorials.html[documentation].
+
+image:TutorialProgress.png[Tutorial Checklist Progress]
+
+==== Acquisition Unit Changes
+
+When installing an Acquisition Unit (AU) on a host or VM that has the same name as an already-installed AU, Cloud Insights assures a unique name by appending the AU name with "_1", "_2", etc. This is also the case when uninstalling and reinstalling an AU from the same VM without first removing it from Cloud Insights. Want a different AU name altogether? No problem; AU's can be renamed after installation.
+
+==== Optimized Time Aggregation in Widgets
+ 
+In widgets, you can choose between an _Optimized_ time aggregation interval or a _Custom_ interval that you set. Optimized aggregation automatically selects the right time interval based on the selected dashboard time range (or widget time range, if overriding the dashboard time). The interval dynamically changes as the dashboard or widget time range is changed.
 
 ==== Simplified "Getting Started with Cloud Insights" process
 

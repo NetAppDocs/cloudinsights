@@ -212,11 +212,34 @@ Node OS
 Capacity
 Used
 
+|Kubernetes System Container
+
+|System Container 
+Kubernetes Node 
+Cluster
+
+|Node Name 
+Node IP 
+Node OS 
+Node UUID
+
+|CPU Usage Nanocores 
+CPU Usage Core Nanoseconds 
+Memory Major Page Faults 
+Memory Page Faults 
+Memory Resident Set Size (RSS) 
+Memory Usage 
+Memory Working Set 
+Root Filesystem Available 
+Root Filesystem Capacity 
+Logs Filesystem Available 
+Logs Filesystem Capacity
+
 |===
 
 == Installing the kube-state-metrics server
 
-When you install the kube-state-metrics server you can enable colletction of the following Kubernetes objects: StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress. 
+When you install the kube-state-metrics server you can enable collection of the following Kubernetes objects: StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress. 
 
 Use the following steps to install the kube-state-metrics server:
 

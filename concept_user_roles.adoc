@@ -9,7 +9,7 @@ summary: Cloud Insights provides multiple user accounts with different permissio
 
 [.lead]
 
-Cloud Insights provides four user accounts: Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels. Users are either link:#creating-accounts-by-inviting-users[invited] to Cloud Insights and assigned a specific role, or can sign in via link:#single-sign-on-(sso)-accounts[Single Sign-On (SSO)] with a default role. SSO is available as a feature in Cloud Insights Premium Edition.
+Cloud Insights provides four user accounts: Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels. Users are either link:#creating-accounts-by-inviting-users[invited] to Cloud Insights and assigned a specific role, or can sign in via link:#single-sign-on-sso-accounts[Single Sign-On (SSO)] with a default role. SSO is available as a feature in Cloud Insights Premium Edition.
 
 :toc: macro
 :hardbreaks:
@@ -23,8 +23,8 @@ Cloud Insights provides four user accounts: Account Owner, Administrator, User, 
 
 You use an account that has Administrator privileges to create or modify user accounts. Each user account is assigned one of the following permission levels.
 * *Guest* can view asset pages, dashboards, and queries, and run queries.
-* *User* can perform all guest-level privileges as well as create, modify, or delete dashboards, queries, annotations, annotation rules, and applications. Users cannot create, modify, or delete policies.
-* *Administrator* and *Account Owner* can perform all functions including adding new users and managing data collectors.
+* *User* can perform all guest-level privileges as well as create, modify, or delete dashboards, queries, annotations, annotation rules, and applications.
+* *Administrator* and *Account Owner* can perform all functions, as well as create, modify and delete policies, and manage all users and data collectors.
 
 The Account Owner is created when you register for Cloud Insights.
 
@@ -63,9 +63,7 @@ If they have an existing account for that email address, they can simply sign in
 
 == Single Sign-On (SSO) Accounts
 
-NOTE: This documentation is Preview documentation. Information and instructions are subject to change.
-
-In addition to inviting users, administrators can enable *Single Sign-On* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights.
+In addition to inviting users, administrators can enable *Single Sign-On* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights using their corporate credentials.
 
 NOTE: SSO is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory, using open standards such as Security Assertion Markup Language 2.0 (SAML) and OpenID Connect (OIDC). 
 
