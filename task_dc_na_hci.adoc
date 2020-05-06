@@ -111,6 +111,7 @@ Some things to try if you encounter problems with this data collector:
 |Error: Failed to instantiate a connection to VirtualCenter at IP
 |Possible solutions:
 
+* Use vpshere.local account for login. Do not add the @vsphere.local to the user name. i.e. for administrator@vsphere.local, specify administrator.
 * Verify credentials and IP address entered.
 * Try to communicate with Virtual Center using Infrastructure Client.
 * Try to communicate with Virtual Center using Managed Object Browser (e.g MOB).
