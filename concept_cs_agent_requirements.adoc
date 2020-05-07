@@ -37,7 +37,7 @@ This computer should be running no other application-level software. A dedicated
 
 |Docker | The Docker CE package must be installed on the VM hosting the agent. 
 The agent systems should always have the Docker CE package installed. Users should not install the Docker-client-xx or Docker-common-xx native RHEL Docker packages since these do not support the 'docker run' CLI format that Cloud Secure supports. 
-|Java |OpenJDK Java is required. 
+//|Java |OpenJDK Java is required. 
 |CPU	|2 CPU cores 
 |Memory	|16 GB RAM 
 |Available disk space	|Disk space should be allocated in this manner:

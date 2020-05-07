@@ -31,8 +31,35 @@ In the Forensics > Activity Forensics page, we provide two views to analyze and 
 
 Additionally, the Alert email notification now contains a direct link to the alert page.
 
+==== Dashboard Grouping
+
+Dashboard grouping allows better link:concept_dashboard_features.html#dashboard-groups[ management of dashboards] that are relevant to you. You can add related dashboards to a group for "one-stop" management of, for example, your storage or virtual machines. 
+
+Groups are customized per user, so one person's groups can be different from someone else's. You can have as many groups as you need, with as few or as many dashboards in each group as you like.
+
+image:DashboardGroupNoPin.png[Dashboard Groups]
+
+==== Dashboard Pinning
+
+You can pin dashboards so favorites always appear at the top of the list. 
+
+image:DashboardPin.png[Dashboard Pins]
+
+==== TV Mode and Auto-Refresh
+
+link:concept_dashboard_features.html#tv-mode-and-auto-refresh[TV Mode and Auto-Refresh] allow for near-real-time display of data on a dashboard or asset page:
+
+* *TV Mode* provides an uncluttered display; the navigation menu is hidden, providing more screen real estate for your data display. 
+
+* Data in widgets on Dashboards and Asset Landing Pages *Auto-Refresh* according a refresh interval (as little as every 10 seconds) determined by the Dashboard Time Range selected (or widget time range, if set to override the dashboard time). 
+
+Combined, TV Mode and Auto-Refresh provide a live view of your Cloud Insights data, perfect for seamless demonstrations or in-house monitoring.
 
 === April 2020
+
+==== New Dashboard Time Range Choices
+
+Time range choices for dashboards and other Cloud insights pages now include _Last 1 Hour_ and _Last 15 Minutes_.
 
 ==== Cloud Secure Updates
 
