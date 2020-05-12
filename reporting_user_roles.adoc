@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: reporting_user_roles.html
+summary: What you can do with Cloud Insights Reporting depends on your user role.
+keywords: reporting, cognos, data warehouse, dwh, users, roles, user roles
+---
+
+= Cloud Insights Reporting User Roles
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+Each Cloud Insights Reporting user account is assigned a role with a set of permissions. 
+
+The Repoprting roles available are:
+
+* *Cloud Insights Consumers* can view reports and set personal preferences such as those for languages and time zones.
++
+Note: Consumers cannot create, schedule, or manage reports, or perform administrative tasks.
+
+* *Cloud Insights Authors* can perform all Consumer functions as well as create and manage reports and dashboards
+
+* *Cloud Insights Administrators* can perform all Author functions as well as all administrative tasks such as import and export of report definitions, configuration of reports, configuration of data sources, and the shutdown and restart of reporting tasks.
+
+////
+Recipient
+Views OnCommand Insight Reporting portal reports and sets personal preferences such as those for languages and time zones.
+Note: Recipients cannot create reports, run reports, schedule reports, export reports, nor perform administrative tasks.
+Business Consumer
+Runs reports and performs all Recipient options.
+Business Author
+Views scheduled reports, runs reports interactively, creates stories, in addition to performing all Business Consumer options.
+Pro Author
+Creates reports, creates packages and data modules, in addition to performing all Business Author options.
+Administrator
+Performs reporting administrative tasks such as the import and export of report definitions, configuration of reports, configuration of data sources, and the shutdown and restart of reporting tasks.
+////
+
+The following table shows the privileges and the maximum number of users allowed for each role:
+
+|===
+|Feature	|Consumer	|Author	|Administrator
+|View reports in the Team Content tab	|Yes	|Yes	|Yes
+|Run reports	|No	|Yes	|Yes	
+|Schedule reports	|No	|Yes	|Yes
+|Upload external files	|No	|Yes	|Yes
+|Create stories	|No	|Yes	|Yes
+|Create reports	|No	|Yes	|Yes
+|Create Packages and Data Modules	|No	|Yes	|Yes
+|Perform administrative tasks	|No	|No	|Yes
+//|Number of users	Number of OnCommand Insight users	20	2	1	1
+|===
+
+When you add a new Data Warehouse and Reporting user, if you exceed the limit in a role, the user is added as "deactivated," and you need to deactivate or remove another user with that role to give a new user membership.
+
+Note: Report authoring capabilities require Insight Plan license. You can add additional Business Author and Pro Author users by purchasing the ARAP (Additional Report Authoring Package). Contact your OnCommand Insight representative for assistance.
+These reporting user roles do not affect direct database access. These reporting user roles do not impact your ability to create SQL queries using the data marts.
