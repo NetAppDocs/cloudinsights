@@ -21,9 +21,9 @@ Each Cloud Insights Reporting user account is assigned a role with a set of perm
 
 The Reporting roles available are:
 
-* *Cloud Insights Consumers* can view and run reports and set personal preferences such as those for languages and time zones.
+* *Cloud Insights Consumers* can view, schedule, and run reports and set personal preferences such as those for languages and time zones.
 +
-Note: Consumers cannot create, schedule, or manage reports, or perform administrative tasks.
+Note: Consumers cannot create reports or perform administrative tasks.
 
 * *Cloud Insights Authors* can perform all Consumer functions as well as create and manage reports and dashboards
 
@@ -49,11 +49,11 @@ The following table shows the functions available to each role.
 |Feature	|Consumer	|Author	|Administrator
 |View reports in the Team Content tab	|Yes	|Yes	|Yes
 |Run reports	|Yes	|Yes	|Yes	
-|Schedule reports	|No	|Yes	|Yes
-|Upload external files	|No	|Yes	|Yes
-|Create stories	|No	|Yes	|Yes
-|Create reports	|No	|Yes	|Yes
-|Create Packages and Data Modules	|No	|Yes	|Yes
+|Schedule reports	|Yes |Yes	|Yes
+|Upload external files	|No	|Yes	|No
+|Create stories	|No	|Yes	|No
+|Create reports	|No	|Yes	|No
+|Create Packages and Data Modules	|No	|Yes	|No
 |Perform administrative tasks	|No	|No	|Yes
 //|Number of users	Number of OnCommand Insight users	20	2	1	1
 |===
