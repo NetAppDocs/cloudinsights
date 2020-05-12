@@ -21,7 +21,7 @@ Each Cloud Insights Reporting user account is assigned a role with a set of perm
 
 The Repoprting roles available are:
 
-* *Cloud Insights Consumers* can view reports and set personal preferences such as those for languages and time zones.
+* *Cloud Insights Consumers* can view and run reports and set personal preferences such as those for languages and time zones.
 +
 Note: Consumers cannot create, schedule, or manage reports, or perform administrative tasks.
 
@@ -48,7 +48,7 @@ The following table shows the privileges and the maximum number of users allowed
 |===
 |Feature	|Consumer	|Author	|Administrator
 |View reports in the Team Content tab	|Yes	|Yes	|Yes
-|Run reports	|No	|Yes	|Yes	
+|Run reports	|Yes	|Yes	|Yes	
 |Schedule reports	|No	|Yes	|Yes
 |Upload external files	|No	|Yes	|Yes
 |Create stories	|No	|Yes	|Yes
@@ -58,7 +58,9 @@ The following table shows the privileges and the maximum number of users allowed
 //|Number of users	Number of OnCommand Insight users	20	2	1	1
 |===
 
+////
 When you add a new Data Warehouse and Reporting user, if you exceed the limit in a role, the user is added as "deactivated," and you need to deactivate or remove another user with that role to give a new user membership.
 
 Note: Report authoring capabilities require Insight Plan license. You can add additional Business Author and Pro Author users by purchasing the ARAP (Additional Report Authoring Package). Contact your OnCommand Insight representative for assistance.
 These reporting user roles do not affect direct database access. These reporting user roles do not impact your ability to create SQL queries using the data marts.
+////
