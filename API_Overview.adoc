@@ -69,7 +69,7 @@ The HTTP header where the Access Token is passed is *X-CloudInsights-ApiKey:*.
 
 For example, use the following to retrieve storages assets:
 
- curl https://<tenant_host_name>/rest/v1/assets/storages -H ‘X-CloudInsights-ApiKey: <API_Access_Token>’
+ curl https://<tenant_host_name>/rest/v1/assets/storages -H 'X-CloudInsights-ApiKey: <API_Access_Token>'
 
 Where _<API_Access_Token>_ is the token you saved during API access key creation. 
 
