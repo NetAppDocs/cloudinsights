@@ -18,6 +18,22 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== June 2020
+
+==== Widget Improvements
+
+The following improvements have been made in dashboard widgets. These improvements are considered Preview functionality and may not be available for all Cloud Insights environments.
+
+* New object/metric chooser: Objects (Storage, Disk, Ports, Nodes, etc.) and their associated metrics (IOPS, Latency, CPU Count, etc.) are now available in widgets in a single inclusive drop-down with powerful search capability. You can enter multiple partial terms in the drop-down, and Cloud Insights will list all object metrics meeting those terms.
+
+image:Object_Metric_Chooser.png[Object/Metric Chooser]
+
+* Multiple Grouping: When working with integration data (Kubernetes, etc.) in certain widgets, for example line charts, you may choose to group the data by multiple criteria. You can group by as many criteria as you like.
+
+image:MultipleGroupsIntegrationLineChart.png[Multiple grouping when displaying integration data]
+
+
+
 === May 2020
 
 ==== Reporting User Roles
