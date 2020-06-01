@@ -28,14 +28,9 @@ Cloud Insightst acquires the following inventory information from the ECS data c
 |===
 |Vendor/Model Term | Cloud Insights Term
 |Cluster|Storage
-|Engine|Storage Node
-|Device, System Extent|Backend Storage Pool
-|Virtual Volume|Volume
-|Front-End Port, Back-End Port|Port
-|Distributed Device|Storage Synchronization
-|Storage View|Volume Map, Volume Mask
-|Storage Volume|Backend LUN
-|ITLs|Backend Path
+|Tenant|Storage Pool
+|Bucket|Internal Volume
+|Disk|Disk
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collector.
@@ -54,12 +49,10 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|IP address of ECS Management Console|IP address or fully-qualified domain name of the VPLEX Management Console
-|User Name|User name for ECS CLI
-|Password|Password used for ECS CLI
-|Performance Remote IP Address|Performance Remote IP address of the ECS Management Console
-|Performance Remote User Name|Performance Remote user name of ECS Management Console
-|Performance Remote Password|Performance Remote Password of ECS Management Console
+|ECS Host|IP address or fully-qualified domain name of the VPLEX Management Console
+|ECS Host Port| Port used for communication with ECS Host
+|ECS Vendor ID|Vendor ID for ECS
+|Password|Password used for ECS
 |===
 
 
@@ -68,14 +61,7 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Communication Port|Port used for ECS CLI. The default is 443. 
-|Inventory Poll Interval (min)|The default is 20 minutes.
-//|Connection timeout (sec)|The default is 60 seconds.
-|Number of connection retries|The default is 3.
-|Performance Poll Interval (sec)|Interval between performance polls. The default is 600 seconds.
-//|Performance SSH Process Wait Timeout (sec).| SSH process timeout. The default is 600 seconds.
-//|SSH Banner Wait Timeout (sec).|The default is 20 seconds.
-|Number of Retries|The default is 2. 
+|Inventory Poll Interval (min)|The default is 360 minutes.
 |===
 
 
