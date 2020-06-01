@@ -208,6 +208,8 @@ If you include a column for performance data (for example, _IOPS - Total_) in a 
 
 You can select the time range for your dashboard data. Only data relevant to the selected time range will be displayed in widgets on the dashboard.  You can select from the following time ranges:
 
+* Last 15 Minutes
+* Last 1 Hour
 * Last 3 Hours (this is the default)
 * Last 24 Hours 
 * Last 3 Days
@@ -620,4 +622,73 @@ ops/min
 reads/min
 writes/min
 |===
+
+
+
+== TV Mode and Auto-Refresh
+
+Data in widgets on Dashboards and Asset Landing Pages auto-refresh according a refresh interval determined by the Dashboard Time Range selected (or widget time range, if set to override the dashboard time). The refresh interval is based on whether the widget is time-series (line, spline, area, stacked area chart) or non-time-series (all other charts).
+
+|===
+|Dashboard Time Range|Time-Series Refresh Interval|Non-Time-Series Refresh Interval
+|Last 15 Minutes|10 Second|1 Minute
+|Last 1 Hour|15 Second|1 Minute
+|Last 3 Hours|30 Second|5 Minute
+|Last 24 Hours|5 Minute|10 Minute
+|Last 3 Days|15 Minute|15 Minute
+|Last 7 Days|1 Hour|1 Hour
+|Last 30 Days|2 Hour|2 Hour
+|===
+
+Each widget displays its auto-refresh interval in the upper-right corner of the widget.
+
+Auto-refresh is not available for Custom dashboard time range.
+
+When combined with *TV Mode*, auto-refresh allows for near-real-time display of data on a dashboard or asset page. TV Mode provides an uncluttered display; the navigation menu is hidden, providing more screen real estate for your data display, as is the Edit button. TV Mode ignores typical Cloud Insights timeouts, leaving the display live until logged out manually or automatically by authorization security protocols.
+
+NOTE: Because NetApp Cloud Central has its own user login timeout of 7 days, Cloud Insights must log out with that event as well. You can simply log in again and your dashboard will continue to display.
+
+* To activate TV Mode, click the image:ActivateTVMode.png[TV Mode] button.
+* To disable TV Mode, click the *Exit* button in the upper left of the screen. image:ExitTVMode.png[Exit Button]
+
+You can temporarily suspend auto-refresh by clicking the Pause button in the upper right corner. While paused, the dashboard time range field will display the paused data's active time range. Your data is still being acquired and updated while auto-refresh is paused. Click the Resume button to continue auto-refreshing of data.
+
+image:AutoRefreshPaused.png[Auto-Refresh paused]
+
+
+== Dashboard Groups
+
+Grouping allows you to view and manage related dashboards. For example, you can have a dashboard group dedicated to the storage in your environment. Dashboard groups are managed on the *Dashboards > Show All Dashboards* page.
+
+image:DashboardGroupNoPin.png[Dashboard Grouping]
+
+Two groups are shown by default:
+
+* *All Dashboards* lists all the dashboards that have been created, regardless of owner.
+* *My Dashboards* lists only those dashboards created by the current user.
+
+The number of dashboards contained in each group is shown next to the group name.
+
+To create a new group, click the *"+" Create New Dashboard Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
+
+To add dashboards to the group, click the _All Dashboards_ group to show all dashboards in your environment, of click _My Dashboards_ if you only want to see the dashboards you own, and do one of the following:
+
+* To add a single dashboard, click the menu to the right of the dashboard and select _Add to Group_.
+* To add multiple dashboards to a group, select them by clicking the checkbox next to each dashboard, then click the *Bulk Actions* button and select _Add to Group_.
+
+Remove dashboards from the current group in the same manner by selecting _Remove From Group_. You can not remove dashboards from the _All Dashboards_ or _My Dashboards_ group. 
+
+NOTE: Removing a dashboard from a group does not delete the dashboard from Cloud Insights. To completely remove a dashboard, select the dashboard and click _Delete_. This removes it from any groups to which it belonged and it is no longer available to any user.
+
+== Pin your Favorite Dashboards
+
+You can further manage your dashboards by pinning favorite ones to the top of your dashboard list. To pin a dashboard, simply click the thumbtack button displayed when you hover over a dashboard in any list. 
+
+// Pinning a dashboard pins it to the top of the current group, as well as any other groups containing that dashboard, including _All Dashboards_.
+
+Dashboard pin/unpin is an individual user preference and independent of the group (or groups) to which the dashboard belongs.
+
+image:DashboardPin.png[Pinned Dashboards]
+
+
 

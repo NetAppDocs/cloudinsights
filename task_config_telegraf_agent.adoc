@@ -263,15 +263,8 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 +
  sudo launchctl stop telegraf
 
-////
-. Remove the Telegraf package:
-+
- brew unpin telegraf
- brew remove telegraf
-////
-
 . Uninstall the telegraf agent:
-
++
  cp /Applications/telegraf.app/scripts/uninstall /tmp
  sudo /tmp/uninstall
 
