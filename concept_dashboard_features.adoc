@@ -102,11 +102,11 @@ The objects returned by queries and filters look similar to those shown in the f
 image:ObjectsReturnedByFilters.png[Objects returned by filters]
 
 
-== Roll up and Aggregation
+== Grouping and Aggregation
 
-=== Roll up / Grouping
+=== Grouping (Rolling Up)
 
-Data displayed in a widget is rolled up (grouped) from the underlying data points collected during acquisition. For example, if you have a line chart widget showing Storage IOPS over time, you might want to see a separate line for each of your data centers, for a quick comparison. You can choose to group this data in one of several ways:
+Data displayed in a widget is grouped (sometimes called rolled-up) from the underlying data points collected during acquisition. For example, if you have a line chart widget showing Storage IOPS over time, you might want to see a separate line for each of your data centers, for a quick comparison. You can choose to group this data in one of several ways:
 
 * *Avg*: displays each line as the _average_ of the underlying data.
 * *Max*: displays each line as the _maximum_ of the underlying data.
