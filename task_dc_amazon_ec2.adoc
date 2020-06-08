@@ -26,8 +26,9 @@ Cloud Insights uses the Amazon EC2 data collector to acquire inventory and perfo
 
 In order to collect data from Amazon EC2 devices, you must have the following information: 
 
-* You must have the IAM Access Key ID 
-* You must have the Secret Access Key for your Amazon EC2 cloud account
+* You must have one of the following:
+** The IAM Role for your Amazon EC2 cloud account, if using IAM Role Authentication, or
+** The IAM Access Key ID and Secret Access Key for your Amazon EC2 cloud account, if using IAM Access Key authentication
 * You must have the "list organization" privilege
 * Port 433 HTTPS
 * EC2 Instances can be reported as a Virtual Machine, or (less naturally) a Host. EBS Volumes can be reported as both a VirtualDisk used by the VM, as well as a DataStore providing the Capacity for the VirtualDisk.
