@@ -27,7 +27,7 @@ Cloud Insights uses the Amazon EC2 data collector to acquire inventory and perfo
 In order to collect data from Amazon EC2 devices, you must have the following information: 
 
 * You must have one of the following:
-** The IAM Role for your Amazon EC2 cloud account, if using IAM Role Authentication. IAM Role only applies when your acquisition unit is installed on an AWS instance.
+** The IAM Role for your Amazon EC2 cloud account, if using IAM Role Authentication. IAM Role only applies if your acquisition unit is installed on an AWS instance.
 ** The IAM Access Key ID and Secret Access Key for your Amazon EC2 cloud account, if using IAM Access Key authentication.
 * You must have the "list organization" privilege
 * Port 433 HTTPS
