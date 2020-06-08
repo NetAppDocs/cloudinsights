@@ -25,15 +25,21 @@ TIP: Cloud Insights Basic Edition supports limited functionality for the Monitor
 To view and manage alerts, do the following.
 
 . Navigate to the *Alerts > Show All Alerts* page.
-. A list of up to the most recent 1,000 alerts is displayed. You can sort this list on any field by clicking the column header for the field. The list displays the following information:
-** *Triggered Time*: The time at which the relevant Monitor triggered the alert
+. A list of up to the most recent 1,000 alerts is displayed. You can sort this list on any field by clicking the column header for the field. The list displays the following information. Note that not all of these columns are displayed by default. You can select columns by clicking on the "gear" icon image:gear.png[gear icon]:
+
 ** *Alert ID*: System-generated unique alert ID
-** *Synopsis*: A brief summary of the event that triggered the alert
-** *IsActive*: Specifies whether the alert is on-going or is over
-** *Duration*: How long the alert lasted
-** *Severity*: The level of monitored threshold that triggered the alert (Warning or Critical)
-** *Status*: All alerts are created as _New_. Investigators may choose to mark an alert _In Process_ while they are looking into it. 
-** *Monitor*: The name of the Monitor that triggered the alert. Click this link to open the link:task_create_monitor.html[Monitor Configuration] page.
+** *Triggered Time*: The time at which the relevant Monitor triggered the alert
+** *Current Severity* (Active alerts): The current severity of the active alert
+** *Top Severity* (Resolved alerts); The maximum severity of the alert before it was resolved
+** *Monitor*: The monitor configured to trigger the alert
+** *Triggered On*: The object on which the monitored threshold was breached
+** *Status*: Current alert status, _New_ or _In Process_
+** *Active Status*: _Active_ or _Resolved_
+** *Condition*: The threshold condition that triggered the alert
+** *Metric*: The object's metric on which the monitored threshold was breached
+
+ 
+
 
 You can manage an alert by clicking the menu to the right of the alert and choosing one of the following:
 
