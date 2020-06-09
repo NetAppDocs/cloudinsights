@@ -1,0 +1,213 @@
+---
+sidebar: sidebar
+permalink: task_config_telegraf_node.html
+keywords: telegraf, installation, install, node, host
+summary: Flink data collector configuration
+---
+
+= Node Data Collection
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Insights gathers metrics from the node on which you install an agent.
+
+== Installation
+
+. From *Admin > Data Collectors*, choose an operating system/platform. Note that installing any integration data collector (Kubernetes, Docker, Apache, etc.) will also configure node data collection.
++
+. Follow the instructions to configure the agent. The instructions vary depending on the type of Operating System or Platform you are using to collect data. 
+
+== Objects and Counters
+
+The following objects and their counters are collected as Node metrics:
+
+[cols="<.<,<.<,<.<,<.<"]
+|===
+|Object:|Identifiers:|Attributes: |Datapoints:
+
+|Node Filesystem
+
+|Node UUID
+Device
+Path
+Type
+
+|Node IP
+Node Name
+Node OS
+Mode
+
+|Free
+Inodes Free
+Inodes Total
+Inodes Used
+Total
+Used Total
+Used
+
+|Node Disk
+
+|Node UUID
+Disk
+
+|Node IP
+Node Name
+Node OS
+
+|IO Time Total
+IOPS In Progress
+Read Bytes (per sec)
+Read Time Total
+Reads (per sec)
+Weighted IO Time Total
+Write Bytes (per sec)
+Write Time Total
+Writes (per sec)
+Current Disk Queue Length
+Write Time
+Read Time
+IO Time
+
+|Node CPU
+
+|Node UUID
+CPU
+
+|Node IP
+Node Name
+Node OS
+
+|System CPU Usage
+User CPU Usage
+Idle CPU Usage
+Processor CPU Usage
+Interrupt CPU Usage
+DPC CPU Usage
+
+|Node
+
+|Node UUID
+
+|Node IP
+Node Name
+Node OS
+
+|Kernel Boot Time
+Kernel Context Switches (per sec)
+Kernel Entropy Available
+Kernel Interrupts (per sec)
+Kernel Processes Forked (per sec)
+Memory Active
+Memory Available Total
+Memory Available
+Memory Buffered
+Memory Cached
+Memory Commit Limit
+Memory Committed As
+Memory Dirty
+Memory Free
+Memory High Free
+Memory High Total
+Memory Huge Page Size
+Memory Huge Pages Free
+Memory Huge Pages Total
+Memory Low Free
+Memory Low Total
+Memory Mapped
+Memory Page Tables
+Memory Shared
+Memory Slab
+Memory Swap Cached
+Memory Swap Free
+Memory Swap Total
+Memory Total
+Memory Used Total
+Memory Used
+Memory Vmalloc Chunk
+Memory Vmalloc Total
+Memory Vmalloc Used
+Memory Wired
+Memory Writeback Total
+Memory Writeback Tmp
+Memory Cache Faults
+Memory Demand Zero Faults
+Memory Page Faults
+Memory Pages
+Memory Nonpaged
+Memory Paged
+Memory Cache Core
+Memory Standby Cache Normal
+Memory Standby Cache Reserve
+Memory Transition Faults
+Processes Blocked
+Processes Dead
+Processes Idle
+Processes Paging
+Processes Running
+Processes Sleeping
+Processes Stopped
+Processes Total
+Processes Total Threads
+Processes Unknown
+Processes Zombies
+Processor Queue Length
+Swap Free
+Swap Total
+Swap Used Total
+Swap Used
+Swap In
+Swap Out
+System Uptime
+System Num CPU
+System Num Users
+System Calls
+
+|Node Network
+
+|Network Interface
+Node UUID
+
+|Node Name
+Node IP
+Node OS
+
+|Bytes Received
+Bytes Sent
+Packets Outboud Discarded
+Packets Outboud Errors
+Packets Received Discarded
+Packets Received Errors
+Packets Received
+Packets Sent
+|===
+
+== Setup
+
+Setup and Troubleshooting information can be found on the link:task_config_telegraf_agent.html[Configuring an Agent] page.
+
+== MacOS Memory Usage
+
+Cloud Insights (via Telegraf) and macOS report different numbers for memory usage. Both Telegraf and the Mac activity monitor use metrics gathered from _vm_stat_, however the total memory usage is calculated differently for each. 
+
+*Telegraf* calculates _Memory Used Total_ as follows:
+
+ Memory Used Total = Memory Total - Memory Available Total 
+
+Where _Memory Available Total_ is derived from the sum of "Pages free" and "Pages inactive" in _vm_stat_.
+
+*The Mac activity monitor*, on the other hand, calculates Memory Used as follows: 
+
+ Memory Used = App Memory + Wired Memory + Compressed 
+
+Where:
+
+* _App Memory_ is derived from the difference between “Anonymous pages” and “Pages purgeable” in _vm_stat_,  
+* _Wired Memory_ is derived from “Pages wired down” in _vm_stat_, and
+* _Compressed_ is derived from “Pages occupied by compressor” in _vm_stat_.

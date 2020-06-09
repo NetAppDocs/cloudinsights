@@ -1,0 +1,127 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_hci.html
+keywords: data collector, VMware, hci
+summary: Configuring NetApp HCI Management server data collector.
+---
+
+= Configuring the NetApp HCI Management server data collector 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+
+The NetApp HCI Management server data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Management server. 
+
+This data collector acquires from the *NetApp HCI Management server only*. To collect data from the storage system, you must also configure the link:task_dc_na_solidfire.html[NetApp SolidFire] data collector.
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Virtual disk|Disk
+|Host|Host
+|Virtual machine|Virtual machine
+|Data store|Data store
+|LUN|Volume
+|Fibre channel port|Port
+|===
+These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Requirements
+
+The following information is required to configure this data collector:
+
+* IP address of the NetApp HCI Management server  
+* Read-only username and password for the NetApp HCI Management server
+* Read only privileges on all objects in the NetApp HCI Management server. 
+* SDK access on the NetApp HCI Management server – normally already set up. 
+//* 3rd party software installed on NetApp HCI Management server / RAU: none 
+* Port requirements: http-80 https-443 
+* Validate access: 
+** Log into the NetApp HCI Management server using above username and password 
+** Verify SDK enabled: telnet <vc_ip> 443 
+
+== Setup and connection
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|Name|Unique name for the data collector
+|Acquisition unit|Name of acquisition unit
+|===
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|NetApp HCI Storage Cluster MVIP |Management Virtual IP Address
+|SolidFire Management Node (mNode)|Management Node IP Address
+|User name |User name used to access the NetApp HCI Management server
+|Password|Password used to access the NetApp HCI Management server
+|VCenter User Name|User name for VCenter
+|VCenter Password|Password for VCenter
+|===
+
+== Advanced configuration 
+
+In the advanced configuration screen, check the *VM Performance* box to collect performance data. Inventory collection is enabled by default. 
+The following fields can be configured:
+
+[cols=2*,  cols"50,50"]
+|===
+|Field|Description
+|Inventory poll interval (min) | Deafult is 20
+//|Connection Timeout (ms)|Default is 60000
+|Filter VMs by|Select CLUSTER, DATACENTER, or ESX HOST
+|Choose 'Exclude' or 'Include' to Specify a List|Specify Whether to Include or Exclude VMs
+|Filter Device List |List of VMs to filter (comma separated, or semicolon separated if comma is used in the value) for for Filtering by ESX_HOST, CLUSTER, and DATACENTER Only
+//or you can choose to filter by TAG 
+//|Number of retries | Default is 3 
+//|HCI Management port| Default is 8443 
+
+//|Tag Keys and Values on which to Filter VMs|Click *+ Filter Tag* to choose which VMs (and associated disks) to include/exclude by filtering for keys and values that match keys and values of tags on the VM. Tag Key is required, Tag Value is optional. When Tag Value is empty, the VM is filtered as long as it matches the Tag Key.
+//Tag filtering is only available in VSphere 6.0 Beta or later.
+
+|Performance poll interval (sec)|Default is 300  
+|===
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: Include list to filter VMs cannot be empty
+|If Include List is selected, please list valid DataCenter, Cluster, or Host names to filter VMs
+|Error: Failed to instantiate a connection to VirtualCenter at IP
+|Possible solutions:
+
+* Verify credentials and IP address entered.
+* Try to communicate with Virtual Center using Infrastructure Client.
+* Try to communicate with Virtual Center using Managed Object Browser (e.g MOB).
+|Error: VirtualCenter at IP has non-conform certificate that JVM requires
+|Possible solutions:
+
+* Recommended: Re-generate certificate for Virtual Center by using stronger (e.g. 1024-bit) RSA key.
+* Not Recommended: Modify the JVM java.security configuration to leverage the constraint jdk.certpath.disabledAlgorithms to allow 512-bit RSA key. See JDK 7 update 40 release notes at "http://www.oracle.com/technetwork/java/javase/7u40-relnotes-2004172.html"
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
+
+

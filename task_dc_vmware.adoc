@@ -31,7 +31,7 @@ Cloud Insights acquires the following inventory information from the VMware vSph
 |Host|Host
 |Virtual machine|Virtual machine
 |Data store|Data store
-|LUN|LUN
+|LUN|Volume
 |Fibre channel port|Port
 |===
 These are common terminology mappings only and might not represent every case for this data collector. 
@@ -71,19 +71,26 @@ The following information is required to configure this data collector:
 
 == Advanced configuration 
 
-In the advanced configuration screen, check the *VM Performance* box to collect performance data. Inventory collection is enableds by default. 
+In the advanced configuration screen, check the *VM Performance* box to collect performance data. Inventory collection is enabled by default. 
 The following fields can be configured:
 
 [cols=2*,  cols"50,50"]
 |===
 |Field|Description
-|Inventory poll interval (min)  | Deafult is 20
-//|Connection Timeout (ms)|Deafult is 60000
-|Filter VMs |Select CLUSTER, DATA CENTER, or ESX HOST 
-|Filter device list|Create a filter list
-|Number of retries | Deafult is 3 
-|Communication port| Deafult is 443 
-|Performance poll interval (sec)|Deafult is 300  
+|Inventory poll interval (min)  | Default is 20
+//|Connection Timeout (ms)|Default is 60000
+|Filter VMs |Select CLUSTER, DATACENTER, or ESX HOST
+
+//or you can choose to filter by TAG 
+
+|Choose 'Exclude' or 'Include' to Specify a List|Create a filter list (CLUSTER, DATACENTER, and/or ESX_HOST) 
+|Number of retries | Default is 3 
+|Communication port| Default is 443 
+
+//|Tag Keys and Values on which to Filter VMs|Click *+ Filter Tag* to choose which VMs (and associated disks) to include/exclude by filtering for keys and values that match keys and values of tags on the VM. Tag Key is required, Tag Value is optional. When Tag Value is empty, the VM is filtered as long as it matches the Tag Key.
+//Tag filtering is only available in VSphere 6.0 Beta or later.
+
+|Performance poll interval (sec)|Default is 300  
 |===
 
 
