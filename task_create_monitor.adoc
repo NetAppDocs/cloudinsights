@@ -52,9 +52,9 @@ The graph displays historical data. The Warning and Critical level lines on the 
 . For the occurence interval, choose _Continuously_ for a period of _15 Minutes_.
 +
 You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
-
++
 image:define_monitor_conditions.png[Define Conditions]
-
++
 . Specify the email recipients for alert notifications. If desired, you can choose different recipients for warning or critical alerts.
 +
 image:email_monitor_alerts.png[Email Alert Recipients]
