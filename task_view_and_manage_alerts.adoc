@@ -18,30 +18,33 @@ keywords: monitor, alert, viewing
 [.lead]
 Cloud Insights displays alerts when link:task_create_monitor.html[monitored thresholds] are exceeded. 
 
-TIP: Cloud Insights Basic Edition supports limited functionality for the Monitors feature. Upgrade to Standard Edition for full access to Monitors.
+TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
 
 === Viewing and Managing Alerts
 
 To view and manage alerts, do the following.
 
-. Navigate to the *Alerts > Show All Alerts* page.
-. A list of up to the most recent 1,000 alerts is displayed. You can sort this list on any field by clicking the column header for the field. The list displays the following information. Note that not all of these columns are displayed by default. You can select columns by clicking on the "gear" icon image:gear.png[gear icon]:
+. Navigate to the *Alerts > Integration Alerts* page.
+. A list of up to the most recent 1,000 alerts is displayed. You can sort this list on any field by clicking the column header for the field. The list displays the following information. Note that not all of these columns are displayed by default. You can select columns to display by clicking on the "gear" icon image:gear.png[gear icon]:
 
 ** *Alert ID*: System-generated unique alert ID
 ** *Triggered Time*: The time at which the relevant Monitor triggered the alert
-** *Current Severity* (Active alerts): The current severity of the active alert
-** *Top Severity* (Resolved alerts); The maximum severity of the alert before it was resolved
+** *Current Severity* (Active alerts tab): The current severity of the active alert
+** *Top Severity* (Resolved alerts tab); The maximum severity of the alert before it was resolved
 ** *Monitor*: The monitor configured to trigger the alert
 ** *Triggered On*: The object on which the monitored threshold was breached
 ** *Status*: Current alert status, _New_ or _In Process_
 ** *Active Status*: _Active_ or _Resolved_
 ** *Condition*: The threshold condition that triggered the alert
 ** *Metric*: The object's metric on which the monitored threshold was breached
+** Monitor Status*: Current status of the monitor that triggered the alert
 
 You can manage an alert by clicking the menu to the right of the alert and choosing one of the following:
 
 * *In Process* to indicate that the alert is under investigation or otherwise needs to be kept open
 * *Dismiss* to remove the alert from the list of active alerts.
+
+You can manage multiple alerts by selecting the checkbox to the left of each Alert and clicking _Change Selected Alerts Status_.
 
 Clicking on an Alert ID opens the Alert Detail Page.
 
