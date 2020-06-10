@@ -16,19 +16,19 @@ summary: Create monitors to alert on performance or inventory thresholds
 :imagesdir: ./media/
 
 [.lead]
-You create monitors to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a monitor to alert you when node write latency reaches a certain point.
+You create monitors to set thresholds that trigger alerts to notify you about issues related to the resources in your network. you can create a monitor to alert for _node write latency_ for any of a multitude of protocols.
 
-TIP: Cloud Insights Basic Edition supports limited functionality for the Monitors feature. Upgrade to Standard Edition for full access to Monitors.
+TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
 
 When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both. 
 
-In the example below, we will create a Monitor to give a Warning alert when NFS Write Latency reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
+In the example below, we will create a Monitor to give a Warning alert when Volume Node NFS Write Latency reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
 
 //image:MonitorExample1.png[Storage IOPS Monitor Example]
 
 === Create the Monitor 
 
-. From the Cloud Insights menu, click *Alerts > Monitors*
+. From the Cloud Insights menu, click *Alerts > Manage Monitors*
 +
 The Monitors list page is displayed, showing currently configured monitors. 
 
