@@ -71,8 +71,11 @@ Note: Be aware of restrictions on special characters in proxy username and passw
 
 The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
 
-The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
+The simplest way to do this is to specify wildcard configuration in your proxy/firewall to communicate with Cloud Insights, for example, specifying _*.cloudinsights.netapp.com_.
 
+NOTE: The use of "*" for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environmant.
+
+////
 * Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
 * Cloud Insights site: _<Site Name>.<Cloud Insights Domain>_
  
@@ -80,6 +83,7 @@ For example:
  
  https://aulogin.c01.cloudinsights.netapp.com
  https://nane1234.c01.cloudinsights.netapp.com
+////
 
 TIP: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
 
@@ -126,8 +130,11 @@ image::NewWindowsAUInstall.png[Windows AU Install]
 
 The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
 
-The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
+The simplest way to do this is to specify wildcard configuration in your proxy/firewall to communicate with Cloud Insights, for example, specifying _*.cloudinsights.netapp.com_.
 
+NOTE: The use of "*" for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environmant.
+
+////
 * Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
 * Cloud Insights site: _<Site Name>.<Cloud Insights Domain>_
  
@@ -137,7 +144,7 @@ For example:
  https://nane1234.c01.cloudinsights.netapp.com
 
 TIP: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
-
+////
 
 == Uninstalling an Acquisition Unit
 
