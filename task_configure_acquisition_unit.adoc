@@ -57,10 +57,14 @@ image:NewLinuxAUInstall.png[Linux AU Instructions]
 
 For environments that use a proxy, you must set the proxy environment variables before you add the Acquisition Unit. The instructions for configuring the proxy are provided on the _Add Acquisition Unit_  dialog. 
 
-. Click + in Have a Proxy Server?
+. Click + in _Have a Proxy Server?_
+
 . Copy the commands to a text editor and set your proxy variables as needed.
-+ Note: Restrictions on special characters in proxy username and password fields:  '%' and '!' are allowed in the  username filed. ':', '%', and '!' are allowed in the password field. 
++ 
+Note: Be aware of restrictions on special characters in proxy username and password fields: '%' and '!' are allowed in the username field. ':', '%', and '!' are allowed in the password field. 
+
 . Run the edited command in a terminal using the Bash shell.
+
 . Install the Acquisition Unit software.
 
 === Proxy Configuration
@@ -124,14 +128,15 @@ The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud In
 
 The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
 
- https://aulogin.<Cloud Insights Domain>
- https://<your-tenant-ID>.<Cloud Insights Domain>
+* Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
+* Cloud Insights site: _<Site Name>.<Cloud Insights Domain>_
  
 For example:
  
  https://aulogin.c01.cloudinsights.netapp.com
- https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
+ https://nane1234.c01.cloudinsights.netapp.com
 
+TIP: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
 
 
 == Uninstalling an Acquisition Unit
