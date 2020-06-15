@@ -47,7 +47,7 @@ Moving Data Collectors to Different Acquisition Units:
 
 === More About Proxy/Firewall
 
-Proxies and firewalls require special consideration when working with many applications, including Cloud Insights, especially in situations where the application does not easily co-exist with SSL. In the case of Cloud Insights, the Acquisition Unit (AU) has a digital certificate that expects to negotiate with Cloud Insights. Proxies and firewalls affect this negotiation.
+Proxies and firewalls require special consideration when working with many applications, including Cloud Insights, in situations where the application does not easily co-exist with SSL. In the case of Cloud Insights, the Acquisition Unit (AU) has a digital certificate that expects to negotiate with Cloud Insights. Proxies and firewalls affect this negotiation.
 
 In this case, the Cloud Insights environment must be added to a whitelist in the proxy configuration. The format and setup of this whitelist varies according to your proxy environemnt and tools, but in general you must add the URLs of the Cloud Insights servers to this whitelist in order to allow the AU to properly communicate with those servers.
 
@@ -55,6 +55,7 @@ The simplest way to do this is to whitelist the Cloud Insights domain itself:
 
  *.cloudinsights.netapp.com
  
-
+ MENTION 
+ Specific URLs?
 
 
