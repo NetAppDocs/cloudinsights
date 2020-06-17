@@ -1,0 +1,50 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+Managing security on the local acquisition unit
+The securityadmin tool allows you to manage security options on the local acquisition user (LAU). Security management includes managing keys and passwords, saving and restoring security configurations you create or restoring configurations to the default settings.
+
+Before you begin
+You must have admin privileges to perform security configuration tasks.
+About this task
+You use the securityadmin tool to manage security:
+Windows - C:\Program Files\SANscreen\securityadmin\bin\securityadmin.bat
+Linux - /bin/oci-securityadmin.sh
+Procedure
+Perform a remote login to the Insight server.
+Start the security admin tool in interactive mode (-i).
+The system requests login credentials.
+Enter the user name and password for an account with Admin credentials.
+Select Local Acquisition Unit to reconfigure the Local Acquisition Unit security configuration.
+The following options are displayed:
+Backup
+Creates a backup zip file of the vault containing all passwords and keys and places the file in a location specified by the user, or in the following default locations:
+Windows - C:\Program Files\SANscreen\backup\vault
+Linux - /var/log/netapp/oci/backup/vault
+Restore
+Restores the zip backup of the vault that was created. Once restored, all passwords and keys are reverted to values existing at the time of the backup creation.
+Note: Restore can be used to synchronize passwords and keys on multiple servers, for example:
+Change encryption keys on the LAU
+Create a backup of the vault
+Restore the vault backup to each of the RAUs
+Change Encryption Keys
+Change the AU encryption keys used to encrypt or decrypt device passwords.
+Important: When you change encryption keys, you should backup your new security configuration so that you can restore it after an upgrade or installation.
+Update Password
+Change password for 'acquisition' user account.
+Important: Some accounts need to be synchronized when passwords are changed. For example, if you change the password for the 'acquisition' user on the server, you need to change the password for the 'acquisition' user on the LAU, RAU, DWH, and EMU to match. Also, when you change passwords, you should backup your new security configuration so that you can restore it after an upgrade or installation.
+Reset to Defaults
+Resets acquisition user password and acquisition user encryption keys to default values, Default values are those provided during installation.
+Exit
+Exit the securityadmin tool.
+Chose the option you want configure and follow the prompts.
