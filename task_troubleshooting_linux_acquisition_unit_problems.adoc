@@ -49,12 +49,16 @@ Moving Data Collectors to Different Acquisition Units:
 
 Proxies and firewalls require special consideration when working with many applications, including Cloud Insights, in situations where the application does not easily co-exist with SSL. In the case of Cloud Insights, the Acquisition Unit (AU) has a digital certificate that expects to negotiate with Cloud Insights. Proxies and firewalls affect this negotiation.
 
-In this case, the Cloud Insights environment must be added to a whitelist in the proxy configuration. The format and setup of this whitelist varies according to your proxy environment and tools, but in general you must add the URLs of the Cloud Insights servers to this whitelist in order to allow the AU to properly communicate with those servers.
+If the proxy is not set up to do traffic inspection (MITM), then it should not affect the AU’s certificate (client certificate). If the proxy is set up to do traffic inspection, then it affects the client certificate as well as Cloud Insight’s certificate (server certificate).
+
+//The whitelisting is definitely needed in the MITM case. It may or may not be needed in the other case.
+
+In case where the proxy is set up for traffic inspection, the Cloud Insights environment must be added to a whitelist in the proxy configuration. The format and setup of this whitelist varies according to your proxy environment and tools, but in general you must add the URLs of the Cloud Insights servers to this whitelist in order to allow the AU to properly communicate with those servers.
 
 The simplest way to do this is to whitelist the Cloud Insights domain itself:
 
  *.cloudinsights.netapp.com
  
-If you experience difficulties installing or running Cloud Insights due to proxy and/or firewall configuration, talk to your proxy administration team to set up the proxy's handling of SSL interception.
+ In the case where the proxy is not set up for traffic inspection, whitelisting may or may not be required. If you are unsure whether you need to whitelist Cloud Insights, or if you experience difficulties installing or running Cloud Insights due to proxy and/or firewall configuration, talk to your proxy administration team to set up the proxy's handling of SSL interception.
 
 
