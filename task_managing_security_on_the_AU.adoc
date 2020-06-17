@@ -1,27 +1,39 @@
+---
+sidebar: sidebar
+permalink: security_overview.html
+summary:  Cloud Insights follows security best practices throughout the release life cycle.
+keywords: security, risk, protection
+---
 
+= Managing security on the acquisition unit
 
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
 
+[.lead]
 
-
-
-
-
-
-
-
-
-
-Managing security on the local acquisition unit
-The securityadmin tool allows you to manage security options on the local acquisition user (LAU). Security management includes managing keys and passwords, saving and restoring security configurations you create or restoring configurations to the default settings.
+The securityadmin tool allows you to manage security options on the acquisition user (AU). Security management includes managing keys and passwords, saving and restoring security configurations you create or restoring configurations to the default settings.
 
 Before you begin
+
 You must have admin privileges to perform security configuration tasks.
+
 About this task
+
 You use the securityadmin tool to manage security:
+
 Windows - C:\Program Files\SANscreen\securityadmin\bin\securityadmin.bat
 Linux - /bin/oci-securityadmin.sh
+
 Procedure
-Perform a remote login to the Insight server.
+
+Log in to the Cloud Insights Acquisition Unit server.
+
 Start the security admin tool in interactive mode (-i).
 The system requests login credentials.
 Enter the user name and password for an account with Admin credentials.
