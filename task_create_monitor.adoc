@@ -22,8 +22,6 @@ TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and h
 
 When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both. 
 
-In the example below, we will create a Monitor to give a Warning alert when Volume Node NFS Write Latency reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
-
 //image:MonitorExample1.png[Storage IOPS Monitor Example]
 
 === Monitor or Performance Policy?
@@ -38,12 +36,15 @@ In both cases, emails can be sent when a policy or monitor is triggered. Policie
 
 image:AlertsMenu.png[Alerts Menu]
 
+=== Creating a Monitor
 
-=== Requirements
+In the example below, we will create a Monitor to give a Warning alert when Volume Node NFS Write Latency reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
+
+==== Requirements
 
 * Cloud Insights must be configured to collect integration data, and that data is being collected.
 
-=== Create the Monitor 
+==== Create the Monitor 
 
 . From the Cloud Insights menu, click *Alerts > Manage Monitors*
 +
@@ -58,7 +59,7 @@ You can set filters to narrow down which storage objects to monitor.
 
 image:select_metric_to_monitor.png[Select Metric]
 
-=== Define the Conditions of the Monitor. 
+==== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
 . For the _Warning_ level, enter 200. The dashed line indicating this Warning level displays in the example graph.
