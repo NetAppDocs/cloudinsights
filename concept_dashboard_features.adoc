@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_dashboard_features.html
 summary: Dashboard features and concepts.
-keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, expressions, timeseries
+keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, group by, expressions, timeseries, exact match,
 ---
 
 = Dashboard Features
@@ -63,7 +63,18 @@ The remaining widget types can have only a single query:
 * Scatter plot
 
 === Filtering in dashboard queries
-You can use any of the following alone or combined to refine your filter:
+
+Here are some things you can do to get the most out of your filters.
+
+==== Exact Match Filtering
+
+If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.
+
+You can use exact match filters to find specific resources, for example hostname. If you want to find only the hostname 'marketing' but exclude 'marketing01', 'marketing-boston', etc., simply enclose the name "marketing" in double quotes. 
+
+==== Advanced Filtering
+
+The following can be used to further refine your filters.
 
 * An asterisk enables you to search for everything. For example,
 [listing]
@@ -93,8 +104,6 @@ NOT *
 +
 to display fields that contain no value.
 
-If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.
-
 === Identifying objects returned by queries and filters
 
 The objects returned by queries and filters look similar to those shown in the following illustration. Objects with 'tags' assigned to them are annotations while the objects without tags are performance counters or object attributes.
@@ -102,11 +111,11 @@ The objects returned by queries and filters look similar to those shown in the f
 image:ObjectsReturnedByFilters.png[Objects returned by filters]
 
 
-== Roll up and Aggregation
+== Grouping and Aggregation
 
-=== Roll up
+=== Grouping (Rolling Up)
 
-Data displayed in a widget is rolled up from the underlying data points collected during acquisition. For example, if you have a line chart widget showing Storage IOPS over time, you might want to see a separate line for each of your data centers, for a quick comparison. You can choose to roll up this data in one of several ways:
+Data displayed in a widget is grouped (sometimes called rolled-up) from the underlying data points collected during acquisition. For example, if you have a line chart widget showing Storage IOPS over time, you might want to see a separate line for each of your data centers, for a quick comparison. You can choose to group this data in one of several ways:
 
 * *Avg*: displays each line as the _average_ of the underlying data.
 * *Max*: displays each line as the _maximum_ of the underlying data.
@@ -118,21 +127,21 @@ Data displayed in a widget is rolled up from the underlying data points collecte
 
 .Steps
 
-To set the roll up method, do the following.
+To set the grouping method, do the following.
 
-. In your widget's query, choose an asset type (for example, _Storage_) and metric (such as _IOPS - Total_).
+. In your widget's query, choose an asset type and metric (for example, _Storage_) and metric (such as _Performance IOPS Total_).
 
-. For *Roll up*, choose a roll up method (such as _Avg_) and select an attribute or annotation by which to roll up the data (for example, _Data Center_).
+. For *Group*, choose a roll up method (such as _Avg_) and select the attributes or metrics by which to roll up the data (for example, _Data Center_).
 +
-The widget updates automatically and shows a line for each of your data centers.
+The widget updates automatically and shows data for each of your data centers.
 
-You can also choose to roll up _all_ of the underlying data into the chart or table. In this case, you will get a single line for each query in the widget, which will show the average, min, max, sum, or count of the chosen metric for all of the underlying assets.
+You can also choose to group _all_ of the underlying data into the chart or table. In this case, you will get a single line for each query in the widget, which will show the average, min, max, sum, or count of the chosen metric or metrics for all of the underlying assets.
 
-Clicking the legend for any widget whose data is rolled up by "All" opens a query page showing the results of the first query used in the widget.
+Clicking the legend for any widget whose data is grouped by "All" opens a query page showing the results of the first query used in the widget.
 
-If you have set a filter for the query, the data that is rolled up is based on the filtered data.
+If you have set a filter for the query, the data is grouped based on the filtered data.
 
-Note that when you choose to roll up a widget by any field (for example, _Model_), you will still need to Filter by that field in order to properly display the data for that field on the chart or table.
+Note that when you choose to group a widget by any field (for example, _Model_), you will still need to Filter by that field in order to properly display the data for that field on the chart or table.
 
 === Aggregating data
 
