@@ -26,6 +26,19 @@ In the example below, we will create a Monitor to give a Warning alert when Volu
 
 //image:MonitorExample1.png[Storage IOPS Monitor Example]
 
+=== Monitor or Performance Policy?
+
+What's the difference between "Performance Policy" and "Monitor"?
+
+_Policies_ allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports. These policies trigger violations when thresholds are met or exceeded. Each violation can be investigated for troubleshooting.
+
+_Monitors_ provide similar functionality for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins, and alert when thresholds are crossed. With Monitors, you can set thresholds for Warning- or Critical-level alerts, or both.
+
+In both cases, emails can be sent when a policy or monitor is triggered. Policies and Monitors are available under the *Alerts* menu.
+
+image:AlertsMenu.png[Alerts Menu]
+
+
 === Requirements
 
 * Cloud Insights must be configured to collect integration data, and that data is being collected.
