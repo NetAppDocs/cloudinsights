@@ -22,7 +22,9 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 ==== Monitoring and Alerting
 
-Cloud Insights Standard Edition now includes the ability to link:task_create_monitor.html[configure monitors] for thresholds on object metrics, and alert when those thresholds are crossed. You simply create a monitor for each object metric you want to trigger alerts, set the conditions for warning-level or critical-level thresholds, and specify the email recipient(s) desired for each level. You can then link:task_view_and_manage_alerts.html[view and manage alerts] to track trends or troubleshoot issues.
+In addition to the current ability to set performance policies for storage objects, VMs, EC2, and ports, Cloud Insights Standard Edition now includes the ability to configure monitors for thresholds on Integration data for Kubernetes, ONTAP advanced metrics, and Telegraf plugins, and alert when those thresholds are crossed. 
+
+n addition to the current ability to set performance policies for storage objects, VMs, EC2, and ports, Cloud Insights Standard Edition now includes the ability to link:task_create_monitor.html[configure monitors] for thresholds on Integration data for Kubernetes, ONTAP advanced metrics, and Telegraf plugins. You simply create a monitor for each object metric you want to trigger alerts, set the conditions for warning-level or critical-level thresholds, and specify the email recipient(s) desired for each level. You can then link:task_view_and_manage_alerts.html[view and manage alerts] to track trends or troubleshoot issues.
 
 image:define_monitor_conditions_2.png[Monitor Conditions]
 
