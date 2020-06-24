@@ -69,7 +69,7 @@ Note: Be aware of restrictions on special characters in proxy username and passw
 
 === Proxy Configuration
 
-The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the https request to the Cloud Insights server without decrypting the data.
 
 The simplest way to do this is to specify wildcard configuration in your proxy/firewall to communicate with Cloud Insights, for example:
 
@@ -130,7 +130,7 @@ image::NewWindowsAUInstall.png[Windows AU Install]
 
 === Proxy Configuration
 
-The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the https request to the Cloud Insights server without decrypting the data.
 
 The simplest way to do this is to specify wildcard configuration in your proxy/firewall to communicate with Cloud Insights, for example:
 
