@@ -55,7 +55,7 @@ If your organization requires proxy usage for internet access, you may need to u
 +
 Your Cloud Insights Acquisition Unit, as well as your interactions in a web browser with Cloud Insights, will all go to hosts with that domain name. 
 
-* Second, some proxies attempt to perform TLS/SSL inspection by impersonating Cloud Insights web sites with digital certificates not generated from NetApp. The Cloud Insights Acquisition Unit’s security model is fundamentally incompatible with these technologies. You would also need the above domain name excepted from this functionality for the CI AU to successfully login to Cloud Insights to facilitate any possibility of data discovery.
+* Second, some proxies attempt to perform TLS/SSL inspection by impersonating Cloud Insights web sites with digital certificates not generated from NetApp. The Cloud Insights Acquisition Unit’s security model is fundamentally incompatible with these technologies. You would also need the above domain name excepted from this functionality in order for the Cloud Insights Acquisition Unit to successfully login to Cloud Insights and facilitate data discovery.
 
 
 ////
