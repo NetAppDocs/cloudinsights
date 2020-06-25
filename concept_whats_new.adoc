@@ -24,8 +24,26 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 Cloud Insights takes advantage of NetApp's ONTAP-specific *Advanced Counter Data*, which provides a host of metrics for use in dashboards and widgets. 
 
+ONTAP Advanced Counters can be found by searching for "netapp_ontap" in the widget's query, and selecting from among the counters. 
+
+image:netapp_ontap counters.png[Searching for ONTAP Advanced Counters]
+
+You can refine your search by typing additional parts of the counter name. For example:
+
+* _lif_
+* _aggregate_
+* _offbox_vscan_server_
+* and many more
+
 image:ONTAP_Widget_Example2.png[ONTAP Widget Example - WAFL]
 image:ONTAP_Widget_Example1.png[ONTAP Widget Example - Cp Reads]
+
+More information can be found at the following links:
+
+* https://mysupport.netapp.com/site/tools/tool-eula/netapp-harvest (Note: You will need to sign in to NetApp Support)
+
+* https://nabox.org/faq/ 
+
 
 === June 2020
 
