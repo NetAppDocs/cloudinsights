@@ -60,3 +60,26 @@ Resets acquisition user password and acquisition user encryption keys to default
 Exit
 Exit the securityadmin tool.
 Chose the option you want configure and follow the prompts.
+
+=== Special considerations for special characters
+
+Due to the limitations of the windows installer, a proxy password with certain special characters cannot be configured during install time. If the proxy password cannot be configured directly (you will see a pop-up message) skip the proxy setup step. After installation, use the securityadmin tool (default location is <install drive>\Program Files\Cloud Insights\Acquisition Unit\acq\securityadmin\bin\securityadmin.bat) to configure the proxy.
+
+Double quote(") is used to escape these special characters: <, >, ^, |, &, !. Thus, double quote cannot be used in password.
+
+For example: if the password is P@'sswo!rd, run the following command to add the proxy configuration:
+
+<install drive>\Program Files\Cloud Insights\Acquisition Unit\acq\securityadmin\bin\securityadmin.bat -pr -ap ip=<proxy IP> port=<proxy port> user=<proxy user> password=P@'sswo"^!rd
+
+<, >, ^, |, & can be escaped by ".
+For example: password is Pa^sswd, then the password can be entered as password=Pa"^sswd
+
+! can be escaped by "^
+For example: password is Passw!d, then the password can be entered as password=Passw"^!d
+
+If the password contains more than one special characters, the double quote can only be used once and has to be used at where the first special character appears.
+For example: password is Pa&ssw!d, then the password can be entered as password=Pa"&ssw^!d
+
+If the password contains both ^ and !, then you need to use another ^ to escape itself.
+For example: password is Pa^ssw!d, then the password can be entered as password=Pa"^^ssw^!d
+
