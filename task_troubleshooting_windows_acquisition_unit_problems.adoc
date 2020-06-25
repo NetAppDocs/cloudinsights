@@ -39,7 +39,7 @@ Restart the Acquisition via Windows Services
 |Data Collection Issues
 |Generate an Error Report from the Data Collector landing page. Click the drop down next to the “Edit” icon and select “Error Report”
 
-|Cannot use special characters in proxy password during install. | Due to the limitations of the windows installer, a proxy password with certain special characters cannot be configured during install time. If the proxy password cannot be configured directly (you will see a pop-up message) skip the proxy setup step. After installation, use the _securityadmin_ (default location is _<install drive>\Program Files\Cloud Insights\Acquisition Unit\acq\securityadmin\bin\securityadmin.bat_ to configure the proxy, using *"^* to escape the special character.
+|Cannot use special characters in proxy password during install. | Due to the limitations of the windows installer, a proxy password with certain special characters cannot be configured during install time. If the proxy password cannot be configured directly (you will see a pop-up message) skip the proxy setup step. After installation, use the _securityadmin_ (default location is _<install drive>\Program Files\Cloud Insights\Acquisition Unit\acq\securityadmin\bin\securityadmin.bat_ to configure the proxy, using *_"^_* to escape the special character.
 
 For example: if the password is _P@'sswo!rd_, run the following command to add the proxy configuration:
 
