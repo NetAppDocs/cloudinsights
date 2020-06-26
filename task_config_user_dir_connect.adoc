@@ -120,5 +120,7 @@ The following table describes known problems and resolutions that can occur duri
 |Adding a User Directory connector results in the ‘Error’ state.|Ensure you have provided valid values for the required fields (Server, forest-name, bind-DN, bind-Password).
 Ensure bind-DN input is always provided as ‘Administrator@<domain_forest_name>’ or as a user account with domain admin privileges.
 |The optional attributes of domain user are not appearing in the Cloud Secure User Profile page.|Ensure you  have used the AD domain user ‘Attribute Editor’ to enter the optional attributes. 
+|Data collector in error state with "Failed to retrieve LDAP users. Reason for failure: Cannot connect on the server, the connection is null"
+|Edit the Data collector and save without changes. If the problem still persists, please contact Netapp support.
 |===
 
