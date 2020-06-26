@@ -147,3 +147,22 @@ The system displays the ONTAP SVM configuration page. Enter the required data fo
 * Click *Test Configuration* to check the status of the collector you configured.
 
 * In the Installed Data Collectors page, use the options menu on the right of each collector to edit the data collector. You can start, stop, and edit data collector configuration attributes. 
+
+
+== Troubleshooting 
+
+Known problems and their resolutions are described in the following table. 
+
+[cols=2*, options="header", cols"30,70"]
+
+|===
+|Problem: | Resolution:
+|Agent is in Connected State and ONTAP Data collector is in Error State. 
+"Unable to define the state of datasource with id:<ID>"
+|Ensure Docker service is running on the agent.
+|Error message: "Connection to the FPolicy server <IP> is broken. ( reason: "FPolicy server is removed from external engine." )"
+|In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
+To prevent this, configure each SVM on a single environment.
+|===
+
+
