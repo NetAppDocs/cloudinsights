@@ -36,12 +36,12 @@ This topic describes how to add Acquisition Units and describes additional steps
 The system displays the _Install Acquisition Unit_ dialog. Choose Linux.
 
 [.thumb]
-image::AU_Install_Linux.png[Linux AU Install]
+image:NewLinuxAUInstall.png[Linux AU Instructions]
 
 . Verify that the server or VM hosting the Acquisition Unit meets the recommended system requirements. 
 . Verify that the server is running a supported version of Linux. Click _OS Versions Supported (i)_ for a list of supported versions.
 
-. Copy the Installation command displayed in the dialog into a terminal window on the server or VM that will host the Acquisition unit.  
+. Copy the Installation command snippet in the dialog into a terminal window on the server or VM that will host the Acquisition unit.  
 . Paste and execute the command in the Bash shell. 
 
 .After you finish
@@ -57,37 +57,36 @@ image::AU_Install_Linux.png[Linux AU Install]
 
 For environments that use a proxy, you must set the proxy environment variables before you add the Acquisition Unit. The instructions for configuring the proxy are provided on the _Add Acquisition Unit_  dialog. 
 
-. Click + in Have a Proxy Server?
+. Click + in _Have a Proxy Server?_
+
 . Copy the commands to a text editor and set your proxy variables as needed.
-+ Note: Restrictions on special characters in proxy username and password fields:  '%' and '!' are allowed in the  username filed. ':', '%', and '!' are allowed in the password field. 
++ 
+Note: Be aware of restrictions on special characters in proxy username and password fields: '%' and '!' are allowed in the username field. ':', '%', and '!' are allowed in the password field. 
+
 . Run the edited command in a terminal using the Bash shell.
+
 . Install the Acquisition Unit software.
 
 === Proxy Configuration
 
-The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the https request to the Cloud Insights server without decrypting the data.
 
-The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
+The simplest way to do this is to specify wildcard configuration in your proxy/firewall to communicate with Cloud Insights, for example:
 
- https://aulogin.<Cloud Insights Domain>
- https://<your-tenant-ID>.<Cloud Insights Domain>
+ *.cloudinsights.netapp.com
+
+NOTE: The use of an asterix (*) for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environmant.
+
+////
+* Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
+* Cloud Insights site: _<Site Name>.<Cloud Insights Domain>_
  
 For example:
  
  https://aulogin.c01.cloudinsights.netapp.com
- https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
+ https://nane1234.c01.cloudinsights.netapp.com
 
-
-////
- https://aulogin.<domain>
- https://<tenantUUID>.<domain>
-
-The second URL can be found in the acq.log, which is located at the following location.
-
- Windows: <installation location>/Cloud Insights/Acquisition Unit/log/acq.log
- Linux: /var/log/netapp/cloudinsights/acq/acq.log
-
-The URl can be found by searching the .log for “Attempting to verify server at: https://<tenantUUID>.oci.cloud.netapp.com”
+TIP: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
 ////
 
 == Adding a Windows Acquisition Unit
@@ -101,18 +100,18 @@ The URl can be found by searching the .log for “Attempting to verify server at
 The system displays the _Install Acquisition Unit_ dialog. Choose Windows.
 
 [.thumb]
-image::AU_Install_Windows.png[Windows AU Install]
+image::NewWindowsAUInstall.png[Windows AU Install]
 
 . Verify that the server or VM hosting the Acquisition Unit meets the recommended system requirements. 
 . Verify that the server is running a supported version of Windows. Click _OS Versions Supported (i)_ for a list of supported versions.
 
 . Click the *Download Installer (Windows 64-bit)* button. 
 
-. Copy the key in the dialog. You can click the clipboard icon to quickly copy it to the clipboard.
+. Copy the Access Key. You will need this during the Installation.
 
 . On the Acquisition Unit server/VM, execute the downloaded installer.
 
-. Paste the copied key into the installation wizard when prompted.
+. Paste the Access Key into the installation wizard when prompted.
 
 . During installation, you will be presented with the opportunity to provide your proxy server settings.
 
@@ -131,19 +130,25 @@ image::AU_Install_Windows.png[Windows AU Install]
 
 === Proxy Configuration
 
-The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the https request to the Cloud Insights server without decrypting the data.
 
-The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
+The simplest way to do this is to specify wildcard configuration in your proxy/firewall to communicate with Cloud Insights, for example:
 
- https://aulogin.<Cloud Insights Domain>
- https://<your-tenant-ID>.<Cloud Insights Domain>
+ *.cloudinsights.netapp.com
+
+NOTE: The use of an asterix (*) for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environmant.
+
+////
+* Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
+* Cloud Insights site: _<Site Name>.<Cloud Insights Domain>_
  
 For example:
  
  https://aulogin.c01.cloudinsights.netapp.com
- https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
+ https://nane1234.c01.cloudinsights.netapp.com
 
-
+TIP: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
+////
 
 == Uninstalling an Acquisition Unit
 
@@ -168,7 +173,6 @@ To uninstall the Acquisition Unit software, do the following:
 
 . After uninstalling the AU software, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
 . Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
-
 
 
 == Reinstalling an Acquisition Unit

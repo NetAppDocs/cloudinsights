@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_dashboard_features.html
 summary: Dashboard features and concepts.
-keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, expressions, timeseries
+keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, group by, expressions, timeseries, exact match,
 ---
 
 = Dashboard Features
@@ -22,7 +22,11 @@ toc::[]
 ==	Widget Placement and Size
 All dashboard widgets can be positioned and sized according to your needs for each particular dashboard.
 
+== Duplicating a Widget
 
+In dashboard Edit mode, click the menu on the widget and select *Duplicate*. The widget editor is launched, pre-filled with the original widget's configuration and with a “copy” suffix in the widget name. You can easily make any necessary changes and Save the new widget. The widget will be placed at the bottom of your dashboard, and you can position it as needed. Remember to Save your dashboard when all changes are complete.
+
+image:DuplicateWidget.png[Duplicate a widget]
 
 == Displaying Widget Legends
 
@@ -32,7 +36,7 @@ Most widgets on dashboards can be displayed with or without legends. Legends in 
 
 As the data displayed in the widget changes, the legend for that widget is updated dynamically.
 
-When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page.
+When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page. If the legend displays "all", clicking the link will display a query page corresponding to the first query in the widget.
 
 == Dashboard widget queries and filters
 
@@ -59,7 +63,18 @@ The remaining widget types can have only a single query:
 * Scatter plot
 
 === Filtering in dashboard queries
-You can use any of the following alone or combined to refine your filter:
+
+Here are some things you can do to get the most out of your filters.
+
+==== Exact Match Filtering
+
+If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.
+
+You can use exact match filters to find specific resources, for example hostname. If you want to find only the hostname 'marketing' but exclude 'marketing01', 'marketing-boston', etc., simply enclose the name "marketing" in double quotes. 
+
+==== Advanced Filtering
+
+The following can be used to further refine your filters.
 
 * An asterisk enables you to search for everything. For example,
 [listing]
@@ -89,8 +104,6 @@ NOT *
 +
 to display fields that contain no value.
 
-If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.
-
 === Identifying objects returned by queries and filters
 
 The objects returned by queries and filters look similar to those shown in the following illustration. Objects with 'tags' assigned to them are annotations while the objects without tags are performance counters or object attributes.
@@ -98,41 +111,43 @@ The objects returned by queries and filters look similar to those shown in the f
 image:ObjectsReturnedByFilters.png[Objects returned by filters]
 
 
-== Roll up and Aggregation
+== Grouping and Aggregation
 
-=== Roll up
+=== Grouping (Rolling Up)
 
-Data displayed in a widget is rolled up from the underlying data points collected during acquisition. For example, if you have a line chart widget showing Storage IOPS over time, you might want to see a separate line for each of your data centers, for a quick comparison. You can choose to roll up this data in one of several ways:
+Data displayed in a widget is grouped (sometimes called rolled-up) from the underlying data points collected during acquisition. For example, if you have a line chart widget showing Storage IOPS over time, you might want to see a separate line for each of your data centers, for a quick comparison. You can choose to group this data in one of several ways:
 
 * *Avg*: displays each line as the _average_ of the underlying data.
 * *Max*: displays each line as the _maximum_ of the underlying data.
 * *Min*: displays each line as the _minimum_ of the underlying data.
 * *Sum*: displays each line as the _sum_ of the underlying data.
-* *Count*: displays a _count_ of objects that have reported data within the specified time frame (5 minute, 1 hour, or entire time window). 
+* *Count*: displays a _count_ of objects that have reported data within the specified time frame. You can choose the _Entire Time Window_ as determined by the dashboard time range (or the widget time range, if set to override the dashboard time), or a _Custom Time Window_ that you select.
 
 // You can choose to include _all_ objects that have reported data, or only those objects whose data is reported as _Not Null_. 
 
 .Steps
 
-To set the roll up method, do the following.
+To set the grouping method, do the following.
 
-. In your widget's query, choose an asset type (for example, _Storage_) and metric (such as _IOPS - Total_).
+. In your widget's query, choose an asset type and metric (for example, _Storage_) and metric (such as _Performance IOPS Total_).
 
-. For *Roll up*, choose a roll up method (such as _Avg_) and select an attribute or annotation by which to roll up the data (for example, _Data Center_).
+. For *Group*, choose a roll up method (such as _Avg_) and select the attributes or metrics by which to roll up the data (for example, _Data Center_).
 +
-The widget updates automatically and shows a line for each of your data centers.
+The widget updates automatically and shows data for each of your data centers.
 
-You can also choose to roll up _all_ of the underlying data into the chart or table. In this case, you will get a single line for each query in the widget, which will show the average, min, max, sum, or count of the chosen metric for all of the underlying assets.
+You can also choose to group _all_ of the underlying data into the chart or table. In this case, you will get a single line for each query in the widget, which will show the average, min, max, sum, or count of the chosen metric or metrics for all of the underlying assets.
 
-If you have set a filter for the query, the data that is rolled up is based on the filtered data.
+Clicking the legend for any widget whose data is grouped by "All" opens a query page showing the results of the first query used in the widget.
 
-Note that when you choose to roll up a widget by any field (for example, _Model_), you will still need to Filter by that field in order to properly display the data for that field on the chart or table.
+If you have set a filter for the query, the data is grouped based on the filtered data.
+
+Note that when you choose to group a widget by any field (for example, _Model_), you will still need to Filter by that field in order to properly display the data for that field on the chart or table.
 
 === Aggregating data
 
 You can further align your time-series charts (line, area, etc.) by aggregating data points into minute, hour, or day buckets before that data is subsequently rolled up by attribute (if chosen). You can choose to aggregate data points according to their _Avg, Max, Min, or Sum_, or by the _Last_ data point collected during the chosen interval. To choose an aggregation method, click on *More options* in the widget's query section.
 
-The minimum allowed interval is ten minutes. A small interval combined with a long time range may result in an "Aggregation interval resulted in too many data points." warning. You might see this if you have a small interval and increase the dashboard time frame to 7 days. In this case, Insight will temporarily increase the aggregation interval to 1 hour until you select a smaller time frame.
+A small interval combined with a long time range may result in an "Aggregation interval resulted in too many data points." warning. You might see this if you have a small interval and increase the dashboard time frame to 7 days. In this case, Insight will temporarily increase the aggregation interval until you select a smaller time frame.
 
 You can also aggregate data in the bar chart widget and single-value widget.
 
@@ -202,8 +217,10 @@ If you include a column for performance data (for example, _IOPS - Total_) in a 
 
 You can select the time range for your dashboard data. Only data relevant to the selected time range will be displayed in widgets on the dashboard.  You can select from the following time ranges:
 
-* Last 3 Hours
-* Last 24 Hours (this is the default)
+* Last 15 Minutes
+* Last 1 Hour
+* Last 3 Hours (this is the default)
+* Last 24 Hours 
 * Last 3 Days
 * Last 7 Days
 * Last 30 Days
@@ -492,3 +509,195 @@ image:Gauge-Bullet.png[Bullet Gauge, width=374]
 in the Single-Value widget, in addition to setting Warning (orange) and Critical (red) thresholds, you can choose to have "In Range" values (those below Warning level) shown with either green or white background.
 
 image:Single-Value Widgets.png[Single-Value Widget with and without Formatting]
+
+Clicking the link in either a single-value widget or a gauge widget will display a query page corresponding to the first query in the widget.
+
+
+== Choosing the Unit for Displaying Data
+
+Most widgets on a dashboard allow you to specify the Units in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc. In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, you can set the format you want.
+
+In the line chart example below, the data selected for the widget is known to be in _bytes_ (the base IEC Data unit: see the table below), so the Base Unit is automatically selected as 'byte (B)'. However, the data values are large enough to be presented as gibibytes (GiB), so Cloud Insights by default auto-formats the values as GiB. The Y-axis on the graph shows 'GiB' as the display unit, and all values are displayed in terms of that unit.
+
+//image:WidgetBaseUnitKnown.png[Widget with known base unit]
+image:used_memory_in_bytes.png[Base Unit Byte shown in Gigabytes,width=640]
+
+If you want to display the graph in a different unit, you can choose another format in which to display the values. Since the base unit in this example is _byte_, you can choose from among the supported "byte-based" formats: bit (b), byte (B), kibibyte (KiB), mebibyte (MiB), gibibyte (GiB). The Y-Axis label and values change according to the format you choose.
+
+//image:WidgetBaseUnitKnown-Formatted.png[Choosing to display values as 'thousand']
+image:used_memory_in_bytes_gb.png[Choosing a display unit,width=640]
+
+In cases where the base unit is not known, you can assign a unit from among the link:#available-units[available units], or type in your own. Once you assign a base unit, you can then select to display the data in one of the appropriate supported formats. 
+
+//image:WidgetBaseUnitNotKnown.png[Base unit unknown]
+image:bits_per_second.png[Choose your own base unit,width=320] 
+
+To clear out your settings and start again, click on *Reset Defaults*.  
+
+=== A word about Auto-Format
+
+Most metrics are reported by data collectors in the smallest unit, for example as a whole number such as 1,234,567,890 bytes. By default, Cloud Insights will automatically format the value for the most readable display, e.g. 1.23bn (billion) bytes. If you choose instead to display this as millions (m), the value will show as 1,234m. If you choose to display as trillion, it will show .001t.
+
+NOTE: Cloud Insights uses American English number naming standards. American "billion" is equivalent to "thousand million".
+
+////
+Depending on the widget and the range of values displayed, Cloud Insights will typically use the highest value as the basis for auto-formatting the units. So if your range goes from one million (1,000,000) to one billion (1,000,000,000), your chart might auto-format to the billion (bn) level, which means lower values might display as .001bn.
+////
+
+=== Widgets with multiple queries
+
+If you have a time-series widget (i.e. line, spline, area, stacked area) that has two queries where both are plotted the primary Y-Axis, the base unit is not shown at the top of the Y-Axis.  However, if your widget has a query on the primary Y-Axis and a query on the secondary Y-Axis, the base units for each are shown.
+
+image:UnitsOnPrimaryAnd SecondaryYAxis.png[Units on both Y-Axes]
+
+If your widget has three or more queries, base units are not shown on the Y-Axis.
+
+
+=== Available Units
+
+The following table shows all the available units by category. 
+
+|===
+*Category*|*Units*
+|Currency|cent
+dollar
+|Data(IEC)|bit
+byte
+kibibyte
+mebibyte
+gibibyte
+tebibyte
+pebibyte
+exbibyte
+|DataRate(IEC)|bit/sec
+byte/sec
+kibibyte/sec
+mebibyte/sec
+gibibyte/sec
+tebibyte/sec
+pebibyte/sec
+|Data(Metric)|kilobyte
+megabyte
+gigabyte
+terabyte
+petabyte
+exabyte
+|DataRate(Metric)|kilobyte/sec
+megabyte/sec
+gigabyte/sec
+terabyte/sec
+petabyte/sec
+exabyte/sec
+|IEC|kibi
+mebi
+gibi
+tebi
+pebi
+exbi
+|Decimal|whole number
+thousand
+million
+bilion
+trillion
+|Percentage|percentage
+|Time|nanosecond
+microsecond
+millisecond
+second
+minute
+hour
+|Temperature|celsius
+fahrenheit
+|Frequency|hertz
+kilohertz
+megahertz
+gigahertz
+|CPU|nanocores
+microcores
+millicores
+cores
+kilocores
+megacores
+gigacores
+teracores
+petacores
+exacores
+|Throughput|I/O ops/sec
+ops/sec
+requests/sec
+reads/sec
+writes/sec
+ops/min
+reads/min
+writes/min
+|===
+
+
+
+== TV Mode and Auto-Refresh
+
+Data in widgets on Dashboards and Asset Landing Pages auto-refresh according a refresh interval determined by the Dashboard Time Range selected (or widget time range, if set to override the dashboard time). The refresh interval is based on whether the widget is time-series (line, spline, area, stacked area chart) or non-time-series (all other charts).
+
+|===
+|Dashboard Time Range|Time-Series Refresh Interval|Non-Time-Series Refresh Interval
+|Last 15 Minutes|10 Second|1 Minute
+|Last 1 Hour|15 Second|1 Minute
+|Last 3 Hours|30 Second|5 Minute
+|Last 24 Hours|5 Minute|10 Minute
+|Last 3 Days|15 Minute|15 Minute
+|Last 7 Days|1 Hour|1 Hour
+|Last 30 Days|2 Hour|2 Hour
+|===
+
+Each widget displays its auto-refresh interval in the upper-right corner of the widget.
+
+Auto-refresh is not available for Custom dashboard time range.
+
+When combined with *TV Mode*, auto-refresh allows for near-real-time display of data on a dashboard or asset page. TV Mode provides an uncluttered display; the navigation menu is hidden, providing more screen real estate for your data display, as is the Edit button. TV Mode ignores typical Cloud Insights timeouts, leaving the display live until logged out manually or automatically by authorization security protocols.
+
+NOTE: Because NetApp Cloud Central has its own user login timeout of 7 days, Cloud Insights must log out with that event as well. You can simply log in again and your dashboard will continue to display.
+
+* To activate TV Mode, click the image:ActivateTVMode.png[TV Mode] button.
+* To disable TV Mode, click the *Exit* button in the upper left of the screen. image:ExitTVMode.png[Exit Button]
+
+You can temporarily suspend auto-refresh by clicking the Pause button in the upper right corner. While paused, the dashboard time range field will display the paused data's active time range. Your data is still being acquired and updated while auto-refresh is paused. Click the Resume button to continue auto-refreshing of data.
+
+image:AutoRefreshPaused.png[Auto-Refresh paused]
+
+
+== Dashboard Groups
+
+Grouping allows you to view and manage related dashboards. For example, you can have a dashboard group dedicated to the storage in your environment. Dashboard groups are managed on the *Dashboards > Show All Dashboards* page.
+
+image:DashboardGroupNoPin.png[Dashboard Grouping]
+
+Two groups are shown by default:
+
+* *All Dashboards* lists all the dashboards that have been created, regardless of owner.
+* *My Dashboards* lists only those dashboards created by the current user.
+
+The number of dashboards contained in each group is shown next to the group name.
+
+To create a new group, click the *"+" Create New Dashboard Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
+
+To add dashboards to the group, click the _All Dashboards_ group to show all dashboards in your environment, of click _My Dashboards_ if you only want to see the dashboards you own, and do one of the following:
+
+* To add a single dashboard, click the menu to the right of the dashboard and select _Add to Group_.
+* To add multiple dashboards to a group, select them by clicking the checkbox next to each dashboard, then click the *Bulk Actions* button and select _Add to Group_.
+
+Remove dashboards from the current group in the same manner by selecting _Remove From Group_. You can not remove dashboards from the _All Dashboards_ or _My Dashboards_ group. 
+
+NOTE: Removing a dashboard from a group does not delete the dashboard from Cloud Insights. To completely remove a dashboard, select the dashboard and click _Delete_. This removes it from any groups to which it belonged and it is no longer available to any user.
+
+== Pin your Favorite Dashboards
+
+You can further manage your dashboards by pinning favorite ones to the top of your dashboard list. To pin a dashboard, simply click the thumbtack button displayed when you hover over a dashboard in any list. 
+
+// Pinning a dashboard pins it to the top of the current group, as well as any other groups containing that dashboard, including _All Dashboards_.
+
+Dashboard pin/unpin is an individual user preference and independent of the group (or groups) to which the dashboard belongs.
+
+image:DashboardPin.png[Pinned Dashboards]
+
+
+
