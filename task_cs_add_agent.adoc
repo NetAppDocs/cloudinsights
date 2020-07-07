@@ -234,10 +234,18 @@ Known problems and their resolutions are described in the following table.
 
 |===
 |Problem: | Resolution:
-|Agent installation fails with "File name too long" errror|To correct this error use the sh shell to run the command. 
+|Agent installation fails with error:
+"File name too long" errror|To correct this error use the sh shell to run the command. 
 |Agent installation fails to create the ~/agent/logs folder and the install.log file provides no relevant information.|This error occurs during bootstrapping of the agent. The error is not logged in log files because it occurs before logger is initialized. 
 The error is redirected to standard output, and is visible in the service log using the `journalctl -u cloudsecure-agent.service` command. This command can be used for troubleshooting the issue further.
 |Agent installation fails with ‘This linux distribution is not supported. Exiting the installation’.|The supported platforms for Cloud Secure 1.0.0 are RHEL 7.x / CentOS 7.x. Ensure that you are not installing the agent on a RHEL 6.x or CentOS 6.x system.
+|Agent Installation failed with the error: 
+"-bash: unzip: command not found"
+|Install unzip and then run the installation command again. If Yum is installed on the machine try “yum install unzip” to install unzip software
+|Agent Installation failed with the error:
+"Adding cssys user to docker group
+Usermod: group ‘docker’ does not exist"
+|Install Docker service and then run the installation command again.
 
 |===
 
