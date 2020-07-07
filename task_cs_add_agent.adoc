@@ -87,6 +87,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 ----
 
+////
 == Java Requirement 
 
 OpenJDK Java is required. Use the following command to determine if OpenJDK Java is installed: 
@@ -99,6 +100,7 @@ The IBM Java package, found in some RHEL versions, must be uninstalled. Use the 
 `sudo java -` (or) `sudo rpm -qa | grep -I java`
 If the command returns information similar to 'IBM J9 VM (build 2.9.x)' you need to remove the package: 
 `sudo update-alternatives --remove java /usr/lib/jvm/jdk[version]/bin/java`
+////
 
 ////
 == Steps to Install an Agent from a Non-Root Account
