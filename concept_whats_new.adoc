@@ -41,12 +41,12 @@ rules:
   attributeRestrictions: null
   resources:
   - nodes/metrics
-[red]  *- nodes/proxy*
+  - nodes/proxy     <== Add this line
   - nodes/stats
-[red]  *- pods*
+  - pods            <== Add this line
   verbs:
   - get
-[red]  *- list*
+  - list            <== Add this line
 --------------------------
 
 
