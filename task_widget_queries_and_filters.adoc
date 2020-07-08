@@ -29,40 +29,43 @@ Stacked area chart
 Line chart
 Spline chart
 Single value widget
+
 The remaining widget types can have only a single query:
+
 Table
 Bar chart
 Box plot
 Scatter plot
 
 == Filtering in dashboard queries
+
 You can filter using any of the following to refine your search in any text field in the query:
 
 An asterisk enables you to search for everything. For example,
 
-vol*rhel
+ vol*rhel
 
 displays all resources that start with "vol" and end with "rhel".
 
 The question mark enables you to search for a specific number of characters. For example,
 
-BOS-PRD??-S12
+ BOS-PRD??-S12
 
 displays BOS-PRD12-S12, BOS-PRD13-S12, and so on.
 
 The OR operator enables you to specify multiple entities. For example,
 
-FAS2240 OR CX600 OR FAS3270
+ FAS2240 OR CX600 OR FAS3270
 
 finds multiple storage models.
 
 The NOT operator allows you to exclude text from the search results. For example,
 
-NOT EMC*
+ NOT EMC*
 
 finds everything that does not start with "EMC". You can use
 
-NOT *
+ NOT *
 
 to display fields that contain null values.
 
@@ -73,3 +76,15 @@ If you enclose a filter string in double quotes, Insight treats everything betwe
 The objects returned by queries and filters look similar to those shown in the following illustration. Objects with 'tags' assigned to them are annotations while the objects without tags are performance counters or object attributes.
 
 image::ObjectsReturnedByFilters.png[]
+
+==== Metrics Filtering
+
+In addition to filtering on an object's attributes/tags in a widget, you can filter on metrics as well. 
+
+image:MetricsFiltering.png[Metrics Filtering]
+
+//When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
+
+When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
+
+image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
