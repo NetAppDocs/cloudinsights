@@ -28,8 +28,8 @@ NOTE: Due to enhanced security in the newer Telegraf version, you may see an "HT
 
 To work around this issue, add the following highlighted lines to the "rules > resources" section of the telegraf configuration file:
 
-+rules:
-- apiGroups:
++rules:+
++- apiGroups:+
   - ""
   - apps
   - autoscaling
