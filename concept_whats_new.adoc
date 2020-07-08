@@ -24,6 +24,29 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 The agent for ingestion of telegraf integration data has been updated to link:https://docs.influxdata.com/telegraf/v1.14/[version 1.14].
 
+NOTE: Due to enhanced security in the newer Telegraf version, you may see an "HTTP status 403 Forbidden" error in the log when attempting to configure a Kubernetes data collector on the Kubernetes platform. This is due to insufficient permissions in the "clusterrole" attribute.
+
+To work around this issue, add the following lines to the "rules > resources" section of the telegraf configuration file:
+
+rules:
+- apiGroups:
+  - ""
+  - apps
+  - autoscaling
+  - batch
+  - extensions
+  - policy
+  - rbac.authorization.k8s.io
+  attributeRestrictions: null
+  resources:
+  - nodes/metrics
+  - *nodes/proxy*
+  - nodes/stats
+  - *pods*
+  verbs:
+  - get
+  - *list*
+
 
 
 === June 2020
