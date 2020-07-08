@@ -18,6 +18,18 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== July 2020
+
+==== Metrics Filtering
+
+In addition to filtering on an object's attributes in a widget, you can now filter on metrics as well. 
+
+image:MetricsFiltering.png[Metrics Filtering]
+
+When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
+
+image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
+
 === June 2020
 
 ==== Simplified Data Collector Error Reporting
