@@ -38,6 +38,12 @@ You can refine your search by typing additional parts of the counter name. For e
 image:ONTAP_Widget_Example2.png[ONTAP Widget Example - WAFL]
 image:ONTAP_Widget_Example1.png[ONTAP Widget Example - Cp Reads]
 
+Please note the following:
+
+* Advanced Data collection will be enabled for new ONTAP data collectors. To enable Advanced Data collection for current ONTAP data collectors, edit the data collector and expand the _Advanced Configuration_ section.
+
+* Advanced Data collection is not available for 7-mode ONTAP.
+
 ===== Advanced Counter Dashboards
 
 Cloud Insights comes with a variety of pre-designed dashboards to help get you started on visualizing ONTAP Advanced Counters for topics such as _Aggregate Performance_, _Volume Workload_, _Processor Activity_, and more. If you have at least one ONTAP data collector configured, these can be imported from the Dashboard Gallery on any dashboard list page.
@@ -48,11 +54,6 @@ More information can be found at the following links:
 
 * https://nabox.org/faq/ 
 
-Please note the following:
-
-* Advanced Data collection will be enabled for new ONTAP data collectors. To enable Advanced Data collection for current ONTAP data collectors, edit the data collector and expand the _Advanced Configuration_ section.
-
-* Advanced Data collection is not available for 7-mode ONTAP.
 
 ////
 ===== Advanced Data Polling
