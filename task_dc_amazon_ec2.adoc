@@ -27,8 +27,8 @@ Cloud Insights uses the Amazon EC2 data collector to acquire inventory and perfo
 In order to collect data from Amazon EC2 devices, you must have the following information: 
 
 * You must have one of the following:
-** The IAM Role for your Amazon EC2 cloud account, if using IAM Role Authentication. IAM Role only applies if your acquisition unit is installed on an AWS instance.
-** The IAM Access Key ID and Secret Access Key for your Amazon EC2 cloud account, if using IAM Access Key authentication.
+** The *IAM Role* for your Amazon EC2 cloud account, if using IAM Role Authentication. IAM Role only applies if your acquisition unit is installed on an AWS instance.
+** The *IAM Access Key* ID and Secret Access Key for your Amazon EC2 cloud account, if using IAM Access Key authentication.
 * You must have the "list organization" privilege
 * Port 433 HTTPS
 * EC2 Instances can be reported as a Virtual Machine, or (less naturally) a Host. EBS Volumes can be reported as both a VirtualDisk used by the VM, as well as a DataStore providing the Capacity for the VirtualDisk.
@@ -65,15 +65,38 @@ Enter data into the data collector fields according to the table below:
 |Performance Poll Interval (sec)|The default is 1800
 |===
 
+== IAM Access Key
+
+Access keys are long-term credentials for an IAM user or the AWS account root user. Access keys are used to sign programmatic requests to the AWS CLI or AWS API (directly or using the AWS SDK). 
+
+Access keys consist of two parts: an access key ID and a secret access key. When you use _IAM Access Key_ authentication (as opposed to _IAM Role_ authentication), you must use both the access key ID and secret access key together for authentication of requests. For more information, see the Amazon documentation on link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[Access Keys].
+
+
+== IAM Role
+
+When using _IAM Role_ authentication (as opposed to IAM Access Key authentication), you must ensure that the role you create or specify has the appropriate permissions needed to access your resources. 
+
+For example, if you create an IAM role named _InstanceEc2ReadOnly_, you must set up the policy to grant EC2 read-only list access permission to all EC2 resources for this IAM role. Additionally, you must grant STS (Security Token Service) access so that this role is allowed to assume roles cross accounts.
+
+After you create an IAM role, you can attach it when you create a new EC2 instance or any existing EC2 instance.
+
+After you attach the IAM role _InstanceEc2ReadOnly_ to an EC2 instance, you will be able to retrieve the temporary credential through instance metadata by IAM role name and use it to access AWS resources by any application running on this EC2 instance.
+
+For more information see the Amazon documentaiton on link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html[IAM Roles].
+
+Note: IAM role can be used only when the Acquisition Unit is running in an AWS instance.
+
 == Mapping Amazon tags to Cloud Insights annotations
 
 The Amazon EC2 data collector includes an option that allows you to populate Cloud Insights annotations with tags configured on EC2. The annotations must be named exactly as the EC2 tags. Cloud Insights will always populate same-named text-type annotations, and will make a "best attempt" to populate annotations of other types (number, boolean, etc). If your annotation is of a different type and the data collector fails to populate it, it may be necessary to remove the annotation and re-create it as a text type.
 
 Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if you create an annotation named "OWNER" in Cloud Insights, and tags named "OWNER", "Owner", and "owner" in EC2, all of the EC2 variations of "owner" will map to Cloud Insight's "OWNER" annotation. 
 
+////
 .Related Information
 
 * https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[Managing Access Keys for IAM Users^]
+////
 
 == Include Extra Regions
 
@@ -99,17 +122,6 @@ link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_
 link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[Creating a Role to Delegate Permissions to an IAM User]
 
 
-== IAM Roles
-
-When using _IAM Role_ security, you must ensure that the role you create or specify has the appropriate permissions needed to access your resources. 
-
-For example, if you create an IAM role named _InstanceEc2ReadOnly_, you must set up the policy to grant EC2 read-only list access permission to all EC2 resources for this IAM role. Additionally, you must grant STS (Security Token Service) access so that this role is allowed to assume roles cross accounts.
-
-After you create an IAM role, you can attach it when you create a new EC2 instance or any existing EC2 instance.
-
-After you attach the IAM role _InstanceEc2ReadOnly_ to an EC2 instance, you will be able to retrieve the temporary credential through instance metadata by IAM role name and use it to access AWS resources by any application running on this EC2 instance.
-
-Note: IAM role can be used only when the Acquisition Unit is running in an AWS instance.
            
 == Troubleshooting
 
