@@ -79,7 +79,7 @@ The agent for ingestion of telegraf integration data has been updated to link:ht
 
 Note: When configuring a Kubernetes data collector on the Kubernetes platform, you may see an "HTTP status 403 Forbidden" error in the lo, due to insufficient permissions in the "clusterrole" attribute.
 
-To work around this issue, add the following highlighted lines to the _rules:_ section of the endpoint-access clusterrole, and then restart the Telegraf pods.
+To work around this issue, add the following highlighted lines to the _rules:_ section of the endpoint-access clusterrole, and then restart the Telegraf pods. 
 
 --------------------------
 rules:
