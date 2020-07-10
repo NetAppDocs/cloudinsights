@@ -20,7 +20,6 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === July 2020
 
-
 ==== ONTAP Advanced Counter Data
 
 Cloud Insights takes advantage of NetApp's ONTAP-specific *Advanced Counter Data*, which provides a host of counters and metrics collected from ONTAP devices. ONTAP Advanced Counter Data is available to all NetApp ONTAP customers. These metrics enable customized and wide-ranging visualization in Cloud Insights widgets and dashboards.
@@ -73,6 +72,35 @@ Performance Policies and Violations are now found under the *Alerts* menu. Polic
 
 image:PoliciesMenuChange.png[Policies and Violations Menu]
 
+
+==== Updated Telegraf Agent
+
+The agent for ingestion of telegraf integration data has been updated to link:https://docs.influxdata.com/telegraf/v1.14/[version 1.14], which includes bugs fixes, security fixes, and new plugins.
+
+Note: When configuring a Kubernetes data collector on the Kubernetes platform, you may see an "HTTP status 403 Forbidden" error in the lo, due to insufficient permissions in the "clusterrole" attribute.
+
+To work around this issue, add the following highlighted lines to the _rules:_ section of the endpoint-access clusterrole, and then restart the Telegraf pods.
+
+--------------------------
+rules:
+- apiGroups:
+  - ""
+  - apps
+  - autoscaling
+  - batch
+  - extensions
+  - policy
+  - rbac.authorization.k8s.io
+  attributeRestrictions: null
+  resources:
+  - nodes/metrics
+  - nodes/proxy     <== Add this line
+  - nodes/stats
+  - pods            <== Add this line
+  verbs:
+  - get
+  - list            <== Add this line
+--------------------------
 
 === June 2020
 
