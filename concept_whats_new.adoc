@@ -20,6 +20,29 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === July 2020
 
+==== Metric/Counter updates
+
+The following capacity counters are available for use in the Server UI and REST API. Previously these counters were only available to DWH. 
+
+|===
+|Object Type	|Counter
+|Storage	|Capacity - Spare raw
+Capacity - Failed raw
+|Storage Pool	|Data capacity - Used
+Data capacity - Total
+Other capacity - Used
+Other capacity - Total
+Capacity - Raw
+Capacity - Soft limit
+|Internal Volume	|Data capacity - Used
+Data capacity - Total
+Other capacity - Used
+Other capacity - Total
+Clone saved capacity - Total
+|===
+
+Additionally, Virtual Machine Peak Memory and CPU utilization values are available for use in the Data Warehouse. 
+
 ==== ONTAP Advanced Counter Data
 
 Cloud Insights takes advantage of NetApp's ONTAP-specific *Advanced Counter Data*, which provides a host of counters and metrics collected from ONTAP devices. ONTAP Advanced Counter Data is available to all NetApp ONTAP customers. These metrics enable customized and wide-ranging visualization in Cloud Insights widgets and dashboards.
