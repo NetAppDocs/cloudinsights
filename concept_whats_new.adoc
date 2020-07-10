@@ -77,7 +77,7 @@ image:PoliciesMenuChange.png[Policies and Violations Menu]
 
 The agent for ingestion of telegraf integration data has been updated to link:https://docs.influxdata.com/telegraf/v1.14/[version 1.14], which includes bugs fixes, security fixes, and new plugins.
 
-Note: When configuring a Kubernetes data collector on the Kubernetes platform, you may see an "HTTP status 403 Forbidden" error in the lo, due to insufficient permissions in the "clusterrole" attribute.
+Note: When configuring a Kubernetes data collector on the Kubernetes platform, you may see an "HTTP status 403 Forbidden" error in the log, due to insufficient permissions in the "clusterrole" attribute.
 
 To work around this issue, add the following highlighted lines to the _rules:_ section of the endpoint-access clusterrole, and then restart the Telegraf pods. 
 
