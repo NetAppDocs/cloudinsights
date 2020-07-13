@@ -32,6 +32,88 @@ When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metr
 
 image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
 
+==== ONTAP Advanced Counter Data
+
+Cloud Insights takes advantage of NetApp's ONTAP-specific *Advanced Counter Data*, which provides a host of counters and metrics collected from ONTAP devices. ONTAP Advanced Counter Data is available to all NetApp ONTAP customers. These metrics enable customized and wide-ranging visualization in Cloud Insights widgets and dashboards.
+
+ONTAP Advanced Counters can be found by searching for "netapp_ontap" in the widget's query, and selecting from among the counters. 
+
+image:netapp_ontap counters.png[Searching for ONTAP Advanced Counters]
+
+You can refine your search by typing additional parts of the counter name. For example:
+
+* _lif_
+* _aggregate_
+* _offbox_vscan_server_
+* and many more
+
+image:ONTAP_Widget_Example2.png[ONTAP Widget Example - WAFL]
+image:ONTAP_Widget_Example1.png[ONTAP Widget Example - Cp Reads]
+
+Please note the following:
+
+* Advanced Data collection will be enabled by default for new ONTAP data collectors. To enable Advanced Data collection for your existing ONTAP data collectors, edit the data collector and expand the _Advanced Configuration_ section.
+
+* Advanced Data collection is not available for 7-mode ONTAP.
+
+===== Advanced Counter Dashboards
+
+Cloud Insights comes with a variety of pre-designed dashboards to help get you started on visualizing ONTAP Advanced Counters for topics such as _Aggregate Performance_, _Volume Workload_, _Processor Activity_, and more. If you have at least one ONTAP data collector configured, these can be imported from the Dashboard Gallery on any dashboard list page.
+
+===== Learn More
+
+More information on ONTAP Advanced Data can be found at the following links:
+
+* https://mysupport.netapp.com/site/tools/tool-eula/netapp-harvest (Note: You will need to sign in to NetApp Support)
+
+* https://nabox.org/faq/ 
+
+
+////
+===== Advanced Data Polling
+
+Be aware that ONTAP Advanced Data is polled at a more rapid rate than polling for traditional inventory and performance data, with the result that the Cloud Insights Data Collector list page may appear to show ONTAP devices in a state of near-constant polling. This is expected and does not indicate a problem in the Acquisition Unit, Cloud Insights, or the monitored cluster.
+
+image:ontap_advanced_polling.png[ONTAP Advanced Data polling]
+////
+
+
+==== Policies and Violations Menu
+
+Performance Policies and Violations are now found under the *Alerts* menu. Policy and Violation functionality are unchanged.
+
+image:PoliciesMenuChange.png[Policies and Violations Menu]
+
+
+==== Updated Telegraf Agent
+
+The agent for ingestion of telegraf integration data has been updated to link:https://docs.influxdata.com/telegraf/v1.14/[version 1.14], which includes bugs fixes, security fixes, and new plugins.
+
+Note: When configuring a Kubernetes data collector on the Kubernetes platform, you may see an "HTTP status 403 Forbidden" error in the log, due to insufficient permissions in the "clusterrole" attribute.
+
+To work around this issue, add the following highlighted lines to the _rules:_ section of the endpoint-access clusterrole, and then restart the Telegraf pods. 
+
+--------------------------
+rules:
+- apiGroups:
+  - ""
+  - apps
+  - autoscaling
+  - batch
+  - extensions
+  - policy
+  - rbac.authorization.k8s.io
+  attributeRestrictions: null
+  resources:
+  - nodes/metrics
+  - nodes/proxy     <== Add this line
+  - nodes/stats
+  - pods            <== Add this line
+  verbs:
+  - get
+  - list            <== Add this line
+--------------------------
+
 === June 2020
 
 ==== Simplified Data Collector Error Reporting
@@ -522,7 +604,7 @@ The data collectors selected must be the same vendor and model, and reside on th
 ==== Duplicating Dashboards
 
 * The ability to duplicate a dashboard has been added to the dashboard list page as a choice in the options menu for each dashboard, and on a dashboard's main page itself from the _Save_ menu.
-
+ 
 ==== Cloud Central products menu
 
 * The menu allowing you to switch to other NetApp Cloud Central products has moved to the upper right corner of the screen.
