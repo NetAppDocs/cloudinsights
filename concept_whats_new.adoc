@@ -20,6 +20,26 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === July 2020
 
+==== Enhanced Table Widget
+
+The dashboard/asset page Table widget includes the following enhancements:
+
+* "Split-Screen" view: Table widgets display the object/grouping on the left side, and the object data (attributes/metrics) on the right.
++
+image:TableWidgetLeftRightPanes.png[Table Widget showing left and right panes]
+
+* Multiple grouping: For Integration data (Kubernetes, ONTAP Advanced Metrics, Docker, etc.), Data is displayed according to the grouping attributes/you choose. 
++
+Grouping for Infrastructure data (storage, EC2, VM, ports, etc.) is by a single attribute as before.
++
+Grouping with Integration Data (shown in Edit mode):
+image:TableWidgetIntegrationEditMode.png[Integration Data Grouping in Table Widget]
++
+Grouping with Infrastructure data (shown in display mode):
+image:[Infrastructure Data Grouping in Table Widget]
+
+
+
 ==== ONTAP Advanced Counter Data
 
 Cloud Insights takes advantage of NetApp's ONTAP-specific *Advanced Counter Data*, which provides a host of counters and metrics collected from ONTAP devices. ONTAP Advanced Counter Data is available to all NetApp ONTAP customers. These metrics enable customized and wide-ranging visualization in Cloud Insights widgets and dashboards.
