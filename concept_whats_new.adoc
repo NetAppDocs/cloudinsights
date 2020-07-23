@@ -20,6 +20,24 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === July 2020
 
+==== Enhanced Table Widget
+
+The dashboard/asset page Table widget includes the following enhancements:
+
+* "Split-Screen" view: Table widgets display the object/grouping on the left side, and the object data (attributes/metrics) on the right.
++
+image:TableWidgetLeftRightPanes.png[Table Widget showing left and right panes]
+
+* Multiple attribute grouping: For Integration data (Kubernetes, ONTAP Advanced Metrics, Docker, etc.), you can choose multiple attributes for grouping. Data is displayed according to the grouping attributes/you choose. 
++
+Grouping with Integration Data (shown in Edit mode):
+image:TableWidgetIntegrationEditMode.png[Integration Data Grouping in Table Widget]
+
+* Grouping for Infrastructure data (storage, EC2, VM, ports, etc.) is by a single attribute as before. When grouping by an attribute which is not the object, the table will allow you to expand the group row to see all the objects within the group.
++
+Grouping with Infrastructure data (shown in display mode):
+image:TableWidgetPerformanceData.png[Infrastructure Data Grouping in Table Widget]
+
 ==== Metrics Filtering
 
 In addition to filtering on an object's attributes in a widget, you can now filter on metrics as well. 
