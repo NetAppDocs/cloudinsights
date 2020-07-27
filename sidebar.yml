@@ -39,248 +39,9 @@ entries:
       - title: Switching to Other Cloud Central Products
         url: /concept_other_cloud_products.html
         
-  - title: Data Collector Reference - Infrastructure
-    entries:
-      - title: Vendor Reference Overview
-        url: /concept_data_collector_reference.html
-      - title: AWS
-        url: /task_dc_amazon_ec2.html
-      - title: Azure
-        url: /task_dc_ms_azure.html
-      - title: Broadcom
-        entries:
-          - title: Brocade Network Advisor
-            url: /task_dc_brocade_bna.html 
-          - title: Fibre Channel Switch
-            url: /task_dc_brocade_fc_switch.html
-      - title: Ceph
-        url: /task_dc_ceph_storage.html
-      - title: Cisco
-        url: /task_dc_cisco_fc_switch.html
-      - title: Dell 
-        entries:
-          - title: XC series
-            url: /task_dc_dell_xc_series.html
-      - title: Dell EMC
-        entries:
-          - title: Data Domain
-            url: /task_dc_emc_datadomain.html
-#          - title: Dell Compellent
-#            url: /task_dc_dell_compellent.html
-          - title: Isilon
-            url: /task_dc_emc_isilon.html
-          - title: RecoverPoint
-            url: /task_dc_emc_recoverpoint.html
-          - title: ScaleIO
-            url: /task_dc_emc_scaleio.html
-          - title: Unity (VNXe)
-            url: /task_dc_emc_unity.html
-          - title: VMAX/PowerMax 
-            url: /task_dc_emc_vmax_powermax.html   
-          - title: VNX Block (Clariion)
-            url: /task_dc_emc_vnx_block.html
-          - title: VNX File (Celerra)
-            url: /task_dc_emc_vnx_file.html 
-          - title: VNX Unified
-            url: /task_dc_emc_vnx_unified.html
-          - title: VPLEX
-            url: /task_dc_emc_vplex.html
-          - title: XtremIO
-            url: /task_dc_emc_xio.html
-      - title: Fujitsu
-        url: /task_dc_fujitsu_eternus.html
-      - title: Google
-        url: /task_dc_google_cloud.html
-      - title: HP Enterprise
-        entries:
-          - title: HP 3PAR StoreServ
-            url: /task_dc_hp_3par.html
-          - title: HP Command View AE
-            url: /task_dc_hpe_commandview.html
-          - title: HPE Nimble
-            url: /task_dc_hpe_nimble.html
-      - title: Hitachi Data Systems
-        entries:
-          - title: HDS Command Suite
-            url: /task_dc_hds_commandsuite.html
-          - title: HDS HNAS
-            url: /task_dc_hds_nas.html
-      - title: Infinidat
-        url: /task_dc_infinidat_infinibox.html
-      - title: Huawei
-        url: /task_dc_huawei_oceanstor.html
-      - title: IBM
-        entries:
-          - title: CS Series
-            url: /task_dc_ibm_cs.html
-#          - title: IBM DS4000
-#            url: /task_dc_ibm_ds4000.html
-          - title: System Storage DS8000 Series
-            url: /task_dc_ibm_ds.html
-          - title: PowerVM
-            url: /task_dc_ibm_powervm.html
-          - title: San Volume Controller (SVC)
-            url: /task_dc_ibm_svc.html
-          - title: XIV/A9000
-            url: /task_dc_ibm_xiv.html 
-      - title: Lenovo
-        url: /task_dc_lenovo.html
-      - title: Microsoft
-        entries:
-          - title: Azure NetApp Files
-            url: /task_dc_ms_anf.html
-          - title: Hyper-V
-            url: /task_dc_ms_hyperv.html
-      - title: NetApp
-        entries:
-          - title: Cloud Volumes
-            url: /task_dc_na_cloud_volumes.html
-          - title: ONTAP Data Management Software 
-            url: /task_dc_na_cdot.html
-#            url: /task_dc_na_ontap.html 
-          - title: Data ONTAP 7-mode
-            url: /task_dc_na_7mode.html
-          - title: E-Series
-            url: /task_dc_na_eseries.html
-          - title: NetApp HCI Management Server
-            url: /task_dc_na_hci.html
-          - title: SolidFire
-            url: /task_dc_na_solidfire.html
-          - title: StorageGRID
-            url: /task_dc_na_storagegrid.html
-      - title: Nutanix
-        url: /task_dc_nutanix.html
-      - title: OpenStack
-        url: /task_dc_openstack.html
-      - title: Oracle
-        url: /task_dc_oracle_zfs.html
-      - title: Pure
-        url: /task_dc_pure_flasharray.html
-      - title: Red Hat
-        url: /task_dc_redhat_virtualization.html
-      - title: VMWare
-        url: /task_dc_vmware.html
+  - title: Data Collector List
+    url: /data_collector_list.html
         
-  - title: Data Collector Reference - Services
-    entries:
-      - title: Display Options
-        url: /concept_telegraf_display_options.html
-      - title: Host/Node
-        url: /task_config_telegraf_node.html
-      - title: ActiveMQ
-        url: /task_config_telegraf_activemq.html
-#      - title: aerospike
-#        url: task_config_telegraf_aerospike.html
-      - title: Apache
-        url: /task_config_telegraf_apache.html
-#      - title: cloudwatch
-#        url: task_config_telegraf_cloudwatch.html
-#      - title: bitbucket
-#        url: task_config_telegraf_bitbucket.html
-#      - title: cassandra
-#        url: task_config_telegraf_cassandra.html
-      - title: Consul 
-        url: /task_config_telegraf_consul.html
-      - title: Couchbase
-        url: /task_config_telegraf_couchbase.html
-      - title: CouchDB
-        url: /task_config_telegraf_couchdb.html
-#      - title: dcos
-#        url: task_config_telegraf_dcos.html
-      - title: Docker
-        url: /task_config_telegraf_docker.html
-      - title: Elasticsearch
-        url: /task_config_telegraf_elasticsearch.html
-#      - title: fibaro
-#        url: task_config_telegraf_fibaro.html
-      - title: Flink
-        url: /task_config_telegraf_flink.html
-#      - title: fluentd
-#        url: task_config_telegraf_fluentd.html
-#      - title: graylog
-#        url: task_config_telegraf_graylog.html
-      - title: Hadoop
-        url: /task_config_telegraf_hadoop.html
-      - title: HAProxy
-        url: /task_config_telegraf_haproxy.html
-#      - title: icinga2
-#        url: task_config_telegraf_icinga2.html
-#      - title: influxdbv2
-#        url: task_config_telegraf_influxdbv2.html
-      - title: Java
-        url: /task_config_telegraf_jvm.html
-#      - title: jboss
-#        url: task_config_telegraf_jboss.html
-      - title: Kafka
-        url: /task_config_telegraf_kafka.html
-      - title: Kapacitor
-        url: task_config_telegraf_kapacitor.html
-      - title: Kibana
-        url: /task_config_telegraf_kibana.html
-      - title: Kubernetes
-        url: /task_config_telegraf_kubernetes.html
-#      - title: mailchimp
-#        url: task_config_telegraf_mailchimp.html
-      - title: Memcached
-        url: /task_config_telegraf_memcached.html
-#      - title: mesos
-#        url: task_config_telegraf_mesos.html
-      - title: MongoDB
-        url: /task_config_telegraf_mongodb.html
-      - title: MySQL
-        url: /task_config_telegraf_mysql.html
-      - title: Netstat
-        url: /task_config_telegraf_netstat.html
-      - title: Nginx
-        url: /task_config_telegraf_nginx.html
-#      - title: nvidia_smi
-#        url: task_config_telegraf_nvidia_smi.html
-#      - title: openldap
-#        url: task_config_telegraf_openldap.html
-      - title: OpenZFS
-        url: task_config_telegraf_openzfs.html
-#      - title: pgbouncer
-#        url: task_config_telegraf_pgbouncer.html
-#      - title: postfix
-#        url: task_config_telegraf_postfix.html
-      - title: PostgreSQL
-        url: /task_config_telegraf_postgresql.html
-#      - title: powerdns
-#        url: task_config_telegraf_powerdns.html
-#      - title: prometheus
-#        url: task_config_telegraf_prometheus.html
-      - title: Puppet
-        url: /task_config_telegraf_puppetagent.html
-#      - title: rabbitmq
-#        url: task_config_telegraf_rabbitmq.html
-      - title: Redis
-        url: /task_config_telegraf_redis.html
-      - title: RethinkDB
-        url: task_config_telegraf_rethinkdb.html
-#      - title: riak
-#        url: task_config_telegraf_riak.html
-#      - title: salesforce
-#        url: task_config_telegraf_salesforce.html
-#      - title: solr
-#        url: task_config_telegraf_solr.html
-#      - title: sqlserver
-#        url: task_config_telegraf_sqlserver.html
-#      - title: statsd
-#        url: task_config_telegraf_statsd.html
-#      - title: tomcat
-#        url: task_config_telegraf_tomcat.html
-#      - title: twemproxy
-#        url: task_config_telegraf_twemproxy.html
-#      - title: varnish
-#        url: task_config_telegraf_varnish.html
-#      - title: vsphere
-#        url: task_config_telegraf_vsphere.html
-#      - title: webhooks
-#        url: task_config_telegraf_webhooks.html
-#      - title: weblogic
-#        url: task_config_telegraf_weblogic.html
-      - title: Zookeeper
-        url: task_config_telegraf_zookeeper.html
         
   - title: Subscribing to Cloud Insights
     url: /concept_subscribing_to_cloud_insights.html
@@ -364,6 +125,8 @@ entries:
     entries:
       - title: Reporting Overview
         url: /reporting_overview.html
+      - title: Reporting User Rules
+        url: /reporting_user_roles.html
       - title: Using Pre-Defined Reports
         url: /reporting_predefined_reports.html
       - title: Storage Manager Dashboard
@@ -375,7 +138,7 @@ entries:
       - title: Custom Reports
         url: /reporting_creating_custom_reports.html
       - title: Data Models
-        url: /reporting_data_model.html
+        url: /reporting_creating_custom_reports.html#reporting-data-models
       - title: Schema Diagrams
         url: /reporting_schema_diagrams.html
       - title: Schema Tables
@@ -414,8 +177,8 @@ entries:
             url: /forensic_user_overview.html
           - title: Forensic Entity Detail
             url: /forensic_entity_detail.html
-          - title: Forensic Community Detail 
-            url: /forensic_community_overview.html
+#          - title: Forensic Community Detail 
+#            url: /forensic_community_overview.html
           - title: Forensic Activity History
             url: /forensic_activity_history.html          
 
@@ -443,6 +206,185 @@ entries:
         url: /concept_requesting_support.html
       - title: Data Collector Support Matrix
         url: /reference_data_collector_support_matrix.html
+        
+      - title: Data Collector Reference - Infrastructure
+        entries:
+          - title: Vendor Reference Overview
+            url: /concept_data_collector_reference.html
+          - title: AWS
+            url: /task_dc_amazon_ec2.html
+          - title: Azure
+            url: /task_dc_ms_azure.html
+          - title: Broadcom
+            entries:
+              - title: Brocade Network Advisor
+                url: /task_dc_brocade_bna.html 
+              - title: Fibre Channel Switch
+                url: /task_dc_brocade_fc_switch.html
+          - title: Ceph
+            url: /task_dc_ceph_storage.html
+          - title: Cisco
+            url: /task_dc_cisco_fc_switch.html
+          - title: Dell 
+            entries:
+              - title: XC series
+                url: /task_dc_dell_xc_series.html
+          - title: Dell EMC
+            entries:
+              - title: Data Domain
+                url: /task_dc_emc_datadomain.html
+              - title: ECS
+                url: /task_dc_emc_ecs.html
+              - title: Isilon
+                url: /task_dc_emc_isilon.html
+              - title: RecoverPoint
+                url: /task_dc_emc_recoverpoint.html
+              - title: ScaleIO
+                url: /task_dc_emc_scaleio.html
+              - title: Unity (VNXe)
+                url: /task_dc_emc_unity.html
+              - title: VMAX/PowerMax 
+                url: /task_dc_emc_vmax_powermax.html   
+              - title: VNX Block (Clariion)
+                url: /task_dc_emc_vnx_block.html
+              - title: VNX File (Celerra)
+                url: /task_dc_emc_vnx_file.html 
+              - title: VNX Unified
+                url: /task_dc_emc_vnx_unified.html
+              - title: VPLEX
+                url: /task_dc_emc_vplex.html
+              - title: XtremIO
+                url: /task_dc_emc_xio.html
+          - title: Fujitsu
+            url: /task_dc_fujitsu_eternus.html
+          - title: Google
+            url: /task_dc_google_cloud.html
+          - title: HP Enterprise
+            entries:
+              - title: HP 3PAR StoreServ
+                url: /task_dc_hp_3par.html
+              - title: HP Command View AE
+                url: /task_dc_hpe_commandview.html
+              - title: HPE Nimble
+                url: /task_dc_hpe_nimble.html
+          - title: Hitachi Data Systems
+            entries:
+              - title: HDS Command Suite
+                url: /task_dc_hds_commandsuite.html
+              - title: HDS HNAS
+                url: /task_dc_hds_nas.html
+          - title: Infinidat
+            url: /task_dc_infinidat_infinibox.html
+          - title: Huawei
+            url: /task_dc_huawei_oceanstor.html
+          - title: IBM
+            entries:
+              - title: Cleversafe
+                url: /task_dc_ibm_cleversafe.html
+              - title: CS Series
+                url: /task_dc_ibm_cs.html
+              - title: System Storage DS8000 Series
+                url: /task_dc_ibm_ds.html
+              - title: PowerVM
+                url: /task_dc_ibm_powervm.html
+              - title: San Volume Controller (SVC)
+                url: /task_dc_ibm_svc.html
+              - title: XIV/A9000
+                url: /task_dc_ibm_xiv.html 
+          - title: Lenovo
+            url: /task_dc_lenovo.html
+          - title: Microsoft
+            entries:
+              - title: Hyper-V
+                url: /task_dc_ms_hyperv.html
+          - title: NetApp
+            entries:
+              - title: Cloud Volumes
+                url: /task_dc_na_cloud_volumes.html
+              - title: ONTAP Data Management Software 
+                url: /task_dc_na_cdot.html
+              - title: Data ONTAP 7-mode
+                url: /task_dc_na_7mode.html
+              - title: E-Series
+                url: /task_dc_na_eseries.html
+              - title: NetApp HCI Management Server
+                url: /task_dc_na_hci.html
+              - title: SolidFire
+                url: /task_dc_na_solidfire.html
+              - title: StorageGRID
+                url: /task_dc_na_storagegrid.html
+          - title: Nutanix
+            url: /task_dc_nutanix.html
+          - title: OpenStack
+            url: /task_dc_openstack.html
+          - title: Oracle
+            url: /task_dc_oracle_zfs.html
+          - title: Pure
+            url: /task_dc_pure_flasharray.html
+          - title: Red Hat
+            url: /task_dc_redhat_virtualization.html
+          - title: VMWare
+            url: /task_dc_vmware.html
+            
+      - title: Data Collector Reference - Services
+        entries:
+          - title: Display Options
+            url: /concept_telegraf_display_options.html
+          - title: Host/Node
+            url: /task_config_telegraf_node.html
+          - title: ActiveMQ
+            url: /task_config_telegraf_activemq.html
+          - title: Apache
+            url: /task_config_telegraf_apache.html
+          - title: Consul 
+            url: /task_config_telegraf_consul.html
+          - title: Couchbase
+            url: /task_config_telegraf_couchbase.html
+          - title: CouchDB
+            url: /task_config_telegraf_couchdb.html
+          - title: Docker
+            url: /task_config_telegraf_docker.html
+          - title: Elasticsearch
+            url: /task_config_telegraf_elasticsearch.html
+          - title: Flink
+            url: /task_config_telegraf_flink.html
+          - title: Hadoop
+            url: /task_config_telegraf_hadoop.html
+          - title: HAProxy
+            url: /task_config_telegraf_haproxy.html
+          - title: Java
+            url: /task_config_telegraf_jvm.html
+          - title: Kafka
+            url: /task_config_telegraf_kafka.html
+          - title: Kapacitor
+            url: task_config_telegraf_kapacitor.html
+          - title: Kibana
+            url: /task_config_telegraf_kibana.html
+          - title: Kubernetes
+            url: /task_config_telegraf_kubernetes.html
+          - title: Memcached
+            url: /task_config_telegraf_memcached.html
+          - title: MongoDB
+            url: /task_config_telegraf_mongodb.html
+          - title: MySQL
+            url: /task_config_telegraf_mysql.html
+          - title: Netstat
+            url: /task_config_telegraf_netstat.html
+          - title: Nginx
+            url: /task_config_telegraf_nginx.html
+          - title: OpenZFS
+            url: task_config_telegraf_openzfs.html
+          - title: PostgreSQL
+            url: /task_config_telegraf_postgresql.html
+          - title: Puppet
+            url: /task_config_telegraf_puppetagent.html
+          - title: Redis
+            url: /task_config_telegraf_redis.html
+          - title: RethinkDB
+            url: task_config_telegraf_rethinkdb.html
+          - title: Zookeeper
+            url: task_config_telegraf_zookeeper.html
+        
       - title: Object Icon Reference
         url: /reference_object_icons.html
 #      - title: FAQ
@@ -450,4 +392,5 @@ entries:
 #      - title: Cloud Insights Release Notes
 #        url: /TBD.html
       
+
       
