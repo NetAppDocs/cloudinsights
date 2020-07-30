@@ -31,6 +31,30 @@ You can also take a snapshot manually from the alert page.
 
 image:AlertActionsAutomaticExample.png[Alert Action Screen,1000]
 
+==== Metric/Counter updates
+
+The following capacity counters are available for use in Cloud Insights UI and REST API. Previously these counters were only available for the Data Warehouse / Reporting. 
+
+[%header,cols=2*]
+|===
+|Object Type	|Counter
+|Storage	|Capacity - Spare Raw
+Capacity - Failed Raw
+|Storage Pool	|Data Capacity - Used
+Data Capacity - Total
+Other Capacity - Used
+Other Capacity - Total
+Capacity - Raw
+Capacity - Soft Limit
+|Internal Volume	|Data Capacity - Used
+Data Capacity - Total
+Other Capacity - Used
+Other Capacity - Total
+Clone Saved Capacity - Total
+|===
+
+//Additionally, Virtual Machine Peak Memory and CPU utilization values are available for use in the Data Warehouse. 
+
 ==== Cloud Secure Potential Attack Detection
 
 Cloud Secure now detects potential attacks such as ransomware. Click on an alert in the Alerts list page to open a detail page showing the following:
