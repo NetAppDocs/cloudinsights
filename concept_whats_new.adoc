@@ -26,6 +26,46 @@ In addition to the current ability to set performance policies for storage objec
 
 image:define_monitor_conditions_2.png[Monitor Conditions]
 
+==== Cloud Secure _Take a Snapshot_ Action
+
+Cloud Secure protects your data by automatically taking a snapshot when malicious activity is detected, ensuring that your data is safely backed up.
+
+You can define automated response policies that take a snapshot when ransomware attack or other abnormal user activity is detected.
+You can also take a snapshot manually from the alert page.
+
+//When Cloud Secure detects risky user behavior, Alert Actions allow Administrators to trigger manual snapshots. Snapshots can also be associated with policies which can be triggered on alerts.
+
+Automatic Snapshot taken:
+image:AlertActionsAutomaticExample.png[Alert Action Screen,1000]
+
+Manual Snapshot:
+image:AlertActionsExample.png[Alert Action Screen,1000]
+
+
+==== Metric/Counter updates
+
+The following capacity counters are available for use in Cloud Insights UI and REST API. Previously these counters were only available for the Data Warehouse / Reporting. 
+
+[%header,cols=2*]
+|===
+|Object Type	|Counter
+|Storage	|Capacity - Spare Raw
+Capacity - Failed Raw
+|Storage Pool	|Data Capacity - Used
+Data Capacity - Total
+Other Capacity - Used
+Other Capacity - Total
+Capacity - Raw
+Capacity - Soft Limit
+|Internal Volume	|Data Capacity - Used
+Data Capacity - Total
+Other Capacity - Used
+Other Capacity - Total
+Clone Saved Capacity - Total
+|===
+
+//Additionally, Virtual Machine Peak Memory and CPU utilization values are available for use in the Data Warehouse. 
+
 ==== Cloud Secure Potential Attack Detection
 
 Cloud Secure now detects potential attacks such as ransomware. Click on an alert in the Alerts list page to open a detail page showing the following:
