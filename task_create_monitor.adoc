@@ -16,7 +16,7 @@ summary: Create monitors to alert on performance or inventory thresholds
 :imagesdir: ./media/
 
 [.lead]
-You create monitors to set thresholds that trigger alerts to notify you about issues related to the resources in your network. you can create a monitor to alert for _node write latency_ for any of a multitude of protocols.
+You create monitors to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a monitor to alert for _node write latency_ for any of a multitude of protocols.
 
 TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
 
@@ -26,19 +26,21 @@ When the monitored threshold and conditions are reached or exceeded, Cloud Insig
 
 === Monitor or Performance Policy?
 
-What's the difference between "Performance Policy" and "Monitors"?
+What's the difference between a *Performance Policy* and a *Monitor*?
 
 _Policies_ allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports. These policies trigger violations when thresholds are met or exceeded. Each violation can be investigated for troubleshooting. Policies are described in detail elsewhere in this link:task_create_performance_policies.html[documentation].
 
-_Monitors_ provide similar functionality for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins, and alert when thresholds are crossed. With Monitors, you can set thresholds for Warning- or Critical-level alerts, or both.
+_Monitors_ provide similar functionality for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins, and alert when thresholds are crossed. With Monitors, you can set thresholds for Warning- or Critical-level alerts, or both. 
 
-In both cases, emails can be sent when a policy or monitor is triggered. Policies and Monitors are available under the *Alerts* menu.
+Policies and Monitors are available under the *Alerts* menu.
 
 image:AlertsMenuLarger.png[Alerts Menu]
 
+Emails can be sent when a policy or monitor is triggered. 
+
 === Creating a Monitor
 
-In the example below, we will create a Monitor to give a Warning alert when Volume Node NFS Write Latency reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
+In the example below, we will create a Monitor to give a Warning alert when _Volume Node NFS Write Latency_ reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
 
 ==== Requirements
 
@@ -54,10 +56,18 @@ The Monitors list page is displayed, showing currently configured monitors.
 +
 The Monitor Configuration dialog is displayed.
 . In the drop-down, search for and choose an object type and metric to monitor, for example _netapp_ontap_volume_node_nfs_write_latency_.
-+
-You can set filters to narrow down which storage objects to monitor.
 
-image:select_metric_to_monitor.png[Select Metric]
+You can set filters to narrow down which object attributes or metrics to monitor. 
+
+//image:select_metric_to_monitor.png[Select Metric]
+
+image:MonitorMetricFilter.png[Metrics Filtering]
+
+//When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
+
+When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
+
+//image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
 
 ==== Define the Conditions of the Monitor. 
 
