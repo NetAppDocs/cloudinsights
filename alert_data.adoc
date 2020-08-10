@@ -100,3 +100,44 @@ You can filter Alerts by the following:
 * The type of _Attacks/Warnings_
 * The _User_ whose actions triggered the alert/warning
 
+
+== The Alert Details page
+
+You can click an alert link on the Alerts list page to open a detail page for the alert. Alert details may vary according to the type of attack or alert. For example, a Ransomware Attack detail page may show the following information:
+
+=== Summary section:
+
+* Attack type (in this example, Ransomware) and Alert ID (assigned by Cloud Secure)
+* Date and Time the attack was detected
+* Action Taken (for example, an automatic snapshot was taken. Time of snapshot is shown immediately below the summary section))
+* Status (New, In Progress, etc.)
+
+=== Attack Results section:
+
+* Counts of Affected Volumes and Files
+* An accompanying summary of the detection
+* A graph showing the file activity during the attack
+
+=== Related Users section:
+
+This section shows details about the user involved in the potential attack, including a graph of Top Activity for the user.
+
+Alerts page showing potential ransomware attack:
+image:RansomwareAlertExample.png[Ransomware Alert Example]
+
+Detail page for potential ransomware attack:
+image:RansomwareDetailPageExample.png[Ransomware Detail Page Example]
+
+
+== _Take a Snapshot_ Action
+
+Cloud Secure protects your data by automatically taking a snapshot when malicious activity is detected, ensuring that your data is safely backed up.
+
+You can define link:cs_automated_response_policies.html[automated response policies] that take a snapshot when ransomware attack or other abnormal user activity is detected.
+You can also take a snapshot manually from the alert page.
+
+Automatic Snapshot taken:
+image:AlertActionsAutomaticExample.png[Alert Action Screen,1000]
+
+Manual Snapshot:
+image:AlertActionsExample.png[Alert Action Screen,1000]
