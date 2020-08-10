@@ -42,15 +42,17 @@ History shows the number of alerts that have been raised over the last seven day
 
 == Alert
 
-The Alert list shows the total number of Potential Attacks and/or Warnings that have been raised in the selected time range, and lists the following for each alert:
+The Alert list displays a graph showing the total number of Potential Attacks and/or Warnings that have been raised in the selected time range, followed by a list of the attacks and/or warnings that occurred in that time range. You can change the time range by adjusting the start time and end time sliders in the graph.
 
-Potential Attacks: 
+The following is displayed for each alert:
 
-* The potential Attack Type (for example, Ransomware)
+*Potential Attacks:* 
 
-* The date and time the potential attack was detected. 
+* The _Potential Attack_ type (for example, Ransomware)
 
-* The Status of the alert:
+* The date and time the potential attack was _Detected_
+
+* The _Status_ of the alert:
 
 ** New (this is the default for new alerts)
 ** In Progress
@@ -60,22 +62,41 @@ Potential Attacks:
 +
 image:CloudSecureChangeAlertStatus.png[Change Alert Status]
 
-* The User whose behavior triggered the alert
+* The _User_ whose behavior triggered the alert
 
-* Evidence of the attack (for example, a large number of files was encrypted)
+* _Evidence_ of the attack (for example, a large number of files was encrypted)
 
-* Action Taken (for example, a snapshot was taken)
+* The _Action Taken_ (for example, a snapshot was taken)
+
+
+*Warnings:*
+
+* The _Abnormal Behavior_ that triggered the warning
+
+* The date and time the behavior occurred
+
+* The _Status_ of the alert:
+
+** New (this is the default for new alerts)
+** In Progress
+** Resolved
+** Dismissed
++ An administrator can change the status of the alert and add a note to assist with investigation.
+
+* The _User_ whose behavior triggered the alert
+
+* A description of the _Change_ (for example, an abnormal increase in file access)
+
+* The _Action Taken_
 
 
 
-Filter Options 
+== Filter Options 
 
 You can filter Alerts by the following:
 
-* Action Taken
-* Alert Type
-* Note
-* Severity
-* Status
-* Synopsis
-* User
+* the _Status_ of the alert
+* Specific text in the _Note_
+* The type of _Attacks/Warnings_
+* The _User_ whose actions triggered the alert/warning
+
