@@ -14,4 +14,11 @@ summary: You can set automated response policies for potential attacks (such as 
 :imagesdir: ./media
 
 [.lead]
+Response Policies trigger actions such as taking a snapshot in the event of an attack or abnormal user behavior. 
+
+You can set policies on specific devices or all devices. To set a response policy, select *Admin > Automated Response Policies* and click the appropriate *+Policy+ button. You can create policies for Attacks or for Warnings.
+
+image:AutomatedAttackPolicy.png[Create Attack Policy]
+
+When an alert is triggered against the specified devices (or all devices, if selected), the automated response policy takes a snapshot of your data. You can see snapshot status on the link:cs_alert_data.html#the-alert-details-page[Alert detail page].
 
