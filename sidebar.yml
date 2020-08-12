@@ -58,6 +58,7 @@ entries:
             url: /task_dashboard_example_VM_performance.html
       - title: Dashboard Best Practices
         url: /concept_dashboard_best_practices.html
+
   - title: Working with Queries
     entries:
       - title: Querying Assets
@@ -74,6 +75,7 @@ entries:
         url: /task_query_assign_multiple_applicationss.html
       - title: Copying table values to the Clipboard
         url: /task_query_copy_table_values.html
+
   - title: Working with Annotations
     entries:
       - title: Defining Annotations
@@ -84,26 +86,44 @@ entries:
         url: /task_create_annotation_rules.html
       - title: Importing Annotations with API
         url: /task_annotation_import.html
+
   - title: Working with Applications
     entries:
       - title: Application Concepts
         url: /concept_about_applications.html
       - title: Configuring Applications
         url: /task_create_application.html
+
+  - title: Monitors and Alerts
+    entries:
+      - title: Creating Monitors
+        url: /task_create_monitor.html
+      - title: Viewing and Managing Alerts
+        url: /task_view_and_manage_alerts.html
+#      - title: Alerting with Performance Policies
+#        url: /task_create_monitor.html
+      - title: Configuring Notification Recipients
+        url: /concept_notifications_email.html 
+
   - title: Working with APIs
     url: /API_Overview.html
   - title: Performance Policies and Alerts
+
     entries:
       - title: Alerting with Performance Policies
-        url: /task_create_performance_policies.html
+        url: /task_create_monitor.html
+      - title: Viewing and Managing Alerts
+        url: /task_view_and_manage_alerts.html
       - title: Configuring Notification Recipients
         url: /concept_notifications_email.html 
+
   - title: Monitoring your Environment
     entries:
       - title: Auditing Events
         url: /concept_audit.html
       - title: TTL and Downsampling
         url: concept_ttl_and_downsampling.html
+
   - title: Asset Page Information
     entries:
       - title: Asset Page Overview

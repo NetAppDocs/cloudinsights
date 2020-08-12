@@ -20,6 +20,12 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === July 2020
 
+==== Monitoring and Alerting
+
+In addition to the current ability to set performance policies for storage objects, VMs, EC2, and ports, Cloud Insights Standard Edition now includes the ability to link:task_create_monitor.html[configure monitors] for thresholds on Integration data for Kubernetes, ONTAP advanced metrics, and Telegraf plugins. You simply create a monitor for each object metric you want to trigger alerts, set the conditions for warning-level or critical-level thresholds, and specify the email recipient(s) desired for each level. You can then link:task_view_and_manage_alerts.html[view and manage alerts] to track trends or troubleshoot issues.
+
+image:define_monitor_conditions_2.png[Monitor Conditions]
+
 ==== Cloud Secure _Take a Snapshot_ Action
 
 Cloud Secure protects your data by automatically taking a snapshot when malicious activity is detected, ensuring that your data is safely backed up.
@@ -211,8 +217,6 @@ image:Object_Metric_Chooser.png[Object/Metric Chooser]
 * Multiple tags grouping: When working with integration data (Kubernetes, etc.), you may group the data by multiple tags/attributes. For example, Sum memory usage by Kubernetes Namespace and Container name.
 
 image:MultipleGroupsIntegrationLineChart.png[Multiple grouping when displaying integration data]
-
-
 
 === May 2020
 
