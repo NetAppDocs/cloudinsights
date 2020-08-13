@@ -71,7 +71,7 @@ See link:concept_cs_agent_requirements.html[Agent requirements] for configuratio
 
 * When an Agent is installed in an AWS EC2 instance to monitor a Cloud ONTAP SVM, the Agent and Storage must be in the same VPC. If they are in separate VPCs, there must be a valid route between the VPC’s.
 
-If you cannot use the "vsadmin" user, create the following roles for the data collector using the "CAuser" user: 
+If you cannot use the "vsadmin" user, create the following roles for the data collector using the "causer" user: 
 
 `security login show -vserver svmname`
 `security login role create -vserver svmname -role carole -cmddirname DEFAULT -access none`
@@ -82,7 +82,9 @@ If you cannot use the "vsadmin" user, create the following roles for the data co
 `security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
 `security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
 
-NOTE: If the data collector is added using "CAuser", link:cs_cs_automated_response_policies.html[alert response snapshots] cannot be taken. You must use "Vsadmin" instead if you require snapshots.
+NOTE: If the data collector is added using "causer", link:cs_cs_automated_response_policies.html[alert response snapshots] cannot be taken by default. To enable snapshots for causer, execute the following command in the ONTAP CLI:
++
+ security login role create -vserver <vservername> -role carole -cmddirname "volume snapshot" -access all .
 
 
  
