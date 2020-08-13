@@ -82,9 +82,7 @@ If you cannot use the "vsadmin" user, create the following roles for the data co
 `security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
 `security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
 
-Note that If the data collector is added using "causer", link:cs_cs_automated_response_policies.html[alert response snapshots] cannot be taken by default. To enable snapshots for causer, the command above mus also include the following line:
-
- security login role create -vserver <vservername> -role carole -cmddirname "volume snapshot" -access all
+Note that If the data collector is added using "causer", link:cs_cs_automated_response_policies.html[alert response snapshots] cannot be taken by default. To enable snapshots for causer, the command above must also include the highlighted line below:
 
 `security login show -vserver svmname`
 `security login role create -vserver svmname -role carole -cmddirname DEFAULT -access none`
