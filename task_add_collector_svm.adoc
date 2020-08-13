@@ -91,7 +91,7 @@ Note that If the data collector is added using "causer", link:cs_cs_automated_re
 `security login role create -vserver svmname -role carole -cmddirname volume -access readonly`
 `security login role create -vserver svmname -role carole -cmddirname vserver -access readonly`
 `security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
-*[red]`security login role create -vserver <vservername> -role carole -cmddirname "volume snapshot" -access all`*
+[red]*`security login role create -vserver <vservername> -role carole -cmddirname "volume snapshot" -access all`*
 `security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
 
 
