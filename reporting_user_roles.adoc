@@ -17,8 +17,16 @@ keywords: reporting, cognos, data warehouse, dwh, users, roles, user roles
 
 
 [.lead]
-Each Cloud Insights Reporting user account is assigned a role with a set of permissions. 
+Each Cloud Insights user inherits a Reporting role based on their Cloud Insights role. 
 
+|===
+|Cloud Insights Role|Reporting Role|Reporting Permissions
+|Guest|Consumer|Can view, schedule, and run reports and set personal preferences such as those for languages and time zones. Consumers cannot create reports or perform administrative tasks.
+|User|Author|Can perform all Consumer functions as well as create and manage reports and dashboards.
+|Administrator|Administrator|Can perform all Author functions as well as all administrative tasks such as import and export of report definitions, configuration of reports, configuration of data sources, and the shutdown and restart of reporting tasks.
+|===
+
+////
 The Reporting roles available are:
 
 * *Cloud Insights Consumers* can view, schedule, and run reports and set personal preferences such as those for languages and time zones.
@@ -28,6 +36,8 @@ Note: Consumers cannot create reports or perform administrative tasks.
 * *Cloud Insights Authors* can perform all Consumer functions as well as create and manage reports and dashboards
 
 * *Cloud Insights Administrators* can perform all Author functions as well as all administrative tasks such as import and export of report definitions, configuration of reports, configuration of data sources, and the shutdown and restart of reporting tasks.
+////
+
 
 ////
 Recipient
