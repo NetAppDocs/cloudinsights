@@ -26,6 +26,8 @@ Each Cloud Insights user inherits a Reporting role based on their Cloud Insights
 |Administrator|Administrator|Can perform all Author functions as well as all administrative tasks such as import and export of report definitions, configuration of reports, configuration of data sources, and the shutdown and restart of reporting tasks.
 |===
 
+
+
 ////
 The Reporting roles available are:
 
@@ -53,7 +55,7 @@ Administrator
 Performs reporting administrative tasks such as the import and export of report definitions, configuration of reports, configuration of data sources, and the shutdown and restart of reporting tasks.
 ////
 
-The following table shows the functions available to each role.
+The following table shows the functions available to each Reporting role.
 
 |===
 |Feature	|Consumer	|Author	|Administrator
@@ -77,8 +79,9 @@ Note: Report authoring capabilities require Insight Plan license. You can add ad
 These reporting user roles do not affect direct database access. These reporting user roles do not impact your ability to create SQL queries using the data marts.
 ////
 
-== Single Sign-On (SSO) with Reporting
+== Setting Reporting (Cognos) email preferences
 
-TBD
+IMPORTANT: If you change your user email preferences within Cloud Insights Reporting (i.e. the Cognos application), those preferences are active _only for the current session_. Logging out of Cognos and back in again will reset your email preferences.
+
 
 
