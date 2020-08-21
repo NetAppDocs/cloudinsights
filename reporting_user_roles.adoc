@@ -41,20 +41,6 @@ Note: Consumers cannot create reports or perform administrative tasks.
 ////
 
 
-////
-Recipient
-Views OnCommand Insight Reporting portal reports and sets personal preferences such as those for languages and time zones.
-Note: Recipients cannot create reports, run reports, schedule reports, export reports, nor perform administrative tasks.
-Business Consumer
-Runs reports and performs all Recipient options.
-Business Author
-Views scheduled reports, runs reports interactively, creates stories, in addition to performing all Business Consumer options.
-Pro Author
-Creates reports, creates packages and data modules, in addition to performing all Business Author options.
-Administrator
-Performs reporting administrative tasks such as the import and export of report definitions, configuration of reports, configuration of data sources, and the shutdown and restart of reporting tasks.
-////
-
 The following table shows the functions available to each Reporting role.
 
 |===
@@ -72,16 +58,9 @@ The following table shows the functions available to each Reporting role.
 //|Number of users	Number of OnCommand Insight users	20	2	1	1
 |===
 
-////
-When you add a new Data Warehouse and Reporting user, if you exceed the limit in a role, the user is added as "deactivated," and you need to deactivate or remove another user with that role to give a new user membership.
-
-Note: Report authoring capabilities require Insight Plan license. You can add additional Business Author and Pro Author users by purchasing the ARAP (Additional Report Authoring Package). Contact your OnCommand Insight representative for assistance.
-These reporting user roles do not affect direct database access. These reporting user roles do not impact your ability to create SQL queries using the data marts.
-////
-
 == Setting Reporting (Cognos) email preferences
 
-IMPORTANT: If you change your user email preferences within Cloud Insights Reporting (i.e. the Cognos application), those preferences are active _only for the current session_. Logging out of Cognos and back in again will reset your email preferences.
+NOTE: If you change your user email preferences within Cloud Insights Reporting (i.e. the Cognos application), those preferences are active _only for the current session_. Logging out of Cognos and back in again will reset your email preferences.
 
 
 
