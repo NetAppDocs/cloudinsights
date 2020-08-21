@@ -18,6 +18,188 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== August 2020
+
+==== Monitoring and Alerting
+
+In addition to the current ability to set performance policies for storage objects, VMs, EC2, and ports, Cloud Insights Standard Edition now includes the ability to link:task_create_monitor.html[configure monitors] for thresholds on Integration data for Kubernetes, ONTAP advanced metrics, and Telegraf plugins. You simply create a monitor for each object metric you want to trigger alerts, set the conditions for warning-level or critical-level thresholds, and specify the email recipient(s) desired for each level. You can then link:task_view_and_manage_alerts.html[view and manage alerts] to track trends or troubleshoot issues.
+
+image:define_monitor_conditions_2.png[Monitor Conditions]
+
+=== July 2020
+
+==== Cloud Secure _Take a Snapshot_ Action
+
+Cloud Secure protects your data by automatically taking a snapshot when malicious activity is detected, ensuring that your data is safely backed up.
+
+You can define automated response policies that take a snapshot when ransomware attack or other abnormal user activity is detected.
+You can also take a snapshot manually from the alert page.
+
+//When Cloud Secure detects risky user behavior, Alert Actions allow Administrators to trigger manual snapshots. Snapshots can also be associated with policies which can be triggered on alerts.
+
+Automatic Snapshot taken:
+image:AlertActionsAutomaticExample.png[Alert Action Screen,1000]
+
+Manual Snapshot:
+image:AlertActionsExample.png[Alert Action Screen,1000]
+
+
+==== Metric/Counter updates
+
+The following capacity counters are available for use in Cloud Insights UI and REST API. Previously these counters were only available for the Data Warehouse / Reporting. 
+
+[%header,cols=2*]
+|===
+|Object Type	|Counter
+|Storage	|Capacity - Spare Raw
+Capacity - Failed Raw
+|Storage Pool	|Data Capacity - Used
+Data Capacity - Total
+Other Capacity - Used
+Other Capacity - Total
+Capacity - Raw
+Capacity - Soft Limit
+|Internal Volume	|Data Capacity - Used
+Data Capacity - Total
+Other Capacity - Used
+Other Capacity - Total
+Clone Saved Capacity - Total
+|===
+
+//Additionally, Virtual Machine Peak Memory and CPU utilization values are available for use in the Data Warehouse. 
+
+==== Cloud Secure Potential Attack Detection
+
+Cloud Secure now detects potential attacks such as ransomware. Click on an alert in the Alerts list page to open a detail page showing the following:
+
+* Time of attack
+* Associated user and file activity
+* Action taken
+* Additional information to assist with tracking down possible security breaches 
+
+Alerts page showing potential ransomware attack:
+image:RansomwareAlertExample.png[Ransomware Alert Example]
+
+Detail page for potential ransomware attack:
+image:RansomwareDetailPageExample.png[Ransomware Detail Page Example]
+
+
+==== Subscribe to Premium Edition through AWS
+
+During your trial of Cloud Insights, you can link:concept_subscribing_to_cloud_insights.html[self-subscribe] through AWS Marketplace to either Cloud Insights Standard Edition or Premium Edition. Previously, you could only self-subscribe through AWS Marketplace to Standard Edition only.  
+
+==== Enhanced Table Widget
+
+The dashboard/asset page Table widget includes the following enhancements:
+
+* "Split-Screen" view: Table widgets display the object/grouping on the left side, and the object data (attributes/metrics) on the right.
++
+image:TableWidgetLeftRightPanes.png[Table Widget showing left and right panes]
+
+* Multiple attribute grouping: For Integration data (Kubernetes, ONTAP Advanced Metrics, Docker, etc.), you can choose multiple attributes for grouping. Data is displayed according to the grouping attributes/you choose. 
++
+Grouping with Integration Data (shown in Edit mode):
+image:TableWidgetIntegrationEditMode.png[Integration Data Grouping in Table Widget]
+
+* Grouping for Infrastructure data (storage, EC2, VM, ports, etc.) is by a single attribute as before. When grouping by an attribute which is not the object, the table will allow you to expand the group row to see all the objects within the group.
++
+Grouping with Infrastructure data (shown in display mode):
+image:TableWidgetPerformanceData.png[Infrastructure Data Grouping in Table Widget]
+
+==== Metrics Filtering
+
+In addition to filtering on an object's attributes in a widget, you can now filter on metrics as well. 
+
+image:MetricsFiltering.png[Metrics Filtering]
+
+//When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
+
+When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
+
+image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
+
+==== ONTAP Advanced Counter Data
+
+Cloud Insights takes advantage of NetApp's ONTAP-specific *Advanced Counter Data*, which provides a host of counters and metrics collected from ONTAP devices.  ONTAP Advanced Counter Data is available to all NetApp ONTAP customers. These metrics enable customized and wide-ranging visualization in Cloud Insights widgets and dashboards.
+
+ONTAP Advanced Counters can be found by searching for "netapp_ontap" in the widget's query, and selecting from among the counters.
+
+image:netapp_ontap counters.png[Searching for ONTAP Advanced Counters]
+
+You can refine your search by typing additional parts of the counter name. For example:
+
+* _lif_
+* _aggregate_
+* _offbox_vscan_server_
+* and more
+
+image:ONTAP_Widget_Example2.png[ONTAP Widget Example - WAFL]
+image:ONTAP_Widget_Example1.png[ONTAP Widget Example - Cp Reads]
+
+Please note the following:
+
+* Advanced Data collection will be enabled by default for new ONTAP data collectors. To enable Advanced Data collection for your existing ONTAP data collectors, edit the data collector and expand the _Advanced Configuration_ section.
+
+* Advanced Data collection is not available for 7-mode ONTAP.
+
+===== Advanced Counter Dashboards
+
+Cloud Insights comes with a variety of pre-designed dashboards to help get you started on visualizing ONTAP Advanced Counters for topics such as _Aggregate Performance_, _Volume Workload_, _Processor Activity_, and more. If you have at least one ONTAP data collector configured, these can be imported from the Dashboard Gallery on any dashboard list page.
+
+===== Learn More
+
+More information on ONTAP Advanced Data can be found at the following links:
+
+* https://mysupport.netapp.com/site/tools/tool-eula/netapp-harvest (Note: You will need to sign in to NetApp Support)
+
+* https://nabox.org/faq/ 
+
+
+////
+===== Advanced Data Polling
+
+Be aware that ONTAP Advanced Data is polled at a more rapid rate than polling for traditional inventory and performance data, with the result that the Cloud Insights Data Collector list page may appear to show ONTAP devices in a state of near-constant polling. This is expected and does not indicate a problem in the Acquisition Unit, Cloud Insights, or the monitored cluster.
+
+image:ontap_advanced_polling.png[ONTAP Advanced Data polling]
+////
+
+
+==== Policies and Violations Menu
+
+Performance Policies and Violations are now found under the *Alerts* menu. Policy and Violation functionality are unchanged.
+
+image:PoliciesMenuChange.png[Policies and Violations Menu]
+
+
+==== Updated Telegraf Agent
+
+The agent for ingestion of telegraf integration data has been updated to link:https://docs.influxdata.com/telegraf/v1.14/[version 1.14], which includes bugs fixes, security fixes, and new plugins.
+
+Note: When configuring a Kubernetes data collector on the Kubernetes platform, you may see an "HTTP status 403 Forbidden" error in the log, due to insufficient permissions in the "clusterrole" attribute.
+
+To work around this issue, add the following highlighted lines to the _rules:_ section of the endpoint-access clusterrole, and then restart the Telegraf pods. 
+
+--------------------------
+rules:
+- apiGroups:
+  - ""
+  - apps
+  - autoscaling
+  - batch
+  - extensions
+  - policy
+  - rbac.authorization.k8s.io
+  attributeRestrictions: null
+  resources:
+  - nodes/metrics
+  - nodes/proxy     <== Add this line
+  - nodes/stats
+  - pods            <== Add this line
+  verbs:
+  - get
+  - list            <== Add this line
+--------------------------
+
 === June 2020
 
 ==== Simplified Data Collector Error Reporting
@@ -37,8 +219,6 @@ image:Object_Metric_Chooser.png[Object/Metric Chooser]
 * Multiple tags grouping: When working with integration data (Kubernetes, etc.), you may group the data by multiple tags/attributes. For example, Sum memory usage by Kubernetes Namespace and Container name.
 
 image:MultipleGroupsIntegrationLineChart.png[Multiple grouping when displaying integration data]
-
-
 
 === May 2020
 
@@ -121,7 +301,7 @@ You can still override the optimized aggregation by setting a custom interval.
 
 ==== Display Unit Auto-Format
 
-In most widgets, Cloud Insights knows the base unit in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc., and now link:concept_dashboard_features.html#choosing-the-unit-for-displaying-data[automatically formats] the widget to the most readable unit. For example, a data value of 1,234,567,890 bytes would be auto formatted to 1.23bn (billion). In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, or in widgets where you want to override the automatic formatting, you can choose the format you want.
+In most widgets, Cloud Insights knows the base unit in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc., and now link:concept_dashboard_features.html#choosing-the-unit-for-displaying-data[automatically formats] the widget to the most readable unit. For example a data value of 1,234,567,890 bytes would be auto formatted to 1.23 gibibytes. In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, or in widgets where you want to override the automatic formatting, you can choose the format you want.
 
 image:used_memory_in_bytes_gb.png[Auto Format in Widgets,width=480]
 
@@ -508,7 +688,7 @@ The data collectors selected must be the same vendor and model, and reside on th
 ==== Duplicating Dashboards
 
 * The ability to duplicate a dashboard has been added to the dashboard list page as a choice in the options menu for each dashboard, and on a dashboard's main page itself from the _Save_ menu.
-
+ 
 ==== Cloud Central products menu
 
 * The menu allowing you to switch to other NetApp Cloud Central products has moved to the upper right corner of the screen.
