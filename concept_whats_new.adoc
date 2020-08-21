@@ -20,6 +20,21 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === August 2020
 
+==== Reporting User Roles
+
+If you have Cloud Insights Premium Edition with Reporting, every Cloud Insights user in your environment also has a login to the Reporting application (i.e. Cognos); by clicking the *Reports* link in the menu, they will automatically be logged in to Reporting. 
+
+Their user role in Cloud Insights determines their link:reporting_user_roles.html[Reporting user role]:
+
+|===
+|Cloud Insights Role|Reporting Role|Reporting Permissions
+|Guest|Consumer|Can view, schedule, and run reports and set personal preferences such as those for languages and time zones. Consumers cannot create reports or perform administrative tasks.
+|User|Author|Can perform all Consumer functions as well as create and manage reports and dashboards.
+|Administrator|Administrator|Can perform all Author functions as well as all administrative tasks such as import and export of report definitions, configuration of reports, configuration of data sources, and the shutdown and restart of reporting tasks.
+|===
+
+NOTE: Cloud Insights Reporting is available for environments of 500 MUs or more.
+
 ==== Monitoring and Alerting
 
 In addition to the current ability to set performance policies for storage objects, VMs, EC2, and ports, Cloud Insights Standard Edition now includes the ability to link:task_create_monitor.html[configure monitors] for thresholds on Integration data for Kubernetes, ONTAP advanced metrics, and Telegraf plugins. You simply create a monitor for each object metric you want to trigger alerts, set the conditions for warning-level or critical-level thresholds, and specify the email recipient(s) desired for each level. You can then link:task_view_and_manage_alerts.html[view and manage alerts] to track trends or troubleshoot issues.
