@@ -39,7 +39,7 @@ Use the following steps to configure the machine to be used as a Cloud Secure Ag
 
 . Select a RHEL or CentOS AMI with the appropriate version as mentioned in this page: 
 +
- https://docs.netapp.com/us-en/cloudinsights/concept_cs_agent_requirements.html
+https://docs.netapp.com/us-en/cloudinsights/concept_cs_agent_requirements.html
 
 . Select the VPC and Subnet that the Cloud ONTAP instance resides in.
 
@@ -53,37 +53,37 @@ Use the following steps to configure the machine to be used as a Cloud Secure Ag
 
 .. Install selinux (dependency package for the docker-ce):
 +
- `wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.68-1.el7.noarch.rpm`  
+ wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.68-1.el7.noarch.rpm  
 +
- `yum install -y container-selinux-2.68-1.el7.noarch.rpm`
+ yum install -y container-selinux-2.68-1.el7.noarch.rpm
 
 . Install the docker-ce (not the native docker) package using https://download.docker.com/linux/centos/7/x86_64/stable/Packages/  (use a version higher than 17.03). 
 
 . SSH to the Redhat EC2 VM
 +
- `ssh -i "your_new_pem.pem" <ec2_hostname_or_IP>`
+ ssh -i "your_new_pem.pem" <ec2_hostname_or_IP>
 +
- `sudo su -`
+ sudo su -
 
 . Perform a docker login after installing the required AWS CLI package:
 +
- `curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"`
+ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 +
- `unzip awscli-bundle.zip`
+ unzip awscli-bundle.zip 
 + 
- `sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws`
+ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws 
 +
- `/usr/local/bin/aws --version`
+ /usr/local/bin/aws --version 
 +
- `aws configure --profile collector_readonly`
+ aws configure --profile collector_readonly 
 +
- `aws ecr get-login --no-include-email --region us-east-1 --profile collector_readonly`
+ aws ecr get-login --no-include-email --region us-east-1 --profile collector_readonly 
 +
- `docker login -u AWS -p <token_generated_above>  <ECR_hostname>`
+ docker login -u AWS -p <token_generated_above>  <ECR_hostname> 
 
 . Use the following command to verify the steps completed successfully and the cs-ontap-dsc image can be successfully pulled: 
 +
- `docker pull 376015418222.dkr.ecr.us-east-1.amazonaws.com/cs-ontap-dsc:1.25.0` 
+ docker pull 376015418222.dkr.ecr.us-east-1.amazonaws.com/cs-ontap-dsc:1.25.0 
 
 
 == Install the Cloud Secure Agent
