@@ -24,10 +24,10 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 == Cloud Volumes ONTAP Storage Configuration
 
 See the OnCommand Cloud Manager Documentation to configure a single-node / HA AWS instance to host the Cloud Secure Agent: 
- https://docs.netapp.com/us-en/occm/index.html
+https://docs.netapp.com/us-en/occm/index.html
 
 After the configuration is complete, follow the steps to setup your SVM: 
- https://docs.netapp.com/us-en/cloudinsights/task_add_collector_svm.html
+https://docs.netapp.com/us-en/cloudinsights/task_add_collector_svm.html
 
 == Agent Machine Configuration
 
@@ -51,12 +51,13 @@ https://docs.netapp.com/us-en/cloudinsights/concept_cs_agent_requirements.html
 
 .. Install _wget_ and _unzip_ native Linux packages.
 
-.. Install selinux (dependency package for the docker-ce):
+.. Install _selinux_ (dependency package for the docker-ce):
 +
  wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.68-1.el7.noarch.rpm  
  yum install -y container-selinux-2.68-1.el7.noarch.rpm
 
-. Install the docker-ce (not the native docker) package using https://download.docker.com/linux/centos/7/x86_64/stable/Packages/  (use a version higher than 17.03). 
+. Install the docker-ce (not the native docker) package. You must use a version higher than 17.03:
+https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
 
 . SSH to the Redhat EC2 VM
 +
