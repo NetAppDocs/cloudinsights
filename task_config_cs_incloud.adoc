@@ -58,7 +58,7 @@ https://docs.netapp.com/us-en/cloudinsights/concept_cs_agent_requirements.html
 . Install the docker-ce (not the native docker) package. You must use a version higher than 17.03:
 https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
 
-. SSH to the Redhat EC2 VM
+. SSH to the Redhat EC2 VM:
 +
  ssh -i "your_new_pem.pem" <ec2_hostname_or_IP>
  sudo su -
@@ -73,7 +73,7 @@ https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
  aws ecr get-login --no-include-email --region us-east-1 --profile collector_readonly 
  docker login -u AWS -p <token_generated_above>  <ECR_hostname> 
 
-. Use the following command to verify the steps completed successfully and the cs-ontap-dsc image can be successfully pulled: 
+. Use the following command to verify the steps completed successfully and the _cs-ontap-dsc_ image can be successfully pulled: 
 +
  docker pull 376015418222.dkr.ecr.us-east-1.amazonaws.com/cs-ontap-dsc:1.25.0 
 
@@ -82,12 +82,13 @@ https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
 
 . Log in as Administrator or Account Owner to your Cloud Insights environment. 
 
-. Under Cloud Secure, click *Admin > Data Collectors > Agents > +Agent* and specify RHEL as the target platform.
+. Navigate to Cloud Secure *Admin > Data Collectors* and click the *Agents* tab. 
+
+. Click +Agent* and specify RHEL as the target platform.
 
 . Copy the Agent Installation command. 
 
 . Paste the Agent Installation command into the RHEL EC2 instance you are logged in to.
-+ 
 This installs the Cloud Secure agent, providing all of the link:concept_cs_agent_requirements.html[Agent Prerequisites] are met. 
 
 For detailed steps please refer to this link:
