@@ -54,7 +54,6 @@ https://docs.netapp.com/us-en/cloudinsights/concept_cs_agent_requirements.html
 .. Install selinux (dependency package for the docker-ce):
 +
  wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.68-1.el7.noarch.rpm  
-+
  yum install -y container-selinux-2.68-1.el7.noarch.rpm
 
 . Install the docker-ce (not the native docker) package using https://download.docker.com/linux/centos/7/x86_64/stable/Packages/  (use a version higher than 17.03). 
@@ -62,23 +61,16 @@ https://docs.netapp.com/us-en/cloudinsights/concept_cs_agent_requirements.html
 . SSH to the Redhat EC2 VM
 +
  ssh -i "your_new_pem.pem" <ec2_hostname_or_IP>
-+
  sudo su -
 
 . Perform a docker login after installing the required AWS CLI package:
 +
  curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-+
  unzip awscli-bundle.zip 
-+ 
  sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws 
-+
  /usr/local/bin/aws --version 
-+
  aws configure --profile collector_readonly 
-+
  aws ecr get-login --no-include-email --region us-east-1 --profile collector_readonly 
-+
  docker login -u AWS -p <token_generated_above>  <ECR_hostname> 
 
 . Use the following command to verify the steps completed successfully and the cs-ontap-dsc image can be successfully pulled: 
