@@ -24,28 +24,28 @@ Click *Forensic > Activity History* to access the Activity History page. The dat
 
 * The time an entity was accessed including the year, month, day, and time of the last access. 
 
-* The user that accessed the entity with a link to the link:forensic_user_detail.html[User Details].
+* The user that accessed the entity with a link to the link:forensic_user_overview.html[User information].
 
 //Above should be new user profile?
 
 * The activity the user performed:  
-** Create 
-** Read
-** Read Metadata
-** Copy
-** Delete
-** Write
+** *Create*
+** *Read*
+** *Read Metadata*
+** *Copy*
+** *Delete*
+** *Write*
 
-* The path to the entity with a link to the link:forensic_entity_detail.html[Entity Detail Data]
+* The *Path* to the entity with a link to the link:forensic_entity_detail.html[Entity Detail Data]
  
 * The entity type:
-** Stream
-** File
-** Directory
-** Symbolic Link
+** *Stream*
+** *File*
+** *Directory*
+** *Symbolic Link*
 ** Other Type
 
-* The location (IP address) from which the activity was performed. 
+* The *Source IP* address from which the activity was performed. 
 
 
 == Filtering Forensic Activity History Data
@@ -54,22 +54,22 @@ You can filter Forensic Activity History data by the following:
 
 
 * The Activity type: 
-** Created
-** Read
-** Read Metadata
-** Copied
-** Deleted
-** Write
+** *Created*
+** *Read*
+** *Read Metadata*
+** *Copied*
+** *Deleted*
+** *Write*
 * Entity type: 
-** Stream
-** File
-** Directory
-** Symbolic Link
+** *Stream*
+** *File*
+** *Directory*
+** *Symbolic Link*
 ** Other Type
-* Location that the entity was accessed from
-* Path of the entity 
-* Time the activity occurred
-* User performing the activity
+* *Source IP* from which the entity was accessed
+* *Path* of the entity 
+* *Time* the activity occurred
+* *User* performing the activity
 
 == Exporting Activity History
 
