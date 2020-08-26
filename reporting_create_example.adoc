@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: reporting_create_example.html
+summary: Use this procedure to create a report using the pre-defined Cloud Insights reports.
+keywords: reporting, cognos, data warehouse, dwh, create, report
+---
+
+= Creating a Report (Example)
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Use the steps in this example to generate a simple report on physical capacity of storage and storage pools in a number of data centers.
+
+.Steps
+
+. In the toolbar, click *[+]*
+. Click *Report*
+. Click *Templates > Blank*
+. Click *Themes > Cool Blue > OK*
++
+The Source and Data tabs is displayed
+. Click *Source > [+]* 
+. In the *Open file* dialog, click *Team content > Packages*
++
+A list of available packages is displayed.
+. Click *Storage and Storage Pool Capacity > Open*
+. Click *[+]*
++
+The available styles for your report are displayed.
+. Click *List*
++
+Add appropriate names for List and Query
+. Click *OK*
+. Expand _Physical Capacity_
+. Expand to the lowest level of _Data Center_
+. Drag _Data Center_ to the Reporting palate.
+. Expand _Capacity (MB)_
+. Drag _Capacity (MB)_ to the Reporting palate.
+. Drag _Used Capacity (MB)_ to the Reporting palate.
+. Run the report by clicking image:Reporting-RunButton.png[Run] and selecting an output type.
+
+.Result
+
+A report similar to the following is created:
+
+image:Reporting-Example1.png[Report Example]
+
