@@ -89,11 +89,12 @@ Note that if the data collector is added using "causer", link:cs_cs_automated_re
 `security login role create -vserver <vservername> -role carole -cmddirname "volume snapshot" -access all`
 `security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
 
-=== Confirgure the data collector
+=== Configure the data collector
 
 .Steps for Configuration 
 
 . Log in as Administrator or Account Owner to your Cloud Insights environment. 
+
 . Click *Admin > Data Collectors > +Data Collectors* 
 +
 The system displays the available Data Collectors. 
