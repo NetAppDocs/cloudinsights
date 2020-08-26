@@ -31,13 +31,13 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 * Ensure the correct protocols are set for the SVM by executing the following command:
 
  security login show -vserver svmname 
-  Vserver: svmname
-  Authentication Acct Is-Nsswitch
-  User/Group Name Application Method Role Name Locked Group
-  vsadmin http password vsadmin yes no
-  vsadmin ontapi password vsadmin yes no
-  vsadmin ssh password vsadmin yes no
-  3 entries were displayed.
+    Vserver: svmname
+    Authentication Acct Is-Nsswitch
+    User/Group Name Application Method Role Name Locked Group
+    vsadmin http password vsadmin yes no
+    vsadmin ontapi password vsadmin yes no
+    vsadmin ssh password vsadmin yes no
+    3 entries were displayed.
  
 * Ensure that the SVM has a CIFS server configured:
  clustershell::> `vserver cifs show`
