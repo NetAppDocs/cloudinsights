@@ -16,10 +16,9 @@ summary: Adding data collectors
 :imagesdir: ./media/
 
 [.lead]
-
 Cloud Secure uses data collectors to collect file and user access data from devices. 
 
-.Before you begin
+=== Before you begin
 
 * This data collector is supported on Data ONTAP 9.1 and later versions. 
 
@@ -65,6 +64,8 @@ See link:concept_cs_agent_requirements.html[Agent requirements] for configuratio
 
 * When an Agent is installed in an AWS EC2 instance to monitor a Cloud ONTAP SVM, the Agent and Storage must be in the same VPC. If they are in separate VPCs, there must be a valid route between the VPC’s.
 
+=== A note about permissions
+
 If you cannot use the "vsadmin" user, create the following roles for the data collector using the "causer" user: 
 
 `security login show -vserver svmname`
@@ -76,7 +77,7 @@ If you cannot use the "vsadmin" user, create the following roles for the data co
 `security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
 `security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
 
-Note that If the data collector is added using "causer", link:cs_cs_automated_response_policies.html[alert response snapshots] cannot be taken by default. To enable snapshots for causer, the commands above must also include the *"volume snapshot"* line below:
+Note that if the data collector is added using "causer", link:cs_cs_automated_response_policies.html[alert response snapshots] cannot be taken by default. To enable snapshots for causer, the commands above must also include the *"volume snapshot"* line below:
 
 `security login show -vserver svmname`
 `security login role create -vserver svmname -role carole -cmddirname DEFAULT -access none`
@@ -88,7 +89,8 @@ Note that If the data collector is added using "causer", link:cs_cs_automated_re
 `security login role create -vserver <vservername> -role carole -cmddirname "volume snapshot" -access all`
 `security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
 
- 
+=== Confirgure the data collector
+
 .Steps for Configuration 
 
 . Log in as Administrator or Account Owner to your Cloud Insights environment. 
@@ -126,7 +128,7 @@ The system displays the ONTAP SVM configuration page. Enter the required data fo
 * In the Installed Data Collectors page, use the options menu on the right of each collector to edit the data collector. You can restart the data collector or edit data collector configuration attributes. 
 
 
-== Troubleshooting 
+=== Troubleshooting 
 
 Known problems and their resolutions are described in the following table. 
 
