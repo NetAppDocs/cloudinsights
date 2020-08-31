@@ -20,6 +20,7 @@ summary: Telegraf data display options
 [.lead]
 The Cloud Insights Telegraf data collectors are powerful tools for gathering source-reported metrics from your data sources. 
 
+////
 === Categorizing Telegraf Data
 
 Because of the varied nature of the ingested data, Cloud Insights makes its best attempt to categorize the data in meaningful ways. To do this, it examines the meta-data (data about the data) that is gathers.
@@ -39,6 +40,7 @@ All metrics gathered by Telegraf data collectors can be used in dashboard widget
 image:TransformOptions.png[Transform Options]
 
 === Telegraf Data Display Options
+////
 
 Cloud Insights provides different transform options for metrics collected using Telegraf. When adding these metrics to a widget, you are presented with a drop-down giving the transform choices:
 
