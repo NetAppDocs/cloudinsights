@@ -83,8 +83,11 @@ The Cloud Insights API is category-based, and currently contains the following c
 ** Import: Import annotations or applications and assign them to objects
 ** Search: Locate a specific object without knowing the object’s unique ID or full name.
 
-* DATA_COLLECTION category is used to retrieve and manage data collectors.
+* DATA COLLECTION category is used to retrieve and manage data collectors.
 
+* DATA INGESTION category is used to retrieve and manage ingestion data, such as from ONTAP Advanced Metrics, Kubernetes, or Docker
+
+* DATA WAREHOUSE category is available for environments with Cloud Insights Reporting, and is used to manage data used with Reporting
 //The link:#api-commands[API Commands] section lists the specific APIs in each cetegory.
 
 Additional categories and/or APIs may become available over time. You can find the latest API information in the link:#api-documentation-swagger[API Swagger documentation]. 
