@@ -24,22 +24,20 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 
 * An Agent link:task_cs_add_agent.html[must be configured] before you can configure data collectors. 
 
-* Make sure that you have a properly configured LDAP Data Connecto, otherwise events will show encoded user names and not the actual name of the user (as stored in Active Directory) in the “Activity Forensics” page.
+* Make sure that you have a properly configured LDAP Data Connector, otherwise events will show encoded user names and not the actual name of the user (as stored in Active Directory) in the “Activity Forensics” page.
 
 * A separate subnet must be used for FPolicy traffic.
 
 //* You need the SVM management IP address or the cluster IP, and username / password for login.
 
-* You can add an SVM by two ways:
+* You must add an SVM using one of the two methods:
 ** By Using Cluster IP, SVM name, Cluster Mgmt Username and Password
 *** SVM name must be exactly as is shown in ONTAP and is case-sensitive.
 ** By Using SVM mgmt. IP, SVM mgmt. username and password
 ** If you are not able or not willing to use the full Administrator Cluster/SVM Mgmt Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM and Cluster access.
 
 * Ensure the correct applications are set for the SVM by executing the following command:
-
  clustershell::> security login show -vserver <vservername> -user-or-group-name <username>   
-
 Example output:
  image:cs_svm_sample_output.png[SVM Command Output Example]
 
