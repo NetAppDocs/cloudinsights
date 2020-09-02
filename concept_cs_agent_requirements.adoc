@@ -46,19 +46,21 @@ The agent systems should always have the Docker CE package installed. Users shou
 |Memory	|16 GB RAM 
 |Available disk space	|Disk space should be allocated in this manner:
 50 GB available for the root partition
-/opt/netapp 5 GB
+/opt/netapp 25 GB
 /var/log/netapp 5 GB
 |Network|100 Mbps 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Cloud Secure instance (80 or 443).
 
+////
 |Agent outbound URLs (port 433)|
 
-\https://<Site ID>.cs01.cloudinsights.netapp.com 
+\https://<site_name>.cs01.cloudinsights.netapp.com 
 //You can get the site ID from the product URL. For example: https://*ab1234*.cs01.cloudinsights.netapp.com
 You can use a broader range to specify the tenant ID: \https://*.cs01.cloudinsights.netapp.com/
 
 \https://gateway.c01.cloudinsights.netapp.com 
 
 \https://agentlogin.cs01.cloudinsights.netapp.com 
+////
 
 |===
 
@@ -73,9 +75,9 @@ You can use a broader range to specify the tenant ID: \https://*.cs01.cloudinsig
 [cols=5*,options="header"]
 |===
 |Protocol|Port|	Destination	|Direction|	Description
-|TCP|443|<tenant id>.cs01.cloudinsights.netapp.com 
-<tenant id>.c01.cloudinsights.netapp.com 
-<tenant id>.c02.cloudinsights.netapp.com|Outbound|Access to Cloud Insights
+|TCP|443|<site_name>.cs01.cloudinsights.netapp.com 
+<site_name>.c01.cloudinsights.netapp.com 
+<site_name>.c02.cloudinsights.netapp.com|Outbound|Access to Cloud Insights
 |TCP|443|gateway.c01.cloudinsights.netapp.com
 agentlogin.cs01.cloudinsights.netapp.com|Outbound|Access to authentication services
 |===
