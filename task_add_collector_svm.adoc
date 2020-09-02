@@ -98,7 +98,9 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
 
 ==== Permissions when adding via *Vserver Management IP*:
 
-If you cannot use the "vsadmin" user, since “vsadmin” has all the privileges, create a new user named “csuser” with the following roles as is shown in the command below. Use the username “csuser” and password for “csuser” for adding the Vserver via Vserver Mgmt IP in the ONTAP DataSource Addition UI.
+If you cannot use the Cluster management administrator user to allow Cloud Secure to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Cloud Secure data collector to use Vserver Management IP.
+
+//If you cannot use the "vsadmin" user, since “vsadmin” has all the privileges, create a new user named “csuser” with the following roles as is shown in the command below. Use the username “csuser” and password for “csuser” for adding the Vserver via Vserver Mgmt IP in the ONTAP DataSource Addition UI.
 
 To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server. For ease, copy these commands to a text editor and replace the <vservername> with your Vserver name before and executing these commands on ONTAP:
 
