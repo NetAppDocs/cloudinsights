@@ -16,10 +16,9 @@ summary: Adding data collectors
 :imagesdir: ./media/
 
 [.lead]
-
 Cloud Secure uses data collectors to collect file and user access data from devices. 
 
-.Before you begin
+=== Before you begin
 
 * This data collector is supported on Data ONTAP 9.1 and later versions. 
 
@@ -27,42 +26,36 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 
 * A separate subnet must be used for FPolicy traffic.
 
-* You need the SVM management IP address.
-* You need a username and password to access the SVM.
-* Ensure the correct protocols are set for the SVM.
-+
-`security login show -vserver svmname`
- Vserver: svmname
- Authentication Acct Is-Nsswitch
- User/Group Name Application Method Role Name Locked Group
- vsadmin http password vsadmin yes no
- vsadmin ontapi password vsadmin yes no
- vsadmin ssh password vsadmin yes no
- 3 entries were displayed.
+* You need the SVM management IP address or the cluster IP, and username / password for login.
+* Ensure the correct protocols are set for the SVM by executing the following command:
+
+ security login show -vserver svmname 
+    Vserver: svmname
+    Authentication Acct Is-Nsswitch
+    User/Group Name Application Method Role Name Locked Group
+    vsadmin http password vsadmin yes no
+    vsadmin ontapi password vsadmin yes no
+    vsadmin ssh password vsadmin yes no
+    3 entries were displayed.
  
 * Ensure that the SVM has a CIFS server configured:
-+ 
-clustershell::> `vserver cifs show`
+ clustershell::> `vserver cifs show`
 + 
 The system returns the Vserver name, CIFS server name and additional fields.
  
 * Set a password for the SVM
-+
-clustershell::> `security login password -username vsadmin -vserver svmname`
+ clustershell::> `security login password -username vsadmin -vserver svmname`
 
 * Unlock the SVM for external access:
-+
-clustershell::> `security login unlock -username vsadmin -vserver svmname`
+ clustershell::> `security login unlock -username vsadmin -vserver svmname`
 
 * Verify that the ONTAP FPolicy framework can connect to the External FPolicy server engine that the Agent system hosts:
-+
-clustershell::> `vserver fpolicy show-engine -vserver svmname`
+ clustershell::> `vserver fpolicy show-engine -vserver svmname`
 +
 The agent IP address state should be "Connected".
 
 * Ensure the firewall-policy of the data LIF is set to ‘mgmt’ (not ‘data’).
-+
-clustershell::> `network interface modify -lif <SVM_data_LIF_name> -firewall-policy mgmt`
+ clustershell::> `network interface modify -lif <SVM_data_LIF_name> -firewall-policy mgmt`
 
 
 * When a firewall is enabled, you must have an exception defined to allow TCP traffic for the port using the Data ONTAP Data Collector. 
@@ -70,6 +63,8 @@ clustershell::> `network interface modify -lif <SVM_data_LIF_name> -firewall-pol
 See link:concept_cs_agent_requirements.html[Agent requirements] for configuration information. This applies to on-premise Agents and Agents installed in the Cloud.  
 
 * When an Agent is installed in an AWS EC2 instance to monitor a Cloud ONTAP SVM, the Agent and Storage must be in the same VPC. If they are in separate VPCs, there must be a valid route between the VPC’s.
+
+=== A note about permissions
 
 If you cannot use the "vsadmin" user, create the following roles for the data collector using the "causer" user: 
 
@@ -82,19 +77,29 @@ If you cannot use the "vsadmin" user, create the following roles for the data co
 `security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
 `security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
 
+Note that if the data collector is added using "causer", link:cs_cs_automated_response_policies.html[alert response snapshots] cannot be taken by default. To enable snapshots for causer, the commands above must also include the *"volume snapshot"* line below:
 
+`security login show -vserver svmname`
+`security login role create -vserver svmname -role carole -cmddirname DEFAULT -access none`
+`security login role create -vserver svmname -role carole -cmddirname "network interface" -access readonly`
+`security login role create -vserver svmname -role carole -cmddirname version -access readonly`
+`security login role create -vserver svmname -role carole -cmddirname volume -access readonly`
+`security login role create -vserver svmname -role carole -cmddirname vserver -access readonly`
+`security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
+`security login role create -vserver <vservername> -role carole -cmddirname "volume snapshot" -access all`
+`security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
 
- 
+=== Configure the data collector
+
 .Steps for Configuration 
 
 . Log in as Administrator or Account Owner to your Cloud Insights environment. 
+
 . Click *Admin > Data Collectors > +Data Collectors* 
 +
 The system displays the available Data Collectors. 
 
-. Click the *NetApp* tile.  
-+ 
-Select ONTAP SVM 
+. Click the *NetApp SVM* tile.  
 +
 The system displays the ONTAP SVM configuration page. Enter the required data for each field. 
 
@@ -105,53 +110,26 @@ The system displays the ONTAP SVM configuration page. Enter the required data fo
 |===
 |Field|Description
 |Name |Unique name for the Data Collector
-|Agent|Select a configured agent from the list or click *Add Agent* to configure an Agent. See link:concept_cs_agent_requirements.html[Agent requirements] and link:task_cs_add_agent.html[Agent Installation] for configuration information.
-|SVM Management IP Address|Management IP Address
-|Username|User name to access the SVM
-|Password|SVM Password
-|Enter complete share names to exclude|Comma-separated list of shares to exclude from event collection
-|Enter complete volume names to exclude|Comma-separated list of volumes to exclude from event collection
+|Agent|Select a configured agent from the list.
+|Connect via Management IP for:|Select either Cluster IP or SVM Management IP
+|Cluster / SVM Management IP Address|The IP address for the cluster or the SVM, depending on your selection above.
+|SVM Name|The Name of the SVM (this field is required when connecting via Cluster IP)
+|Username|User name to access the SVM/Cluster
+|Password|Password for the above user name
+|Filter Shares/Volumes|Choose whether to include or exclude Shares / Volumes from event collection
+|Enter complete share names to exclude/include|Comma-separated list of shares to exclude or include (as appropriate) from event collection
+|Enter complete volume names to exclude/include|Comma-separated list of volumes to exclude or include (as appropriate) from event collection
 |===
-
-// [caption=]
-//Advanced Configuration 
-//[cols=2*, cols"50,50"]
-//[Options=header]
-//|===
-//|*Name* |*Field*
-//|Protocol| HTTPS
-//|Ports | 443
-//|===
-
-// [caption=]
-//.Custom NFS Export Policies and CIFS Shares
-//[cols=2*, cols"50,50"]
-//[Options=header]
-//|===
-//|*Name* |*Field*
-//|NFS Export Policies| All included or All excluded
-//|Policy 1 | Included or Excluded
-//|Policy 2 | Included or Excluded
-//|Policy 3 | Included or Excluded
-//|Newly added NFS Export Policies | Include or exclude
-//|CIFS Shares|All included or All excluded
-//|Share 1 |Included or Excluded
-//|Share 2 |Included or Excluded
-//|Share 3 |Included or Excluded
-//|Newly added CIFS Shares | Include or exclude
-//|===
-
-
 
 
 .After you finish
 
-* Click *Test Configuration* to check the status of the collector you configured.
+//* Click *Test Configuration* to check the status of the collector you configured.
 
-* In the Installed Data Collectors page, use the options menu on the right of each collector to edit the data collector. You can start, stop, and edit data collector configuration attributes. 
+* In the Installed Data Collectors page, use the options menu on the right of each collector to edit the data collector. You can restart the data collector or edit data collector configuration attributes. 
 
 
-== Troubleshooting 
+=== Troubleshooting 
 
 Known problems and their resolutions are described in the following table. 
 
@@ -165,6 +143,8 @@ Known problems and their resolutions are described in the following table.
 |Error message: "Connection to the FPolicy server <IP> is broken. ( reason: "FPolicy server is removed from external engine." )"
 |In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
 To prevent this, configure each SVM on a single environment.
+|Error Message: "Connector is in error state. Service.name: audit. Reason for failure: External fpolicy server terminated."
+|It is most likely that a firewall is blocking the necessary ports in the agent machine. Verify the port range 35001-35100/tcp is opened for the agent machine to connect from the SVM. Also ensure that there are no firewalls enabled from the ONTAP side blocking communication to the agent machine.
 |===
 
 
