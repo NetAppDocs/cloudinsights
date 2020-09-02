@@ -34,7 +34,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 ** By Using Cluster IP, SVM name, Cluster Mgmt Username and Password
 *** SVM name must be exactly as is shown in ONTAP and is case-sensitive.
 ** By Using SVM mgmt. IP, SVM mgmt. username and password
-** If you are not able or not willing to use the full Administrator Cluster/SVM Mgmt Username and Password, you can create a custom user with lesser privileges as mentioned in the “A note about permissions” section below. This custom user can be created for either SVM and Cluster access.
+** If you are not able or not willing to use the full Administrator Cluster/SVM Mgmt Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM and Cluster access.
 
 * Ensure the correct applications are set for the SVM by executing the following command:
 
@@ -72,15 +72,46 @@ The agent IP address state should be "Connected".
 * Ensure the firewall-policy of the data LIF is set to ‘mgmt’ (not ‘data’).
  clustershell::> `network interface modify -lif <SVM_data_LIF_name> -firewall-policy mgmt`
 
-
 * When a firewall is enabled, you must have an exception defined to allow TCP traffic for the port using the Data ONTAP Data Collector. 
 +
 See link:concept_cs_agent_requirements.html[Agent requirements] for configuration information. This applies to on-premise Agents and Agents installed in the Cloud.  
 
 * When an Agent is installed in an AWS EC2 instance to monitor a Cloud ONTAP SVM, the Agent and Storage must be in the same VPC. If they are in separate VPCs, there must be a valid route between the VPC’s.
 
-=== A note about permissions
+=== A Note About Permissions
 
+==== Permissions when adding via *Cluster Management IP*:
+
+If you cannot use the Cluster management administrator user to allow Cloud Secure to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Cloud Secure data collector to use Cluster Management IP. 
+
+To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
+
+ security login role create -role csrole -cmddirname DEFAULT -access none
+ security login role create -role csrole -cmddirname "network interface" -access readonly
+ security login role create -role csrole -cmddirname version -access readonly
+ security login role create -role csrole -cmddirname volume -access readonly
+ security login role create -role csrole -cmddirname vserver -access readonly
+ security login role create -role csrole -cmddirname "vserver fpolicy" -access all
+ security login role create -role csrole -cmddirname "volume snapshot" -access all
+ security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
+
+==== Permissions when adding via *Vserver Management IP*:
+
+If you cannot use the "vsadmin" user, since “vsadmin” has all the privileges, create a new user named “csuser” with the following roles as is shown in the command below. Use the username “csuser” and password for “csuser” for adding the Vserver via Vserver Mgmt IP in the ONTAP DataSource Addition UI.
+
+To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server. For ease, copy these commands to a text editor and replace the <vservername> with your Vserver name before and executing these commands on ONTAP:
+
+ security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access none
+ security login role create -vserver <vservername> -role csrole -cmddirname "network interface" -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname version -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname volume -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname vserver -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
+ security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
+ security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
+
+
+////
 If you cannot use the "vsadmin" user, create the following roles for the data collector using the "causer" user: 
 
 `security login show -vserver svmname`
@@ -103,6 +134,8 @@ Note that if the data collector is added using "causer", link:cs_cs_automated_re
 `security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
 `security login role create -vserver <vservername> -role carole -cmddirname "volume snapshot" -access all`
 `security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
+////
+
 
 === Configure the data collector
 
@@ -152,12 +185,24 @@ Known problems and their resolutions are described in the following table.
 
 |===
 |Problem: | Resolution:
+
 |Agent is in Connected State and ONTAP Data collector is in Error State. 
 "Unable to define the state of datasource with id:<ID>"
 |Ensure Docker service is running on the agent.
+
 |Error message: "Connection to the FPolicy server <IP> is broken. ( reason: "FPolicy server is removed from external engine." )"
-|In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
+|SVM is unable to reach the Fpolicy Server. 
+Make sure there is route available from SVM to the Fpolicy Server. Login to the SVM and ping the Fpolicy Server IP address.
+Also, in instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
 To prevent this, configure each SVM on a single environment.
+
+|DSC reports Error Message: “No local IP address found on the connector that can reach the data interfaces of the SVM”.
+|While adding the DSC via SVM IP and vsadmin credentials, can you please check if the SVM Lif has is Data plus Mgmt role enabled. 
+If yes, please create a SVM Mgmt Only Lif and try connecting via this SVM management only Lif
+
+|Message: "Failed to determine ONTAP type for [hostname: <IP Address>. Reason: Connection error to Storage System <IP Address>: Host is unreachable (Host unreachable)"
+|verify that the correct SVM IP Management address or Cluster Management IP has been provided.
+
 |Error Message: "Connector is in error state. Service.name: audit. Reason for failure: External fpolicy server terminated."
 |It is most likely that a firewall is blocking the necessary ports in the agent machine. Verify the port range 35001-35100/tcp is opened for the agent machine to connect from the SVM. Also ensure that there are no firewalls enabled from the ONTAP side blocking communication to the agent machine.
 |===
