@@ -31,10 +31,10 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 //* You need the SVM management IP address or the cluster IP, and username / password for login.
 
 * You must add an SVM using one of the two methods:
-** By Using Cluster IP, SVM name, Cluster Mgmt Username and Password
+** By Using Cluster IP, SVM name, and Cluster Management Username and Password
 *** SVM name must be exactly as is shown in ONTAP and is case-sensitive.
-** By Using SVM mgmt. IP, SVM mgmt. username and password
-** If you are not able or not willing to use the full Administrator Cluster/SVM Mgmt Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM and Cluster access.
+** By Using SVM Vserver Management IP, Username, and Password
+** If you are not able or not willing to use the full Administrator Cluster/SVM Management Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM and Cluster access.
 
 * Ensure the correct applications are set for the SVM by executing the following command:
 
