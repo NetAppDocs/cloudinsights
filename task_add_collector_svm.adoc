@@ -158,6 +158,8 @@ Known problems and their resolutions are described in the following table.
 |Error message: "Connection to the FPolicy server <IP> is broken. ( reason: "FPolicy server is removed from external engine." )"
 |In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
 To prevent this, configure each SVM on a single environment.
+|Error Message: "Connector is in error state. Service.name: audit. Reason for failure: External fpolicy server terminated."
+|It is most likely that a firewall is blocking the necessary ports in the agent machine. Verify the port range 35001-35100/tcp is opened for the agent machine to connect from the SVM. Also ensure that there are no firewalls enabled from the ONTAP side blocking communication to the agent machine.
 |===
 
 
