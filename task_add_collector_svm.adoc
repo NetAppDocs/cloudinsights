@@ -22,6 +22,10 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 
 * This data collector is supported on Data ONTAP 9.1 and later versions. 
 
+* Only data type SVMs are supported. SVMs with infinite/flexgroup volumes are not supported
+
+* SVM has several sub-types. Of these, only _default_ and _sync_source_ are supported.
+
 * An Agent link:task_cs_add_agent.html[must be configured] before you can configure data collectors. 
 
 * Make sure that you have a properly configured LDAP Data Connector, otherwise events will show encoded user names and not the actual name of the user (as stored in Active Directory) in the “Activity Forensics” page.
@@ -34,7 +38,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 ** By Using Cluster IP, SVM name, and Cluster Management Username and Password
 *** SVM name must be exactly as is shown in ONTAP and is case-sensitive.
 ** By Using SVM Vserver Management IP, Username, and Password
-** If you are not able or not willing to use the full Administrator Cluster/SVM Management Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM and Cluster access.
+** If you are not able or not willing to use the full Administrator Cluster/SVM Management Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM or Cluster access.
 
 * Ensure the correct applications are set for the SVM by executing the following command:
 
@@ -59,16 +63,11 @@ security login show -vserver svmname
 + 
 The system returns the Vserver name, CIFS server name and additional fields.
  
-* Set a password for the SVM
+* Set a password for the SVM vsadmin user. If using custom user, skip this step.
  clustershell::> `security login password -username vsadmin -vserver svmname`
 
-* Unlock the SVM for external access:
+* Unlock the SVM vsadmin user for external access. If using custom user, skip this step.
  clustershell::> `security login unlock -username vsadmin -vserver svmname`
-
-* Verify that the ONTAP FPolicy framework can connect to the External FPolicy server engine that the Agent system hosts:
- clustershell::> `vserver fpolicy show-engine -vserver svmname`
-+
-The agent IP address state should be "Connected".
 
 * Ensure the firewall-policy of the data LIF is set to ‘mgmt’ (not ‘data’).
  clustershell::> `network interface modify -lif <SVM_data_LIF_name> -firewall-policy mgmt`
@@ -200,14 +199,18 @@ Also, in instances where the same SVM was added in two different Cloud Secure en
 To prevent this, configure each SVM on a single environment.
 
 |DSC reports Error Message: “No local IP address found on the connector that can reach the data interfaces of the SVM”.
-|While adding the DSC via SVM IP and vsadmin credentials, can you please check if the SVM Lif has is Data plus Mgmt role enabled. 
-If yes, please create a SVM Mgmt Only Lif and try connecting via this SVM management only Lif
+|While adding the DSC via SVM IP and vsadmin credentials, check if the SVM Lif has Data plus Mgmt role enabled. 
+If yes, create an SVM Mgmt Only Lif and try connecting via this SVM management only Lif.
 
 |Message: "Failed to determine ONTAP type for [hostname: <IP Address>. Reason: Connection error to Storage System <IP Address>: Host is unreachable (Host unreachable)"
-|verify that the correct SVM IP Management address or Cluster Management IP has been provided.
+|Verify that the correct SVM IP Management address or Cluster Management IP has been provided.
 
 |Error Message: "Connector is in error state. Service.name: audit. Reason for failure: External fpolicy server terminated."
 |It is most likely that a firewall is blocking the necessary ports in the agent machine. Verify the port range 35001-35100/tcp is opened for the agent machine to connect from the SVM. Also ensure that there are no firewalls enabled from the ONTAP side blocking communication to the agent machine.
+
+|No events seen in activity page.
+|Check if ONTAP collector is in “RUNNING” state. If yes, then ensure that some cifs events are being generated on the cifs client VMs.
+
 |===
 
 
