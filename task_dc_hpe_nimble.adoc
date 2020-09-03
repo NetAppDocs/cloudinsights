@@ -44,7 +44,7 @@ You must have the following in order to collect data from the Nimble storage arr
 
 * The array must be installed and configured, and reachable from the client through its fully qualified domain name (FQDN) or array management IP address.
 * The array must be running NimbleOS 2.3.x or later.
-* You must have a valid user name and password to the array.
+* You must have a valid user name and password to the array with at least "Operator" level role. The "Guest" role does not have sufficient access to understand initiator configurations.
 * Port 5392 must be open on the array.
 
 == Configuration
