@@ -1,0 +1,113 @@
+---
+sidebar: sidebar
+permalink: data_collector_list.html
+summary: List of supported data collectors.
+keywords: data collector, vendor, infrastructure, integration, service
+---
+
+= Cloud Insights Data Collector List
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Insights supports a variety of Data Collectors from many vendors and services. 
+
+Data Collectors are categorized by these types:
+
+* Infrastructure: Acquired from vendor devices such as storage arrays or switches.
+* Service: Acquired from services such as Kubernetes or Docker. Also called _Integration_.
+
+Alphabetical list of Data Collectors supported by Cloud Insights:
+
+|===
+| link:task_config_telegraf_activemq.html[ActiveMQ ] |Service 
+| link:task_dc_amazon_ec2.html[Amazon EC2 and EBS ] |Infrastructure 
+| link:task_config_telegraf_apache.html[Apache ] |Service 
+| link:task_dc_ms_azure.html[Azure Azure VMs and VHD ] |Infrastructure 
+| link:task_dc_brocade_bna.html[Brocade Brocade Network Advisor (BNA) ] |Infrastructure 
+| link:task_dc_brocade_fc_switch.html[Brocade Fibre Channel Switches ] |Infrastructure 
+| link:task_dc_ceph_storage.html[Ceph Storage ] |Infrastructure 
+| link:task_dc_cisco_fc_switch.html[Cisco MDS Fabric Switches ] |Infrastructure 
+| link:task_config_telegraf_consul.html[Consul ] |Service 
+| link:task_config_telegraf_couchbase.html[Couchbase ] |Service 
+| link:task_config_telegraf_couchdb.html[CouchDB ] |Service 
+| link:task_dc_emc_datadomain.html[Dell EMC Data Domain ] |Infrastructure 
+| link:task_dc_emc_ecs.html[Dell EMC ECS ] |Infrastructure 
+| link:task_dc_emc_isilon.html[Dell EMC Isilon ] |Infrastructure 
+| link:task_dc_emc_recoverpoint.html[Dell EMC Recoverpoint ] |Infrastructure 
+| link:task_dc_emc_scaleio.html[Dell EMC ScaleIO ] |Infrastructure 
+| link:task_dc_emc_unity.html[Dell EMC Unity ] |Infrastructure 
+| link:task_dc_emc_vmax_powermax.html[Dell EMC VMAX/PowerMax Family of Devices ] |Infrastructure 
+| link:task_dc_emc_vnx_block.html[Dell EMC VNX Block Storage ] |Infrastructure 
+| link:task_dc_emc_vnx_file.html[Dell EMC VNX File ] |Infrastructure 
+| link:task_dc_emc_vnx_unified.html[Dell EMC VNX Unified ] |Infrastructure 
+| link:task_dc_emc_vplex.html[Dell EMC VPLEX ] |Infrastructure 
+| link:task_dc_emc_xio.html[Dell EMC XtremIO ] |Infrastructure 
+| link:task_dc_dell_xc_series.html[Dell XC Series ] |Infrastructure 
+| link:task_config_telegraf_docker.html[Docker ] |Service 
+| link:task_config_telegraf_elasticsearch.html[Elasticsearch ] |Service 
+| link:task_config_telegraf_flink.html[Flink ] |Service 
+| link:task_dc_fujitsu_eternus.html[Fujitsu ETERNUS DX ] |Infrastructure 
+| link:task_dc_google_cloud.html[Google Compute and Storage ] |Infrastructure 
+| link:task_config_telegraf_hadoop.html[Hadoop ] |Service 
+| link:task_config_telegraf_haproxy.html[HAProxy ] |Service 
+| link:task_dc_hds_commandsuite.html[Hitachi Vantara Command Suite ] |Infrastructure 
+| link:task_dc_hds_nas.html[Hitachi Vantara NAS Platform ] |Infrastructure 
+| link:task_dc_hpe_nimble.html[HPE Nimble Storage ] |Infrastructure 
+| link:task_dc_hp_3par.html[HP Enterprise 3PAR StoreServ Storage ] |Infrastructure 
+| link:task_dc_hpe_commandview.html[HP Enterprise Command View ] |Infrastructure 
+| link:task_dc_huawei_oceanstor.html[Huawei OceanStor and Dorado Devices ] |Infrastructure 
+| link:task_dc_ibm_cleversafe.html[IBM Cleversafe ] |Infrastructure 
+| link:task_dc_ibm_cs.html[IBM CS Series ] |Infrastructure 
+| link:task_dc_ibm_powervm.html[IBM PowerVM ] |Infrastructure 
+| link:task_dc_ibm_svc.html[IBM SAN Volume Controller (SVC) ] |Infrastructure 
+| link:task_dc_ibm_ds.html[IBM System Storage DS8000 Series ] |Infrastructure 
+| link:task_dc_ibm_xiv.html[IBM XIV and A9000 Storages ] |Infrastructure 
+| link:task_dc_infinidat_infinibox.html[Infinidat InfiniBox ] |Infrastructure 
+| link:task_config_telegraf_jvm.html[Java ] |Service 
+| link:task_config_telegraf_kafka.html[Kafka ] |Service 
+| link:task_config_telegraf_kapacitor.html[Kapacitor ] |Service 
+| link:task_config_telegraf_kibana.html[Kibana ] |Service 
+| link:task_config_telegraf_kubernetes.html[Kubernetes ] |Service 
+| link:task_dc_lenovo.html[Lenovo HX Series ] |Infrastructure 
+| link:task_config_telegraf_agent.html#macos[macOS ] |Service 
+| link:task_config_telegraf_memcached.html[Memcached ] |Service 
+| link:task_dc_ms_anf.html[Microsoft Azure NetApp Files ] |Infrastructure 
+| link:task_dc_ms_hyperv.html[Microsoft Hyper-V ] |Infrastructure 
+| link:task_config_telegraf_mongodb.html[MongoDB ] |Service 
+| link:task_config_telegraf_mysql.html[MySQL ] |Service 
+| link:task_dc_na_cdot.html[NetApp Cloud Volumes ONTAP ] |Infrastructure 
+| link:task_dc_na_cloud_volumes.html[NetApp Cloud Volumes Services ] |Infrastructure 
+| link:task_dc_na_7mode.html[NetApp Data ONTAP 7-Mode ] |Infrastructure 
+| link:task_dc_na_eseries.html[NetApp E-Series ] |Infrastructure 
+| link:task_dc_na_hci.html[NetApp HCI Virtual Center ] |Infrastructure 
+| link:task_dc_na_cdot.html[NetApp ONTAP Data Management Software ] |Infrastructure 
+| link:task_dc_na_cdot.html[NetApp ONTAP Select ] |Infrastructure 
+| link:task_dc_na_solidfire.html[NetApp SolidFire All-Flash Array ] |Infrastructure 
+| link:task_dc_na_storagegrid.html[NetApp StorageGrid ] |Infrastructure 
+| link:task_config_telegraf_netstat.html[Netstat ] |Service 
+| link:task_config_telegraf_nginx.html[Nginx ] |Service 
+| link:task_config_telegraf_node.html[Node ] |Service 
+| link:task_dc_nutanix.html[Nutanix NX Series ] |Infrastructure 
+| link:task_dc_openstack.html[OpenStack ] |Infrastructure 
+| link:task_config_telegraf_openzfs.html[OpenZFS ] |Service 
+| link:task_dc_oracle_zfs.html[Oracle ZFS Storage Appliance ] |Infrastructure 
+| link:task_config_telegraf_postgresql.html[PostgreSQL ] |Service 
+| link:task_config_telegraf_puppetagent.html[Puppet Agent ] |Service 
+| link:task_dc_pure_flasharray.html[Pure Storage FlashArray ] |Infrastructure 
+| link:task_dc_redhat_virtualization.html[Red Hat Red Hat Virtualization ] |Infrastructure 
+| link:task_config_telegraf_redis.html[Redis ] |Service 
+| link:task_config_telegraf_rethinkdb.html[RethinkDB ] |Service 
+| link:task_config_telegraf_agent.html#rhel-and-centos[RHEL & CentOS ] |Service 
+| link:task_config_telegraf_agent.html#ubuntu-and-debian[Ubuntu & Debian ] |Service 
+| link:task_dc_vmware.html[VMware vSphere ] |Infrastructure 
+| link:task_config_telegraf_agent.html#windows[Windows ] |Service 
+| link:task_config_telegraf_zookeeper.html[ZooKeeper ] |Service 
+|===
+

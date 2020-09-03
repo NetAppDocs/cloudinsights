@@ -32,3 +32,11 @@ Names can contain can contain letters (a-z), numbers (0-9), dashes (-), undersco
 . Click *Test Configuration* to verify that the data collector is properly configured.
 . Click *Add Collector* to save the configuration and add the data collector to your Cloud Insights tenant.
 //For help adding a new Acquisition Unit, see //link:<task_configure_acquisition_unit>.html[C//onfiguring acquisition units]
+
+After adding a new data collector, Cloud Insights initiates three polls:
+
+* 1st inventory poll: immediately 
+* 1st performance data poll to establish a baseline: immediately after inventory poll
+* 2nd performance poll: within 15 seconds after completion of 1st performance poll
+
+Polling then proceeds according to the configured inventory and performance poll intervals.
