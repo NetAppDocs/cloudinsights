@@ -18,13 +18,117 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== September 2020
+
+==== New API Category for Data Ingestion
+
+Cloud Insights has added a *Data Ingestion* API category, giving you greater control over custom data and agents. Detailed documentation for this and other API Categories can be found in Cloud Insights by navigating to *Admin > API Access* and clicking the _API Documentation_ link.
+
+=== August 2020
+
+==== Monitoring and Alerting
+
+In addition to the current ability to set performance policies for storage objects, VMs, EC2, and ports, Cloud Insights Standard Edition now includes the ability to link:task_create_monitor.html[configure monitors] for thresholds on Integration data for Kubernetes, ONTAP advanced metrics, and Telegraf plugins. You simply create a monitor for each object metric you want to trigger alerts, set the conditions for warning-level or critical-level thresholds, and specify the email recipient(s) desired for each level. You can then link:task_view_and_manage_alerts.html[view and manage alerts] to track trends or troubleshoot issues.
+
+image:define_monitor_conditions_2.png[Monitor Conditions]
+
 === July 2020
+
+==== Cloud Secure _Take a Snapshot_ Action
+
+Cloud Secure protects your data by automatically taking a snapshot when malicious activity is detected, ensuring that your data is safely backed up.
+
+You can define automated response policies that take a snapshot when ransomware attack or other abnormal user activity is detected.
+You can also take a snapshot manually from the alert page.
+
+//When Cloud Secure detects risky user behavior, Alert Actions allow Administrators to trigger manual snapshots. Snapshots can also be associated with policies which can be triggered on alerts.
+
+Automatic Snapshot taken:
+image:AlertActionsAutomaticExample.png[Alert Action Screen,1000]
+
+Manual Snapshot:
+image:AlertActionsExample.png[Alert Action Screen,1000]
+
+
+==== Metric/Counter updates
+
+The following capacity counters are available for use in Cloud Insights UI and REST API. Previously these counters were only available for the Data Warehouse / Reporting. 
+
+[%header,cols=2*]
+|===
+|Object Type	|Counter
+|Storage	|Capacity - Spare Raw
+Capacity - Failed Raw
+|Storage Pool	|Data Capacity - Used
+Data Capacity - Total
+Other Capacity - Used
+Other Capacity - Total
+Capacity - Raw
+Capacity - Soft Limit
+|Internal Volume	|Data Capacity - Used
+Data Capacity - Total
+Other Capacity - Used
+Other Capacity - Total
+Clone Saved Capacity - Total
+|===
+
+//Additionally, Virtual Machine Peak Memory and CPU utilization values are available for use in the Data Warehouse. 
+
+==== Cloud Secure Potential Attack Detection
+
+Cloud Secure now detects potential attacks such as ransomware. Click on an alert in the Alerts list page to open a detail page showing the following:
+
+* Time of attack
+* Associated user and file activity
+* Action taken
+* Additional information to assist with tracking down possible security breaches 
+
+Alerts page showing potential ransomware attack:
+image:RansomwareAlertExample.png[Ransomware Alert Example]
+
+Detail page for potential ransomware attack:
+image:RansomwareDetailPageExample.png[Ransomware Detail Page Example]
+
+
+==== Subscribe to Premium Edition through AWS
+
+During your trial of Cloud Insights, you can link:concept_subscribing_to_cloud_insights.html[self-subscribe] through AWS Marketplace to either Cloud Insights Standard Edition or Premium Edition. Previously, you could only self-subscribe through AWS Marketplace to Standard Edition only.  
+
+==== Enhanced Table Widget
+
+The dashboard/asset page Table widget includes the following enhancements:
+
+* "Split-Screen" view: Table widgets display the object/grouping on the left side, and the object data (attributes/metrics) on the right.
++
+image:TableWidgetLeftRightPanes.png[Table Widget showing left and right panes]
+
+* Multiple attribute grouping: For Integration data (Kubernetes, ONTAP Advanced Metrics, Docker, etc.), you can choose multiple attributes for grouping. Data is displayed according to the grouping attributes/you choose. 
++
+Grouping with Integration Data (shown in Edit mode):
+image:TableWidgetIntegrationEditMode.png[Integration Data Grouping in Table Widget]
+
+* Grouping for Infrastructure data (storage, EC2, VM, ports, etc.) is by a single attribute as before. When grouping by an attribute which is not the object, the table will allow you to expand the group row to see all the objects within the group.
++
+Grouping with Infrastructure data (shown in display mode):
+image:TableWidgetPerformanceData.png[Infrastructure Data Grouping in Table Widget]
+
+==== Metrics Filtering
+
+In addition to filtering on an object's attributes in a widget, you can now filter on metrics as well. 
+
+image:MetricsFiltering.png[Metrics Filtering]
+
+//When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
+
+When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
+
+image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
 
 ==== ONTAP Advanced Counter Data
 
 Cloud Insights takes advantage of NetApp's ONTAP-specific *Advanced Counter Data*, which provides a host of counters and metrics collected from ONTAP devices.  ONTAP Advanced Counter Data is available to all NetApp ONTAP customers. These metrics enable customized and wide-ranging visualization in Cloud Insights widgets and dashboards.
 
-ONTAP Advanced Counters can be found by searching for "netapp_ontap" in the widget's query, and selecting from among the counters. 
+ONTAP Advanced Counters can be found by searching for "netapp_ontap" in the widget's query, and selecting from among the counters.
 
 image:netapp_ontap counters.png[Searching for ONTAP Advanced Counters]
 
@@ -33,7 +137,7 @@ You can refine your search by typing additional parts of the counter name. For e
 * _lif_
 * _aggregate_
 * _offbox_vscan_server_
-* and many more
+* and more
 
 image:ONTAP_Widget_Example2.png[ONTAP Widget Example - WAFL]
 image:ONTAP_Widget_Example1.png[ONTAP Widget Example - Cp Reads]
@@ -122,8 +226,6 @@ image:Object_Metric_Chooser.png[Object/Metric Chooser]
 
 image:MultipleGroupsIntegrationLineChart.png[Multiple grouping when displaying integration data]
 
-
-
 === May 2020
 
 ==== Reporting User Roles
@@ -205,7 +307,7 @@ You can still override the optimized aggregation by setting a custom interval.
 
 ==== Display Unit Auto-Format
 
-In most widgets, Cloud Insights knows the base unit in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc., and now link:concept_dashboard_features.html#choosing-the-unit-for-displaying-data[automatically formats] the widget to the most readable unit. For example a data value of 1,234,567,890 bytes would be auto formatted to 1.1498 Gigabytes. In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, or in widgets where you want to override the automatic formatting, you can choose the format you want.
+In most widgets, Cloud Insights knows the base unit in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc., and now link:concept_dashboard_features.html#choosing-the-unit-for-displaying-data[automatically formats] the widget to the most readable unit. For example a data value of 1,234,567,890 bytes would be auto formatted to 1.23 gibibytes. In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, or in widgets where you want to override the automatic formatting, you can choose the format you want.
 
 image:used_memory_in_bytes_gb.png[Auto Format in Widgets,width=480]
 
