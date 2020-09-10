@@ -20,9 +20,28 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === September 2020
 
+==== Reporting User Roles
+
+If you have Cloud Insights Premium Edition with Reporting, every Cloud Insights user in your environment also has a Single Sign-On (SSO) login to the Reporting application (i.e. Cognos); by clicking the *Reports* link in the menu, they will automatically be logged in to Reporting. 
+
+Their user role in Cloud Insights determines their link:reporting_user_roles.html[Reporting user role]:
+
+|===
+|Cloud Insights Role|Reporting Role|Reporting Permissions
+|Guest|Consumer|Can view, schedule, and run reports and set personal preferences such as those for languages and time zones. Consumers cannot create reports or perform administrative tasks.
+|User|Author|Can perform all Consumer functions as well as create and manage reports and dashboards.
+|Administrator|Administrator|Can perform all Author functions as well as all administrative tasks such configuration of reports and the shutdown and restart of reporting tasks.
+|===
+
+NOTE: Cloud Insights Reporting is available for environments of 500 MUs or more.
+
+IMPORTANT: If you are a current Premium Edition customer and wish to retain your reports, read this link:reporting_user_roles.html#important-note-for-existing-customers[important note for existing customers].
+
+
 ==== New API Category for Data Ingestion
 
 Cloud Insights has added a *Data Ingestion* API category, giving you greater control over custom data and agents. Detailed documentation for this and other API Categories can be found in Cloud Insights by navigating to *Admin > API Access* and clicking the _API Documentation_ link.
+
 
 === August 2020
 

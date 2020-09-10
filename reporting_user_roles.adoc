@@ -17,33 +17,20 @@ keywords: reporting, cognos, data warehouse, dwh, users, roles, user roles
 
 
 [.lead]
-Each Cloud Insights Reporting user account is assigned a role with a set of permissions. 
+If you have Cloud Insights Premium Edition with Reporting, every Cloud Insights user in your environment also has a Single Sign-On (SSO) login to the Reporting application (i.e. Cognos). Simply click the *Reports* link in the menu and you will automatically be logged in to Reporting. 
 
-The Reporting roles available are:
+Your user role in Cloud Insights determines your Reporting user role:
 
-* *Cloud Insights Consumers* can view, schedule, and run reports and set personal preferences such as those for languages and time zones.
-+
-Note: Consumers cannot create reports or perform administrative tasks.
+|===
+|Cloud Insights Role|Reporting Role|Reporting Permissions
+|Guest|Consumer|Can view, schedule, and run reports and set personal preferences such as those for languages and time zones. Consumers cannot create reports or perform administrative tasks.
+|User|Author|Can perform all Consumer functions as well as create and manage reports and dashboards.
+|Administrator|Administrator|Can perform all Author functions as well as all administrative tasks such as configuration of reports and the shutdown and restart of reporting tasks.
+|===
 
-* *Cloud Insights Authors* can perform all Consumer functions as well as create and manage reports and dashboards
 
-* *Cloud Insights Administrators* can perform all Author functions as well as all administrative tasks such as import and export of report definitions, configuration of reports, configuration of data sources, and the shutdown and restart of reporting tasks.
 
-////
-Recipient
-Views OnCommand Insight Reporting portal reports and sets personal preferences such as those for languages and time zones.
-Note: Recipients cannot create reports, run reports, schedule reports, export reports, nor perform administrative tasks.
-Business Consumer
-Runs reports and performs all Recipient options.
-Business Author
-Views scheduled reports, runs reports interactively, creates stories, in addition to performing all Business Consumer options.
-Pro Author
-Creates reports, creates packages and data modules, in addition to performing all Business Author options.
-Administrator
-Performs reporting administrative tasks such as the import and export of report definitions, configuration of reports, configuration of data sources, and the shutdown and restart of reporting tasks.
-////
-
-The following table shows the functions available to each role.
+The following table shows the functions available to each Reporting role.
 
 |===
 |Feature	|Consumer	|Author	|Administrator
@@ -52,7 +39,7 @@ The following table shows the functions available to each role.
 |Schedule reports	|Yes |Yes	|Yes
 |Upload external files	|No	|Yes	|Yes
 |Create Jobs| No|Yes|Yes
-|Create Users|No|No|Yes
+//|Create Users|No|No|Yes
 |Create stories	|No	|Yes	|Yes
 |Create reports	|No	|Yes	|Yes
 |Create Packages and Data Modules	|No	|Yes|Yes
@@ -60,9 +47,40 @@ The following table shows the functions available to each role.
 //|Number of users	Number of OnCommand Insight users	20	2	1	1
 |===
 
-////
-When you add a new Data Warehouse and Reporting user, if you exceed the limit in a role, the user is added as "deactivated," and you need to deactivate or remove another user with that role to give a new user membership.
+== Setting Reporting (Cognos) email preferences
 
-Note: Report authoring capabilities require Insight Plan license. You can add additional Business Author and Pro Author users by purchasing the ARAP (Additional Report Authoring Package). Contact your OnCommand Insight representative for assistance.
-These reporting user roles do not affect direct database access. These reporting user roles do not impact your ability to create SQL queries using the data marts.
-////
+NOTE: If you change your user email preferences within Cloud Insights Reporting (i.e. the Cognos application), those preferences are active _only for the current session_. Logging out of Cognos and back in again will reset your email preferences.
+
+
+== Important note for existing customers
+
+If you are new to Cloud Insights with Reporting, welcome!  There is nothing more you need to do to begin enjoying Reporting.
+
+If you are a current Premium Edition customer, SSO is not automatically enabled for your environment. When you enable SSO, the administrator user for the reporting portal (Cognos) ceases to exist. This means that any reports that are in the _My Content_ folder are removed and must be reinstalled or re-created in _Team Content_. Additionally, scheduled reports will need to be configured once SSO is enabled.
+
+=== What steps should I take to prepare my existing environment for enabling SSO?
+
+To ensure your reports are retained, migrate all reports from _My Content_ to _Team Content_ using the following steps. You must do this prior to enabling SSO in your environment:
+
+. Create a new folder in _Team Content_
+
+.. If multiple users have been created, please create a separate folder for each user to avoid overwriting reports with duplicate names
+
+. Navigate to _My Content_
+
+. Select all of the reports you wish to retain.
+
+. In the upper right corner of the menu, select "Copy or move"
+
+. Navigate to the newly created folder in _Team Content_
+
+. Paste the reports to the newly created folder using the "Copy to" or "Move to" buttons
+
+. Once SSO is enabled for Cognos, log into Cloud Insights with the email address used to create your account.
+
+. Navigate to the _Team Content_ folder, and Copy or Move the previously saved reports back to _My Content_.
+
+
+
+
+
