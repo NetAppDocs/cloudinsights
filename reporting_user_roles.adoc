@@ -58,7 +58,7 @@ If you are new to Cloud Insights with Reporting, welcome!  There is nothing more
 
 If you are a current Premium Edition customer, SSO is not automatically enabled for your environment. When you enable SSO, the administrator user for the reporting portal (Cognos) ceases to exist. This means that any reports that are in the _My Content_ folder are removed and must be reinstalled or re-created in _Team Content_. Additionally, scheduled reports will need to be configured once SSO is enabled.
 
-=== What steps should I take to prepare my environment for enabling SSO?
+=== What steps should I take to prepare my existing environment for enabling SSO?
 
 To ensure your reports are retained, migrate all reports from _My Content_ to _Team Content_ using the following steps. You must do this prior to enabling SSO in your environment:
 
@@ -75,6 +75,11 @@ To ensure your reports are retained, migrate all reports from _My Content_ to _T
 . Navigate to the newly created folder in _Team Content_
 
 . Paste the reports to the newly created folder using the "Copy to" or "Move to" buttons
+
+. Once SSO is enabled for Cognos, log into Cloud Insights with the email address used to create your account.
+
+. Navigate to the _Team Content_ folder, and Copy or Move the previously saved reports back to _My Content_.
+
 
 
 
