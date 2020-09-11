@@ -40,9 +40,10 @@ Configure the User Directory Collector by entering the required data in the foll
 |Name|Description
 |User Directory Name |Unique name for the user directory. For example _GlobalADCollector_
 |Agent|Select a configured agent from the list
-|Server|IP address or Fully-Qualified Domain Name of server hosting the active directory
+|Server|IP address or Fully-Qualified Domain Name (FQDN) of server hosting the active directory
 |Forest Name|Forest level of the directory structure.
 Forest name allows both of the following formats:
+
 * _x.y.z_ => direct domain name as you have it on your SVM. [Example: hq.companyname.com]
 * _DC=x,DC=y,DC=z_ => Relative distinguished names [Example: DC=hq,DC= companyname,DC=com]
 Or you can specify as the following:
