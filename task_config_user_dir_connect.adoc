@@ -56,15 +56,18 @@ _CN=username,OU=engineering,DC=companyname, DC=netapp, DC=com_ [to get only spec
 
 _CN=Acrobat Users,CN=Users,DC=hq,DC=companyname,DC=com,O= companyname,L=Boston,S=MA,C=US_ [to get all Acrobat Users within the Users in that organization]
 
-////
-For more details about forest names, please refer to this link:
-////
+
 
 |Bind DN|User permitted to search the directory. For example: _username@companyname.com_ or _username@domainname.com_
 |BIND password|Directory server password (i.e. password for username used in Bind DN)
 |Protocol|ldap, ldaps, ldap-start-tls
 |Ports|Select port
 |===
+
+////
+Add to table once link is provided:
+For more details about forest names, please refer to this link:
+////
 
 Enter the following Directory Server required attributes if the default attribute names have been modified in Active Directory. Most often these attributes names are _not_ modified in Active Directory, in which case you can simply proceed with the default attribute name.
 
