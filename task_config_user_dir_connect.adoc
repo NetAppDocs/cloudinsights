@@ -44,17 +44,17 @@ Configure the User Directory Collector by entering the required data in the foll
 |Forest Name|Forest level of the directory structure.
 Forest name allows both of the following formats:
 
-* _x.y.z_ => direct domain name as you have it on your SVM. [Example: hq.companyname.com]
+_x.y.z_ => direct domain name as you have it on your SVM. [Example: hq.companyname.com]
 
-* _DC=x,DC=y,DC=z_ => Relative distinguished names [Example: DC=hq,DC= companyname,DC=com]
+_DC=x,DC=y,DC=z_ => Relative distinguished names [Example: DC=hq,DC= companyname,DC=com]
 
 Or you can specify as the following:
 
-* OU=engineering,DC=hq,DC= companyname,DC=com [to filter by specific OU engineering]
+_OU=engineering,DC=hq,DC= companyname,DC=com_ [to filter by specific OU engineering]
 
-*	CN=username,OU=engineering,DC= companyname, DC=netapp, DC=com [to get only specific user with <username> from OU <engineering>]
+_CN=username,OU=engineering,DC=companyname, DC=netapp, DC=com_ [to get only specific user with <username> from OU <engineering>]
 
-*	CN=Acrobat Users,CN=Users,DC=hq,DC=companyname,DC=com,O= companyname,L=Boston,S=MA,C=US [to get all Acrobat Users within the Users in that organization]
+_CN=Acrobat Users,CN=Users,DC=hq,DC=companyname,DC=com,O= companyname,L=Boston,S=MA,C=US_ [to get all Acrobat Users within the Users in that organization]
 
 ////
 For more details about forest names, please refer to this link:
