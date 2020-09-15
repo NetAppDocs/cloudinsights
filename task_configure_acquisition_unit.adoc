@@ -200,7 +200,7 @@ You can also select multiple data collectors of the same type and click the *Bul
 
 == Viewing AU Details
 
-The Acquisition Unit (AU) detail page provides useful detail for an AU as well as information to help with troubleshooting. The AU detail page contains two sections:
+The Acquisition Unit (AU) detail page provides useful detail for an AU as well as information to help with troubleshooting. The AU detail page contains the following sections:
 
 * A *summary* section showing the following:
 
@@ -211,10 +211,16 @@ The Acquisition Unit (AU) detail page provides useful detail for an AU as well a
  
  * A table of the AU's *Data Collectors* showing, for each data collector:
  
- ** *Name* - Click this link to open the data collector's detail page with additional information
- ** *Status* (Success or error information)
- ** *Type*
- ** *IP* address 
- ** Current *Impact*
+ ** *Name* - Click this link to drill down into the data collector's detail page with additional information
+ ** *Status* - Success or error information
+ ** *Type* - Vendor/model
+ ** *IP* address of the data collector
+ ** Current *Impact* level
  ** *Last Acquired* time - when the data collector was last successfully polled
+
+image:AUDetailPageExample.png[Example AU Detail page]
+
+For each data collector, you can click on the "three dots" menu to Clone, Edit, Poll, or Delete the data collector. You can also select multiple data collectors in this list to perform bulk actions on them.
+
+To restart the Acquisition Unit, click the *Restart* button at the top of the page.
 
