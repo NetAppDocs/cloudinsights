@@ -14,15 +14,18 @@ summary: This topic describes how to create a query.
 
 [.lead]
 
-You can create a query to enable you to search the assets in your environment at a granular level. Queries enable you to slice data by adding filters and then sorting the results to view inventory and performance data in one view.
+Queries enable you to search the assets in your environment at a granular level, allowing to filter for the data you want and sort the results to your liking.
 
-. About this task
-You can create a query for volumes, add a filter to find particular storages associated with the selected volume, add a filter to find a particular annotation, such as Tier 1, on the selected storages, and finally add another filter to find all storages with IOPS - Read (IO/s) greater than 25. When the results are displayed, you can then sort the columns of information associated with the query in ascending or descending order.
+For example, you can create a query for _volumes_, add a filter to find particular _storages_ associated with the selected volumes, add another filter to find a particular _annotation_ such as "Tier 1" on the selected storages, and finally add another filter to find all storages with _IOPS - Read (IO/s)_ greater than 25. When the results are displayed, you can then sort the columns of information associated with the query in ascending or descending order.
 
-When a new data collector is added which acquires assets or any annotation or application assignments are made, you can query for those assets, annotations, or applications after the queries are indexed, which occurs at a regularly scheduled interval.
+When a new data collector is added which acquires assets, or any annotation or application assignments are made, you can query for those assets, annotations, or applications after the queries are indexed. Indexing occurs at a regularly scheduled interval or during certain events such as running annotation rules.
 
-. Steps
+. Creating a Query is very simple:
 
-. Click *Queries > New Query*
-. Click *+Query*
-. From the 'Search for' list, select the asset type you want to query for.
+. Navigate to *Queries > New Query* and click *+Query*
+
+. From the 'Search for' list, select the asset/metric type you want to query for.
+
+image:QueryDrop-DownList.png[Query Drop-Down]
+
+
