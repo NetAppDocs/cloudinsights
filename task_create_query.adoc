@@ -46,10 +46,12 @@ After you have configured your query to show you the results you want, you can c
 
 === What do I do now that I have query results?
 
-Querying provides a simple place to add annotations or assign applications to assets.  Note that you can only assign applications or annotations to your inventory assets (Disk, Storage, etc.). Integration metrics cannot take on annotation or application assignments.
+Querying provides a simple place to add annotations or assign applications to assets. Note that you can only assign applications or annotations to your inventory assets (Disk, Storage, etc.). Integration metrics cannot take on annotation or application assignments.
 
 To assign an annotation or application to the assets resulting from your query, sinply select the asset(s) using the check box column on the left of the results table, then click the *Bulk Actions* button on the right. Choose the desired action to apply to the selected assets.
 
 image:QueryVolumeBulkActions.png[Query Bulk Actions Example]
 
-You also need a query if you are applying Annotation Rules to assets
+=== Annotation Rules require query
+
+If you are configuring link:task_create_annotation_rules.html[Annotation Rules], each rule must have an underlying query to work with. But as you've seen above, queries can be made as broad or as narrow as you need.
