@@ -20,7 +20,7 @@ Queries enable you to search the assets in your environment at a granular level,
 
 For example, you can create a query for _volumes_, add a filter to find particular _storages_ associated with the selected volumes, add another filter to find a particular _annotation_ such as "Tier 1" on the selected storages, and finally add another filter to find all storages with _IOPS - Read (IO/s)_ greater than 25. When the results are displayed, you can then sort the columns of information associated with the query in ascending or descending order.
 
-Note: When a new data collector is added which acquires assets, or any annotation or application assignments are made, you can query for those new assets, annotations, or applications after the queries are indexed. Indexing occurs at a regularly scheduled interval or during certain events such as running annotation rules.
+Note: When a new data collector is added which acquires assets, or any annotation or application assignments are made, you can query for those new assets, annotations, or applications only after the queries are indexed. Indexing occurs at a regularly scheduled interval or during certain events such as running annotation rules.
 
 .Creating a Query is very simple:
 
