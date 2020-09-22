@@ -23,6 +23,7 @@ Cloud Secure collects user activity data using one or more agents. Agents connec
 
 * The sudo privilege is required for installation, running scripts, and uninstall. 
 
+////
 * The Docker CE package must be installed on the VM hosting the agent. 
 + 
 To determine if the Docker CE package is installed, use the following command:   
@@ -86,6 +87,7 @@ sudo rpm -i <rpms>
 sudo systemctl enable docker
 sudo systemctl start docker
 ----
+////
 
 ////
 == Java Requirement 
