@@ -223,7 +223,7 @@ Use the following commands to open ports to be used by Cloud Secure.
 
 .Steps
 
-. `sudo firewall-cmd --permanent --zone=public --add-port=35000-35100/tcp` 
+. `sudo firewall-cmd --permanent --zone=public --add-port=35000-55000/tcp` 
 . `sudo firewall-cmd --reload` 
 . `sudo iptables-save | grep 35000`
 +
