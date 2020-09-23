@@ -18,7 +18,100 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== September 2020
+
+==== Reporting User Roles
+
+If you have Cloud Insights Premium Edition with Reporting, every Cloud Insights user in your environment also has a Single Sign-On (SSO) login to the Reporting application (i.e. Cognos); by clicking the *Reports* link in the menu, they will automatically be logged in to Reporting. 
+
+Their user role in Cloud Insights determines their link:reporting_user_roles.html[Reporting user role]:
+
+|===
+|Cloud Insights Role|Reporting Role|Reporting Permissions
+|Guest|Consumer|Can view, schedule, and run reports and set personal preferences such as those for languages and time zones. Consumers cannot create reports or perform administrative tasks.
+|User|Author|Can perform all Consumer functions as well as create and manage reports and dashboards.
+|Administrator|Administrator|Can perform all Author functions as well as all administrative tasks such configuration of reports and the shutdown and restart of reporting tasks.
+|===
+
+NOTE: Cloud Insights Reporting is available for environments of 500 MUs or more.
+
+IMPORTANT: If you are a current Premium Edition customer and wish to retain your reports, read this link:reporting_user_roles.html#important-note-for-existing-customers[important note for existing customers].
+
+
+==== New API Category for Data Ingestion
+
+Cloud Insights has added a *Data Ingestion* API category, giving you greater control over custom data and agents. Detailed documentation for this and other API Categories can be found in Cloud Insights by navigating to *Admin > API Access* and clicking the _API Documentation_ link.
+
+
+=== August 2020
+
+==== Monitoring and Alerting
+
+In addition to the current ability to set performance policies for storage objects, VMs, EC2, and ports, Cloud Insights Standard Edition now includes the ability to link:task_create_monitor.html[configure monitors] for thresholds on Integration data for Kubernetes, ONTAP advanced metrics, and Telegraf plugins. You simply create a monitor for each object metric you want to trigger alerts, set the conditions for warning-level or critical-level thresholds, and specify the email recipient(s) desired for each level. You can then link:task_view_and_manage_alerts.html[view and manage alerts] to track trends or troubleshoot issues.
+
+image:define_monitor_conditions_2.png[Monitor Conditions]
+
 === July 2020
+
+==== Cloud Secure _Take a Snapshot_ Action
+
+Cloud Secure protects your data by automatically taking a snapshot when malicious activity is detected, ensuring that your data is safely backed up.
+
+You can define automated response policies that take a snapshot when ransomware attack or other abnormal user activity is detected.
+You can also take a snapshot manually from the alert page.
+
+//When Cloud Secure detects risky user behavior, Alert Actions allow Administrators to trigger manual snapshots. Snapshots can also be associated with policies which can be triggered on alerts.
+
+Automatic Snapshot taken:
+image:AlertActionsAutomaticExample.png[Alert Action Screen,1000]
+
+Manual Snapshot:
+image:AlertActionsExample.png[Alert Action Screen,1000]
+
+
+==== Metric/Counter updates
+
+The following capacity counters are available for use in Cloud Insights UI and REST API. Previously these counters were only available for the Data Warehouse / Reporting. 
+
+[%header,cols=2*]
+|===
+|Object Type	|Counter
+|Storage	|Capacity - Spare Raw
+Capacity - Failed Raw
+|Storage Pool	|Data Capacity - Used
+Data Capacity - Total
+Other Capacity - Used
+Other Capacity - Total
+Capacity - Raw
+Capacity - Soft Limit
+|Internal Volume	|Data Capacity - Used
+Data Capacity - Total
+Other Capacity - Used
+Other Capacity - Total
+Clone Saved Capacity - Total
+|===
+
+//Additionally, Virtual Machine Peak Memory and CPU utilization values are available for use in the Data Warehouse. 
+
+==== Cloud Secure Potential Attack Detection
+
+Cloud Secure now detects potential attacks such as ransomware. Click on an alert in the Alerts list page to open a detail page showing the following:
+
+* Time of attack
+* Associated user and file activity
+* Action taken
+* Additional information to assist with tracking down possible security breaches 
+
+Alerts page showing potential ransomware attack:
+image:RansomwareAlertExample.png[Ransomware Alert Example]
+
+Detail page for potential ransomware attack:
+image:RansomwareDetailPageExample.png[Ransomware Detail Page Example]
+
+
+==== Subscribe to Premium Edition through AWS
+
+During your trial of Cloud Insights, you can link:concept_subscribing_to_cloud_insights.html[self-subscribe] through AWS Marketplace to either Cloud Insights Standard Edition or Premium Edition. Previously, you could only self-subscribe through AWS Marketplace to Standard Edition only.  
 
 ==== Enhanced Table Widget
 
@@ -152,8 +245,6 @@ image:Object_Metric_Chooser.png[Object/Metric Chooser]
 
 image:MultipleGroupsIntegrationLineChart.png[Multiple grouping when displaying integration data]
 
-
-
 === May 2020
 
 ==== Reporting User Roles
@@ -235,7 +326,7 @@ You can still override the optimized aggregation by setting a custom interval.
 
 ==== Display Unit Auto-Format
 
-In most widgets, Cloud Insights knows the base unit in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc., and now link:concept_dashboard_features.html#choosing-the-unit-for-displaying-data[automatically formats] the widget to the most readable unit. For example a data value of 1,234,567,890 bytes would be auto formatted to 1.1498 Gigabytes. In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, or in widgets where you want to override the automatic formatting, you can choose the format you want.
+In most widgets, Cloud Insights knows the base unit in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc., and now link:concept_dashboard_features.html#choosing-the-unit-for-displaying-data[automatically formats] the widget to the most readable unit. For example a data value of 1,234,567,890 bytes would be auto formatted to 1.23 gibibytes. In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, or in widgets where you want to override the automatic formatting, you can choose the format you want.
 
 image:used_memory_in_bytes_gb.png[Auto Format in Widgets,width=480]
 
