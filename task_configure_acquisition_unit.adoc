@@ -205,9 +205,9 @@ The Acquisition Unit (AU) detail page provides useful detail for an AU as well a
 * A *summary* section showing the following:
 
  ** *Name* and *IP* of the Acquisition Unit
- ** Current *Status* of the AU
- ** *Last Reported* successful poll time
- ** Any current *Note* for the AU
+ ** Current connection *Status* of the AU
+ ** *Last Reported* successful data collector poll time
+ ** Any current *Note* for the AU. Use this field to enter a comment for the AU. The field displays the most recently added note.
  
  * A table of the AU's *Data Collectors* showing, for each data collector:
  
@@ -222,5 +222,5 @@ image:AUDetailPageExample.png[Example AU Detail page]
 
 For each data collector, you can click on the "three dots" menu to Clone, Edit, Poll, or Delete the data collector. You can also select multiple data collectors in this list to perform bulk actions on them.
 
-To restart the Acquisition Unit, click the *Restart* button at the top of the page.
+To restart the Acquisition Unit, click the *Restart* button at the top of the page. Drop down this button to attempt to *Restore Connection* to the AU in the event of a connection problem.
 
