@@ -24,9 +24,9 @@ Note: When a new data collector is added which acquires assets, or any annotatio
 
 .Creating a Query is very simple:
 
-. Navigate to *Queries > New Query* and click *+Query*
+. Navigate to *Queries > *+New Query*.
 
-. From the 'Select...' list, select the asset/metric type you want to query for. You can scroll through the list or you can start typing to more quickly find what you're searching for.
+. From the 'Select...' list, select the object type you want to query for. You can scroll through the list or you can start typing to more quickly find what you're searching for.
 
 .Scroll list:
 image:QueryDrop-DownList.png[Query Drop-Down]
@@ -34,11 +34,12 @@ image:QueryDrop-DownList.png[Query Drop-Down]
 .Type-to-Search:
 image:QueryPageFilter.png[Typing to find]
 
-You can add filters to further narrow down your query by clicking the *+* button in the *Filter By* field. When working with integration data (Kubernetes, ONTAP Advanced Metrics, etc.), you can also add one or more groupings for the data, if desired.
+You can add filters to further narrow down your query by clicking the *+* button in the *Filter By* field. 
+Group rows by object or attribute. When working with integration data (Kubernetes, ONTAP Advanced Metrics, etc.), you can group by multiple attributes, if desired.
 
 image:QueryFilterExample.png[Query Filtering and Grouping]
 
-The query results list shows a number of default columns, depending on the asset or metric type searched for. To add, remove, or change the columns, click the gear icon on the right of the table. The available columns variy based on the asset/metric type.
+The query results list shows a number of default columns, depending on the object type searched for. To add, remove, or change the columns, click the gear icon on the right of the table. The available columns variy based on the asset/metric type.
 
 image:QuerySelectColumns.png[Select Columns]
 
