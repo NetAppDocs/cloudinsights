@@ -20,6 +20,19 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === September 2020
 
+==== Query Page with Integration Data
+
+The Cloud Insights Query page supports integration data (i.e. from Kubernetes, ONTAP Advanced Metrics, etc.). When working with integration data, the query results table displays a "Split-Screen" view, with object/grouping on the left side, and object data (attributes/metrics) on the right. You can also choose multiple attributes for grouping integration data. 
+
+image:QueryPageIntegrationData.png[Query showing integration data]
+
+==== Unit Display Formatting in Table Widget
+
+Unit display formatting is now available in Table widgets for columns that display metric/counter data (for example, gigabytes, MB/second, etc.). To change a metric's display unit, click the "three dots" menu in the column header and select "Unit Display". You can choose from any of the available units. Available units will vary according to the type of metric data in the display column.
+
+//image:TableWidgetUnitManagement.png[Table Widget Unit Management]
+image:TableWidgetUnitManagement1.png[Table Widget Unit Management]
+
 ////
 ==== Basic Edition Technical Support
 
