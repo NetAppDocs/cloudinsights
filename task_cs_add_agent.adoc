@@ -23,6 +23,7 @@ Cloud Secure collects user activity data using one or more agents. Agents connec
 
 * The sudo privilege is required for installation, running scripts, and uninstall. 
 
+////
 * The Docker CE package must be installed on the VM hosting the agent. 
 + 
 To determine if the Docker CE package is installed, use the following command:   
@@ -86,6 +87,7 @@ sudo rpm -i <rpms>
 sudo systemctl enable docker
 sudo systemctl start docker
 ----
+////
 
 ////
 == Java Requirement 
@@ -221,12 +223,12 @@ Use the following commands to open ports to be used by Cloud Secure.
 
 .Steps
 
-. `sudo firewall-cmd --permanent --zone=public --add-port=35001-35100/tcp` 
+. `sudo firewall-cmd --permanent --zone=public --add-port=35000-55000/tcp` 
 . `sudo firewall-cmd --reload` 
-. `sudo iptables-save | grep 35001`
+. `sudo iptables-save | grep 35000`
 +
 sample output:
- -A IN_public_allow -p tcp -m tcp --dport 35001 -m conntrack -ctstate NEW -j ACCEPT
+ -A IN_public_allow -p tcp -m tcp --dport 35000 -m conntrack -ctstate NEW -j ACCEPT
 
 
 == Troubleshooting Agent Installation Errors
