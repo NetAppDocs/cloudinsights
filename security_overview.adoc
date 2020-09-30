@@ -71,25 +71,26 @@ Cloud Insights performs independent third-party Audit and validations from exter
 == What information does Cloud Insights store?
 
 Cloud Insights stores the following data:
+
 * Performance data
 +
-Performance data is time series data providing information about the performance of the monitored device/source. This includes for example the number of IOs delivered by a storage system, the throughput of a FibreChannel port, the number of pages delivered by a web server or the response time of a database.
+Performance data is time-series data providing information about the performance of the monitored device/source. This includes, for example, the number of IOs delivered by a storage system, the throughput of a FibreChannel port, the number of pages delivered by a web server, the response time of a database, and more.
 
 * Inventory data
 +
-Inventory data consists of metadata describing the monitored device/source and how it is configured. This includes e.g. hardware and software versions installed, disks and LUNs in a storage system, CPU cores, RAM and disks of a virtual machine, the tablespaces of a database, the number and type of ports on a SAN switch, directory / file names (if Cloud Secure is enabled) etc.
+Inventory data consists of metadata describing the monitored device/source and how it is configured. This includes, for example, hardware and software versions installed, disks and LUNs in a storage system, CPU cores, RAM and disks of a virtual machine, the tablespaces of a database, the number and type of ports on a SAN switch, directory/file names (if Cloud Secure is enabled), etc.
 
 * Configuration data
 +
-This summarizes customer-provided configuration data used to manage customer inventory and operations, e.g. hostnames or IP addresses of the monitored devices, polling intervals and timeout values.
+This summarizes customer-provided configuration data used to manage customer inventory and operations, e.g. hostnames or IP addresses of the monitored devices, polling intervals, timeout values, etc.
 
 * Secrets
 +
-Secrets consist of the credentials used by the Cloud Insights Acquisition Unit to access customer devices and services. These credentials are encrypted AES-256, the private keys are stored only on the Acquisition Units and never leave the customer environment. Even privileged Cloud Insights SREs are unable to access customer secrets in plain-text due to this design.
+Secrets consist of the credentials used by the Cloud Insights Acquisition Unit to access customer devices and services. These credentials are encrypted using AES-256, and the private keys are stored only on the Acquisition Units and never leave the customer environment. Even privileged Cloud Insights SREs are unable to access customer secrets in plain-text due to this design.
 
 * (optionally) User data
 +
-In cases where the Cloud Secure functionality is enabled AND the customer chooses to enable the User Directory collector, the system will store user display names, corporate email addresses and other information collected from Active Directory.
+In cases where the Cloud Secure functionality is enabled AND the customer chooses to enable the User Directory collector, the system will store user display names, corporate email addresses, and other information collected from Active Directory.
  
 *No explicit personal data* is collected from infrastructure and services resources. Collected information consists of performance metrics, configuration information and infrastructure metadata only, much like many vendor phone-homes, including NetApp auto-support and ActiveIQ. However, depending on a customer's naming conventions, matadata for shares, volumes, VMs, qtrees, applications, etc. may contain personally identifiable information. 
  
