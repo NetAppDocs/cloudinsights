@@ -92,7 +92,7 @@ Secrets consist of the credentials used by the Cloud Insights Acquisition Unit t
 +
 In cases where the Cloud Secure functionality is enabled AND the customer chooses to enable the User Directory collector, the system will store user display names, corporate email addresses, and other information collected from Active Directory.
  
-*No explicit personal data* is collected from infrastructure and services resources. Collected information consists of performance metrics, configuration information and infrastructure metadata only, much like many vendor phone-homes, including NetApp auto-support and ActiveIQ. However, depending on a customer's naming conventions, matadata for shares, volumes, VMs, qtrees, applications, etc. may contain personally identifiable information. 
+*No explicit personal data* is collected from infrastructure and services resources. Collected information consists of performance metrics, configuration information and infrastructure metadata only, much like many vendor phone-homes, including NetApp auto-support and ActiveIQ. However, depending on a customer's naming conventions, data for shares, volumes, VMs, qtrees, applications, etc. may contain personally identifiable information. 
  
 If Cloud Secure is enabled, the system additionally looks at file and directory names on SMB shares, which may contain personally identifiable information. Where customers enable the Cloud Secure User Directory Collector (which essentially maps Windows SIDs to usernames through Active Directory), the display name, corporate email address and any additional attributes selected will be collected and stored by Cloud Insights.
  
