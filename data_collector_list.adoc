@@ -20,12 +20,14 @@ Cloud Insights supports a variety of Data Collectors from many vendors and servi
 
 Data Collectors are categorized by these types:
 
-* Infrastructure: Acquired from vendor devices such as storage arrays or switches.
+* Infrastructure: Acquired from vendor devices such as storage arrays, switches, hypervisors, or backup devices.
 * Service: Acquired from services such as Kubernetes or Docker. Also called _Integration_.
 
 Alphabetical list of Data Collectors supported by Cloud Insights:
 
 |===
+|Data Collector|Type
+
 | link:task_config_telegraf_activemq.html[ActiveMQ ] |Service 
 | link:task_dc_amazon_ec2.html[Amazon EC2 and EBS ] |Infrastructure 
 | link:task_config_telegraf_apache.html[Apache ] |Service 
