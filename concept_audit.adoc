@@ -16,35 +16,19 @@ summary: Audit provides a view of system and user activities in the Cloud Insigh
 :imagesdir: ./media/
 
 [.lead]
-To identify unexpected changes, you can view an audit trail of the Cloud Insights system and its user activities.
+To identify changes both expected (for tracking) or unexpected (for troubleshooting), you can view an audit trail of the Cloud Insights system events and user activities.
 
-Cloud Insights generates audit entries for changes that impact the system or users. These changes include:
+== Viewing Audited Events
 
-    * Logging in
-    * Authorizing or unauthorizing a path
-    * Updating an authorized path
-    * Setting global policies or thresholds
-    * Adding or removing a data collector
-    * Starting or stopping a data collector
-    * Updating data collector properties
-    * Adding, editing, or deleting a task
-    * Removing an application group
-    * Identifying or changing the identification for a device
+To View the Audit page, click *Admin > Audit* in the menu. The Audit page is displayed, providing the following details for each audit entry:
 
-Use the following steps to access the Audit system:
-
-.Steps
-
-. In the Cloud Insights menu, click *Admin > Audit*
-+
-The Audit page is displayed, providing the following details for each audit entry:
-
-* *Time* - Date and time that the changes were made
-* *User* - User account's role, (guest, user, or administrator)
-* *Role* - The user's role in Cloud Insights
-* *IP* - IP address associated with the audit entry
-* *Action* - Type of activity in the audit entry
-* *Details* - Details of the audit entry
+* *Time* - Date and time of the event or activity
+* *User* - The User who initiated the activity 
+* *Role* - The user's role in Cloud Insights (guest, user, administrator)
+* *IP* - The IP address associated with the event
+* *Action* - Type of activity, for example Login, Create, Update
+* *Category* - The category of activity
+* *Details* - Details of the activity
 
 When there is a user activity that affects a resource, such as a data collector or an application, the details include a link to the resource's landing page.
 
