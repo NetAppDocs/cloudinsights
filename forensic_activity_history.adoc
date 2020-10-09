@@ -96,7 +96,7 @@ You can filter Forensic Activity data by the following fields:
 **	Write Metadata
 **	Other Change 
 
-* *Source IP* from which the entity was accessed. You must provide a valid source IP address in double quotes, for example “10.1.1.1.”.  Incomplete IPs such as “10.1.1.*”, “10.1.*.*”, etc. will not work.
+* Source IP from which the entity was accessed. You must provide a valid source IP address in double quotes, for example “10.1.1.1.”.  Incomplete IPs such as “10.1.1.*”, “10.1.*.*”, etc. will not work.
 
 * Protocol to fetch activities
 * Noise Reduction to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.                 
@@ -110,7 +110,8 @@ The following fields are subject to special filtering rules:
 * Device where entities reside
 * Volume where entities reside
 
-These fields must adhere to the following when filtering:
+The preceeding fields are subject to the following when filtering:
+
 * Exact value should be within quotes: Example: "searchtext"
 * Wildcard strings must contain no quotes: Example: *searchtext*, searchtext, will filter for any strings containing ‘searchtext’.
 * String with a prefix, Example: searchtext* , will search any strings which start with ‘searchtext’.
