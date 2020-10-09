@@ -15,12 +15,23 @@ summary: forensic activity history data
 
 [.lead]
 
-The Activity History page helps you understand the actions performed on entities in the Cloud Secure environment. 
+The All Activity page helps you understand the actions performed on entities in the Cloud Secure environment. 
 
 
-== Examining Activity History Data  
+== Examining All Activity Data  
 
-Click *Forensic > Activity History* to access the Activity History page. The data available on this page describes:
+Click *Forensics > Activity Forensics* and click the *All Activity* tab to access the All Activity page.
+This page provides an overview of activities in your environment, highlighting the following information:
+
+* A graph showing _Activity History_ (accessed per minute/per 5 minutes/per 10 minutes based on selected global time range)
++
+You can zoom the graph by dragging out a rectangle in the graph. The entire page will be loaded to display the zoomed time range. When zoomed in, a button is displayed that lets the user zoom out. 
+
+* A chart of _Activity Types_ 
+* A chart of Activity on _Entity Types_
+* A list of the _All Activity_ data
+
+The _All Activity_ table shows the following information:
 
 * The time an entity was accessed including the year, month, day, and time of the last access. 
 
@@ -28,44 +39,64 @@ Click *Forensic > Activity History* to access the Activity History page. The dat
 
 //Above should be new user profile?
 
-* The activity the user performed:  
-** *Create*
-** *Read*
-** *Read Metadata*
-** *Copy*
-** *Delete*
-** *Write*
+* The activity the user performed. Supported types are:  
+**	Change Group Ownership
+**	Change Owner
+**	Change Permission
+**	Copy
+**	Create
+**	Delete
+**	Move
+**	Read
+**	Read Metadata
+**	Rename
+**	Write
+**	Write Metadata
+**	Other Change
 
 * The *Path* to the entity with a link to the link:forensic_entity_detail.html[Entity Detail Data]
  
-* The entity type:
-** *Stream*
-** *File*
-** *Directory*
-** *Symbolic Link*
-** Other Type
+** The entity type, including entity (i.e. file) extension (.doc, .docx, .tmp, etc.)
+** The device where the entities reside
+** Protocol used to fetch events. 
 
-* The *Source IP* address from which the activity was performed. 
+//* The *Source IP* address from which the activity was performed. 
 
 
 == Filtering Forensic Activity History Data
 
-You can filter Forensic Activity History data by the following:
+There are two methods you can use to filter data.
+1)	Hover over the field in the table and click the filter icon that appears. The value is added to the appropriate filters in the top _Filter By_ list.
+
+2)	Filter data by typing in the _Filter By_ field:
++
+** Select the appropriate filter from the top ‘Filter By’ widget by clicking the *[+]* button:
++
+image:Forensic_Activity_Filter.png[Entity Filer]
+
+** Enter the search text.
+
+** Press Enter or click outside of the filter box.
+
+
+You can filter Forensic Activity History data by the following fields:
 
 
 * The Activity type: 
-** *Created*
-** *Read*
-** *Read Metadata*
-** *Copied*
-** *Deleted*
-** *Write*
-* Entity type: 
-** *Stream*
-** *File*
-** *Directory*
-** *Symbolic Link*
-** Other Type
+** Change Group Ownership
+**	Change Owner
+**	Change Permission
+**	Copy
+**	Create
+**	Delete
+**	Move
+**	Read
+**	Read Metadata
+**	Rename
+**	Write
+**	Write Metadata
+**	Other Change 
+
 * *Source IP* from which the entity was accessed
 * *Path* of the entity 
 * *Time* the activity occurred
