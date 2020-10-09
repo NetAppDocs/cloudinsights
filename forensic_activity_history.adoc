@@ -79,8 +79,7 @@ image:Forensic_Activity_Filter.png[Entity Filer]
 ** Press Enter or click outside of the filter box.
 
 
-You can filter Forensic Activity History data by the following fields:
-
+You can filter Forensic Activity data by the following fields:
 
 * The Activity type: 
 ** Change Group Ownership
@@ -97,12 +96,27 @@ You can filter Forensic Activity History data by the following fields:
 **	Write Metadata
 **	Other Change 
 
-* *Source IP* from which the entity was accessed
-* *Path* of the entity 
-* *Time* the activity occurred
-* *User* performing the activity
+* *Source IP* from which the entity was accessed. You must provide a valid source IP address in double quotes, for example “10.1.1.1.”.  Incomplete IPs such as “10.1.1.*”, “10.1.*.*”, etc. will not work.
 
-== Exporting Activity History
+* Protocol to fetch activities
+* Noise Reduction to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.                 
+* Username of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
+
+The following fields are subject to special filtering rules:
+
+* Entity Type, using entity (file) extension
+* Path of the entity 
+* User performing the activity
+* Device where entities reside
+* Volume where entities reside
+
+These fields must adhere to the following when filtering:
+* Exact value should be within quotes: Example: "searchtext"
+* Wildcard strings must contain no quotes: Example: *searchtext*, searchtext, will filter for any strings containing ‘searchtext’.
+* String with a prefix, Example: searchtext* , will search any strings which start with ‘searchtext’.
+
+
+== Exporting All Activity
 
 You can export the activity history to a .CSV file by clicking the _Export_ button above the Activity History table. Note that only the top 10,000 records are exported.
 
