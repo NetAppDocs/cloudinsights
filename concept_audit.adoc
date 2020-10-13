@@ -48,16 +48,23 @@ By default, the table displays the entries in descending time order.
 
 == Audited Events and Actions
 
-The events and actions audited by Cloud insights can be categorized in the following broad areas, showing typical examples for each:
+The events and actions audited by Cloud insights can be categorized in the following broad areas:
 
 * User account: Log in, log out, role change, etc.
++
+Example: User *Tony Lavoie* logged in from *10.1.120.15*, user agent *Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36*, login method(s) *Cloud Central Portal Login*
+
 * Acquisition Unit: create, delete, etc.
++
+Example: Acquisition unit *AU-Boston-1* removed
+
 * Data Collector: add, remove, modify, postpone/resume, change acquisition unit, start/stop, etc.
 * Application: add, assign to object, remove, etc.
 * Annotation: add, assign, remove, annotation rule actions, annotation value changes, etc.
 * Query: add, remove, etc.
 * Monitor: add, remove, etc.
 * Notification: change email, etc.
+
 
 
 
