@@ -20,6 +20,29 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === October 2020
 
+==== ONTAP Metrics Renamed
+
+As part of an on-going effort to improve efficiency of data-gathering from ONTAP systems, the following ONTAP Metrics have been renamed.
+
+|===
+|Previous Metric Name|New Metric Name
+|netapp_ontap.system_node.total_data |netapp_ontap.system_node.total_throughput 
+|netapp_ontap.aggregate.total_transfers |netapp_ontap.aggregate.total_iops 
+|netapp_ontap.nic_common.total_bytes |netapp_ontap.nic_common.total_throughput 
+|netapp_ontap.lif.total_data |netapp_ontap.lif.total_throughput 
+|netapp_ontap.volume.total_ops |netapp_ontap.volume.total_iops 
+|netapp_ontap.volume.avg_latency |netapp_ontap.volume.total_latency 
+|netapp_ontap.workload.ops |netapp_ontap.workload.total_iops 
+|netapp_ontap.workload.total_data |netapp_ontap.workload.total_throughput 
+|netapp_ontap.workload.latency |netapp_ontap.workload.total_latency 
+|netapp_ontap.workload_volume.ops |netapp_ontap.workload_volume.total_iops 
+|netapp_ontap.workload_volume.total_data |netapp_ontap.workload_volume.total_throughput 
+|netapp_ontap.workload_volume.latency |netapp_ontap.workload_volume.total_latency 
+|===
+
+Dashboard widgets or monitors configured with any of these metrics will stop showing data as of the point in time where the data collector was updated. To use the new metrics, edit each dashboard widget or monitor and consult the table above to change the metric name to the new name.  
+
+
 ==== Basic Edition Technical Support
 
 Technical Support is now available for subscribers to Cloud Insights Basic Edition in addition to Standard and Premium Editions. Additionally, Cloud Insights has simplified the workflow for creating a NetApp support ticket.
