@@ -27,11 +27,11 @@ This page provides an overview of activities in your environment, highlighting t
 +
 You can zoom the graph by dragging out a rectangle in the graph. The entire page will be loaded to display the zoomed time range. When zoomed in, a button is displayed that lets the user zoom out. 
 
-* A chart of _Activity Types_ 
-* A chart of Activity on _Entity Types_
+* A chart of _Activity Types_. To obtain activity history data by activity type, click on corresponding x-axis label link.
+* A chart of Activity on _Entity Types_. To obtain activity history data by entity type, click on corresponding x-axis label link.
 * A list of the _All Activity_ data
 
-The _All Activity_ table shows the following information:
+The _*All Activity*_ table shows the following information:
 
 * The time an entity was accessed including the year, month, day, and time of the last access. 
 
@@ -40,19 +40,33 @@ The _All Activity_ table shows the following information:
 //Above should be new user profile?
 
 * The activity the user performed. Supported types are:  
-**	Change Group Ownership
-**	Change Owner
-**	Change Permission
-**	Copy
-**	Create
-**	Delete
-**	Move
-**	Read
-**	Read Metadata
-**	Rename
-**	Write
-**	Write Metadata
-**	Other Change
+
+**	*Change Group Ownership* - Group Ownership is of file is changed. For more details about group ownership please see link:https://docs.microsoft.com/en-us/previous-versions/orphan-topics/ws.11/dn789205(v=ws.11)?redirectedfrom=MSDN[this link.]
+
+**	*Change Owner* - Ownership of File is changed to another user.
+
+**	*Change Permission* - File permission is changed.
+
+//**	*Copy* - 
+
+**	*Create* - Create file or directory.
+
+**	*Delete* - Delete file or directory. If a directory is deleted, _delete_ events are obtained for all the files in that directory and subdirectories. 
+
+//**	*Move* - 
+
+**	*Read* - File is read.
+
+**	*Read Metadata* - File attributes are read, for example, name of the file, size of the file, file permissions.
+
+**	*Rename* - Rename file or directory.
+
+**	*Write* - Data is written to a file.
+
+**	*Write Metadata* - File metadata is written, for example, permission changed.
+
+**	*Other Change* - Any other event which are not described above. All unmapped events are mapped to “Other Change” activity type.
+
 
 * The *Path* to the entity with a link to the link:forensic_entity_detail.html[Entity Detail Data]
  
@@ -107,19 +121,27 @@ The following fields are subject to special filtering rules:
 * Entity Type, using entity (file) extension
 * Path of the entity 
 * User performing the activity
-* Device where entities reside
+* Device (SVM) where entities reside
 * Volume where entities reside
 
 The preceding fields are subject to the following when filtering:
 
 * Exact value should be within quotes: Example: "searchtext"
-* Wildcard strings must contain no quotes: Example: *searchtext*, searchtext, will filter for any strings containing ‘searchtext’.
+* Wildcard strings must contain no quotes: Example: searchtext, *searchtext*, will filter for any strings containing ‘searchtext’.
 * String with a prefix, Example: searchtext* , will search any strings which start with ‘searchtext’.
+
+== Sorting Forensic Activity History Data
+
+You can sort activity history data by _Time, User,  Source IP, Activity, Path_ and _Entity Type_. By default, the table is sorted by descending _Time_ order, meaning the latest data will be displayed first. Sorting is disabled for _Device_ and _Protocol_ fields.
 
 
 == Exporting All Activity
 
 You can export the activity history to a .CSV file by clicking the _Export_ button above the Activity History table. Note that only the top 10,000 records are exported.
+
+== Activity History Retention
+
+Activity history is retained for 13 months for active Cloud Secure environments.
 
 
 
