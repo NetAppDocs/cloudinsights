@@ -20,6 +20,12 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === October 2020
 
+When grouping integration data (i.e. Kubernetes, ONTAP Advanced Metrics, etc.) in a table widget, if that data contains IDs/Natural Keys in the metadata--also known as _modeled data_--the table widget will allow default expansions of that data based on those natural keys. For example, if you group Kubernetes _Pods_ by _Cluster_, you will see a row in the table for each cluster. You could then expand each cluster row to see a list of the pod objects.
+
+For integration metadata that does not contain Natural Keys/IDs (i.e. _unmodeled data), this grouping does not occur by default.
+
+//CIS-10642
+
 === September 2020
 
 ==== Query Page with Integration Data
