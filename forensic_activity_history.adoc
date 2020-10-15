@@ -95,7 +95,9 @@ image:Forensic_Activity_Filter.png[Entity Filer, width=640]
 
 You can filter Forensic Activity data by the following fields:
 
-* The Activity type: 
+* The *Activity* type.
+
+////
 ** Change Group Ownership
 **	Change Owner
 **	Change Permission
@@ -109,12 +111,15 @@ You can filter Forensic Activity data by the following fields:
 **	Write
 **	Write Metadata
 **	Other Change 
+////
 
-* Source IP from which the entity was accessed. You must provide a valid source IP address in double quotes, for example “10.1.1.1.”.  Incomplete IPs such as “10.1.1.*”, “10.1.*.*”, etc. will not work.
+* *Source IP* from which the entity was accessed. You must provide a valid source IP address in double quotes, for example “10.1.1.1.”.  Incomplete IPs such as “10.1.1.*”, “10.1.*.*”, etc. will not work.
 
-* Protocol to fetch activities
-* Noise Reduction to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.                 
-* Username of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
+* *Protocol* to fetch protocol-specific activities.
+
+* *Noise Reduction* to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.
+
+* *Username* of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
 
 The following fields are subject to special filtering rules:
 
