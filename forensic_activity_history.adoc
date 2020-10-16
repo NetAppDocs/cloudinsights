@@ -130,7 +130,7 @@ The following fields are subject to special filtering rules:
 The preceding fields are subject to the following when filtering:
 
 * Exact value should be within quotes: Example: "searchtext"
-* Wildcard strings must contain no quotes: Example: searchtext, *searchtext*, will filter for any strings containing ‘searchtext’.
+* Wildcard strings must contain no quotes: Example: searchtext, \*searchtext\*, will filter for any strings containing ‘searchtext’.
 * String with a prefix, Example: searchtext* , will search any strings which start with ‘searchtext’.
 
 == Sorting Forensic Activity History Data
