@@ -33,13 +33,13 @@ You can zoom the graph by dragging out a rectangle in the graph. The entire page
 
 The _*All Activity*_ table shows the following information:
 
-* The time an entity was accessed including the year, month, day, and time of the last access. 
+* The *time* an entity was accessed including the year, month, day, and time of the last access. 
 
-* The user that accessed the entity with a link to the link:forensic_user_overview.html[User information].
+* The *user* that accessed the entity with a link to the link:forensic_user_overview.html[User information].
 
 //Above should be new user profile?
 
-* The activity the user performed. Supported types are:  
+* The *activity* the user performed. Supported types are:  
 
 **	*Change Group Ownership* - Group Ownership is of file is changed. For more details about group ownership please see link:https://docs.microsoft.com/en-us/previous-versions/orphan-topics/ws.11/dn789205(v=ws.11)?redirectedfrom=MSDN[this link.]
 
@@ -47,13 +47,9 @@ The _*All Activity*_ table shows the following information:
 
 **	*Change Permission* - File permission is changed.
 
-//**	*Copy* - 
-
 **	*Create* - Create file or directory.
 
 **	*Delete* - Delete file or directory. If a directory is deleted, _delete_ events are obtained for all the files in that directory and subdirectories. 
-
-//**	*Move* - 
 
 **	*Read* - File is read.
 
@@ -67,12 +63,13 @@ The _*All Activity*_ table shows the following information:
 
 **	*Other Change* - Any other event which are not described above. All unmapped events are mapped to “Other Change” activity type.
 
-
 * The *Path* to the entity with a link to the link:forensic_entity_detail.html[Entity Detail Data]
  
-** The entity type, including entity (i.e. file) extension (.doc, .docx, .tmp, etc.)
-** The device where the entities reside
-** Protocol used to fetch events. 
+* The *Entity Type*, including entity (i.e. file) extension (.doc, .docx, .tmp, etc.)
+
+* The *Device* where the entities reside
+
+* The *Protocol* used to fetch events. 
 
 //* The *Source IP* address from which the activity was performed. 
 
@@ -80,17 +77,18 @@ The _*All Activity*_ table shows the following information:
 == Filtering Forensic Activity History Data
 
 There are two methods you can use to filter data.
-1)	Hover over the field in the table and click the filter icon that appears. The value is added to the appropriate filters in the top _Filter By_ list.
 
-2)	Filter data by typing in the _Filter By_ field:
+.	Hover over the field in the table and click the filter icon that appears. The value is added to the appropriate filters in the top _Filter By_ list.
+
+.	Filter data by typing in the _Filter By_ field:
 +
 Select the appropriate filter from the top ‘Filter By’ widget by clicking the *[+]* button:
 +
-image:Forensic_Activity_Filter.png[Entity Filer, width=640]
-
-** Enter the search text.
-
-** Press Enter or click outside of the filter box.
+image:Forensic_Activity_Filter.png[Entity Filer, width=500]
++
+Enter the search text
++
+Press Enter or click outside of the filter box to apply the filter.
 
 
 You can filter Forensic Activity data by the following fields:
@@ -123,16 +121,16 @@ You can filter Forensic Activity data by the following fields:
 
 The following fields are subject to special filtering rules:
 
-* Entity Type, using entity (file) extension
-* Path of the entity 
-* User performing the activity
-* Device (SVM) where entities reside
-* Volume where entities reside
+* *Entity Type*, using entity (file) extension
+* *Path* of the entity 
+* *User* performing the activity
+* *Device* (SVM) where entities reside
+* *Volume* where entities reside
 
 The preceding fields are subject to the following when filtering:
 
 * Exact value should be within quotes: Example: "searchtext"
-* Wildcard strings must contain no quotes: Example: searchtext, *searchtext*, will filter for any strings containing ‘searchtext’.
+* Wildcard strings must contain no quotes: Example: searchtext, \*searchtext*, will filter for any strings containing ‘searchtext’.
 * String with a prefix, Example: searchtext* , will search any strings which start with ‘searchtext’.
 
 == Sorting Forensic Activity History Data
