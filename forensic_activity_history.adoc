@@ -27,38 +27,49 @@ This page provides an overview of activities in your environment, highlighting t
 +
 You can zoom the graph by dragging out a rectangle in the graph. The entire page will be loaded to display the zoomed time range. When zoomed in, a button is displayed that lets the user zoom out. 
 
-* A chart of _Activity Types_ 
-* A chart of Activity on _Entity Types_
+* A chart of _Activity Types_. To obtain activity history data by activity type, click on corresponding x-axis label link.
+* A chart of Activity on _Entity Types_. To obtain activity history data by entity type, click on corresponding x-axis label link.
 * A list of the _All Activity_ data
 
-The _All Activity_ table shows the following information:
+The _*All Activity*_ table shows the following information:
 
-* The time an entity was accessed including the year, month, day, and time of the last access. 
+* The *time* an entity was accessed including the year, month, day, and time of the last access. 
 
-* The user that accessed the entity with a link to the link:forensic_user_overview.html[User information].
+* The *user* that accessed the entity with a link to the link:forensic_user_overview.html[User information].
 
 //Above should be new user profile?
 
-* The activity the user performed. Supported types are:  
-**	Change Group Ownership
-**	Change Owner
-**	Change Permission
-**	Copy
-**	Create
-**	Delete
-**	Move
-**	Read
-**	Read Metadata
-**	Rename
-**	Write
-**	Write Metadata
-**	Other Change
+* The *activity* the user performed. Supported types are:  
+
+**	*Change Group Ownership* - Group Ownership is of file is changed. For more details about group ownership please see link:https://docs.microsoft.com/en-us/previous-versions/orphan-topics/ws.11/dn789205(v=ws.11)?redirectedfrom=MSDN[this link.]
+
+**	*Change Owner* - Ownership of File is changed to another user.
+
+**	*Change Permission* - File permission is changed.
+
+**	*Create* - Create file or directory.
+
+**	*Delete* - Delete file or directory. If a directory is deleted, _delete_ events are obtained for all the files in that directory and subdirectories. 
+
+**	*Read* - File is read.
+
+**	*Read Metadata* - File attributes are read, for example, name of the file, size of the file, file permissions.
+
+**	*Rename* - Rename file or directory.
+
+**	*Write* - Data is written to a file.
+
+**	*Write Metadata* - File metadata is written, for example, permission changed.
+
+**	*Other Change* - Any other event which are not described above. All unmapped events are mapped to “Other Change” activity type.
 
 * The *Path* to the entity with a link to the link:forensic_entity_detail.html[Entity Detail Data]
  
-** The entity type, including entity (i.e. file) extension (.doc, .docx, .tmp, etc.)
-** The device where the entities reside
-** Protocol used to fetch events. 
+* The *Entity Type*, including entity (i.e. file) extension (.doc, .docx, .tmp, etc.)
+
+* The *Device* where the entities reside
+
+* The *Protocol* used to fetch events. 
 
 //* The *Source IP* address from which the activity was performed. 
 
@@ -66,22 +77,25 @@ The _All Activity_ table shows the following information:
 == Filtering Forensic Activity History Data
 
 There are two methods you can use to filter data.
-1)	Hover over the field in the table and click the filter icon that appears. The value is added to the appropriate filters in the top _Filter By_ list.
 
-2)	Filter data by typing in the _Filter By_ field:
+.	Hover over the field in the table and click the filter icon that appears. The value is added to the appropriate filters in the top _Filter By_ list.
+
+.	Filter data by typing in the _Filter By_ field:
 +
 Select the appropriate filter from the top ‘Filter By’ widget by clicking the *[+]* button:
 +
-image:Forensic_Activity_Filter.png[Entity Filer, width=640]
-
-** Enter the search text.
-
-** Press Enter or click outside of the filter box.
+image:Forensic_Activity_Filter.png[Entity Filer, width=500]
++
+Enter the search text
++
+Press Enter or click outside of the filter box to apply the filter.
 
 
 You can filter Forensic Activity data by the following fields:
 
-* The Activity type: 
+* The *Activity* type.
+
+////
 ** Change Group Ownership
 **	Change Owner
 **	Change Permission
@@ -95,31 +109,42 @@ You can filter Forensic Activity data by the following fields:
 **	Write
 **	Write Metadata
 **	Other Change 
+////
 
-* Source IP from which the entity was accessed. You must provide a valid source IP address in double quotes, for example “10.1.1.1.”.  Incomplete IPs such as “10.1.1.*”, “10.1.*.*”, etc. will not work.
+* *Source IP* from which the entity was accessed. You must provide a valid source IP address in double quotes, for example “10.1.1.1.”.  Incomplete IPs such as “10.1.1.*”, “10.1.*.*”, etc. will not work.
 
-* Protocol to fetch activities
-* Noise Reduction to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.                 
-* Username of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
+* *Protocol* to fetch protocol-specific activities.
+
+* *Noise Reduction* to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.
+
+* *Username* of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
 
 The following fields are subject to special filtering rules:
 
-* Entity Type, using entity (file) extension
-* Path of the entity 
-* User performing the activity
-* Device where entities reside
-* Volume where entities reside
+* *Entity Type*, using entity (file) extension
+* *Path* of the entity 
+* *User* performing the activity
+* *Device* (SVM) where entities reside
+* *Volume* where entities reside
 
 The preceding fields are subject to the following when filtering:
 
 * Exact value should be within quotes: Example: "searchtext"
-* Wildcard strings must contain no quotes: Example: *searchtext*, searchtext, will filter for any strings containing ‘searchtext’.
+* Wildcard strings must contain no quotes: Example: searchtext, \*searchtext*, will filter for any strings containing ‘searchtext’.
 * String with a prefix, Example: searchtext* , will search any strings which start with ‘searchtext’.
+
+== Sorting Forensic Activity History Data
+
+You can sort activity history data by _Time, User,  Source IP, Activity, Path_ and _Entity Type_. By default, the table is sorted by descending _Time_ order, meaning the latest data will be displayed first. Sorting is disabled for _Device_ and _Protocol_ fields.
 
 
 == Exporting All Activity
 
 You can export the activity history to a .CSV file by clicking the _Export_ button above the Activity History table. Note that only the top 10,000 records are exported.
+
+== Activity History Retention
+
+Activity history is retained for 13 months for active Cloud Secure environments.
 
 
 
