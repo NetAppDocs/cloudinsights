@@ -206,7 +206,7 @@ If yes, create an SVM Mgmt Only Lif and try connecting via this SVM management o
 |Verify that the correct SVM IP Management address or Cluster Management IP has been provided.
 
 |Error Message: "Connector is in error state. Service.name: audit. Reason for failure: External fpolicy server terminated."
-|It is most likely that a firewall is blocking the necessary ports in the agent machine. Verify the port range 35001-35100/tcp is opened for the agent machine to connect from the SVM. Also ensure that there are no firewalls enabled from the ONTAP side blocking communication to the agent machine.
+|It is most likely that a firewall is blocking the necessary ports in the agent machine. Verify the port range 35000-55000/tcp is opened for the agent machine to connect from the SVM. Also ensure that there are no firewalls enabled from the ONTAP side blocking communication to the agent machine.
 
 |No events seen in activity page.
 |Check if ONTAP collector is in “RUNNING” state. If yes, then ensure that some cifs events are being generated on the cifs client VMs.

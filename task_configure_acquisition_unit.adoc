@@ -200,3 +200,29 @@ You can also select multiple data collectors of the same type and click the *Bul
 
 . Once the Acquisition Unit has been re-installed, assign your data collectors back to the Acquisition Unit.
 
+== Viewing AU Details
+
+The Acquisition Unit (AU) detail page provides useful detail for an AU as well as information to help with troubleshooting. The AU detail page contains the following sections:
+
+* A *summary* section showing the following:
+
+ ** *Name* and *IP* of the Acquisition Unit
+ ** Current connection *Status* of the AU
+ ** *Last Reported* successful data collector poll time
+ ** Any current *Note* for the AU. Use this field to enter a comment for the AU. The field displays the most recently added note.
+ 
+ * A table of the AU's *Data Collectors* showing, for each data collector:
+ 
+ ** *Name* - Click this link to drill down into the data collector's detail page with additional information
+ ** *Status* - Success or error information
+ ** *Type* - Vendor/model
+ ** *IP* address of the data collector
+ ** Current *Impact* level
+ ** *Last Acquired* time - when the data collector was last successfully polled
+
+image:AUDetailPageExample.png[Example AU Detail page]
+
+For each data collector, you can click on the "three dots" menu to Clone, Edit, Poll, or Delete the data collector. You can also select multiple data collectors in this list to perform bulk actions on them.
+
+To restart the Acquisition Unit, click the *Restart* button at the top of the page. Drop down this button to attempt to *Restore Connection* to the AU in the event of a connection problem.
+
