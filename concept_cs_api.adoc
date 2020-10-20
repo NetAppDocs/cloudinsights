@@ -40,9 +40,9 @@ NOTE: Your token will only be available for copying to the clipboard and saving 
 
 You can disable, enable, and revoke tokens. Tokens that are disabled can be enabled.
 
-Tokens grant general purpose access to APIs from a customer perspective, managing access to APIs in the scope of their own tenant. 
+Tokens grant general purpose access to APIs from a customer perspective, managing access to APIs in the scope of their own environment. 
 
-The application receives an Access Token after a user successfully authenticates and authorizes access, then passes the Access Token as a credential when it calls the target API. The passed token informs the API that the bearer of the token has been authorized to access the API and perform specific actions specified by the scope that was granted during authorization.
+The application receives an Access Token after a user successfully authenticates and authorizes access, then passes the Access Token as a credential when it calls the target API. The passed token informs the API that the bearer of the token has been authorized to access the API and perform specific actions based on the scope that was granted during authorization.
 
 The HTTP header where the Access Token is passed is *X-CloudInsights-ApiKey:*
 
@@ -52,6 +52,6 @@ For example, use the following to retrieve storages assets:
  
 Where _<API_Access_Token>_ is the token you saved during API access key creation.
 
-Detailed information can be found in _API Documentation_ link under *Admin > API Access*. 
+Detailed information can be found in the _API Documentation_ link under *Admin > API Access*. 
 
 
