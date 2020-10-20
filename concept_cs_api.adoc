@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_cs_api.html
 keywords: api, access, token, swagger  
-summary: Cloud Sercure includes a powerful API for integration with other applications such as CMDBs.
+summary: Cloud Secure includes a powerful API for integration with other applications such as CMDBs.
 ---
 
 = Cloud Secure API
@@ -23,8 +23,8 @@ Requirements for API Access:
 
 
 == API Documentation (Swagger)
-The latest API information is found by logging in to Cloud Secure and navigating to *Admin > API Acccess*. Click the *API Documentation* link.
-The API Documentation is Swagger-based, which provides a brief description and usage information for the API, and allows you to try it out in your environment.
+The latest API information is found by logging in to Cloud Secure and navigating to *Admin > API Access*. Click the *API Documentation* link.
+The API Documentation is Swagger-based, which provides a brief description and usage information for the API and allows you to try it out in your environment.
 
 == API Access Tokens
 Before using the Cloud Secure API, you must create one or more *API Access Tokens*. Access tokens grant read permissions. You can also set the expiration for each access token. 
@@ -40,7 +40,7 @@ NOTE: Your token will only be available for copying to the clipboard and saving 
 
 You can disable, enable, and revoke tokens. Tokens that are disabled can be enabled.
 
-Tokens grant general purpose access to APIs from a customer perspective; managing access to APIs in the scope of their own tenant. 
+Tokens grant general purpose access to APIs from a customer perspective, managing access to APIs in the scope of their own tenant. 
 
 The application receives an Access Token after a user successfully authenticates and authorizes access, then passes the Access Token as a credential when it calls the target API. The passed token informs the API that the bearer of the token has been authorized to access the API and perform specific actions specified by the scope that was granted during authorization.
 
@@ -52,6 +52,6 @@ For example, use the following to retrieve storages assets:
  
 Where _<API_Access_Token>_ is the token you saved during API access key creation.
 
-Please look into the API Documentation link under Admin > API Acccess for details about the APIs. 
+Detailed information can be found in _API Documentation_ link under *Admin > API Access*. 
 
 
