@@ -42,11 +42,13 @@ As part of an on-going effort to improve efficiency of data-gathering from ONTAP
 
 Dashboard widgets or monitors configured with any of these metrics will stop showing data as of the point in time where the data collector was updated. To use the new metrics, edit each dashboard widget or monitor and consult the table above to change the metric name to the new name.  
 
-////
 ==== Basic Edition Technical Support
 
 Technical Support is now available for subscribers to Cloud Insights Basic Edition in addition to Standard and Premium Editions. Additionally, Cloud Insights has simplified the workflow for creating a NetApp support ticket.
-////
+
+==== Cloud Secure Public API
+
+Cloud Secure supports link:concept_cs_api.html[REST APIs] for accessing Activity and Alert information. This is accomplished through the use of API Access Tokens, created through the Cloud Secure Admin UI, which are then used to access the REST APIs. Swagger documentation for these REST APIs is integrated with Cloud Secure.
 
 ==== Query Page with Integration Data
 
@@ -60,6 +62,7 @@ Unit display formatting is now available in Table widgets for columns that displ
 
 //image:TableWidgetUnitManagement.png[Table Widget Unit Management]
 image:TableWidgetUnitManagement1.png[Table Widget Unit Management]
+
 
 ==== Acquisition Unit Detail Page
 
