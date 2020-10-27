@@ -35,7 +35,7 @@ image:ZookeeperDCConfigLinux.png[Zookeeper configuration]
 == Setup
 
 At a minimum, you need to allow the Zookeeper four letter server commands _mntr_, _srvr_, and _stat_.
-You can enable these commands using the following format: 4lw.commands.whitelist=mntr, srvr, stat in the zoo.cfg file.
+You can enable these commands using the following format: _4lw.commands.whitelist=mntr, srvr, stat_ in the _zoo.cfg_ file.
 There may be other four letter commands that are required in your configuration. See the link:https://zookeeper.apache.org/[Zookeeper] documentation for more information. 
 
 == Objects and Counters
