@@ -51,4 +51,25 @@ Additionally, access logs to Cloud Insights are maintained and contain users' IP
 
 == Where is my information stored?
 
-TBD: region information
+Cloud Insights stores information according to the region in which your environment is created.
+
+The following information is stored in the host region:
+
+* Customer telemetry information
+* Asset/Object information, including counters and performance metrics
+* Acquisition Unit information
+* Audit information on user activities inside Cloud Insights
+//* Etc
+* Cloud Secure Active Directory information
+* Cloud Secure Audit information 
+
+The following information resides in the United States, regardless of the region hosting your Cloud Insights environment:
+
+* Environment site (sometimes called "tenant") information such as site/account owner. 
+* Information that allows NetApp Cloud Central to communicate with regional Cloud Insights sites, including user Authorization.
+//* Cloud Insights user information including authorization information.
+* Information about the relation between user and tenant.
+ 
+
+ 
+
