@@ -223,7 +223,7 @@ If yes, create an SVM Mgmt Only Lif and try connecting via this SVM management o
 |Error Message: "Connector is in error state. Service.name: audit. Reason for failure: External fpolicy server terminated."
 |1. It is most likely that a firewall is blocking the necessary ports in the agent machine. Verify the port range 35000-55000/tcp is opened for the agent machine to connect from the SVM. Also ensure that there are no firewalls enabled from the ONTAP side blocking communication to the agent machine.
 2. Type the following command in the Agent box and ensure that the port range is open.
-_sudo iptables-save | grep 3500*_
+_sudo iptables-save \| grep 3500*_
 
 3. Login to SVM, enter the following commands and check that no firewall is set to block the communication with ONTAP.
 _system services firewall show_
