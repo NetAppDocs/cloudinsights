@@ -40,9 +40,11 @@ Restart the Acquisition Service: sudo cloudinsights-service.sh restart acquisiti
 |Data Collection Issues:
 |Send an Error Report from the Data Collector landing page by clicking the "Send Error Report" button
 
+////
 |When installing a new Cloud Insights Acquisition Unit it fails to connect.
 |1. If a proxy server is needed you may need to uninstall and reinstall the AU with the correct proxy settings.  
 2. Ensure that the domain _*.cloudinsights.netapp.com_ is included in your proxy exception list. More informaiton can be found in the link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/Cloud_Insights_Acquisition_Unit_fails_to_connect_for_new_install[NetApp Knowledgebase]. 
+////
 |===
 
 ////
@@ -54,7 +56,7 @@ Moving Data Collectors to Different Acquisition Units:
 
 If your organization requires proxy usage for internet access, you may need to understand your organization’s proxy behavior and seek certain exceptions for Cloud Insights to work. Keep the following in mind:
 
-* First, does your organization block access by default, and only allow access to specific web sites/domains by exception? If so, you will need to get the following domain whitelisted:
+* First, does your organization block access by default, and only allow access to specific web sites/domains by exception? If so, you will need to get the following domain added to the exception list:
 +
  *.cloudinsights.netapp.com
 +
