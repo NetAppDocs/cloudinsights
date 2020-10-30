@@ -26,15 +26,26 @@ Here you will find suggestions for troubleshooting problems with Acquisition Uni
 2. Copy the displayed token and paste it into a new file named "token".
 3. Place this file in the /var/lib/netapp/cloudinsights/acq/conf/ folder.
 4. Use the given command to start the Acquisition Unit service.
+
 |Installation fails on SELinux|When the AU is installed on SELinux, SE should be either disabled or set to permissive mode. Once the installation is complete, enforcing mode can be enabled.   
+
 |Server Requirements not met | Ensure that your Acquisition Unit server or VM meets  link:concept_acquisition_unit_requirements.html[requirements]
-|Network Requirements not met |Ensure that your Acquisition Unit server/VM can access your Cloud Insights environment (<environment-name>.c01.cloudinsights.netapp.com) through SSL connection over port 443 
-|Proxy Server not configured properly | Follow the link:task_configure_acquisition_unit.html#Setting_proxy_environment_variables[instructions] under “Have a Proxy Server?” in the Add an Acquisition Unit box. 
+
+|Network Requirements not met |Ensure that your Acquisition Unit server/VM can access your Cloud Insights environment (<environment-name>.c01.cloudinsights.netapp.com) through SSL connection over port 443. Try the following commands:
+
+ _ping <environment-name>.c01.cloudinsights.netapp.com_
+_traceroute <environment-name>.c01.cloudinsights.netapp.com_
+_curl \https://<environment-name>.c01.cloudinsights.netapp.com_
+_wget \https://<environment-name>.c01.cloudinsights.netapp.com_
+
+|Proxy Server not configured properly | Verify your proxy settings, and uninstall/re-install the Acquisition Unit software if necessary to enter the correct proxy settings. 
+
+1. Try "curl".  Refer to "man curl" information/documentation regarding proxies: --preproxy, --proxy-* (that's a wildcard "*" because curl supports many proxy settings).
+2. Try "wget".  Check documentation for proxy options.
 
 |Acquisition unit installation failed in Cloud insights with credential errors while starting acquisition service (and visible in the acq.log).|This can be caused by the inclusion of special characters in the proxy credentials. Uninstall the AU (_sudo cloudinsights-uninstall.sh_) and reinstall without using special characters.
 
 |Linux: missing library / file not found| Ensure that your Linux Acquisition Unit server/VM has all necessary libraries. For example, you must have the _unzip_ library installed on the server. To install the _unzip_ library, run the command _*sudo yum install unzip*_ before running the Acquisition Unit install script
-
 
 |Permission issues| Be sure you are logged in as a user with _sudo_ permissions
 
