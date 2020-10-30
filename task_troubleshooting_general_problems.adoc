@@ -22,10 +22,12 @@ See also link:task_troubleshooting_linux_acquisition_unit_problems.html[Troubles
 
 |===
 |*Problem:* | *Try this:* 
-|Cloud Insights logs out from Chrome every 5 minutes
-|This might happen in Chrome's incognito mode, where the default browser settings block third-party cookies. Try the following:
+|Cloud Insights logs out every 5 minutes
+|Enable 3rd party cookie acceptance from [*.]auth0.com in your browser settings. 
+For example in Chrome's incognito mode, the default browser settings block third-party cookies. Try the following:
 Enter "chrome://settings/cookies" in browser URL.
 Select "Allow all cookies" option.
+
 |===
 
 
