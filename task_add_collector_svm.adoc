@@ -20,7 +20,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 
 === Before you begin
 
-* This data collector is supported on Data ONTAP 9.1 and later versions. 
+* This data collector is supported on Data ONTAP 9.2 and later versions. 
 
 * Only data type SVMs are supported. SVMs with infinite/flexgroup volumes are not supported
 
@@ -28,7 +28,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 
 * An Agent link:task_cs_add_agent.html[must be configured] before you can configure data collectors. 
 
-* Make sure that you have a properly configured LDAP Data Connector, otherwise events will show encoded user names and not the actual name of the user (as stored in Active Directory) in the “Activity Forensics” page.
+* Make sure that you have a properly configured User Directory Connector, otherwise events will show encoded user names and not the actual name of the user (as stored in Active Directory) in the “Activity Forensics” page.
 
 * A separate subnet must be used for FPolicy traffic.
 
@@ -39,6 +39,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 *** SVM name must be exactly as is shown in ONTAP and is case-sensitive.
 ** By Using SVM Vserver Management IP, Username, and Password
 ** If you are not able or not willing to use the full Administrator Cluster/SVM Management Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM or Cluster access.
+*** o	You can also use an AD user with a role that has at least the permissions of csrole as mentioned in “A note about permissions” section below. Also refer to the link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.pow-adm-auth-rbac%2FGUID-0DB65B04-71DB-43F4-9A0F-850C93C4896C.html[ONTAP documentation].
 
 * Ensure the correct applications are set for the SVM by executing the following command:
 
@@ -63,13 +64,13 @@ security login show -vserver svmname
 + 
 The system returns the Vserver name, CIFS server name and additional fields.
  
-* Set a password for the SVM vsadmin user. If using custom user, skip this step.
+* Set a password for the SVM vsadmin user. If using custom user or cluster admin user, skip this step.
  clustershell::> `security login password -username vsadmin -vserver svmname`
 
-* Unlock the SVM vsadmin user for external access. If using custom user, skip this step.
+* Unlock the SVM vsadmin user for external access. If using custom user or cluster admin user, skip this step.
  clustershell::> `security login unlock -username vsadmin -vserver svmname`
 
-* Ensure the firewall-policy of the data LIF is set to ‘mgmt’ (not ‘data’).
+* Ensure the firewall-policy of the data LIF is set to ‘mgmt’ (not ‘data’). Skip this step if using a dedicated management lif to add the SVM.
  clustershell::> `network interface modify -lif <SVM_data_LIF_name> -firewall-policy mgmt`
 
 * When a firewall is enabled, you must have an exception defined to allow TCP traffic for the port using the Data ONTAP Data Collector. 
@@ -149,7 +150,7 @@ Note that if the data collector is added using "causer", link:cs_cs_automated_re
 +
 The system displays the available Data Collectors. 
 
-. Click the *NetApp SVM* tile.  
+. Hover over the *NetApp SVM tile and click *+Monitor*.  
 +
 The system displays the ONTAP SVM configuration page. Enter the required data for each field. 
 
@@ -165,6 +166,15 @@ The system displays the ONTAP SVM configuration page. Enter the required data fo
 |Cluster / SVM Management IP Address|The IP address for the cluster or the SVM, depending on your selection above.
 |SVM Name|The Name of the SVM (this field is required when connecting via Cluster IP)
 |Username|User name to access the SVM/Cluster
+When adding via Cluster IP the options are:
+1.	Cluster-admin 
+2.	‘csuser’ 
+3.	AD-user having similar role as csuser.
+When adding via SVM IP the options are:
+4.	vsadmin 
+5.	‘csuser’ 
+6.	AD-username having similar role as csuser.
+
 |Password|Password for the above user name
 |Filter Shares/Volumes|Choose whether to include or exclude Shares / Volumes from event collection
 |Enter complete share names to exclude/include|Comma-separated list of shares to exclude or include (as appropriate) from event collection
@@ -183,34 +193,63 @@ The system displays the ONTAP SVM configuration page. Enter the required data fo
 
 Known problems and their resolutions are described in the following table. 
 
+In the case of an error, hover the mouse over the “Error” string to see the actual error message in the Admin>Data Collectors page.
+
+image:CS_Data_Collector_Error.png[]
+
 [cols=2*, options="header", cols"30,70"]
 
 |===
 |Problem: | Resolution:
 
-|Agent is in Connected State and ONTAP Data collector is in Error State. 
-"Unable to define the state of datasource with id:<ID>"
-|Ensure Docker service is running on the agent.
-
 |Error message: "Connection to the FPolicy server <IP> is broken. ( reason: "FPolicy server is removed from external engine." )"
 |SVM is unable to reach the Fpolicy Server. 
-Make sure there is route available from SVM to the Fpolicy Server. Login to the SVM and ping the Fpolicy Server IP address.
-Also, in instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
+1. Make sure there is route available from SVM to the Fpolicy Server/Agent machine IP. Login to the cluster/SVM and ping the Fpolicy Server IP address using the following command:
+_net ping -lif <data_lif> -destination <agent IP> -vserver <svmname>_
+2. In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
 To prevent this, configure each SVM on a single environment.
 
-|DSC reports Error Message: “No local IP address found on the connector that can reach the data interfaces of the SVM”.
-|While adding the DSC via SVM IP and vsadmin credentials, check if the SVM Lif has Data plus Mgmt role enabled. 
+|Collector reports Error Message: “No local IP address found on the connector that can reach the data interfaces of the SVM”.
+|This is most likely due to a networking issue on the ONTAP side. Please follow these steps:
+1. Ensure that there are no firewalls on the SVM data lif or the management lif which are blocking the connection from the SVM.
+2. When adding an SVM via a cluster management IP, please ensure that the data lif and mgmt. lif of SVM are pingable from the Agent VM. In case of issues, check the gateway, netmask and routes for the lif.
+3. While adding the collector via SVM IP and vsadmin credentials, check if the SVM Lif has Data plus Mgmt role enabled. In this case ping to the SVM Lif will work, however SSH to the SVM Lif will not work.
 If yes, create an SVM Mgmt Only Lif and try connecting via this SVM management only Lif.
 
 |Message: "Failed to determine ONTAP type for [hostname: <IP Address>. Reason: Connection error to Storage System <IP Address>: Host is unreachable (Host unreachable)"
-|Verify that the correct SVM IP Management address or Cluster Management IP has been provided.
+|1. Verify that the correct SVM IP Management address or Cluster Management IP has been provided.
+2. SSH to the SVM or the Cluster to which you are intending to connect. Once you are connected ensure that the SVM or the Cluster name is correct.
 
 |Error Message: "Connector is in error state. Service.name: audit. Reason for failure: External fpolicy server terminated."
-|It is most likely that a firewall is blocking the necessary ports in the agent machine. Verify the port range 35000-55000/tcp is opened for the agent machine to connect from the SVM. Also ensure that there are no firewalls enabled from the ONTAP side blocking communication to the agent machine.
+|1. It is most likely that a firewall is blocking the necessary ports in the agent machine. Verify the port range 35000-55000/tcp is opened for the agent machine to connect from the SVM. Also ensure that there are no firewalls enabled from the ONTAP side blocking communication to the agent machine.
+2. Type the following command in the Agent box and ensure that the port range is open.
+_sudo iptables-save \| grep 3500*_
+
+3. Login to SVM, enter the following commands and check that no firewall is set to block the communication with ONTAP.
+_system services firewall show_
+_system services firewall policy show_
+
+link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nmg%2FGUID-969851BB-4302-4645-8DAC-1B059D81C5B2.html[Check firewall commands] on the ONTAP side.
+
+4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM and ensure that ping is working.
 
 |No events seen in activity page.
-|Check if ONTAP collector is in “RUNNING” state. If yes, then ensure that some cifs events are being generated on the cifs client VMs.
+|1. Check if ONTAP collector is in “RUNNING” state. If yes, then ensure that some cifs events are being generated on the cifs client VMs by opening some files.
+
+2. If no activities are seen, please login to the SVM and enter the following command. 
+_<SVM>event log show -source fpolicy_ 
+Please ensure that there are no errors related to fpolicy.
+
+3. If no activities are seen, please login to the SVM. Enter the following command 
+_<SVM>fpolicy show_
+Please check if the fpolicy policy named with prefix “metadata_service” has been set and status is “on”. If not set, then most likely the Agent is unable to execute the commands in the SVM. Please ensure all the prerequisites as described in the beginning of the page have been followed.
+
+|SVM Data Collector is in error state and Errror message is “Agent failed to connect to the collector” 
+|1. Most likely the Agent is overloaded and is unable to connect to the Data Source collectors. 
+2. Check how many Data Source collectors are connected to the Agent. 
+3. Also check the data flow rate in the “All Activity” page in the UI. 
+4. If the number of activities per second is significantly high, install another Agent and move some of the Data Source Collectors to the new Agent.
 
 |===
 
-
+If you are still experiencing problems, reach out to the support links mentioned in the *Help > Support* page.

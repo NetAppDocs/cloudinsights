@@ -20,16 +20,23 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === October 2020
 
+==== Default Expansion of Integration Data
+
+Table widget grouping now allows for default expansions of Kubernetes, ONTAP Advanced Data, and Agent Node metrics. For example, if you group Kubernetes _Nodes_ by _Cluster_, you will see a row in the table for each cluster. You could then expand each cluster row to see a list of the Node objects.
+
+
+//CIS-10642
+
+==== Basic Edition Technical Support
+
+Technical Support is now available for subscribers to Cloud Insights Basic Edition in addition to Standard and Premium Editions. Additionally, Cloud Insights has simplified the workflow for creating a NetApp support ticket.
+
+
 ==== Cloud Secure Public API
 
 Cloud Secure supports link:concept_cs_api.html[REST APIs] for accessing Activity and Alert information. This is accomplished through the use of API Access Tokens, created through the Cloud Secure Admin UI, which are then used to access the REST APIs. Swagger documentation for these REST APIs is integrated with Cloud Secure.
 
-
-////
-==== Basic Edition Technical Support
-
-Technical Support is now available for subscribers to Cloud Insights Basic Edition in addition to Standard and Premium Editions. Additionally, Cloud Insights has simplified the workflow for creating a NetApp support ticket.
-////
+=== September 2020
 
 ==== Query Page with Integration Data
 
