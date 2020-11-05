@@ -179,6 +179,7 @@ When adding via SVM IP the options are:
 |Filter Shares/Volumes|Choose whether to include or exclude Shares / Volumes from event collection
 |Enter complete share names to exclude/include|Comma-separated list of shares to exclude or include (as appropriate) from event collection
 |Enter complete volume names to exclude/include|Comma-separated list of volumes to exclude or include (as appropriate) from event collection
+|Monitor Folder Access|When checked, enables events for folder access monitoring. Note that folder create/rename and delete will be monitored even without this option selected. Enabling this will increase the number of events monitored.
 |===
 
 
@@ -231,7 +232,7 @@ _system services firewall policy show_
 
 link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nmg%2FGUID-969851BB-4302-4645-8DAC-1B059D81C5B2.html[Check firewall commands] on the ONTAP side.
 
-4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM and ensure that ping is working.
+4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM management lif (with CIFS, NFS protocols support) and ensure that ping is working.
 
 |No events seen in activity page.
 |1. Check if ONTAP collector is in “RUNNING” state. If yes, then ensure that some cifs events are being generated on the cifs client VMs by opening some files.
@@ -249,6 +250,19 @@ Please check if the fpolicy policy named with prefix “metadata_service” has 
 2. Check how many Data Source collectors are connected to the Agent. 
 3. Also check the data flow rate in the “All Activity” page in the UI. 
 4. If the number of activities per second is significantly high, install another Agent and move some of the Data Source Collectors to the new Agent.
+
+|SVM Data Collector shows error message as "fpolicy.server.connectError: Node failed to establish a connection with the FPolicy server "12.195.15.146" ( reason: "Select Timed out")"
+|Firewall is enabled in SVM/Cluster. So fpolicy engine is unable to connect to fpolicy server.
+CLIs in ONTAP which can be used to get more information are:
+
+event log show -source fpolicy which shows the error
+event log show -source fpolicy -fields event,action,description which shows more details.
+
+link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nmg%2FGUID-969851BB-4302-4645-8DAC-1B059D81C5B2.html[Check firewall commands] on the ONTAP side.
+
+|Error Message: “Connector is in error state. Service name:audit. Reason for failure: No valid data interface (role: data,data protocols: NFS or CIFS or both, status: up) found on the SVM.”
+|Ensure there is an operational interface (having role as data and data protocol as CIFS/NFS.
+
 
 |===
 
