@@ -38,9 +38,11 @@ This summarizes customer-provided configuration data used to manage customer inv
 +
 Secrets consist of the credentials used by the Cloud Insights Acquisition Unit to access customer devices and services. These credentials are encrypted using AES-256, and the private keys are stored only on the Acquisition Units and never leave the customer environment. Even privileged Cloud Insights SREs are unable to access customer secrets in plain-text due to this design.
 
-* (optionally) User data
+* Cloud Secure User Directory Data
 +
 In cases where the Cloud Secure functionality is enabled AND the customer chooses to enable the User Directory collector, the system will store user display names, corporate email addresses, and other information collected from Active Directory.
+
+NOTE: User Directory data refers to user directory information collected by the CLoud Secure User Directory data collector, not to data about the users of CLoud Insights/Cloud Secure themselves.
  
 *No explicit personal data* is collected from infrastructure and services resources. Collected information consists of performance metrics, configuration information and infrastructure metadata only, much like many vendor phone-homes, including NetApp auto-support and ActiveIQ. However, depending on a customer's naming conventions, data for shares, volumes, VMs, qtrees, applications, etc. may contain personally identifiable information. 
  
