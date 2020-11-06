@@ -36,7 +36,15 @@ The following new ONTAP-focused dashboards have been added to the gallery and ar
 * ONTAP: Node Workload Performance (Frontend)
 * ONTAP: Processor
 * ONTAP: SVM Workload Performance (Frontend)
-* ONTAP: Volume Workload Performance (Frontend
+* ONTAP: Volume Workload Performance (Frontend)
+
+==== Column Rename in Table Widgets
+
+You can rename columns in the _Metrics and Attributes_ section of a table widget by opening the widget in Edit mode and clicking the menu at the top of the column. Enter the new name and click _Save_, or click _Reset_ to set the column back to the original name.
+
+Note that this only affects the column's display name in the table widget; the metric/attribute name does not change in the underlying data itself.
+
+image:Table_Widget_Column_Rename.png[Table Widget Rename Column]
 
 === October 2020
 
