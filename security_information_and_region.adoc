@@ -40,8 +40,7 @@ Secrets consist of the credentials used by the Cloud Insights Acquisition Unit t
 
 * Functional Data
 +
-This is information about your Cloud Insights infrastructure, service configuration, and telemetry. This information remains within the region where the tenant resides.
-//about how Cloud Insights is being used and may include things like number of users accessing Cloud Insights, number and nature of API calls being made, etc. Functional data allows NetApp to understand how customers are using its products.
+This is data generated as a result of NetApp providing the Cloud Data Service, which informs NetApp in the development, deployment, operations, maintenance, and securing of the Cloud Data Service. Functional Data does not contain Customer Information or Personal Information.
 
 * User Access data
 +
@@ -66,7 +65,7 @@ Cloud Insights stores information according to the region in which your environm
 
 The following information is stored in the host region:
 
-* Functional data, which includes telemetry, environmant, and asset/object information, including counters and performance metrics
+* Telemetry and asset/object information, including counters and performance metrics
 * Acquisition Unit information
 * Audit information on user activities inside Cloud Insights
 * Cloud Secure Active Directory information
