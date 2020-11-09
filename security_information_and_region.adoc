@@ -16,11 +16,11 @@ keywords: security, risk, protection
 :imagesdir: ./media/
 
 [.lead]
-Here is how and where Cloud Insights stores your information. 
+NetApp takes the security of customer information very seriously. Here is how and where Cloud Insights stores your information. 
 
 == What information does Cloud Insights store?
 
-Cloud Insights stores the following data:
+Cloud Insights stores the following information:
 
 * Performance data
 +
@@ -37,6 +37,14 @@ This summarizes customer-provided configuration data used to manage customer inv
 * Secrets
 +
 Secrets consist of the credentials used by the Cloud Insights Acquisition Unit to access customer devices and services. These credentials are encrypted using AES-256, and the private keys are stored only on the Acquisition Units and never leave the customer environment. Even privileged Cloud Insights SREs are unable to access customer secrets in plain-text due to this design.
+
+* Functional Data
++
+This is information about how CLoud Insights is being used and may include things like number of users accessing Cloud Insights, number and nature of API calls being made, etc. Functional data allows NetApp to understand how customers are using its products.
+
+* User Access data
++
+Authentication and access information that allows NetApp Cloud Central to communicate with regional Cloud Insights sites, including data related to user Authorization. 
 
 * Cloud Secure User Directory Data
 +
