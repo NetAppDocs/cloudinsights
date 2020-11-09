@@ -40,7 +40,7 @@ Secrets consist of the credentials used by the Cloud Insights Acquisition Unit t
 
 * Functional Data
 +
-This is information about how CLoud Insights is being used and may include things like number of users accessing Cloud Insights, number and nature of API calls being made, etc. Functional data allows NetApp to understand how customers are using its products.
+This is information about how Cloud Insights is being used and may include things like number of users accessing Cloud Insights, number and nature of API calls being made, etc. Functional data allows NetApp to understand how customers are using its products.
 
 * User Access data
 +
@@ -50,7 +50,7 @@ Authentication and access information that allows NetApp Cloud Central to commun
 +
 In cases where the Cloud Secure functionality is enabled AND the customer chooses to enable the User Directory collector, the system will store user display names, corporate email addresses, and other information collected from Active Directory.
 
-NOTE: User Directory data refers to user directory information collected by the CLoud Secure User Directory data collector, not to data about the users of CLoud Insights/Cloud Secure themselves.
+NOTE: User Directory data refers to user directory information collected by the Cloud Secure User Directory data collector, not to data about the users of Cloud Insights/Cloud Secure themselves.
  
 *No explicit personal data* is collected from infrastructure and services resources. Collected information consists of performance metrics, configuration information and infrastructure metadata only, much like many vendor phone-homes, including NetApp auto-support and ActiveIQ. However, depending on a customer's naming conventions, data for shares, volumes, VMs, qtrees, applications, etc. may contain personally identifiable information. 
  
@@ -77,7 +77,6 @@ The following information resides in the United States, regardless of the region
 
 * Environment site (sometimes called "tenant") information such as site/account owner. 
 * Information that allows NetApp Cloud Central to communicate with regional Cloud Insights sites, including anything to do with user Authorization.
-//* Cloud Insights user information including authorization information.
 * Information related to the relation between the Cloud Insights user and the tenant.
  
 
