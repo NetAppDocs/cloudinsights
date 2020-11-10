@@ -171,8 +171,11 @@ image::Add-agent-1.png[]
 . Verify that the agent server meets the minimum system requirements. 
 
 . To verify that the agent server is running a supported version of Linux, click _Versions Supported (i)_.
+
+. If your network is using proxy server, please set the proxy server details by following the instructions in the Proxy section.
 +
-image::add-agent-2.png[] 
+image:CloudSecureAgentWithProxy.png[Agent Install with Proxy Note]
+//image::add-agent-2.png[] 
 
 
 . Click the Copy to Clipboard icon to copy the installation command. 
@@ -231,7 +234,7 @@ sample output:
  -A IN_public_allow -p tcp -m tcp --dport 35000 -m conntrack -ctstate NEW -j ACCEPT
 
 
-== Troubleshooting Agent Installation Errors
+== Troubleshooting Agent Errors
 
 Known problems and their resolutions are described in the following table. 
 
@@ -251,10 +254,30 @@ The error is redirected to standard output, and is visible in the service log us
 "-bash: unzip: command not found"
 |Install unzip and then run the installation command again. If Yum is installed on the machine, try “yum install unzip” to install unzip software
 
-|Agent Installation failed with the error:
-"Adding cssys user to docker group
-Usermod: group ‘docker’ does not exist"
-|Install Docker service and then run the installation command again.
+|Agent was installed and was running. However agent has stopped suddenly.
+|SSH to the Agent machine. Check the status of the agent service via “sudo systemctl status cloudsecure-agent.service”. 
+1. Check if the logs shows a message“Failed to start Cloud Secure daemon service” . 
+2. Check if cssys user exists in the Agent machine or not. Execute the following commands one by one with root permission and check if the cssys user and group exists. 
+Sudo id cssys
+Sudo groups cssys
+3. If none exists, then a centralized monitoring policy may have deleted the cssys user.
+4. Create cssys user and group manually by executing the following commands.
+sudo useradd cssys
+sudo groupadd cssys
+5. Restart the agent service after that by executing the following command:
+sudo systemctl restart cloudsecure-agent.service
+6. If it is still not running, please check the other troubleshooting options.
+
+|Unable to add more than 10 Data collectors to an Agent.
+|Only 10 Data collectors can be added to an Agent. This can be a combination of all the collector types, for example, Active Directory, SVM and other collectors.
+
+|UI shows Agent is in NOT_CONNECTED state.
+|Steps to restart the Agent.
+1. SSH to the Agent machine.
+2. Restart the agent service after that by executing the following command:
+sudo systemctl restart cloudsecure-agent.service
+3. Check the status of the agent service via “sudo systemctl status cloudsecure-agent.service”.
+4. Agent should go to CONNECTED state.
 
 |===
 
