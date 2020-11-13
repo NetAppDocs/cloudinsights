@@ -53,7 +53,7 @@ The _*All Activity*_ table shows the following information:
 
 **	*Read* - File is read.
 
-**	*Read Metadata* - File attributes are read, for example, name of the file, size of the file, file permissions.
+**	*Read Metadata* - File attributes are read. For example, name of the file, size of the file, file permissions, and on access of a folder.
 
 **	*Rename* - Rename file or directory.
 
@@ -145,6 +145,20 @@ You can export the activity history to a .CSV file by clicking the _Export_ butt
 == Activity History Retention
 
 Activity history is retained for 13 months for active Cloud Secure environments.
+
+== Troubleshooting
+
+|===
+|Problem|Try This
+|In the “All Activities” table, under the ‘User’ column, the user name is shown as:
+“ldap:HQ.COMPANYNAME.COM:S-1-5-21-3577637-1906459482-1437260136-1831817”
+|Possible reasons could be:
+1. No User Directory Collectors have been configured yet. Please go to *Admin > Data Collectors > User Directory Collectors*.
+2. A User Directory Collector has been configured, however it has stopped or is in error state. Please go to *Admin > Data Collectors > User Directory Collectors* and check the status. Refer to the link:http://docs.netapp.com/us-en/cloudinsights/task_config_user_dir_connect.html#troubleshooting-user-directory-collector-configuration-errors[User Directory Collector troubleshooting] section of the documentation for troubleshooting tips.
+After configuring properly, the name will get automatically resolved within 24 hours.
+If it still does not get resolved, check if you have added the correct User Data Collector. Make sure that the user is indeed part of the added Active Directory.
+|===
+
 
 
 
