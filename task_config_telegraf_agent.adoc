@@ -436,7 +436,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
  kubectl --namespace monitoring delete clusterrolebinding endpoint-access 
  
 ==== Upgrading the Agent
-[upgrading-kubernetes-agent]
+[#upgrading-kubernetes-agent]
 
 To upgrade the telegraf agent, do the following:
 
