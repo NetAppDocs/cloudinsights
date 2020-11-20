@@ -5,7 +5,7 @@ keywords: data collector, VNXe, EMC, Unity
 summary: Configuring VNXe data collector.
 ---
 
-= Configuring the EMC Unity (formerly VNXe) data collector
+= Configuring the EMC Unity data collector
 
 :toc: macro
 :hardbreaks:
@@ -17,7 +17,7 @@ summary: Configuring VNXe data collector.
 
 [.lead] 
 
-The DELL EMC Unity data collector provides inventory support for VNXe unified storage arrays. Cloud Insights currently supports iSCSI and NAS protocols. 
+The DELL EMC Unity (formerly VNXe) data collector provides inventory support for VNXe unified storage arrays. Cloud Insights currently supports iSCSI and NAS protocols. 
 
 == Requirements
 
@@ -25,7 +25,7 @@ The DELL EMC Unity data collector provides inventory support for VNXe unified st
 * uemcli.exe uses HTTPS as the transport protocol, so the acquisition unit will need to be able to initiate HTTPS connections to the Unity. 
 * IP address or fully-qualified domain name of the Unity device
 * You must have at least a read-only user for use by the data collector. 
-* IP address of the managing Solutions enabler server.
+//* IP address of the managing Solutions enabler server.
 * HTTPS on Port 443 is required 
 * The EMC Unity data collector provides NAS and iSCSI support for inventory; fibre channel volumes will be discovered, but Cloud Insights does not report on FC mapping, masking, or storage ports.
 

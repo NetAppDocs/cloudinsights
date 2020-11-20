@@ -145,7 +145,7 @@ entries:
     entries:
       - title: Reporting Overview
         url: /reporting_overview.html
-      - title: Reporting User Rules
+      - title: Reporting User Roles
         url: /reporting_user_roles.html
       - title: Using Pre-Defined Reports
         url: /reporting_predefined_reports.html
@@ -166,7 +166,7 @@ entries:
       - title: Schema Tables
         url: /reference_schemas.html
         
-  
+ 
   - title: Cloud Secure 
     entries:
       - title: About Cloud Secure
@@ -183,26 +183,34 @@ entries:
             url: /task_cs_delete_agent.html 
           - title: Configuring a User Directory Collector 
             url: /task_config_user_dir_connect.html
-          - title: Configuring NetApp Data Collectors
-            entries: 
-              - title: Configuring the ONTAP SVM Data Collector
-                url: /task_add_collector_svm.html
-              - title: Configuring the Cloud ONTAP Data Collector
-                url: /task_config_cs_incloud.html
-      - title: Viewing Cloud Secure Forensic Data 
-        entries: 
-          - title: Alerts
-            url: /alert_data.html
-          - title: General Forensic Views
-            url: /concept_forensic.html
-          - title: Forensic User Overview
-            url: /forensic_user_overview.html
-          - title: Forensic Entity Detail
+#          - title: Configuring NetApp Data Collectors
+#            entries: 
+          - title: Configuring the ONTAP SVM Data Collector
+            url: /task_add_collector_svm.html
+          - title: Configuring the Cloud ONTAP Data Collector
+            url: /task_config_cs_incloud.html
+          - title: Cloud Secure User Management
+            url: /task_cs_user_management.html
+#      - title: Viewing Cloud Secure Forensic Data 
+#        entries: 
+      - title: Alerts 
+        url: /cs_alert_data.html  
+      - title: Forensics
+        entries:
+          - title: Activity Forensics - All Activity
+            url: /forensic_activity_history.html
+          - title: Activity Forensics - Entities
             url: /forensic_entity_detail.html
-#          - title: Forensic Community Detail 
-#            url: /forensic_community_overview.html
-          - title: Forensic Activity History
-            url: /forensic_activity_history.html          
+          - title: Users
+            url: /forensic_user_overview.html
+      - title: Automated Response Policies
+        url: /cs_automated_response_policies.html  
+      - title: Notifications
+        url: /cs_notifications_email.html
+      - title: Cloud Secure API
+        url: /concept_cs_api.html
+
+
 
   - title: Active IQ
     url: /concept_activeiq.html
@@ -317,6 +325,8 @@ entries:
             url: /task_dc_lenovo.html
           - title: Microsoft
             entries:
+              - title: Azure NetApp Files
+                url: /task_dc_ms_anf.html
               - title: Hyper-V
                 url: /task_dc_ms_hyperv.html
           - title: NetApp

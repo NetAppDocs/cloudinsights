@@ -17,12 +17,13 @@ summary: Adding Cloud Secure agents
 
 [.lead]
 
-Cloud Secure collects user activity data using one or more agents. Agents connect to devices in your environment and collect data that is sent to the Cloud Secure SaaS layer for analysis. See link:concept_cs_agent_requirements.html[Agent Requirements] to configure an agent.
+Cloud Secure collects user activity data using one or more agents. Agents connect to devices in your environment and collect data that is sent to the Cloud Secure SaaS layer for analysis. See link:concept_cs_agent_requirements.html[Agent Requirements] to configure an agent VM.
 
 == Before You Begin
 
 * The sudo privilege is required for installation, running scripts, and uninstall. 
 
+////
 * The Docker CE package must be installed on the VM hosting the agent. 
 + 
 To determine if the Docker CE package is installed, use the following command:   
@@ -86,6 +87,7 @@ sudo rpm -i <rpms>
 sudo systemctl enable docker
 sudo systemctl start docker
 ----
+////
 
 ////
 == Java Requirement 
@@ -169,8 +171,11 @@ image::Add-agent-1.png[]
 . Verify that the agent server meets the minimum system requirements. 
 
 . To verify that the agent server is running a supported version of Linux, click _Versions Supported (i)_.
+
+. If your network is using proxy server, please set the proxy server details by following the instructions in the Proxy section.
 +
-image::add-agent-2.png[] 
+image:CloudSecureAgentWithProxy.png[Agent Install with Proxy Note]
+//image::add-agent-2.png[] 
 
 
 . Click the Copy to Clipboard icon to copy the installation command. 
@@ -191,6 +196,7 @@ image::new-agent-detect.png[]
 . You need to configure a link:task_config_user_dir_connect.html[User Directory Collector ].
 . You need to configure one or more Data Collectors.  
 
+////
 == Files Created During Installation
 
 * Installation directory: 
@@ -212,6 +218,7 @@ image::new-agent-detect.png[]
 
 * Use the following script to uninstall the agent:
 `sudo cloudsecure-agent-uninstall.sh`
+////
 
 == Network Configuration
 
@@ -219,14 +226,15 @@ Use the following commands to open ports to be used by Cloud Secure.
 
 .Steps
 
-. `sudo firewall-cmd --permanent --zone=public --add-port=35001-35100/tcp` 
+. `sudo firewall-cmd --permanent --zone=public --add-port=35000-55000/tcp` 
 . `sudo firewall-cmd --reload` 
-. `sudo iptables-save | grep 35001`
+. `sudo iptables-save | grep 35000`
 +
-sample output: 
-. -A IN_public_allow -p tcp -m tcp --dport 35001 -m conntrack -ctstate NEW -j ACCEPT 
+sample output:
+ -A IN_public_allow -p tcp -m tcp --dport 35000 -m conntrack -ctstate NEW -j ACCEPT
 
-== Troubleshooting Agent Installation Errors
+
+== Troubleshooting Agent Errors
 
 Known problems and their resolutions are described in the following table. 
 
@@ -235,17 +243,41 @@ Known problems and their resolutions are described in the following table.
 |===
 |Problem: | Resolution:
 |Agent installation fails with error:
-"File name too long" errror|To correct this error use the sh shell to run the command. 
-|Agent installation fails to create the ~/agent/logs folder and the install.log file provides no relevant information.|This error occurs during bootstrapping of the agent. The error is not logged in log files because it occurs before logger is initialized. 
+"File name too long" errror|To correct this error use the bash shell to run the command. 
+
+|Agent installation fails to create the /opt/netapp/cloudsecure/agent/logs/agent.log folder and the install.log file provides no relevant information.|This error occurs during bootstrapping of the agent. The error is not logged in log files because it occurs before logger is initialized. 
 The error is redirected to standard output, and is visible in the service log using the `journalctl -u cloudsecure-agent.service` command. This command can be used for troubleshooting the issue further.
+
 |Agent installation fails with ‘This linux distribution is not supported. Exiting the installation’.|The supported platforms for Cloud Secure 1.0.0 are RHEL 7.x / CentOS 7.x. Ensure that you are not installing the agent on a RHEL 6.x or CentOS 6.x system.
+
 |Agent Installation failed with the error: 
 "-bash: unzip: command not found"
-|Install unzip and then run the installation command again. If Yum is installed on the machine try “yum install unzip” to install unzip software
-|Agent Installation failed with the error:
-"Adding cssys user to docker group
-Usermod: group ‘docker’ does not exist"
-|Install Docker service and then run the installation command again.
+|Install unzip and then run the installation command again. If Yum is installed on the machine, try “yum install unzip” to install unzip software
+
+|Agent was installed and was running. However agent has stopped suddenly.
+|SSH to the Agent machine. Check the status of the agent service via `sudo systemctl status cloudsecure-agent.service`. 
+1. Check if the logs shows a message“Failed to start Cloud Secure daemon service” . 
+2. Check if cssys user exists in the Agent machine or not. Execute the following commands one by one with root permission and check if the cssys user and group exists. 
+`sudo id cssys`
+`sudo groups cssys`
+3. If none exists, then a centralized monitoring policy may have deleted the cssys user.
+4. Create cssys user and group manually by executing the following commands.
+`sudo useradd cssys`
+`sudo groupadd cssys`
+5. Restart the agent service after that by executing the following command:
+`sudo systemctl restart cloudsecure-agent.service`
+6. If it is still not running, please check the other troubleshooting options.
+
+|Unable to add more than 10 Data collectors to an Agent.
+|Only 10 Data collectors can be added to an Agent. This can be a combination of all the collector types, for example, Active Directory, SVM and other collectors.
+
+|UI shows Agent is in NOT_CONNECTED state.
+|Steps to restart the Agent.
+1. SSH to the Agent machine.
+2. Restart the agent service after that by executing the following command:
+`sudo systemctl restart cloudsecure-agent.service`
+3. Check the status of the agent service via `sudo systemctl status cloudsecure-agent.service`.
+4. Agent should go to CONNECTED state.
 
 |===
 
