@@ -1,0 +1,120 @@
+---
+sidebar: sidebar
+permalink: task_annotation_import.html
+keywords: annotations, import, api
+summary: You can import annotaitons and applications using the Cloud Insights API.
+---
+
+= Importing Annotations
+
+:toc: macro
+:hardbreaks: 
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead]
+
+Cloud Insights includes an API for importing annotations or applications from a CSV file, and assigning them to objects you specify.
+
+NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*. 
+
+//The export and import functions are supported only between servers that are running the same version of OnCommand Insight.
+
+=== Importing
+
+The *Admin > API Access* links contain link:API_Overview.html[documentation] for the *Assets/Import* API. This documentation contains information on the .CSV file format. 
+
+image:api_assets_import.png[Import API]
+
+=== .CSV File Format
+
+The general format of the CSV file is as follows. The first line of the file defines the import fields and specifies the order of the fields. This is followed by separate lines for each annotation or application. You do not need to define every field. However, the subsequent annotation lines must follow the same order as the definition line.
+
+ [Object Type] , [Object Name or ID] , Annotation Type [, Annotation Type,  ...] [, Application] [, Tenant] [, Line_Of_Business] [, Business_Unit] [, Project] 
+
+See the API Documentation for examples of .CSV files.
+ 
+////
+<Object Type Value 1>, <Object Name or Key 1>, <Annotation Value> [, <Annotation Value> ...] [, <Application>] [, <Tenant>] [, <Line_Of_Business>] [, <Business_Unit>] [, <Project>] 
+
+<Object Type Value 2>, <Object Name or Key 2>, <Annotation Value> [, <Annotation Value> ...] [, <Application>] [, <Tenant>] [, <Line_Of_Business>] [, <Business_Unit>] [, <Project>] 
+
+<Object Type Value 3>, <Object Name or Key 3>, <Annotation Value> [, <Annotation Value> ...] [, <Application>] [, <Tenant>] [, <Line_Of_Business>] [, <Business_Unit>] [, <Project>] 
+
+... 
+
+<Object Type Value N>, <Object Name or Key N>, <Annotation Value> [, <Annotation Value> ...] [, <Application>] [, <Tenant>] [, <Line_Of_Business>] [, <Business_Unit>] [, <Project>]
+////
+
+You can import and assign annotations from a .CSV file from within the API swagger itself. Simply choose the file to use and click the _Execute_ button:
+
+image:api_assets_import_assign.png[Import and Assign]
+
+=== Import Behavior
+
+During the import operation, data is added, merged, or replaced, depending on the objects and object types that are being imported. While importing, keep in mind the following behaviors.
+
+* Adds an annotation or application if none exists with the same name in the target system.
+* Merges an annotation if the annotation type is a list, and an annotation with the same name exists in the target system.
+* Replaces an annotation if the annotation type is anything other than a list, and an annotation with the same name exists in the target system.
++
+Note: If an annotation with the same name but with a different type exists in the target system, the import fails. If objects depend on the failed annotation, those objects may show incorrect or unwanted information. You must check all annotation dependencies after the import operation is complete.
+* If an annotation value is empty then that annotation is removed from the object. Inherited annotations are not affected. 
+* Date type annotation values must be passed in as unix time in milliseconds. 
+* When annotating volumes or internal volumes, the object name is a combination of storage name and volume name using the "\->" separator. For example: _<Storage Name>\-><Volume Name>_
+* If an object name contains a comma, the whole name must be in double quotes. For example: _"NetApp1,NetApp2"\->023F_ 
+* When attaching annotating to storages, switches, and ports, the 'Application' column will be ignored. 
+* Tenant, Line_Of_Business, Business_Unit, and/or Project makes a business entity. As with all business entities, any of the values can be empty.
+
+The following object types can be annotated.
+
+|===
+|OBJECT TYPE |NAME OR KEY
+|Host|id\-><id> or <Name> or <IP>
+|VM|id\-><id> or <Name>
+|StoragePool|id\-><id> or <Storage Name>\-><Storage Pool Name>
+|InternalVolume|id\-><id> or <Storage Name>\-><Internal Volume Name>
+|Volume|id\-><id> or <Storage Name>\-><Volume Name>
+|Storage|id\-><id> or <Name> or <IP>
+|Switch|id\-><id> or <Name> or <IP>
+|Port|id\-><id> or <WWN>
+|Qtree|id\-><id> or <Storage Name>\-><Internal Volume Name>\-><Qtree Name>
+|Share|id\-><id> or <Storage Name>\-><Internal Volume Name>\-><Share Name>\-><Protocol>[\-><Qtree Name (optional in case of default Qtree)>]
+|===
+
+
+//•	TBD: ONLY FOR OCI? The user can import a csv file and execute the API for the annotation assignment -
+
+
+////
+* Annotation Rules
++
+Adds an annotation rule if no annotation rule with the same name exists in the target system.
+Replaces an annotation rule if an annotation rule with the same name exists in the target system.
+Note: Annotation rules are dependent on both queries and annotations. You must check all the annotation rules for accuracy after the import operation is complete.
+////
+
+////
+Policies
+Adds a policy if no policy with the same name exists in the target system.
+Replaces a policy if a policy with the same name exists in the target system.
+Note: Policies may be out of order after the import operation is complete. You must check the policy order after the import.
+Policies that are dependent on annotations may fail if the annotations are incorrect. You must check all the annotation dependencies after the import.
+
+Queries
+Adds a query if no query with the same name exists in the target system.
+Replaces a query if a query with the same name exists in the target system, even if the resource type of the query is different.
+Note: If the resource type of a query is different, after the import, any dashboard widgets that use that query may display unwanted or incorrect results. You must check all query-based widgets for accuracy after the import.
+Queries that are dependent on annotations may fail if the annotations are incorrect. You must check all the annotation dependencies after the import.
+
+Dashboards
+Adds a dashboard if no dashboard with the same name exists in the target system.
+Replaces a dashboard if a dashboard with the same name exists in the target system, even if the resource type of the query is different.
+Note: You must check all query-based widgets in dashboards for accuracy after the import.
+If the source server has multiple dashboards with the same name, they are all exported. However, only the first one will be imported to the target server. To avoid errors during import, you should ensure that your dashboards have unique names before exporting them.
+////
