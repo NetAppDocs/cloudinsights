@@ -213,9 +213,17 @@ To prevent this, configure each SVM on a single environment.
 |Collector reports Error Message: “No local IP address found on the connector that can reach the data interfaces of the SVM”.
 |This is most likely due to a networking issue on the ONTAP side. Please follow these steps:
 1. Ensure that there are no firewalls on the SVM data lif or the management lif which are blocking the connection from the SVM.
-2. When adding an SVM via a cluster management IP, please ensure that the data lif and mgmt. lif of SVM are pingable from the Agent VM. In case of issues, check the gateway, netmask and routes for the lif.
+2. When adding an SVM via a cluster management IP, please ensure that the data lif and management lif of the SVM are pingable from the Agent VM. In case of issues, check the gateway, netmask and routes for the lif.
+
+You can also try logging in to the cluster via ssh using the cluster management IP, and ping the Agent IP. Make sure that the agent IP is pingable:
+
+_network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name>_
+
+If not pingable, make sure the network settings in ONTAP are correct, so that the Agent machine is pingable.
+
 3. While adding the collector via SVM IP and vsadmin credentials, check if the SVM Lif has Data plus Mgmt role enabled. In this case ping to the SVM Lif will work, however SSH to the SVM Lif will not work.
 If yes, create an SVM Mgmt Only Lif and try connecting via this SVM management only Lif.
+
 
 |Message: "Failed to determine ONTAP type for [hostname: <IP Address>. Reason: Connection error to Storage System <IP Address>: Host is unreachable (Host unreachable)"
 |1. Verify that the correct SVM IP Management address or Cluster Management IP has been provided.
@@ -232,7 +240,12 @@ _system services firewall policy show_
 
 link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nmg%2FGUID-969851BB-4302-4645-8DAC-1B059D81C5B2.html[Check firewall commands] on the ONTAP side.
 
-4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM management lif (with CIFS, NFS protocols support) and ensure that ping is working.
+4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM management lif (with CIFS, NFS protocols support) and ensure that ping is working:
+
+_network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name>_
+
+If not pingable, make sure the network settings in ONTAP are correct, so that the Agent machine is pingable.
+
 
 |No events seen in activity page.
 |1. Check if ONTAP collector is in “RUNNING” state. If yes, then ensure that some cifs events are being generated on the cifs client VMs by opening some files.
@@ -262,6 +275,7 @@ link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nm
 
 |Error Message: “Connector is in error state. Service name:audit. Reason for failure: No valid data interface (role: data,data protocols: NFS or CIFS or both, status: up) found on the SVM.”
 |Ensure there is an operational interface (having role as data and data protocol as CIFS/NFS.
+
 
 |The data collector goes into Error state and then goes into RUNNING state after some time, then back to Error again. This cycle repeats. 
 |This typically happens in the following scenario:
