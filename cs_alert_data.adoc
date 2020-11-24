@@ -172,13 +172,13 @@ In ONTAP 9.3 and earlier, a volume can contain up to 255 Snapshot copies. In ONT
 See the ONTAP Documentation for information on link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-cmpr-960%2Fvolume__snapshot__autodelete__modify.html[setting Snapshot deletion policy].
 
 
-|CloudSecure is unable to take snapshots at all.
+|Cloud Secure is unable to take snapshots at all.
 |Make sure that the role being used to create snapshots has link: https://docs.netapp.com/us-en/cloudinsights/task_add_collector_svm.html#a-note-about-permissions[proper rights assigned].
 Make sure _csrole_ is created with proper access rights for taking snapshots:
 
  security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
 
-|Snapshots are failing for older alerts on SVMs which were removed from CloudSecure and subsequently added back again. For new alerts which occur after SVM is added again, snapshots are taken.
+|Snapshots are failing for older alerts on SVMs which were removed from Cloud Secure and subsequently added back again. For new alerts which occur after SVM is added again, snapshots are taken.
 |This is a rare scenario. In the event you experience this, log in to ONTAP and take the snapshots manually for the older alerts.
 
 |In the _Alert Details_ page, the message “Last attempt failed” error is seen  below the _Take Snapshot_ button.
