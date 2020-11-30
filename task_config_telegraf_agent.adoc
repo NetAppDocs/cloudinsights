@@ -76,6 +76,7 @@ After the agent is installed, you can use the following commands to start/stop t
   Start-Service telegraf
   Stop-Service telegraf
   
+[[windows_proxy]]  
 ==== Configuring Proxy Support for Windows
 
 For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) PRIOR to installing the Telegraf agent:
