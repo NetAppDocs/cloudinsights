@@ -350,8 +350,7 @@ AFTER installing the Telegraf agent, add and set the appropriate _https_proxy_ a
 
  kubectl edit ds telegraf-ds
 
-****
-…
+ …
         env:
         - name: https_proxy
           value: <proxy_server>:<proxy_port>
@@ -360,13 +359,11 @@ AFTER installing the Telegraf agent, add and set the appropriate _https_proxy_ a
             fieldRef:
               apiVersion: v1
               fieldPath: status.hostIP
-…
-****
+ …
 
  kubectl edit rs telegraf-rs
 
-****
-…
+ …
         env:
         - name: https_proxy
           value: <proxy_server>:<proxy_port>
@@ -375,8 +372,7 @@ AFTER installing the Telegraf agent, add and set the appropriate _https_proxy_ a
             fieldRef:
               apiVersion: v1
               fieldPath: status.hostIP
-…
-****
+ …
 
 Then, restart Telegraf:
 
