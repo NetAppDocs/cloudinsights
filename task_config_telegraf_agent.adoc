@@ -213,6 +213,16 @@ If your operating system is not using systemd:
 
 ==== Configuring Proxy Support for Ubuntu/Debian
 
+For systems residing behind a proxy, perform the following steps PRIOR to installing the Telegraf agent:
+
+. Set the https_proxy and/or http_proxy environment variable(s) for the current user:
++
+ export https_proxy=<proxy_server>:<proxy_port>
+
+. Create /etc/default/telegraf, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
++
+ https_proxy=<proxy_server>:<proxy_port>
+
 
 
 ==== Uninstalling the Agent
@@ -274,6 +284,49 @@ After the agent is installed, you can use the following commands to start/stop t
  sudo launchctl stop telegraf
  
  ==== Configuring Proxy Support for macOS
+ 
+ For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_prox_y environment variable(s) for the current user PRIOR to installing the Telegraf agent:
+
+export https_proxy=<proxy_server>:<proxy_port>
+
+AFTER installing the Telegraf agent, add and set the appropriate _https_proxy_ and/or _http_proxy_ variable(s) in _/Applications/telegraf.app/Contents/telegraf.plist_:
+
+ …
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+ <plist version="1.0">
+ <dict>
+    <key>EnvironmentVariables</key>
+    <dict>
+           <key>https_proxy</key>
+           <string><proxy_server>:<proxy_port></string>
+    </dict>
+    <key>Program</key>
+    <string>/Applications/telegraf.app/Contents/MacOS/telegraf</string>
+    <key>Label</key>
+    <string>telegraf</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Applications/telegraf.app/Contents/MacOS/telegraf</string>
+      <string>--config</string>
+      <string>/usr/local/etc/telegraf.conf</string>
+      <string>--config-directory</string>
+      <string>/usr/local/etc/telegraf.d</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+ </dict>
+ </plist>
+ …
+
+Then, restart Telegraf after loading the above changes:
+
+ sudo launchctl stop telegraf
+ sudo launchctl unload -w /Library/LaunchDaemons/telegraf.plist
+ sudo launchctl load -w /Library/LaunchDaemons/telegraf.plist
+ sudo launchctl start telegraf
+
+
 
 ==== Uninstalling the Agent
 
