@@ -188,6 +188,11 @@ Ensure bind-DN input is always provided as ‘Administrator@<domain_forest_name>
 6. Then Edit the CloudSecure User Directory collector. In optional attribute section, replace ‘telephonenumber’ with ‘phonenumber’.
 7. Save the Active Directory collector, the collector will restart and get the telephone number of the user and display the same in the user profile page.
 
+|If encryption certificate (SSL) is enabled on the Active Directory (AD) Server, the Cloud Secure User Directory Collector can not connect to the AD Server.
+|Disable AD Server encryption before Configuring a User Directory Collector.
+Once the user detail is fetched it will be there for 13 months.
+If the AD server gets disconnected after fetching the user details, the newly added users in AD won’t get fetched. To fetch again the user directory collector needs to be connected to AD.
+
 
 |===
 
