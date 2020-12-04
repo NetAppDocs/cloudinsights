@@ -51,6 +51,8 @@ NOTE: Once you have installed an agent on a host, you do not need to install an 
 
 TIP: Once you have installed an agent on a server/VM, Cloud Insights collects metrics from that system in addition to collecting from any data collectors you configure. These metrics are gathered as link:task_config_telegraf_node.html["Node" metrics].
 
+NOTE: If you are using a proxy, read the proxy instructions for your platform before installing the Telegraf agent.
+
 === Windows
 image:AgentInstallWindows.png[Windows Agent Install]
 
@@ -73,6 +75,14 @@ After the agent is installed, you can use the following commands to start/stop t
 
   Start-Service telegraf
   Stop-Service telegraf
+  
+[[windows_proxy]]  
+==== Configuring Proxy Support for Windows
+
+For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) PRIOR to installing the Telegraf agent:
+
+ [System.Environment]::SetEnvironmentVariable(“https_proxy”, “<proxy_server>:<proxy_port>”, [System.EnvironmentVariableTarget]::Machine)
+
 
 ==== Uninstalling the Agent
 
@@ -132,6 +142,19 @@ If your operating system is not using systemd (CentOS 7+ and RHEL 7+):
 
  sudo service telegraf start
  sudo service telegraf stop
+ 
+==== Configuring Proxy Support for RHEL/CentOS
+
+For systems residing behind a proxy, perform the following steps PRIOR to installing the Telegraf agent:
+
+. Set the https_proxy and/or http_proxy environment variable(s) for the current user:
++
+ export https_proxy=<proxy_server>:<proxy_port>
+
+. Create /etc/default/telegraf, and insert definitions for the https_proxy and/or http_proxy variable(s):
++
+ https_proxy=<proxy_server>:<proxy_port>
+
 
 
 ==== Uninstalling the Agent
@@ -199,6 +222,19 @@ If your operating system is not using systemd:
  sudo service telegraf start
  sudo service telegraf stop
 
+==== Configuring Proxy Support for Ubuntu/Debian
+
+For systems residing behind a proxy, perform the following steps PRIOR to installing the Telegraf agent:
+
+. Set the https_proxy and/or http_proxy environment variable(s) for the current user:
++
+ export https_proxy=<proxy_server>:<proxy_port>
+
+. Create /etc/default/telegraf, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
++
+ https_proxy=<proxy_server>:<proxy_port>
+
+
 
 ==== Uninstalling the Agent
 
@@ -257,6 +293,51 @@ After the agent is installed, you can use the following commands to start/stop t
 
  sudo launchctl start telegraf
  sudo launchctl stop telegraf
+ 
+ ==== Configuring Proxy Support for macOS
+ 
+ For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_prox_y environment variable(s) for the current user PRIOR to installing the Telegraf agent:
+
+export https_proxy=<proxy_server>:<proxy_port>
+
+AFTER installing the Telegraf agent, add and set the appropriate _https_proxy_ and/or _http_proxy_ variable(s) in _/Applications/telegraf.app/Contents/telegraf.plist_:
+
+ …
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+ <plist version="1.0">
+ <dict>
+    <key>EnvironmentVariables</key>
+    <dict>
+           <key>https_proxy</key>
+           <string><proxy_server>:<proxy_port></string>
+    </dict>
+    <key>Program</key>
+    <string>/Applications/telegraf.app/Contents/MacOS/telegraf</string>
+    <key>Label</key>
+    <string>telegraf</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Applications/telegraf.app/Contents/MacOS/telegraf</string>
+      <string>--config</string>
+      <string>/usr/local/etc/telegraf.conf</string>
+      <string>--config-directory</string>
+      <string>/usr/local/etc/telegraf.d</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+ </dict>
+ </plist>
+ …
+
+Then, restart Telegraf after loading the above changes:
+
+ sudo launchctl stop telegraf
+ sudo launchctl unload -w /Library/LaunchDaemons/telegraf.plist
+ sudo launchctl load -w /Library/LaunchDaemons/telegraf.plist
+ sudo launchctl start telegraf
+
+
 
 ==== Uninstalling the Agent
 
@@ -323,7 +404,49 @@ You can use the following commands to stop and start the Telegraf service:
  kubectl --namespace monitoring apply -f /tmp/telegraf-ds.yaml 
  kubectl --namespace monitoring apply -f /tmp/telegraf-rs.yaml
  
+==== Configuring Proxy Support for Kubernetes
+
+For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user PRIOR to installing the Telegraf agent:
+
+ export https_proxy=<proxy_server>:<proxy_port>
+
+AFTER installing the Telegraf agent, add and set the appropriate _https_proxy_ and/or _http_proxy_ environment variable(s) to the _telegraf-ds_ daemonset and _telegraf-rs_ replicaset.
+
+ kubectl edit ds telegraf-ds
+
+ …
+        env:
+        - name: https_proxy
+          value: <proxy_server>:<proxy_port>
+        - name: HOSTIP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+ …
+
+ kubectl edit rs telegraf-rs
+
+ …
+        env:
+        - name: https_proxy
+          value: <proxy_server>:<proxy_port>
+        - name: HOSTIP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+ …
+
+Then, restart Telegraf:
+
+ kubectl delete pod telegraf-ds-*
+ kubectl delete pod telegraf-rs-*
+
+
+ 
 ==== Configuring the Agent to Collect Data from Kubernetes
+[Kubernetes Configuration](#configuring-kubernetes-agent-to-collect-data)
 
 For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet and a ReplicaSet. The pods in which the agents run need to have access to the following:
 
