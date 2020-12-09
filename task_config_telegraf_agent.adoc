@@ -36,16 +36,20 @@ To install an agent, regardless of the platform you are using, you must first do
 
 . Log into the host you will use for your agent. 
 . Log in to your Cloud Insights site and go to *Admin > Data Collectors*.
-. Click on *+Data Collector* and choose a data collector to install. There are several types of data collectors:
+. Click on *+Data Collector* and choose a data collector to install. 
+
+////
+There are several types of data collectors:
 +
 * *Host* (Windows, Linux, macOS, etc.)
 +
 * *Service* (integration with a wide variety of agent-collected plugins). Agents are configured and run as a service for RHEL/CentOS, Ubuntu/Debian, macOS, and Windows. For Kubernetes platforms, the agent in configured as a DaemonSet.
 +
 * *Infrastructure* (collects from storage, switch, cloud platform, etc.). Infrastructure collection is done with an link:task_configure_acquisition_unit.html[Acquisition Unit] instead of an Agent.
+////
 
 . Choose the appropriate platform for your host (Windows, Linux, macOS, etc.)
-. Follow the remaining steps for each platform below
+. Follow the remaining steps for each platform.
 
 NOTE: Once you have installed an agent on a host, you do not need to install an agent again on that host. 
 
