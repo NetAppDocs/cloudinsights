@@ -394,6 +394,7 @@ image:Kubernetes_Install_Agent.png[Kubernetes Agent Install]
 ** NAMESPACE=<Namespace>
 +
 The entire command block would look like this:
++
  installerName=cloudinsights-kubernetes.sh && token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJyb2xlcyI6WyJhZG1pbiJdLCJpc3MiOiJvY2kiLCJleHAiOjE2MDc2MzUxNzcsImxvZ2luIjoidGVsZWdyYWYuMjE1MTc3ZGMtMDUwYi00YjhkLWE3N2ItYTlhNDI0ZjdjMjRiIiwiaWF0IjoxNjA3NTQ4NzE3LCJ0ZW5hbnQiOiIwNTIwNjMwZC0zM2UwLTQzM2MtOWJlNC02YmNlYmNjODE1YTMifQ.wuvXQ08UY_pk66bvKkKq3lrPi3Q7zEv79vSsrxcstL-_mFpVvru6wuJPq9n2YGN7 && key=c5d2e336-91f4-4c6f-80c8-72faabd6bee6 && domain=tenant1.testk8.cloudinsights-qa.netapp.com && curl -k -X GET -H "Authorization: Bearer $token" -H "X-CloudInsights-ApiKey-Id: $key" -o $installerName https://$domain/rest/v1/lake/telegraf/platforms/installer?platform=kubernetes && chmod +x $installerName && sudo --preserve-env JWT=$token DOMAIN_NAME=$domain API_KEY_ID=$key CLUSTER_NAME=TEST_CLUSTER NAMESPACE=NEW-NAMESPACE ./$installerName
 
 . When ready, click Enter to execute the command block.
