@@ -48,6 +48,22 @@ By default, the table displays the entries in descending time order.
 +
 image:Audit_Filters.png[Audit Filters]
 
+=== More on Filtering
+
+You can use any of the following to refine your filter:
+
+|===
+|Filter|What it does | Example | Result
+| * (Asterisk) |enables you to search for everything | vol*rhel |returns all resources that start with "vol" and end with "rhel"
+| ? (question mark) |enables you to search for a specific number of characters|  BOS-PRD??-S12 |returns BOS-PRD12-S12, BOS-PRD13-S12, and so on
+| OR |enables you to specify multiple entities | FAS2240 OR CX600 OR FAS3270 |returns only the specified resources
+| NOT |allows you to exclude text from the search results |  NOT EMC* |returns everything that does not start with "EMC"
+| _None_ |searches for NULL values in all fields | _None_ |returns results where the target field is not empty
+| Not * |searches for NULL values in _text-only_ fields | Not * |returns results where the target field is not empty
+|===
+
+If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.
+
 == Audited Events and Actions
 
 The events and actions audited by Cloud insights can be categorized in the following broad areas:
