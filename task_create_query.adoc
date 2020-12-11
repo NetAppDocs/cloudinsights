@@ -52,8 +52,8 @@ You can use any of the following to refine your filter:
 |===
 |Filter|What it does | Example | Result
 | * (Asterisk) |enables you to search for everything | vol*rhel |returns all resources that start with "vol" and end with "rhel"
-| ? (question mark) |enables you to search for a specific number of characters|  BOS-PRD??-S12 |returns BOS-PRD12-S12, BOS-PRD13-S12, and so on
-| OR |enables you to specify multiple entities | FAS2240 OR CX600 OR FAS3270 |returns only the specified resources
+| ? (question mark) |enables you to search for a specific number of characters|  BOS-PRD??-S12 |returns BOS-PRD12-S12, BOS-PRD23-S12, and so on
+| OR |enables you to specify multiple entities | FAS2240 OR CX600 OR FAS3270 |returns any of FAS2440, CX600, or FAS3270
 | NOT |allows you to exclude text from the search results |  NOT EMC* |returns everything that does not start with "EMC"
 | _None_ |searches for NULL values in all fields | _None_ |returns results where the target field is not empty
 | Not * |searches for NULL values in _text-only_ fields | Not * |returns results where the target field is not empty
