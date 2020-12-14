@@ -396,13 +396,17 @@ image:Kubernetes_Install_Agent.png[Kubernetes Agent Install]
 Scroll through the following example to see this in place in the command block:
 +
  installerName=cloudinsights-kubernetes.sh && token=<token> && key=c642e336-91f4-4c6f-8086-72faabd6aff6 && domain=tenant1.testk8.cloudinsights-test.netapp.com && curl -k -X GET -H "Authorization: Bearer $token" -H "X-CloudInsights-ApiKey-Id: $key" -o $installerName https://$domain/rest/v1/lake/telegraf/platforms/installer?platform=kubernetes && chmod +x $installerName && sudo --preserve-env JWT=$token DOMAIN_NAME=$domain API_KEY_ID=$key CLUSTER_NAME=TEST_CLUSTER NAMESPACE=NEW-NAMESPACE ./$installerName
+ 
+TIP: _CLUSTER_NAME_ is the name of the Kubernetes cluster from Cloud Insights collects metrics, while _NAMESPACE_ is the namespace to which the Telegraf agent will be deployed. The specified namespace will be created if it does not already exist.
 
 . When ready, click Enter to execute the command block.
 . The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
 // . If you have already installed an agent on this host, you can skip the previous step.
 . When finished, click *Complete Setup*.
 
-After the agent is installed, generate the Telegraf DaemonSet YAML and ReplicaSet YAML using the following commands. Note that these commands are using the default namespace "ci_monitoring". If you have set your own namespace, substitute that namespace in these and all subsequent commands:
+After the agent is installed, generate the Telegraf DaemonSet YAML and ReplicaSet YAML using the following commands. Note that these commands are using the default namespace "ci_monitoring". 
+
+If you have set your own namespace, substitute that namespace in these and all subsequent commands and files:
 
  kubectl --namespace ci_monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml 
  kubectl --namespace ci_monitoring get rs telegraf-rs -o yaml > /tmp/telegraf-rs.yaml
@@ -511,6 +515,8 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
 ==== Installing the kube-state-metrics server
 
 When you install the kube-state-metrics server you can enable collection of the following Kubernetes objects: StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress. 
+
+NOTE: It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices. 
 
 Use the following steps to install the kube-state-metrics server:
 
