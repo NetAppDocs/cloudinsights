@@ -389,7 +389,7 @@ image:Kubernetes_Install_Agent.png[Kubernetes Agent Install]
 . Click the *Copy Agent Installer Snippet* button in the installation dialog. You can optionally click the _+Reveal Agent Installer Snippet_ button if you want to view the command block.
 . Open a Bash window.
 . Paste the command into the Bash window.
-. Optionally, you can modify the command block to override the default Namespace and/or Cluster Name. To override the defaults, modify the command block to add one or both of the following before the final _./$installerName_
+. Optionally, you can override the namespace or provide the cluster name as part of the install command by modifying the command block to add one or both of the following before the final _./$installerName_
 ** CLUSTER_NAME=<Cluster Name>
 ** NAMESPACE=<Namespace>
 +
