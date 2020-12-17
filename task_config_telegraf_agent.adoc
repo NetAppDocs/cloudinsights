@@ -381,7 +381,11 @@ image:Kubernetes_Install_Agent.png[Kubernetes Agent Install]
 
 .Pre-requisites:
 
-* The following commands must be available: curl, sudo. kubectl
+* The following commands must be available: curl, sudo, kubectl
++
+For best results, add these commands to the PATH.
+
+* kube-state-metrics must be installed. See below for more infomation.
 
 .Steps to install agent on Kubernetes:
 
@@ -399,8 +403,8 @@ Scroll through the following example to see this in place in the command block:
  
 TIP: _CLUSTER_NAME_ is the name of the Kubernetes cluster from Cloud Insights collects metrics, while _NAMESPACE_ is the namespace to which the Telegraf agent will be deployed. The specified namespace will be created if it does not already exist.
 
-. When ready, click Enter to execute the command block.
-. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. When ready, execute the command block.
+. The command will download the appropriate agent installer, install it, and set a default configuration. If you have not explicitly set the _namespace_, you will be prompted to enter it. When finished, the script will restart the agent service. The command has a unique key and is valid for 24 hours. 
 // . If you have already installed an agent on this host, you can skip the previous step.
 . When finished, click *Complete Setup*.
 
