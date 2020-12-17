@@ -20,6 +20,7 @@ Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Cont
 
 // You can expand collection to include StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress by <<Installing the kube-state-metrics server>>. 
 
+////
 == Installation
 
 TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet and a ReplicaSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.
@@ -117,6 +118,7 @@ To create the required access token file, run the following:
  echo -n $TOKEN | sudo tee /var/run/secrets/kubernetes.io/serviceaccount/token
 
 By default, the Kubernetes input plugin configuration provided by CloudInsights is set up to look for the required access token file in the location used above. After performing the steps above, restart the Telegraf agent for the changes to take effect.
+////
 
 == Objects and Counters
 
@@ -237,6 +239,7 @@ Logs Filesystem Capacity
 
 |===
 
+////
 == Installing the kube-state-metrics server
 
 When you install the kube-state-metrics server you can enable collection of the following Kubernetes objects: StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress. 
@@ -271,6 +274,8 @@ Use the following links to access information for the kube state metrics counter
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/poddisruptionbudget-metrics.md[Pod Disruption Budget Metrics]
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/replicaset-metrics.md[ReplicaSet metrics]
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/replicationcontroller-metrics.md[ReplicationController Metrics]
+////
+
 
 == Troubleshooting
 
