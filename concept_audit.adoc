@@ -107,27 +107,12 @@ You can export the results of your Audit display to a .CSV file, which will allo
 
 .Steps
 
-. On your Audit page, set the desired time range and any filters you want. Cloud Insights will export only the Audit entries that match the filter and time range you have set.
+. On the Audit page, set the desired time range and any filters you want. Cloud Insights will export only the Audit entries that match the filtering and time range you have set.
 
 . Click the _Export_ button image:ExportButton.png[Export Button]
 
 The displayed Audit events will be exported to a .CSV file, up to a maximum of 10,000 rows.
 
-////
-When opening an exported .CSV file with Excel, if you have an object name or other field that is in the format NN:NN (two digits followed by a colon followed by two more digits), Excel will sometimes interpret that name as a Time format, instead of Text format. This can result in Excel displaying incorrect values in those columns. For example, an object named "81:45" would show in Excel as "81:45:00".
-
-To work around this, import the .CSV into Excel using the following steps:
-
-. Open a new sheet in Excel.
-. On the "Data" tab, choose "From Text".
-. Locate the desired .CSV file and click "Import".
-. In the Import wizard, choose "Delimited" and click Next.
-. Choose "Comma" for the delimiter and click Next.
-. Select the desired columns and choose "Text" for the column data format.
-. Click Finish.
-+
-Your objects should show in Excel in the proper format.
-////
 
 
 
