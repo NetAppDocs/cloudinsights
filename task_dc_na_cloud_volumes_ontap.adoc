@@ -1,0 +1,59 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_cloud_volumes_ontap.html
+summary: Configure NetApp Cloud Volumes ONTAP data collector
+keywords: data collector, NetApp, Cloud, ONTAP
+---
+
+= NetApp Cloud Volumes ONTAP data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead]
+
+This data collector supports inventory collection from Cloud Volumes ONTAP configurations. 
+
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|NetApp Management IP Address |IP address for Cloud Volumens ONTAP
+|User Name | User name for Cloud Volumes ONTAP
+|Password| Password for the above user
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Connection Type | HTTPS recommended. Also shows default port.
+|Override Communication Port | Port to use if not default.
+|Inventory Poll Interval (min) |Default is 60 minutes.
+|Inventory Concurrent Thread Count|Number of concurrent threads.
+|Force TLS for HTTPS |Force TLS over HTTPS
+|Automatically Lookup Netgroups|Automatically Lookup Netgroups
+|Netgroup Expansion |Select Shell or File
+|HTTP read timeout seconds |Default is 30 seconds
+|Force responses as UTF-8 |Force responses as UTF-8 
+
+|Performance Poll Interval (min) |Default is 900 seconds.
+|Performance Concurrent Thread Count|Number of concurrent threads.
+|Advanced Counter Data Collection  |Check this to have Cloud Insights collect the advanced metrics from the list below.
+|===
+
+           
+== Troubleshooting
+
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
