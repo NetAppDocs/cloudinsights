@@ -18,6 +18,7 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+
 === January 2021
 
 ==== New Kubernetes Explorer
@@ -26,7 +27,84 @@ The link:kubernetes_landing_page.html[Kubernetes Explorer] is a powerful tool to
 
 image:Kubernetes_Cluster_Detail_Example.png[The Kubernetes Explorer]
 
+=== December 2020
+
+==== Simpler Kubernetes Installation
+
+Kubernetes Agent installation has been streamlined to require fewer user interactions. link:task_config_telegraf_agent.html#kubernetes[Installing the Kubernetes Agent] now includes Kubernetes data collection.
+
+=== November 2020
+
+==== Additional Dashboards
+
+The following new ONTAP-focused dashboards have been added to the gallery and are available for import: 
+
+* ONTAP: Aggregate Performance & Capacity
+* ONTAP FAS/AFF - Capacity Utilization
+* ONTAP FAS/AFF - Cluster Capacity
+* ONTAP FAS/AFF - Efficiency
+* ONTAP FAS/AFF - FlexVol Performance
+* ONTAP FAS/AFF - Node Operational/Optimal Points
+* ONTAP FAS/AFF - PrePost Capacity Efficiencies
+* ONTAP: Network Port Activity
+* ONTAP: Node Protocols Performance
+* ONTAP: Node Workload Performance (Frontend)
+* ONTAP: Processor
+* ONTAP: SVM Workload Performance (Frontend)
+* ONTAP: Volume Workload Performance (Frontend)
+
+==== Column Rename in Table Widgets
+
+You can rename columns in the _Metrics and Attributes_ section of a table widget by opening the widget in Edit mode and clicking the menu at the top of the column. Enter the new name and click _Save_, or click _Reset_ to set the column back to the original name.
+
+Note that this only affects the column's display name in the table widget; the metric/attribute name does not change in the underlying data itself.
+
+image:Table_Widget_Column_Rename.png[Table Widget Rename Column]
+
+=== October 2020
+
+==== Default Expansion of Integration Data
+
+Table widget grouping now allows for default expansions of Kubernetes, ONTAP Advanced Data, and Agent Node metrics. For example, if you group Kubernetes _Nodes_ by _Cluster_, you will see a row in the table for each cluster. You could then expand each cluster row to see a list of the Node objects.
+
+
+//CIS-10642
+
+==== Basic Edition Technical Support
+
+Technical Support is now available for subscribers to Cloud Insights Basic Edition in addition to Standard and Premium Editions. Additionally, Cloud Insights has simplified the workflow for creating a NetApp support ticket.
+
+
+==== Cloud Secure Public API
+
+Cloud Secure supports link:concept_cs_api.html[REST APIs] for accessing Activity and Alert information. This is accomplished through the use of API Access Tokens, created through the Cloud Secure Admin UI, which are then used to access the REST APIs. Swagger documentation for these REST APIs is integrated with Cloud Secure.
+
+
 === September 2020
+
+==== Query Page with Integration Data
+
+The Cloud Insights Query page supports integration data (i.e. from Kubernetes, ONTAP Advanced Metrics, etc.). When working with integration data, the query results table displays a "Split-Screen" view, with object/grouping on the left side, and object data (attributes/metrics) on the right. You can also choose multiple attributes for grouping integration data. 
+
+image:QueryPageIntegrationData.png[Query showing integration data]
+
+==== Unit Display Formatting in Table Widget
+
+Unit display formatting is now available in Table widgets for columns that display metric/counter data (for example, gigabytes, MB/second, etc.). To change a metric's display unit, click the "three dots" menu in the column header and select "Unit Display". You can choose from any of the available units. Available units will vary according to the type of metric data in the display column.
+
+//image:TableWidgetUnitManagement.png[Table Widget Unit Management]
+image:TableWidgetUnitManagement1.png[Table Widget Unit Management]
+
+
+==== Acquisition Unit Detail Page
+
+Acquisition Units now have their own landing page, providing useful detail for each AU as well as information to help with troubleshooting. The link:task_configure_acquisition_unit.html#viewing-au-details[AU detail page] provides links to the AU's data collectors as well as helpful status information. 
+
+
+==== Cloud Secure Docker Dependency Removed
+
+Cloud Secure's dependency on Docker has been removed. Docker is no longer required for Cloud Secure agent installation.
+
 
 ==== Reporting User Roles
 
@@ -46,9 +124,10 @@ NOTE: Cloud Insights Reporting is available for environments of 500 MUs or more.
 IMPORTANT: If you are a current Premium Edition customer and wish to retain your reports, read this link:reporting_user_roles.html#important-note-for-existing-customers[important note for existing customers].
 
 
+
 ==== New API Category for Data Ingestion
 
-Cloud Insights has added a *Data Ingestion* API category, giving you greater control over custom data and agents. Detailed documentation for this and other API Categories can be found in Cloud Insights by navigating to *Admin > API Access* and clicking the _API Documentation_ link.
+Cloud Insights has added a *Data Ingestion* API category, giving you greater control over custom data and agents. Detailed documentation for this and other API Categories can be found in Cloud Insights by navigating to *Admin > API Access* and clicking the _API Documentation_ link. You can also attach a comment to the AU in the Note field, which is  displayed on the AU detail page as well as the AU list page.
 
 
 === August 2020
