@@ -80,7 +80,7 @@ The following are requirements to configure and use this data collector:
 //|<TBD: New Micro Poll> | Default is 60 seconds
 |===
 
-=== A Note About Permissions
+== A Note About Permissions
 
 Since a number of Cloud Insights' ONTAP dashboards rely on advanced ONTAP counters, you must ensure that write permission to the ONTAP API is enabled. This typically requires an account at the cluster level with the necessary permissions.
 
@@ -95,7 +95,7 @@ To create a local account for CLoud Insights at the cluster level, log in to ONT
 
  security login create -username oci_user -application ontapi -authentication-method password -role oci_readonly
  
-If AD/LDAP account is used:, the command should be 
+If AD/LDAP account is used, the command should be 
 
  security login create -user-or-group-name DOMAIN\aduser/adgroup -application ontapi -authentication-method domain -role oci_readonly
  
@@ -113,8 +113,6 @@ The resulting role and user login will look something like this:
  UserName    Application   Method      Role Name      Locked
  ---------   -------      ----------- -------------- --------
  ci_user     ontapi      password    ci_readonly   no
-
-
 
 
 
