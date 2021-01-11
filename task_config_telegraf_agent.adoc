@@ -396,6 +396,8 @@ For best results, add these commands to the PATH.
 
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
+* if you are running a kubernetes variant that requires security context constraints, follow the instructins in the *Configuring the Agent to Collect Data from Kubernetes* section.
+
 
 .Steps to install agent on Kubernetes:
 
@@ -475,7 +477,6 @@ Then, restart Telegraf:
 
  
 ==== Configuring the Agent to Collect Data from Kubernetes
-[Kubernetes Configuration](#configuring-kubernetes-agent-to-collect-data)
 
 For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet and a ReplicaSet. The pods in which the agents run need to have access to the following:
 
