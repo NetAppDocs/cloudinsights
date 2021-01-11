@@ -61,6 +61,7 @@ image:AgentInstallWindows.png[Windows Agent Install]
 .Pre-requisites:
 
 * PowerShell must be installed
+* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Windows* section. 
 
 .Steps to install agent on Windows:
 
@@ -122,6 +123,8 @@ image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 .Pre-requisites:
 
 * The following commands must be available: curl, sudo, ping, and dmidecode
+* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for RHEL/CentOS* section. 
+
 
 .Steps to install agent on RHEL/CentOS:
 
@@ -201,6 +204,8 @@ image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 .Pre-requisites:
 
 * The following commands must be available: curl, sudo, ping, and dmidecode
+* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Ubuntu/Debian* section. 
+
 
 .Steps to install agent on Debian or Ubuntu:
 
@@ -280,6 +285,8 @@ image:AgentInstallMacOS.png[MacOS Agent Install]
 .Pre-requisites:
 
 * The "curl" command must be available
+* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for macOS* section. 
+
 
 .Steps to install agent on macOS:
 
@@ -387,6 +394,11 @@ For best results, add these commands to the PATH.
 
 * kube-state-metrics must be installed. See below for more infomation.
 
+* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
+
+* if you are running a kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section.
+
+
 .Steps to install agent on Kubernetes:
 
 . Choose an Agent Access Key.
@@ -465,7 +477,6 @@ Then, restart Telegraf:
 
  
 ==== Configuring the Agent to Collect Data from Kubernetes
-[Kubernetes Configuration](#configuring-kubernetes-agent-to-collect-data)
 
 For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet and a ReplicaSet. The pods in which the agents run need to have access to the following:
 
