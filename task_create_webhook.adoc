@@ -28,11 +28,11 @@ The Webhook channel instance is comprised of the following elements:
 
 |===
 |Name|Unique name
-|URL	|Webhook target URL. The URL will include http/https prefix
+|URL|Webhook target URL, including the _http/_ or _https/_ prefix
 |Method	|GET, POST, PUT, HEAD, DELETE, PATCH, OPTIONS - Default is POST
 |Payload|Message body
 Custom Headers
-(optional) allow adding custom headers such as token etc.
+(optional) Allow adding custom headers such as token etc.
 |Form-encoded	|Form encoded serialization (Boolean)
 |Secrets|A set of secret parameters (api-key, token, password) that will not be visible to users and will be encrypted in the DB. 
 A user can embed these parameters to alert fields
