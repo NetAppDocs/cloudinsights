@@ -20,7 +20,7 @@ Webhooks allow users to send alert notifications to various applications using a
 
 NOTE: This documentation is considered _Preview_ documentation and is therefore subject to change.
 
-Many commercial applications support webhooks as a standard input interface, for example: Slack, Jira, Zapier, and Twilio all support webhooks. By supporting a generic, customizable webhook channel, Cloud Insights can support many of these delivery channels.
+Many commercial applications support webhooks as a standard input interface, for example: Slack, Jira, Zapier, Discord, and Twilio all support webhooks. By supporting a generic, customizable webhook channel, Cloud Insights can support many of these delivery channels.
 
 You can create multiple webhook channels, each channel targeted for a different perpuse; a separate application, different recipients, etc. 
 
@@ -37,6 +37,10 @@ Custom Headers
 A user can embed these parameters to alert fields
 |===
 
-
 To create a webhook, go to *Admin > Notifications* and select the *Webhooks* tab.
+
+The following image shows an example Webhook configured for Discord:
+
+image:Webhook_Example_Discord.png[Webhook Example]
+
 
