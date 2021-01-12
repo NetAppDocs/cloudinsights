@@ -29,7 +29,7 @@ The webhook channel instance is comprised of the following elements:
 |===
 |Name|Unique name
 |URL|Webhook target URL, including the _http/_ or _https/_ prefix
-|Method	|GET, POST, PUT, HEAD, DELETE, PATCH, OPTIONS - Default is POST
+|Method	|GET, POST - Default is POST
 |Payload|Message body
 Custom Headers
 |Form-encoded	|Form encoded serialization (Boolean)
@@ -47,7 +47,13 @@ image:Webhook_Example_Discord.png[Webhook Example]
 
 Cloud Insights webhooks comprise a number of default parameters. Additionally, you can create your own custom parameters or secrets. 
 
-image:Webhook_Default_Parameters.png[Cloud Insights Default Webhook Paramaters]
+image:Webhook_Default_Parameters.png[Cloud Insights Default Webhook Parameters]
+
+=== Choosing Webhook Notification in a Monitor
+
+To choose the Webhook notification in a link:/task_create_monitor.html#creating-a-monitor[Monitor], go to *Alerts > Manage Monitors* and select the desired monitor, or add a new Monitor. In the _Set up team notifications_ section, choose Webhook as the delivery method. Select the alert levels (Critical, Warning, Resolved), then choose the desired webhook.
+
+image:Webhook_Monitor_Notification.png[Webhook Monitor Notification]
 
 
 
