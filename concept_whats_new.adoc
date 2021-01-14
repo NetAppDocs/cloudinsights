@@ -75,37 +75,69 @@ If you have existing dashboard widgets or queries using any of these metrics, yo
 |===
 
 
+==== New Kubernetes Explorer
+
+The link:kubernetes_landing_page.html[Kubernetes Explorer] provides a simple topology view of Kubernetes Clusters, allowing even non-experts to quickly identify issues & dependencies, from the cluster level down to the container and storage.
+
+A wide variety of information can be explored using the Kubernetes Explorer's drill-down details for status, usage, and health of the Clusters, Nodes, Pods, Containers, and Storage in your Kubernetes environment.
+
+
+image:Kubernetes_Cluster_Detail_Example.png[The Kubernetes Explorer]
+
+=== December 2020
+
+==== Simpler Kubernetes Installation
+
+Kubernetes Agent installation has been streamlined to require fewer user interactions. link:task_config_telegraf_agent.html#kubernetes[Installing the Kubernetes Agent] now includes Kubernetes data collection.
+
+=== November 2020
+
+==== Additional Dashboards
+
+The following new ONTAP-focused dashboards have been added to the gallery and are available for import: 
+
+* ONTAP: Aggregate Performance & Capacity
+* ONTAP FAS/AFF - Capacity Utilization
+* ONTAP FAS/AFF - Cluster Capacity
+* ONTAP FAS/AFF - Efficiency
+* ONTAP FAS/AFF - FlexVol Performance
+* ONTAP FAS/AFF - Node Operational/Optimal Points
+* ONTAP FAS/AFF - PrePost Capacity Efficiencies
+* ONTAP: Network Port Activity
+* ONTAP: Node Protocols Performance
+* ONTAP: Node Workload Performance (Frontend)
+* ONTAP: Processor
+* ONTAP: SVM Workload Performance (Frontend)
+* ONTAP: Volume Workload Performance (Frontend)
+
+==== Column Rename in Table Widgets
+
+You can rename columns in the _Metrics and Attributes_ section of a table widget by opening the widget in Edit mode and clicking the menu at the top of the column. Enter the new name and click _Save_, or click _Reset_ to set the column back to the original name.
+
+Note that this only affects the column's display name in the table widget; the metric/attribute name does not change in the underlying data itself.
+
+image:Table_Widget_Column_Rename.png[Table Widget Rename Column]
+
 === October 2020
 
-==== ONTAP Metrics Renamed
+==== Default Expansion of Integration Data
 
-As part of an on-going effort to improve efficiency of data-gathering from ONTAP systems, the following ONTAP Metrics have been renamed.
+Table widget grouping now allows for default expansions of Kubernetes, ONTAP Advanced Data, and Agent Node metrics. For example, if you group Kubernetes _Nodes_ by _Cluster_, you will see a row in the table for each cluster. You could then expand each cluster row to see a list of the Node objects.
 
-|===
-|Previous Metric Name|New Metric Name
-|netapp_ontap.system_node.total_data |netapp_ontap.system_node.total_throughput 
-|netapp_ontap.aggregate.total_transfers |netapp_ontap.aggregate.total_iops 
-|netapp_ontap.nic_common.total_bytes |netapp_ontap.nic_common.total_throughput 
-|netapp_ontap.lif.total_data |netapp_ontap.lif.total_throughput 
-|netapp_ontap.volume.total_ops |netapp_ontap.volume.total_iops 
-|netapp_ontap.volume.avg_latency |netapp_ontap.volume.total_latency 
-|netapp_ontap.workload.ops |netapp_ontap.workload.total_iops 
-|netapp_ontap.workload.total_data |netapp_ontap.workload.total_throughput 
-|netapp_ontap.workload.latency |netapp_ontap.workload.total_latency 
-|netapp_ontap.workload_volume.ops |netapp_ontap.workload_volume.total_iops 
-|netapp_ontap.workload_volume.total_data |netapp_ontap.workload_volume.total_throughput 
-|netapp_ontap.workload_volume.latency |netapp_ontap.workload_volume.total_latency 
-|===
 
-Dashboard widgets or monitors configured with any of these metrics will stop showing data as of the point in time where the data collector was updated. To use the new metrics, edit each dashboard widget or monitor and consult the table above to change the metric name to the new name.  
+//CIS-10642
 
 ==== Basic Edition Technical Support
 
 Technical Support is now available for subscribers to Cloud Insights Basic Edition in addition to Standard and Premium Editions. Additionally, Cloud Insights has simplified the workflow for creating a NetApp support ticket.
 
+
 ==== Cloud Secure Public API
 
 Cloud Secure supports link:concept_cs_api.html[REST APIs] for accessing Activity and Alert information. This is accomplished through the use of API Access Tokens, created through the Cloud Secure Admin UI, which are then used to access the REST APIs. Swagger documentation for these REST APIs is integrated with Cloud Secure.
+
+
+=== September 2020
 
 ==== Query Page with Integration Data
 

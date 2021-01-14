@@ -41,27 +41,27 @@ The _*All Activity*_ table shows the following information:
 
 * The *activity* the user performed. Supported types are:  
 
-**	*Change Group Ownership* - Group Ownership is of file is changed. For more details about group ownership please see link:https://docs.microsoft.com/en-us/previous-versions/orphan-topics/ws.11/dn789205(v=ws.11)?redirectedfrom=MSDN[this link.]
+**	*Change Group Ownership* - Group Ownership is of file or folder is changed. For more details about group ownership please see link:https://docs.microsoft.com/en-us/previous-versions/orphan-topics/ws.11/dn789205(v=ws.11)?redirectedfrom=MSDN[this link.]
 
-**	*Change Owner* - Ownership of File is changed to another user.
+**	*Change Owner* - Ownership of file or folder is changed to another user.
 
-**	*Change Permission* - File permission is changed.
+**	*Change Permission* - File or folder permission is changed.
 
-**	*Create* - Create file or directory.
+**	*Create* - Create file or folder.
 
-**	*Delete* - Delete file or directory. If a directory is deleted, _delete_ events are obtained for all the files in that directory and subdirectories. 
+**	*Delete* - Delete file or folder. If a folder is deleted, _delete_ events are obtained for all the files in that folder and subfolders. 
 
 **	*Read* - File is read.
 
-**	*Read Metadata* - File attributes are read, for example, name of the file, size of the file, file permissions.
+**	*Read Metadata* - Only on enabling folder monitoring option. Will be generated on opening a folder on Windows or Running “ls” inside a folder in Linux.
 
-**	*Rename* - Rename file or directory.
+**	*Rename* - Rename file or folder.
 
 **	*Write* - Data is written to a file.
 
 **	*Write Metadata* - File metadata is written, for example, permission changed.
 
-**	*Other Change* - Any other event which are not described above. All unmapped events are mapped to “Other Change” activity type.
+**	*Other Change* - Any other event which are not described above. All unmapped events are mapped to “Other Change” activity type. Applicable to files and folders.
 
 * The *Path* to the entity with a link to the link:forensic_entity_detail.html[Entity Detail Data]
  
@@ -145,6 +145,20 @@ You can export the activity history to a .CSV file by clicking the _Export_ butt
 == Activity History Retention
 
 Activity history is retained for 13 months for active Cloud Secure environments.
+
+== Troubleshooting
+
+|===
+|Problem|Try This
+|In the “All Activities” table, under the ‘User’ column, the user name is shown as:
+“ldap:HQ.COMPANYNAME.COM:S-1-5-21-3577637-1906459482-1437260136-1831817”
+|Possible reasons could be:
+1. No User Directory Collectors have been configured yet. Please go to *Admin > Data Collectors > User Directory Collectors*.
+2. A User Directory Collector has been configured, however it has stopped or is in error state. Please go to *Admin > Data Collectors > User Directory Collectors* and check the status. Refer to the link:http://docs.netapp.com/us-en/cloudinsights/task_config_user_dir_connect.html#troubleshooting-user-directory-collector-configuration-errors[User Directory Collector troubleshooting] section of the documentation for troubleshooting tips.
+After configuring properly, the name will get automatically resolved within 24 hours.
+If it still does not get resolved, check if you have added the correct User Data Collector. Make sure that the user is indeed part of the added Active Directory.
+|===
+
 
 
 
