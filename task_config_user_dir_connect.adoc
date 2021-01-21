@@ -38,9 +38,9 @@ Configure the User Directory Collector by entering the required data in the foll
 [Options=header]
 |===
 |Name|Description
-|User Directory Name |Unique name for the user directory. For example _GlobalADCollector_
+|Name |Unique name for the user directory. For example _GlobalADCollector_
 |Agent|Select a configured agent from the list
-|Server|IP address or Fully-Qualified Domain Name (FQDN) of server hosting the active directory
+|AD Server IP/Domain Name|IP address or Fully-Qualified Domain Name (FQDN) of server hosting the active directory
 |Forest Name|Forest level of the directory structure.
 Forest name allows both of the following formats:
 
@@ -177,8 +177,22 @@ Ensure bind-DN input is always provided as ‘Administrator@<domain_forest_name>
 |User Directory connector results in the ‘Error’ state. "Connector is in error state. Service name: usersLdap. Reason for failure: Failed to retrieve LDAP users. Reason for failure: 80090308: LdapErr: DSID-0C090453, comment: AcceptSecurityContext error, data 52e, v3839"
 |Incorrect forest name provided. See above on how to provide the correct forest name.
 
-|
-|
+|Telephone number is not getting populated in the user profile page.
+|This is most likely due to an attribute mapping problem with the Active Directory. 
+
+1. Edit the particular Active Directory collector which is fetching the user’s information from Active Directory.
+2. Notice under optional attributes, there is a field name “Telephone Number” mapped to Active Directory attribute ‘telephonenumber’.
+4. Now, please use the Active Directory Explorer tool as described above to browse the Active Directory and see the correct attribute name.
+3. Make sure that in Active Directory there is an attribute named ‘telephonenumber’ which has indeed the telephone number of the user.
+5. Let us say in Active Directory it has been modified to ‘phonenumber’.
+6. Then Edit the CloudSecure User Directory collector. In optional attribute section, replace ‘telephonenumber’ with ‘phonenumber’.
+7. Save the Active Directory collector, the collector will restart and get the telephone number of the user and display the same in the user profile page.
+
+|If encryption certificate (SSL) is enabled on the Active Directory (AD) Server, the Cloud Secure User Directory Collector can not connect to the AD Server.
+|Disable AD Server encryption before Configuring a User Directory Collector.
+Once the user detail is fetched it will be there for 13 months.
+If the AD server gets disconnected after fetching the user details, the newly added users in AD won’t get fetched. To fetch again the user directory collector needs to be connected to AD.
+
 
 |===
 
