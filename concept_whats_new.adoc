@@ -22,16 +22,15 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 ==== Multi-Region Support
 
-Cloud Insights can now be hosted in different regions across the globe, which facilitates performance and security for customers based outside the United States. Cloud Insights/Cloud Secure stores information according to the region in which your environment is created:
+Starting today we offer the Cloud Insights service in different regions across the globe, which facilitates performance and increases security for customers based outside the United States. Cloud Insights/Cloud Secure stores information according to the region in which your environment is created.
 
-The following information is stored in the host region:
+The following information is stored in the chosen region:
 
 * Telemetry and asset/object information, including counters and performance metrics
 * Acquisition Unit information
 * Functional data
-* Audit information on user activities inside Cloud Insights
-* Cloud Secure Active Directory information
-* Cloud Secure Audit information
+* Audit information on user activities inside Cloud Insights and Cloud Secure
+* Cloud Secure Active Directory information imported via the data collector you configure
 
 The following information resides in the United States, regardless of the region hosting your Cloud Insights environment:
 
