@@ -16,7 +16,7 @@ keywords: analysis, cost, analyzer
 :imagesdir: ./media/
 
 [.lead]
-Cloud Cost provides a detailed cost analysis of past, present, and estimated spend, providing deep cross-cloud and cross-account visibility. The Cloud Cost dashboard delivers a clear view of your organization's entire cloud expenses and a drill down into individual workloads, accounts, and services.
+Cloud Cost provides a detailed cost analysis of past, present, and estimated spending, providing visibility into cloud usage in your environment. The Cloud Cost dashboard delivers a clear view of your organization's entire cloud expenses and a drill down into individual workloads, accounts, and services.
 
 Cloud Cost can help with the following major challenges:
 
@@ -24,11 +24,22 @@ Cloud Cost can help with the following major challenges:
 * Identifying waste and potential optimization areas
 * Delivering executable action items
 
-You must have Cloud Insights _Administrator_ or _Account Owner_ permissions to configure or view Cloud Cost.
+You must have Cloud Insights _Administrator_ or _Account Owner_ permissions to configure or view Cloud Cost. Once it has been configured, any Cloud Insights  user with those permissions can access it.
 
 NOTE: Cloud Cost is available for US-Region Cloud Insights environments only.
 
+==== Setting Up Cloud Cost
 
+When you log in to Cloud Insights and click the *Cloud Cost* menu item, you are presented with a welcome screen and a prompt to begin setup of Cloud Cost. 
+
+* Click the *Add AWS Credentials to Start* button to begin. You are presented with the AWS Connection screen.
++
+image:Cloud_Cost_Setup_1.png[AWS Connect]
+
+* 
+
+
+////
 Notes:
 Only US-Based Cloud Insights will see CC
 All Editions (Basic, Std, Premium
@@ -36,4 +47,4 @@ Only Admin/Acct Owner
 
 Onboarding - configure AWS account (once)
 All Admin users can then see the CC page
-
+////
