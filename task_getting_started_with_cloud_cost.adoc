@@ -24,7 +24,11 @@ Cloud Cost can help with the following major challenges:
 * Identifying waste and potential optimization areas
 * Delivering executable action items
 
-You must have Cloud Insights _Administrator_ or _Account Owner_ permissions to configure or view Cloud Cost. Once it has been configured, any Cloud Insights  user with those permissions can access it.
+.Before you begin
+
+* You must have Cloud Insights _Administrator_ or _Account Owner_ permissions to configure or view Cloud Cost. Once it has been configured, any Cloud Insights user with those permissions can access it.
+
+* You must link CLoud Cost to your _AWS Organizations_ account. This is sometimes known as the _master payer_ acount.
 
 NOTE: Cloud Cost is available for US-Region Cloud Insights environments only.
 
@@ -32,7 +36,7 @@ NOTE: Cloud Cost is available for US-Region Cloud Insights environments only.
 
 When you log in to Cloud Insights and click the *Cloud Cost* menu item for the first time, you are presented with a welcome screen and a prompt to begin setup of Cloud Cost. 
 
-* Click the *Add AWS Credentials to Start* button to begin. You are given the AWS Connection screen. Follow the instructions on this screen to link your AWS account to Cloud Cost.
+* Click the *Add AWS Credentials to Start* button to begin. You are given the AWS Connection screen. Follow the instructions on this screen to link your *AWS Organizations Account* to Cloud Cost.
 +
 image:Cloud_Cost_Setup_1.png[AWS Connect]
 
