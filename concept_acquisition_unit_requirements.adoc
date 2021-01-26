@@ -31,6 +31,33 @@ You must install an Acquisition Unit (AU) in order to acquire information from y
 * Red Hat Enterprise Linux (64-bit): 7.2 through 7.9, 8.1 through 8.2
 * Ubuntu Server: 18.04 LTS
 
+This computer should be running no other application-level software. A dedicated server is recommended. 
+|A computer running a licensed version of one of the following:
+
+* Microsoft Windows 10 64-bit
+* Microsoft Windows Server 2012
+* Microsoft Windows Server 2012 R2
+* Microsoft Windows Server 2016
+* Microsoft Windows Server 2019
+
+This computer should be running no other application-level software. A dedicated server is recommended. 
+|CPU	|2 CPU cores 
+| Same
+|Memory	|8 GB RAM 
+| Same
+|Available disk space	|50 GB 
+For Linux, disk space should be allocated in this manner:
+/opt/netapp 25 GB
+/var/log/netapp 25 GB
+|50 GB
+|Network	|100 Mbps /1 Gbps Ethernet connection, static IP address, IP connectivity to all FC devices, and a required port to the Cloud Insights instance (80 or 443). 
+|Same 
+|Permissions	|Sudo permissions on the Acquisition Unit server.  
+/tmp must be mounted with exec capabilities.
+|Administrator permissions on the Acquisition Unit server
+|Virus Scan |  | During installation, you must completely disable all virus scanners. Following installation, the paths used by the Acquisition Unit software must be excluded from virus scanning.
+|===
+
 ////  OLD STYLE:
 * CentOS 7.2 64-bit
 * CentOS 7.3 64-bit
@@ -63,33 +90,6 @@ You must install an Acquisition Unit (AU) in order to acquire information from y
 
 * Ubuntu Server 18.04 LTS
 ////
-
-This computer should be running no other application-level software. A dedicated server is recommended. 
-|A computer running a licensed version of one of the following:
-
-* Microsoft Windows 10 64-bit
-* Microsoft Windows Server 2012
-* Microsoft Windows Server 2012 R2
-* Microsoft Windows Server 2016
-* Microsoft Windows Server 2019
-
-This computer should be running no other application-level software. A dedicated server is recommended. 
-|CPU	|2 CPU cores 
-| Same
-|Memory	|8 GB RAM 
-| Same
-|Available disk space	|50 GB 
-For Linux, disk space should be allocated in this manner:
-/opt/netapp 25 GB
-/var/log/netapp 25 GB
-|50 GB
-|Network	|100 Mbps /1 Gbps Ethernet connection, static IP address, IP connectivity to all FC devices, and a required port to the Cloud Insights instance (80 or 443). 
-|Same 
-|Permissions	|Sudo permissions on the Acquisition Unit server.  
-/tmp must be mounted with exec capabilities.
-|Administrator permissions on the Acquisition Unit server
-|Virus Scan |  | During installation, you must completely disable all virus scanners. Following installation, the paths used by the Acquisition Unit software must be excluded from virus scanning.
-|===
 
 === Additional recommendations
 * For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Acquisition Unit machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
