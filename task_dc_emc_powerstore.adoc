@@ -1,0 +1,58 @@
+---
+sidebar: sidebar
+permalink: task_dc_emc_powerstore.html
+keywords: data collector, PowerStore, EMC, DELL
+summary: Configuring DELL EMC PowerStore data collector.
+---
+
+= Dell EMC PowerStore data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+The EMC PowerStore data collector gathers inventory information from EMC PowerStore storage. For configuration, the data collector requires the IP address of the storage processors and a read-only user name and password.
+
+The EMC PowerStore data collector gathers the volume-to-volume replication relationships that PowerStore coordinates across other storage arrays. Cloud Insights shows a storage array for each PowerStore cluster, and collects inventory data for nodes and storage ports on that cluster. No storage pool or volume data is collected. 
+
+== Requirements
+
+The following information is required to configure this data collector:
+
+* IP address or fully-qualified domain name of storage processor 
+* Read-only user name and password 
+* REST API access via port 443
+
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|Address of PowerStore|IP address or fully-qualified domain name of RecoverPoint cluster
+|User Name|User name for the PowerShare cluster
+|Password|Password used for the PowerShare cluster
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|TCP Port|TCP Port used to connect to PowerStore cluster
+|Inventory Poll Interval (minutes)|Interval between inventory polls. The default is 20 minutes.
+|Excluded Clusters|Comma-separated list of cluster IDs or names to exclude when polling.
+|===
+
+           
+== Troubleshooting
+
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
+
