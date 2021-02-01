@@ -18,8 +18,83 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== February 2021
+
+==== Multi-Region Support
+
+Starting today we offer the Cloud Insights service in different regions across the globe, which facilitates performance and increases security for customers based outside the United States. Cloud Insights/Cloud Secure stores information according to the region in which your environment is created.
+
+The following information is stored in the chosen region:
+
+* Telemetry and asset/object information, including counters and performance metrics
+* Acquisition Unit information
+* Functional data
+* Audit information on user activities inside Cloud Insights and Cloud Secure
+* Cloud Secure Active Directory information imported via the data collector you configure
+
+The following information resides in the United States, regardless of the region hosting your Cloud Insights environment:
+
+* Environment site (sometimes called "tenant") information such as site/account owner.
+* Information that allows NetApp Cloud Central to communicate with regional Cloud Insights sites, including anything to do with user Authorization.
+* Information related to the relation between the Cloud Insights user and the tenant.
+
 
 === January 2021
+
+==== Additional ONTAP Metrics Renamed
+
+As part of our continuing effort to improve efficiency of data-gathering from ONTAP systems, the following ONTAP metrics have been renamed. 
+
+If you have existing dashboard widgets or queries using any of these metrics, you will need to edit or re-create them to use the new metric names.
+
+[%header, cols="1,1"]
+|===
+|Previous Metric Name|New Metric Name
+|netapp_ontap.disk_constituent.total_transfers|netapp_ontap.disk_constituent.total_iops
+|netapp_ontap.disk.total_transfers|netapp_ontap.disk.total_iops
+|netapp_ontap.fcp_lif.read_data|netapp_ontap.fcp_lif.read_throughput
+|netapp_ontap.fcp_lif.write_data|netapp_ontap.fcp_lif.write_throughput
+|netapp_ontap.iscsi_lif.read_data|netapp_ontap.iscsi_lif.read_throughput
+|netapp_ontap.iscsi_lif.write_data|netapp_ontap.iscsi_lif.write_throughput
+|netapp_ontap.lif.recv_data|netapp_ontap.lif.recv_throughput
+|netapp_ontap.lif.sent_data|netapp_ontap.lif.sent_throughput
+|netapp_ontap.lun.read_data|netapp_ontap.lun.read_throughput
+|netapp_ontap.lun.write_data|netapp_ontap.lun.write_throughput
+|netapp_ontap.nic_common.rx_bytes|netapp_ontap.nic_common.rx_throughput
+|netapp_ontap.nic_common.tx_bytes|netapp_ontap.nic_common.tx_throughput
+|netapp_ontap.path.read_data|netapp_ontap.path.read_throughput
+|netapp_ontap.path.write_data|netapp_ontap.path.write_throughput
+|netapp_ontap.path.total_data|netapp_ontap.path.total_throughput
+|netapp_ontap.policy_group.read_data|netapp_ontap.policy_group.read_throughput
+|netapp_ontap.policy_group.write_data|netapp_ontap.policy_group.write_throughput
+|netapp_ontap.policy_group.other_data|netapp_ontap.policy_group.other_throughput
+|netapp_ontap.policy_group.total_data|netapp_ontap.policy_group.total_throughput
+|netapp_ontap.system_node.disk_data_read|netapp_ontap.system_node.disk_throughput_read
+|netapp_ontap.system_node.disk_data_written|netapp_ontap.system_node.disk_throughput_written
+|netapp_ontap.system_node.hdd_data_read|netapp_ontap.system_node.hdd_throughput_read
+|netapp_ontap.system_node.hdd_data_written|netapp_ontap.system_node.hdd_throughput_written
+|netapp_ontap.system_node.ssd_data_read|netapp_ontap.system_node.ssd_throughput_read
+|netapp_ontap.system_node.ssd_data_written|netapp_ontap.system_node.ssd_throughput_written
+|netapp_ontap.system_node.net_data_recv|netapp_ontap.system_node.net_throughput_recv
+|netapp_ontap.system_node.net_data_sent|netapp_ontap.system_node.net_throughput_sent
+|netapp_ontap.system_node.fcp_data_recv|netapp_ontap.system_node.fcp_throughput_recv
+|netapp_ontap.system_node.fcp_data_sent|netapp_ontap.system_node.fcp_throughput_sent
+|netapp_ontap.volume_node.cifs_read_data|netapp_ontap.volume_node.cifs_read_throughput
+|netapp_ontap.volume_node.cifs_write_data|netapp_ontap.volume_node.cifs_write_throughput
+|netapp_ontap.volume_node.nfs_read_data|netapp_ontap.volume_node.nfs_read_throughput
+|netapp_ontap.volume_node.nfs_write_data|netapp_ontap.volume_node.nfs_write_throughput
+|netapp_ontap.volume_node.iscsi_read_data|netapp_ontap.volume_node.iscsi_read_throughput
+|netapp_ontap.volume_node.iscsi_write_data|netapp_ontap.volume_node.iscsi_write_throughput
+|netapp_ontap.volume_node.fcp_read_data|netapp_ontap.volume_node.fcp_read_throughput
+|netapp_ontap.volume_node.fcp_write_data|netapp_ontap.volume_node.fcp_write_throughput
+|netapp_ontap.volume.read_data|netapp_ontap.volume.read_throughput
+|netapp_ontap.volume.write_data|netapp_ontap.volume.write_throughput
+|netapp_ontap.workload.read_data|netapp_ontap.workload.read_throughput
+|netapp_ontap.workload.write_data|netapp_ontap.workload.write_throughput
+|netapp_ontap.workload_volume.read_data|netapp_ontap.workload_volume.read_throughput
+|netapp_ontap.workload_volume.write_data|netapp_ontap.workload_volume.write_throughput
+|===
+
 
 ==== New Kubernetes Explorer
 
