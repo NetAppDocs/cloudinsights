@@ -18,6 +18,27 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== February 2021
+
+==== Multi-Region Support
+
+Starting today we offer the Cloud Insights service in different regions across the globe, which facilitates performance and increases security for customers based outside the United States. Cloud Insights/Cloud Secure stores information according to the region in which your environment is created.
+
+The following information is stored in the chosen region:
+
+* Telemetry and asset/object information, including counters and performance metrics
+* Acquisition Unit information
+* Functional data
+* Audit information on user activities inside Cloud Insights and Cloud Secure
+* Cloud Secure Active Directory information imported via the data collector you configure
+
+The following information resides in the United States, regardless of the region hosting your Cloud Insights environment:
+
+* Environment site (sometimes called "tenant") information such as site/account owner.
+* Information that allows NetApp Cloud Central to communicate with regional Cloud Insights sites, including anything to do with user Authorization.
+* Information related to the relation between the Cloud Insights user and the tenant.
+
+
 === January 2021
 
 ==== Additional ONTAP Metrics Renamed
