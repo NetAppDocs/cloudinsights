@@ -607,6 +607,7 @@ To upgrade the telegraf agent, do the following:
  
 . link:#kubernetes[Install the new agent].
 
+////
 . Re-apply the configurations:
 
  kubectl --namespace ci_monitoring apply -f /tmp/telegraf-conf.yaml --force
@@ -615,7 +616,7 @@ To upgrade the telegraf agent, do the following:
 . Restart all telegraf pods. Run the following command for each telegraf pod:
 
  kubectl --namespace ci_monitoring delete pod <Telegraf_pod>
-
+////
 
 
 == Troubleshooting Agent Installation
