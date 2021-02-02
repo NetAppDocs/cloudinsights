@@ -46,6 +46,18 @@ The following information resides in the United States, regardless of the region
 
 === January 2021
 
+////
+==== Webhooks
+
+By supporting a generic, customizable webhook channel, Cloud Insights supports notifications using webhooks to many different applications, such as PagerDuty, Slack, and Jira.
+You can create multiple webhook channels, each channel targeted for a different purpose; separate applications, different recipients, etc.
+
+[.thumb]
+image:Webhook_Example_Slack.png[Example Webhook for Slack]
+
+NOTE: Webhooks is considered a _Preview_ feature and is therefore subject to change.
+////
+
 ==== Additional ONTAP Metrics Renamed
 
 As part of our continuing effort to improve efficiency of data-gathering from ONTAP systems, the following ONTAP metrics have been renamed. 
@@ -99,7 +111,6 @@ If you have existing dashboard widgets or queries using any of these metrics, yo
 |netapp_ontap.workload_volume.read_data|netapp_ontap.workload_volume.read_throughput
 |netapp_ontap.workload_volume.write_data|netapp_ontap.workload_volume.write_throughput
 |===
-
 
 ==== New Kubernetes Explorer
 
