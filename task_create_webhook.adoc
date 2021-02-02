@@ -68,5 +68,29 @@ image:Webhook_Monitor_Notification.png[Webhook Monitor Notifications]
 //image:Webhook_Monitor_Notifications.png[Webhook Monitor Notifications]
 
 
+=== Example: Creating a Webhook for Slack
+
+The example below lists the steps for setting up a Slack webhook for use with Cloud Insights. 
+
+* Enable incoming webhooks for Slack. See https://slack.com/help/articles/115005265063-Incoming-webhooks-for-Slack 
+
+
+* Go to Admin -> Notification -> Webhooks and add a new webhook channel.
+* Select the default slack template
+
+* Copy the Slack webhook URL into the URL field\
++
+Figure 1. How to find my Webhook URL
++
+image:Webhook_Slack_Config.png[Slack Webhook URL]
+ 
+* Test channel
+
+* Add a webhook channel to the desired link:task_create_monitor.html[monitor]
+
+Other
+* To modify message format and layout, see https://api.slack.com/messaging/composing 
+* Error handling: https://api.slack.com/messaging/webhooks#handling_errors 
+
 
 
