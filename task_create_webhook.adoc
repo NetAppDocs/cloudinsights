@@ -28,7 +28,7 @@ The webhook channel instance is comprised of the following elements:
 
 |===
 |Name|Unique name
-|URL|Webhook target URL, including the _http/_ or _https/_ prefix
+|URL|Webhook target URL, including the _http://_ or _https://_ prefix
 |Method	|GET, POST - Default is POST
 |Custom Header|Specify any custom header lines here
 |Message Body|Put the body of your message here
@@ -60,7 +60,7 @@ In this section you can add any custom parameters and/or secrets you wish. For s
 
 To choose the Webhook notification in a link:/task_create_monitor.html#creating-a-monitor[Monitor], go to *Alerts > Manage Monitors* and select the desired monitor, or add a new Monitor. In the _Set up team notifications_ section, choose Webhook as the delivery method. Select the alert levels (Critical, Warning, Resolved), then choose the desired webhook.
 
-image:Webhook_Monitor_Notification.png[Webhook Monitor Notifications]
+image:Webhook_Monitor_Notify.png[Webhook Monitor Notification]
 
 //To be published after Feb 5:
 //Select the alert levels (Critical, Warning, Resolved), then choose the desired webhook(s). You can choose multiple webhooks for each alert, and you can choose the same webhook for different alerts.
