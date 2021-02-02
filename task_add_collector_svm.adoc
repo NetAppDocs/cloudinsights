@@ -206,7 +206,9 @@ image:CS_Data_Collector_Error.png[]
 |Error message: "Connection to the FPolicy server <IP> is broken. ( reason: "FPolicy server is removed from external engine." )"
 |SVM is unable to reach the Fpolicy Server. 
 1. Make sure there is route available from SVM to the Fpolicy Server/Agent machine IP. Login to the cluster/SVM and ping the Fpolicy Server IP address using the following command:
-_net ping -lif <data_lif> -destination <agent IP> -vserver <svmname>_
+
+_net ping -lif <data_lif> -destination <agent IP> -vserver <svmname> -show-detail_
+
 2. In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
 To prevent this, configure each SVM on a single environment.
 
@@ -217,7 +219,7 @@ To prevent this, configure each SVM on a single environment.
 
 You can also try logging in to the cluster via ssh using the cluster management IP, and ping the Agent IP. Make sure that the agent IP is pingable:
 
-_network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name>_
+_network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name> -show-detail_
 
 If not pingable, make sure the network settings in ONTAP are correct, so that the Agent machine is pingable.
 
@@ -231,10 +233,17 @@ If yes, create an SVM Mgmt Only Lif and try connecting via this SVM management o
 
 |Error Message: "Connector is in error state. Service.name: audit. Reason for failure: External fpolicy server terminated."
 |1. It is most likely that a firewall is blocking the necessary ports in the agent machine. Verify the port range 35000-55000/tcp is opened for the agent machine to connect from the SVM. Also ensure that there are no firewalls enabled from the ONTAP side blocking communication to the agent machine.
+
 2. Type the following command in the Agent box and ensure that the port range is open.
+
 _sudo iptables-save \| grep 3500*_
 
+Sample output should look like:
+
+_-A IN_public_allow -p tcp -m tcp --dport 35000 -m conntrack -ctstate NEW -j ACCEPT_
+
 3. Login to SVM, enter the following commands and check that no firewall is set to block the communication with ONTAP.
+
 _system services firewall show_
 _system services firewall policy show_
 
@@ -242,7 +251,7 @@ link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nm
 
 4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM management lif (with CIFS, NFS protocols support) and ensure that ping is working:
 
-_network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name>_
+_network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name> -show-detail_
 
 If not pingable, make sure the network settings in ONTAP are correct, so that the Agent machine is pingable.
 
