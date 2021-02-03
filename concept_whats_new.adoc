@@ -18,12 +18,17 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+
 === February 2021
 
 ==== Multi-Region Support
 
-Starting today we offer the Cloud Insights service in different regions across the globe, which facilitates performance and increases security for customers based outside the United States. Cloud Insights/Cloud Secure stores information according to the region in which your environment is created.
+Starting today we offer the Cloud Insights service in different regions across the globe, which facilitates performance and increases security for customers based outside the United States. Cloud Insights/Cloud Secure stores information according to the region in which your environment is created.  
 
+Click link:http://docs.netapp.com/us-en/cloudinsights/security_information_and_region.html[here] for more information.
+
+
+////
 The following information is stored in the chosen region:
 
 * Telemetry and asset/object information, including counters and performance metrics
@@ -37,9 +42,21 @@ The following information resides in the United States, regardless of the region
 * Environment site (sometimes called "tenant") information such as site/account owner.
 * Information that allows NetApp Cloud Central to communicate with regional Cloud Insights sites, including anything to do with user Authorization.
 * Information related to the relation between the Cloud Insights user and the tenant.
-
+////
 
 === January 2021
+
+////
+==== Webhooks
+
+By supporting a generic, customizable webhook channel, Cloud Insights supports notifications using webhooks to many different applications, such as PagerDuty, Slack, and Jira.
+You can create multiple webhook channels, each channel targeted for a different purpose; separate applications, different recipients, etc.
+
+[.thumb]
+image:Webhook_Example_Slack.png[Example Webhook for Slack]
+
+NOTE: Webhooks is considered a _Preview_ feature and is therefore subject to change.
+////
 
 ==== Additional ONTAP Metrics Renamed
 
@@ -95,7 +112,6 @@ If you have existing dashboard widgets or queries using any of these metrics, yo
 |netapp_ontap.workload_volume.write_data|netapp_ontap.workload_volume.write_throughput
 |===
 
-
 ==== New Kubernetes Explorer
 
 The link:kubernetes_landing_page.html[Kubernetes Explorer] provides a simple topology view of Kubernetes Clusters, allowing even non-experts to quickly identify issues & dependencies, from the cluster level down to the container and storage.
@@ -110,6 +126,7 @@ image:Kubernetes_Cluster_Detail_Example.png[The Kubernetes Explorer]
 ==== Simpler Kubernetes Installation
 
 Kubernetes Agent installation has been streamlined to require fewer user interactions. link:task_config_telegraf_agent.html#kubernetes[Installing the Kubernetes Agent] now includes Kubernetes data collection.
+
 
 === November 2020
 
