@@ -19,7 +19,7 @@ summary: Configuring HDS COps Center data collector.
 
 [.lead] 
 
-This data collector supports the Ops Center server. Cloud Insights communicates with the server using the HiCommand API.
+This data collector uses Hitachi Ops Center's integrated suite of applications to access inventory and performance data of multiple storage devices.
 
 == Terminology 
 
@@ -28,12 +28,15 @@ Cloud Insights acquires the following inventory information from this data colle
 [cols=2*, options="header", cols"50,50"]
 |===
 |Vendor/Model Term|Cloud Insights Term 
-|PDEV|Disk
-|Journal Pool|Disk Group
-|Storage Array|Storage
-|Port Controller|Storage Node
-|Array Group, HDS Pool|Storage Pool
-|Logical Unit, LDEV|Volume
+|Storage Systems|Storage
+|Volume|Volume
+|Parity Groups|Storage Pool(RAID), Disk Groups
+|Disk|Disk
+|Storage Pool|Storage Pool(Thin, SNAP)
+|External Parity Groups|Storage Pool(Backend), Disk Groups
+|Port|Storage Node → Controller Node → Port
+|Host Groups|Volume Mapping and Masking
+|Volume Pairs|Storage Synchronization
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collector. 
@@ -44,9 +47,8 @@ You must have the following in order to collect inventory data:
 
 * IP address of the Ops Center server
 * Read-only user name and password for the Ops Center software and peer privileges
-* Port requirements: 2001 (http) or 2443 (https)
-* Log into Ops Centerr software using username and password 
 
+////
 == Performance requirements 
 
 The following requirements must be met in order to collect performance data:
@@ -61,6 +63,7 @@ The following requirements must be met in order to collect performance data:
 ** NetApp strongly recommends creating a dedicated service account on AMS arrays for Cloud Insights to use to retrieve performance data. Storage Navigator only allows a user account one concurrent login to the array. Having Cloud Insights use the same user account as management scripts or HiCommand may result in Cloud Insights, management scripts, or HiCommand being unable to communicate to the array due to the one concurrent user account login limit
 ** Performance Monitor must be licensed.
 ** The Storage Navigator Modular 2 (SNM2) CLI utility needs to be installed on the Cloud Insights AU. 
+////
 
 == Configuration
 
