@@ -21,6 +21,8 @@ keywords: data collector, queries, create
 
 The NetApp StorageGrid data collector supports inventory and performance collection from StorageGrid configurations. 
 
+The user must have permissions to access the tenant and query metrics on the StorageGrid.
+
 ////
 The SolidFire data collector utilizes the SolidFire REST API. The acquisition unit where the data collector resides needs to be able to initiate HTTPS connections to TCP port 443 on the SolidFire cluster management IP address. The data collector needs credentials capable of making REST API queries on the SolidFire cluster.
 
