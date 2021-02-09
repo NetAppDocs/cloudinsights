@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_dc_na_storagegrid.html
-summary: Configure NetApp StorageGrid data collector
+summary: Configure NetApp StorageGRID data collector
 keywords: data collector, queries, create
 ---
 
-= NetApp StorageGrid data collector
+= NetApp StorageGRID data collector
 
 :toc: macro
 :hardbreaks:
@@ -19,7 +19,7 @@ keywords: data collector, queries, create
 
 [.lead]
 
-The NetApp StorageGrid data collector supports inventory and performance collection from StorageGrid configurations. 
+The NetApp StorageGRID data collector supports inventory and performance collection from StorageGrid configurations. 
 
 ////
 The SolidFire data collector utilizes the SolidFire REST API. The acquisition unit where the data collector resides needs to be able to initiate HTTPS connections to TCP port 443 on the SolidFire cluster management IP address. The data collector needs credentials capable of making REST API queries on the SolidFire cluster.
@@ -55,9 +55,9 @@ The following are requirements for configuring this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|StorageGrid Host IP Address |Management Virtual IP address of the StorageGrid appliance
-|User Name |Name used to log into the StorageGrid appliance
-|Password |Password used to log into the StorageGrid appliance
+|StorageGrid Host IP Address |Management Virtual IP address of the StorageGRID appliance
+|User Name |Name used to log into the StorageGRID appliance
+|Password |Password used to log into the StorageGRID appliance
 |===
 
 == Advanced configuration
