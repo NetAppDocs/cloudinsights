@@ -95,6 +95,20 @@ OLD STYLE:
 === Additional recommendations
 * For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Acquisition Unit machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
+=== Regarding Sizing
+
+You can get started with a Cloud Insights Acquisition Unit with just 8GB memory and 50GB of disk space, however, for larger environments you should ask yourself the following questions: 
+
+Do you expect to:
+
+* Discover more than 2500 virtual machines or 10 large (> 2 node) ONTAP, Symmetrix, or HDS/HPE VSP/XP arrays on this Acquisition Unit?
+* Deploy 75 or more total data collectors on this Acquisition Unit?
+
+For each "Yes" answer above, it is recommend to add 8 GB of memory and 50 GB of disk space to the AU. So for example if you answered "Yes" to both, you should deploy a 24GB memory system with 150GB or more of disk space.
+
+For additional sizing questions, contact NetApp Support.
+
+
 //// 
 Previous list:
 * Red Hat Enterprise Linux 7.2 64-bit
