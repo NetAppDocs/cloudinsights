@@ -82,11 +82,29 @@ The graph displays historical data. The Warning and Critical level lines on the 
 You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
 +
 image:define_monitor_conditions.png[Define Conditions]
-+
-. Specify the email recipients for alert notifications. If desired, you can choose different recipients for warning or critical alerts.
-+
+
+=== Select notification type and recipients
+
+In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
+
+image:Webhook_Choose_Monitor_Notification.png[Choose alerting method]
+
+*Alerting via Email:*
+
+Specify the email recipients for alert notifications. If desired, you can choose different recipients for warning or critical alerts.
+
 image:email_monitor_alerts.png[Email Alert Recipients]
-+
+
+*Alerting via Webhook:*
+
+Specify the webhook(s) for alert notifications. If desired, you can choose different webhooks for warning or critical alerts.
+
+image:Webhook_Monitor_Notifications.png[Webhook Alerting]
+
+NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
+
+=== Save your Monitor
+
 . If desired, you can add a description of the monitor. 
 +
 . Give the Monitor a meaningful name and click *Save*.

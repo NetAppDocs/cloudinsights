@@ -1,0 +1,98 @@
+---
+sidebar: sidebar
+permalink: task_create_webhook.html
+keywords: webhook, notification, slack, integration
+summary: Create monitors to alert on performance or inventory thresholds
+---
+
+= Notification using Webhooks
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Webhooks allow users to send alert notifications to various applications using a customized webhook channel.
+
+NOTE: This feature is considered _Preview_ and is therefore subject to change.
+
+Many commercial applications support webhooks as a standard input interface, for example: Slack, Jira, Zapier, PagerDuty, and Twilio all support webhooks. By supporting a generic, customizable webhook channel, Cloud Insights can support many of these delivery channels. Information on Webhooks can be found on these application websites. For example, Slack provides link:https://api.slack.com/messaging/webhooks[this useful guide].
+
+You can create multiple webhook channels, each channel targeted for a different purpose; separate applications, different recipients, etc. 
+
+The webhook channel instance is comprised of the following elements:
+
+|===
+|Name|Unique name
+|URL|Webhook target URL, including the _http://_ or _https://_ prefix
+|Method	|GET, POST - Default is POST
+|Custom Header|Specify any custom header lines here
+|Message Body|Put the body of your message here
+|Default Alert Parameters|Lists the default parameters for the webhook
+|Custom Parameters and Secrets|Custom parameters and secrets allow you to add unique parameters and secure elements such as passwords
+|===
+
+=== Creating a Webhook
+
+To create a Cloud Insights webhook, go to *Admin > Notifications* and select the *Webhooks* tab.
+
+The following image shows an example Webhook configured for Slack:
+
+image:Webhook_Example_Slack.png[Webhook Example]
+
+Cloud Insights webhooks comprise a number of default parameters. Additionally, you can create your own custom parameters or secrets. 
+
+image:Webhook_Default_Parameters.png[Cloud Insights Default Webhook Parameters]
+
+==== Parameters: What are they and how do I use them?
+
+Alert Parameters are dynamic values populated per alert. For example, the _%%TriggeredOn%%_ parameter will be replaced with the object on which the alert was triggered.
+
+==== Custom Parameters and Secrets
+
+In this section you can add any custom parameters and/or secrets you wish. For security reasons, if a secret is defined only the webhook creator can modify this webhook channel. It is read-only for others.
+
+=== Choosing Webhook Notification in a Monitor
+
+To choose the Webhook notification in a link:/task_create_monitor.html#creating-a-monitor[Monitor], go to *Alerts > Manage Monitors* and select the desired monitor, or add a new Monitor. In the _Set up team notifications_ section, choose Webhook as the delivery method. Select the alert levels (Critical, Warning, Resolved), then choose the desired webhook.
+
+image:Webhook_Monitor_Notify.png[Webhook Monitor Notification]
+
+//To be published after Feb 5:
+//Select the alert levels (Critical, Warning, Resolved), then choose the desired webhook(s). You can choose multiple webhooks for each alert, and you can choose the same webhook for different alerts.
+
+//image:Webhook_Monitor_Notifications.png[Webhook Monitor Notifications]
+
+
+=== Example: Creating a Webhook for Slack
+
+The example below lists the steps for setting up a Slack webhook for use with Cloud Insights. 
+
+* Enable incoming webhooks for Slack. See https://slack.com/help/articles/115005265063-Incoming-webhooks-for-Slack 
+
+* In Cloud Insights, go to *Admin -> Notification -> Webhooks* and add a new webhook channel
+
+* Select the default slack template
+
+* Copy the Slack webhook URL into the URL field
++
+Figure 1. How to find my Webhook URL
++
+image:Webhook_Slack_Config.jpg[Slack Webhook URL]
+ 
+* Test channel
+
+* Add a webhook channel to the desired link:http://docs.netapp.com/us-en/cloudinsights/task_create_monitor.html[monitor]
+
+More information:
+
+* To modify message format and layout, see https://api.slack.com/messaging/composing 
+
+* Error handling: https://api.slack.com/messaging/webhooks#handling_errors 
+
+
+
