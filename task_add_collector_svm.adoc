@@ -316,6 +316,10 @@ link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nm
 3.	Ensure 1 data collector connects to only 1 SVM. 
 4.	Delete the other data collectors which are connected to the same SVM.
 
+|Connector is in error state. Service name: audit. Reason for failure: Failed to configure (policy on SVM svmname. Reason: Invalid value specified for 'shares-to-include' element within 'fpolicy.policy.scope-modify: "Federal'
+|The share names need to be given without any quotes. Edit the ONTAP SVM DSC configuration again to correct the share names.
+
+_Include and exclude shares_ is not intended for a long list of share names. Use filtering by volume instead if you have a large number of shares to include or exclude.
 
 
 |===
