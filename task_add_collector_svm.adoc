@@ -238,8 +238,8 @@ b)	Try to connect a Data Source collector to the SVM from CloudSecure UI.
 c)	Wait till the error appears. Stop the packet trace in ONTAP.
 d)	Open the packet trace from ONTAP. It is available at this location
 
- _/https://1.197.128.16/spi/trail-fas8020-02/etc/log/packet_traces/_
- _/https://<cluster_mgmt_ip>/spi/<clustername>/etc/log/packet_traces/_
+ _\https://1.197.128.16/spi/trail-fas8020-02/etc/log/packet_traces/_
+ _\https://<cluster_mgmt_ip>/spi/<clustername>/etc/log/packet_traces/_
  
 e)	Make sure there is a SYN from ONTAP to the Agent box.
 f)	If there is no SYN from ONTAP then it is an issue with firewall in ONTAP.
