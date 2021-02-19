@@ -29,47 +29,90 @@ Stacked area chart
 Line chart
 Spline chart
 Single value widget
+
 The remaining widget types can have only a single query:
+
 Table
 Bar chart
 Box plot
 Scatter plot
 
 == Filtering in dashboard queries
+
+You can use any of the following to refine your filter:
+
+|===
+|Filter|What it does | Example | Result
+| * (Asterisk) |enables you to search for everything | vol*rhel |returns all resources that start with "vol" and end with "rhel"
+| ? (question mark) |enables you to search for a specific number of characters|  BOS-PRD??-S12 |returns BOS-PRD**__12__**-S12, BOS-PRD**__13__**-S12, and so on
+| OR |enables you to specify multiple entities | FAS2240 OR CX600 OR FAS3270 |returns only the specified resources
+| NOT |allows you to exclude text from the search results |  NOT EMC* |returns everything that does not start with "EMC"
+| _None_ |searches for NULL values in all fields | _None_ |returns results where the target field is empty
+| Not * |searches for NULL values in _text-only_ fields | Not * |returns results where the target field is empty
+|===
+
+If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.
+
+////
+PREVIOUS:
 You can filter using any of the following to refine your search in any text field in the query:
 
 An asterisk enables you to search for everything. For example,
 
-vol*rhel
+ vol*rhel
 
 displays all resources that start with "vol" and end with "rhel".
 
 The question mark enables you to search for a specific number of characters. For example,
 
-BOS-PRD??-S12
+ BOS-PRD??-S12
 
 displays BOS-PRD12-S12, BOS-PRD13-S12, and so on.
 
 The OR operator enables you to specify multiple entities. For example,
 
-FAS2240 OR CX600 OR FAS3270
+ FAS2240 OR CX600 OR FAS3270
 
 finds multiple storage models.
 
 The NOT operator allows you to exclude text from the search results. For example,
 
-NOT EMC*
+ NOT EMC*
 
-finds everything that does not start with "EMC". You can use
+finds everything that does not start with "EMC". 
 
-NOT *
+You can use
 
-to display fields that contain null values.
+ NOT *
+
+to display fields that contain null values. Note that "Not *" works for text fields only. For all other fields, use "_None_" as described below.
+
+You can use 
+
+ _None_
+
+to filter for null values in all fields including text. The _None_ option can be selected in any filter drop-down or selection box.
 
 If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.
+////
 
 == Identifying objects returned by queries and filters
 
 The objects returned by queries and filters look similar to those shown in the following illustration. Objects with 'tags' assigned to them are annotations while the objects without tags are performance counters or object attributes.
 
 image::ObjectsReturnedByFilters.png[]
+
+
+==== Metrics Filtering
+
+In addition to filtering on an object's attributes/tags in a widget, you can filter on metrics as well. 
+
+image:MetricsFiltering.png[Metrics Filtering]
+
+//When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
+
+When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
+
+image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
+
+

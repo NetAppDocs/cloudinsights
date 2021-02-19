@@ -1,0 +1,35 @@
+---
+sidebar: sidebar
+permalink: task_troubleshooting_general_problems.html
+summary: General Cloud Insights Troubleshooting tips.
+keywords: trioubleshooting, problems, browser
+---
+
+= Troubleshooting General Cloud Insights Problems
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Here you will find suggestions for troubleshooting Cloud insights. 
+
+See also link:task_troubleshooting_linux_acquisition_unit_problems.html[Troubleshooting Linux Acquisition Unit Problems] and link:task_troubleshooting_windows_acquisition_unit_problems.html[Troubleshooting Windows Acquisition Unit Problems].
+
+|===
+|*Problem:* | *Try this:* 
+|Cloud Insights logs out every 5 minutes
+|Enable 3rd party cookie acceptance from _[*.]auth0.com_ in your browser settings. 
+For example in Chrome's incognito mode, the default browser settings block third-party cookies. Try the following:
+Enter "chrome://settings/cookies" in browser URL.
+Select "Allow all cookies" option.
+
+|===
+
+You can find more troubleshooting and other link:concept_requesting_support.html[support] information on the Cloud Insights *Help > Support* page.
+
+
