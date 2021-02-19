@@ -8,8 +8,12 @@ entries:
     url: /task_cloud_insights_onboarding_1.html
 
   - title: Security
-    url: /security_overview.html
-
+    entries:
+      - title: Security Practices
+        url: /security_overview.html
+      - title: What We Store, and Where 
+        url: /security_information_and_region.html
+        
   - title: Getting Started
     entries:
       - title: Feature Tutorials
@@ -58,6 +62,14 @@ entries:
             url: /task_dashboard_example_VM_performance.html
       - title: Dashboard Best Practices
         url: /concept_dashboard_best_practices.html
+     
+  - title: Kubernetes Explorer
+    entries:
+      - title: Kubernetes Overview Page
+        url: /kubernetes_landing_page.html
+      - title: Kubernetes Cluster Page
+        url: /kubernetes_cluster_detail.html
+
   - title: Working with Queries
     entries:
       - title: Querying Assets
@@ -74,6 +86,7 @@ entries:
         url: /task_query_assign_multiple_applicationss.html
       - title: Copying table values to the Clipboard
         url: /task_query_copy_table_values.html
+
   - title: Working with Annotations
     entries:
       - title: Defining Annotations
@@ -84,26 +97,47 @@ entries:
         url: /task_create_annotation_rules.html
       - title: Importing Annotations with API
         url: /task_annotation_import.html
+
   - title: Working with Applications
     entries:
       - title: Application Concepts
         url: /concept_about_applications.html
       - title: Configuring Applications
         url: /task_create_application.html
+
+  - title: Monitors and Alerts
+    entries:
+      - title: Creating Monitors
+        url: /task_create_monitor.html
+      - title: Viewing and Managing Alerts
+        url: /task_view_and_manage_alerts.html
+#      - title: Alerting with Performance Policies
+#        url: /task_create_monitor.html
+      - title: Configuring Notification Recipients
+        url: /concept_notifications_email.html 
+
   - title: Working with APIs
     url: /API_Overview.html
+
   - title: Performance Policies and Alerts
     entries:
       - title: Alerting with Performance Policies
-        url: /task_create_performance_policies.html
+        url: /task_create_monitor.html
+      - title: Viewing and Managing Alerts
+        url: /task_view_and_manage_alerts.html
       - title: Configuring Notification Recipients
         url: /concept_notifications_email.html 
+        
+  - title: Webhook Notification
+    url: /task_create_webhook.html
+
   - title: Monitoring your Environment
     entries:
       - title: Auditing Events
         url: /concept_audit.html
       - title: TTL and Downsampling
         url: concept_ttl_and_downsampling.html
+
   - title: Asset Page Information
     entries:
       - title: Asset Page Overview
@@ -125,7 +159,7 @@ entries:
     entries:
       - title: Reporting Overview
         url: /reporting_overview.html
-      - title: Reporting User Rules
+      - title: Reporting User Roles
         url: /reporting_user_roles.html
       - title: Using Pre-Defined Reports
         url: /reporting_predefined_reports.html
@@ -144,7 +178,7 @@ entries:
       - title: Schema Tables
         url: /reference_schemas.html
         
-  
+ 
   - title: Cloud Secure 
     entries:
       - title: About Cloud Secure
@@ -161,26 +195,34 @@ entries:
             url: /task_cs_delete_agent.html 
           - title: Configuring a User Directory Collector 
             url: /task_config_user_dir_connect.html
-          - title: Configuring NetApp Data Collectors
-            entries: 
-              - title: Configuring the ONTAP SVM Data Collector
-                url: /task_add_collector_svm.html
-              - title: Configuring the Cloud ONTAP Data Collector
-                url: /task_config_cs_incloud.html
-      - title: Viewing Cloud Secure Forensic Data 
-        entries: 
-          - title: Alerts
-            url: /alert_data.html
-          - title: General Forensic Views
-            url: /concept_forensic.html
-          - title: Forensic User Overview
-            url: /forensic_user_overview.html
-          - title: Forensic Entity Detail
+#          - title: Configuring NetApp Data Collectors
+#            entries: 
+          - title: Configuring the ONTAP SVM Data Collector
+            url: /task_add_collector_svm.html
+          - title: Configuring the Cloud ONTAP Data Collector
+            url: /task_config_cs_incloud.html
+          - title: Cloud Secure User Management
+            url: /task_cs_user_management.html
+#      - title: Viewing Cloud Secure Forensic Data 
+#        entries: 
+      - title: Alerts 
+        url: /cs_alert_data.html  
+      - title: Forensics
+        entries:
+          - title: Activity Forensics - All Activity
+            url: /forensic_activity_history.html
+          - title: Activity Forensics - Entities
             url: /forensic_entity_detail.html
-#          - title: Forensic Community Detail 
-#            url: /forensic_community_overview.html
-          - title: Forensic Activity History
-            url: /forensic_activity_history.html          
+          - title: Users
+            url: /forensic_user_overview.html
+      - title: Automated Response Policies
+        url: /cs_automated_response_policies.html  
+      - title: Notifications
+        url: /cs_notifications_email.html
+      - title: Cloud Secure API
+        url: /concept_cs_api.html
+
+
 
   - title: Active IQ
     url: /concept_activeiq.html
@@ -190,16 +232,20 @@ entries:
 #         url: /task_h2_minrisk_thin.html
 #      - title: Ensuring IO density data describes only internal data volumes
 #        url: /task_io_density_report_no_root.html
+
   - title: Troubleshooting
     entries:
-      - title: Troubleshooting Overview
-        url: /concept_troubleshooting_overview.html
+      - title: General Troubleshooting
+        url: /task_troubleshooting_general_problems.html
+#      - title: Troubleshooting Overview
+#        url: /concept_troubleshooting_overview.html
       - title: Troubleshooting Linux Acquisition Unit Problems
         url: /task_troubleshooting_linux_acquisition_unit_problems.html
       - title: Troubleshooting Windows Acquisition Unit Problems
         url: /task_troubleshooting_windows_acquisition_unit_problems.html
       - title: Researching Data Collector Errors
         url: /task_research_failed_collector.html
+        
   - title: Reference & Support
     entries:
       - title: Requesting Support
@@ -295,11 +341,15 @@ entries:
             url: /task_dc_lenovo.html
           - title: Microsoft
             entries:
+              - title: Azure NetApp Files
+                url: /task_dc_ms_anf.html
               - title: Hyper-V
                 url: /task_dc_ms_hyperv.html
           - title: NetApp
             entries:
-              - title: Cloud Volumes
+              - title: Cloud Volumes ONTAP
+                url: /task_dc_na_cloud_volumes_ontap.html
+              - title: Cloud Volumes Services for AWS
                 url: /task_dc_na_cloud_volumes.html
               - title: ONTAP Data Management Software 
                 url: /task_dc_na_cdot.html
@@ -361,7 +411,7 @@ entries:
           - title: Kibana
             url: /task_config_telegraf_kibana.html
           - title: Kubernetes
-            url: /task_config_telegraf_kubernetes.html
+            url: /task_config_telegraf_agent.html#kubernetes
           - title: Memcached
             url: /task_config_telegraf_memcached.html
           - title: MongoDB

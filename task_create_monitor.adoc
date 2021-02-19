@@ -1,0 +1,136 @@
+---
+sidebar: sidebar
+permalink: task_create_monitor.html
+keywords: performance policy, performance, thresholds, alerts, preference, delete
+summary: Create monitors to alert on performance or inventory thresholds
+---
+
+= Alerting with Monitors
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You create monitors to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a monitor to alert for _node write latency_ for any of a multitude of protocols.
+
+TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
+
+When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both. 
+
+//image:MonitorExample1.png[Storage IOPS Monitor Example]
+
+=== Monitor or Performance Policy?
+
+What's the difference between a *Performance Policy* and a *Monitor*?
+
+_Policies_ allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports. These policies trigger violations when thresholds are met or exceeded. Each violation can be investigated for troubleshooting. Policies are described in detail elsewhere in this link:task_create_performance_policies.html[documentation].
+
+_Monitors_ provide similar functionality for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins, and alert when thresholds are crossed. With Monitors, you can set thresholds for Warning- or Critical-level alerts, or both. 
+
+Policies and Monitors are available under the *Alerts* menu.
+
+image:AlertsMenuLarger.png[Alerts Menu]
+
+Emails can be sent when a policy or monitor is triggered. 
+
+=== Creating a Monitor
+
+In the example below, we will create a Monitor to give a Warning alert when _Volume Node NFS Write Latency_ reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
+
+==== Requirements
+
+* Cloud Insights must be configured to collect integration data, and that data is being collected.
+
+==== Create the Monitor 
+
+. From the Cloud Insights menu, click *Alerts > Manage Monitors*
++
+The Monitors list page is displayed, showing currently configured monitors. 
+
+. To add a monitor, Click *+ Monitor*. To modify an existing monitor, click the monitor name in the list.
++
+The Monitor Configuration dialog is displayed.
+. In the drop-down, search for and choose an object type and metric to monitor, for example _netapp_ontap_volume_node_nfs_write_latency_.
+
+You can set filters to narrow down which object attributes or metrics to monitor. 
+
+//image:select_metric_to_monitor.png[Select Metric]
+
+image:MonitorMetricFilter.png[Metrics Filtering]
+
+//When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
+
+When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
+
+//image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
+
+==== Define the Conditions of the Monitor. 
+
+. After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
+. For the _Warning_ level, enter 200. The dashed line indicating this Warning level displays in the example graph.
+. For the _Critical_ level, enter 400. The dashed line indicating this Critical level displays in the example graph.
++
+The graph displays historical data. The Warning and Critical level lines on the graph are a visual representation of the Monitor, so you can easily see when the Monitor might trigger an alert in each case. 
+
+. For the occurence interval, choose _Continuously_ for a period of _15 Minutes_.
++
+You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
++
+image:define_monitor_conditions.png[Define Conditions]
+
+=== Select notification type and recipients
+
+In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
+
+image:Webhook_Choose_Monitor_Notification.png[Choose alerting method]
+
+*Alerting via Email:*
+
+Specify the email recipients for alert notifications. If desired, you can choose different recipients for warning or critical alerts.
+
+image:email_monitor_alerts.png[Email Alert Recipients]
+
+*Alerting via Webhook:*
+
+Specify the webhook(s) for alert notifications. If desired, you can choose different webhooks for warning or critical alerts.
+
+image:Webhook_Monitor_Notifications.png[Webhook Alerting]
+
+NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
+
+=== Save your Monitor
+
+. If desired, you can add a description of the monitor. 
++
+. Give the Monitor a meaningful name and click *Save*.
++
+Your new monitor is added to the list of active Monitors.
+
+=== Monitor List
+
+The Monitor page lists the currently configured monitors, showing the following:
+
+* Monitor Name
+* Status 
+* Object/metric being monitored
+* Conditions of the Monitor
+
+You can choose to temporarily suspend monitoring of an object type by clicking the menu to the right of the monitor and selecting *Pause*. When you are ready to resume monitoring, click *Resume*.
+
+You can copy a monitor by selecting *Duplicate* from the menu. You can then modify the new monitor and change the object/metric, filter, conditions, email recipients, etc.
+
+If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
+
+=== More Information
+
+//* link:concept_notifications_email.html[Email Alerting] for Monitors
+
+* link:task_view_and_manage_alerts.html[Viewing and Dismissing Alerts]
+
+
+

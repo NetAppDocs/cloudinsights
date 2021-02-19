@@ -21,6 +21,8 @@ Cloud Insights collects device data using one or more Acquisition Units installe
 
 This topic describes how to add Acquisition Units and describes additional steps required when your environment uses a proxy. 
 
+NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Acquisition Unit machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
+
 == Adding a Linux Acquisition Unit
 
 .Before you begin
@@ -197,4 +199,32 @@ You can also select multiple data collectors of the same type and click the *Bul
 . You can now re-install the Acquisition Unit software on the original server/VM. Click *+Acquisition Unit* and follow the instructions above to install the Acquisition Unit.  
 
 . Once the Acquisition Unit has been re-installed, assign your data collectors back to the Acquisition Unit.
+
+== Viewing AU Details
+
+The Acquisition Unit (AU) detail page provides useful detail for an AU as well as information to help with troubleshooting. The AU detail page contains the following sections:
+
+* A *summary* section showing the following:
+
+ ** *Name* and *IP* of the Acquisition Unit
+ ** Current connection *Status* of the AU
+ ** *Last Reported* successful data collector poll time
+ ** The *Operating System* of the AU machine
+ ** Any current *Note* for the AU. Use this field to enter a comment for the AU. The field displays the most recently added note.
+ 
+ * A table of the AU's *Data Collectors* showing, for each data collector:
+ 
+ ** *Name* - Click this link to drill down into the data collector's detail page with additional information
+ ** *Status* - Success or error information
+ ** *Type* - Vendor/model
+ ** *IP* address of the data collector
+ ** Current *Impact* level
+ ** *Last Acquired* time - when the data collector was last successfully polled
+
+//image:AUDetailPageExample.png[Example AU Detail page]
+image:AU_Detail_Example.png[AU Detail Page Example]
+
+For each data collector, you can click on the "three dots" menu to Clone, Edit, Poll, or Delete the data collector. You can also select multiple data collectors in this list to perform bulk actions on them.
+
+To restart the Acquisition Unit, click the *Restart* button at the top of the page. Drop down this button to attempt to *Restore Connection* to the AU in the event of a connection problem.
 
