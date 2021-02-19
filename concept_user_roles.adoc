@@ -22,13 +22,46 @@ Cloud Insights provides four user accounts: Account Owner, Administrator, User, 
 == Permission levels
 
 You use an account that has Administrator privileges to create or modify user accounts. Each user account is assigned one of the following permission levels.
+
 * *Guest* can view asset pages, dashboards, and queries, and run queries.
 * *User* can perform all guest-level privileges as well as create, modify, or delete dashboards, queries, annotations, annotation rules, and applications.
-* *Administrator* and *Account Owner* can perform all functions, as well as create, modify and delete policies, and manage all users and data collectors.
+* *Administrator* and *Account Owner* can perform all functions, as well as create, modify and delete policies, import dashboards, and manage all users and data collectors.
 
 The Account Owner is created when you register for Cloud Insights.
 
 Best practice is to limit the number of users with Administrator permissions. The greatest number of accounts should be user or guest accounts.
+
+=== Permissions by User Role
+
+The following table shows the Cloud Insights permissions granted to each user role.
+
+|===
+|Feature|Administrator/
+Account Owner|User|Guest
+|Acquisition Units: Add/Modify/Delete|Y|N|N
+|Alerts*/Policies: Create/Modify/Delete|Y|Y|N
+|Alerts*/Policies: View|Y|Y|Y
+|Annotation Rules: Create/Run/Modify/Delete|Y|Y|N
+|Annotations: Create/Modify/Assign/View/Remove/Delete|Y|Y|N
+|API Access*: Create/Rename/Disable/Revoke|Y|N|N
+|Applications: Create/View/Modify/Delete|Y|Y|N
+|Asset Pages: Modify|Y|Y|N
+|Asset Pages: View|Y|Y|Y
+|Audit: View|Y|N|N
+|Cloud Cost|Y|N|N
+|Cloud Secure*|Y|N|N
+|Dashboards: Create/Modify/Delete|Y|Y|N
+|Dashboards: View|Y|Y|Y
+|Data Collectors: Add/Modify/Poll/Delete|Y|N|N
+|Notifications: View/Modify|Y|N|N
+|Queries: Create/Modify/Delete|Y|Y|N
+|Queries: View/Run|Y|Y|Y
+|Reports*: View/Run|Y|Y|Y
+|Reports*: Create/Modify/Delete/Schedule|Y|Y|N
+|Subscription: View/Modify|Y|N|N
+|User Management: Invite/Add/Modify/Deactivate|Y|N|N
+|===
+*Requires Premium Edition
 
 == Creating Accounts by Inviting Users
 

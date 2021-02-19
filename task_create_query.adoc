@@ -1,11 +1,14 @@
 ---
 sidebar: sidebar
 permalink: task_create_query.html
+summary: Queries allow you to quickly and easily ientify assets and metrics of interest.
 keywords: query, queries
-summary: This topic describes how to create a query.
 ---
+
+= Creating Queries
+
 :toc: macro
-:hardbreaks: AA
+:hardbreaks:
 :toclevels: 1
 :nofooter:
 :icons: font
@@ -13,16 +16,61 @@ summary: This topic describes how to create a query.
 :imagesdir: ./media/
 
 [.lead]
+Queries enable you to search the assets in your environment at a granular level, allowing to filter for the data you want and sort the results to your liking. 
 
-You can create a query to enable you to search the assets in your environment at a granular level. Queries enable you to slice data by adding filters and then sorting the results to view inventory and performance data in one view.
+For example, you can create a query for _volumes_, add a filter to find particular _storages_ associated with the selected volumes, add another filter to find a particular _annotation_ such as "Tier 1" on the selected storages, and finally add another filter to find all storages with _IOPS - Read (IO/s)_ greater than 25. When the results are displayed, you can then sort the columns of information associated with the query in ascending or descending order.
 
-. About this task
-You can create a query for volumes, add a filter to find particular storages associated with the selected volume, add a filter to find a particular annotation, such as Tier 1, on the selected storages, and finally add another filter to find all storages with IOPS - Read (IO/s) greater than 25. When the results are displayed, you can then sort the columns of information associated with the query in ascending or descending order.
+Note: When a new data collector is added which acquires assets, or any annotation or application assignments are made, you can query for those new assets, annotations, or applications only after the queries are indexed. Indexing occurs at a regularly scheduled interval or during certain events such as running annotation rules.
 
-When a new data collector is added which acquires assets or any annotation or application assignments are made, you can query for those assets, annotations, or applications after the queries are indexed, which occurs at a regularly scheduled interval.
+.Creating a Query is very simple:
 
-. Steps
+. Navigate to *Queries > *+New Query*.
 
-. Click *Queries > New Query*
-. Click *+Query*
-. From the 'Search for' list, select the asset type you want to query for.
+. From the 'Select...' list, select the object type you want to query for. You can scroll through the list or you can start typing to more quickly find what you're searching for.
+
+.Scroll list:
+image:QueryDrop-DownList.png[Query Drop-Down]
+
+.Type-to-Search:
+image:QueryPageFilter.png[Typing to find]
+
+You can add filters to further narrow down your query by clicking the *+* button in the *Filter By* field. 
+Group rows by object or attribute. When working with integration data (Kubernetes, ONTAP Advanced Metrics, etc.), you can group by multiple attributes, if desired.
+
+image:QueryFilterExample.png[Query Filtering and Grouping]
+
+The query results list shows a number of default columns, depending on the object type searched for. To add, remove, or change the columns, click the gear icon on the right of the table. The available columns variy based on the asset/metric type.
+
+image:QuerySelectColumns.png[Select Columns]
+
+After you have configured your query to show you the results you want, you can click the *Save* button to save the query for future use. Give it a meaningful and unique name.
+
+=== More on Filtering
+
+You can use any of the following to refine your filter:
+
+|===
+|Filter|What it does | Example | Result
+| * (Asterisk) |enables you to search for everything | vol*rhel |returns all resources that start with "vol" and end with "rhel"
+| ? (question mark) |enables you to search for a specific number of characters|  BOS-PRD??-S12 |returns BOS-PRD**__12__**-S12, BOS-PRD**__23__**-S12, and so on
+| OR |enables you to specify multiple entities | FAS2240 OR CX600 OR FAS3270 |returns any of FAS2440, CX600, or FAS3270
+| NOT |allows you to exclude text from the search results |  NOT EMC* |returns everything that does not start with "EMC"
+| _None_ |searches for NULL values in all fields | _None_ |returns results where the target field is empty
+| Not * |searches for NULL values in _text-only_ fields | Not * |returns results where the target field is empty
+|===
+
+If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators OR and NOT will also be treated as literal strings when enclosed in double quotes.
+
+//The operator AND is always trated as a literal string.
+
+=== What do I do now that I have query results?
+
+Querying provides a simple place to add annotations or assign applications to assets. Note that you can only assign applications or annotations to your inventory assets (Disk, Storage, etc.). Integration metrics cannot take on annotation or application assignments.
+
+To assign an annotation or application to the assets resulting from your query, sinply select the asset(s) using the check box column on the left of the results table, then click the *Bulk Actions* button on the right. Choose the desired action to apply to the selected assets.
+
+image:QueryVolumeBulkActions.png[Query Bulk Actions Example]
+
+=== Annotation Rules require query
+
+If you are configuring link:task_create_annotation_rules.html[Annotation Rules], each rule must have an underlying query to work with. But as you've seen above, queries can be made as broad or as narrow as you need.

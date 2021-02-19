@@ -5,7 +5,7 @@ keywords: Forensic, activity history, activity data, history
 summary: forensic activity history data 
 ---
 
-= Forensic Activity History
+= Forensics - All Activity
 
 :hardbreaks:
 :nofooter:
@@ -15,65 +15,150 @@ summary: forensic activity history data
 
 [.lead]
 
-The Activity History page helps you understand the actions performed on entities in the Cloud Secure environment. 
+The All Activity page helps you understand the actions performed on entities in the Cloud Secure environment. 
 
 
-== Examining Activity History Data  
+== Examining All Activity Data  
 
-Click *Forensic > Activity History* to access the Activity History page. The data available on this page describes:
+Click *Forensics > Activity Forensics* and click the *All Activity* tab to access the All Activity page.
+This page provides an overview of activities in your environment, highlighting the following information:
 
-* The time an entity was accessed including the year, month, day, and time of the last access. 
+* A graph showing _Activity History_ (accessed per minute/per 5 minutes/per 10 minutes based on selected global time range)
++
+You can zoom the graph by dragging out a rectangle in the graph. The entire page will be loaded to display the zoomed time range. When zoomed in, a button is displayed that lets the user zoom out. 
 
-* The user that accessed the entity with a link to the link:forensic_user_overview.html[User information].
+* A chart of _Activity Types_. To obtain activity history data by activity type, click on corresponding x-axis label link.
+* A chart of Activity on _Entity Types_. To obtain activity history data by entity type, click on corresponding x-axis label link.
+* A list of the _All Activity_ data
+
+The _*All Activity*_ table shows the following information:
+
+* The *time* an entity was accessed including the year, month, day, and time of the last access. 
+
+* The *user* that accessed the entity with a link to the link:forensic_user_overview.html[User information].
 
 //Above should be new user profile?
 
-* The activity the user performed:  
-** *Create*
-** *Read*
-** *Read Metadata*
-** *Copy*
-** *Delete*
-** *Write*
+* The *activity* the user performed. Supported types are:  
+
+**	*Change Group Ownership* - Group Ownership is of file or folder is changed. For more details about group ownership please see link:https://docs.microsoft.com/en-us/previous-versions/orphan-topics/ws.11/dn789205(v=ws.11)?redirectedfrom=MSDN[this link.]
+
+**	*Change Owner* - Ownership of file or folder is changed to another user.
+
+**	*Change Permission* - File or folder permission is changed.
+
+**	*Create* - Create file or folder.
+
+**	*Delete* - Delete file or folder. If a folder is deleted, _delete_ events are obtained for all the files in that folder and subfolders. 
+
+**	*Read* - File is read.
+
+**	*Read Metadata* - Only on enabling folder monitoring option. Will be generated on opening a folder on Windows or Running “ls” inside a folder in Linux.
+
+**	*Rename* - Rename file or folder.
+
+**	*Write* - Data is written to a file.
+
+**	*Write Metadata* - File metadata is written, for example, permission changed.
+
+**	*Other Change* - Any other event which are not described above. All unmapped events are mapped to “Other Change” activity type. Applicable to files and folders.
 
 * The *Path* to the entity with a link to the link:forensic_entity_detail.html[Entity Detail Data]
  
-* The entity type:
-** *Stream*
-** *File*
-** *Directory*
-** *Symbolic Link*
-** Other Type
+* The *Entity Type*, including entity (i.e. file) extension (.doc, .docx, .tmp, etc.)
 
-* The *Source IP* address from which the activity was performed. 
+* The *Device* where the entities reside
+
+* The *Protocol* used to fetch events. 
+
+//* The *Source IP* address from which the activity was performed. 
 
 
 == Filtering Forensic Activity History Data
 
-You can filter Forensic Activity History data by the following:
+There are two methods you can use to filter data.
+
+.	Hover over the field in the table and click the filter icon that appears. The value is added to the appropriate filters in the top _Filter By_ list.
+
+.	Filter data by typing in the _Filter By_ field:
++
+Select the appropriate filter from the top ‘Filter By’ widget by clicking the *[+]* button:
++
+image:Forensic_Activity_Filter.png[Entity Filer, width=500]
++
+Enter the search text
++
+Press Enter or click outside of the filter box to apply the filter.
 
 
-* The Activity type: 
-** *Created*
-** *Read*
-** *Read Metadata*
-** *Copied*
-** *Deleted*
-** *Write*
-* Entity type: 
-** *Stream*
-** *File*
-** *Directory*
-** *Symbolic Link*
-** Other Type
-* *Source IP* from which the entity was accessed
+You can filter Forensic Activity data by the following fields:
+
+* The *Activity* type.
+
+////
+** Change Group Ownership
+**	Change Owner
+**	Change Permission
+**	Copy
+**	Create
+**	Delete
+**	Move
+**	Read
+**	Read Metadata
+**	Rename
+**	Write
+**	Write Metadata
+**	Other Change 
+////
+
+* *Source IP* from which the entity was accessed. You must provide a valid source IP address in double quotes, for example “10.1.1.1.”.  Incomplete IPs such as “10.1.1.*”, “10.1.*.*”, etc. will not work.
+
+* *Protocol* to fetch protocol-specific activities.
+
+* *Noise Reduction* to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.
+
+* *Username* of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
+
+The following fields are subject to special filtering rules:
+
+* *Entity Type*, using entity (file) extension
 * *Path* of the entity 
-* *Time* the activity occurred
 * *User* performing the activity
+* *Device* (SVM) where entities reside
+* *Volume* where entities reside
 
-== Exporting Activity History
+The preceding fields are subject to the following when filtering:
+
+* Exact value should be within quotes: Example: "searchtext"
+* Wildcard strings must contain no quotes: Example: searchtext, \*searchtext*, will filter for any strings containing ‘searchtext’.
+* String with a prefix, Example: searchtext* , will search any strings which start with ‘searchtext’.
+
+== Sorting Forensic Activity History Data
+
+You can sort activity history data by _Time, User,  Source IP, Activity, Path_ and _Entity Type_. By default, the table is sorted by descending _Time_ order, meaning the latest data will be displayed first. Sorting is disabled for _Device_ and _Protocol_ fields.
+
+
+== Exporting All Activity
 
 You can export the activity history to a .CSV file by clicking the _Export_ button above the Activity History table. Note that only the top 10,000 records are exported.
+
+== Activity History Retention
+
+Activity history is retained for 13 months for active Cloud Secure environments.
+
+== Troubleshooting
+
+|===
+|Problem|Try This
+|In the “All Activities” table, under the ‘User’ column, the user name is shown as:
+“ldap:HQ.COMPANYNAME.COM:S-1-5-21-3577637-1906459482-1437260136-1831817”
+|Possible reasons could be:
+1. No User Directory Collectors have been configured yet. Please go to *Admin > Data Collectors > User Directory Collectors*.
+2. A User Directory Collector has been configured, however it has stopped or is in error state. Please go to *Admin > Data Collectors > User Directory Collectors* and check the status. Refer to the link:http://docs.netapp.com/us-en/cloudinsights/task_config_user_dir_connect.html#troubleshooting-user-directory-collector-configuration-errors[User Directory Collector troubleshooting] section of the documentation for troubleshooting tips.
+After configuring properly, the name will get automatically resolved within 24 hours.
+If it still does not get resolved, check if you have added the correct User Data Collector. Make sure that the user is indeed part of the added Active Directory.
+|===
+
 
 
 
