@@ -194,7 +194,7 @@ When adding via SVM IP the options are:
 
 Known problems and their resolutions are described in the following table. 
 
-In the case of an error, click on the error in the _Status_ column for detail about the error.
+In the case of an error, click on _more detail_ in the _Status_ column for detail about the error.
 
 image:CS_Data_Collector_Error.png[]
 
@@ -234,7 +234,7 @@ If yes, create an SVM Mgmt Only Lif and try connecting via this SVM management o
 
 6. Advanced Debugging:
 a)	Start a packet trace in ONTAP.
-b)	Try to connect a Data Source collector to the SVM from CloudSecure UI.
+b)	Try to connect a data collector to the SVM from CloudSecure UI.
 c)	Wait till the error appears. Stop the packet trace in ONTAP.
 d)	Open the packet trace from ONTAP. It is available at this location
 
@@ -246,7 +246,7 @@ g)	Open the firewall in ONTAP, so that ONTAP is able to connect the agent box.
 
 7. If it is still not working, please consult the networking team to make sure that no external firewall is blocking the connection from ONTAP to the Agent box.
 
-8. If all the above steps are not solving the issue, please open a case with link:http://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[Netapp Support] for further assistance.
+8. If none of the above solves the issue, open a case with link:http://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[Netapp Support] for further assistance.
 
 
 
