@@ -46,11 +46,11 @@ Steps:
 
 Keep the following in mind:
 
-A. A single Agent machine can handle upto 7000 events per second and maximum of 10 data collectors.
+A) A single Agent machine can handle upto 7000 events per second and maximum of 10 data collectors.
 
-B. To calculate your total events, add the Events generated for all SVMs for that agent.
+B) To calculate your total events, add the Events generated for all SVMs for that agent.
 
-C. If the script is not run during peak hours or if peak traffic is difficult to predict, then keep an event rate buffer of 30%.
+C) If the script is not run during peak hours or if peak traffic is difficult to predict, then keep an event rate buffer of 30%.
 
 B + C Should be less than A, otherwise the Agent machine will fail to monitor.
 
