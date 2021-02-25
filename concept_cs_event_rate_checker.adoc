@@ -54,13 +54,13 @@ C) If the script is not run during peak hours or if peak traffic is difficult to
 
 B + C Should be less than A, otherwise the Agent machine will fail to monitor.
 
-In other words, The number of data collectors which can be added to a single agent machine should comply to the formula below:
+In other words, the number of data collectors which can be added to a single agent machine should comply to the formula below:
 
  Sum of all Event rate of all Data Source Collectors + Buffer Event rate of 30% < 7000 events/second
 
 === Example
 
-Let's say we have three SVMS, with the SVMs generating event rates of 100, 200, and 300 events per second, respectively.
+Let us say we have three SVMS generating event rates of 100, 200, and 300 events per second, respectively.
 
 We apply the formula:
 
@@ -77,7 +77,7 @@ The script may give erroneous results in the following cases:
 * The script is stopped abruptly while running.
 
 
-An exmaple script run is shown below:
+An example script run is shown below:
 
  [root@ci-cs-data agent]# /opt/netapp/cloudsecure/agent/install/svm_event_rate_checker.sh
  
