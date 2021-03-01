@@ -77,7 +77,9 @@ The following are requirements to configure and use this data collector:
 |Performance Poll Interval (sec)|Default is 900 seconds.
 //|Performance Concurrent thread count|Thread count for parallel performance queries
 //|Performance model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
+
 |Advanced Counter Data Collection|Enable ONTAP integration. Select this to include ONTAP Advanced Counter data in polls. Choose the desired counters from the list.
+
 //|<TBD: New Micro Poll> | Default is 60 seconds
 |===
 
