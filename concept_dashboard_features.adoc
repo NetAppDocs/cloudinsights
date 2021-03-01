@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_dashboard_features.html
 summary: Dashboard features and concepts.
-keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, group by, expressions, timeseries, exact match,
+keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, group by, expressions, timeseries, exact match, theme, visibility
 ---
 
 = Dashboard Features
@@ -700,4 +700,18 @@ Dashboard pin/unpin is an individual user preference and independent of the grou
 image:DashboardPin.png[Pinned Dashboards]
 
 
+== Dark Theme
 
+You can choose to display Cloud Insights using either a light theme (the default), which displays most screens using a light background with dark text, or a dark theme which displays most screens using a dark background with light text.
+
+To switch between light and dark themes, click the username button in the upper right corner of the screen and choose _Switch to Dark Mode_.
+
+image:DarkThemeSwitch.png[Switch between light and dark themes]
+
+Dark Theme Dashboard view:
+image:DarkThemeDashboardExample.png[Dark Theme Dashboard Example]
+
+Light Theme Dashboard view:
+image:LightThemeDashboardExample.png[Light Theme Dashboard Example]
+
+NOTE: some screen areas, such as certain widget charts, still show light backgrounds even while viewed in dark theme. 
