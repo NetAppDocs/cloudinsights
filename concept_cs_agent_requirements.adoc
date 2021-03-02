@@ -51,6 +51,9 @@ This computer should be running no other application-level software. A dedicated
 
 |===
 
+=== Additional recommendations
+* It is strongly recommended to synchronize the time on both the ONTAP system and the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
+
 Please note: Cloud Insights agent and Cloud Secure agent can be installed in the same machine. However, it is a best practice to install them in separate machines. In the event that both agents are installed on the same machine, please allocate disk space as shown below:
 
 |===
