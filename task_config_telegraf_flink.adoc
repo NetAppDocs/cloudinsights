@@ -36,8 +36,8 @@ image:FlinkDCConfigWindows.png[Flink configuration]
 
 A full Flink deployment involves the following components:
 
-JobManager: The Flink master. Coordinates a series of TaskManagers (slaves). In a High Availability setup, system will have more than one JobManager.
-TaskManager: The Flink slaves. This is where Flink operators get executed.
+JobManager: The Flink primary system. Coordinates a series of TaskManagers. In a High Availability setup, system will have more than one JobManager.
+TaskManager: This is where Flink operators are executed.
 The Flink plugin is based on the telegraf's Jolokia plugin. As such as a requirement to gather info from all Flink components, JMX needs to be configured and exposed via Jolokia on all components.
 
 ==== Compatibility

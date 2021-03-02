@@ -94,7 +94,14 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -role csrole -cmddirname vserver -access readonly
  security login role create -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -role csrole -cmddirname "volume snapshot" -access all
+ security login role create -role csrole -cmddirname "event catalog" -access all
+ security login role create -role csrole -cmddirname "event filter" -access all
+ security login role create -role csrole -cmddirname "event notification destination" -access all
+ security login role create -role csrole -cmddirname "event notification" -access all
+ security login role create -role csrole -cmddirname "security certificate" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
+ security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
+
 
 ==== Permissions when adding via *Vserver Management IP*:
 
@@ -194,7 +201,7 @@ When adding via SVM IP the options are:
 
 Known problems and their resolutions are described in the following table. 
 
-In the case of an error, click on the error in the _Status_ column for detail about the error.
+In the case of an error, click on _more detail_ in the _Status_ column for detail about the error.
 
 image:CS_Data_Collector_Error.png[]
 
@@ -212,9 +219,27 @@ _net ping -lif <data_lif> -destination <agent IP> -vserver <svmname> -show-detai
 2. In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
 To prevent this, configure each SVM on a single environment.
 
+|Data Collector runs for some time and stops after a random time, failing with: "Error message: Connector is in error state. Service name: audit. Reason for failure: External fpolicy server overloaded."
+|The event rate from ONTAP was much higher than what the Agent box can handle. Hence the connection got terminated.
+
+Check the peak traffic in CloudSecure when the disconnection happened. This you can check from the *CloudSecure > Activity Forensics > All Activity* page.
+
+If the peak aggregated traffic is higher than what the Agent Box can handle, then please refer to the Event Rate Checker page on how to size for Collector deployment in an Agent Box.
+
+If the Agent was installed in the Agent box prior to 4 March 2021, run the following commands in the Agent box:
+
+ echo 'net.core.rmem_max=8388608' >> /etc/sysctl.conf
+ echo 'net.ipv4.tcp_rmem = 4096 2097152 8388608' >> /etc/sysctl.conf
+ sysctl -p
+
+Restart the collector from the UI after resizing.
+
+
 |Collector reports Error Message: “No local IP address found on the connector that can reach the data interfaces of the SVM”.
 |This is most likely due to a networking issue on the ONTAP side. Please follow these steps:
+
 1. Ensure that there are no firewalls on the SVM data lif or the management lif which are blocking the connection from the SVM.
+
 2. When adding an SVM via a cluster management IP, please ensure that the data lif and management lif of the SVM are pingable from the Agent VM. In case of issues, check the gateway, netmask and routes for the lif.
 
 You can also try logging in to the cluster via ssh using the cluster management IP, and ping the Agent IP. Make sure that the agent IP is pingable:
@@ -223,8 +248,29 @@ _network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name> -s
 
 If not pingable, make sure the network settings in ONTAP are correct, so that the Agent machine is pingable.
 
-3. While adding the collector via SVM IP and vsadmin credentials, check if the SVM Lif has Data plus Mgmt role enabled. In this case ping to the SVM Lif will work, however SSH to the SVM Lif will not work.
+3. If you have tried connecting via Cluster IP and it is not working, try connecting directly via SVM IP. Please see above for the steps to connect via SVM IP.
+
+4. While adding the collector via SVM IP and vsadmin credentials, check if the SVM Lif has Data plus Mgmt role enabled. In this case ping to the SVM Lif will work, however SSH to the SVM Lif will not work.
 If yes, create an SVM Mgmt Only Lif and try connecting via this SVM management only Lif.
+
+5. If it is still not working, create a new SVM Lif and try connecting through that Lif. Make sure that the subnet mask is correctly set.
+
+6. Advanced Debugging:
+a)	Start a packet trace in ONTAP.
+b)	Try to connect a data collector to the SVM from CloudSecure UI.
+c)	Wait till the error appears. Stop the packet trace in ONTAP.
+d)	Open the packet trace from ONTAP. It is available at this location
+
+ _\https://<cluster_mgmt_ip>/spi/<clustername>/etc/log/packet_traces/_
+ 
+e)	Make sure there is a SYN from ONTAP to the Agent box.
+f)	If there is no SYN from ONTAP then it is an issue with firewall in ONTAP.
+g)	Open the firewall in ONTAP, so that ONTAP is able to connect the agent box.
+
+7. If it is still not working, please consult the networking team to make sure that no external firewall is blocking the connection from ONTAP to the Agent box.
+
+8. If none of the above solves the issue, open a case with link:http://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[Netapp Support] for further assistance.
+
 
 
 |Message: "Failed to determine ONTAP type for [hostname: <IP Address>. Reason: Connection error to Storage System <IP Address>: Host is unreachable (Host unreachable)"
@@ -293,6 +339,10 @@ link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nm
 3.	Ensure 1 data collector connects to only 1 SVM. 
 4.	Delete the other data collectors which are connected to the same SVM.
 
+|Connector is in error state. Service name: audit. Reason for failure: Failed to configure (policy on SVM svmname. Reason: Invalid value specified for 'shares-to-include' element within 'fpolicy.policy.scope-modify: "Federal'
+|The share names need to be given without any quotes. Edit the ONTAP SVM DSC configuration to correct the share names.
+
+_Include and exclude shares_ is not intended for a long list of share names. Use filtering by volume instead if you have a large number of shares to include or exclude.
 
 
 |===
