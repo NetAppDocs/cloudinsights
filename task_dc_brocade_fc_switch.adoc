@@ -39,6 +39,7 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
+* The Cloud Insights Acquisition Unit (AU) will initiate connections to TCP Port 22 on Brocade switches to collect inventory data. The AU will also initiate connections to UDP port 161 for collection of performance data.
 * There must be IP connectivity to all switches in the fabric. If you select the Discover all switches in the fabric check box, Cloud Insights identifies all the switches in the fabric; however, it needs IP connectivity to these additional switches to discover them.
 * The same account is needed globally across all switches in the fabric. You can use PuTTY (open source terminal emulator) to confirm access.
 * Ports 161 and 162 must be open to all switches in the fabric for SNMP performance polling.

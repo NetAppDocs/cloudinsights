@@ -21,6 +21,8 @@ Cloud Insights collects device data using one or more Acquisition Units installe
 
 This topic describes how to add Acquisition Units and describes additional steps required when your environment uses a proxy. 
 
+NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Acquisition Unit machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
+
 == Adding a Linux Acquisition Unit
 
 .Before you begin
@@ -57,37 +59,36 @@ image:NewLinuxAUInstall.png[Linux AU Instructions]
 
 For environments that use a proxy, you must set the proxy environment variables before you add the Acquisition Unit. The instructions for configuring the proxy are provided on the _Add Acquisition Unit_  dialog. 
 
-. Click + in Have a Proxy Server?
+. Click + in _Have a Proxy Server?_
+
 . Copy the commands to a text editor and set your proxy variables as needed.
-+ Note: Restrictions on special characters in proxy username and password fields:  '%' and '!' are allowed in the  username filed. ':', '%', and '!' are allowed in the password field. 
++ 
+Note: Be aware of restrictions on special characters in proxy username and password fields: '%' and '!' are allowed in the username field. ':', '%', and '!' are allowed in the password field. 
+
 . Run the edited command in a terminal using the Bash shell.
+
 . Install the Acquisition Unit software.
 
 === Proxy Configuration
 
-The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the https request to the Cloud Insights server without decrypting the data.
 
-The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
+The simplest way to do this is to specify wildcard configuration in your proxy/firewall to communicate with Cloud Insights, for example:
 
- https://aulogin.<Cloud Insights Domain>
- https://<your-tenant-ID>.<Cloud Insights Domain>
+ *.cloudinsights.netapp.com
+
+NOTE: The use of an asterix (*) for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environmant.
+
+////
+* Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
+* Cloud Insights site: _<Site Name>.<Cloud Insights Domain>_
  
 For example:
  
  https://aulogin.c01.cloudinsights.netapp.com
- https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
+ https://nane1234.c01.cloudinsights.netapp.com
 
-
-////
- https://aulogin.<domain>
- https://<tenantUUID>.<domain>
-
-The second URL can be found in the acq.log, which is located at the following location.
-
- Windows: <installation location>/Cloud Insights/Acquisition Unit/log/acq.log
- Linux: /var/log/netapp/cloudinsights/acq/acq.log
-
-The URl can be found by searching the .log for “Attempting to verify server at: https://<tenantUUID>.oci.cloud.netapp.com”
+TIP: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
 ////
 
 == Adding a Windows Acquisition Unit
@@ -131,19 +132,25 @@ image::NewWindowsAUInstall.png[Windows AU Install]
 
 === Proxy Configuration
 
-The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the http request to the Cloud Insights server without decrypting the data.
+The Acquisition Unit uses 2-way/mutual authentication to connect to the Cloud Insights server. The client certificate must be passed to the Cloud Insights server to be authenticated. To accomplish this, the proxy must be set up to forward the https request to the Cloud Insights server without decrypting the data.
 
-The Acquisition Unit uses the following two endpoints to communicate with Cloud Insights. If you have a firewall between the Acquisition Unit server and Cloud Insights, you need these endpoints when configuring firewall rules:
+The simplest way to do this is to specify wildcard configuration in your proxy/firewall to communicate with Cloud Insights, for example:
 
- https://aulogin.<Cloud Insights Domain>
- https://<your-tenant-ID>.<Cloud Insights Domain>
+ *.cloudinsights.netapp.com
+
+NOTE: The use of an asterix (*) for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environmant.
+
+////
+* Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
+* Cloud Insights site: _<Site Name>.<Cloud Insights Domain>_
  
 For example:
  
  https://aulogin.c01.cloudinsights.netapp.com
- https://cg0c586a-ee05-45rb-a5ac-333b5ae7718d7.c01.cloudinsights.netapp.com
+ https://nane1234.c01.cloudinsights.netapp.com
 
-
+TIP: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
+////
 
 == Uninstalling an Acquisition Unit
 
@@ -192,4 +199,32 @@ You can also select multiple data collectors of the same type and click the *Bul
 . You can now re-install the Acquisition Unit software on the original server/VM. Click *+Acquisition Unit* and follow the instructions above to install the Acquisition Unit.  
 
 . Once the Acquisition Unit has been re-installed, assign your data collectors back to the Acquisition Unit.
+
+== Viewing AU Details
+
+The Acquisition Unit (AU) detail page provides useful detail for an AU as well as information to help with troubleshooting. The AU detail page contains the following sections:
+
+* A *summary* section showing the following:
+
+ ** *Name* and *IP* of the Acquisition Unit
+ ** Current connection *Status* of the AU
+ ** *Last Reported* successful data collector poll time
+ ** The *Operating System* of the AU machine
+ ** Any current *Note* for the AU. Use this field to enter a comment for the AU. The field displays the most recently added note.
+ 
+ * A table of the AU's *Data Collectors* showing, for each data collector:
+ 
+ ** *Name* - Click this link to drill down into the data collector's detail page with additional information
+ ** *Status* - Success or error information
+ ** *Type* - Vendor/model
+ ** *IP* address of the data collector
+ ** Current *Impact* level
+ ** *Last Acquired* time - when the data collector was last successfully polled
+
+//image:AUDetailPageExample.png[Example AU Detail page]
+image:AU_Detail_Example.png[AU Detail Page Example]
+
+For each data collector, you can click on the "three dots" menu to Clone, Edit, Poll, or Delete the data collector. You can also select multiple data collectors in this list to perform bulk actions on them.
+
+To restart the Acquisition Unit, click the *Restart* button at the top of the page. Drop down this button to attempt to *Restore Connection* to the AU in the event of a connection problem.
 
