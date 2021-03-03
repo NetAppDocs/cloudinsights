@@ -37,10 +37,10 @@ image:HadoopDCConfigLinux-2.png[Hadoop configuration]
 
 A full Hadoop deployment involves the following components:
 
-* NameNode: The Hadoop Distributed File System (HDFS) master. Coordinates a series of DataNodes.
+* NameNode: The Hadoop Distributed File System (HDFS) primary system. Coordinates a series of DataNodes.
 * Secondary NameNode: a warm failover for the main NameNode. In Hadoop the promotion to NameNode does not occur automatically. Secondary NameNode gathers information from NameNode to be ready to be promoted when needed.
 * DataNode: Actual owner for data.
-* ResourceManager: The compute master (Yarn). Coordinates a series of NodeManagers.
+* ResourceManager: The compute primary system (Yarn). Coordinates a series of NodeManagers.
 * NodeManager: The resource for compute. Actual location for running of applications.
 * JobHistoryServer: Responsible for servicing all job history related requests.
 
