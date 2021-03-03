@@ -94,7 +94,14 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -role csrole -cmddirname vserver -access readonly
  security login role create -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -role csrole -cmddirname "volume snapshot" -access all
+ security login role create -role csrole -cmddirname "event catalog" -access all
+ security login role create -role csrole -cmddirname "event filter" -access all
+ security login role create -role csrole -cmddirname "event notification destination" -access all
+ security login role create -role csrole -cmddirname "event notification" -access all
+ security login role create -role csrole -cmddirname "security certificate" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
+ security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
+
 
 ==== Permissions when adding via *Vserver Management IP*:
 
@@ -211,6 +218,22 @@ _net ping -lif <data_lif> -destination <agent IP> -vserver <svmname> -show-detai
 
 2. In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
 To prevent this, configure each SVM on a single environment.
+
+|Data Collector runs for some time and stops after a random time, failing with: "Error message: Connector is in error state. Service name: audit. Reason for failure: External fpolicy server overloaded."
+|The event rate from ONTAP was much higher than what the Agent box can handle. Hence the connection got terminated.
+
+Check the peak traffic in CloudSecure when the disconnection happened. This you can check from the *CloudSecure > Activity Forensics > All Activity* page.
+
+If the peak aggregated traffic is higher than what the Agent Box can handle, then please refer to the Event Rate Checker page on how to size for Collector deployment in an Agent Box.
+
+If the Agent was installed in the Agent box prior to 4 March 2021, run the following commands in the Agent box:
+
+ echo 'net.core.rmem_max=8388608' >> /etc/sysctl.conf
+ echo 'net.ipv4.tcp_rmem = 4096 2097152 8388608' >> /etc/sysctl.conf
+ sysctl -p
+
+Restart the collector from the UI after resizing.
+
 
 |Collector reports Error Message: “No local IP address found on the connector that can reach the data interfaces of the SVM”.
 |This is most likely due to a networking issue on the ONTAP side. Please follow these steps:
