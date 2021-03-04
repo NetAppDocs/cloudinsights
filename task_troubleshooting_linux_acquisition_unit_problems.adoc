@@ -26,18 +26,36 @@ Here you will find suggestions for troubleshooting problems with Acquisition Uni
 2. Copy the displayed token and paste it into a new file named "token".
 3. Place this file in the /var/lib/netapp/cloudinsights/acq/conf/ folder.
 4. Use the given command to start the Acquisition Unit service.
+
 |Installation fails on SELinux|When the AU is installed on SELinux, SE should be either disabled or set to permissive mode. Once the installation is complete, enforcing mode can be enabled.   
+
 |Server Requirements not met | Ensure that your Acquisition Unit server or VM meets  link:concept_acquisition_unit_requirements.html[requirements]
-|Network Requirements not met |Ensure that your Acquisition Unit server/VM can access your Cloud Insights environment (<environment-name>.c01.cloudinsights.netapp.com) through SSL connection over port 443 
-|Proxy Server not configured properly | Follow the link:task_configure_acquisition_unit.html#Setting_proxy_environment_variables[instructions] under “Have a Proxy Server?” in the Add an Acquisition Unit box. 
+
+|Network Requirements not met |Ensure that your Acquisition Unit server/VM can access your Cloud Insights environment (<environment-name>.c01.cloudinsights.netapp.com) through SSL connection over port 443. Try the following commands:
+
+ _ping <environment-name>.c01.cloudinsights.netapp.com_
+_traceroute <environment-name>.c01.cloudinsights.netapp.com_
+_curl \https://<environment-name>.c01.cloudinsights.netapp.com_
+_wget \https://<environment-name>.c01.cloudinsights.netapp.com_
+
+|Proxy Server not configured properly | Verify your proxy settings, and uninstall/re-install the Acquisition Unit software if necessary to enter the correct proxy settings. 
+
+1. Try "curl".  Refer to "man curl" information/documentation regarding proxies: --preproxy, --proxy-* (that's a wildcard "*" because curl supports many proxy settings).
+2. Try "wget".  Check documentation for proxy options.
+
+|Acquisition unit installation failed in Cloud insights with credential errors while starting acquisition service (and visible in the acq.log).|This can be caused by the inclusion of special characters in the proxy credentials. Uninstall the AU (_sudo cloudinsights-uninstall.sh_) and reinstall without using special characters.
+
 |Linux: missing library / file not found| Ensure that your Linux Acquisition Unit server/VM has all necessary libraries. For example, you must have the _unzip_ library installed on the server. To install the _unzip_ library, run the command _*sudo yum install unzip*_ before running the Acquisition Unit install script
+
 |Permission issues| Be sure you are logged in as a user with _sudo_ permissions
 
 |Acquisition Not Running:
 | Gather the acq.log from /opt/netapp/cloudinsights/acq/logs (Linux)
 Restart the Acquisition Service: sudo cloudinsights-service.sh restart acquisition
+
 |Data Collection Issues:
 |Send an Error Report from the Data Collector landing page by clicking the "Send Error Report" button
+
 |===
 
 ////
@@ -58,21 +76,17 @@ Your Cloud Insights Acquisition Unit, as well as your interactions in a web brow
 * Second, some proxies attempt to perform TLS/SSL inspection by impersonating Cloud Insights web sites with digital certificates not generated from NetApp. The Cloud Insights Acquisition Unit’s security model is fundamentally incompatible with these technologies. You would also need the above domain name excepted from this functionality in order for the Cloud Insights Acquisition Unit to successfully login to Cloud Insights and facilitate data discovery.
 
 
-////
-=== More About Proxy/Firewall
+In case where the proxy is set up for traffic inspection, the Cloud Insights environment must be added to an exception list in the proxy configuration. The format and setup of this exception list varies according to your proxy environment and tools, but in general you must add the URLs of the Cloud Insights servers to this exception list in order to allow the AU to properly communicate with those servers.
 
-Proxies and firewalls require special consideration when working with many applications, including Cloud Insights, in situations where the application does not easily co-exist with SSL. In the case of Cloud Insights, the Acquisition Unit (AU) has a digital certificate that expects to negotiate with Cloud Insights. Proxies and firewalls affect this negotiation.
-
-If the proxy is not set up to do traffic inspection (MITM), then it should not affect the AU’s certificate (client certificate). If the proxy is set up to do traffic inspection, then it affects the client certificate as well as Cloud Insight’s certificate (server certificate).
-
-//The whitelisting is definitely needed in the MITM case. It may or may not be needed in the other case.
-
-In case where the proxy is set up for traffic inspection, the Cloud Insights environment must be added to a whitelist in the proxy configuration. The format and setup of this whitelist varies according to your proxy environment and tools, but in general you must add the URLs of the Cloud Insights servers to this whitelist in order to allow the AU to properly communicate with those servers.
-
-The simplest way to do this is to whitelist the Cloud Insights domain itself:
+The simplest way to do this is to add the Cloud Insights domain itself to the exception list:
 
  *.cloudinsights.netapp.com
  
-In the case where the proxy is not set up for traffic inspection, whitelisting may or may not be required. If you are unsure whether you need to whitelist Cloud Insights, or if you experience difficulties installing or running Cloud Insights due to proxy and/or firewall configuration, talk to your proxy administration team to set up the proxy's handling of SSL interception.
+In the case where the proxy is not set up for traffic inspection, an exception list may or may not be required. If you are unsure whether you need to add Cloud Insights to an exception list, or if you experience difficulties installing or running Cloud Insights due to proxy and/or firewall configuration, talk to your proxy administration team to set up the proxy's handling of SSL interception.
 ////
 
+=== Resources
+
+Additional troubleshooting tips may be found in the link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights[NetApp Knowledgebase] (support sign-in required).
+
+Additional support information may be found from the Cloud Insights link:concept_requesting_support.html[Support] page.

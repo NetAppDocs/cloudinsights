@@ -118,8 +118,8 @@ entries:
 
   - title: Working with APIs
     url: /API_Overview.html
-  - title: Performance Policies and Alerts
 
+  - title: Performance Policies and Alerts
     entries:
       - title: Alerting with Performance Policies
         url: /task_create_monitor.html
@@ -127,6 +127,9 @@ entries:
         url: /task_view_and_manage_alerts.html
       - title: Configuring Notification Recipients
         url: /concept_notifications_email.html 
+        
+  - title: Webhook Notification
+    url: /task_create_webhook.html
 
   - title: Monitoring your Environment
     entries:
@@ -200,6 +203,8 @@ entries:
             url: /task_config_cs_incloud.html
           - title: Cloud Secure User Management
             url: /task_cs_user_management.html
+          - title: Event Rate Checker
+            url: /concept_cs_event_rate_checker.html
 #      - title: Viewing Cloud Secure Forensic Data 
 #        entries: 
       - title: Alerts 
@@ -229,16 +234,20 @@ entries:
 #         url: /task_h2_minrisk_thin.html
 #      - title: Ensuring IO density data describes only internal data volumes
 #        url: /task_io_density_report_no_root.html
+
   - title: Troubleshooting
     entries:
-      - title: Troubleshooting Overview
-        url: /concept_troubleshooting_overview.html
+      - title: General Troubleshooting
+        url: /task_troubleshooting_general_problems.html
+#      - title: Troubleshooting Overview
+#        url: /concept_troubleshooting_overview.html
       - title: Troubleshooting Linux Acquisition Unit Problems
         url: /task_troubleshooting_linux_acquisition_unit_problems.html
       - title: Troubleshooting Windows Acquisition Unit Problems
         url: /task_troubleshooting_windows_acquisition_unit_problems.html
       - title: Researching Data Collector Errors
         url: /task_research_failed_collector.html
+        
   - title: Reference & Support
     entries:
       - title: Requesting Support
