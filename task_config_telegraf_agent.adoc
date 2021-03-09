@@ -576,19 +576,19 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 . Stop and delete the Telegraf service:
 
- kubectl --namespace ci_monitoring delete ds telegraf-ds 
- kubectl --namespace ci_monitoring delete rs telegraf-rs
+ kubectl --namespace ci-monitoring delete ds telegraf-ds 
+ kubectl --namespace ci-monitoring delete rs telegraf-rs
  
 . Delete the Telegraf ConfigMap and ServiceAccount:
 
- kubectl --namespace ci_monitoring delete cm telegraf-conf 
- kubectl --namespace ci_monitoring delete cm telegraf-conf-rs
- kubectl --namespace ci_monitoring delete sa telegraf-user 
+ kubectl --namespace ci-monitoring delete cm telegraf-conf 
+ kubectl --namespace ci-monitoring delete cm telegraf-conf-rs
+ kubectl --namespace ci-monitoring delete sa telegraf-user 
  
 . Delete the Telegraf ClusterRole and ClusterRolebinding:
 
- kubectl --namespace ci_monitoring delete clusterrole endpoint-access 
- kubectl --namespace ci_monitoring delete clusterrolebinding endpoint-access 
+ kubectl --namespace ci-monitoring delete clusterrole endpoint-access 
+ kubectl --namespace ci-monitoring delete clusterrolebinding endpoint-access 
  
 ==== Upgrading the Agent
 [#upgrading-kubernetes-agent]
@@ -597,25 +597,25 @@ To upgrade the telegraf agent, do the following:
 
 . Remove the current the telegraf deployments:
 
- kubectl --namespace ci_monitoring delete ds telegraf-ds
- kubectl --namespace ci_monitoring delete rs telegraf-rs
+ kubectl --namespace ci-monitoring delete ds telegraf-ds
+ kubectl --namespace ci-monitoring delete rs telegraf-rs
 
 . Back up the existing configurations:
 
- kubectl --namespace ci_monitoring get cm telegraf-conf -o yaml > /tmp/telegraf-conf.yaml
- kubectl --namespace ci_monitoring get cm telegraf-conf-rs -o yaml > /tmp/telegraf-conf-rs.yaml
+ kubectl --namespace ci-monitoring get cm telegraf-conf -o yaml > /tmp/telegraf-conf.yaml
+ kubectl --namespace ci-monitoring get cm telegraf-conf-rs -o yaml > /tmp/telegraf-conf-rs.yaml
  
 . link:#kubernetes[Install the new agent].
 
 ////
 . Re-apply the configurations:
 
- kubectl --namespace ci_monitoring apply -f /tmp/telegraf-conf.yaml --force
- kubectl --namespace ci_monitoring apply -f /tmp/telegraf-conf-rs.yaml --force
+ kubectl --namespace ci-monitoring apply -f /tmp/telegraf-conf.yaml --force
+ kubectl --namespace ci-monitoring apply -f /tmp/telegraf-conf-rs.yaml --force
  
 . Restart all telegraf pods. Run the following command for each telegraf pod:
 
- kubectl --namespace ci_monitoring delete pod <Telegraf_pod>
+ kubectl --namespace ci-monitoring delete pod <Telegraf_pod>
 ////
 
 
