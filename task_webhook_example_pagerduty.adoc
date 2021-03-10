@@ -17,3 +17,51 @@ summary: Create a webhook to alert on performance or inventory thresholds for Pa
 
 [.lead]
 Webhooks allow users to send alert notifications to various applications using a customized webhook channel.
+
+
+https://support.pagerduty.com/docs/services-and-integrations
+
+. Navigate to Services -> Service Directory and click on the +New Service button​
+
+. Enter in a Name and select Use our API directly.  Click on Add Service.​
+
+image:Webhooke_PagerdutyScreen1.png[Pagerduty screen]
+
+. Click on the Integrations tab. The Integration Key is then displayed, which is the Routing Key needed for the CI Webhooks configuration 
+
+. In Pagerduty, go to Incidents or Services to view Alerts
+
+image:Webhooks_PagerdutyScreen2.png[Pagerduty Screen]
+
+. Select the Integrations tab, under Integrations, select Add a new integration.
+
+
+
+Create a webhook notification for "PagerDuty Trigger - Critical"​
+
+Set the URL to `https://events.pagerduty.com/v2/enqueue`​
+
+Copy the contents of `trigger.json` into the `Message Body`​
+
+Create a custom parameter secret named `routingKey` and set it to the PagerDuty `routingKey` integration value.​
+
+Repeat steps 1-4 for "PagerDuty Resolve" using `resolve.json`​
+
+Set your webhooks as notifications for integration alerts​
+
+If you would like to create a webhook for warning as well, copy `trigger.json` and replace `critical` with `warning`.
+
+Create a Custom Parameter for routingKey and enter routingKey in the Value field​
+
+image:Webhooks_Custom_Paramater_Routing_Key.png[Setting the Routing Key]
+
+
+
+Trigger vs Resolve: Two separate templates.  Resolved alerts are no longer displayed in PagerDuty​
+
+URL is Static: https://events.pagerduty.com/v2/enqueue ​
+
+routingKey must be setup as a custom parameter​
+
+
+
