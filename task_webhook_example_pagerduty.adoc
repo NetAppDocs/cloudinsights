@@ -16,38 +16,42 @@ summary: Create a webhook to alert on performance or inventory thresholds for Pa
 :imagesdir: ./media/
 
 [.lead]
-Webhooks allow users to send alert notifications to various applications using a customized webhook channel.
+Webhooks allow users to send alert notifications to various applications using a customized webhook channel. This page provides an example for setting up Webhooks for Pagerduty.
 
+NOTE: This page refers to third-party instructions, which could be subject to change. Refer to the link:https://support.pagerduty.com/docs/services-and-integrations[Pagerduty documentation] for the most up-to-date information. 
 
-https://support.pagerduty.com/docs/services-and-integrations
+In Pagerduty:
 
-. Navigate to Services -> Service Directory and click on the +New Service button​
+. Navigate to *Services > Service Directory* and click on the *+New Service* button​
 
-. Enter in a Name and select Use our API directly.  Click on Add Service.
+. Enter in a _Name_ and select _Use our API directly_.  Click on _Add Service_.
 
 image:Webhooks_PagerDutyScreen1.png[Pagerduty screen]
 
-. Click on the Integrations tab. The Integration Key is then displayed, which is the Routing Key needed for the CI Webhooks configuration 
+. Click on the _Integrations_ tab to see the _Integration Key_. This is the _Routing Key_ that will be needed for the Cloud Insights Webhooks configuration.
 
-. In Pagerduty, go to Incidents or Services to view Alerts
+. Go to *Incidents* or *Services* to view Alerts.
 
 image:Webhooks_PagerDutyScreen2.png[Pagerduty Screen]
 
-. Select the Integrations tab, under Integrations, select Add a new integration.
 
+With PagerDuty, you must create separate integrations for Triggered events and Resolved events. To add a new integration:
 
+In Cloud Insights:
 
-Create a webhook notification for "PagerDuty Trigger - Critical"​
+. Select the _Integrations_ tab and choose _Add a new integration_.
 
-Set the URL to `https://events.pagerduty.com/v2/enqueue`​
+. Create a webhook notification called "PagerDuty Trigger" (or something equally meaningful for you).
 
-Copy the contents of `trigger.json` into the `Message Body`​
+. Set the URL to `https://events.pagerduty.com/v2/enqueue*.
 
-Create a custom parameter secret named `routingKey` and set it to the PagerDuty `routingKey` integration value.​
+. Copy the contents of _trigger.json_ into the webhook *Message Body`
 
-Repeat steps 1-4 for "PagerDuty Resolve" using `resolve.json`​
+. Create a custom parameter secret named `routingKey` and set it to the PagerDuty `routingKey` integration value.
 
-Set your webhooks as notifications for integration alerts​
+Repeat steps 1-4 for "PagerDuty Resolve" using `resolve.json`
+
+Set your webhooks as notifications for integration alerts
 
 If you would like to create a webhook for warning as well, copy `trigger.json` and replace `critical` with `warning`.
 
