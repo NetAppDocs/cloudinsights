@@ -23,6 +23,13 @@ NOTE: This page refers to third-party instructions, which could be subject to ch
 
 === Teams Setup:
 
+. In Teams, select the kebab, and search for Incoming Webhook.
++
+image:Webhooks_Teams_Create_Webhook.png[Incoming Webhook in Teams]
+
+. Select *Add to a Team > Select a Team > Setup a Connector*.
+
+. Copy the Webhook URL. You will need to paste this into the Cloud Insights webhook configuration.
 
 
 === Create Cloud Insights Webhook:
@@ -34,6 +41,8 @@ NOTE: This page refers to third-party instructions, which could be subject to ch
 . In the _Template Type_ drop-down, select *Teams*.
 
 image:Webhooks-Teams_example.png[Teams webhook template]
+
+. Paste the URL from above into the _URL_ field.
 
 
 === Notifications via Webhook
