@@ -25,6 +25,8 @@ Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Cont
 
 For Kubernetes Installation instructions, please see the link:task_config_telegraf_agent.html#kubernetes[Agent Installation] page.
 
+NOTE: Information about *kube-state-metrics* has been moved to the link:task_config_telegraf_agent.html#kubernetes[Agent Installation] page.
+
 ////
 TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet and a ReplicaSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.
 
