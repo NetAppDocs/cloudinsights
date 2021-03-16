@@ -66,6 +66,52 @@ image:Webhook_Monitor_Notify.png[Webhook Monitor Notification]
 //image:Webhook_Monitor_Notifications.png[Webhook Monitor Notifications]
 
 
+
+=== Slack Example:
+
+* Go to https://api.slack.com/apps and Create a new App.  Give it a meaningful name and select the Slack Workspace.
++
+image:Webhooks_Slack_Create_Webhook.png[Create Slack Webhook]
+
+* Go to Incoming Webhooks, click on _Activate Incoming Webhooks_, Request to _Add New Webhook_, and select the Channel on which to Post.
+
+* Copy the Webhook URL. You will need to paste this into the Cloud Insights webhook configuration.
++
+image:Webhook_Slack_Config.jpg[Slack Webhook URL]
+
+See the link:https://slack.com/help/articles/115005265063-Incoming-webhooks-for-Slack[Slack documentation] for more information.
+
+
+=== Create Cloud Insights Webhook:
+
+. In Cloud Insights, navigate to *Admin > Notifications* and select the *Webhooks* tab. Click *+Webhook* to create a new webhook.
+
+. Give the Webhook a meaningful Name, such as "Slack Webhook". 
+
+. In the _Template Type_ drop-down, select *Slack*.
+
+. Paste the URL from above into the _URL_ field.
+
+//Note: the URL in the _message body_ must also be a valid URL for Test Webhook to function in Cloud Insights.
+
+image:Webhooks-Slack_example.png[Slack webhook template]
+
+
+=== Notifications via Webhook
+
+To notify on events via webhook, in Cloud Insights navigate to *Alerts > Monitors* and click *+Monitor* to create a new link:task_create_monitor.html[monitor].
+
+* Select a metric and define the monitor's conditions.
+
+* Under _Set up team notification(s), choose the *Webhook* Delivery Method.
+
+* Choose the "Slack" webhook for the desired events (Critical, Warning, Resolved)
++
+image:Webhooks_Slack_Notifications.png[Webhook Notifications]
+
+
+
+////
 === Example: Creating a Webhook for Slack
 
 The example below lists the steps for setting up a Slack webhook for use with Cloud Insights. 
@@ -91,8 +137,9 @@ image:Webhook_Slack_Config.jpg[Slack Webhook URL]
 * To modify message format and layout, see https://api.slack.com/messaging/composing 
 
 * Error handling: https://api.slack.com/messaging/webhooks#handling_errors 
+////
 
-==== Examples
+== Other Examples
 
 Webhooks for link:task_webhook_example_pagerduty.html[PagerDuty]
 Webhooks for link:task_webhook_example_discord.html[Discord]
