@@ -573,7 +573,7 @@ To uninstall the agent on Kubernetes, do the following:
 
 . If the monitoring namespace is being used solely for Telegraf:
 
- kubectl delete ns monitoring
+ kubectl delete ns ci-monitoring
  
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 
