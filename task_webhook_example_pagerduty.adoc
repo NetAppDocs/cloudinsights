@@ -30,6 +30,8 @@ image:Webhooks_PagerDutyScreen1.png[Pagerduty screen]
 
 . Click on the _Integrations_ tab to see the *Integration Key*. You will need this key when you create the Cloud Insights webhook below. 
 
+. On the same screen, copy or make note of the *Integration URL* under Alert Events. You will need to enter this into the Cloud Insights webhook configuration.
+
 . Go to *Incidents* or *Services* to view Alerts.
 +
 image:Webhooks_PagerDutyScreen2.png[Pagerduty Screen]
@@ -43,7 +45,7 @@ image:Webhooks_PagerDutyScreen2.png[Pagerduty Screen]
 
 . In the _Template Type_ drop-down, select *PagerDuty*.
 
-. Set the URL to _https://events.pagerduty.com/v2/enqueue_.
+. Enter the PagerDuty Integration URL from above into the _URL_ field.
 
 . Create a custom parameter secret named _routingKey_ and set the value to the PagerDuty _Integration Key_ value from above.
 +
