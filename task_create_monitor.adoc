@@ -135,22 +135,25 @@ image:DashboardGroupNoPin.png[Dashboard Grouping]
 
 Two groups are shown by default:
 
-* *All Monitors* lists all monitors, system-created as well as user-created.
+* *All Monitors* lists all monitors.
 * *Custom Monitors* lists only user-created monitors.
 
-The number of monitors contained in each group is shown next to the group name.
+The number of monitors contained in a group is shown next to the group name.
 
 To create a new group, click the *"+" Create New monitor Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
 
-To add monitors to the group, click the _All monitors_ group to show all monitors in your environment, or click _Custom monitors_ if you only want to see the user-created monitors, and do one of the following:
+To add monitors to the group, select a group and do one of the following:
 
 * To add a single monitor, click the menu to the right of the monitor and select _Add to Group_. Choose the group to which to add the monitor.
-* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Add to Group_.
+* Click on the monitor name to open the edit view, and select a group in the _Associate to a monitor group_ section.
+
+//* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Add to Group_.
 
 Remove monitors from the current group in the same manner by selecting _Remove From Group_. You can not remove monitors from the _All monitors or _Custom monitors_ group. To Delete a monitor from these groups, you must delete the monitor itself.
 
 NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This removes it from any groups to which it belonged and it is no longer available to any user.
 
+////
 == Pin your Favorite monitors
 
 You can further manage your monitors by pinning favorite ones to the top of your monitor list. To pin a monitor, simply click the thumbtack button displayed when you hover over a monitor in any list. 
@@ -160,7 +163,7 @@ You can further manage your monitors by pinning favorite ones to the top of your
 Monitor pin/unpin is an individual user preference and independent of the group (or groups) to which the monitor belongs.
 
 image:DashboardPin.png[Pinned Dashboards]
-
+////
 
 === More Information
 
