@@ -28,14 +28,18 @@ link:https://docs.netapp.com/us-en/cloudinsights/task_create_monitor.html#monito
 
 Monitor groups is the first part of an exciting new feature bringing improved management of ONTAP devices to Cloud Insights.
 
+image:Monitors_GroupList.png[Monitor Grouping]
+
 
 ==== Enhanced Alerting options using webhooks
 
 Many commercial applications support link:task_create_webhook.html[Webhooks] as a standard input interface. Cloud Insights now supports many of these delivery channels, providing default templates for Slack, PagerDuty, Teams, and Discord, in addition to providing customizable generic webhooks to support many other applications.
 
+
 ==== Improved Device identification
 
 To improve monitoring and troubleshooting as well as deliver accurate reporting, it is helpful to understand the names of devices rather than their IP addresses or other identifiers. Cloud Insights now incorporates an automatic way to identify the names of storage and physical host devices in the environment, using a rule-based approach called link:concept_device_resolution_overview.html[*Device Resolution*], available in the *Manage* menu.
+
 
 ==== You asked for more!
 
