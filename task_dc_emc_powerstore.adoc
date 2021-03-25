@@ -68,6 +68,7 @@ The following information is required to configure this data collector:
 |Inventory Poll Interval (minutes)|Interval between inventory polls. The default is 60 minutes.
 |===
 
+Cloud Insight's PowerStore performance collection makes use of PowerStore's 5-minute granularity source data. As such, Cloud Insights polls for that data every five minutes, and this is not configurable.
            
 == Troubleshooting
 
