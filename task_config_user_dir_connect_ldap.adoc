@@ -149,41 +149,52 @@ The following table describes known problems and resolutions that can occur duri
 [options="header"]
 |===
 |Problem: | Resolution:
-|Adding a User Directory connector results in the ‘Error’ state. Error says, “Invalid credentials provided for LDAP server”.
-|Incorrect username or password provided. Edit and provide the correct user name and password.
+|Adding an LDAP Directory connector results in the ‘Error’ state. Error says, “Invalid credentials provided for LDAP server”.
+|Incorrect Bind DN or Bind Password or Search Base provided. Edit and provide the correct information.
 
-|Adding a User Directory connector results in the ‘Error’ state. Error says, “Failed to get the object corresponding to DN=DC=hq,DC=domainname,DC=com provided as forest name.”
-|Incorrect forest name provided. Edit and provide the correct forest name.
+|Adding an LDAP Directory connector results in the ‘Error’ state. Error says, “Failed to get the object corresponding to DN=DC=hq,DC=domainname,DC=com provided as forest name.”
+|Incorrect Search Base provided. Edit and provide the correct forest name.
 
 |The optional attributes of domain user are not appearing in the Cloud Secure User Profile page.
-|This is likely due to a mismatch between the names of optional attributes added in CloudSecure and the actual attribute names in Active Directory. Edit and provide the correct optional attribute name(s). 
+|This is likely due to a mismatch between the names of optional attributes added in CloudSecure and the actual attribute names in Active Directory. Fields are case sensitive. Edit and provide the correct optional attribute name(s). 
 
 |Data collector in error state with "Failed to retrieve LDAP users. Reason for failure: Cannot connect on the server, the connection is null"
 |Restart the collector by clicking on the _Restart_ button.
 
-|Adding a User Directory connector results in the ‘Error’ state. 
+|Adding an LDAP Directory connector results in the ‘Error’ state. 
 |Ensure you have provided valid values for the required fields (Server, forest-name, bind-DN, bind-Password).
-Ensure bind-DN input is always provided as ‘Administrator@<domain_forest_name>’ or as a user account with domain admin privileges.
+Ensure bind-DN input is always provided as uid=ldapuser,cn=users,cn=accounts,dc=domain,dc=companyname,dc=com.
 
-|Adding a User Directory connector results in the ‘RETRYING’ state. Shows error “Unable to define state of the collector,reason Tcp command [Connect(localhost:35012,None,List(),Some(,seconds),true)] failed because of java.net.ConnectionException:Connection refused.”
+|Adding an LDAP Directory connector results in the ‘RETRYING’ state. Shows error “Failed to determine the health of the collector hence retrying again”
+|Ensure correct Server IP and Search Base is provided
+
+////
+|While adding LDAP directory the following error is shown:
+“Failed to determine the health of the collector within 2 retries, try restarting the collector again(Error Code: AGENT008)”
+|Ensure correct Server IP and Search Base is provided
+
+|Adding an LDAP Directory connector results in the ‘RETRYING’ state. Shows error “Unable to define state of the collector,reason Tcp command [Connect(localhost:35012,None,List(),Some(,seconds),true)] failed because of java.net.ConnectionException:Connection refused.”
 |Incorrect IP or FQDN provided for the AD Server. Edit and provide the correct IP address or FQDN.
+////
 
-|Adding a User Directory connector results in the ‘Error’ state. Error says, “Failed to establish LDAP connection”.
-|Incorrect IP or FQDN provided for the AD Server. Edit and provide the correct IP address or FQDN.
+|Adding an LDAP Directory connector results in the ‘Error’ state. Error says, “Failed to establish LDAP connection”.
+|Incorrect IP or FQDN provided for the LDAP Server. Edit and provide the correct IP address or FQDN.
+Or
+Incorrect value for Port provided. Try using the default port values or the correct port number for the LDAP server. 
 
-|Adding a User Directory connector results in the ‘Error’ state. Error says, “Failed to load the settings. Reason: Datasource configuration has an error. Specific reason: /connector/conf/application.conf: 70: ldap.ldap-port has type STRING rather than NUMBER”
+|Adding an LDAP Directory connector results in the ‘Error’ state. Error says, “Failed to load the settings. Reason: Datasource configuration has an error. Specific reason: /connector/conf/application.conf: 70: ldap.ldap-port has type STRING rather than NUMBER”
 |Incorrect value for Port provided. Try using the default port values or the correct port number for the AD server.
 
 |I started with the mandatory attributes, and it worked. After adding the optional ones, the optional attributes data is not getting fetched from AD. 
 |This is likely due to a mismatch between the optional attributes added in CloudSecure and the actual attribute names in Active Directory. Edit and provide the correct mandatory or optional attribute name.
 
-|After restarting the collector, when will the AD sync happen?
-|AD sync will happen immediately after the collector restarts. It will take approximately 15 minutes to fetch user data of approximately 300K users, and is refreshed every 12 hours automatically.
+|After restarting the collector, when will the LDAP sync happen?
+|LDAP sync will happen immediately after the collector restarts. It will take approximately 15 minutes to fetch user data of approximately 300K users, and is refreshed every 12 hours automatically.
 
-|User Data is synced from AD to CloudSecure. When will the data be deleted?
+|User Data is synced from LDAP to CloudSecure. When will the data be deleted?
 |User data is retained for 13months in case of no refresh. If the tenant is deleted then the data will be deleted.
 
-|User Directory connector results in the ‘Error’ state. "Connector is in error state. Service name: usersLdap. Reason for failure: Failed to retrieve LDAP users. Reason for failure: 80090308: LdapErr: DSID-0C090453, comment: AcceptSecurityContext error, data 52e, v3839"
+|LDAP Directory connector results in the ‘Error’ state. "Connector is in error state. Service name: usersLdap. Reason for failure: Failed to retrieve LDAP users. Reason for failure: 80090308: LdapErr: DSID-0C090453, comment: AcceptSecurityContext error, data 52e, v3839"
 |Incorrect forest name provided. See above on how to provide the correct forest name.
 
 |Telephone number is not getting populated in the user profile page.
@@ -191,9 +202,9 @@ Ensure bind-DN input is always provided as ‘Administrator@<domain_forest_name>
 
 1. Edit the particular Active Directory collector which is fetching the user’s information from Active Directory.
 2. Notice under optional attributes, there is a field name “Telephone Number” mapped to Active Directory attribute ‘telephonenumber’.
-4. Now, please use the Active Directory Explorer tool as described above to browse the Active Directory and see the correct attribute name.
-3. Make sure that in Active Directory there is an attribute named ‘telephonenumber’ which has indeed the telephone number of the user.
-5. Let us say in Active Directory it has been modified to ‘phonenumber’.
+4. Now, please use the Active Directory Explorer tool as described above to browse the LDAP Directory server and see the correct attribute name.
+3. Make sure that in LDAP Directory there is an attribute named ‘telephonenumber’ which has indeed the telephone number of the user.
+5. Let us say in LDAP Directory it has been modified to ‘phonenumber’.
 6. Then Edit the CloudSecure User Directory collector. In optional attribute section, replace ‘telephonenumber’ with ‘phonenumber’.
 7. Save the Active Directory collector, the collector will restart and get the telephone number of the user and display the same in the user profile page.
 
