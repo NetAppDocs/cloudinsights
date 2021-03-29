@@ -20,7 +20,10 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 
 === Before you begin
 
-* This data collector is supported on Data ONTAP 9.2 and later versions. 
+* This data collector is supported with the following:
+** Data ONTAP 9.2 and later versions
+** SMB protocol version 3.1 and earlier
+**	NFS protocol version 4.0 and earlier 
 
 * Only data type SVMs are supported. SVMs with infinite/flexgroup volumes are not supported
 
