@@ -17,7 +17,7 @@ summary: Automatic Device Resolution helps you accurately track performance and 
 :imagesdir: ./media/
 
 [.lead]
-You need to discover all of the devices you want to monitor with Cloud Insights. Discovery is necessary in order to accurately track performance and inventory in your environment. Typically the majority of devices in your environment are discovered through _Automatic Device Resolution_. 
+You need to identify all of the devices you want to monitor with Cloud Insights. Identification is necessary in order to accurately track performance and inventory in your environment. Typically the majority of devices discovered in your environment are identified through _Automatic Device Resolution_. 
 
 After you configure data collectors, devices in your environment including switches, storage arrays, and your virtual infrastructure of hypervisors and VMs are identified. However, this does not normally identify 100% of the devices in your environment.
 
@@ -29,7 +29,7 @@ After data collector type devices have been configured, best practice is to leve
 
 Devices remaining as unknown after device resolution are considered generic devices, which you can also show in queries and on dashboards.
 
-The rules created in turn will automatically identify new devices with similar attributes as they are added to your environment. In some cases, Device resolution also allows for manual identification bypassing the device resolution rules for undiscovered devices within Cloud Insights.
+The rules created in turn will automatically identify new devices with similar attributes as they are added to your environment. In some cases, device resolution also allows for manual identification bypassing the device resolution rules for undiscovered devices within Cloud Insights.
 
 Incomplete identification of devices can result in issues including:
 
@@ -39,7 +39,7 @@ Incomplete identification of devices can result in issues including:
 * Inaccurate topology views
 * Inaccurate data in the Data warehouse and reporting
 
-The Device resolution feature (Manage > Device resolution) includes the following tabs, each of which plays a role in device resolution planning and viewing results:
+The device resolution feature (Manage > Device resolution) includes the following tabs, each of which plays a role in device resolution planning and viewing results:
 
 * *Fibre Channel Identify* contains a list WWNs and port information of Fibre Channel devices that were not resolved through automatic device resolution. The tab also identifies the percentage of devices that have been identified.
 * *IP Address Identify* contains a list of devices accessing CIFS shares and NFS shares that were not identified through automatic device resolution. The tab also identifies the percentage of devices that have been identified.
