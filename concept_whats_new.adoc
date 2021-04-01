@@ -31,13 +31,13 @@ Monitor groups is the first part of an exciting new feature bringing improved ma
 image:Monitors_GroupList.png[Monitor Grouping]
 
 
-==== Enhanced Alerting options using webhooks
+==== Enhanced Alerting Options Using Webhooks
 
 Many commercial applications support link:task_create_webhook.html[Webhooks] as a standard input interface. Cloud Insights now supports many of these delivery channels, providing default templates for Slack, PagerDuty, Teams, and Discord, in addition to providing customizable generic webhooks to support many other applications.
 
 image:Webhooks_Notifications_sm.png[Webhooks Notifications]
 
-==== Improved Device identification
+==== Improved Device Identification
 
 To improve monitoring and troubleshooting as well as deliver accurate reporting, it is helpful to understand the names of devices rather than their IP addresses or other identifiers. Cloud Insights now incorporates an automatic way to identify the names of storage and physical host devices in the environment, using a rule-based approach called link:concept_device_resolution_overview.html[*Device Resolution*], available in the *Manage* menu.
 
@@ -50,6 +50,11 @@ A popular ask by customers has been for more default options for visualizing the
 * Last 6 Hours
 * Last 12 Hours
 * Last 2 Days
+
+==== Multiple Subscriptions in one Cloud Insights Environment
+
+Starting April 2, Cloud Insights supports multiple subscriptions for a customer in a single Cloud Insights instance. This enables customers to co-term parts of their Cloud Insights subscription with infrastructure purchases. Contact NetApp Sales for assistance with multiple subscriptions.
+
 
 ==== Easier Cloud Secure Onboarding
 
