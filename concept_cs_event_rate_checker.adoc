@@ -16,7 +16,7 @@ keywords: event, checker, rate, sizing
 :imagesdir: ./media/
 
 [.lead]
-The Event Rate Checker is used to check the event rate in the SVM before installing an ONTAP SVM data collector, to see how many SVMs one Agent machine will be able to monitor.
+The Event Rate Checker is used to check the NFS/SMB combined event rate in the SVM before installing an ONTAP SVM data collector, to see how many SVMs one Agent machine will be able to monitor.
 
 Requirements:
 
@@ -84,6 +84,7 @@ An example script run is shown below:
  Enter the cluster ip: 10.192.139.166
  Enter the username to SSH: admin
  Enter the password:
+ Getting event rate for NFS and SMB events.
  Available SVMs in the Cluster
  -----------------------------
  QA_SVM
@@ -110,10 +111,18 @@ An example script run is shown below:
  Stopping sample audit_svm_sample
  Stopping sample QA_SVM_sample
  fpolicy stats of svm svm_rate is saved in fpolicy_stat_svm_rate.log
- Svm svm_rate is generating 100 events/sec
+ Svm svm_rate is generating 100 SMB events/sec and 100 NFS events/sec 
+ Overall svm svm_rate is generating 200 events/sec
  fpolicy stats of svm audit_svm is saved in fpolicy_stat_audit_svm.log
- Svm shails3 is generating 200 events/sec
- fpolicy stats of svm QA_SVM is saved in fpolicy_stat_QA_SVM.log
- Svm QA_SVM is generating 300 events/sec
+ Svm shails3 is generating 200 SMB events/sec and 100 NFS events/sec 
+ Overall svm shails3 is generating 300 events/sec
+
  [root@ci-cs-data agent]#
 
+
+== Troubleshooting
+
+|===
+|Question: If I run this script on an SVM that is already configured for Cloud Secure, does it just use the existing fpolicy config on the SVM or does it setup a temporary one and run the process? 
+|Answer: The Event Rate Checker can run fine even for an SVM already configured for Cloud Secure. There should be no impact.
+|===
