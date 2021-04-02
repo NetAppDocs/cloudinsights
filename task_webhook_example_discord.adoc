@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: task_webhook_example_discord.html
+keywords: webhook, notification, Discord, integration
+summary: Create a webhook to alert on performance or inventory thresholds for Discord
+---
+
+= Webhook Example for Discord
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Webhooks allow users to send alert notifications to various applications using a customized webhook channel. This page provides an example for setting up webhooks for Discord.
+
+NOTE: This page refers to third-party instructions, which could be subject to change. Refer to the link:https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks[Discord documentation] for the most up-to-date information. 
+
+=== Discord Setup:
+
+* In Discord, select the Server, under Text Channels, select Edit Channel (gear icon)
+
+* Select *Integrations > View Webhooks* and click *New Webhook*
+
+* Copy the Webhook URL. You will need to paste this into the Cloud Insights webhook configuration.
+
+
+=== Create Cloud Insights Webhook:
+
+. In Cloud Insights, navigate to *Admin > Notifications* and select the *Webhooks* tab. Click *+Webhook* to create a new webhook.
+
+. Give the webhook a meaningful Name, such as "Discord". 
+
+. In the _Template Type_ drop-down, select *Discord*.
+
+. Paste the URL from above into the _URL_ field.
+
+image:Webhooks-Discord_example.png[Discord webhook template]
+
+NOTE: In order to test the webhook, temporarily replace the url value in the message body with any valid URL (such as _https://netapp.com_) then click the _Test Webhook_ button. Be sure to set the message body back once the test completes.
+
+=== Notifications via Webhook
+
+To notify on events via webhook, in Cloud Insights navigate to *Alerts > Monitors* and click *+Monitor* to create a new link:task_create_monitor.html[monitor].
+
+* Select a metric and define the monitor's conditions.
+
+* Under _Set up team notification(s), choose the *Webhook* Delivery Method.
+
+* Choose the "Discord" webhook for the desired events (Critical, Warning, Resolved)
++
+image:Webhooks_Discord_Notifications.png[Webhook Notifications]
+
+
+
+
+
