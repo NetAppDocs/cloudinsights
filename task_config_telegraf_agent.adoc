@@ -399,6 +399,21 @@ For best results, add these commands to the PATH.
 * If you are running a kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section.
 
 
+==== Monitoring is only installed on Linux nodes
+
+Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, by specifying a Kubernetes node selector that looks for the following Kubernetes labels on these platforms:
+
+|===
+|Platform|Label
+
+|Kubernetes v1.14 and above |Kubernetes.io/os = linux
+|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
+|Rancher + cattle.io as orchestration/Kubernetes platform |cattle.io/os = linux
+|===
+
+
+==== Installation
+
 .Steps to install agent on Kubernetes:
 
 . Choose an Agent Access Key.
