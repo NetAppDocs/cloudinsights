@@ -83,6 +83,8 @@ You can choose to trigger an alert the moment a threshold is breached, or wait u
 +
 image:define_monitor_conditions.png[Define Conditions]
 
+NOTE: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
+
 === Select notification type and recipients
 
 In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
