@@ -1,0 +1,100 @@
+---
+sidebar: sidebar
+permalink: task_webhook_example_pagerduty.html
+keywords: webhook, notification, PagerDuty, integration
+summary: Create a webhook to alert on performance or inventory thresholds for Pagerduty
+---
+
+= Webhook Example for PagerDuty
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Webhooks allow users to send alert notifications to various applications using a customized webhook channel. This page provides an example for setting up webhooks for PagerDuty.
+
+NOTE: This page refers to third-party instructions, which could be subject to change. Refer to the link:https://support.pagerduty.com/docs/services-and-integrations[PagerDuty documentation] for the most up-to-date information. 
+
+=== PagerDuty Setup:
+
+. In PagerDuty, navigate to *Services > Service Directory* and click on the *+New Service* button​
+
+. Enter in a _Name_ and select _Use our API directly_.  Click on _Add Service_.
++
+image:Webhooks_PagerDutyScreen1.png[Pagerduty screen]
+
+. Click on the _Integrations_ tab to see the *Integration Key*. You will need this key when you create the Cloud Insights webhook below. 
+
+//. On the same screen, copy or make note of the *Integration URL* under Alert Events. You will need to enter this into the Cloud Insights webhook configuration.
+
+. Go to *Incidents* or *Services* to view Alerts.
++
+image:Webhooks_PagerDutyScreen2.png[Pagerduty Screen]
+
+
+=== Create Cloud Insights Webhook:
+
+. In Cloud Insights, navigate to *Admin > Notifications* and select the *Webhooks* tab. Click *+Webhook* to create a new webhook.
+
+. Give the webhook a meaningful Name, such as "PagerDuty Trigger". You will use this webhook for critical- and warning-level events.
+
+. In the _Template Type_ drop-down, select *PagerDuty*.
+
+//. Enter the PagerDuty Integration URL from above into the _URL_ field.
+
+. Create a custom parameter secret named _routingKey_ and set the value to the PagerDuty _Integration Key_ value from above.
++
+image:Webhooks_Custom_Secret_Routing_Key.png[Setting the Routing Key]
+
+Repeat these steps to create a "PagerDuty Resolve" webhook for resolved events.  
+
+
+=== PagerDuty to Cloud Insights Field Mapping
+
+The following table and image show the mapping of fields between PagerDuty and Cloud insights:
+
+[cols="<,<", options="header"]
+|===
+<|PagerDuty|Cloud Insights
+
+|Alert Key|Alert ID
+|Source|Triggered On
+|Component|Metric Name
+|Group|Object Type
+|Class|Monitor Name
+|===
+
+image:Webhooks-PagerDuty_Fields.png[PagerDuty Fields in CI]
+
+
+
+
+=== Notifications via Webhook
+
+To notify on events via webhook, in Cloud Insights navigate to *Alerts > Monitors* and click *+Monitor* to create a new link:task_create_monitor.html[monitor].
+
+* Select a metric and define the monitor's conditions.
+
+* Under _Set up team notification(s), choose the *Webhook* Delivery Method.
+
+* Choose the "PagerDuty Trigger" webhook for Critical- and Warning-level events.
+
+* Choose the "PagerDuty Resolve" for resolved events.
++
+image:Webhooks_Notifications.png[Webhook Notifications]
+
+NOTE: Setting separate notifications for trigger events versus resolved events is a best practice, since PagerDuty handles trigger events differently than resolved events. 
+
+//Additionally, if you would like to create a webhook for Warning-level events as well, create a new webhook and set the Message Body _severity_ to "warning".
+
+//Trigger vs Resolve: Two separate templates.  Resolved alerts are no longer displayed in PagerDuty​
+
+
+
+
+

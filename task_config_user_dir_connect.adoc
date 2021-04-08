@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: task_config_user_dir_connect.html
 keywords: collector, configure, LDAP, Active Directory 
-summary: Configuring Cloud Secure User Directory Collector 
+summary: Configuring Cloud Secure Active Directory User Directory Collector 
 ---
 
-= Configuring a User Directory Collector 
+= Configuring an Active Directory (AD) User Directory Collector 
 
 :toc: macro
 :hardbreaks:
@@ -16,8 +16,7 @@ summary: Configuring Cloud Secure User Directory Collector
 :imagesdir: ./media/
 
 [.lead]
-
-You configure Cloud Secure to collect user attributes from Active Directory servers.     
+Cloud Secure can be configured to collect user attributes from Active Directory servers.     
 
 .Before you begin
 
@@ -28,7 +27,7 @@ You configure Cloud Secure to collect user attributes from Active Directory serv
 .Steps to Configure a User Directory Collector
 
 . In the Cloud Secure menu, click: 
-*Admin > Data Collectors > User Directory Collectors > + User Directory Collector*
+*Admin > Data Collectors > User Directory Collectors > + User Directory Collector* and select *Active Directory*
 +
 The system displays the Add User Directory screen.
 
@@ -40,7 +39,7 @@ Configure the User Directory Collector by entering the required data in the foll
 |Name|Description
 |Name |Unique name for the user directory. For example _GlobalADCollector_
 |Agent|Select a configured agent from the list
-|AD Server IP/Domain Name|IP address or Fully-Qualified Domain Name (FQDN) of server hosting the active directory
+|Server IP/Domain Name|IP address or Fully-Qualified Domain Name (FQDN) of server hosting the active directory
 |Forest Name|Forest level of the directory structure.
 Forest name allows both of the following formats:
 
