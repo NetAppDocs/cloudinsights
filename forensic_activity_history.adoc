@@ -31,7 +31,7 @@ You can zoom the graph by dragging out a rectangle in the graph. The entire page
 * A chart of Activity on _Entity Types_. To obtain activity history data by entity type, click on corresponding x-axis label link.
 * A list of the _All Activity_ data
 
-The _*All Activity*_ table shows the following information:
+The _*All Activity*_ table shows the following information. Note that not all of these columns are displayed by default. You can select columns to display by clicking on the "gear" icon  image:GearIcon.png[gear icon].
 
 * The *time* an entity was accessed including the year, month, day, and time of the last access. 
 
@@ -70,6 +70,11 @@ The _*All Activity*_ table shows the following information:
 * The *Device* where the entities reside
 
 * The *Protocol* used to fetch events. 
+
+* The *Original Path* used for rename events when the original file was renamed. By default , it is not visible in the table. You need to use column selector to add this column to the table.
+
+* The *Volume* where the entities reside. By default , it is not visible in the table. You need to use column selector to add this column to the table
+
 
 //* The *Source IP* address from which the activity was performed. 
 
@@ -126,6 +131,7 @@ The following fields are subject to special filtering rules:
 * *User* performing the activity
 * *Device* (SVM) where entities reside
 * *Volume* where entities reside
+* The *Original Path* used for rename events when the original file was renamed. 
 
 The preceding fields are subject to the following when filtering:
 
@@ -141,6 +147,12 @@ You can sort activity history data by _Time, User,  Source IP, Activity, Path_ a
 == Exporting All Activity
 
 You can export the activity history to a .CSV file by clicking the _Export_ button above the Activity History table. Note that only the top 10,000 records are exported.
+
+== Column Selection for All Activity 
+
+All activity table shows default columns. To add, remove, or change the columns, click the gear icon on the right of the table. It will list available columns for the table.
+
+image:CloudSecure_ActivitySelection.png[Activity Selector]
 
 == Activity History Retention
 
