@@ -69,6 +69,9 @@ When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metr
 
 //image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
 
+TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
+
+
 ==== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
@@ -82,8 +85,6 @@ The graph displays historical data. The Warning and Critical level lines on the 
 You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
 +
 image:define_monitor_conditions.png[Define Conditions]
-
-TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
 
 === Select notification type and recipients
 
