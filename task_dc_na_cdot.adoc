@@ -17,7 +17,7 @@ summary: ONTAP Data Collector
 
 [.lead]
 
-This data collector acquires inventory and performance data from storage systems running ONTAP using read-only API calls from an administrator account.
+This data collector acquires inventory and performance data from storage systems running ONTAP using read-only API calls from an ONTAP account. This data collector also creates a record in the cluster application registry to accelerate support.
 
 == Terminology
 
@@ -39,11 +39,15 @@ Cloud Insights acquires inventory and performance data from the ONTAP data colle
 
 The following are requirements to configure and use this data collector:
 
-* You must have access to an Administrator account used for read-only API calls.
-* Username (with read-only role name to ontapi application to the default Vserver) and password to log into NetApp cluster)
+* You must have access to an Administrator account configured for read-only API calls.
+* Account details include username and password.
 * Port requirements: 80 or 443
-//* License requirements: 
-//** FCP license and mapped/masked volumes required for discovery 
+
+* Account permissions:
+** Read only role name to ontapi application to the default Vserver 
+** You may require additional optional write permissions. See the Note About Permissions below.
+* ONTAP License requirements:
+** FCP license and mapped/masked volumes required for fibre-channel discovery 
 
 == Configuration 
 
@@ -60,10 +64,62 @@ The following are requirements to configure and use this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Communication Port|Port used for NetApp API
+|Connection type|Choose HTTP (default port 80) or HTTPS (default port 443). The default is HTTPS
+|Override Communication Port|Specify a different port if you do not want to use the default
 |Inventory Poll Interval (min) |Default is 60 minutes.
+//|Inventory concurrent thread count|Thread count for parallel foundation queries
+|For TLS for HTTPS|Only allow TLS as protocol when using HTTPS
+|Automatically Lookup Netgroups|Enable the automatic netgroup lookups for export policy rules
+|Netgroup Expansion|Netgroup Expansion Strategy. Choose _file_ or _shell_. The default is _shell_.
+|HTTP read timeout seconds|Default is 30
+|Force responses as UTF-8|Forces data collector code to interpret responses from the CLI as being in UTF-8
+//|Foundation model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
 |Performance Poll Interval (sec)|Default is 900 seconds.
+//|Performance Concurrent thread count|Thread count for parallel performance queries
+//|Performance model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
+
+|Advanced Counter Data Collection|Enable ONTAP integration. Select this to include ONTAP Advanced Counter data in polls. Choose the desired counters from the list.
+
+//|<TBD: New Micro Poll> | Default is 60 seconds
 |===
+
+== A Note About Permissions
+
+Since a number of Cloud Insights' ONTAP dashboards rely on advanced ONTAP counters, you must enable *Advanced Counter Data Collection* in the data collector Advanced Configuration section.
+
+You should also ensure that write permission to the ONTAP API is enabled. This typically requires an account at the cluster level with the necessary permissions.
+
+To create a local account for Cloud Insights at the cluster level, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
+
+. Create a read-only role using the following two commands.
+
+ security login role create -role oci_readonly -cmddirname DEFAULT -access readonly
+ security login role create -role oci_readonly -cmddirname security -access readonly
+ security login role create -role oci_readonly -access all -cmddirname “cluster application-record create”
+ 
+. Create the read-only user using the following command. Once you have executed the create command, you will be prompted to enter a password for this user.
+
+ security login create -username oci_user -application ontapi -authentication-method password -role oci_readonly
+ 
+If AD/LDAP account is used, the command should be 
+
+ security login create -user-or-group-name DOMAIN\aduser/adgroup -application ontapi -authentication-method domain -role oci_readonly
+ 
+The resulting role and user login will look something like this:
+
+ Role Command/ Access
+ Vserver Name Directory Query Level
+ ---------- ------------- --------- ------------------ --------
+ cluster1 oci_readonly DEFAULT read only
+ cluster1 oci_readonly security readonly
+ 
+ cluster1::security login> show
+ Vserver: cluster1
+ Authentication Acct
+ UserName    Application   Method      Role Name      Locked
+ ---------   -------      ----------- -------------- --------
+ ci_user     ontapi      password    oci_readonly   no
+
 
 
 == Troubleshooting
@@ -74,13 +130,21 @@ Some things to try if you encounter problems with this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
+
 |Receive 401 HTTP response or 13003 ZAPI error code and ZAPI returns “Insufficient privileges” or “not authorized for this command”| Check username and password, and user privileges/permissions.
+
 |Cluster version is < 8.1| Cluster minimum supported version is 8.1. Upgrade to minimum supported version.
+
 |ZAPI returns "cluster role is not cluster_mgmt LIF"|AU needs to talk to cluster management IP. Check the IP and change to a different IP if necessary
-|Error: “7 Mode filers are not supported”| This can happen if you use this data collector to discover 7 mode filer. Change IP to point to cdot filer instead. 
+
+|Error: “7 Mode filers are not supported”| This can happen if you use this data collector to discover 7 mode filer. Change IP to point to cdot cluster instead. 
+
 |ZAPI command fails after retry| AU has communication problem with the cluster. Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+
 |AU failed to connect to ZAPI via HTTP| Check whether ZAPI port accepts plaintext. If AU tries to send plaintext to an SSL socket, the communication fails.
+
 |Communication fails with SSLException|AU is attempting to send SSL to a plaintext port on a filer. Check whether the ZAPI port accepts SSL, or use a different port.
+
 |Additional Connection errors:
 
 ZAPI response has error code 13001, “database  is not open”
