@@ -16,7 +16,22 @@ keywords: time-to-live, TTL, downsampling, downsample,
 :imagesdir: ./media/
 
 [.lead]
-// Because Cloud Insights retains your data for up to 1 year (based on your subscription), there is potential for tens or hundreds of thousands of data points to be processed for charts and tables. Data may therefore be downsampled before being displayed. 
+Because Cloud Insights retains data for a set period (per Edition), there is potential for processing of thousands of data points. Data may therefore be downsampled before being displayed in charts and tables. 
+
+== Data Retention (Time-to-Live)
+
+Cloud Insights retains data for an amount of time determined by the active subscribed Edition. Data retention is also known as Time-To-Live or TTL.
+
+|===
+|Edition|TTL
+|Basic |7 Days
+|Standard |90 Days
+|Premium |13 Months
+
+Premium Edition subscriptions with at least 500 Managed Units (MUs) also retain Business Intelligence and Reporting data for the 13-month period.
+
+
+== Downsampling of Data
 
 *Downsampling* provides a statistical approximation of your data in charts, giving you an efficient overview of data without having to display every data point, while maintaining an accurate view of your collected data.
 
@@ -59,15 +74,4 @@ When viewing downsampled charts, be aware that violations are not shown. To see 
 * View the actual data for that time range by selecting Custom in the asset page time selector, and entering a range of time less than 7 days. Hover over each red dot. The tooltip will show the violation that occurred.
 * Note the time range and find the violation(s) in the Violation Dashboard.
 
-== Data Retention (Time-to-Live)
-
-Cloud Insights retains data for an amount of time determined by the active subscribed Edition. Data retention is also known as Time-To-Live or TTL.
-
-|===
-|Edition|TTL
-|Basic |7 Days
-|Standard |90 Days
-|Premium |13 Months
-
-Premium Edition subscriptions with at least 500 Managed Units (MUs) also retain Business Intelligence and Reporting data for the 13-month period.
 
