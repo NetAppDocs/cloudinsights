@@ -59,3 +59,15 @@ When viewing downsampled charts, be aware that violations are not shown. To see 
 * View the actual data for that time range by selecting Custom in the asset page time selector, and entering a range of time less than 7 days. Hover over each red dot. The tooltip will show the violation that occurred.
 * Note the time range and find the violation(s) in the Violation Dashboard.
 
+== Data Retention (Time-to-Live)
+
+Cloud Insights retains data for an amount of time determined by the active subscribed Edition. Data retention is also known as Time-To-Live or TTL.
+
+|===
+|Edition|TTL
+|Basic |7 Days
+|Standard |90 Days
+|Premium |13 Months
+
+Premium Edition subscriptions with at least 500 Managed Units (MUs) also retain Business Intelligence and Reporting data for the 13-month period.
+
