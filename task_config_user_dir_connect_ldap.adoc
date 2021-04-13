@@ -1,0 +1,218 @@
+---
+sidebar: sidebar
+permalink: task_config_user_dir_connect_ldap.html
+keywords: collector, configure, LDAP, Active Directory 
+summary: Configuring Cloud Secure LDAP User Directory Collector 
+---
+
+= Configuring an LDAP Directory Server Collector 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You configure Cloud Secure to collect user attributes from LDAP Directory servers.     
+
+.Before you begin
+
+* You must be a Cloud Insights Administrator or Account Owner to perform this task. 
+* You must have the IP address of the server hosting the LDAP Directory server.
+* An Agent must be configured before you configure an LDAP Directory connector. 
+
+.Steps to Configure a User Directory Collector
+
+. In the Cloud Secure menu, click: 
+*Admin > Data Collectors > User Directory Collectors > + User Directory Collector* and select *LDAP Directory Server*
++
+The system displays the Add User Directory screen.
+
+Configure the User Directory Collector by entering the required data in the following tables:
+
+[cols=2*, cols"30,70"]
+[Options=header]
+|===
+|Name|Description
+|Name |Unique name for the user directory. For example _GlobalLDAPCollector_
+|Agent|Select a configured agent from the list
+|Server IP/Domain Name|IP address or Fully-Qualified Domain Name (FQDN) of server hosting the LDAP Directory Server
+|Search Base|Search Base of the LDAP server
+Search Base allows both of the following formats:
+
+_x.y.z_ => direct domain name as you have it on your SVM. [Example: hq.companyname.com]
+
+_DC=x,DC=y,DC=z_ => Relative distinguished names [Example: DC=hq,DC= companyname,DC=com]
+
+Or you can specify as the following:
+
+_OU=engineering,DC=hq,DC= companyname,DC=com_ [to filter by specific OU engineering]
+
+_CN=username,OU=engineering,DC=companyname, DC=netapp, DC=com_ [to get only specific user with <username> from OU <engineering>]
+
+_CN=Acrobat Users,CN=Users,DC=hq,DC=companyname,DC=com,O= companyname,L=Boston,S=MA,C=US_ [to get all Acrobat Users within the Users in that organization]
+
+
+
+|Bind DN|User permitted to search the directory. For example: 
+uid=ldapuser,cn=users,cn=accounts,dc=domain,dc=companyname,dc=com
+uid=john,cn=users,cn=accounts,dc=dorp,dc=company,dc=com for a user john@dorp.company.com.
+
+dorp.company.com
+|--accounts
+        |--users
+              |--john
+              |--anna       
+
+|BIND password|Directory server password (i.e. password for username used in Bind DN)
+|Protocol|ldap, ldaps, ldap-start-tls
+|Ports|Select port
+|===
+
+////
+Add to table once link is provided:
+For more details about forest names, please refer to this link:
+////
+
+Enter the following Directory Server required attributes if the default attribute names have been modified in LDAP Directory Server. Most often these attributes names are _not_ modified in LDAP Directory Server, in which case you can simply proceed with the default attribute name.
+
+[cols=2*, cols"50,50"]
+[Options=header]
+|===
+|Attributes |Attribute name in Directory Server
+|Display Name|name
+|UNIXID|uidnumber
+|User Name|uid
+|===
+
+Click Include Optional Attributes to add any of the following attributes:
+
+[cols=2*, cols"50,50"]
+[Options=header]
+|===
+|Attributes |Attribute Name in Directory Server
+|Email Address|mail
+|Telephone Number|telephonenumber
+|Role|title
+|Country|co
+|State|state
+|Department|departmentnumber
+|Photo|photo
+|ManagerDN|manager
+|Groups|memberOf
+|===
+
+
+//Removed based on review comments
+//Enter the following user search parameters in the Advanced Configuration attributes table: 
+
+//[cols=2*, cols"50,50"]
+//[Options=header]
+//|===
+//|*Base DN*|*Query* 
+//|Attributes //|(&(objectCategory=person)(objectClass=user))
+//|Email Address|mail
+//|Phone|telephoneNumber
+//|Country|Country
+//|State|state
+//|Department|department
+//|Photo|thumbnailPhoto
+//
+//|===
+
+== Testing Your User Directory Collector Configuration 
+
+You can validate LDAP User Permissions and Attribute Definitions using the following procedures:
+
+* Use the following command to validate Cloud Secure LDAP user permission:
++
+ ldapsearch -D "uid=john ,cn=users,cn=accounts,dc=dorp,dc=company,dc=com" -W -x -LLL -o ldif-wrap=no -b "cn=accounts,dc=dorp,dc=company,dc=com" -H ldap://vmwipaapp08.dorp.company.com
+
+* Use LDAP Explorer to navigate an LDAP database, view object properties and attributes, view permissions, view an object's schema, execute sophisticated searches that you can save and re-execute. 
+
+** Install LDAP Explorer (http://ldaptool.sourceforge.net/) or Java LDAP Explorer (http://jxplorer.org/) on any windows machine which can connect to the LDAP Server.
+
+** Connect to the LDAP server using the username/password of the LDAP directory server.
+
+image:CloudSecure_LDAPDialog.png[LDAP Connection]
+
+
+== Troubleshooting LDAP Directory Collector Configuration Errors
+
+The following table describes known problems and resolutions that can occur during collector configuration:
+
+[cols=2*,  cols"50,50"]
+[options="header"]
+|===
+|Problem: | Resolution:
+|Adding an LDAP Directory connector results in the ‘Error’ state. Error says, “Invalid credentials provided for LDAP server”.
+|Incorrect Bind DN or Bind Password or Search Base provided. Edit and provide the correct information.
+
+|Adding an LDAP Directory connector results in the ‘Error’ state. Error says, “Failed to get the object corresponding to DN=DC=hq,DC=domainname,DC=com provided as forest name.”
+|Incorrect Search Base provided. Edit and provide the correct forest name.
+
+|The optional attributes of domain user are not appearing in the Cloud Secure User Profile page.
+|This is likely due to a mismatch between the names of optional attributes added in CloudSecure and the actual attribute names in Active Directory. Fields are case sensitive. Edit and provide the correct optional attribute name(s). 
+
+|Data collector in error state with "Failed to retrieve LDAP users. Reason for failure: Cannot connect on the server, the connection is null"
+|Restart the collector by clicking on the _Restart_ button.
+
+|Adding an LDAP Directory connector results in the ‘Error’ state. 
+|Ensure you have provided valid values for the required fields (Server, forest-name, bind-DN, bind-Password).
+Ensure bind-DN input is always provided as uid=ldapuser,cn=users,cn=accounts,dc=domain,dc=companyname,dc=com.
+
+|Adding an LDAP Directory connector results in the ‘RETRYING’ state. Shows error “Failed to determine the health of the collector hence retrying again”
+|Ensure correct Server IP and Search Base is provided
+
+////
+|While adding LDAP directory the following error is shown:
+“Failed to determine the health of the collector within 2 retries, try restarting the collector again(Error Code: AGENT008)”
+|Ensure correct Server IP and Search Base is provided
+
+|Adding an LDAP Directory connector results in the ‘RETRYING’ state. Shows error “Unable to define state of the collector,reason Tcp command [Connect(localhost:35012,None,List(),Some(,seconds),true)] failed because of java.net.ConnectionException:Connection refused.”
+|Incorrect IP or FQDN provided for the AD Server. Edit and provide the correct IP address or FQDN.
+////
+
+|Adding an LDAP Directory connector results in the ‘Error’ state. Error says, “Failed to establish LDAP connection”.
+|Incorrect IP or FQDN provided for the LDAP Server. Edit and provide the correct IP address or FQDN.
+Or
+Incorrect value for Port provided. Try using the default port values or the correct port number for the LDAP server. 
+
+|Adding an LDAP Directory connector results in the ‘Error’ state. Error says, “Failed to load the settings. Reason: Datasource configuration has an error. Specific reason: /connector/conf/application.conf: 70: ldap.ldap-port has type STRING rather than NUMBER”
+|Incorrect value for Port provided. Try using the default port values or the correct port number for the AD server.
+
+|I started with the mandatory attributes, and it worked. After adding the optional ones, the optional attributes data is not getting fetched from AD. 
+|This is likely due to a mismatch between the optional attributes added in CloudSecure and the actual attribute names in Active Directory. Edit and provide the correct mandatory or optional attribute name.
+
+|After restarting the collector, when will the LDAP sync happen?
+|LDAP sync will happen immediately after the collector restarts. It will take approximately 15 minutes to fetch user data of approximately 300K users, and is refreshed every 12 hours automatically.
+
+|User Data is synced from LDAP to CloudSecure. When will the data be deleted?
+|User data is retained for 13months in case of no refresh. If the tenant is deleted then the data will be deleted.
+
+|LDAP Directory connector results in the ‘Error’ state. "Connector is in error state. Service name: usersLdap. Reason for failure: Failed to retrieve LDAP users. Reason for failure: 80090308: LdapErr: DSID-0C090453, comment: AcceptSecurityContext error, data 52e, v3839"
+|Incorrect forest name provided. See above on how to provide the correct forest name.
+
+|Telephone number is not getting populated in the user profile page.
+|This is most likely due to an attribute mapping problem with the Active Directory. 
+
+1. Edit the particular Active Directory collector which is fetching the user’s information from Active Directory.
+2. Notice under optional attributes, there is a field name “Telephone Number” mapped to Active Directory attribute ‘telephonenumber’.
+4. Now, please use the Active Directory Explorer tool as described above to browse the LDAP Directory server and see the correct attribute name.
+3. Make sure that in LDAP Directory there is an attribute named ‘telephonenumber’ which has indeed the telephone number of the user.
+5. Let us say in LDAP Directory it has been modified to ‘phonenumber’.
+6. Then Edit the CloudSecure User Directory collector. In optional attribute section, replace ‘telephonenumber’ with ‘phonenumber’.
+7. Save the Active Directory collector, the collector will restart and get the telephone number of the user and display the same in the user profile page.
+
+|If encryption certificate (SSL) is enabled on the Active Directory (AD) Server, the Cloud Secure User Directory Collector can not connect to the AD Server.
+|Disable AD Server encryption before Configuring a User Directory Collector.
+Once the user detail is fetched it will be there for 13 months.
+If the AD server gets disconnected after fetching the user details, the newly added users in AD won’t get fetched. To fetch again the user directory collector needs to be connected to AD.
+
+
+|===
+
