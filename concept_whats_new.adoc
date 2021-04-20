@@ -18,7 +18,56 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== April 2021
 
+The Cloud Insights team has developed a wealth of new content in March. Here are some of the highlights we are super excited to show:
+
+==== Easier Management of Monitors
+
+link:https://docs.netapp.com/us-en/cloudinsights/task_create_monitor.html#monitor-grouping[Monitor Grouping] simplifies the management of monitors in your environment. Multiple monitors can now be grouped together and paused as one. For example, if you have an update occurring on a stack of infrastructure, you can pause alerts from all those devices via one click.
+
+Monitor groups is the first part of an exciting new feature bringing improved management of ONTAP devices to Cloud Insights.
+
+image:Monitors_GroupList.png[Monitor Grouping]
+
+
+==== Enhanced Alerting Options Using Webhooks
+
+Many commercial applications support link:task_create_webhook.html[Webhooks] as a standard input interface. Cloud Insights now supports many of these delivery channels, providing default templates for Slack, PagerDuty, Teams, and Discord, in addition to providing customizable generic webhooks to support many other applications.
+
+image:Webhooks_Notifications_sm.png[Webhooks Notifications]
+
+==== Improved Device Identification
+
+To improve monitoring and troubleshooting as well as deliver accurate reporting, it is helpful to understand the names of devices rather than their IP addresses or other identifiers. Cloud Insights now incorporates an automatic way to identify the names of storage and physical host devices in the environment, using a rule-based approach called link:concept_device_resolution_overview.html[*Device Resolution*], available in the *Manage* menu.
+
+==== You asked for more!
+
+A popular ask by customers has been for more default options for visualizing the range of data, so we have added the following five new choices that are now available throughout the service via the time range picker:
+
+* Last 30 Minutes
+* Last 2 Hours
+* Last 6 Hours
+* Last 12 Hours
+* Last 2 Days
+
+
+==== Multiple Subscriptions in one Cloud Insights Environment
+
+Starting April 2, Cloud Insights supports multiple subscriptions of the same edition type for a customer in a single Cloud Insights instance. This enables customers to co-term parts of their Cloud Insights subscription with infrastructure purchases. Contact NetApp Sales for assistance with multiple subscriptions.
+
+==== Choose Your Path
+
+While setting up Cloud Insights, you can now choose whether to start with Monitoring and Alerting or Ransomware and Insider Threat Detection. Cloud Insights will configure your starting environment based on the path you choose. You can configure the other path at any time afterward. 
+ 
+==== Easier Cloud Secure Onboarding 
+And it is easier than ever to start using Cloud Secure, with a new step-by-step setup checklist. 
+
+image:CloudSecure_SetupChecklist.png[Cloud Secure Checklist]
+
+
+As always, we love to hear your suggestions! Send them to ng-cloudinsights-customerfeedback@netapp.com.
+ 
 ////
 === April 2021
 
@@ -26,6 +75,7 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 Cloud Secure now supports NFS event collection from ONTAP devices, which means ransomware attacks are detected on NFS in addition to SMB.
 ////
+
 
 === February 2021
 

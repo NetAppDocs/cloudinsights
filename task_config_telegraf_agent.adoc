@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_config_telegraf_agent.html
 keywords: telegraf, installation, install, agent, telegraf agent
-summary: 
+summary: Cloud Insights supports link:https://docs.influxdata.com/telegraf/v1.14/[Telegraf] as its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
 ---
 
 = Configuring an Agent to Collect Data
@@ -383,8 +383,10 @@ To upgrade the telegraf agent, do the following:
 . link:#macos[Install the new agent].
 
 
+
 === Kubernetes
-image:Kubernetes_Install_Agent.png[Kubernetes Agent Install]
+
+image:Kubernetes_Install_Agent_screen.png[Kubernetes Agent Install]
 
 .Pre-requisites:
 
@@ -398,6 +400,21 @@ For best results, add these commands to the PATH.
 
 * If you are running a kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section.
 
+
+==== Monitoring is only installed on Linux nodes
+
+Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, by specifying a Kubernetes node selector that looks for the following Kubernetes labels on these platforms:
+
+|===
+|Platform|Label
+
+|Kubernetes v1.14 and above |Kubernetes.io/os = linux
+|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
+|Rancher + cattle.io as orchestration/Kubernetes platform |cattle.io/os = linux
+|===
+
+
+==== Installation
 
 .Steps to install agent on Kubernetes:
 

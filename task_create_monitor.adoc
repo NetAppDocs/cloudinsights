@@ -69,6 +69,9 @@ When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metr
 
 //image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
 
+TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
+
+
 ==== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
