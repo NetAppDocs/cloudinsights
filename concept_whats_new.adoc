@@ -20,13 +20,17 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === May 2021
 
-Here are some of the changes we've made in April that we are highlighting:
+Here are some of the changes we've made in April:
 
 ==== Updated Telegraf Agent
 
 The agent for ingestion of telegraf integration data has been updated to version 1.17.3, which includes vulnerability and bug fixes.
 
+==== Add Corrective Actions to an Alert
 
+You can now add an optional description as well as additional insights and/or corrective actions when creating ot modifying a Monitor by filling in the *Add an Alert Description* section. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page. The description will be sent with the alert. 
+
+image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 
 === April 2021
 
