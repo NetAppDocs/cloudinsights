@@ -18,7 +18,12 @@ keywords: email, notifications, alerts, warnings, attacks
 [.lead]
 Email notifications of alerts are sent to the alert recipient list for every action on the alert. 
 
-To configure alert recipients, click on *Admin > Notifications* and enter an email addresses for each recipient.
+To configure alert recipients, click on *Admin > Notifications* and choose the desired recipients in the *Global Monitor Notification Recipients* section.
 
 [.thumb]
-image:CS-Alert-Notification-List.png[Alert Email notification recipient list]
+//image:CS-Alert-Notification-List.png[Alert Email notification recipient list]
+.image:GlobalMonitorRecipients.png[Global Monitor Notification Recipients]
+
+You can override the global recipients list for an individual monitor when creating or modifying the monitor.
+
+image:MonitorTeamNotifications.png[Override Global Notifications]
