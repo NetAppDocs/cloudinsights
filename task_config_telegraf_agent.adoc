@@ -586,14 +586,21 @@ Use the following links to access information for the kube state metrics counter
 
 ==== Uninstalling the Agent
 
+Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
+
 To uninstall the agent on Kubernetes, do the following:
 
 . If the monitoring namespace is being used solely for Telegraf:
 
+ kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
  kubectl delete ns ci-monitoring
+
  
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 
+ kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
+
+////
 . Stop and delete the Telegraf service:
 
  kubectl --namespace ci-monitoring delete ds telegraf-ds 
@@ -609,9 +616,12 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
  kubectl --namespace ci-monitoring delete clusterrole endpoint-access 
  kubectl --namespace ci-monitoring delete clusterrolebinding endpoint-access 
+ ////
  
 ==== Upgrading the Agent
 [#upgrading-kubernetes-agent]
+
+Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
 To upgrade the telegraf agent, do the following:
 
