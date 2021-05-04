@@ -590,9 +590,10 @@ Note that these commands are using the default namespace "ci-monitoring".  If yo
 
 To uninstall the agent on Kubernetes, do the following:
 
-. If the monitoring namespace is being used solely for Telegraf:
+If the monitoring namespace is being used solely for Telegraf:
 
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
+ 
  kubectl delete ns ci-monitoring
 
  
