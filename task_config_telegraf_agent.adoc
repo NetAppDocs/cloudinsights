@@ -616,7 +616,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
  kubectl --namespace ci-monitoring delete clusterrole endpoint-access 
  kubectl --namespace ci-monitoring delete clusterrolebinding endpoint-access 
- ////
+////
  
 ==== Upgrading the Agent
 [#upgrading-kubernetes-agent]
