@@ -24,7 +24,10 @@ Here are some of the changes we've made in April:
 
 ==== Updated Telegraf Agent
 
-The agent for ingestion of telegraf integration data has been updated to version 1.17.3, which includes vulnerability and bug fixes.
+The agent for ingestion of telegraf integration data has been updated to version 1.17.3, with performance and security improvements.
+Users wishing to update can refer to the documentation section <here>.
+Previous versions of the agent will continue to function with no user action required.
+
 
 ==== Add Corrective Actions to an Alert
 
@@ -36,11 +39,11 @@ image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 
 APIs are available for Basic and Standard Editions of Cloud Insights, in addition to Premium. The categories of APIs available vary for each subscription level:
 
-[cols="<,^s,^s,^s", role="green"]
+[cols="<,^s,^s,^s"]
 |===
 |API Category|Basic|Standard|Premium
 
-|Acquisition Unit|&check;|&check;|&check;
+|Acquisition Unit| image:SmallCheckMark.png[] |&check;|&check;
 |Data Collection|&check;|&check;|&check;
 |Assets| |&check;|&check;
 |Data Ingestion| |&check;|&check;
