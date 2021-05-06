@@ -31,13 +31,15 @@ Previous versions of the agent will continue to function with no user action req
 
 ==== Add Corrective Actions to an Alert
 
-You can now add an optional description as well as additional insights and/or corrective actions when creating ot modifying a Monitor by filling in the *Add an Alert Description* section. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page. The description will be sent with the alert. 
+You can now add an optional description as well as additional insights and/or corrective actions when creating or modifying a Monitor by filling in the *Add an Alert Description* section. The description will be sent with the alert. The _insights and corrective action_ field can provide detailed steps and guidance for dealing with alerts and will be displayed in the summary section of the alert landing page.description will be sent with the alert. 
 
 image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 
 ==== Cloud Insights APIs for All Editions
 
-APIs are available for Basic and Standard Editions of Cloud Insights, in addition to Premium. The categories of APIs available vary for each subscription level:
+API access is now available in all editions of Cloud Insights.
+Users of Basic edition can now automate actions for Acquisition Units and Data Collectors, and Standard Edition users can query metrics and ingest custom metrics.
+Premium edition continues to allow full use of all API categories.
 
 [cols="<,^s,^s,^s"]
 |===
@@ -45,6 +47,7 @@ APIs are available for Basic and Standard Editions of Cloud Insights, in additio
 
 |Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
 |Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
 |Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
 |Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
 |Data Warehouse| | |image:SmallCheckMark.png[]
