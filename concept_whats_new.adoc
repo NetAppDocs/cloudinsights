@@ -25,20 +25,20 @@ Here are some of the changes we've made in April:
 ==== Updated Telegraf Agent
 
 The agent for ingestion of telegraf integration data has been updated to version 1.17.3, with performance and security improvements.
-Users wishing to update can refer to the documentation section <here>.
+Users wishing to update can refer to the appropriate upgrade section of the link:https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent.html[Agent Installation] documentation.
 Previous versions of the agent will continue to function with no user action required.
 
 
 ==== Add Corrective Actions to an Alert
 
-You can now add an optional description as well as additional insights and/or corrective actions when creating or modifying a Monitor by filling in the *Add an Alert Description* section. The description will be sent with the alert. The _insights and corrective action_ field can provide detailed steps and guidance for dealing with alerts and will be displayed in the summary section of the alert landing page.description will be sent with the alert. 
+You can now add an optional description as well as additional insights and/or corrective actions when creating or modifying a Monitor by filling in the *Add an Alert Description* section. The description will be sent with the alert. The _insights and corrective action_ field can provide detailed steps and guidance for dealing with alerts and will be displayed in the summary section of the alert landing page.
 
 image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 
 ==== Cloud Insights APIs for All Editions
 
 API access is now available in all editions of Cloud Insights.
-Users of Basic edition can now automate actions for Acquisition Units and Data Collectors, and Standard Edition users can query metrics and ingest custom metrics.
+Users of Basic edition can now automate actions for Acquisition Units and Data Collectors, and Standard Edition users can get alert information, query metrics, and ingest custom metrics.
 Premium edition continues to allow full use of all API categories.
 
 [cols="<,^s,^s,^s"]
