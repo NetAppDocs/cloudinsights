@@ -20,7 +20,28 @@ The Cloud Insights API enables NetApp customers and independent software vendors
 
 //NOTE: This documentation is considered *Preview Documentation* and is therefore subject to change.
 
-NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*. 
+//NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*. 
+
+Note that Cloud Insights APIs are available based on your current Edition:
+
+[cols="<,^s,^s,^s"]
+|===
+|API Category|Basic|Standard|Premium
+
+|Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+//|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Warehouse| | |image:SmallCheckMark.png[]
+
+|===
+
+////
+We are exposing API Access in Basic Edition for Acquisition Unit and Data Collection API Keys & swagger documentation.
+For Standard Edition, we expose Acquisition Unit, Assets, Data Collection and Data Ingestion API keys & swagger documentation.
+For Premium Edition, we expose Acquisition Unit, Assets, Data Collection, Data Ingestion, & Data Warehouse API keys & swagger documentation.
+////
 
 == Requirements for API Access
 
