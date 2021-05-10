@@ -100,16 +100,14 @@ An example script run is shown below:
  -----------------------------
  Enter [1/5] SVM name to check (press enter to skip): svm_rate
  Enter [2/5] SVM name to check (press enter to skip): audit_svm
- Enter [3/5] SVM name to check (press enter to skip): QA_SVM
+ Enter [3/5] SVM name to check (press enter to skip): 
  Enter [4/5] SVM name to check (press enter to skip):
  Enter [5/5] SVM name to check (press enter to skip):
  Running check for svm svm_rate...
  Running check for svm audit_svm...
- Running check for svm QA_SVM...
  Waiting 5 minutes for stat collection
  Stopping sample svm_rate_sample
  Stopping sample audit_svm_sample
- Stopping sample QA_SVM_sample
  fpolicy stats of svm svm_rate is saved in fpolicy_stat_svm_rate.log
  Svm svm_rate is generating 100 SMB events/sec and 100 NFS events/sec 
  Overall svm svm_rate is generating 200 events/sec
@@ -123,6 +121,14 @@ An example script run is shown below:
 == Troubleshooting
 
 |===
+
 |Question: If I run this script on an SVM that is already configured for Cloud Secure, does it just use the existing fpolicy config on the SVM or does it setup a temporary one and run the process? 
 |Answer: The Event Rate Checker can run fine even for an SVM already configured for Cloud Secure. There should be no impact.
+
+|Question: Can I increase the number of SVMs on which the script can be run?
+|Answer: Yes. Simply edit the script and change the max number of SVMs from 5 to any desirable number.
+
+|Question: If I increase the number of SVMs, will it increase the time of running of the script?
+|Answer: No. The script will run for a max of 5 minutes, even if the number of SVMs is increased.
+
 |===
