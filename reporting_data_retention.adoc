@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: reporting_data_retention.html
+summary: Cloud Insights data retention for Reporting
+keywords: reporting, cognos, data warehouse, dwh, managing, customizing, copying, retention
+---
+
+= How historical data is retained for Reporting
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Insights retains historical data for use in Reporting based on the data marts and granularity of the data, as shown in the following table.
+
+|===
+|Data mart | Measured object | Granularity | Retention period
+|Performance marts | Volumes and internal volumes | Hourly | 14 days
+|Performance marts | Volumes and internal volumes | Daily | 13 months
+|Performance marts | Application | Hourly | 13 months
+|Performance marts | Host | Hourly | 13 months
+|Performance marts | Switch performance for port | Hourly | 35 days
+|Performance marts | Switch performance for host, storage, and tape | Hourly | 13 months
+|Performance marts | Storage node | Hourly | 14 days
+|Performance marts | Storage node | Daily | 13 months
+|Performance marts | VM performance | Hourly | 35 days
+|Performance marts | VM performance | Daily | 13 months
+|Performance marts | Hypervisor performance | Hourly | 35 days
+|Performance marts | Hypervisor performance | Daily | 13 months
+|Performance marts | VMDK performance | Hourly | 35 days
+|Performance marts | VMDK performance | Daily | 13 months
+|Performance marts | Disk performance | Hourly | 14 days
+|Performance marts | Disk performance | Daily | 13 months
+|Capacity marts | All (except individual volumes) | Daily | 13 months
+|Capacity marts | All (except individual volumes) | Monthly representative | 14 months and beyond
+|Inventory marts | Individual volumes | Current state | 1 day (or until next ETL)
+|===
