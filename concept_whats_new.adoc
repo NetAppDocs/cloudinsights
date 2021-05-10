@@ -18,9 +18,47 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
-=== April 2021
+=== May 2021
 
-The Cloud Insights team has developed a wealth of new content in March. Here are some of the highlights we are super excited to show:
+Here are some of the changes we've made in April:
+
+==== Updated Telegraf Agent
+
+The agent for ingestion of telegraf integration data has been updated to version 1.17.3, with performance and security improvements.
+Users wishing to update can refer to the appropriate upgrade section of the link:https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent.html[Agent Installation] documentation.
+Previous versions of the agent will continue to function with no user action required.
+
+
+==== Add Corrective Actions to an Alert
+
+You can now add an optional description as well as additional insights and/or corrective actions when creating or modifying a Monitor by filling in the *Add an Alert Description* section. The description will be sent with the alert. The _insights and corrective actions_ field can provide detailed steps and guidance for dealing with alerts and will be displayed in the summary section of the alert landing page.
+
+image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
+
+////
+==== Cloud Insights APIs for All Editions
+
+API access is now available in all editions of Cloud Insights.
+Users of Basic edition can now automate actions for Acquisition Units and Data Collectors, and Standard Edition users can query metrics and ingest custom metrics.
+Premium edition continues to allow full use of all API categories.
+
+[cols="<,^s,^s,^s"]
+|===
+|API Category|Basic|Standard|Premium
+
+|Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+//|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Warehouse| | |image:SmallCheckMark.png[]
+
+|===
+
+For details on API usage, please refer to the link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-documentation-swagger[API documentation]. 
+////
+
+=== April 2021
 
 ==== Easier Management of Monitors
 
