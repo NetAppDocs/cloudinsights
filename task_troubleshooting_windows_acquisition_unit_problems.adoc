@@ -56,6 +56,16 @@ Restart the Acquisition via Windows Services
 
 |Data Collection Issues
 |Send an Error Report from the Data Collector landing page by clicking the "Send Error Report" button
+
+|Status: Heartbeat Failed
+|The Acquisition Unit (AU) sends a heartbeat to Cloud Insights every 60 seconds to renew its lease. If the heartbeat call fails due to network issue or unresponsive Cloud Insights, the AU's lease time isn't updated. When the AU's lease time expires, Cloud Insights shows a status of "Heartbeat Failed".
+
+Troubleshoot steps:
+
+* Check the network connection between the Acquisition Unit sever and CloudInsights.
+* Check whether the Acquisition Unit service is running. If the service is not running, start the service.
+* Check the Acquisition Unit log (<Install dir>:\Program Files\Cloud Insights\Acquisition Unit\log\acq.log) to see whether there are any errors.
+
 |===
 
 
