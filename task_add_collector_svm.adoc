@@ -38,7 +38,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 //* You need the SVM management IP address or the cluster IP, and username / password for login.
 
 * You must add an SVM using one of the following two methods:
-** By Using Cluster IP, SVM name, and Cluster Management Username and Password
+** By Using Cluster IP, SVM name, and Cluster Management Username and Password. _This is the recommended method._
 *** SVM name must be exactly as is shown in ONTAP and is case-sensitive.
 ** By Using SVM Vserver Management IP, Username, and Password
 ** If you are not able or not willing to use the full Administrator Cluster/SVM Management Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM or Cluster access.
@@ -213,6 +213,7 @@ image:CS_Data_Collector_Error.png[]
 |===
 |Problem: | Resolution:
 
+////
 |Error message: "Connection to the FPolicy server <IP> is broken. ( reason: "FPolicy server is removed from external engine." )"
 |SVM is unable to reach the Fpolicy Server. 
 1. Make sure there is route available from SVM to the Fpolicy Server/Agent machine IP. Login to the cluster/SVM and ping the Fpolicy Server IP address using the following command:
@@ -221,6 +222,7 @@ _net ping -lif <data_lif> -destination <agent IP> -vserver <svmname> -show-detai
 
 2. In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
 To prevent this, configure each SVM on a single environment.
+////
 
 |Data Collector runs for some time and stops after a random time, failing with: "Error message: Connector is in error state. Service name: audit. Reason for failure: External fpolicy server overloaded."
 |The event rate from ONTAP was much higher than what the Agent box can handle. Hence the connection got terminated.
@@ -300,9 +302,16 @@ link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nm
 
 4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM management lif (with CIFS, NFS protocols support) and ensure that ping is working:
 
-_network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name> -show-detail_
+ _network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name> -show-detail_
 
 If not pingable, make sure the network settings in ONTAP are correct, so that the Agent machine is pingable.
+
+5.If a single SVM is added twice added to a tenant via 2 data collectors, then this error will be shown. Delete one of the data collectors thru the UI. Then restart the other data collector thru the UI. Then the data collector will show “RUNNING” status and will start receiving events from SVM.
+
+Basically, in a tenant, 1 SVM should be added only once, via 1 data collector. 1 SVM should not added twice via 2 data collectors.
+
+6. In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state.
+To prevent this, configure each SVM on a single environment.
 
 
 |No events seen in activity page.
