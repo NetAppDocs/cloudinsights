@@ -46,8 +46,6 @@ Steps:
 
 Keep the following in mind:
 
-//A) A single Agent machine can handle up to 7000 events per second and maximum of 10 data collectors.
-
 A) A single Agent machine can handle the following:
 
 |===
@@ -57,6 +55,7 @@ A) A single Agent machine can handle the following:
 |4 core, 16GB	|10 data collectors	|20K events/sec
 |4 core, 32GB	|20 data collectors	|20K events/sec
 
+|===
 
 B) To calculate your total events, add the Events generated for all SVMs for that agent.
 
