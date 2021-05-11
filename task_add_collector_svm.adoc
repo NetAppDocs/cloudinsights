@@ -213,17 +213,6 @@ image:CS_Data_Collector_Error.png[]
 |===
 |Problem: | Resolution:
 
-////
-|Error message: "Connection to the FPolicy server <IP> is broken. ( reason: "FPolicy server is removed from external engine." )"
-|SVM is unable to reach the Fpolicy Server. 
-1. Make sure there is route available from SVM to the Fpolicy Server/Agent machine IP. Login to the cluster/SVM and ping the Fpolicy Server IP address using the following command:
-
-_net ping -lif <data_lif> -destination <agent IP> -vserver <svmname> -show-detail_
-
-2. In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
-To prevent this, configure each SVM on a single environment.
-////
-
 |Data Collector runs for some time and stops after a random time, failing with: "Error message: Connector is in error state. Service name: audit. Reason for failure: External fpolicy server overloaded."
 |The event rate from ONTAP was much higher than what the Agent box can handle. Hence the connection got terminated.
 
