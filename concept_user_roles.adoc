@@ -117,9 +117,7 @@ In the above diagram, when a user accesses Cloud Insights, that user is directed
 
 Cloud Central uses Auth0 to implement Identity Federation and integrate with services like Active Directory Federation Services (ADFS) and Microsoft Azure Active Directory (AD). 
 
-Cloud Central can help with the process of changing identity providers, and iFor more information on Identity can be found hereFederation setup and configuration. See Cloud Central documentation Identity Federation for understanding more about the process. They can be contacted for further information and access to a Self-Serve Portal for beginning the process of identity federation through the customer’s identity provider. 
-
-Once completed, the user goes to the Cloud Insights tenant URL and upon entering their Cloud Central credentials at the Cloud Central page, they are then sent to their company identity provider for authentication. New users are added to their Cloud Insights tenant by invitation just as they are with auth0 local user authentication. 
+Cloud Central uses Auth0 to implement Identity Federation and integrate with services like Active Directory Federation Services (ADFS) and Microsoft Azure Active Directory (AD). For more information on Identity Federation setup and configuration. See Cloud Central documentation on link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation].
 
 It is important to understand that changing identity federation in Cloud Central will apply not only to Cloud Insights but to all NetApp Cloud Services. The customer should discuss this change with the NetApp team of each Cloud Central product they own to make sure the configuration they are using will work with Identity Federation or if adjustments need to be made on any accounts. The customer will need to involve their internal SSO team in the change to identity federation as well. 
 
