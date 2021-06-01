@@ -138,7 +138,7 @@ You can copy a monitor by selecting *Duplicate* from the menu. You can then modi
 If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
 
 
-== Monitor Groups
+== Monitor Groups and System-Defined Monitors
 
 Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
 
@@ -155,6 +155,16 @@ Monitors are grouped in the following categories:
 The number of monitors contained in a group is shown next to the group name.
 
 NOTE: Custom monitors can be pasued, resumed, deleted, or moved to another group. System-defined monitors can be paused and resumed but can not be deleted or moved.
+
+
+=== System-Defined Monitors
+
+System-defined monitors are comprised of pre-defined metrics and conditions, as well as default descriptions and corrective actions, which can not be modified. You _can_ modify the notification recipient list for system-defined monitors. To view the metrics, conditions, description and corrective actions, or to modify the recipient list, open a system-defined monitor group and click the monitor name in the list.
+
+System-defined monitor groups cannot be modified or removed.
+
+
+=== Custom Monitor Groups
 
 To create a new group, click the *"+" Create New Monitor Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
 
