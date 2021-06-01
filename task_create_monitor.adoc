@@ -142,7 +142,15 @@ If a monitor is no longer needed, you can delete it by selecting *Delete* from t
 
 Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
 
-image:Monitors_GroupList.png[Monitor Grouping]
+//image:Monitors_GroupList.png[Monitor Grouping]
+image:Monitors_Custom_System.png[Monitor Groups List]
+
+Monitors are grouped in the following categories and include counts of included monitors:
+
+* *All Monitors*: All monitors, both user-created and system-defined
+* *Custom Monitors*: Includes user-created monitors
+* *System Monitor groups*: These groups include system-defined monitors, which are based on the data collectors in your environment
+* *User-Created Monitor groups*: These are monitor groups you create
 
 ////
 Two groups are shown by default:
