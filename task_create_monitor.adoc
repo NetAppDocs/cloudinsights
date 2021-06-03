@@ -163,7 +163,11 @@ System-defined monitors are comprised of pre-defined metrics and conditions, as 
 
 System-defined monitor groups cannot be modified or removed.
 
-The following system-defined monitors are available:
+The following system-defined monitors are available, in the noted groups.
+
+* *ONTAP Infrastructure* includes monitors for infrastructure-related issues in ONTAP clusters. 
+* *ONTAP workload examples* includes monitors for workload-related issues. 
+* Monitors in both group default to _Paused_ state.
 
 |===
 |Group | Monitor Name | Monitor Description
