@@ -32,6 +32,17 @@ Steps:
 +
  /opt/netapp/cloudsecure/agent/install/svm_event_rate_checker.sh
  
+. This script requires _sshpass_ to be installed in the linux machine. There are two ways to install it: 
+
+.. Run the fiollowing command:
++
+ linux_prompt> yum install sshpass
+
+.. If that does not work, then download _sshpass_ to the linux machine from the web and run the following command:
++
+ linux_prompt> rpm -i sshpass
+
+ 
 .	Provide the correct values when prompted. See below for an example.
 
 .	The script will take approximately 5 minutes to run.
