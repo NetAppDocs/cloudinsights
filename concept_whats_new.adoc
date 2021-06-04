@@ -18,6 +18,31 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
+=== June 2021
+
+Some of the new and exciting things we've been working on:
+
+==== Cloud Secure Snapshot Purge and Data Collection Speed
+
+Cloud Secure automatically deletes snapshots based on the Snapshot Purge Settings. 
+
+image:CloudSecure_AutomatedResponsePolicies_WithSnapshotPurge.png[Purge Settings]
+
+Additionally, a single data collector agent system can post up to 20,000 events per second to Cloud Secure.
+
+
+==== ONTAP System Monitors
+
+Cloud Insights now includes the following ONTAP monitors, in the noted monitor groups:
+
+•	*ONTAP Infrastructure* includes monitors for infrastructure-related issues in ONTAP clusters. 
+•	*ONTAP Workload Examples* includes monitors for workload-related issues. 
+
+image:Monitors_Custom_System.png[Syetem Monitor Groups]
+
+See the link:task_create_monitor.html[Monitors] documentation for a list of the dashboards included in each group.
+
+
 === May 2021
 
 Here are some of the changes we've made in April:
