@@ -20,12 +20,9 @@ keywords: data collector, NetApp, Cloud, agent, ONTAP
 
 This data collector creates a cloud connection to support data collection from ONTAP 9.9+ systems. 
 
-
 == Configuration
 
-Configuration of the Cloud Connection for ONTAP 9.9+ data collector requires you to copy a Pairing Code to the ONTAP System Manager, which will then establish a connection to your Cloud Insights environment. 
-
-NOTE: Starting with ONTAP 9.9+, data collection no longer requires a traditional acquisition unit. Data is instead collected using the cloud connection, eliminating the need to install an external acquisition unit. 
+Cloud Insights collects data from ONTAP 9.9+ using a *cloud connection*, eliminating the need to install an external acquisition unit. Configuration of the cloud connection for the ONTAP 9.9+ data collector requires you to copy a *Pairing Code* to the ONTAP System Manager, which will then establish a connection to your Cloud Insights environment. 
 
 image:Cloud_Agent_DC.png[Cloud Agent Data Collector Configuration]
 
