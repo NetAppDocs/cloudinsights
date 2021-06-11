@@ -20,7 +20,7 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === June 2021
 
-Some of the new and exciting things we've been working on:
+//Some of the new and exciting things we've been working on:
 
 
 ////
@@ -37,13 +37,15 @@ See the link:task_create_monitor.html[Monitors] documentation for a list of the 
 ////
 
 
-==== Cloud Secure Snapshot Purge and Data Collection Speed
+==== Cloud Secure Snapshot Purge  
 
-Cloud Secure automatically deletes snapshots based on the Snapshot Purge Settings. Snapshot purge occurs once per day and only snapshots that age out are purged at that time.
+Cloud Secure automatically deletes snapshots based on the Snapshot Purge Settings, to save storage space and reduce the need for manual snapshots.
 
 image:CloudSecure_SnapshotPurgeSettings.png[Purge Settings]
 
-Additionally, a single data collector agent system can post up to 20,000 events per second to Cloud Secure.
+==== Cloud Secure Data Collection Speed
+
+A single data collector agent system can now post up to 20,000 events per second to Cloud Secure.
 
 
 === May 2021
