@@ -37,13 +37,17 @@ See the link:task_create_monitor.html[Monitors] documentation for a list of the 
 ////
 
 
-==== Cloud Secure Snapshot Purge  
+==== Cloud Secure snapshot purge  
 
-Cloud Secure automatically deletes snapshots based on the Snapshot Purge Settings, to save storage space and reduce the need for manual snapshots.
+Cloud Secure automatically deletes snapshots based on the Snapshot Purge Settings, to save storage space and reduce the need for manual snapshot deletion.
 
 image:CloudSecure_SnapshotPurgeSettings.png[Purge Settings]
 
-==== Cloud Secure Data Collection Speed
+==== Cloud Secure supports NFS
+
+Cloud Secure now supports NFS for ONTAP SVM data collection.
+
+==== Cloud Secure data collection speed
 
 A single data collector agent system can now post up to 20,000 events per second to Cloud Secure.
 
