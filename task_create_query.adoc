@@ -51,7 +51,7 @@ After you have configured your query to show you the results you want, you can c
 
 ==== Wildcards and Expressions
 
-When you are filtering for text or list values, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
+When you are filtering for text or list values in queries or dashboard widgets, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
 
 image:Type-Ahead-Example-ingest.png[Wildcard Filter]
 
@@ -59,7 +59,7 @@ Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display i
 
 image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
 
-Note that Wildcard and Expression filtering works with text or lists but not with numerics or dates.
+Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
 
 
 
