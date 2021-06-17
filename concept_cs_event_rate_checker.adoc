@@ -32,6 +32,17 @@ Steps:
 +
  /opt/netapp/cloudsecure/agent/install/svm_event_rate_checker.sh
  
+. This script requires _sshpass_ to be installed in the linux machine. There are two ways to install it: 
+
+.. Run the fiollowing command:
++
+ linux_prompt> yum install sshpass
+
+.. If that does not work, then download _sshpass_ to the linux machine from the web and run the following command:
++
+ linux_prompt> rpm -i sshpass
+
+ 
 .	Provide the correct values when prompted. See below for an example.
 
 .	The script will take approximately 5 minutes to run.
@@ -120,8 +131,8 @@ An example script run is shown below:
  Svm svm_rate is generating 100 SMB events/sec and 100 NFS events/sec 
  Overall svm svm_rate is generating 200 events/sec
  fpolicy stats of svm audit_svm is saved in fpolicy_stat_audit_svm.log
- Svm shails3 is generating 200 SMB events/sec and 100 NFS events/sec 
- Overall svm shails3 is generating 300 events/sec
+ Svm audit_svm is generating 200 SMB events/sec and 100 NFS events/sec 
+ Overall svm audit_svm is generating 300 events/sec
 
  [root@ci-cs-data agent]#
 
