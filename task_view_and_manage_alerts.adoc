@@ -54,3 +54,10 @@ The Alert Detail Page provides additional detail about the alert, including a _S
 
 image:alert_detail_page.png[Alert Detail Page] 
 
+
+=== "Permanently Active" Alerts
+
+It is possible to configure a monitor in such a way for the condition to *always* exist on the monitored object--for example, IOPS > 1 or latency > 0. These are often created as 'test' monitors and then forgotten. Such monitors create alerts that stay permanently open on the constituent objects, which can cause problems and stability issues in the overall product. 
+
+To prevent this, CLoud Insights will automatically close any "permanently active" alert after 7 days. Note that the underlying monitor conditions may (probably will) contibnue to exist, causing a new alert to be issued almost immediately, but this cycling of new alerts prevents some of the system stress that can occur.
+
