@@ -96,7 +96,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -role csrole -cmddirname volume -access readonly
  security login role create -role csrole -cmddirname vserver -access readonly
  security login role create -role csrole -cmddirname "vserver fpolicy" -access all
- security login role create -role csrole -cmddirname "volume snapshot" -access all
+ security login role create -role csrole -cmddirname "volume snapshot" -access all -query "-snapshot cloudsecure_*"
  security login role create -role csrole -cmddirname "event catalog" -access all
  security login role create -role csrole -cmddirname "event filter" -access all
  security login role create -role csrole -cmddirname "event notification destination" -access all

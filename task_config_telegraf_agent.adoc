@@ -447,7 +447,7 @@ If you have set your own namespace, substitute that namespace in these and all s
 You can use the following commands to stop and start the Telegraf service:
 
  kubectl --namespace ci-monitoring delete ds telegraf-ds
- kubectl --namespace ci-monitoring delete ds telegraf-rs
+ kubectl --namespace ci-monitoring delete rs telegraf-rs
  
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-ds.yaml 
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml
