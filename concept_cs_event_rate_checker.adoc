@@ -32,6 +32,17 @@ Steps:
 +
  /opt/netapp/cloudsecure/agent/install/svm_event_rate_checker.sh
  
+. This script requires _sshpass_ to be installed in the linux machine. There are two ways to install it: 
+
+.. Run the fiollowing command:
++
+ linux_prompt> yum install sshpass
+
+.. If that does not work, then download _sshpass_ to the linux machine from the web and run the following command:
++
+ linux_prompt> rpm -i sshpass
+
+ 
 .	Provide the correct values when prompted. See below for an example.
 
 .	The script will take approximately 5 minutes to run.
@@ -46,7 +57,16 @@ Steps:
 
 Keep the following in mind:
 
-A) A single Agent machine can handle upto 7000 events per second and maximum of 10 data collectors.
+A) A single Agent machine can handle the following:
+
+|===
+
+|Agent Machine Configuration |Number of SVM Data Collectors |Max event Rate which the Agent Machine can handle
+
+|4 core, 16GB	|10 data collectors	|20K events/sec
+|4 core, 32GB	|20 data collectors	|20K events/sec
+
+|===
 
 B) To calculate your total events, add the Events generated for all SVMs for that agent.
 
@@ -56,7 +76,7 @@ B + C Should be less than A, otherwise the Agent machine will fail to monitor.
 
 In other words, the number of data collectors which can be added to a single agent machine should comply to the formula below:
 
- Sum of all Event rate of all Data Source Collectors + Buffer Event rate of 30% < 7000 events/second
+ Sum of all Event rate of all Data Source Collectors + Buffer Event rate of 30% < 20000 events/second
 
 === Example
 
@@ -65,8 +85,7 @@ Let us say we have three SVMS generating event rates of 100, 200, and 300 events
 We apply the formula:
 
  (100+200+300) + [(100+200+300)*30%] = 600+180 = 780events/sec
-
-780 events/second is < 7000 events/second, so the 3 SVMs can be monitored via one agent box.
+780 events/second is < 20000 events/second, so the 3 SVMs can be monitored via one agent box.
 
 Console output is available in the Agent machine in the file name __fpolicy_stat_<SVM Name>.log__ in the present working directory. 
 
@@ -112,8 +131,8 @@ An example script run is shown below:
  Svm svm_rate is generating 100 SMB events/sec and 100 NFS events/sec 
  Overall svm svm_rate is generating 200 events/sec
  fpolicy stats of svm audit_svm is saved in fpolicy_stat_audit_svm.log
- Svm shails3 is generating 200 SMB events/sec and 100 NFS events/sec 
- Overall svm shails3 is generating 300 events/sec
+ Svm audit_svm is generating 200 SMB events/sec and 100 NFS events/sec 
+ Overall svm audit_svm is generating 300 events/sec
 
  [root@ci-cs-data agent]#
 
@@ -130,5 +149,13 @@ An example script run is shown below:
 
 |Question: If I increase the number of SVMs, will it increase the time of running of the script?
 |Answer: No. The script will run for a max of 5 minutes, even if the number of SVMs is increased.
+
+|Question: Can I increase the number of SVMs on which the script can be run?
+|Answer: Yes. You need to edit the script and change the max number of SVMs from 5 to any desirable number.
+
+|Question: If I increase the number of SVMs, will it increase the time of running of the script?
+|Answer: No. The script will run for a max of 5mins, even if the number of SVMs are increased.
+
+
 
 |===
