@@ -18,9 +18,79 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
-=== April 2021
+=== June 2021
 
-The Cloud Insights team has developed a wealth of new content in March. Here are some of the highlights we are super excited to show:
+//Some of the new and exciting things we've been working on:
+
+////
+==== ONTAP System Monitors
+
+Cloud Insights now includes the following ONTAP monitors, in the noted monitor groups:
+
+•	*ONTAP Infrastructure* includes monitors for infrastructure-related issues in ONTAP clusters. 
+•	*ONTAP Workload Examples* includes monitors for workload-related issues. 
+
+image:Monitors_Custom_System.png[Syetem Monitor Groups]
+
+See the link:task_create_monitor.html[Monitors] documentation for a list of the dashboards included in each group.
+////
+
+==== Cloud Secure supports NFS
+
+Cloud Secure now supports NFS for ONTAP data collection. Monitor SMB and NFS user access to protect your data from ransomware attacks. 
+Additionally, Cloud Secure supports Active-Directory and LDAP user directories for collection of NFS user attributes.
+
+==== Cloud Secure snapshot purge  
+
+Cloud Secure automatically deletes snapshots based on the Snapshot Purge Settings, to save storage space and reduce the need for manual snapshot deletion.
+
+image:CloudSecure_SnapshotPurgeSettings.png[Purge Settings]
+
+==== Cloud Secure data collection speed
+
+A single data collector agent system can now post up to 20,000 events per second to Cloud Secure.
+
+
+
+=== May 2021
+
+Here are some of the changes we've made in April:
+
+==== Updated Telegraf Agent
+
+The agent for ingestion of telegraf integration data has been updated to version 1.17.3, with performance and security improvements.
+Users wishing to update can refer to the appropriate upgrade section of the link:https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent.html[Agent Installation] documentation.
+Previous versions of the agent will continue to function with no user action required.
+
+
+==== Add Corrective Actions to an Alert
+
+You can now add an optional description as well as additional insights and/or corrective actions when creating or modifying a Monitor by filling in the *Add an Alert Description* section. The description will be sent with the alert. The _insights and corrective actions_ field can provide detailed steps and guidance for dealing with alerts and will be displayed in the summary section of the alert landing page.
+
+image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
+
+==== Cloud Insights APIs for All Editions
+
+API access is now available in all editions of Cloud Insights.
+Users of Basic edition can now automate actions for Acquisition Units and Data Collectors, and Standard Edition users can query metrics and ingest custom metrics.
+Premium edition continues to allow full use of all API categories.
+
+[cols="<,^s,^s,^s"]
+|===
+|API Category|Basic|Standard|Premium
+
+|Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+//|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Warehouse| | |image:SmallCheckMark.png[]
+
+|===
+
+For details on API usage, please refer to the link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-documentation-swagger[API documentation]. 
+
+=== April 2021
 
 ==== Easier Management of Monitors
 
