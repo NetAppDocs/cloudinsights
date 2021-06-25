@@ -20,26 +20,6 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === June 2021
 
-==== Kubernetes PV and Pod Visibility
-
-Cloud Insights provides visibility into the back-end storage for your Kubernetes environments, giving you insight to your Kubernetes Pods and Persistent Volumes (PVs). You can now track PV counters such as IOPS, latency, and throughput from a single Pod’s usage through a PV counter to a PV and all the way to the back-end storage device. 
-
-On a Volume or Internal Volume landing page, two new tables are displayed:
-
-image:Kubernetes_PV_Table.png[Kubernetes PV Table]
-image:Kubernetes_Pod_Table.png[Kubernetes Pod Table]
-
-Note that to take advantage of these new tables, it is recommended to uninstall your current Kubernetes agent, and install it fresh. You must also install Kube-State-Metrics version 2.1.0 or later.
-
-==== Kubernetes Node to VM links
-
-On a Kubernetes Node page, you can now click to open the Node's VM page. The VM page also includes a link back to the Node itself.
-
-image:Kubernetes_Node_Page_with_VM_Link.png[Kubernetes Node Page showing VM link]
-image:Kubernetes_VM_Page_with_Node_Link.png[Kubernetes VM Page showing Node link]
-
-
-
 
 //Some of the new and exciting things we've been working on:
 
