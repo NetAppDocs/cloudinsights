@@ -20,18 +20,35 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === June 2021
 
-==== Autocomplete Suggestions, Wildcards, and Expressions in Filters
+//Some of the new and exciting things we've been working on:
 
-With this release of Cloud Insights, you no longer need to know all the possible names and values on which to filter in a query or widget. When filtering, you can simply start typing and Cloud insights will suggest values based on your text. No more looking up Application names or Kubernetes attributes ahead of time just to find the ones you want to show in your widget.
+////
+==== ONTAP System Monitors
 
-As you type in a filter, the filter displays a smart list of results from which you can choose, as well as the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can of course also select multiple individual values that you want added to the filter.
+Cloud Insights now includes the following ONTAP monitors, in the noted monitor groups:
 
-image:Type-Ahead-Example-ingest.png[Wildcard Filter]
+•	*ONTAP Infrastructure* includes monitors for infrastructure-related issues in ONTAP clusters. 
+•	*ONTAP Workload Examples* includes monitors for workload-related issues. 
 
-Additionally, you can create *expressions* in a filter using NOT or OR, or you can select the "None" option to filter for null values in the field. 
+image:Monitors_Custom_System.png[Syetem Monitor Groups]
 
-Read more about link:task_create_query.html#more-on-filtering[filtering options] in queries and widgets.
+See the link:task_create_monitor.html[Monitors] documentation for a list of the dashboards included in each group.
+////
 
+==== Cloud Secure supports NFS
+
+Cloud Secure now supports NFS for ONTAP data collection. Monitor SMB and NFS user access to protect your data from ransomware attacks. 
+Additionally, Cloud Secure supports Active-Directory and LDAP user directories for collection of NFS user attributes.
+
+==== Cloud Secure snapshot purge  
+
+Cloud Secure automatically deletes snapshots based on the Snapshot Purge Settings, to save storage space and reduce the need for manual snapshot deletion.
+
+image:CloudSecure_SnapshotPurgeSettings.png[Purge Settings]
+
+==== Cloud Secure data collection speed
+
+A single data collector agent system can now post up to 20,000 events per second to Cloud Secure.
 
 
 
