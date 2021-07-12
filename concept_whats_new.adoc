@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: concept_whats_new.html
-summary: New features and functionlity in Cloud Insights. 
+summary: New features and functionality available in Cloud Insights. 
 keywords: features
 ---
 
@@ -18,9 +18,132 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.
 
-=== April 2021
+=== June 2021
 
-The Cloud Insights team has developed a wealth of new content in March. Here are some of the highlights we are super excited to show:
+==== Autocomplete Suggestions, Wildcards, and Expressions in Filters
+
+With this release of Cloud Insights, you no longer need to know all the possible names and values on which to filter in a query or widget. When filtering, you can simply start typing and Cloud insights will suggest values based on your text. No more looking up Application names or Kubernetes attributes ahead of time just to find the ones you want to show in your widget.
+
+As you type in a filter, the filter displays a smart list of results from which you can choose, as well as the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can of course also select multiple individual values that you want added to the filter.
+
+image:Type-Ahead-Example-ingest.png[Wildcard Filter]
+
+Additionally, you can create *expressions* in a filter using NOT or OR, or you can select the "None" option to filter for null values in the field. 
+
+Read more about link:task_create_query.html#more-on-filtering[filtering options] in queries and widgets.
+
+==== APIs available by Edition
+
+Cloud Insights' powerful APIs are more accessible than ever, with Alerts APIs now available in Standard and Premium Editions.  
+The following APIs are available for each Edition:
+
+[cols="<,^s,^s,^s"]
+|===
+|API Category|Basic|Standard|Premium
+
+|Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Warehouse| | |image:SmallCheckMark.png[]
+
+|===
+
+==== Kubernetes PV and Pod Visibility
+
+Cloud Insights provides visibility into the back-end storage for your Kubernetes environments, giving you insight to your Kubernetes Pods and Persistent Volumes (PVs). You can now track PV counters such as IOPS, latency, and throughput from a single Pod’s usage through a PV counter to a PV and all the way to the back-end storage device. 
+
+On a Volume or Internal Volume landing page, two new tables are displayed:
+
+image:Kubernetes_PV_Table.png[Kubernetes PV Table]
+image:Kubernetes_Pod_Table.png[Kubernetes Pod Table]
+
+Note that to take advantage of these new tables, it is recommended to uninstall your current Kubernetes agent, and install it fresh. You must also install Kube-State-Metrics version 2.1.0 or later.
+
+==== Kubernetes Node to VM links
+
+On a Kubernetes Node page, you can now click to open the Node's VM page. The VM page also includes a link back to the Node itself.
+
+image:Kubernetes_Node_Page_with_VM_Link.png[Kubernetes Node Page showing VM link]
+image:Kubernetes_VM_Page_with_Node_Link.png[Kubernetes VM Page showing Node link]
+
+==== Alert Monitors replacing Performance Policies
+
+To enable the added benefits of multiple thresholds, webhook and email alert delivery, alerting on all metrics using a single interface, and more, Cloud Insights will be converting Standard and Premium Edition customers from *Performance Policies* to *Monitors* during the months of July and August, 2021. Learn more about link:https://docs.netapp.com/us-en/cloudinsights/task_create_monitor.html[Alerts and Monitors], and stay tuned for this exciting change.
+
+
+//Some of the new and exciting things we've been working on:
+
+////
+==== ONTAP System Monitors
+
+Cloud Insights now includes the following ONTAP monitors, in the noted monitor groups:
+
+•	*ONTAP Infrastructure* includes monitors for infrastructure-related issues in ONTAP clusters. 
+•	*ONTAP Workload Examples* includes monitors for workload-related issues. 
+
+image:Monitors_Custom_System.png[Syetem Monitor Groups]
+
+See the link:task_create_monitor.html[Monitors] documentation for a list of the dashboards included in each group.
+////
+
+==== Cloud Secure supports NFS
+
+Cloud Secure now supports NFS for ONTAP data collection. Monitor SMB and NFS user access to protect your data from ransomware attacks. 
+Additionally, Cloud Secure supports Active-Directory and LDAP user directories for collection of NFS user attributes.
+
+==== Cloud Secure snapshot purge  
+
+Cloud Secure automatically deletes snapshots based on the Snapshot Purge Settings, to save storage space and reduce the need for manual snapshot deletion.
+
+image:CloudSecure_SnapshotPurgeSettings.png[Purge Settings]
+
+==== Cloud Secure data collection speed
+
+A single data collector agent system can now post up to 20,000 events per second to Cloud Secure.
+
+
+
+=== May 2021
+
+Here are some of the changes we've made in April:
+
+==== Updated Telegraf Agent
+
+The agent for ingestion of telegraf integration data has been updated to version 1.17.3, with performance and security improvements.
+Users wishing to update can refer to the appropriate upgrade section of the link:https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent.html[Agent Installation] documentation.
+Previous versions of the agent will continue to function with no user action required.
+
+
+==== Add Corrective Actions to an Alert
+
+You can now add an optional description as well as additional insights and/or corrective actions when creating or modifying a Monitor by filling in the *Add an Alert Description* section. The description will be sent with the alert. The _insights and corrective actions_ field can provide detailed steps and guidance for dealing with alerts and will be displayed in the summary section of the alert landing page.
+
+image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
+
+==== Cloud Insights APIs for All Editions
+
+API access is now available in all editions of Cloud Insights.
+Users of Basic edition can now automate actions for Acquisition Units and Data Collectors, and Standard Edition users can query metrics and ingest custom metrics.
+Premium edition continues to allow full use of all API categories.
+
+[cols="<,^s,^s,^s"]
+|===
+|API Category|Basic|Standard|Premium
+
+|Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+//|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Warehouse| | |image:SmallCheckMark.png[]
+
+|===
+
+For details on API usage, please refer to the link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-documentation-swagger[API documentation]. 
+
+=== April 2021
 
 ==== Easier Management of Monitors
 
