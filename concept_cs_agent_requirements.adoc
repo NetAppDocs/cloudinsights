@@ -5,7 +5,7 @@ summary: The server or VM you use as your Agent must meet minimum requirements
 keywords: agent, Linux, requirements, docker, browsers, permissions, Network
 ---
 
-= Agent Requirements 
+= Agent Requirements
 
 :toc: macro
 :hardbreaks:
@@ -106,6 +106,20 @@ For *Europe-based* Cloud Secure environments:
 |Outbound|Access to Cloud Insights
 |TCP|443|gateway.c01.cloudinsights.netapp.com
 agentlogin.cs01-eu-1.cloudinsights.netapp.com
+|Outbound|Access to authentication services
+|===
+
+For *APAC-based* Cloud Secure environments:
+
+[cols=5*,options="header"]
+|===
+|Protocol|Port|	Destination	|Direction|	Description
+|TCP|443|<site_name>.cs01-ap-1.cloudinsights.netapp.com
+<site_name>.c01-ap-1.cloudinsights.netapp.com
+<site_name>.c02-ap-1.cloudinsights.netapp.com
+|Outbound|Access to Cloud Insights
+|TCP|443|gateway.c01.cloudinsights.netapp.com
+agentlogin.cs01-ap-1.cloudinsights.netapp.com
 |Outbound|Access to authentication services
 |===
 
