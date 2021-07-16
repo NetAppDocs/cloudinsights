@@ -443,12 +443,11 @@ image:Variables_Drop-Down.png[Variable Types]
 
 ==== "Attribute" type variables
 
-Selecting an Attribute type variable allows you to filter for widget data containing the specified attribute value or values.  The example below shows a line widget displaying free memory trends for Agent nodes. 
+Selecting an Attribute type variable allows you to filter for widget data containing the specified attribute value or values.  The example below shows a line widget displaying free memory trends for Agent nodes. We have created a variable for Agent Node IPs, currently set to show all IPs:
 
 image:Variables_Node_Example_Before_Variable_Applied.png[Agent Nodes Before Variable Filter]
 
-
-But if you temporarily want to see only nodes on individual subnets in your environment, you can add a variable for Agent Node IP. here you can view only the node opn the "123" subnet:
+But if you temporarily want to see only nodes on individual subnets in your environment, you can set the variable for a specific Agent Node IP. Here we are viewing only the nodes on the "123" subnet:
 
 image:Variables_Node_Example_Before_Variable_Applied.png[Agent Nodes Before Variable Filter]
 
