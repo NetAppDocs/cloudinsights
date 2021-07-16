@@ -91,7 +91,7 @@ You should also ensure that write permission to the ONTAP API is enabled. This t
 
 To create a local account for Cloud Insights at the cluster level, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
 
-. Create a read-only role using the following two commands.
+. Create a read-only role using the following commands.
 
  security login role create -role oci_readonly -cmddirname DEFAULT -access readonly
  security login role create -role oci_readonly -cmddirname security -access readonly
