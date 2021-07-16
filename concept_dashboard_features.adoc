@@ -453,6 +453,13 @@ image:Variables_Node_Example_After_Variable_Applied.png[Agent Nodes After Variab
 
 Applying variables is as easy as changing the attribute data of your choice.
 
+==== Setting a non-attribute variable
+
+You can create generic variables that are not associated with a particular attribute bu selecting a variable type of _Text_, _Number_, _Boolean_, or _Date_. Once the variable has been created, you can select it in a widget filter field. When setting a filter in a widget, in addition to specific values that you can select for the filter, any variables that have been created for the dashboard are displayed in the list. Choosing a variable in this filter will allow you to search for values you enter in the variable field on the dashboard itself. Any widgets using that variable in a filter will be updated dynamically.
+
+image:Variables_in_a_Widget_Filter.png[Selecting a variable in a widget]
+
+
 ==== Variable filter scope
 
 Additionally, you can choose the scope to which the variable is applied in your dashboard. For most attributes, you can choose from among the following:
@@ -480,6 +487,8 @@ Because generic variables can be used for any field of that type, you can change
 
 Note: All variables are treated as "generic" variables, even those you create for a specific attribute, because all configured variables of a type are shown when you set a filter for any attributes or annotations of that type. However, best practice is to create a generic variable when you will use it to filter for a value across multiple fields, as in the Name/Alias/Vendor example above.
 ////
+
+
 
 ==== Variable naming
 
