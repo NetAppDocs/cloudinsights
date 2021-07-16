@@ -390,6 +390,7 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 
 Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting one or more widgets to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
 
+////
 .Before you begin
 The example below requires the *City* annotation (also called City attribute) to be set on multiple storage assets. For best results, set different cities on different storages. See the link:https://docs.netapp.com/us-en/cloudinsights/task_defining_annotations.html[Annotations] topics for more information on using annotations.
 
@@ -419,8 +420,11 @@ The _$city_ choice only appears here if it was defined previously on the main da
 Your table widget updates to show only the cities you selected. You can change the values in the _$city_ variable at will, and all widgets on your dashboard that are set to use the $city variable will refresh automatically to show only data for the values you selected.
 
 Be sure to *Save* your dashboard when you have it configured as you want it.
+////
 
-=== More on dashboard variables
+
+//=== More on dashboard variables
+
 Dashboard variables come in several types, can be used across different fields, and must follow rules for naming. These concepts are explained here.
 
 ==== Variable types
