@@ -386,6 +386,8 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 . Click *Save* to save the chart to your dashboard.
 
 
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 == Variables
 
 Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting one or more widgets to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
@@ -439,10 +441,28 @@ A variable can be one the following types:
 
 image:Variables_Drop-Down.png[Variable Types]
 
+==== "Attribute" type variables
+
+Selecting an Attribute type variable allows you to filter for widget data containing the specified attribute value or values.  The example below shows a line widget displaying free memory trends for Agent nodes. 
+
+image:Variables_Node_Example_Before_Variable_Applied.png[Agent Nodea Before Variable Filter]
+
+
+But if you temporarily want to see only nodes on individual subnets in your environment, you can add a variable for Agent Node IP. here you can view only the node opn the "123" subnet:
+
+image:Variables_Node_Example_Before_Variable_Applied.png[Agent Nodea Before Variable Filter]
+
+Applying variables is as easy as changing the attribute data of your choice.
+
+
+
+////
 ==== "Generic" variables
 
-You can set a generic or universal variable by clicking the *Add Variable* button and selecting one of the types listed above. These types are always shown at the top of the drop-down list. The variable is given a default name, for example "$var1", and is not tied to a specific annotation or attribute.
+You can set a generic or universal variable by clicking the *Add Variable* button and selecting 'text',' or 'number' variable type. The variable is assigned a default name, for example "$var1", and is not tied to a specific annotation or attribute. In other words, searching for a number or phrase in this variable applies to _all_ fields in any widget using this variable.
+////
 
+////
 Configuring a generic variable allows you to use that variable in widgets to filter for any field of that type. For example, if you have a table widget showing Name, Alias, and Vendor (which are all text-type attributes), and "$var1" is a text-type variable, you can set filters for each of those fields in the widget to use the $var1 variable. You can set other widgets to use $var1 for those or any text fields.
 
 On your dashboard page, setting $var1 to a value (for example "NetApp") will filter all of those fields in all widgets that are set to use that variable. In this way, you can update multiple widgets at once to highlight dashboard data you choose at will.
@@ -450,6 +470,7 @@ On your dashboard page, setting $var1 to a value (for example "NetApp") will fil
 Because generic variables can be used for any field of that type, you can change the name of a generic variable without changing its functionality.
 
 Note: All variables are treated as "generic" variables, even those you create for a specific attribute, because all configured variables of a type are shown when you set a filter for any attributes or annotations of that type. However, best practice is to create a generic variable when you will use it to filter for a value across multiple fields, as in the Name/Alias/Vendor example above.
+////
 
 ==== Variable naming
 
