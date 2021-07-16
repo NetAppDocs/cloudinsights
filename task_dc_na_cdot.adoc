@@ -51,7 +51,7 @@ The following terms apply to objects or references that you might find on ONTAP 
 * Throughput – aggregated from internal volumes.
 Management – this may contain a hyperlink for the management interface of the device. Created programmatically by the Cloud Insights data source as part of inventory reporting.
 
-=== Storage Pool
+=== ONTAP Data Management Storage Pool
 
 * Storage – what storage array this pool lives on. Mandatory.
 * Type – a descriptive value from a list of an enumerated list of possibilities. Most commonly will be “Aggregate” or “RAID Group””.
@@ -65,7 +65,7 @@ Management – this may contain a hyperlink for the management interface of the 
 * IOPS – the sum IOPs of all the disks contributing capacity to this storage pool.
 Throughput – the sum throughput of all the disks contributing capacity to this storage pool.
 
-=== Storage Node
+=== ONTAP Data Management Storage Node
 
 * Storage – what storage array this node is part of. Mandatory.
 * HA Partner – on platforms where a node will fail over to one and only one other node, it will generally be seen here.
