@@ -664,26 +664,26 @@ Some things to try if you encounter problems setting up an agent:
 
 E0901 15:21:39.962145 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.MutatingWebhookConfiguration: the server could not find the requested resource
 E0901 15:21:43.168161 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.Lease: the server could not find the requested resource (get leases.coordination.k8s.io)
-E0901 15:22:09.827927 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.ValidatingWebhookConfiguration: the server could not find the requested resource
-E0901 15:22:10.894959 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.VolumeAttachment: the server could not find the requested resource
+etc.
+
 |These messages may occur if your kube-state-metrics version is higher than your kubernetes version. For example, running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17. 
 
-to get Kubernetes version:
+to get the Kubernetes version:
 
 _kubectl version_
 
-
-to get kube-state-metrics version:
+to get the kube-state-metrics version:
 
 _kubectl get deploy/kube-state-metrics -o jsonpath='{..image}'_
 
-To prevent these from happening, users can modify their kube-state-metrics deployment to disable the leases _mutatingwebhookconfigurations_, _validatingwebhookconfigurations_, and _volumeattachments resources_. More specifically, they can use the following CLI argument:
+To prevent these messages from happening, users can modify their kube-state-metrics deployment to disable the leases _mutatingwebhookconfigurations_, _validatingwebhookconfigurations_, and _volumeattachments resources_. More specifically, they can use the following CLI argument:
 
 resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,limitranges,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses
 
 The default resource list is:
 
 "certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments"
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
