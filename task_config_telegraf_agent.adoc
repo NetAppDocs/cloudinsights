@@ -653,9 +653,37 @@ Some things to try if you encounter problems setting up an agent:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
+
 |I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. 
+
 |I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
+
 |I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.|Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent.
+
+|I'm seeing messages in the logs resembling the following:
+
+E0901 15:21:39.962145 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.MutatingWebhookConfiguration: the server could not find the requested resource
+E0901 15:21:43.168161 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.Lease: the server could not find the requested resource (get leases.coordination.k8s.io)
+E0901 15:22:09.827927 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.ValidatingWebhookConfiguration: the server could not find the requested resource
+E0901 15:22:10.894959 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.VolumeAttachment: the server could not find the requested resource
+|These messages may occur if your kube-state-metrics version is higher than your kubernetes version. For example, running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17. 
+
+to get Kubernetes version:
+
+_kubectl version_
+
+
+to get kube-state-metrics version:
+
+_kubectl get deploy/kube-state-metrics -o jsonpath='{..image}'_
+
+To prevent these from happening, users can modify their kube-state-metrics deployment to disable the leases _mutatingwebhookconfigurations_, _validatingwebhookconfigurations_, and _volumeattachments resources_. More specifically, they can use the following CLI argument:
+
+resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,limitranges,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses
+
+The default resource list is:
+
+"certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments"
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
