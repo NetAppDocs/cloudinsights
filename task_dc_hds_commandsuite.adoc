@@ -38,6 +38,44 @@ Cloud Insights acquires the following inventory information from the Hitachi Van
 
 Note: These are common terminology mappings only and might not represent every case for this data collector. 
 
+=== HDS Command Suite Storage
+
+The following terms apply to objects or references that you might find on HDS storage asset landing pages. Many of these terms apply to other data collectors as well.
+
+* Name – comes directly from HDS HiCommand Device Manager’s “name” attribute via the GetStorageArray XML API call
+* Model - comes directly from HDS HiCommand Device Manager’s “arrayType” attribute via the GetStorageArray XML API call
+* Vendor – HDS
+* Family - comes directly from HDS HiCommand Device Manager’s “arrayFamily” attribute via the GetStorageArray XML API call
+* IP – this is the management IP address of the array, not an exhaustive list of all IP addresses on the array
+* Raw Capacity – a base2 value representing the sum of the total capacity of all disks in this system, regardless of disk role.
+
+=== HDS Command Suite Storage Pool
+
+The following terms apply to objects or references that you might find on HDS storage pool asset landing pages. Many of these terms apply to other data collectors as well.
+
+* Type: The value here will be one of:
+** RESERVED – if this pool is dedicated for purposes other than data volumes, i.e, journaling, snapshots
+** Thin Provisioning – if this is a HDP pool
+** Raid Group – you will not likely see these for a few reasons:
++
+Cloud Insights takes a strong stance to avoid double counting capacity at all costs. On HDS, one typically needs to build Raid Groups from disks, create pool volumes on those Raid Groups, and construct pools (often HDP, but could be special purpose) from those pool volumes. If Cloud Insights reported both the underlying Raid Groups as is, as well as the Pools, the sum of their raw capacity would vastly exceed the sum of the disks.
++
+Instead, Cloud Insights’ HDS Command Suite data collector arbitrarily shrinks the size of Raid Groups by the capacity of pool volumes. This may result in Cloud Insights not reporting the Raid Group at all. Additionally, any resulting Raid Groups are flagged in a way such that they are not visible in the Cloud Insights WebUI, but they do flow into the Cloud Insights Data Warehouse (DWH). The purpose of these decisions is to avoid UI clutter for things that most users do not care about – if your HDS array has Raid Groups with 50MB free, you probably cannot use that free space for any meaningful outcome.
+
+* Node - N/A, as HDS pools are not tied to any one specific node
+* Redundancy - the RAID level of the pool. Possibly multiple values for a HDP pool comprised of multiple RAID types
+* Capacity % - the percent used of the pool for data usage, with the used GB and total logical GB size of the pool
+* Over-committed Capacity - a derived value, stating “the logical capacity of this pool is oversubscribed by this percentage by virtue of the sum of the logical volumes exceeding the logical capacity of the pool by this percentage”
+* Snapshot - shows the capacity reserved for snapshot usage on this pool
+
+=== HDS Command Suite Storage Node
+
+The following terms apply to objects or references that you might find on HDS storage node asset landing pages. Many of these terms apply to other data collectors as well.
+
+* Name – The name of the Front-end director (FED) or Channel Adapter on monolithic arrays, or the name of the controller on a modular array. A given HDS array will have 2 or more Storage Nodes
+* Volumes – The Volume table will show any volume mapped to any port owned by this storage node
+
+
 == Inventory Requirements
 
 You must have the following in order to collect inventory data:
@@ -103,7 +141,7 @@ Note: In HDS USP, USP V, and VSP, any disk can belong to more than one array gro
 //|HTTPs Enabled|Select to enable HTTPs
 |Inventory Poll Interval (min)|	Interval between inventory polls. The default is 40.  
 |Choose 'Exclude' or 'Include' to specify a list|Specify whether to include or exclude the array list below when collecting data.
-|Filter device List|Comma-separated list of device ID's or array names to include or exclude
+|Filter device List|Comma-separated list of device serial numbers to include or exclude
 //|Query Host Manager|Select to query host manager
 //|HTTP Timeout (sec)|HTTP connection timeout The default is 60. 
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300.

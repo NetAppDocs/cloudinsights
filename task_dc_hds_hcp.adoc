@@ -29,7 +29,7 @@ Cloud Insights acquires the following inventory information from the Hitachi HCP
 |===
 |Vendor/Model Term|Cloud Insights Term 
 |HCP Cluster|Storage
-|Tenant Storage Pool|
+|Tenant |Storage Pool|
 |Namespace|Internal Volume
 |Node|Node
 |===
@@ -68,8 +68,8 @@ The following requirements must be met in order to collect performance data:
 |HCP Host|IP address or fully-qualified domain name of the HCP host 
 |HCP Port|Default is 9090
 |HCP User ID |User name for the HCP host. 
-|HCPPassword|Password used for the HCP host. 
-|HCP Authentication Type|CHoost HCP_LOCAL or ACTIVE_DIRECTORY
+|HCP Password|Password used for the HCP host. 
+|HCP Authentication Type|Choose HCP_LOCAL or ACTIVE_DIRECTORY
 |===
 
 == Advanced configuration
