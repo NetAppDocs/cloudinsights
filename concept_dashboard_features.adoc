@@ -507,9 +507,9 @@ Variables names:
 * Cannot be the same as an existing variable name.
 * Cannot be empty.
 
+////
 ==== Widgets that use variables
 
-////
 Variables can be used with the following widgets:
 
 * Area Chart
@@ -524,6 +524,7 @@ Variables can be used with the following widgets:
 * Pie Chart
 ////
 
+////
 === Understanding "$this" variables
 
 Special variables on an asset's landing page allow you to easily showcase additional information that is directly related to the current asset. These special variables have names beginning with '$this".
@@ -558,6 +559,7 @@ The table now shows all the VM's hosted by the current VM's hypervisor.
 The table that you created for this VM asset page will be displayed for any VM asset page you display. The use of the _$this.host.name_ variable in the widget means that only the VM's owned by the _current assets's_ hypervisor will be displayed in the table.
 
 You can also apply link:concept_in_context_filters.html[*in-context filters*] to asset page widgets to accomplish a similar result.
+////
 
 ////
 == Duplicating a Dashboard
