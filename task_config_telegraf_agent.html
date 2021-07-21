@@ -1,0 +1,3296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Configuring an Agent to Collect Data | NetApp Cloud Docs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Configuring an Agent to Collect Data | NetApp Cloud Docs" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent.html" />
+	<meta property="og:description" content="Cloud Insights supports link:https://docs.influxdata.com/telegraf/v1.14/[Telegraf] as its agent for collection of integration data and can be configured on W..." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/cloudinsights/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="Cloud Insights supports link:https://docs.influxdata.com/telegraf/v1.14/[Telegraf] as its agent for collection of integration data and can be configured on W...">
+  <meta name="keywords" content=" telegraf, installation, install, agent, telegraf agent">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/us-en/cloudinsights/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+  <link rel="alternate" type="application/rss+xml" title="NetApp Cloud Docs" href="/us-en/cloudinsights/feed.xml">
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloudinsights/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/us-en/cloudinsights/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloudinsights/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloudinsights/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/us-en/cloudinsights/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/us-en/cloudinsights/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/us-en/cloudinsights/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/us-en/cloudinsights/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/us-en/cloudinsights/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/us-en/cloudinsights/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloudinsights/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloudinsights/css/na-pagenav.css' type='text/css'>
+
+  
+
+  
+  <link rel='stylesheet' href='/us-en/cloudinsights/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/us-en/cloudinsights/js/na-search.js'></script>
+  
+
+  
+  <script src='/us-en/cloudinsights/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/us-en/cloudinsights/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloudinsights/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/us-en/cloudinsights/js/na-utility.js'></script>
+  <script src='/us-en/cloudinsights/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/us-en/cloudinsights/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/us-en/cloudinsights/js/toc.js'></script>
+  <script src='/us-en/cloudinsights/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Product and Solutions</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Support and Training</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Community</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Customer Stories</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" data-type="widget" data-placeholder="Search Documentation" data-no-results-found="No results were found for {query}" data-did-you-mean="Search for {suggestion}." data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?" data-results-found="{hitCount} results found"  ></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar"><!-- Start Language Selector --><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+        <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">Home</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">Documentation</a>
+        </li>
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud/">Cloud Docs</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/us-en/cloudinsights/">Cloud&nbsp;Insights</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Configuring an Agent to Collect Data
+        </li>
+      </ul>
+    </div>
+
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" >
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">PDFs<span>
+    </span>
+  </a>
+</div>
+<ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><div class="n-pdf-section">
+      <span class="n-pdf-section-title">Site</span>
+    </div>
+    <li>
+      <a target="_blank" href="/us-en/cloudinsights/pdfs/fullsite-sidebar/Cloud_Insights_documentation.pdf" >
+        <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+        Cloud Insights documentation
+      </a>
+    </li>
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Security.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Security
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Getting_Started.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Getting Started
+          </a>
+        </li>
+        <span>
+          
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Collecting_Data.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Collecting Data
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+    <div class="n-pdf-section">
+  <span class="n-pdf-section-title">This page</span>
+</div>
+
+<li class="active">
+  <a target="_blank" href="/us-en/cloudinsights/pdfs/pages/task_config_telegraf_agent.pdf" >
+    <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+    Configuring an Agent to Collect Data
+  </a>
+</li>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Automatic_Device_Resolution.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Automatic Device Resolution
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Creating_Dashboards.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Creating Dashboards
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Sample_Dashboards.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Sample Dashboards
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Kubernetes_Explorer.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Kubernetes Explorer
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Working_with_Queries.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Working with Queries
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Working_with_Annotations.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Working with Annotations
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Working_with_Applications.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Working with Applications
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Monitors_and_Alerts.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Monitors and Alerts
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Performance_Policies_and_Alerts.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Performance Policies and Alerts
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Monitoring_your_Environment.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Monitoring your Environment
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Asset_Page_Information.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Asset Page Information
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Reporting.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Reporting
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Cloud_Secure.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Cloud Secure
+          </a>
+        </li>
+        <span>
+          
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Getting_Started.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Getting Started
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Forensics.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Forensics
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Troubleshooting.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Troubleshooting
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Reference___Support.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Reference & Support
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Data_Collector_Reference___Infrastructure.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Data Collector Reference - Infrastructure
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Broadcom.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Broadcom
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Dell.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Dell
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Dell_EMC.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Dell EMC
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/HP_Enterprise.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            HP Enterprise
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Hitachi_Data_Systems.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Hitachi Data Systems
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/IBM.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            IBM
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Microsoft.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Microsoft
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/NetApp.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            NetApp
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Data_Collector_Reference___Services.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Data Collector Reference - Services
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+</ul>
+
+<script>
+  $("#toggleContainerPdf li.active").parents('li').toggle('display');
+  $("#toggleContainerPdf li.active").parents('span.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+  });
+</script><ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="index.html">
+        Cloud Insights documentation
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_whats_new.html">
+        What's New
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_cloud_insights_onboarding_1.html">
+        Signing Up for Cloud Insights
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Security</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="security_overview.html">
+        Security Practices
+      </a></li><li class=" "><a class="na-navbar-padding" href="security_information_and_region.html">
+        What We Store, and Where
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Getting Started</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_feature_tutorials.html">
+        Feature Tutorials
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Collecting Data</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_getting_started_with_cloud_insights.html">
+        Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_acquisition_unit_requirements.html">
+        Acquisition Unit Requirements
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_configure_acquisition_unit.html">
+        Configuring an Acquisition Unit
+      </a></li><li class="  active "><a class="na-navbar-padding" href="task_config_telegraf_agent.html">
+        Configuring an Agent
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_configure_data_collectors.html">
+        Configuring Data Collectors
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_determining_data_collector_acq_status.html">
+        Determining Data Collector Acquisition Status
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_view_configured_data_collectors.html">
+        Manage Configured Data Collectors
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_research_failed_collector.html">
+        Research data collector errors
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="concept_import_from_dashboard_gallery.html">
+        Importing Recommended Dashboards
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_user_roles.html">
+        User Accounts and Roles
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_other_cloud_products.html">
+        Switching to Other Cloud Central Products
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="data_collector_list.html">
+        Data Collector List
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_subscribing_to_cloud_insights.html">
+        Subscribing to Cloud Insights
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Automatic Device Resolution</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_device_resolution_overview.html">
+        Device Resolution Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_device_resolution_rules.html">
+        Device Resolution Rules
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_device_resolution_fibre_channel.html">
+        Fibre Channel Device Resolution
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_device_resolution_ip.html">
+        IP Device Resolution
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_device_resolution_preferences.html">
+        Setting Device Resolution Preferences
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_device_resolution_regex_examples.html">
+        Regular expression examples
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Creating Dashboards</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_dashboards_overview.html">
+        Dashboard Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_dashboard_features.html">
+        Features of Dashboards
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Sample Dashboards</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dashboard_example_VM_performance.html">
+        Virtual Machine Performance
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="concept_dashboard_best_practices.html">
+        Dashboard Best Practices
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Kubernetes Explorer</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="kubernetes_landing_page.html">
+        Kubernetes Overview Page
+      </a></li><li class=" "><a class="na-navbar-padding" href="kubernetes_cluster_detail.html">
+        Kubernetes Cluster Page
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Working with Queries</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_querying_assets.html">
+        Querying Assets
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_create_query.html">
+        Creating a Query
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_view_queries.html">
+        Viewing Available Queries
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_export_query_results.html">
+        Exporting Query Results to .CSV
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_modify_delete_query.html">
+        Modifying or Deleting a Query
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_query_assign_multiple_applicationss.html">
+        Assigning Multiple Applications/annotations to Objects
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_query_copy_table_values.html">
+        Copying table values to the Clipboard
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Working with Annotations</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_defining_annotations.html">
+        Defining Annotations
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_create_annotation.html">
+        Using Annotations
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_create_annotation_rules.html">
+        Using Annotation Rules
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_annotation_import.html">
+        Importing Annotations with API
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Working with Applications</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_about_applications.html">
+        Application Concepts
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_create_application.html">
+        Configuring Applications
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Monitors and Alerts</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_create_monitor.html">
+        Creating Monitors
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_view_and_manage_alerts.html">
+        Viewing and Managing Alerts
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_notifications_email.html">
+        Configuring Notification Recipients
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="API_Overview.html">
+        Working with APIs
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Performance Policies and Alerts</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_create_monitor.html">
+        Alerting with Performance Policies
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_view_and_manage_alerts.html">
+        Viewing and Managing Alerts
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_notifications_email.html">
+        Configuring Notification Recipients
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_create_webhook.html">
+        Webhook Notification
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Monitoring your Environment</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_audit.html">
+        Auditing Events
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_ttl_and_downsampling.html">
+        TTL and Downsampling
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Asset Page Information</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_asset_page_overview.html">
+        Asset Page Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_in_context_filters.html">
+        In-Context Filtering for Objects
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_asset_summary_section.html">
+        Summary & Topology Sections
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_asset_expert_view_section.html">
+        Expert View Section
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_asset_user_data_section.html">
+        User Data Section
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_asset_violation_section.html">
+        Violations Section
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_searching_assets.html">
+        Hints and Tips to Search for Assets
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Reporting</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reporting_overview.html">
+        Reporting Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_user_roles.html">
+        Reporting User Roles
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_predefined_reports.html">
+        Using Pre-Defined Reports
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_storage_manager_dashboard.html">
+        Storage Manager Dashboard
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_create_example.html">
+        Creating an Example Report
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_managing_reports.html">
+        Managing Reports
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_creating_custom_reports.html">
+        Custom Reports
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_creating_custom_reports.html#reporting-data-models">
+        Data Models
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_data_retention.html">
+        Data Retention
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_schema_diagrams.html">
+        Schema Diagrams
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_schemas.html">
+        Schema Tables
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cloud Secure</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="cs_intro.html">
+        About Cloud Secure
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Getting Started</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_cs_getting_started.html">
+        Getting Started With Cloud Secure
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_cs_agent_requirements.html">
+        Cloud Secure Agent Requirements
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_cs_add_agent.html">
+        Configuring a Cloud Secure Agent
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_cs_delete_agent.html">
+        Deleting a Cloud Secure Agent
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_user_dir_connect.html">
+        Configuring an AD Directory Collector
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_user_dir_connect_ldap.html">
+        Configuring an LDAP Directory Collector
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_add_collector_svm.html">
+        Configuring the ONTAP SVM Data Collector
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_cs_incloud.html">
+        Configuring the Cloud ONTAP Data Collector
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_cs_user_management.html">
+        Cloud Secure User Management
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_cs_event_rate_checker.html">
+        Event Rate Checker
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="cs_alert_data.html">
+        Alerts
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Forensics</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="forensic_activity_history.html">
+        Activity Forensics - All Activity
+      </a></li><li class=" "><a class="na-navbar-padding" href="forensic_entity_detail.html">
+        Activity Forensics - Entities
+      </a></li><li class=" "><a class="na-navbar-padding" href="forensic_user_overview.html">
+        Users
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="cs_automated_response_policies.html">
+        Automated Response Policies
+      </a></li><li class=" "><a class="na-navbar-padding" href="cs_notifications_email.html">
+        Notifications
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_cs_api.html">
+        Cloud Secure API
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="concept_activeiq.html">
+        Active IQ
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Troubleshooting</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_troubleshooting_general_problems.html">
+        General Troubleshooting
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_troubleshooting_linux_acquisition_unit_problems.html">
+        Troubleshooting Linux Acquisition Unit Problems
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_troubleshooting_windows_acquisition_unit_problems.html">
+        Troubleshooting Windows Acquisition Unit Problems
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_research_failed_collector.html">
+        Researching Data Collector Errors
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Reference & Support</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_requesting_support.html">
+        Requesting Support
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_data_collector_support_matrix.html">
+        Data Collector Support Matrix
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Data Collector Reference - Infrastructure</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_data_collector_reference.html">
+        Vendor Reference Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_amazon_ec2.html">
+        AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ms_azure.html">
+        Azure
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Broadcom</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_brocade_bna.html">
+        Brocade Network Advisor
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_brocade_fc_switch.html">
+        Fibre Channel Switch
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_dc_ceph_storage.html">
+        Ceph
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_cisco_fc_switch.html">
+        Cisco
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Dell</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_dell_xc_series.html">
+        XC series
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Dell EMC</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_emc_datadomain.html">
+        Data Domain
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_ecs.html">
+        ECS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_isilon.html">
+        Isilon
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_powerstore.html">
+        PowerStore
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_recoverpoint.html">
+        RecoverPoint
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_scaleio.html">
+        ScaleIO
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_unity.html">
+        Unity (VNXe)
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_vmax_powermax.html">
+        VMAX/PowerMax
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_vnx_block.html">
+        VNX Block (Clariion)
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_vnx_file.html">
+        VNX File (Celerra)
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_vnx_unified.html">
+        VNX Unified
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_vplex.html">
+        VPLEX
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_xio.html">
+        XtremIO
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_dc_fujitsu_eternus.html">
+        Fujitsu
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_google_cloud.html">
+        Google
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> HP Enterprise</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_hp_3par.html">
+        HP 3PAR StoreServ
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_hpe_commandview.html">
+        HP Command View AE
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_hpe_nimble.html">
+        HPE Nimble
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Hitachi Data Systems</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_hds_commandsuite.html">
+        HDS Command Suite
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_hds_nas.html">
+        HDS HNAS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_hds_ops_center.html">
+        HDS Ops Center
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_dc_infinidat_infinibox.html">
+        Infinidat
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_huawei_oceanstor.html">
+        Huawei
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> IBM</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_cleversafe.html">
+        Cleversafe
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_cs.html">
+        CS Series
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_ds.html">
+        System Storage DS8000 Series
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_powervm.html">
+        PowerVM
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_svc.html">
+        San Volume Controller (SVC)
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_xiv.html">
+        XIV/A9000
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_dc_lenovo.html">
+        Lenovo
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Microsoft</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_ms_anf.html">
+        Azure NetApp Files
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ms_hyperv.html">
+        Hyper-V
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NetApp</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_na_cloud_volumes_ontap.html">
+        Cloud Volumes ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_cloud_volumes.html">
+        Cloud Volumes Services for AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_cdot.html">
+        ONTAP Data Management Software
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_7mode.html">
+        Data ONTAP 7-mode
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_eseries.html">
+        E-Series
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_hci.html">
+        NetApp HCI Management Server
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_solidfire.html">
+        SolidFire
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_storagegrid.html">
+        StorageGRID
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_dc_nutanix.html">
+        Nutanix
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_openstack.html">
+        OpenStack
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_oracle_zfs.html">
+        Oracle
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_pure_flasharray.html">
+        Pure
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_redhat_virtualization.html">
+        Red Hat
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_vmware.html">
+        VMWare
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Data Collector Reference - Services</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_node.html">
+        Host/Node
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_activemq.html">
+        ActiveMQ
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_apache.html">
+        Apache
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_consul.html">
+        Consul
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_couchbase.html">
+        Couchbase
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_couchdb.html">
+        CouchDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_docker.html">
+        Docker
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_elasticsearch.html">
+        Elasticsearch
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_flink.html">
+        Flink
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_hadoop.html">
+        Hadoop
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_haproxy.html">
+        HAProxy
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_jvm.html">
+        Java
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_kafka.html">
+        Kafka
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_kapacitor.html">
+        Kapacitor
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_kibana.html">
+        Kibana
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_agent.html#kubernetes">
+        Kubernetes
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_memcached.html">
+        Memcached
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_mongodb.html">
+        MongoDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_mysql.html">
+        MySQL
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_netstat.html">
+        Netstat
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_nginx.html">
+        Nginx
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_openzfs.html">
+        OpenZFS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_postgresql.html">
+        PostgreSQL
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_puppetagent.html">
+        Puppet
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_redis.html">
+        Redis
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_rethinkdb.html">
+        RethinkDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_zookeeper.html">
+        Zookeeper
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="reference_object_icons.html">
+        Object Icon Reference
+      </a></li></ul></li></ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      
+
+
+
+<div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Configuring an Agent to Collect Data</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2021-07-19 13:35:51 +0000">07/19/2021</time>
+    
+  
+
+<span>Contributors
+  <a target="_blank" href="https://github.com/netapp-alavoie">
+    <img  class="avatar avatar-small"
+          alt="netapp-alavoie"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/39956590?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+  <span>
+    <a target="_blank" href="/us-en/cloudinsights/pdfs/pages/task_config_telegraf_agent.pdf" role="button">
+      <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>Download PDF of this page</a>
+  </span>
+
+
+</p>
+
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Cloud Insights uses <a href="https://docs.influxdata.com/telegraf/v1.17/">Telegraf</a> as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights.</p>
+</div>
+<div class="paragraph">
+<p>The current Telegraf version for Cloud Insights is <strong>1.17.3</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using <strong>Network Time Protocol (NTP)</strong> or <strong>Simple Network Time Protocol (SNTP)</strong>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-an-agent">Installing an Agent</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are installing a Service data collector and have not yet configured an Agent, you are prompted to first install an Agent for the appropriate Operating System. This topic provides instructions for installing the Telegraf agent on the following Operating Systems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#windows">Windows</a></p>
+</li>
+<li>
+<p><a href="#rhel-and-centos">RHEL and CentOS</a></p>
+</li>
+<li>
+<p><a href="#ubuntu-and-debian">Ubuntu and Debian</a></p>
+</li>
+<li>
+<p><a href="#macos">macOS</a></p>
+</li>
+<li>
+<p><a href="#kubernetes">Kubernetes</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To install an agent, regardless of the platform you are using, you must first do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log into the host you will use for your agent.</p>
+</li>
+<li>
+<p>Log in to your Cloud Insights site and go to <strong>Admin &gt; Data Collectors</strong>.</p>
+</li>
+<li>
+<p>Click on <strong>+Data Collector</strong> and choose a data collector to install.</p>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Choose the appropriate platform for your host (Windows, Linux, macOS, etc.)</p>
+</li>
+<li>
+<p>Follow the remaining steps for each platform.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Once you have installed an agent on a host, you do not need to install an agent again on that host.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Once you have installed an agent on a server/VM, Cloud Insights collects metrics from that system in addition to collecting from any data collectors you configure. These metrics are gathered as <a href="task_config_telegraf_node.html">"Node" metrics</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are using a proxy, read the proxy instructions for your platform before installing the Telegraf agent.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="windows">Windows</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./media/AgentInstallWindows.png" alt="Windows Agent Install"></span></p>
+</div>
+<div class="ulist">
+<div class="title">Pre-requisites:</div>
+<ul>
+<li>
+<p>PowerShell must be installed</p>
+</li>
+<li>
+<p>If you are behind a proxy, follow the instructions in the <strong>Configuring Proxy Support for Windows</strong> section.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Steps to install agent on Windows:</div>
+<ol class="arabic">
+<li>
+<p>Choose an Agent Access Key.</p>
+</li>
+<li>
+<p>Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.</p>
+</li>
+<li>
+<p>Open a PowerShell window</p>
+</li>
+<li>
+<p>Paste the command into the PowerShell window and press Enter.</p>
+</li>
+<li>
+<p>The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours.</p>
+</li>
+<li>
+<p>Click <strong>Finish</strong> or <strong>Continue</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After the agent is installed, you can use the following commands to start/stop the service:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Start-Service telegraf
+Stop-Service telegraf</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="windows-proxy">Configuring Proxy Support for Windows</h4>
+<div class="paragraph">
+<p>For systems residing behind a proxy, perform the following to set the <em>https_proxy</em> and/or <em>http_proxy</em> environment variable(s) <strong>PRIOR</strong> to installing the Telegraf agent:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[System.Environment]::SetEnvironmentVariable(“https_proxy”, “&lt;proxy_server&gt;:&lt;proxy_port&gt;”, [System.EnvironmentVariableTarget]::Machine)</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="uninstalling-the-agent">Uninstalling the Agent</h4>
+<div class="paragraph">
+<p>To uninstall the agent on Windows, do the following in a PowerShell window:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Stop and delete the Telegraf service:</p>
+<div class="literalblock">
+<div class="content">
+<pre>Stop-Service telegraf
+sc.exe delete telegraf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Delete the <em>C:\Program Files\telegraf</em> folder to remove the binary, logs, and configuration files</p>
+</li>
+<li>
+<p>Remove the <em>SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf</em> key from the registry</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upgrading-the-agent">Upgrading the Agent</h4>
+<div class="paragraph">
+<p>To upgrade the telegraf agent, do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Stop and delete the telegraf service:</p>
+<div class="literalblock">
+<div class="content">
+<pre>Stop-Service telegraf
+sc.exe delete telegraf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Delete the <em>SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf</em> key from the registry</p>
+</li>
+<li>
+<p>Delete <em>C:\Program Files\telegraf\telegraf.conf</em></p>
+</li>
+<li>
+<p>Delete <em>C:\Program Files\telegraf\telegraf.exe</em></p>
+</li>
+<li>
+<p><a href="#windows">Install the new agent</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rhel-and-centos">RHEL and CentOS</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./media/AgentInstallRHELCentOS.png" alt="RHEL/CentOS Agent Install"></span></p>
+</div>
+<div class="ulist">
+<div class="title">Pre-requisites:</div>
+<ul>
+<li>
+<p>The following commands must be available: curl, sudo, ping, and dmidecode</p>
+</li>
+<li>
+<p>If you are behind a proxy, follow the instructions in the <strong>Configuring Proxy Support for RHEL/CentOS</strong> section.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Steps to install agent on RHEL/CentOS:</div>
+<ol class="arabic">
+<li>
+<p>Choose an Agent Access Key.</p>
+</li>
+<li>
+<p>Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.</p>
+</li>
+<li>
+<p>Open a Bash window</p>
+</li>
+<li>
+<p>Paste the command into the Bash window and press Enter.</p>
+</li>
+<li>
+<p>The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours.</p>
+</li>
+<li>
+<p>Click <strong>Finish</strong> or <strong>Continue</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After the agent is installed, you can use the following commands to start/stop the service:</p>
+</div>
+<div class="paragraph">
+<p>If your operating system is using systemd (CentOS 7+ and RHEL 7+):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo systemctl start telegraf
+sudo systemctl stop telegraf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If your operating system is not using systemd (CentOS 7+ and RHEL 7+):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo service telegraf start
+sudo service telegraf stop</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-proxy-support-for-rhelcentos">Configuring Proxy Support for RHEL/CentOS</h4>
+<div class="paragraph">
+<p>For systems residing behind a proxy, perform the following steps <strong>PRIOR</strong> to installing the Telegraf agent:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Set the <em>https_proxy</em> and/or <em>http_proxy</em> environment variable(s) for the current user:</p>
+<div class="literalblock">
+<div class="content">
+<pre>export https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create <em>/etc/default/telegraf</em>, and insert definitions for the <em>https_proxy</em> and/or <em>http_proxy</em> variable(s):</p>
+<div class="literalblock">
+<div class="content">
+<pre>https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="uninstalling-the-agent-2">Uninstalling the Agent</h4>
+<div class="paragraph">
+<p>To uninstall the agent on RHEL/CentOS, in a Bash terminal, do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Stop the Telegraf service:</p>
+<div class="literalblock">
+<div class="content">
+<pre>systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+/etc/init.d/telegraf stop (for systems without systemd support)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Remove the Telegraf agent:</p>
+<div class="literalblock">
+<div class="content">
+<pre>yum remove telegraf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Remove any configuration or log files that may be left behind:</p>
+<div class="literalblock">
+<div class="content">
+<pre>rm -rf /etc/telegraf*
+rm -rf /var/log/telegraf*</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upgrading-the-agent-2">Upgrading the Agent</h4>
+<div class="paragraph">
+<p>To upgrade the telegraf agent, do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Stop the telegraf service:</p>
+<div class="literalblock">
+<div class="content">
+<pre>systemctl stop telegraf (If your operating system is using systemd (CentOS 7+ and RHEL 7+)
+/etc/init.d/telegraf stop (for systems without systemd support)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Remove the previous telegraf agent:</p>
+<div class="literalblock">
+<div class="content">
+<pre>yum remove telegraf</pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="#rhel-and-centos">Install the new agent</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ubuntu-and-debian">Ubuntu and Debian</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./media/AgentInstallUbuntuDebian.png" alt="Ubuntu/Debian Agent Install"></span></p>
+</div>
+<div class="ulist">
+<div class="title">Pre-requisites:</div>
+<ul>
+<li>
+<p>The following commands must be available: curl, sudo, ping, and dmidecode</p>
+</li>
+<li>
+<p>If you are behind a proxy, follow the instructions in the <strong>Configuring Proxy Support for Ubuntu/Debian</strong> section.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Steps to install agent on Debian or Ubuntu:</div>
+<ol class="arabic">
+<li>
+<p>Choose an Agent Access Key.</p>
+</li>
+<li>
+<p>Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.</p>
+</li>
+<li>
+<p>Open a Bash window</p>
+</li>
+<li>
+<p>Paste the command into the Bash window and press Enter.</p>
+</li>
+<li>
+<p>The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours.</p>
+</li>
+<li>
+<p>Click <strong>Finish</strong> or <strong>Continue</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After the agent is installed, you can use the following commands to start/stop the service:</p>
+</div>
+<div class="paragraph">
+<p>If your operating system is using systemd:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo systemctl start telegraf
+sudo systemctl stop telegraf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If your operating system is not using systemd:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo service telegraf start
+sudo service telegraf stop</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-proxy-support-for-ubuntudebian">Configuring Proxy Support for Ubuntu/Debian</h4>
+<div class="paragraph">
+<p>For systems residing behind a proxy, perform the following steps <strong>PRIOR</strong> to installing the Telegraf agent:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Set the <em>https_proxy</em> and/or <em>http_proxy</em> environment variable(s) for the current user:</p>
+<div class="literalblock">
+<div class="content">
+<pre>export https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create /etc/default/telegraf, and insert definitions for the <em>https_proxy</em> and/or <em>http_proxy</em> variable(s):</p>
+<div class="literalblock">
+<div class="content">
+<pre>https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="uninstalling-the-agent-3">Uninstalling the Agent</h4>
+<div class="paragraph">
+<p>To uninstall the agent on Ubuntu/Debian, in a Bash terminal, run the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Stop the Telegraf service:</p>
+<div class="literalblock">
+<div class="content">
+<pre>systemctl stop telegraf (If your operating system is using systemd)
+/etc/init.d/telegraf stop (for systems without systemd support)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Remove the Telegraf agent:</p>
+<div class="literalblock">
+<div class="content">
+<pre>dpkg -r telegraf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Remove any configuration or log files that may be left behind:</p>
+<div class="literalblock">
+<div class="content">
+<pre>rm -rf /etc/telegraf*
+rm -rf /var/log/telegraf*</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upgrading-the-agent-3">Upgrading the Agent</h4>
+<div class="paragraph">
+<p>To upgrade the telegraf agent, do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Stop the telegraf service:</p>
+<div class="literalblock">
+<div class="content">
+<pre>systemctl stop telegraf (If your operating system is using systemd)
+/etc/init.d/telegraf stop (for systems without systemd support)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Remove the previous telegraf agent:</p>
+<div class="literalblock">
+<div class="content">
+<pre>dpkg -r telegraf</pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="#ubuntu-and-debian">Install the new agent</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="macos">macOS</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./media/AgentInstallMacOS.png" alt="MacOS Agent Install"></span></p>
+</div>
+<div class="ulist">
+<div class="title">Pre-requisites:</div>
+<ul>
+<li>
+<p>The "curl" command must be available</p>
+</li>
+<li>
+<p>If you are behind a proxy, follow the instructions in the <strong>Configuring Proxy Support for macOS</strong> section.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Steps to install agent on macOS:</div>
+<ol class="arabic">
+<li>
+<p>Choose an Agent Access Key.</p>
+</li>
+<li>
+<p>Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.</p>
+</li>
+<li>
+<p>Open a Bash window</p>
+</li>
+<li>
+<p>Paste the command into the Bash window and press Enter.</p>
+</li>
+<li>
+<p>The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours.</p>
+</li>
+<li>
+<p>If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 5 above.</p>
+</li>
+<li>
+<p>Click <strong>Finish</strong> or <strong>Continue</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After the agent is installed, you can use the following commands to start/stop the service:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo launchctl start telegraf
+sudo launchctl stop telegraf</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-proxy-support-for-macos">Configuring Proxy Support for macOS</h4>
+<div class="paragraph">
+<p>For systems residing behind a proxy, perform the following to set the <em>https_proxy</em> and/or <em>http_proxy</em> environment variable(s) for the current user <strong>PRIOR</strong> to installing the Telegraf agent:</p>
+</div>
+<div class="paragraph">
+<p>export https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;</p>
+</div>
+<div class="paragraph">
+<p><strong>AFTER</strong> installing the Telegraf agent, add and set the appropriate <em>https_proxy</em> and/or <em>http_proxy</em> variable(s) in <em>/Applications/telegraf.app/Contents/telegraf.plist</em>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>…
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+   &lt;key&gt;EnvironmentVariables&lt;/key&gt;
+   &lt;dict&gt;
+          &lt;key&gt;https_proxy&lt;/key&gt;
+          &lt;string&gt;&lt;proxy_server&gt;:&lt;proxy_port&gt;&lt;/string&gt;
+   &lt;/dict&gt;
+   &lt;key&gt;Program&lt;/key&gt;
+   &lt;string&gt;/Applications/telegraf.app/Contents/MacOS/telegraf&lt;/string&gt;
+   &lt;key&gt;Label&lt;/key&gt;
+   &lt;string&gt;telegraf&lt;/string&gt;
+   &lt;key&gt;ProgramArguments&lt;/key&gt;
+   &lt;array&gt;
+     &lt;string&gt;/Applications/telegraf.app/Contents/MacOS/telegraf&lt;/string&gt;
+     &lt;string&gt;--config&lt;/string&gt;
+     &lt;string&gt;/usr/local/etc/telegraf.conf&lt;/string&gt;
+     &lt;string&gt;--config-directory&lt;/string&gt;
+     &lt;string&gt;/usr/local/etc/telegraf.d&lt;/string&gt;
+   &lt;/array&gt;
+   &lt;key&gt;RunAtLoad&lt;/key&gt;
+   &lt;true/&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+…</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, restart Telegraf after loading the above changes:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo launchctl stop telegraf
+sudo launchctl unload -w /Library/LaunchDaemons/telegraf.plist
+sudo launchctl load -w /Library/LaunchDaemons/telegraf.plist
+sudo launchctl start telegraf</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="uninstalling-the-agent-4">Uninstalling the Agent</h4>
+<div class="paragraph">
+<p>To uninstall the agent on macOS, in a Bash terminal, run the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Stop the Telegraf service:</p>
+<div class="literalblock">
+<div class="content">
+<pre>sudo launchctl stop telegraf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Uninstall the telegraf agent:</p>
+<div class="literalblock">
+<div class="content">
+<pre>cp /Applications/telegraf.app/scripts/uninstall /tmp
+sudo /tmp/uninstall</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Remove any configuration or log files that may be left behind:</p>
+<div class="literalblock">
+<div class="content">
+<pre>rm -rf /usr/local/etc/telegraf*
+rm -rf /usr/local/var/log/telegraf.*</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upgrading-the-agent-4">Upgrading the Agent</h4>
+<div class="paragraph">
+<p>To upgrade the telegraf agent, do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Stop the telegraf service:</p>
+<div class="literalblock">
+<div class="content">
+<pre>sudo launchctl stop telegraf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Uninstall the previous telegraf agent:</p>
+<div class="literalblock">
+<div class="content">
+<pre>cp /Applications/telegraf.app/scripts/uninstall /tmp
+sudo /tmp/uninstall</pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="#macos">Install the new agent</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kubernetes">Kubernetes</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./media/Kubernetes_Install_Agent_screen.png" alt="Kubernetes Agent Install"></span></p>
+</div>
+<div class="ulist">
+<div class="title">Pre-requisites:</div>
+<ul>
+<li>
+<p>The following commands must be available: curl, sudo, kubectl</p>
+<div class="paragraph">
+<p>For best results, add these commands to the PATH.</p>
+</div>
+</li>
+<li>
+<p>kube-state-metrics must be installed. See below for more infomation.</p>
+</li>
+<li>
+<p>If you are behind a proxy, follow the instructions in the <strong>Configuring Proxy Support for Kubernetes</strong> section.</p>
+</li>
+<li>
+<p>If you are running a kubernetes variant that requires security context constraints, follow the instructions in the <strong>Configuring the Agent to Collect Data from Kubernetes</strong> section.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="monitoring-is-only-installed-on-linux-nodes">Monitoring is only installed on Linux nodes</h4>
+<div class="paragraph">
+<p>Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, by specifying a Kubernetes node selector that looks for the following Kubernetes labels on these platforms:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Platform</th>
+<th class="tableblock halign-left valign-top">Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kubernetes v1.14 and above</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kubernetes.io/os = linux</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kubernetes v1.13 and below</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">beta.kubernetes.io/os = linux</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rancher + cattle.io as orchestration/Kubernetes platform</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cattle.io/os = linux</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="installation">Installation</h4>
+<div class="olist arabic">
+<div class="title">Steps to install agent on Kubernetes:</div>
+<ol class="arabic">
+<li>
+<p>Choose an Agent Access Key.</p>
+</li>
+<li>
+<p>Click the <strong>Copy Agent Installer Snippet</strong> button in the installation dialog. You can optionally click the <em>+Reveal Agent Installer Snippet</em> button if you want to view the command block.</p>
+</li>
+<li>
+<p>Open a Bash window.</p>
+</li>
+<li>
+<p>Paste the command into the Bash window.</p>
+</li>
+<li>
+<p>Optionally, you can override the namespace or provide the cluster name as part of the install command by modifying the command block to add one or both of the following before the final <em>./$installerName</em></p>
+<div class="ulist">
+<ul>
+<li>
+<p>CLUSTER_NAME=&lt;Cluster Name&gt;</p>
+</li>
+<li>
+<p>NAMESPACE=&lt;Namespace&gt;</p>
+<div class="paragraph">
+<p>Scroll through the following example to see this in place in the command block:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>installerName=cloudinsights-kubernetes.sh &amp;&amp; token=&lt;token&gt; &amp;&amp; key=c642e336-91f4-4c6f-8086-72faabd6aff6 &amp;&amp; domain=tenant1.testk8.cloudinsights-test.netapp.com &amp;&amp; curl -k -X GET -H "Authorization: Bearer $token" -H "X-CloudInsights-ApiKey-Id: $key" -o $installerName https://$domain/rest/v1/lake/telegraf/platforms/installer?platform=kubernetes &amp;&amp; chmod +x $installerName &amp;&amp; sudo --preserve-env JWT=$token DOMAIN_NAME=$domain API_KEY_ID=$key CLUSTER_NAME=TEST_CLUSTER NAMESPACE=NEW-NAMESPACE ./$installerName</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<em>CLUSTER_NAME</em> is the name of the Kubernetes cluster from Cloud Insights collects metrics, while <em>NAMESPACE</em> is the namespace to which the Telegraf agent will be deployed. The specified namespace will be created if it does not already exist.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>When ready, execute the command block.</p>
+</li>
+<li>
+<p>The command will download the appropriate agent installer, install it, and set a default configuration. If you have not explicitly set the <em>namespace</em>, you will be prompted to enter it. When finished, the script will restart the agent service. The command has a unique key and is valid for 24 hours.</p>
+</li>
+<li>
+<p>When finished, click <strong>Complete Setup</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>A DaemonSet and ReplicaSet will be created on the Kubernetes cluster to run the required Telegraf agents/pods. By default, these Telegraf agents/pods will be scheduled on both master and non-master nodes.</p>
+</div>
+<div class="paragraph">
+<p>To facilitate stopping and restarting of the agent, generate the Telegraf DaemonSet YAML and ReplicaSet YAML using the following commands. Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files:</p>
+</div>
+<div class="paragraph">
+<p>If you have set your own namespace, substitute that namespace in these and all subsequent commands and files:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl --namespace ci-monitoring get ds telegraf-ds -o yaml &gt; /tmp/telegraf-ds.yaml
+kubectl --namespace ci-monitoring get rs telegraf-rs -o yaml &gt; /tmp/telegraf-rs.yaml</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can then use the following commands to stop and start the Telegraf service:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl --namespace ci-monitoring delete ds telegraf-ds
+kubectl --namespace ci-monitoring delete rs telegraf-rs</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl --namespace ci-monitoring apply -f /tmp/telegraf-ds.yaml
+kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-proxy-support-for-kubernetes">Configuring Proxy Support for Kubernetes</h4>
+<div class="paragraph">
+<p>For systems residing behind a proxy, perform the following to set the <em>https_proxy</em> and/or <em>http_proxy</em> environment variable(s) for the current user <strong>PRIOR</strong> to installing the Telegraf agent:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>export https_proxy=&lt;proxy_server&gt;:&lt;proxy_port&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>AFTER</strong> installing the Telegraf agent, add and set the appropriate <em>https_proxy</em> and/or <em>http_proxy</em> environment variable(s) to the <em>telegraf-ds</em> daemonset and <em>telegraf-rs</em> replicaset.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl edit ds telegraf-ds</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>…
+       env:
+       - name: https_proxy
+         value: &lt;proxy_server&gt;:&lt;proxy_port&gt;
+       - name: HOSTIP
+         valueFrom:
+           fieldRef:
+             apiVersion: v1
+             fieldPath: status.hostIP
+…</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl edit rs telegraf-rs</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>…
+       env:
+       - name: https_proxy
+         value: &lt;proxy_server&gt;:&lt;proxy_port&gt;
+       - name: HOSTIP
+         valueFrom:
+           fieldRef:
+             apiVersion: v1
+             fieldPath: status.hostIP
+…</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, restart Telegraf:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl delete pod telegraf-ds-*
+kubectl delete pod telegraf-rs-*</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-the-agent-to-collect-data-from-kubernetes">Configuring the Agent to Collect Data from Kubernetes</h4>
+<div class="paragraph">
+<p>For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet and a ReplicaSet. The pods in which the agents run need to have access to the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hostPath</p>
+</li>
+<li>
+<p>configMap</p>
+</li>
+<li>
+<p>secrets</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These Kubernetes objects are automatically created as part of the Kubernetes agent install command provided in the Cloud Insights UI. Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to these components. The <em>SecurityContextConstraint</em> is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    apiVersion: v1
+    kind: SecurityContextConstraints
+    metadata:
+      name: telegraf-hostaccess
+      creationTimestamp:
+      annotations:
+        kubernetes.io/description: telegraf-hostaccess allows hostpath volume mounts for restricted SAs.
+      labels:
+        app: ci-telegraf
+    priority: 10
+    allowPrivilegedContainer: false
+    defaultAddCapabilities: []
+    requiredDropCapabilities: []
+    allowedCapabilities: []
+    allowedFlexVolumes: []
+    allowHostDirVolumePlugin: true
+    volumes:
+    - hostPath
+    - configMap
+    - secret
+    allowHostNetwork: false
+    allowHostPorts: false
+    allowHostPID: false
+    allowHostIPC: false
+    seLinuxContext:
+      type: MustRunAs
+    runAsUser:
+      type: RunAsAny
+    supplementalGroups:
+      type: RunAsAny
+    fsGroup:
+      type: RunAsAny
+    readOnlyRootFilesystem: false
+    users:
+    - system:serviceaccount:ci-monitoring:telegraf-user
+    groups: []</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="installing-the-kube-state-metrics-server">Installing the kube-state-metrics server</h4>
+<div class="paragraph">
+<p>When you install the kube-state-metrics server you can enable collection of the following Kubernetes objects: StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Use the following steps to install the kube-state-metrics server:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Create a temporary folder (for example, <em>/tmp/kube-state-yaml-files/</em>) and copy the .yaml files from <a href="https://github.com/kubernetes/kube-state-metrics/tree/master/examples/standard" class="bare">https://github.com/kubernetes/kube-state-metrics/tree/master/examples/standard</a> to this folder.</p>
+</li>
+<li>
+<p>Run the following command to apply the .yaml files needed for installing kube-state-metrics:</p>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl apply -f /tmp/kube-state-yaml-files/</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="kube-state-metrics-counters">kube-state-metrics Counters</h4>
+<div class="paragraph">
+<p>Use the following links to access information for the kube state metrics counters:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/configmap-metrics.md">ConfigMap Metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/daemonset-metrics.md">DaemonSet Metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/deployment-metrics.md">Deployment Metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/ingress-metrics.md">Ingress Metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/namespace-metrics.md">Namespace Metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/node-metrics.md">Node Metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/persistentvolume-metrics.md">Persistent Volume Metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/persistentvolumeclaim-metrics.md">Persistant Volume Claim Metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/pod-metrics.md">Pod Metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/replicaset-metrics.md">ReplicaSet metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/secret-metrics.md">Secret metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/service-metrics.md">Service metrics</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubernetes/kube-state-metrics/blob/master/docs/statefulset-metrics.md">StatefulSet metrics</a></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="uninstalling-the-agent-5">Uninstalling the Agent</h4>
+<div class="paragraph">
+<p>Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.</p>
+</div>
+<div class="paragraph">
+<p>To uninstall the agent on Kubernetes, do the following:</p>
+</div>
+<div class="paragraph">
+<p>If the monitoring namespace is being used solely for Telegraf:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl delete ns ci-monitoring</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the monitoring namespace is being used for other purposes in addition to Telegraf:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upgrading-the-agent-5">Upgrading the Agent</h4>
+<div id="upgrading-kubernetes-agent" class="paragraph">
+<p>Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.</p>
+</div>
+<div class="paragraph">
+<p>To upgrade the telegraf agent, do the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Back up the existing configurations:</p>
+<div class="literalblock">
+<div class="content">
+<pre>kubectl --namespace ci-monitoring get cm -o yaml &gt; /tmp/telegraf-configs.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Uninstall the Agent (see above for instructions)</p>
+</li>
+<li>
+<p><a href="#kubernetes">Install the new agent</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="troubleshooting-agent-installation">Troubleshooting Agent Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some things to try if you encounter problems setting up an agent:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Problem:</th>
+<th class="tableblock halign-left valign-top">Try this:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I already installed an agent using Cloud Insights</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on <strong>Continue</strong> or <strong>Finish</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I already have an agent installed but not by using the Cloud Insights installer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on <strong>Continue</strong> or <strong>Finish</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I&#8217;m seeing messages in the logs resembling the following:<br>
+<br>
+E0901 15:21:39.962145 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.MutatingWebhookConfiguration: the server could not find the requested resource<br>
+E0901 15:21:43.168161 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.Lease: the server could not find the requested resource (get leases.coordination.k8s.io)<br>
+etc.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">These messages may occur if your kube-state-metrics version is higher than your kubernetes version. For example, running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17.<br>
+<br>
+to get the Kubernetes version:<br>
+<br>
+<em>kubectl version</em><br>
+<br>
+to get the kube-state-metrics version:<br>
+<br>
+<em>kubectl get deploy/kube-state-metrics -o jsonpath='{..image}'</em><br>
+<br>
+To prevent these messages from happening, users can modify their kube-state-metrics deployment to disable the leases <em>mutatingwebhookconfigurations</em>, <em>validatingwebhookconfigurations</em>, and <em>volumeattachments resources</em>. More specifically, they can use the following CLI argument:<br>
+<br>
+resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,limitranges,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses<br>
+<br>
+The default resource list is:<br>
+<br>
+"certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments"</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional information may be found from the <a href="concept_requesting_support.html">Support</a> page or in the <a href="https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf">Data Collector Support Matrix</a>.</p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div class="page-nav-contribute"  >
+      <div class="page-nav-contribute-title">CONTRIBUTE</div>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloudinsights/blob/main/task_config_telegraf_agent.adoc" class="btn btn-default githubEditButton" role="button"><img src="/us-en/cloudinsights/images/github.png" class="github-icon" />Edit on GitHub</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloudinsights/issues/new?body=Page%3A%20[Configuring an Agent to Collect Data](https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent.html)" class="btn btn-default githubEditButton" role="button"><img src="/us-en/cloudinsights/images/github.png" class="github-icon" />Request doc changes</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >Contributor's Guide</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">ON THIS PAGE</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2021 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">Have feedback for our website?<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">Let us know</a>
+  <a href="https://docs.netapp.com/us-en/announcements/" class="n-footer__copyright">Announcements</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/cloudinsights/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/cloudinsights/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/cloudinsights/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/cloudinsights/js/www-ntap.js'></script>
+    <script src='/us-en/cloudinsights/js/tabbed-blocks.js'></script>
+  </body>
+
+  
+</html>

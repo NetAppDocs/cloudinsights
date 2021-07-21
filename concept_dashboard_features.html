@@ -1,0 +1,3495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Dashboard Features | NetApp Cloud Docs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Dashboard Features | NetApp Cloud Docs" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/cloudinsights/concept_dashboard_features.html" />
+	<meta property="og:description" content="Dashboard features and concepts." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/cloudinsights/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="Dashboard features and concepts.">
+  <meta name="keywords" content=" dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, group by, expressions, timeseries, exact match,">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/us-en/cloudinsights/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+  <link rel="alternate" type="application/rss+xml" title="NetApp Cloud Docs" href="/us-en/cloudinsights/feed.xml">
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloudinsights/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/us-en/cloudinsights/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloudinsights/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloudinsights/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/us-en/cloudinsights/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/us-en/cloudinsights/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/us-en/cloudinsights/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/us-en/cloudinsights/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/us-en/cloudinsights/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/us-en/cloudinsights/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloudinsights/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloudinsights/css/na-pagenav.css' type='text/css'>
+
+  
+
+  
+  <link rel='stylesheet' href='/us-en/cloudinsights/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/us-en/cloudinsights/js/na-search.js'></script>
+  
+
+  
+  <script src='/us-en/cloudinsights/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/us-en/cloudinsights/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloudinsights/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/us-en/cloudinsights/js/na-utility.js'></script>
+  <script src='/us-en/cloudinsights/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/us-en/cloudinsights/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/us-en/cloudinsights/js/toc.js'></script>
+  <script src='/us-en/cloudinsights/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Product and Solutions</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Support and Training</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Community</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Customer Stories</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" data-type="widget" data-placeholder="Search Documentation" data-no-results-found="No results were found for {query}" data-did-you-mean="Search for {suggestion}." data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?" data-results-found="{hitCount} results found"  ></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar"><!-- Start Language Selector --><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+        <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">Home</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">Documentation</a>
+        </li>
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud/">Cloud Docs</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/us-en/cloudinsights/">Cloud&nbsp;Insights</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Dashboard Features
+        </li>
+      </ul>
+    </div>
+
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" >
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">PDFs<span>
+    </span>
+  </a>
+</div>
+<ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><div class="n-pdf-section">
+      <span class="n-pdf-section-title">Site</span>
+    </div>
+    <li>
+      <a target="_blank" href="/us-en/cloudinsights/pdfs/fullsite-sidebar/Cloud_Insights_documentation.pdf" >
+        <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+        Cloud Insights documentation
+      </a>
+    </li>
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Security.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Security
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Getting_Started.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Getting Started
+          </a>
+        </li>
+        <span>
+          
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Collecting_Data.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Collecting Data
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Automatic_Device_Resolution.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Automatic Device Resolution
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Creating_Dashboards.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Creating Dashboards
+          </a>
+        </li>
+        <span>
+          
+
+
+    <div class="n-pdf-section">
+  <span class="n-pdf-section-title">This page</span>
+</div>
+
+<li class="active">
+  <a target="_blank" href="/us-en/cloudinsights/pdfs/pages/concept_dashboard_features.pdf" >
+    <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+    Dashboard Features
+  </a>
+</li>
+
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Sample_Dashboards.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Sample Dashboards
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Kubernetes_Explorer.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Kubernetes Explorer
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Working_with_Queries.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Working with Queries
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Working_with_Annotations.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Working with Annotations
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Working_with_Applications.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Working with Applications
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Monitors_and_Alerts.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Monitors and Alerts
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Performance_Policies_and_Alerts.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Performance Policies and Alerts
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Monitoring_your_Environment.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Monitoring your Environment
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Asset_Page_Information.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Asset Page Information
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Reporting.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Reporting
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Cloud_Secure.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Cloud Secure
+          </a>
+        </li>
+        <span>
+          
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Getting_Started.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Getting Started
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Forensics.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Forensics
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Troubleshooting.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Troubleshooting
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Reference___Support.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Reference & Support
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Data_Collector_Reference___Infrastructure.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Data Collector Reference - Infrastructure
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Broadcom.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Broadcom
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Dell.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Dell
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Dell_EMC.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Dell EMC
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/HP_Enterprise.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            HP Enterprise
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Hitachi_Data_Systems.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Hitachi Data Systems
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/IBM.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            IBM
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Microsoft.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Microsoft
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/NetApp.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            NetApp
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloudinsights/pdfs/sidebar/Data_Collector_Reference___Services.pdf" >
+            <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>
+            Data Collector Reference - Services
+          </a>
+        </li>
+        <span>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+</ul>
+
+<script>
+  $("#toggleContainerPdf li.active").parents('li').toggle('display');
+  $("#toggleContainerPdf li.active").parents('span.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+  });
+</script><ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="index.html">
+        Cloud Insights documentation
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_whats_new.html">
+        What's New
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_cloud_insights_onboarding_1.html">
+        Signing Up for Cloud Insights
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Security</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="security_overview.html">
+        Security Practices
+      </a></li><li class=" "><a class="na-navbar-padding" href="security_information_and_region.html">
+        What We Store, and Where
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Getting Started</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_feature_tutorials.html">
+        Feature Tutorials
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Collecting Data</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_getting_started_with_cloud_insights.html">
+        Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_acquisition_unit_requirements.html">
+        Acquisition Unit Requirements
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_configure_acquisition_unit.html">
+        Configuring an Acquisition Unit
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_agent.html">
+        Configuring an Agent
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_configure_data_collectors.html">
+        Configuring Data Collectors
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_determining_data_collector_acq_status.html">
+        Determining Data Collector Acquisition Status
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_view_configured_data_collectors.html">
+        Manage Configured Data Collectors
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_research_failed_collector.html">
+        Research data collector errors
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="concept_import_from_dashboard_gallery.html">
+        Importing Recommended Dashboards
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_user_roles.html">
+        User Accounts and Roles
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_other_cloud_products.html">
+        Switching to Other Cloud Central Products
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="data_collector_list.html">
+        Data Collector List
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_subscribing_to_cloud_insights.html">
+        Subscribing to Cloud Insights
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Automatic Device Resolution</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_device_resolution_overview.html">
+        Device Resolution Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_device_resolution_rules.html">
+        Device Resolution Rules
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_device_resolution_fibre_channel.html">
+        Fibre Channel Device Resolution
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_device_resolution_ip.html">
+        IP Device Resolution
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_device_resolution_preferences.html">
+        Setting Device Resolution Preferences
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_device_resolution_regex_examples.html">
+        Regular expression examples
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Creating Dashboards</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_dashboards_overview.html">
+        Dashboard Overview
+      </a></li><li class="  active "><a class="na-navbar-padding" href="concept_dashboard_features.html">
+        Features of Dashboards
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Sample Dashboards</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dashboard_example_VM_performance.html">
+        Virtual Machine Performance
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="concept_dashboard_best_practices.html">
+        Dashboard Best Practices
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Kubernetes Explorer</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="kubernetes_landing_page.html">
+        Kubernetes Overview Page
+      </a></li><li class=" "><a class="na-navbar-padding" href="kubernetes_cluster_detail.html">
+        Kubernetes Cluster Page
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Working with Queries</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_querying_assets.html">
+        Querying Assets
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_create_query.html">
+        Creating a Query
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_view_queries.html">
+        Viewing Available Queries
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_export_query_results.html">
+        Exporting Query Results to .CSV
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_modify_delete_query.html">
+        Modifying or Deleting a Query
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_query_assign_multiple_applicationss.html">
+        Assigning Multiple Applications/annotations to Objects
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_query_copy_table_values.html">
+        Copying table values to the Clipboard
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Working with Annotations</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_defining_annotations.html">
+        Defining Annotations
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_create_annotation.html">
+        Using Annotations
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_create_annotation_rules.html">
+        Using Annotation Rules
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_annotation_import.html">
+        Importing Annotations with API
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Working with Applications</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_about_applications.html">
+        Application Concepts
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_create_application.html">
+        Configuring Applications
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Monitors and Alerts</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_create_monitor.html">
+        Creating Monitors
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_view_and_manage_alerts.html">
+        Viewing and Managing Alerts
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_notifications_email.html">
+        Configuring Notification Recipients
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="API_Overview.html">
+        Working with APIs
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Performance Policies and Alerts</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_create_monitor.html">
+        Alerting with Performance Policies
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_view_and_manage_alerts.html">
+        Viewing and Managing Alerts
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_notifications_email.html">
+        Configuring Notification Recipients
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_create_webhook.html">
+        Webhook Notification
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Monitoring your Environment</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_audit.html">
+        Auditing Events
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_ttl_and_downsampling.html">
+        TTL and Downsampling
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Asset Page Information</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_asset_page_overview.html">
+        Asset Page Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_in_context_filters.html">
+        In-Context Filtering for Objects
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_asset_summary_section.html">
+        Summary & Topology Sections
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_asset_expert_view_section.html">
+        Expert View Section
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_asset_user_data_section.html">
+        User Data Section
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_asset_violation_section.html">
+        Violations Section
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_searching_assets.html">
+        Hints and Tips to Search for Assets
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Reporting</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reporting_overview.html">
+        Reporting Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_user_roles.html">
+        Reporting User Roles
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_predefined_reports.html">
+        Using Pre-Defined Reports
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_storage_manager_dashboard.html">
+        Storage Manager Dashboard
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_create_example.html">
+        Creating an Example Report
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_managing_reports.html">
+        Managing Reports
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_creating_custom_reports.html">
+        Custom Reports
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_creating_custom_reports.html#reporting-data-models">
+        Data Models
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_data_retention.html">
+        Data Retention
+      </a></li><li class=" "><a class="na-navbar-padding" href="reporting_schema_diagrams.html">
+        Schema Diagrams
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_schemas.html">
+        Schema Tables
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cloud Secure</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="cs_intro.html">
+        About Cloud Secure
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Getting Started</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_cs_getting_started.html">
+        Getting Started With Cloud Secure
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_cs_agent_requirements.html">
+        Cloud Secure Agent Requirements
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_cs_add_agent.html">
+        Configuring a Cloud Secure Agent
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_cs_delete_agent.html">
+        Deleting a Cloud Secure Agent
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_user_dir_connect.html">
+        Configuring an AD Directory Collector
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_user_dir_connect_ldap.html">
+        Configuring an LDAP Directory Collector
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_add_collector_svm.html">
+        Configuring the ONTAP SVM Data Collector
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_cs_incloud.html">
+        Configuring the Cloud ONTAP Data Collector
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_cs_user_management.html">
+        Cloud Secure User Management
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_cs_event_rate_checker.html">
+        Event Rate Checker
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="cs_alert_data.html">
+        Alerts
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Forensics</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="forensic_activity_history.html">
+        Activity Forensics - All Activity
+      </a></li><li class=" "><a class="na-navbar-padding" href="forensic_entity_detail.html">
+        Activity Forensics - Entities
+      </a></li><li class=" "><a class="na-navbar-padding" href="forensic_user_overview.html">
+        Users
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="cs_automated_response_policies.html">
+        Automated Response Policies
+      </a></li><li class=" "><a class="na-navbar-padding" href="cs_notifications_email.html">
+        Notifications
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_cs_api.html">
+        Cloud Secure API
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="concept_activeiq.html">
+        Active IQ
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Troubleshooting</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_troubleshooting_general_problems.html">
+        General Troubleshooting
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_troubleshooting_linux_acquisition_unit_problems.html">
+        Troubleshooting Linux Acquisition Unit Problems
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_troubleshooting_windows_acquisition_unit_problems.html">
+        Troubleshooting Windows Acquisition Unit Problems
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_research_failed_collector.html">
+        Researching Data Collector Errors
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Reference & Support</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_requesting_support.html">
+        Requesting Support
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_data_collector_support_matrix.html">
+        Data Collector Support Matrix
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Data Collector Reference - Infrastructure</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_data_collector_reference.html">
+        Vendor Reference Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_amazon_ec2.html">
+        AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ms_azure.html">
+        Azure
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Broadcom</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_brocade_bna.html">
+        Brocade Network Advisor
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_brocade_fc_switch.html">
+        Fibre Channel Switch
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_dc_ceph_storage.html">
+        Ceph
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_cisco_fc_switch.html">
+        Cisco
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Dell</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_dell_xc_series.html">
+        XC series
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Dell EMC</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_emc_datadomain.html">
+        Data Domain
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_ecs.html">
+        ECS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_isilon.html">
+        Isilon
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_powerstore.html">
+        PowerStore
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_recoverpoint.html">
+        RecoverPoint
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_scaleio.html">
+        ScaleIO
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_unity.html">
+        Unity (VNXe)
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_vmax_powermax.html">
+        VMAX/PowerMax
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_vnx_block.html">
+        VNX Block (Clariion)
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_vnx_file.html">
+        VNX File (Celerra)
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_vnx_unified.html">
+        VNX Unified
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_vplex.html">
+        VPLEX
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_emc_xio.html">
+        XtremIO
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_dc_fujitsu_eternus.html">
+        Fujitsu
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_google_cloud.html">
+        Google
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> HP Enterprise</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_hp_3par.html">
+        HP 3PAR StoreServ
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_hpe_commandview.html">
+        HP Command View AE
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_hpe_nimble.html">
+        HPE Nimble
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Hitachi Data Systems</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_hds_commandsuite.html">
+        HDS Command Suite
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_hds_nas.html">
+        HDS HNAS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_hds_ops_center.html">
+        HDS Ops Center
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_dc_infinidat_infinibox.html">
+        Infinidat
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_huawei_oceanstor.html">
+        Huawei
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> IBM</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_cleversafe.html">
+        Cleversafe
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_cs.html">
+        CS Series
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_ds.html">
+        System Storage DS8000 Series
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_powervm.html">
+        PowerVM
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_svc.html">
+        San Volume Controller (SVC)
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ibm_xiv.html">
+        XIV/A9000
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_dc_lenovo.html">
+        Lenovo
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Microsoft</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_ms_anf.html">
+        Azure NetApp Files
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_ms_hyperv.html">
+        Hyper-V
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NetApp</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_dc_na_cloud_volumes_ontap.html">
+        Cloud Volumes ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_cloud_volumes.html">
+        Cloud Volumes Services for AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_cdot.html">
+        ONTAP Data Management Software
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_7mode.html">
+        Data ONTAP 7-mode
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_eseries.html">
+        E-Series
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_hci.html">
+        NetApp HCI Management Server
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_solidfire.html">
+        SolidFire
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_na_storagegrid.html">
+        StorageGRID
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_dc_nutanix.html">
+        Nutanix
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_openstack.html">
+        OpenStack
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_oracle_zfs.html">
+        Oracle
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_pure_flasharray.html">
+        Pure
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_redhat_virtualization.html">
+        Red Hat
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_dc_vmware.html">
+        VMWare
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Data Collector Reference - Services</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_node.html">
+        Host/Node
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_activemq.html">
+        ActiveMQ
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_apache.html">
+        Apache
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_consul.html">
+        Consul
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_couchbase.html">
+        Couchbase
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_couchdb.html">
+        CouchDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_docker.html">
+        Docker
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_elasticsearch.html">
+        Elasticsearch
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_flink.html">
+        Flink
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_hadoop.html">
+        Hadoop
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_haproxy.html">
+        HAProxy
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_jvm.html">
+        Java
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_kafka.html">
+        Kafka
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_kapacitor.html">
+        Kapacitor
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_kibana.html">
+        Kibana
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_agent.html#kubernetes">
+        Kubernetes
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_memcached.html">
+        Memcached
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_mongodb.html">
+        MongoDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_mysql.html">
+        MySQL
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_netstat.html">
+        Netstat
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_nginx.html">
+        Nginx
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_openzfs.html">
+        OpenZFS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_postgresql.html">
+        PostgreSQL
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_puppetagent.html">
+        Puppet
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_redis.html">
+        Redis
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_rethinkdb.html">
+        RethinkDB
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_config_telegraf_zookeeper.html">
+        Zookeeper
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="reference_object_icons.html">
+        Object Icon Reference
+      </a></li></ul></li></ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      
+
+
+
+<div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Dashboard Features</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2021-06-29 18:45:17 +0000">06/29/2021</time>
+    
+  
+
+<span>Contributors
+  <a target="_blank" href="https://github.com/netapp-alavoie">
+    <img  class="avatar avatar-small"
+          alt="netapp-alavoie"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/39956590?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+  <span>
+    <a target="_blank" href="/us-en/cloudinsights/pdfs/pages/concept_dashboard_features.pdf" role="button">
+      <img src="/us-en/cloudinsights/images/pdf.png" width="20" height="20"/>Download PDF of this page</a>
+  </span>
+
+
+</p>
+
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Dashboards and widgets allow great flexibility in how data is displayed. Here are some concepts to help you get the most from your custom dashboards.</p>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#widget-placement-and-size">Widget Placement and Size</a></li>
+<li><a href="#duplicating-a-widget">Duplicating a Widget</a></li>
+<li><a href="#displaying-widget-legends">Displaying Widget Legends</a></li>
+<li><a href="#transforming-metrics">Transforming Metrics</a></li>
+<li><a href="#dashboard-widget-queries-and-filters">Dashboard widget queries and filters</a></li>
+<li><a href="#grouping-and-aggregation">Grouping and Aggregation</a></li>
+<li><a href="#showing-topbottom-results">Showing Top/Bottom Results</a></li>
+<li><a href="#grouping-in-table-widget">Grouping in Table Widget</a></li>
+<li><a href="#dashboard-time-range-selector">Dashboard time range selector</a></li>
+<li><a href="#overriding-dashboard-time-in-individual-widgets">Overriding Dashboard Time in Individual widgets</a></li>
+<li><a href="#primary-and-secondary-axis">Primary and Secondary Axis</a></li>
+<li><a href="#expressions-in-widgets">Expressions in widgets</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#formatting-gauge-widgets">Formatting Gauge Widgets</a></li>
+<li><a href="#formatting-single-value-widget">Formatting Single-Value Widget</a></li>
+<li><a href="#choosing-the-unit-for-displaying-data">Choosing the Unit for Displaying Data</a></li>
+<li><a href="#tv-mode-and-auto-refresh">TV Mode and Auto-Refresh</a></li>
+<li><a href="#dashboard-groups">Dashboard Groups</a></li>
+<li><a href="#pin-your-favorite-dashboards">Pin your Favorite Dashboards</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="widget-placement-and-size">Widget Placement and Size</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All dashboard widgets can be positioned and sized according to your needs for each particular dashboard.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="duplicating-a-widget">Duplicating a Widget</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In dashboard Edit mode, click the menu on the widget and select <strong>Duplicate</strong>. The widget editor is launched, pre-filled with the original widget&#8217;s configuration and with a “copy” suffix in the widget name. You can easily make any necessary changes and Save the new widget. The widget will be placed at the bottom of your dashboard, and you can position it as needed. Remember to Save your dashboard when all changes are complete.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/DuplicateWidget.png" alt="Duplicate a widget"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="displaying-widget-legends">Displaying Widget Legends</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most widgets on dashboards can be displayed with or without legends. Legends in widgets can be turned on or off on a dashboard by either of the following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When displaying the dashboard, click the <strong>Options</strong> button on the widget and select <strong>Show Legends</strong> in the menu.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As the data displayed in the widget changes, the legend for that widget is updated dynamically.</p>
+</div>
+<div class="paragraph">
+<p>When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page. If the legend displays "all", clicking the link will display a query page corresponding to the first query in the widget.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="transforming-metrics">Transforming Metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Insights provides different <strong>transform</strong> options for certain metrics in widgets (specifically, those metrics called "Custom" or Integration Metrics, such as from Kubernetes, ONTAP Advanced Data, Telegraf plugins, etc.), allowing you to display the data in a number of ways. When adding transformable metrics to a widget, you are presented with a drop-down giving the following transform choices:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">None</dt>
+<dd>
+<p>Data is displayed as is, with no manipulation.</p>
+</dd>
+<dt class="hdlist1">Rate</dt>
+<dd>
+<p>Current value divided by the time range since the previous observation.</p>
+</dd>
+<dt class="hdlist1">Cumulative</dt>
+<dd>
+<p>The accumulation of the sum of previous values and the current value.</p>
+</dd>
+<dt class="hdlist1">Delta</dt>
+<dd>
+<p>The difference between the previous observation value and the current value.</p>
+</dd>
+<dt class="hdlist1">Delta rate</dt>
+<dd>
+<p>Delta value divided by the time range since the previous observation.</p>
+</dd>
+<dt class="hdlist1">Cumulative Rate</dt>
+<dd>
+<p>Cumulative value divided by the time range since the previous observation.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Note that transforming metrics does not change the underlying data itself, but only the way that data is displayed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dashboard-widget-queries-and-filters">Dashboard widget queries and filters</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="queries">Queries</h3>
+<div class="paragraph">
+<p>The Query in a dashboard widget is a powerful tool for managing the display of your data. Here are some things to note about widget queries.</p>
+</div>
+<div class="paragraph">
+<p>Some widgets can have up to five queries. Each query will plot its own set of lines or graphs in the widget. Setting rollup, grouping, top/bottom results, etc. on one query does not affect any other queries for the widget.</p>
+</div>
+<div class="paragraph">
+<p>You can click on the eye icon to temporarily hide a query. The widget display updates automatically when you hide or show a query. This allows you to check your displayed data for individual queries as you build your widget.</p>
+</div>
+<div class="paragraph">
+<p>The following widget types can have multiple queries:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Area chart</p>
+</li>
+<li>
+<p>Stacked area chart</p>
+</li>
+<li>
+<p>Line chart</p>
+</li>
+<li>
+<p>Spline chart</p>
+</li>
+<li>
+<p>Single value widget</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The remaining widget types can have only a single query:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Table</p>
+</li>
+<li>
+<p>Bar chart</p>
+</li>
+<li>
+<p>Box plot</p>
+</li>
+<li>
+<p>Scatter plot</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="filtering-in-dashboard-queries">Filtering in dashboard queries</h3>
+<div class="paragraph">
+<p>Here are some things you can do to get the most out of your filters.</p>
+</div>
+<div class="sect3">
+<h4 id="exact-match-filtering">Exact Match Filtering</h4>
+<div class="paragraph">
+<p>If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.</p>
+</div>
+<div class="paragraph">
+<p>You can use exact match filters to find specific resources, for example hostname. If you want to find only the hostname 'marketing' but exclude 'marketing01', 'marketing-boston', etc., simply enclose the name "marketing" in double quotes.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="advanced-filtering">Advanced Filtering</h4>
+<div class="paragraph">
+<p>The following can be used to further refine your filters.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An asterisk enables you to search for everything. For example,</p>
+<div class="listingblock">
+<div class="content">
+<pre>vol*rhel</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>displays all resources that start with "vol" and end with "rhel".</p>
+</div>
+</li>
+<li>
+<p>The question mark enables you to search for a specific number of characters. For example,</p>
+<div class="listingblock">
+<div class="content">
+<pre>BOS-PRD??-S12</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>displays <em>BOS-PRD12-S12</em>, <em>BOS-PRD13-S12</em>, and so on.</p>
+</div>
+</li>
+<li>
+<p>The OR operator enables you to specify multiple entities. For example,</p>
+<div class="listingblock">
+<div class="content">
+<pre>FAS2240 OR CX600 OR FAS3270</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>finds multiple storage models.</p>
+</div>
+</li>
+<li>
+<p>The NOT operator allows you to exclude text from the search results. For example,</p>
+<div class="listingblock">
+<div class="content">
+<pre>NOT EMC*</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>finds everything that does not start with "EMC". You can use</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NOT *</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to display fields that contain no value.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="identifying-objects-returned-by-queries-and-filters">Identifying objects returned by queries and filters</h3>
+<div class="paragraph">
+<p>The objects returned by queries and filters look similar to those shown in the following illustration. Objects with 'tags' assigned to them are annotations while the objects without tags are performance counters or object attributes.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/ObjectsReturnedByFilters.png" alt="Objects returned by filters"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grouping-and-aggregation">Grouping and Aggregation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="grouping-rolling-up">Grouping (Rolling Up)</h3>
+<div class="paragraph">
+<p>Data displayed in a widget is grouped (sometimes called rolled-up) from the underlying data points collected during acquisition. For example, if you have a line chart widget showing Storage IOPS over time, you might want to see a separate line for each of your data centers, for a quick comparison. You can choose to group this data in one of several ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Avg</strong>: displays each line as the <em>average</em> of the underlying data.</p>
+</li>
+<li>
+<p><strong>Max</strong>: displays each line as the <em>maximum</em> of the underlying data.</p>
+</li>
+<li>
+<p><strong>Min</strong>: displays each line as the <em>minimum</em> of the underlying data.</p>
+</li>
+<li>
+<p><strong>Sum</strong>: displays each line as the <em>sum</em> of the underlying data.</p>
+</li>
+<li>
+<p><strong>Count</strong>: displays a <em>count</em> of objects that have reported data within the specified time frame. You can choose the <em>Entire Time Window</em> as determined by the dashboard time range (or the widget time range, if set to override the dashboard time), or a <em>Custom Time Window</em> that you select.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">Steps</div>
+<p>To set the grouping method, do the following.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In your widget&#8217;s query, choose an asset type and metric (for example, <em>Storage</em>) and metric (such as <em>Performance IOPS Total</em>).</p>
+</li>
+<li>
+<p>For <strong>Group</strong>, choose a roll up method (such as <em>Avg</em>) and select the attributes or metrics by which to roll up the data (for example, <em>Data Center</em>).</p>
+<div class="paragraph">
+<p>The widget updates automatically and shows data for each of your data centers.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can also choose to group <em>all</em> of the underlying data into the chart or table. In this case, you will get a single line for each query in the widget, which will show the average, min, max, sum, or count of the chosen metric or metrics for all of the underlying assets.</p>
+</div>
+<div class="paragraph">
+<p>Clicking the legend for any widget whose data is grouped by "All" opens a query page showing the results of the first query used in the widget.</p>
+</div>
+<div class="paragraph">
+<p>If you have set a filter for the query, the data is grouped based on the filtered data.</p>
+</div>
+<div class="paragraph">
+<p>Note that when you choose to group a widget by any field (for example, <em>Model</em>), you will still need to Filter by that field in order to properly display the data for that field on the chart or table.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aggregating-data">Aggregating data</h3>
+<div class="paragraph">
+<p>You can further align your time-series charts (line, area, etc.) by aggregating data points into minute, hour, or day buckets before that data is subsequently rolled up by attribute (if chosen). You can choose to aggregate data points according to their <em>Avg, Max, Min, or Sum</em>, or by the <em>Last</em> data point collected during the chosen interval. To choose an aggregation method, click on <strong>More options</strong> in the widget&#8217;s query section.</p>
+</div>
+<div class="paragraph">
+<p>A small interval combined with a long time range may result in an "Aggregation interval resulted in too many data points." warning. You might see this if you have a small interval and increase the dashboard time frame to 7 days. In this case, Insight will temporarily increase the aggregation interval until you select a smaller time frame.</p>
+</div>
+<div class="paragraph">
+<p>You can also aggregate data in the bar chart widget and single-value widget.</p>
+</div>
+<div class="paragraph">
+<p>Most asset counters aggregate to <em>Avg</em> by default. Some counters aggregate to <em>Max, Min</em>, or <em>Sum</em> by default. For example, port errors aggregate to <em>Sum</em> by default, where storage IOPS aggregate to <em>Avg</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="showing-topbottom-results">Showing Top/Bottom Results</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In a chart widget, you can show either the <strong>Top</strong> or <strong>Bottom</strong> results for rolled up data, and choose the number of results shown from the drop-down list provided. In a table widget, you can sort by any column.</p>
+</div>
+<div class="sect2">
+<h3 id="chart-widget-topbottom">Chart widget top/bottom</h3>
+<div class="paragraph">
+<p>In a chart widget, when you choose to rollup data by a specific attribute, you have the option of viewing either the top N or bottom N results. Note that you cannot choose the top or bottom results when you choose to rollup by <em>all</em> attributes.</p>
+</div>
+<div class="paragraph">
+<p>You can choose which results to display by choosing either <strong>Top</strong> or <strong>Bottom</strong> in the query&#8217;s <strong>Show</strong> field, and selecting a value from the list provided.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="table-widget-show-entries">Table widget show entries</h3>
+<div class="paragraph">
+<p>In a table widget, you can select the number of results shown in the table results. You are not given the option to choose top or bottom results because the table allows you to sort ascending or descending by any column on demand.</p>
+</div>
+<div class="paragraph">
+<p>You can choose the number of results to show in the table on the dashboard by selecting a value from the query&#8217;s <strong>Show entries</strong> field.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grouping-in-table-widget">Grouping in Table Widget</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Data in a table widget can be grouped by any available attribute, allowing you to see an overview of your data, and to drill-down into it for more detail. Metrics in the table are rolled up for easy viewing in each collapsed row.</p>
+</div>
+<div class="paragraph">
+<p>Table widgets allow you to group your data based on the attributes you set. For example, you might want your table to show total storage IOPS grouped by the data centers in which those storages live. Or you might want to display a table of virtual machines grouped according to the hypervisor that hosts them. From the list, you can expand each group to view the assets in that group.</p>
+</div>
+<div class="paragraph">
+<p>Grouping is only available in the Table widget type.</p>
+</div>
+<div class="sect2">
+<h3 id="grouping-example-with-rollup-explained">Grouping example (with rollup explained)</h3>
+<div class="paragraph">
+<p>Table widgets allow you to group data for easier display.</p>
+</div>
+<div class="paragraph">
+<p>In this example, we will create a table widget showing all VMs grouped by Data Center.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Create or open a dashboard, and add a <strong>Table</strong> widget.</p>
+</li>
+<li>
+<p>Select <em>Virtual Machine</em> as the asset type for this widget.</p>
+</li>
+<li>
+<p>Click on the Column Selector and choose <em>Hypervisor name</em> and <em>IOPS - Total</em>.</p>
+<div class="paragraph">
+<p>Those columns are now displayed in the table.</p>
+</div>
+</li>
+<li>
+<p>Let&#8217;s disregard any VM&#8217;s with no IOPS, and include only VMs that have total IOPS greater than 1. Click the <strong>Filter by</strong> <strong>[+]</strong> button and select <em>IOPS - Total</em>. Click on <em>Any</em>, and in the <strong>from</strong> field, type <strong>1</strong>. Leave the <strong>to</strong> field empty. Hit Enter ot click off the filter field to apply the filter.</p>
+<div class="paragraph">
+<p>The table now shows all VMs with Total IOPS greater than or equal to 1. Notice that there is no grouping in the table. All VMs are shown.</p>
+</div>
+</li>
+<li>
+<p>Click the <strong>Group by [+]</strong> button.</p>
+<div class="paragraph">
+<p>You can group by any attribute or annotation shown. Choose <em>All</em> to display all VMs in a single group.</p>
+</div>
+<div class="paragraph">
+<p>Any column header for a performance metric displays a "three dot" menu containing a <strong>Roll up</strong> option. The default roll up method is <em>Avg</em>. This means that the number shown for the group is the average of all the Total IOPS reported for each VM inside the group. You can choose to roll this column up by <em>Avg, Sum, Min</em> or <em>Max</em>. Any column that you display that contains performance metrics can be rolled up individually.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/TableRollUp.png" alt="Roll Up"></span></p>
+</div>
+</li>
+<li>
+<p>Click <em>All</em> and select <em>Hypervisor name</em>.</p>
+<div class="paragraph">
+<p>The VM list is now grouped by Hypervisor. You can expand each hypervisor to view the VMs hosted by it.</p>
+</div>
+</li>
+<li>
+<p>Click <strong>Save</strong> to save the table to the dashboard. You can resize or move the widget as desired.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong> to save the dashboard.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="performance-data-roll-up">Performance data roll up</h3>
+<div class="paragraph">
+<p>If you include a column for performance data (for example, <em>IOPS - Total</em>) in a table widget, when you choose to group the data you can then choose a roll up method for that column. The default roll up method is to display the average (<em>avg</em>) of the underlying data in the group row. You can also choose to display the sum, minimum, or maximum of the data.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dashboard-time-range-selector">Dashboard time range selector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can select the time range for your dashboard data. Only data relevant to the selected time range will be displayed in widgets on the dashboard.  You can select from the following time ranges:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Last 15 Minutes</p>
+</li>
+<li>
+<p>Last 30 Minutes</p>
+</li>
+<li>
+<p>Last 60 Minutes</p>
+</li>
+<li>
+<p>Last 2 Hours</p>
+</li>
+<li>
+<p>Last 3 Hours (this is the default)</p>
+</li>
+<li>
+<p>Last 6 Hours</p>
+</li>
+<li>
+<p>Last 12 Hours</p>
+</li>
+<li>
+<p>Last 24 Hours</p>
+</li>
+<li>
+<p>Last 2 Days</p>
+</li>
+<li>
+<p>Last 3 Days</p>
+</li>
+<li>
+<p>Last 7 Days</p>
+</li>
+<li>
+<p>Last 30 Days</p>
+</li>
+<li>
+<p>Custom time range</p>
+<div class="paragraph">
+<p>The Custom time range allows you to select up to 31 consecutive days. You can also set the Start Time and End Time of day for this range. The default Start Time is 12:00 AM on the first day selected and the default End Time is 11:59 PM on the last day selected. Clicking <strong>Apply</strong> will apply the custom time range to the dashboard.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overriding-dashboard-time-in-individual-widgets">Overriding Dashboard Time in Individual widgets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can override the main dashboard time range setting in individual widgets. These widgets will display data based on their set time frame, not the dashboard time frame.</p>
+</div>
+<div class="paragraph">
+<p>To override the dashboard time and force a widget to use its own time frame, in the widget&#8217;s edit mode set the <strong>Override dashboard time</strong> to <strong>On</strong> (check the box), and select a time range for the widget. <strong>Save</strong> the widget to the dashboard.</p>
+</div>
+<div class="paragraph">
+<p>The widget will display its data according to the time frame set for it, regardless of the time frame you select on the dashboard itself.</p>
+</div>
+<div class="paragraph">
+<p>The time frame you set for one widget will not affect any other widgets on the dashboard.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="primary-and-secondary-axis">Primary and Secondary Axis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Different metrics use different units of measurements for the data they report in a chart. For example, when looking at IOPS, the unit of measurement is the number of I/O operations per second of time (IO/s), while Latency is purely a measure of time (milliseconds, microseconds, seconds, etc.). When charting both metrics on a single line chart using a single set a values for the Y-Axis, the latency numbers (typically a handful of milliseconds) are charted on the same scale with the IOPS (typically numbering in the thousands), and the latency line gets lost at that scale.</p>
+</div>
+<div class="paragraph">
+<p>But it is possible to chart both sets of data on a single meaningful graph, by setting one unit of measurement on the primary (left-side) Y-axis, and the other unit of measurement on the secondary (right-side) Y-axis. Each metric is charted at its own scale.</p>
+</div>
+<div class="paragraph">
+<div class="title">Steps</div>
+<p>This example illustrates the concept of Primary and Secondary axes in a chart widget.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create or open a dashboard. Add a line chart, spline chart, area chart or stacked area chart widget to the dashboard.</p>
+</li>
+<li>
+<p>Select an asset type (for example <em>Storage</em>) and choose <em>IOPS - Total</em> for your first metric. Set any filters you like, and choose a roll-up method if desired.</p>
+<div class="paragraph">
+<p>The IOPS line is displayed on the chart, with its scale shown on the left.</p>
+</div>
+</li>
+<li>
+<p>Click <strong>[+Query]</strong> to add a second line to the chart. For this line, choose <em>Latency - Total</em> for the metric.</p>
+<div class="paragraph">
+<p>Notice that the line is displayed flat at the bottom of the chart. This is because it is being drawn <em>at the same scale</em> as the IOPS line.</p>
+</div>
+</li>
+<li>
+<p>In the Latency query, select <strong>Y-Axis: Secondary</strong>.</p>
+<div class="paragraph">
+<p>The Latency line is now drawn at its own scale, which is displayed on the right side of the chart.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./media/SecondaryAxisExplained.png" alt="Secondary Axis example">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="expressions-in-widgets">Expressions in widgets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In a dashboard, any time series widget (line, spline, area, stacked area) allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment&#8212;&#8203;those IOPS that are not directly from reading or writing data.</p>
+</div>
+<div class="sect2">
+<h3 id="expressions-example-read-iops-percentage">Expressions Example: Read IOPS percentage</h3>
+<div class="paragraph">
+<p>In this example, we want to show Read IOPS as a percentage of Total IOPS. You can think of this as the following formula:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Read Percentage = (Read IOPS / Total IOPS) x 100</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This data can be shown in a line graph on your dashboard. To do this, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Create a new dashboard, or open an existing dashboard in edit mode.</p>
+</li>
+<li>
+<p>Add a widget to the dashboard. Choose <strong>Area chart</strong>.</p>
+<div class="paragraph">
+<p>The widget opens in edit mode. By default, a query is displayed showing <em>IOPS - Total</em> for <em>Storage</em> assets. If desired, select a different asset type.</p>
+</div>
+</li>
+<li>
+<p>Click the <strong>Convert to Expression</strong> link on the right.</p>
+<div class="paragraph">
+<p>The current query is converted to Expression mode. Notice that you cannot change the asset type while in Expression mode. While you are in Expression mode, the link changes to <strong>Revert to Query</strong>. Click this if you wish to switch back to Query mode at any time. Be aware that switching between modes will reset fields to their defaults.</p>
+</div>
+<div class="paragraph">
+<p>For now, stay in Expression mode.</p>
+</div>
+</li>
+<li>
+<p>The <strong>IOPS - Total</strong> metric is now in the alphabetic variable field "<strong>a</strong>". In the "<strong>b</strong>" variable field, click <strong>Select</strong> and choose <strong>IOPS - Read</strong>.</p>
+<div class="paragraph">
+<p>You can add up to a total of five alphabetic variables for your expression by clicking the + button following the variable fields. For our Read Percentage example, we only need Total IOPS ("<strong>a</strong>") and Read IOPS ("<strong>b</strong>").</p>
+</div>
+</li>
+<li>
+<p>In the <strong>Expression</strong> field, you use the letters corresponding to each variable to build your expression. We know that Read Percentage = (Read IOPS / Total IOPS) x 100, so we would write this expression as:</p>
+<div class="literalblock">
+<div class="content">
+<pre>(b / a) * 100</pre>
+</div>
+</div>
+</li>
+<li>
+<p>The <strong>Label</strong> field identifies the expression. Change the label to "Read Percentage", or something equally meaningful for you.</p>
+</li>
+<li>
+<p>Change the <strong>Units</strong> field to "%" or "Percent".</p>
+<div class="paragraph">
+<p>The chart displays the IOPS Read percentage over time for the chosen storage devices. If desired, you can set a filter, or choose a different rollup method. Be aware that if you select Sum as the rollup method, all percentage values are added together, which potentially may go higher than 100%.</p>
+</div>
+</li>
+<li>
+<p>Click <strong>Save</strong> to save the chart to your dashboard.</p>
+<div class="paragraph">
+<p>You can also use expressions in Line chart, Spline chart, or Stacked Area chart widgets.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="expressions-example-system-io">Expressions example: "System" I/O</h3>
+<div class="paragraph">
+<p>Example 2: Among the metrics collected from data sources are read, write, and total IOPS. However, the total number of IOPS reported by a data source sometimes includes "system" IOPS, which are those IO operations that are not a direct part of data reading or writing. This system I/O can also be thought of as "overhead" I/O, necessary for proper system operation but not directly related to data operations.</p>
+</div>
+<div class="paragraph">
+<p>To show these system I/Os, you can subtract read and write IOPS from the total IOPS reported from acquisition. The formula might look like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>System IOPS = Total IOPS - (Read IOPS + Write IOPS)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This data can then be shown in a line graph on your dashboard. To do this, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Create a new dashboard, or open an existing dashboard in edit mode.</p>
+</li>
+<li>
+<p>Add a widget to the dashboard. Choose <strong>Line chart</strong>.</p>
+<div class="paragraph">
+<p>The widget opens in edit mode. By default, a query is displayed showing <em>IOPS - Total</em> for <em>Storage</em> assets. If desired, select a different asset type.</p>
+</div>
+</li>
+<li>
+<p>In the <strong>Roll Up</strong> field, choose <em>Sum</em> by <em>All</em>.</p>
+<div class="paragraph">
+<p>The Chart displays a line showing the sum of total IOPS.</p>
+</div>
+</li>
+<li>
+<p>Click the <em>Duplicate this Query</em> icon <span class="image"><img src="./media/DuplicateQueryIcon.png" alt="Duplicat Query"></span> to create a copy of the query.</p>
+<div class="paragraph">
+<p>A duplicate of the query is added below the original.</p>
+</div>
+</li>
+<li>
+<p>In the second query, click the <strong>Convert to Expression</strong> button.</p>
+<div class="paragraph">
+<p>The current query is converted to Expression mode. Click <strong>Revert to Query</strong> if you wish to switch back to Query mode at any time. Be aware that switching between modes will reset fields to their defaults.</p>
+</div>
+<div class="paragraph">
+<p>For now, stay in Expression mode.</p>
+</div>
+</li>
+<li>
+<p>The <em>IOPS - Total</em> metric is now in the alphabetic variable field "<strong>a</strong>". Click on <em>IOPS - Total</em> and change it to <em>IOPS - Read</em>.</p>
+</li>
+<li>
+<p>In the "<strong>b</strong>" variable field, click <strong>Select</strong> and choose <em>IOPS - Write</em>.</p>
+</li>
+<li>
+<p>In the <strong>Expression</strong> field, you use the letters corresponding to each variable to build your expression. We would write our expression simply as:</p>
+<div class="literalblock">
+<div class="content">
+<pre>a + b</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the Display section, choose <strong>Area chart</strong> for this expression.</p>
+</div>
+</li>
+<li>
+<p>The <strong>Label</strong> field identifies the expression. Change the label to "System IOPS", or something equally meaningful for you.</p>
+<div class="paragraph">
+<p>The chart displays the total IOPS as a line chart, with an area chart showing the combination of read and write IOPS below that. The gap between the two shows the IOPS that are not directly related to data read or write operations. These are your "system" IOPS.</p>
+</div>
+</li>
+<li>
+<p>Click <strong>Save</strong> to save the chart to your dashboard.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="variables">Variables</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting one or more widgets to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.</p>
+</div>
+<div class="paragraph">
+<div class="title">Before you begin</div>
+<p>The example below requires the <strong>City</strong> annotation (also called City attribute) to be set on multiple storage assets. For best results, set different cities on different storages. See the <a href="https://docs.netapp.com/us-en/cloudinsights/task_defining_annotations.html">Annotations</a> topics for more information on using annotations.</p>
+</div>
+<div class="paragraph">
+<div class="title">About this task</div>
+<p>Variables provide a quick and simple way of filtering the data shown in some or all of the widgets on a custom dashboard. The following steps will guide you to creating widgets that use variables, and show you how to use them on your dashboard.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Click on <strong>Dashboards &gt; +New Dashboard</strong>.</p>
+</li>
+<li>
+<p>Before adding widgets, you must define the variables we will use to filter the dashboard data. Click on the <strong>Add Variable</strong> button.</p>
+<div class="paragraph">
+<p>The list of attributes is displayed.</p>
+</div>
+</li>
+<li>
+<p>Let&#8217;s say we want to set the dashboard to filter based on City. Select the <em>City</em> attribute from the list.</p>
+<div class="paragraph">
+<p>The $city variable field is created and added to the dashboard. Variables used by the dashboard are displayed above any widgets.</p>
+</div>
+</li>
+<li>
+<p>Next, we must tell our widgets to use this variable. The simplest way to illustrate this is to add a table widget showing the <em>City</em> column. Click on the <strong>Add Widget</strong> button and select the <em>Table</em> widget.</p>
+</li>
+<li>
+<p>First, add the <em>City</em> column to the table by selecting it from the "gear" button.</p>
+<div class="paragraph">
+<p>City is a list-type attribute, so it contains a list of previously-defined choices. You may also choose text, boolean, or date-type attributes.</p>
+</div>
+</li>
+<li>
+<p>Next, click the <strong>Filter by +</strong> button and choose <em>City</em>.</p>
+</li>
+<li>
+<p>Click <em>Any</em> to view the possible filter choices for City. Notice that the list now includes "<strong>$city</strong>" at the top, in addition to any previously-available choices. Select <em>$city</em> to use this dashboard variable.</p>
+<div class="paragraph">
+<p>The <em>$city</em> choice only appears here if it was defined previously on the main dashboard page. If the variable was not previously defined, only the existing choices for the filter will be shown. Only variables that are applicable to the selected attribute type will be displayed in the drop-down for that filter.</p>
+</div>
+</li>
+<li>
+<p><strong>Save</strong> the widget.</p>
+</li>
+<li>
+<p>On the dashboard page, click on <em>Any</em> next to the <em>$city</em> variable, and select the city or cities you want to see.</p>
+<div class="paragraph">
+<p>Your table widget updates to show only the cities you selected. You can change the values in the <em>$city</em> variable at will, and all widgets on your dashboard that are set to use the $city variable will refresh automatically to show only data for the values you selected.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Be sure to <strong>Save</strong> your dashboard when you have it configured as you want it.</p>
+</div>
+<div class="sect2">
+<h3 id="more-on-dashboard-variables">More on dashboard variables</h3>
+<div class="paragraph">
+<p>Dashboard variables come in several types, can be used across different fields, and must follow rules for naming. These concepts are explained here.</p>
+</div>
+<div class="sect3">
+<h4 id="variable-types">Variable types</h4>
+<div class="paragraph">
+<p>A variable can be one the following types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Text</strong>: Alphanumeric string. This is the default variable type.</p>
+</li>
+<li>
+<p><strong>Numerical</strong>: a number or range of numbers.</p>
+</li>
+<li>
+<p><strong>Boolean</strong>: Use for fields with values of True/False, Yes/No, 0/1, etc. For the boolean variable, the choices are Yes, No, None, Any.</p>
+</li>
+<li>
+<p><strong>Date</strong>: A date or range of dates.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="generic-variables">"Generic" variables</h4>
+<div class="paragraph">
+<p>You can set a generic or universal variable by clicking the <strong>Add Variable</strong> button and selecting one of the types listed above. These types are always shown at the top of the drop-down list. The variable is given a default name, for example "$var1", and is not tied to a specific annotation or attribute.</p>
+</div>
+<div class="paragraph">
+<p>Configuring a generic variable allows you to use that variable in widgets to filter for any field of that type. For example, if you have a table widget showing Name, Alias, and Vendor (which are all text-type attributes), and "$var1" is a text-type variable, you can set filters for each of those fields in the widget to use the $var1 variable. You can set other widgets to use $var1 for those or any text fields.</p>
+</div>
+<div class="paragraph">
+<p>On your dashboard page, setting $var1 to a value (for example "NetApp") will filter all of those fields in all widgets that are set to use that variable. In this way, you can update multiple widgets at once to highlight dashboard data you choose at will.</p>
+</div>
+<div class="paragraph">
+<p>Because generic variables can be used for any field of that type, you can change the name of a generic variable without changing its functionality.</p>
+</div>
+<div class="paragraph">
+<p>Note: All variables are treated as "generic" variables, even those you create for a specific attribute, because all configured variables of a type are shown when you set a filter for any attributes or annotations of that type. However, best practice is to create a generic variable when you will use it to filter for a value across multiple fields, as in the Name/Alias/Vendor example above.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="variable-naming">Variable naming</h4>
+<div class="paragraph">
+<p>Variables names:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Must always be prefixed with a "$". This is added automatically when you configure a variable.</p>
+</li>
+<li>
+<p>Cannot contain any special characters; only the letters a-z and the digits 0-9 are allowed.</p>
+</li>
+<li>
+<p>Cannot be longer than 20 characters, including the "$" symbol.</p>
+</li>
+<li>
+<p>Are case-sensitive: $CityName and $cityname are different variables.</p>
+</li>
+<li>
+<p>Cannot be the same as an existing variable name.</p>
+</li>
+<li>
+<p>Cannot be only the "$" symbol.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="widgets-that-use-variables">Widgets that use variables</h4>
+<div class="paragraph">
+<p>Variables can be used with the following widgets:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Area Chart</p>
+</li>
+<li>
+<p>Bar Chart</p>
+</li>
+<li>
+<p>Box Plot Chart</p>
+</li>
+<li>
+<p>Line Chart</p>
+</li>
+<li>
+<p>Scatter Plot Chart</p>
+</li>
+<li>
+<p>Single Value Widget</p>
+</li>
+<li>
+<p>Spline Chart</p>
+</li>
+<li>
+<p>Stacked Area Chart</p>
+</li>
+<li>
+<p>Table Widget</p>
+</li>
+<li>
+<p>Pie Chart</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="understanding-this-variables">Understanding "$this" variables</h3>
+<div class="paragraph">
+<p>Special variables on an asset&#8217;s landing page allow you to easily showcase additional information that is directly related to the current asset. These special variables have names beginning with '$this".</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>About this task<br>
+To use the "$this" variables in widgets on your asset&#8217;s landing page, follow the steps below. For this example, we will add a <strong>table widget</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+"$this" variables are only valid for an asset&#8217;s landing page. They are not available for other dashboards. The available "$this" variables varies according to asset type.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Navigate to the landing page for an asset of your choosing. For this example, let&#8217;s choose a Virtual Machine (VM) asset page. Query or search for a VM and click on the link to go to that VM&#8217;s asset page.</p>
+<div class="paragraph">
+<p>The asset page for the VM opens.</p>
+</div>
+</li>
+<li>
+<p>Click <strong>Edit</strong> to switch to edit mode, and click the <strong>Add Widget</strong> button. Choose the <strong>Table</strong> widget.</p>
+<div class="paragraph">
+<p>The Table widget opens for editing. By default, all storages are shown in the table.</p>
+</div>
+</li>
+<li>
+<p>We want to show all virtual machines. Click on the asset selector and change <em>Storage</em> to <em>Virtual Machine</em>.</p>
+<div class="paragraph">
+<p>All virtual machines are now shown in the table.</p>
+</div>
+</li>
+<li>
+<p>Click on the gear button and add the <em>Hypervisor Name</em> column to the table.</p>
+<div class="paragraph">
+<p>The hypervisor name is shown for each VM in the table.</p>
+</div>
+</li>
+<li>
+<p>We only care about the hypervisor that hosts the current VM. Click on the <strong>Filter by</strong> field&#8217;s <strong>+</strong> button and select <em>Hypervisor Name</em>.</p>
+</li>
+<li>
+<p>Click on <em>Any</em> and select the <strong>$this.host.name</strong> variable. Press Enter or click off the field to apply the filter.</p>
+<div class="paragraph">
+<p>The table now shows all the VM&#8217;s hosted by the current VM&#8217;s hypervisor.</p>
+</div>
+</li>
+<li>
+<p>Click <strong>Save</strong> to save the widget.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong> to save the asset page.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Result</div>
+<p>The table that you created for this VM asset page will be displayed for any VM asset page you display. The use of the <em>$this.host.name</em> variable in the widget means that only the VM&#8217;s owned by the <em>current assets&#8217;s</em> hypervisor will be displayed in the table.</p>
+</div>
+<div class="paragraph">
+<p>You can also apply <a href="concept_in_context_filters.html"><strong>in-context filters</strong></a> to asset page widgets to accomplish a similar result.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="formatting-gauge-widgets">Formatting Gauge Widgets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Solid and Bullet Gauge widgets allow you to set thresholds for <em>Warning</em> and/or <em>Critical</em> levels, providing clear representation of the data you specify.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/Gauge%20Widget%20Formatting.png" alt="Format settings for Gauge Widget"></span></p>
+</div>
+<div class="paragraph">
+<p>To set formatting for these widgets, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Choose  whether you want to highlight values greater than (&gt;) or less than (&lt;) your thresholds. In this example, we will highlight values greater than (&gt;) the threshold levels.</p>
+</li>
+<li>
+<p>Choose a value for the "Warning" threshold. When the widget displays values greater than this level, it displays the gauge in orange.</p>
+</li>
+<li>
+<p>Choose a value for the "Critical" threshold. Values greater than this level will cause the gauge to display in red.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can optionally choose a minimum and maximum value for the gauge. Values below minimum will not display the gauge. Values above maximum will display a full gauge. If you do not choose minimum or maximum values, the widget selects optimal min and max based on the widget&#8217;s value.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/Gauge-Solid.png" alt="Solid/Traditional Gauge" width="374"></span><br>
+<span class="image"><img src="./media/Gauge-Bullet.png" alt="Bullet Gauge" width="374"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="formatting-single-value-widget">Formatting Single-Value Widget</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>in the Single-Value widget, in addition to setting Warning (orange) and Critical (red) thresholds, you can choose to have "In Range" values (those below Warning level) shown with either green or white background.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/Single-Value%20Widgets.png" alt="Single-Value Widget with and without Formatting"></span></p>
+</div>
+<div class="paragraph">
+<p>Clicking the link in either a single-value widget or a gauge widget will display a query page corresponding to the first query in the widget.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="choosing-the-unit-for-displaying-data">Choosing the Unit for Displaying Data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most widgets on a dashboard allow you to specify the Units in which to display values, for example <em>Megabytes</em>, <em>Thousands</em>, <em>Percentage</em>, <em>Milliseconds (ms)</em>, etc. In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, you can set the format you want.</p>
+</div>
+<div class="paragraph">
+<p>In the line chart example below, the data selected for the widget is known to be in <em>bytes</em> (the base IEC Data unit: see the table below), so the Base Unit is automatically selected as 'byte (B)'. However, the data values are large enough to be presented as gibibytes (GiB), so Cloud Insights by default auto-formats the values as GiB. The Y-axis on the graph shows 'GiB' as the display unit, and all values are displayed in terms of that unit.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/used_memory_in_bytes.png" alt="Base Unit Byte shown in Gigabytes" width="640"></span></p>
+</div>
+<div class="paragraph">
+<p>If you want to display the graph in a different unit, you can choose another format in which to display the values. Since the base unit in this example is <em>byte</em>, you can choose from among the supported "byte-based" formats: bit (b), byte (B), kibibyte (KiB), mebibyte (MiB), gibibyte (GiB). The Y-Axis label and values change according to the format you choose.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/used_memory_in_bytes_gb.png" alt="Choosing a display unit" width="640"></span></p>
+</div>
+<div class="paragraph">
+<p>In cases where the base unit is not known, you can assign a unit from among the <a href="#available-units">available units</a>, or type in your own. Once you assign a base unit, you can then select to display the data in one of the appropriate supported formats.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/bits_per_second.png" alt="Choose your own base unit" width="320"></span></p>
+</div>
+<div class="paragraph">
+<p>To clear out your settings and start again, click on <strong>Reset Defaults</strong>.</p>
+</div>
+<div class="sect2">
+<h3 id="a-word-about-auto-format">A word about Auto-Format</h3>
+<div class="paragraph">
+<p>Most metrics are reported by data collectors in the smallest unit, for example as a whole number such as 1,234,567,890 bytes. By default, Cloud Insights will automatically format the value for the most readable display. For example a data value of 1,234,567,890 bytes would be auto formatted to 1.23 <em>Gibibytes</em>. You can choose to display it in another format, such as <em>Mebibytes</em>. The value will display accordingly.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Cloud Insights uses American English number naming standards. American "billion" is equivalent to "thousand million".
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="widgets-with-multiple-queries">Widgets with multiple queries</h3>
+<div class="paragraph">
+<p>If you have a time-series widget (i.e. line, spline, area, stacked area) that has two queries where both are plotted the primary Y-Axis, the base unit is not shown at the top of the Y-Axis.  However, if your widget has a query on the primary Y-Axis and a query on the secondary Y-Axis, the base units for each are shown.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/UnitsOnPrimaryAnd%20SecondaryYAxis.png" alt="Units on both Y-Axes"></span></p>
+</div>
+<div class="paragraph">
+<p>If your widget has three or more queries, base units are not shown on the Y-Axis.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="available-units">Available Units</h3>
+<div class="paragraph">
+<p>The following table shows all the available units by category.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Category</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Units</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Currency</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cent<br>
+dollar</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data(IEC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bit<br>
+byte<br>
+kibibyte<br>
+mebibyte<br>
+gibibyte<br>
+tebibyte<br>
+pebibyte<br>
+exbibyte</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DataRate(IEC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bit/sec<br>
+byte/sec<br>
+kibibyte/sec<br>
+mebibyte/sec<br>
+gibibyte/sec<br>
+tebibyte/sec<br>
+pebibyte/sec</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data(Metric)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kilobyte<br>
+megabyte<br>
+gigabyte<br>
+terabyte<br>
+petabyte<br>
+exabyte</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DataRate(Metric)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kilobyte/sec<br>
+megabyte/sec<br>
+gigabyte/sec<br>
+terabyte/sec<br>
+petabyte/sec<br>
+exabyte/sec</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IEC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kibi<br>
+mebi<br>
+gibi<br>
+tebi<br>
+pebi<br>
+exbi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decimal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">whole number<br>
+thousand<br>
+million<br>
+bilion<br>
+trillion</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Percentage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">percentage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nanosecond<br>
+microsecond<br>
+millisecond<br>
+second<br>
+minute<br>
+hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Temperature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">celsius<br>
+fahrenheit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Frequency</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hertz<br>
+kilohertz<br>
+megahertz<br>
+gigahertz</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CPU</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nanocores<br>
+microcores<br>
+millicores<br>
+cores<br>
+kilocores<br>
+megacores<br>
+gigacores<br>
+teracores<br>
+petacores<br>
+exacores</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Throughput</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I/O ops/sec<br>
+ops/sec<br>
+requests/sec<br>
+reads/sec<br>
+writes/sec<br>
+ops/min<br>
+reads/min<br>
+writes/min</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tv-mode-and-auto-refresh">TV Mode and Auto-Refresh</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Data in widgets on Dashboards and Asset Landing Pages auto-refresh according a refresh interval determined by the Dashboard Time Range selected (or widget time range, if set to override the dashboard time). The refresh interval is based on whether the widget is time-series (line, spline, area, stacked area chart) or non-time-series (all other charts).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dashboard Time Range</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time-Series Refresh Interval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Non-Time-Series Refresh Interval</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 15 Minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 30 Minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 60 Minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 2 Hours</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 Seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 Minutes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 3 Hours</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30 Seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 Minutes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 6 Hours</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Minute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 Minutes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 12 Hours</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 Minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Minutes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 24 Hours</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 Minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Minutes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 2 Days</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Minutes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 3 Days</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Minutes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Minutes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 7 Days</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Hour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last 30 Days</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 Hours</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 Hours</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Each widget displays its auto-refresh interval in the upper-right corner of the widget.</p>
+</div>
+<div class="paragraph">
+<p>Auto-refresh is not available for Custom dashboard time range.</p>
+</div>
+<div class="paragraph">
+<p>When combined with <strong>TV Mode</strong>, auto-refresh allows for near-real-time display of data on a dashboard or asset page. TV Mode provides an uncluttered display; the navigation menu is hidden, providing more screen real estate for your data display, as is the Edit button. TV Mode ignores typical Cloud Insights timeouts, leaving the display live until logged out manually or automatically by authorization security protocols.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Because NetApp Cloud Central has its own user login timeout of 7 days, Cloud Insights must log out with that event as well. You can simply log in again and your dashboard will continue to display.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To activate TV Mode, click the <span class="image"><img src="./media/ActivateTVMode.png" alt="TV Mode"></span> button.</p>
+</li>
+<li>
+<p>To disable TV Mode, click the <strong>Exit</strong> button in the upper left of the screen. <span class="image"><img src="./media/ExitTVMode.png" alt="Exit Button"></span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can temporarily suspend auto-refresh by clicking the Pause button in the upper right corner. While paused, the dashboard time range field will display the paused data&#8217;s active time range. Your data is still being acquired and updated while auto-refresh is paused. Click the Resume button to continue auto-refreshing of data.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/AutoRefreshPaused.png" alt="Auto-Refresh paused"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dashboard-groups">Dashboard Groups</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Grouping allows you to view and manage related dashboards. For example, you can have a dashboard group dedicated to the storage in your environment. Dashboard groups are managed on the <strong>Dashboards &gt; Show All Dashboards</strong> page.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/DashboardGroupNoPin.png" alt="Dashboard Grouping"></span></p>
+</div>
+<div class="paragraph">
+<p>Two groups are shown by default:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>All Dashboards</strong> lists all the dashboards that have been created, regardless of owner.</p>
+</li>
+<li>
+<p><strong>My Dashboards</strong> lists only those dashboards created by the current user.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The number of dashboards contained in each group is shown next to the group name.</p>
+</div>
+<div class="paragraph">
+<p>To create a new group, click the <strong>"+" Create New Dashboard Group</strong> button. Enter a name for the group and click <strong>Create Group</strong>. An empty group is created with that name.</p>
+</div>
+<div class="paragraph">
+<p>To add dashboards to the group, click the <em>All Dashboards</em> group to show all dashboards in your environment, of click <em>My Dashboards</em> if you only want to see the dashboards you own, and do one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To add a single dashboard, click the menu to the right of the dashboard and select <em>Add to Group</em>.</p>
+</li>
+<li>
+<p>To add multiple dashboards to a group, select them by clicking the checkbox next to each dashboard, then click the <strong>Bulk Actions</strong> button and select <em>Add to Group</em>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Remove dashboards from the current group in the same manner by selecting <em>Remove From Group</em>. You can not remove dashboards from the <em>All Dashboards</em> or <em>My Dashboards</em> group.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Removing a dashboard from a group does not delete the dashboard from Cloud Insights. To completely remove a dashboard, select the dashboard and click <em>Delete</em>. This removes it from any groups to which it belonged and it is no longer available to any user.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pin-your-favorite-dashboards">Pin your Favorite Dashboards</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can further manage your dashboards by pinning favorite ones to the top of your dashboard list. To pin a dashboard, simply click the thumbtack button displayed when you hover over a dashboard in any list.</p>
+</div>
+<div class="paragraph">
+<p>Dashboard pin/unpin is an individual user preference and independent of the group (or groups) to which the dashboard belongs.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/DashboardPin.png" alt="Pinned Dashboards"></span></p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div class="page-nav-contribute"  >
+      <div class="page-nav-contribute-title">CONTRIBUTE</div>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloudinsights/blob/main/concept_dashboard_features.adoc" class="btn btn-default githubEditButton" role="button"><img src="/us-en/cloudinsights/images/github.png" class="github-icon" />Edit on GitHub</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloudinsights/issues/new?body=Page%3A%20[Dashboard Features](https://docs.netapp.com/us-en/cloudinsights/concept_dashboard_features.html)" class="btn btn-default githubEditButton" role="button"><img src="/us-en/cloudinsights/images/github.png" class="github-icon" />Request doc changes</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >Contributor's Guide</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">ON THIS PAGE</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2021 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloudinsights/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">Have feedback for our website?<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">Let us know</a>
+  <a href="https://docs.netapp.com/us-en/announcements/" class="n-footer__copyright">Announcements</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/cloudinsights/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/cloudinsights/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/cloudinsights/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/cloudinsights/js/www-ntap.js'></script>
+    <script src='/us-en/cloudinsights/js/tabbed-blocks.js'></script>
+  </body>
+
+  
+</html>
