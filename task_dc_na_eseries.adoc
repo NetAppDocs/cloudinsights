@@ -42,7 +42,7 @@ Note: These are common terminology mappings only and might not represent every c
 
 The following terms apply to objects or references that you might find on NetApp E-Series asset landing pages. Many of these terms apply to other data collectors as well. 
 
-=== E-Series Storage
+=== Storage
 
 * Model – model name of the device. 
 * Vendor – same Vendor name you would see if you were configuring a new datasource
@@ -56,7 +56,7 @@ The following terms apply to objects or references that you might find on NetApp
 * Management – this may contain a hyperlink for the management interface of the device. Created programmatically by the Cloud Insights datasource as part of inventory reporting
  
 
-=== E-Series Storage Pool
+=== Storage Pool
 
 * Storage – what storage array this pool lives on. Mandatory
 * Type – a descriptive value from a list of an enumerated list of possibilities. Most commonly will be “Thin Provisioning” or “RAID Group”
@@ -71,7 +71,7 @@ The following terms apply to objects or references that you might find on NetApp
 * Throughput – the sum throughput of all the disks contributing capacity to this storage pool. If disk throughput is not available on a given platform, this value will be sourced from the sum of volume throughout for all the volumes sitting on this storage pool
 
 
-=== E-Series Storage Node
+=== Storage Node
 
 * Storage – what storage array this node is part of. Mandatory
 * HA Partner – on platforms where a node will fail over to one and only one other node, it will generally be seen here
@@ -115,5 +115,5 @@ The following terms apply to objects or references that you might find on NetApp
            
 == Troubleshooting
 
-Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information on this data collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
 
