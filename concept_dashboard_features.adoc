@@ -387,6 +387,12 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 == Variables
 
@@ -494,15 +500,16 @@ Note: All variables are treated as "generic" variables, even those you create fo
 
 Variables names:
 
-* Must always be prefixed with a "$". This is added automatically when you configure a variable.
+//* Must always be prefixed with a "$". This is added automatically when you configure a variable.
 * Cannot contain any special characters; only the letters a-z and the digits 0-9 are allowed.
-* Cannot be longer than 20 characters, including the "$" symbol.
+* Cannot be longer than 20 characters.
 * Are case-sensitive: $CityName and $cityname are different variables.
 * Cannot be the same as an existing variable name.
-* Cannot be only the "$" symbol.
+* Cannot be empty.
 
 ==== Widgets that use variables
 
+////
 Variables can be used with the following widgets:
 
 * Area Chart
@@ -515,6 +522,7 @@ Variables can be used with the following widgets:
 * Stacked Area Chart
 * Table Widget
 * Pie Chart
+////
 
 === Understanding "$this" variables
 
