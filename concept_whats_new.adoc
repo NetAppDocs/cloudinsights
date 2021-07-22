@@ -20,6 +20,44 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === August 2021
 
+==== Improved User Role Management
+
+Cloud Insights now allows greater freedom for assigning link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html[user roles] in each of its three distinct areas. Users can be assigned different roles in each component, with accompanying permission levels specific to that component:
+
+|===
+|Role	|Monitoring	|Cloud Secure	|Reporting
+
+|Account Owner	
+3+>|Can modify subscriptions, view billing and usage information, and perform all Administrator functions for Monitoring & Optimization, Cloud Secure, and Reporting.
+Owners can also invite and manage users.
+
+The Account Owner is created when you register for Cloud Insights.
+
+It is strongly recommended to have at least two Account Owners for each Cloud Insights environment. 
+
+|Administrator	
+|Can perform all Monitoring & Optimization functions, all user functions, as well as management of data collectors, API keys, and notifications.
+An Administrator can also invite other users but can only assign Monitor and Optimize roles. 
+
+|Can perform all Cloud Secure functions, including those for Alerts, Forensics, data collectors, automated response policies, and APIs for Cloud Secure.
+An Administrator can also invite other users but can only assign Cloud Secure roles.
+
+|Can perform all User/Author functions, as well as all administrative tasks such as configuration of reports, and the shutdown and restart of reporting tasks.
+An Administrator can also invite other users but can only assign Reporting roles.
+
+|User	
+|Can view and modify dashboards, queries, alerts, annotations, annotation rules, and applications, and manage device resolution.
+|n/a	
+|Can perform all Guest/Consumer functions as well as create and manage reports and dashboards.
+
+|Guest	
+|Has read-only access to asset pages, dashboards, alerts, and can view and run queries.
+|n/a	
+|Can view, schedule, and run reports and set personal preferences such as those for languages and time zones. Guests/Consumers cannot create reports or perform administrative tasks.
+
+|===
+
+
 ==== Excluded devices shown in FC Resolution Status
 
 ==== More powerful Variables
