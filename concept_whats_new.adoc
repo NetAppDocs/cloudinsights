@@ -69,6 +69,17 @@ image:Variables_Choose_Filter_Scope.png[Variable Filter and Scope]
 
 
 
+==== Automatic Widget Naming
+
+Widgets are automatically named based on the graph query. 
+The name is based on the first widget query and it includes the metric name or object name (for tables) and "Group by" attributes. 
+
+image:WidgetNameExample.png[Widget Naming Example]
+
+Selecting a new object or grouping attribute updates the automatic name.
+
+
+
 ==== Alerts and Monitors available in top search
 
 The top search box can now be used to search for Alert name or ID.
