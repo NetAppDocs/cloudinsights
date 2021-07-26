@@ -502,7 +502,7 @@ Note: All variables are treated as "generic" variables, even those you create fo
 Variables names:
 
 //* Must always be prefixed with a "$". This is added automatically when you configure a variable.
-* Cannot contain any special characters; only the letters a-z and the digits 0-9 are allowed.
+* Cannot contain any special characters; only the letters a-z, the digits 0-9, period (.), and underscore (_) are allowed.
 * Cannot be longer than 20 characters.
 * Are case-sensitive: $CityName and $cityname are different variables.
 * Cannot be the same as an existing variable name.
