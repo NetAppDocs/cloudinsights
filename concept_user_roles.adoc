@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: concept_user_roles.html
-keywords: roles, guest, user, administrator, SSO, Federate, federation, identity, single sign-on
+keywords: roles, guest, user, administrator, SSO, Federate, federation, identity, single sign-on, Account Owner
 summary: Cloud Insights provides multiple user accounts with different permission levels.
 ---
 
@@ -30,6 +30,8 @@ You use an account that has Administrator privileges to create or modify user ac
 The Account Owner is created when you register for Cloud Insights.
 
 Best practice is to limit the number of users with Administrator permissions. The greatest number of accounts should be user or guest accounts.
+
+NOTE: It is strongly recommended to have at least two Account Owners for each Cloud Insights environment. 
 
 === Permissions by User Role
 
