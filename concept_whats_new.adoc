@@ -71,23 +71,25 @@ image:Variables_Choose_Filter_Scope.png[Variable Filter and Scope]
 
 ==== Automatic Widget Naming
 
-Widgets are automatically named based on the first widget query. The name is created from the metric name (or object name, for tables) and "Group by" attributes (metric as well as aggregation method). 
+Widgets are automatically named based on the first widget query. The name is created from fields such as the metric name (or object name, for tables) and "Group by" attributes (metric as well as aggregation method). Different widget types may use some or all of these when creating an automatic name.
 
 image:WidgetNameExample.png[Widget Naming Example]
 
-Selecting a new object or grouping attribute updates the automatic name.
+Selecting a new object or grouping attribute updates the automatic name. And of course you can always give the widget your own name if desired.
 
 
 
 ==== Alerts and Monitors available in top search
 
-The top search box can now be used to search for Alert name or ID.
+You can now search for alerts in Cloud Insights' top search box. 
 
 image:Search_Alert.png[Top Search for Alerts]
 
+
+
 ==== Related Alerts table on landing pages
 
-You can use the *Related Alerts* table on an asset's landing page to see any alerts that occur related to the asset.
+The *Related Alerts* table on an asset's landing page enables you to quickly and easily investigate alerts that occur related to the asset.
 
 image:Alerts_on_Landing_Page.png[Related Alerts Table]
 
@@ -96,6 +98,7 @@ image:Alerts_on_Landing_Page.png[Related Alerts Table]
 ==== Excluded devices shown in FC Resolution Status
 
 FC Resolution now shows devices that are specifically excluded from identification with a status of _Excluded_. 
+TBD: Image
 
 
 
