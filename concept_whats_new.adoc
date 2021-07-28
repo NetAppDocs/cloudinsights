@@ -227,6 +227,7 @@ image:CloudSecure_SnapshotPurgeSettings.png[Purge Settings]
 A single data collector agent system can now post up to 20,000 events per second to Cloud Secure.
 
 
+'''
 
 === May 2021
 
@@ -265,6 +266,9 @@ Premium edition continues to allow full use of all API categories.
 |===
 
 For details on API usage, please refer to the link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-documentation-swagger[API documentation]. 
+
+
+'''
 
 === April 2021
 
@@ -323,6 +327,8 @@ Cloud Secure now supports NFS event collection from ONTAP devices, which means r
 ////
 
 
+'''
+
 === February 2021
 
 ==== Updated Telegraf Agent
@@ -379,6 +385,8 @@ The following information resides in the United States, regardless of the region
 * Information that allows NetApp Cloud Central to communicate with regional Cloud Insights sites, including anything to do with user Authorization.
 * Information related to the relation between the Cloud Insights user and the tenant.
 ////
+
+'''
 
 === January 2021
 
@@ -445,12 +453,17 @@ A wide variety of information can be explored using the Kubernetes Explorer's dr
 
 image:Kubernetes_Cluster_Detail_Example.png[The Kubernetes Explorer]
 
+
+'''
+
 === December 2020
 
 ==== Simpler Kubernetes Installation
 
 Kubernetes Agent installation has been streamlined to require fewer user interactions. link:task_config_telegraf_agent.html#kubernetes[Installing the Kubernetes Agent] now includes Kubernetes data collection.
 
+
+'''
 
 === November 2020
 
@@ -480,6 +493,8 @@ Note that this only affects the column's display name in the table widget; the m
 
 image:Table_Widget_Column_Rename.png[Table Widget Rename Column]
 
+'''
+
 === October 2020
 
 ==== Default Expansion of Integration Data
@@ -498,6 +513,7 @@ Technical Support is now available for subscribers to Cloud Insights Basic Editi
 
 Cloud Secure supports link:concept_cs_api.html[REST APIs] for accessing Activity and Alert information. This is accomplished through the use of API Access Tokens, created through the Cloud Secure Admin UI, which are then used to access the REST APIs. Swagger documentation for these REST APIs is integrated with Cloud Secure.
 
+'''
 
 === September 2020
 
@@ -548,6 +564,7 @@ IMPORTANT: If you are a current Premium Edition customer and wish to retain your
 
 Cloud Insights has added a *Data Ingestion* API category, giving you greater control over custom data and agents. Detailed documentation for this and other API Categories can be found in Cloud Insights by navigating to *Admin > API Access* and clicking the _API Documentation_ link. You can also attach a comment to the AU in the Note field, which is  displayed on the AU detail page as well as the AU list page.
 
+'''
 
 === August 2020
 
@@ -556,6 +573,8 @@ Cloud Insights has added a *Data Ingestion* API category, giving you greater con
 In addition to the current ability to set performance policies for storage objects, VMs, EC2, and ports, Cloud Insights Standard Edition now includes the ability to link:task_create_monitor.html[configure monitors] for thresholds on Integration data for Kubernetes, ONTAP advanced metrics, and Telegraf plugins. You simply create a monitor for each object metric you want to trigger alerts, set the conditions for warning-level or critical-level thresholds, and specify the email recipient(s) desired for each level. You can then link:task_view_and_manage_alerts.html[view and manage alerts] to track trends or troubleshoot issues.
 
 image:define_monitor_conditions_2.png[Monitor Conditions]
+
+'''
 
 === July 2020
 
@@ -731,6 +750,8 @@ rules:
   - list            <== Add this line
 --------------------------
 
+'''
+
 === June 2020
 
 ==== Simplified Data Collector Error Reporting
@@ -750,6 +771,8 @@ image:Object_Metric_Chooser.png[Object/Metric Chooser]
 * Multiple tags grouping: When working with integration data (Kubernetes, etc.), you may group the data by multiple tags/attributes. For example, Sum memory usage by Kubernetes Namespace and Container name.
 
 image:MultipleGroupsIntegrationLineChart.png[Multiple grouping when displaying integration data]
+
+'''
 
 === May 2020
 
@@ -798,6 +821,8 @@ link:concept_dashboard_features.html#tv-mode-and-auto-refresh[TV Mode and Auto-R
 * Data in widgets on Dashboards and Asset Landing Pages *Auto-Refresh* according a refresh interval (as little as every 10 seconds) determined by the Dashboard Time Range selected (or widget time range, if set to override the dashboard time). 
 
 Combined, TV Mode and Auto-Refresh provide a live view of your Cloud Insights data, perfect for seamless demonstrations or in-house monitoring.
+
+'''
 
 === April 2020
 
@@ -851,6 +876,7 @@ Adding widgets to dashboards and asset landing pages is easier with a new widget
 
 image:NewWidgetPicker.png[New widget selector]
 
+'''
 
 === February 2020
 
@@ -886,6 +912,9 @@ image:DuplicateWidget.png[Duplicate a widget]
 With Cloud Insights Premium Edition, administrators can enable *link:concept_user_roles.html#single-sign-on-sso-accounts[Single Sign-On]* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights using their corporate credentials.
 
 NOTE: SSO is only available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory.
+
+
+'''
 
 === January 2020
 
@@ -925,6 +954,8 @@ Additional improvements:
 +
 image:Onboarding_Progress.png[Progress Bar]
 
+
+'''
 === December 2019
 
 ==== Business Entity can be used in filters
@@ -948,6 +979,9 @@ The calculation of Managed Units (MUs) in Cloud Insights has been changed to the
 
 This change effectively doubles the environment capacity that you can monitor using your existing Cloud Insights subscription.
 
+
+'''
+
 === November 2019
 
 ////
@@ -962,6 +996,7 @@ SSO is available in Cloud Insights Premium Edition, and must be configured befor
 
 The *Admin > Subscription* page link:concept_subscribing_to_cloud_insights.html#key-features[comparison table] has been updated to list the feature sets available in Basic, Standard, and Premium Editions of Cloud Insights. NetApp is constantly improving its Cloud Services, so check this page often to find the Edition that's right for your evolving business needs.
 
+'''
 
 === October 2019
 
@@ -1001,6 +1036,9 @@ link:concept_activeiq.html[Active IQ Risks] are now available as objects that ca
 * Storage Node
 * UI Category
 
+
+'''
+
 === September 2019
 
 ==== New Gauge Widgets
@@ -1025,6 +1063,7 @@ At any point during the onboarding process, you can click on Admin > User Manage
 
 The data collector detail page has been improved to display errors in a more readable format. Errors are now displayed in a separate table on the page, with each error displayed on a separate line in the case of multiple errors for the data collector.
 
+'''
 
 === August 2019
 
@@ -1044,6 +1083,7 @@ _Business Entity_ is now an annotation type provided by Cloud Insights, which ca
 
 Cloud Insights collects data from NetApp ActiveIQ, which provides a series of visualizations, analytics, and other support related services to NetApp customers and their hardware / software systems. Cloud Insights integrates with ONTAP Data Management systems. See link:concept_activeiq.html[Active IQ] for more information.
 
+'''
 
 === July 2019
 
@@ -1068,6 +1108,8 @@ Downgrade to Basic Edition fails with an error message if there is no available 
 
 The link:task_config_telegraf_kubernetes.html[Kubernetes Data Collector] now collects objects and counters from the kube-state-metrics plugin, greatly expanding the number and scope of metrics available for monitoring in Cloud Insights.
 
+'''
+
 === June 2019
 
 ==== Cloud Insights Editions
@@ -1081,6 +1123,7 @@ Cloud Insights is available in different Editions to fit your budget and busines
 Note that the HCI data collector acquires from the HCI Virtual Center only. To collect data from the storage system, you must also configure the NetApp link:task_dc_na_solidfire[SolidFire] data collector.
 
 
+'''
 === May 2019
 
 ==== New Service Data Collector: Kapacitor
@@ -1127,6 +1170,7 @@ Microsoft Windows Server 2008 R2
 Microsoft Windows Server 2019
 |===
 
+'''
 
 === April 2019
 
@@ -1137,6 +1181,8 @@ When configuring the following data collectors, you can filter to include or exc
 * link:task_dc_amazon_ec2.html#advanced-configuration[Amazon EC2]
 * link:task_dc_ms_azure.html#advanced-configuration[Azure]
 * link:task_dc_google_cloud.html#advanced_configuration[Google Cloud Platform]
+
+'''
 
 === March 2019
 
@@ -1154,6 +1200,7 @@ When configuring the following data collectors, you can filter to include or exc
  ** AWS Admin - Which EC2 are in high demand?
  **	AWS EC2 Instance Performance by Region 
 
+'''
 
 === February 2019
 
@@ -1170,6 +1217,7 @@ When configuring the following data collectors, you can filter to include or exc
 
 * You can configure a Cloud Insights Acquisition Unit on a Windows server/VM. Review the Windows link:concept_acquisition_unit_requirements.html[pre-requisites] before installing the link:task_configure_acquisition_unit.html[Acquisition Unit software].
 
+'''
 
 === January 2019
 
@@ -1181,6 +1229,7 @@ When configuring the following data collectors, you can filter to include or exc
 
 * For each data collector listed on the *Admin > Subscription* page, you can now see a breakdown of Managed Unit (MU) counts for hosts and storage, as well as the total.
 
+'''
 
 === December 2018
 
@@ -1197,6 +1246,9 @@ The data collectors selected must be the same vendor and model, and reside on th
 ==== Support and Subscription pages are Available During Onboarding
 
 * During the onboarding workflow, you can navigate to the *Help > Support* and *Admin > Subscription* pages. Returning from those pages returns you to the onboarding workflow, providing you have not closed the browser tab.
+
+
+'''
 
 === November 2018
 
