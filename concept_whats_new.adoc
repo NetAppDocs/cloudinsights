@@ -20,9 +20,18 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === August 2021
 
+==== Enhanced User Role Management 
+
+Cloud Insights now allows even greater freedom for assigning user roles and access controls. Users can now be assigned granular permissions for monitoring, reporting, and Cloud Secure separately.  
+
+This means you can allow more users administrative access to monitoring, optimization, and reporting functions whilst restricting access to your sensitive Cloud Secure audit and activity data to only those that need it. 
+
+link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html[Find out more] about the different levels of access in the Cloud Insights documentation. 
+
+////
 ==== Improved User Role Management
 
-Cloud Insights now allows greater freedom for assigning link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html[user roles] in each of its three distinct Feature Sets. Users can be assigned different roles in each Feature Set, with accompanying permission levels specific to that Feature Set:
+Cloud Insights now allows greater freedom for assigning link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html[user roles] in each of its three distinct Feature Sets: _Monitoring and Optimization_, _Cloud Secure_, and _Reporting_. A user may be assigned a different role in each Feature Set, with accompanying permission levels specific to that Feature Set:
 
 |===
 |Role	|Monitoring	|Cloud Secure	|Reporting
@@ -58,7 +67,7 @@ An Administrator can also invite other users but can only assign Reporting roles
 |===
 
 It is recommended to verify your user's roles, including SSO roles if appropriate, following this update.
-
+////
 
 ////
 ==== More powerful Variables
