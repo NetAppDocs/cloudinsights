@@ -286,6 +286,15 @@ To upgrade the telegraf agent, do the following:
 . link:#ubuntu-and-debian[Install the new agent].
 
 
+=== Troubleshooting _Unable to determine IP address_
+
+. Are you getting the correct IP address from the nameserver?
+
+. Is `/etc/nsswitch.conf` correctly configured?
+  
+ hosts:          dns files
+
+
 === macOS
 
 image:AgentInstallMacOS.png[MacOS Agent Install]
