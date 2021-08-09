@@ -177,7 +177,7 @@ In addition to inviting users, administrators can enable *Single Sign-On (SSO) U
 
 NOTE: _SSO User Auto-Provisioning_ is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO User Auto-Provisining configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central as described in the section above. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory, using open standards such as Security Assertion Markup Language 2.0 (SAML) and OpenID Connect (OIDC). 
 
-To configure _SSO User Auto-Provisioning_, on the *Admin > User Management* page, click the *Configure SSO* button. Once configured, administrators can then enable SSO user login. When an administrator enables _SSO User Auto-Provisioning_, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
+To configure _SSO User Auto-Provisioning_, on the *Admin > User Management* page, click the *Request Federation* button. Once configured, administrators can then enable SSO user login. When an administrator enables _SSO User Auto-Provisioning_, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
 
 //image:SSOBanner.jpg[User Management with SSO]
 image:Roles_federation_Banner.png[User management with Federation]
@@ -188,7 +188,7 @@ If the user no longer requires the elevated role, you can click the menu to _Rem
 
 You can choose to hide SSO users by unchecking the *Show SSO Users* checkbox. 
 
-image:UserListWithSSO.png[SSO Enabled] 
+//image:UserListWithSSO.png[SSO Enabled] 
 
 However, do not enable _SSO User Auto-Provisioning_ if either of these are true: 
 
