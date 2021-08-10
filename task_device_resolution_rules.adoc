@@ -1,0 +1,144 @@
+---
+sidebar: sidebar
+permalink: task_device_resolution_rules.html
+keywords: Automatic, AR, AHR, Host, automatic device resolution
+summary: Device Resolution helps you accurately track performance and inventory in your environment.
+---
+
+= Device Resolution rules
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You create device resolution rules to identify hosts, storage, and tapes that are not automatically identified currently by Cloud Insights. The rules that you create identify devices currently in your environment and also identify similar devices as they are added to your environment.
+
+
+== Creating Device Resolution Rules
+
+When you create rules you start by identifying the source of information that the rule runs against, the method used to extract information, and whether DNS lookup is applied to the results of the rule.
+
+[cols=2*]
+|===
+|Source that is used to identify the device	
+|* SRM aliases for hosts
+* Storage alias containing an embedded host or tape name
+* Switch alias containing an embedded host or tape name
+* Zone names containing an embedded host name 
+|Method that is used to extract the device name from the source	
+|* As is (extract a name from an SRM)
+* Delimiters
+* Regular expressions
+|DNS lookup	|Specifies if you use DNS to verify the host name
+|===
+
+You create rules in the Auto Resolution Rules tab. The following steps describe the rule creation process.
+
+.Procedure
+
+. Click *Manage > Device Resolution*
+
+. In the *Auto resolution rules* tab, click *+ Host Rule* or *+ Tape Rule*.
++
+The *Resolution Rule* screen is displayed.
++
+NOTE: Click the _View matching criteria_ link for help with and examples for creating regular expressions.
+
+. In the *Type* list select the device you want to identify.
++
+You can select _Host_ or _Tape_.
+
+. In the *Source* list, select the source you want to use to identify the host.
++
+Depending on the source you chose, Cloud Insights displays the following response:
+
+.. *Zones* lists the zones and WWN that need to be identified by Cloud Insights.
+.. *SRM* lists the unidentified aliases that need to be identified by Cloud Insights
+.. *Storage alias* lists storage aliases and WWN that need to be identified by Cloud Insights
+.. *Switch alias* lists the switch aliases that need to be identified by Cloud Insights
+
+. In the *Method* list select the method you want to employ to identify the host.
++
+|===
+|Source	|Method
+|SRM	|As is, Delimiters, Regular expressions
+|Storage alias	|Delimiters, Regular expressions
+|Switch alias	|Delimiters, Regular expressions
+|Zones	|Delimiters, Regular expressions
+|===
++
+* Rules using Delimiters require the delimiters and the minimum length of the host name.
+The minimum length of the host name is number of characters that Cloud Insights should use to identify a host. Cloud Insights performs DNS lookups only for host names that are this long or longer.
++
+For rules using Delimiters, the input string is tokenized by the delimiter and a list of host name candidates is created by making several combinations of the adjacent token. The list is then sorted, largest to smallest. For example, for an input sring of _vipsnq03_hba3_emc3_12ep0_ the list would result in the following:
++
+** vipsnq03_hba3_emc3_12ep0
+** vipsnq03_hba3_emc3
+** hba3 emc3_12ep0
+** vipsnq03_hba3
+** emc3_12ep0
+** hba3_emc3
+** vipsnq03
+** 12ep0
+** emc3
+** hba3
++
+* Rules using Regular expressions require a regular expression, the format, and cases sensitivity selection.
+
+. Click *Run AR* to run all rules, or click the down-arrow in the button to run the rule you created (and any other rules that have been created since the last full run of AR).
++
+The results of the rule run are displayed in the *FC identify* tab.
+
+== Starting an automatic device resolution update
+
+A device resolution update commits manual changes that have been added since the last full automatic device resolution run. Running an update can be used to commit and run only the new manual entries made to the device resolution configuration. No full device resolution run is performed.
+
+.Procedure
+
+. Log into the Cloud Insights web UI.
+. Click *Manage > Device Resolution*
+. In the *Device Resolution* screen, click the down-arrow in the *Run AR* button.
+. Click *Update* to start the update.
+
+== Rule-assisted manual identification
+
+This feature is used for special cases where you want to run a specific rule or a list of rules (with or without a one-time reordering) to resolve unknown hosts, storage, and tape devices.
+
+.Before you begin
+
+You have a number of devices that have not been identified and you also have multiple rules that successfully identified other devices.
+
+NOTE: If your source only contains part of a host or device name, use a regular expression rule and format it to add the missing text.
+
+.Procedure
+
+. Log into the Cloud Insights web UI.
+. Click *Manage > Device Resolution*
+. Click the *Fibre Channel Identify* tab.
++
+The system displays the devices along with their resolution status.
+
+. Select multiple unidentified devices.
+. Click *Bulk Actions*  and select *Set host resolution* or *Set tape resolution*.
++
+The system displays the Identify screen which contains a list of all of the rules that successfully identified devices.
+
+. Change the order of the rules to an order that meets your needs.
++
+The order of the rules are changed in the Identify screen, but are not changed globally.
+
+. Select the method that that meets your needs.
+
+Cloud Insights executes the host resolution process in the order in which the methods appear, beginning with those at the top.
+
+When rules that apply are encountered, rule names are shown in the rules column and identified as manual.
+
+Related:
+link:task_device_resolution_fibre_channel.html[Fibre Channel Device Resolution]
+link:task_device_resolution_ip.html[IP Device Resolution]
+link:task_device_resolution_preferences.html[Setting Device Resolution Preferences]

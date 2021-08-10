@@ -5,7 +5,7 @@ summary: The server or VM you use as your Agent must meet minimum requirements
 keywords: agent, Linux, requirements, docker, browsers, permissions, Network
 ---
 
-= Agent Requirements 
+= Agent Requirements
 
 :toc: macro
 :hardbreaks:
@@ -42,7 +42,7 @@ This computer should be running no other application-level software. A dedicated
 //|Docker | The Docker CE package must be installed on the VM hosting the agent. 
 //The agent systems should always have the Docker CE package installed. Users should not install the Docker-client-xx or Docker-common-xx native RHEL Docker packages since these do not support the 'docker run' CLI format that Cloud Secure supports. 
 //|Java |OpenJDK Java is required. 
-|CPU	|2 CPU cores 
+|CPU	|4 CPU cores 
 |Memory	|16 GB RAM 
 |Available disk space	|Disk space should be allocated in this manner:
 //50 GB available for the root partition
@@ -59,6 +59,9 @@ For Linux, disk space should be allocated in this manner:
 /opt/netapp 25 GB
 /var/log/netapp 25 GB
 |===
+
+=== Additional recommendations
+* It is strongly recommended to synchronize the time on both the ONTAP system and the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
 //// 
 
@@ -80,6 +83,8 @@ You can use a broader range to specify the tenant ID: \https://*.cs01.cloudinsig
 
 == Cloud Network Access Rules
 
+For *US-based* Cloud Secure environments:
+
 [cols=5*,options="header"]
 |===
 |Protocol|Port|	Destination	|Direction|	Description
@@ -88,6 +93,34 @@ You can use a broader range to specify the tenant ID: \https://*.cs01.cloudinsig
 <site_name>.c02.cloudinsights.netapp.com|Outbound|Access to Cloud Insights
 |TCP|443|gateway.c01.cloudinsights.netapp.com
 agentlogin.cs01.cloudinsights.netapp.com|Outbound|Access to authentication services
+|===
+
+For *Europe-based* Cloud Secure environments:
+
+[cols=5*,options="header"]
+|===
+|Protocol|Port|	Destination	|Direction|	Description
+|TCP|443|<site_name>.cs01-eu-1.cloudinsights.netapp.com
+<site_name>.c01-eu-1.cloudinsights.netapp.com
+<site_name>.c02-eu-1.cloudinsights.netapp.com
+|Outbound|Access to Cloud Insights
+|TCP|443|gateway.c01.cloudinsights.netapp.com
+agentlogin.cs01-eu-1.cloudinsights.netapp.com
+|Outbound|Access to authentication services
+|===
+
+For *APAC-based* Cloud Secure environments:
+
+[cols=5*,options="header"]
+|===
+|Protocol|Port|	Destination	|Direction|	Description
+|TCP|443|<site_name>.cs01-ap-1.cloudinsights.netapp.com
+<site_name>.c01-ap-1.cloudinsights.netapp.com
+<site_name>.c02-ap-1.cloudinsights.netapp.com
+|Outbound|Access to Cloud Insights
+|TCP|443|gateway.c01.cloudinsights.netapp.com
+agentlogin.cs01-ap-1.cloudinsights.netapp.com
+|Outbound|Access to authentication services
 |===
 
 == In-network rules
@@ -107,3 +140,7 @@ agentlogin.cs01.cloudinsights.netapp.com|Outbound|Access to authentication servi
 // * Internet Explorer 11 
 // * Firefox ESR 60 
 // * Chrome latest nightly (73.0)6
+
+==== Related:
+
+See the link:concept_cs_event_rate_checker.html[Event Rate Checker] documentation for information about sizing.

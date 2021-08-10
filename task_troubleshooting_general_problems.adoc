@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: task_troubleshooting_general_problems.html
+summary: General Cloud Insights Troubleshooting tips.
+keywords: troubleshooting, problems, browser, login, log in, accessing, access to
+---
+
+= Troubleshooting General Cloud Insights Problems
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Here you will find suggestions for troubleshooting Cloud insights. 
+
+See also link:task_troubleshooting_linux_acquisition_unit_problems.html[Troubleshooting Linux Acquisition Unit Problems] and link:task_troubleshooting_windows_acquisition_unit_problems.html[Troubleshooting Windows Acquisition Unit Problems].
+
+==== Login issues:
+
+|===
+|*Problem:* | *Try this:* 
+|Cloud Insights logs out every 5 minutes
+|Enable 3rd party cookie acceptance from _[*.]auth0.com_ in your browser settings. 
+For example in Chrome's incognito mode, the default browser settings block third-party cookies. Try the following:
+Enter "chrome://settings/cookies" in browser URL.
+Select "Allow all cookies" option.
+
+|I have a Cloud Central account but am unable to login to Cloud Central.
+|Contact saas.support@netapp.com. This is specifically for Cloud Central issues or questions.
+For all other Cloud Insights issues, contact link:concept_requesting_support.html[NetApp support]. 
+
+|I got invited to Cloud Insights but I get a "not authorized" message.
+|Verify that you have signed up for a Cloud Central account, or that your organization uses SSO login with Cloud Central.
+
+Verify your Cloud Central profile email address matches email address shown in your Cloud Insights welcome email. If the email does not match, request a new invitation with the correct email address.
+
+|I logged out from Cloud Central or Cloud Secure and was automatically logged out from Cloud Insights. |Single Sign-On (SSO) across NetApp Cloud logs out all Cloud Insights, Cloud Secure, and Reporting sessions. If you have access to multiple Cloud Insights accounts, logging out from any one logs out all active sessions. Log back in to access your account.
+
+|I was automatically logged out after several days.
+|NetApp Cloud accounts require reauthentication every few days (current Cloud Central setting is 7 days). Log back in to access your account.
+
+|I receive an error message “no longer authorized to login”.
+|Contact your account administrator to verify access to Cloud Insights. 
+Verify your Cloud Central profile email address matches email address shown in your Cloud Insights welcome email
+
+|Other login errors
+|Try incognito mode in Chrome, or clear browser history, cookies, and cache. 
+Try with a different browser profile (i.e. Chrome - add Person).
+
+|===
+
+//You can find more troubleshooting and other link:concept_requesting_support.html[support] information on the Cloud Insights *Help > Support* page.
+
+If you have an active Cloud Insights subscription you can use these support options:
+
+link:https://www.netapp.com/us/contact-us/support.aspx[Phone]
+link:https://mysupport.netapp.com/site/cases/mine/create?serialNumber=95001014387268156333[Support Ticket]
+
+For more information, see the https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[Cloud Insights Support Documentation].
+
+

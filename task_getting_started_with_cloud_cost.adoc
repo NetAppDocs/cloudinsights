@@ -1,0 +1,80 @@
+---
+sidebar: sidebar
+permalink: task_getting_started_with_cloud_cost.html
+summary: Getting started with Cloud Cost.
+keywords: analysis, cost, analyzer
+---
+
+= Getting started with Cloud Cost 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Cost provides a detailed cost analysis of past, present, and estimated spending, providing visibility into cloud usage in your environment. The Cloud Cost dashboard delivers a clear view of your organization's cloud expenses and a drill down into individual workloads, accounts, and services.
+
+Cloud Cost can help with the following major challenges:
+
+* Tracking and monitoring your cloud expenses
+* Identifying waste and potential optimization areas
+* Delivering executable action items
+
+You must have Cloud Insights _Administrator_ or _Account Owner_ permissions to configure or view Cloud Cost. Once it has been configured, any Cloud Insights user with those permissions can access Cloud Cost.
+
+Configure Cloud Cost by linking it to your _AWS Organizations_ account. This is sometimes known as the link:https://docs.spot.io/cloud-analyzer/getting-started/connect-your-aws-master-payer-account-existing-customer[_management_] account.
+
+NOTE: Cloud Cost is available for US-Region Cloud Insights environments only and can be configured for only a single AWS Organizations account. Cloud Cost must be configured separately from any AWS Collectors you may have in Cloud Insights. 
+
+==== Setting Up Cloud Cost
+
+When you log in to Cloud Insights and click the *Cloud Cost* menu item for the first time, you are presented with a welcome screen and a prompt to begin setup of Cloud Cost. 
+
+image:Cloud_Cost_Welcome.png[Cloud Cost]
+
+* Click the *Add AWS Credentials to Start* button to begin. You are given the AWS Connection screen. Follow the instructions on this screen to link your *AWS Organizations Account* to Cloud Cost.
++
+image:Cloud_Cost_Setup_1.png[AWS Connect]
+
+* When you have finished configuring your account, Cloud Cost displays a "Welcome" message.
++
+image:Cloud_Cost_Welcome_Wait.png[Welcome to Cloud Cost!]
++
+NOTE: It can take up to 24 hours for Cloud Cost to fully configure. You will receive an email notification once configuration is complete. If you have difficulty, you can contact NetApp Support by clicking the Chat icon or visiting  link:https://spot.io/support[NetApp Spot Support]. 
+
+* After setup is complete, clicking the *Cloud Cost* menu item will display your cost analysis dashboard, similar to the following example.
++
+image:Cloud_Cost_Example_Dashboard.png[Cloud Cost Example Dashboard]
+
+=== More about Cloud Cost
+
+Cloud Cost connects your Cloud Insights environment with the Cloud Analyzer feature of link:https://docs.spot.io/cloud-analyzer/[Spot by NetApp], which provides Cloud Insights with the most relevant view of your cloud cost data.  By clicking on the _Get Full Analysis_ link in the upper right corner of the Cloud Cost dashboard, you can open the full Cloud Analyzer dashboard in Spot. The full analysis may provide additional data and drill-downs to give additional insight into your cloud spending.
+
+
+=== Troubleshooting
+
+Some things to try if you encounter problems:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|I received an email from Spot confirming my setup, but the links don't seem relevant to Cloud Insights |The links in the Spot email are not relevant to Cloud Insights Cloud Cost. Ignore links in the emails from Spot.
+|Cloud Cost is presenting me with a Spot login prompt. | Your Cloud Cost session may have expired. Navigate to the Cloud Insights Home screen and then back to Cloud Cost to restart your Cloud Cost session.
+|I received a "Cloud Cost session conflict detected" message. |Cloud Cost sessions opened in multiple accounts are not supported in the same browser. Log out of Cloud Insights and log back in to see Cloud Cost information for your account.
+|I see an error when I try to log in: "Unauthorized. Invalid credentials." |Verify that you are logging in with the correct credentials. If the problem persists, contact NetApp Spot Support.
+|===
+
+
+////
+Notes:
+Only US-Based Cloud Insights will see CC
+All Editions (Basic, Std, Premium
+Only Admin/Acct Owner
+
+Onboarding - configure AWS account (once)
+All Admin users can then see the CC page
+////

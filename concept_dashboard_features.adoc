@@ -19,6 +19,16 @@ Dashboards and widgets allow great flexibility in how data is displayed. Here ar
 
 toc::[]
 
+== Widget Naming
+
+Widgets are automatically named based on the object, metric, or attribute selected for the first widget query. If you also choose a grouping for the widget, the "Group by" attributes are included in the automatic naming (aggregation method and metric).
+
+image:WidgetNameExample.png[Widget Naming Example]
+
+Selecting a new object or grouping attribute updates the automatic name.
+
+If you do not want to use the automatic widget name, you can simply type a new name. 
+
 ==	Widget Placement and Size
 All dashboard widgets can be positioned and sized according to your needs for each particular dashboard.
 
@@ -37,6 +47,31 @@ Most widgets on dashboards can be displayed with or without legends. Legends in 
 As the data displayed in the widget changes, the legend for that widget is updated dynamically.
 
 When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page. If the legend displays "all", clicking the link will display a query page corresponding to the first query in the widget.
+
+== Transforming Metrics 
+
+Cloud Insights provides different *transform* options for certain metrics in widgets (specifically, those metrics called "Custom" or Integration Metrics, such as from Kubernetes, ONTAP Advanced Data, Telegraf plugins, etc.), allowing you to display the data in a number of ways. When adding transformable metrics to a widget, you are presented with a drop-down giving the following transform choices:
+
+None::
+Data is displayed as is, with no manipulation.
+
+Rate::
+Current value divided by the time range since the previous observation.
+
+Cumulative::
+The accumulation of the sum of previous values and the current value.
+
+Delta::
+The difference between the previous observation value and the current value. 
+
+Delta rate::
+Delta value divided by the time range since the previous observation.
+
+Cumulative Rate::
+Cumulative value divided by the time range since the previous observation.
+
+Note that transforming metrics does not change the underlying data itself, but only the way that data is displayed.
+ 
 
 == Dashboard widget queries and filters
 
@@ -218,9 +253,14 @@ If you include a column for performance data (for example, _IOPS - Total_) in a 
 You can select the time range for your dashboard data. Only data relevant to the selected time range will be displayed in widgets on the dashboard.  You can select from the following time ranges:
 
 * Last 15 Minutes
-* Last 1 Hour
+* Last 30 Minutes
+* Last 60 Minutes
+* Last 2 Hours
 * Last 3 Hours (this is the default)
-* Last 24 Hours 
+* Last 6 Hours
+* Last 12 Hours
+* Last 24 Hours
+* Last 2 Days
 * Last 3 Days
 * Last 7 Days
 * Last 30 Days
@@ -640,13 +680,18 @@ Data in widgets on Dashboards and Asset Landing Pages auto-refresh according a r
 
 |===
 |Dashboard Time Range|Time-Series Refresh Interval|Non-Time-Series Refresh Interval
-|Last 15 Minutes|10 Second|1 Minute
-|Last 1 Hour|15 Second|1 Minute
-|Last 3 Hours|30 Second|5 Minute
-|Last 24 Hours|5 Minute|10 Minute
-|Last 3 Days|15 Minute|15 Minute
+|Last 15 Minutes|10 Seconds|1 Minute
+|Last 30 Minutes|15 Seconds|1 Minute
+|Last 60 Minutes|15 Seconds|1 Minute
+|Last 2 Hours|30 Seconds|5 Minutes
+|Last 3 Hours|30 Seconds|5 Minutes
+|Last 6 Hours|1 Minute|5 Minutes
+|Last 12 Hours|5 Minutes|10 Minutes
+|Last 24 Hours|5 Minutes|10 Minutes
+|Last 2 Days|10 Minutes|10 Minutes
+|Last 3 Days|15 Minutes|15 Minutes
 |Last 7 Days|1 Hour|1 Hour
-|Last 30 Days|2 Hour|2 Hour
+|Last 30 Days|2 Hours|2 Hours
 |===
 
 Each widget displays its auto-refresh interval in the upper-right corner of the widget.

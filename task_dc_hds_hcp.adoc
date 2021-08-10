@@ -1,0 +1,84 @@
+---
+sidebar: sidebar
+permalink: task_dc_hds_hcp.html
+keywords: data collector, Hitachi HDS, HCP 
+summary: Configuring HDS data collector.
+---
+
+= Hitachi HCP data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead] 
+
+This data collector supports the Hitachi Content Platform (HCP) using the HCP Management API. 
+
+== Terminology 
+
+Cloud Insights acquires the following inventory information from the Hitachi HCP data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|HCP Cluster|Storage
+|Tenant |Storage Pool|
+|Namespace|Internal Volume
+|Node|Node
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Inventory Requirements
+
+You must have the following in order to collect inventory data:
+
+* IP address of the HCP server
+* Read-only user name and password for the HCP software and peer privileges
+
+////
+== Performance requirements 
+
+The following requirements must be met in order to collect performance data:
+
+* HDS USP, USP V, and VSP performance 
+** Performance Monitor must be licensed.
+** Monitoring switch must be enabled. 
+** The Export Tool (Export.exe) must be copied to the Cloud Insights AU.
+** The Export Tool version must match the microcode version of the target array.
+
+* AMS performance:
+** NetApp strongly recommends creating a dedicated service account on AMS arrays for Cloud Insights to use to retrieve performance data. Storage Navigator only allows a user account one concurrent login to the array. Having Cloud Insights use the same user account as management scripts or HiCommand may result in Cloud Insights, management scripts, or HiCommand being unable to communicate to the array due to the one concurrent user account login limit
+** Performance Monitor must be licensed.
+** The Storage Navigator Modular 2 (SNM2) CLI utility needs to be installed on the Cloud Insights AU. 
+////
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|HCP Host|IP address or fully-qualified domain name of the HCP host 
+|HCP Port|Default is 9090
+|HCP User ID |User name for the HCP host. 
+|HCP Password|Password used for the HCP host. 
+|HCP Authentication Type|Choose HCP_LOCAL or ACTIVE_DIRECTORY
+|===
+
+== Advanced configuration
+
+|===
+|Field|Description
+|Inventory Poll Interval (min)|	Interval between inventory polls. The default is 60.  
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 900.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+

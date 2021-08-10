@@ -222,7 +222,7 @@ image::new-agent-detect.png[]
 
 == Network Configuration
 
-Use the following commands to open ports to be used by Cloud Secure. 
+Run the following commands on the local system to open ports that will be used by Cloud Secure.
 
 .Steps
 
@@ -277,6 +277,19 @@ After that, re-copy the command from the Agent installation UI and paste it in t
 `sudo systemctl restart cloudsecure-agent.service`
 3. Check the status of the agent service via `sudo systemctl status cloudsecure-agent.service`.
 4. Agent should go to CONNECTED state.
+
+|Agent VM is behind Zscaler proxy and the agent installation is failing. Because of Zscaler proxy’s SSL inspection, the Cloud Secure certificates are presented as it is signed by Zscaler CA so the agent is not trusting the communication.
+|To resolve the issue, do the following:
+1.	Get the CA certificate which is used in Zscaler, by browser or a tool like openssl. Also download all the intermediate CA certificates if applicable.
+2.	Import the CA certificates into the Cloud Secure agent’s trust store using below command.
+/opt/netapp/cloudsecure/agent/java64/bin/keytool -importcert -file <ca_cert_path> -keystore /opt/netapp/cloudsecure/agent-certs/cert/client.keystore -alias <alias_name>
+3.	Restart the agent by executing the following command.
+
+ systemctl restart cloudsecure-agent.service
+ 
+4.	The agent should work now.
+5.	If the agent is still failing with SSL error then import the immediate certificate presented by the tenant url using browser or tool like openssl.
+6.	Restart the agent again.
 
 |===
 
