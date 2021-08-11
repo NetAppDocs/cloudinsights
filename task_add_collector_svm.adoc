@@ -345,6 +345,21 @@ link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nm
 
 _Include and exclude shares_ is not intended for a long list of share names. Use filtering by volume instead if you have a large number of shares to include or exclude.
 
+|There are existing fpolicies in the Cluster which are unused. What should be done with those prior to installation of Cloud Secure?
+|It is recommended to delete all existing unused fpolicy settings even if they are in disconnected state. Cloud Secure will create fpolicy with the prefix "cloudsecure_". All other unused fpolicy configurations can be deleted.
+
+CLI command to show fpolicy list:
+
+_fpolicy show_
+
+Steps to delete fpolicy configurations:
+
+_fpolicy disable -vserver <svmname> -policy-name <policy_name>_
+_fpolicy policy scope delete -vserver <svmname> -policy-name <policy_name>_
+_fpolicy policy delete -vserver <svmname> -policy-name <policy_name>_
+_fpolicy policy event delete -vserver <svmname> -event-name <event_list>_
+_fpolicy policy external-engine delete -vserver <svmname> -engine-name <engine_name>_
+
 
 |===
 

@@ -55,7 +55,7 @@ _CN=username,OU=engineering,DC=companyname, DC=netapp, DC=com_ [to get only spec
 
 _CN=Acrobat Users,CN=Users,DC=hq,DC=companyname,DC=com,O= companyname,L=Boston,S=MA,C=US_ [to get all Acrobat Users within the Users in that organization]
 
-
+Trusted Active Directory domains are also supported.
 
 |Bind DN|User permitted to search the directory. For example: _username@companyname.com_ or _username@domainname.com_
 |BIND password|Directory server password (i.e. password for username used in Bind DN)
