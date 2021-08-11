@@ -20,10 +20,12 @@ You create monitors to set thresholds that trigger alerts to notify you about is
 
 TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
 
-When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both. 
+When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both.
 
-//image:MonitorExample1.png[Storage IOPS Monitor Example]
+Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
 
+
+////
 === Monitor or Performance Policy?
 
 What's the difference between a *Performance Policy* and a *Monitor*?
@@ -37,6 +39,8 @@ Policies and Monitors are available under the *Alerts* menu.
 image:AlertsMenuLarger.png[Alerts Menu]
 
 Emails can be sent when a policy or monitor is triggered. 
+////
+
 
 === Creating a Monitor
 
