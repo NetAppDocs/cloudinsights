@@ -5,7 +5,7 @@ summary: The server or VM you use as your Agent must meet minimum requirements
 keywords: agent, Linux, requirements, docker, browsers, permissions, Network
 ---
 
-= Agent Requirements 
+= Agent Requirements
 
 :toc: macro
 :hardbreaks:
@@ -109,6 +109,20 @@ agentlogin.cs01-eu-1.cloudinsights.netapp.com
 |Outbound|Access to authentication services
 |===
 
+For *APAC-based* Cloud Secure environments:
+
+[cols=5*,options="header"]
+|===
+|Protocol|Port|	Destination	|Direction|	Description
+|TCP|443|<site_name>.cs01-ap-1.cloudinsights.netapp.com
+<site_name>.c01-ap-1.cloudinsights.netapp.com
+<site_name>.c02-ap-1.cloudinsights.netapp.com
+|Outbound|Access to Cloud Insights
+|TCP|443|gateway.c01.cloudinsights.netapp.com
+agentlogin.cs01-ap-1.cloudinsights.netapp.com
+|Outbound|Access to authentication services
+|===
+
 == In-network rules
 
 [cols=5*,options="header"]
@@ -118,6 +132,7 @@ agentlogin.cs01-eu-1.cloudinsights.netapp.com
 636 (LDAPs / start-tls) |LDAP Server URL|Outbound|Connect to LDAP
 |TCP|443|SVM Management IP Address|Outbound|API communication with ONTAP
 |TCP|35000 - 55000|SVM data LIF IP Addresses|Inbound/Outbound|Communication with ONTAP for Fpolicy events
+|TCP|7|SVM data LIF IP Addresses|Outbound|Bidirectional between ONTAP and Cloud Secure. Agent pings the SVM Lifs.
 |===
 
 //link:task_cs_add_agent.html[Configure an Agent]
