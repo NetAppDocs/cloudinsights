@@ -396,7 +396,15 @@ To upgrade the telegraf agent, do the following:
 
 === Kubernetes
 
-image:Kubernetes_Install_Agent_screen.png[Kubernetes Agent Install]
+Kubernetes offers two ways to collect data:
+
+* Operator-based configuration. This is recommended for ONTAP data collectors.
+* Traditional script-based Agent installation
+
+Installation instructions vary based on which tile you choose.
+
+image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
+
 
 .Pre-requisites:
 
@@ -424,7 +432,16 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 |===
 
 
-==== Installation
+==== Operator-Based Installation
+
+image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
+
+TBD
+
+
+==== Script-Based Installation
+
+image:Kubernetes_Install_Agent_screen.png[Script-Based Install]
 
 .Steps to install agent on Kubernetes:
 
@@ -464,6 +481,7 @@ You can then use the following commands to stop and start the Telegraf service:
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-ds.yaml 
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml
  
+
  
 ==== Configuring Proxy Support for Kubernetes
 
