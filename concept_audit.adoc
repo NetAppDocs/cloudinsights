@@ -114,6 +114,16 @@ You can export the results of your Audit display to a .CSV file, which will allo
 The displayed Audit events will be exported to a .CSV file, up to a maximum of 10,000 rows.
 
 
+== Retention of Audit Data
+
+The amount of time Cloud Insights retains Audit data is based on your Edition:
+
+* Basic Edition: Audit data is retained for 7 days
+* Standard and Premium Editions: Audit data is retained for 1 year plus 1 day
+
+Audit entries older than the retention time are automatically purged. No user interaction is needed.
+
+
 
 
 
