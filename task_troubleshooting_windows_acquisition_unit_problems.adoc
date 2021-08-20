@@ -81,6 +81,12 @@ Your Cloud Insights Acquisition Unit, as well as your interactions in a web brow
 
 * Second, some proxies attempt to perform TLS/SSL inspection by impersonating Cloud Insights web sites with digital certificates not generated from NetApp. The Cloud Insights Acquisition Unit’s security model is fundamentally incompatible with these technologies. You would also need the above domain name excepted from this functionality in order for the Cloud Insights Acquisition Unit to successfully login to Cloud Insights and facilitate data discovery.
 
+==== Viewing Proxy endpoints
+
+You can view your proxy endpoints by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed.
+
+image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
+
 === Resources
 
 Additional troubleshooting tips may be found in the link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights[NetApp Knowledgebase] (support sign-in required).
