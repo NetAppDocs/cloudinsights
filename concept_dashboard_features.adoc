@@ -439,14 +439,18 @@ Dashboard variables come in several types, can be used across different fields, 
 
 A variable can be one the following types:
 
-* *Attribute*: this includes annotations, attributes, and metrics 
-* *Text*: Alphanumeric string. This is the default variable type.
-* *Numerical*: a number values.
+//* *Attribute*: this includes annotations, attributes, and metrics 
+
+* *Annotation*: use a pre-definied link:task_defining_annotations.html[Annotation] to filter widget data.
+* *Text*: Alphanumeric string. 
+* *Numerical*:A number value. Use by itself, or as a "from" or "to" value, depending on your widget field.
 * *Boolean*: Use for fields with values of True/False, Yes/No, 0/1, etc. For the boolean variable, the choices are Yes, No, None, Any.
-* *Date*: A date value.
+* *Date*: A date value. Use by itself, or as a "from" or "to" value, depending on your widget field.
 
-image:Variables_Drop-Down.png[Variable Types]
+//image:Variables_Drop-Down.png[Variable Types]
+image:Variables_Drop_Down_Showing_Annotations.png[Variable Types]
 
+////
 ==== "Attribute" type variables
 
 Selecting an Attribute type variable allows you to filter for widget data containing the specified attribute value or values.  The example below shows a line widget displaying free memory trends for Agent nodes. We have created a variable for Agent Node IPs, currently set to show all IPs:
@@ -464,8 +468,9 @@ Applying variables is as easy as changing the attribute data of your choice.
 You can create generic variables that are not associated with a particular attribute by selecting a variable type of _Text_, _Number_, _Boolean_, or _Date_. Once the variable has been created, you can select it in a widget filter field. When setting a filter in a widget, in addition to specific values that you can select for the filter, any variables that have been created for the dashboard are displayed in the list--these are grouped under the "Variables" section in the drop-down and have names starting with "$". Choosing a variable in this filter will allow you to search for values that you enter in the variable field on the dashboard itself. Any widgets using that variable in a filter will be updated dynamically. 
 
 image:Variables_in_a_Widget_Filter.png[Selecting a variable in a widget]
+////
 
-
+////
 ==== Variable filter scope
 
 Additionally, you can choose the scope to which the variable is applied in your dashboard. For most attributes, you can choose from among the following:
@@ -477,6 +482,17 @@ Additionally, you can choose the scope to which the variable is applied in your 
 image:Variables_Choose_Filter_Scope.png[Select variable filter scope]
 
 Read more about link:https://docs.netapp.com/us-en/cloudinsights/task_create_query.html#more-on-filtering[filtering options].
+////
+
+==== Variable Filter Scope
+
+By default, when you add an Annotation variable to your dashboard, the variable is applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard where the variable is relevant will display results filtered by the value you set in the variable. 
+
+image:Variables_Automatic_Filter_Button.png[Automatic Filter]
+
+To change this so that the variable only applies to the widgets where you have specifically set the variable, click the "Filter automatically" slider to disable it.
+
+To set a variable in a specific widget, open the widget in edit mode and select specific annotation in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the vairable at the dashboard level. Only those widgets for which you set the variable will show the filtered results.
 
 
 ////
