@@ -436,7 +436,12 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
-TBD
+.Steps to install Operator-based agent on Kubernetes:
+
+. Enter the cluster name and namespace.
+. Once these are entered, you can copy the Agent Installer snippe. Click the button to copy this snippet to the clipboard.
+. Paste the snippet into a _bash_ window.
+. The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
 
 
 ==== Script-Based Installation
@@ -447,8 +452,7 @@ image:Kubernetes_Install_Agent_screen.png[Script-Based Install]
 
 . Choose an Agent Access Key.
 . Click the *Copy Agent Installer Snippet* button in the installation dialog. You can optionally click the _+Reveal Agent Installer Snippet_ button if you want to view the command block.
-. Open a Bash window.
-. Paste the command into the Bash window.
+. Paste the command into a _bash_ window.
 . Optionally, you can override the namespace or provide the cluster name as part of the install command by modifying the command block to add one or both of the following before the final _./$installerName_
 ** CLUSTER_NAME=<Cluster Name>
 ** NAMESPACE=<Namespace>
