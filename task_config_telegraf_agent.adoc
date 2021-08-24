@@ -126,7 +126,7 @@ image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 
 .Pre-requisites:
 
-* The following commands must be available: curl, sudo, ping, and dmidecode
+* The following commands must be available: curl, sudo, ping, sha256sum, and dmidecode
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for RHEL/CentOS* section. 
 
 
@@ -209,7 +209,7 @@ image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 
 .Pre-requisites:
 
-* The following commands must be available: curl, sudo, ping, and dmidecode
+* The following commands must be available: curl, sudo, ping, sha256sum, and dmidecode
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Ubuntu/Debian* section. 
 
 
@@ -292,7 +292,7 @@ image:AgentInstallMacOS.png[MacOS Agent Install]
 
 .Pre-requisites:
 
-* The "curl" command must be available
+* The following commands must be available: curl, sudo, and shasum
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for macOS* section. 
 
 
