@@ -418,6 +418,8 @@ For best results, add these commands to the PATH.
 
 * If you are running a kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section.
 
+* You must have permissions to create Kubernetes cluster roles and role bindings.
+
 
 ==== Monitoring is only installed on Linux nodes
 
@@ -439,7 +441,8 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 .Steps to install Operator-based agent on Kubernetes:
 
 . Enter the cluster name and namespace.
-. Once these are entered, you can copy the Agent Installer snippe. Click the button to copy this snippet to the clipboard.
+. Once these are entered, you can copy the Agent Installer snippet
+. Click the button to copy this snippet to the clipboard.
 . Paste the snippet into a _bash_ window.
 . The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
 
