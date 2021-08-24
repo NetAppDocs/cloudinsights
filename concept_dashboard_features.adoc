@@ -486,13 +486,13 @@ Read more about link:https://docs.netapp.com/us-en/cloudinsights/task_create_que
 
 ==== Variable Filter Scope
 
-By default, when you add an Annotation variable to your dashboard, the variable is applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard where the variable is relevant will display results filtered by the value you set in the variable. 
+By default, when you add an Annotation variable to your dashboard, the variable is applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard where the variable is relevant will display results filtered by the value you set in the variable. Note that _only_ Annotation-type variables can be applied universally like this. Other variable types must be set in individual widgets.
 
 image:Variables_Automatic_Filter_Button.png[Automatic Filter]
 
 To change this so that the variable only applies to the widgets where you have specifically set the variable, click the "Filter automatically" slider to disable it.
 
-To set a variable in a specific widget, open the widget in edit mode and select specific annotation in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the variable at the dashboard level. Only those widgets for which you set the variable will show the filtered results.
+To set a variable in an individual widget, open the widget in edit mode and select specific annotation in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the variable at the dashboard level. Only those widgets for which you set the variable will show the filtered results.
 
 
 ////
