@@ -96,18 +96,19 @@ For systems residing behind a proxy, perform the following to set the _https_pro
 To uninstall the agent on Windows, do the following in a PowerShell window:
 
 . Stop and delete the Telegraf service:
-+
+
  Stop-Service telegraf
  sc.exe delete telegraf
  
-. Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
-
-.  Remove the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
-
-. To remove the certificate from the trustore:
+. Remove the certificate from the trustore:
 
  cd Cert:\CurrentUser\Root
  rm E5FB7B68C08B1CA902708584C274F8EFC7BE8ABC
+ 
+. Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
+
+. Remove the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
+
 
 
 ==== Upgrading the Agent
