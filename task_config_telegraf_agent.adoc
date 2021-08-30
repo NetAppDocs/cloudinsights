@@ -104,7 +104,7 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
 
 .  Remove the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
 
-. To remove the certificate from the trustore, run the following commands in PowerShell:
+. To remove the certificate from the trustore:
 
  cd Cert:\CurrentUser\Root
  rm E5FB7B68C08B1CA902708584C274F8EFC7BE8ABC
