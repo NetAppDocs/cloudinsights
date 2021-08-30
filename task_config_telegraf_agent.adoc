@@ -697,6 +697,57 @@ To upgrade the telegraf agent, do the following:
 ////
 
 
+== I want to Download the Agent, Verify Checksums, and then Install
+
+The Cloud Insights agent installer performs its own integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform these checks before installing the Cloud Insights agent, these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
+
+Follow these steps:
+
+. Copy the Agent Installer snippet as directed.
+. Instead of pasting the snippet into a command window, paste it into a text editor.
+. Remove the trailing “--install” (Linux/Mac) or “-install” (Windows) from the command.
+. Copy the entire command from the text editor.
+. Now paste it into your command window (in a working directory) and run it.
+
+Linux/Mac:
+ installerName=<installation_script_name> … && sudo -E -H ./$installerName --download --install
+
+Windows:
+ !$($installerName=".\cloudinsights-windows.ps1") … -and $(&$installerName -download -install)
+
+This will download all required artifacts from Cloud Insights to the working directory.  The artifacts include, but may not be limited to: 
+
+* an installation script
+* an environment file
+* YAML files
+* a signed checksum file
+* a PEM file for signature verification
+
+The installation script, environment file, YAML files, and PEM file can be inspected and verified visually. The signed checksum file can be verified by running the following:
+
+Linux/Mac:
+
+ openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
+
+Windows:
+
+ Import-Certificate -Filepath netapp_cert.pem  -CertStoreLocation cert:\CurrentUser\Root
+ Get-AuthenticodeSignature sha256.signed.ps1
+
+Once all of the artifacts have been satisfactorily verified, the agent installation can be initiated by running:
+
+Linux/Mac:
+
+ sudo -E -H ./<installation_script_name> --install
+
+Windows:
+
+ .\ cloudinsights-windows.ps1 -install
+
+
+
+
+
 == Troubleshooting Agent Installation
 
 Some things to try if you encounter problems setting up an agent:
