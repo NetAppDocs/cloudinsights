@@ -409,12 +409,14 @@ To upgrade the telegraf agent, do the following:
 
 Kubernetes offers two ways to collect data:
 
-* Operator-based configuration. This is recommended for ONTAP data collectors.
+* Operator-based configuration. 
 * Traditional script-based Agent installation
 
 Installation instructions vary based on which tile you choose.
 
 image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
+
+NOTE: Operator-based installation is considered a _Preview_ feature and is therefore subject to change.
 
 
 .Pre-requisites:
