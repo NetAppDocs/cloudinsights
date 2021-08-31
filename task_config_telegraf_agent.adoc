@@ -23,7 +23,7 @@ The current Telegraf version for Cloud Insights is *1.17.3*.
 
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
-NOTE: If you want to verify the installation files before instaling the Agent, see the section below on <<Verifying Checksums>>.
+//NOTE: If you want to verify the installation files before instaling the Agent, see the section below on <<Verifying Checksums>>.
 
 == Installing an Agent
 
@@ -700,6 +700,7 @@ To upgrade the telegraf agent, do the following:
 ////
 
 
+//// Hold for now.
 == Verifying Checksums
 
 The Cloud Insights agent installer performs its own integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform these checks before installing the Cloud Insights agent, these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
@@ -746,7 +747,7 @@ Linux/Mac:
 Windows:
 
  .\ cloudinsights-windows.ps1 -install
-
+//// Hold for now.
 
 
 
