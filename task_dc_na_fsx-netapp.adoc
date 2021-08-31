@@ -27,7 +27,6 @@ Cloud Insights acquires inventory and performance data from the FSx-NetApp data 
 |===
 |Vendor/Model Term | Cloud Insights Term
 |Cluster|Storage
-|Node|Storage Node
 |LUN|Volume
 |Volume|Internal Volume
 |===
@@ -62,6 +61,7 @@ Management – this may contain a hyperlink for the management interface of the 
 * IOPS – the sum IOPs of all the disks contributing capacity to this storage pool.
 Throughput – the sum throughput of all the disks contributing capacity to this storage pool.
 
+////
 === Storage Node
 
 * Storage – what storage array this node is part of. Mandatory.
@@ -76,6 +76,7 @@ Throughput – the sum throughput of all the disks contributing capacity to this
 * Latency – Derived directly from ONTAP ZAPI calls on the node object.
 * Throughput – Derived directly from ONTAP ZAPI calls on the node object.
 * Processors – CPU count.
+////
 
 
 == Requirements
