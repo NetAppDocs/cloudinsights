@@ -39,7 +39,7 @@ The following terms apply to objects or references that you might find on FSx-Ne
 
 * Model – A comma-delimited list of the unique, discrete node model names within this cluster. 
 * Vendor – AWS
-* Serial number – The array serial number. On cluster architecture storage systems like ONTAP Data Management, this serial number may be less useful than the individual “Storage Nodes” serial numbers.
+* Serial number – The array serial number. 
 * IP – generally will be the IP(s) or hostname(s) as configured in the data source.
 //* Microcode version – firmware.
 * Raw Capacity – base 2 summation of all the physical disks in the system, regardless of their role.
@@ -51,7 +51,7 @@ Management – this may contain a hyperlink for the management interface of the 
 
 * Storage – what storage array this pool lives on. Mandatory.
 * Type – a descriptive value from a list of an enumerated list of possibilities. Most commonly will be “Aggregate” or “RAID Group””.
-* Node – if this storage array’s architecture is such that pools belong to a specific storage node, its name will be seen here as a hyperlink to its own landing page.
+//* Node – if this storage array’s architecture is such that pools belong to a specific storage node, its name will be seen here as a hyperlink to its own landing page.
 * Uses Flash Pool – Yes/No value – does this SATA/SAS based pool have SSDs used for caching acceleration?
 * Redundancy – RAID level or protection scheme. RAID_DP is dual parity, RAID_TP is triple parity.
 * Capacity – the values here are the logical used, usable capacity and the logical total capacity, and the percentage used across these.
