@@ -411,7 +411,7 @@ For best results, add these commands to the PATH.
 
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
-* If you are running a kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section.
+* If you are running a Kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section.
 
 
 ==== Monitoring is only installed on Linux nodes
@@ -566,7 +566,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
 
 When you install the kube-state-metrics server you can enable collection of the following Kubernetes objects: StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress. 
 
-NOTE: It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices. Note also that with kube-state-metrics version 2.0 and above, kubernetes object labels are not exported by default. To configure kube-state-metrics to export kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
+NOTE: It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices. Note also that with kube-state-metrics version 2.0 and above, Kubernetes object labels are not exported by default. To configure kube-state-metrics to export Kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
 
 
 Use the following steps to install the kube-state-metrics server:
@@ -685,7 +685,7 @@ E0901 15:21:39.962145 1 reflector.go:178] k8s.io/kube-state-metrics/internal/sto
 E0901 15:21:43.168161 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.Lease: the server could not find the requested resource (get leases.coordination.k8s.io)
 etc.
 
-|These messages may occur if your kube-state-metrics version is higher than your kubernetes version. For example, running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17. 
+|These messages may occur if your kube-state-metrics version is higher than your Kubernetes version. For example, running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17. 
 
 to get the Kubernetes version:
 
