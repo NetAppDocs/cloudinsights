@@ -486,15 +486,17 @@ Read more about link:https://docs.netapp.com/us-en/cloudinsights/task_create_que
 
 ==== Variable Filter Scope
 
-By default, when you add an Annotation variable to your dashboard, the variable is applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard where the variable is relevant will display results filtered by the value you set in the variable. 
+By default, when you add an Annotation variable to your dashboard, the variable is applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard will display results filtered according to the value you set in the variable. 
 
 image:Variables_Automatic_Filter_Button.png[Automatic Filter]
 
-Note that _only_ text-based Annotation-type variables can be applied universally like this. Non-text Annotations such as number or date cannot be automatically filtered, nor can non-Annotation variables (Number, Date, Boolean). These variables must be configured in individual widgets.
+Note that only Annotations of type _Text_, _Boolean_, or _List_ can be filtered automatically using variables like this. _Non-text Annotation_ types such as numbers or dates cannot be automatically filtered, nor can _non-Annotation_ variables (Number, Date, Boolean). Individual widgets must each be configured to use variables of these types.
 
-To disable automatic filtering so that the variable only applies to the widgets where you have specifically set it, click the "Filter automatically" slider to disable it.
+To disable automatic filtering so that the Annotation variable only applies to the widgets where you have specifically set it, click the "Filter automatically" slider to disable it.
 
-To set a variable in an individual widget, open the widget in edit mode and select the specific annotation in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the variable at the dashboard level. Only those widgets for which you set the variable will show the filtered results.
+To set an Annotation-type variable in an individual widget, open the widget in edit mode and select the specific annotation in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the variable at the dashboard level. Only those widgets for which you set the variable will show the filtered results.
+
+You can configure widgets to use non-Annotation variables (Number, Date, Boolean) in the same way.
 
 
 ////
