@@ -267,8 +267,8 @@ After that, re-copy the command from the Agent installation UI and paste it in t
 `sudo systemctl restart cloudsecure-agent.service`
 6. If it is still not running, please check the other troubleshooting options.
 
-|Unable to add more than 10 Data collectors to an Agent.
-|Only 10 Data collectors can be added to an Agent. This can be a combination of all the collector types, for example, Active Directory, SVM and other collectors.
+|Unable to add more than 20 Data collectors to an Agent.
+|Only 20 Data collectors can be added to an Agent. This can be a combination of all the collector types, for example, Active Directory, SVM and other collectors.
 
 |UI shows Agent is in NOT_CONNECTED state.
 |Steps to restart the Agent.
@@ -279,17 +279,16 @@ After that, re-copy the command from the Agent installation UI and paste it in t
 4. Agent should go to CONNECTED state.
 
 |Agent VM is behind Zscaler proxy and the agent installation is failing. Because of Zscaler proxy’s SSL inspection, the Cloud Secure certificates are presented as it is signed by Zscaler CA so the agent is not trusting the communication.
-|To resolve the issue, do the following:
-1.	Get the CA certificate which is used in Zscaler, by browser or a tool like openssl. Also download all the intermediate CA certificates if applicable.
-2.	Import the CA certificates into the Cloud Secure agent’s trust store using below command.
-/opt/netapp/cloudsecure/agent/java64/bin/keytool -importcert -file <ca_cert_path> -keystore /opt/netapp/cloudsecure/agent-certs/cert/client.keystore -alias <alias_name>
-3.	Restart the agent by executing the following command.
+|Disable SSL inspection in the Zscaler proxy for the *.cloudinsights.netapp.com url. If Zscaler does SSL inspection and replaces the certificates, Cloud Secure will not work.
 
- systemctl restart cloudsecure-agent.service
- 
-4.	The agent should work now.
-5.	If the agent is still failing with SSL error then import the immediate certificate presented by the tenant url using browser or tool like openssl.
-6.	Restart the agent again.
+|While installing the agent, the installation hangs after unzipping.
+|“chmod 755 -Rf” command is failing. 
+The command fails when the agent installation command is being run by a non-root sudo user that has files in the working directory, belonging to another user, and permissions of those files cannot be changed. Because of the failing chmod command, the rest of the installation does not execute.
+
+1.	Create a new directory named “cloudsecure”.
+2.	Go to that directory.
+3.	Copy and paste the command “token=…… … ./cloudsecure-agent-install.sh and press enter.
+4.	Installation should be able to proceed.
 
 |===
 
