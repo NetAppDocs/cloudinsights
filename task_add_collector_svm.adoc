@@ -21,7 +21,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 === Before you begin
 
 * This data collector is supported with the following:
-** Data ONTAP 9.2 and later versions
+** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
 ** SMB protocol version 3.1 and earlier
 **	NFS protocol version 4.0 and earlier 
 
@@ -359,6 +359,9 @@ _fpolicy policy scope delete -vserver <svmname> -policy-name <policy_name>_
 _fpolicy policy delete -vserver <svmname> -policy-name <policy_name>_
 _fpolicy policy event delete -vserver <svmname> -event-name <event_list>_
 _fpolicy policy external-engine delete -vserver <svmname> -engine-name <engine_name>_
+
+|After enabling Cloud Secure, ONTAP performance is impacted: Latency becomes sporadically high, IOPs become sporadically low.
+|Ensure that you are using a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
 
 
 |===
