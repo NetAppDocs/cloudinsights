@@ -685,7 +685,7 @@ E0901 15:21:39.962145 1 reflector.go:178] k8s.io/kube-state-metrics/internal/sto
 E0901 15:21:43.168161 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.Lease: the server could not find the requested resource (get leases.coordination.k8s.io)
 etc.
 
-|These messages may occur if your kube-state-metrics version is higher than your Kubernetes version. For example, running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17. 
+|These messages may occur if you are running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17 or below.
 
 to get the Kubernetes version:
 
