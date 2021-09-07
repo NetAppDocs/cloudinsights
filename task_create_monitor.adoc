@@ -86,6 +86,14 @@ You can choose to trigger an alert the moment a threshold is breached, or wait u
 +
 image:define_monitor_conditions.png[Define Conditions]
 
+=== Setting Corrective Actions or Additional Information
+
+You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
+
+In these fields you can provide notes, links, or steps to take to correct or otherwise address the alert.
+
+image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
+
 === Select notification type and recipients
 
 In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
@@ -156,7 +164,7 @@ image:Monitors_AssociateToGroup.png[Associate to group]
 
 //* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Move to Group_.
 
-Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
+Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
 
 NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from the group to which it belonged and it is no longer available to any user.
 
