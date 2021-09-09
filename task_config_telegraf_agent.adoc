@@ -678,10 +678,7 @@ Some things to try if you encounter problems setting up an agent:
 |I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
 
 |I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.|Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent.
-|===
 
-[cols=2*, cols"50,50"]
-|===
 |I'm seeing messages in the logs resembling the following:
 
 E0901 15:21:39.962145 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.MutatingWebhookConfiguration: the server could not find the requested resource
