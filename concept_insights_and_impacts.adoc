@@ -1,0 +1,20 @@
+---
+sidebar: sidebar
+permalink: concept_insights_and_impacts.html
+keywords: insights, greedy, degraded, bully, victim, impacted, impacting, impactful, impact, resources
+summary: Insights give you a look into how resources impact other resources in your environment.
+---
+
+= Insights and Impacts
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Insights alow you to investigate resource contntion and impact in your invironment. An "impactful" or "greedy" resource is on that causes a negative impact on another resource, for example, a volume experiencing very high IOPS may cause increased latency in other volumes (i.e. "impacted" or "degraded" resources). Greedy/degraded resources are “peers” that utilize the same shared resource. The greedy resource has IOPS or utilization rates that negatively impact the degraded resource's IOPS or latency.
+
