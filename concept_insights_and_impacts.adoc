@@ -22,6 +22,17 @@ Cloud Insights provides tools to help you investigate resource contention and im
 
 An _impactful_ or _greedy_ resource is one that causes a negative impact on another resource. For example, a volume experiencing very high IOPS may cause increased latency in other volumes (i.e. _impacted_ or _degraded_ resources). Impactful and Impacted resources are “peers” that utilize the same shared resource, for example, a storage pool or node. 
 
+A _Changed Workload_ is a workload that is currently identified as impacting other resources in the shared storage pool. These workloads drive higher IOPS, reducing IOPS in the Impacted Workloads.
+
+An _Impacted Workload_ is a workload affected by a changed workload in the shared Storage Pool. These workloads are experiencing reduced IOPS and/or higher latency, caused by the  Changed Workloads.
+
+The _Shared Resource Contention Ratio_ is the ratio of impacting IOPS to baseline. 
+
+_Baseline_ is defined as the maximum reported data point for each workload in the hour immediately preceding the contention. 
+
+A _Contention_ occurs when IOPS are determined to be affecting other resources or workloads in the shared storage pool.
+
+
 
 
 
