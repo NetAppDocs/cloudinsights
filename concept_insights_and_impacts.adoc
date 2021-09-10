@@ -16,5 +16,13 @@ summary: Insights give you a look into how resources impact other resources in y
 :imagesdir: ./media/
 
 [.lead]
-Insights alow you to investigate resource contntion and impact in your invironment. An "impactful" or "greedy" resource is on that causes a negative impact on another resource, for example, a volume experiencing very high IOPS may cause increased latency in other volumes (i.e. "impacted" or "degraded" resources). Greedy/degraded resources are “peers” that utilize the same shared resource. The greedy resource has IOPS or utilization rates that negatively impact the degraded resource's IOPS or latency.
+Cloud Insights provides tools to help you investigate resource contention and impact in your invironment. 
+
+=== Some terms to keep in mind
+
+An _impactful_ or _greedy_ resource is one that causes a negative impact on another resource. For example, a volume experiencing very high IOPS may cause increased latency in other volumes (i.e. _impacted_ or _degraded_ resources). Impactful and Impacted resources are “peers” that utilize the same shared resource, for example, a storage pool or node. 
+
+
+
+
 
