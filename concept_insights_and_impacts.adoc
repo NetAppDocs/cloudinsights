@@ -16,9 +16,12 @@ summary: Insights give you a look into how resources impact other resources in y
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights provides tools to help you investigate resource contention and impact in your invironment. 
+High-impact workloads can reduce the performance of other workloads in a shared resource. Cloud Insights provides tools to help you investigate resource contention and impact in your environment. 
 
-=== Some terms to keep in mind
+
+=== Terminology
+
+When talking about workload or resource impact, the following definitions are useful.
 
 An _impactful_ or _greedy_ resource is one that causes a negative impact on another resource. For example, a volume experiencing very high IOPS may cause increased latency in other volumes (i.e. _impacted_ or _degraded_ resources). Impactful and Impacted resources are “peers” that utilize the same shared resource, for example, a storage pool or node. 
 
