@@ -654,6 +654,7 @@ If the monitoring namespace is being used solely for Telegraf:
  
  kubectl delete ns ci-monitoring
 
+For the commands above, use “_netapp-monitoring_” if you installed using operator-based installation.
  
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 
@@ -687,6 +688,8 @@ To upgrade the telegraf agent, do the following:
 . Back up the existing configurations:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
+ 
+ Be sure to specify the appropriate namespace if it is not the default.
 
 . Uninstall the Agent (see above for instructions)
 
