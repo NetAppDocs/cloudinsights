@@ -48,6 +48,10 @@ As the data displayed in the widget changes, the legend for that widget is updat
 
 When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page. If the legend displays "all", clicking the link will display a query page corresponding to the first query in the widget.
 
+In a time-series widget (line, spline, area, stacked area chart), you can hover over a legend to highlight the associated data in a chart. Conversely, hovering over a data point in the chart will highlight the associated legend.
+
+image:WidgetLegendHighlight.png[Legend Highlight]
+
 == Transforming Metrics 
 
 Cloud Insights provides different *transform* options for certain metrics in widgets (specifically, those metrics called "Custom" or Integration Metrics, such as from Kubernetes, ONTAP Advanced Data, Telegraf plugins, etc.), allowing you to display the data in a number of ways. When adding transformable metrics to a widget, you are presented with a drop-down giving the following transform choices:
