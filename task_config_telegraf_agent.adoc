@@ -685,23 +685,30 @@ E0901 15:21:39.962145 1 reflector.go:178] k8s.io/kube-state-metrics/internal/sto
 E0901 15:21:43.168161 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.Lease: the server could not find the requested resource (get leases.coordination.k8s.io)
 etc.
 
-|These messages may occur if your kube-state-metrics version is higher than your Kubernetes version. For example, running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17. 
+|These messages may occur if you are running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17 or below.
 
-to get the Kubernetes version:
+To get the Kubernetes version:
 
-_kubectl version_
+ _kubectl version_
 
-to get the kube-state-metrics version:
+To get the kube-state-metrics version:
 
-_kubectl get deploy/kube-state-metrics -o jsonpath='{..image}'_
+ _kubectl get deploy/kube-state-metrics -o jsonpath='{..image}'_
 
-To prevent these messages from happening, users can modify their kube-state-metrics deployment to disable the leases _mutatingwebhookconfigurations_, _validatingwebhookconfigurations_, and _volumeattachments resources_. More specifically, they can use the following CLI argument:
+To prevent these messages from happening, users can modify their kube-state-metrics deployment to disable the following Leases:
 
-resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,limitranges,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses
+_mutatingwebhookconfigurations_
+_validatingwebhookconfigurations_
+_volumeattachments resources_
+
+More specifically, they can use the following CLI argument:
+
+resources=certificatesigningrequests,configmaps,cronjobs,daemonsets, deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,limitranges, namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes, poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas, secrets,services,statefulsets,storageclasses
 
 The default resource list is:
 
-"certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments"
+"certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments, endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges, mutatingwebhookconfigurations,namespaces,networkpolicies,nodes, persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets, replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses, validatingwebhookconfigurations,volumeattachments"
+|
 
 |===
 
