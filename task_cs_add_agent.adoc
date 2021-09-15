@@ -290,6 +290,14 @@ The command fails when the agent installation command is being run by a non-root
 3.	Copy and paste the full “token=…… … ./cloudsecure-agent-install.sh" installation command and press enter.
 4.	Installation should be able to proceed.
 
+|If the Agent is still not able to connect to Saas, please open a case with NetApp Support. Provide the Cloud Insights serial number to open a case, and attach logs to the case as noted.
+|To attach logs to the case:
+ 1.	Execute the following script with root permission and share the output file (cloudsecure-agent-symptoms.zip).
+    a.	/opt/netapp/cloudsecure/agent/bin/cloudsecure-agent-symptom-collector.sh
+ 2.	Execute the following commands one by one with root permission and share the output.
+    a.	id cssys
+    b.	groups cssys
+    c.	cat /etc/os-release
 
 |===
 
