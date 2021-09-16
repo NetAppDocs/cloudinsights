@@ -34,6 +34,20 @@ Cloud Insights acquires inventory and performance data from this collector. For 
 |===
 
 
+== Requirements
+
+* The Acquisition Unit must be running in a Kubernetes pod inside the Astra Data Store Kubernetes cluster. See link:task_configure_acquisition_unit.html[Acquisition Unit installation] for more details.
+//Alternative text: The Acquisition Unit must be deployed by the NetApp Monitoring Operator in the Astra Data Store Kubernetes cluster. See Acquisition Unit installation for more details.
+** To install the Acquisition Unit, you will need a Cloud Insights link:API_Overview.html[API Key] with Read/Write  permissions to the categories: _Acquisition Unit, Data Collection, Data Ingestion_
+
+** The Kubernetes API token used must grant read-only access to the _astrads.netapp.io_ apiGroup
+
+* To retrieve the API token for the astrads-system default service account, run the following commands in a bash  shell:
+
+ SECRET_NAME=$(kubectl get secrets -n astrads-system| grep ^default| cut -f1 -d ' ' )
+ kubectl describe secret $SECRET_NAME -n astrads-system | grep -E '^token' | cut -f2 -d':' | tr -d " "
+ 
+
 == Configuration
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -53,6 +67,9 @@ Cloud Insights acquires inventory and performance data from this collector. For 
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds. 
 |ADS Metrics Endpoint|ADS cluster Metrics endpoint (May not be needed)
 |===
+
+
+== Installing the Astra Data Store collector
 
            
 == Troubleshooting
