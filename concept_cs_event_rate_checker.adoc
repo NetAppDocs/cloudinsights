@@ -1,0 +1,161 @@
+---
+sidebar: sidebar
+permalink: concept_cs_event_rate_checker.html
+summary: This script  can be run to check the event rate in the SVM before installing an ONTAP SVM DSC
+keywords: event, checker, rate, sizing
+---
+
+= SVM Event Rate Checker
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The Event Rate Checker is used to check the NFS/SMB combined event rate in the SVM before installing an ONTAP SVM data collector, to see how many SVMs one Agent machine will be able to monitor.
+
+Requirements:
+
+* Cluster IP
+* Cluster admin username and password 
+
+NOTE: When running this script no ONTAP SVM Data Collector should be running for the SVM for which event rate is being determined.
+
+Steps:
+
+. Install the Agent by following the instructions in CloudSecure.
+. Once the agent is installed, run the _server_data_rate_checker.sh_ script as a sudo user:
++
+ /opt/netapp/cloudsecure/agent/install/svm_event_rate_checker.sh
+ 
+. This script requires _sshpass_ to be installed in the linux machine. There are two ways to install it: 
+
+.. Run the fiollowing command:
++
+ linux_prompt> yum install sshpass
+
+.. If that does not work, then download _sshpass_ to the linux machine from the web and run the following command:
++
+ linux_prompt> rpm -i sshpass
+
+ 
+.	Provide the correct values when prompted. See below for an example.
+
+.	The script will take approximately 5 minutes to run.
+
+.	After the run is complete, the script will print the event rate from the SVM. You can check Event rate per SVM in the console output:
++
+ “Svm svm_rate is generating 100 events/sec”. 
+
+//This will show the rate of generation of Events for a SVM.
+
+9.	Each Ontap SVM Data Collector can be associated with a single SVM, which means each data collector will be able to receive the number of events which a single SVM generates.
+
+Keep the following in mind:
+
+A) A single Agent machine can handle the following:
+
+|===
+
+|Agent Machine Configuration |Number of SVM Data Collectors |Max event Rate which the Agent Machine can handle
+
+|4 core, 16GB	|10 data collectors	|20K events/sec
+|4 core, 32GB	|20 data collectors	|20K events/sec
+
+|===
+
+B) To calculate your total events, add the Events generated for all SVMs for that agent.
+
+C) If the script is not run during peak hours or if peak traffic is difficult to predict, then keep an event rate buffer of 30%.
+
+B + C Should be less than A, otherwise the Agent machine will fail to monitor.
+
+In other words, the number of data collectors which can be added to a single agent machine should comply to the formula below:
+
+ Sum of all Event rate of all Data Source Collectors + Buffer Event rate of 30% < 20000 events/second
+
+=== Example
+
+Let us say we have three SVMS generating event rates of 100, 200, and 300 events per second, respectively.
+
+We apply the formula:
+
+ (100+200+300) + [(100+200+300)*30%] = 600+180 = 780events/sec
+780 events/second is < 20000 events/second, so the 3 SVMs can be monitored via one agent box.
+
+Console output is available in the Agent machine in the file name __fpolicy_stat_<SVM Name>.log__ in the present working directory. 
+
+The script may give erroneous results in the following cases:
+
+* Incorrect credentials, IP, or SVM name are provided.
+* An already-existing fpolicy with same name, sequence number, etc. will give error.
+* The script is stopped abruptly while running.
+
+
+An example script run is shown below:
+
+ [root@ci-cs-data agent]# /opt/netapp/cloudsecure/agent/install/svm_event_rate_checker.sh
+ 
+ Enter the cluster ip: 10.192.139.166
+ Enter the username to SSH: admin
+ Enter the password:
+ Getting event rate for NFS and SMB events.
+ Available SVMs in the Cluster
+ -----------------------------
+ QA_SVM
+ Stage_SVM
+ Qa-fas8020
+ Qa-fas8020-01
+ Qa-fas8020-02
+ audit_svm
+ svm_rate
+ vs_new
+ vs_new2
+
+ -----------------------------
+ Enter [1/5] SVM name to check (press enter to skip): svm_rate
+ Enter [2/5] SVM name to check (press enter to skip): audit_svm
+ Enter [3/5] SVM name to check (press enter to skip): 
+ Enter [4/5] SVM name to check (press enter to skip):
+ Enter [5/5] SVM name to check (press enter to skip):
+ Running check for svm svm_rate...
+ Running check for svm audit_svm...
+ Waiting 5 minutes for stat collection
+ Stopping sample svm_rate_sample
+ Stopping sample audit_svm_sample
+ fpolicy stats of svm svm_rate is saved in fpolicy_stat_svm_rate.log
+ Svm svm_rate is generating 100 SMB events/sec and 100 NFS events/sec 
+ Overall svm svm_rate is generating 200 events/sec
+ fpolicy stats of svm audit_svm is saved in fpolicy_stat_audit_svm.log
+ Svm audit_svm is generating 200 SMB events/sec and 100 NFS events/sec 
+ Overall svm audit_svm is generating 300 events/sec
+
+ [root@ci-cs-data agent]#
+
+
+== Troubleshooting
+
+|===
+
+|Question: If I run this script on an SVM that is already configured for Cloud Secure, does it just use the existing fpolicy config on the SVM or does it setup a temporary one and run the process? 
+|Answer: The Event Rate Checker can run fine even for an SVM already configured for Cloud Secure. There should be no impact.
+
+|Question: Can I increase the number of SVMs on which the script can be run?
+|Answer: Yes. Simply edit the script and change the max number of SVMs from 5 to any desirable number.
+
+|Question: If I increase the number of SVMs, will it increase the time of running of the script?
+|Answer: No. The script will run for a max of 5 minutes, even if the number of SVMs is increased.
+
+|Question: Can I increase the number of SVMs on which the script can be run?
+|Answer: Yes. You need to edit the script and change the max number of SVMs from 5 to any desirable number.
+
+|Question: If I increase the number of SVMs, will it increase the time of running of the script?
+|Answer: No. The script will run for a max of 5mins, even if the number of SVMs are increased.
+
+
+
+|===
