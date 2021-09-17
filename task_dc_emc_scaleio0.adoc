@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: task_dc_emc_scaleio.html
+keywords: data collector, scaleIO, EMC, DELL
+summary: Configuring DELL EMC ScaleIO data collector.
+---
+
+= DELL EMC ScaleIO data collector
+
+[.lead]
+
+The ScaleIO data collector collects inventory information from ScaleIO storage. For configuration, this data collector requires the ScaleIO gateway address and an admin user name and password.
+
+== Terminology 
+
+Cloud Insights acquires the following inventory information from the ScaleIO data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|MDM (Meta Data Manager) Cluster|Storage
+|SDS (ScaleIO Data Server)|Storage Node
+|Storage Pool|Storage Pool
+|Volume|Volume
+|Device|Disk
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Requirements
+
+* Read-only access to the Admin user account
+* Port requirement: HTTPS Port 443
+ 
+ 
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|ScaleIO Gateway(s)|IP addresses or FQDNs of ScaleIO gateways, separated by comma (,) or semicolon (;)
+|User Name|Admin user name used to log in to the ScaleIO device
+|Password|Password used to log in to the ScaleIO device
+|===
+
+== Advanced configuration
+
+Click the Inventory check box to enable inventory collection.
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|HTTPS port|443
+|Inventory poll interval (min)|The default is 60. 
+|Connection Timeout (sec)|The default is 60. 
+|===
+
+           
+== Troubleshooting
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].

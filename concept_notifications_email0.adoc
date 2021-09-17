@@ -1,0 +1,117 @@
+---
+sidebar: sidebar
+permalink: concept_notifications_email.html
+summary: Adding email addresses for notifications.
+keywords: email, notifications, signature, recipient, list, subscription
+---
+
+= Configuring Email Notifications
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can configure an email list for subscription-related notifications, as well as a global email list of recipients for notification of performance policy threshold violations. 
+//You can also configure a global email list of recipients for monitor-related notifications.
+
+To configure notification email recipient settings, go to the *Admin > Notifications* page. 
+
+== Subscription Notification Recipients
+
+[.thumb]
+image:SubscriptionNotificationSection.png[Subscription Email Notifications]
+
+To configure recipients for subscription-related event notifications, go to the "Subscription Notification Recipients" section. 
+You can choose to have email notifications sent for subscription-related events to any or all of the following recipients:
+
+* All Account Owners
+* All Administrators
+* Additional Email Addresses that you specify
+
+////
+A notification email will be sent to the selected recipients when any of the following events occur:
+
+==== Informational notifications:
+
+* Your trial ends in two days
+* Your subscription has been updated
+* Your subscription will expire in 3 months
+
+==== Critical notifications:
+
+* Your trial subscription has ended
+* Your trial account will stop collecting data in 48 hours
+* Your trial account will be deleted after 48 hours
+* Your subscription will expire in 1 month
+* Your subscription has expired
+* Your expired account will stop collecting data in 48 hours
+* Your expired account will be deleted after 48 hours
+////
+
+The following are examples of the types of notifications that might be sent, and user actions you can take.
+
+|===
+|*Notification:*|*User Action:*
+|Trial or subscription has been updated|Review subscription details on the link:concept_subscribing_to_cloud_insights.html[Subscription] page
+|Subscription will expire in 90 days
+Subscription will expire in 30 days|No action needed if “Auto Renewal” is enabled
+Contact link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp sales] to renew the subscription
+|Trial ends in 2 days|Renew trial from the link:concept_subscribing_to_cloud_insights.html[Subscription] page. You can renew a trial one time.
+Contact link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp sales] to purchase a subscription
+|Trial or subscription has expired
+Account will stop collecting data in 48 hours 
+Account will be deleted after 48 hours|Contact link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp sales] to purchase a subscription
+|===
+
+
+== Global Recipient List for Alerts
+
+Email notifications of alerts are sent to the alert recipient list for every action on the alert. You can choose to send alert notifications to a global recipient list.
+
+To configure global alert recipients, click on *Admin > Notifications* and choose the desired recipients in the *Global Monitor Notification Recipients* section.
+
+[.thumb]
+//image:CS-Alert-Notification-List.png[Alert Email notification recipient list]
+.image:GlobalMonitorRecipients.png[Global Monitor Notification Recipients]
+
+You can always override the global recipients list for an individual monitor when creating or modifying the monitor.
+
+//image:MonitorTeamNotifications.png[Override Global Notifications]
+
+
+
+== Global Recipient List for Performance Policy Notifications
+
+[.thumb]
+image:PerformancePolicyNotificationSection.png[Performance Policy Email Notifications]
+
+To add recipients to the global performance policy notification email list, go to the "Global Performance Policy Recipients" section and enter email addresses separated by commas. Emails sent as alerts from performance policy threshold violations will be sent to all recipients on the list. 
+
+If you make a mistake, you can click on [x] to remove a recipient from the list.
+
+You can also add an optional signature block that will be attached to the email notifications sent.
+
+//NOTE: You can override the global list for a link:task_create_performance_policies.html[specific policy] when you configure that policy.
+
+NOTE: You can override the global list for a specific policy when you configure that policy.
+
+
+////
+== Global Recipient List for Monitor Notifications
+
+[.thumb]
+image:GlobalMonitorNotificationSection.png[Monitors Email Notifications]
+
+To add recipients to the global email list for monitor-related notifications, click on *Admin > Notifications*, and go to the "Global Monitor Notification Recipients" section.
+
+You can choose to have email notifications sent for monitor-related events to any or all of the following recipients:
+
+* All Account Owners
+* All Administrators
+* Additional Email Addresses that you specify
+////

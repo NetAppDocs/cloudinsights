@@ -1,0 +1,133 @@
+---
+sidebar: sidebar
+permalink: task_dc_ibm_svc.html
+keywords: IBM, SVC,SAN 
+summary: Configuring IBM SAN Volume Controller data collector.
+---
+
+= Configuring the IBM SAN Volume Controller data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+
+The IBM SAN Volume Controller (SVC) data collector collects inventory and performance data using SSH, supporting a variety of devices that run the SVC operating system.
+
+The list of supported devices includes models such as the SVC, the v7000, the v5000, and the v3700. Refer to the Cloud Insights support matrix for supported models and firmware versions.
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the IBM SVC data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Drive|Disk
+|Cluster|Storage
+|Node|Storage Node
+|Mdisk Group|Storage Pool
+|Vdisk|Volume
+|Mdisk|Backend LUNs and paths
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+=== Inventory Requirements
+* IP address of each SVC cluster
+* Port 22 available
+* Read-only user name and password 
+
+=== Performance Requirements
+* SVC Console, which is mandatory for any SVC cluster and required for the SVC discovery foundation package.
+* Credentials will require administrative access level only for copying performance files from cluster nodes to the config node. 
+* Enable data collection by connecting to the SVC cluster by SSH and running: _svctask startstats -interval 1_
++
+Note: Alternatively, enable data collection using the SVC management user interface.
+
+////
+* IP address of each SVC cluster
+* Port 22 available 
+* Public and private key pair that you either generate with Cloud Insights or reuse a keypair already in use on your SVC
++
+If you are reusing an existing keypair, you must convert them from Putty format to OpenSSH format.
+
+* Public key installed on the SVC cluster
+* Private key needs to be identified in the Acquisition Unit.
+* Access validation: Open ssh session to the SVC cluster using the private key
+
+//Note: No third-party software needs to be installed. 
+
+== Performance Requirements
+
+* SVC Console, which is mandatory for any SVC cluster and required for the SVC discovery foundation package. 
+* Administrative access level required only for copying performance files from cluster nodes to the config node.
++
+Note: Because this access level is not required for the SVC foundation discovery package, the SVC foundation user might not work successfully. 
+
+//* A private and public SSH key must be generated for this user, and the private key stored so that it is accessible from the Acquisition Unit. If the SVC foundation user has the proper permissions, then the same user and key works. The same SSH key can be used for inventory and performance data. 
+* Enable data collection by connecting to the SVC cluster by SSH and running: _svctask startstats -interval 1_
++
+Note: Alternatively, enable data collection using the SVC  management user interface.
+
+* Port Requirement: 22
+////
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Cluster IP Addresses |IP addresses or fully-qualified domain names of the SVC storage 
+//|'Password' or 'OpenSSH Key File'|Credential type used to connect to the device via SSH
+|Inventory User Name|User name for the SVC CLI
+|Inventory Password|Password for the SVC CLI
+//|Full Path to Inventory Private Key|Full path to the Inventory private key file
+//|Performance User Name|User name for the SVC CLI for performance collection
+//|Performance User|Name 	User name for the SVC CLI for performance collection
+//|Full Path to Performance Private Key|Full path to the Performance private key file
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 40 minutes.
+//|Exclude Devices|Comma-separated list of device IDs to exclude from inventory collection
+//|SSH Process Wait Timeout (sec)|SSH process timeout. The default is 200 seconds. 
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds. 
+//|Performance Exclude Devices|Comma-separated list of device IDs to exclude from performance collection
+//|Performance SSH Process Wait Timeout (sec)|SSH process timeout. The default is 200 seconds.
+//|Performance User|Name 	User name for the SVC CLI for performance collection
+|To clean up dumped stats files|Select this checkbox to clean up dumped stats files
+|===
+
+           
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: "The command cannot be initiated because it was not run on the configuration node."
+|The command must be executed on the configuration node.
+|===
+
+Some things to try if you encounter problems with this data collector:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: "The command cannot be initiated because it was not run on the configuration node."
+|The command must be executed on the configuration node.
+|===
+
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+

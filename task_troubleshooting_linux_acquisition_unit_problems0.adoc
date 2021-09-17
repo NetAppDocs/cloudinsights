@@ -1,0 +1,110 @@
+---
+sidebar: sidebar
+permalink: task_troubleshooting_linux_acquisition_unit_problems.html
+summary: Troubleshooting tips for Acquisition Unit problems.
+keywords: AU, acquisition unit, trioubleshooting
+---
+
+= Troubleshooting Acquisition Unit Problems on Linux
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Here you will find suggestions for troubleshooting problems with Acquisition Units on a Linux server. 
+
+|===
+|*Problem:* | *Try this:* 
+|AU status on the *Admin > Data Collectors* page in the *Acquisition Units* tab displays "Certificate Expired” or “Certificate Revoked” .
+|Click on the menu to the right of the AU and select *Restore Connection*. Follow the instructions to restore your Acquisition Unit:
+
+1. Stop the Acquisition Unit (AU) service. You can click the _Copy Stop Command_ button to quickly copy the command to the clipboard, then paste this command into a command prompt on the acquisition unit machine.
+
+2. Create a file named "token" in the _/var/lib/netapp/cloudinsights/acq/conf_ folder on the AU. 
+
+3. Click the _Copy Token_ button, and paste this token into the file you created. 
+
+4. Restart the AU service. Click the _Copy Restart Command_ button, and paste the command into a command prompt on the AU.
+
+|Installation fails on SELinux|When the AU is installed on SELinux, SE should be either disabled or set to permissive mode. Once the installation is complete, enforcing mode can be enabled.   
+
+|Server Requirements not met | Ensure that your Acquisition Unit server or VM meets  link:concept_acquisition_unit_requirements.html[requirements]
+
+|Network Requirements not met |Ensure that your Acquisition Unit server/VM can access your Cloud Insights environment (<environment-name>.c01.cloudinsights.netapp.com) through SSL connection over port 443. Try the following commands:
+
+ _ping <environment-name>.c01.cloudinsights.netapp.com_
+_traceroute <environment-name>.c01.cloudinsights.netapp.com_
+_curl \https://<environment-name>.c01.cloudinsights.netapp.com_
+_wget \https://<environment-name>.c01.cloudinsights.netapp.com_
+
+|Proxy Server not configured properly | Verify your proxy settings, and uninstall/re-install the Acquisition Unit software if necessary to enter the correct proxy settings. 
+
+1. Try "curl".  Refer to "man curl" information/documentation regarding proxies: --preproxy, --proxy-* (that's a wildcard "*" because curl supports many proxy settings).
+2. Try "wget".  Check documentation for proxy options.
+
+|Acquisition unit installation failed in Cloud insights with credential errors while starting acquisition service (and visible in the acq.log).|This can be caused by the inclusion of special characters in the proxy credentials. Uninstall the AU (_sudo cloudinsights-uninstall.sh_) and reinstall without using special characters.
+
+|Linux: missing library / file not found| Ensure that your Linux Acquisition Unit server/VM has all necessary libraries. For example, you must have the _unzip_ library installed on the server. To install the _unzip_ library, run the command _*sudo yum install unzip*_ before running the Acquisition Unit install script
+
+|Permission issues| Be sure you are logged in as a user with _sudo_ permissions
+
+|Acquisition Not Running:
+| Gather the acq.log from /opt/netapp/cloudinsights/acq/logs (Linux)
+Restart the Acquisition Service: sudo cloudinsights-service.sh restart acquisition
+
+|Data Collection Issues:
+|Send an Error Report from the Data Collector landing page by clicking the "Send Error Report" button
+
+|Status: Heartbeat Failed
+|The Acquisition Unit (AU) sends a heartbeat to Cloud Insights every 60 seconds to renew its lease. If the heartbeat call fails due to network issue or unresponsive Cloud Insights, the AU's lease time isn't updated. When the AU's lease time expires, Cloud Insights shows a status of "Heartbeat Failed".
+
+Troubleshoot steps:
+
+Check the network connection between the Acquisition Unit sever and CloudInsights.
+Check whether the Acquisition Unit service is running. If the service is not running, start the service.
+Check the Acquisition Unit log (/var/log/netapp/cloudinsights/acq/acq.log) to see whether there are any errors.
+
+|===
+
+////
+Moving Data Collectors to Different Acquisition Units:
+•	What is the proper process for a customer to do this?  They have to retype their passwords or go into the security admin tool to transfer the keys?
+////
+
+=== Considerations about Proxies and Firewalls
+
+If your organization requires proxy usage for internet access, you may need to understand your organization’s proxy behavior and seek certain exceptions for Cloud Insights to work. Keep the following in mind:
+
+* First, does your organization block access by default, and only allow access to specific web sites/domains by exception? If so, you will need to get the following domain added to the exception list:
++
+ *.cloudinsights.netapp.com
++
+Your Cloud Insights Acquisition Unit, as well as your interactions in a web browser with Cloud Insights, will all go to hosts with that domain name. 
+
+* Second, some proxies attempt to perform TLS/SSL inspection by impersonating Cloud Insights web sites with digital certificates not generated from NetApp. The Cloud Insights Acquisition Unit’s security model is fundamentally incompatible with these technologies. You would also need the above domain name excepted from this functionality in order for the Cloud Insights Acquisition Unit to successfully login to Cloud Insights and facilitate data discovery.
+
+
+In case where the proxy is set up for traffic inspection, the Cloud Insights environment must be added to an exception list in the proxy configuration. The format and setup of this exception list varies according to your proxy environment and tools, but in general you must add the URLs of the Cloud Insights servers to this exception list in order to allow the AU to properly communicate with those servers.
+
+The simplest way to do this is to add the Cloud Insights domain itself to the exception list:
+
+ *.cloudinsights.netapp.com
+ 
+In the case where the proxy is not set up for traffic inspection, an exception list may or may not be required. If you are unsure whether you need to add Cloud Insights to an exception list, or if you experience difficulties installing or running Cloud Insights due to proxy and/or firewall configuration, talk to your proxy administration team to set up the proxy's handling of SSL interception.
+
+==== Viewing Proxy endpoints
+
+You can view your proxy endpoints by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed.
+
+image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
+
+=== Resources
+
+Additional troubleshooting tips may be found in the link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights[NetApp Knowledgebase] (support sign-in required).
+
+Additional support information may be found from the Cloud Insights link:concept_requesting_support.html[Support] page.

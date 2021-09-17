@@ -1,0 +1,72 @@
+---
+sidebar: sidebar
+permalink: concept_asset_page_overview.html
+summary: Asset pages can be displayed for most object types.
+keywords: asset page, objects, landing page, Virtual machine, VM, Storage Virtual Machine, SVM, Volume, Internal volume, Host, Hypervisor, pool, Storage, Datastore, Application, node, Qtree, Disk, VMDK, Port, Switch, Fabric
+---
+
+= Asset Page Overview
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Asset pages summarize the current status of an asset and contain links to additional information about the asset and its related assets.
+
+== Types of Asset Pages
+
+Cloud Insights provides asset pages for the following assets:
+
+* Virtual machine
+* Storage Virtual Machine (SVM)
+* Volume
+* Internal volume
+* Host (including Hypervisor)
+* Storage pool
+* Storage
+* Datastore
+* Application
+* Storage node
+* Qtree
+* Disk
+* VMDK
+* Port
+* Switch
+* Fabric
+//* Object storage (for example, Atmos, Centera, Amazon S3)
+//* Zone
+
+//Mapping and Masking information can be viewed in tables on Zone, Volume, VM, and Host/Hypervisor asset pages.
+
+//Note: Summary information is available for object storage assets; however, you can only access this information from the Data sources detail page.
+
+== Changing the Time Range of Displayed Data
+
+By default, an asset page displays the last 24 hours of data; however, you can change the segment of data displayed by selecting another fixed time range or a custom range of time to view less or more data.
+
+You can change the time segment of displayed data by using an option that is located on every asset page, regardless of asset type. To change the time range, click the displayed time range in the top bar and choose from among the following time segments:
+
+* Last 15 Minutes
+* Last 30 Minutes
+* Last 60 Minutes
+* Last 2 Hours
+* Last 3 Hours (this is the default)
+* Last 6 Hours
+* Last 12 Hours
+* Last 24 Hours
+* Last 2 Days
+* Last 3 Days
+* Last 7 Days
+* Last 30 Days
+* Custom time range
+
+The Custom time range allows you to select up to 31 consecutive days. You can also set the Start Time and End Time of day for this range. The default Start Time is 12:00 AM on the first day selected and the default End Time is 11:59 PM on the last day selected. Clicking Apply will apply the custom time range to the asset page.
+
+== Add Custom Widgets
+
+You can add your own widgets to any asset page.  Widgets you add will appear on asset pages for all objects of that type. For example, adding a custom widget to a storage asset page will display that widget on asset pages for all storage assets.

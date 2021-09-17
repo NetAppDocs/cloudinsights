@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: task_cs_getting_started.html
+keywords: collectors, data collectors, configure, introduction, browsers 
+summary: A few simple steps will get you started using Cloud Secure
+---
+
+= Getting Started with Cloud Secure
+
+There are configuration tasks that need to be completed before you can start using Cloud Secure to monitor user activity. 
+
+//not complete? 4/17 
+
+The Cloud Secure system uses an agent to collect access data from storage systems and user information from  Directory Services servers.
+
+//not complete? 4/17
+
+You need to configure the following before you can start collecting data:
+
+[cols="2*"]
+|===
+|Task|Related information
+| Configure an Agent a| link:concept_cs_agent_requirements.html[Agent Requirements] 
+
+link:task_cs_add_agent.html[Add Agent]
+
+link:https://netapp.hubs.vidyard.com/watch/Lce7EaGg7NZfvCUw4Jwy5P?[*Video*: Agent Deployment] 
+
+|Configure a User Directory Connector|link:task_config_user_dir_connect.html[Add User Directory Connector]
+
+link:https://netapp.hubs.vidyard.com/watch/NEmbmYrFjCHvPps7QMy8me?[*Video*: Active Directory Connection]
+
+|Configure data collectors | Click *Admin > Data Collectors*
+
+Click the data collector you want to configure. 
+
+See the Data Collector Vendor Reference section of the documentation. 
+
+link:https://netapp.hubs.vidyard.com/watch/YSQrcYA7DKXbj1UGeLYnSF?[*Video*: ONTAP SVM Connection]
+
+|Create  Users Accounts| link:concept_user_roles.html[Manage User Accounts]
+
+|Troubleshooting|link:https://netapp.hubs.vidyard.com/watch/Fs8N2w9wBtsFGrhRH9X85U?[*Video*: Troubleshooting]
+
+|===
+
+
+

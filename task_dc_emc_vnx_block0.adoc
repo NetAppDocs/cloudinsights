@@ -1,0 +1,123 @@
+---
+sidebar: sidebar
+permalink: task_dc_emc_vnx_block.html
+keywords: data collector, EMC, clariion, VNX block
+summary: Configuring DELL EMC VNX Block Storage (formerly CLARiiON).
+---
+
+= Dell EMC VNX Block Storage (NaviCLI) data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+Cloud Insights uses the Dell EMC VNX Block Storage (NaviSec) data collector (formerly CLARiiON) to acquire inventory and performance data.
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the EMC VNX Block Storage data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Disk|Disk
+|Storage|Storage
+|Storage Processor|Storage Node
+|This Pool, RAID Group|Storage Pool
+|LUN|Volume
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data source. 
+
+== Requirements
+
+The following requirements must be met in order to collect data:
+
+* An IP address of each VNX block storage processor
+* Read-only Navisphere username and password to the VNX block storage arrays
+* NaviSecCli must be installed on the Cloud Insights AU
+* Access validation: Run NaviSecCLI from the Cloud Insights AU to each array using the username and password.
+* Port requirements: 80, 443
+* NaviSecCLI version should correspond with the newest FLARE code on your array
+* For performance, statistics logging must be enabled.
+
+== NaviSphere command line interface syntax
+
+naviseccli.exe -h <IP address> -user <user> -password <password> -scope
+<scope,use 0 for global scope> -port <use 443 by default> command
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field |Description
+|VNX Block Storage IP Address|IP address or fully-qualified domain name of the VNX block storage 
+|User Name |Name used to log into the VNX block storage device. 
+|Password|Password used to log into the VNX block storage device. 
+|CLI Path to naviseccli.exe|Full path to the folder containing the _naviseccli.exe_ executable
+|===
+
+== Advanced Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field |Description
+|Inventory Poll Interval (min)|Interval between inventory polls. Default is 40 minutes.
+//|Use Secure Client |Select to use the _navseccl_ secure client (i)
+|Scope|The secure client scope. The default is Global.
+//|VNX block storage CLI Port|Port used for VNX block storage CLI. The default is 443. 
+//|Inventory External Process Timeout (sec)|External process timeout. The default is 1800 seconds.
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds. 
+//|Performance External process timeout (sec)|External process timeout. The default is 1800 seconds.
+|===
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error:
+•	Agent Not Running
+•	Failed to find naviseccli
+•	Failed to execute any command
+|•	Confirm that NaviSphere CLI is installed on the Cloud Insight Acquisition Unit
+•	You have not selected the "Use secure client" option in the data collector configuration wizard and do not have a non-secure version of Naviphere CLI installed.
+•	Confirm that NaviSphere CLI installation directory is correct in the data collector configuration
+•	Confirm that the IP of the VNX block storage is correct in the data collector configuration:
+•	From the Cloud Insights Acquisition Unit:
+    -	Open a CMD.
+    -	Change the directory to the configured installation directory
+    -	Try to make a connection with the VNX block storage device by typing “navicli -h {ip} getagent” (replace the {ip} with the actual IP)
+|Error: 4.29 emc235848 emc241018 getall Failed to parse host alias info
+|This is likely caused by a FLARE 29 corruption issue of the host initiator database on the array itself. See EMC knowledge base articles: emc235848, emc241018. You can also check https://now.netapp.com/Knowledgebase/solutionarea.asp?id=kb58128
+|Error: Unable to retrieve Meta LUNs. Error Executing java -jar navicli.jar
+|•	Modify the data collector configuration to use the secure client (recommended)
+•	Install navicli.jar in the CLI path to navicli.exe OR naviseccli.exe
+•	Note: navicli.jar is deprecated as of EMC Navisphere version 6.26
+•	The navicli.jar may be available on http://powerlink.emc.com
+|Error: Storage Pools not reporting disks on Service Processor at configured IP address
+|Configure the data collector with both Service Processor IPs, separated by a comma
+|Error: Revision mismatch error
+|•	This is usually caused by updating the firmware on the VNX block storage device, but not updating the installation of NaviCLI.exe. This also might be caused by having different devices with different firmwares, but only one CLI installed (with a different firmware version).
+•	Verify that the device and the host are both running identical versions of the software:
+    -	From the Cloud Insights Acquisition Unit, open a command line window
+    -	Change the directory to the configured installation directory
+    -	Make a connection with the CLARiiON device by typing “navicli -h ${ip} getagent”
+    -	Look for the version number on the first couple of lines. Example: “Agent Rev:           6.16.2 (0.1)”
+    -	Look for and compare the version on the first line. Example: “Navisphere CLI Revision 6.07.00.04.07”
+|Error: Unsupported Configuration - No Fibre Channel Ports
+|The device is not configured with any Fibre Channel ports. Currently, only FC configurations are supported.  Verify this version/firmware is supported.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+

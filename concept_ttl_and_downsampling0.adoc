@@ -1,0 +1,79 @@
+---
+sidebar: sidebar
+permalink: concept_ttl_and_downsampling.html
+summary: Time-to-Live (TTL) and downsampling explained
+keywords: time-to-live, TTL, downsampling, downsample, 
+---
+
+= Time-to-live (TTL) and downsampled data
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Because Cloud Insights retains data for a set period (per Edition), there is potential for processing of thousands of data points. Data may therefore be downsampled before being displayed in charts and tables. 
+
+== Data Retention (Time-to-Live)
+
+Cloud Insights retains data for an amount of time determined by the active subscribed Edition. Data retention is also known as Time-To-Live or TTL.
+
+|===
+|Edition|TTL
+
+|Basic |7 Days
+|Standard |90 Days
+|Premium |13 Months
+|===
+
+Premium Edition subscriptions with at least 500 Managed Units (MUs) also retain Business Intelligence and Reporting data for the 13-month period.
+
+
+== Downsampling of Data
+
+*Downsampling* provides a statistical approximation of your data in charts, giving you an efficient overview of data without having to display every data point, while maintaining an accurate view of your collected data.
+
+=== Why is downsampling needed?
+
+Because a large amount of processing is needed to prepare data for display in charts and graphs, in order to allow charts to display quickly and efficiently, data may be downsampled in a manner that keeps the overall shape of a chart without needing to process every single data point for that chart.
+
+Note: No actual data is lost during downsampling. You can choose to view actual data for your chart instead of downsampled data by following the steps illustrated below.
+
+=== How downsampling works
+
+Data is downsampled under the following conditions:
+
+* When your selected time range includes 7 days of data or less, no downsampling occurs. Charts display actual data.
+* When your selected time range includes more than 7 days of data but less than 1,000 data points, no downsampling occurs. Charts display actual data.
+* When your selected time range includes more than 7 days of data and more than 1,000 data points, data is downsampled. Charts display approximated data.
+
+The following examples show downsampling in action. The first illustration shows latency and IOPS charts on a Datastore asset page for a 24-hour period, as shown by selecting 24h on the asset page's time selector. You can also see the same data by selecting Custom and setting the time range to the same 24-hour period.
+
+Since we are choosing a time range of less than 7 days and we have less than 1,000 data points to chart, the data displayed is actual data. No downsampling occurs.
+
+image:Charts_NoDownsample.png[No Downsampling]
+
+However, if you are viewing data by choosing either 30d on the asset page time selector, or by setting a custom time range of more than 7 days (or in the event that Cloud Insights has collected more than 1,000 data samples for the time period chosen), the data is downsampled before being displayed. When you zoom in on a downsampled chart, the display continues to show the approximated data.
+
+NOTE: When you zoom in on a downsampled chart, the zoom is a digital zoom. The display continues to show the approximated data.
+
+You can see this in the following illustration, where the time range is first set to 30d, and the chart is then zoomed in to show the same 24-hour period as above.
+
+image:Charts_Downsampled.png[Downsampling]
+
+The downsampled charts are showing the same 24-hour period as the "actual" charts above, so the lines follow the same general shape, allowing you to quickly spot interesting peaks or valleys in your performance data.
+
+NOTE: Due to the way data is approximated for downsampling, chart lines may be off slightly when comparing downsampled vs. actual data, to allow for better alignment in the graphs. However, the difference is minimal and does not affect the overall accuracy of the data displayed.
+
+=== Violations on downsampled charts
+
+When viewing downsampled charts, be aware that violations are not shown. To see violations, you can do one of two things:
+
+* View the actual data for that time range by selecting Custom in the asset page time selector, and entering a range of time less than 7 days. Hover over each red dot. The tooltip will show the violation that occurred.
+* Note the time range and find the violation(s) in the Violation Dashboard.
+
+

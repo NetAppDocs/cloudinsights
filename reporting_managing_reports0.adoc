@@ -1,0 +1,63 @@
+---
+sidebar: sidebar
+permalink: reporting_managing_reports.html
+summary: Customizing report output and delivery, copying reports to the clipboard, opening reports (XML).
+keywords: reporting, cognos, data warehouse, dwh, managing, customizing, copying
+---
+
+= Managing Reports
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can customize a report’s output format and delivery, set report properties or schedules, and email reports. 
+
+NOTE: The Reporting feature is available in Cloud Insights link:concept_subscribing_to_cloud_insights.html[Premium Edition]. 
+
+=== Customizing a report's output format and delivery
+
+You can customize the format and delivery method of reports.
+
+. In the Cloud Insights Reporting Portal, mouse over the report you want to customize and click *[...]*.
+
+image:ReportCustomizationMenu.png[Report Customization Menu]
+
+. Click *Properties > Schedule*
+
+image:ReportSchedule.png[Scheduling a Report]
+
+. You can set the following options:
+** Schedule when you want reports to run.
+** Format the report output.
+** Delivery: print, save, or email the report.
+** Languages define the language the report is delivered in.
+
+. Click *Create* to produce the report using the selections you made.
+
+=== Copying a report to the clipboard
+
+Use this process to copy a report to the clipboard.
+
+. In the toolbar, click *[+]*
+. Click *Report* 
+. Click the *Pages* icon image:PageIcon.png[Page Icon]. The Report icon image:ReportIcon.png[Report Icon] is displayed
+. Left click the Report icon. Report options are displayed.
+. Click *Copy Report to Clipboard*.
+
+=== Opening reports (xml) from the clipboard
+You can open a report specification that was previously copied to the clipboard.
+
+About this task
+You enter the Reporting user interface by creating a new report or opening an existing report
+
+. In the toolbar, click *[+]*
+. Click *Report* 
+. Click the *Pages* icon image:PageIcon.png[Page Icon]. The Report icon image:ReportIcon.png[Report Icon] is displayed
+. Left click the Report icon. Report options are displayed.
+. Click *Open report from clipboard*.

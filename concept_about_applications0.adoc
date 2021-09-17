@@ -1,0 +1,37 @@
+---
+sidebar: sidebar
+permalink: concept_about_applications.html
+keywords: applications, asset, cost 
+summary: Understanding the applications used in your company's environment helps you to keep track of asset usage and costs.
+---
+
+= Tracking asset usage by application
+
+[.lead]
+Understanding the applications used in your company's environment helps you to keep track of asset usage and cost.
+
+Before you can track data associated with the applications running in your environment, you must first define those applications and associate them with the appropriate assets. You can associate applications with the following assets: hosts, virtual machines, volumes, internal volumes, qtrees, shares, and hypervisors. 
+
+This topic provides an example of tracking the usage of virtual machines that the Marketing Team uses for its Exchange email.
+
+You might want to create a table similar to the following to identify applications used in your environment and note the group or business unit using each applications.
+
+[cols=5*,options="header]
+|===
+|Tenant|Line of Business|Business Unit|Project|Applications
+|NetApp|Data Storage|Legal|Patents|Oracle Identity Manager, Oracle On Demand, PatentWiz
+|NetApp|Data Storage|Marketing|Sales Events|Exchange, Oracle Shared DataBase, BlastOff Event Planner
+|===
+
+The table shows that that Marketing Team uses the Exchange application. We want to track their virtual machine utilization for Exchange, so that we can predict when we will need to add more storage.  We can associate the Exchange application with all of Marketing's virtual machines: 
+
+. Create an application named _Exchange_
+. Go to *Queries > +New Query* to create a new query for virtual machines (or select an existing VM query, if applicable).
++
+Assuming the Marketing team's VMs all have a name containing the string “*mkt*”, create your query to filter VM name for “mkt”.
+. Select the VMs.
+. Associate the VMs with the _Exchange_ application using *Bulk Actions > Add Applications*. 
+. Select the desired application and click *Save*.
+. When finished, *Save* the query.
+
+

@@ -1,0 +1,24 @@
+---
+sidebar: sidebar
+permalink: concept_determining_data_collector_acq_status.html
+summary: Data Collector acquisition status
+keywords: collector, acquisition, status
+---
+
+= Determining data collector acquisition status
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/ 
+
+[.lead]
+Because data collectors are the primary source of information for Cloud Insights, it is imperative that you ensure that they remain in a running state.
+
+Data collector status is displayed in the upper right corner of any asset page as the message "Acquired N minutes ago", where N indicates the most recent acquisition time of the asset's data collector(s). The acquisition time/date is also displayed.
+
+Clicking on the message displays a table with data collector name, status, and last successful acquisition time. If you are signed in as an Administrator, clicking on the data collector name link in the table takes you to detail page for that data collector.
+

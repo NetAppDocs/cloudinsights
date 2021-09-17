@@ -1,0 +1,85 @@
+---
+sidebar: sidebar
+permalink: io_density_nonroot.html
+keywords:  notifications, annotations, queries, applications, 
+summary: IO Density
+---
+
+= Ensuring IO density data describe only internal data volumes
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+In NetApp storage systems the root aggregate contains the root volume, containing special directories and configuration files for managing and controlling the storage system. Theses operations might result in a large amount of activity in the root aggregate. When you query Cloud Insights for the top 10 internal volumes with the highest IO density, your results might include NetApp root aggregates as members of the top 10.
+
+When monitoring your environment it is more important to determine which internal data volumes are producing high I/O density numbers. In order to accurately identify only the data volumes, you need to isolate the NetApp internal volumes from queries you use to monitor I/O density. 
+
+This guide describes how to easily identify the NetApp root aggregates, isolate them from the results of internal volume queries, and create rules that exclude any new NetApp root aggregates as they are added to the system. The following Cloud Insights features are used to insure that your I/O density reports are derived from internal data volumes. 
+
+* A query is created to identify all of the NetApp root aggregates that are monitored by Cloud Insights.
+* An annotation is assigned to each of the NetApp root aggregates.
+* An annotation rule is created to exclude the NetApp root  aggregates. 
+
+== Creating a query to identify NetApp root aggregates in your environment
+
+Queries provide search at a granular level, based on user-selected criteria. Using a query allows you to search for Internal volumes in your environment that contain the NetApp root aggregate. 
+
+.Steps 
+
+. In Cloud Insights create a query to identify NetApp root aggregates in your environment: *Queries > +New Query > Storage Pool*
+. Enter the name for the root aggregate
++
+This example uses "aggr0" for the name. When creating an aggregate, only the following requirements for the name must be followed:
+
+* It must begin with either a letter or an underscore (_).
+* It can contain only letters, digits, and underscores.
+* It can be 250 characters or less.
+
+In most cases the aggregate is name aggr0, aggr_0, or something similar. It might require an iterative process to identify all of the NetApp root aggregates in your environment. 
+
+. Click *Save* and enter a name for the new query. 
++
+As mentioned before, this might be an iterative process and require multiple queries to identify all of the NetApp root aggregates. 
+
+== Create an annotation for the root volumes returned by your queries
+
+Annotations are specialized notes that you assign to your assets, allowing you to filter assets by their annotations. The annotation you create will be used to identify the NetApp root aggregates in your environment and ensure that they are not included in a list of internal volumes with the highest IO density. 
+
+.Before you begin
+
+You must have identified all of the root aggregates you want to exclude from the "High I/O Density" report. 
+
+.Steps
+
+. Create an annotation to associate all of the NetApp root aggregates you identified with queries: *Manage > Annotations*
+.. Enter the name for the annotation: *RootAggr*
+.. Enter a description of the annotation: *Remove root aggregate from "High I/O Density" list*
+.. Enter the type of annotation: *Boolean*
+. Click *Save*
+
+== Create an annotation rule to automate excluding specific aggregates from your I/O density report
+
+As an alternative to manually applying annotations to individual assets, you can automatically apply annotations to multiple assets using annotation rules. Annotation rules are based on queries you create and when run on the system they add new assets to existing sets of assets. When these sets of assets are excluded from inclusion the new assets are automatically excluded too.
+
+.Before you begin
+
+You must have created and saved a query that identifies the NetApp root aggregates you identified in your environment. 
+
+.Steps
+
+. In the Cloud Insights menu, click  *Manage > Annotations*
+. Click *Add*
+. Do the following: 
+.. In the Name box, enter a unique name that describes the rule: *RootAggrExclude*
+.. Click Query and select the Query that Cloud Insights should use to apply the annotation rule to: *Aggregate0*
+.. Click Annotation and select: *Root agg exclude* 
+.. Click *Value* and enter *True*
+
+

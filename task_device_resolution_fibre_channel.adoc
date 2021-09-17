@@ -1,0 +1,120 @@
+---
+sidebar: sidebar
+permalink: task_device_resolution_fibre_channel.html
+keywords: Automatic, AR, AHR, Host, automatic device resolution, FC, Identify
+summary: 
+---
+
+= Fibre Channel device resolution
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The Fibre Channel Identify screen displays the WWN and WWPN of fibre channel devices whose hosts have not been identified by automatic device resolution. The screen also displays any devices that have been resolved by manual device resolution.
+
+Devices that have been resolved by manual resolution contain a status of _OK_ and identify the rule used to identify the device. Missing devices have a status of _Unidentified_. Devices that are specifically excluded from identification have a status of _Excluded_. The total coverage for identification of devices is listed on this page.
+
+You perform bulk actions by selecting multiple devices on the left-hand side of the Fibre Channel Identify screen. Actions can be performed on a single device by hovering over a device and selecting the _Identify_ or _Unidentify_ buttons on the far right of the list.
+
+The _Total Coverage_ link displays a list of the number of devices identified/number of devices available for your configuration:
+
+* SRM alias
+* Storage alias
+* Switch alias
+* Zones
+* User defined
+
+
+==== Adding a Fibre Channel device manually
+
+You can manually add a fibre channel device to Cloud Insights using the _Manual Add_ feature available in the device resolution Fibre Channel Identify tab. This process might be used for pre-identification of a device that is expected to be discovered in the future.
+
+.Before you begin
+
+To successfully add a device identification to the system you need to know the WWN or IP address and the device name.
+
+.About this task
+You can add a Host, Storage, Tape or Unknown fibre channel device manually.
+
+.Procedure
+
+. Log in to the Cloud Insights web UI
+. Click *Manage > Device Resolution*
+. Click the *Fibre Channel Identify* tab.
+. Click the *Add* button.
++
+The *Add Device* dialog is displayed
+
+. Enter the WWN or IP address, the device name, and select the device type.
++
+The device you enter is added to the list of devices in the Fibre Channel Identify tab. The Rule is identified as _Manual_.
+
+
+==== Importing Fibre Channel device identification from a .CSV file
+
+
+You can manually import fibre channel device identification into Cloud Insights device resolution using a list of devices in a .CSV file.
+
+. Before you begin
+
+You must have a correctly formatted .CSV file in order to import device identifications directly into device resolution. The .CSV file for fibre channel devices requires the following information:
+
+|===
+|WWN |IP |Name |Type
+|===
+
+
+The data fields must be enclosed in quotes, as shown in the example below.
+
+ "WWN","IP","Name","Type"
+ "WWN:2693","ADDRESS2693|IP2693","NAME-2693","HOST"
+ "WWN:997","ADDRESS997|IP997","NAME-997","HOST"
+ "WWN:1860","ADDRESS1860|IP1860","NAME-1860","HOST"
+
+NOTE: As a best practice, it is recommended to first export the Fibre Channel Identify information to a .CSV file, make your desired changes in that file, and then import the file back into Fibre Channel Identify. This ensures that the expected columns are present and in the proper order.
+
+To import Fibre Channel Identify information:
+
+. Log into the Cloud Insights web UI.
+. Click *Manage > Device Resolution*
+. Select the *Fibre Channel Identify* tab.
+. Click the *Identify > Identify from file* button.
+. Navigate to the folder containing your .CSV files for import and select the desired file.
++
+The devices you enter are added to the list of devices in the Fibre Channel Identify tab. The “Rule” is identified as Manual.
+
+
+==== Exporting Fibre Channel device identifications to a .CSV file
+
+You can export existing fibre channel device identifications to a .CSV file from the Cloud Insights device resolution feature. You might want to export a device identification so that you can modify it and then import it back into Cloud Insights where it is then used to identify devices that are similar to those originally matching the exported identification.
+
+.About this task
+
+This scenario might be used when devices have similar attributes that can be easily edited in the .CSV file and then imported back into the system.
+
+When you export a Fibre Channel device identification to a .CSV file, the file contains the following information in the order shown:
+
+|===
+|WWN |IP |Name |Type
+|===
+
+.Procedure
+
+. Log into the Cloud Insights web UI.
+. Click *Manage > Device Resolution*
+. Select the *Fibre Channel Identify* tab.
+. Select the Fibre Channel device or devices whose identification you want to export.
+. Click the *Export* image:ExportButton.png[] button.
++
+Select whether to open the .CSV file or save the file.
+
+Related: 
+link:task_device_resolution_ip.html[IP Device Resolution]
+link:task_device_resolution_rules.html[Creating Device Resolution Rules]
+link:task_device_resolution_preferences.html[Setting Device Resolution Preferences]
