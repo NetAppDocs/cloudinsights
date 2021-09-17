@@ -128,7 +128,9 @@ To configure the operator, follow these steps:
 
 The Monitoring Operator will now install the Acquisition Unit, Telegraf and Fluent Bit. This may take several minutes to complete.
 Periodically run the following command to check the Acquisition Unit status until the status is UP. Alternatively, you can wait for the new Acquisition Unit to appear in the Cloud Insights UI.
+
  kubectl --namespace netapp-monitoring get agent -o jsonpath='{.status.au-pod-status}' acc-monitoring
+ 
 Once the Acquisition Unit is installed, you may add the Astra Data Store collector from the Cloud Insights UI.
 
 
