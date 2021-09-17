@@ -110,7 +110,7 @@ To configure the operator, follow these steps:
      domain-name: "<INSERT_CI_DOMAIN_NAME>"
      name: CI
 
-. If there is not a Storage Provisioner configured in the Kubernetes cluster, uncomment storageClassName  and supply the name of the StorageClass containing PVs for the Acquisition Unit. These PVs must already be created. Leave blank to use the default StorageClass.
+. If there is not a Storage Provisioner configured in the Kubernetes cluster, uncomment _storageClassName_ and supply the name of the StorageClass containing PVs for the Acquisition Unit. These PVs must already be created. Leave blank to use the default StorageClass.
 . Replace <INSERT_CLUSTER_NAME> with the name of the Astra Data Store cluster
 . Replace <INSERT_CI_API_KEY> with the Cloud Insights API Access Token
 . Replace <INSERT_CI_DOMAIN_NAME> with the Cloud Insights tenant domain name
