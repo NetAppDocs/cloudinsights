@@ -19,6 +19,16 @@ Dashboards and widgets allow great flexibility in how data is displayed. Here ar
 
 toc::[]
 
+== Widget Naming
+
+Widgets are automatically named based on the object, metric, or attribute selected for the first widget query. If you also choose a grouping for the widget, the "Group by" attributes are included in the automatic naming (aggregation method and metric).
+
+image:WidgetNameExample.png[Widget Naming Example]
+
+Selecting a new object or grouping attribute updates the automatic name.
+
+If you do not want to use the automatic widget name, you can simply type a new name. 
+
 ==	Widget Placement and Size
 All dashboard widgets can be positioned and sized according to your needs for each particular dashboard.
 
@@ -37,6 +47,10 @@ Most widgets on dashboards can be displayed with or without legends. Legends in 
 As the data displayed in the widget changes, the legend for that widget is updated dynamically.
 
 When legends are displayed, if the landing page of the asset indicated by the legend can be navigated to, the legend will display as a link to that asset page. If the legend displays "all", clicking the link will display a query page corresponding to the first query in the widget.
+
+In a time-series widget (line, spline, area, stacked area chart), you can hover over a legend to highlight the associated data in a chart. Conversely, hovering over a data point in the chart will highlight the associated legend. Clicking on the data point opens the landing page for the object.
+
+image:WidgetLegendHighlight.png[Legend Highlight]
 
 == Transforming Metrics 
 
@@ -87,7 +101,7 @@ The remaining widget types can have only a single query:
 * Box plot
 * Scatter plot
 
-=== Filtering in dashboard queries
+=== Filtering in dashboard widget queries
 
 Here are some things you can do to get the most out of your filters.
 
@@ -96,6 +110,19 @@ Here are some things you can do to get the most out of your filters.
 If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators AND, OR, and NOT will also be treated as literal strings when enclosed in double quotes.
 
 You can use exact match filters to find specific resources, for example hostname. If you want to find only the hostname 'marketing' but exclude 'marketing01', 'marketing-boston', etc., simply enclose the name "marketing" in double quotes. 
+
+==== Wildcards and Expressions
+
+When you are filtering for text or list values in queries or dashboard widgets, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
+
+image:Type-Ahead-Example-ingest.png[Wildcard Filter]
+
+Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
+
+image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
+
+Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
+
 
 ==== Advanced Filtering
 
