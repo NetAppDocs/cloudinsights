@@ -24,7 +24,7 @@ Note: When a new data collector is added which acquires assets, or any annotatio
 
 .Creating a Query is very simple:
 
-. Navigate to *Queries > *+New Query*.
+. Navigate to *Queries > *+New Query*. 
 
 . From the 'Select...' list, select the object type you want to query for. You can scroll through the list or you can start typing to more quickly find what you're searching for.
 
@@ -45,9 +45,27 @@ image:QuerySelectColumns.png[Select Columns]
 
 After you have configured your query to show you the results you want, you can click the *Save* button to save the query for future use. Give it a meaningful and unique name.
 
+
 === More on Filtering
 
-You can use any of the following to refine your filter:
+
+==== Wildcards and Expressions
+
+When you are filtering for text or list values in queries or dashboard widgets, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
+
+image:Type-Ahead-Example-ingest.png[Wildcard Filter]
+
+Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
+
+image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
+
+Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
+
+
+
+==== Refining Filters
+
+You can use the following to refine your filter:
 
 |===
 |Filter|What it does | Example | Result
