@@ -52,10 +52,9 @@ Cloud Insights acquires inventory and performance data from this collector. For 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Kubernetes API IP Address|The IP address of the kubernetes API server
-|Kubernetes API Port|The port of the kubernetes API server
+|Kubernetes API Server IP Address|The IP address of the Kubernetes API server
+|Kubernetes API Server Port|The port of the Kubernetes API server
 |Kubernetes API Token|Base64 encoded Kubernetes API token
-|Include Cluster Names|Comma separated list of cluster names to monitor. Empty = monitor all clusters
 |===
 
 == Advanced Configuration
@@ -65,14 +64,79 @@ Cloud Insights acquires inventory and performance data from this collector. For 
 |Field|Description
 |Inventory Poll Interval (min)|Interval between inventory polls. The default is 60 minutes.
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds. 
-|ADS Metrics Endpoint|ADS cluster Metrics endpoint (May not be needed)
+|Included ADS Cluster Names|Comma-separated list of ADS cluster names to include in polling. Leave blank to monitor all clusters.
 |===
 
 
-== Installing the Astra Data Store collector
+== Install Acquisition Unit, Telegraf and Fluent Bit
 
-           
+The NetApp Monitoring Operator will be installed in the Kubernetes cluster with Astra Data Store. The Monitoring Operator manages the installation and configuration of the to an Acquisition Unit, a Telegraf agent for advanced metrics, and a Fluent Bit agent for logs. 
+
+To configure the operator, follow these steps:
+
+. Copy the custom resource definition snippet below
+
+ spec:
+   au:
+     isEnabled: true
+     #storageClassName: ""
+   telegraf:
+   - name: "open-metric"
+     run-mode:
+     - ReplicaSet
+     substitutions:
+     - key: URLS
+       values:
+       - "http://astrads-metrics-service.astrads-system.svc.cluster.local:9341"
+     - key: METRIC_TYPE
+       value: "ads-metrics"
+     outputs:
+     - sink: CI
+   fluent-bit:
+   - name: "ads-tail-ci"
+     substitutions:
+     - key: TAG
+       value: "ads-logs"
+     - key: ADS_CLUSTER_NAME
+       value: "<INSERT_CLUSTER_NAME>"
+     - key: LOG_FILE
+       values:
+       - "/var/log/firetap/*/ems/ems"
+       - "/var/log/firetap/ems/*/ems/ems"
+     outputs:
+     - sink: CI
+   output-sink:
+   - api-key: "<INSERT_CI_API_KEY>"
+     domain-name: "<INSERT_CI_DOMAIN_NAME>"
+     name: CI
+
+. If there is not a Storage Provisioner configured in the Kubernetes cluster, uncomment storageClassName  and supply the name of the StorageClass containing PVs for the Acquisition Unit. These PVs must already be created. Leave blank to use the default StorageClass.
+. Replace <INSERT_CLUSTER_NAME> with the name of the Astra Data Store cluster
+. Replace <INSERT_CI_API_KEY> with the Cloud Insights API Access Token
+. Replace <INSERT_CI_DOMAIN_NAME> with the Cloud Insights tenant domain name
+. Run the following command to edit the Monitoring Operator agent spec:
+ kubectl --namespace netapp-monitoring edit agent acc-monitoring
+. Merge the custom resource definition snippet above with the existing Monitoring Operator agent spec.
+. Save and close the editor window.
+
+The Monitoring Operator will now install the Acquisition Unit, Telegraf and Fluent Bit. This may take several minutes to complete.
+Periodically run the following command to check the Acquisition Unit status until the status is UP. Alternatively, you can wait for the new Acquisition Unit to appear in the Cloud Insights UI.
+ kubectl --namespace netapp-monitoring get agent -o jsonpath='{.status.au-pod-status}' acc-monitoring
+Once the Acquisition Unit is installed, you may add the Astra Data Store collector from the Cloud Insights UI.
+
+
 == Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|You see an "Unauthorized" message
+|Check that the Kubernetes API Token has permission to call APIs in the _astrads.netapp.io_ apiGroup
+|"Unknown host: astrads-metrics-service.astrads-system.svc.cluster.local: Name or service not known"
+|Verify the collector is installed in an Acquisition Unit pod running inside the ADS Kubernetes cluster.
+Verify the astrads-metrics-service  is running the astrads-system  namespace.
+|===
 
 Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
 
