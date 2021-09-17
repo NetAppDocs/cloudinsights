@@ -49,6 +49,21 @@ entries:
         
   - title: Subscribing to Cloud Insights
     url: /concept_subscribing_to_cloud_insights.html
+
+  - title: Automatic Device Resolution 
+    entries:
+      - title: Device Resolution Overview
+        url: /concept_device_resolution_overview.html
+      - title: Device Resolution Rules
+        url: /task_device_resolution_rules.html
+      - title: Fibre Channel Device Resolution
+        url: /task_device_resolution_fibre_channel.html
+      - title: IP Device Resolution
+        url: /task_device_resolution_ip.html
+      - title: Setting Device Resolution Preferences
+        url: /task_device_resolution_preferences.html
+      - title: Regular expression examples
+        url: /concept_device_resolution_regex_examples.html
     
   - title: Creating Dashboards
     entries:
@@ -115,7 +130,19 @@ entries:
 #        url: /task_create_monitor.html
       - title: Configuring Notification Recipients
         url: /concept_notifications_email.html 
-
+#      - title: Webhooks
+#        entries:
+#          - title: Creating Webhooks 
+#            url: /task_create_webhook.html
+#          - title:Slack Webhook Example
+#            url: /task_webhook_example_slack.html
+#          - title: Pagerduty Webhook Example
+#            url: /task_webhook_example_pagerduty.html
+#          - title: Teams Webhook Example
+#            url: /task_webhook_example_Teams.html            
+#          - title: Discord Webhook Example
+#            url: /task_webhook_example_discord.html  
+            
   - title: Working with APIs
     url: /API_Overview.html
 
@@ -150,6 +177,8 @@ entries:
         url: /concept_asset_expert_view_section.html
       - title: User Data Section
         url: /concept_asset_user_data_section.html
+      - title: Related Alerts Section
+        url: /concept_asset_alerts_section.html
       - title: Violations Section
         url: /concept_asset_violation_section.html
       - title: Hints and Tips to Search for Assets
@@ -173,6 +202,8 @@ entries:
         url: /reporting_creating_custom_reports.html
       - title: Data Models
         url: /reporting_creating_custom_reports.html#reporting-data-models
+      - title: Data Retention
+        url: /reporting_data_retention.html
       - title: Schema Diagrams
         url: /reporting_schema_diagrams.html
       - title: Schema Tables
@@ -193,8 +224,10 @@ entries:
             url: /task_cs_add_agent.html
           - title: Deleting a Cloud Secure Agent
             url: /task_cs_delete_agent.html 
-          - title: Configuring a User Directory Collector 
+          - title: Configuring an AD Directory Collector 
             url: /task_config_user_dir_connect.html
+          - title: Configuring an LDAP Directory Collector 
+            url: /task_config_user_dir_connect_ldap.html
 #          - title: Configuring NetApp Data Collectors
 #            entries: 
           - title: Configuring the ONTAP SVM Data Collector
@@ -203,6 +236,8 @@ entries:
             url: /task_config_cs_incloud.html
           - title: Cloud Secure User Management
             url: /task_cs_user_management.html
+          - title: Event Rate Checker
+            url: /concept_cs_event_rate_checker.html
 #      - title: Viewing Cloud Secure Forensic Data 
 #        entries: 
       - title: Alerts 
@@ -283,6 +318,8 @@ entries:
                 url: /task_dc_emc_ecs.html
               - title: Isilon
                 url: /task_dc_emc_isilon.html
+              - title: PowerStore
+                url: /task_dc_emc_powerstore.html
               - title: RecoverPoint
                 url: /task_dc_emc_recoverpoint.html
               - title: ScaleIO
@@ -319,6 +356,8 @@ entries:
                 url: /task_dc_hds_commandsuite.html
               - title: HDS HNAS
                 url: /task_dc_hds_nas.html
+              - title: HDS Ops Center
+                url: /task_dc_hds_ops_center.html
           - title: Infinidat
             url: /task_dc_infinidat_infinibox.html
           - title: Huawei
@@ -378,8 +417,8 @@ entries:
             
       - title: Data Collector Reference - Services
         entries:
-          - title: Display Options
-            url: /concept_telegraf_display_options.html
+#          - title: Display Options
+#            url: /concept_telegraf_display_options.html
           - title: Host/Node
             url: /task_config_telegraf_node.html
           - title: ActiveMQ
@@ -442,5 +481,7 @@ entries:
 #      - title: Cloud Insights Release Notes
 #        url: /TBD.html
       
+  - title: Legal notices
+    url: /reference_legal_notices.html
 
       

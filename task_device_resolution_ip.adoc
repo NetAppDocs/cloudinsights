@@ -1,0 +1,94 @@
+---
+sidebar: sidebar
+permalink: task_device_resolution_ip.html
+keywords: Automatic, AR, AHR, Host, automatic device resolution, FC, Identify
+summary: 
+---
+
+= IP device resolution
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The IP Identify screen displays any iSCSI and CIFS or NFS shares that have been identified by automatic device resolution or by manual device resolution. Unidentified devices are also shown. The screen includes the IP address, Name, Status, iSCSI node, and share name for devices. The percentage of devices that have been successfully identified is also displayed.
+
+image:Device_Resolution_IP.png[IP Device Resolution]
+
+==== Adding IP devices manually
+
+You can manually add an IP device to Cloud Insights using the manual add feature available in the IP Identify screen.
+
+
+.Procedure
+
+. Log in to the Cloud insights web UI.
+. Click *Manage > Device resolution*
+. Click the *IP Address Identify* tab.
+. Click the *Add* button.
++
+The Add Device dialog is displayed
+
+. Enter the address, IP address, and a unique device name.
+
+.Result
+The device you enter is added to the list of devices in the IP Address Identify tab.
+
+
+==== Importing IP device identification from a .CSV file
+
+
+You can manually import IP device identifications into the Device Resolution feature using a list of device identifications in a .CSV file.
+
+. Before you begin
+
+You must have a correctly formatted .CSV file in order to import device identifications directly into the Device Resolution feature. The .CSV file for IP devices requires the following information:
+
+|===
+|Address |IP |Name
+|===
+
+The data fields must be enclosed in quotes, as shown in the example below.
+
+ "Address","IP","Name"
+ "ADDRESS6447","IP6447","NAME-6447"
+ "ADDRESS3211","IP3211","NAME-3211"
+ "ADDRESS593","IP593","NAME-593"
+
+NOTE: As a best practice, it is recommended to first export the IP Address Identify information to a .CSV file, make your desired changes in that file, and then import the file back into IP Address Identify. This ensures that the expected columns are present and in the proper order.
+
+
+==== Exporting IP device identification to a .CSV file
+
+You can export existing IP device identifications to a .CSV file from the Cloud Insights device resolution feature. You might want to export a device identification so that you can modify it and then import it back into Cloud Insights where it is then used to identify devices that are similar to those originally matching the exported identification.
+
+.About this task
+.
+This scenario might be used when devices have similar attributes that can be easily edited in the .CSV file and then imported back into the system.
+
+When you export an IP device identification to a .CSV file, the file contains the following information in the order shown:
+
+|===
+|Address |IP |Name
+|===
+
+.Procedure
+
+. Log into the Cloud Insights web UI.
+. Click *Manage > Device Resolution*
+. Select the *IP Address Identify* tab.
+. Select the IP device or devices whose identification you want to export.
+. Click the *Export* image:ExportButton.png[] button.
++
+Select whether to open the .CSV file or save the file.
+
+
+Related: 
+link:task_device_resolution_fibre_channel.html[Fibre Channel device resolution]
+link:task_device_resolution_rules.html[Creating Device Resolution Rules]
+link:task_device_resolution_preferences.html[Setting Device Resolution Preferences]
