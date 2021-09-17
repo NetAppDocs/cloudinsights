@@ -413,10 +413,19 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 . Click *Save* to save the chart to your dashboard.
 
 
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 == Variables
 
-Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting one or more widgets to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.
+Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting one or more widgets to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.  
 
+////
 .Before you begin
 The example below requires the *City* annotation (also called City attribute) to be set on multiple storage assets. For best results, set different cities on different storages. See the link:https://docs.netapp.com/us-en/cloudinsights/task_defining_annotations.html[Annotations] topics for more information on using annotations.
 
@@ -446,23 +455,84 @@ The _$city_ choice only appears here if it was defined previously on the main da
 Your table widget updates to show only the cities you selected. You can change the values in the _$city_ variable at will, and all widgets on your dashboard that are set to use the $city variable will refresh automatically to show only data for the values you selected.
 
 Be sure to *Save* your dashboard when you have it configured as you want it.
+////
 
-=== More on dashboard variables
+
+//=== More on dashboard variables
+
 Dashboard variables come in several types, can be used across different fields, and must follow rules for naming. These concepts are explained here.
 
 ==== Variable types
 
 A variable can be one the following types:
 
-* *Text*: Alphanumeric string. This is the default variable type.
-* *Numerical*: a number or range of numbers.
-* *Boolean*: Use for fields with values of True/False, Yes/No, 0/1, etc. For the boolean variable, the choices are Yes, No, None, Any.
-* *Date*: A date or range of dates.
+//* *Attribute*: this includes annotations, attributes, and metrics 
 
+* *Annotation*: Use a pre-defined link:task_defining_annotations.html[Annotation] to filter widget data.
+* *Text*: An alphanumeric string. 
+* *Numerical*: A number value. Use by itself, or as a "from" or "to" value, depending on your widget field.
+* *Boolean*: Use for fields with values of True/False, Yes/No, etc. For the boolean variable, the choices are Yes, No, None, Any.
+* *Date*: A date value. Use by itself, or as a "from" or "to" value, depending on your widget field.
+
+//image:Variables_Drop-Down.png[Variable Types]
+image:Variables_Drop_Down_Showing_Annotations.png[Variable Types]
+
+////
+==== "Attribute" type variables
+
+Selecting an Attribute type variable allows you to filter for widget data containing the specified attribute value or values.  The example below shows a line widget displaying free memory trends for Agent nodes. We have created a variable for Agent Node IPs, currently set to show all IPs:
+
+image:Variables_Node_Example_Before_Variable_Applied.png[Agent Nodes Before Variable Filter]
+
+But if you temporarily want to see only nodes on individual subnets in your environment, you can set or change the variable to a specific Agent Node IP or IPs. Here we are viewing only the nodes on the "123" subnet:
+
+image:Variables_Node_Example_After_Variable_Applied.png[Agent Nodes After Variable Filter]
+
+Applying variables is as easy as changing the attribute data of your choice.
+
+==== Setting a non-attribute variable
+
+You can create generic variables that are not associated with a particular attribute by selecting a variable type of _Text_, _Number_, _Boolean_, or _Date_. Once the variable has been created, you can select it in a widget filter field. When setting a filter in a widget, in addition to specific values that you can select for the filter, any variables that have been created for the dashboard are displayed in the list--these are grouped under the "Variables" section in the drop-down and have names starting with "$". Choosing a variable in this filter will allow you to search for values that you enter in the variable field on the dashboard itself. Any widgets using that variable in a filter will be updated dynamically. 
+
+image:Variables_in_a_Widget_Filter.png[Selecting a variable in a widget]
+////
+
+////
+==== Variable filter scope
+
+Additionally, you can choose the scope to which the variable is applied in your dashboard. For most attributes, you can choose from among the following:
+
+* Filter all widgets by the specified attribute (for example, *agent.node.agent_node_ip*)
+* Filter only those widgets showing data from the parent attribute (for example, *agent.node*)
+* Filter manually (meaning, you choose the variable in a filter on an individual widget)
+
+image:Variables_Choose_Filter_Scope.png[Select variable filter scope]
+
+Read more about link:https://docs.netapp.com/us-en/cloudinsights/task_create_query.html#more-on-filtering[filtering options].
+////
+
+==== Variable Filter Scope
+
+By default, when you add an Annotation variable to your dashboard, the variable is applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard will display results filtered according to the value you set in the variable. 
+
+image:Variables_Automatic_Filter_Button.png[Automatic Filter]
+
+Note that only Annotations of type _Text_, _Boolean_, or _List_ can be filtered automatically using variables like this. _Non-text Annotation_ types such as numbers or dates cannot be automatically filtered, nor can _non-Annotation_ variables (Number, Date, Boolean). Individual widgets must each be configured to use variables of these types.
+
+To disable automatic filtering so that the Annotation variable only applies to the widgets where you have specifically set it, click the "Filter automatically" slider to disable it.
+
+To set an Annotation-type variable in an individual widget, open the widget in edit mode and select the specific annotation in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the variable at the dashboard level. Only those widgets for which you set the variable will show the filtered results.
+
+You can configure widgets to use non-Annotation variables (Number, Date, Boolean) in the same way.
+
+
+////
 ==== "Generic" variables
 
-You can set a generic or universal variable by clicking the *Add Variable* button and selecting one of the types listed above. These types are always shown at the top of the drop-down list. The variable is given a default name, for example "$var1", and is not tied to a specific annotation or attribute.
+You can set a generic or universal variable by clicking the *Add Variable* button and selecting 'text',' or 'number' variable type. The variable is assigned a default name, for example "$var1", and is not tied to a specific annotation or attribute. In other words, searching for a number or phrase in this variable applies to _all_ fields in any widget using this variable.
+////
 
+////
 Configuring a generic variable allows you to use that variable in widgets to filter for any field of that type. For example, if you have a table widget showing Name, Alias, and Vendor (which are all text-type attributes), and "$var1" is a text-type variable, you can set filters for each of those fields in the widget to use the $var1 variable. You can set other widgets to use $var1 for those or any text fields.
 
 On your dashboard page, setting $var1 to a value (for example "NetApp") will filter all of those fields in all widgets that are set to use that variable. In this way, you can update multiple widgets at once to highlight dashboard data you choose at will.
@@ -470,18 +540,22 @@ On your dashboard page, setting $var1 to a value (for example "NetApp") will fil
 Because generic variables can be used for any field of that type, you can change the name of a generic variable without changing its functionality.
 
 Note: All variables are treated as "generic" variables, even those you create for a specific attribute, because all configured variables of a type are shown when you set a filter for any attributes or annotations of that type. However, best practice is to create a generic variable when you will use it to filter for a value across multiple fields, as in the Name/Alias/Vendor example above.
+////
+
+
 
 ==== Variable naming
 
 Variables names:
 
-* Must always be prefixed with a "$". This is added automatically when you configure a variable.
-* Cannot contain any special characters; only the letters a-z and the digits 0-9 are allowed.
-* Cannot be longer than 20 characters, including the "$" symbol.
+//* Must always be prefixed with a "$". This is added automatically when you configure a variable.
+* Cannot contain any special characters; only the letters a-z, the digits 0-9, period (.), and underscore (_) are allowed.
+* Cannot be longer than 20 characters.
 * Are case-sensitive: $CityName and $cityname are different variables.
 * Cannot be the same as an existing variable name.
-* Cannot be only the "$" symbol.
+* Cannot be empty.
 
+////
 ==== Widgets that use variables
 
 Variables can be used with the following widgets:
@@ -496,7 +570,9 @@ Variables can be used with the following widgets:
 * Stacked Area Chart
 * Table Widget
 * Pie Chart
+////
 
+////
 === Understanding "$this" variables
 
 Special variables on an asset's landing page allow you to easily showcase additional information that is directly related to the current asset. These special variables have names beginning with '$this".
@@ -531,6 +607,7 @@ The table now shows all the VM's hosted by the current VM's hypervisor.
 The table that you created for this VM asset page will be displayed for any VM asset page you display. The use of the _$this.host.name_ variable in the widget means that only the VM's owned by the _current assets's_ hypervisor will be displayed in the table.
 
 You can also apply link:concept_in_context_filters.html[*in-context filters*] to asset page widgets to accomplish a similar result.
+////
 
 ////
 == Duplicating a Dashboard
