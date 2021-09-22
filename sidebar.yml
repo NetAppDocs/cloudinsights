@@ -146,14 +146,14 @@ entries:
   - title: Working with APIs
     url: /API_Overview.html
 
-  - title: Performance Policies and Alerts
-    entries:
-      - title: Alerting with Performance Policies
-        url: /task_create_monitor.html
-      - title: Viewing and Managing Alerts
-        url: /task_view_and_manage_alerts.html
-      - title: Configuring Notification Recipients
-        url: /concept_notifications_email.html 
+#  - title: Performance Policies and Alerts
+#    entries:
+#      - title: Alerting with Performance Policies
+#        url: /task_create_monitor.html
+#      - title: Viewing and Managing Alerts
+#        url: /task_view_and_manage_alerts.html
+#      - title: Configuring Notification Recipients
+#        url: /concept_notifications_email.html 
         
   - title: Webhook Notification
     url: /task_create_webhook.html
@@ -177,8 +177,10 @@ entries:
         url: /concept_asset_expert_view_section.html
       - title: User Data Section
         url: /concept_asset_user_data_section.html
-      - title: Violations Section
-        url: /concept_asset_violation_section.html
+      - title: Related Alerts Section
+        url: /concept_asset_alerts_section.html
+#      - title: Violations Section
+#        url: /concept_asset_violation_section.html
       - title: Hints and Tips to Search for Assets
         url: /concept_searching_assets.html
 
@@ -415,8 +417,8 @@ entries:
             
       - title: Data Collector Reference - Services
         entries:
-          - title: Display Options
-            url: /concept_telegraf_display_options.html
+#          - title: Display Options
+#            url: /concept_telegraf_display_options.html
           - title: Host/Node
             url: /task_config_telegraf_node.html
           - title: ActiveMQ
@@ -479,5 +481,7 @@ entries:
 #      - title: Cloud Insights Release Notes
 #        url: /TBD.html
       
+  - title: Legal notices
+    url: /reference_legal_notices.html
 
       
