@@ -81,8 +81,8 @@ The following table shows the Cloud Insights permissions granted to each user ro
 |Feature|Administrator/
 Account Owner|User|Guest
 |Acquisition Units: Add/Modify/Delete|Y|N|N
-|Alerts*/Policies: Create/Modify/Delete|Y|Y|N
-|Alerts*/Policies: View|Y|Y|Y
+|Alerts*: Create/Modify/Delete|Y|Y|N
+|Alerts*: View|Y|Y|Y
 |Annotation Rules: Create/Run/Modify/Delete|Y|Y|N
 |Annotations: Create/Modify/Assign/View/Remove/Delete|Y|Y|N
 |API Access*: Create/Rename/Disable/Revoke|Y|N|N
@@ -143,6 +143,13 @@ image:UserRoleChoices.png[User Role Choices]
 +
 The invitation is sent to the user. Users will have 14 days to accept the invitation. Once a user accepts the invitation, they will be taken to the NetApp Cloud Portal, where they will sign up using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud Insights environment.
 
+
+== Deleting Users
+
+A user with the Administrator role can delete a user (for example, someone no longer with the company) by clicking on the user's name and clicking _Delete User_ in the dialog. The user will be removed from the Cloud Insights environment. 
+
+Note that any dashboards, queries, etc. that were created by the user will remain available in the Cloud Insights environment even after the user is removed. 
+
 == Single Sign-On (SSO) and Identity Federation
 
 === Enabling Identity Federation for SSO In Cloud Insights  
@@ -169,6 +176,7 @@ Cloud Central uses Auth0 to implement Identity Federation and integrate with ser
 It is important to understand that changing identity federation in Cloud Central will apply not only to Cloud Insights but to all NetApp Cloud Services. The customer should discuss this change with the NetApp team of each Cloud Central product they own to make sure the configuration they are using will work with Identity Federation or if adjustments need to be made on any accounts. The customer will need to involve their internal SSO team in the change to identity federation as well. 
 
 It is also important to realize that once identity federation is enabled, that any changes to the company’s identity provider (such moving from SAML to Microsoft AD) will likely require troubleshooting/changes/attention in Cloud Central to update the profiles of the users. 
+
 
 
 === Single Sign-On (SSO) User Auto-Provisioning 

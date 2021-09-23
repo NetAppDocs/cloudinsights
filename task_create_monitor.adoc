@@ -20,10 +20,12 @@ You create monitors to set thresholds that trigger alerts to notify you about is
 
 TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
 
-When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both. 
+When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both.
 
-//image:MonitorExample1.png[Storage IOPS Monitor Example]
+Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
 
+
+////
 === Monitor or Performance Policy?
 
 What's the difference between a *Performance Policy* and a *Monitor*?
@@ -37,6 +39,8 @@ Policies and Monitors are available under the *Alerts* menu.
 image:AlertsMenuLarger.png[Alerts Menu]
 
 Emails can be sent when a policy or monitor is triggered. 
+////
+
 
 === Creating a Monitor
 
@@ -85,6 +89,21 @@ The graph displays historical data. The Warning and Critical level lines on the 
 You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
 +
 image:define_monitor_conditions.png[Define Conditions]
+
+
+==== Refining the Filter
+
+When you are filtering, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
+
+image:Type-Ahead_Monitor_1.png[Wildcard Filter]
+
+Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
+
+image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
+
+Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
+
+
 
 === Setting Corrective Actions or Additional Information
 
@@ -138,6 +157,7 @@ You can copy a monitor by selecting *Duplicate* from the menu. You can then modi
 If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
 
 
+
 == Monitor Groups
 
 Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
@@ -177,6 +197,8 @@ To pause or resume all monitors in a group at once, select the menu for the grou
 Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_.
 
 image:Monitors_PauseGroup.png[Pause a group]
+
+
 
 ////
 == Pin your Favorite monitors
