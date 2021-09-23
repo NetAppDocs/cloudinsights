@@ -29,7 +29,7 @@ A *High-Consuming Workload* is a workload that is currently identified as impact
 
 An *Impacted Workload* is a workload affected by a high-consuming workload in the shared Storage Pool. These workloads are experiencing reduced IOPS and/or higher latency, caused by the Impactful Workloads.
 
- *Shared Resource Saturation* is the ratio of impacting IOPS to _baseline_.
+*Shared Resource Saturation* is the ratio of impacting IOPS to _baseline_.
 
 *Baseline* is defined as the maximum reported data point for each workload in the hour immediately preceding the detected saturation.
 
