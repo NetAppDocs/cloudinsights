@@ -77,7 +77,13 @@ The simplest way to do this is to specify wildcard configuration in your proxy/f
 
  *.cloudinsights.netapp.com
 
-NOTE: The use of an asterix (*) for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environmant.
+NOTE: The use of an asterisk (*) for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environment.
+
+==== Viewing Proxy URLs
+
+You can view your proxy endpoint URLs by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed.
+
+image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
 
 ////
 * Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
@@ -138,7 +144,13 @@ The simplest way to do this is to specify wildcard configuration in your proxy/f
 
  *.cloudinsights.netapp.com
 
-NOTE: The use of an asterix (*) for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environmant.
+NOTE: The use of an asterisk (*) for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environment.
+
+==== Viewing Proxy URLs
+
+You can view your proxy endpoint URLs by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed.
+
+image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
 
 ////
 * Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
@@ -176,6 +188,8 @@ To uninstall the Acquisition Unit software, do the following:
 . After uninstalling the AU software, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
 . Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
 
+NOTE:You cannot delete the default Acquisition Unit. Select another AU as the default before deleting the old one.
+
 
 == Reinstalling an Acquisition Unit
 
@@ -209,6 +223,7 @@ The Acquisition Unit (AU) detail page provides useful detail for an AU as well a
  ** *Name* and *IP* of the Acquisition Unit
  ** Current connection *Status* of the AU
  ** *Last Reported* successful data collector poll time
+ ** The *Operating System* of the AU machine
  ** Any current *Note* for the AU. Use this field to enter a comment for the AU. The field displays the most recently added note.
  
  * A table of the AU's *Data Collectors* showing, for each data collector:
@@ -220,7 +235,8 @@ The Acquisition Unit (AU) detail page provides useful detail for an AU as well a
  ** Current *Impact* level
  ** *Last Acquired* time - when the data collector was last successfully polled
 
-image:AUDetailPageExample.png[Example AU Detail page]
+//image:AUDetailPageExample.png[Example AU Detail page]
+image:AU_Detail_Example.png[AU Detail Page Example]
 
 For each data collector, you can click on the "three dots" menu to Clone, Edit, Poll, or Delete the data collector. You can also select multiple data collectors in this list to perform bulk actions on them.
 

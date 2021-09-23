@@ -25,6 +25,8 @@ Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Cont
 
 For Kubernetes Installation instructions, please see the link:task_config_telegraf_agent.html#kubernetes[Agent Installation] page.
 
+NOTE: Information about *kube-state-metrics* has been moved to the link:task_config_telegraf_agent.html#kubernetes[Agent Installation] page.
+
 ////
 TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet and a ReplicaSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.
 
@@ -94,7 +96,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
       type: RunAsAny
     readOnlyRootFilesystem: false
     users:
-    - system:serviceaccount:monitoring:telegraf-user
+    - system:serviceaccount:ci-monitoring:telegraf-user
     groups: []
 ----
     
@@ -287,21 +289,21 @@ Use the following links to access information for the kube state metrics counter
 |Problem:|Try this:
 |I ran the Kubernetes agent installer command, but I do not see a Telegraf agent pod running via:
 
- sudo kubectl --namespace monitoring get pods
+ sudo kubectl --namespace ci-monitoring get pods
 
 |Check if there were any errors deploying the DaemonSet:
 
- sudo kubectl --namespace monitoring describe ds telegraf-ds
+ sudo kubectl --namespace ci-monitoring describe ds telegraf-ds
 
 If there are errors related to SecurityContextConstraints, do the following:
 
 1. Generate the Telegraf DaemonSet YAML
 
- sudo kubectl --namespace monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml
+ sudo kubectl --namespace ci-monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml
 
 2. Stop the Telegraf service
 
- sudo kubectl --namespace monitoring delete ds telegraf-ds
+ sudo kubectl --namespace ci-monitoring delete ds telegraf-ds
 
 3. Create the necessary SecurityContextConstraint (see "Configuring Agent to Collect Data" section)
 

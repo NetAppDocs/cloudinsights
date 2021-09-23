@@ -1,15 +1,17 @@
 ---
 sidebar: sidebar
 permalink: concept_user_roles.html
-keywords: roles, guest, user, administrator, SSO, Federate
+
+keywords: roles, guest, user, administrator, SSO, Federate, federation, identity, single sign-on, Account Owner, Reporting, Cloud Secure
 summary: Cloud Insights provides multiple user accounts with different permission levels.
+
 ---
 
-= User accounts
+= User Accounts and Roles
 
 [.lead]
 
-Cloud Insights provides four user accounts: Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels. Users are either link:#creating-accounts-by-inviting-users[invited] to Cloud Insights and assigned a specific role, or can sign in via link:#single-sign-on-sso-accounts[Single Sign-On (SSO)] with a default role. SSO is available as a feature in Cloud Insights Premium Edition.
+Cloud Insights provides up to four user account roles: Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels as noted in the table below. (Note that _User_ and _Guest_ roles are not available in the Cloud Secure feature.). Users are either link:#creating-accounts-by-inviting-users[invited] to Cloud Insights and assigned a specific role, or can sign in via link:#single-sign-on-sso-accounts[Single Sign-On (SSO) Authorization] with a default role. SSO Authorization is available as a feature in Cloud Insights Premium Edition.
 
 :toc: macro
 :hardbreaks:
@@ -21,15 +23,88 @@ Cloud Insights provides four user accounts: Account Owner, Administrator, User, 
 
 == Permission levels
 
-You use an account that has Administrator privileges to create or modify user accounts. Each user account is assigned one of the following permission levels.
+You use an account that has Administrator privileges to create or modify user accounts. Each user account is assigned a role for each Cloud Insights feature from the following permission levels.
 
+////
 * *Guest* can view asset pages, dashboards, and queries, and run queries.
 * *User* can perform all guest-level privileges as well as create, modify, or delete dashboards, queries, annotations, annotation rules, and applications.
 * *Administrator* and *Account Owner* can perform all functions, as well as create, modify and delete policies, import dashboards, and manage all users and data collectors.
+////
 
-The Account Owner is created when you register for Cloud Insights.
+
+
+|===
+|Role	|Monitoring	|Cloud Secure	|Reporting
+
+|Account Owner	
+3+<|Can modify subscriptions, view billing and usage information, and perform all Administrator functions for Monitoring & Optimization, Cloud Secure, and Reporting.
+Owners can also invite and manage users, as well as manage SSO Authentication and Identity Federation settings. 
+
+The first Account Owner is created when you register for Cloud Insights.
+
+It is strongly recommended to have at least two Account Owners for each Cloud Insights environment. 
+
+|Administrator	
+|Can perform all Monitoring & Optimization functions, all user functions, as well as management of data collectors, API keys, and notifications.
+An Administrator can also invite other users but can only assign Monitor and Optimize roles. 
+
+|Can perform all Cloud Secure functions, including those for Alerts, Forensics, data collectors, automated response policies, and APIs for Cloud Secure.
+An Administrator can also invite other users but can only assign Cloud Secure roles.
+
+|Can perform all User/Author functions, as well as all administrative tasks such as configuration of reports, and the shutdown and restart of reporting tasks.
+An Administrator can also invite other users but can only assign Reporting roles.
+
+|User	
+|Can view and modify dashboards, queries, alerts, annotations, annotation rules, and applications, and manage device resolution.
+|n/a	
+|Can perform all Guest/Consumer functions as well as create and manage reports and dashboards.
+
+|Guest	
+|Has read-only access to asset pages, dashboards, alerts, and can view and run queries.
+|n/a	
+|Can view, schedule, and run reports and set personal preferences such as those for languages and time zones. Guests/Consumers cannot create reports or perform administrative tasks.
+
+|===
+
+
+
+
 
 Best practice is to limit the number of users with Administrator permissions. The greatest number of accounts should be user or guest accounts.
+
+
+=== Cloud Insights Permissions by User Role
+
+The following table shows the Cloud Insights permissions granted to each user role.
+
+|===
+|Feature|Administrator/
+Account Owner|User|Guest
+|Acquisition Units: Add/Modify/Delete|Y|N|N
+|Alerts*: Create/Modify/Delete|Y|Y|N
+|Alerts*: View|Y|Y|Y
+|Annotation Rules: Create/Run/Modify/Delete|Y|Y|N
+|Annotations: Create/Modify/Assign/View/Remove/Delete|Y|Y|N
+|API Access*: Create/Rename/Disable/Revoke|Y|N|N
+|Applications: Create/View/Modify/Delete|Y|Y|N
+|Asset Pages: Modify|Y|Y|N
+|Asset Pages: View|Y|Y|Y
+|Audit: View|Y|N|N
+|Cloud Cost|Y|N|N
+|Cloud Secure*|Y|N|N
+|Dashboards: Create/Modify/Delete|Y|Y|N
+|Dashboards: View|Y|Y|Y
+|Data Collectors: Add/Modify/Poll/Delete|Y|N|N
+|Notifications: View/Modify|Y|N|N
+|Queries: Create/Modify/Delete|Y|Y|N
+|Queries: View/Run|Y|Y|Y
+|Device Resolution|Y|Y|N
+|Reports*: View/Run|Y|Y|Y
+|Reports*: Create/Modify/Delete/Schedule|Y|Y|N
+|Subscription: View/Modify|Y|N|N
+|User Management: Invite/Add/Modify/Deactivate|Y|N|N
+|===
+*Requires Premium Edition
 
 == Creating Accounts by Inviting Users
 
@@ -55,29 +130,75 @@ The *Invite User* screen is displayed.
 +
 *Note:* When you enter multiple addresses, they are all created with the same role. You can only set multiple users to the same role.
 
-. Enter the user's e-mail address.
-. Select the user role.
+//. Enter the user's e-mail address.
+
+. Select the user's role for each feature of Cloud Insights. 
++
+NOTE: The features and roles you can choose from depend on which features you have access to in your particular Administrator role. For example, if you have Admin role only for Reporting, you will be able to assign users to any role in Reporting, but will not be able to assign roles for Monitor and Optimize or Cloud Secure.
++
+image:UserRoleChoices.png[User Role Choices]
+
+
 . Click *Invite*
 +
-The invitation is sent to the user. Users will have 14 days to accept the invitation. Once a user accepts the invitation, he or she will be taken to the NetApp Cloud Portal, where they will sign up using the email address in the invitation.
-If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud Insights environment.
+The invitation is sent to the user. Users will have 14 days to accept the invitation. Once a user accepts the invitation, they will be taken to the NetApp Cloud Portal, where they will sign up using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud Insights environment.
 
-== Single Sign-On (SSO) Accounts
 
-In addition to inviting users, administrators can enable *Single Sign-On* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights using their corporate credentials.
+== Deleting Users
 
-NOTE: SSO is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory, using open standards such as Security Assertion Markup Language 2.0 (SAML) and OpenID Connect (OIDC). 
+A user with the Administrator role can delete a user (for example, someone no longer with the company) by clicking on the user's name and clicking _Delete User_ in the dialog. The user will be removed from the Cloud Insights environment. 
 
-To configure SSO, on the *Admin > User Management* page, click the *Configure SSO* button. Once configured, administrators can then enable SSO user login. When an administrator enables SSO, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
+Note that any dashboards, queries, etc. that were created by the user will remain available in the Cloud Insights environment even after the user is removed. 
 
-image:SSOBanner.jpg[User Management with SSO]
+== Single Sign-On (SSO) and Identity Federation
 
-Occasionally, an administrator will want to promote a single user out of the default SSO role (for example, to make them an administrator). They can accomplish this on the *Admin > User Management* page by clicking on the right-side menu for the user and selecting _Assign Role_. Users who are assigned an explicit role in this way continue to have access to Cloud Insights even if SSO is subsequently disabled. 
+=== Enabling Identity Federation for SSO In Cloud Insights  
 
-If the user no longer requires the elevated role, you can click the menu to _Remove User_. The user will be removed from the list. If SSO is enabled, the user can continue log in to Cloud Insights through SSO, with the default role.
+With Identity Federation:
+
+* Authentication is delegated to the customer’s identity management system, using the customer’s credentials from your corporate directory, and automatization policies such as Multi-Factor Authentication (MFA).   
+* Users log in once to all NetApp Cloud Services (Single Sign On). 
+
+User accounts are managed in NetApp Cloud Central for all Cloud Services. By default, authentication is done using Cloud Central local user profile. Below is a simplified overview of that process: 
+
+image:CloudCentralAuthentication.png[Cloud Central Authentication]
+
+However, some customers would like to use their own identity provider to authenticate their users for Cloud Insights and their other NetApp Cloud Central Services. With Identity Federation, NetApp Cloud Central accounts are authenticated using credentials from your corporate directory.  
+
+The following is a simplified example of that process: 
+
+image:IdentityFederationDiagram-2.png[Identity Federation Illustrated]
+
+In the above diagram, when a user accesses Cloud Insights, that user is directed to the customer’s identity management system for authentication. Once the account is authenticated, the user is directed to the Cloud Insights tenant URL.  
+
+Cloud Central uses Auth0 to implement Identity Federation and integrate with services like Active Directory Federation Services (ADFS) and Microsoft Azure Active Directory (AD). For more information on Identity Federation setup and configuration, see Cloud Central documentation on link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation].
+
+It is important to understand that changing identity federation in Cloud Central will apply not only to Cloud Insights but to all NetApp Cloud Services. The customer should discuss this change with the NetApp team of each Cloud Central product they own to make sure the configuration they are using will work with Identity Federation or if adjustments need to be made on any accounts. The customer will need to involve their internal SSO team in the change to identity federation as well. 
+
+It is also important to realize that once identity federation is enabled, that any changes to the company’s identity provider (such moving from SAML to Microsoft AD) will likely require troubleshooting/changes/attention in Cloud Central to update the profiles of the users. 
+
+
+
+=== Single Sign-On (SSO) User Auto-Provisioning 
+
+In addition to inviting users, administrators can enable *Single Sign-On (SSO) User Auto-Provisioning* access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights using their corporate credentials.
+
+NOTE: _SSO User Auto-Provisioning_ is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO User Auto-Provisining configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central as described in the section above. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory, using open standards such as Security Assertion Markup Language 2.0 (SAML) and OpenID Connect (OIDC). 
+
+To configure _SSO User Auto-Provisioning_, on the *Admin > User Management* page, click the *Request Federation* button. Once configured, administrators can then enable SSO user login. When an administrator enables _SSO User Auto-Provisioning_, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
+
+//image:SSOBanner.jpg[User Management with SSO]
+image:Roles_federation_Banner.png[User management with Federation]
+
+Occasionally, an administrator will want to promote a single user out of the default SSO role (for example, to make them an administrator). They can accomplish this on the *Admin > User Management* page by clicking on the right-side menu for the user and selecting _Assign Role_. Users who are assigned an explicit role in this way continue to have access to Cloud Insights even if _SSO User Auto-Provisioning_ is subsequently disabled. 
+
+If the user no longer requires the elevated role, you can click the menu to _Remove User_. The user will be removed from the list. If _SSO User Auto-Provisioning_ is enabled, the user can continue log in to Cloud Insights through SSO, with the default role.
 
 You can choose to hide SSO users by unchecking the *Show SSO Users* checkbox. 
 
-image:UserListWithSSO.png[SSO Enabled] 
+//image:UserListWithSSO.png[SSO Enabled] 
 
+However, do not enable _SSO User Auto-Provisioning_ if either of these are true: 
 
+* Your organization has more than one Cloud Insights tenant 
+* Your organization does not want any/every user in the federated domain to have some level of automatic access to the Cloud Insights tenant. _At this point in time, we do not have the ability to use groups to control role access with this option_. 
