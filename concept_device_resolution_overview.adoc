@@ -1,0 +1,90 @@
+---
+sidebar: sidebar
+permalink: concept_device_resolution_overview.html
+keywords: Automatic, AR, AHR, Host, automatic device resolution
+summary: Automatic Device Resolution helps you accurately track performance and inventory in your environment.
+---
+
+= Automatic Device Resolution Overview
+
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You need to identify all of the devices you want to monitor with Cloud Insights. Identification is necessary in order to accurately track performance and inventory in your environment. Typically the majority of devices discovered in your environment are identified through _Automatic Device Resolution_. 
+
+After you configure data collectors, devices in your environment including switches, storage arrays, and your virtual infrastructure of hypervisors and VMs are identified. However, this does not normally identify 100% of the devices in your environment.
+
+After data collector type devices have been configured, best practice is to leverage device resolution rules to help identify the remaining unknown devices in your environment. Device resolution can help you resolve unknown devices as the following device types:
+
+* Physical hosts
+* Storage arrays
+* Tapes
+
+Devices remaining as unknown after device resolution are considered generic devices, which you can also show in queries and on dashboards.
+
+The rules created in turn will automatically identify new devices with similar attributes as they are added to your environment. In some cases, device resolution also allows for manual identification bypassing the device resolution rules for undiscovered devices within Cloud Insights.
+
+Incomplete identification of devices can result in issues including:
+
+* Incomplete paths
+* Unidentified multipath connections
+* The inability to group applications
+* Inaccurate topology views
+* Inaccurate data in the Data warehouse and reporting
+
+The device resolution feature (Manage > Device resolution) includes the following tabs, each of which plays a role in device resolution planning and viewing results:
+
+* *Fibre Channel Identify* contains a list WWNs and port information of Fibre Channel devices that were not resolved through automatic device resolution. The tab also identifies the percentage of devices that have been identified.
+* *IP Address Identify* contains a list of devices accessing CIFS shares and NFS shares that were not identified through automatic device resolution. The tab also identifies the percentage of devices that have been identified.
+* *Auto resolution rules* contains the list of rules that are run when performing Fibre channel device resolution. These are rules you create to resolve unidentified Fibre channel devices.
+* *Preferences* provides configuration options that you use to customize device resolution for your environment.
+
+== Before You Begin
+
+You need to know how your environment is configured before you define the rules for identifying devices. The more you know about your environment the easier it will be to identify devices.
+
+You need to answer questions similar to the following to help you create accurate rules:
+
+* Does your environment have naming standards for zones or hosts and what percentage of these are accurate?
+
+* Does your environment use a switch alias or storage alias and do they match the host name?
+
+//* Does your environment use an SRM tool and can you use it to identify host names? What coverage does the SRM provide?
+
+* How often do naming schemes change in your environment?
+
+* Have there been any acquisitions or mergers that introduced different naming schemes?
+
+After analyzing your environment, you should be able to identify what naming standards exist that you can expect to reliability encounter. The information you gathered might be represented graphically in a figure similar to the following:
+
+image:Device_Resolution_Venn.png[Device Overview Diagram]
+
+In this example the largest number of devices are reliably represented by storage aliases. Rules that identify hosts using storage aliases should be written first, rules using switch aliases should be written next , and the last rules created should use zone aliases. Due to the overlap of the use of zone aliases and switch aliases, some storage alias rules might identify additional devices, leaving less rules required for zone aliases and switch aliases.
+
+== Steps to Identifying devices
+
+Typically, you would use a workflow similar to the following to identify devices in your environment. Identification is an iterative process and might require multiple steps of planning and refining rules.
+
+* Research environment
+* Plan rules 
+* Create/Revise rules 
+* Review results 
+* Create additional rules or Manually Identify devices
+* Done
+
+//image:Device_Resolution_Flowchart.png[Device Resolution Flow]
+
+NOTE: If you have unidentified devices (otherwise known as unknown or generic devices) in your environment and you subsequently configure a data source that identifies those devices upon polling, they will no longer be displayed or counted as generic devices.
+
+Related: 
+link:task_device_resolution_rules.html[Creating Device Resolution Rules]
+link:task_device_resolution_fibre_channel.html[Fibre Channel Device Resolution]
+link:task_device_resolution_ip.html[IP Device Resolution]
+link:task_device_resolution_preferences.html[Setting Device Resolution Preferences]

@@ -22,10 +22,14 @@ Here you will find suggestions for troubleshooting problems with Acquisition Uni
 |*Problem:* | *Try this:* 
 |AU status on the *Admin > Data Collectors* page in the *Acquisition Units* tab displays "Certificate Expired” or “Certificate Revoked” .
 |Click on the menu to the right of the AU and select *Restore Connection*. Follow the instructions to restore your Acquisition Unit:
-1. Issue the given command on the AU server/VM to stop the Acquisition Unit service. You can click the clipboard icon in the command window to quickly copy the command to the clipboard.
-2. Copy the displayed token and paste it into a new file named "token".
-3. Place this file in the /var/lib/netapp/cloudinsights/acq/conf/ folder.
-4. Use the given command to start the Acquisition Unit service.
+
+1. Stop the Acquisition Unit (AU) service. You can click the _Copy Stop Command_ button to quickly copy the command to the clipboard, then paste this command into a command prompt on the acquisition unit machine.
+
+2. Create a file named "token" in the _/var/lib/netapp/cloudinsights/acq/conf_ folder on the AU. 
+
+3. Click the _Copy Token_ button, and paste this token into the file you created. 
+
+4. Restart the AU service. Click the _Copy Restart Command_ button, and paste the command into a command prompt on the AU.
 
 |Installation fails on SELinux|When the AU is installed on SELinux, SE should be either disabled or set to permissive mode. Once the installation is complete, enforcing mode can be enabled.   
 
@@ -56,6 +60,15 @@ Restart the Acquisition Service: sudo cloudinsights-service.sh restart acquisiti
 |Data Collection Issues:
 |Send an Error Report from the Data Collector landing page by clicking the "Send Error Report" button
 
+|Status: Heartbeat Failed
+|The Acquisition Unit (AU) sends a heartbeat to Cloud Insights every 60 seconds to renew its lease. If the heartbeat call fails due to network issue or unresponsive Cloud Insights, the AU's lease time isn't updated. When the AU's lease time expires, Cloud Insights shows a status of "Heartbeat Failed".
+
+Troubleshoot steps:
+
+Check the network connection between the Acquisition Unit sever and CloudInsights.
+Check whether the Acquisition Unit service is running. If the service is not running, start the service.
+Check the Acquisition Unit log (/var/log/netapp/cloudinsights/acq/acq.log) to see whether there are any errors.
+
 |===
 
 ////
@@ -83,5 +96,15 @@ The simplest way to do this is to add the Cloud Insights domain itself to the ex
  *.cloudinsights.netapp.com
  
 In the case where the proxy is not set up for traffic inspection, an exception list may or may not be required. If you are unsure whether you need to add Cloud Insights to an exception list, or if you experience difficulties installing or running Cloud Insights due to proxy and/or firewall configuration, talk to your proxy administration team to set up the proxy's handling of SSL interception.
-////
 
+==== Viewing Proxy endpoints
+
+You can view your proxy endpoints by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed.
+
+image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
+
+=== Resources
+
+Additional troubleshooting tips may be found in the link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights[NetApp Knowledgebase] (support sign-in required).
+
+Additional support information may be found from the Cloud Insights link:concept_requesting_support.html[Support] page.

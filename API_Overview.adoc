@@ -20,7 +20,28 @@ The Cloud Insights API enables NetApp customers and independent software vendors
 
 //NOTE: This documentation is considered *Preview Documentation* and is therefore subject to change.
 
-NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*. 
+//NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*. 
+
+Note that Cloud Insights APIs are available based on your current Edition: 
+
+[cols="<,^s,^s,^s"]
+|===
+|API Category|Basic|Standard|Premium
+
+|Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Warehouse| | |image:SmallCheckMark.png[]
+
+|===
+
+////
+We are exposing API Access in Basic Edition for Acquisition Unit and Data Collection API Keys & swagger documentation.
+For Standard Edition, we expose Acquisition Unit, Assets, Data Collection and Data Ingestion API keys & swagger documentation.
+For Premium Edition, we expose Acquisition Unit, Assets, Data Collection, Data Ingestion, & Data Warehouse API keys & swagger documentation.
+////
 
 == Requirements for API Access
 
@@ -402,7 +423,7 @@ The search API is a simple entry point to the system. The only input parameter t
 
 Cloud Insights is an extensible (wide open) solution that allows integrations with third party orchestration, business management, change control and ticketing systems as well as custom CMDB integrations. 
 
-Cloud Insight’s RESTful API and open MySQL database are primary points of integration that allow simple and effective movement of data and allow users to gain seamless access to their data. 
+Cloud Insight’s RESTful API is a primary point of integration that allows simple and effective movement of data as well as allows users to gain seamless access to their data. 
 
 ////
 == Allocating Resources to Business Units or Departments
