@@ -16,24 +16,24 @@ summary: Insights give you a look into how resources impact other resources in y
 :imagesdir: ./media/
 
 [.lead]
-High-impact workloads can reduce the performance of other workloads in a shared resource. Cloud Insights provides tools to help you investigate resource contention and impact in your environment.
+High-impact workloads can reduce the performance of other workloads in a shared resource. Cloud Insights provides tools to help you investigate resource saturation and impact in your environment.
 
 
 === Terminology
 
 When talking about workload or resource impact, the following definitions are useful.
 
-An _Impactful_ or _Greedy_ resource is one that causes a negative impact on another resource. For example, a volume experiencing very high IOPS may cause increased latency in other volumes (i.e. _Impacted_ or _Degraded_ resources). Impactful and Impacted resources are “peers” that utilize the same shared resource, for example, a storage pool or Volume.
+An *Impactful* or _Greedy_ resource is one that causes a negative impact on another resource. For example, a volume experiencing very high IOPS may cause increased latency in other volumes (i.e. _Impacted_ or _Degraded_ resources). Impactful and Impacted resources are “peers” that utilize the same shared resource, for example, a storage pool or Volume.
 
-A _High-Consuming Workload_ is a workload that is currently identified as impacting other resources in the shared storage pool. These workloads drive higher IOPS, reducing IOPS in the Impacted Workloads. In Cloud Insights these are identified as _Changed Workloads_.
+A *High-Consuming Workload* is a workload that is currently identified as impacting other resources in the shared storage pool. These workloads drive higher IOPS, reducing IOPS in the Impacted Workloads. In Cloud Insights these are identified as *Impactful Workloads*.
 
-An _Impacted Workload_ is a workload affected by a high-consuming workload in the shared Storage Pool. These workloads are experiencing reduced IOPS and/or higher latency, caused by the Changed Workloads.
+An *Impacted Workload* is a workload affected by a high-consuming workload in the shared Storage Pool. These workloads are experiencing reduced IOPS and/or higher latency, caused by the Impactful Workloads.
 
- _Shared Resource Saturation_ is the ratio of impacting IOPS to baseline.
+ *Shared Resource Saturation* is the ratio of impacting IOPS to _baseline_.
 
-_Baseline_ is defined as the maximum reported data point for each workload in the hour immediately preceding the detected saturation.
+*Baseline* is defined as the maximum reported data point for each workload in the hour immediately preceding the detected saturation.
 
-A _Contention_ occurs when IOPS are determined to be affecting other resources or workloads in the shared storage pool.
+A *Contention* occurs when IOPS are determined to be affecting other resources or workloads in the shared storage pool. 
 
 
 === High-Consuming Workloads
