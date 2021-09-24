@@ -24,13 +24,11 @@ Use the following steps to configure the machine to be used as a Cloud Secure Ag
 
 . Log in to the AWS console and navigate to EC2-Instances page and select Launch instance.
 
-. Select a RHEL or CentOS AMI with the appropriate version as mentioned in this page:
-+
-https://docs.netapp.com/us-en/cloudinsights/concept_cs_agent_requirements.html
+. Select a RHEL or CentOS AMI with the appropriate version as mentioned in the link:concept_cs_agent_requirements.html[Requirements].
 
 . Create the Agent box in the same VPC and Subnet that the Amazon FsX for NetApp ONTAP instance resides in. 
 +
-Or the Agent box should be in a VPC which has got connectivity to the Amazon FsX for NetApp ONTAP VPC.
+Or the Agent box should be in a VPC which has connectivity to the Amazon FsX for NetApp ONTAP VPC.
 +
 Make sure that bidirectional communication is present between the Agent and Amazon FsX for NetApp ONTAP.
 
@@ -52,10 +50,10 @@ Make sure that bidirectional communication is present between the Agent and Amaz
 
 . Paste the Agent Installation command into the RHEL EC2 instance you are logged in to.
 +
-This installs the Cloud Secure agent, providing all of the Agent Prerequisites are met.
+This installs the Cloud Secure agent, providing all of the Agent prerequisites are met.
 
-For detailed steps please refer to this link:
-https://docs.netapp.com/us-en/cloudinsights/task_cs_add_agent.html#steps-to-install-agent
+For detailed steps please refer to the Cloud Secure link:task_cs_add_agent.html[Agent Installation] page,
+
 
 
 
