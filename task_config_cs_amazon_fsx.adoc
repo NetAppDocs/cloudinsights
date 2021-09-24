@@ -5,7 +5,7 @@ keywords:  Cloud, Storage, AWS, Fsx
 summary: Cloud Secure uses data collectors to collect file and user access data from devices.
 ---
 
-= Amazon FsX for NetApp ONTAP Configuration
+= Amazon FSx for NetApp ONTAP Configuration
 
 :toc: macro
 :hardbreaks:
@@ -26,11 +26,11 @@ Use the following steps to configure the machine to be used as a Cloud Secure Ag
 
 . Select a RHEL or CentOS AMI with the appropriate version as mentioned in the link:concept_cs_agent_requirements.html[Requirements].
 
-. Create the Agent box in the same VPC and Subnet that the Amazon FsX for NetApp ONTAP instance resides in. 
+. Create the Agent box in the same VPC and Subnet that the Amazon FSx for NetApp ONTAP instance resides in. 
 +
-Or the Agent box should be in a VPC which has connectivity to the Amazon FsX for NetApp ONTAP VPC.
+Or the Agent box should be in a VPC which has connectivity to the Amazon FSx for NetApp ONTAP VPC.
 +
-Make sure that bidirectional communication is present between the Agent and Amazon FsX for NetApp ONTAP.
+Make sure that bidirectional communication is present between the Agent and Amazon FSx for NetApp ONTAP.
 
 . Select t2.xlarge (4 vcpus and 16 GB RAM) as allocated resources.
 .. Create the EC2 instance.
