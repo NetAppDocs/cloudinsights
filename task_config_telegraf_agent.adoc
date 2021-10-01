@@ -17,9 +17,9 @@ summary: Cloud Insights supports link:https://docs.influxdata.com/telegraf/v1.14
 
 
 [.lead]
-Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.17/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
+Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.19/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
-The current Telegraf version for Cloud Insights is *1.17.3*.
+The current Telegraf version for Cloud Insights is *1.19.3*.
 
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
@@ -84,6 +84,8 @@ After the agent is installed, you can use the following commands to start/stop t
 [[windows-proxy]]  
 ==== Configuring Proxy Support for Windows
 
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
+
 For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) *PRIOR* to installing the Telegraf agent:
 
  [System.Environment]::SetEnvironmentVariable(“https_proxy”, “<proxy_server>:<proxy_port>”, [System.EnvironmentVariableTarget]::Machine)
@@ -120,11 +122,12 @@ To upgrade the telegraf agent, do the following:
 
 === RHEL and CentOS
 
-image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
+//image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
+image:Agent_Requirements_Rhel.png[Rhel/CentOS Agent Install]
 
 .Pre-requisites:
 
-* The following commands must be available: curl, sudo, ping, and dmidecode
+* The following commands must be available: curl, sudo, ping, sha256sum, and dmidecode
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for RHEL/CentOS* section. 
 
 
@@ -151,6 +154,8 @@ If your operating system is not using systemd (CentOS 7+ and RHEL 7+):
  sudo service telegraf stop
  
 ==== Configuring Proxy Support for RHEL/CentOS
+
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
 
 For systems residing behind a proxy, perform the following steps *PRIOR* to installing the Telegraf agent:
 
@@ -201,11 +206,12 @@ To upgrade the telegraf agent, do the following:
 
 === Ubuntu and Debian
 
-image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
+//image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
+image:Agent_Requirements_Ubuntu.png[Ubuntu/Debian Agent Install]
 
 .Pre-requisites:
 
-* The following commands must be available: curl, sudo, ping, and dmidecode
+* The following commands must be available: curl, sudo, ping, sha256sum, and dmidecode
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Ubuntu/Debian* section. 
 
 
@@ -232,6 +238,8 @@ If your operating system is not using systemd:
  sudo service telegraf stop
 
 ==== Configuring Proxy Support for Ubuntu/Debian
+
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
 
 For systems residing behind a proxy, perform the following steps *PRIOR* to installing the Telegraf agent:
 
@@ -282,11 +290,12 @@ To upgrade the telegraf agent, do the following:
 
 === macOS
 
-image:AgentInstallMacOS.png[MacOS Agent Install]
+//image:AgentInstallMacOS.png[MacOS Agent Install]
+image:Agent_Requirements_Macos.png[macOS Agent Install]
 
 .Pre-requisites:
 
-* The "curl" command must be available
+* The following commands must be available: curl, sudo, and shasum
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for macOS* section. 
 
 
@@ -306,10 +315,12 @@ After the agent is installed, you can use the following commands to start/stop t
  sudo launchctl stop telegraf
  
 ==== Configuring Proxy Support for macOS
+
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
  
 For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user *PRIOR* to installing the Telegraf agent:
 
-export https_proxy=<proxy_server>:<proxy_port>
+ export https_proxy=<proxy_server>:<proxy_port>
 
 *AFTER* installing the Telegraf agent, add and set the appropriate _https_proxy_ and/or _http_proxy_ variable(s) in _/Applications/telegraf.app/Contents/telegraf.plist_:
 
@@ -400,7 +411,7 @@ For best results, add these commands to the PATH.
 
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
-* If you are running a kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section.
+* If you are running a Kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section.
 
 
 ==== Monitoring is only installed on Linux nodes
@@ -458,6 +469,8 @@ You can then use the following commands to stop and start the Telegraf service:
  
  
 ==== Configuring Proxy Support for Kubernetes
+
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
 
 For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user *PRIOR* to installing the Telegraf agent:
 
@@ -553,7 +566,8 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
 
 When you install the kube-state-metrics server you can enable collection of the following Kubernetes objects: StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress. 
 
-NOTE: It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices. 
+NOTE: It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices. Note also that with kube-state-metrics version 2.0 and above, Kubernetes object labels are not exported by default. To configure kube-state-metrics to export Kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
+
 
 Use the following steps to install the kube-state-metrics server:
 
@@ -658,9 +672,44 @@ Some things to try if you encounter problems setting up an agent:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
+
 |I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. 
+
 |I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
+
 |I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.|Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent.
+
+|I'm seeing messages in the logs resembling the following:
+
+E0901 15:21:39.962145 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.MutatingWebhookConfiguration: the server could not find the requested resource
+E0901 15:21:43.168161 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.Lease: the server could not find the requested resource (get leases.coordination.k8s.io)
+etc.
+
+|These messages may occur if you are running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17 or below.
+
+To get the Kubernetes version:
+
+ _kubectl version_
+
+To get the kube-state-metrics version:
+
+ _kubectl get deploy/kube-state-metrics -o jsonpath='{..image}'_
+
+To prevent these messages from happening, users can modify their kube-state-metrics deployment to disable the following Leases:
+
+_mutatingwebhookconfigurations_
+_validatingwebhookconfigurations_
+_volumeattachments resources_
+
+More specifically, they can use the following CLI argument:
+
+resources=certificatesigningrequests,configmaps,cronjobs,daemonsets, deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,limitranges, namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes, poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas, secrets,services,statefulsets,storageclasses
+
+The default resource list is:
+
+"certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments, endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges, mutatingwebhookconfigurations,namespaces,networkpolicies,nodes, persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets, replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses, validatingwebhookconfigurations,volumeattachments"
+|
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
