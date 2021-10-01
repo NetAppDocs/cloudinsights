@@ -222,7 +222,7 @@ image::new-agent-detect.png[]
 
 == Network Configuration
 
-Use the following commands to open ports to be used by Cloud Secure. 
+Run the following commands on the local system to open ports that will be used by Cloud Secure.
 
 .Steps
 
@@ -267,8 +267,8 @@ After that, re-copy the command from the Agent installation UI and paste it in t
 `sudo systemctl restart cloudsecure-agent.service`
 6. If it is still not running, please check the other troubleshooting options.
 
-|Unable to add more than 10 Data collectors to an Agent.
-|Only 10 Data collectors can be added to an Agent. This can be a combination of all the collector types, for example, Active Directory, SVM and other collectors.
+|Unable to add more than 20 Data collectors to an Agent.
+|Only 20 Data collectors can be added to an Agent. This can be a combination of all the collector types, for example, Active Directory, SVM and other collectors.
 
 |UI shows Agent is in NOT_CONNECTED state.
 |Steps to restart the Agent.
@@ -278,5 +278,30 @@ After that, re-copy the command from the Agent installation UI and paste it in t
 3. Check the status of the agent service via `sudo systemctl status cloudsecure-agent.service`.
 4. Agent should go to CONNECTED state.
 
+|Agent VM is behind Zscaler proxy and the agent installation is failing. Because of Zscaler proxy’s SSL inspection, the Cloud Secure certificates are presented as it is signed by Zscaler CA so the agent is not trusting the communication.
+|Disable SSL inspection in the Zscaler proxy for the *.cloudinsights.netapp.com url. If Zscaler does SSL inspection and replaces the certificates, Cloud Secure will not work.
+
+|While installing the agent, the installation hangs after unzipping.
+|“chmod 755 -Rf” command is failing. 
+The command fails when the agent installation command is being run by a non-root sudo user that has files in the working directory, belonging to another user, and permissions of those files cannot be changed. Because of the failing chmod command, the rest of the installation does not execute.
+
+1.	Create a new directory named “cloudsecure”.
+2.	Go to that directory.
+3.	Copy and paste the full “token=…… … ./cloudsecure-agent-install.sh" installation command and press enter.
+4.	Installation should be able to proceed.
+
+|If the Agent is still not able to connect to Saas, please open a case with NetApp Support. Provide the Cloud Insights serial number to open a case, and attach logs to the case as noted.
+|To attach logs to the case:
+ 1.	Execute the following script with root permission and share the output file (cloudsecure-agent-symptoms.zip).
+    a.	/opt/netapp/cloudsecure/agent/bin/cloudsecure-agent-symptom-collector.sh
+ 2.	Execute the following commands one by one with root permission and share the output.
+    a.	id cssys
+    b.	groups cssys
+    c.	cat /etc/os-release
+
 |===
+
+//image:CloudSecureAgentInstallationCommand.png[]
+
+
 
