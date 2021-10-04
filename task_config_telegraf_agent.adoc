@@ -710,7 +710,7 @@ To upgrade the telegraf agent, do the following:
 //// Hold for now.
 == Verifying Checksums
 
-The Cloud Insights agent installer performs its own integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform these checks before installing the Cloud Insights agent, these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
+The Cloud Insights agent installer performs integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform a download-only operation (as opposed to the default download-and-install), these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
 
 Follow these steps:
 
@@ -720,40 +720,81 @@ Follow these steps:
 . Copy the entire command from the text editor.
 . Now paste it into your command window (in a working directory) and run it.
 
-Linux/Mac:
- installerName=<installation_script_name> … && sudo -E -H ./$installerName --download --install
+Non-Windows:
+
+* Download and install (default):
+
+ installerName=<installation_script_name> … && sudo -E -H ./$installerName --download –-install
+
+* Download-only:
+
+ installerName=<installation_script_name> … && sudo -E -H ./$installerName --download
 
 Windows:
+
+* Download and install (default):
+
  !$($installerName=".\cloudinsights-windows.ps1") … -and $(&$installerName -download -install)
 
-This will download all required artifacts from Cloud Insights to the working directory.  The artifacts include, but may not be limited to: 
+*	Download-only:
+
+ !$($installerName=".\cloudinsights-windows.ps1") … -and $(&$installerName -download)
+
+
+
+The download-only command will download all required artifacts from Cloud Insights to the working directory.  The artifacts include, but may not be limited to: 
 
 * an installation script
 * an environment file
 * YAML files
-* a signed checksum file
-* a PEM file for signature verification
+* a signed checksum file (sha256.signed)
+* a PEM file (netapp_cert.pem) for signature verification
 
-The installation script, environment file, YAML files, and PEM file can be inspected and verified visually. The signed checksum file can be verified by running the following:
 
-Linux/Mac:
+
+The installation script, environment file, and YAML files can be verified using visual inspection. 
+
+
+
+The PEM file can be verified by confirming its fingerprint to be the following:
+
+ E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
+
+More specifically,
+
+*	Non-Windows:
+
+ openssl x509 -fingerprint -sha1 -noout -inform pem -in netapp_cert.pem
+
+*	Windows:
+
+ Import-Certificate -Filepath .\netapp_cert.pem -CertStoreLocation Cert:\CurrentUser\Root
+
+
+
+
+The signed checksum file can be verified using the PEM file:
+
+*	Non-Windows:
 
  openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
 
-Windows:
+*	Windows (after installing the certificate via Import-Certificate above):
 
- Import-Certificate -Filepath netapp_cert.pem  -CertStoreLocation cert:\CurrentUser\Root
- Get-AuthenticodeSignature sha256.signed.ps1
+Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
+
+
 
 Once all of the artifacts have been satisfactorily verified, the agent installation can be initiated by running:
 
-Linux/Mac:
+Non-Windows:
 
  sudo -E -H ./<installation_script_name> --install
 
 Windows:
 
  .\ cloudinsights-windows.ps1 -install
+ 
 //// Hold for now.
 
 
