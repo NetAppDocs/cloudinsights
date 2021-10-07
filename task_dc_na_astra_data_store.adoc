@@ -52,9 +52,9 @@ Cloud Insights acquires inventory and performance data from this collector. For 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Kubernetes API Server IP Address|The IP address of the Kubernetes API server
-|Kubernetes API Server Port|The port of the Kubernetes API server
-|Kubernetes API Token|Base64 encoded Kubernetes API token
+|Kubernetes API Server IP Address|The IP address of the Kubernetes API server.
+|Kubernetes API Server Port|The port of the Kubernetes API server. Default is 6443.
+|Kubernetes API Token|Base64 encoded Kubernetes API token.
 |===
 
 == Advanced Configuration
