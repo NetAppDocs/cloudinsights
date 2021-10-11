@@ -42,11 +42,13 @@ The Monitors list page is displayed, showing currently configured monitors.
 
 . To add a monitor, Click *+ Monitor*. To modify an existing monitor, click the monitor name in the list.
 +
-image:Monitor_system_or_log.png[Choose system or log monitor]
+image:Monitor_log_or_metric.png[Choose system or log monitor]
 +
 You are prompted to create a Metric Monitor or a Log Monitor.
+
 * _Metric_ monitors alert on infrastructure- or performance-related triggers
 * _Log_ monitors alert on log-related triggers
+
 +
 After you choose your monitor type, the Monitor Configuration dialog is displayed.
 . In the drop-down, search for and choose an object type and metric to monitor, for example _netapp_ontap_volume_node_nfs_write_latency_.
