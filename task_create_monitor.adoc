@@ -53,7 +53,10 @@ When you add a new monitor, you are prompted to create a Metric Monitor or a Log
 
 +
 After you choose your monitor type, the Monitor Configuration dialog is displayed.
-. In the drop-down, search for and choose an object type and metric to monitor, for example _netapp_ontap_volume_node_nfs_write_latency_.
+
+=== Metric Monitor
+
+. In the drop-down, search for and choose an object type and metric (for Metric Monitor) or Log (for Log Monitor) to monitor.
 
 You can set filters to narrow down which object attributes or metrics to monitor. 
 
@@ -73,7 +76,7 @@ TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), defin
 ==== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
-. For the _Warning_ level, enter 200. The dashed line indicating this Warning level displays in the example graph.
+. For the _Warning_ level, enter 200 for our example. The dashed line indicating this Warning level displays in the example graph.
 . For the _Critical_ level, enter 400. The dashed line indicating this Critical level displays in the example graph.
 +
 The graph displays historical data. The Warning and Critical level lines on the graph are a visual representation of the Monitor, so you can easily see when the Monitor might trigger an alert in each case. 
@@ -83,6 +86,14 @@ The graph displays historical data. The Warning and Critical level lines on the 
 You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
 +
 image:define_monitor_conditions.png[Define Conditions]
+
+=== Log Monitor
+
+In a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above.
+
+image:Monitor_log_monitor_choose.png[choose which log to monitor]
+
+
 
 
 ==== Refining the Filter
