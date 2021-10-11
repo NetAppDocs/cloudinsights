@@ -25,22 +25,6 @@ When the monitored threshold and conditions are reached or exceeded, Cloud Insig
 Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
 
 
-////
-=== Monitor or Performance Policy?
-
-What's the difference between a *Performance Policy* and a *Monitor*?
-
-_Policies_ allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports. These policies trigger violations when thresholds are met or exceeded. Each violation can be investigated for troubleshooting. Policies are described in detail elsewhere in this link:task_create_performance_policies.html[documentation].
-
-_Monitors_ provide similar functionality for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins, and alert when thresholds are crossed. With Monitors, you can set thresholds for Warning- or Critical-level alerts, or both. 
-
-Policies and Monitors are available under the *Alerts* menu.
-
-image:AlertsMenuLarger.png[Alerts Menu]
-
-Emails can be sent when a policy or monitor is triggered. 
-////
-
 
 === Creating a Monitor
 
@@ -58,7 +42,12 @@ The Monitors list page is displayed, showing currently configured monitors.
 
 . To add a monitor, Click *+ Monitor*. To modify an existing monitor, click the monitor name in the list.
 +
-The Monitor Configuration dialog is displayed.
++
+You are prompted to create a Metric Monitor or a Log Monitor.
+* _Metric_ monitors alert on infrastructure- or performance-related triggers
+* _Log_ monitors alert on log-related triggers
++
+After you choose your monitor type, the Monitor Configuration dialog is displayed.
 . In the drop-down, search for and choose an object type and metric to monitor, for example _netapp_ontap_volume_node_nfs_write_latency_.
 
 You can set filters to narrow down which object attributes or metrics to monitor. 
