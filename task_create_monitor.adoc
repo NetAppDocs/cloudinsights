@@ -183,6 +183,11 @@ System-defined monitors are comprised of pre-defined metrics and conditions, as 
 
 System-defined monitor groups cannot be modified or removed.
 
+NOTE: You cannot modify the conditions of a system-defined monitor. To change the conditional, first save the monitor with a different name (Save As), and then modify the new monitor.
+
+You _can_ update the Notifications section of a system-defined monitor.
+
+
 The following system-defined monitors are available, in the noted groups.
 
 * *ONTAP Infrastructure* includes monitors for infrastructure-related issues in ONTAP clusters. 
