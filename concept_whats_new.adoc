@@ -18,13 +18,71 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights. 
 
-=== January 2021
+=== September 2021
+
+==== Performance Policies are now Monitors
+
+Monitors and Alerts have supplanted Performance Policies and Violations throughout Cloud Insights. link:task_create_monitor.html[Alerting with Monitors] provides greater flexibility and insight into potential problems or trends in your environment.
+
+////
+==== Support and protection for Amazon FSx for NetApp ONTAP 
+
+Rolling out starting in September, Cloud Insights will support data collection and ransomware protection for NetApp’s *Amazon FSx for NetApp ONTAP* environment.  
+
+Contact your sales representative for information on this new feature. 
+////
+
+
+==== Autocomplete Suggestions, Wildcards, and Expressions in Monitors
+
+When creating a monitor for alerting, typing in a filter is now predictive, allowing you to easily search for and find the metrics or attributes for your monitor. Additionally, you are given the option to create a wildcard filter based on the text you type. 
+
+image:Type-Ahead_Monitor_1.png[Type-ahead filters in Monitors]
+ 
+
+==== Updated Telegraf Agent
+
+The agent for ingestion of telegraf integration data has been updated to version *1.19.3*, with performance and security improvements.
+Users wishing to update can refer to the appropriate upgrade section of the link:task_config_telegraf_agent.html[Agent Installation] documentation.
+Previous versions of the agent will continue to function with no user action required.
+
+==== Data Collector Support
+
+We’ve made some improvements in Cloud Insights Data Collectors. Here are some highlights:
+
+* Microsoft Hyper-V collector now uses PowerShell instead of WMI
+* Azure VMs and VHD collector is now up to 10 times faster due to parallel calls
+* HPE Nimble now supports federated and iSCSI configurations
+
+And since we’re always improving Data Collection, here are some other recent changes of note: 
+
+* New collector for EMC Powerstore 
+* New collector for Hitachi Ops Center 
+* New collector for Hitachi Content Platform 
+* Enhanced ONTAP collector to report Fabric Pools 
+* Enhanced ANF with Storage Pool and Volume performance 
+* Enhanced EMC ECS with Storage Nodes and Storage performance as well as the Object Count in buckets 
+* Enhanced EMC Isilon with Storage Node and Qtree metrics 
+* Enhanced EMC Symetrix with volume QOS limit metrics 
+* Enhanced IBM SVC and EMC PowerStore with Storage Nodes parent serial number 
+
+////
+==== Documentation Updates 
+The following additional improvements are reflected in the documentation 
+•	Page variables 
+•	Change GB/MB to GiB/MiB 
+////
+
+
+
+
+
+
+=== August 2021
 
 ==== New Audit Page User Interface
 
 The link:concept_audit.html[Audit page] provides a cleaner interface and now allows the export of audit events to .CSV file.
-
-=== August 2021
 
 ==== Enhanced User Role Management 
 
@@ -182,9 +240,11 @@ The following APIs are available for each Edition:
 |Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
 |Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
 |Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Data Warehouse| | |image:SmallCheckMark.png[]
-
 |===
+
+//|Data Warehouse| | |image:SmallCheckMark.png[]
+
+
 
 ==== Kubernetes PV and Pod Visibility
 

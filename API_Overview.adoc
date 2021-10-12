@@ -33,7 +33,6 @@ Note that Cloud Insights APIs are available based on your current Edition:
 |Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
 |Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
 |Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Data Warehouse| | |image:SmallCheckMark.png[]
 
 |===
 
@@ -111,6 +110,8 @@ The Cloud Insights API is category-based, and currently contains the following c
 //* DATA WAREHOUSE category is available for environments with Cloud Insights Reporting, and is used to manage data used with Reporting
 
 Additional categories and/or APIs may become available over time. You can find the latest API information in the link:#api-documentation-swagger[API Swagger documentation]. 
+
+Note that the API categories to which a user has access depend also on the link:concept_user_roles.html[User Role] they have in each Cloud Insights feature set (Monitoring, Cloud Secure, Reporting).
 
 ////
 == API Commands
