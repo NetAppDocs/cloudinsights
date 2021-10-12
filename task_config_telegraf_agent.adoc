@@ -708,11 +708,11 @@ The default resource list is:
 
 Ensure the namespace and service account specified for the Security Context Constraint matches the namespace and service account for the Telegraf ReplicaSet and DaemonSet.
 
- kubectl describe scc telegraf-hostaccess |grep serviceaccount
- kubectl -n ci-monitoring --describe rs telegraf-rs | grep -i "Namespace:"
- kubectl -n ci-monitoring describe rs telegraf-rs | grep -i "Service Account:"
- kubectl -n ci-monitoring --describe ds telegraf-ds | grep -i "Namespace:"
- kubectl -n ci-monitoring describe ds telegraf-ds | grep -i "Service Account:"
+ kubectl describe scc telegraf-hostaccess \|grep serviceaccount
+ kubectl -n ci-monitoring --describe rs telegraf-rs \| grep -i "Namespace:"
+ kubectl -n ci-monitoring describe rs telegraf-rs \| grep -i "Service Account:"
+ kubectl -n ci-monitoring --describe ds telegraf-ds \| grep -i "Namespace:"
+ kubectl -n ci-monitoring describe ds telegraf-ds \| grep -i "Service Account:"
 
 |===
 
