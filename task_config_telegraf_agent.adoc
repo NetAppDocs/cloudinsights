@@ -710,6 +710,20 @@ The default resource list is:
 "certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments, endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges, mutatingwebhookconfigurations,namespaces,networkpolicies,nodes, persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets, replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses, validatingwebhookconfigurations,volumeattachments"
 |
 
+|I installed or upgraded Telegraf on Kubernetes, but the Telegraf pods are not starting up.  The Telegraf ReplicaSet or DaemonSet is reporting a failure resembling the following:
+
+ Error creating: pods "telegraf-rs-" is forbidden": unable to validate against any security context constraint: [spec.volumes[2]: Invalid value: "hostPath": hostPath volumes are not allowed to be used]
+
+|Create a Security Context Constraint (refer to the Configuring the Agent to Collect Data from Kubernetes section above) if one does not already exist.
+
+Ensure the namespace and service account specified for the Security Context Constraint matches the namespace and service account for the Telegraf ReplicaSet and DaemonSet.
+
+ kubectl describe scc telegraf-hostaccess \|grep serviceaccount
+ kubectl -n ci-monitoring --describe rs telegraf-rs \| grep -i "Namespace:"
+ kubectl -n ci-monitoring describe rs telegraf-rs \| grep -i "Service Account:"
+ kubectl -n ci-monitoring --describe ds telegraf-ds \| grep -i "Namespace:"
+ kubectl -n ci-monitoring describe ds telegraf-ds \| grep -i "Service Account:"
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
