@@ -319,7 +319,7 @@ image::SecondaryAxisExplained.png[Secondary Axis example]
 
 == Expressions in widgets
 
-In a dashboard, any time series widget (line, spline, area, stacked area) allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
+In a dashboard, any time series widget (line, spline, area, stacked area), Single-Value, or Gauge Widget allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
 
 === Expressions Example: Read IOPS percentage
 
@@ -408,7 +408,9 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 
 . Click *Save* to save the chart to your dashboard.
 
-To use a variable in an expression, simply type the variable name, for example, "$var1 * 100"
+To use a variable in an expression, simply type the variable name, for example, _$var1 * 100_. Only numeric variables can be used in expressions.
+
+
 
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -523,6 +525,8 @@ To set an Annotation-type variable in an individual widget, open the widget in e
 
 You can configure widgets to use non-Annotation variables (Number, Date, Boolean) in the same way. 
 
+To use a variable in an expression, simply type the variable name, for example, _$var1 * 100_. Only numeric variables can be used in expressions.
+
 
 ////
 ==== "Generic" variables
@@ -547,7 +551,7 @@ Note: All variables are treated as "generic" variables, even those you create fo
 Variables names:
 
 //* Must always be prefixed with a "$". This is added automatically when you configure a variable.
-* Cannot contain any special characters; only the letters a-z, the digits 0-9, period (.), and underscore (_) are allowed.
+* Must include only the letters a-z, the digits 0-9, period (.), underscore (_), and space ( ).
 * Cannot be longer than 20 characters.
 * Are case-sensitive: $CityName and $cityname are different variables.
 * Cannot be the same as an existing variable name.
