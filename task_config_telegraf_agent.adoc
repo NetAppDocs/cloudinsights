@@ -724,7 +724,7 @@ Ensure the namespace and service account specified for the Security Context Cons
  kubectl -n ci-monitoring --describe ds telegraf-ds \| grep -i "Namespace:"
  kubectl -n ci-monitoring describe ds telegraf-ds \| grep -i "Service Account:"
 
-|I see error messages from Telegraf resembling the following, but Telegraf does start up and run...
+|I see an error messages from Telegraf resembling the following, but Telegraf does start up and run...
 
 Oct 11 14:23:41 ip-172-31-39-47 systemd[1]: Started The plugin-driven server agent for reporting metrics into InfluxDB.
 Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: time="2021-10-11T14:23:41Z" level=error msg="failed to create cache directory. /etc/telegraf/.cache/snowflake, err: mkdir /etc/telegraf/.ca
@@ -733,8 +733,7 @@ Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: time="2021-10-11T14:23:41Z" leve
 file or directory\n" func="gosnowflake.(*defaultLogger).Errorf" file="log.go:120"
 Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: 2021-10-11T14:23:41Z I! Starting Telegraf 1.19.3
 
-|
-This is a known issue.  Refer to link:https://github.com/influxdata/telegraf/issues/9407[This GitHub article] for more details. As long as Telegraf is up and running, users can ignore these error messages.
+|This is a known issue.  Refer to link:https://github.com/influxdata/telegraf/issues/9407[This GitHub article] for more details. As long as Telegraf is up and running, users can ignore these error messages.
 
 |===
 
