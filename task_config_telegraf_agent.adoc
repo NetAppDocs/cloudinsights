@@ -101,7 +101,7 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
  Stop-Service telegraf
  sc.exe delete telegraf
  
-. Remove the NetApp certificate:
+. Remove the certificate from the trustore:
 
  cd Cert:\CurrentUser\Root
  rm E5FB7B68C08B1CA902708584C274F8EFC7BE8ABC
@@ -111,7 +111,6 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
 . Remove the _SYSTEM\CurrentControlSet\Services\EventLog\Application\telegraf_ key from the registry
 
 
- 
 
 ==== Upgrading the Agent
 
