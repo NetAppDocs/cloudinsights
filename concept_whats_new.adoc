@@ -20,38 +20,34 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === October 2021
 
-==== Dark Mode has arrived
-
-Many of you asked for a dark theme, and Cloud Insights has answered. To switch to dark mode, click the drop-down next to your user name. 
-image:DarkModeSwitch.png[Switch to Dark Mode is available in the User drop-down]
-image:DarkModeDashboard.png[An image of a typical dashboard shown in dark theme]
- 
-
-
-==== System-Defined Monitors 
-Cloud Insights provides a number of default system monitors, comprised of pre-defined metrics and conditions as well as default descriptions and corrective actions. You can find system monitors in the Alerts > Manage Monitors page, in the following Groups:
-
-*	ONTAP Infrastructure includes monitors for infrastructure-related issues in ONTAP clusters 
-*	ONTAP Workload Examples includes monitors for workload-related issues.
-
 
 ==== Filters on K8S Explorer pages
 
-Kubernetes Explorer pages now include filters to allow more precise display of data relevant to your exploration of Kubernetes clusters, nodes, and pods. 
+link:kubernetes_landing_page.html[Kubernetes Explorer] page filters give you focused control of the data displayed for your Kubernetes cluster, node, and pod exploration. 
 
 image:Filter_Kubernetes_Explorer.png[Kubernetes Explorer filtering example]
 
 
-==== K8s ETL to DWH
+==== K8s Data for Reporting
 
-Kubernetes data is now delivered to the Cloud Insights Data Warehouse (DWH) through the Extract, Transform, and Load (ETL) process for use in Reporting.
+Kubernetes data is now available for use in Reporting, allowing you to create chargeback or other reports.
 
 image:Kubernetes_ETL_Example.png[Kubernetes data showin in a chargeback report]
 
 
+==== Dark Theme has arrived
+
+Many of you asked for a dark theme, and Cloud Insights has answered. To switch between light and dark theme, click the drop-down next to your user name. 
+image:DarkModeSwitch.png[Switch to Dark Theme is available in the User drop-down]
+image:DarkModeDashboard.png[An image of a typical dashboard shown in dark theme]
+ 
+
+////
 ==== Data Collector Updates 
 
 The Vplex data collector has been improved, with model and data files split by Vplex cluster.  Because data is now reported with a different originator ID based on serial number instead of IP, historical data will be lost. All new data collected will be based on the new modeling.
+////
+
 
 '''
 
