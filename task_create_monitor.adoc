@@ -248,7 +248,6 @@ The following system-defined monitors are available, in the noted groups.
  statistics show -object fcp_port -counter queue_full -instance port.portname -raw
  3. Monitor the threshold counter and ensure that it does not increase. For example:
  statistics show -object fcp_port -counter threshold_full -instance port.portname -raw
-|Monitor Name | CI Severity | Monitor Description | Corrective Action
 |LUN Offline | INFO | This event occurs when a LUN is brought offline manually.� | Bring the LUN back online.�
 |AWS Credentials Not Initialized | INFO | This event occurs when a module attempts to access Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials from the cloud credentials thread before they are initialized.� | "Wait for the cloud credentials thread, as well as the system, to complete initialization.�"
 |Cloud Tier Unreachable | CRITICAL | A storage node cannot connect to Cloud Tier object store API. Some data will be inaccessible. | "If you use on-premises products, perform the following corrective actions:�"
