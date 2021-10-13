@@ -193,11 +193,13 @@ image:Monitors_AssociateToGroup.png[Associate to group]
 
 Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
 
+//To remove a monitor from a group while editing the monitor, in the _Associate with a group_ section, click the *X* next to the group name.
+
 NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from the group to which it belonged and it is no longer available to any user.
 
 You can also move a monitor to a different group in the same manner, selecting _Move to Group_. 
 
-NOTE: Each monitor can belong to only a single group at any given time.
+NOTE: Each monitor can belong to only a single group at any given time (in addition to belonging to "All Monitors" and "Custom Monitors"). 
 
 To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
 
