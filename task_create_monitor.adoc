@@ -174,7 +174,9 @@ Two groups are shown by default:
 The number of monitors contained in a group is shown next to the group name.
 
 
-NOTE: Custom monitors can be paused, resumed, deleted, or moved to another group. System-defined monitors can be paused and resumed but can not be deleted or moved.
+NOTE: Custom monitors can be paused, resumed, deleted, or moved to another group. 
+
+//NOTE: System-defined monitors can be paused and resumed but can not be deleted or moved.
 
 
 === Custom Monitor Groups
@@ -213,6 +215,8 @@ image:Monitors_PauseGroup.png[Pause a group]
 === System-Defined Monitors 
 
 System-defined monitors are comprised of pre-defined metrics and conditions, as well as default descriptions and corrective actions, which can not be modified. You _can_ modify the notification recipient list for system-defined monitors. To view the metrics, conditions, description and corrective actions, or to modify the recipient list, open a system-defined monitor group and click the monitor name in the list.
+
+NOTE: System-Defined Monitors are a _Preview_ feature and this documentation is therefore subject to change.
 
 System-defined monitor groups cannot be modified or removed.
 
