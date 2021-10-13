@@ -288,7 +288,7 @@ The following system-defined monitors are available, in the noted groups.
  "However, if the condition persists for too long, the�overtemperature might trigger an automatic shutdown." 
 |Fan in Warning State | INFO | This event occurs when one or more fans are in a warning state. | Replace the indicated fans to avoid overheating.
 |NVRAM Battery Low | WARNING | The NVRAM battery capacity is critically low. There might be a potential data loss if the battery runs out of power. | Perform the following corrective actions:
- "Your system generates and transmits an AutoSupport�or ""call home"" message to NetApp technical support and the configured destinations if it is configured to do so. The successful delivery of an AutoSupport message significantly improves problem determination and resolution." | "1. View the battery's current status, capacity, and charging state by using the ""system node environment sensors show"" command."
+ "Your system generates and transmits an AutoSupport�or ""call home"" message to NetApp technical support and the configured destinations if it is configured to do so. The successful delivery of an AutoSupport message significantly improves problem determination and resolution."  "1. View the battery's current status, capacity, and charging state by using the ""system node environment sensors show"" command."
  "2. If the battery was replaced recently or the system was non-operational for an extended period of time, monitor the battery to verify that it is charging properly."
  "3. Contact NetApp technical support if the battery runtime continues to decrease below critical levels, and the storage system shuts down automatically."
 |Disk Out of Service | INFO | "This event occurs when a disk is removed from service because it has been marked failed, is being sanitized, or has entered the Maintenance Center." | None.
@@ -297,6 +297,8 @@ The following system-defined monitors are available, in the noted groups.
  NOTE:�The fan is integrated into the power supply module in some disk shelves.
  "2. If the issue persists, replace the fan module."
  "3. If the issue still persists, contact NetApp technical support for assistance."
+
+
 
 
 ////
