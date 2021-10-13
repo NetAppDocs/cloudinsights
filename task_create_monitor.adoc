@@ -177,6 +177,37 @@ The number of monitors contained in a group is shown next to the group name.
 NOTE: Custom monitors can be paused, resumed, deleted, or moved to another group. System-defined monitors can be paused and resumed but can not be deleted or moved.
 
 
+=== Custom Monitor Groups
+
+To create a new custom monitor group, click the *"+" Create New Monitor Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
+
+
+To add monitors to the group, go to the _All Monitors_ group (recommended) and do one of the following:
+
+* To add a single monitor, click the menu to the right of the monitor and select _Add to Group_. Choose the group to which to add the monitor.
+* Click on the monitor name to open the monitor's edit view, and select a group in the _Associate to a monitor group_ section.
++
+image:Monitors_AssociateToGroup.png[Associate to group]
+
+//* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Move to Group_.
+
+Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
+
+NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from the group to which it belonged and it is no longer available to any user.
+
+You can also move a monitor to a different group in the same manner, selecting _Move to Group_. 
+
+NOTE: Each monitor can belong to only a single group at any given time.
+
+To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
+
+Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_.
+
+image:Monitors_PauseGroup.png[Pause a group]
+
+
+
+
 === System-Defined Monitors 
 
 System-defined monitors are comprised of pre-defined metrics and conditions, as well as default descriptions and corrective actions, which can not be modified. You _can_ modify the notification recipient list for system-defined monitors. To view the metrics, conditions, description and corrective actions, or to modify the recipient list, open a system-defined monitor group and click the monitor name in the list.
@@ -213,34 +244,6 @@ The following system-defined monitors are available, in the noted groups.
 |===
 
 
-
-=== Custom Monitor Groups
-
-To create a new custom monitor group, click the *"+" Create New Monitor Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
-
-
-To add monitors to the group, go to the _All Monitors_ group (recommended) and do one of the following:
-
-* To add a single monitor, click the menu to the right of the monitor and select _Add to Group_. Choose the group to which to add the monitor.
-* Click on the monitor name to open the monitor's edit view, and select a group in the _Associate to a monitor group_ section.
-+
-image:Monitors_AssociateToGroup.png[Associate to group]
-
-//* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Move to Group_.
-
-Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
-
-NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from the group to which it belonged and it is no longer available to any user.
-
-You can also move a monitor to a different group in the same manner, selecting _Move to Group_. 
-
-NOTE: Each monitor can belong to only a single group at any given time.
-
-To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
-
-Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_.
-
-image:Monitors_PauseGroup.png[Pause a group]
 
 
 
