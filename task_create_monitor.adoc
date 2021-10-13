@@ -302,7 +302,7 @@ The following system-defined monitors are available, in the noted groups.
 
 
 
-////
+
 |===
 |Group | Monitor Name | Monitor Description
 
@@ -324,7 +324,7 @@ The following system-defined monitors are available, in the noted groups.
 |ONTAP Workload Examples | Snapshot Reserve Capacity is Full | Storage capacity of a volume is necessary to store application and customer data. A portion of that space, called snapshot reserved space, is used to store snapshots which allow data to be protected locally. The more new and updated data stored in the ONTAP volume the more snapshot capacity is used and less snapshot storage capacity will be available for future new or updated data. If the snapshot data capacity within a volume reaches the total snapshot reserve space it may lead to the customer being unable to store new snapshot data and reduction in the level of protection for the data in the volume. Monitoring the volume used snapshot capacity ensures data services continuity.
 |ONTAP Workload Examples | Volume Capacity is Full | Storage capacity of a volume is necessary to store application and customer data. The more data stored in the ONTAP volume the less storage availability for future data. If the data storage capacity within a volume reaches the total storage capacity may lead to the customer being unable to store data due to lack of storage capacity. Monitoring the volume used storage capacity ensures data services continuity.
 |===
-////
+
 
 
 
