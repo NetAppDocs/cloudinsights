@@ -224,7 +224,7 @@ The following system-defined monitors are available, in the noted groups.
 
 |===
 | Monitor Name | Severity | Monitor Description | Corrective Action
-|WAFL Quota Qtree Exceeded	|INFO	|This event occurs when a tree quota has exceeded on a volume. This event is not repeated for this tree for a set amount of time or until a “quota resize” is performed. The amount of time is specified by the “quota logmsg” command.	Reduce the usage in this tree or increase the quota and run the "quota resize" command.
+|WAFL Quota Qtree Exceeded	|INFO	|This event occurs when a tree quota has exceeded on a volume. This event is not repeated for this tree for a set amount of time or until a “quota resize” is performed. The amount of time is specified by the “quota logmsg” command.	| Reduce the usage in this tree or increase the quota and run the "quota resize" command.
 
 |Volume Automatic Resizing Succeeded | INFO | "This event occurs when the automatic resizing of a volume is successful. It happens when the ?autosize grow? option is enabled, and the volume reaches the grow threshold percentage." | None.
 |Volume Automatic Resizing Failed | WARNING | The automatic resizing of the volume has failed. The volume might run out of space if you do not take corrective actions. | Analyze why automatic resize failed:
