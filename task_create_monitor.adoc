@@ -277,7 +277,7 @@ The following system-defined monitors are available, in the noted groups.
  "4. Verify that the SP can send an AutoSupport email by using the ""system service-processor autosupport invoke"" command."
  NOTE:�AutoSupport email hosts and recipients should be configured in ONTAP�before you issue this command.
 |Service Processor Offline | CRITICAL | "ONTAP is no longer receiving heartbeats from the Service Processor (SP), even though all the SP recovery actions have been taken. ONTAP cannot monitor the health of the hardware without the SP." | Power-cycle the system by performing the following actions:
- The system will shut down to prevent hardware damage and data loss. Set up a panic alert to be notified immediately if the SP goes offline.� | 1. Pull the controller out from the chassis.
+ The system will shut down to prevent hardware damage and data loss. Set up a panic alert to be notified immediately if the SP goes offline.�  1. Pull the controller out from the chassis.
  2. Push the controller back in.
  3. Turn the controller back on.
  "If the problem persists, replace the controller module."
