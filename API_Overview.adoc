@@ -36,6 +36,8 @@ Note that Cloud Insights APIs are available based on your current Edition:
 
 |===
 
+Additionally, your Cloud Insights feature set roles will determine which APIs you can access. User and Guest roles have fewer privileges than Administrator role. For example, if you have Administrator role in _Monitor and Optimize_, but User role in _Reporting_, you will see all API types except _Data Warehouse_.
+
 ////
 We are exposing API Access in Basic Edition for Acquisition Unit and Data Collection API Keys & swagger documentation.
 For Standard Edition, we expose Acquisition Unit, Assets, Data Collection and Data Ingestion API keys & swagger documentation.
