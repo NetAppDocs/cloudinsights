@@ -449,7 +449,7 @@ Cloud Insights incorporates a method of metadata tagging called Annotations. Bus
 
 == Rotating Expired API Access Tokens
 
-API access tokens have an expiration date.  When an API access token expires, users need to generate a new token (of type Data Ingestion with Read/Write permissions) and reconfigure Telegraf to use the newly generated token instead of the expired token.  The steps listed below detail how users can do this. 
+API access tokens have an expiration date. When an API access token expires, users need to generate a new token (of type _Data Ingestion_ with Read/Write permissions) and reconfigure Telegraf to use the newly-generated token instead of the expired token. The steps below detail how to do this. 
 
 ==== Kubernetes 
 
@@ -481,29 +481,29 @@ Note that these commands are using the default namespace "netapp-monitoring".  I
 +
  sudo sed -i.bkup ‘s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g’ /etc/telegraf/telegraf.d/*.conf
  
-* Restart Telegraf
+* Restart Telegraf.
 
  sudo systemctl restart telegraf
 
 ==== MacOS
 
-* Edit the Telegraf configuration files, and replace all instances of the old API token with the new API token
+* Edit the Telegraf configuration files, and replace all instances of the old API token with the new API token.
 +
  sudo sed -i.bkup ‘s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g’ /usr/local/etc/telegraf.d/*.conf
 
-* Restart Telegraf
+* Restart Telegraf.
 +
  sudo launchctl stop telegraf
  sudo launchctl start telegraf
 
 ==== Windows
 
-* For each Telegraf configuration file in C:\Program Files\telegraf\telegraf.d, replace all instances of the old API token with the new API token
+* For each Telegraf configuration file in _C:\Program Files\telegraf\telegraf.d_, replace all instances of the old API token with the new API token.
 +
  cp <plugin>.conf <plugin>.conf.bkup
  (Get-Content <plugin>.conf).Replace(‘<OLD_API_TOKEN>’, ‘<NEW_API_TOKEN>’) | Set-Content <plugin>.conf
 
-* Restart Telegraf
+* Restart Telegraf.
 +
  Stop-Service telegraf
  Start-Service telegraf
