@@ -491,6 +491,7 @@ Note that these commands are using the default namespace "netapp-monitoring".  I
 +
  sudo sed -i.bkup ‘s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g’ /usr/local/etc/telegraf.d/*.conf
 
+* Restart Telegraf
 +
  sudo launchctl stop telegraf
  sudo launchctl start telegraf
