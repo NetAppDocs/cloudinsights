@@ -28,7 +28,7 @@ Monitors allow you to set thresholds on "infrastructure" objects such as storage
 
 === Creating a Monitor
 
-In the example below, we will create a Monitor to give a Warning alert when _Volume Node NFS Write Latency_ reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
+In the example below, we will create a Monitor to give a Warning alert when _iops.total_ reaches or exceeds 2500ms, and a Critical alert when it reaches or exceeds 3500ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
 
 ==== Requirements
 
@@ -77,8 +77,8 @@ TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), defin
 ==== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
-. For the _Warning_ level, enter 200 for our example. The dashed line indicating this Warning level displays in the example graph.
-. For the _Critical_ level, enter 400. The dashed line indicating this Critical level displays in the example graph.
+. For the _Warning_ level, enter 2500 for our example. The dashed line indicating this Warning level displays in the example graph.
+. For the _Critical_ level, enter 3500. The dashed line indicating this Critical level displays in the example graph.
 +
 The graph displays historical data. The Warning and Critical level lines on the graph are a visual representation of the Monitor, so you can easily see when the Monitor might trigger an alert in each case. 
 
