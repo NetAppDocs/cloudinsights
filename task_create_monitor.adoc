@@ -131,7 +131,6 @@ Specify the webhook(s) for alert notifications. If desired, you can choose diffe
 
 image:Webhook_Monitor_Notifications.png[Webhook Alerting]
 
-NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
 
 === Save your Monitor
 
@@ -149,6 +148,9 @@ The Monitor page lists the currently configured monitors, showing the following:
 * Status 
 * Object/metric being monitored
 * Conditions of the Monitor
+
+You can view any active alerts associated with a monitor by clicking rthe "bell" icon next to the Monitor name.
+image:ViewActiveAlerts.png[Icon showing active alerts for a monitor]
 
 You can choose to temporarily suspend monitoring of an object type by clicking the menu to the right of the monitor and selecting *Pause*. When you are ready to resume monitoring, click *Resume*.
 
