@@ -425,7 +425,7 @@ NOTE: Operator-based installation is considered a _Preview_ feature and is there
 +
 For best results, add these commands to the PATH.
 
-* kube-state-metrics must be installed. See below for more information.
+* kube-state-metrics must be installed. See below for more information. kube-state-metrics is automatically installed with Operator-based installation.
 
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
@@ -434,6 +434,7 @@ For best results, add these commands to the PATH.
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
 * Operator-based installation has been tested and is expected to work with AWS EKS 1.18 and OpenShift 3.11.
+
 
 
 ==== Monitoring is only installed on Linux nodes
@@ -458,7 +459,7 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 . Enter the cluster name and namespace.
 . Once these are entered, you can copy the Agent Installer snippet
 . Click the button to copy this snippet to the clipboard.
-. Paste the snippet into a _bash_ window.
+. Paste the snippet into a _bash_ window and execute it.
 . The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
 
 
@@ -550,7 +551,7 @@ Then, restart Telegraf:
  
 ==== Configuring the Agent to Collect Data from Kubernetes
 
-For Kubernetes environments, Cloud Insights deploys the Telegraf agent as a DaemonSet and a ReplicaSet. The pods in which the agents run need to have access to the following:
+The pods in which the agents run need to have access to the following:
 
 * hostPath
 * configMap
@@ -601,14 +602,13 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
 
 ==== Installing the kube-state-metrics server
 
-NOTE: Operator-based install handles the installation of kube-state-metrics. These steps are therefore not required for operator-based installation.
+NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
 
 When you install the kube-state-metrics server you can enable collection of the following Kubernetes objects: StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress. 
 
 NOTE: It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices. Note also that with kube-state-metrics version 2.0 and above, Kubernetes object labels are not exported by default. To configure kube-state-metrics to export Kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
 
-
-Use the following steps to install the kube-state-metrics server:
+Use the following steps to install the kube-state-metrics server (required if you are performing script-based installation):
 
 .Steps
 
@@ -654,7 +654,7 @@ If the monitoring namespace is being used solely for Telegraf:
  
  kubectl delete ns ci-monitoring
 
-For the commands above, use “_netapp-monitoring_” if you installed using operator-based installation.
+For the commands above, use “_netapp-monitoring_” if you installed using operator-based installation with the default namespace.
  
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 
@@ -689,7 +689,7 @@ To upgrade the telegraf agent, do the following:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
  
- Be sure to specify the appropriate namespace if it is not the default.
+// Be sure to specify the appropriate namespace if it is not the default.
 
 . Uninstall the Agent (see above for instructions)
 
@@ -723,11 +723,11 @@ Non-Windows:
 
 * Download and install (default):
 
- installerName=<installation_script_name> … && sudo -E -H ./$installerName --download –-install
+ installerName=cloudinsights-kubernetes.sh … && sudo -E -H ./$installerName --download –-install
 
 * Download-only:
 
- installerName=<installation_script_name> … && sudo -E -H ./$installerName --download
+ installerName=cloudinsights-kubernetes.sh … && sudo -E -H ./$installerName --download
 
 Windows:
 
@@ -809,7 +809,8 @@ Some things to try if you encounter problems setting up an agent:
 
 |I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
 
-|I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.|Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent.
+|I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.
+|Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent. You must be using Telegraf version 2.0 or later.
 
 |I'm seeing messages in the logs resembling the following:
 
