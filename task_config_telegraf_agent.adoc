@@ -431,6 +431,7 @@ For best results, add these commands to the PATH.
 
 * If you are running a Kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section.
 
+
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
 * Operator-based installation has been tested and is expected to work with AWS EKS 1.18 and OpenShift 3.11.
@@ -604,7 +605,6 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
 
 NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
 
-When you install the kube-state-metrics server you can enable collection of the following Kubernetes objects: StatefulSet, DaemonSet, Deployment, PV, PVC, ReplicaSet, Service, Namespace, Secret, ConfigMap, Pod Volume, and Ingress. 
 
 NOTE: It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices. Note also that with kube-state-metrics version 2.0 and above, Kubernetes object labels are not exported by default. To configure kube-state-metrics to export Kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
 
@@ -818,23 +818,56 @@ E0901 15:21:39.962145 1 reflector.go:178] k8s.io/kube-state-metrics/internal/sto
 E0901 15:21:43.168161 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.Lease: the server could not find the requested resource (get leases.coordination.k8s.io)
 etc.
 
-|These messages may occur if your kube-state-metrics version is higher than your Kubernetes version. For example, running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17. 
 
-to get the Kubernetes version:
+|These messages may occur if you are running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17 or below.
 
-_kubectl version_
 
-to get the kube-state-metrics version:
+To get the Kubernetes version:
 
-_kubectl get deploy/kube-state-metrics -o jsonpath='{..image}'_
+ _kubectl version_
 
-To prevent these messages from happening, users can modify their kube-state-metrics deployment to disable the leases _mutatingwebhookconfigurations_, _validatingwebhookconfigurations_, and _volumeattachments resources_. More specifically, they can use the following CLI argument:
+To get the kube-state-metrics version:
 
-resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,limitranges,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses
+ _kubectl get deploy/kube-state-metrics -o jsonpath='{..image}'_
+
+To prevent these messages from happening, users can modify their kube-state-metrics deployment to disable the following Leases:
+
+_mutatingwebhookconfigurations_
+_validatingwebhookconfigurations_
+_volumeattachments resources_
+
+More specifically, they can use the following CLI argument:
+
+resources=certificatesigningrequests,configmaps,cronjobs,daemonsets, deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,limitranges, namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes, poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas, secrets,services,statefulsets,storageclasses
 
 The default resource list is:
 
-"certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments"
+"certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments, endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges, mutatingwebhookconfigurations,namespaces,networkpolicies,nodes, persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets, replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses, validatingwebhookconfigurations,volumeattachments"
+
+|I installed or upgraded Telegraf on Kubernetes, but the Telegraf pods are not starting up.  The Telegraf ReplicaSet or DaemonSet is reporting a failure resembling the following:
+
+ Error creating: pods "telegraf-rs-" is forbidden": unable to validate against any security context constraint: [spec.volumes[2]: Invalid value: "hostPath": hostPath volumes are not allowed to be used]
+
+|Create a Security Context Constraint (refer to the Configuring the Agent to Collect Data from Kubernetes section above) if one does not already exist.
+
+Ensure the namespace and service account specified for the Security Context Constraint matches the namespace and service account for the Telegraf ReplicaSet and DaemonSet.
+
+ kubectl describe scc telegraf-hostaccess \|grep serviceaccount
+ kubectl -n ci-monitoring --describe rs telegraf-rs \| grep -i "Namespace:"
+ kubectl -n ci-monitoring describe rs telegraf-rs \| grep -i "Service Account:"
+ kubectl -n ci-monitoring --describe ds telegraf-ds \| grep -i "Namespace:"
+ kubectl -n ci-monitoring describe ds telegraf-ds \| grep -i "Service Account:"
+
+|I see error messages from Telegraf resembling the following, but Telegraf does start up and run:
+
+Oct 11 14:23:41 ip-172-31-39-47 systemd[1]: Started The plugin-driven server agent for reporting metrics into InfluxDB.
+Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: time="2021-10-11T14:23:41Z" level=error msg="failed to create cache directory. /etc/telegraf/.cache/snowflake, err: mkdir /etc/telegraf/.ca
+che: permission denied. ignored\n" func="gosnowflake.(*defaultLogger).Errorf" file="log.go:120"
+Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: time="2021-10-11T14:23:41Z" level=error msg="failed to open. Ignored. open /etc/telegraf/.cache/snowflake/ocsp_response_cache.json: no such
+file or directory\n" func="gosnowflake.(*defaultLogger).Errorf" file="log.go:120"
+Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: 2021-10-11T14:23:41Z I! Starting Telegraf 1.19.3
+
+|This is a known issue.  Refer to link:https://github.com/influxdata/telegraf/issues/9407[This GitHub article] for more details. As long as Telegraf is up and running, users can ignore these error messages.
 
 |===
 

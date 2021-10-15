@@ -1,0 +1,151 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_astra_data_store.html
+summary: Configure NetApp Astra Data Store
+keywords: data collector, queries, create, astra, ads, data, store,
+---
+
+= NetApp Astra Data Store data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+The NetApp Astra Data Store data collector monitors and reports configuration and performance data for a single Astra Data Store (ADS) cluster. 
+
+== Terminology
+
+Cloud Insights acquires inventory and performance data from this collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|AstraDSVolume|Internal Volume
+|AstraDSNodeInfo.status.drives|Disk
+|AstraDSNodeInfo|Storage Node
+|AstraDSExportPolicy|Share / Share Initiator
+|AstraDSCluster|Storage
+|===
+
+
+== Requirements
+
+* The Acquisition Unit must be running in a Kubernetes pod inside the Astra Data Store Kubernetes cluster. See link:task_configure_acquisition_unit.html[Acquisition Unit installation] for more details.
+//Alternative text: The Acquisition Unit must be deployed by the NetApp Monitoring Operator in the Astra Data Store Kubernetes cluster. See Acquisition Unit installation for more details.
+** To install the Acquisition Unit, you will need a Cloud Insights link:API_Overview.html[API Key] with Read/Write  permissions to the categories: _Acquisition Unit, Data Collection, Data Ingestion_
+
+** The Kubernetes API token used must grant read-only access to the _astrads.netapp.io_ apiGroup
+
+* To retrieve the API token for the astrads-system default service account, run the following commands in a bash  shell:
+
+ SECRET_NAME=$(kubectl get secrets -n astrads-system| grep ^default| cut -f1 -d ' ' )
+ kubectl describe secret $SECRET_NAME -n astrads-system | grep -E '^token' | cut -f2 -d':' | tr -d " "
+ 
+
+== Configuration
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Kubernetes API Server IP Address|The IP address of the Kubernetes API server.
+|Kubernetes API Server Port|The port of the Kubernetes API server. Default is 6443.
+|Kubernetes API Token|Base64 encoded Kubernetes API token.
+|===
+
+== Advanced Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 60 minutes.
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds. 
+|Included ADS Cluster Names|Comma-separated list of ADS cluster names to include in polling. Leave blank to monitor all clusters.
+|===
+
+
+== Install Acquisition Unit, Telegraf, and Fluent Bit
+
+The NetApp Monitoring Operator will be installed in the Kubernetes cluster with Astra Data Store. The Monitoring Operator manages the installation and configuration of an Acquisition Unit, a Telegraf agent for advanced metrics, and a Fluent Bit agent for logs. 
+
+To configure the operator, follow these steps:
+
+. Copy the custom resource definition snippet below
+
+ spec:
+   au:
+     isEnabled: true
+     #storageClassName: ""
+   telegraf:
+   - name: "open-metric"
+     run-mode:
+     - ReplicaSet
+     substitutions:
+     - key: URLS
+       values:
+       - "http://astrads-metrics-service.astrads-system.svc.cluster.local:9341"
+     - key: METRIC_TYPE
+       value: "ads-metrics"
+     outputs:
+     - sink: CI
+   fluent-bit:
+   - name: "ads-tail-ci"
+     substitutions:
+     - key: TAG
+       value: "ads-logs"
+     - key: ADS_CLUSTER_NAME
+       value: "<INSERT_CLUSTER_NAME>"
+     - key: LOG_FILE
+       values:
+       - "/var/log/firetap/*/ems/ems"
+       - "/var/log/firetap/ems/*/ems/ems"
+     outputs:
+     - sink: CI
+   output-sink:
+   - api-key: "<INSERT_CI_API_KEY>"
+     domain-name: "<INSERT_CI_DOMAIN_NAME>"
+     name: CI
+
+. If there is not a Storage Provisioner configured in the Kubernetes cluster, uncomment _storageClassName_ and supply the name of the StorageClass containing PVs for the Acquisition Unit. These PVs must already be created. Leave blank to use the default StorageClass.
+
+. Replace <INSERT_CLUSTER_NAME> with the name of the Astra Data Store cluster
+
+. Replace <INSERT_CI_API_KEY> with the Cloud Insights API Access Token
+
+. Replace <INSERT_CI_DOMAIN_NAME> with the Cloud Insights tenant domain name
+
+. Run the following command to edit the Monitoring Operator agent spec:
++
+ kubectl --namespace netapp-monitoring edit agent acc-monitoring
+ 
+. Merge the custom resource definition snippet above with the existing Monitoring Operator agent spec.
+
+. Save and close the editor window.
+
+The Monitoring Operator will now install the Acquisition Unit, Telegraf and Fluent Bit. This may take several minutes to complete.
+Periodically run the following command to check the Acquisition Unit status until the status is UP. Alternatively, you can wait for the new Acquisition Unit to appear in the Cloud Insights UI.
+
+ kubectl --namespace netapp-monitoring get agent -o jsonpath='{.status.au-pod-status}' acc-monitoring
+ 
+Once the Acquisition Unit is installed, you may add the Astra Data Store collector from the Cloud Insights UI.
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|You see an "Unauthorized" message
+|Check that the Kubernetes API Token has permission to call APIs in the _astrads.netapp.io_ apiGroup
+|"Unknown host: astrads-metrics-service.astrads-system.svc.cluster.local: Name or service not known"
+|Verify the collector is installed in an Acquisition Unit pod running inside the ADS Kubernetes cluster.
+Verify the astrads-metrics-service  is running the astrads-system  namespace.
+|===
+
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
