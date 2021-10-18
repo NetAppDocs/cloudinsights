@@ -202,6 +202,301 @@ image:Monitors_PauseGroup.png[Pause a group]
 
 
 
+
+== System-Defined Monitors (Preview)
+
+Beginning in October 2021, Cloud Insights will be previewing a number of system-definied monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
+
+NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
+
+==== Create the Monitor 
+
+. From the Cloud Insights menu, click *Alerts > Manage Monitors*
++
+The Monitors list page is displayed, showing currently configured monitors. 
+
+. To add a monitor, Click *+ Monitor*. To modify an existing monitor, click the monitor name in the list.
++
+The Monitor Configuration dialog is displayed.
+. In the drop-down, search for and choose an object type and metric to monitor, for example _netapp_ontap_volume_node_nfs_write_latency_.
+
+You can set filters to narrow down which object attributes or metrics to monitor. 
+
+//image:select_metric_to_monitor.png[Select Metric]
+
+image:MonitorMetricFilter.png[Metrics Filtering]
+
+//When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
+
+When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
+
+//image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
+
+TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
+
+
+==== Define the Conditions of the Monitor. 
+
+. After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
+. For the _Warning_ level, enter 200. The dashed line indicating this Warning level displays in the example graph.
+. For the _Critical_ level, enter 400. The dashed line indicating this Critical level displays in the example graph.
++
+The graph displays historical data. The Warning and Critical level lines on the graph are a visual representation of the Monitor, so you can easily see when the Monitor might trigger an alert in each case. 
+
+. For the occurence interval, choose _Continuously_ for a period of _15 Minutes_.
++
+You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
++
+image:define_monitor_conditions.png[Define Conditions]
+
+
+==== Refining the Filter
+
+When you are filtering, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
+
+image:Type-Ahead_Monitor_1.png[Wildcard Filter]
+
+Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
+
+image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
+
+Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
+
+
+
+=== Setting Corrective Actions or Additional Information
+
+You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
+
+In these fields you can provide notes, links, or steps to take to correct or otherwise address the alert.
+
+image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
+
+=== Select notification type and recipients
+
+In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
+
+image:Webhook_Choose_Monitor_Notification.png[Choose alerting method]
+
+*Alerting via Email:*
+
+Specify the email recipients for alert notifications. If desired, you can choose different recipients for warning or critical alerts.
+
+image:email_monitor_alerts.png[Email Alert Recipients]
+
+*Alerting via Webhook:*
+
+Specify the webhook(s) for alert notifications. If desired, you can choose different webhooks for warning or critical alerts.
+
+image:Webhook_Monitor_Notifications.png[Webhook Alerting]
+
+NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
+
+=== Save your Monitor
+
+. If desired, you can add a description of the monitor. 
++
+. Give the Monitor a meaningful name and click *Save*.
++
+Your new monitor is added to the list of active Monitors.
+
+=== Monitor List
+
+The Monitor page lists the currently configured monitors, showing the following:
+
+* Monitor Name
+* Status 
+* Object/metric being monitored
+* Conditions of the Monitor
+
+You can choose to temporarily suspend monitoring of an object type by clicking the menu to the right of the monitor and selecting *Pause*. When you are ready to resume monitoring, click *Resume*.
+
+You can copy a monitor by selecting *Duplicate* from the menu. You can then modify the new monitor and change the object/metric, filter, conditions, email recipients, etc.
+
+If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
+
+
+
+== Monitor Groups
+
+Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
+
+image:Monitors_GroupList.png[Monitor Grouping]
+
+////
+Two groups are shown by default:
+
+* *All Monitors* lists all monitors.
+* *Custom Monitors* lists only user-created monitors.
+////
+
+The number of monitors contained in a group is shown next to the group name.
+
+
+NOTE: Custom monitors can be paused, resumed, deleted, or moved to another group. System-defined monitors can be paused and resumed but can not be deleted or moved.
+
+
+=== Custom Monitor Groups
+
+To create a new custom monitor group, click the *"+" Create New Monitor Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
+
+
+To add monitors to the group, go to the _All Monitors_ group (recommended) and do one of the following:
+
+* To add a single monitor, click the menu to the right of the monitor and select _Add to Group_. Choose the group to which to add the monitor.
+* Click on the monitor name to open the monitor's edit view, and select a group in the _Associate to a monitor group_ section.
++
+image:Monitors_AssociateToGroup.png[Associate to group]
+
+//* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Move to Group_.
+
+Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
+
+//To remove a monitor from a group while editing the monitor, in the _Associate with a group_ section, click the *X* next to the group name.
+
+NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from the group to which it belonged and it is no longer available to any user.
+
+You can also move a monitor to a different group in the same manner, selecting _Move to Group_. 
+
+NOTE: Each monitor can belong to only a single group at any given time (in addition to belonging to "All Monitors" and "Custom Monitors"). 
+
+To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
+
+Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_.
+
+image:Monitors_PauseGroup.png[Pause a group]
+
+
+
+
+=== System-Defined Monitors 
+
+System-defined monitors are comprised of pre-defined metrics and conditions, as well as default descriptions and corrective actions, which can not be modified. You _can_ modify the notification recipient list for system-defined monitors. To view the metrics, conditions, description and corrective actions, or to modify the recipient list, open a system-defined monitor group and click the monitor name in the list.
+
+System-defined monitor groups cannot be modified or removed.
+
+The following system-defined monitors are available, in the noted groups.
+
+* *ONTAP Infrastructure* includes monitors for infrastructure-related issues in ONTAP clusters. 
+* *ONTAP Workload Examples* includes monitors for workload-related issues. 
+* Monitors in both group default to _Paused_ state.
+
+|===
+| Monitor Name | Severity | Monitor Description | Corrective Action
+|WAFL Quota Qtree Exceeded	|INFO	|This event occurs when a tree quota has exceeded on a volume. This event is not repeated for this tree for a set amount of time or until a “quota resize” is performed. The amount of time is specified by the “quota logmsg” command.	| Reduce the usage in this tree or increase the quota and run the "quota resize" command.
+
+|Volume Automatic Resizing Succeeded | INFO | "This event occurs when the automatic resizing of a volume is successful. It happens when the 'autosize grow' option is enabled, and the volume reaches the grow threshold percentage." | None.
+|Volume Automatic Resizing Failed | WARNING | The automatic resizing of the volume has failed. The volume might run out of space if you do not take corrective actions. | Analyze why automatic resize failed:
+ Did the volume reach its maximum capacity?
+ Is the storage pool (aggregate) out of space? 
+ Increase the maximum capacity of the volume when you automatically resize it.
+|SnapMirror Relationship Out of Sync | CRITICAL | This event occurs when a SnapMirror(R) Sync relationship status changes from 'in-sync' to 'out-of-sync'. I/O restrictions are imposed on the source volume based on the mode of replication. Client read or write access to the volume is not allowed for relationships of the 'strict-sync-mirror' policy type. Data protection is affected. | Check the network connection between the source and destination volumes. Monitor the SnapMirror Sync relationship status using the 'snapmirror show' command. 'Auto-resync' attempts to bring the relationship back to the 'in-sync' status.
+|SAN 'active-active' State Changed | WARNING | "The SAN pathing is no longer symmetric. Pathing should be asymmetric only on ASA, because AFF and FAS are both asymmetric." | "Try and enable the ""active-active"" state. Contact customer support if the problem persists."
+|QoS Monitor Memory Maxed Out | CRITICAL | The QoS subsystem's dynamic memory has reached its limit for the current platform hardware. Some QoS features might operate in a limited capacity. | "Delete some active workloads or streams to free up memory. Use the 'statistics show -object workload -counter ops' command to determine which workloads are active. Active workloads show non-zero ops. Then use the 'workload delete <workload_name>' command multiple times to remove specific workloads. Alternatively, use the 'stream delete -workload <workload name> *' command to delete the associated streams from the active workload."
+|NVMe Namespace Online | INFO | This event occurs when an NVMe namespace is brought online manually. | None.
+|NVMe Namespace Offline | INFO | This event occurs when an NVMe namespace is brought offline manually. | None.
+|NVMe Namespace Destroyed | INFO | This event occurs when an NVMe namespace is destroyed. | None.
+|Non-responsive Antivirus Server | INFO | This event occurs when ONTAP(R) detects a non-responsive antivirus (AV) server and forcibly closes its Vscan connection. | Ensure that the AV server installed on the AV connector can connect to the Storage Virtual Machine (SVM) and receive the scan requests.
+|LUN Destroyed | INFO | This event occurs when a LUN is destroyed. | None.
+|FC Target Port Commands Exceeded | WARNING | The number of outstanding commands on the physical FC target port exceeds the supported limit. The port does not have sufficient buffers for the outstanding commands. It is overrun or the fan-in is too steep because too many initiator I/Os are using it.  | Perform the following corrective actions:
+ "1. Evaluate the host fan-in on the port, and perform one of the following actions:"
+ a. Reduce the number of hosts that log in to this port.
+ b. Reduce the number of LUNs accessed by the hosts that log in to this port.
+ c. Reduce the host command queue depth.
+ "2. Monitor the ""queue_full"" counter on the ""fcp_port"" CM object, and ensure that it does not increase. For example: "
+ statistics show -object fcp_port -counter queue_full -instance port.portname -raw
+ 3. Monitor the threshold counter and ensure that it does not increase. For example:
+ statistics show -object fcp_port -counter threshold_full -instance port.portname -raw
+|LUN Offline | INFO | This event occurs when a LUN is brought offline manually.  | Bring the LUN back online. 
+|AWS Credentials Not Initialized | INFO | This event occurs when a module attempts to access Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials from the cloud credentials thread before they are initialized.  | "Wait for the cloud credentials thread, as well as the system, to complete initialization. "
+|Cloud Tier Unreachable | CRITICAL | A storage node cannot connect to Cloud Tier object store API. Some data will be inaccessible. | "If you use on-premises products, perform the following corrective actions: "
+ "1. Verify that your intercluster LIF is online and functional by using the ""network interface show"" command."
+ "2. Check the network connectivity to the object store server by using the ""ping"" command over the destination node intercluster LIF."
+ 3. Ensure the following:
+ a. The configuration of your object store has not changed.
+ b. The login and connectivity information is still valid.
+ Contact NetApp technical support if the issue persists. 
+ "If you use Cloud Volumes ONTAP, perform the following corrective actions: "
+ 1. Ensure that the configuration of your object store has not changed.
+ 2.  Ensure that the login and connectivity information is still valid.
+ Contact NetApp technical support if the issue persists.
+|FlexGroup Constituent Out of Inodes | CRITICAL | "A constituent of a FlexGroup volume has run out of inodes, which might cause a potential disruption of service. You cannot create new files on this constituent. This might lead to an overall imbalanced distribution of content across the FlexGroup volume." | "It is recommended that you add capacity to the FlexGroup volume by using the ""volume modify -files +X"" command."
+ "Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent."
+|FlexGroup Constituent Nearly Out of Inodes | WARNING | "A constituent within a FlexGroup volume is almost out of inodes, which might cause a potential disruption of service. The constituent receives lesser create requests than average. This might impact the overall performance of the FlexGroup volume, because the requests are routed to constituents with more inodes." | "It is recommended that you add capacity to the FlexGroup volume by using the ""volume modify -files +X"" command."
+ "Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent."
+|FlexGroup Constituent Full | CRITICAL | "A constituent within a FlexGroup volume is full, which might cause a potential disruption of service. You can still create or expand files on the FlexGroup volume. However, none of the files that are stored on the constituent can be modified. As a result, you might see random out-of-space errors when you try to perform write operations on the FlexGroup volume." | "It is recommended that you add capacity to the FlexGroup volume by using the ""volume modify -files +X"" command."
+ "Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent."
+|Flexgroup Constituent Nearly Full | WARNING | "A constituent within a FlexGroup volume is nearly out of space, which might cause a potential disruption of service. Files can be created and expanded. However, if the constituent runs out of space, you might not be able to append to or modify the files on the constituent. " | "It is recommended that you add capacity to the FlexGroup volume by using the ""volume modify -files +X"" command."
+ "Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent."
+|Service Processor Not Configured | WARNING | "This event occurs on a weekly basis, to remind you to configure the Service Processor (SP). The SP is a physical device that is incorporated into your system to provide remote access and remote management capabilities. You should configure the SP to use its full functionality. " | Perform the following corrective actions:
+ "1. Configure the SP by using the ""system service-processor network modify"" command."
+ "2. Optionally, obtain the MAC address of the SP by using the ""system service-processor network show"" command."
+ "3. Verify the SP network configuration by using the ""system service-processor network show"" command."
+ "4. Verify that the SP can send an AutoSupport email by using the ""system service-processor autosupport invoke"" command."
+ NOTE: AutoSupport email hosts and recipients should be configured in ONTAP before you issue this command.
+|Service Processor Offline | CRITICAL | "ONTAP is no longer receiving heartbeats from the Service Processor (SP), even though all the SP recovery actions have been taken. ONTAP cannot monitor the health of the hardware without the SP." | Power-cycle the system by performing the following actions:
+ The system will shut down to prevent hardware damage and data loss. Set up a panic alert to be notified immediately if the SP goes offline.   1. Pull the controller out from the chassis.
+ 2. Push the controller back in.
+ 3. Turn the controller back on.
+ "If the problem persists, replace the controller module."
+|Unassigned Disks | INFO | System has unassigned disks - capacity is being wasted and your system may have some misconfiguration or partial configuration change applied. | Perform the following corrective actions:
+ "1. Determine which disks are unassigned by using the ""disk show -n"" command."
+ "2. Assign the disks to a system by using the ""disk assign"" command."
+|System Cannot Operate Due to Fan Failure  | CRITICAL | "One or more main unit fans have failed, disrupting system operation. This might lead to a potential data loss. " | Replace the failed fans.
+|Fan Failed | WARNING | One or more main unit fans have failed. The system remains operational. | "Reseat the failed fans. If the error persists, replace them."
+ "However, if the condition persists for too long, the overtemperature might trigger an automatic shutdown." 
+|Fan in Warning State | INFO | This event occurs when one or more fans are in a warning state. | Replace the indicated fans to avoid overheating.
+|NVRAM Battery Low | WARNING | The NVRAM battery capacity is critically low. There might be a potential data loss if the battery runs out of power. | Perform the following corrective actions:
+ "Your system generates and transmits an AutoSupport or ""call home"" message to NetApp technical support and the configured destinations if it is configured to do so. The successful delivery of an AutoSupport message significantly improves problem determination and resolution."  "1. View the battery's current status, capacity, and charging state by using the ""system node environment sensors show"" command."
+ "2. If the battery was replaced recently or the system was non-operational for an extended period of time, monitor the battery to verify that it is charging properly."
+ "3. Contact NetApp technical support if the battery runtime continues to decrease below critical levels, and the storage system shuts down automatically."
+|Disk Out of Service | INFO | "This event occurs when a disk is removed from service because it has been marked failed, is being sanitized, or has entered the Maintenance Center." | None.
+|Storage Switch Fans Failed | CRITICAL | "The indicated cooling fan or fan module of the shelf has failed. The disks in the shelf might not receive enough cooling airflow, which might result in disk failure." | Perform the following corrective actions:
+ 1. Verify that the fan module is fully seated and secured.
+ NOTE: The fan is integrated into the power supply module in some disk shelves.
+ "2. If the issue persists, replace the fan module."
+ "3. If the issue still persists, contact NetApp technical support for assistance."
+|=== 
+
+
+
+////
+
+|===
+|Group | Monitor Name | Monitor Description
+
+|ONTAP Infrastructure | Storage Capacity Limit | When a storage pool (aggregate) fills up, I/O operations slow down and finally cease causing a storage outage incident. A warning alert indicates that planned action should be taken soon to restore minimum free space. A critical alert indicates that service disruption is imminent and emergency measures should be taken to free up space to ensure service continuity.
+|ONTAP Infrastructure | Storage Performance Limit | When a storage pool reaches its performance limit, operations slow down, latency goes up and workloads and applications may start failing. ONTAP evaluates the storage pool utilization due to workloads and estimates what percent of performance has been consumed. A warning alert indicates that planned action should be taken to reduce storage pool load as there may not be enough storage pool performance left to service workload peaks. A critical alert indicates that a performance brownout is imminent and emergency measures should be taken to reduce storage pool load to ensure service continuity.
+|ONTAP Infrastructure | Fiber Channel Port High Utilization | Fiber Channel Protocol ports are used to receive and transfer the SAN traffic between the customer host system and the ONTAP LUNs. If the port utilization is high, then it will become a bottleneck and it will ultimately affect the performance of Fiber Channel Protocol workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.
+|ONTAP Infrastructure | Network Port High Utilization | Network ports are used to receive and transfer the NFS, CIFS, and iSCSI protocol traffic between the customer host systems and the ONTAP volumes. If the port utilization is high then it becomes a bottleneck and it ultimately affects the performance of NFS, CIFS, and iSCSI workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.
+| ONTAP Workload Examples | Volume Inodes Limit | Volumes that store files use index nodes (inode) to store file metadata. When a volume exhausts its inode allocation, no more files can be added to it. A warning alert indicates that planned action should be taken to increase the number of available inodes. A critical alert indicates that file limit exhaustion is imminent and emergency measures should be taken to free up inodes to ensure service continuity.
+|ONTAP Workload Examples | QTree Capacity is Full | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a default space quota or a quota defined by a quota policy to limit amount of data stored in the tree within the volume capacity. A warning alert indicates that planned action should be taken to increase the space. A critical alert indicates that service disruption is imminent and emergency measures should be taken to free up space to ensure service continuity.
+|ONTAP Workload Examples | Lun High Latency | LUNs are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High LUN latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds
+|ONTAP Workload Examples | NVMe Namespace High Latency | NVMe Namespaces are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High NVMe Namespaces latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity.
+|ONTAP Workload Examples | Qtree Files Soft Limit  | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a quota of the number of files that it can contain in order to maintain a manageable file system size within the volume. A qtree maintains a soft file number quota in order to be able to alert the user proactively before reaching the limit of files in the qtree and being unable to store any additional files. Monitoring the number of files within a qtree ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | Qtree Files Hard Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a quota of the number of files that it can contain in order to maintain a manageable file system size within the volume. A qtree maintains a hard file number quota beyond which new files in the tree are denied. Monitoring the number of files within a qtree ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | QTree Capacity Soft Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a space quota measured in KBytes that it can use to store data in order to control the growth of user data in volume and not exceed its total capacity. A qtree maintains a soft storage capacity quota in order to be able to alert the user proactively before reaching the total capacity quota limit in the qtree and being unable to store data anymore. Monitoring the amount of data stored within a qtree ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | QTree Capacity Hard Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a space quota measured in KBytes that it can use to store data in order to control the growth of user data in volume and not exceed its total capacity. A qtree hard storage capacity quota serves as a threshold beyond which the writes on the qtree are denied. Monitoring the amount of data stored within a qtree ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | User Quota Capacity Soft Limit | ONTAP recognize the users of Unix or Windows systems that have the rights to access volumes, files or directories within a volume. As a result, ONTAP allows the customers to configure storage capacity for their users or groups of users of their Linux or Windows systems. The user or group policy quota limits the amount of space the user can utilize for their own data. A soft limit of this quota allows proactive notification of the user when the amount of capacity used within the volume is reaching the total capacity quota. Monitoring the amount of data stored within a user or group quota ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | User Quota Capacity Hard Limit | ONTAP recognize the users of Unix or Windows systems that have the rights to access volumes, files or directories within a volume. As a result, ONTAP allows the customers to configure storage capacity for their users or groups of users of their Linux or Windows systems. The user or group policy quota limits the amount of space the user can utilize for their own data. A hard limit of this quota allows notification of the user when the amount of capacity used within the volume is right before reaching the total capacity quota. Monitoring the amount of data stored within a user or group quota ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | Volume High Latency | Volumes are objects that serve the IO traffic often driven by performance sensitive applications including devOps applications, home directories, and databases. High volume latencies means that the applications themselves may suffer and be unable to accomplish their tasks. Monitoring volume latencies is critical to maintain application consistent performance. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds
+|ONTAP Workload Examples | Snapshot Reserve Capacity is Full | Storage capacity of a volume is necessary to store application and customer data. A portion of that space, called snapshot reserved space, is used to store snapshots which allow data to be protected locally. The more new and updated data stored in the ONTAP volume the more snapshot capacity is used and less snapshot storage capacity will be available for future new or updated data. If the snapshot data capacity within a volume reaches the total snapshot reserve space it may lead to the customer being unable to store new snapshot data and reduction in the level of protection for the data in the volume. Monitoring the volume used snapshot capacity ensures data services continuity.
+|ONTAP Workload Examples | Volume Capacity is Full | Storage capacity of a volume is necessary to store application and customer data. The more data stored in the ONTAP volume the less storage availability for future data. If the data storage capacity within a volume reaches the total storage capacity may lead to the customer being unable to store data due to lack of storage capacity. Monitoring the volume used storage capacity ensures data services continuity.
+|===
+
+////
+
+
+
+=== More Information
+
+//* link:concept_notifications_email.html[Email Alerting] for Monitors
+
+* link:task_view_and_manage_alerts.html[Viewing and Dismissing Alerts]
+
+
+
+
 ////
 == Pin your Favorite monitors
 
