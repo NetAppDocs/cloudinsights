@@ -55,8 +55,8 @@ The following information is required to configure this data collector:
 |===
 |Field|Description 
 |PowerStore gateway(s)|IP addresses or fully-qualified domain names of PowerStore storage
-|User Name|User name for PowerShare 
-|Password|Password used for PowerShare 
+|User Name|User name for PowerStore 
+|Password|Password used for PowerStore 
 |===
 
 == Advanced configuration
@@ -68,6 +68,7 @@ The following information is required to configure this data collector:
 |Inventory Poll Interval (minutes)|Interval between inventory polls. The default is 60 minutes.
 |===
 
+Cloud Insight's PowerStore performance collection makes use of PowerStore's 5-minute granularity source data. As such, Cloud Insights polls for that data every five minutes, and this is not configurable.
            
 == Troubleshooting
 

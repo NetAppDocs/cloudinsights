@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: task_device_resolution_preferences.html
+keywords: Automatic, AR, AHR, Host, automatic device resolution, FC, Identify
+summary: 
+---
+
+= Setting options in the Preferences tab
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The device resolution preferences tab lets you create an auto resolution schedule, specify storage and tape venders to include or exclude from identification, and set DNS lookup options.
+
+=== Auto resolution schedule
+
+An auto resolution schedule can specify when automatic device resolution is run:
+
+|===
+|Option	|Description
+|Every	|Use this option to run automatic device resolution on intervals of days, hours, or minutes.
+|Every day	|Use this option to run automatic device resolution daily at a specific time.
+|Manually	|Use this option to only run automatic device resolution manually.
+|On every environment change	|Use this option to run automatic device resolution whenever there is a change in the environment.
+|===
+
+If you specify _Manually_, nightly automatic device resolution is disabled.
+
+
+=== DNS processing options
+DNS processing options allow you to select the following features:
+
+* When DNS lookup result processing is enabled, you can add a list of DNS names to append to resolved devices.
+* You can select Auto resolution of IPs: to enables automatic host resolution for iSCSI initiators and hosts accessing NFS shares by using DNS lookup. If this is not specified, only FC-based resolution is performed.
+* You can choose to allow underscores in host names and to use a "connected to" alias instead of the standard port alias in results.
+
+=== Including or excluding specific storage and tape vendors
+You can include or exclude specific storage and tape vendors for automatic resolution. You might want to exclude specific vendors if you know, for example, that a specific host will become a legacy host and should be excluded from your new environment. You can also re-add vendors that you earlier excluded but no longer want excluded.
+
+NOTE: Device resolution rules for tape only work for WWNs where the Vendor for that WWN is set to _Included as Tape only_ in the Vendors preferences.
+
+See also: link:concept_device_resolution_regex_examples.html[Regular Expression Examples]
