@@ -26,16 +26,22 @@ Apache Olingo is a Java library that implements the Open Data Protocol (OData). 
 Note that the exception to the read-only limitation the _dwh_custom_ schema that is used for secondary ETL (Extract, Transform, Load) can be written.
 However, this schema is not populated by ETL, so none of the collected data is sent there directly.
 
-The current release or Olingo supports access via REST clients. Future versions are expected to support tools such as Tableau.
+The current release of Olingo supports access via REST clients. Future versions are expected to support tools such as Tableau.
 
 == REST client setup for Synchronous Queries
-3 © 2019 NetApp, Inc. All rights reserved. --- NETAPP CONFIDENTIAL ---
-§ These slides use the FireFox REST client plugin, any REST client should work
-§ 2 Headers are required
-§ Name “X-CloudInsights-ApiKey”
-§ Attribute Value “<apikey>”
-§ Here is an example apikey, yours will be specific to your tenant
+
+
+
+* These slides use the FireFox REST client plugin, any REST client should work
+* 2 Headers are required:
+** Name “X-CloudInsights-ApiKey”
+** Attribute Value “<apikey>”
+* Here is an example apikey, yours will be specific to your tenant:
++
 “eyJraWQiOiI5OTk5IiwidHlwIjoiSldUIiwiYWxnIjoiSFMzODQifQ.eyJjcmVhdG9yTG9naW4iOiJhdXRoMHw1YjBlZTI4YWIzNTJjNjE5M2FhZWM2YTQiLCJkaXNwbGF5TmFtZSI6Ik9kYX
 RhLXRlc3QgKG9uIGJlaGFsZiBvZiBNaWNoYWVsIFJ5YW4pIiwicm9sZXMiOltdLCJpc3MiOiJvY2kiLCJuYW1lIjoiT2RhdGEtdGVzdCIsImFwaSI6InRydWUiLCJleHAiOjE2NTQxMDI0OT MsImxvZ2luIjoiYjM1ZGNmZWEtMzgzMi00YWI5LTkxZmMtZDJkODJlNDY0Y2E5IiwiaWF0IjoxNjIyNTY2NDkzLCJ0ZW5hbnQiOiJiYzgxMTk3OS02ZDliLTRlOGItOGQzNy05NDNlYmE1
 M2QwYzMifQ.K2iY2niou_k6lMBg_a6Gugq9bYL1Q-JV_3IanXh4x_YCOiJNo9Q11fuNweXMPQr3”
-§ All requests will start with the url - https://<tenant>/rest/v1/dwh-management/odata
+
+* All requests will start with the url - https://<tenant>/rest/v1/dwh-management/odata
+
+
