@@ -30,18 +30,56 @@ The current release of Olingo supports access via REST clients. Future versions 
 
 == REST client setup for Synchronous Queries
 
+// * These slides use the FireFox REST client plugin, any REST client should work
 
-
-* These slides use the FireFox REST client plugin, any REST client should work
 * 2 Headers are required:
 ** Name “X-CloudInsights-ApiKey”
 ** Attribute Value “<apikey>”
-* Here is an example apikey, yours will be specific to your tenant:
-+
-“eyJraWQiOiI5OTk5IiwidHlwIjoiSldUIiwiYWxnIjoiSFMzODQifQ.eyJjcmVhdG9yTG9naW4iOiJhdXRoMHw1YjBlZTI4YWIzNTJjNjE5M2FhZWM2YTQiLCJkaXNwbGF5TmFtZSI6Ik9kYX
+* Your API key will be specific to your Cloud Insights environment.
+
+//“eyJraWQiOiI5OTk5IiwidHlwIjoiSldUIiwiYWxnIjoiSFMzODQifQ.eyJjcmVhdG9yTG9naW4iOiJhdXRoMHw1YjBlZTI4YWIzNTJjNjE5M2FhZWM2YTQiLCJkaXNwbGF5TmFtZSI6Ik9kYX
 RhLXRlc3QgKG9uIGJlaGFsZiBvZiBNaWNoYWVsIFJ5YW4pIiwicm9sZXMiOltdLCJpc3MiOiJvY2kiLCJuYW1lIjoiT2RhdGEtdGVzdCIsImFwaSI6InRydWUiLCJleHAiOjE2NTQxMDI0OT MsImxvZ2luIjoiYjM1ZGNmZWEtMzgzMi00YWI5LTkxZmMtZDJkODJlNDY0Y2E5IiwiaWF0IjoxNjIyNTY2NDkzLCJ0ZW5hbnQiOiJiYzgxMTk3OS02ZDliLTRlOGItOGQzNy05NDNlYmE1
 M2QwYzMifQ.K2iY2niou_k6lMBg_a6Gugq9bYL1Q-JV_3IanXh4x_YCOiJNo9Q11fuNweXMPQr3”
 
-* All requests will start with the url - https://<tenant>/rest/v1/dwh-management/odata
+* All requests will start with the url _https://<tenant>/rest/v1/dwh-management/odata_
+
+== Generating an APIKey
+
+§ Log into your tenant,
+select Admin > API Access,
+click “+ API Access Token”
+§ Enter a Name & Description
+§ For type choose either
+§ “All Categories”
+§ “Data Warehouse”
+§ Permissions = R/W
+§ APIkeys are good for
+Sync or Async
+§ Click “Save”, then copy the key and save it somewhere safe, you can’t access it later
+
+== Learning about OData and Postman
+
+§ Here are some tutorials on how to use OData/Olingo, and Postman REST client
+§ Basic Tutorial · OData - the Best Way to REST
+§ OData, short for Open Data Protocol, is an open protocol to allow the creation and consumption of queryable and interoperable RESTful APIs in a simple and standard way.
+§ https://www.odata.org/getting-started/basic-tutorial/
+§ Learning OData on Postman · OData - the Best Way to REST
+§ OData, short for Open Data Protocol, is an open protocol to allow the creation and consumption of queryable
+and interoperable RESTful APIs in a simple and standard way.
+§ https://www.odata.org/getting-started/learning-odata-on-postman
+
+== Direct query of tables
+7 © 2019 NetApp, Inc. All rights reserved. --- NETAPP CONFIDENTIAL ---
+§ Direct queries of the DWH DB are possible via the Odata integration
+§ **Long URLs may be simplified to https://.../odata/ for display purposes
+§ Rather than the full - https://<tenant>/rest/v1/dwh-management/odata/
+§ Try simple queries like
+§ https://<tenant>/rest/v1/dwh-management/odata/dwh_custom
+§ https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory
+§ https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory/storage
+§ https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory/disk
+§ https://.../odata/dwh_custom/custom_queries
+§ custom_queries table, is where the queries can be saved as views, and run
+later
 
 
