@@ -1,0 +1,164 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_amazon_fsx.html
+keywords: data collector, stout, fsx, fsx-netapp, Amazon, AWS, cluster, volume, share, LUN"
+summary: Amazon FSx for NetApp ONTAP Data Collector 
+--- 
+
+= Amazon FSx for NetApp ONTAP data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+This data collector acquires inventory and performance data from Amazon FSx for NetApp ONTAP. This data collector will be made available incrementally throughout the Cloud Insights service regions. Contact your sales person if you do not see the Icon for this collector in your Cloud Insights Environment.
+
+== Terminology
+
+Cloud Insights acquires inventory and performance data from the FSx-NetApp data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Cluster|Storage
+|LUN|Volume
+|Volume|Internal Volume
+|===
+
+== FSx-NetApp Terminology
+
+The following terms apply to objects or references that you might find on FSx-NetApp storage asset landing pages. Many of these terms apply to other data collectors as well.
+
+=== Storage
+
+* Model – A comma-delimited list of the unique, discrete model names within this cluster. 
+* Vendor – AWS
+* Serial number – The array serial number. 
+* IP – generally will be the IP(s) or hostname(s) as configured in the data source.
+//* Microcode version – firmware.
+* Raw Capacity – base 2 summation of all the physical disks in the system, regardless of their role.
+* Latency – a representation of what the host facing workloads are experiencing, across both reads and writes. Ideally, Cloud Insights is sourcing this value directly, but this is often not the case. In lieu of the array offering this up, Cloud Insights is generally performing an IOPs-weighted calculation derived from the individual internal volumes’ statistics.
+* Throughput – aggregated from internal volumes.
+Management – this may contain a hyperlink for the management interface of the device. Created programmatically by the Cloud Insights data source as part of inventory reporting.
+
+=== Storage Pool
+
+* Storage – what storage array this pool lives on. Mandatory.
+* Type – a descriptive value from a list of an enumerated list of possibilities. Most commonly will be “Aggregate” or “RAID Group””.
+//* Node – if this storage array’s architecture is such that pools belong to a specific storage node, its name will be seen here as a hyperlink to its own landing page.
+* Uses Flash Pool – Yes/No value – does this SATA/SAS based pool have SSDs used for caching acceleration?
+* Redundancy – RAID level or protection scheme. RAID_DP is dual parity, RAID_TP is triple parity.
+* Capacity – the values here are the logical used, usable capacity and the logical total capacity, and the percentage used across these.
+* Over-committed capacity – If by using efficiency technologies you have allocated a sum total of volume or internal volume capacities larger than the logical capacity of the storage pool, the percentage value here will be greater than 0%.
+* Snapshot – snapshot capacities used and total, if your storage pool architecture dedicates part of its capacity to segments areas exclusively for snapshots. ONTAP in MetroCluster configurations are likely to exhibit this, while other ONTAP configurations are less so.
+* Utilization – a percentage value showing the highest disk busy percentage of any disk contributing capacity to this storage pool. Disk utilization does not necessarily have a strong correlation with array performance – utilization may be high due to disk rebuilds, deduplication activities, etc in the absence of host driven workloads. Also, many arrays’ replication implementations may drive disk utilization while not showing as internal volume or volume workload.
+* IOPS – the sum IOPs of all the disks contributing capacity to this storage pool.
+Throughput – the sum throughput of all the disks contributing capacity to this storage pool.
+
+////
+=== Storage Node
+
+* Storage – what storage array this node is part of. Mandatory.
+* HA Partner – on platforms where a node will fail over to one and only one other node, it will generally be seen here.
+* State – health of the node. Only available when the array is healthy enough to be inventoried by a data source.
+* Model – model name of the node.
+* Version – version name of the device.
+* Serial number – The node serial number.
+* Memory – base 2 memory if available.
+* Utilization – On ONTAP, this is a controller stress index from a proprietary algorithm. With every performance poll, a number between 0 and 100% will be reported that is the higher of either WAFL disk contention, or average CPU utilization. If you observe sustained values > 50%, that is indicative of undersizing – potentially a controller/node not large enough or not enough spinning disks to absorb the write workload.
+* IOPS – Derived directly from ONTAP ZAPI calls on the node object.
+* Latency – Derived directly from ONTAP ZAPI calls on the node object.
+* Throughput – Derived directly from ONTAP ZAPI calls on the node object.
+* Processors – CPU count.
+////
+
+
+== Requirements
+
+The following are requirements to configure and use this data collector:
+
+* You must have access to an Administrator account configured for read-only API calls.
+* Account details include username and password.
+* Port requirements: 80 or 443
+
+
+== Configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|NetApp Management IP |IP address or fully-qualified domain name of the NetApp cluster
+|User Name |User name for NetApp cluster
+|Password |Password for NetApp cluster 
+|===
+
+////
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Connection type|Choose HTTP (default port 80) or HTTPS (default port 443). The default is HTTPS
+|Override Communication Port|Specify a different port if you do not want to use the default
+|Inventory Poll Interval (min) |Default is 60 minutes.
+//|Inventory concurrent thread count|Thread count for parallel foundation queries
+|For TLS for HTTPS|Only allow TLS as protocol when using HTTPS
+|Automatically Lookup Netgroups|Enable the automatic netgroup lookups for export policy rules
+|Netgroup Expansion|Netgroup Expansion Strategy. Choose _file_ or _shell_. The default is _shell_.
+|HTTP read timeout seconds|Default is 30
+|Force responses as UTF-8|Forces data collector code to interpret responses from the CLI as being in UTF-8
+//|Foundation model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
+|Performance Poll Interval (sec)|Default is 900 seconds.
+//|Performance Concurrent thread count|Thread count for parallel performance queries
+//|Performance model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
+
+|Advanced Counter Data Collection|Enable ONTAP integration. Select this to include ONTAP Advanced Counter data in polls. Choose the desired counters from the list.
+
+//|<TBD: New Micro Poll> | Default is 60 seconds
+|===
+////
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+
+|Receive 401 HTTP response or 13003 ZAPI error code and ZAPI returns “Insufficient privileges” or “not authorized for this command”| Check username and password, and user privileges/permissions.
+
+|ZAPI returns "cluster role is not cluster_mgmt LIF"|AU needs to talk to cluster management IP. Check the IP and change to a different IP if necessary
+
+|ZAPI command fails after retry| AU has communication problem with the cluster. Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+
+|AU failed to connect to ZAPI via HTTP| Check whether ZAPI port accepts plaintext. If AU tries to send plaintext to an SSL socket, the communication fails.
+
+|Communication fails with SSLException|AU is attempting to send SSL to a plaintext port on a filer. Check whether the ZAPI port accepts SSL, or use a different port.
+
+|Additional Connection errors:
+
+ZAPI response has error code 13001, “database  is not open”
+  
+ZAPI error code is 60 and response contains “API did not finish on time”
+  
+ZAPI response contains “initialize_session() returned NULL environment”
+  
+ZAPI error code is 14007 and response contains “Node is not healthy”
+
+|Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+|===
+
+
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
+

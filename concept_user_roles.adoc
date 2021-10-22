@@ -37,7 +37,7 @@ You use an account that has Administrator privileges to create or modify user ac
 |Role	|Monitoring	|Cloud Secure	|Reporting
 
 |Account Owner	
-3+>|Can modify subscriptions, view billing and usage information, and perform all Administrator functions for Monitoring & Optimization, Cloud Secure, and Reporting.
+3+<|Can modify subscriptions, view billing and usage information, and perform all Administrator functions for Monitoring & Optimization, Cloud Secure, and Reporting.
 Owners can also invite and manage users, as well as manage SSO Authentication and Identity Federation settings. 
 
 The first Account Owner is created when you register for Cloud Insights.
@@ -81,8 +81,8 @@ The following table shows the Cloud Insights permissions granted to each user ro
 |Feature|Administrator/
 Account Owner|User|Guest
 |Acquisition Units: Add/Modify/Delete|Y|N|N
-|Alerts*/Policies: Create/Modify/Delete|Y|Y|N
-|Alerts*/Policies: View|Y|Y|Y
+|Alerts*: Create/Modify/Delete|Y|Y|N
+|Alerts*: View|Y|Y|Y
 |Annotation Rules: Create/Run/Modify/Delete|Y|Y|N
 |Annotations: Create/Modify/Assign/View/Remove/Delete|Y|Y|N
 |API Access*: Create/Rename/Disable/Revoke|Y|N|N
@@ -98,6 +98,7 @@ Account Owner|User|Guest
 |Notifications: View/Modify|Y|N|N
 |Queries: Create/Modify/Delete|Y|Y|N
 |Queries: View/Run|Y|Y|Y
+|Device Resolution|Y|Y|N
 |Reports*: View/Run|Y|Y|Y
 |Reports*: Create/Modify/Delete/Schedule|Y|Y|N
 |Subscription: View/Modify|Y|N|N
@@ -140,8 +141,14 @@ image:UserRoleChoices.png[User Role Choices]
 
 . Click *Invite*
 +
-The invitation is sent to the user. Users will have 14 days to accept the invitation. Once a user accepts the invitation, they will be taken to the NetApp Cloud Portal, where they will sign up using the email address in the invitation.
-If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud Insights environment.
+The invitation is sent to the user. Users will have 14 days to accept the invitation. Once a user accepts the invitation, they will be taken to the NetApp Cloud Portal, where they will sign up using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud Insights environment.
+
+
+== Deleting Users
+
+A user with the Administrator role can delete a user (for example, someone no longer with the company) by clicking on the user's name and clicking _Delete User_ in the dialog. The user will be removed from the Cloud Insights environment. 
+
+Note that any dashboards, queries, etc. that were created by the user will remain available in the Cloud Insights environment even after the user is removed. 
 
 == Single Sign-On (SSO) and Identity Federation
 
@@ -171,15 +178,17 @@ It is important to understand that changing identity federation in Cloud Central
 It is also important to realize that once identity federation is enabled, that any changes to the company’s identity provider (such moving from SAML to Microsoft AD) will likely require troubleshooting/changes/attention in Cloud Central to update the profiles of the users. 
 
 
+
 === Single Sign-On (SSO) User Auto-Provisioning 
 
 In addition to inviting users, administrators can enable *Single Sign-On (SSO) User Auto-Provisioning* access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights using their corporate credentials.
 
 NOTE: _SSO User Auto-Provisioning_ is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO User Auto-Provisining configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central as described in the section above. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory, using open standards such as Security Assertion Markup Language 2.0 (SAML) and OpenID Connect (OIDC). 
 
-To configure _SSO User Auto-Provisioning_, on the *Admin > User Management* page, click the *Configure SSO* button. Once configured, administrators can then enable SSO user login. When an administrator enables _SSO User Auto-Provisioning_, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
+To configure _SSO User Auto-Provisioning_, on the *Admin > User Management* page, click the *Request Federation* button. Once configured, administrators can then enable SSO user login. When an administrator enables _SSO User Auto-Provisioning_, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
 
-image:SSOBanner.jpg[User Management with SSO]
+//image:SSOBanner.jpg[User Management with SSO]
+image:Roles_federation_Banner.png[User management with Federation]
 
 Occasionally, an administrator will want to promote a single user out of the default SSO role (for example, to make them an administrator). They can accomplish this on the *Admin > User Management* page by clicking on the right-side menu for the user and selecting _Assign Role_. Users who are assigned an explicit role in this way continue to have access to Cloud Insights even if _SSO User Auto-Provisioning_ is subsequently disabled. 
 
@@ -187,7 +196,7 @@ If the user no longer requires the elevated role, you can click the menu to _Rem
 
 You can choose to hide SSO users by unchecking the *Show SSO Users* checkbox. 
 
-image:UserListWithSSO.png[SSO Enabled] 
+//image:UserListWithSSO.png[SSO Enabled] 
 
 However, do not enable _SSO User Auto-Provisioning_ if either of these are true: 
 
