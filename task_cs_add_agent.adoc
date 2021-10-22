@@ -229,7 +229,7 @@ Run the following commands on the local system to open ports that will be used b
 . `sudo firewall-cmd --permanent --zone=public --add-port=35000-55000/tcp` 
 . `sudo firewall-cmd --reload` 
 . `sudo iptables-save | grep 35000` (for CentOS 7)
-. `sudo firewall-cmd --zone=public --list-ports` (for CentOS 8)
+. `sudo firewall-cmd --zone=public --list-ports | grep 35000` (for CentOS 8)
 
 sample output:
 
