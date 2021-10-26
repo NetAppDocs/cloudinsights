@@ -321,6 +321,8 @@ image::SecondaryAxisExplained.png[Secondary Axis example]
 
 In a dashboard, any time series widget (line, spline, area, stacked area), Single-Value, or Gauge Widget allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
 
+You can use variables in expressions (for example, _$Var1 * 100_)
+
 === Expressions Example: Read IOPS percentage
 
 In this example, we want to show Read IOPS as a percentage of Total IOPS. You can think of this as the following formula:
@@ -521,7 +523,7 @@ Read more about link:https://docs.netapp.com/us-en/cloudinsights/task_create_que
 
 ==== Variable Filter Scope
 
-By default, when you add an Annotation variable to your dashboard, the variable is applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard will display results filtered according to the value you set in the variable. 
+By default, when you add a variable to your dashboard, the variable is applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard will display results filtered according to the value you set in the variable. 
 
 image:Variables_Automatic_Filter_Button.png[Automatic Filter]
 
