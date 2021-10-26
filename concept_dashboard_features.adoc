@@ -468,6 +468,7 @@ A variable can be one the following types:
 
 //* *Attribute*: this includes annotations, attributes, and metrics 
 
+* *Attribute*: Use an object's attributes or metrics to filter
 * *Annotation*: Use a pre-defined link:task_defining_annotations.html[Annotation] to filter widget data.
 * *Text*: An alphanumeric string. 
 * *Numerical*: A number value. Use by itself, or as a "from" or "to" value, depending on your widget field.
@@ -477,10 +478,10 @@ A variable can be one the following types:
 //image:Variables_Drop-Down.png[Variable Types]
 image:Variables_Drop_Down_Showing_Annotations.png[Variable Types]
 
-////
+
 ==== "Attribute" type variables
 
-Selecting an Attribute type variable allows you to filter for widget data containing the specified attribute value or values.  The example below shows a line widget displaying free memory trends for Agent nodes. We have created a variable for Agent Node IPs, currently set to show all IPs:
+Selecting an Attribute type variable allows you to filter for widget data containing the specified attribute value or values. The example below shows a line widget displaying free memory trends for Agent nodes. We have created a variable for Agent Node IPs, currently set to show all IPs:
 
 image:Variables_Node_Example_Before_Variable_Applied.png[Agent Nodes Before Variable Filter]
 
@@ -495,7 +496,7 @@ Applying variables is as easy as changing the attribute data of your choice.
 You can create generic variables that are not associated with a particular attribute by selecting a variable type of _Text_, _Number_, _Boolean_, or _Date_. Once the variable has been created, you can select it in a widget filter field. When setting a filter in a widget, in addition to specific values that you can select for the filter, any variables that have been created for the dashboard are displayed in the list--these are grouped under the "Variables" section in the drop-down and have names starting with "$". Choosing a variable in this filter will allow you to search for values that you enter in the variable field on the dashboard itself. Any widgets using that variable in a filter will be updated dynamically. 
 
 image:Variables_in_a_Widget_Filter.png[Selecting a variable in a widget]
-////
+
 
 ////
 ==== Variable filter scope
