@@ -20,11 +20,24 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === November 2021
 
+
 ==== Pod tables on VM Landing Page
 
-If you have a virtual machine associated with a Kubernetes node, the VM landing page will include a table of thre VM's Kubernetes Pods.
+If you have a virtual machine associated with a Kubernetes node, the VM landing page will include a table of the VM's Kubernetes Pods.
 
-image:Kubernetes_Pod_Table_on_VM_Page.png[Kubernetes Pod table on a VM landing page]
+image:Kubernetes_Pod_Table_on_VM_Page.png[Kubernetes Pod table on a VM landing page
+
+
+==== Page variables now include Attributes 
+
+In addition to Annotation, Text, Date, Number, and Boolean, you can now use an object's Attributes in dashboard variables. 
+
+image:Variables_Drop_Down_Showing_Annotations.png[]
+image:Variables_Attribute_Filtering.png[]
+
+
+
+
 
 
 '''
