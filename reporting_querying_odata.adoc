@@ -45,42 +45,32 @@ M2QwYzMifQ.K2iY2niou_k6lMBg_a6Gugq9bYL1Q-JV_3IanXh4x_YCOiJNo9Q11fuNweXMPQr3”
 
 == Generating an APIKey
 
-§ Log into your tenant,
-select Admin > API Access,
-click “+ API Access Token”
-§ Enter a Name & Description
-§ For type choose either
-§ “All Categories”
-§ “Data Warehouse”
-§ Permissions = R/W
-§ APIkeys are good for
-Sync or Async
-§ Click “Save”, then copy the key and save it somewhere safe, you can’t access it later
+* Log into your Cloud Insights environment
+* select Admin > API Access,
+* click “+ API Access Token”
+* Enter a Name & Description
+* For type choose either
+** “All Categories”
+** “Data Warehouse”
+* Permissions = R/W
+* APIkeys are good for
+** Sync or Async
+* Click “Save”, then copy the key and save it somewhere safe, you can’t access it later
 
 == Learning about OData and Postman
 
-§ Here are some tutorials on how to use OData/Olingo, and Postman REST client
-§ Basic Tutorial · OData - the Best Way to REST
-§ OData, short for Open Data Protocol, is an open protocol to allow the creation and consumption of queryable and interoperable RESTful APIs in a simple and standard way.
-§ https://www.odata.org/getting-started/basic-tutorial/
-§ Learning OData on Postman · OData - the Best Way to REST
-§ OData, short for Open Data Protocol, is an open protocol to allow the creation and consumption of queryable
-and interoperable RESTful APIs in a simple and standard way.
-§ https://www.odata.org/getting-started/learning-odata-on-postman
+Here are some tutorials on how to use OData/Olingo, and Postman REST client
+* Basic Tutorial · OData - the Best Way to REST: https://www.odata.org/getting-started/basic-tutorial/
+* Learning OData on Postman · OData - the Best Way to REST: https://www.odata.org/getting-started/learning-odata-on-postman
 
 == Direct query of tables
-7 © 2019 NetApp, Inc. All rights reserved. --- NETAPP CONFIDENTIAL ---
-§ Direct queries of the DWH DB are possible via the Odata integration
-§ **Long URLs may be simplified to https://.../odata/ for display purposes
-§ Rather than the full - https://<tenant>/rest/v1/dwh-management/odata/
-§ Try simple queries like
-§ https://<tenant>/rest/v1/dwh-management/odata/dwh_custom
-§ https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory
-§ https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory/storage
-§ https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory/disk
-§ https://.../odata/dwh_custom/custom_queries
-§ custom_queries table, is where the queries can be saved as views, and run
-later
+Direct queries of the DWH DB are possible via the Odata integration. Long URLs may be simplified to https://.../odata/ for display purposes rather than the full - https://<tenant>/rest/v1/dwh-management/odata/
+Try simple queries like
+* https://<tenant>/rest/v1/dwh-management/odata/dwh_custom
+* https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory
+* https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory/storage
+* https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory/disk
+* https://.../odata/dwh_custom/custom_queries
 
 
 == REST API Examples
