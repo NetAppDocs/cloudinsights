@@ -24,15 +24,191 @@ When the monitored threshold and conditions are reached or exceeded, Cloud Insig
 
 Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
 
+See below for link:#system-defined-monitors-preview[System-Defined Monitors] preview documentation.
+
+////
+=== Monitor or Performance Policy?
+
+What's the difference between a *Performance Policy* and a *Monitor*?
+
+_Policies_ allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports. These policies trigger violations when thresholds are met or exceeded. Each violation can be investigated for troubleshooting. Policies are described in detail elsewhere in this link:task_create_performance_policies.html[documentation].
+
+_Monitors_ provide similar functionality for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins, and alert when thresholds are crossed. With Monitors, you can set thresholds for Warning- or Critical-level alerts, or both. 
+
+Policies and Monitors are available under the *Alerts* menu.
+
+image:AlertsMenuLarger.png[Alerts Menu]
+
+Emails can be sent when a policy or monitor is triggered. 
+////
 
 
 === Creating a Monitor
 
-In the example below, we will create a Monitor to give a Warning alert when _iops.total_ reaches or exceeds 2500ms, and a Critical alert when it reaches or exceeds 3500ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
+In the example below, we will create a Monitor to give a Warning alert when _Volume Node NFS Write Latency_ reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
 
 ==== Requirements
 
 * Cloud Insights must be configured to collect integration data, and that data is being collected.
+
+==== Create the Monitor 
+
+. From the Cloud Insights menu, click *Alerts > Manage Monitors*
++
+The Monitors list page is displayed, showing currently configured monitors. 
+
+. To add a monitor, Click *+ Monitor*. To modify an existing monitor, click the monitor name in the list.
++
+The Monitor Configuration dialog is displayed.
+. In the drop-down, search for and choose an object type and metric to monitor, for example _netapp_ontap_volume_node_nfs_write_latency_.
+
+You can set filters to narrow down which object attributes or metrics to monitor. 
+
+//image:select_metric_to_monitor.png[Select Metric]
+
+image:MonitorMetricFilter.png[Metrics Filtering]
+
+//When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
+
+When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
+
+//image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
+
+TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
+
+
+==== Define the Conditions of the Monitor. 
+
+. After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
+. For the _Warning_ level, enter 200. The dashed line indicating this Warning level displays in the example graph.
+. For the _Critical_ level, enter 400. The dashed line indicating this Critical level displays in the example graph.
++
+The graph displays historical data. The Warning and Critical level lines on the graph are a visual representation of the Monitor, so you can easily see when the Monitor might trigger an alert in each case. 
+
+. For the occurence interval, choose _Continuously_ for a period of _15 Minutes_.
++
+You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
++
+image:define_monitor_conditions.png[Define Conditions]
+
+
+==== Refining the Filter
+
+When you are filtering, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
+
+image:Type-Ahead_Monitor_1.png[Wildcard Filter]
+
+Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
+
+image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
+
+Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
+
+
+
+=== Setting Corrective Actions or Additional Information
+
+You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
+
+In these fields you can provide notes, links, or steps to take to correct or otherwise address the alert.
+
+image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
+
+=== Select notification type and recipients
+
+In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
+
+image:Webhook_Choose_Monitor_Notification.png[Choose alerting method]
+
+*Alerting via Email:*
+
+Specify the email recipients for alert notifications. If desired, you can choose different recipients for warning or critical alerts.
+
+image:email_monitor_alerts.png[Email Alert Recipients]
+
+*Alerting via Webhook:*
+
+Specify the webhook(s) for alert notifications. If desired, you can choose different webhooks for warning or critical alerts.
+
+image:Webhook_Monitor_Notifications.png[Webhook Alerting]
+
+
+=== Save your Monitor
+
+. If desired, you can add a description of the monitor. 
++
+. Give the Monitor a meaningful name and click *Save*.
++
+Your new monitor is added to the list of active Monitors.
+
+=== Monitor List
+
+The Monitor page lists the currently configured monitors, showing the following:
+
+* Monitor Name
+* Status 
+* Object/metric being monitored
+* Conditions of the Monitor
+
+You can view any active alerts associated with a monitor by clicking rthe "bell" icon next to the Monitor name.
+image:ViewActiveAlerts.png[Icon showing active alerts for a monitor]
+
+You can choose to temporarily suspend monitoring of an object type by clicking the menu to the right of the monitor and selecting *Pause*. When you are ready to resume monitoring, click *Resume*.
+
+You can copy a monitor by selecting *Duplicate* from the menu. You can then modify the new monitor and change the object/metric, filter, conditions, email recipients, etc.
+
+If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
+
+
+
+== Monitor Groups
+
+Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
+
+image:Monitors_GroupList.png[Monitor Grouping]
+
+////
+Two groups are shown by default:
+
+* *All Monitors* lists all monitors.
+* *Custom Monitors* lists only user-created monitors.
+////
+
+The number of monitors contained in a group is shown next to the group name.
+
+To create a new group, click the *"+" Create New Monitor Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
+
+To add monitors to the group, go to the _All Monitors_ group (recommended) and do one of the following:
+
+* To add a single monitor, click the menu to the right of the monitor and select _Add to Group_. Choose the group to which to add the monitor.
+* Click on the monitor name to open the monitor's edit view, and select a group in the _Associate to a monitor group_ section.
++
+image:Monitors_AssociateToGroup.png[Associate to group]
+
+//* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Move to Group_.
+
+Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
+
+NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from the group to which it belonged and it is no longer available to any user.
+
+You can also move a monitor to a different group in the same manner, selecting _Move to Group_. 
+
+NOTE: Each monitor can belong to only a single group at any given time.
+
+To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
+
+Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_.
+
+image:Monitors_PauseGroup.png[Pause a group]
+
+
+
+
+== System-Defined Monitors (Preview)
+
+Beginning in October 2021, Cloud Insights will be previewing a number of system-definied monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
+
+NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
 
 ==== Create the Monitor 
 
@@ -77,8 +253,8 @@ TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), defin
 ==== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
-. For the _Warning_ level, enter 2500 for our example. The dashed line indicating this Warning level displays in the example graph.
-. For the _Critical_ level, enter 3500. The dashed line indicating this Critical level displays in the example graph.
+. For the _Warning_ level, enter 200 for our example. The dashed line indicating this Warning level displays in the example graph.
+. For the _Critical_ level, enter 400. The dashed line indicating this Critical level displays in the example graph.
 +
 The graph displays historical data. The Warning and Critical level lines on the graph are a visual representation of the Monitor, so you can easily see when the Monitor might trigger an alert in each case. 
 
@@ -90,6 +266,10 @@ You can choose to trigger an alert the moment a threshold is breached, or wait u
 image:Monitor_metric_conditions.png[Define the monitor's conditions]
 
 
+
+
+
+
 === Log Monitor
 
 In a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above.
@@ -99,6 +279,7 @@ For example, you might choose to filter for "object.store.unavailabe" message ty
 NOTE: The Log Monitor filter cannot be empty. 
 
 image:Monitor_log_monitor_filter.png[choose which log to monitor, and set a filter]
+
 
 
 ==== Define the alert behavior
@@ -119,7 +300,6 @@ You can choose how an log monitor alert is resolved. You are presented with thre
 image:Monitor_log_monitor_resolution.png[Alert Resolution]
 
 
-=== All Monitors
 
 ==== Select notification type and recipients
 
@@ -142,8 +322,7 @@ image:Webhook_Monitor_Notifications.png[Webhook Alerting]
 NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
 
 
-
-==== Setting Corrective Actions or Additional Information
+=== Setting Corrective Actions or Additional Information
 
 You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
 
@@ -152,32 +331,13 @@ In these fields you can provide notes, links, or steps to take to correct or oth
 image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 
 
-
-
-==== Save your Monitor
+=== Save your Monitor
 
 . If desired, you can add a description of the monitor. 
 +
 . Give the Monitor a meaningful name and click *Save*.
 +
 Your new monitor is added to the list of active Monitors.
-
-
-=== Refining the Filter
-
-When you are filtering, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
-
-//image:Type-Ahead_Monitor_1.png[Wildcard Filter]
-
-Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
-
-image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
-
-Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
-
-
-
-
 
 === Monitor List
 
@@ -193,6 +353,9 @@ You can choose to temporarily suspend monitoring of an object type by clicking t
 You can copy a monitor by selecting *Duplicate* from the menu. You can then modify the new monitor and change the object/metric, filter, conditions, email recipients, etc.
 
 If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
+
+
+
 
 
 
@@ -212,9 +375,7 @@ Two groups are shown by default:
 The number of monitors contained in a group is shown next to the group name.
 
 
-NOTE: Custom monitors can be paused, resumed, deleted, or moved to another group. 
-
-//NOTE: System-defined monitors can be paused and resumed but can not be deleted or moved.
+NOTE: Custom monitors can be paused, resumed, deleted, or moved to another group. System-defined monitors can be paused and resumed but can not be deleted or moved.
 
 
 === Custom Monitor Groups
@@ -254,17 +415,13 @@ image:Monitors_PauseGroup.png[Pause a group]
 
 System-defined monitors are comprised of pre-defined metrics and conditions, as well as default descriptions and corrective actions, which can not be modified. You _can_ modify the notification recipient list for system-defined monitors. To view the metrics, conditions, description and corrective actions, or to modify the recipient list, open a system-defined monitor group and click the monitor name in the list.
 
-NOTE: System-Defined Monitors are a _Preview_ feature and this documentation is therefore subject to change.
-
 System-defined monitor groups cannot be modified or removed.
 
 The following system-defined monitors are available, in the noted groups.
 
 * *ONTAP Infrastructure* includes monitors for infrastructure-related issues in ONTAP clusters. 
 * *ONTAP Workload Examples* includes monitors for workload-related issues. 
-* Monitors in both groups default to _Paused_ state.
-
-==== ONTAP Infrastructure monitors
+* Monitors in both group default to _Paused_ state.
 
 |===
 | Monitor Name | Severity | Monitor Description | Corrective Action
@@ -343,38 +500,46 @@ The following system-defined monitors are available, in the noted groups.
  "3. If the issue still persists, contact NetApp technical support for assistance."
 |=== 
 
-==== Additional System-Defined Monitors
-Infrastructure:
+
+
+////
 
 |===
-| Monitor Name | Monitor Description
+|Group | Monitor Name | Monitor Description
 
-| Storage Capacity Limit | When a storage pool (aggregate) fills up, I/O operations slow down and finally cease causing a storage outage incident. A warning alert indicates that planned action should be taken soon to restore minimum free space. A critical alert indicates that service disruption is imminent and emergency measures should be taken to free up space to ensure service continuity.
-| Storage Performance Limit | When a storage pool reaches its performance limit, operations slow down, latency goes up and workloads and applications may start failing. ONTAP evaluates the storage pool utilization due to workloads and estimates what percent of performance has been consumed. A warning alert indicates that planned action should be taken to reduce storage pool load as there may not be enough storage pool performance left to service workload peaks. A critical alert indicates that a performance brownout is imminent and emergency measures should be taken to reduce storage pool load to ensure service continuity.
- | Fiber Channel Port High Utilization | Fiber Channel Protocol ports are used to receive and transfer the SAN traffic between the customer host system and the ONTAP LUNs. If the port utilization is high, then it will become a bottleneck and it will ultimately affect the performance of Fiber Channel Protocol workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.
-| Network Port High Utilization | Network ports are used to receive and transfer the NFS, CIFS, and iSCSI protocol traffic between the customer host systems and the ONTAP volumes. If the port utilization is high then it becomes a bottleneck and it ultimately affects the performance of NFS, CIFS, and iSCSI workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.
+|ONTAP Infrastructure | Storage Capacity Limit | When a storage pool (aggregate) fills up, I/O operations slow down and finally cease causing a storage outage incident. A warning alert indicates that planned action should be taken soon to restore minimum free space. A critical alert indicates that service disruption is imminent and emergency measures should be taken to free up space to ensure service continuity.
+|ONTAP Infrastructure | Storage Performance Limit | When a storage pool reaches its performance limit, operations slow down, latency goes up and workloads and applications may start failing. ONTAP evaluates the storage pool utilization due to workloads and estimates what percent of performance has been consumed. A warning alert indicates that planned action should be taken to reduce storage pool load as there may not be enough storage pool performance left to service workload peaks. A critical alert indicates that a performance brownout is imminent and emergency measures should be taken to reduce storage pool load to ensure service continuity.
+|ONTAP Infrastructure | Fiber Channel Port High Utilization | Fiber Channel Protocol ports are used to receive and transfer the SAN traffic between the customer host system and the ONTAP LUNs. If the port utilization is high, then it will become a bottleneck and it will ultimately affect the performance of Fiber Channel Protocol workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.
+|ONTAP Infrastructure | Network Port High Utilization | Network ports are used to receive and transfer the NFS, CIFS, and iSCSI protocol traffic between the customer host systems and the ONTAP volumes. If the port utilization is high then it becomes a bottleneck and it ultimately affects the performance of NFS, CIFS, and iSCSI workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.
+| ONTAP Workload Examples | Volume Inodes Limit | Volumes that store files use index nodes (inode) to store file metadata. When a volume exhausts its inode allocation, no more files can be added to it. A warning alert indicates that planned action should be taken to increase the number of available inodes. A critical alert indicates that file limit exhaustion is imminent and emergency measures should be taken to free up inodes to ensure service continuity.
+|ONTAP Workload Examples | QTree Capacity is Full | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a default space quota or a quota defined by a quota policy to limit amount of data stored in the tree within the volume capacity. A warning alert indicates that planned action should be taken to increase the space. A critical alert indicates that service disruption is imminent and emergency measures should be taken to free up space to ensure service continuity.
+|ONTAP Workload Examples | Lun High Latency | LUNs are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High LUN latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds
+|ONTAP Workload Examples | NVMe Namespace High Latency | NVMe Namespaces are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High NVMe Namespaces latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity.
+|ONTAP Workload Examples | Qtree Files Soft Limit  | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a quota of the number of files that it can contain in order to maintain a manageable file system size within the volume. A qtree maintains a soft file number quota in order to be able to alert the user proactively before reaching the limit of files in the qtree and being unable to store any additional files. Monitoring the number of files within a qtree ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | Qtree Files Hard Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a quota of the number of files that it can contain in order to maintain a manageable file system size within the volume. A qtree maintains a hard file number quota beyond which new files in the tree are denied. Monitoring the number of files within a qtree ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | QTree Capacity Soft Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a space quota measured in KBytes that it can use to store data in order to control the growth of user data in volume and not exceed its total capacity. A qtree maintains a soft storage capacity quota in order to be able to alert the user proactively before reaching the total capacity quota limit in the qtree and being unable to store data anymore. Monitoring the amount of data stored within a qtree ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | QTree Capacity Hard Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a space quota measured in KBytes that it can use to store data in order to control the growth of user data in volume and not exceed its total capacity. A qtree hard storage capacity quota serves as a threshold beyond which the writes on the qtree are denied. Monitoring the amount of data stored within a qtree ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | User Quota Capacity Soft Limit | ONTAP recognize the users of Unix or Windows systems that have the rights to access volumes, files or directories within a volume. As a result, ONTAP allows the customers to configure storage capacity for their users or groups of users of their Linux or Windows systems. The user or group policy quota limits the amount of space the user can utilize for their own data. A soft limit of this quota allows proactive notification of the user when the amount of capacity used within the volume is reaching the total capacity quota. Monitoring the amount of data stored within a user or group quota ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | User Quota Capacity Hard Limit | ONTAP recognize the users of Unix or Windows systems that have the rights to access volumes, files or directories within a volume. As a result, ONTAP allows the customers to configure storage capacity for their users or groups of users of their Linux or Windows systems. The user or group policy quota limits the amount of space the user can utilize for their own data. A hard limit of this quota allows notification of the user when the amount of capacity used within the volume is right before reaching the total capacity quota. Monitoring the amount of data stored within a user or group quota ensures that the user receives uninterrupted data service.
+|ONTAP Workload Examples | Volume High Latency | Volumes are objects that serve the IO traffic often driven by performance sensitive applications including devOps applications, home directories, and databases. High volume latencies means that the applications themselves may suffer and be unable to accomplish their tasks. Monitoring volume latencies is critical to maintain application consistent performance. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds
+|ONTAP Workload Examples | Snapshot Reserve Capacity is Full | Storage capacity of a volume is necessary to store application and customer data. A portion of that space, called snapshot reserved space, is used to store snapshots which allow data to be protected locally. The more new and updated data stored in the ONTAP volume the more snapshot capacity is used and less snapshot storage capacity will be available for future new or updated data. If the snapshot data capacity within a volume reaches the total snapshot reserve space it may lead to the customer being unable to store new snapshot data and reduction in the level of protection for the data in the volume. Monitoring the volume used snapshot capacity ensures data services continuity.
+|ONTAP Workload Examples | Volume Capacity is Full | Storage capacity of a volume is necessary to store application and customer data. The more data stored in the ONTAP volume the less storage availability for future data. If the data storage capacity within a volume reaches the total storage capacity may lead to the customer being unable to store data due to lack of storage capacity. Monitoring the volume used storage capacity ensures data services continuity.
 |===
 
-Workload Examples:
-
-|===
-| Volume Inodes Limit | Volumes that store files use index nodes (inode) to store file metadata. When a volume exhausts its inode allocation, no more files can be added to it. A warning alert indicates that planned action should be taken to increase the number of available inodes. A critical alert indicates that file limit exhaustion is imminent and emergency measures should be taken to free up inodes to ensure service continuity.
-| QTree Capacity is Full | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a default space quota or a quota defined by a quota policy to limit amount of data stored in the tree within the volume capacity. A warning alert indicates that planned action should be taken to increase the space. A critical alert indicates that service disruption is imminent and emergency measures should be taken to free up space to ensure service continuity.
-| Lun High Latency | LUNs are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High LUN latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds
-| NVMe Namespace High Latency | NVMe Namespaces are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High NVMe Namespaces latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity.
-| Qtree Files Soft Limit  | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a quota of the number of files that it can contain in order to maintain a manageable file system size within the volume. A qtree maintains a soft file number quota in order to be able to alert the user proactively before reaching the limit of files in the qtree and being unable to store any additional files. Monitoring the number of files within a qtree ensures that the user receives uninterrupted data service.
-| Qtree Files Hard Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a quota of the number of files that it can contain in order to maintain a manageable file system size within the volume. A qtree maintains a hard file number quota beyond which new files in the tree are denied. Monitoring the number of files within a qtree ensures that the user receives uninterrupted data service.
-| QTree Capacity Soft Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a space quota measured in KBytes that it can use to store data in order to control the growth of user data in volume and not exceed its total capacity. A qtree maintains a soft storage capacity quota in order to be able to alert the user proactively before reaching the total capacity quota limit in the qtree and being unable to store data anymore. Monitoring the amount of data stored within a qtree ensures that the user receives uninterrupted data service.
-| QTree Capacity Hard Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a space quota measured in KBytes that it can use to store data in order to control the growth of user data in volume and not exceed its total capacity. A qtree hard storage capacity quota serves as a threshold beyond which the writes on the qtree are denied. Monitoring the amount of data stored within a qtree ensures that the user receives uninterrupted data service.
-| User Quota Capacity Soft Limit | ONTAP recognize the users of Unix or Windows systems that have the rights to access volumes, files or directories within a volume. As a result, ONTAP allows the customers to configure storage capacity for their users or groups of users of their Linux or Windows systems. The user or group policy quota limits the amount of space the user can utilize for their own data. A soft limit of this quota allows proactive notification of the user when the amount of capacity used within the volume is reaching the total capacity quota. Monitoring the amount of data stored within a user or group quota ensures that the user receives uninterrupted data service.
-| User Quota Capacity Hard Limit | ONTAP recognize the users of Unix or Windows systems that have the rights to access volumes, files or directories within a volume. As a result, ONTAP allows the customers to configure storage capacity for their users or groups of users of their Linux or Windows systems. The user or group policy quota limits the amount of space the user can utilize for their own data. A hard limit of this quota allows notification of the user when the amount of capacity used within the volume is right before reaching the total capacity quota. Monitoring the amount of data stored within a user or group quota ensures that the user receives uninterrupted data service.
-| Volume High Latency | Volumes are objects that serve the IO traffic often driven by performance sensitive applications including devOps applications, home directories, and databases. High volume latencies means that the applications themselves may suffer and be unable to accomplish their tasks. Monitoring volume latencies is critical to maintain application consistent performance. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds
-| Snapshot Reserve Capacity is Full | Storage capacity of a volume is necessary to store application and customer data. A portion of that space, called snapshot reserved space, is used to store snapshots which allow data to be protected locally. The more new and updated data stored in the ONTAP volume the more snapshot capacity is used and less snapshot storage capacity will be available for future new or updated data. If the snapshot data capacity within a volume reaches the total snapshot reserve space it may lead to the customer being unable to store new snapshot data and reduction in the level of protection for the data in the volume. Monitoring the volume used snapshot capacity ensures data services continuity.
-| Volume Capacity is Full | Storage capacity of a volume is necessary to store application and customer data. The more data stored in the ONTAP volume the less storage availability for future data. If the data storage capacity within a volume reaches the total storage capacity may lead to the customer being unable to store data due to lack of storage capacity. Monitoring the volume used storage capacity ensures data services continuity.
-|===
+////
 
 
+////
+== Pin your Favorite monitors
 
+You can further manage your monitors by pinning favorite ones to the top of your monitor list. To pin a monitor, simply click the thumbtack button displayed when you hover over a monitor in any list. 
+
+// Pinning a monitor pins it to the top of the current group, as well as any other groups containing that monitor, including _All monitors_.
+
+Monitor pin/unpin is an individual user preference and independent of the group (or groups) to which the monitor belongs.
+
+image:DashboardPin.png[Pinned Dashboards]
+////
 
 === More Information
 
