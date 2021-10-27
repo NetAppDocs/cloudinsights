@@ -423,6 +423,103 @@ The following system-defined monitors are available, in the noted groups.
 * *ONTAP Workload Examples* includes monitors for workload-related issues. 
 * Monitors in both group default to _Paused_ state.
 
+
+|===
+|Monitor Name|CI Severity|Monitor Description|Corrective Action
+|Fiber Channel Port High Utilization|CRITICAL|Fiber Channel Protocol ports are used to receive and transfer the SAN traffic between the customer host system and the ONTAP LUNs. If the port utilization is high, then it will become a bottleneck and it will ultimately affect the performance of sensitive of Fiber Channel Protocol workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Move workloads to another lower utilized FCP port
+2. Limit the traffic of certain LUNs to essential work only either via QoS policies in ONTAP or host-side configuration to lighten the utilization of the FCP ports…
+Plan to take the following actions soon if warning threshold is breached:
+1. Consider configuring more FCP ports to handle the data traffic so that the port utilization gets distributed among more ports
+2. Move workloads to another lower utilized FCP port
+3. Limit the traffic of certain LUNs to essential work only either via QoS policies in ONTAP or host-side configuration to lighten the utilization of the FCP ports
+|Lun High Latency|CRITICAL|LUNs are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High LUN latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. If the LUN or its volume has a QoS policy associated with it, evaluate its threshold limits and validate if they are causing the LUN workload to get throttled…
+Plan to take the following actions soon if warning threshold is breached:
+1. If aggregate is also experiencing high utilization, move the LUN to another aggregate
+2. If the node is also experiencing high utilization, move the volume to another node or reduce the total workload of the node
+3. If the LUN or its volume has a QoS policy associated with it, evaluate its threshold limits and validate if they are causing the LUN workload to get throttled
+|Network Port High Utilization|CRITICAL|Network ports are used to receive and transfer the NFS, CIFS and iSCSI protocol traffic between the customer host systems and the ONTAP volumes. If the port utilization is high then it will become a bottleneck and it will ultimately affect the performance of NFS, CIFS and iSCSI workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Limit the traffic of certain volumes to essential work only either via QoS policies in ONTAP or host-side analysis to lighten the utilization of the network ports
+2. Configure one or more volumes to use another lower utilized network port…
+Plan to take the following actions soon if warning threshold is breached:
+1. Consider configuring more network ports to handle the data traffic so that the port utilization gets distributed among more ports
+2. Configure one or more volumes to use another lower utilized network port
+|NVMe Namespace High Latency|CRITICAL |NVMe Namespaces are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High NVMe Namespaces latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. If the NVMe namespace or its volume has a QoS policy assigned to them, evaluate its limit thresholds in case they are causing the NVMe namespace workload to get throttled…
+Plan to take the following actions soon if warning threshold is breached:
+1. If aggregate is also experiencing high utilization, move the LUN to another aggregate
+2. If the node is also experiencing high utilization, move the volume to another node or reduce the total workload of the node
+3. If the NVMe namespace or its volume has a QoS policy assigned to them, evaluate its limit thresholds in case they are causing the NVMe namespace workload to get throttled
+|QTree Capacity Hard Limit|CRITICAL|A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a space quota measured in KBytes that it can use to store data in order to control the growth of user data in volume and not exceed its total capacity. A qtree maintains a soft storage capacity quota in order to be able to alert the user proactively before reaching the total capacity quota limit in the qtree and being unable to store data anymore. Monitoring the amount of data stored within a qtree ensures that the user receives uninterrupted data service.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Consider increasing the tree space quota in order to accommodate the growth
+2. Consider instructing the user to delete unwanted data in the tree that is not needed anymore in order to free up space
+|QTree Capacity is Full|CRITICAL|A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a default space quota or a quota defined by a quota policy to limit amount of data stored in the tree within the volume capacity. A warning alert indicates that planned action should be taken to increase the space. A critical alert indicates that service disruption is imminent and emergency measures should be taken to free up space to ensure service continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Consider increasing the space of the qtree in order to accommodate the growth
+2. Consider deleting data that is not needed anymore to free up space…
+Plan to take the following actions soon if warning threshold is breached:
+1. Consider increasing the space of the qtree in order to accommodate the growth
+2. Consider deleting data that is not needed anymore to free up space
+|QTree Capacity Soft Limit|WARNING|A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a space quota measured in KBytes that it can use to store data in order to control the growth of user data in volume and not exceed its total capacity. A qtree maintains a soft storage capacity quota in order to be able to alert the user proactively before reaching the total capacity quota limit in the qtree and being unable to store data anymore. Monitoring the amount of data stored within a qtree ensures that the user receives uninterrupted data service.|Plan to take the following actions soon if warning threshold is breached:
+1. Consider increasing the tree space quota in order to accommodate the growth
+2. Consider instructing the user to delete unwanted data in the tree that is not needed anymore in order to free up space
+|QTree Files Hard Limit|CRITICAL|A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a quota of the number of files that it can contain in order to maintain a manageable file system size within the volume. A qtree maintains a hard file number quota beyond which new files in the tree are denied. Monitoring the number of files within a qtree ensures that the user receives uninterrupted data service.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Consider increasing the file count quota for the qtree
+2. Delete files that are not used any more from the qtree file system.
+|QTree Files Soft Limit|WARNING|A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a quota of the number of files that it can contain in order to maintain a manageable file system size within the volume. A qtree maintains a soft file number quota in order to be able to alert the user proactively before reaching the limit of files in the qtree and being unable to store any additional files. Monitoring the number of files within a qtree ensures that the user receives uninterrupted data service.|Plan to take the following actions soon if warning threshold is breached:
+1. Consider increasing the file count quota for the qtree
+2. Delete files that are not used any more from the qtree file system
+|Snapshot Reserve Space is Full|CRITICAL|Storage capacity of a volume is necessary to store application and customer data. A portion of that space, called snapshot reserved space, is used to store snapshots which allow data to be protected locally. The more new and updated data stored in the ONTAP volume the more snapshot capacity is used and less snapshot storage capacity will be available for future new or updated data. If the snapshot data capacity within a volume reaches the total snapshot reserve space it may lead to the customer being unable to store new snapshot data and reduction in the level of protection for the data in the volume. Monitoring the volume used snapshot capacity ensures data services continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Consider configuring snapshots to use data space in the volume when the snapshot reserve is full
+2. Consider deleting some older snapshots that may not be needed anymore to free up space…
+Plan to take the following actions soon if warning threshold is breached:
+1. Consider increasing the snapshot reserve space within the volume to accommodate the growth
+2. Consider configuring snapshots to use data space in the volume when the snapshot reserve is full
+|Storage Capacity Limit|CRITICAL|When a storage pool (aggregate) fills up, I/O operations slow down and finally cease causing a storage outage incident. A warning alert indicates that planned action should be taken soon to restore minimum free space. A critical alert indicates that service disruption is imminent and emergency measures should be taken to free up space to ensure service continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Delete Snapshots on non-critical volumes
+2. Delete Volumes or LUNs that are non-essential workloads and that may be restored from off storage copies…
+Plan to take the following actions soon if warning threshold is breached:
+1. Move one or more volumes to a different storage location
+2. Add more storage capacity
+3. Change storage efficiency settings or tier inactive data to cloud storage
+|Storage Performance Limit|CRITICAL|When a storage system reaches its performance limit, operations slow down, latency goes up and workloads and applications may start failing. ONTAP evaluates the storage pool utilization due to workloads and estimates what percent of performance has been consumed. A warning alert indicates that planned action should be taken to reduce storage pool load to as there may not be enough storage pool performance left to service workload peaks. A critical alert indicates that a performance brownout is imminent and emergency measures should be taken to reduce storage pool load to ensure service continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Suspend scheduled tasks such as Snapshots or SnapMirror replication
+2. Idle non-essential workloads…
+Plan to take the following actions soon if warning threshold is breached:
+1. Move one or more workloads to a different storage location
+2. Add more storage nodes (AFF) or disk shelves (FAS)and redistribute workloads
+3. Change workload characteristics(block size, application caching etc)
+|User Quota Capacity Hard Limit|CRITICAL|ONTAP recognize the users of Unix or Windows systems that have the rights to access volumes, files or directories within a volume. As a result ONTAP allows the customers to configure storage capacity for their users or groups of users of their Linux or Windows systems. The user or group policy quota limits the amount of space the user can utilize for their own data. A hard limit of this quota allows notification of the user when the amount of capacity used within the volume is right before reaching the total capacity quota. Monitoring the amount of data stored within a user or group quota ensures that the user receives uninterrupted data service.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Consider increasing the space of the user or group quota in order to accommodate the growth
+2. Consider instructing the user or group to delete data that is not needed anymore to free up space.
+|User Quota Capacity Soft Limit|WARNING|ONTAP recognize the users of Unix or Windows systems that have the rights to access volumes, files or directories within a volume. As a result ONTAP allows the customers to configure storage capacity for their users or groups of users of their Linux or Windows systems. The user or group policy quota limits the amount of space the user can utilize for their own data. A soft limit of this quota allows proactive notification of the user when the amount of capacity used within the volume is reaching the total capacity quota. Monitoring the amount of data stored within a user or group quota ensures that the user receives uninterrupted data service.|Plan to take the following actions soon if warning threshold is breached:
+1. Consider increasing the space of the user or group quota in order to accommodate the growth
+2. Consider deleting data that is not needed anymore to free up space.
+|Volume Capacity is Full|CRITICAL|Storage capacity of a volume is necessary to store application and customer data. The more data stored in the ONTAP volume the less storage availability for future data. If the data storage capacity within a volume reaches the total storage capacity may lead to the customer being unable to store data due to lack of storage capacity. Monitoring the volume used storage capacity ensures data services continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Consider increasing the space of the volume in order to accommodate the growth
+2. Consider deleting data that is not needed anymore to free up space…
+Plan to take the following actions soon if warning threshold is breached:
+1. Consider increasing the space of the volume in order to accommodate the growth
+|Volume High Latency|CRITICAL|Volumes are objects that serve the IO traffic often driven by performance sensitive applications including devOps applications, home directories, and databases. High volume latencies means that the applications themselves may suffer and be unable to accomplish their tasks. Monitoring volume latencies is critical to maintain application consistent performance. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. If the volume has a QoS policy assigned to it, evaluate its limit thresholds in case they are causing the volume workload to get throttled…
+Plan to take the following actions soon if warning threshold is breached:
+1. If aggregate is also experiencing high utilization, move the volume to another aggregate.
+2. If the volume has a QoS policy assigned to it, evaluate its limit thresholds in case they are causing the volume workload to get throttled.
+3. If the node is also experiencing high utilization, move the volume to another node or reduce the total workload of the node
+|Volume Inodes Limit|CRITICAL|Volumes that store files use index nodes (inode) to store file metadata. When a volume exhausts its inode allocation no more files can be added to it. A warning alert indicates that planned action should be taken to increase the number of available inodes. A critical alert indicates that file limit exhaustion is imminent and emergency measures should be taken to free up inodes to ensure service continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
+1. Consider increasing the inodes value for the volume. If the inodes value is already at the max, then consider splitting the volume into two or more volumes because the file system has grown beyond the maximum size
+2. Consider using FlexGroup as it helps to accommodate large file systems…
+Plan to take the following actions soon if warning threshold is breached:
+1. Consider increasing the inodes value for the volume. If the inodes value is already at the max, then consider splitting the volume into two or more volumes because the file system has grown beyond the maximum size
+2. Consider using FlexGroup as it helps to accommodate large file systems
+|===
+
+
+
+
+
+
+////
 |===
 | Monitor Name | Severity | Monitor Description | Corrective Action
 |WAFL Quota Qtree Exceeded	|INFO	|This event occurs when a tree quota has exceeded on a volume. This event is not repeated for this tree for a set amount of time or until a “quota resize” is performed. The amount of time is specified by the “quota logmsg” command.	| Reduce the usage in this tree or increase the quota and run the "quota resize" command.
@@ -499,6 +596,9 @@ The following system-defined monitors are available, in the noted groups.
  "2. If the issue persists, replace the fan module."
  "3. If the issue still persists, contact NetApp technical support for assistance."
 |=== 
+////
+
+
 
 
 
