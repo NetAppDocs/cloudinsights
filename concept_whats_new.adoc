@@ -20,6 +20,14 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === November 2021
 
+==== Additional Operating Systems supported
+
+The Cloud Insights Acquisition Unit supports the following operating systems, in addition to those already supported:
+
+* Centos (64-bit) 8.4
+* Oracle Enterprise Linux (64-bit) 8.4
+* Red Hat Enterprise Linux (64-bit) 8.4
+
 
 ==== Pod tables on VM Landing Page
 
@@ -38,7 +46,20 @@ image:Variables_Attribute_Filtering.png[]
 
 ==== Variables in Expressions  
 
-It is now possible to use any Numeric variable in a widget expression. For example _$NumVar1 * 100_).
+It is now possible to use any Numeric dashboard variable in a widget expression. For example _$NumVar1 * 100_.
+
+
+==== Add Entitlement ID to Subscription
+
+*******THIS SECTION TO BE RE-WORDED*****
+
+If you own a valid NetApp product that is bundled with Cloud Insights, you can add that product serial number to your existing Cloud Insights subscription. For example, if you have purchased NetApp Astra, and Cloud Insights is bundled with the Astra deal, the Astra license serial number can be used to identify the subscription in Cloud Insights. Cloud Insights refers to this an _Entitlement ID_.
+
+To add an entitlement ID to your Cloud Insights subscription, on the *Admin > Subscription* page, click _+Entitlement ID_.
+
+image:Subscription_AddEntitlementID.png[Add an entitlement ID to your subscription]
+
+
 
 
 
