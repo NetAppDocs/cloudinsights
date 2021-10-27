@@ -204,6 +204,13 @@ image:Monitors_PauseGroup.png[Pause a group]
 
 
 
+
+
+
+
+
+
+
 == System-Defined Monitors (Preview)
 
 Beginning in October 2021, Cloud Insights will be previewing a number of system-definied monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
@@ -366,6 +373,7 @@ If a monitor is no longer needed, you can delete it by selecting *Delete* from t
 Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
 
 image:Monitors_GroupList.png[Monitor Grouping]
+////
 
 ////
 Two groups are shown by default:
@@ -374,6 +382,7 @@ Two groups are shown by default:
 * *Custom Monitors* lists only user-created monitors.
 ////
 
+////
 The number of monitors contained in a group is shown next to the group name.
 
 
@@ -530,7 +539,7 @@ Plan to take the following actions soon if warning threshold is breached:
 2. Consider using FlexGroup as it helps to accommodate large file systems
 
 |===
-
+////
 
 
 
@@ -657,13 +666,14 @@ Monitor pin/unpin is an individual user preference and independent of the group 
 image:DashboardPin.png[Pinned Dashboards]
 ////
 
+
 === More Information
 
-//* link:concept_notifications_email.html[Email Alerting] for Monitors
-
 * link:task_view_and_manage_alerts.html[Viewing and Dismissing Alerts]
+* link:task_system_monitors.html[System-Defined Monitors (Preview)
 
-////
+
+
 
 
 
