@@ -62,12 +62,15 @@ M2QwYzMifQ.K2iY2niou_k6lMBg_a6Gugq9bYL1Q-JV_3IanXh4x_YCOiJNo9Q11fuNweXMPQr3”
 == Learning about OData and Postman
 
 Here are some tutorials on how to use OData/Olingo, and Postman REST client
+
 * Basic Tutorial · OData - the Best Way to REST: https://www.odata.org/getting-started/basic-tutorial/
 * Learning OData on Postman · OData - the Best Way to REST: https://www.odata.org/getting-started/learning-odata-on-postman
 
 == Direct query of tables
 Direct queries of the DWH DB are possible via the Odata integration. Long URLs may be simplified to https://.../odata/ for display purposes rather than the full - https://<tenant>/rest/v1/dwh-management/odata/
+
 Try simple queries like
+
 * https://<tenant>/rest/v1/dwh-management/odata/dwh_custom
 * https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory
 * https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory/storage
