@@ -5,7 +5,7 @@ summary: Integration of Odata / Olingo libraries allows users to query the DWH D
 keywords: reporting, cognos, data warehouse, dwh
 ---
 
-= Cloud Insights Reporting Overview
+= Reporting Odata via API
 
 :toc: macro
 :hardbreaks:
@@ -82,4 +82,44 @@ and interoperable RESTful APIs in a simple and standard way.
 § custom_queries table, is where the queries can be saved as views, and run
 later
 
+
+== REST API Examples
+
+The URL for all calls is _https://<sub-domain>.<domain>/rest/v1/dwh-management/odata_. 
+
+ * GET /{schema}/** - Retrieves data from Data Warehouse through ODATA protocol, requires GUEST role
+
+ Format: https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/<schema_name>/<query>
+
+ Example: get all Storage Pools of storage with id 287 with expanded Internal Volume data: https://regf79q.oci.cloudinsights-qa.netapp.com/rest/v1/dwh-management/odata/dwh_inventory/storage(287)/storage_pool?$expand=internal_volume
+
+
+
+ * POST /{schema}/** - Write data and create queries in dwh_custom schema of Data Warehouse database through ODATA protocol, requires ADMIN role
+
+ Format: https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/<schema_name>/<table_name>. The body contains the record in JSON format
+
+ Example: add a new record to the storage table: https://regf79q.oci.cloudinsights-qa.netapp.com/rest/v1/dwh-management/odata/dwh_custom/storage , Request body: {"storageId": 123, "storageName": "storage123"}
+
+Creating queries: POST https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/dwh_custom/custom_queries -d '{"queryName": "<query_name>", "querySql": "<query_sql>"}'
+
+
+
+ * PATCH /{schema}/** - Modify data and modify queries in dwh_custom schema of Data Warehouse database through ODATA protocol, requires ADMIN role
+
+ Format: https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/<schema_name>/<table_name>('<record_id>'). The body contains the record in JSON format
+
+ Example: modify a record in the storage table: https://regf79q.oci.cloudinsights-qa.netapp.com/rest/v1/dwh-management/odata/dwh_custom/storage('123') , Request body: {"storageId": 123, "storageName": "storage123"}
+
+Modifying queries: PATCH https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/dwh_custom/custom_queries('queryName') -d '{"queryName": "<query_name>", "querySql": "<query_sql>"}'
+
+
+
+ * DELETE /{schema}/** - Delete data and delete queries in dwh_custom schema of Data Warehouse database through ODATA protocol, requires ADMIN role
+
+ Format: https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/<schema_name>/<table_name>('<record_id>')
+
+ Example: delete a record from the storage table: https://regf79q.oci.cloudinsights-qa.netapp.com/rest/v1/dwh-management/odata/dwh_custom/storage('123')
+
+Deleting queries: DELETE https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/dwh_custom/custom_queries('queryName')
 
