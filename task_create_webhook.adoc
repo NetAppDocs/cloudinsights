@@ -26,7 +26,7 @@ The webhook channel instance is comprised of the following elements:
 
 |===
 |Name|Unique name
-|URL|Webhook target URL, including the _http://_ or _https://_ prefix
+|URL|Webhook target URL, including the _http://_ or _https://_ prefix along with the url params
 |Method	|GET, POST - Default is POST
 |Custom Header|Specify any custom header lines here
 |Message Body|Put the body of your message here
@@ -52,7 +52,7 @@ Alert Parameters are dynamic values populated per alert. For example, the _%%Tri
 
 ==== Custom Parameters and Secrets
 
-In this section you can add any custom parameters and/or secrets you wish. For security reasons, if a secret is defined only the webhook creator can modify this webhook channel. It is read-only for others.
+In this section you can add any custom parameters and/or secrets you wish. For security reasons, if a secret is defined only the webhook creator can modify this webhook channel. It is read-only for others. For using secrets in URL/Headers you can use them as %%<secret_name>%%
 
 === Choosing Webhook Notification in a Monitor
 
