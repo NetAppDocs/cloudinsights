@@ -32,9 +32,21 @@ The current release of Olingo supports access via REST clients. Future versions 
 
 // * These slides use the FireFox REST client plugin, any REST client should work
 
+Keep the following in mind when working with Reporting API queries.
+
+* The query must be contained in a single line
+* Double quotes must be escaped
+* Tabs are supported as "\t"
+* Avoid comments
+* Lower-case table names are supported
+* Must be a valid JSON string
+
+Additionally:
+
 * 2 Headers are required:
 ** Name “X-CloudInsights-ApiKey”
 ** Attribute Value “<apikey>”
+
 * Your API key will be specific to your Cloud Insights environment.
 
 ////
