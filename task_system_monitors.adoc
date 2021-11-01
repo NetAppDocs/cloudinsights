@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_create_monitor.html
+permalink: task_system_monitors.html
 keywords: monitors, alerts, log, metric
 summary: Create monitors to alert on performance or inventory thresholds, as well as metric or log conditions.
 ---
 
-= Alerting with Monitors
+= System Monitors
 
 :toc: macro
 :hardbreaks:
@@ -18,198 +18,6 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 [.lead]
 You create monitors to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a monitor to alert for _node write latency_ for any of a multitude of protocols.
 
-TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
-
-When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both.
-
-Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
-
-See below for link:#system-defined-monitors-preview[System-Defined Monitors] preview documentation.
-
-////
-=== Monitor or Performance Policy?
-
-What's the difference between a *Performance Policy* and a *Monitor*?
-
-_Policies_ allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports. These policies trigger violations when thresholds are met or exceeded. Each violation can be investigated for troubleshooting. Policies are described in detail elsewhere in this link:task_create_performance_policies.html[documentation].
-
-_Monitors_ provide similar functionality for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins, and alert when thresholds are crossed. With Monitors, you can set thresholds for Warning- or Critical-level alerts, or both. 
-
-Policies and Monitors are available under the *Alerts* menu.
-
-image:AlertsMenuLarger.png[Alerts Menu]
-
-Emails can be sent when a policy or monitor is triggered. 
-////
-
-
-=== Creating a Monitor
-
-In the example below, we will create a Monitor to give a Warning alert when _Volume Node NFS Write Latency_ reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
-
-==== Requirements
-
-* Cloud Insights must be configured to collect integration data, and that data is being collected.
-
-==== Create the Monitor 
-
-. From the Cloud Insights menu, click *Alerts > Manage Monitors*
-+
-The Monitors list page is displayed, showing currently configured monitors. 
-
-. To add a monitor, Click *+ Monitor*. To modify an existing monitor, click the monitor name in the list.
-+
-The Monitor Configuration dialog is displayed.
-. In the drop-down, search for and choose an object type and metric to monitor, for example _netapp_ontap_volume_node_nfs_write_latency_.
-
-You can set filters to narrow down which object attributes or metrics to monitor. 
-
-//image:select_metric_to_monitor.png[Select Metric]
-
-image:MonitorMetricFilter.png[Metrics Filtering]
-
-//When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
-
-When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
-
-//image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
-
-TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
-
-
-==== Define the Conditions of the Monitor. 
-
-. After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
-. For the _Warning_ level, enter 200. The dashed line indicating this Warning level displays in the example graph.
-. For the _Critical_ level, enter 400. The dashed line indicating this Critical level displays in the example graph.
-+
-The graph displays historical data. The Warning and Critical level lines on the graph are a visual representation of the Monitor, so you can easily see when the Monitor might trigger an alert in each case. 
-
-. For the occurence interval, choose _Continuously_ for a period of _15 Minutes_.
-+
-You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
-+
-image:define_monitor_conditions.png[Define Conditions]
-
-
-==== Refining the Filter
-
-When you are filtering, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
-
-image:Type-Ahead_Monitor_1.png[Wildcard Filter]
-
-Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
-
-image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
-
-Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
-
-
-
-=== Setting Corrective Actions or Additional Information
-
-You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
-
-In these fields you can provide notes, links, or steps to take to correct or otherwise address the alert.
-
-image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
-
-=== Select notification type and recipients
-
-In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
-
-image:Webhook_Choose_Monitor_Notification.png[Choose alerting method]
-
-*Alerting via Email:*
-
-Specify the email recipients for alert notifications. If desired, you can choose different recipients for warning or critical alerts.
-
-image:email_monitor_alerts.png[Email Alert Recipients]
-
-*Alerting via Webhook:*
-
-Specify the webhook(s) for alert notifications. If desired, you can choose different webhooks for warning or critical alerts.
-
-image:Webhook_Monitor_Notifications.png[Webhook Alerting]
-
-
-=== Save your Monitor
-
-. If desired, you can add a description of the monitor. 
-+
-. Give the Monitor a meaningful name and click *Save*.
-+
-Your new monitor is added to the list of active Monitors.
-
-=== Monitor List
-
-The Monitor page lists the currently configured monitors, showing the following:
-
-* Monitor Name
-* Status 
-* Object/metric being monitored
-* Conditions of the Monitor
-
-You can view any active alerts associated with a monitor by clicking rthe "bell" icon next to the Monitor name.
-image:ViewActiveAlerts.png[Icon showing active alerts for a monitor]
-
-You can choose to temporarily suspend monitoring of an object type by clicking the menu to the right of the monitor and selecting *Pause*. When you are ready to resume monitoring, click *Resume*.
-
-You can copy a monitor by selecting *Duplicate* from the menu. You can then modify the new monitor and change the object/metric, filter, conditions, email recipients, etc.
-
-If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
-
-
-
-== Monitor Groups
-
-Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
-
-image:Monitors_GroupList.png[Monitor Grouping]
-
-////
-Two groups are shown by default:
-
-* *All Monitors* lists all monitors.
-* *Custom Monitors* lists only user-created monitors.
-////
-
-The number of monitors contained in a group is shown next to the group name.
-
-To create a new group, click the *"+" Create New Monitor Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
-
-To add monitors to the group, go to the _All Monitors_ group (recommended) and do one of the following:
-
-* To add a single monitor, click the menu to the right of the monitor and select _Add to Group_. Choose the group to which to add the monitor.
-* Click on the monitor name to open the monitor's edit view, and select a group in the _Associate to a monitor group_ section.
-+
-image:Monitors_AssociateToGroup.png[Associate to group]
-
-//* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Move to Group_.
-
-Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
-
-NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from the group to which it belonged and it is no longer available to any user.
-
-You can also move a monitor to a different group in the same manner, selecting _Move to Group_. 
-
-NOTE: Each monitor can belong to only a single group at any given time.
-
-To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
-
-Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_.
-
-image:Monitors_PauseGroup.png[Pause a group]
-
-
-
-
-
-
-
-
-
-
 
 == System-Defined Monitors (Preview)
 
@@ -217,10 +25,6 @@ Beginning in October 2021, Cloud Insights will be previewing a number of system-
 
 NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
 
-Read more about link:task_system_monitors.html[System-Defined Monitors]
-
-
-////
 ==== Create the Monitor 
 
 . From the Cloud Insights menu, click *Alerts > Manage Monitors*
@@ -375,7 +179,6 @@ If a monitor is no longer needed, you can delete it by selecting *Delete* from t
 Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
 
 image:Monitors_GroupList.png[Monitor Grouping]
-////
 
 ////
 Two groups are shown by default:
@@ -384,7 +187,6 @@ Two groups are shown by default:
 * *Custom Monitors* lists only user-created monitors.
 ////
 
-////
 The number of monitors contained in a group is shown next to the group name.
 
 
@@ -541,8 +343,34 @@ Plan to take the following actions soon if warning threshold is breached:
 2. Consider using FlexGroup as it helps to accommodate large file systems
 
 |===
-////
 
+
+==== Log Monitors
+
+|===
+|Monitor Name|CI Severity|Monitor Description|Corrective Action
+|AWS Credentials Not Initialized|INFO|This event occurs when a module attempts to access Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials from the cloud credentials thread before they are initialized. |Wait for the cloud credentials thread, as well as the system, to complete initialization. 
+|Cloud Tier Unreachable|CRITICAL|A storage node cannot connect to Cloud Tier object store API. Some data will be inaccessible.|If you use on-premises products, perform the following corrective actions: …Verify that your intercluster LIF is online and functional by using the "network interface show" command.…Check the network connectivity to the object store server by using the "ping" command over the destination node intercluster LIF.…Ensure the following:…The configuration of your object store has not changed.…The login and connectivity information is still valid.…Contact NetApp technical support if the issue persists. 
+
+If you use Cloud Volumes ONTAP, perform the following corrective actions: …Ensure that the configuration of your object store has not changed.… Ensure that the login and connectivity information is still valid.…Contact NetApp technical support if the issue persists.
+|Disk Out of Service|INFO|This event occurs when a disk is removed from service because it has been marked failed, is being sanitized, or has entered the Maintenance Center.|None.
+|FlexGroup Constituent Full|CRITICAL|A constituent within a FlexGroup volume is full, which might cause a potential disruption of service. You can still create or expand files on the FlexGroup volume. However, none of the files that are stored on the constituent can be modified. As a result, you might see random out-of-space errors when you try to perform write operations on the FlexGroup volume.|It is recommended that you add capacity to the FlexGroup volume by using the "volume modify -files +X" command.…Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent.
+|Flexgroup Constituent Nearly Full|WARNING|A constituent within a FlexGroup volume is nearly out of space, which might cause a potential disruption of service. Files can be created and expanded. However, if the constituent runs out of space, you might not be able to append to or modify the files on the constituent. |It is recommended that you add capacity to the FlexGroup volume by using the "volume modify -files +X" command.…Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent.
+|FlexGroup Constituent Nearly Out of Inodes|WARNING|A constituent within a FlexGroup volume is almost out of inodes, which might cause a potential disruption of service. The constituent receives lesser create requests than average. This might impact the overall performance of the FlexGroup volume, because the requests are routed to constituents with more inodes.|It is recommended that you add capacity to the FlexGroup volume by using the "volume modify -files +X" command.…Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent.
+|FlexGroup Constituent Out of Inodes|CRITICAL|A constituent of a FlexGroup volume has run out of inodes, which might cause a potential disruption of service. You cannot create new files on this constituent. This might lead to an overall imbalanced distribution of content across the FlexGroup volume.|It is recommended that you add capacity to the FlexGroup volume by using the "volume modify -files +X" command.…Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent.
+|LUN Offline|INFO|This event occurs when a LUN is brought offline manually. |Bring the LUN back online. 
+|Main Unit Fan Failed|WARNING|One or more main unit fans have failed. The system remains operational.…However, if the condition persists for too long, the overtemperature might trigger an automatic shutdown.|Reseat the failed fans. If the error persists, replace them.
+|Main Unit Fan in Warning State|INFO|This event occurs when one or more main unit fans are in a warning state.|Replace the indicated fans to avoid overheating.
+|NVRAM Battery Low|WARNING|The NVRAM battery capacity is critically low. There might be a potential data loss if the battery runs out of power.…Your system generates and transmits an AutoSupport or "call home" message to NetApp technical support and the configured destinations if it is configured to do so. The successful delivery of an AutoSupport message significantly improves problem determination and resolution. |Perform the following corrective actions:…View the battery's current status, capacity, and charging state by using the "system node environment sensors show" command.…If the battery was replaced recently or the system was non-operational for an extended period of time, monitor the battery to verify that it is charging properly.…Contact NetApp technical support if the battery runtime continues to decrease below critical levels, and the storage system shuts down automatically.
+|Service Processor Not Configured|WARNING|This event occurs on a weekly basis, to remind you to configure the Service Processor (SP). The SP is a physical device that is incorporated into your system to provide remote access and remote management capabilities. You should configure the SP to use its full functionality. |Perform the following corrective actions:…Configure the SP by using the "system service-processor network modify" command.…Optionally, obtain the MAC address of the SP by using the "system service-processor network show" command.…Verify the SP network configuration by using the "system service-processor network show" command.…Verify that the SP can send an AutoSupport email by using the "system service-processor autosupport invoke" command.
+NOTE: AutoSupport email hosts and recipients should be configured in ONTAP before you issue this command.
+|Service Processor Offline|CRITICAL|ONTAP is no longer receiving heartbeats from the Service Processor (SP), even though all the SP recovery actions have been taken. ONTAP cannot monitor the health of the hardware without the SP.…The system will shut down to prevent hardware damage and data loss. Set up a panic alert to be notified immediately if the SP goes offline. |Power-cycle the system by performing the following actions:…Pull the controller out from the chassis.…Push the controller back in.…Turn the controller back on.…If the problem persists, replace the controller module.
+|Shelf Fans Failed|CRITICAL|The indicated cooling fan or fan module of the shelf has failed. The disks in the shelf might not receive enough cooling airflow, which might result in disk failure.|Perform the following corrective actions:…Verify that the fan module is fully seated and secured.
+NOTE: The fan is integrated into the power supply module in some disk shelves.…If the issue persists, replace the fan module.…If the issue still persists, contact NetApp technical support for assistance.
+|System Cannot Operate Due to Main Unit Fan Failure |CRITICAL|One or more main unit fans have failed, disrupting system operation. This might lead to a potential data loss. |Replace the failed fans.
+|Unassigned Disks|INFO|System has unassigned disks - capacity is being wasted and your system may have some misconfiguration or partial configuration change applied.|Perform the following corrective actions:…Determine which disks are unassigned by using the "disk show -n" command.…Assign the disks to a system by using the "disk assign" command.
+
+|===
 
 
 
@@ -668,11 +496,11 @@ Monitor pin/unpin is an individual user preference and independent of the group 
 image:DashboardPin.png[Pinned Dashboards]
 ////
 
-
 === More Information
 
-* link:task_view_and_manage_alerts.html[Viewing and Dismissing Alerts]
+//* link:concept_notifications_email.html[Email Alerting] for Monitors
 
+* link:task_view_and_manage_alerts.html[Viewing and Dismissing Alerts]
 
 
 
