@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: reporting_querying_odata.html
-summary: Integration of Odata / Olingo libraries allows users to query the DWH DB directly, without going through the Cognos Reporting environment.
+summary: Integration of Odata / Olingo libraries allows users to query the Reporting DB directly, without going through the Cognos Reporting environment.
 keywords: reporting, cognos, data warehouse, dwh
 ---
 
@@ -17,11 +17,11 @@ keywords: reporting, cognos, data warehouse, dwh
 
 
 [.lead]
-Integration of Apache's Odata / Olingo libraries allows users to query the Cloud Insights Data Warehouse (DWH) database directly, without going through the Cognos Reporting environment.
+Integration of Apache's Odata / Olingo libraries allows users to query the Cloud Insights Reporting database directly, without going through the Cognos Reporting environment.
 
 == What is Apache Olingo?
 
-Apache Olingo is a Java library that implements the Open Data Protocol (OData). Integration of Odata Olingo libraries allows users to perform read-only queries of the Cloud Insights Data Warehouse (DWH) directly, without going through the Cognos Reporting environment.
+Apache Olingo is a Java library that implements the Open Data Protocol (OData). Integration of Odata Olingo libraries allows users to perform read-only queries of the Cloud Insights Reporting database directly, without going through the Cognos Reporting environment.
 
 Note that the exception to the read-only limitation the _dwh_custom_ schema that is used for secondary ETL (Extract, Transform, Load) can be written.
 However, this schema is not populated by ETL, so none of the collected data is sent there directly.
@@ -79,7 +79,7 @@ Here are some tutorials on how to use OData/Olingo, and Postman REST client
 * Learning OData on Postman · OData - the Best Way to REST: https://www.odata.org/getting-started/learning-odata-on-postman
 
 == Direct query of tables
-Direct queries of the DWH DB are possible via the Odata integration. Long URLs may be simplified to https://.../odata/ for display purposes rather than the full - https://<tenant>/rest/v1/dwh-management/odata/
+Direct queries of the Reporting database are possible via the Odata integration. Long URLs may be simplified to https://.../odata/ for display purposes rather than the full - https://<tenant>/rest/v1/dwh-management/odata/
 
 Try simple queries like
 
