@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: reporting_querying_odata.html
-summary: Integration of Odata / Olingo libraries allows users to query the Reporting DB directly, without going through the Cognos Reporting environment.
-keywords: reporting, cognos, data warehouse, dwh
+summary: Use Cloud Insights APIs to query the Reporting DB directly.
+keywords: reporting, cognos, data warehouse, dwh, API
 ---
 
-= Reporting Odata via API
+= Access the Reporting Database via API
 
 :toc: macro
 :hardbreaks:
@@ -17,26 +17,22 @@ keywords: reporting, cognos, data warehouse, dwh
 
 
 [.lead]
-Integration of Apache's Odata / Olingo libraries allows users to query the Cloud Insights Reporting database directly, without going through the Cognos Reporting environment.
+Cloud Insights' powerful API allows users to query the Cloud Insights Reporting database directly, without going through the Cognos Reporting environment.
 
-== What is Apache Olingo?
+NOTE: This documentation refers to the Cloud Insights Reporting feature, which is available in the link:/concept_subscribing_to_cloud_insights.html#editions[Premium Edition].
 
-Apache Olingo is a Java library that implements the Open Data Protocol (OData). Integration of Odata Olingo libraries allows users to perform read-only queries of the Cloud Insights Reporting database directly, without going through the Cognos Reporting environment.
+== Odata
 
-Note that the exception to the read-only limitation the _dwh_custom_ schema that is used for secondary ETL (Extract, Transform, Load) can be written.
-However, this schema is not populated by ETL, so none of the collected data is sent there directly.
-
-The current release of Olingo supports access via REST clients. Future versions are expected to support tools such as Tableau.
+The Cloud Insights Reporting API follows the link:https://www.odata.org/[OData v4] (Open Data Protocol) standard for its querying of the Reporting database. 
+For more information or to learn more, check out link:https://www.odata.org/getting-started/basic-tutorial/[this tutorial] on OData. 
 
 == REST client setup for Synchronous Queries
-
-// * These slides use the FireFox REST client plugin, any REST client should work
 
 Keep the following in mind when working with Reporting API queries.
 
 * The query must be contained in a single line
-* Double quotes must be escaped
-* Tabs are supported as "\t"
+* Double quotes must be escaped, i.e. \"
+* Tabs are supported as \t
 * Avoid comments
 * Lower-case table names are supported
 * Must be a valid JSON string
@@ -47,7 +43,7 @@ Additionally:
 ** Name “X-CloudInsights-ApiKey”
 ** Attribute Value “<apikey>”
 
-* Your API key will be specific to your Cloud Insights environment.
+Your API key will be specific to your Cloud Insights environment.
 
 ////
 “eyJraWQiOiI5OTk5IiwidHlwIjoiSldUIiwiYWxnIjoiSFMzODQifQ.eyJjcmVhdG9yTG9naW4iOiJhdXRoMHw1YjBlZTI4YWIzNTJjNjE5M2FhZWM2YTQiLCJkaXNwbGF5TmFtZSI6Ik9kYX
@@ -55,82 +51,115 @@ RhLXRlc3QgKG9uIGJlaGFsZiBvZiBNaWNoYWVsIFJ5YW4pIiwicm9sZXMiOltdLCJpc3MiOiJvY2kiLC
 M2QwYzMifQ.K2iY2niou_k6lMBg_a6Gugq9bYL1Q-JV_3IanXh4x_YCOiJNo9Q11fuNweXMPQr3”
 ////
 
-* All requests will start with the url _https://<tenant>/rest/v1/dwh-management/odata_
+* All requests will start with the url _\https://<Cloud Insights URL>/rest/v1/dwh-management/odata_
 
 == Generating an APIKey
 
-* Log into your Cloud Insights environment
-* select Admin > API Access,
-* click “+ API Access Token”
-* Enter a Name & Description
-* For type choose either
-** “All Categories”
-** “Data Warehouse”
-* Permissions = R/W
-* APIkeys are good for
-** Sync or Async
-* Click “Save”, then copy the key and save it somewhere safe, you can’t access it later
+Read more about link:API_Overview.html[Cloud Insights APIs].
 
-== Learning about OData and Postman
+To generate an API key, do the following:
 
-Here are some tutorials on how to use OData/Olingo, and Postman REST client
+* Log into your Cloud Insights environment and select *Admin > API Access*.
+* Click “+ API Access Token”.
+* Enter a Name & Description.
+* For type, choose _Data Warehouse_.
+* Set Permissions as Read/Write.
+* Set a desires Expiration date.
+* Click “Save”, then *copy the key and save it* somewhere safe. You will not be able to access the full key later.
 
-* Basic Tutorial · OData - the Best Way to REST: https://www.odata.org/getting-started/basic-tutorial/
-* Learning OData on Postman · OData - the Best Way to REST: https://www.odata.org/getting-started/learning-odata-on-postman
+APIkeys are good for _Sync_ or _Async_
+<TBD More information>
+
 
 == Direct query of tables
-Direct queries of the Reporting database are possible via the Odata integration. Long URLs may be simplified to https://.../odata/ for display purposes rather than the full - https://<tenant>/rest/v1/dwh-management/odata/
+
+With the API Key in place, direct queries of the Reporting database are now possible. Long URLs may be simplified to \https://.../odata/ for display purposes rather than the full \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/
 
 Try simple queries like
 
-* https://<tenant>/rest/v1/dwh-management/odata/dwh_custom
-* https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory
-* https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory/storage
-* https://<tenant>/rest/v1/dwh-management/odata/dwh_inventory/disk
-* https://.../odata/dwh_custom/custom_queries
+* \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom
+* \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_inventory
+* \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_inventory/storage
+* \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_inventory/disk
+* \https://.../odata/dwh_custom/custom_queries
 
 
 == REST API Examples
 
-The URL for all calls is _https://<sub-domain>.<domain>/rest/v1/dwh-management/odata_. 
+The URL for all calls is _\https://<Cloud Insights URL>/rest/v1/dwh-management/odata_. 
 
- * GET /{schema}/** - Retrieves data from Data Warehouse through ODATA protocol, requires GUEST role
+* GET /{schema}/** - Retrieves data from the Reporting Database, requires at least _Guest_ role.
 
- Format: https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/<schema_name>/<query>
+Format: _\https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<query>_
 
- Example: get all Storage Pools of storage with id 287 with expanded Internal Volume data: https://regf79q.oci.cloudinsights-qa.netapp.com/rest/v1/dwh-management/odata/dwh_inventory/storage(287)/storage_pool?$expand=internal_volume
+Example:
+
+ https://<domain>/rest/v1/dwh-management/odata/dwh_inventory/fabric?$count=true&$orderby=name
+
+Result:
+
+ {
+    "@odata.context": "$metadata#fabric",
+    "@odata.count": 2,
+    "value": [
+        {
+            "id": 851,
+            "identifier": "10:00:50:EB:1A:40:3B:44",
+            "wwn": "10:00:50:EB:1A:40:3B:44",
+            "name": "10:00:50:EB:1A:40:3B:44",
+            "vsanEnabled": "0",
+            "vsanId": null,
+            "zoningEnabled": "0",
+            "url": "https://<domain>/web/#/assets/fabrics/941716"
+        },
+        {
+            "id": 852,
+            "identifier": "10:00:50:EB:1A:40:44:0C",
+            "wwn": "10:00:50:EB:1A:40:44:0C",
+            "name": "10:00:50:EB:1A:40:44:0C",
+            "vsanEnabled": "0",
+            "vsanId": null,
+            "zoningEnabled": "0",
+            "url": "https://<domain>/web/#/assets/fabrics/941836"
+         }
+     ]
+ }
+
+// Example: get all Storage Pools of storage with id 287 with expanded Internal Volume data: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_inventory/storage(287)/storage_pool?$expand=internal_volume
 
 
-
+////
  * POST /{schema}/** - Write data and create queries in dwh_custom schema of Data Warehouse database through ODATA protocol, requires ADMIN role
 
- Format: https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/<schema_name>/<table_name>. The body contains the record in JSON format
+ Format: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<table_name>. The body contains the record in JSON format
 
- Example: add a new record to the storage table: https://regf79q.oci.cloudinsights-qa.netapp.com/rest/v1/dwh-management/odata/dwh_custom/storage , Request body: {"storageId": 123, "storageName": "storage123"}
+ Example: add a new record to the storage table: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/storage , Request body: {"storageId": 123, "storageName": "storage123"}
 
-Creating queries: POST https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/dwh_custom/custom_queries -d '{"queryName": "<query_name>", "querySql": "<query_sql>"}'
+Creating queries: POST https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/custom_queries -d '{"queryName": "<query_name>", "querySql": "<query_sql>"}'
 
 
 
  * PATCH /{schema}/** - Modify data and modify queries in dwh_custom schema of Data Warehouse database through ODATA protocol, requires ADMIN role
 
- Format: https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/<schema_name>/<table_name>('<record_id>'). The body contains the record in JSON format
+ Format: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<table_name>('<record_id>'). The body contains the record in JSON format
 
- Example: modify a record in the storage table: https://regf79q.oci.cloudinsights-qa.netapp.com/rest/v1/dwh-management/odata/dwh_custom/storage('123') , Request body: {"storageId": 123, "storageName": "storage123"}
+ Example: modify a record in the storage table: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/storage('123') , Request body: {"storageId": 123, "storageName": "storage123"}
 
-Modifying queries: PATCH https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/dwh_custom/custom_queries('queryName') -d '{"queryName": "<query_name>", "querySql": "<query_sql>"}'
+Modifying queries: PATCH https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/custom_queries('queryName') -d '{"queryName": "<query_name>", "querySql": "<query_sql>"}'
 
 
 
  * DELETE /{schema}/** - Delete data and delete queries in dwh_custom schema of Data Warehouse database through ODATA protocol, requires ADMIN role
 
- Format: https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/<schema_name>/<table_name>('<record_id>')
+ Format: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<table_name>('<record_id>')
 
- Example: delete a record from the storage table: https://regf79q.oci.cloudinsights-qa.netapp.com/rest/v1/dwh-management/odata/dwh_custom/storage('123')
+ Example: delete a record from the storage table: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/storage('123')
 
-Deleting queries: DELETE https://<sub-domain>.<_domain_>/rest/v1/dwh-management/odata/dwh_custom/custom_queries('queryName')
+Deleting queries: DELETE https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/custom_queries('queryName')
+////
+
 
 
 == Troubleshooting
-
+TBD
 
