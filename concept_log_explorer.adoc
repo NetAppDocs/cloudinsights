@@ -24,7 +24,7 @@ To begin exploring logs, click *Queries > +New Log Query*.
 
 image:LogExplorerMenu.png[Log queries menu]
 
-Select an available log from the list.
+Select an available log from the list. This list may vary based on your current Cloud Insights environment configuration.
 
 image:LogExplorer_ChooseLog.png[Choose your log]
 
@@ -62,7 +62,15 @@ To zoom in the graph, simply drag the sliders from either side. To pan the zoome
 
 image:LogExplorer_Zoom.png[Zoom in by dragging in the sides of the graph]
 
-Note that when zooming the graph or scrolling the table, dashboard auto-refresh will pause and the time range will show the frozen time. To resume refresh, click the _Resume_ button image:ResumeButton.png[]. This will also reset tjhe zoom level.
+Note that when zooming the graph or scrolling the table, dashboard auto-refresh will pause and the time range will show the frozen time. To resume refresh, click the _Resume_ button image:ResumeButton.png[]. This will also reset the zoom level.
+
+==== Log Details
+
+Clicking anywhere in a log entry in the list will open a detail pane for that entry.  Here you can explore more information about the event.
+
+image:LogExplorer_DetailPane.png[Log Entry Detail Pane]
+
+
 
 
 
