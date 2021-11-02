@@ -489,6 +489,10 @@ But if you temporarily want to see only nodes on individual subnets in your envi
 
 image:Variables_Node_Example_After_Variable_Applied.png[Agent Nodes After Variable Filter]
 
+You can also set a variable to filter on all objects with a particular attribute regardless of object type, for example objects with an attribute of "*.name", by specifying _*.name_ in the variable field.
+
+image:Variables_Attribute_Name_List.png[Variable list showing all *.name attributes]
+
 Applying variables is as easy as changing the attribute data of your choice.
 
 
