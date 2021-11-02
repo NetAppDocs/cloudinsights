@@ -86,14 +86,14 @@ Try simple queries like
 
 == REST API Examples
 
-The URL for all calls is _https://<Cloud Insights URL>/rest/v1/dwh-management/odata_. 
+The URL for all calls is _\https://<Cloud Insights URL>/rest/v1/dwh-management/odata_. 
 
  * GET /{schema}/** - Retrieves data from Data Warehouse through ODATA protocol, requires GUEST role
 
  Format: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<query>
  
 Example:
- https://<domain>/rest/v1/dwh-management/odata/dwh_inventory/fabric?$count=true&$orderby=name
+ \https://<domain>/rest/v1/dwh-management/odata/dwh_inventory/fabric?$count=true&$orderby=name
 
 Result:
  {
