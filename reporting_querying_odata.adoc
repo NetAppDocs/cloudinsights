@@ -90,8 +90,8 @@ The URL for all calls is _\https://<Cloud Insights URL>/rest/v1/dwh-management/o
 
 * GET /{schema}/** - Retrieves data from the Reporting Database, requires at least _Guest_ role.
 
-Format: \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<query>
- 
+Format: _\https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<query>_
+
 Example:
 
  https://<domain>/rest/v1/dwh-management/odata/dwh_inventory/fabric?$count=true&$orderby=name
