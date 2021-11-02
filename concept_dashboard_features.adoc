@@ -527,7 +527,7 @@ When you add an Annotation or Attribute variable to your dashboard, the variable
 
 image:Variables_Automatic_Filter_Button.png[Automatic Filter]
 
-Note that only Attribute variables, and Annotations of type _Text_, _Boolean_, or _List_, can be filtered automatically using variables like this. _Non-text_ annotations such as numbers or dates cannot be automatically filtered, nor can variables other than Annotation or Attribute type (i.e. Number, Date, Boolean). Individual widgets must each be configured to use variables of these types.
+Note that only Attribute and Annotation variables can be filtered automatically like this. Non-Annotation or -Attribute variables cannot be automatically filtered. Individual widgets must each be configured to use variables of these types.
 
 To disable automatic filtering so that the variable only applies to the widgets where you have specifically set it, click the "Filter automatically" slider to disable it.
 
