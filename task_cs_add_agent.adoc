@@ -240,6 +240,7 @@ Sample output:
  -A IN_public_allow -p tcp -m tcp --dport 35000:55000 -m conntrack -ctstate NEW,UNTRACKED -j ACCEPT
 
 *CentOS 8.x / RHEL 8.x*:
+
 . `sudo firewall-cmd --zone=public --list-ports | grep 35000` (for CentOS 8)
 
 Sample output:
