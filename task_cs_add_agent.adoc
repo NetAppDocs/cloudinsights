@@ -222,16 +222,30 @@ image::new-agent-detect.png[]
 
 == Network Configuration
 
-Run the following commands on the local system to open ports that will be used by Cloud Secure.
+Run the following commands on the local system to open ports that will be used by Cloud Secure. If there is a security concern regarding the port range, you can use a lesser port range, for example _35000:35100_. Each SVM uses two ports. 
 
 .Steps
 
 . `sudo firewall-cmd --permanent --zone=public --add-port=35000-55000/tcp` 
 . `sudo firewall-cmd --reload` 
-. `sudo iptables-save | grep 35000`
-+
-sample output:
- -A IN_public_allow -p tcp -m tcp --dport 35000 -m conntrack -ctstate NEW -j ACCEPT
+
+Follow the next steps according to your platform:
+
+*CentOS 7.x / RHEL 7.x*:
+
+. `sudo iptables-save | grep 35000` 
+
+Sample output:
+
+ -A IN_public_allow -p tcp -m tcp --dport 35000:55000 -m conntrack -ctstate NEW,UNTRACKED -j ACCEPT
+
+*CentOS 8.x / RHEL 8.x*:
+
+. `sudo firewall-cmd --zone=public --list-ports | grep 35000` (for CentOS 8)
+
+Sample output:
+
+ 35000-55000/tcp
 
 
 == Troubleshooting Agent Errors
