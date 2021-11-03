@@ -205,17 +205,12 @@ image:Monitors_PauseGroup.png[Pause a group]
 
 
 
-
-
-
-
-
-
 == System-Defined Monitors (Preview)
 
 Beginning in October 2021, Cloud Insights will be previewing a number of system-definied monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
 
 NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
+
 
 Read more about link:task_system_monitors.html[System-Defined Monitors]
 
@@ -375,8 +370,6 @@ If a monitor is no longer needed, you can delete it by selecting *Delete* from t
 Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
 
 image:Monitors_GroupList.png[Monitor Grouping]
-////
-
 
 ////
 Two groups are shown by default:
@@ -385,8 +378,9 @@ Two groups are shown by default:
 * *Custom Monitors* lists only user-created monitors.
 ////
 
-////
+
 The number of monitors contained in a group is shown next to the group name.
+
 
 NOTE: Custom monitors can be paused, resumed, deleted, or moved to another group. System-defined monitors can be paused and resumed but can not be deleted or moved.
 
@@ -575,6 +569,7 @@ NOTE: The fan is integrated into the power supply module in some disk shelves.�
 
 
 ////
+
 |===
 | Monitor Name | Severity | Monitor Description | Corrective Action
 |WAFL Quota Qtree Exceeded	|INFO	|This event occurs when a tree quota has exceeded on a volume. This event is not repeated for this tree for a set amount of time or until a “quota resize” is performed. The amount of time is specified by the “quota logmsg” command.	| Reduce the usage in this tree or increase the quota and run the "quota resize" command.
@@ -651,11 +646,8 @@ NOTE: The fan is integrated into the power supply module in some disk shelves.�
  "2. If the issue persists, replace the fan module."
  "3. If the issue still persists, contact NetApp technical support for assistance."
 |=== 
+
 ////
-
-
-
-
 
 ////
 
