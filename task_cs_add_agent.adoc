@@ -229,18 +229,20 @@ Run the following commands on the local system to open ports that will be used b
 . `sudo firewall-cmd --permanent --zone=public --add-port=35000-55000/tcp` 
 . `sudo firewall-cmd --reload` 
 
+Follow the next steps according to your platform:
+
 *CentOS 7.x / RHEL 7.x*:
 
 . `sudo iptables-save | grep 35000` 
 
-. Sample output:
+Sample output:
 
  -A IN_public_allow -p tcp -m tcp --dport 35000:55000 -m conntrack -ctstate NEW,UNTRACKED -j ACCEPT
 
 *CentOS 8.x / RHEL 8.x*:
 . `sudo firewall-cmd --zone=public --list-ports | grep 35000` (for CentOS 8)
 
-sample output:
+Sample output:
 
  35000-55000/tcp
 
