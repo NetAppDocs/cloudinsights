@@ -6,27 +6,24 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 ---
 
 = System Monitors
-
 :toc: macro
 :hardbreaks:
-:toclevels: 3
+:toclevels: 1
 :nofooter:
 :icons: font
 :linkattrs:
 :imagesdir: ./media/
 
 [.lead]
-You create monitors to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a monitor to alert for _node write latency_ for any of a multitude of protocols.
-
-toc::[]
-
-== System-Defined Monitors (Preview)
-
 Beginning in October 2021, Cloud Insights will be previewing a number of system-definied monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
 
 NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
 
-==== Create the Monitor 
+toc::[]
+
+
+
+=== Create the Monitor 
 
 . From the Cloud Insights menu, click *Alerts > Manage Monitors*
 +
@@ -47,7 +44,7 @@ When you add a new monitor, you are prompted to create a Metric Monitor or a Log
 After you choose your monitor type, the Monitor Configuration dialog is displayed.
 
 
-=== Metric Monitor
+== Metric Monitor
 
 . In the drop-down, search for and choose an object type and metric to monitor.
 
@@ -66,7 +63,7 @@ When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metr
 TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
 
 
-==== Define the Conditions of the Monitor. 
+=== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
 . For the _Warning_ level, enter 200 for our example. The dashed line indicating this Warning level displays in the example graph.
@@ -86,7 +83,7 @@ image:Monitor_metric_conditions.png[Define the monitor's conditions]
 
 
 
-=== Log Monitor
+== Log Monitor
 
 In a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above.
 
@@ -98,14 +95,14 @@ image:Monitor_log_monitor_filter.png[choose which log to monitor, and set a filt
 
 
 
-==== Define the alert behavior
+=== Define the alert behavior
 
 Choose how you want to alert when a log alert is triggered. You can set the monitor to alert with _Warning_, _Critical_, or _Informational_ severity, based on the filter conditions you set above.
 
 image:Monitor_log_alert_behavior.png[define the log behavior to monitor]
 
 
-==== Define the alert resolution behavior
+=== Define the alert resolution behavior
 
 You can choose how an log monitor alert is resolved. You are presented with three choices:
 
@@ -117,7 +114,7 @@ image:Monitor_log_monitor_resolution.png[Alert Resolution]
 
 
 
-==== Select notification type and recipients
+=== Select notification type and recipients
 
 In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
 
@@ -138,7 +135,7 @@ image:Webhook_Monitor_Notifications.png[Webhook Alerting]
 NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
 
 
-=== Setting Corrective Actions or Additional Information
+== Setting Corrective Actions or Additional Information
 
 You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
 
@@ -147,7 +144,7 @@ In these fields you can provide notes, links, or steps to take to correct or oth
 image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 
 
-=== Save your Monitor
+== Save your Monitor
 
 . If desired, you can add a description of the monitor. 
 +
@@ -174,7 +171,7 @@ If a monitor is no longer needed, you can delete it by selecting *Delete* from t
 
 
 
-
+////
 == Monitor Groups
 
 Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
@@ -216,18 +213,18 @@ NOTE: Removing a monitor from a group does not delete the monitor from Cloud Ins
 
 You can also move a monitor to a different group in the same manner, selecting _Move to Group_. 
 
-NOTE: Each monitor can belong to only a single group at any given time (in addition to belonging to "All Monitors" and "Custom Monitors"). 
+//NOTE: Each monitor can belong to only a single group at any given time (in addition to belonging to "All Monitors" and "Custom Monitors"). 
 
 To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
 
 Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_.
 
 image:Monitors_PauseGroup.png[Pause a group]
+////
 
 
 
-
-=== System-Defined Monitors 
+== Monitor Descriptions
 
 System-defined monitors are comprised of pre-defined metrics and conditions, as well as default descriptions and corrective actions, which can not be modified. You _can_ modify the notification recipient list for system-defined monitors. To view the metrics, conditions, description and corrective actions, or to modify the recipient list, open a system-defined monitor group and click the monitor name in the list.
 
@@ -239,8 +236,9 @@ The following system-defined monitors are available, in the noted groups.
 * *ONTAP Workload Examples* includes monitors for workload-related issues. 
 * Monitors in both group default to _Paused_ state.
 
+Below are the system monitors currently included with Cloud Insights:
 
-==== Metric Monitors
+=== Metric Monitors
 
 |===
 |Monitor Name|CI Severity|Monitor Description|Corrective Action
@@ -346,7 +344,7 @@ Plan to take the following actions soon if warning threshold is breached:
 |===
 
 
-==== Log Monitors
+=== Log Monitors (not time-resolved)
 
 |===
 |Monitor Name|CI Severity|Monitor Description|Corrective Action
@@ -377,7 +375,7 @@ NOTE: The fan is integrated into the power supply module in some disk shelves.â€
 
 
 
-==== Log Monitors Resolved by Time
+=== Log Monitors Resolved by Time
 
 |===
 Monitor Name|CI Severity|Monitor Description|Corrective Action
