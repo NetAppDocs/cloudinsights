@@ -489,7 +489,7 @@ But if you temporarily want to see only nodes on individual subnets in your envi
 
 image:Variables_Node_Example_After_Variable_Applied.png[Agent Nodes After Variable Filter]
 
-You can also set a variable to filter on _all_ objects with a particular attribute regardless of object type, for example objects with an attribute of "vendor", by specifying _*.vendor_ in the variable field. You do not need to type the "*"; Cloud Insights will supply this as you type.
+You can also set a variable to filter on _all_ objects with a particular attribute regardless of object type, for example objects with an attribute of "vendor", by specifying _*.vendor_ in the variable field. You do not need to type the "*."; Cloud Insights will supply this if you select the wildcard option.
 
 image:Variables_Attribute_Vendor_Example.png[Attribute Variable for Vendor]
 
