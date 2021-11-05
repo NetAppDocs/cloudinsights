@@ -489,9 +489,19 @@ But if you temporarily want to see only nodes on individual subnets in your envi
 
 image:Variables_Node_Example_After_Variable_Applied.png[Agent Nodes After Variable Filter]
 
-You can also set a variable to filter on all objects with a particular attribute regardless of object type, for example objects with an attribute of "name", by specifying _*.name_ in the variable field. You do not need to type the "*"; Cloud Insights will supply this as you type.
+You can also set a variable to filter on _all_ objects with a particular attribute regardless of object type, for example objects with an attribute of "vendor", by specifying _*.vendor_ in the variable field. You do not need to type the "*"; Cloud Insights will supply this as you type.
 
-image:Variables_Attribute_Name_List.png[Variable list showing all *.name attributes]
+image:Variables_Attribute_Vendor_Example.png[Attribute Variable for Vendor]
+
+When you drop-down the list of choices for the variable value, the results are filtered so show only the available vendors based on the objects on your dashboard.
+
+image:Variables_Attribute_Vendor_Filtered_List.png[Attribute Variable showing only available vendors]
+
+//image:Variables_Attribute_Name_List.png[Variable list showing all *.name attributes]
+
+If you edit a widget on your dashboard where the attribute filter is relevant (meaning, the widget's objects contain any _*.vendor attribute_), it shows you that the attribute filter is automatically applied.
+
+image:Variables_Attribute_inWidgetQuery.png[Attribute variable automatically applied]
 
 Applying variables is as easy as changing the attribute data of your choice.
 
