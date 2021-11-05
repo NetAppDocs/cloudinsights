@@ -1,12 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_create_monitor.html
-keywords: monitors, alerts, log, metric, system-defined, system, metric, 
+permalink: task_system_monitors.html
+keywords: monitors, alerts, log, metric
 summary: Create monitors to alert on performance or inventory thresholds, as well as metric or log conditions.
 ---
 
-= Alerting with Monitors
-
+= System Monitors
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,207 +15,15 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 :imagesdir: ./media/
 
 [.lead]
-You create monitors to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a monitor to alert for _node write latency_ for any of a multitude of protocols.
-
-TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
-
-When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both.
-
-Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
-
-See below for link:#system-defined-monitors-preview[System-Defined Monitors] preview documentation.
-
-////
-=== Monitor or Performance Policy?
-
-What's the difference between a *Performance Policy* and a *Monitor*?
-
-_Policies_ allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports. These policies trigger violations when thresholds are met or exceeded. Each violation can be investigated for troubleshooting. Policies are described in detail elsewhere in this link:task_create_performance_policies.html[documentation].
-
-_Monitors_ provide similar functionality for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins, and alert when thresholds are crossed. With Monitors, you can set thresholds for Warning- or Critical-level alerts, or both. 
-
-Policies and Monitors are available under the *Alerts* menu.
-
-image:AlertsMenuLarger.png[Alerts Menu]
-
-Emails can be sent when a policy or monitor is triggered. 
-////
-
-
-=== Creating a Monitor
-
-In the example below, we will create a Monitor to give a Warning alert when _Volume Node NFS Write Latency_ reaches or exceeds 200ms, and a Critical alert when it reaches or exceeds 400ms. We only want to be alerted when either threshold is exceeded for at least 15 continuous minutes.
-
-==== Requirements
-
-* Cloud Insights must be configured to collect integration data, and that data is being collected.
-
-==== Create the Monitor 
-
-. From the Cloud Insights menu, click *Alerts > Manage Monitors*
-+
-The Monitors list page is displayed, showing currently configured monitors. 
-
-. To add a monitor, Click *+ Monitor*. To modify an existing monitor, click the monitor name in the list.
-+
-The Monitor Configuration dialog is displayed.
-. In the drop-down, search for and choose an object type and metric to monitor, for example _netapp_ontap_volume_node_nfs_write_latency_.
-
-You can set filters to narrow down which object attributes or metrics to monitor. 
-
-//image:select_metric_to_monitor.png[Select Metric]
-
-image:MonitorMetricFilter.png[Metrics Filtering]
-
-//When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
-
-When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
-
-//image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
-
-TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
-
-
-==== Define the Conditions of the Monitor. 
-
-. After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
-. For the _Warning_ level, enter 200. The dashed line indicating this Warning level displays in the example graph.
-. For the _Critical_ level, enter 400. The dashed line indicating this Critical level displays in the example graph.
-+
-The graph displays historical data. The Warning and Critical level lines on the graph are a visual representation of the Monitor, so you can easily see when the Monitor might trigger an alert in each case. 
-
-. For the occurence interval, choose _Continuously_ for a period of _15 Minutes_.
-+
-You can choose to trigger an alert the moment a threshold is breached, or wait until the threshold has been in continuous breach for a period of time. In our example, we do not want to be alerted every time the Total IOPS peaks above the Warning or Critical level, but only when a monitored object continuously exceeds one of these levels for at least 15 minutes.
-+
-image:define_monitor_conditions.png[Define Conditions]
-
-
-==== Refining the Filter
-
-When you are filtering, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
-
-image:Type-Ahead_Monitor_1.png[Wildcard Filter]
-
-Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
-
-image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
-
-Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
-
-
-
-=== Setting Corrective Actions or Additional Information
-
-You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
-
-In these fields you can provide notes, links, or steps to take to correct or otherwise address the alert.
-
-image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
-
-=== Select notification type and recipients
-
-In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
-
-image:Webhook_Choose_Monitor_Notification.png[Choose alerting method]
-
-*Alerting via Email:*
-
-Specify the email recipients for alert notifications. If desired, you can choose different recipients for warning or critical alerts.
-
-image:email_monitor_alerts.png[Email Alert Recipients]
-
-*Alerting via Webhook:*
-
-Specify the webhook(s) for alert notifications. If desired, you can choose different webhooks for warning or critical alerts.
-
-image:Webhook_Monitor_Notifications.png[Webhook Alerting]
-
-
-=== Save your Monitor
-
-. If desired, you can add a description of the monitor. 
-+
-. Give the Monitor a meaningful name and click *Save*.
-+
-Your new monitor is added to the list of active Monitors.
-
-=== Monitor List
-
-The Monitor page lists the currently configured monitors, showing the following:
-
-* Monitor Name
-* Status 
-* Object/metric being monitored
-* Conditions of the Monitor
-
-You can view any active alerts associated with a monitor by clicking rthe "bell" icon next to the Monitor name.
-image:ViewActiveAlerts.png[Icon showing active alerts for a monitor]
-
-You can choose to temporarily suspend monitoring of an object type by clicking the menu to the right of the monitor and selecting *Pause*. When you are ready to resume monitoring, click *Resume*.
-
-You can copy a monitor by selecting *Duplicate* from the menu. You can then modify the new monitor and change the object/metric, filter, conditions, email recipients, etc.
-
-If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
-
-
-
-== Monitor Groups
-
-Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
-
-image:Monitors_GroupList.png[Monitor Grouping]
-
-////
-Two groups are shown by default:
-
-* *All Monitors* lists all monitors.
-* *Custom Monitors* lists only user-created monitors.
-////
-
-The number of monitors contained in a group is shown next to the group name.
-
-To create a new group, click the *"+" Create New Monitor Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
-
-To add monitors to the group, go to the _All Monitors_ group (recommended) and do one of the following:
-
-* To add a single monitor, click the menu to the right of the monitor and select _Add to Group_. Choose the group to which to add the monitor.
-* Click on the monitor name to open the monitor's edit view, and select a group in the _Associate to a monitor group_ section.
-+
-image:Monitors_AssociateToGroup.png[Associate to group]
-
-//* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Move to Group_.
-
-Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
-
-NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from the group to which it belonged and it is no longer available to any user.
-
-You can also move a monitor to a different group in the same manner, selecting _Move to Group_. 
-
-NOTE: Each monitor can belong to only a single group at any given time.
-
-To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
-
-Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_.
-
-image:Monitors_PauseGroup.png[Pause a group]
-
-
-
-
-
-== System-Defined Monitors (Preview)
-
 Beginning in October 2021, Cloud Insights will be previewing a number of system-definied monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
 
 NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
 
+toc::[]
 
-Read more about link:task_system_monitors.html[System-Defined Monitors]
 
 
-////
-==== Create the Monitor 
+=== Create the Monitor 
 
 . From the Cloud Insights menu, click *Alerts > Manage Monitors*
 +
@@ -237,7 +44,7 @@ When you add a new monitor, you are prompted to create a Metric Monitor or a Log
 After you choose your monitor type, the Monitor Configuration dialog is displayed.
 
 
-=== Metric Monitor
+== Metric Monitor
 
 . In the drop-down, search for and choose an object type and metric to monitor.
 
@@ -256,7 +63,7 @@ When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metr
 TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
 
 
-==== Define the Conditions of the Monitor. 
+=== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
 . For the _Warning_ level, enter 200 for our example. The dashed line indicating this Warning level displays in the example graph.
@@ -276,7 +83,7 @@ image:Monitor_metric_conditions.png[Define the monitor's conditions]
 
 
 
-=== Log Monitor
+== Log Monitor
 
 In a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above.
 
@@ -288,14 +95,14 @@ image:Monitor_log_monitor_filter.png[choose which log to monitor, and set a filt
 
 
 
-==== Define the alert behavior
+=== Define the alert behavior
 
 Choose how you want to alert when a log alert is triggered. You can set the monitor to alert with _Warning_, _Critical_, or _Informational_ severity, based on the filter conditions you set above.
 
 image:Monitor_log_alert_behavior.png[define the log behavior to monitor]
 
 
-==== Define the alert resolution behavior
+=== Define the alert resolution behavior
 
 You can choose how an log monitor alert is resolved. You are presented with three choices:
 
@@ -307,7 +114,7 @@ image:Monitor_log_monitor_resolution.png[Alert Resolution]
 
 
 
-==== Select notification type and recipients
+=== Select notification type and recipients
 
 In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
 
@@ -328,7 +135,7 @@ image:Webhook_Monitor_Notifications.png[Webhook Alerting]
 NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
 
 
-=== Setting Corrective Actions or Additional Information
+== Setting Corrective Actions or Additional Information
 
 You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
 
@@ -337,7 +144,7 @@ In these fields you can provide notes, links, or steps to take to correct or oth
 image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 
 
-=== Save your Monitor
+== Save your Monitor
 
 . If desired, you can add a description of the monitor. 
 +
@@ -364,7 +171,7 @@ If a monitor is no longer needed, you can delete it by selecting *Delete* from t
 
 
 
-
+////
 == Monitor Groups
 
 Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
@@ -377,7 +184,6 @@ Two groups are shown by default:
 * *All Monitors* lists all monitors.
 * *Custom Monitors* lists only user-created monitors.
 ////
-
 
 The number of monitors contained in a group is shown next to the group name.
 
@@ -407,18 +213,18 @@ NOTE: Removing a monitor from a group does not delete the monitor from Cloud Ins
 
 You can also move a monitor to a different group in the same manner, selecting _Move to Group_. 
 
-NOTE: Each monitor can belong to only a single group at any given time (in addition to belonging to "All Monitors" and "Custom Monitors"). 
+//NOTE: Each monitor can belong to only a single group at any given time (in addition to belonging to "All Monitors" and "Custom Monitors"). 
 
 To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
 
 Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_.
 
 image:Monitors_PauseGroup.png[Pause a group]
+////
 
 
 
-
-=== System-Defined Monitors 
+== Monitor Descriptions
 
 System-defined monitors are comprised of pre-defined metrics and conditions, as well as default descriptions and corrective actions, which can not be modified. You _can_ modify the notification recipient list for system-defined monitors. To view the metrics, conditions, description and corrective actions, or to modify the recipient list, open a system-defined monitor group and click the monitor name in the list.
 
@@ -430,11 +236,12 @@ The following system-defined monitors are available, in the noted groups.
 * *ONTAP Workload Examples* includes monitors for workload-related issues. 
 * Monitors in both group default to _Paused_ state.
 
+Below are the system monitors currently included with Cloud Insights:
 
-==== Metric Monitors
+=== Metric Monitors
 
 |===
-|Monitor Name|Severity|Monitor Description|Corrective Action
+|Monitor Name|CI Severity|Monitor Description|Corrective Action
 |Fiber Channel Port High Utilization|CRITICAL|Fiber Channel Protocol ports are used to receive and transfer the SAN traffic between the customer host system and the ONTAP LUNs. If the port utilization is high, then it will become a bottleneck and it will ultimately affect the performance of sensitive of Fiber Channel Protocol workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
 1. Move workloads to another lower utilized FCP port
 2. Limit the traffic of certain LUNs to essential work only either via QoS policies in ONTAP or host-side configuration to lighten the utilization of the FCP ports…
@@ -537,10 +344,10 @@ Plan to take the following actions soon if warning threshold is breached:
 |===
 
 
-==== Log Monitors
+=== Log Monitors (not time-resolved)
 
 |===
-|Monitor Name|Severity|Monitor Description|Corrective Action
+|Monitor Name|CI Severity|Monitor Description|Corrective Action
 |AWS Credentials Not Initialized|INFO|This event occurs when a module attempts to access Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials from the cloud credentials thread before they are initialized. |Wait for the cloud credentials thread, as well as the system, to complete initialization. 
 |Cloud Tier Unreachable|CRITICAL|A storage node cannot connect to Cloud Tier object store API. Some data will be inaccessible.|If you use on-premises products, perform the following corrective actions: …Verify that your intercluster LIF is online and functional by using the "network interface show" command.…Check the network connectivity to the object store server by using the "ping" command over the destination node intercluster LIF.…Ensure the following:…The configuration of your object store has not changed.…The login and connectivity information is still valid.…Contact NetApp technical support if the issue persists. 
 
@@ -553,23 +360,70 @@ If you use Cloud Volumes ONTAP, perform the following corrective actions: …Ens
 |LUN Offline|INFO|This event occurs when a LUN is brought offline manually. |Bring the LUN back online. 
 |Main Unit Fan Failed|WARNING|One or more main unit fans have failed. The system remains operational.…However, if the condition persists for too long, the overtemperature might trigger an automatic shutdown.|Reseat the failed fans. If the error persists, replace them.
 |Main Unit Fan in Warning State|INFO|This event occurs when one or more main unit fans are in a warning state.|Replace the indicated fans to avoid overheating.
-|NVRAM Battery Low|WARNING|The NVRAM battery capacity is critically low. There might be a potential data loss if the battery runs out of power.…Your system generates and transmits an AutoSupport or "call home" message to NetApp technical support and the configured destinations if it is configured to do so. The successful delivery of an AutoSupport message significantly improves problem determination and resolution.|1.|Perform the following corrective actions:…View the battery's current status, capacity, and charging state by using the "system node environment sensors show" command.…If the battery was replaced recently or the system was non-operational for an extended period of time, monitor the battery to verify that it is charging properly.…Contact NetApp technical support if the battery runtime continues to decrease below critical levels, and the storage system shuts down automatically.|2.
-|Service Processor Not Configured|WARNING|This event occurs on a weekly basis, to remind you to configure the Service Processor (SP). The SP is a physical device that is incorporated into your system to provide remote access and remote management capabilities. You should configure the SP to use its full functionality. |1.|Perform the following corrective actions:…Configure the SP by using the "system service-processor network modify" command.…Optionally, obtain the MAC address of the SP by using the "system service-processor network show" command.…Verify the SP network configuration by using the "system service-processor network show" command.…Verify that the SP can send an AutoSupport email by using the "system service-processor autosupport invoke" command.
-NOTE: AutoSupport email hosts and recipients should be configured in ONTAP before you issue this command.|2.
+|NVRAM Battery Low|WARNING|The NVRAM battery capacity is critically low. There might be a potential data loss if the battery runs out of power.…Your system generates and transmits an AutoSupport or "call home" message to NetApp technical support and the configured destinations if it is configured to do so. The successful delivery of an AutoSupport message significantly improves problem determination and resolution. |Perform the following corrective actions:…View the battery's current status, capacity, and charging state by using the "system node environment sensors show" command.…If the battery was replaced recently or the system was non-operational for an extended period of time, monitor the battery to verify that it is charging properly.…Contact NetApp technical support if the battery runtime continues to decrease below critical levels, and the storage system shuts down automatically.
+|Service Processor Not Configured|WARNING|This event occurs on a weekly basis, to remind you to configure the Service Processor (SP). The SP is a physical device that is incorporated into your system to provide remote access and remote management capabilities. You should configure the SP to use its full functionality. |Perform the following corrective actions:…Configure the SP by using the "system service-processor network modify" command.…Optionally, obtain the MAC address of the SP by using the "system service-processor network show" command.…Verify the SP network configuration by using the "system service-processor network show" command.…Verify that the SP can send an AutoSupport email by using the "system service-processor autosupport invoke" command.
+NOTE: AutoSupport email hosts and recipients should be configured in ONTAP before you issue this command.
 |Service Processor Offline|CRITICAL|ONTAP is no longer receiving heartbeats from the Service Processor (SP), even though all the SP recovery actions have been taken. ONTAP cannot monitor the health of the hardware without the SP.…The system will shut down to prevent hardware damage and data loss. Set up a panic alert to be notified immediately if the SP goes offline. |Power-cycle the system by performing the following actions:…Pull the controller out from the chassis.…Push the controller back in.…Turn the controller back on.…If the problem persists, replace the controller module.
-|Shelf Fans Failed|CRITICAL|The indicated cooling fan or fan module of the shelf has failed. The disks in the shelf might not receive enough cooling airflow, which might result in disk failure.|1.|Perform the following corrective actions:…Verify that the fan module is fully seated and secured.
-NOTE: The fan is integrated into the power supply module in some disk shelves.…If the issue persists, replace the fan module.…If the issue still persists, contact NetApp technical support for assistance.|2.
+|Shelf Fans Failed|CRITICAL|The indicated cooling fan or fan module of the shelf has failed. The disks in the shelf might not receive enough cooling airflow, which might result in disk failure.|Perform the following corrective actions:…Verify that the fan module is fully seated and secured.
+NOTE: The fan is integrated into the power supply module in some disk shelves.…If the issue persists, replace the fan module.…If the issue still persists, contact NetApp technical support for assistance.
 |System Cannot Operate Due to Main Unit Fan Failure |CRITICAL|One or more main unit fans have failed, disrupting system operation. This might lead to a potential data loss. |Replace the failed fans.
-|Unassigned Disks|INFO|System has unassigned disks - capacity is being wasted and your system may have some misconfiguration or partial configuration change applied.|1.|Perform the following corrective actions:…Determine which disks are unassigned by using the "disk show -n" command.…Assign the disks to a system by using the "disk assign" command.|2.
+|Unassigned Disks|INFO|System has unassigned disks - capacity is being wasted and your system may have some misconfiguration or partial configuration change applied.|Perform the following corrective actions:…Determine which disks are unassigned by using the "disk show -n" command.…Assign the disks to a system by using the "disk assign" command.
+
 |===
 
+
+
+
+
+=== Log Monitors Resolved by Time
+
+|===
+Monitor Name|CI Severity|Monitor Description|Corrective Action
+|Antivirus Server Busy|WARNING|The antivirus server is too busy to accept any new scan requests.|If this message occurs frequently, ensure that there are enough antivirus servers to handle the virus scan load generated by the SVM.
+|AWS Credentials for IAM Role Expired|CRITICAL|Cloud Volume ONTAP has become inaccessible. The Identity and Access Management (IAM) role-based credentials have expired. The credentials are acquired from the Amazon Web Services (AWS) metadata server using the IAM role, and are used to sign API requests to Amazon Simple Storage Service (Amazon S3).|Perform the following:…Log in to the AWS EC2 Management Console.…Navigate to the Instances page.…Find the instance for the Cloud Volumes ONTAP deployment and check its health.…Verify that the AWS IAM role associated with the instance is valid and has been granted proper privileges to the instance.
+|AWS Credentials for IAM Role Not Found|CRITICAL|The cloud credentials thread cannot acquire the Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials from the AWS metadata server. The credentials are used to sign API requests to Amazon Simple Storage Service (Amazon S3). Cloud Volume ONTAP has become inaccessible.…|Perform the following:…Log in to the AWS EC2 Management Console.…Navigate to the Instances page.…Find the instance for the Cloud Volumes ONTAP deployment and check its health.…Verify that the AWS IAM role associated with the instance is valid and has been granted proper privileges to the instance.
+|AWS Credentials for IAM Role Not Valid|CRITICAL|The Identity and Access Management (IAM) role-based credentials are not valid. The credentials are acquired from the Amazon Web Services (AWS) metadata server using the IAM role, and are used to sign API requests to Amazon Simple Storage Service (Amazon S3). Cloud Volume ONTAP has become inaccessible. |Perform the following:…Log in to the AWS EC2 Management Console.…Navigate to the Instances page.…Find the instance for the Cloud Volumes ONTAP deployment and check its health.…Verify that the AWS IAM role associated with the instance is valid and has been granted proper privileges to the instance.
+|AWS IAM Role Not Found|CRITICAL|The Identity and Access Management (IAM) roles thread cannot find an Amazon Web Services (AWS) IAM role on the AWS metadata server. The IAM role is required to acquire role-based credentials used to sign API requests to Amazon Simple Storage Service (Amazon S3). Cloud Volume ONTAP has become inaccessible.…|Perform the following:…Log in to the AWS EC2 Management Console.…Navigate to the Instances page.…Find the instance for the Cloud Volumes ONTAP deployment and check its health.…Verify that the AWS IAM role associated with the instance is valid.
+|AWS IAM Role Not Valid|CRITICAL|The Amazon Web Services (AWS) Identity and Access Management (IAM) role on the AWS metadata server is not valid. The Cloud Volume ONTAP has become inaccessible.…|Perform the following:…Log in to the AWS EC2 Management Console.…Navigate to the Instances page.…Find the instance for the Cloud Volumes ONTAP deployment and check its health.…Verify that the AWS IAM role associated with the instance is valid and has been granted proper privileges to the instance.
+|AWS Metadata Server Connection Fail|CRITICAL|The Identity and Access Management (IAM) roles thread cannot establish a communication link with the Amazon Web Services (AWS) metadata server. Communication should be established to acquire the necessary AWS IAM role-based credentials used to sign API requests to Amazon Simple Storage Service (Amazon S3). Cloud Volume ONTAP has become inaccessible.…|Perform the following:…Log in to the AWS EC2 Management Console.…Navigate to the Instances page.…Find the instance for the Cloud Volumes ONTAP deployment and check its health.… 
+|FabricPool Space Usage Limit Nearly Reached|WARNING|The total cluster-wide FabricPool space usage of object stores from capacity-licensed providers has nearly reached the licensed limit.|Perform the following corrective actions:…Check the percentage of the licensed capacity used by each FabricPool storage tier by using the "storage aggregate object-store show-space" command.…Delete Snapshot copies from volumes with the tiering policy "snapshot" or "backup" by using the "volume snapshot delete" command to clear up space.…Install a new license on the cluster to increase the licensed capacity.
+|FabricPool Space Usage Limit Reached|CRITICAL|The total cluster-wide FabricPool space usage of object stores from capacity-licensed providers has reached  the license limit.|Perform the following corrective actions:…Check the percentage of the licensed capacity used by each FabricPool storage tier by using the "storage aggregate object-store show-space" command.…Delete Snapshot copies from volumes with the tiering policy "snapshot" or "backup" by using the "volume snapshot delete" command to clear up space.…Install a new license on the cluster to increase the licensed capacity.
+|Giveback of Aggregate Failed|CRITICAL|This event occurs during the migration of an aggregate as part of a storage failover (SFO) giveback, when the destination node cannot reach the object stores. |Perform the following corrective actions:…Verify that your intercluster LIF is online and functional by using the "network interface show" command.…Check network connectivity to the object store server by using the"'ping" command over the destination node intercluster LIF. …Verify that the configuration of your object store has not changed and that login and connectivity information is still accurate by using the "aggregate object-store config show" command.…Alternatively, you can override the error by specifying false for the "require-partner-waiting" parameter of the giveback command.…Contact NetApp technical support for more information or assistance.
+|HA Interconnect Down|WARNING|The high-availability (HA) interconnect is down. Risk of service outage when failover is not available.|Corrective actions depend on the number and type of HA interconnect links supported by the platform, as well as the reason why the interconnect is down. …If the links are down:…Verify that both controllers in the HA pair are operational.…For externally connected links, make sure that the interconnect cables are connected properly and that the small form-factor pluggables (SFPs), if applicable, are seated properly on both controllers.…For internally connected links, disable and re-enable the links, one after the other, by using the "ic link off" and "ic link on" commands. …If links are disabled, enable the links by using the "ic link on" command. …If a peer is not connected, disable and re-enable the links, one after the other, by using the "ic link off" and "ic link on" commands.…Contact NetApp technical support if the issue persists.
+|Max Sessions Per User Exceeded|WARNING
+|You have exceeded the maximum number of sessions allowed per user over a TCP connection. Any request to establish a session will be denied until some sessions are released. …|Perform the following corrective actions: …Inspect all the applications that run on the client, and terminate any that are not operating properly.…Reboot the client.…Check if the issue is caused by a new or existing application:…If the application is new, set a higher threshold for the client by using the "cifs option modify -max-opens-same-file-per-tree" command.
+In some cases, clients operate as expected, but require a higher threshold. You should have advanced privilege to set a higher threshold for the client. …If the issue is caused by an existing application, there might be an issue with the client. Contact NetApp technical support for more information or assistance.
+|Max Times Open Per File Exceeded|WARNING|You have exceeded the maximum number of times that you can open the file over a TCP connection. Any request to open this file will be denied until you close some open instances of the file. This typically indicates abnormal application behavior.…|Perform the following corrective actions:…Inspect the applications that run on the client using this TCP connection.
+The client might be operating incorrectly because of the application running on it.…Reboot the client.…Check if the issue is caused by a new or existing application:…If the application is new, set a higher threshold for the client by using the "cifs option modify -max-opens-same-file-per-tree" command.
+In some cases, clients operate as expected, but require a higher threshold. You should have advanced privilege to set a higher threshold for the client. …If the issue is caused by an existing application, there might be an issue with the client. Contact NetApp technical support for more information or assistance.
+|NetBIOS Name Conflict|CRITICAL
+|The NetBIOS Name Service has received a negative response to a name registration request, from a remote machine. This is typically caused by a conflict in the NetBIOS name or an alias. As a result, clients might not be able to access data or connect to the right data-serving node in the cluster.|Perform any one of the following corrective actions:…If there is a conflict in the NetBIOS name or an alias, perform one of the following:…Delete the duplicate NetBIOS alias by using the "vserver cifs delete -aliases alias -vserver vserver" command.…Rename a NetBIOS alias by deleting the duplicate name and adding an alias with a new name by using the "vserver cifs create -aliases alias -vserver vserver" command. …If there are no aliases configured and there is a conflict in the NetBIOS name, then rename the CIFS server by using the "vserver cifs delete -vserver vserver" and "vserver cifs create -cifs-server netbiosname" commands.
+NOTE: Deleting a CIFS server can make data inaccessible. …Remove NetBIOS name or rename the NetBIOS on the remote machine.
+|NFSv4 Store Pool Exhausted|CRITICAL|A NFSv4 store pool has been exhausted.|If the NFS server is unresponsive for more than 10 minutes after this event, contact NetApp technical support.
+|No Registered Scan Engine|CRITICAL|The antivirus connector notified ONTAP that it does not have a registered scan engine. This might cause data unavailability if the "scan-mandatory" option is enabled. |Perform the following corrective actions:…Ensure that the scan engine software installed on the antivirus server is compatible with ONTAP.…Ensure that scan engine software is running and configured to connect to the antivirus connector over local loopback.
+|No Vscan Connection|CRITICAL|ONTAP has no Vscan connection to service virus scan requests. This might cause data unavailability if the "scan-mandatory" option is enabled.|Ensure that the scanner pool is properly configured and the antivirus servers are active and connected to ONTAP.
+|Node Root Volume Space Low|CRITICAL|The system has detected that the root volume is dangerously low on space. The node is not fully operational. Data LIFs might have failed over within the cluster, because of which NFS and CIFS access is limited on the node. Administrative capability is limited to local recovery procedures for the node to clear up space on the root volume.|Perform the following corrective actions:…Clear up space on the root volume by deleting old Snapshot copies, deleting files you no longer need from the /mroot directory, or expanding the root volume capacity.…Reboot the controller.…Contact NetApp technical support for more information or assistance.
+|Nonexistent Admin Share|CRITICAL|Vscan issue: a client has attempted to connect to a nonexistent ONTAP_ADMIN$ share. |Ensure that Vscan is enabled for the mentioned SVM ID. Enabling Vscan on a SVM causes the ONTAP_ADMIN$ share to be created for the SVM automatically.
+|NVMe Namespace Out of Space|CRITICAL|An NVMe namespace has been brought offline because of a write failure caused by lack of space.|Add space to the volume, and then bring the NVMe namespace online by using the "vserver nvme namespace modify" command.
+|NVMe-oF Grace Period Active|WARNING|This event occurs on a daily basis when the NVMe over Fabrics (NVMe-oF) protocol is in use and the grace period of the license is active. The NVMe-oF functionality requires a license after the license grace period expires. NVMe-oF functionality is disabled when the license grace period is over. |Contact your sales representative to obtain an NVMe-oF license, and add it to the cluster, or remove all instances of NVMe-oF configuration from the cluster. 
+|NVMe-oF Grace Period Expired|WARNING|The NVMe over Fabrics (NVMe-oF) license grace period is over and the NVMe-oF functionality is disabled.|Contact your sales representative to obtain an NVMe-oF license, and add it to the cluster.
+|NVMe-oF Grace Period Start|WARNING|The NVMe over Fabrics (NVMe-oF) configuration was detected during the upgrade to ONTAP 9.5 software. NVMe-oF functionality requires a license after the license grace period expires.|Contact your sales representative to obtain an NVMe-oF license, and add it to the cluster.
+|Object Store Host Unresolvable|CRITICAL|The object store server host name cannot be resolved to an IP address. The object store client cannot communicate with the object-store server without resolving to an IP address. As a result, data might be inaccessible. |Check the DNS configuration to verify that the host name is configured correctly with an IP address.
+|Object Store Intercluster LIF Down|CRITICAL|The object-store client cannot find an operational LIF to communicate with the object store server. The node will not allow object store client traffic until the intercluster LIF is operational. As a result, data might be inaccessible. |Perform the following corrective actions:…Check the intercluster LIF status by using the "network interface show -role intercluster" command.…Verify that the intercluster LIF is configured correctly and operational.…If an intercluster LIF is not configured, add it by using the "network interface create -role intercluster" command.
+|Object Store Signature Mismatch|CRITICAL|The request signature sent to the object store server does not match the signature calculated by the client. As a result, data might be inaccessible. |Verify that the secret access key is configured correctly. If it is configured correctly, contact NetApp technical support for assistance.
+|READDIR Timeout|CRITICAL|A READDIR file operation has exceeded the timeout that it is allowed to run in WAFL. This can be because of very large or sparse directories. Corrective action is recommended. |Perform the following corrective actions:…Find information specific to recent directories that have had READDIR file operations expire by using the following 'diag' privilege nodeshell CLI command:
+wafl readdir notice show.…Check if directories are indicated as sparse or not:…If a directory is indicated as sparse, it is recommended that you copy the contents of the directory to a new directory to remove the sparseness of the directory file. …If a directory is not indicated as sparse and the directory is large, it is recommended that you reduce the size of the directory file by reducing the number of file entries in the directory.
+|Relocation of Aggregate Failed|CRITICAL|This event occurs during the relocation of an aggregate, when the destination node cannot reach the object stores. |Perform the following corrective actions:…Verify that your intercluster LIF is online and functional by using the "network interface show" command.…Check network connectivity to the object store server by using the"'ping" command over the destination node intercluster LIF. …Verify that the configuration of your object store has not changed and that login and connectivity information is still accurate by using the "aggregate object-store config show" command.…Alternatively, you can override the error by using the "override-destination-checks" parameter of the relocation command.…Contact NetApp technical support for more information or assistance.
+|Shadow Copy Failed|CRITICAL|A Volume Shadow Copy Service (VSS), a Microsoft Server backup and restore service operation, has failed.|Check the following using the information provided in the event message:…Is shadow copy configuration enabled?…Are the appropriate licenses installed? …On which shares is the shadow copy operation performed?…Is the share name correct?…Does the share path exist?…What are the states of the shadow copy set and its shadow copies?
+|Storage Switch Power Supplies Failed|WARNING|There is a missing power supply in the cluster switch. Redundancy is reduced, risk of outage with any further power failures.|Perform the following corrective actions:…Ensure that the power supply mains, which supplies power to the cluster switch, is turned on.…Ensure that the power cord is connected to the power supply.…Contact NetApp technical support if the issue persists.
+|Too Many CIFS Authentication|WARNING|Many authentication negotiations have occurred simultaneously. There are 256 incomplete new session requests from this client.|Investigate why the client has created 256 or more new connection requests. You might have to contact the vendor of the client or of the application to determine why the error occurred.
+|Unauthorized User Access to Admin Share|WARNING|A client has attempted to connect to the privileged ONTAP_ADMIN$ share even though their logged-in user is not an allowed user.|Perform the following corrective actions:…Ensure that the mentioned username and IP address is configured in one of the active Vscan scanner pools.…Check the scanner pool configuration that is currently active by using the "vserver vscan scanner pool show-active" command.
+|Virus Detected|WARNING|A Vscan server has reported an error to the storage system. This typically indicates that a virus has been found. However, other errors on the Vscan server can cause this event.…Client access to the file is denied. The Vscan server might, depending on its settings and configuration, clean the file, quarantine it, or delete it.|Check the log of the Vscan server reported in the "syslog" event to see if it was able to successfully clean, quarantine, or delete the infected file. If it was not able to do so, a system administrator might have to manually delete the file.
+|===
+
+
+
 ////
-
-
-
-
-////
-
 |===
 | Monitor Name | Severity | Monitor Description | Corrective Action
 |WAFL Quota Qtree Exceeded	|INFO	|This event occurs when a tree quota has exceeded on a volume. This event is not repeated for this tree for a set amount of time or until a “quota resize” is performed. The amount of time is specified by the “quota logmsg” command.	| Reduce the usage in this tree or increase the quota and run the "quota resize" command.
@@ -646,8 +500,11 @@ NOTE: The fan is integrated into the power supply module in some disk shelves.�
  "2. If the issue persists, replace the fan module."
  "3. If the issue still persists, contact NetApp technical support for assistance."
 |=== 
-
 ////
+
+
+
+
 
 ////
 
@@ -688,11 +545,11 @@ Monitor pin/unpin is an individual user preference and independent of the group 
 image:DashboardPin.png[Pinned Dashboards]
 ////
 
-
 === More Information
 
-* link:task_view_and_manage_alerts.html[Viewing and Dismissing Alerts]
+//* link:concept_notifications_email.html[Email Alerting] for Monitors
 
+* link:task_view_and_manage_alerts.html[Viewing and Dismissing Alerts]
 
 
 
