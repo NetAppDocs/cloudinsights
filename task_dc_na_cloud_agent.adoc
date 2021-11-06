@@ -18,13 +18,15 @@ keywords: data collector, NetApp, Cloud, agent, ONTAP
 
 [.lead]
 
-This data collector creates a cloud connection to support data collection from ONTAP 9.9+ systems. 
+This data collector creates a cloud connection to support data collection from ONTAP 9.9+ CVO, AFF, and FAS systems. 
 
 NOTE: This documentation is considered _Preview_ documentation and is therefore subject to change.
 
 == Configuration
 
 Cloud Insights collects data from ONTAP 9.9+ using a *cloud connection*, eliminating the need to install an external acquisition unit, simplifying troubleshooting, maintenance, and initial deployment. Configuration of the cloud connection for the ONTAP 9.9+ data collector requires you to copy a *Pairing Code* to the ONTAP System Manager, which will then establish a connection to your Cloud Insights environment. After the connection is established, the data collected is the same as it would be if it was collected through an acquisition unit.
+
+This data collector supports ONTAP 9.9+ CVO, AFF, and FAS systems.
 
 image:Cloud_Agent_DC.png[Cloud Agent Data Collector Configuration]
 
@@ -45,6 +47,9 @@ image:Cloud_Agent_Step_Waiting.png[Waiting for connection]
 * Return to the Cloud Insights browser tab and wait for the connection to be established. Once it is established, a _Complete_ button is revealed.
 
 * Click _Complete_.
+
+
+// The Cloud Connection data collector acquires EMS (Event Monitoring System) logs from ONTAP.
 
            
 == Troubleshooting

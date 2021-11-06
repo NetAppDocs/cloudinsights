@@ -19,6 +19,8 @@ summary: ONTAP Data Collector
 
 This data collector acquires inventory and performance data from storage systems running ONTAP using read-only API calls from an ONTAP account. This data collector also creates a record in the cluster application registry to accelerate support.
 
+NOTE: Beginning in November 2021, ONTAP Advanced Counter data collection will be enabled by default. This feature will be rolled out gradually; you will see the advanced data in your dashboards over time. To disable Advanced Data collection, edit the ONTAP data collector and un-check the 'Opt in for Advanced Counter Data Collection rollout' checkbox.
+
 == Terminology
 
 Cloud Insights acquires inventory and performance data from the ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
