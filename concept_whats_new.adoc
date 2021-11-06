@@ -18,6 +18,58 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights. 
 
+=== November 2021
+
+
+==== Adaptive Dashboards
+
+_New variables for attributes and the ability to use variables in widgets_.
+
+Dashboards are now more powerful and flexible than ever. Build adaptive dashboards with attribute variables to quickly filter dashboards on the fly. Using these and other pre-existing link:concept_dashboard_features.html#variables[variables] you can now create one high level dashboard to see metrics for your entire environment, and seamlessly filter down by resource name, type, location, and more. Use number variables in widgets to associate raw metrics with costs, for example cost per GB for storage as a service. 
+
+image:Variables_Drop_Down_Showing_Annotations.png[]
+image:Variables_Attribute_Filtering.png[]
+
+
+
+==== Access the Reporting Database via API
+
+Enhanced capabilities for integration with third party reporting, ITSM, and automation tools: Cloud Insights' powerful link:API_Overview.html[API] allows users to query the Cloud Insights Reporting database directly, without going through the Cognos Reporting environment.
+
+
+
+
+==== Pod tables on VM Landing Page
+
+Seamless navigation between VMs and the Kubernetes Pods using them: for improved troubleshooting and performance headroom management, a table of associated Kubernetes Pods will now appear on VM landing pages.
+
+image:Kubernetes_Pod_Table_on_VM_Page.png[Kubernetes Pod table on a VM landing page]
+
+
+
+
+==== Data Collector Updates
+
+* ECS now reports firmware for storage and node
+* Isilon has improved prompt detection
+* Azure NetApp Files collects performance data more quickly
+* StorageGRID now supports Single Sign-On (SSO)
+* Brocade CLI properly reports model for X&-4
+
+
+
+
+==== Additional Operating Systems supported
+
+The Cloud Insights Acquisition Unit supports the following operating systems, in addition to those already supported:
+
+* Centos (64-bit) 8.4
+* Oracle Enterprise Linux (64-bit) 8.4
+* Red Hat Enterprise Linux (64-bit) 8.4
+
+
+'''
+
 === October 2021
 
 
