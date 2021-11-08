@@ -135,7 +135,7 @@ image:Agent_Requirements_Rhel.png[Rhel/CentOS Agent Install]
 
 .Pre-requisites:
 
-* The following commands must be available: curl, sudo, ping, sha256sum, and dmidecode
+* The following commands must be available: curl, sudo, ping, sha256sum, openssl, and dmidecode
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for RHEL/CentOS* section. 
 
 
@@ -219,7 +219,7 @@ image:Agent_Requirements_Ubuntu.png[Ubuntu/Debian Agent Install]
 
 .Pre-requisites:
 
-* The following commands must be available: curl, sudo, ping, sha256sum, and dmidecode
+* The following commands must be available: curl, sudo, ping, sha256sum, openssl, and dmidecode
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Ubuntu/Debian* section. 
 
 
@@ -303,7 +303,7 @@ image:Agent_Requirements_Macos.png[macOS Agent Install]
 
 .Pre-requisites:
 
-* The following commands must be available: curl, sudo, and shasum
+* The following commands must be available: curl, sudo, openssl, and shasum
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for macOS* section. 
 
 
@@ -421,7 +421,7 @@ NOTE: Operator-based installation is considered a _Preview_ feature and is there
 
 .Pre-requisites:
 
-* The following commands must be available: curl, sudo, kubectl
+* The following commands must be available: curl, sudo, openssl, sha256sum, and kubectl
 +
 For best results, add these commands to the PATH.
 
