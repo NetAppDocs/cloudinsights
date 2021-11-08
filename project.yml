@@ -1,3 +1,13 @@
+---
+settings:
+  name: Cloud Insights
+  rss_page: concept_whats_new.html
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: true
+    langs: us-en,ja-jp,zh-cn
 sidebar:
   entries:
     - title: Cloud Insights documentation
@@ -203,6 +213,8 @@ sidebar:
           url: /reporting_creating_custom_reports.html
         - title: Data Models
           url: /reporting_creating_custom_reports.html#reporting-data-models
+        - title: Reporting Database API
+          url: /reporting_querying_database.html
         - title: Data Retention
           url: /reporting_data_retention.html
         - title: Schema Diagrams
@@ -231,6 +243,8 @@ sidebar:
               url: /task_config_user_dir_connect_ldap.html
   #          - title: Configuring NetApp Data Collectors
   #            entries: 
+            - title: Configuring the Amazon FsX for NetApp ONTAP Collector
+              url: /task_config_cs_amazon_fsx.html
             - title: Configuring the ONTAP SVM Data Collector
               url: /task_add_collector_svm.html
             - title: Configuring the Cloud ONTAP Data Collector
