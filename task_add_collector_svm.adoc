@@ -371,7 +371,12 @@ Wait until the Data collector in Cloud Secure shows an error.
 Since the CIFS server is NOT configured on the SVM, this error as shown in the left is shown by Cloud Secure.
 Edit the ONTAP SVM data collector and un-check CIFs as allowed protocol. Save the data collector. It will start running with only NFS protocol enabled.
 
-
+|Data Collector shows the error message:
+“Error: Failed to determine the health of the collector within 2 retries, try restarting the collector again (Error Code: AGENT008)”.
+|On the Data Collectors page, scroll to the right of the data collector giving the error and click on the 3 dots menu. Select _Edit_.
+Enter the password of the data collector again.
+Save the data collector by pressing on the _Save_ button.
+Data Collector will restart and the error should be resolved.
 
 |===
 
