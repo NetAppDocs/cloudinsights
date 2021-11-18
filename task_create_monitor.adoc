@@ -24,7 +24,8 @@ When the monitored threshold and conditions are reached or exceeded, Cloud Insig
 
 Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
 
-See below for link:#system-defined-monitors-preview[System-Defined Monitors] preview documentation.
+//See below for link:#system-defined-monitors-preview[System-Defined Monitors] documentation.
+See below for link:#system-defined-monitors[System-Defined Monitors] documentation.
 
 ////
 === Monitor or Performance Policy?
@@ -205,12 +206,9 @@ image:Monitors_PauseGroup.png[Pause a group]
 
 
 
-== System-Defined Monitors (Preview)
+== System-Defined Monitors
 
-Beginning in October 2021, Cloud Insights will be previewing a number of system-definied monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
-
-NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
-
+Beginning in October 2021, Cloud Insights includes a number of system-defined monitors for both metrics and logs. 
 
 Read more about link:task_system_monitors.html[System-Defined Monitors]
 
@@ -324,8 +322,6 @@ image:email_monitor_alerts.png[Email Alert Recipients]
 Specify the webhook(s) for alert notifications. If desired, you can choose different webhooks for warning or critical alerts.
 
 image:Webhook_Monitor_Notifications.png[Webhook Alerting]
-
-NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
 
 
 === Setting Corrective Actions or Additional Information
