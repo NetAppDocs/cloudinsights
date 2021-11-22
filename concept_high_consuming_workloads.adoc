@@ -25,9 +25,9 @@ When talking about workload or resource impact, the following definitions are us
 
 An *Impactful* or _Greedy_ resource is one that causes a negative impact on another resource. For example, a volume experiencing very high IOPS may cause increased latency in other volumes (i.e. _Impacted_ or _Degraded_ resources). Impactful and Impacted resources are “peers” that utilize the same shared resource, for example, a storage pool or Volume.
 
-A *High-Consuming Workload* is a workload that is currently identified as impacting other resources in the shared storage pool. These workloads drive higher IOPS, reducing IOPS in the Impacted Workloads. In Cloud Insights these are identified as *Impactful Workloads*.
+A *High-Consuming Workload* is a workload that is currently identified as impacting other resources in the shared storage pool. These workloads drive higher IOPS, reducing IOPS in the Impacted Workloads. In Cloud Insights these are identified as *Demanding Workloads*.
 
-An *Impacted Workload* is a workload affected by a high-consuming workload in the shared Storage Pool. These workloads are experiencing reduced IOPS and/or higher latency, caused by the Impactful Workloads.
+An *Impacted Workload* is a workload affected by a high-consuming workload in the shared Storage Pool. These workloads are experiencing reduced IOPS and/or higher latency, caused by the Demanding Workloads.
 
 *Shared Resource Saturation* is the ratio of impacting IOPS to _baseline_.
 
