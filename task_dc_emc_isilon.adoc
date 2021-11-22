@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_dc_emc_isilon.html
-keywords: data collector, isilon, EMC, DELL
-summary: Configuring DELL EMC Isilon data collector.
+keywords: data collector, isilon, EMC, DELL, PowerScale
+summary: Configuring the Dell EMC PowerScale (formerly Isilon) data collector.
 ---
 
-= Dell EMC Isilon data collector
+= Dell EMC PowerScale data collector
 
 :toc: macro
 :hardbreaks:
@@ -17,11 +17,11 @@ summary: Configuring DELL EMC Isilon data collector.
 
 [.lead]
 
-Cloud Insights uses the Isilon SSH data collector to acquire  inventory and performance data from EMC Isilon scale-out NAS storage. 
+Cloud Insights uses the Dell EMC PowerScale (previously Isilon) SSH data collector to acquire inventory and performance data from PowerScale scale-out NAS storage. 
 
 == Terminology
 
-Cloud Insights acquires the following inventory information from the Isilon data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -38,8 +38,8 @@ Note: These are common terminology mappings only and might not represent every c
 
 You need the following information to configure this data collector:
 
-* Administrator permissions to the Isilon storage
-* IP address of the Isilon cluster
+* Administrator permissions to the PowerScale storage
+* IP address of the PowerScale cluster
 * SSH access to port 22
 
 == Configuration
@@ -47,9 +47,9 @@ You need the following information to configure this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description 
-|IP address|The IP address or fully-qualified domain name of the Isilon cluster 
-|User Name|User name for the Isilon cluster
-|Password|Password used for the Isilon cluster
+|IP address|The IP address or fully-qualified domain name of the PowerScale cluster 
+|User Name|User name for the PowerScale cluster
+|Password|Password used for the PowerScale cluster
 |===
 
 == Advanced configuration
