@@ -198,7 +198,10 @@ Once the Acquisition Unit is installed, you may add the Astra Data Store collect
 
 
 == Troubleshooting
+
 Some things to try if you encounter problems with this data collector:
+
+==== Astra Data Store data collector
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -209,6 +212,31 @@ Some things to try if you encounter problems with this data collector:
 |Verify the collector is installed in an Acquisition Unit pod running inside the ADS Kubernetes cluster.
 Verify the astrads-metrics-service  is running the astrads-system  namespace.
 |===
+
+==== Installation Script
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+
+|The monitoring operator is not running in ____ namespace.
+|Follow the Astra Data Store installation instructions to install it
+
+|Acquisition Unit pod ____ did not start successfully after 300 seconds.
+|Get the name of the acquisition unit pod: kubectl get pods --namespace netapp-monitoring | grep "au-pod"
+Check the pod events for errors: kubectl describe pod --namespace netapp-monitoring <POD_NAME>
+
+|Acquisition Unit installation has not finished after 900 seconds
+|Get the name of the acquisition unit pod: kubectl get pods --namespace netapp-monitoring | grep "au-pod"
+Check the pod logs for errors: kubectl logs --namespace netapp-monitoring <POD_NAME>
+If there are no errors and the logs end with the message "Main - Acquisition is up and running!", the install succeeded but too longer than expected. Rerun the installation script. 
+
+|Failed to retrieve Acquisition Unit id from Cloud Insights
+|Verify the Acquisition Unit appears in Cloud Insights. Go to Admin > Data Collectors and click on the Acquisition Units tab.
+Verify the Cloud Insights API key has permission for Acquisition Unit
+
+|===
+
 
 Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
 
