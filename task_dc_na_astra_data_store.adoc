@@ -17,11 +17,13 @@ keywords: data collector, queries, create, astra, ads, data, store,
 
 [.lead]
 
-The NetApp Astra Data Store data collector monitors and reports configuration and performance data for a single Astra Data Store (ADS) cluster. 
+This data collector acquires inventory and performance data for a single Astra Data Store (ADS) cluster. In addition to the data collector, the Monitoring Operator will configure _Telegraf_ to collect advanced metrics and _Fluent Bit_ to collect logs.
+
+TIP:These instructions and additional information can also be found in the link:https://review.docs.netapp.com/us-en/astra-data-store_ads-PI4-review/use/monitor-with-cloud-insights.html#perform-cloud-insight-connection-prerequisites[Astra Data Store documentation].
 
 == Terminology
 
-Cloud Insights acquires inventory and performance data from this collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires inventory and performance data from this data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -36,6 +38,11 @@ Cloud Insights acquires inventory and performance data from this collector. For 
 
 == Requirements
 
+* The NetApp Monitoring Operator must be installed in the Kubernetes cluster with Astra Data Store. If this was not installed during the Astra Data Store installation, please install the monitoring operator following the Astra Data Store installation instructions.
+* The _ubectl-astrads_  kubectl plugin must be installed. If it is not installed, please install the _kubectl-astrads_ binary following the Astra Data Store installation instructions.
+* The following commands must be available: _awk, curl, grep and jq_.
+
+//// Previous Requirements
 * The Acquisition Unit must be running in a Kubernetes pod inside the Astra Data Store Kubernetes cluster. See link:task_configure_acquisition_unit.html[Acquisition Unit installation] for more details.
 //Alternative text: The Acquisition Unit must be deployed by the NetApp Monitoring Operator in the Astra Data Store Kubernetes cluster. See Acquisition Unit installation for more details.
 ** To install the Acquisition Unit, you will need a Cloud Insights link:API_Overview.html[API Key] with Read/Write  permissions to the categories: _Acquisition Unit, Data Collection, Data Ingestion_
@@ -46,7 +53,7 @@ Cloud Insights acquires inventory and performance data from this collector. For 
 
  SECRET_NAME=$(kubectl get secrets -n astrads-system| grep ^default| cut -f1 -d ' ' )
  kubectl describe secret $SECRET_NAME -n astrads-system | grep -E '^token' | cut -f2 -d':' | tr -d " "
- 
+ ////
 
 == Configuration
 [cols=2*, options="header", cols"50,50"]
