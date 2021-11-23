@@ -42,7 +42,8 @@ Cloud Insights acquires inventory and performance data from this data collector.
 * The _ubectl-astrads_  kubectl plugin must be installed. If it is not installed, please install the _kubectl-astrads_ binary following the Astra Data Store installation instructions.
 * The following commands must be available: _awk, curl, grep and jq_.
 
-//// Previous Requirements
+//// 
+Previous Requirements
 
 * The Acquisition Unit must be running in a Kubernetes pod inside the Astra Data Store Kubernetes cluster. See link:task_configure_acquisition_unit.html[Acquisition Unit installation] for more details.
 //Alternative text: The Acquisition Unit must be deployed by the NetApp Monitoring Operator in the Astra Data Store Kubernetes cluster. See Acquisition Unit installation for more details.
