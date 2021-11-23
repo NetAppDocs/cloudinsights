@@ -219,15 +219,15 @@ Verify the astrads-metrics-service  is running the astrads-system  namespace.
 |===
 |Problem:|Try this:
 
-|The monitoring operator is not running in ____ namespace.
+|The monitoring operator is not running in <namespace> namespace.
 |Follow the Astra Data Store installation instructions to install it
 
-|Acquisition Unit pod ____ did not start successfully after 300 seconds.
-|Get the name of the acquisition unit pod: kubectl get pods --namespace netapp-monitoring | grep "au-pod"
+|Acquisition Unit pod <pod> did not start successfully after 300 seconds.
+|Get the name of the acquisition unit pod: kubectl get pods --namespace netapp-monitoring \| grep "au-pod"
 Check the pod events for errors: kubectl describe pod --namespace netapp-monitoring <POD_NAME>
 
 |Acquisition Unit installation has not finished after 900 seconds
-|Get the name of the acquisition unit pod: kubectl get pods --namespace netapp-monitoring | grep "au-pod"
+|Get the name of the acquisition unit pod: kubectl get pods --namespace netapp-monitoring \| grep "au-pod"
 Check the pod logs for errors: kubectl logs --namespace netapp-monitoring <POD_NAME>
 If there are no errors and the logs end with the message "Main - Acquisition is up and running!", the install succeeded but too longer than expected. Rerun the installation script. 
 
