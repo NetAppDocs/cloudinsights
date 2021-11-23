@@ -104,13 +104,13 @@ The installer script will:
 
 . Click Complete Setup
 
-If the installer script exits due to an error, you can rerun it again once the error is resolved. The installer script supports additional parameters such as the Monitoring Operator namespace and Kubernetes API server port if your environment does not use the default settings. A full list of options is listed below.
+If the installer script exits due to an error, you can rerun it again once the error is resolved. The installer script supports additional parameters such as the Monitoring Operator namespace and Kubernetes API server port if your environment does not use the default settings. A full list of available options is listed below.
 
-Installer script usage:
+=== Installer script options:
 
 Note that the Cloud Insights domain name and selected API Access Key will be embedded in the installer script when it is downloaded.
 
-$ ./cloudinsights-ads-monitoring.sh -h
+ $ ./cloudinsights-ads-monitoring.sh -h
 
  USAGE: cloudinsights-ads-monitoring.sh [OPTIONS]
  
