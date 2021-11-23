@@ -19,7 +19,7 @@ keywords: data collector, queries, create, astra, ads, data, store,
 
 This data collector acquires inventory and performance data for a single Astra Data Store (ADS) cluster. In addition to the data collector, the Monitoring Operator will configure _Telegraf_ to collect advanced metrics and _Fluent Bit_ to collect logs.
 
-TIP: These instructions and additional information can also be found in the link:https://review.docs.netapp.com/us-en/astra-data-store_ads-PI4-review/use/monitor-with-cloud-insights.html#perform-cloud-insight-connection-prerequisites[Astra Data Store documentation].
+TIP: These installation instructions and additional information can also be found in the link:https://review.docs.netapp.com/us-en/astra-data-store_ads-PI4-review/use/monitor-with-cloud-insights.html#perform-cloud-insight-connection-prerequisites[Astra Data Store documentation].
 
 == Terminology
 
@@ -53,7 +53,7 @@ Cloud Insights acquires inventory and performance data from this data collector.
 
  SECRET_NAME=$(kubectl get secrets -n astrads-system| grep ^default| cut -f1 -d ' ' )
  kubectl describe secret $SECRET_NAME -n astrads-system | grep -E '^token' | cut -f2 -d':' | tr -d " "
- ////
+
 
 == Configuration
 [cols=2*, options="header", cols"50,50"]
@@ -74,7 +74,60 @@ Cloud Insights acquires inventory and performance data from this data collector.
 |Included ADS Cluster Names|Comma-separated list of ADS cluster names to include in polling. Leave blank to monitor all clusters.
 |===
 
+////
 
+== Installation
+
+Steps to install collector and agents:
+
+. Choose an API Access Token
+
+. Copy the installer script from the installation dialog and save it as as a file named cloudinsights-ads-monitoring.sh. You can click the clipboard icon to quickly copy the script to the clipboard.
+. Open a Bash window, change directory to the location of the _cloudinsights-ads-monitoring.sh_ script.
+. Copy the permissions command block from the installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+
+. Paste the permissions command into the Bash window and press Enter.
+. Copy the install command from the installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Paste the install command into the Bash window.
+. Replace <KUBERNETES_IP>  with the IP address of the Kubernetes API server.
+. Replace <KUBERNETES_TOKEN>  with your Kubernetes API token.
+. Press Enter.
++
+The installer script will:
+* Verify the Monitoring Operator is installed and configured
+* Configure Fluent Bit
+* Configure Telegraf
+* Install the Acquisition Unit
+* Install the Astra Data Store collector once the Acquisition Unit is running.
+
+. Click Complete Setup
+
+If the installer script exits due to an error, you can rerun it again once the error is resolved. The installer script supports additional parameters such as the Monitoring Operator namespace and Kubernetes API server port if your environment does not use the default settings. A full list of options is listed below.
+
+Installer script usage:
+
+Note that the Cloud Insights domain name and selected API Access Key will be embedded in the installer script when it is downloaded.
+
+$ ./cloudinsights-ads-monitoring.sh -h
+
+ USAGE: cloudinsights-ads-monitoring.sh [OPTIONS]
+ 
+ Configure monitoring of Astra Data Store by Cloud Insights.
+ 
+ OPTIONS:
+  -h                      Display this help message.
+  -d ci_domain_name       Cloud Insights tenant domain name.
+  -i kubernetes_ip        Kubernetes API server IP address.
+  -k ci_api_key           Cloud Insights API Access Key.
+  -n namespace            Namespace for monitoring components. (default: netapp-monitoring)
+  -p kubernetes_port      Kubernetes API server port. (default: 6443)
+  -r root_pv_dir          Create 3 Persistent Volumes in this directory for the Acquisition Unit.
+                          Only specify this option if there is no Storage Provisioner installed and the PVs do not already exist.
+  -s storage_class        Storage Class name for provisioning Acquisition Unit PVs. If not specified, the default storage class will be used.
+  -t kubernetes_token     Kubernetes API server token.
+
+
+//// Previous instructions
 == Install Acquisition Unit, Telegraf, and Fluent Bit
 
 The NetApp Monitoring Operator will be installed in the Kubernetes cluster with Astra Data Store. The Monitoring Operator manages the installation and configuration of an Acquisition Unit, a Telegraf agent for advanced metrics, and a Fluent Bit agent for logs. 
@@ -139,6 +192,9 @@ Periodically run the following command to check the Acquisition Unit status unti
  kubectl --namespace netapp-monitoring get agent -o jsonpath='{.status.au-pod-status}' acc-monitoring
  
 Once the Acquisition Unit is installed, you may add the Astra Data Store collector from the Cloud Insights UI.
+
+////
+
 
 
 == Troubleshooting
