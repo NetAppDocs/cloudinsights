@@ -43,6 +43,7 @@ Cloud Insights acquires inventory and performance data from this data collector.
 * The following commands must be available: _awk, curl, grep and jq_.
 
 //// Previous Requirements
+
 * The Acquisition Unit must be running in a Kubernetes pod inside the Astra Data Store Kubernetes cluster. See link:task_configure_acquisition_unit.html[Acquisition Unit installation] for more details.
 //Alternative text: The Acquisition Unit must be deployed by the NetApp Monitoring Operator in the Astra Data Store Kubernetes cluster. See Acquisition Unit installation for more details.
 ** To install the Acquisition Unit, you will need a Cloud Insights link:API_Overview.html[API Key] with Read/Write  permissions to the categories: _Acquisition Unit, Data Collection, Data Ingestion_
