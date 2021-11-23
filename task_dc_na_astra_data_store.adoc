@@ -84,7 +84,7 @@ The installation script will walk you through installation of the Astra Data Sto
 
 The script will walk you through the following steps:
 
-. Choose an API Access Token
+. Choose an API Access Token.
 . Copy the installer script from the installation dialog and save it as as a file named cloudinsights-ads-monitoring.sh. You can click the clipboard icon to quickly copy the script to the clipboard.
 . Open a Bash window, change directory to the location of the _cloudinsights-ads-monitoring.sh_ script.
 . Copy the permissions command block from the installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
@@ -96,13 +96,13 @@ The script will walk you through the following steps:
 . Press Enter.
 +
 The installer script will:
-* Verify the Monitoring Operator is installed and configured
-* Configure Fluent Bit
-* Configure Telegraf
-* Install the Acquisition Unit
+* Verify the Monitoring Operator is installed and configured.
+* Configure Fluent Bit.
+* Configure Telegraf.
+* Install the Acquisition Unit.
 * Install the Astra Data Store collector once the Acquisition Unit is running.
 
-. Click Complete Setup
+. Click _Complete Setup_.
 
 If the installer script exits due to an error, you can rerun it again once the error is resolved. The installer script supports additional parameters such as the Monitoring Operator namespace and Kubernetes API server port if your environment does not use the default settings. A full list of available options is listed below.
 
