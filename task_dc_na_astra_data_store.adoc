@@ -47,11 +47,11 @@ Previous Requirements
 
 * The Acquisition Unit must be running in a Kubernetes pod inside the Astra Data Store Kubernetes cluster. See link:task_configure_acquisition_unit.html[Acquisition Unit installation] for more details.
 //Alternative text: The Acquisition Unit must be deployed by the NetApp Monitoring Operator in the Astra Data Store Kubernetes cluster. See Acquisition Unit installation for more details.
-** To install the Acquisition Unit, you will need a Cloud Insights link:API_Overview.html[API Key] with Read/Write  permissions to the categories: _Acquisition Unit, Data Collection, Data Ingestion_
+** To install the Acquisition Unit, you will need a Cloud Insights link:API_Overview.html[API Key] with Read/Write permissions to the categories: _Acquisition Unit, Data Collection, Data Ingestion_
 
 ** The Kubernetes API token used must grant read-only access to the _astrads.netapp.io_ apiGroup
 
-* To retrieve the API token for the astrads-system default service account, run the following commands in a bash  shell:
+* To retrieve the API token for the astrads-system default service account, run the following commands in a bash shell:
 
  SECRET_NAME=$(kubectl get secrets -n astrads-system| grep ^default| cut -f1 -d ' ' )
  kubectl describe secret $SECRET_NAME -n astrads-system | grep -E '^token' | cut -f2 -d':' | tr -d " "
@@ -80,12 +80,12 @@ Previous Requirements
 
 == Installation
 
-The installation script will walk you through installation of the Astra Data Store data collector. Follow the instructions on-screen.
+The installation script will walk you through installation of the Astra Data Store data collector. Follow the instructions on-screen. Installation will take several minutes to complete. Once complete, it may take a few more minutes before data is shown in Cloud Insights.
 
 The script will walk you through the following steps:
 
 . Choose an API Access Token.
-. Copy the installer script from the installation dialog and save it as as a file named cloudinsights-ads-monitoring.sh. You can click the clipboard icon to quickly copy the script to the clipboard.
+. Copy the installer script from the installation dialog and save it as as a file named _cloudinsights-ads-monitoring.sh_. You can click the clipboard icon to quickly copy the script to the clipboard.
 . Open a Bash window, change directory to the location of the _cloudinsights-ads-monitoring.sh_ script.
 . Copy the permissions command block from the installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
 . Paste the permissions command into the Bash window and press Enter.
@@ -108,7 +108,7 @@ If the installer script exits due to an error, you can rerun it again once the e
 
 === Installer script options:
 
-Note that the Cloud Insights domain name and selected API Access Key will be embedded in the installer script when it is downloaded.
+Note that the Cloud Insights domain name and selected API Access Key will be embedded in the installer script when it is downloaded. 
 
  $ ./cloudinsights-ads-monitoring.sh -h
  USAGE: cloudinsights-ads-monitoring.sh [OPTIONS]
