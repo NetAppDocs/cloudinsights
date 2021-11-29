@@ -21,7 +21,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 === Before you begin
 
 * This data collector is supported with the following:
-** Data ONTAP 9.2 and later versions
+** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
 ** SMB protocol version 3.1 and earlier
 **	NFS protocol version 4.0 and earlier 
 
@@ -38,7 +38,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 //* You need the SVM management IP address or the cluster IP, and username / password for login.
 
 * You must add an SVM using one of the following two methods:
-** By Using Cluster IP, SVM name, and Cluster Management Username and Password
+** By Using Cluster IP, SVM name, and Cluster Management Username and Password. _This is the recommended method._
 *** SVM name must be exactly as is shown in ONTAP and is case-sensitive.
 ** By Using SVM Vserver Management IP, Username, and Password
 ** If you are not able or not willing to use the full Administrator Cluster/SVM Management Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM or Cluster access.
@@ -96,7 +96,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -role csrole -cmddirname volume -access readonly
  security login role create -role csrole -cmddirname vserver -access readonly
  security login role create -role csrole -cmddirname "vserver fpolicy" -access all
- security login role create -role csrole -cmddirname "volume snapshot" -access all
+ security login role create -role csrole -cmddirname "volume snapshot" -access all -query "-snapshot cloudsecure_*"
  security login role create -role csrole -cmddirname "event catalog" -access all
  security login role create -role csrole -cmddirname "event filter" -access all
  security login role create -role csrole -cmddirname "event notification destination" -access all
@@ -213,15 +213,6 @@ image:CS_Data_Collector_Error.png[]
 |===
 |Problem: | Resolution:
 
-|Error message: "Connection to the FPolicy server <IP> is broken. ( reason: "FPolicy server is removed from external engine." )"
-|SVM is unable to reach the Fpolicy Server. 
-1. Make sure there is route available from SVM to the Fpolicy Server/Agent machine IP. Login to the cluster/SVM and ping the Fpolicy Server IP address using the following command:
-
-_net ping -lif <data_lif> -destination <agent IP> -vserver <svmname> -show-detail_
-
-2. In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state. 
-To prevent this, configure each SVM on a single environment.
-
 |Data Collector runs for some time and stops after a random time, failing with: "Error message: Connector is in error state. Service name: audit. Reason for failure: External fpolicy server overloaded."
 |The event rate from ONTAP was much higher than what the Agent box can handle. Hence the connection got terminated.
 
@@ -300,9 +291,16 @@ link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nm
 
 4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM management lif (with CIFS, NFS protocols support) and ensure that ping is working:
 
-_network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name> -show-detail_
+ _network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name> -show-detail_
 
 If not pingable, make sure the network settings in ONTAP are correct, so that the Agent machine is pingable.
+
+5.If a single SVM is added twice added to a tenant via 2 data collectors, then this error will be shown. Delete one of the data collectors thru the UI. Then restart the other data collector thru the UI. Then the data collector will show “RUNNING” status and will start receiving events from SVM.
+
+Basically, in a tenant, 1 SVM should be added only once, via 1 data collector. 1 SVM should not added twice via 2 data collectors.
+
+6. In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state.
+To prevent this, configure each SVM on a single environment.
 
 
 |No events seen in activity page.
@@ -347,6 +345,38 @@ link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nm
 
 _Include and exclude shares_ is not intended for a long list of share names. Use filtering by volume instead if you have a large number of shares to include or exclude.
 
+|There are existing fpolicies in the Cluster which are unused. What should be done with those prior to installation of Cloud Secure?
+|It is recommended to delete all existing unused fpolicy settings even if they are in disconnected state. Cloud Secure will create fpolicy with the prefix "cloudsecure_". All other unused fpolicy configurations can be deleted.
+
+CLI command to show fpolicy list:
+
+_fpolicy show_
+
+Steps to delete fpolicy configurations:
+
+_fpolicy disable -vserver <svmname> -policy-name <policy_name>_
+_fpolicy policy scope delete -vserver <svmname> -policy-name <policy_name>_
+_fpolicy policy delete -vserver <svmname> -policy-name <policy_name>_
+_fpolicy policy event delete -vserver <svmname> -event-name <event_list>_
+_fpolicy policy external-engine delete -vserver <svmname> -engine-name <engine_name>_
+
+|After enabling Cloud Secure, ONTAP performance is impacted: Latency becomes sporadically high, IOPs become sporadically low.
+|Ensure that you are using a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1415152[this issue] is fixed. The minimum version of ONTAP recommended is 9.8P7.
+
+|Data collector is in error, shows this error message.
+“Error: Connector is in error state. Service name: audit. Reason for failure: Failed to configure policy on SVM svm_test. Reason: Missing value for zapi field: events. “
+|Start with a new SVM with only NFS service configured.
+Add an ONTAP SVM data collector in Cloud Secure. CIFS is configured as an allowed protocol for the SVM while adding the ONTAP SVM Data Collector in Cloud Secure. 
+Wait until the Data collector in Cloud Secure shows an error.
+Since the CIFS server is NOT configured on the SVM, this error as shown in the left is shown by Cloud Secure.
+Edit the ONTAP SVM data collector and un-check CIFs as allowed protocol. Save the data collector. It will start running with only NFS protocol enabled.
+
+|Data Collector shows the error message:
+“Error: Failed to determine the health of the collector within 2 retries, try restarting the collector again (Error Code: AGENT008)”.
+|On the Data Collectors page, scroll to the right of the data collector giving the error and click on the 3 dots menu. Select _Edit_.
+Enter the password of the data collector again.
+Save the data collector by pressing on the _Save_ button.
+Data Collector will restart and the error should be resolved.
 
 |===
 

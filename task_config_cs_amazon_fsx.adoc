@@ -1,0 +1,68 @@
+---
+sidebar: sidebar
+permalink: task_config_cs_amazon_fsx.html
+keywords:  Cloud, Storage, AWS, Fsx
+summary: Cloud Secure uses data collectors to collect file and user access data from devices.
+---
+
+= Amazon FSx for NetApp ONTAP Configuration
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+This data collector gathers file and user access data from Amazon FSx for NetApp ONTAP. This data collector will be made available incrementally throughout the Cloud Insights service regions. Contact your sales person if you do not see the Icon for this collector in your Cloud Insights Environment.
+
+=== Agent Machine Configuration
+
+Use the following steps to configure the machine to be used as a Cloud Secure Agent:
+
+. Log in to the AWS console and navigate to EC2-Instances page and select Launch instance.
+
+. Select a RHEL or CentOS AMI with the appropriate version as mentioned in the link:concept_cs_agent_requirements.html[Requirements].
+
+. Create the Agent box in the same VPC and Subnet that the Amazon FSx for NetApp ONTAP instance resides in. 
++
+Or the Agent box should be in a VPC which has connectivity to the Amazon FSx for NetApp ONTAP VPC.
++
+Make sure that bidirectional communication is present between the Agent and Amazon FSx for NetApp ONTAP.
+
+. Select t2.xlarge (4 vcpus and 16 GB RAM) as allocated resources.
+.. Create the EC2 instance.
+
+. Install the required Linux packages using the YUM package manager:
+.. Install wget and unzip native Linux packages.
+
+=== Install the Cloud Secure Agent
+
+. Log in as Administrator or Account Owner to your Cloud Insights environment.
+
+. Navigate to Cloud Secure Admin > Data Collectors and click the Agents tab.
+
+. Click +Agent and specify RHEL as the target platform.
+
+. Copy the Agent Installation command.
+
+. Paste the Agent Installation command into the RHEL EC2 instance you are logged in to.
++
+This installs the Cloud Secure agent, providing all of the Agent prerequisites are met.
+
+For detailed steps please refer to the Cloud Secure link:task_cs_add_agent.html[Agent Installation] page,
+
+
+
+
+
+
+
+
+
+
+
+
+

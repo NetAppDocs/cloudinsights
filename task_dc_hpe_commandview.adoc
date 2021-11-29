@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: task_dc_hpe_commandview.html
-keywords: data collector, HP Command View, HP 
+keywords: data collector, HP Command View, HP, CVAE 
 summary: Configuring HP Enterprise Command View data collector.
 ---
 
@@ -18,7 +18,7 @@ summary: Configuring HP Enterprise Command View data collector.
 
 [.lead] 
 
-The HP Enterprise Command View data collector supports the Command View Device Manager server. Cloud Insights communicates with the Command View Server using the standard Command View API to collect inventory and performance data. 
+The HP Enterprise Command View Advanced Edition data collector supports discovering XP and P9500 arrays via Command View Advanced Edition (CVAE) server. Cloud Insights communicates with CVAE using the standard Command View API to collect inventory and performance data. 
 
 == Terminology 
 
@@ -41,8 +41,8 @@ Note: These are common terminology mappings only and might not represent every c
 
 You must have the following in order to collect inventory data:
 
-* IP address of the Command View Device Manager server
-* Read-only user name and password for the Command View Device Manager software and peer privileges
+* IP address of the CVAE server
+* Read-only user name and password for the CVAE software and peer privileges
 * Port requirement: 2001
 
 == Performance requirements 
@@ -52,12 +52,15 @@ The following requirements must be met in order to collect performance data:
 * HDS USP, USP V, and VSP performance 
 ** Performance Monitor must be licensed.
 ** Monitoring switch must be enabled. 
-** The Export Tool (Export.exe) must be copied to the Cloud Insights AU.
+** The Export Tool (Export.exe) must be copied to the Cloud Insights AU and extracted to a location. On CI Linux AUs, ensure "cisys" has read and execute permissions.
 ** The Export Tool version must match the microcode version of the target array.
 
 * AMS performance:
 ** Performance Monitor must be licensed.
 ** The Storage Navigator Modular 2 (SNM2) CLI utility be installed on the Cloud Insights AU. 
+
+* Network requirements
+** The Export Tools are Java based, and use RMI to speak to the array. These tools may not be firewall-friendly as they may dynamically negotiate source and destination TCP ports on each invocation. Also, different model array's Export Tools may behave differently across the network - consult HPE for your model's requirements
 
 == Configuration
 

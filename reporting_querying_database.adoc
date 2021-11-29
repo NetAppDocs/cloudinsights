@@ -1,0 +1,157 @@
+---
+sidebar: sidebar
+permalink: reporting_querying_database.html
+summary: Use Cloud Insights APIs to query the Reporting DB directly.
+keywords: reporting, cognos, data warehouse, dwh, API
+---
+
+= Access the Reporting Database via API
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+Cloud Insights' powerful API allows users to query the Cloud Insights Reporting database directly, without going through the Cognos Reporting environment.
+
+NOTE: This documentation refers to the Cloud Insights Reporting feature, which is available in the link:/concept_subscribing_to_cloud_insights.html#editions[Premium Edition].
+
+== Odata
+
+The Cloud Insights Reporting API follows the link:https://www.odata.org/[OData v4] (Open Data Protocol) standard for its querying of the Reporting database. 
+For more information or to learn more, check out link:https://www.odata.org/getting-started/basic-tutorial/[this tutorial] on OData. 
+
+All requests will start with the url _\https://<Cloud Insights URL>/rest/v1/dwh-management/odata_
+
+== Generating an APIKey
+
+Read more about link:API_Overview.html[Cloud Insights APIs].
+
+To generate an API key, do the following:
+
+* Log into your Cloud Insights environment and select *Admin > API Access*.
+* Click “+ API Access Token”.
+* Enter a Name & Description.
+* For type, choose _Data Warehouse_.
+* Set Permissions as Read/Write.
+* Set a desires Expiration date.
+* Click “Save”, then *copy the key and save it* somewhere safe. You will not be able to access the full key later.
+
+APIkeys are good for _Sync_ or _Async_.
+
+//<TBD More information>
+
+
+== Direct query of tables
+
+With the API Key in place, direct queries of the Reporting database are now possible. Long URLs may be simplified to \https://.../odata/ for display purposes rather than the full \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/
+
+Try simple queries like
+
+* \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom
+* \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_inventory
+* \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_inventory/storage
+* \https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_inventory/disk
+* \https://.../odata/dwh_custom/custom_queries
+
+
+== REST API Examples
+
+The URL for all calls is _\https://<Cloud Insights URL>/rest/v1/dwh-management/odata_. 
+
+* GET /{schema}/** - Retrieves data from the Reporting Database, requires at least _Guest_ role.
+
+Format: _\https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<query>_
+
+Example:
+
+ https://<domain>/rest/v1/dwh-management/odata/dwh_inventory/fabric?$count=true&$orderby=name
+
+Result:
+
+ {
+    "@odata.context": "$metadata#fabric",
+    "@odata.count": 2,
+    "value": [
+        {
+            "id": 851,
+            "identifier": "10:00:50:EB:1A:40:3B:44",
+            "wwn": "10:00:50:EB:1A:40:3B:44",
+            "name": "10:00:50:EB:1A:40:3B:44",
+            "vsanEnabled": "0",
+            "vsanId": null,
+            "zoningEnabled": "0",
+            "url": "https://<domain>/web/#/assets/fabrics/941716"
+        },
+        {
+            "id": 852,
+            "identifier": "10:00:50:EB:1A:40:44:0C",
+            "wwn": "10:00:50:EB:1A:40:44:0C",
+            "name": "10:00:50:EB:1A:40:44:0C",
+            "vsanEnabled": "0",
+            "vsanId": null,
+            "zoningEnabled": "0",
+            "url": "https://<domain>/web/#/assets/fabrics/941836"
+         }
+     ]
+ }
+
+// Example: get all Storage Pools of storage with id 287 with expanded Internal Volume data: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_inventory/storage(287)/storage_pool?$expand=internal_volume
+
+
+////
+ * POST /{schema}/** - Write data and create queries in dwh_custom schema of Data Warehouse database through ODATA protocol, requires ADMIN role
+
+ Format: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<table_name>. The body contains the record in JSON format
+
+ Example: add a new record to the storage table: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/storage , Request body: {"storageId": 123, "storageName": "storage123"}
+
+Creating queries: POST https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/custom_queries -d '{"queryName": "<query_name>", "querySql": "<query_sql>"}'
+
+
+
+ * PATCH /{schema}/** - Modify data and modify queries in dwh_custom schema of Data Warehouse database through ODATA protocol, requires ADMIN role
+
+ Format: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<table_name>('<record_id>'). The body contains the record in JSON format
+
+ Example: modify a record in the storage table: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/storage('123') , Request body: {"storageId": 123, "storageName": "storage123"}
+
+Modifying queries: PATCH https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/custom_queries('queryName') -d '{"queryName": "<query_name>", "querySql": "<query_sql>"}'
+
+
+
+ * DELETE /{schema}/** - Delete data and delete queries in dwh_custom schema of Data Warehouse database through ODATA protocol, requires ADMIN role
+
+ Format: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/<schema_name>/<table_name>('<record_id>')
+
+ Example: delete a record from the storage table: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/storage('123')
+
+Deleting queries: DELETE https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/custom_queries('queryName')
+////
+
+
+
+== Helpful Hints
+
+Keep the following in mind when working with Reporting API queries.
+
+* The query payload must be a valid JSON string
+* The query payload must be contained in a single line
+* Double quotes must be escaped, i.e. \"
+* Tabs are supported as \t
+* Avoid comments
+* Lower-case table names are supported
+
+Additionally:
+
+* 2 Headers are required:
+** Name “X-CloudInsights-ApiKey”
+** Attribute Value “<apikey>”
+
+Your API key will be specific to your Cloud Insights environment.
+

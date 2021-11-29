@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: concept_asset_alerts_section.html
+summary: Overview of the asset page Related Alerts section in Cloud Insights.
+keywords: asset, landing page, violations, Alerts, 
+
+---
+
+= Asset Page Related Alerts section
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can use the Related Alerts section of an asset page to see any alerts that occur in your environment as a result of a monitor assigned to an asset. Monitors generate alerts based on conditions you set, and enable you to identify the implication and analyze the impact and root cause of the problem in a manner that enables rapid and effective correction.
+
+The following example shows a typical Related Alerts section that displays on an asset page:
+
+image:Alerts_on_Landing_Page.png[Related Alerts Table]
+
+The Related Alerts section enables you to view and manage the alerts that occur in your network as the result of monitor conditions assigned to an asset.
+
+.Steps
+* Locate an asset page by doing any of the following:
+
+** Type the name of the asset in the Search area, and then select the asset from the list.
+
+** In a dashboard widget, click on the name of an asset.
+
+** Query for a set of assets and select on from the results list.
+
+The asset page displays. The Related Alerts section displays the time the alert was triggered as well as current status of the alert and the monitor that triggered it. You can click the Alert ID to open the landing page for the alert for further investigation.
+
+////
+You can perform any of the following optional tasks:
+
+* Use the filter box to show only specific alerts.
+* Change the sort order of the columns in a table to either ascending (up arrow) or descending (down arrow) by clicking the arrow in the column header.
+* Click the asset name in any description to display its asset page; a red circle indicates issues that need further investigation.
+* You can click the performance policy, which displays the Edit Policy dialog box, to review the performance policy and make changes to the policy if necessary.
+
+If you determine the issue is no longer a cause for concern, click the "three dots" menu on the right and select "Dismiss Violation" to remove a violation from the list.
+///
+
