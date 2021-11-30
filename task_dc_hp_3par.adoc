@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_dc_hp_3par.html
-keywords: data collector, 3PAR, HP, HP 3PAR 
-summary: Configuring task_dc_fujitsu_ data collector. 
+keywords: data collector, 3PAR, HP, HP 3PAR, HPE,  
+summary: Configuring the HP Enterprise Alletra 9000 / Primera (formerly 3PAR) data collector. 
 ---
 
-= 3PAR StoreServ Storage data collector
+= HP Enterprise Alletra 9000 / Primera Storage data collector
 
 :toc: macro
 :hardbreaks:
@@ -18,11 +18,11 @@ summary: Configuring task_dc_fujitsu_ data collector.
 
 [.lead] 
 
-Cloud Insights uses the 3PAR StoreServ data collector to discover inventory and performance for HP 3PAR StoreServ storage arrays.
+Cloud Insights uses the HP Enterprise Alletra 9000 / HP Enterprise Primera (previously 3PAR)  data collector to discover inventory and performance.
 
 == Terminology 
 
-Cloud Insights acquires the following inventory information from the 3PAR StoreServ data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -43,8 +43,8 @@ The following are required to configure this data colletor:
 * IP address or FQDN of the InServ cluster
 * For inventory, read-only user name and password to the StoreServ Server
 * For performance, read-write user name and password to the StoreServ Server
-* Port requirements: 22 (inventory collection), 5988 or 5989 (performance collection) [Note: 3PAR Performance is supported for StoreServ OS 3.x+]
-* For performance collection confirm that SMI-S is enabled by logging into the 3PAR array via SSH.
+* Port requirements: 22 (inventory collection), 5988 or 5989 (performance collection) [Note: Performance is supported for StoreServ OS 3.x+]
+* For performance collection confirm that SMI-S is enabled by logging into the array via SSH.
 
 
 == Configuration
@@ -92,7 +92,7 @@ Customer can take action.  What can customer do about this scenario?
 |===
 |Problem:|Try this:
 |"showsys" command doesn't return any result.
-|Run "showsys" and "showversion -a" from the command line and check if the version is supported by 3PAR.
+|Run "showsys" and "showversion -a" from the command line and check if the version is supported by the array.
 |===
 
 ==== Performance
