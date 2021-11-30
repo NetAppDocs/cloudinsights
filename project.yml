@@ -1,3 +1,13 @@
+---
+settings:
+  name: Cloud Insights
+  rss_page: concept_whats_new.html
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: true
+    langs: us-en,ja-jp,zh-cn
 sidebar:
   entries:
     - title: Cloud Insights documentation
@@ -102,6 +112,8 @@ sidebar:
           url: /task_query_assign_multiple_applicationss.html
         - title: Copying table values to the Clipboard
           url: /task_query_copy_table_values.html
+        - title: Querying Logs (Preview)
+          url: /concept_log_explorer.html
   
     - title: Working with Annotations
       entries:
@@ -203,6 +215,8 @@ sidebar:
           url: /reporting_creating_custom_reports.html
         - title: Data Models
           url: /reporting_creating_custom_reports.html#reporting-data-models
+        - title: Reporting Database API
+          url: /reporting_querying_database.html
         - title: Data Retention
           url: /reporting_data_retention.html
         - title: Schema Diagrams
@@ -319,7 +333,7 @@ sidebar:
                   url: /task_dc_emc_datadomain.html
                 - title: ECS
                   url: /task_dc_emc_ecs.html
-                - title: Isilon
+                - title: PowerScale
                   url: /task_dc_emc_isilon.html
                 - title: PowerStore
                   url: /task_dc_emc_powerstore.html
@@ -347,11 +361,11 @@ sidebar:
               url: /task_dc_google_cloud.html
             - title: HP Enterprise
               entries:
-                - title: HP 3PAR StoreServ
+                - title: HP Alletra 9000 and Primera
                   url: /task_dc_hp_3par.html
                 - title: HP Command View AE
                   url: /task_dc_hpe_commandview.html
-                - title: HPE Nimble
+                - title: HPE Alletra 6000
                   url: /task_dc_hpe_nimble.html
             - title: Hitachi Data Systems
               entries:
