@@ -21,20 +21,53 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === December 2021
 
+==== System Monitors for Metrics and Logs
+
+Cloud insights includes a number of link:task_system_monitors.html[system-defined monitors] for both metrics and logs. System-defined monitors are paused by default, giving you control over which monitors are most important to you. System-defined monitors are available for the following:
+
+*	ONTAP metric monitors
+*	Kubernetes metric monitors
+*	ONTAP log monitors
+*	Kubernetes log monitors 
+* Astra Data Store metric monitors
+
+Monitors are grouped, with metric monitors and log (workload) monitors in separate groups.
+
+image:SystemMonitorGroups.png[System Monitor Groups]
+
+
+==== Querying Logs
+
+Additionally, for ONTAP systems, Cloud Insights *Queries* include a powerful link:concept_log_explorer.html[Log Explorer], allowing you to easily investigate and troubleshoot EMS log entries. 
+
+image:LogQueryExplorer.png[Log Queries]
+
+
+==== Data Collector-level notifications.
+
+In addition to system-defined and custom-created Monitors for alerting, you can also set alert notifications for ONTAP data collectors, allowing you to specify recipients for collector-level alerts, independent of other monitor alerts.
+
+
 ==== Operating Systems support
 
 CentOS 8.x support is being replaced with *CentOS 8 Stream* support. CentOS 8.x will reach End-of-Life on December 21, 2021.
 
 
-==== System Monitors for Metrics and Logs
 
-Cloud insights includes a number of link:task_system_monitors.html[system-defined monitors] for both metrics and logs. 
+==== Data Collector Updates
 
-image:SystemMonitorGroups.png[System Monitor Groups]
+A number of Cloud Insights data collector names have been updated to reflect vendor changes:
 
-Additionally, the Queries feature includes a powerful link:concept_log_explorer.html[Log Explorer], allowing you to easily investigate and troubleshoot log entries. 
+|===
+|Vendor/Model|Previous Name
+|Dell EMC PowerScale|Isilon
+|HPE Alletra 9000 / Primera|3PAR
+|HPE Alletra 6000|Nimble
+|===
 
-image:LogQueryExplorer.png[Log Queries]
+
+
+
 
 
 '''
