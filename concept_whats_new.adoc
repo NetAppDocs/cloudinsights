@@ -173,7 +173,7 @@ image:Filter_Kubernetes_Explorer.png[Kubernetes Explorer filtering example]
 
 ==== K8s Data for Reporting
 
-Kubernetes data is now available for use in Reporting, allowing you to create chargeback or other reports.
+Kubernetes data is now available for use in Reporting, allowing you to create chargeback or other reports. In order for Kubernetes chargeback data to be passed to Reporting, you must have an active connection to, and Cloud Insights must be receiving data from, your Kubernetes cluster as well as its back-end storage. If there is no data received from the back-end storage, Cloud Insights can not send Kubernetes object data to Reporting.
 
 image:Kubernetes_ETL_Example.png[Kubernetes data showin in a chargeback report]
 
