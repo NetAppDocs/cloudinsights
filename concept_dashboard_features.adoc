@@ -120,18 +120,18 @@ image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
 Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
 
 
-==== Contextual Filtering
+==== Advanced Text Filtering with Type-ahead Suggestions
 
 When you select a value or values for a field, the other filters for that query will show values relevant to that filter.
 For example, when setting a filter for a specific object _Name_, the field to filter for _Model_ will only show values relevant to that object Name.
 
-Note that  only Text filters will show context. Date, Enum (list), etc. will not filter out. The exception to this is that you can set a filter on an Enum (i.e. list) field and have other text fields be filtered in context. In this case, the list fields acts as a source for the remaining fields. For example, selecting a value in an Enum field like Data Center, then other filters will show only the models/names in that data center)
+Note that  only Text filters will show contextual type-ahead suggestions. Date, Enum (list), etc. will not show type-ahead suggestions. That said, you _can_ set a filter on an Enum (i.e. list) field and have other text fields be filtered in context. For example, selecting a value in an Enum field like Data Center, then other filters will show only the models/names in that data center), but not vice-versa.
 
 The selected time range will also provide context for the data shown in filters.
 
 
 
-==== Advanced Filtering
+==== Additional Filtering Refinements
 
 The following can be used to further refine your filters.
 
