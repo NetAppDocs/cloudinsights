@@ -435,8 +435,9 @@ wafl readdir notice show.…Check if directories are indicated as sparse or not:
 |Volume Anti-ransomware Monitoring Paused (Learning Mode)|WARNING|The anti-ransomware monitoring for the volume is paused in learning mode.|None
 |Volume Anti-ransomware Monitoring Paused|WARNING|The anti-ransomware monitoring for the volume is paused.|None
 |Volume Anti-ransomware Monitoring Disabling|WARNING|The anti-ransomware monitoring for the volume is disabling.|None
-|Ransomware Activity Detected|CRITICAL|To protect the data from the detected ransomware, a Snapshot copy has been taken that can be used to restore original data.|Refer to the "FINAL-DOCUMENT-NAME" to take remedial measures for ransomware activity.
-(Alma suggested CRITICAL as ransomware activity is detected)|Your system generates and transmits an AutoSupport or "call home" message to NetApp technical support and any configured destinations. AutoSupport message improves problem determination and resolution.|(Alma: FINAL-DOCUMENT-NAME is not available yet, UM/SM just shows this text as is)
+|Ransomware Activity Detected|CRITICAL|To protect the data from the detected ransomware, a Snapshot copy has been taken that can be used to restore original data. 
+Your system generates and transmits an AutoSupport or "call home" message to NetApp technical support and any configured destinations. AutoSupport message improves problem determination and resolution.|Refer to the "FINAL-DOCUMENT-NAME" to take remedial measures for ransomware activity.
+
 
 |===
 
