@@ -63,7 +63,7 @@ When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metr
 TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
 
 
-==== Define the Conditions of the Monitor. 
+===== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
 . For the _Warning_ level, enter 200 for our example. The dashed line indicating this Warning level displays in the example graph.
@@ -102,7 +102,7 @@ Choose how you want to alert when a log alert is triggered. You can set the moni
 image:Monitor_log_alert_behavior.png[define the log behavior to monitor]
 
 
-=== Define the alert resolution behavior
+==== Define the alert resolution behavior
 
 You can choose how an log monitor alert is resolved. You are presented with three choices:
 
