@@ -8,7 +8,7 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 = System Monitors
 :toc: macro
 :hardbreaks:
-:toclevels: 1
+:toclevels: 2
 :nofooter:
 :icons: font
 :linkattrs:
@@ -23,7 +23,7 @@ toc::[]
 
 
 
-=== Create the Monitor 
+== Create the Monitor 
 
 . From the Cloud Insights menu, click *Alerts > Manage Monitors*
 +
@@ -44,7 +44,7 @@ When you add a new monitor, you are prompted to create a Metric Monitor or a Log
 After you choose your monitor type, the Monitor Configuration dialog is displayed.
 
 
-== Metric Monitor
+==== Metric Monitor
 
 . In the drop-down, search for and choose an object type and metric to monitor.
 
@@ -63,7 +63,7 @@ When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metr
 TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
 
 
-=== Define the Conditions of the Monitor. 
+==== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
 . For the _Warning_ level, enter 200 for our example. The dashed line indicating this Warning level displays in the example graph.
@@ -83,7 +83,7 @@ image:Monitor_metric_conditions.png[Define the monitor's conditions]
 
 
 
-== Log Monitor
+=== Log Monitor
 
 In a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above.
 
@@ -95,7 +95,7 @@ image:Monitor_log_monitor_filter.png[choose which log to monitor, and set a filt
 
 
 
-=== Define the alert behavior
+==== Define the alert behavior
 
 Choose how you want to alert when a log alert is triggered. You can set the monitor to alert with _Warning_, _Critical_, or _Informational_ severity, based on the filter conditions you set above.
 
@@ -114,7 +114,7 @@ image:Monitor_log_monitor_resolution.png[Alert Resolution]
 
 
 
-=== Select notification type and recipients
+==== Select notification type and recipients
 
 In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
 
@@ -135,7 +135,7 @@ image:Webhook_Monitor_Notifications.png[Webhook Alerting]
 NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
 
 
-== Setting Corrective Actions or Additional Information
+==== Setting Corrective Actions or Additional Information
 
 You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
 
@@ -144,7 +144,7 @@ In these fields you can provide notes, links, or steps to take to correct or oth
 image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 
 
-== Save your Monitor
+==== Save your Monitor
 
 . If desired, you can add a description of the monitor. 
 +
@@ -152,7 +152,7 @@ image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 +
 Your new monitor is added to the list of active Monitors.
 
-=== Monitor List
+==== Monitor List
 
 The Monitor page lists the currently configured monitors, showing the following:
 
