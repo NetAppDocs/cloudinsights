@@ -498,6 +498,19 @@ Your system generates and transmits an AutoSupport or "call home" message to Net
 
 
 
+=== Astra Data Store (ADS) Monitors
+
+|===
+|Monitor Name|CI Severity|Monitor Description|Corrective Action
+|Cluster Capacity Full|Warning @ > 85 %
+Critical @ > 95 %|The Storage capacity of an ADS cluster is used to store application and customer data. The more data stored in the cluster the less storage availability for future data.…When the storage capacity within a cluster reaches the total cluster capacity, the cluster will be unable to store more data. Monitoring the cluster physical capacity ensures data services continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:…1. Consider increasing the space allocated to the cluster in order to accommodate the growth…2. Consider deleting data that is not needed anymore to free up space…Plan to take the following actions soon if warning threshold is breached:…1. Consider increasing the space allocated to the cluster in order to accommodate the growth.
+|Volume Capacity Full|Warning @ < 15%
+Critical @ < 5 %|The Storage capacity for a volume is used to store application and customer data. The more data stored on the cluster volume the less storage availability for future data.…When the data storage capacity used within a volume reaches the total storage capacity, the volume will be unable to store more data due to lack of available storage capacity.…Monitoring the volume used storage capacity ensures data services continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:…1. Consider increasing the space of the volume in order to accommodate the growth…2. Consider deleting data that is not needed anymore to free up space…Plan to take the following actions soon if warning threshold is breached:…1. Consider increasing the space of the volume in order to accommodate the growth.
+
+|===
+
+
+
 === More Information
 
 //* link:concept_notifications_email.html[Email Alerting] for Monitors
