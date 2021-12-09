@@ -15,9 +15,13 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 :imagesdir: ./media/
 
 [.lead]
-Beginning in October 2021, Cloud Insights will be previewing a number of system-definied monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
+Beginning in October 2021, Cloud Insights will be including a number of system-defined monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
 
-NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
+NOTE: System Monitors are in _Paused_ state by default. Before resuming the monitor, you must ensure that _Advanced Counter Data Collection_ and _Enable ONTAP EMS log collection_ are enabled in the Data Collector. These options can be found in the ONTAP Data Collector under _Advanced Configuration_: 
+image:Enable_Log_Monitor_Collection.png[Enabling Advanced Counter and EMS Log collection for ONTAP]
+
+
+//NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
 
 toc::[]
 
