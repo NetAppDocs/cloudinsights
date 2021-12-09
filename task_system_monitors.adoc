@@ -344,6 +344,61 @@ Plan to take the following actions soon if warning threshold is breached:
 |===
 
 
+
+|===
+|Monitor Name|Severity|Description|Corrective Action
+|User Quota Files Hard Limit|CRITICAL|The number of files created within the volume has reached the critical limit and additional files cannot be created. Monitoring the number of files stored ensures that the user receives uninterrupted data service.|Immediate actions are required to minimize service disruption if critical threshold is breached.…Consider taking following actions:
+1. Increase the  file count quota for the specific user
+2. Delete unwanted files to reduce the pressure on the files quota for the specific user
+|User Quota Files Soft Limit|WARNING|The number of files created within the volume has reached the threshold limit of the quota and is near to the critical limit. You cannot create additional files if quota reaches the critical limit. Monitoring the number of files stored by a user ensures that the user receives uninterrupted data service.|Consider immediate actions if warning threshold is breached:
+1. Increase the file count quota for the specific user quota
+2. Delete unwanted files to reduce the pressure on the files quota for the specific user
+|Node Performance Limit|WARNING / CRITICAL|Node performance utilization has reached the levels where it might affect the performance of the IOs and the applications supported by the node. Low node performance utilization ensures consistent performance of the applications.|Immediate actions should be taken to minimize service disruption if critical threshold is breached:
+1. Suspend scheduled tasks, Snapshots or SnapMirror replication 
+2. Lower the demand of lower priority workloads via QoS limits
+3. Inactivate non-essential workloads   
+ 
+Consider the following actions if warning threshold is breached:
+1. Move one or more workloads to a different storage location
+2. Lower the demand of lower priority workloads via QoS limits
+3. Add more storage nodes (AFF) or disk shelves (FAS)and redistribute workloads
+4. Change workload characteristics (block size, application caching etc)
+|Node High Latency|WARNING / CRITICAL|Node latency has reached the levels where it might affect the performance of the applications on the node. Lower node latency ensures consistent performance of the applications. The expected latencies based on media type are: SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds.|If critical threshold is breached, then immediate actions should be taken to minimize service disruption:
+1. Suspend scheduled tasks, Snapshots or SnapMirror replication
+2. Lower the demand of lower priority workloads via QoS limits
+3. Inactivate non-essential workloads  
+ 
+Consider immediate actions when warning threshold is breached:
+1. Move one or more workloads to a different storage location
+2. Lower the demand of lower priority workloads via QoS limits
+3. Add more storage nodes (AFF) or disk shelves (FAS) and redistribute workloads
+4. Change workload characteristics (block size, application caching etc)
+|Storage VM High Latency|WARNING / CRITICAL|Storage VM (SVM) latency has reached the levels where it might affect the performance of the applications on the storage VM. Lower storage VM latency ensures consistent performance of the applications. The expected latencies based on media type are: SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds.|If critical threshold is breached, then immediately evaluate the threshold limits for volumes of the storage VM with a QoS policy assigned,  to verify whether they are causing the volume workloads to get throttled
+
+Consider following immediate actions when warning threshold is breached:
+1. If aggregate is also experiencing high utilization, move some volumes of the  storage VM to another aggregate.
+2. For volumes of the storage VM with a QoS policy assigned, evaluate the threshold limits if they are causing the volume workloads to get throttled
+3. If the node is experiencing high utilization, move some volumes of the storage VM to another node or reduce the total workload of the node
+|Volume Cache Miss Ratio|WARNING / CRITICAL|Volume Cache Miss Ratio is the percentage of read requests from the client applications that are returned from the disk instead of being returned from the cache. This means that the volume has reached the set threshold.|If critical threshold is breached, then immediate actions should be taken to minimize service disruption:
+1. Move some workloads off of the node of the volume to reduce the IO load
+2. If not already on the node of the volume, increase the WAFL cache by purchasing and adding a Flash Cache
+3. Lower the demand of lower priority workloads on the same node via QoS limits
+
+Consider immediate actions when warning threshold is breached:
+1. Move some workloads off of the node of the volume to reduce the IO load
+2. If not already on the node of the volume, increase the WAFL cache by purchasing and adding a Flash Cache
+3. Lower the demand of lower priority workloads on the same node via QoS limits
+4. Change workload characteristics (block size, application caching etc)
+|Volume Qtree Quota Overcommit|WARNING / CRITICAL|Volume Qtree Quota Overcommit specifies the percentage at which a volume is considered to be overcommitted by the qtree quotas. The set threshold for the qtree quota is reached for the volume. Monitoring the volume qtree quota overcommit ensures that the user receives uninterrupted data service.|If critical threshold is breached, then immediate actions should be taken to minimize service disruption:
+1. Increase the space of the volume 
+2. Delete unwanted data
+
+When warning threshold is breached, then consider increasing the space of the volume.
+
+|===
+
+
+
 === Log Monitors (not time-resolved)
 
 |===
