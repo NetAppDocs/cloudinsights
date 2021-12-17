@@ -8,22 +8,27 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 = System Monitors
 :toc: macro
 :hardbreaks:
-:toclevels: 1
+:toclevels: 2
 :nofooter:
 :icons: font
 :linkattrs:
 :imagesdir: ./media/
 
 [.lead]
-Beginning in October 2021, Cloud Insights will be previewing a number of system-definied monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
+Cloud Insights includes a number of system-defined monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
 
-NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
+NOTE: System Monitors are in _Paused_ state by default. Before resuming the monitor, you must ensure that _Advanced Counter Data Collection_ and _Enable ONTAP EMS log collection_ are enabled in the Data Collector. These options can be found in the ONTAP Data Collector under _Advanced Configuration_: 
+image:Enable_Log_Monitor_Collection.png[Enabling Advanced Counter and EMS Log collection for ONTAP]
+
+
+//NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
+
 
 toc::[]
 
 
 
-=== Create the Monitor 
+== Create the Monitor 
 
 . From the Cloud Insights menu, click *Alerts > Manage Monitors*
 +
@@ -44,7 +49,7 @@ When you add a new monitor, you are prompted to create a Metric Monitor or a Log
 After you choose your monitor type, the Monitor Configuration dialog is displayed.
 
 
-== Metric Monitor
+==== Metric Monitor
 
 . In the drop-down, search for and choose an object type and metric to monitor.
 
@@ -63,7 +68,7 @@ When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metr
 TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
 
 
-=== Define the Conditions of the Monitor. 
+===== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
 . For the _Warning_ level, enter 200 for our example. The dashed line indicating this Warning level displays in the example graph.
@@ -83,7 +88,7 @@ image:Monitor_metric_conditions.png[Define the monitor's conditions]
 
 
 
-== Log Monitor
+=== Log Monitor
 
 In a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above.
 
@@ -95,14 +100,14 @@ image:Monitor_log_monitor_filter.png[choose which log to monitor, and set a filt
 
 
 
-=== Define the alert behavior
+==== Define the alert behavior
 
 Choose how you want to alert when a log alert is triggered. You can set the monitor to alert with _Warning_, _Critical_, or _Informational_ severity, based on the filter conditions you set above.
 
 image:Monitor_log_alert_behavior.png[define the log behavior to monitor]
 
 
-=== Define the alert resolution behavior
+==== Define the alert resolution behavior
 
 You can choose how an log monitor alert is resolved. You are presented with three choices:
 
@@ -114,7 +119,7 @@ image:Monitor_log_monitor_resolution.png[Alert Resolution]
 
 
 
-=== Select notification type and recipients
+==== Select notification type and recipients
 
 In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
 
@@ -132,10 +137,8 @@ Specify the webhook(s) for alert notifications. If desired, you can choose diffe
 
 image:Webhook_Monitor_Notifications.png[Webhook Alerting]
 
-NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
 
-
-== Setting Corrective Actions or Additional Information
+==== Setting Corrective Actions or Additional Information
 
 You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
 
@@ -144,7 +147,7 @@ In these fields you can provide notes, links, or steps to take to correct or oth
 image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 
 
-== Save your Monitor
+==== Save your Monitor
 
 . If desired, you can add a description of the monitor. 
 +
@@ -152,7 +155,7 @@ image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 +
 Your new monitor is added to the list of active Monitors.
 
-=== Monitor List
+==== Monitor List
 
 The Monitor page lists the currently configured monitors, showing the following:
 
@@ -241,7 +244,7 @@ Below are the system monitors currently included with Cloud Insights:
 === Metric Monitors
 
 |===
-|Monitor Name|CI Severity|Monitor Description|Corrective Action
+|Monitor Name|Severity|Description|Corrective Action
 |Fiber Channel Port High Utilization|CRITICAL|Fiber Channel Protocol ports are used to receive and transfer the SAN traffic between the customer host system and the ONTAP LUNs. If the port utilization is high, then it will become a bottleneck and it will ultimately affect the performance of sensitive of Fiber Channel Protocol workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:
 1. Move workloads to another lower utilized FCP port
 2. Limit the traffic of certain LUNs to essential work only either via QoS policies in ONTAP or host-side configuration to lighten the utilization of the FCP ports…
@@ -344,10 +347,65 @@ Plan to take the following actions soon if warning threshold is breached:
 |===
 
 
-=== Log Monitors (not time-resolved)
 
 |===
 |Monitor Name|CI Severity|Monitor Description|Corrective Action
+|Node High Latency|WARNING / CRITICAL|Node latency has reached the levels where it might affect the performance of the applications on the node. Lower node latency ensures consistent performance of the applications. The expected latencies based on media type are: SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds.|If critical threshold is breached, then immediate actions should be taken to minimize service disruption:
+1. Suspend scheduled tasks, Snapshots or SnapMirror replication
+2. Lower the demand of lower priority workloads via QoS limits
+3. Inactivate non-essential workloads  
+ 
+Consider immediate actions when warning threshold is breached:
+1. Move one or more workloads to a different storage location
+2. Lower the demand of lower priority workloads via QoS limits
+3. Add more storage nodes (AFF) or disk shelves (FAS) and redistribute workloads
+4. Change workload characteristics (block size, application caching etc)
+|Node Performance Limit|WARNING / CRITICAL|Node performance utilization has reached the levels where it might affect the performance of the IOs and the applications supported by the node. Low node performance utilization ensures consistent performance of the applications.|Immediate actions should be taken to minimize service disruption if critical threshold is breached:
+1. Suspend scheduled tasks, Snapshots or SnapMirror replication 
+2. Lower the demand of lower priority workloads via QoS limits
+3. Inactivate non-essential workloads   
+ 
+Consider the following actions if warning threshold is breached:
+1. Move one or more workloads to a different storage location
+2. Lower the demand of lower priority workloads via QoS limits
+3. Add more storage nodes (AFF) or disk shelves (FAS)and redistribute workloads
+4. Change workload characteristics (block size, application caching etc)
+|Storage VM High Latency|WARNING / CRITICAL|Storage VM (SVM) latency has reached the levels where it might affect the performance of the applications on the storage VM. Lower storage VM latency ensures consistent performance of the applications. The expected latencies based on media type are: SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds.|If critical threshold is breached, then immediately evaluate the threshold limits for volumes of the storage VM with a QoS policy assigned,  to verify whether they are causing the volume workloads to get throttled
+
+Consider following immediate actions when warning threshold is breached:
+1. If aggregate is also experiencing high utilization, move some volumes of the  storage VM to another aggregate.
+2. For volumes of the storage VM with a QoS policy assigned, evaluate the threshold limits if they are causing the volume workloads to get throttled
+3. If the node is experiencing high utilization, move some volumes of the storage VM to another node or reduce the total workload of the node
+|User Quota Files Hard Limit|CRITICAL|The number of files created within the volume has reached the critical limit and additional files cannot be created. Monitoring the number of files stored ensures that the user receives uninterrupted data service.|Immediate actions are required to minimize service disruption if critical threshold is breached.…Consider taking following actions:
+1. Increase the  file count quota for the specific user
+2. Delete unwanted files to reduce the pressure on the files quota for the specific user
+|User Quota Files Soft Limit|WARNING|The number of files created within the volume has reached the threshold limit of the quota and is near to the critical limit. You cannot create additional files if quota reaches the critical limit. Monitoring the number of files stored by a user ensures that the user receives uninterrupted data service.|Consider immediate actions if warning threshold is breached:
+1. Increase the file count quota for the specific user quota
+2. Delete unwanted files to reduce the pressure on the files quota for the specific user
+|Volume Cache Miss Ratio|WARNING / CRITICAL|Volume Cache Miss Ratio is the percentage of read requests from the client applications that are returned from the disk instead of being returned from the cache. This means that the volume has reached the set threshold.|If critical threshold is breached, then immediate actions should be taken to minimize service disruption:
+1. Move some workloads off of the node of the volume to reduce the IO load
+2. If not already on the node of the volume, increase the WAFL cache by purchasing and adding a Flash Cache
+3. Lower the demand of lower priority workloads on the same node via QoS limits
+
+Consider immediate actions when warning threshold is breached:
+1. Move some workloads off of the node of the volume to reduce the IO load
+2. If not already on the node of the volume, increase the WAFL cache by purchasing and adding a Flash Cache
+3. Lower the demand of lower priority workloads on the same node via QoS limits
+4. Change workload characteristics (block size, application caching etc)
+|Volume Qtree Quota Overcommit|WARNING / CRITICAL|Volume Qtree Quota Overcommit specifies the percentage at which a volume is considered to be overcommitted by the qtree quotas. The set threshold for the qtree quota is reached for the volume. Monitoring the volume qtree quota overcommit ensures that the user receives uninterrupted data service.|If critical threshold is breached, then immediate actions should be taken to minimize service disruption:
+1. Increase the space of the volume 
+2. Delete unwanted data
+
+When warning threshold is breached, then consider increasing the space of the volume.
+
+|===
+
+
+
+=== Log Monitors (not time-resolved)
+
+|===
+|Monitor Name|Severity|Description|Corrective Action
 |AWS Credentials Not Initialized|INFO|This event occurs when a module attempts to access Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials from the cloud credentials thread before they are initialized. |Wait for the cloud credentials thread, as well as the system, to complete initialization. 
 |Cloud Tier Unreachable|CRITICAL|A storage node cannot connect to Cloud Tier object store API. Some data will be inaccessible.|If you use on-premises products, perform the following corrective actions: …Verify that your intercluster LIF is online and functional by using the "network interface show" command.…Check the network connectivity to the object store server by using the "ping" command over the destination node intercluster LIF.…Ensure the following:…The configuration of your object store has not changed.…The login and connectivity information is still valid.…Contact NetApp technical support if the issue persists. 
 
@@ -378,7 +436,7 @@ NOTE: The fan is integrated into the power supply module in some disk shelves.�
 === Log Monitors Resolved by Time
 
 |===
-Monitor Name|CI Severity|Monitor Description|Corrective Action
+Monitor Name|Severity|Description|Corrective Action
 |Antivirus Server Busy|WARNING|The antivirus server is too busy to accept any new scan requests.|If this message occurs frequently, ensure that there are enough antivirus servers to handle the virus scan load generated by the SVM.
 |AWS Credentials for IAM Role Expired|CRITICAL|Cloud Volume ONTAP has become inaccessible. The Identity and Access Management (IAM) role-based credentials have expired. The credentials are acquired from the Amazon Web Services (AWS) metadata server using the IAM role, and are used to sign API requests to Amazon Simple Storage Service (Amazon S3).|Perform the following:…Log in to the AWS EC2 Management Console.…Navigate to the Instances page.…Find the instance for the Cloud Volumes ONTAP deployment and check its health.…Verify that the AWS IAM role associated with the instance is valid and has been granted proper privileges to the instance.
 |AWS Credentials for IAM Role Not Found|CRITICAL|The cloud credentials thread cannot acquire the Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials from the AWS metadata server. The credentials are used to sign API requests to Amazon Simple Storage Service (Amazon S3). Cloud Volume ONTAP has become inaccessible.…|Perform the following:…Log in to the AWS EC2 Management Console.…Navigate to the Instances page.…Find the instance for the Cloud Volumes ONTAP deployment and check its health.…Verify that the AWS IAM role associated with the instance is valid and has been granted proper privileges to the instance.
@@ -422,130 +480,41 @@ wafl readdir notice show.…Check if directories are indicated as sparse or not:
 |===
 
 
-
-////
-|===
-| Monitor Name | Severity | Monitor Description | Corrective Action
-|WAFL Quota Qtree Exceeded	|INFO	|This event occurs when a tree quota has exceeded on a volume. This event is not repeated for this tree for a set amount of time or until a “quota resize” is performed. The amount of time is specified by the “quota logmsg” command.	| Reduce the usage in this tree or increase the quota and run the "quota resize" command.
-
-|Volume Automatic Resizing Succeeded | INFO | "This event occurs when the automatic resizing of a volume is successful. It happens when the 'autosize grow' option is enabled, and the volume reaches the grow threshold percentage." | None.
-|Volume Automatic Resizing Failed | WARNING | The automatic resizing of the volume has failed. The volume might run out of space if you do not take corrective actions. | Analyze why automatic resize failed:
- Did the volume reach its maximum capacity?
- Is the storage pool (aggregate) out of space? 
- Increase the maximum capacity of the volume when you automatically resize it.
-|SnapMirror Relationship Out of Sync | CRITICAL | This event occurs when a SnapMirror(R) Sync relationship status changes from 'in-sync' to 'out-of-sync'. I/O restrictions are imposed on the source volume based on the mode of replication. Client read or write access to the volume is not allowed for relationships of the 'strict-sync-mirror' policy type. Data protection is affected. | Check the network connection between the source and destination volumes. Monitor the SnapMirror Sync relationship status using the 'snapmirror show' command. 'Auto-resync' attempts to bring the relationship back to the 'in-sync' status.
-|SAN 'active-active' State Changed | WARNING | "The SAN pathing is no longer symmetric. Pathing should be asymmetric only on ASA, because AFF and FAS are both asymmetric." | "Try and enable the ""active-active"" state. Contact customer support if the problem persists."
-|QoS Monitor Memory Maxed Out | CRITICAL | The QoS subsystem's dynamic memory has reached its limit for the current platform hardware. Some QoS features might operate in a limited capacity. | "Delete some active workloads or streams to free up memory. Use the 'statistics show -object workload -counter ops' command to determine which workloads are active. Active workloads show non-zero ops. Then use the 'workload delete <workload_name>' command multiple times to remove specific workloads. Alternatively, use the 'stream delete -workload <workload name> *' command to delete the associated streams from the active workload."
-|NVMe Namespace Online | INFO | This event occurs when an NVMe namespace is brought online manually. | None.
-|NVMe Namespace Offline | INFO | This event occurs when an NVMe namespace is brought offline manually. | None.
-|NVMe Namespace Destroyed | INFO | This event occurs when an NVMe namespace is destroyed. | None.
-|Non-responsive Antivirus Server | INFO | This event occurs when ONTAP(R) detects a non-responsive antivirus (AV) server and forcibly closes its Vscan connection. | Ensure that the AV server installed on the AV connector can connect to the Storage Virtual Machine (SVM) and receive the scan requests.
-|LUN Destroyed | INFO | This event occurs when a LUN is destroyed. | None.
-|FC Target Port Commands Exceeded | WARNING | The number of outstanding commands on the physical FC target port exceeds the supported limit. The port does not have sufficient buffers for the outstanding commands. It is overrun or the fan-in is too steep because too many initiator I/Os are using it.  | Perform the following corrective actions:
- "1. Evaluate the host fan-in on the port, and perform one of the following actions:"
- a. Reduce the number of hosts that log in to this port.
- b. Reduce the number of LUNs accessed by the hosts that log in to this port.
- c. Reduce the host command queue depth.
- "2. Monitor the ""queue_full"" counter on the ""fcp_port"" CM object, and ensure that it does not increase. For example: "
- statistics show -object fcp_port -counter queue_full -instance port.portname -raw
- 3. Monitor the threshold counter and ensure that it does not increase. For example:
- statistics show -object fcp_port -counter threshold_full -instance port.portname -raw
-|LUN Offline | INFO | This event occurs when a LUN is brought offline manually.  | Bring the LUN back online. 
-|AWS Credentials Not Initialized | INFO | This event occurs when a module attempts to access Amazon Web Services (AWS) Identity and Access Management (IAM) role-based credentials from the cloud credentials thread before they are initialized.  | "Wait for the cloud credentials thread, as well as the system, to complete initialization. "
-|Cloud Tier Unreachable | CRITICAL | A storage node cannot connect to Cloud Tier object store API. Some data will be inaccessible. | "If you use on-premises products, perform the following corrective actions: "
- "1. Verify that your intercluster LIF is online and functional by using the ""network interface show"" command."
- "2. Check the network connectivity to the object store server by using the ""ping"" command over the destination node intercluster LIF."
- 3. Ensure the following:
- a. The configuration of your object store has not changed.
- b. The login and connectivity information is still valid.
- Contact NetApp technical support if the issue persists. 
- "If you use Cloud Volumes ONTAP, perform the following corrective actions: "
- 1. Ensure that the configuration of your object store has not changed.
- 2.  Ensure that the login and connectivity information is still valid.
- Contact NetApp technical support if the issue persists.
-|FlexGroup Constituent Out of Inodes | CRITICAL | "A constituent of a FlexGroup volume has run out of inodes, which might cause a potential disruption of service. You cannot create new files on this constituent. This might lead to an overall imbalanced distribution of content across the FlexGroup volume." | "It is recommended that you add capacity to the FlexGroup volume by using the ""volume modify -files +X"" command."
- "Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent."
-|FlexGroup Constituent Nearly Out of Inodes | WARNING | "A constituent within a FlexGroup volume is almost out of inodes, which might cause a potential disruption of service. The constituent receives lesser create requests than average. This might impact the overall performance of the FlexGroup volume, because the requests are routed to constituents with more inodes." | "It is recommended that you add capacity to the FlexGroup volume by using the ""volume modify -files +X"" command."
- "Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent."
-|FlexGroup Constituent Full | CRITICAL | "A constituent within a FlexGroup volume is full, which might cause a potential disruption of service. You can still create or expand files on the FlexGroup volume. However, none of the files that are stored on the constituent can be modified. As a result, you might see random out-of-space errors when you try to perform write operations on the FlexGroup volume." | "It is recommended that you add capacity to the FlexGroup volume by using the ""volume modify -files +X"" command."
- "Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent."
-|Flexgroup Constituent Nearly Full | WARNING | "A constituent within a FlexGroup volume is nearly out of space, which might cause a potential disruption of service. Files can be created and expanded. However, if the constituent runs out of space, you might not be able to append to or modify the files on the constituent. " | "It is recommended that you add capacity to the FlexGroup volume by using the ""volume modify -files +X"" command."
- "Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent."
-|Service Processor Not Configured | WARNING | "This event occurs on a weekly basis, to remind you to configure the Service Processor (SP). The SP is a physical device that is incorporated into your system to provide remote access and remote management capabilities. You should configure the SP to use its full functionality. " | Perform the following corrective actions:
- "1. Configure the SP by using the ""system service-processor network modify"" command."
- "2. Optionally, obtain the MAC address of the SP by using the ""system service-processor network show"" command."
- "3. Verify the SP network configuration by using the ""system service-processor network show"" command."
- "4. Verify that the SP can send an AutoSupport email by using the ""system service-processor autosupport invoke"" command."
- NOTE: AutoSupport email hosts and recipients should be configured in ONTAP before you issue this command.
-|Service Processor Offline | CRITICAL | "ONTAP is no longer receiving heartbeats from the Service Processor (SP), even though all the SP recovery actions have been taken. ONTAP cannot monitor the health of the hardware without the SP." | Power-cycle the system by performing the following actions:
- The system will shut down to prevent hardware damage and data loss. Set up a panic alert to be notified immediately if the SP goes offline.   1. Pull the controller out from the chassis.
- 2. Push the controller back in.
- 3. Turn the controller back on.
- "If the problem persists, replace the controller module."
-|Unassigned Disks | INFO | System has unassigned disks - capacity is being wasted and your system may have some misconfiguration or partial configuration change applied. | Perform the following corrective actions:
- "1. Determine which disks are unassigned by using the ""disk show -n"" command."
- "2. Assign the disks to a system by using the ""disk assign"" command."
-|System Cannot Operate Due to Fan Failure  | CRITICAL | "One or more main unit fans have failed, disrupting system operation. This might lead to a potential data loss. " | Replace the failed fans.
-|Fan Failed | WARNING | One or more main unit fans have failed. The system remains operational. | "Reseat the failed fans. If the error persists, replace them."
- "However, if the condition persists for too long, the overtemperature might trigger an automatic shutdown." 
-|Fan in Warning State | INFO | This event occurs when one or more fans are in a warning state. | Replace the indicated fans to avoid overheating.
-|NVRAM Battery Low | WARNING | The NVRAM battery capacity is critically low. There might be a potential data loss if the battery runs out of power. | Perform the following corrective actions:
- "Your system generates and transmits an AutoSupport or ""call home"" message to NetApp technical support and the configured destinations if it is configured to do so. The successful delivery of an AutoSupport message significantly improves problem determination and resolution."  "1. View the battery's current status, capacity, and charging state by using the ""system node environment sensors show"" command."
- "2. If the battery was replaced recently or the system was non-operational for an extended period of time, monitor the battery to verify that it is charging properly."
- "3. Contact NetApp technical support if the battery runtime continues to decrease below critical levels, and the storage system shuts down automatically."
-|Disk Out of Service | INFO | "This event occurs when a disk is removed from service because it has been marked failed, is being sanitized, or has entered the Maintenance Center." | None.
-|Storage Switch Fans Failed | CRITICAL | "The indicated cooling fan or fan module of the shelf has failed. The disks in the shelf might not receive enough cooling airflow, which might result in disk failure." | Perform the following corrective actions:
- 1. Verify that the fan module is fully seated and secured.
- NOTE: The fan is integrated into the power supply module in some disk shelves.
- "2. If the issue persists, replace the fan module."
- "3. If the issue still persists, contact NetApp technical support for assistance."
-|=== 
-////
-
-
-
-
-
-////
+=== Anti-Ransomware Log Monitors
 
 |===
-|Group | Monitor Name | Monitor Description
 
-|ONTAP Infrastructure | Storage Capacity Limit | When a storage pool (aggregate) fills up, I/O operations slow down and finally cease causing a storage outage incident. A warning alert indicates that planned action should be taken soon to restore minimum free space. A critical alert indicates that service disruption is imminent and emergency measures should be taken to free up space to ensure service continuity.
-|ONTAP Infrastructure | Storage Performance Limit | When a storage pool reaches its performance limit, operations slow down, latency goes up and workloads and applications may start failing. ONTAP evaluates the storage pool utilization due to workloads and estimates what percent of performance has been consumed. A warning alert indicates that planned action should be taken to reduce storage pool load as there may not be enough storage pool performance left to service workload peaks. A critical alert indicates that a performance brownout is imminent and emergency measures should be taken to reduce storage pool load to ensure service continuity.
-|ONTAP Infrastructure | Fiber Channel Port High Utilization | Fiber Channel Protocol ports are used to receive and transfer the SAN traffic between the customer host system and the ONTAP LUNs. If the port utilization is high, then it will become a bottleneck and it will ultimately affect the performance of Fiber Channel Protocol workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.
-|ONTAP Infrastructure | Network Port High Utilization | Network ports are used to receive and transfer the NFS, CIFS, and iSCSI protocol traffic between the customer host systems and the ONTAP volumes. If the port utilization is high then it becomes a bottleneck and it ultimately affects the performance of NFS, CIFS, and iSCSI workloads. A warning alert indicates that planned action should be taken to balance network traffic. A critical alert indicates that service disruption is imminent and emergency measures should be taken to balance network traffic to ensure service continuity.
-| ONTAP Workload Examples | Volume Inodes Limit | Volumes that store files use index nodes (inode) to store file metadata. When a volume exhausts its inode allocation, no more files can be added to it. A warning alert indicates that planned action should be taken to increase the number of available inodes. A critical alert indicates that file limit exhaustion is imminent and emergency measures should be taken to free up inodes to ensure service continuity.
-|ONTAP Workload Examples | QTree Capacity is Full | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a default space quota or a quota defined by a quota policy to limit amount of data stored in the tree within the volume capacity. A warning alert indicates that planned action should be taken to increase the space. A critical alert indicates that service disruption is imminent and emergency measures should be taken to free up space to ensure service continuity.
-|ONTAP Workload Examples | Lun High Latency | LUNs are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High LUN latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds
-|ONTAP Workload Examples | NVMe Namespace High Latency | NVMe Namespaces are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High NVMe Namespaces latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity.
-|ONTAP Workload Examples | Qtree Files Soft Limit  | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a quota of the number of files that it can contain in order to maintain a manageable file system size within the volume. A qtree maintains a soft file number quota in order to be able to alert the user proactively before reaching the limit of files in the qtree and being unable to store any additional files. Monitoring the number of files within a qtree ensures that the user receives uninterrupted data service.
-|ONTAP Workload Examples | Qtree Files Hard Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a quota of the number of files that it can contain in order to maintain a manageable file system size within the volume. A qtree maintains a hard file number quota beyond which new files in the tree are denied. Monitoring the number of files within a qtree ensures that the user receives uninterrupted data service.
-|ONTAP Workload Examples | QTree Capacity Soft Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a space quota measured in KBytes that it can use to store data in order to control the growth of user data in volume and not exceed its total capacity. A qtree maintains a soft storage capacity quota in order to be able to alert the user proactively before reaching the total capacity quota limit in the qtree and being unable to store data anymore. Monitoring the amount of data stored within a qtree ensures that the user receives uninterrupted data service.
-|ONTAP Workload Examples | QTree Capacity Hard Limit | A qtree is a logically defined file system that can exist as a special subdirectory of the root directory within a volume. Each qtree has a space quota measured in KBytes that it can use to store data in order to control the growth of user data in volume and not exceed its total capacity. A qtree hard storage capacity quota serves as a threshold beyond which the writes on the qtree are denied. Monitoring the amount of data stored within a qtree ensures that the user receives uninterrupted data service.
-|ONTAP Workload Examples | User Quota Capacity Soft Limit | ONTAP recognize the users of Unix or Windows systems that have the rights to access volumes, files or directories within a volume. As a result, ONTAP allows the customers to configure storage capacity for their users or groups of users of their Linux or Windows systems. The user or group policy quota limits the amount of space the user can utilize for their own data. A soft limit of this quota allows proactive notification of the user when the amount of capacity used within the volume is reaching the total capacity quota. Monitoring the amount of data stored within a user or group quota ensures that the user receives uninterrupted data service.
-|ONTAP Workload Examples | User Quota Capacity Hard Limit | ONTAP recognize the users of Unix or Windows systems that have the rights to access volumes, files or directories within a volume. As a result, ONTAP allows the customers to configure storage capacity for their users or groups of users of their Linux or Windows systems. The user or group policy quota limits the amount of space the user can utilize for their own data. A hard limit of this quota allows notification of the user when the amount of capacity used within the volume is right before reaching the total capacity quota. Monitoring the amount of data stored within a user or group quota ensures that the user receives uninterrupted data service.
-|ONTAP Workload Examples | Volume High Latency | Volumes are objects that serve the IO traffic often driven by performance sensitive applications including devOps applications, home directories, and databases. High volume latencies means that the applications themselves may suffer and be unable to accomplish their tasks. Monitoring volume latencies is critical to maintain application consistent performance. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds
-|ONTAP Workload Examples | Snapshot Reserve Capacity is Full | Storage capacity of a volume is necessary to store application and customer data. A portion of that space, called snapshot reserved space, is used to store snapshots which allow data to be protected locally. The more new and updated data stored in the ONTAP volume the more snapshot capacity is used and less snapshot storage capacity will be available for future new or updated data. If the snapshot data capacity within a volume reaches the total snapshot reserve space it may lead to the customer being unable to store new snapshot data and reduction in the level of protection for the data in the volume. Monitoring the volume used snapshot capacity ensures data services continuity.
-|ONTAP Workload Examples | Volume Capacity is Full | Storage capacity of a volume is necessary to store application and customer data. The more data stored in the ONTAP volume the less storage availability for future data. If the data storage capacity within a volume reaches the total storage capacity may lead to the customer being unable to store data due to lack of storage capacity. Monitoring the volume used storage capacity ensures data services continuity.
+|Monitor Name|Severity|Description|Corrective Action
+|Storage VM Anti-ransomware Monitoring Disabled|WARNING|The anti-ransomware monitoring for the storage VM is disabled. Enable anti-ransomware to protect the storage VM.|None
+|Storage VM Anti-ransomware Monitoring Enabled (Learning Mode)|INFO|The anti-ransomware monitoring for the storage VM is enabled in learning mode.|None
+|Volume Anti-ransomware Monitoring Enabled|INFO|The anti-ransomware monitoring for the volume is enabled.|None
+|Volume Anti-ransomware Monitoring Disabled|WARNING|The anti-ransomware monitoring for the volume is disabled. Enable anti-ransomware to protect the volume.|None
+|Volume Anti-ransomware Monitoring  Enabled (Learning Mode)|INFO|The anti-ransomware monitoring for the volume is enabled in learning mode.|None
+|Volume Anti-ransomware Monitoring Paused (Learning Mode)|WARNING|The anti-ransomware monitoring for the volume is paused in learning mode.|None
+|Volume Anti-ransomware Monitoring Paused|WARNING|The anti-ransomware monitoring for the volume is paused.|None
+|Volume Anti-ransomware Monitoring Disabling|WARNING|The anti-ransomware monitoring for the volume is disabling.|None
+|Ransomware Activity Detected|CRITICAL|To protect the data from the detected ransomware, a Snapshot copy has been taken that can be used to restore original data. 
+Your system generates and transmits an AutoSupport or "call home" message to NetApp technical support and any configured destinations. AutoSupport message improves problem determination and resolution.|Refer to the "FINAL-DOCUMENT-NAME" to take remedial measures for ransomware activity.
+
+
 |===
 
-////
 
 
-////
-== Pin your Favorite monitors
+=== Astra Data Store (ADS) Monitors
 
-You can further manage your monitors by pinning favorite ones to the top of your monitor list. To pin a monitor, simply click the thumbtack button displayed when you hover over a monitor in any list. 
+|===
+|Monitor Name|CI Severity|Monitor Description|Corrective Action
+|Cluster Capacity Full|Warning @ > 85 %
+Critical @ > 95 %|The Storage capacity of an ADS cluster is used to store application and customer data. The more data stored in the cluster the less storage availability for future data.…When the storage capacity within a cluster reaches the total cluster capacity, the cluster will be unable to store more data. Monitoring the cluster physical capacity ensures data services continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:…1. Consider increasing the space allocated to the cluster in order to accommodate the growth…2. Consider deleting data that is not needed anymore to free up space…Plan to take the following actions soon if warning threshold is breached:…1. Consider increasing the space allocated to the cluster in order to accommodate the growth.
+|Volume Capacity Full|Warning @ < 15%
+Critical @ < 5 %|The Storage capacity for a volume is used to store application and customer data. The more data stored on the cluster volume the less storage availability for future data.…When the data storage capacity used within a volume reaches the total storage capacity, the volume will be unable to store more data due to lack of available storage capacity.…Monitoring the volume used storage capacity ensures data services continuity.|Immediate actions are required to minimize service disruption if critical threshold is breached:…1. Consider increasing the space of the volume in order to accommodate the growth…2. Consider deleting data that is not needed anymore to free up space…Plan to take the following actions soon if warning threshold is breached:…1. Consider increasing the space of the volume in order to accommodate the growth.
 
-// Pinning a monitor pins it to the top of the current group, as well as any other groups containing that monitor, including _All monitors_.
+|===
 
-Monitor pin/unpin is an individual user preference and independent of the group (or groups) to which the monitor belongs.
 
-image:DashboardPin.png[Pinned Dashboards]
-////
 
-=== More Information
+== More Information
 
 //* link:concept_notifications_email.html[Email Alerting] for Monitors
 

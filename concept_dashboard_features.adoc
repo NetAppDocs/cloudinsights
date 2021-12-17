@@ -120,7 +120,25 @@ image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
 Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
 
 
-==== Advanced Filtering
+==== Advanced Text Filtering with Type-ahead Suggestions
+
+When you select a value or values for a field, the other filters for that query will show values relevant to that filter.
+For example, when setting a filter for a specific object _Name_, the field to filter for _Model_ will only show values relevant to that object Name.
+
+Note that  only Text filters will show contextual type-ahead suggestions. Date, Enum (list), etc. will not show type-ahead suggestions. That said, you _can_ set a filter on an Enum (i.e. list) field and have other text fields be filtered in context. For example, selecting a value in an Enum field like Data Center, then other filters will show only the models/names in that data center), but not vice-versa.
+
+The selected time range will also provide context for the data shown in filters.
+
+
+==== Choosing the filter units
+
+As you type a value in a filter field, you can select the units in which to display the values on the chart. For example, you can filter on raw capacity and choose to display in the deafult GiB, or select another format such as TiB. This is useful if you have a number of charts on your dashboard showing values in TiB and you want all your charts to show consistent values.
+
+image:Filter_Unit_Format.png[selecting units in a filter]
+
+
+
+==== Additional Filtering Refinements
 
 The following can be used to further refine your filters.
 

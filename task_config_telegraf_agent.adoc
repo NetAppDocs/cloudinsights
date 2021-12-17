@@ -693,7 +693,7 @@ For Operator-based installation run the following commands:
  kubectl --namespace ci-monitoring delete clusterrolebinding endpoint-access 
 ////
 
-If a Security Context Constraint was previously-created for Telegraf (hyperlink to Configuring the Agent to Collect Data from Kubernetes):
+If a Security Context Constraint was previously-created for Telegraf:
 
  kubectl delete scc telegraf-hostaccess
  
@@ -887,6 +887,15 @@ file or directory\n" func="gosnowflake.(*defaultLogger).Errorf" file="log.go:120
 Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: 2021-10-11T14:23:41Z I! Starting Telegraf 1.19.3
 
 |This is a known issue.  Refer to link:https://github.com/influxdata/telegraf/issues/9407[This GitHub article] for more details. As long as Telegraf is up and running, users can ignore these error messages.
+
+|On Kubernetes, my Telegraf pod(s) are reporting the following error:
+"Error in processing mountstats info: failed to open mountstats file: /hostfs/proc/1/mountstats, error: open /hostfs/proc/1/mountstats: permission denied"
+|If SELinux is enabled and enforcing, it is likely preventing the Telegraf pod(s) from accessing the /proc/1/mountstats file on the Kubernetes nodes.  To relax this restriction, do ONE of the following:
+
+•	On each Kubernetes node where Telegraf is running, run `chcon -Rt container_runtime_t /proc/1/mountstats`
+•	On each Kubernetes node where Telegraf is running, change the SELinux security policy from "enforcing" to "permissive"
+•	Edit the Telegraf DaemonSet, and set the spec.containers.securityContext.privileged to "true"
+
 
 |===
 

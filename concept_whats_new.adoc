@@ -18,6 +18,88 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights. 
 
+
+=== December 2021
+
+==== Deeper integration for ONTAP systems
+
+Simplify alerting for ONTAP hardware failures and more with new integration with NetApp Event Management System (EMS).
+link:task_system_monitors.html[Explore and alert] on low-level ONTAP messages in Cloud Insights to inform and improve troubleshooting workflows and further reduce reliance on ONTAP element management tooling.
+
+
+
+==== Querying Logs
+
+For ONTAP systems, Cloud Insights Queries include a powerful link:concept_log_explorer.html[Log Explorer], allowing you to easily investigate and troubleshoot EMS log entries. 
+
+image:LogQueryExplorer.png[Log Queries]
+
+
+
+==== Data Collector-level notifications.
+
+In addition to system-defined and custom-created Monitors for alerting, you can also set alert notifications for ONTAP data collectors, allowing you to specify recipients for collector-level alerts, independent of other monitor alerts.
+
+
+
+==== Greater flexibility of Cloud Secure roles
+
+Users can be granted access to Cloud Secure features based on link:concept_user_roles.html#permission-levels[roles] set by an administrator:
+
+|===
+|Role	|Cloud Secure	Access
+|Administrator	
+|Can perform all Cloud Secure functions, including those for Alerts, Forensics, data collectors, automated response policies, and APIs for Cloud Secure.
+An Administrator can also invite other users but can only assign Cloud Secure roles.
+|User	
+|Can view and manage Alerts and view Forensics. User role can change alert status, add a note, take snapshots manually, and restrict user access.
+|Guest	
+|Can view Alerts and Forensics. Guest role cannot change alert status, add a note, take snapshots manually, or restrict user access.
+
+|===
+
+
+////
+==== Improved Kubernetes installation
+
+The process for installing the Kubernetes link:task_config_telegraf_agent.html#kubernetes[operator-based agent] in your environment has been streamlined to involve fewer user interactions. 
+////
+
+
+////
+==== TBD:
+
+* Contextual Filtering
+* Improved/auto-formatted Units in Widget filters
+* StorageGRID moving to tier 2 (10x less cost than tier 1)</td></tr></tbody></table>
+////
+
+
+
+==== Operating System support
+
+CentOS 8.x support is being replaced with *CentOS 8 Stream* support. CentOS 8.x will reach End-of-Life on December 31, 2021.
+
+
+
+==== Data Collector Updates
+
+A number of Cloud Insights data collector names have been added to reflect vendor changes:
+
+|===
+|Vendor/Model|Previous Name
+|Dell EMC PowerScale|Isilon
+|HPE Alletra 9000 / Primera|3PAR
+|HPE Alletra 6000|Nimble
+|===
+
+
+
+
+
+
+'''
+
 === November 2021
 
 
@@ -82,7 +164,7 @@ image:Filter_Kubernetes_Explorer.png[Kubernetes Explorer filtering example]
 
 ==== K8s Data for Reporting
 
-Kubernetes data is now available for use in Reporting, allowing you to create chargeback or other reports.
+Kubernetes data is now available for use in Reporting, allowing you to create chargeback or other reports. In order for Kubernetes chargeback data to be passed to Reporting, you must have an active connection to, and Cloud Insights must be receiving data from, your Kubernetes cluster as well as its back-end storage. If there is no data received from the back-end storage, Cloud Insights can not send Kubernetes object data to Reporting.
 
 image:Kubernetes_ETL_Example.png[Kubernetes data showin in a chargeback report]
 
