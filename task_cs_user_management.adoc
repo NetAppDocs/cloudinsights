@@ -19,7 +19,19 @@ summary: Cloud Secure User accounts are managed through Cloud Insights User mana
 [.lead]
 Cloud Secure user accounts are managed through Cloud Insights.
 
-Cloud Insights provides four user accounts: Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels. A User account that has Administrator privileges can access Cloud Secure and can create or modify users.
+Cloud Insights provides four user accounts: Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels. A User account that has Cloud Secure Administrator privileges can create or modify users, and assign each a role: 
+
+|===
+|Role	|Cloud Secure	Access
+|Administrator	
+|Can perform all Cloud Secure functions, including those for Alerts, Forensics, data collectors, automated response policies, and APIs for Cloud Secure.
+An Administrator can also invite other users but can only assign Cloud Secure roles.
+|User	
+|Can view and manage Alerts and view Forensics. User role can change alert status, add a note, take snapshots manually, and restrict user access.
+|Guest	
+|Can view Alerts and Forensics. Guest role cannot change alert status, add a note, take snapshots manually, or restrict user access.
+
+|===
 
 .Steps
 
