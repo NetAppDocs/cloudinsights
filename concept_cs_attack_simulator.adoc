@@ -111,31 +111,40 @@ Cloud Secure learns user's behavior and will not alert on repeated Ransomware at
 
 == Create files programmatically
 
-1.	Stop data collector processing
+Before creating the files, you must first Stop the data collector processing. 
 Do the steps below before you add the DSC collector to the Agent. If you already added the data collector, just edit the data collector and enter a wrong password and save it. So that the data collector is in error state. 
 
-2.	Add files to be encrypted
+=== Add files to be encrypted
 
-For the Ransomware simulation, copy files to be encrypted into the target folder. Make sure you copy at least 1000 files.
-Run the following script to programmatically create files:
-1.	Log into the Agent box. 
-2.	Mount an nfs export from the SVM of the filer to the Agent machine. Cd to that folder. 
-3.	In that folder create a file named createfiles.sh 
-4.	Copy the following lines in that folder. 
+For the Ransomware simulation, Either manually copy the files to be encrypted into the target folder, or use a script (see the example below) to programmatically create the files. Whichever method you use, copy at least 1000 files.
+
+ To programmatically create files, do the following:
+
+. Log into the Agent box. 
+. Mount an NFS export from the SVM of the filer to the Agent machine. Cd to that folder. 
+. In that folder create a file named createfiles.sh 
+. Copy the following lines to that file. 
  
-for i in {000..1000} 
-do 
+ for i in {000..1000} 
+ do 
     echo hello > "File${i}.txt" 
-done 
-echo 3 > /proc/sys/vm/drop_caches ; sync 
+ done 
+ echo 3 > /proc/sys/vm/drop_caches ; sync 
  
-5.	Save and run the following commands for createfiles.sh.  
-[root@scspa2527575001 for]# chmod 777 ./createfiles.sh 
-[root@scspa2527575001 for]# ./createfiles.sh  
+. Save the file.
 
-1000 files will be created by this script. 
+. Ensure execute permission on the file:
 
-3.	Enable data collector
+ chmod 777 ./createfiles.sh 
+ 
+. Execute the script:
+
+ ./createfiles.sh  
+
+1000 files will be created in the current folder. 
+
+3.	re-enable the data collector
+
 If you disabled the data collector in step 1, fix the password and save. Make sure that the data collector is back in running state.
  
 
