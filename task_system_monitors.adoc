@@ -253,6 +253,8 @@ Plan to take the following actions soon if warning threshold is breached:
 1. Consider configuring more FCP ports to handle the data traffic so that the port utilization gets distributed among more ports
 2. Move workloads to another lower utilized FCP port
 3. Limit the traffic of certain LUNs to essential work only either via QoS policies in ONTAP or host-side configuration to lighten the utilization of the FCP ports
+
+////
 |Global Volume IOPS|CRITICAL|IOPS thresholds on volumes can be used to alert an administrator when volumes exceed predefined performance expectations, potentially impacting other volumes. Activating this monitor will generate alerts appropriate for the typical IOPS profile of volumes on AFF systems. This monitor will cover all volumes in your environment. The warning and critical threshold values can be adjusted based on your monitoring goals by duplicating this monitor and setting thresholds appropriate for FAS, CVO and ONTAP Select. A duplicated monitor can be further targeted to a subset of the clusters, SVMs or specific volumes in your environment.|Immediate actions are required to minimize service disruption if critical threshold is breached:
 1. Introduce QoS IOPS limits for the volume
 2. Review the application driving the workload on the volume for anomalies…
@@ -265,6 +267,8 @@ Plan to take the following actions soon if warning threshold is breached:
 Plan to take the following actions soon if warning threshold is breached:
 1. Introduce QoS MBPS limits for the volume
 2. Review the application driving the workload on the volume for anomalies
+////
+
 |Lun High Latency|CRITICAL|LUNs are objects that serve the IO traffic often driven by performance sensitive applications such as databases. High LUN latencies means that the applications themselves may suffer and be unable to accomplish their tasks. A warning alert indicates that planned action should be taken to move the LUN to appropriate Node or Aggregate. A critical alert indicates that service disruption is imminent and emergency measures should be taken to ensure service continuity. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds|Immediate actions are required to minimize service disruption if critical threshold is breached:
 1. If the LUN or its volume has a QoS policy associated with it, evaluate its threshold limits and validate if they are causing the LUN workload to get throttled…
 Plan to take the following actions soon if warning threshold is breached:
