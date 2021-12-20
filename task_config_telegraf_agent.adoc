@@ -693,7 +693,7 @@ For Operator-based installation run the following commands:
  kubectl --namespace ci-monitoring delete clusterrolebinding endpoint-access 
 ////
 
-If a Security Context Constraint was previously-created for Telegraf (hyperlink to Configuring the Agent to Collect Data from Kubernetes):
+If a Security Context Constraint was previously-created for Telegraf:
 
  kubectl delete scc telegraf-hostaccess
  
