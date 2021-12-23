@@ -24,6 +24,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 ** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
 ** SMB protocol version 3.1 and earlier
 **	NFS protocol version 4.0 and earlier 
+** Flexgroup is supported from ONTAP 9.4 and later versions
 
 * Only data type SVMs are supported. SVMs with infinite volumes are not supported.
 
@@ -191,6 +192,8 @@ When adding via SVM IP the options are:
 |Enter complete volume names to exclude/include|Comma-separated list of volumes to exclude or include (as appropriate) from event collection
 |Monitor Folder Access|When checked, enables events for folder access monitoring. Note that folder create/rename and delete will be monitored even without this option selected. Enabling this will increase the number of events monitored.
 |Set ONTAP Send Buffer size|Sets the ONTAP Fpolicy send buffer size. If an ONTAP version prior to 9.8p7 is used and performance issue is seen, then the ONTAP send buffer size can be altered to get improved ONTAP performance. Contact NetApp Support if you do not see this option and wish to explore it. 
+|Set ONTAP Send Buffer size
+|Sets the ONTAP Fpolicy send buffer size. If ONTAP versions prior to 9.8p7 is used and ONTAP performance issue is hit, then the ONTAP send buffer size can be altered to get improved ONTAP performance. This is a hidden feature and enabled per customer basis on request.
 
 |===
 
@@ -365,7 +368,7 @@ _fpolicy policy external-engine delete -vserver <svmname> -engine-name <engine_n
 |After enabling Cloud Secure, ONTAP performance is impacted: Latency becomes sporadically high, IOPs become sporadically low.
 |Ensure that you are using a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1415152[this issue] is fixed. The minimum version of ONTAP recommended is 9.8P7.
 
-If an ONTAP version prior to 9.8p7 is used and this performance issue is seen, then the ONTAP send buffer size can be altered to get improved ONTAP performance. Contact NetApp Support if you do not see this option and wish to explore it. 
+If an ONTAP version prior to 9.8p7 is used and this performance issue is seen, then the ONTAP send buffer size can be altered to get improved ONTAP performance. Contact NetApp Support if you wish to explore this option and do not see this setting when adding a new data collector or editing an existing one. 
 
 |Data collector is in error, shows this error message.
 “Error: Connector is in error state. Service name: audit. Reason for failure: Failed to configure policy on SVM svm_test. Reason: Missing value for zapi field: events. “
