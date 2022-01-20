@@ -1,0 +1,94 @@
+---
+sidebar: sidebar
+permalink: cs_restrict_user_access.html
+keywords: alert, snapshot,  attack
+summary: With Cloud Secure, you can restrict user access in the event of suspected sabotage
+---
+
+= Restricting User Access
+
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media
+
+[.lead]
+Once a ransomware attack is detected, the machines from which the user is accessing the storage can be blocked.
+
+Blocking happens via IP address of the host machines. Meaning the host machines from which the user has accessed the storage, those IP addresses will be blocked from accessing any of the Storage Virtual Machines (SVMs) monitored by CloudSecure.
+
+Let us say Cloudsecure manages 10SVMs and the Automatic Response Policy is configured for 4SVMs, if the attack originates in 1 out of the 4SVMs, then the user will be blocked in all the 10SVMs. Snapshot is still taken on the originating SVM.
+
+If there are 4SVMs and in 1 SVM only Cifs is configured, in the 2nd SVM only NFS is configured, and in the remaining both NFS and Cifs are configured, all the SVMs will be blocked if the attack originates in any of the 4SVMs.
+
+=== Prerequisites for user blocking feature
+
+Customers must configure export policies for SMB and NFS for this feature to work. Follow the steps below if NFS and SMB are configured in the Data Source Collector.
+For both NFS and SMB, csroles must be configured correctly. Customers should configure csrole as is shown below if not configured already when setting up an ONTAP SVM Data Source Collector as documented in this section, https://docs.netapp.com/us-en/cloudinsights/task_add_collector_svm.html#a-note-about-permissions.
+
+If Cluster IP is used to configure Data Source Collector then do the following from ONTAP command line:
+
+security login role create -role csrole -cmddirname "vserver export-policy rule" -access all
+
+If Server IP is used to configure DSC then do the following from ONTAP line, after editing the correct <vservername>.
+
+security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all
+
+For NFS, export policies are configured by default. By default, there is an export policy created when NFS service is created in the SVM. 
+If it is for SMB, then the export policies must be configured. Below are the commands to configure export policy. Copy the below commands to notepad and replace the name of the <vserver> name in the following commands. Then copy one line each at a time and run it in the ONTAP console by first switching to the advanced mode. This is particularly helpful for running PoCs. In the machines where we want to test, SMB can be configured as shown below. During PoCs, in the Data Source Collectors, enable only SMB/CIFs protocol and disable NFS protocol.
+
+set -privilege advanced
+cifs options modify -is-exportpolicy-enabled true -vserver <vserver>
+export-policy rule create -vserver <vserver> -policyname default -protocol cifs -clientmatch 0.0.0.0/0 -rorule any -rwrule any 
+
+To Check if the exportpolicy and exportpolicy rule has been configured correctly, run the following commands, after running the above commands.
+
+cifs options show  -fields is-exportpolicy-enabled -vserver <vserver>
+export-policy show -vserver <vserver>
+export-policy rule show -policyname default -vserver <vserver>
+
+=== How to enable the feature?
+
+In CloudSecure UI go to 
+•	AdminAutomated Response PoliciesResponse Policy SettingsAccess Limitation
+•	Then set “Enable Restrict User Access” to enabled.
+
+=== How to set up Automatic user blocking?
+•	Create a new Attack Policy or edit an existing Attack policy.
+•	Select the SVMs on which the attack policy should be monitored.
+•	Click on the checkbox “Restrict User IP File Access”. The feature will be enabled when this is selected.
+•	Under “Limit User Access” select what mode of restriction should be applied.
+•	Under “Time Period” select the time till which the blocking should be applied.
+
+=== How to know if a user has been blocked because of an alert?
+•	In the alert lists page, a banner on the top of screen will be displayed in case any user is blocked.
+•	Clicking on the banner, will take the user to the “Users” page. In that the list of blocked users can be seen.
+•	In the “Users” page, there in a column named “IP Access”. In that column, whether the user is blocked will be displayed.
+
+=== Can user be manually blocked or unblocked?
+•	You can simulate an attack via a simulated script.
+•	You can go to the alert details or user details screen and then manually block or unblock a user from those screens.
+
+=== What more details can be seen?
+In the alert details page, you can view the access limitation history, i.e., when the user was blocked, unblocked.
+
+== Troubleshooting
+|===
+|Problem|Try This|
+
+|Some of the users are not getting blocked, though there is an attack.	
+|1.	Make sure that the DSC and Agent for the SVMs are in Running state. Cloudsecure won’t be able to send commands if the DSC and Agent are stopped.
+
+2.	This is because the user may have accessed the storage from a machine with a new IP which has not been used before.
+Blocking happens via IP address of the host through which the user is accessing the storage. Check in the UI ( Alert DetailsAccess Limitation History for This UserAffected Ips) the list of IP addresses which are blocked can be seen. If the user is accessing storage from a host, which has an IP different from the blocked Ips, then the user will still be able to access the storage. If the user is trying to access from the hosts whose Ips are listed in the UI, then the storage won’t be accessible.
+
+|Manually clicking on Restrict Access gives “No user Ips for the action”.	 
+|The IP to be restricted is already being blocked by another user.
+
+|Restrict Access fails with warning “Export policy usage for SMB protocol is disabled for the SVM. Enable use of export-policy to use restrict user access feature”	
+|Ensure -is-exportpolicy-enabled option is true for the vserver as mentioned in Prerequisites.
+
+|===
+
+
