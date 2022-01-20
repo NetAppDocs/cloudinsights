@@ -434,7 +434,7 @@ For best results, add these commands to the PATH.
 
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
-* Operator-based installation has been tested and is expected to work with AWS EKS 1.18 and OpenShift 3.11.
+* Operator-based installation has been tested and is expected to work with AWS EKS 1.18, OpenShift 3.11, and Rancher 2.6.
 
 
 
@@ -445,11 +445,11 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 |===
 |Platform|Label
 
-|Kubernetes v1.14 and above |Kubernetes.io/os = linux
-|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
+|Kubernetes v1.17 and above |Kubernetes.io/os = linux
 |Rancher + cattle.io as orchestration/Kubernetes platform |cattle.io/os = linux
 |===
 
+//|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
 
 ==== Operator-Based Installation
 
@@ -645,24 +645,6 @@ You can then use the following commands to stop and start the Telegraf service:
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-ds.yaml 
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  
 ==== Configuring the Agent to Collect Data from Kubernetes
