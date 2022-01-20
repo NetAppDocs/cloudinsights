@@ -14,7 +14,12 @@ summary: With Cloud Secure, you can restrict user access in the event of suspect
 :imagesdir: ./media
 
 [.lead]
-Once a ransomware attack is detected, Cloud Secure can restrict user access from the machines being used to access the storage.
+Once an attack is detected, Cloud Secure can stop the attack by restricting user access to the file system. Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
+
+When restricting user access, you should define the access limit type (Block or Read-only) and time-period. After the selected time period ends, user access is automatically restored.
+
+Access restriction is supported for both SMB and NFS protocols.
+
 
 Restriction happens via IP address of the host machines, meaning the machines from which the user has accessed the storage. Those machine IP addresses will be blocked from accessing any of the Storage Virtual Machines (SVMs) monitored by Cloud Secure.
 
@@ -24,7 +29,10 @@ If there are four SVMs with one SVM configured for CIFS, one configured for NFS,
 
 === Prerequisites for User Access Restriction
 
-Customers must configure export policies for SMB and NFS for this feature to work. Follow the steps below if NFS and SMB are configured in the Cloud Secure Data Collector.
+Customers must configure export policies for SMB and NFS for this feature to work. Follow the steps below if NFS and SMB are configured in the Data Source Collector.
+
+For NFS, export policies are configured by default. By default, an export policy is created when NFS service is created in the SVM. For SMB, the export policies must be configured. 
+
 For both NFS and SMB, _csroles_ must be configured correctly. Customers should configure _csrole_ (if not configured already) when setting up an ONTAP SVM Data Source Collector as documented in the link:task_add_collector_svm.html#a-note-about-permissions[data collector permissions] documentation. 
 
 If Cluster IP is used to configure the Data Collector then do the following from the ONTAP command line:
@@ -37,9 +45,19 @@ If Server IP is used to configure the Data Collector then do the following from 
 
 By default, there is an export policy created when the NFS service is created in the SVM. 
 
-For SMB, then the export policies must be manually configured. Below are the commands to configure export policy. Copy the commands below to a text editor and replace the <vserver> name with the name of your vserver. Then copy each line one at a time and execute it in the ONTAP console. NOTE: you must first switch to advanced mode before pasting hte commands. 
+Below are the commands to configure export policy. Copy the commands below to a text editor and replace the <vserver> name with the name of your vserver. Then copy each line one at a time and execute it in the ONTAP console. NOTE: you must first switch to advanced mode before running the commands. 
 
 TIP: This is particularly helpful for running PoCs. In the machines where you want to test, SMB can be configured as shown below. During PoCs, in the Data Source Collectors, enable only SMB/CIFs protocol and disable NFS protocol.
+
+If using cluster mode:
+
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*" 
+
+If using SVM mode:
+
+security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*" 
+
+For both modes, then run these commands:
 
  set -privilege advanced
  cifs options modify -is-exportpolicy-enabled true -vserver <vserver>
@@ -56,7 +74,7 @@ To Check if the _exportpolicy_ and _exportpolicy rule_ have been configured corr
 * In Cloud Secure, navigate to *Admin > Automated Response Policies > Response Policy Settings > Access Limitation*.
 * Set “Enable Restrict User Access” to _enabled_.
 
-=== How to set up Automatic user blocking?
+=== How to set up Automatic user access restriction?
 
 * Create a new Attack Policy or edit an existing Attack policy.
 * Select the SVMs on which the attack policy should be monitored.
@@ -64,20 +82,30 @@ To Check if the _exportpolicy_ and _exportpolicy rule_ have been configured corr
 * Under “Limit User Access” select what mode of restriction should be applied.
 * Under “Time Period” select the time until which the restriction should be applied.
 
-=== How to know if a user has been blocked because of an alert?
+=== How to know if there are restricted users in the system?
 
 * In the alert lists page, a banner on the top of screen will be displayed in case any user is restricted.
 * Clicking on the banner will take you to the “Users” page. In that the list of restricted users can be seen.
 * In the “Users” page, there in a column named “IP Access”. In that column, the current state of user restriction will be displayed.
 
-=== Can a user be manually restricted or un-restricted?
+=== Restrict and manage user access manually 
 
 * You can simulate an attack via a link:concept_cs_attack_simulator.html[simulated script].
 * You can go to the alert details or user details screen and then manually restrict or un-restrict a user from those screens.
 
-=== What other details can be seen?
+=== User Restrict Access History
 
-In the alert details page, you can view the access limitation history (i.e. when the user was restricted or un-restricted).
+In the alert details and user details page, in the user panel, you can view an audit of the user’s restrict access limitation history: Time, Action (Block, Read-only, restore), duration, action taken by, manual/automatic, and affected IPs. 
+
+=== How to disable the feature?
+
+At any time, you can disable the feature. If there are restricted users in the system, you must restore their access first.
+
+* In Cloud Secure, navigate to *Admin > Automated Response Policies > Response Policy Settings > Access Limitation*
+* De-select “Enable Restrict User Access” to disable.
+
+The feature will be hidden from all pages.
+
 
 == Troubleshooting
 
