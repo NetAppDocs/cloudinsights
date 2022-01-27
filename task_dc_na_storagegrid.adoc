@@ -15,11 +15,19 @@ keywords: data collector, queries, create, storagegrid
 :linkattrs:
 :imagesdir: ./media/
 
-
-
 [.lead]
 
 The NetApp StorageGRID data collector supports inventory and performance collection from StorageGRID configurations. 
+
+NOTE: StorageGRID is metered at a different Raw TB to Managed Unit rate. Every 40 TB of unformatted StorageGRID capacity is charged as 1 link:concept_subscribing_to_cloud_insights.html#pricing[Managed Unit (MU)].
+
+== Requirements
+
+The following are requirements for configuring this data source:
+
+* StorageGRID Host IP Address
+* A username and password for a user that has had the Metric Query and Tenant Access roles assigned
+* Port 443
 
 == Configuration
 

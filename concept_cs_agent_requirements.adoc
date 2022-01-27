@@ -5,7 +5,7 @@ summary: The server or VM you use as your Agent must meet minimum requirements
 keywords: agent, Linux, requirements, docker, browsers, permissions, Network
 ---
 
-= Agent Requirements 
+= Agent Requirements
 
 :toc: macro
 :hardbreaks:
@@ -23,18 +23,9 @@ You must link:task_cs_add_agent.html[install an Agent] in order to acquire infor
 |Component|Linux Requirement
 |Operating system|A computer running a licensed version of one of the following:
 
-Red Hat Enterprise Linux 7.2 64-bit
-Red Hat Enterprise Linux 7.2 64-bit KVM
-Red Hat Enterprise Linux 7.5 64-bit
-Red Hat Enterprise Linux 7.5 64-bit KVM
-Red Hat Enterprise Linux 7.8 64-bit
-Red Hat Enterprise Linux 7.8 64-bit KVM
-CentOS 7.2 64-bit
-CentOS 7.2 64-bit KVM
-CentOS 7.5 64-bit
-CentOS 7.5 64-bit KVM
-CentOS 7.8 64-bit
-CentOS 7.8 64-bit KVM
+Red Hat Enterprise Linux 7.x, 8.x 64-bit
+CentOS 7.x 64-bit
+CentOS 8 Stream
 
 This computer should be running no other application-level software. A dedicated server is recommended.
 |Commands|The 'sudo su –' command is required for installation, running scripts, and uninstall.
@@ -46,17 +37,17 @@ This computer should be running no other application-level software. A dedicated
 |Memory	|16 GB RAM 
 |Available disk space	|Disk space should be allocated in this manner:
 //50 GB available for the root partition
-/opt/netapp 25 GB
+/opt/netapp 25-30 GB
 |Network|100 Mbps to 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Cloud Secure instance (80 or 443).
 
 |===
 
-Please note: Cloud Insights agent and Cloud Secure agent can be installed in the same machine. However, it is a best practice to install them in separate machines. In the event that both agents are installed on the same machine, please allocate disk space as shown below:
+Please note: The Cloud Secure agent can be installed in the same machine as a Cloud Insights acquisition unit and/or agent. However, it is a best practice to install these in separate machines. In the event that these are installed on the same machine, please allocate disk space as shown below:
 
 |===
-|Available disk space	|50 GB
+|Available disk space	|50-55 GB
 For Linux, disk space should be allocated in this manner:
-/opt/netapp 25 GB
+/opt/netapp 25-30 GB
 /var/log/netapp 25 GB
 |===
 
@@ -109,6 +100,20 @@ agentlogin.cs01-eu-1.cloudinsights.netapp.com
 |Outbound|Access to authentication services
 |===
 
+For *APAC-based* Cloud Secure environments:
+
+[cols=5*,options="header"]
+|===
+|Protocol|Port|	Destination	|Direction|	Description
+|TCP|443|<site_name>.cs01-ap-1.cloudinsights.netapp.com
+<site_name>.c01-ap-1.cloudinsights.netapp.com
+<site_name>.c02-ap-1.cloudinsights.netapp.com
+|Outbound|Access to Cloud Insights
+|TCP|443|gateway.c01.cloudinsights.netapp.com
+agentlogin.cs01-ap-1.cloudinsights.netapp.com
+|Outbound|Access to authentication services
+|===
+
 == In-network rules
 
 [cols=5*,options="header"]
@@ -118,6 +123,7 @@ agentlogin.cs01-eu-1.cloudinsights.netapp.com
 636 (LDAPs / start-tls) |LDAP Server URL|Outbound|Connect to LDAP
 |TCP|443|SVM Management IP Address|Outbound|API communication with ONTAP
 |TCP|35000 - 55000|SVM data LIF IP Addresses|Inbound/Outbound|Communication with ONTAP for Fpolicy events
+|TCP|7|SVM data LIF IP Addresses|Outbound|Bidirectional between ONTAP and Cloud Secure. Agent pings the SVM Lifs.
 |===
 
 //link:task_cs_add_agent.html[Configure an Agent]

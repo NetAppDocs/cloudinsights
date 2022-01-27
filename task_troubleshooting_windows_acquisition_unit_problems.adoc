@@ -56,6 +56,16 @@ Restart the Acquisition via Windows Services
 
 |Data Collection Issues
 |Send an Error Report from the Data Collector landing page by clicking the "Send Error Report" button
+
+|Status: Heartbeat Failed
+|The Acquisition Unit (AU) sends a heartbeat to Cloud Insights every 60 seconds to renew its lease. If the heartbeat call fails due to network issue or unresponsive Cloud Insights, the AU's lease time isn't updated. When the AU's lease time expires, Cloud Insights shows a status of "Heartbeat Failed".
+
+Troubleshoot steps:
+
+* Check the network connection between the Acquisition Unit sever and CloudInsights.
+* Check whether the Acquisition Unit service is running. If the service is not running, start the service.
+* Check the Acquisition Unit log (<Install dir>:\Program Files\Cloud Insights\Acquisition Unit\log\acq.log) to see whether there are any errors.
+
 |===
 
 
@@ -70,6 +80,12 @@ If your organization requires proxy usage for internet access, you may need to u
 Your Cloud Insights Acquisition Unit, as well as your interactions in a web browser with Cloud Insights, will all go to hosts with that domain name. 
 
 * Second, some proxies attempt to perform TLS/SSL inspection by impersonating Cloud Insights web sites with digital certificates not generated from NetApp. The Cloud Insights Acquisition Unit’s security model is fundamentally incompatible with these technologies. You would also need the above domain name excepted from this functionality in order for the Cloud Insights Acquisition Unit to successfully login to Cloud Insights and facilitate data discovery.
+
+==== Viewing Proxy endpoints
+
+You can view your proxy endpoints by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed. If you have Cloud Secure in your environment, the configured endpoint URLs will also be displayed in this list.
+
+image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
 
 === Resources
 

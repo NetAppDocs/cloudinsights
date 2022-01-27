@@ -20,7 +20,7 @@ Getting started with Cloud Insights is as easy as three simple steps:
 
 * Sign up for an account on link:https://cloud.netapp.com/[*NetApp Cloud Central*] to get access to all of NetApp's Cloud offerings.
 * Register for a link:https://cloud.netapp.com/cloud-insights[*free trial*] of Cloud Insights to explore the features available.
-* *Subscribe* to Cloud Insights for on-going, uninterrupted access to your data via link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales] direct or link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[AWS Marketplace].
+* *Subscribe* to Cloud Insights for on-going, uninterrupted access to your data via link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales] direct or AWS Marketplace (link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[Standard Edition] or link:https://aws.amazon.com/marketplace/pp/prodview-pbc3h2mkgaqxe[Premium Edition]).
 
 During the registration process, you can choose the global region to host your Cloud Insights environment. 
 For more information, read about Cloud Insights link:security_information_and_region.html[Information and Region].
@@ -45,7 +45,7 @@ NOTE: The features, data retention times, and objects or metrics collected in Cl
 
 Here are the key features available in Basic, Standard, and Premium Edition:
 
-[cols=".<,.^,.^,.^"]
+[cols=".<,.^,.^,.^", role="green"]
 |===
 |Key Feature |Basic Edition |Standard Edition|Premium Edition
 |Data Retention|7 Days|90 Days|13 Months
@@ -179,3 +179,13 @@ In the event that your usage is nearing or exceeding your subscribed amount, you
 == Subscribe Directly and Skip the Trial
 
 You can also subscribe to Cloud Insights directly from the link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[AWS Marketplace], without first creating a trial environment. Once your subscription is complete and your environment is set up, you will immediately be subscribed.
+
+== Adding an Entitlement ID
+
+If you own a valid NetApp product that is bundled with Cloud Insights, you can add that product serial number to your existing Cloud Insights subscription. For example, if you have purchased NetApp Astra, and Cloud Insights is bundled with the Astra deal, the Astra license serial number can be used to identify the subscription in Cloud Insights. Cloud Insights refers to this an _Entitlement ID_.
+
+To add an entitlement ID to your Cloud Insights subscription, on the *Admin > Subscription* page, click _+Entitlement ID_.
+
+image:Subscription_AddEntitlementID.png[Add an entitlement ID to your subscription]
+
+
