@@ -70,6 +70,8 @@ Filters based on wildcards or expressions (e.g. NOT, AND, "None", etc.) display 
 
 image:Filter_Kubernetes_Explorer_2.png[Filter showing wildcard and selected items] 
 
+Kubernetes filters are contextual, meaning for example that if you are on a specific node page, the pod_name filter only lists pods related to that node. Moreover, if you apply a filter for a specific namespace, then the pod_name filter will list only pods on that node _and_ in that namespace.
+
 Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
 
 

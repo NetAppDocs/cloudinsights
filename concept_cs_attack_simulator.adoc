@@ -1,0 +1,143 @@
+---
+sidebar: sidebar
+permalink: concept_cs_attack_simulator.html
+keywords:  ransomware, simulation, simulator, restrict, attack
+summary: Using a script, you can simulate a Ransomware attack for testing or demonstrating Cloud Secure 
+---
+
+= Cloud Secure: Simulating an Attack 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can use the instructions on this page to simulate an attack for testing or demonstrating Cloud Secure using the included Cloud Secure Ransomware Simulation script.
+ 
+== Things to note before you begin
+
+* The ransomware simulation script works on Linux only.
+* The script is provided with the Cloud Secure agent installation files. It is available on any machine that has a Cloud Secure agent installed.
+* You can run the script on the Cloud Secure agent machine itself; there is no need to prepare another Linux machine. However, if you prefer to run the script on another system, simply copy the script and run it there. 
+
+== Have at least 1,000 sample files
+
+This script should run on an SVM with a folder that has files to encrypt. We recommend having at least 1,000 files within that folder and any sub-folders. The files must not be empty.
+Do not create the files and encrypt them using the same user. Cloud Secure considers this a low-risk activity and will therefore not generate an alert (i.e. the same user modifies files he/she/they just created).
+
+See below for instructions to link:#create-files-programmatically[programmatically create non-empty files].
+
+== Prepare the system
+
+First, mount the target volume to machine. You can mount either an NFS mount or CIFs export. 
+
+To mount NFS export in Linux: 
+
+ mount -t nfs -o vers=4.0 10.193.177.158:/svmvol1 /mntpt 
+ mount -t nfs -o vers=4.0 Vserver data IP>:/nfsvol /destinationlinuxfolder 
+
+Do not mount NFS version 4.1; it is not supported by Fpolicy.
+
+To mount CIFs in Linux: 
+
+ mount -t cifs //10.193.77.91/sharedfolderincluster /root/destinationfolder/ -o username=raisa 
+
+
+Next, set up a Data Collector:
+
+. Configure the Cloud Secure agent if not already done.
+. Configure SVM data collector if not already done.
+
+== Run the Ransomware Simulator script
+
+. Log in (ssh) to the Cloud Secure agent machine.
+. Navigate to: _/opt/netapp/cloudsecure/agent/install_
+. Call the simulator script without parameters to see usage:
+ 
+ # pwd 
+ /opt/netapp/cloudsecure/agent/install 
+ # ./ransomware_simulator.sh 
+ Error: Invalid directory  provided. 
+ Usage: ./ransomware_simulator.sh [-e] [-d] [-i <input_directory>] 
+        -e to encrypt files (default) 
+        -d to restore files 
+        -i <input_directory> - Files under the directory to be encrypted 
+
+ Encrypt command example: ./ransomware_simulator.sh -e -i /mnt/audit/reports/ 
+ Decrypt command example: ./ransomware_simulator.sh -d -i /mnt/audit/reports/ 
+
+ 
+== Encrypt your test files
+
+To encrypt the files, run the following command: 
+ 
+ # ./ransomware_simulator.sh -e -i /root/for/ 
+ Encryption key is saved in /opt/netapp/cloudsecure/cloudsecure-agent-1.251.0/install/encryption-key, 
+ which can be used for restoring the files. 
+ Encrypted /root/for/File000.txt 
+ Encrypted /root/for/File001.txt 
+ Encrypted /root/for/File002.txt 
+ ...
+
+
+== Restore files
+
+To decrypt, run the following command: 
+ 
+ [root@scspa2527575001 install]# ./ransomware_simulator.sh -d -i /root/for/ 
+ File /root/for/File000.txt is restored. 
+ File /root/for/File001.txt is restored. 
+ File /root/for/File002.txt is restored. 
+ ...
+ 
+
+== Run the script multiple times
+
+After generating a ransomware attack for a user, switch to another user in order to generate an additional attack. 
+Cloud Secure learns user behavior and will not alert on repeated ransomware attacks within a short duration for the same user. 
+
+
+== Create files programmatically
+
+Before creating the files, you must first stop the data collector processing. 
+Perform the steps below before you add the data collector to the Agent. If you have already added the data collector, just edit the data collector, enter an invalid password, and save it. This will temporarily put the data collector in error state. NOTE: Be sure you note the original password!
+
+Before running the simulation, you must first add files to be encrypted. You can either manually copy the files to be encrypted into the target folder, or use a script (see the example below) to programmatically create the files. Whichever method you use, copy at least 1,000 files.
+
+If you choose to programmatically create the files, do the following:
+
+. Log into the Agent box. 
+. Mount an NFS export from the SVM of the filer to the Agent machine. Cd to that folder. 
+. In that folder create a file named createfiles.sh 
+. Copy the following lines to that file. 
+ 
+ for i in {000..1000} 
+ do 
+    echo hello > "File${i}.txt" 
+ done 
+ echo 3 > /proc/sys/vm/drop_caches ; sync 
+ 
+. Save the file.
+
+. Ensure execute permission on the file:
+
+ chmod 777 ./createfiles.sh 
+ 
+. Execute the script:
+
+ ./createfiles.sh  
++
+1000 files will be created in the current folder. 
+
+. Re-enable the data collector
++
+If you disabled the data collector in step 1, edit the data collector, enter the correct password, and save. Make sure that the data collector is back in running state.
+ 
+
+
+
+
