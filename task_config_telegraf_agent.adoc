@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_config_telegraf_agent.html
 keywords: telegraf, installation, install, agent, telegraf agent
-summary: Cloud Insights supports link:https://docs.influxdata.com/telegraf/v1.19/[Telegraf] as its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
+summary: Cloud Insights supports Telegrafas its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
 ---
 
 = Configuring an Agent to Collect Data
@@ -409,14 +409,14 @@ To upgrade the telegraf agent, do the following:
 
 Kubernetes offers two ways to collect data:
 
-* Operator-based configuration. This is recommended for Kubernetes.
+* NetApp Kubernetes Monitoring Operator configuration. This is the recommended installation method for Kubernetes.
 * Traditional script-based Agent installation
 
-Installation instructions vary based on which tile you choose.
+Installation instructions vary based on which you choose.
 
 image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
-NOTE: Operator-based installation is considered a _Preview_ feature and is therefore subject to change.
+NOTE: NetApp Kubernetes Monitoring Operator installation is considered a _Preview_ feature and is therefore subject to change.
 
 
 .Pre-requisites:
@@ -434,7 +434,7 @@ For best results, add these commands to the PATH.
 
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
-* Operator-based installation has been tested and is expected to work with AWS EKS 1.18, OpenShift 3.11, and Rancher 2.6.
+* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with AWS EKS 1.18, OpenShift 3.11, and Rancher 2.6.
 
 
 
@@ -451,11 +451,11 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 //|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
 
-==== Operator-Based Installation
+==== NetApp Kubernetes Monitoring Operator Installation
 
 image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
-.Steps to install Operator-based agent on Kubernetes:
+.Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
 
 . Enter the cluster name and namespace.
 . Once these are entered, you can copy the Agent Installer snippet
@@ -464,7 +464,7 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 . The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
 
 
-==== Configuring Proxy Support for Kubernetes - Operator-Based
+==== Configuring Proxy Support for NetApp Kubernetes Monitoring Operator
 
 To configure a proxy for the monitoring operator, perform the following steps.
 
