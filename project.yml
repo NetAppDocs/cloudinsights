@@ -7,7 +7,6 @@ settings:
   prod:
     pdf_enabled: true
     harmony_enabled: true
-    langs: us-en,ja-jp,zh-cn
 sidebar:
   entries:
     - title: Cloud Insights documentation
@@ -112,7 +111,7 @@ sidebar:
           url: /task_query_assign_multiple_applicationss.html
         - title: Copying table values to the Clipboard
           url: /task_query_copy_table_values.html
-        - title: Querying Logs (Preview)
+        - title: Querying Logs
           url: /concept_log_explorer.html
   
     - title: Working with Annotations
@@ -143,6 +142,8 @@ sidebar:
   #        url: /task_create_monitor.html
         - title: Configuring Notification Recipients
           url: /concept_notifications_email.html 
+        - title: System-Defined Monitors
+          url: /task_system_monitors.html
   #      - title: Webhooks
   #        entries:
   #          - title: Creating Webhooks 
@@ -268,7 +269,9 @@ sidebar:
             - title: Users
               url: /forensic_user_overview.html
         - title: Automated Response Policies
-          url: /cs_automated_response_policies.html  
+          url: /cs_automated_response_policies.html
+        - title: Simulating a Ransomware Attack
+          url: /concept_cs_attack_simulator.html
         - title: Notifications
           url: /cs_notifications_email.html
         - title: Cloud Secure API
@@ -403,6 +406,8 @@ sidebar:
                   url: /task_dc_ms_hyperv.html
             - title: NetApp
               entries:
+                - title: Astra Data Store
+                  url: /task_dc_na_astra_data_store.html
                 - title: Cloud Connection for ONTAP 9.9+
                   url: /task_dc_na_cloud_agent.html
                 - title: Cloud Volumes ONTAP
