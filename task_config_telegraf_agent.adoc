@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_config_telegraf_agent.html
 keywords: telegraf, installation, install, agent, telegraf agent
-summary: Cloud Insights supports link:https://docs.influxdata.com/telegraf/v1.19/[Telegraf] as its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
+summary: Cloud Insights supports Telegrafas its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
 ---
 
 = Configuring an Agent to Collect Data
@@ -409,14 +409,14 @@ To upgrade the telegraf agent, do the following:
 
 Kubernetes offers two ways to collect data:
 
-* Operator-based configuration. This is recommended for Kubernetes.
+* NetApp Kubernetes Monitoring Operator configuration. This is the recommended installation method for Kubernetes.
 * Traditional script-based Agent installation
 
-Installation instructions vary based on which tile you choose.
+Installation instructions vary based on which you choose.
 
 image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
-NOTE: Operator-based installation is considered a _Preview_ feature and is therefore subject to change.
+NOTE: NetApp Kubernetes Monitoring Operator installation is considered a _Preview_ feature and is therefore subject to change.
 
 
 .Pre-requisites:
@@ -434,7 +434,7 @@ For best results, add these commands to the PATH.
 
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
-* Operator-based installation has been tested and is expected to work with AWS EKS 1.18 and OpenShift 3.11.
+* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with AWS EKS 1.18, OpenShift 3.11, and Rancher 2.6.
 
 
 
@@ -445,23 +445,117 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 |===
 |Platform|Label
 
-|Kubernetes v1.14 and above |Kubernetes.io/os = linux
-|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
+|Kubernetes v1.17 and above |Kubernetes.io/os = linux
 |Rancher + cattle.io as orchestration/Kubernetes platform |cattle.io/os = linux
 |===
 
+//|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
 
-==== Operator-Based Installation
+==== NetApp Kubernetes Monitoring Operator Installation
 
 image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
-.Steps to install Operator-based agent on Kubernetes:
+.Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
 
 . Enter the cluster name and namespace.
 . Once these are entered, you can copy the Agent Installer snippet
 . Click the button to copy this snippet to the clipboard.
 . Paste the snippet into a _bash_ window and execute it.
 . The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
+
+
+==== Configuring Proxy Support for NetApp Kubernetes Monitoring Operator
+
+To configure a proxy for the monitoring operator, perform the following steps.
+
+First, open the _agent-monitoring-netapp_ file for editing:
+
+ kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
+
+
+In the _spec:_ section of this file, add the following code block:
+
+ spec:
+   proxy:
+     isAuProxyEnabled: <true or false>
+     isTelegrafProxyEnabled: <true or false>
+     isFluentbitProxyEnabled: <true or false>
+     password: <password for proxy, optional>
+     port: <port for proxy>
+     server: <server for proxy>
+     username: <username for proxy, optional>
+     noProxy: <comma separated list of IPs or resolvable hostnames that should bypass a proxy>
+
+===== Using a custom/private docker repository
+
+If using a custom docker repository, do the following:
+
+Get the docker secret:
+
+ kubectl -n netapp-monitoring get secret docker -o yaml
+ 
+Copy/paste the value of _.dockerconfigjson:_ from the output of the above command.
+
+Decode the docker secret:
+
+ echo <paste from _.dockerconfigjson:_  output above> | base64 -d
+ 
+The output of this will be in the following json format:
+
+ { "auths":
+   {"docker.<cluster>.cloudinsights.netapp.com" :
+     {"username":"<tenant id>",
+      "password":"<password which is the CI API key>",
+      "auth"    :"<encoded username:password basic auth key. This is internal to docker>"}
+   }
+ }
+
+Log in to the docker repository:
+
+ docker login docker.<cluster>.cloudinsights.netapp.com (from step #2) -u <username from step #2>
+ password: <password from docker secret step above>
+
+Pull the operator docker image from Cloud Insights:
+
+ docker pull docker.<cluster>.cloudinsights.netapp.com/netapp-monitoring:<version>
+ 
+Find the <version> field using the following command:
+ 
+ kubectl -n netapp-monitoring get deployment monitoring-operator | grep "image:"
+
+Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies.
+
+Download all open source dependencies to your private docker registry. The following open source images need to be downloaded:
+
+ docker.io/telegraf:1.19.3
+ gcr.io/kubebuilder/kube-rbac-proxy:v0.5.0
+ k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.1.0
+ 
+If fluent-bit is enabled, also download:
+
+ docker.io/fluent-bit:1.7.8
+ docker.io/kubernetes-event-exporter:0.10
+
+Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
+
+ kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
+ 
+ enableAutoUpgrade: false
+
+ docker-repo: <docker repo of the enterprise/corp docker repo>
+ dockerRepoSecret: <optional: name of the docker secret of enterprise/corp docker repo, this secret should be already created on the k8s cluster in the same namespace>
+ 
+In the _spec:_ section, make the following changes:
+ 
+ spec:
+   telegraf:
+     - name: ksm
+       substitutions:
+         - key: k8s.gcr.io
+           value: <same as "docker-repo" field above>
+
+
+
 
 
 ==== Script-Based Installation
@@ -488,28 +582,8 @@ TIP: _CLUSTER_NAME_ is the name of the Kubernetes cluster from Cloud Insights co
 // . If you have already installed an agent on this host, you can skip the previous step.
 . When finished, click *Complete Setup*.
 
-==== DaemonSet, ReplicaSet, and Stopping/Starting the agent
 
-A DaemonSet and ReplicaSet will be created on the Kubernetes cluster to run the required Telegraf agents/pods. By default, these Telegraf agents/pods will be scheduled on both master and non-master nodes.
-
-To facilitate stopping and restarting of the agent, generate the Telegraf DaemonSet YAML and ReplicaSet YAML using the following commands. Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files:
-
-If you have set your own namespace, substitute that namespace in these and all subsequent commands and files:
-
- kubectl --namespace ci-monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml 
- kubectl --namespace ci-monitoring get rs telegraf-rs -o yaml > /tmp/telegraf-rs.yaml
-
-You can then use the following commands to stop and start the Telegraf service:
-
- kubectl --namespace ci-monitoring delete ds telegraf-ds
- kubectl --namespace ci-monitoring delete rs telegraf-rs
- 
- kubectl --namespace ci-monitoring apply -f /tmp/telegraf-ds.yaml 
- kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml
- 
-
- 
-==== Configuring Proxy Support for Kubernetes
+==== Configuring Proxy Support for Kubernetes - Script-Based
 
 NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
 
@@ -550,6 +624,27 @@ Then, restart Telegraf:
  kubectl delete pod telegraf-ds-*
  kubectl delete pod telegraf-rs-*
 
+
+
+==== DaemonSet, ReplicaSet, and Stopping/Starting the agent
+
+A DaemonSet and ReplicaSet will be created on the Kubernetes cluster to run the required Telegraf agents/pods. By default, these Telegraf agents/pods will be scheduled on both master and non-master nodes.
+
+To facilitate stopping and restarting of the agent, generate the Telegraf DaemonSet YAML and ReplicaSet YAML using the following commands. Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files:
+
+If you have set your own namespace, substitute that namespace in these and all subsequent commands and files:
+
+ kubectl --namespace ci-monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml 
+ kubectl --namespace ci-monitoring get rs telegraf-rs -o yaml > /tmp/telegraf-rs.yaml
+
+You can then use the following commands to stop and start the Telegraf service:
+
+ kubectl --namespace ci-monitoring delete ds telegraf-ds
+ kubectl --namespace ci-monitoring delete rs telegraf-rs
+ 
+ kubectl --namespace ci-monitoring apply -f /tmp/telegraf-ds.yaml 
+ kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml
+ 
 
  
 ==== Configuring the Agent to Collect Data from Kubernetes

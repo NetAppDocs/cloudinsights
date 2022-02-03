@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: cs_automated_response_policies.html
+keywords: alert, snapshot, ransomware, attack
+summary: You can set automated response policies for potential attacks (such as ransomware) and/or activity warnings
+---
+
+= Automated Response Policies
+
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media
+
+[.lead]
+
+Response Policies trigger actions such as taking a snapshot or restricting user access in the event of an attack or abnormal user behavior. 
+
+You can set policies on specific devices or all devices. To set a response policy, select *Admin > Automated Response Policies* and click the appropriate *+Policy+ button. You can create policies for Attacks or for Warnings.
+
+image:AutomatedAttackPolicy.png[Create Attack Policy]
+
+You must save the policy with a unique name.
+
+To disable an automated response action (for example, Take Snapshot), simply un-check the action and save the policy.
+
+When an alert is triggered against the specified devices (or all devices, if selected), the automated response policy takes a snapshot of your data. You can see snapshot status on the link:cs_alert_data.html#the-alert-details-page[Alert detail page].
+
+See the link:cs_restrict_user_access.html[Restrict User Access] page for more details on restricting user access by IP.
+
+You can modify or pause an Automated Response Policy by choosing the option in the policy's drop-down menu.
+
+Cloud Secure will automatically delete snapshots once per day based on the Snapshot Purge settings. 
+
+//image:AutomatedResponsePolicyList.png[Automated Response Policy Pause]
+//image:CloudSecure_AutomatedResponsePolicies_WithSnapshotPurge.png[Automated Response Policy Settings]
+image:CloudSecure_SnapshotPurgeSettings.png[Snapshot Purge Settings]
+
+
+
