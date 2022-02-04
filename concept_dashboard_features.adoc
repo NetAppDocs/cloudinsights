@@ -898,3 +898,10 @@ Light Theme Dashboard view:
 image:LightThemeDashboardExample.png[Light Theme Dashboard Example]
 
 NOTE: Some screen areas, such as certain widget charts, still show light backgrounds even while viewed in dark theme. 
+
+
+== Line Chart interpolation
+
+Different data collectors often poll their data at different intervals. For example, data collector A may poll every 15 minutes while data collector B polls every five minutes. When a line chart widget (also spline, area, and stacked area charts) is aggregating this data from multiple data collectors into a single line (for example, when the widget is grouping by "all"), and refreshing the line every five minutes, data from collector B may be shown accurately while data from collector A may have gaps, thus affecting the aggregate until collector A polls again.
+
+To alleviate this, Cloud Insights interpolates data when aggregating, using the surrounding data points to take a "best guess" at data until data collectors poll again. You can always view each data collector's object data individually by adjusting the widget's grouping.
