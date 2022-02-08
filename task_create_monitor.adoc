@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: task_create_monitor.html
-keywords: performance policy, performance, thresholds, alerts, preference, delete
-summary: Create monitors to alert on performance or inventory thresholds
+keywords: monitors, alerts, log, metric, system-defined, system, metric, 
+summary: Create monitors to alert on performance or inventory thresholds, as well as metric or log conditions.
 ---
 
 = Alerting with Monitors
@@ -20,10 +20,14 @@ You create monitors to set thresholds that trigger alerts to notify you about is
 
 TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
 
-When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both. 
+When the monitored threshold and conditions are reached or exceeded, Cloud Insights creates an alert. A Monitor can have a _Warning_ threshold, a _Critical_ threshold, or both.
 
-//image:MonitorExample1.png[Storage IOPS Monitor Example]
+Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
 
+//See below for link:#system-defined-monitors-preview[System-Defined Monitors] documentation.
+See below for link:#system-defined-monitors[System-Defined Monitors] documentation.
+
+////
 === Monitor or Performance Policy?
 
 What's the difference between a *Performance Policy* and a *Monitor*?
@@ -37,6 +41,8 @@ Policies and Monitors are available under the *Alerts* menu.
 image:AlertsMenuLarger.png[Alerts Menu]
 
 Emails can be sent when a policy or monitor is triggered. 
+////
+
 
 === Creating a Monitor
 
@@ -86,6 +92,29 @@ You can choose to trigger an alert the moment a threshold is breached, or wait u
 +
 image:define_monitor_conditions.png[Define Conditions]
 
+
+==== Refining the Filter
+
+When you are filtering, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
+
+image:Type-Ahead_Monitor_1.png[Wildcard Filter]
+
+Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
+
+image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
+
+Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
+
+
+
+=== Setting Corrective Actions or Additional Information
+
+You can add an optional description as well as additional insights and/or corrective actions by filling in the *Add an Alert Description* section. The description can be up to 1024 characters and will be sent with the alert. The insights/corrective action field can be up to 67,000 characters and will be displayed in the summary section of the alert landing page.
+
+In these fields you can provide notes, links, or steps to take to correct or otherwise address the alert.
+
+image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
+
 === Select notification type and recipients
 
 In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
@@ -104,7 +133,6 @@ Specify the webhook(s) for alert notifications. If desired, you can choose diffe
 
 image:Webhook_Monitor_Notifications.png[Webhook Alerting]
 
-NOTE: Webhooks is considered a Preview feature and is therefore subject to change.
 
 === Save your Monitor
 
@@ -123,11 +151,15 @@ The Monitor page lists the currently configured monitors, showing the following:
 * Object/metric being monitored
 * Conditions of the Monitor
 
+You can view any active alerts associated with a monitor by clicking rthe "bell" icon next to the Monitor name.
+image:ViewActiveAlerts.png[Icon showing active alerts for a monitor]
+
 You can choose to temporarily suspend monitoring of an object type by clicking the menu to the right of the monitor and selecting *Pause*. When you are ready to resume monitoring, click *Resume*.
 
 You can copy a monitor by selecting *Duplicate* from the menu. You can then modify the new monitor and change the object/metric, filter, conditions, email recipients, etc.
 
 If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
+
 
 
 == Monitor Groups
@@ -156,7 +188,7 @@ image:Monitors_AssociateToGroup.png[Associate to group]
 
 //* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Move to Group_.
 
-Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
+Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
 
 NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from the group to which it belonged and it is no longer available to any user.
 
@@ -170,23 +202,21 @@ Use the same menu to rename or delete a group. Deleting a group does not delete 
 
 image:Monitors_PauseGroup.png[Pause a group]
 
-////
-== Pin your Favorite monitors
 
-You can further manage your monitors by pinning favorite ones to the top of your monitor list. To pin a monitor, simply click the thumbtack button displayed when you hover over a monitor in any list. 
 
-// Pinning a monitor pins it to the top of the current group, as well as any other groups containing that monitor, including _All monitors_.
 
-Monitor pin/unpin is an individual user preference and independent of the group (or groups) to which the monitor belongs.
 
-image:DashboardPin.png[Pinned Dashboards]
-////
+== System-Defined Monitors
+
+Beginning in October 2021, Cloud Insights includes a number of system-defined monitors for both metrics and logs. 
+
+Read more about link:task_system_monitors.html[System-Defined Monitors], including descriptions of the monitors included with Cloud Insights.
+
 
 === More Information
 
-//* link:concept_notifications_email.html[Email Alerting] for Monitors
-
 * link:task_view_and_manage_alerts.html[Viewing and Dismissing Alerts]
+
 
 
 
