@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: kubernetes_namespace_landing_page.html
+keywords: telegraf, installation, install, kubernetes, pods, clusters, filters, filtering, k8s, namespace
+summary: The Kubernetes namespace landing page explained
+---
+
+= Kubernetes Namespace Detail Page 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The Kubernetes namespace detail page provides a summary of all the assets used by a namespace, including all the backend storage resources and their capacity utilizations.
+
+Clicking on a namespace link on any Kubernetes Explorer page will open a detail page for that namespace.
+
+image:Kubernetes_Namespace_Detail_Example_2.png[Namespace Detail Page]
+
+Like other Kubernetes Excplorer pages, you can set a filter to focus on specific nodes or other objects, and you can see an overview of pod health and namespace status, along with charts showing CPU and Memory demand as well as persistent volume capacity if applicable. 
+
+Finally, the page displays a table of workloads associated with the namespace.
+
+Click on any link on the page to further explore or troubleshoot your Kubernetes environment.
+
+
