@@ -33,7 +33,7 @@ Customers must configure export policies for SMB and NFS for this feature to wor
 
 For NFS, export policies are configured by default. By default, an export policy is created when NFS service is created in the SVM. For SMB, the export policies must be configured. 
 
-If Customers are NOT using cluster credentials but using a csuser then they should follow the below steps to support user access restriction.
+If Customers are NOT using cluster credentials but using a csuser then they should follow the steps below to support user access restriction.
 
 If Cluster IP is used to configure the Data Collector (along with a csuser), do the following from the ONTAP command line:
 
