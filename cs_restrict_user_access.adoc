@@ -47,7 +47,7 @@ By default, there is an export policy created when the NFS service is created in
 
 Below are the commands to configure export policy. Copy the commands below to a text editor and replace the <vserver> name with the name of your vserver. Then copy each line one at a time and execute it in the ONTAP console. NOTE: you must first switch to advanced mode before running the commands. 
 
-TIP: This is particularly helpful for running PoCs. In the machines where you want to test, SMB can be configured as shown below. During PoCs, in the Data Source Collectors, enable only SMB/CIFs protocol and disable NFS protocol.
+//TIP: This is particularly helpful for running PoCs. In the machines where you want to test, SMB can be configured as shown below. During PoCs, in the Data Source Collectors, enable only SMB/CIFs protocol and disable NFS protocol.
 
 If using csuser in cluster mode:
 
