@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: task_create_monitor.html
-keywords: performance policy, performance, thresholds, alerts, preference, delete
-summary: Create monitors to alert on performance or inventory thresholds
+keywords: monitors, alerts, log, metric, system-defined, system, metric, 
+summary: Create monitors to alert on performance or inventory thresholds, as well as metric or log conditions.
 ---
 
 = Alerting with Monitors
@@ -24,6 +24,8 @@ When the monitored threshold and conditions are reached or exceeded, Cloud Insig
 
 Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
 
+//See below for link:#system-defined-monitors-preview[System-Defined Monitors] documentation.
+See below for link:#system-defined-monitors[System-Defined Monitors] documentation.
 
 ////
 === Monitor or Performance Policy?
@@ -202,23 +204,19 @@ image:Monitors_PauseGroup.png[Pause a group]
 
 
 
-////
-== Pin your Favorite monitors
 
-You can further manage your monitors by pinning favorite ones to the top of your monitor list. To pin a monitor, simply click the thumbtack button displayed when you hover over a monitor in any list. 
 
-// Pinning a monitor pins it to the top of the current group, as well as any other groups containing that monitor, including _All monitors_.
+== System-Defined Monitors
 
-Monitor pin/unpin is an individual user preference and independent of the group (or groups) to which the monitor belongs.
+Beginning in October 2021, Cloud Insights includes a number of system-defined monitors for both metrics and logs. 
 
-image:DashboardPin.png[Pinned Dashboards]
-////
+Read more about link:task_system_monitors.html[System-Defined Monitors], including descriptions of the monitors included with Cloud Insights.
+
 
 === More Information
 
-//* link:concept_notifications_email.html[Email Alerting] for Monitors
-
 * link:task_view_and_manage_alerts.html[Viewing and Dismissing Alerts]
+
 
 
 

@@ -57,6 +57,8 @@ image:Kubernetes_Node_Pod_Status.png[Node and Pod Status]
 
 To the right of the screen is a list of the top three namespaces utilized in each cluster.  Click the *All* link to see all namespaces for the cluster.
 
+Clicking on a namespace will open the Namespace Detail Page.
+
 image:Kubernetes_Namespaces.png[Namespaces]
 
 
@@ -69,6 +71,8 @@ image:Filter_Kubernetes_Explorer.png[Filtering with Wildcard in K8S Explorer]
 Filters based on wildcards or expressions (e.g. NOT, AND, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
 
 image:Filter_Kubernetes_Explorer_2.png[Filter showing wildcard and selected items] 
+
+Kubernetes filters are contextual, meaning for example that if you are on a specific node page, the pod_name filter only lists pods related to that node. Moreover, if you apply a filter for a specific namespace, then the pod_name filter will list only pods on that node _and_ in that namespace.
 
 Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
 

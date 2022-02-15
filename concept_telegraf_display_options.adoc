@@ -1,0 +1,42 @@
+---
+sidebar: sidebar
+permalink: concept_telegraf_display_options.html
+keywords: telegraf, data, display, 
+summary: Telegraf data display options 
+---
+
+
+= Transforming Metrics
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+Cloud Insights provides different *transform* options for certain metrics in widgets (specifically, those metrics called "Custom" or Integration Metrics, such as from Kubernetes, ONTAP Advanced Data, Telegraf plugins, etc.), allowing you to display the data in a number of ways. When adding transformable metrics to a widget, you are presented with a drop-down giving the following transform choices:
+
+None::
+Data is displayed as is, with no manipulation.
+
+Rate::
+Current value divided by the time range since the previous observation.
+
+Cumulative::
+The accumulation of the sum of previous values and the current value.
+
+Delta::
+The difference between the previous observation value and the current value. 
+
+Delta rate::
+Delta value divided by the time range since the previous observation.
+
+Cumulative Rate::
+Cumulative value divided by the time range since the previous observation.
+
+Note that transforming metrics does not change the underlying data itself, but only the way that data is displayed.
+ 
