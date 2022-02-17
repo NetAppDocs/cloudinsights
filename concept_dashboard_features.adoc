@@ -120,7 +120,25 @@ image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
 Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
 
 
-==== Advanced Filtering
+==== Advanced Text Filtering with Type-ahead Suggestions
+
+When you select a value or values for a field, the other filters for that query will show values relevant to that filter.
+For example, when setting a filter for a specific object _Name_, the field to filter for _Model_ will only show values relevant to that object Name.
+
+Note that  only Text filters will show contextual type-ahead suggestions. Date, Enum (list), etc. will not show type-ahead suggestions. That said, you _can_ set a filter on an Enum (i.e. list) field and have other text fields be filtered in context. For example, selecting a value in an Enum field like Data Center, then other filters will show only the models/names in that data center), but not vice-versa.
+
+The selected time range will also provide context for the data shown in filters.
+
+
+==== Choosing the filter units
+
+As you type a value in a filter field, you can select the units in which to display the values on the chart. For example, you can filter on raw capacity and choose to display in the deafult GiB, or select another format such as TiB. This is useful if you have a number of charts on your dashboard showing values in TiB and you want all your charts to show consistent values.
+
+image:Filter_Unit_Format.png[selecting units in a filter]
+
+
+
+==== Additional Filtering Refinements
 
 The following can be used to further refine your filters.
 
@@ -321,6 +339,8 @@ image::SecondaryAxisExplained.png[Secondary Axis example]
 
 In a dashboard, any time series widget (line, spline, area, stacked area), Single-Value, or Gauge Widget allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
 
+You can use variables in expressions (for example, _$Var1 * 100_)
+
 === Expressions Example: Read IOPS percentage
 
 In this example, we want to show Read IOPS as a percentage of Total IOPS. You can think of this as the following formula:
@@ -471,7 +491,7 @@ A variable can be one the following types:
 * *Text*: An alphanumeric string. 
 * *Numerical*: A number value. Use by itself, or as a "from" or "to" value, depending on your widget field.
 * *Boolean*: Use for fields with values of True/False, Yes/No, etc. For the boolean variable, the choices are Yes, No, None, Any.
-* *Date*: A date value. Use by itself, or as a "from" or "to" value, depending on your widget field.
+* *Date*: A date value. Use as a "from" or "to" value, depending on your widget's configuration.
 
 //image:Variables_Drop-Down.png[Variable Types]
 image:Variables_Drop_Down_Showing_Annotations.png[Variable Types]
@@ -486,6 +506,20 @@ image:Variables_Node_Example_Before_Variable_Applied.png[Agent Nodes Before Vari
 But if you temporarily want to see only nodes on individual subnets in your environment, you can set or change the variable to a specific Agent Node IP or IPs. Here we are viewing only the nodes on the "123" subnet:
 
 image:Variables_Node_Example_After_Variable_Applied.png[Agent Nodes After Variable Filter]
+
+You can also set a variable to filter on _all_ objects with a particular attribute regardless of object type, for example objects with an attribute of "vendor", by specifying _*.vendor_ in the variable field. You do not need to type the "*."; Cloud Insights will supply this if you select the wildcard option.
+
+image:Variables_Attribute_Vendor_Example.png[Attribute Variable for Vendor]
+
+When you drop-down the list of choices for the variable value, the results are filtered so show only the available vendors based on the objects on your dashboard.
+
+image:Variables_Attribute_Vendor_Filtered_List.png[Attribute Variable showing only available vendors]
+
+//image:Variables_Attribute_Name_List.png[Variable list showing all *.name attributes]
+
+If you edit a widget on your dashboard where the attribute filter is relevant (meaning, the widget's objects contain any _*.vendor attribute_), it shows you that the attribute filter is automatically applied.
+
+image:Variables_Attribute_inWidgetQuery.png[Attribute variable automatically applied]
 
 Applying variables is as easy as changing the attribute data of your choice.
 
@@ -521,19 +555,19 @@ Read more about link:https://docs.netapp.com/us-en/cloudinsights/task_create_que
 
 ==== Variable Filter Scope
 
-By default, when you add an Annotation variable to your dashboard, the variable is applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard will display results filtered according to the value you set in the variable. 
+When you add an Annotation or Attribute variable to your dashboard, the variable can be applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard will display results filtered according to the value you set in the variable. 
 
 image:Variables_Automatic_Filter_Button.png[Automatic Filter]
 
-Note that only Annotations of type _Text_, _Boolean_, or _List_ can be filtered automatically using variables like this. _Non-text Annotation_ types such as numbers or dates cannot be automatically filtered, nor can _non-Annotation_ variables (Number, Date, Boolean). Individual widgets must each be configured to use variables of these types.
+Note that only Attribute and Annotation variables can be filtered automatically like this. Non-Annotation or -Attribute variables cannot be automatically filtered. Individual widgets must each be configured to use variables of these types.
 
-To disable automatic filtering so that the Annotation variable only applies to the widgets where you have specifically set it, click the "Filter automatically" slider to disable it.
+To disable automatic filtering so that the variable only applies to the widgets where you have specifically set it, click the "Filter automatically" slider to disable it.
 
-To set an Annotation-type variable in an individual widget, open the widget in edit mode and select the specific annotation in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the variable at the dashboard level. Only those widgets for which you set the variable will show the filtered results.
+To set a variable in an individual widget, open the widget in edit mode and select the specific annotation or attribute in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the variable at the dashboard level. The same applies to Attribute variables. Only those widgets for which you set the variable will show the filtered results.
 
-You can configure widgets to use non-Annotation variables (Number, Date, Boolean) in the same way. 
+//You can configure widgets to use non-Annotation or -Attribute variables (Number, Date, Boolean) in the same way. 
 
-To use a variable in an expression, simply type the variable name, for example, _$var1 * 100_. Only numeric variables can be used in expressions.
+To use a variable in an expression, simply type the variable name as part of the expression, for example, _$var1 * 100_. Only Numeric variables can be used in expressions. You cannot use numeric Annotation or Attribute variables in expressions.
 
 
 ////
@@ -864,3 +898,10 @@ Light Theme Dashboard view:
 image:LightThemeDashboardExample.png[Light Theme Dashboard Example]
 
 NOTE: Some screen areas, such as certain widget charts, still show light backgrounds even while viewed in dark theme. 
+
+
+== Line Chart interpolation
+
+Different data collectors often poll their data at different intervals. For example, data collector A may poll every 15 minutes while data collector B polls every five minutes. When a line chart widget (also spline, area, and stacked area charts) is aggregating this data from multiple data collectors into a single line (for example, when the widget is grouping by "all"), and refreshing the line every five minutes, data from collector B may be shown accurately while data from collector A may have gaps, thus affecting the aggregate until collector A polls again.
+
+To alleviate this, Cloud Insights interpolates data when aggregating, using the surrounding data points to take a "best guess" at data until data collectors poll again. You can always view each data collector's object data individually by adjusting the widget's grouping.
