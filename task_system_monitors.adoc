@@ -522,3 +522,53 @@ Plan to take the following actions soon if warning threshold is breached:
 ////
 
 
+|===
+|Monitor Name| Severity| Description| Corrective Action
+
+Volume Automatic Resizing Succeeded| INFO| This event occurs when the automatic resizing of a volume is successful. It happens when the "autosize grow" option is enabled, and the volume reaches the grow threshold percentage.| 
+
+---
+
+Storage Performance Limit| CRITICAL| When a storage system reaches its performance limit, operations slow down, latency goes up and workloads and applications may start failing. ONTAP evaluates the storage pool utilization due to workloads and estimates what percent of performance has been consumed. 
+A warning alert indicates that planned action should be taken to reduce storage pool load to ensure that there will be enough storage pool performance left to service workload peaks. 
+A critical alert indicates that a performance brownout is imminent and emergency measures should be taken to reduce storage pool load to ensure service continuity.| 
+If critical threshold is breached, consider following immediate actions to minimize service disruption:
+1. Suspend scheduled tasks such as Snapshots or SnapMirror replication. 
+2. Idle non-essential workloads. 
+ 
+If warning threshold is breached, take the following actions immediately:
+1. Move one or more workloads to a different storage location. 
+2. Add more storage nodes(AFF) or disk shelves(FAS) and redistribute workloads. 
+3. Change workload characteristics(block size, application caching).
+---
+
+HA Interconnect Down| WARNING| The high-availability (HA) interconnect is down. Risk of service outage when failover is not available.| 
+Corrective actions depend on the number and type of HA interconnect links supported by the platform, as well as the reason why the interconnect is down. 
+
+* If the links are down:
+    - Verify that both controllers in the HA pair are operational.
+    - For externally connected links, make sure that the interconnect cables are connected properly and that the small form-factor pluggables (SFPs), if applicable, are seated properly on both controllers.
+    - For internally connected links, disable and re-enable the links, one after the other, by using the "ic link off" and "ic link on" commands. 
+* If links are disabled, enable the links by using the "ic link on" command. 
+* If a peer is not connected, disable and re-enable the links, one after the other, by using the "ic link off" and "ic link on" commands.
+
+Contact NetApp technical support if the issue persists.
+---
+
+Volume Automatic Resizing Failed| WARNING| The automatic resizing of the volume has failed. The volume might run out of space if you do not take corrective actions.| 
+Analyze why automatic resize failed:
+
+Did the volume reach its maximum capacity?
+Is the storage pool (aggregate) out of space? 
+Increase the maximum capacity of the volume when you automatically resize it.
+---
+
+Object Store Signature Mismatch| CRITICAL| The request signature sent to the object store server does not match the signature calculated by the client. As a result, data might be inaccessible.| 
+Verify that the secret access key is configured correctly. If it is configured correctly, contact NetApp technical support for assistance.
+---
+
+NVMe Namespace Offline| INFO| This event occurs when an NVMe namespace is brought offline manually.| 
+
+---
+
+|===
