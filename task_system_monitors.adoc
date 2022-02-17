@@ -522,10 +522,17 @@ Plan to take the following actions soon if warning threshold is breached:
 ////
 
 
+
+
+
+
+
+
+
 |===
 |Monitor Name| Severity| Description| Corrective Action
 
-Volume Automatic Resizing Succeeded| INFO| This event occurs when the automatic resizing of a volume is successful. It happens when the "autosize grow" option is enabled, and the volume reaches the grow threshold percentage.| 
+|Volume Automatic Resizing Succeeded| INFO| This event occurs when the automatic resizing of a volume is successful. It happens when the "autosize grow" option is enabled, and the volume reaches the grow threshold percentage.| 
 
 
 |Storage Performance Limit| CRITICAL| When a storage system reaches its performance limit, operations slow down, latency goes up and workloads and applications may start failing. ONTAP evaluates the storage pool utilization due to workloads and estimates what percent of performance has been consumed. 
