@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_dc_na_cdot.html
-keywords: data collector, ontap, ontap, CDOT
-summary: ONTAP Data Collector
+permalink: task_dc_na_amazon_fsx.html
+keywords: data collector, stout, fsx, fsx-netapp, Amazon, AWS, cluster, volume, share, LUN"
+summary: Amazon FSx for NetApp ONTAP Data Collector 
 --- 
 
-= NetApp ONTAP Data Management Software data collector
+= Amazon FSx for NetApp ONTAP data collector
 
 :toc: macro
 :hardbreaks:
@@ -17,37 +17,31 @@ summary: ONTAP Data Collector
 
 [.lead]
 
-This data collector acquires inventory and performance data from storage systems running ONTAP using read-only API calls from an ONTAP account. This data collector also creates a record in the cluster application registry to accelerate support.
-
-NOTE: Beginning in November 2021, ONTAP Advanced Counter data collection will be enabled by default. This feature will be rolled out gradually; you will see the advanced data in your dashboards over time. To disable Advanced Data collection, edit the ONTAP data collector and un-check the 'Opt in for Advanced Counter Data Collection rollout' checkbox.
+This data collector acquires inventory and performance data from Amazon FSx for NetApp ONTAP. This data collector will be made available incrementally throughout the Cloud Insights service regions. Contact your sales person if you do not see the Icon for this collector in your Cloud Insights Environment.
 
 == Terminology
 
-Cloud Insights acquires inventory and performance data from the ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires inventory and performance data from the FSx-NetApp data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Vendor/Model Term | Cloud Insights Term
-|Disk|Disk
-|Raid Group|Disk Group
 |Cluster|Storage
-|Node|Storage Node
-|Aggregate|Storage Pool
 |LUN|Volume
 |Volume|Internal Volume
 |===
 
-== ONTAP Data Management Terminology
+== FSx-NetApp Terminology
 
-The following terms apply to objects or references that you might find on ONTAP Data Management storage asset landing pages. Many of these terms apply to other data collectors as well.
+The following terms apply to objects or references that you might find on FSx-NetApp storage asset landing pages. Many of these terms apply to other data collectors as well.
 
 === Storage
 
-* Model – A comma-delimited list of the unique, discrete node model names within this cluster. If all the nodes in the clusters are the same model type, just one model name will appear.
-* Vendor – same Vendor name you would see if you were configuring a new data source.
-* Serial number – The array serial number. On cluster architecture storage systems like ONTAP Data Management, this serial number may be less useful than the individual “Storage Nodes” serial numbers.
+* Model – A comma-delimited list of the unique, discrete model names within this cluster. 
+* Vendor – AWS
+* Serial number – The array serial number. 
 * IP – generally will be the IP(s) or hostname(s) as configured in the data source.
-* Microcode version – firmware.
+//* Microcode version – firmware.
 * Raw Capacity – base 2 summation of all the physical disks in the system, regardless of their role.
 * Latency – a representation of what the host facing workloads are experiencing, across both reads and writes. Ideally, Cloud Insights is sourcing this value directly, but this is often not the case. In lieu of the array offering this up, Cloud Insights is generally performing an IOPs-weighted calculation derived from the individual internal volumes’ statistics.
 * Throughput – aggregated from internal volumes.
@@ -57,7 +51,7 @@ Management – this may contain a hyperlink for the management interface of the 
 
 * Storage – what storage array this pool lives on. Mandatory.
 * Type – a descriptive value from a list of an enumerated list of possibilities. Most commonly will be “Aggregate” or “RAID Group””.
-* Node – if this storage array’s architecture is such that pools belong to a specific storage node, its name will be seen here as a hyperlink to its own landing page.
+//* Node – if this storage array’s architecture is such that pools belong to a specific storage node, its name will be seen here as a hyperlink to its own landing page.
 * Uses Flash Pool – Yes/No value – does this SATA/SAS based pool have SSDs used for caching acceleration?
 * Redundancy – RAID level or protection scheme. RAID_DP is dual parity, RAID_TP is triple parity.
 * Capacity – the values here are the logical used, usable capacity and the logical total capacity, and the percentage used across these.
@@ -67,6 +61,7 @@ Management – this may contain a hyperlink for the management interface of the 
 * IOPS – the sum IOPs of all the disks contributing capacity to this storage pool.
 Throughput – the sum throughput of all the disks contributing capacity to this storage pool.
 
+////
 === Storage Node
 
 * Storage – what storage array this node is part of. Mandatory.
@@ -81,6 +76,7 @@ Throughput – the sum throughput of all the disks contributing capacity to this
 * Latency – Derived directly from ONTAP ZAPI calls on the node object.
 * Throughput – Derived directly from ONTAP ZAPI calls on the node object.
 * Processors – CPU count.
+////
 
 
 == Requirements
@@ -91,11 +87,6 @@ The following are requirements to configure and use this data collector:
 * Account details include username and password.
 * Port requirements: 80 or 443
 
-* Account permissions:
-** Read only role name to ontapi application to the default Vserver 
-** You may require additional optional write permissions. See the Note About Permissions below.
-* ONTAP License requirements:
-** FCP license and mapped/masked volumes required for fibre-channel discovery 
 
 == Configuration 
 
@@ -107,6 +98,7 @@ The following are requirements to configure and use this data collector:
 |Password |Password for NetApp cluster 
 |===
 
+////
 == Advanced configuration
 
 [cols=2*, options="header", cols"50,50"]
@@ -130,44 +122,7 @@ The following are requirements to configure and use this data collector:
 
 //|<TBD: New Micro Poll> | Default is 60 seconds
 |===
-
-== A Note About Permissions
-
-Since a number of Cloud Insights' ONTAP dashboards rely on advanced ONTAP counters, you must enable *Advanced Counter Data Collection* in the data collector Advanced Configuration section.
-
-You should also ensure that write permission to the ONTAP API is enabled. This typically requires an account at the cluster level with the necessary permissions.
-
-To create a local account for Cloud Insights at the cluster level, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
-
-. Create a read-only role using the following commands.
-
- security login role create -role ci_readonly -cmddirname DEFAULT -access readonly
- security login role create -role ci_readonly -cmddirname security -access readonly
- security login role create -role ci_readonly -access all -cmddirname “cluster application-record create”
- 
-. Create the read-only user using the following command. Once you have executed the create command, you will be prompted to enter a password for this user.
-
- security login create -username ci_user -application ontapi -authentication-method password -role ci_readonly
- 
-If AD/LDAP account is used, the command should be 
-
- security login create -user-or-group-name DOMAIN\aduser/adgroup -application ontapi -authentication-method domain -role ci_readonly
- 
-The resulting role and user login will look something like this:
-
- Role Command/ Access
- Vserver Name Directory Query Level
- ---------- ------------- --------- ------------------ --------
- cluster1 ci_readonly DEFAULT read only
- cluster1 ci_readonly security readonly
- 
- cluster1::security login> show
- Vserver: cluster1
- Authentication Acct
- UserName    Application   Method      Role Name      Locked
- ---------   -------      ----------- -------------- --------
- ci_user     ontapi      password    ci_readonly   no
-
+////
 
 
 == Troubleshooting
@@ -181,11 +136,7 @@ Some things to try if you encounter problems with this data collector:
 
 |Receive 401 HTTP response or 13003 ZAPI error code and ZAPI returns “Insufficient privileges” or “not authorized for this command”| Check username and password, and user privileges/permissions.
 
-|Cluster version is < 8.1| Cluster minimum supported version is 8.1. Upgrade to minimum supported version.
-
 |ZAPI returns "cluster role is not cluster_mgmt LIF"|AU needs to talk to cluster management IP. Check the IP and change to a different IP if necessary
-
-|Error: “7 Mode filers are not supported”| This can happen if you use this data collector to discover 7 mode filer. Change IP to point to cdot cluster instead. 
 
 |ZAPI command fails after retry| AU has communication problem with the cluster. Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
 
@@ -206,14 +157,7 @@ ZAPI error code is 14007 and response contains “Node is not healthy”
 |Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
 |===
 
-==== Performance
-[cols=2*, options="header", cols"50,50"]
-|===
-|Problem:|Try this:
-|“Failed to collect performance from ZAPI” error|This is usually due to perf stat not running. Try the following command on each node:
 
-> _system node systemshell -node * -command “spmctl -h cmd –stop; spmctl -h cmd –exec”_
-|===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
 
