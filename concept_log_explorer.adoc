@@ -76,8 +76,15 @@ Click on "Add Filter" to add the selected field to the current filter. The log e
 
 image:LogExplorer_DetailPane.png[Log Entry Detail Pane]
 
+== Troubleshooting
 
+Here you will find suggestions for troubleshooting problems with Log Queries. 
 
+|===
+|*Problem:* | *Try this:* 
+|I don't see "debug" messages in my log query
+|Debug log messaging is not collected. To capture messages you want, change the relevant message severity to _informational, error, alert, emergency,_ or _notice_ level.
+|===
 
 
 
