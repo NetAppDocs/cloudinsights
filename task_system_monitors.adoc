@@ -522,3 +522,30 @@ Plan to take the following actions soon if warning threshold is breached:
 ////
 
 
+|===
+Non-responsive AntiVirus Server| INFO| This event occurs when ONTAP(R) detects a non-responsive antivirus (AV) server and forcibly closes its Vscan connection.| 
+Ensure that the AV server installed on the AV connector can connect to the Storage Virtual Machine (SVM) and receive the scan requests.
+---
+
+|NVMe-oF Grace Period Start| WARNING| The NVMe over Fabrics (NVMe-oF) configuration was detected during the upgrade to ONTAP 9.5 software. NVMe-oF functionality requires a license after the license grace period expires.| 
+Contact your sales representative to obtain an NVMe-oF license, and add it to the cluster.
+---
+
+|Shadow Copy Failed| CRITICAL| A Volume Shadow Copy Service (VSS), a Microsoft Server backup and restore service operation, has failed.| 
+Check the following using the information provided in the event message:
+
+* Is shadow copy configuration enabled?
+* Are the appropriate licenses installed? 
+* On which shares is the shadow copy operation performed?
+* Is the share name correct?
+* Does the share path exist?
+* What are the states of the shadow copy set and its shadow copies?
+---
+
+|Flexgroup Constituent Out of Inodes| CRITICAL| A constituent of a FlexGroup volume has run out of inodes, which might cause a potential disruption of service. You cannot create new files on this constituent. This might lead to an overall imbalanced distribution of content across the FlexGroup volume.| 
+It is recommended that you add capacity to the FlexGroup volume by using the "volume modify -files +X" command.
+
+Alternatively, delete files from the FlexGroup volume. However, it is difficult to determine which files have landed on the constituent.
+---
+|===
+
