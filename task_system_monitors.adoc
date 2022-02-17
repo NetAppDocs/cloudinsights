@@ -332,11 +332,6 @@ If warning threshold is breached, consider the following immediate actions:
 2. If the volume has a QoS policy assigned to it, evaluate its limit thresholds in case they are causing the volume workload to get throttled.
 3. If the node is also experiencing high utilization, move the volume to another node or reduce the total workload of the node.
 
-|===
-
-
-
-|===
 |Monitor Name|CI Severity|Monitor Description|Corrective Action
 |Node High Latency|WARNING / CRITICAL|Node latency has reached the levels where it might affect the performance of the applications on the node. Lower node latency ensures consistent performance of the applications. The expected latencies based on media type are: SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds.|If critical threshold is breached, then immediate actions should be taken to minimize service disruption:
 1. Suspend scheduled tasks, Snapshots or SnapMirror replication
