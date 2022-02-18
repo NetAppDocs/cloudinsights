@@ -541,7 +541,9 @@ Plan to take the following actions soon if warning threshold is breached:
 
 
 |===
+
 |Monitor Name|Severity|Description|Corrective Action 
+
 |Acquisition Unit Failed|CRITICAL|Monitor that detects Acquisition Unit failures|  
 |Acquisition Unit Shutdown|WARNING|Monitor that detects when an Acquisition Unit shuts down. Will resolve when the Acquisition Unit comes back online.|  
 |ADS Volume Capacity Full|CRITICAL|A volume stores application and customer data. More the data stored on the cluster volume, less is the storage capacity available for future data.  When the data storage capacity of a volume reaches the total storage capacity, the volume cannot store more data.  Monitoring the volume for used storage capacity ensures continuity of data services.| Consider the following actions to be taken to minimize service disruption when critical threshold is breached:  1. Increase the space of the volume  2. Delete unwanted data  If warning threshold is breached, then immediately increase the space of the volume to accommodate the growth. 
