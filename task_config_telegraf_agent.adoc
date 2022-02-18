@@ -427,14 +427,15 @@ For best results, add these commands to the PATH.
 
 * kube-state-metrics must be installed. See below for more information. kube-state-metrics is automatically installed with Operator-based installation.
 
+* If you are running on OpenShift 4, you must follow the *Openshift instructions* below.
+
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
 * If you are running a Kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section. Operator-based installation installs this for you.
 
-
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
-* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with AWS EKS 1.18, OpenShift 3.11, and Rancher 2.6.
+* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with AWS EKS 1.18 - 1.21, OpenShift 4.6 - 4.8, and Rancher 2.4 - 2.6.
 
 
 
@@ -464,6 +465,16 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 . The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
 
 
+==== OpenSshift Instructions
+
+If you are running on Openshift 4.x, you must change the "priveleged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace int he command line:
+
+ kubectl edit agent agent-monitoring-netapp -n netapp-monitoring 
+ 
+In the file, change _privileged-mode: false_ to  _privileged-mode: true_
+
+
+
 ==== Configuring Proxy Support for NetApp Kubernetes Monitoring Operator
 
 To configure a proxy for the monitoring operator, perform the following steps.
@@ -485,6 +496,7 @@ In the _spec:_ section of this file, add the following code block:
      server: <server for proxy>
      username: <username for proxy, optional>
      noProxy: <comma separated list of IPs or resolvable hostnames that should bypass a proxy>
+     
 
 ===== Using a custom/private docker repository
 
