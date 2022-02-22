@@ -25,13 +25,14 @@ Cloud Insights uses the Azure compute data collector to acquire inventory and pe
 You need the following information to configure this data collector.
 
 * Port requirement: 443 HTTPS
+* Azure OAuth 2.0 Redirect URI (login.microsoftonline.com)
 * Azure Management Rest IP (management.azure.com) 
+* Azure Resource Manager IP (management.core.windows.net)
 * Azure Service Principal Application (Client) ID (Reader role required)
 * Azure service principal authentication key (user password)
 * You need to set up an Azure account for Cloud Insights discovery. 
 +
-Once the account is properly configured and you register the application in Azure, you will have the credentials required to discover the Azure instance with Cloud Insights. The following link describes how to set up the account for discovery:
-
+Once the account is properly configured and you register the application in Azure, you will have the credentials required to discover the Azure instance with Cloud Insights. The following link describes how to set up the account for discovery.
 https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
 
 == Configuration
