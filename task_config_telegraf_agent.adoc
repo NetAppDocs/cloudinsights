@@ -427,7 +427,7 @@ For best results, add these commands to the PATH.
 
 * kube-state-metrics must be installed. See below for more information. kube-state-metrics is automatically installed with Operator-based installation.
 
-* If you are running on OpenShift 4, you must follow the *OpenShift Instructions* below.
+* If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below.
 
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
@@ -467,7 +467,7 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
 ==== OpenShift Instructions
 
-If you are running on OpenShift 4.x, you must change the "privileged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace in the command line:
+If you are running on OpenShift 4.6 - 4.8, you must change the "privileged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace in the command line:
 
  kubectl edit agent agent-monitoring-netapp -n _netapp-monitoring_
  
