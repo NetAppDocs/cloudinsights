@@ -90,7 +90,7 @@ image:Monitor_metric_conditions.png[Define the monitor's conditions]
 
 === Log Monitor
 
-In a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above.
+When creating a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above.
 
 For example, you might choose to filter for "object.store.unavailable" message type in the logs.netapp.ems source:
 
@@ -164,7 +164,7 @@ The Monitor page lists the currently configured monitors, showing the following:
 * Object/metric being monitored
 * Conditions of the Monitor
 
-You can choose to temporarily suspend monitoring of an object type by clicking the menu to the right of the monitor and selecting *Pause*. When you are ready to resume monitoring, click *Resume*.
+You can choose to temporarily pause monitoring of an object type by clicking the menu to the right of the monitor and selecting *Pause*. When you are ready to resume monitoring, click *Resume*.
 
 You can copy a monitor by selecting *Duplicate* from the menu. You can then modify the new monitor and change the object/metric, filter, conditions, email recipients, etc.
 
