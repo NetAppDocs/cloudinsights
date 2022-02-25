@@ -120,9 +120,11 @@ You can filter Forensic Activity data by the following fields:
 
 * *Protocol* to fetch protocol-specific activities.
 
-* *Noise Reduction* to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.
+//* *Noise Reduction* to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.
 
 * *Username* of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
+
+* *Nopise Reduction* to filter files which are created in the last 2 hours by the user. It is also used to filter temporary files (for example, .tmp files) accessed by the user.
 
 The following fields are subject to special filtering rules:
 
@@ -172,6 +174,15 @@ or
 2. A User Directory Collector has been configured, however it has stopped or is in error state. Please go to *Admin > Data Collectors > User Directory Collectors* and check the status. Refer to the link:http://docs.netapp.com/us-en/cloudinsights/task_config_user_dir_connect.html#troubleshooting-user-directory-collector-configuration-errors[User Directory Collector troubleshooting] section of the documentation for troubleshooting tips.
 After configuring properly, the name will get automatically resolved within 24 hours.
 If it still does not get resolved, check if you have added the correct User Data Collector. Make sure that the user is indeed part of the added Active Directory/LDAP Directory Server.
+
+|Some NFS events are not seen in UI.
+|Check the following:
+1.	A user directory collector for AD server with POSIX attributes set should be running with the unixid attribute enabled from UI.
+2.	Any user doing NFS access should be seen when searched in the user page from UI
+3.	Raw events (Events for whom the user is not yet discovered) are not supported for NFS
+4.	Anonymous access to the NFS export will not be monitored.
+5.	Make sure NFS version used in lesser than NFS4.1.
+
 |===
 
 
