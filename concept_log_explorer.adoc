@@ -18,8 +18,6 @@ summary: The Log Explorer is a powerful tool for investigating issues.
 [.lead]
 The Cloud Insights Log Explorer is a powerful tool for querying EMS and Kubernetes logs. In addition to helping with investigations, you can also save a log query in a Monitor to provide alerts when log triggers are activated.
 
-NOTE: Log Explorer is a _Preview_ feature and is therefore subject to change.
-
 To begin exploring logs, click *Queries > +New Log Query*.
 
 image:LogExplorerMenu.png[Log queries menu]
@@ -76,8 +74,15 @@ Click on "Add Filter" to add the selected field to the current filter. The log e
 
 image:LogExplorer_DetailPane.png[Log Entry Detail Pane]
 
+== Troubleshooting
 
+Here you will find suggestions for troubleshooting problems with Log Queries. 
 
+|===
+|*Problem:* | *Try this:* 
+|I don't see "debug" messages in my log query
+|Debug log messaging is not collected. To capture messages you want, change the relevant message severity to _informational, error, alert, emergency,_ or _notice_ level.
+|===
 
 
 
