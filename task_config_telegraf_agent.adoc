@@ -573,7 +573,7 @@ image:Kubernetes_Install_Agent_screen.png[Script-Based Install]
 +
 Here it is in place in the command block:
 +
- installerName=cloudinsights-kubernetes.sh ... && CLUSTER_NAME=<cluster_name> NAMESPACE=<new_namespace> && sudo -E -H ./$installerName --download --install
+ installerName=cloudinsights-kubernetes.sh ... && CLUSTER_NAME=<cluster_name> NAMESPACE=<new_namespace> sudo -E -H ./$installerName --download --install
 +
 TIP: _CLUSTER_NAME_ is the name of the Kubernetes cluster from Cloud Insights collects metrics, while _NAMESPACE_ is the namespace to which the Telegraf agent will be deployed. The specified namespace will be created if it does not already exist.
 +
