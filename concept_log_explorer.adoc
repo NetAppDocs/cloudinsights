@@ -1,0 +1,88 @@
+---
+sidebar: sidebar
+permalink: concept_log_explorer.html
+keywords: logs, monitors, alerts, 
+summary: The Log Explorer is a powerful tool for investigating issues.
+---
+
+= Log Explorer
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The Cloud Insights Log Explorer is a powerful tool for querying EMS and Kubernetes logs. In addition to helping with investigations, you can also save a log query in a Monitor to provide alerts when log triggers are activated.
+
+To begin exploring logs, click *Queries > +New Log Query*.
+
+image:LogExplorerMenu.png[Log queries menu]
+
+Select an available log from the list. This list may vary based on your current Cloud Insights environment configuration.
+
+image:LogExplorer_ChooseLog.png[Choose your log]
+
+NOTE: A select set of logs are accessible for Preview; additional logs will be available over time.
+
+You can set filters to further refine the results of the query. For example, to find all log messages showing a failure, set a filter for _Messages_ containing the word "failed".  
+
+TIP: You can begin typing the desired text in the filter field; Cloud Insights will prompt you to create a wildcard search containing the string as you type.
+
+The results are displayed in a graph showing the number of log instances in each time period shown. Below the graph are the log entries temselves. The graph and the entries refresh automatically based on the selected time range.
+
+image:LogExplorer_QueryForFailed.png[Query example showing filter]
+
+==== The Log Graph
+
+The graph shows the number of log entries, grouped into _buckets_, which are based on the selected dashboard time range. The buckets for each time range are as follows:
+
+|===
+|Dashboard Time Range|Bucket size
+|Last 15 Minutes|10 Seconds
+|Last 30 Minutes|15 Seconds
+|Last 60 Minutes|30 Seconds
+|Last 2 Hours|1 Minute
+|Last 3 Hours|5 Minutes
+|Last 6 Hours|5 Minutes
+|Last 12 Hours|10 Minutes
+|Last 24 Hours|15 Minutes
+|Last 2 Days|30 Minutes
+|Last 3 Days|45 Minutes
+|Last 7 Days|2 Hours
+|Last 30 Days|1 Day
+|===
+
+To zoom in the graph, simply drag the sliders from either side. To pan the zoomed area, click and hold in the white area and move left or right. Click _Reset Zoom_ to reset the zoom level.
+
+//image:LogExplorer_Zoom.png[Zoom in by dragging in the sides of the graph]
+image:LogExplorer_Zoom_2.png[Zoom in by dragging in the sides of the graph]
+
+Note that when zooming the graph or scrolling the table, dashboard auto-refresh will pause and the time range will show the frozen time. To resume refresh, click the _Resume_ button image:ResumeButton.png[]. This will also reset the zoom level.
+
+At any point, you can click on _Create a Log Monitor_ to create a new Monitor based on the current filter.
+
+
+==== Log Details
+
+Clicking anywhere in a log entry in the list will open a detail pane for that entry.  Here you can explore more information about the event. 
+
+Click on "Add Filter" to add the selected field to the current filter. The log entry list will update based on the new filter.
+
+image:LogExplorer_DetailPane.png[Log Entry Detail Pane]
+
+== Troubleshooting
+
+Here you will find suggestions for troubleshooting problems with Log Queries. 
+
+|===
+|*Problem:* | *Try this:* 
+|I don't see "debug" messages in my log query
+|Debug log messaging is not collected. To capture messages you want, change the relevant message severity to _informational, error, alert, emergency,_ or _notice_ level.
+|===
+
+
+

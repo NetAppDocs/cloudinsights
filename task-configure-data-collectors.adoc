@@ -1,12 +1,19 @@
 ---
 sidebar: sidebar
 permalink: task_configure_data_collectors.html
-keywords: acquisition, AU, data collector, collector
+keywords: acquisition, AU, data collector, collector, notification, notify, 
 summary: General data collector instructions
 ---
 
 = Configuring Data Collectors
 
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
 
 [.lead]
 You configure Data Collectors in your Cloud Insights environment to collect data from devices in the data center.
@@ -28,6 +35,15 @@ In the dialog box you can configure the data collector and add an Acquisition Un
 Names can contain can contain letters (a-z), numbers (0-9), dashes (-), underscores (_), apostrophes ('), and periods (.).
 . Enter the Acquisition Unit to associate with this data collector.
 . Enter the required fields in the Configuration screen.
+. When prompted to configure notifications, choose to alert by Email, Webhook, or both, and choose the alert types on which to notify (Critical, Warning, Informational, and/or Resolved). You can choose to notify to the Global Monitor Recipient list (configured in *Admin > Notifications*), or specify additional recipients.  When ready to continue, click *Complete Setup*.
+
+image:CollectorNotifications.jpg[Collector Notifications]
+
+When viewing a data collector landing page, you can modify the notifications by clicking the pencil icon in the "Notifications" field of the data collector summary section.
+
+image:CollectorNotifications_Edit.jpg[Editing Collector Notifications]
+
+
 . Click *Advanced Configuration* to add additional configuration fields. (Not all data collectors require advanced configuration.)
 . Click *Test Configuration* to verify that the data collector is properly configured.
 . Click *Add Collector* to save the configuration and add the data collector to your Cloud Insights tenant.
