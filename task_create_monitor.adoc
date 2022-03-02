@@ -115,6 +115,9 @@ In these fields you can provide notes, links, or steps to take to correct or oth
 
 image:Monitors_Alert_Description.png[Alert Corrective Actions and Description]
 
+
+
+
 === Select notification type and recipients
 
 In the _Set up team notification(s)_ section, you can choose whether to alert your team via email or Webhook.
@@ -132,6 +135,17 @@ image:email_monitor_alerts.png[Email Alert Recipients]
 Specify the webhook(s) for alert notifications. If desired, you can choose different webhooks for warning or critical alerts.
 
 image:Webhook_Monitor_Notifications.png[Webhook Alerting]
+
+==== Warning vs. Critical vs. Resolved alerting
+
+Whether a monitor sends a Warning, Critical, or Resolved alert notification depends on which threshold is crossed:
+
+* Crossing from non-triggered to WARNING - Send Warning Alert
+* Crossing from non-triggered to CRITICAL - Send Critical Alert
+* Crossing from WARNING to CRITICAL - Send Critical Alert
+* Crossing from CRITICAL to WARNING - Send Warning Alert
+* Crossing from WARNING to Non-Triggered - Send RESOLVED Alert
+* Crossing from CRITICAL to Non-Triggered - Send RESOLVED Alert
 
 
 === Save your Monitor
