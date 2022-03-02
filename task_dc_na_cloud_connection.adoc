@@ -52,6 +52,17 @@ image:Cloud_Agent_Step_Waiting.png[Waiting for connection]
 
            
 == Troubleshooting
+with this data collector:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|I'm seeing the following error while trying to connect to Azure CVO: "The certificate signing request to broker/manager CA service was not completed."
+|Verify that your Cloud manager proxy settings are set to the Cloud Manager private IP. Cloud Manager installation may set a different proxy. Once the proxy is set to the correct IP and you reference the proxy in the Cloud Connector dialog, the connection to Cloud Insights should connect successfully.
+
+|===
+
+
 
 Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
 
