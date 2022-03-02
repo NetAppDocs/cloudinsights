@@ -672,7 +672,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
       labels:
         app: ci-telegraf
     priority: 10
-    allowPrivilegedContainer: false
+    allowPrivilegedContainer: true
     defaultAddCapabilities: []
     requiredDropCapabilities: []
     allowedCapabilities: []
