@@ -770,27 +770,11 @@ For Operator-based installation run the following commands:
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
 
 
-////
-. Stop and delete the Telegraf service:
-
- kubectl --namespace ci-monitoring delete ds telegraf-ds 
- kubectl --namespace ci-monitoring delete rs telegraf-rs
- 
-. Delete the Telegraf ConfigMap and ServiceAccount:
-
- kubectl --namespace ci-monitoring delete cm telegraf-conf 
- kubectl --namespace ci-monitoring delete cm telegraf-conf-rs
- kubectl --namespace ci-monitoring delete sa telegraf-user 
- 
-. Delete the Telegraf ClusterRole and ClusterRolebinding:
-
- kubectl --namespace ci-monitoring delete clusterrole endpoint-access 
- kubectl --namespace ci-monitoring delete clusterrolebinding endpoint-access 
-////
-
-If a Security Context Constraint was previously-created for Telegraf:
+If a Security Context Constraint was previously-created manually for a script-based Telegraf installation:
 
  kubectl delete scc telegraf-hostaccess
+ 
+ 
  
 ==== Upgrading the Agent
 [#upgrading-kubernetes-agent]
