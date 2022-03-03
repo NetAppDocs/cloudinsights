@@ -181,23 +181,42 @@ Grouping allows you to view and manage related monitors. For example, you can ha
 
 image:Monitors_GroupList.png[Monitor Grouping]
 
-////
-Two groups are shown by default:
+The following monitor groups are shown. The number of monitors contained in a group is shown next to the group name.
 
 * *All Monitors* lists all monitors.
-* *Custom Monitors* lists only user-created monitors.
+* *Custom Monitors* lists all user-created monitors.
+* *Suspended Monitors* will list any system monitors that have been suspended by Cloud Insights.
+* *System-Defined Monitors* will list one or more groups of system-defined monitors, including ONTAP Infrastructure and Workload groups. 
+//* *Data Collection* monitors will alert on Data Collector or Acquisition Unit issues.
+
+NOTE: Custom monitors can be paused, resumed, deleted, or moved to another group. System-defined monitors can be paused and resumed but can not be deleted or moved. 
+
+=== Suspended Monitors
+
+This group will only be shown if Cloud Insights has suspended one or more monitors. A monitor may be suspended if it is generating excessive or continuous alerts. If the monitor is a custom monitor, modify the conditions to prevent the continuous alerting, and then resume the monitor. The monitor will be removed from the Suspended Monitors group when the issue causing the suspension is resolved.
+
+
+////
+=== Data Collection Monitors
+
+This group will show monitors 
 ////
 
-The number of monitors contained in a group is shown next to the group name.
 
+=== System-Defined Monitors
 
-NOTE: Custom monitors can be paused, resumed, deleted, or moved to another group. System-defined monitors can be paused and resumed but can not be deleted or moved.
+These groups will show monitors provided by Cloud Insights, as long as your environment contains the devices and/or log availability required by the monitors.
+
+System-Defined monitors cannot be modified, moved to another group, or deleted. However, you can duplicate a system monitor and modify or move the duplicate. 
+
+System monitors may include monitors for ONTAP Infrastructure (storage, volume, etc.) or Workloads (i.e. log monitors), or other groups. NetApp is constantly evaluating customer need and product functionality, and will update or add to system monitors and groups as needed.
 
 
 === Custom Monitor Groups
 
-To create a new custom monitor group, click the *"+" Create New Monitor Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
+You can create your own groups to contain monitors based on your needs. For example, you may want a group for all of your storage-related monitors.
 
+To create a new custom monitor group, click the *"+" Create New Monitor Group* button. Enter a name for the group and click *Create Group*. An empty group is created with that name. 
 
 To add monitors to the group, go to the _All Monitors_ group (recommended) and do one of the following:
 
@@ -232,21 +251,6 @@ image:Monitors_PauseGroup.png[Pause a group]
 
 
 
-////
-=== Monitor or Performance Policy?
-
-What's the difference between a *Performance Policy* and a *Monitor*?
-
-_Policies_ allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports. These policies trigger violations when thresholds are met or exceeded. Each violation can be investigated for troubleshooting. Policies are described in detail elsewhere in this link:task_create_performance_policies.html[documentation].
-
-_Monitors_ provide similar functionality for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins, and alert when thresholds are crossed. With Monitors, you can set thresholds for Warning- or Critical-level alerts, or both. 
-
-Policies and Monitors are available under the *Alerts* menu.
-
-image:AlertsMenuLarger.png[Alerts Menu]
-
-Emails can be sent when a policy or monitor is triggered. 
-////
 
 ////
 === Creating a Monitor
