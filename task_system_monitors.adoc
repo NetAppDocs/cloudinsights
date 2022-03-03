@@ -539,7 +539,6 @@ Plan to take the following actions soon if warning threshold is breached:
 
 
 
-//// Full table, but without line breaks in desc or corrective action fields:
 
 |===
 
@@ -650,5 +649,5 @@ Plan to take the following actions soon if warning threshold is breached:
 |Volume Qtree Quota Overcommit|CRITICAL|Volume Qtree Quota Overcommit specifies the percentage at which a volume is considered to be overcommitted by the qtree quotas. The set threshold for the qtree quota is reached for the volume. Monitoring the volume qtree quota overcommit ensures that the user receives uninterrupted data service.| If critical threshold is breached, then immediate actions should be taken to minimize service disruption: 1. Increase the space of the volume  2. Delete unwanted data  When warning threshold is breached, then consider increasing the space of the volume. 
 |WAFL Quota Qtree Exceeded|INFO|This event occurs when a tree quota has exceeded on a volume. This event is not repeated for this tree for a set amount of time or until a "quota resize" is performed. The amount of time is specified by the "quota logmsg" command.| Reduce the usage in this tree or increase the quota and run the "quota resize" command. 
 |===
-////
+
 
