@@ -25,7 +25,7 @@ When the monitored threshold and conditions are reached or exceeded, Cloud Insig
 Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
 
 //See below for link:#system-defined-monitors-preview[System-Defined Monitors] documentation.
-See below for link:#system-defined-monitors[System-Defined Monitors] documentation.
+Read descriptions of link:task_system_monitors.html[System-Defined Monitors].
 
 
 == Create the Monitor 
@@ -393,6 +393,9 @@ Two groups are shown by default:
 
 * *All Monitors* lists all monitors.
 * *Custom Monitors* lists only user-created monitors.
+* *Suspended Monitors* will be shown only if a monitor has been suspended by the system. 
+
+
 ////
 
 The number of monitors contained in a group is shown next to the group name.
