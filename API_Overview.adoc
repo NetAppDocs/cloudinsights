@@ -56,8 +56,9 @@ For Premium Edition, we expose Acquisition Unit, Assets, Data Collection, Data I
 
 The latest API information is found by logging in to Cloud Insights and navigating to *Admin > API Acccess*. Click the *API Documentation* link.
 
-image:API_Types_Example.png[API Types]
-//image:API_Documentation.png[API Documentation] 
+//image:API_Types_Example.png[API Types]
+//image:API_Documentation.png[API Documentation]
+image:API_Swagger_Types.png[API types]
 
 The API Documentation is Swagger-based, which provides a brief description and usage information for the API, and allows you to try it out in your environment. Depending on your user role and/or Cloud Insights edition, the API types available to you may vary.
 
@@ -110,6 +111,8 @@ The Cloud Insights API is category-based, and currently contains the following t
 * DATA COLLECTION type is used to retrieve and manage data collectors.
 
 * DATA INGESTION type is used to retrieve and manage ingestion data and custom metrics, such as from Telegraf agents
+
+* LOG INGESTION is used to retrieve and manage log data
 
 //* DATA WAREHOUSE type is available for environments with Cloud Insights Reporting, and is used to manage data used with Reporting
 
