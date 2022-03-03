@@ -26,7 +26,7 @@ When the monitored threshold and conditions are reached or exceeded, Cloud Insig
 Monitors allow you to set thresholds on "infrastructure" objects such as storage, VM, EC2, and ports, as well as  for "integration" data such as those collected for Kubernetes, ONTAP advanced metrics, and Telegraf plugins . Monitors alert you when thresholds are crossed, and you can set thresholds for Warning-level alerts, Critical-level alerts, or both. 
 
 //See below for link:#system-defined-monitors-preview[System-Defined Monitors] documentation.
-Read descriptions of link:task_system_monitors.html[System-Defined Monitors].
+//Read descriptions of link:task_system_monitors.html[System-Defined Monitors].
 
 
 == Create the Monitor 
@@ -185,7 +185,7 @@ The following monitor groups are shown. The number of monitors contained in a gr
 * *All Monitors* lists all monitors.
 * *Custom Monitors* lists all user-created monitors.
 * *Suspended Monitors* will list any system monitors that have been suspended by Cloud Insights.
-* *System-Defined Monitors* will list one or more groups of system-defined monitors, including ONTAP Infrastructure and Workload groups. 
+* *System-Defined Monitors* will list one or more groups of link:task_system_monitors.html[system-defined monitors], including ONTAP Infrastructure and Workload groups. 
 //* *Data Collection* monitors will alert on Data Collector or Acquisition Unit issues.
 
 NOTE: Custom monitors can be paused, resumed, deleted, or moved to another group. System-defined monitors can be paused and resumed but can not be deleted or moved. 
@@ -425,12 +425,13 @@ image:Monitors_PauseGroup.png[Pause a group]
 
 
 
-
+////
 == System-Defined Monitors
 
 //Beginning in October 2021, Cloud Insights includes a number of system-defined monitors for both metrics and logs. 
 
 View the link:task_system_monitors.html[System-Defined Monitors] page for descriptions of monitors included with Cloud Insights.
+////
 
 
 === More Information
