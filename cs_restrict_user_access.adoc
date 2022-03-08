@@ -69,13 +69,19 @@ Note that you must first switch to advanced mode before running the commands.
 TIP: This is particularly helpful for running PoCs. In the machines where you want to test, SMB can be configured as shown below. During PoCs, in the Data Source Collectors, enable only SMB/CIFs protocol and disable NFS protocol.
 
  set -privilege advanced
+ 
  cifs options modify -is-exportpolicy-enabled true -vserver <vserver>
+ 
  export-policy rule create -vserver <vserver> -policyname default -protocol cifs -clientmatch 0.0.0.0/0 -rorule any -rwrule any 
+ 
+NOTE: The clientmatch is either a specific address or a subnet (for example 10.0.3.212 or 192.168.5.0/24), a hostname, or a netgroup, like @netgroup. If you want an export policy to apply to all possible IP4 addresses, set the clientmatch to 0.0.0.0/0.
 
 To check if the _exportpolicy_ and _exportpolicy rule_ have been configured correctly, run the following commands after running the above commands.
 
  cifs options show  -fields is-exportpolicy-enabled -vserver <vserver>
+ 
  export-policy show -vserver <vserver>
+ 
  export-policy rule show -policyname default -vserver <vserver>
 
 === How to enable the feature?
