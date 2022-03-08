@@ -31,8 +31,22 @@ If there are four SVMs with one SVM configured for CIFS, one configured for NFS,
 
 Customers must configure export policies for SMB and NFS for this feature to work. Follow the steps below if NFS and SMB are configured in the Data Source Collector.
 
-For NFS, export policies are configured by default. By default, an export policy is created when NFS service is created in the SVM. For SMB, the export policies must be configured. 
+For NFS, export policies are configured by default. By default, an export policy is created when NFS service is created in the SVM. 
 
+For SMB, the export policies must be configured. 
+
+If you are NOT using cluster/svm credentials but using a csuser then follow the steps below first, to allow Cloud Secure to create a custom export policy rule.
+
+For csuser with cluster credentials, do the following from the ONTAP command line:
+
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all
+
+For csuser with SVM credentials, do the following from the ONTAP command line, inserting the correct <vservername>:
+
+ security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all
+
+
+////
 For both NFS and SMB, _csroles_ must be configured correctly. Customers should configure _csrole_ (if not configured already) when setting up an ONTAP SVM Data Source Collector as documented in the link:task_add_collector_svm.html#a-note-about-permissions[data collector permissions] documentation. 
 
 If Cluster IP is used to configure the Data Collector then do the following from the ONTAP command line:
@@ -44,20 +58,13 @@ If Server IP is used to configure the Data Collector then do the following from 
  security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all
 
 By default, there is an export policy created when the NFS service is created in the SVM. 
+////
 
-Below are the commands to configure export policy. Copy the commands below to a text editor and replace the <vserver> name with the name of your vserver. Then copy each line one at a time and execute it in the ONTAP console. NOTE: you must first switch to advanced mode before running the commands. 
+Below are the commands to configure a default export policy. 
+Copy the commands to a text editor and replace the <vserver> name with the name of your vserver. Then copy each line one at a time and execute it in the ONTAP console. 
+Note that you must first switch to advanced mode before running the commands. 
 
 TIP: This is particularly helpful for running PoCs. In the machines where you want to test, SMB can be configured as shown below. During PoCs, in the Data Source Collectors, enable only SMB/CIFs protocol and disable NFS protocol.
-
-If using cluster mode:
-
- security login role create -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*" 
-
-If using SVM mode:
-
-security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*" 
-
-For both modes, then run these commands:
 
  set -privilege advanced
  cifs options modify -is-exportpolicy-enabled true -vserver <vserver>
