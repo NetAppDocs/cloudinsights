@@ -33,6 +33,7 @@ Customers must configure export policies for SMB and NFS for this feature to wor
 
 For NFS, export policies are configured by default. By default, an export policy is created when NFS service is created in the SVM. 
 
+
 For SMB, the export policies must be configured. 
 
 If you are NOT using cluster/svm credentials but using a csuser then follow the steps below first, to allow Cloud Secure to create a custom export policy rule.
@@ -48,6 +49,7 @@ For csuser with SVM credentials, do the following from the ONTAP command line, i
 
 ////
 For both NFS and SMB, _csroles_ must be configured correctly. Customers should configure _csrole_ (if not configured already) when setting up an ONTAP SVM Data Source Collector as documented in the link:task_add_collector_svm.html#a-note-about-permissions[data collector permissions] documentation. 
+
 
 If Cluster IP is used to configure the Data Collector then do the following from the ONTAP command line:
 
@@ -70,7 +72,7 @@ TIP: This is particularly helpful for running PoCs. In the machines where you wa
  cifs options modify -is-exportpolicy-enabled true -vserver <vserver>
  export-policy rule create -vserver <vserver> -policyname default -protocol cifs -clientmatch 0.0.0.0/0 -rorule any -rwrule any 
 
-To Check if the _exportpolicy_ and _exportpolicy rule_ have been configured correctly, run the following commands after running the above commands.
+To check if the _exportpolicy_ and _exportpolicy rule_ have been configured correctly, run the following commands after running the above commands.
 
  cifs options show  -fields is-exportpolicy-enabled -vserver <vserver>
  export-policy show -vserver <vserver>
@@ -114,6 +116,53 @@ At any time, you can disable the feature. If there are restricted users in the s
 The feature will be hidden from all pages.
 
 
+=== Manually Restore IPs
+
+Use the following steps to manually restore any IPs from ONTAP if your Cloud Secure trial expires, or if the agent/collector is down. 
+ 
+. List all export policies on an SVM.
+ 
+ contrail-qa-fas8020::> export-policy rule show -vserver <svm name>
+              Policy          Rule    Access   Client                RO
+ Vserver      Name            Index   Protocol Match                 Rule
+ ------------ --------------- ------  -------- --------------------- ---------
+ svm_s_____a default         1       nfs3,    cloudsecure_rule,     never
+                                      nfs4,    10.19.12.216
+                                      cifs
+ svm_s_____a default         4       cifs,    0.0.0.0/0             any
+                                      nfs
+ svm_s_____a test            1       nfs3,    cloudsecure_rule,     never
+                                      nfs4,    10.19.12.216
+                                      cifs
+ svm_s_____a test            3       cifs,    0.0.0.0/0             any
+                                      nfs,
+                                      flexcache
+ 4 entries were displayed.
+ 
+ 
+. Delete the all rules across all policies on the SVM which have “cloudsecure_rule” as Client Match by specifying its respective RuleIndex. CloudSecure rule will usually be at 1.
+ 
+ contrail-qa-fas8020::*> export-policy rule delete -vserver <svm name> -policyname * -ruleindex 1
+ 
+ 
+ 
+ 
+.	Ensure cloudsecure rule is deleted (optional step to confirm)
+ 
+ contrail-qa-fas8020::*> export-policy rule show -vserver <svm name>
+              Policy          Rule    Access   Client                RO
+ Vserver      Name            Index   Protocol Match                 Rule
+ ------------ --------------- ------  -------- --------------------- ---------
+ svm_suchitra default         4       cifs,    0.0.0.0/0             any
+                                      nfs
+ svm_suchitra test            3       cifs,    0.0.0.0/0             any
+                                      nfs,
+                                      flexcache
+ 2 entries were displayed.
+ 
+
+
+
 == Troubleshooting
 
 |===
@@ -125,7 +174,7 @@ The feature will be hidden from all pages.
 2. This is because the user may have accessed the storage from a machine with a new IP which has not been used before.
 Restricting happens via IP address of the host through which the user is accessing the storage. Check in the UI (Alert Details > Access Limitation History for This User > Affected IPs) for the list of IP addresses which are restricted. If the user is accessing storage from a host which has an IP different from the restricted IPs, then the user will still be able to access the storage through the non-restricted IP. If the user is trying to access from the hosts whose IPs are restricted, then the storage won’t be accessible.
 
-|Manually clicking on Restrict Access gives “No user IPs for the action”.	 
+|Manually clicking on Restrict Access gives “IP addresses of this user have already been restricted”.	 
 |The IP to be restricted is already being restricted from another user.
 
 |Restrict Access fails with warning “Export policy usage for SMB protocol is disabled for the SVM. Enable use of export-policy to use restrict user access feature”	

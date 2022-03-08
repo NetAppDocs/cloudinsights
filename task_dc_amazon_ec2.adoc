@@ -63,6 +63,9 @@ Enter data into the data collector fields according to the table below:
 //|HTTP connection and socket timeout (sec)|The default is 300
 //|Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
 |Performance Poll Interval (sec)|The default is 1800
+|CloudWatch Agent Metrics Namespace
+|Namespace in EC2/EBS from which to collect data. Note that if the names of the default metrics in this namespace are changed, Cloud Insights may not be able to collect that renamed data. It is recommended to leave the default metric names.
+
 |===
 
 == IAM Access Key
