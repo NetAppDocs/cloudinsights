@@ -5,7 +5,7 @@ rvm:
 - 2.4.3
 env:
   global:
-    - FRAMEWORK_BRANCH=main
+    - FRAMEWORK_BRANCH=prod-issues
     - DEPLOY_VERSION=v2
 jobs:
   include:
@@ -21,6 +21,7 @@ jobs:
       - source .ci/deploy/install.bash
       script:
       - source .ci/deploy/post_install.bash
+      - ls -al /tmp/output
       deploy:
         provider: pages
         skip_cleanup: true
