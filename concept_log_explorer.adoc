@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_log_explorer.html
 keywords: logs, monitors, alerts, 
-summary: The Log Explorer is a powerful tool for investigating issues.
+summary: The Log Explorer is a powerful tool for investigating issues through different system logs.
 ---
 
 = Log Explorer
@@ -16,17 +16,17 @@ summary: The Log Explorer is a powerful tool for investigating issues.
 :imagesdir: ./media/
 
 [.lead]
-The Cloud Insights Log Explorer is a powerful tool for querying EMS and Kubernetes logs. In addition to helping with investigations, you can also save a log query in a Monitor to provide alerts when log triggers are activated.
+The Cloud Insights Log Explorer is a powerful tool for querying system logs. In addition to helping with investigations, you can also save a log query in a Monitor to provide alerts when those particular log triggers are activated.
 
 To begin exploring logs, click *Queries > +New Log Query*.
 
-image:LogExplorerMenu.png[Log queries menu]
+image:LogExplorerMenu.png[Log queries menu, 640]
 
 Select an available log from the list. This list may vary based on your current Cloud Insights environment configuration.
 
 image:LogExplorer_ChooseLog.png[Choose your log]
 
-NOTE: A select set of logs are accessible for Preview; additional logs will be available over time.
+NOTE: The types of logs available for querying may vary based on your environment. Additional log types may be added over time.
 
 You can set filters to further refine the results of the query. For example, to find all log messages showing a failure, set a filter for _Messages_ containing the word "failed".  
 
