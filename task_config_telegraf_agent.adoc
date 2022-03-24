@@ -421,6 +421,8 @@ NOTE: NetApp Kubernetes Monitoring Operator installation is considered a _Previe
 
 .Pre-requisites:
 
+* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with AWS EKS 1.18 - 1.21, OpenShift 4.6 - 4.8, and Rancher 2.4 - 2.6.
+
 * The following commands must be available: curl, sudo, openssl, sha256sum, and kubectl
 +
 For best results, add these commands to the PATH.
@@ -434,8 +436,6 @@ For best results, add these commands to the PATH.
 * If you are running a Kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section. Operator-based installation installs this for you.
 
 * You must have permissions to create Kubernetes cluster roles and role bindings.
-
-* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with AWS EKS 1.18 - 1.21, OpenShift 4.6 - 4.8, and Rancher 2.4 - 2.6.
 
 
 
