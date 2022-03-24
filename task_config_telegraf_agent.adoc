@@ -405,6 +405,20 @@ To upgrade the telegraf agent, do the following:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 === Kubernetes
 
 Kubernetes offers two ways to collect data:
@@ -421,7 +435,12 @@ NOTE: NetApp Kubernetes Monitoring Operator installation is considered a _Previe
 
 .Pre-requisites:
 
-* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with AWS EKS 1.18 - 1.21, OpenShift 4.6 - 4.8, and Rancher 2.4 - 2.6.  If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
+* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with the following:
+** AWS EKS 1.18 - 1.21
+** OpenShift 4.6 - 4.8
+** Rancher 2.4 - 2.6.  
+
+* If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
 * The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
