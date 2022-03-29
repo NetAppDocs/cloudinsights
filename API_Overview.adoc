@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: API_Overview.html
-keywords: API, customer API, premium, JSON, Swagger, Access Token, token
+keywords: API, customer API, premium, JSON, Swagger, Access Token, token, key
 summary: The Cloud Insights API enables integration with other applications, such as monitoring and reporting systems.
 ---
 
@@ -39,11 +39,6 @@ Note that Cloud Insights APIs are available based on your current Edition:
 
 Additionally, your Cloud Insights link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html#permission-levels[feature set role] will determine which APIs you can access. User and Guest roles have fewer privileges than Administrator role. For example, if you have Administrator role in Monitor and Optimize, but User role in Reporting, you can manage all API types except Data Warehouse.
 
-////
-We are exposing API Access in Basic Edition for Acquisition Unit and Data Collection API Keys & swagger documentation.
-For Standard Edition, we expose Acquisition Unit, Assets, Data Collection and Data Ingestion API keys & swagger documentation.
-For Premium Edition, we expose Acquisition Unit, Assets, Data Collection, Data Ingestion, & Data Warehouse API keys & swagger documentation.
-////
 
 == Requirements for API Access
 
@@ -86,7 +81,7 @@ NOTE: Your token will only be available for copying to the clipboard and saving 
 
 You can disable, enable, and revoke tokens. Tokens that are disabled can be enabled. 
       
-Tokens grant general purpose access to APIs from a customer perspective;  managing access to APIs in the scope of their own tenant. Customer administrators may grant and revoke these keys without direct involvement from Cloud Insights back end personnel.
+Tokens grant general purpose access to APIs from a customer perspective;  managing access to APIs in the scope of their own tenant. Customer administrators may grant and revoke these tokens without direct involvement from Cloud Insights back end personnel.
 
 The application receives an Access Token after a user successfully authenticates and authorizes access, then passes the Access Token as a credential when it calls the target API. The passed token informs the API that the bearer of the token has been authorized to access the API and perform specific actions specified by the scope that was granted during authorization.
 
@@ -96,7 +91,7 @@ For example, use the following to retrieve storages assets:
 
  curl https://<tenant_host_name>/rest/v1/assets/storages -H 'X-CloudInsights-ApiKey: <API_Access_Token>'
 
-Where _<API_Access_Token>_ is the token you saved during API access key creation. 
+Where _<API_Access_Token>_ is the token you saved during API access creation. 
 
 == API Type
 
