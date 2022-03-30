@@ -469,6 +469,8 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 ==== NetApp Kubernetes Monitoring Operator Installation
 
+NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes 1.17 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
+
 image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
 .Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
