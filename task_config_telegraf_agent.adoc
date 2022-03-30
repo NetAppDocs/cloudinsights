@@ -435,10 +435,14 @@ NOTE: NetApp Kubernetes Monitoring Operator installation is considered a _Previe
 
 .Pre-requisites:
 
+* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes 1.17 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
+
+////
 * NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with the following:
 ** AWS EKS 1.18 - 1.21
 ** OpenShift 4.6 - 4.8
 ** Rancher 2.4 - 2.6.  
+////
 
 * If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
@@ -468,8 +472,6 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 //|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
 
 ==== NetApp Kubernetes Monitoring Operator Installation
-
-NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes 1.17 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
 
 image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
