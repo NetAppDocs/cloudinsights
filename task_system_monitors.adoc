@@ -15,12 +15,10 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights includes a number of system-defined monitors for both metrics and logs. The Monitors interface will include a number of changes to accomodate these system monitors. These are described in this section.
+Cloud Insights includes a number of system-defined monitors for both metrics and logs. The system monitors available are dependent on the data collectors present in your environment. Because of that, the monitors available in Cloud Insights may change as data collectors are added or their configurations changed.
 
 NOTE: System Monitors are in _Paused_ state by default. Before resuming the monitor, you must ensure that _Advanced Counter Data Collection_ and _Enable ONTAP EMS log collection_ are enabled in the Data Collector. These options can be found in the ONTAP Data Collector under _Advanced Configuration_: 
 image:Enable_Log_Monitor_Collection.png[Enabling Advanced Counter and EMS Log collection for ONTAP]
-
-The system monitors available are dependent on the data collectors present in your environment. Because of that, the monitors available in Cloud Insights may change as data collectors are added or their configurations changed.
 
 //NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
 
@@ -62,7 +60,7 @@ image:MonitorMetricFilter.png[Metrics Filtering]
 
 //When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering works against the data samples themselves, not the objects as with infrastructure data (storage, VMs, ports, etc.).
 
-When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart.
+When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metric filtering removes the individual/unmatched data points from the plotted data series, unlike infrastructure data (storage, VM, ports etc.) where filters work on the aggregated value of the data series and potentially remove the entire object from the chart. 
 
 //image:IntegrationMetricFilterExample.png[Integration Metric Filtering]
 
@@ -170,12 +168,10 @@ You can choose to temporarily pause monitoring of an object type by clicking the
 You can copy a monitor by selecting *Duplicate* from the menu. You can then modify the new monitor and change the object/metric, filter, conditions, email recipients, etc.
 
 If a monitor is no longer needed, you can delete it by selecting *Delete* from the menu.
-
-
-
-
-
 ////
+
+
+
 
 ////
 == Monitor Groups
@@ -184,13 +180,13 @@ Grouping allows you to view and manage related monitors. For example, you can ha
 
 image:Monitors_GroupList.png[Monitor Grouping]
 
-////
 Two groups are shown by default:
 
 * *All Monitors* lists all monitors.
 * *Custom Monitors* lists only user-created monitors.
 ////
 
+////
 The number of monitors contained in a group is shown next to the group name.
 
 
@@ -227,7 +223,7 @@ Use the same menu to rename or delete a group. Deleting a group does not delete 
 
 image:Monitors_PauseGroup.png[Pause a group]
 ////
-////
+
 
 
 == Monitor Descriptions
