@@ -30,18 +30,19 @@ Managing and inviting users is a snap with APIs; you can invite users and assign
 Cloud Insights keeps you on top of changes in your Kubernetes environment by alerting you when pods, daemonsets, and replicasets are created or removed, as well as when new deployments are created. Kubernetes monitors default to _paused_ state, so you should enable only the specific ones you need.
 
 
-==== New Count aggregation for Bar, Column, and Pie Charts
-
-When grouping data in bar chart, column chart, and pie chart widgets, you can now choose _Count_ as an aggregation method, to quickly and easily show the number of relevant objects for the selected metric.
-
-image:CountAggregationExample1.png[aggregation drop-down showing Count]
-
 
 ==== Dashboard widget editor improvements
 
 Creating or modifying a dashboard widget now gives you a full screen to work in and provides a cleaner, easier-to-use layout. In addition to putting the chart at the top of the screen (so it's always visible as you add or modify your query/queries), the editor separates filters for Metrics and Attributes, provides easier time range choosing, adds interpolation methods, and more. 
 
 image:DashboardWidgetEditorScreen.png[Widget Editor Improved Layout]
+
+==== New Count aggregation for Bar, Column, and Pie Charts
+
+When grouping data in bar chart, column chart, and pie chart widgets, you can now choose _Count_ as an aggregation method, to quickly and easily show the number of relevant objects for the selected metric.
+
+image:CountAggregationExample1.png[aggregation drop-down showing Count]
+
 
 
 ==== Preview Features
