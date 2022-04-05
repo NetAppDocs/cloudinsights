@@ -574,6 +574,8 @@ For example, when setting a variable filter to a specific storage _Model_, any v
 
 To use a variable in an expression, simply type the variable name as part of the expression, for example, _$var1 * 100_. Only Numeric variables can be used in expressions. You cannot use numeric Annotation or Attribute variables in expressions.
 
+Filtering in variables is _contextual_; when you select a filter value or values for a variable, the other variables on your page will show only values relevant to that filter.
+For example, when setting a variable filter to a specific storage _Model_, any variables set to filter for storage _Name_ will only show values relevant to that Model.
 
 ////
 ==== "Generic" variables
