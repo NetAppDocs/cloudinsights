@@ -20,29 +20,25 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === April 2022
 
-==== New APIs for User Management
+==== Updated Dashboard Editor
 
-Managing and inviting users is a snap with APIs; you can invite users and assign roles based on the Cloud Insights feature sets you like: Monitor and Optimize, Cloud Secure, or Reporting.
+We’ve overhauled our dashboard creation tools to make it easier for you to visualize your data even more quickly. Navigate to the “Dashboards” page of Cloud Insights to edit an existing dashboard, add one from our dashboard gallery, or create a new dashboard of your own to check it out.
+
+image:DashboardWidgetEditorScreen.png[Widget Editor Improved Layout]
 
 
-==== Monitor your Kubernetes Infrastructure
+A new Count aggregation method has also been introduced.  When grouping data in bar chart, column chart, and pie chart widgets, you can quickly and easily show the number of relevant objects for the selected metric.
+
+image:CountAggregationExample1.png[aggregation drop-down showing Count]
+
+==== Enhanced Monitoring for Your Kubernetes Infrastructure
 
 Cloud Insights keeps you on top of changes in your Kubernetes environment by alerting you when pods, daemonsets, and replicasets are created or removed, as well as when new deployments are created. Kubernetes monitors default to _paused_ state, so you should enable only the specific ones you need.
 
 
+==== New APIs for User Management
 
-==== Dashboard widget editor improvements
-
-Creating or modifying a dashboard widget now gives you a full screen to work in and provides a cleaner, easier-to-use layout. In addition to putting the chart at the top of the screen (so it's always visible as you add or modify your query/queries), the editor separates filters for Metrics and Attributes, provides easier time range choosing, adds interpolation methods, and more. 
-
-image:DashboardWidgetEditorScreen.png[Widget Editor Improved Layout]
-
-==== New Count aggregation for Bar, Column, and Pie Charts
-
-When grouping data in bar chart, column chart, and pie chart widgets, you can now choose _Count_ as an aggregation method, to quickly and easily show the number of relevant objects for the selected metric.
-
-image:CountAggregationExample1.png[aggregation drop-down showing Count]
-
+Managing and inviting users is a snap with APIs; you can invite users and assign roles based on the Cloud Insights feature sets you like: Monitor and Optimize, Cloud Secure, or Reporting.
 
 
 ==== Preview Features
@@ -56,19 +52,16 @@ Cloud Insights regularly highlights a number of exciting new preview features. I
 |Internal Volume and Volume Capacity Time-to-Full forecasting	
 |Cloud Insights is able to prognose the number of days until capacity runs out for each Internal Volume and Volume monitored. This value can help to significantly reduce the risk of an outage. 
 
-|Restrict User Access automatic response action
-|When an attack is detected, Cloud Secure can stop the attack by restricting user access to the file system (full block, or set to read-only access). 
+|Cloud Secure – restrict user access on attack
+|Greater protection for your business-critical data with the ability to restrict user access when an attack is detected. 
 Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
 link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
 
 |Shared Resource Under Stress
-|The Shared Resource Under Stress insight allows you to identify:
--	Shared Storage Resources which are under stress due to high demand from one or more individual workloads
--	Demanding and impacted workloads on the shared resource
+|TThe Shared Resource Under Stress insight uses AI/ML to automatically identify where resource contention is causing performance degradation in your environment, highlights any workloads impacted by it, and provides recommended actions to remediate, letting you solve performance issues more quickly.
 link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html[Read More]
 
 |===
-
 
 ==== New Data Collector
  
