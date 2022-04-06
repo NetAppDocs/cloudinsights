@@ -25,13 +25,16 @@ You must install an Acquisition Unit (AU) in order to acquire information from y
 |Operating system	
 |A computer running a licensed version of one of the following:
 
-* Centos (64-bit): 7.2 through 7.9, 8.1 through 8.3
+* Centos (64-bit): 7.2 through 7.9, 8.1 through 8.4
 * Debian (64-bit): 9 and 10
-* Oracle Enterprise Linux (64-bit): 7.5 through 7.9, 8.1 through 8.3
-* Red Hat Enterprise Linux (64-bit): 7.2 through 7.9, 8.1 through 8.3
+* Oracle Enterprise Linux (64-bit): 7.5 through 7.9, 8.1 through 8.4
+* Red Hat Enterprise Linux (64-bit): 7.2 through 7.9, 8.1 through 8.4
 * Ubuntu Server: 18.04 and 20.04 LTS
 
 This computer should be running no other application-level software. A dedicated server is recommended. 
+
+// NOTE: CentOS 8 will reach End-of-Life December 31, 2021. Cloud Insights will support _CentOS 8 Stream_ going forward.
+
 |A computer running a licensed version of one of the following:
 
 * Microsoft Windows 10 64-bit
@@ -39,6 +42,9 @@ This computer should be running no other application-level software. A dedicated
 * Microsoft Windows Server 2012 R2
 * Microsoft Windows Server 2016
 * Microsoft Windows Server 2019
+
+// * Microsoft Windows 11 64-bit
+// * Microsoft Windows 2022
 
 This computer should be running no other application-level software. A dedicated server is recommended. 
 |CPU	|2 CPU cores 
@@ -101,10 +107,10 @@ You can get started with a Cloud Insights Acquisition Unit with just 8GB memory 
 
 Do you expect to:
 
-* Discover more than 2500 virtual machines or 10 large (> 2 node) ONTAP, Symmetrix, or HDS/HPE VSP/XP arrays on this Acquisition Unit?
+* Discover more than 2500 virtual machines or 10 large (> 2 node) ONTAP clusters, Symmetrix, or HDS/HPE VSP/XP arrays on this Acquisition Unit?
 * Deploy 75 or more total data collectors on this Acquisition Unit?
 
-For each "Yes" answer above, it is recommend to add 8 GB of memory and 50 GB of disk space to the AU. So for example if you answered "Yes" to both, you should deploy a 24GB memory system with 150GB or more of disk space.
+For each "Yes" answer above, it is recommend to add 8 GB of memory and 50 GB of disk space to the AU. So for example if you answered "Yes" to both, you should deploy a 24GB memory system with 150GB or more of disk space. On Linux, the disk space to be added to the log location.
 
 For additional sizing questions, contact NetApp Support.
 

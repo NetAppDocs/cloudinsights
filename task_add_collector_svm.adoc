@@ -24,8 +24,9 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 ** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
 ** SMB protocol version 3.1 and earlier
 **	NFS protocol version 4.0 and earlier 
+** Flexgroup is supported from ONTAP 9.4 and later versions
 
-* Only data type SVMs are supported. SVMs with infinite/flexgroup volumes are not supported
+* Only data type SVMs are supported. SVMs with infinite volumes are not supported.
 
 * SVM has several sub-types. Of these, only _default_ and _sync_source_ are supported.
 
@@ -104,6 +105,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -role csrole -cmddirname "security certificate" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
  security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*" 
 
 
 ==== Permissions when adding via *Vserver Management IP*:
@@ -122,7 +124,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
-
+ security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*"
 
 ////
 If you cannot use the "vsadmin" user, create the following roles for the data collector using the "causer" user: 
@@ -190,6 +192,10 @@ When adding via SVM IP the options are:
 |Enter complete share names to exclude/include|Comma-separated list of shares to exclude or include (as appropriate) from event collection
 |Enter complete volume names to exclude/include|Comma-separated list of volumes to exclude or include (as appropriate) from event collection
 |Monitor Folder Access|When checked, enables events for folder access monitoring. Note that folder create/rename and delete will be monitored even without this option selected. Enabling this will increase the number of events monitored.
+|Set ONTAP Send Buffer size|Sets the ONTAP Fpolicy send buffer size. If an ONTAP version prior to 9.8p7 is used and performance issue is seen, then the ONTAP send buffer size can be altered to get improved ONTAP performance. Contact NetApp Support if you do not see this option and wish to explore it. 
+|Set ONTAP Send Buffer size
+|Sets the ONTAP Fpolicy send buffer size. If ONTAP versions prior to 9.8p7 is used and ONTAP performance issue is hit, then the ONTAP send buffer size can be altered to get improved ONTAP performance. This is a hidden feature and enabled per customer basis on request.
+
 |===
 
 
@@ -361,8 +367,24 @@ _fpolicy policy event delete -vserver <svmname> -event-name <event_list>_
 _fpolicy policy external-engine delete -vserver <svmname> -engine-name <engine_name>_
 
 |After enabling Cloud Secure, ONTAP performance is impacted: Latency becomes sporadically high, IOPs become sporadically low.
-|Ensure that you are using a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
+|Ensure that you are using a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1415152[this issue] is fixed. The minimum version of ONTAP recommended is 9.8P7.
 
+If an ONTAP version prior to 9.8p7 is used and this performance issue is seen, then the ONTAP send buffer size can be altered to get improved ONTAP performance. Contact NetApp Support if you wish to explore this option and do not see this setting when adding a new data collector or editing an existing one. 
+
+|Data collector is in error, shows this error message.
+“Error: Connector is in error state. Service name: audit. Reason for failure: Failed to configure policy on SVM svm_test. Reason: Missing value for zapi field: events. “
+|Start with a new SVM with only NFS service configured.
+Add an ONTAP SVM data collector in Cloud Secure. CIFS is configured as an allowed protocol for the SVM while adding the ONTAP SVM Data Collector in Cloud Secure. 
+Wait until the Data collector in Cloud Secure shows an error.
+Since the CIFS server is NOT configured on the SVM, this error as shown in the left is shown by Cloud Secure.
+Edit the ONTAP SVM data collector and un-check CIFs as allowed protocol. Save the data collector. It will start running with only NFS protocol enabled.
+
+|Data Collector shows the error message:
+“Error: Failed to determine the health of the collector within 2 retries, try restarting the collector again (Error Code: AGENT008)”.
+|On the Data Collectors page, scroll to the right of the data collector giving the error and click on the 3 dots menu. Select _Edit_.
+Enter the password of the data collector again.
+Save the data collector by pressing on the _Save_ button.
+Data Collector will restart and the error should be resolved.
 
 |===
 
