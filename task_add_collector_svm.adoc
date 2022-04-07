@@ -295,7 +295,7 @@ _system services firewall policy show_
 
 link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nmg%2FGUID-969851BB-4302-4645-8DAC-1B059D81C5B2.html[Check firewall commands] on the ONTAP side.
 
-4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM management lif (with CIFS, NFS protocols support) and ensure that ping is working:
+4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM data lif (with CIFS, NFS protocols support) and ensure that ping is working:
 
  _network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name> -show-detail_
 
@@ -318,7 +318,7 @@ Please ensure that there are no errors related to fpolicy.
 
 3. If no activities are seen, please login to the SVM. Enter the following command 
 _<SVM>fpolicy show_
-Please check if the fpolicy policy named with prefix “metadata_service” has been set and status is “on”. If not set, then most likely the Agent is unable to execute the commands in the SVM. Please ensure all the prerequisites as described in the beginning of the page have been followed.
+Check if the fpolicy policy named with prefix “cloudsecure_” has been set and status is “on”. If not set, then most likely the Agent is unable to execute the commands in the SVM. Please ensure all the prerequisites as described in the beginning of the page have been followed.
 
 |SVM Data Collector is in error state and Errror message is “Agent failed to connect to the collector” 
 |1. Most likely the Agent is overloaded and is unable to connect to the Data Source collectors. 

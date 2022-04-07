@@ -7,7 +7,6 @@ settings:
   prod:
     pdf_enabled: true
     harmony_enabled: true
-    langs: us-en,ja-jp,zh-cn
 sidebar:
   entries:
     - title: Cloud Insights documentation
@@ -270,7 +269,9 @@ sidebar:
             - title: Users
               url: /forensic_user_overview.html
         - title: Automated Response Policies
-          url: /cs_automated_response_policies.html  
+          url: /cs_automated_response_policies.html
+        - title: Restricting User Access
+          url: /cs_restrict_user_access.html
         - title: Simulating a Ransomware Attack
           url: /concept_cs_attack_simulator.html
         - title: Notifications
@@ -323,8 +324,6 @@ sidebar:
                   url: /task_dc_brocade_bna.html 
                 - title: Fibre Channel Switch
                   url: /task_dc_brocade_fc_switch.html
-            - title: Ceph
-              url: /task_dc_ceph_storage.html
             - title: Cisco
               url: /task_dc_cisco_fc_switch.html
             - title: Dell 
@@ -410,7 +409,7 @@ sidebar:
                 - title: Astra Data Store
                   url: /task_dc_na_astra_data_store.html
                 - title: Cloud Connection for ONTAP 9.9+
-                  url: /task_dc_na_cloud_agent.html
+                  url: /task_dc_na_cloud_connection.html
                 - title: Cloud Volumes ONTAP
                   url: /task_dc_na_cloud_volumes_ontap.html
                 - title: Cloud Volumes Services for AWS

@@ -31,7 +31,7 @@ The Add Application dialog box displays.
 
 .After you finish
 
-After defining an application, it  can be assigned to assets.
+After defining an application, it can be assigned to assets.
 
 == Assigning applications to assets
 
@@ -44,6 +44,10 @@ This procedure assigns the application to a host as an example. You can assign h
 . Click the check box on the left of the Host you want to associate with the application.
 . Click *Bulk Actions > Add Application*.
 . Select the Application you are assigning the asset to. 
+
+Any new applications you assign override any applications on the asset that were derived from another asset. For example, volumes inherit applications from hosts, and when new applications are assigned to a volume, the new application takes precedence over the derived application.
+
+NOTE: For environments with large amounts of related assets, inheritance of application assignments to those assets could take several minutes. Please allow more time for inheritance to occur if you have many related assets.
 
 .After you finish
 
