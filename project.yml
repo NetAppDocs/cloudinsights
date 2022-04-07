@@ -1,3 +1,12 @@
+---
+settings:
+  name: Cloud Insights
+  rss_page: concept_whats_new.html
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: true
 sidebar:
   entries:
     - title: Cloud Insights documentation
@@ -102,6 +111,8 @@ sidebar:
           url: /task_query_assign_multiple_applicationss.html
         - title: Copying table values to the Clipboard
           url: /task_query_copy_table_values.html
+        - title: Querying Logs
+          url: /concept_log_explorer.html
   
     - title: Working with Annotations
       entries:
@@ -131,6 +142,8 @@ sidebar:
   #        url: /task_create_monitor.html
         - title: Configuring Notification Recipients
           url: /concept_notifications_email.html 
+        - title: System-Defined Monitors
+          url: /task_system_monitors.html
   #      - title: Webhooks
   #        entries:
   #          - title: Creating Webhooks 
@@ -147,14 +160,14 @@ sidebar:
     - title: Working with APIs
       url: /API_Overview.html
   
-    - title: Performance Policies and Alerts
-      entries:
-        - title: Alerting with Performance Policies
-          url: /task_create_monitor.html
-        - title: Viewing and Managing Alerts
-          url: /task_view_and_manage_alerts.html
-        - title: Configuring Notification Recipients
-          url: /concept_notifications_email.html 
+  #  - title: Performance Policies and Alerts
+  #    entries:
+  #      - title: Alerting with Performance Policies
+  #        url: /task_create_monitor.html
+  #      - title: Viewing and Managing Alerts
+  #        url: /task_view_and_manage_alerts.html
+  #      - title: Configuring Notification Recipients
+  #        url: /concept_notifications_email.html 
           
     - title: Webhook Notification
       url: /task_create_webhook.html
@@ -180,8 +193,8 @@ sidebar:
           url: /concept_asset_user_data_section.html
         - title: Related Alerts Section
           url: /concept_asset_alerts_section.html
-        - title: Violations Section
-          url: /concept_asset_violation_section.html
+  #      - title: Violations Section
+  #        url: /concept_asset_violation_section.html
         - title: Hints and Tips to Search for Assets
           url: /concept_searching_assets.html
   
@@ -203,6 +216,8 @@ sidebar:
           url: /reporting_creating_custom_reports.html
         - title: Data Models
           url: /reporting_creating_custom_reports.html#reporting-data-models
+        - title: Reporting Database API
+          url: /reporting_querying_database.html
         - title: Data Retention
           url: /reporting_data_retention.html
         - title: Schema Diagrams
@@ -231,6 +246,8 @@ sidebar:
               url: /task_config_user_dir_connect_ldap.html
   #          - title: Configuring NetApp Data Collectors
   #            entries: 
+            - title: Configuring the Amazon FsX for NetApp ONTAP Collector
+              url: /task_config_cs_amazon_fsx.html
             - title: Configuring the ONTAP SVM Data Collector
               url: /task_add_collector_svm.html
             - title: Configuring the Cloud ONTAP Data Collector
@@ -252,7 +269,11 @@ sidebar:
             - title: Users
               url: /forensic_user_overview.html
         - title: Automated Response Policies
-          url: /cs_automated_response_policies.html  
+          url: /cs_automated_response_policies.html
+        - title: Restricting User Access
+          url: /cs_restrict_user_access.html
+        - title: Simulating a Ransomware Attack
+          url: /concept_cs_attack_simulator.html
         - title: Notifications
           url: /cs_notifications_email.html
         - title: Cloud Secure API
@@ -317,7 +338,7 @@ sidebar:
                   url: /task_dc_emc_datadomain.html
                 - title: ECS
                   url: /task_dc_emc_ecs.html
-                - title: Isilon
+                - title: PowerScale
                   url: /task_dc_emc_isilon.html
                 - title: PowerStore
                   url: /task_dc_emc_powerstore.html
@@ -345,11 +366,11 @@ sidebar:
               url: /task_dc_google_cloud.html
             - title: HP Enterprise
               entries:
-                - title: HP 3PAR StoreServ
+                - title: HP Alletra 9000 and Primera
                   url: /task_dc_hp_3par.html
                 - title: HP Command View AE
                   url: /task_dc_hpe_commandview.html
-                - title: HPE Nimble
+                - title: HPE Alletra 6000
                   url: /task_dc_hpe_nimble.html
             - title: Hitachi Data Systems
               entries:
@@ -387,6 +408,10 @@ sidebar:
                   url: /task_dc_ms_hyperv.html
             - title: NetApp
               entries:
+                - title: Astra Data Store
+                  url: /task_dc_na_astra_data_store.html
+                - title: Cloud Connection for ONTAP 9.9+
+                  url: /task_dc_na_cloud_agent.html
                 - title: Cloud Volumes ONTAP
                   url: /task_dc_na_cloud_volumes_ontap.html
                 - title: Cloud Volumes Services for AWS
