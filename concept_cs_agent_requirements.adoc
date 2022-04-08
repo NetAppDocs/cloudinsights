@@ -24,7 +24,8 @@ You must link:task_cs_add_agent.html[install an Agent] in order to acquire infor
 |Operating system|A computer running a licensed version of one of the following:
 
 Red Hat Enterprise Linux 7.x, 8.x 64-bit
-CentOS 7.x, 8.x 64-bit
+CentOS 7.x 64-bit
+CentOS 8 Stream
 
 This computer should be running no other application-level software. A dedicated server is recommended.
 |Commands|The 'sudo su –' command is required for installation, running scripts, and uninstall.
@@ -41,7 +42,7 @@ This computer should be running no other application-level software. A dedicated
 
 |===
 
-Please note: Cloud Insights agent and Cloud Secure agent can be installed in the same machine. However, it is a best practice to install them in separate machines. In the event that both agents are installed on the same machine, please allocate disk space as shown below:
+Please note: The Cloud Secure agent can be installed in the same machine as a Cloud Insights acquisition unit and/or agent. However, it is a best practice to install these in separate machines. In the event that these are installed on the same machine, please allocate disk space as shown below:
 
 |===
 |Available disk space	|50-55 GB

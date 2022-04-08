@@ -1,0 +1,191 @@
+---
+sidebar: sidebar
+permalink: cs_restrict_user_access.html
+keywords: alert, snapshot,  attack
+summary: With Cloud Secure, you can restrict user access in the event of suspected sabotage
+---
+
+= Restricting User Access
+
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media
+
+[.lead]
+Once an attack is detected, Cloud Secure can stop the attack by restricting user access to the file system. Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
+
+When restricting user access, you should define the access limit type (Block or Read-only) and time-period. After the selected time period ends, user access is automatically restored.
+
+Access restriction is supported for both SMB and NFS protocols.
+
+
+Restriction happens via IP address of the host machines, meaning the machines from which the user has accessed the storage. Those machine IP addresses will be blocked from accessing any of the Storage Virtual Machines (SVMs) monitored by Cloud Secure.
+
+For example, let's say Cloud Secure manages 10 SVMs and the Automatic Response Policy is configured for four of those SVMs. If the attack originates in one of the four SVMs, the user's access will be restricted in all 10 SVMs. A Snapshot is still taken on the originating SVM.
+
+If there are four SVMs with one SVM configured for CIFS, one configured for NFS, and the remaining two configured for both NFS and CIFS, all the SVMs will be blocked if the attack originates in any of the four SVMs.
+
+=== Prerequisites for User Access Restriction
+
+Customers must configure export policies for SMB and NFS for this feature to work. Follow the steps below if NFS and SMB are configured in the Data Source Collector.
+
+For NFS, export policies are configured by default. By default, an export policy is created when NFS service is created in the SVM. 
+
+
+For SMB, the export policies must be configured. 
+
+If you are NOT using cluster/svm credentials but using a csuser then follow the steps below first, to allow Cloud Secure to create a custom export policy rule.
+
+For csuser with cluster credentials, do the following from the ONTAP command line:
+
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all
+
+For csuser with SVM credentials, do the following from the ONTAP command line, inserting the correct <vservername>:
+
+ security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all
+
+
+////
+For both NFS and SMB, _csroles_ must be configured correctly. Customers should configure _csrole_ (if not configured already) when setting up an ONTAP SVM Data Source Collector as documented in the link:task_add_collector_svm.html#a-note-about-permissions[data collector permissions] documentation. 
+
+
+If Cluster IP is used to configure the Data Collector then do the following from the ONTAP command line:
+
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all
+
+If Server IP is used to configure the Data Collector then do the following from the ONTAP command line, inserting the correct _<vservername>_.
+
+ security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all
+
+By default, there is an export policy created when the NFS service is created in the SVM. 
+////
+
+Below are the commands to configure a default export policy. 
+Copy the commands to a text editor and replace the <vserver> name with the name of your vserver. Then copy each line one at a time and execute it in the ONTAP console. 
+Note that you must first switch to advanced mode before running the commands. 
+
+TIP: This is particularly helpful for running PoCs. In the machines where you want to test, SMB can be configured as shown below. During PoCs, in the Data Source Collectors, enable only SMB/CIFs protocol and disable NFS protocol.
+
+ set -privilege advanced
+ 
+ cifs options modify -is-exportpolicy-enabled true -vserver <vserver>
+ 
+ export-policy rule create -vserver <vserver> -policyname default -protocol cifs -clientmatch 0.0.0.0/0 -rorule any -rwrule any 
+ 
+NOTE: The clientmatch is either a specific address or a subnet (for example 10.0.3.212 or 192.168.5.0/24), a hostname, or a netgroup, like @netgroup. If you want an export policy to apply to all possible IP4 addresses, set the clientmatch to 0.0.0.0/0.
+
+To check if the _exportpolicy_ and _exportpolicy rule_ have been configured correctly, run the following commands after running the above commands.
+
+ cifs options show  -fields is-exportpolicy-enabled -vserver <vserver>
+ 
+ export-policy show -vserver <vserver>
+ 
+ export-policy rule show -policyname default -vserver <vserver>
+
+=== How to enable the feature?
+
+* In Cloud Secure, navigate to *Admin > Automated Response Policies > Response Policy Settings > Access Limitation*.
+* Set “Enable Restrict User Access” to _enabled_.
+
+=== How to set up Automatic user access restriction?
+
+* Create a new Attack Policy or edit an existing Attack policy.
+* Select the SVMs on which the attack policy should be monitored.
+* Click on the checkbox “Restrict User IP File Access”. The feature will be enabled when this is selected.
+* Under “Limit User Access” select what mode of restriction should be applied.
+* Under “Time Period” select the time until which the restriction should be applied.
+* To test automatic restriction,, you can simulate an attack via a link:concept_cs_attack_simulator.html[simulated script].
+
+=== How to know if there are restricted users in the system?
+
+* In the alert lists page, a banner on the top of screen will be displayed in case any user is restricted.
+* Clicking on the banner will take you to the “Users” page. In that the list of restricted users can be seen.
+* In the “Users” page, there in a column named “IP Access”. In that column, the current state of user restriction will be displayed.
+
+=== Restrict and manage user access manually 
+
+* You can go to the alert details or user details screen and then manually restrict or un-restrict a user from those screens.
+
+=== User Restrict Access History
+
+In the alert details and user details page, in the user panel, you can view an audit of the user’s restrict access limitation history: Time, Action (Block, Read-only, restore), duration, action taken by, manual/automatic, and affected IPs. 
+
+=== How to disable the feature?
+
+At any time, you can disable the feature. If there are restricted users in the system, you must restore their access first.
+
+* In Cloud Secure, navigate to *Admin > Automated Response Policies > Response Policy Settings > Access Limitation*
+* De-select “Enable Restrict User Access” to disable.
+
+The feature will be hidden from all pages.
+
+
+=== Manually Restore IPs
+
+Use the following steps to manually restore any IPs from ONTAP if your Cloud Secure trial expires, or if the agent/collector is down. 
+ 
+. List all export policies on an SVM.
+ 
+ contrail-qa-fas8020::> export-policy rule show -vserver <svm name>
+              Policy          Rule    Access   Client                RO
+ Vserver      Name            Index   Protocol Match                 Rule
+ ------------ --------------- ------  -------- --------------------- ---------
+ svm_s_____a default         1       nfs3,    cloudsecure_rule,     never
+                                      nfs4,    10.19.12.216
+                                      cifs
+ svm_s_____a default         4       cifs,    0.0.0.0/0             any
+                                      nfs
+ svm_s_____a test            1       nfs3,    cloudsecure_rule,     never
+                                      nfs4,    10.19.12.216
+                                      cifs
+ svm_s_____a test            3       cifs,    0.0.0.0/0             any
+                                      nfs,
+                                      flexcache
+ 4 entries were displayed.
+ 
+ 
+. Delete the all rules across all policies on the SVM which have “cloudsecure_rule” as Client Match by specifying its respective RuleIndex. CloudSecure rule will usually be at 1.
+ 
+ contrail-qa-fas8020::*> export-policy rule delete -vserver <svm name> -policyname * -ruleindex 1
+ 
+ 
+ 
+ 
+.	Ensure cloudsecure rule is deleted (optional step to confirm)
+ 
+ contrail-qa-fas8020::*> export-policy rule show -vserver <svm name>
+              Policy          Rule    Access   Client                RO
+ Vserver      Name            Index   Protocol Match                 Rule
+ ------------ --------------- ------  -------- --------------------- ---------
+ svm_suchitra default         4       cifs,    0.0.0.0/0             any
+                                      nfs
+ svm_suchitra test            3       cifs,    0.0.0.0/0             any
+                                      nfs,
+                                      flexcache
+ 2 entries were displayed.
+ 
+
+
+
+== Troubleshooting
+
+|===
+|Problem|Try This
+
+|Some of the users are not getting restricted, though there is an attack.	
+|1.	Make sure that the Data Collector and Agent for the SVMs are in _Running_ state. Cloud Secure won’t be able to send commands if the Data Collector and Agent are stopped.
+
+2. This is because the user may have accessed the storage from a machine with a new IP which has not been used before.
+Restricting happens via IP address of the host through which the user is accessing the storage. Check in the UI (Alert Details > Access Limitation History for This User > Affected IPs) for the list of IP addresses which are restricted. If the user is accessing storage from a host which has an IP different from the restricted IPs, then the user will still be able to access the storage through the non-restricted IP. If the user is trying to access from the hosts whose IPs are restricted, then the storage won’t be accessible.
+
+|Manually clicking on Restrict Access gives “IP addresses of this user have already been restricted”.	 
+|The IP to be restricted is already being restricted from another user.
+
+|Restrict Access fails with warning “Export policy usage for SMB protocol is disabled for the SVM. Enable use of export-policy to use restrict user access feature”	
+|Ensure -is-exportpolicy-enabled option is true for the vserver as mentioned in the Prerequisites.
+
+|===
+
+
