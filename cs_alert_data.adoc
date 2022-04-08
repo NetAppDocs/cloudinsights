@@ -54,10 +54,10 @@ The following is displayed for each alert:
 
 * The _Status_ of the alert:
 
-** New (this is the default for new alerts)
-** In Progress
-** Resolved
-** Dismissed
+** *New*: This is the default for new alerts.
+** *In Progress*: The alert is under investigation by a team member or members.
+** *Resolved*: The alert has been marked as resolved by a team member.
+** *Dismissed*: The alert has been dismissed as false positive or expected behavior.
 +
 An administrator can change the status of the alert and add a note to assist with investigation.
 +
@@ -76,14 +76,7 @@ image:CloudSecureChangeAlertStatus.png[Change Alert Status]
 
 * The date and time the behavior was _Detected_
 
-* The _Status_ of the alert:
-
-** New (this is the default for new alerts)
-** In Progress
-** Resolved
-** Dismissed
-+ 
-An administrator can change the status of the alert and add a note to assist with investigation.
+* The _Status_ of the alert (New, In progress, etc.)
 
 * The _User_ whose behavior triggered the alert
 

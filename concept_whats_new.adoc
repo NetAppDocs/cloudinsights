@@ -19,6 +19,79 @@ keywords: features
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights. 
 
 
+=== March 2022
+
+==== Cloud Connection for ONTAP 9.9+ 
+
+The link:task_dc_na_cloud_connection.html[NetApp Cloud Connection for ONTAP 9.9+] data collector eliminates the need to install an external acquisition unit, thereby simplifying troubleshooting, maintenance, and initial deployment. 
+
+
+==== New FSx for NetApp ONTAP Monitors
+
+Monitoring your FSx for NetApp ONTAP environment is easy with new link:task_system_monitors.html[system-defined monitors] for both infrastructure (metrics) and workloads (logs).
+
+image:FSx_System_Monitors_Metrics.png[FSx monitors for infrastructure] 
+image:FSx_System_Monitors_Workloads.png[FSx monitors for workloads]
+
+
+==== New Cloud Secure features available to all
+
+Your environment is more secure than ever with the following Cloud Secure features now generally available:
+
+|===
+
+|*Feature* |*Description*
+
+
+|Data Destruction – File Deletion attack detection
+|Detect abnormal large-scale file deletion activity, block malicious file access by malicious users, and take automatic snapshots with automatic response policies.
+
+|Separate notifications for Warnings and Alerts
+|Warning and Alert notifications can be sent to separate recipients, ensuring the right team can stay informed
+
+|===
+
+
+==== Updated Telegraf Agent
+
+The agent for ingestion of telegraf integration data has been updated to version *1.21.2*, with performance and security improvements.
+Users wishing to update can refer to the appropriate upgrade section of the link:task_config_telegraf_agent.html[Agent Installation] documentation.
+Previous versions of the agent will continue to function with no user action required.
+
+
+
+==== Data Collector Updates
+
+* The Broadcom Fibre Channel Switches data collector has been optimized to reduce the number of CLI commands issued with each inventory poll.
+
+
+
+==== Preview Features
+
+Cloud Insights regularly highlights a number of exciting new preview features. If you are interested in previewing one or more of these features, contact your link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales Team] for more information.
+
+|===
+
+|*Feature* |*Description*
+
+|Restrict User Access automatic response action
+|When an attack is detected, Cloud Secure can stop the attack by restricting user access to the file system (full block, or set to read-only access). 
+Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
+link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
+
+|Shared Resource Under Stress
+|The Shared Resource Under Stress insight allows you to identify:
+-	Shared Storage Resources which are under stress due to high demand from one or more individual workloads
+-	Demanding and impacted workloads on the shared resource
+link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html[Read More]
+
+|===
+
+
+
+
+'''
+
 === February 2022
 
 
@@ -41,31 +114,6 @@ Exploring your Kubernetes environment is now better than ever, with informative 
 
 image:Kubernetes_Namespace_Detail_Example_2.png[Kubernetes Namespace Detail Page]
 
-==== Preview Features
-
-//Cloud Insights often allows select customers to preview features before they are made available for general use. 
-
-Cloud Insights is highlighting a number of exciting new preview features. If you are interested in previewing one or more of these features, contact your link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales Team] for more information.
-
-|===
-
-|*Feature* |*Description*
-
-|Restrict User Access automatic response action
-|When an attack is detected, Cloud Secure can stop the attack by restricting user access to the file system (full block, or set to read-only access). 
-Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
-link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
-
-|Data Destruction – File Deletion attack detection
-|Detect abnormal large-scale file deletion activity, block malicious file access by malicious users, and take automatic snapshots with automatic response policies.
-
-|Shared Resource Under Stress
-|The Shared Resource Under Stress insight allows you to identify:
--	Shared Storage Resources which are under stress due to high demand from one or more individual workloads
--	Demanding and impacted workloads on the shared resource
-link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html[Read More]
-
-|===
 
 
 '''

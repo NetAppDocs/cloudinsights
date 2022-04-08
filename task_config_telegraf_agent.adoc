@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_config_telegraf_agent.html
 keywords: telegraf, installation, install, agent, telegraf agent
-summary: Cloud Insights supports Telegrafas its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
+summary: Cloud Insights supports Telegraf as its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
 ---
 
 = Configuring an Agent to Collect Data
@@ -405,6 +405,20 @@ To upgrade the telegraf agent, do the following:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 === Kubernetes
 
 Kubernetes offers two ways to collect data:
@@ -421,9 +435,14 @@ NOTE: NetApp Kubernetes Monitoring Operator installation is considered a _Previe
 
 .Pre-requisites:
 
-* The following commands must be available: curl, sudo, openssl, sha256sum, and kubectl
-+
-For best results, add these commands to the PATH.
+* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with the following:
+** AWS EKS 1.18 - 1.21
+** OpenShift 4.6 - 4.8
+** Rancher 2.4 - 2.6.  
+
+* If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
+
+* The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
 * kube-state-metrics must be installed. See below for more information. kube-state-metrics is automatically installed with Operator-based installation.
 
@@ -431,10 +450,7 @@ For best results, add these commands to the PATH.
 
 * If you are running a Kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section. Operator-based installation installs this for you.
 
-
 * You must have permissions to create Kubernetes cluster roles and role bindings.
-
-* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with AWS EKS 1.18, OpenShift 3.11, and Rancher 2.6.
 
 
 
@@ -464,6 +480,16 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 . The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
 
 
+==== OpenShift Instructions
+
+If you are running on OpenShift 4.6 - 4.8, you must change the "privileged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace in the command line:
+
+ kubectl edit agent agent-monitoring-netapp -n netapp-monitoring
+ 
+In the file, change _privileged-mode: false_ to  _privileged-mode: true_
+
+
+
 ==== Configuring Proxy Support for NetApp Kubernetes Monitoring Operator
 
 To configure a proxy for the monitoring operator, perform the following steps.
@@ -485,6 +511,7 @@ In the _spec:_ section of this file, add the following code block:
      server: <server for proxy>
      username: <username for proxy, optional>
      noProxy: <comma separated list of IPs or resolvable hostnames that should bypass a proxy>
+     
 
 ===== Using a custom/private docker repository
 
@@ -573,7 +600,7 @@ image:Kubernetes_Install_Agent_screen.png[Script-Based Install]
 +
 Here it is in place in the command block:
 +
- installerName=cloudinsights-kubernetes.sh ... && CLUSTER_NAME=<cluster_name> NAMESPACE=<new_namespace> && sudo -E -H ./$installerName --download --install
+ installerName=cloudinsights-kubernetes.sh ... && CLUSTER_NAME=<cluster_name> NAMESPACE=<new_namespace> sudo -E -H ./$installerName --download --install
 +
 TIP: _CLUSTER_NAME_ is the name of the Kubernetes cluster from Cloud Insights collects metrics, while _NAMESPACE_ is the namespace to which the Telegraf agent will be deployed. The specified namespace will be created if it does not already exist.
 +
@@ -672,7 +699,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
       labels:
         app: ci-telegraf
     priority: 10
-    allowPrivilegedContainer: false
+    allowPrivilegedContainer: true
     defaultAddCapabilities: []
     requiredDropCapabilities: []
     allowedCapabilities: []
@@ -770,27 +797,11 @@ For Operator-based installation run the following commands:
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
 
 
-////
-. Stop and delete the Telegraf service:
-
- kubectl --namespace ci-monitoring delete ds telegraf-ds 
- kubectl --namespace ci-monitoring delete rs telegraf-rs
- 
-. Delete the Telegraf ConfigMap and ServiceAccount:
-
- kubectl --namespace ci-monitoring delete cm telegraf-conf 
- kubectl --namespace ci-monitoring delete cm telegraf-conf-rs
- kubectl --namespace ci-monitoring delete sa telegraf-user 
- 
-. Delete the Telegraf ClusterRole and ClusterRolebinding:
-
- kubectl --namespace ci-monitoring delete clusterrole endpoint-access 
- kubectl --namespace ci-monitoring delete clusterrolebinding endpoint-access 
-////
-
-If a Security Context Constraint was previously-created for Telegraf:
+If a Security Context Constraint was previously-created manually for a script-based Telegraf installation:
 
  kubectl delete scc telegraf-hostaccess
+ 
+ 
  
 ==== Upgrading the Agent
 [#upgrading-kubernetes-agent]
@@ -987,10 +998,20 @@ Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: 2021-10-11T14:23:41Z I! Starting
 "Error in processing mountstats info: failed to open mountstats file: /hostfs/proc/1/mountstats, error: open /hostfs/proc/1/mountstats: permission denied"
 |If SELinux is enabled and enforcing, it is likely preventing the Telegraf pod(s) from accessing the /proc/1/mountstats file on the Kubernetes nodes.  To relax this restriction, do ONE of the following:
 
-•	On each Kubernetes node where Telegraf is running, run `chcon -Rt container_runtime_t /proc/1/mountstats`
-•	On each Kubernetes node where Telegraf is running, change the SELinux security policy from "enforcing" to "permissive"
-•	Edit the Telegraf DaemonSet, and set the spec.containers.securityContext.privileged to "true"
+• For script-based installations, edit the telegraf DS (`kubectl edit ds telegraf-ds`), and change "privileged: false" to "privileged: true"
+• For operator-based installation, edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"
 
+
+|On Kubernetes, my Telegraf ReplicaSet pod is reporting the following error:
+
+ [inputs.prometheus] Error in plugin: could not load keypair /etc/kubernetes/pki/etcd/server.crt:/etc/kubernetes/pki/etcd/server.key: open /etc/kubernetes/pki/etcd/server.crt: no such file or directory
+|The Telegraf ReplicaSet pod is intended to run on a node designated as a master or for etcd. If the ReplicaSet pod is not running on one of these nodes, you will get these errors. Check to see if your master/etcd nodes have taints on them. If they do, add the necessary tolerations to the Telegraf ReplicaSet, telegraf-rs.
+
+For example, edit the ReplicaSet...
+
+ kubectl edit rs telegraf-rs
+
+...and add the appropriate tolerations to the spec. Then, restart the ReplicaSet pod.
 
 |===
 

@@ -19,8 +19,6 @@ summary: ONTAP Data Collector
 
 This data collector acquires inventory and performance data from storage systems running ONTAP using read-only API calls from an ONTAP account. This data collector also creates a record in the cluster application registry to accelerate support.
 
-NOTE: Beginning in November 2021, ONTAP Advanced Counter data collection will be enabled by default. This feature will be rolled out gradually; you will see the advanced data in your dashboards over time. To disable Advanced Data collection, edit the ONTAP data collector and un-check the 'Opt in for Advanced Counter Data Collection rollout' checkbox.
-
 == Terminology
 
 Cloud Insights acquires inventory and performance data from the ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
@@ -139,6 +137,8 @@ You should also ensure that write permission to the ONTAP API is enabled. This t
 
 To create a local account for Cloud Insights at the cluster level, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
 
+. Before you begin, you must be signed in to ONTAP with an _Administrator_ account, and _diagnostic-level commands_ must be enabled.
+
 . Create a read-only role using the following commands.
 
  security login role create -role ci_readonly -cmddirname DEFAULT -access readonly
@@ -153,7 +153,7 @@ If AD/LDAP account is used, the command should be
 
  security login create -user-or-group-name DOMAIN\aduser/adgroup -application ontapi -authentication-method domain -role ci_readonly
  
-The resulting role and user login will look something like this:
+The resulting role and user login will look something like the following. Your actual output may vary:
 
  Role Command/ Access
  Vserver Name Directory Query Level

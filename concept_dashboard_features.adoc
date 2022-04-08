@@ -120,10 +120,12 @@ image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
 Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
 
 
-==== Advanced Text Filtering with Type-ahead Suggestions
+==== Advanced Text Filtering with Contextual Type-Ahead Suggestions
 
-When you select a value or values for a field, the other filters for that query will show values relevant to that filter.
+Filtering in widget queries is _contextual_; when you select a filter value or values for a field, the other filters for that query will show values relevant to that filter.
 For example, when setting a filter for a specific object _Name_, the field to filter for _Model_ will only show values relevant to that object Name.
+
+Contextual filtering also applies to dashboard page variables (text-type attributes or annotations only). When you select a filer value for one variable, any other variables using related objects will only show possible filter values based on the context of those related variables.
 
 Note that  only Text filters will show contextual type-ahead suggestions. Date, Enum (list), etc. will not show type-ahead suggestions. That said, you _can_ set a filter on an Enum (i.e. list) field and have other text fields be filtered in context. For example, selecting a value in an Enum field like Data Center, then other filters will show only the models/names in that data center), but not vice-versa.
 
@@ -564,6 +566,9 @@ Note that only Attribute and Annotation variables can be filtered automatically 
 To disable automatic filtering so that the variable only applies to the widgets where you have specifically set it, click the "Filter automatically" slider to disable it.
 
 To set a variable in an individual widget, open the widget in edit mode and select the specific annotation or attribute in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the variable at the dashboard level. The same applies to Attribute variables. Only those widgets for which you set the variable will show the filtered results.
+
+Filtering in variables is _contextual_; when you select a filter value or values for a variable, the other variables on your page will show only values relevant to that filter.
+For example, when setting a variable filter to a specific storage _Model_, any variables set to filter for storage _Name_ will only show values relevant to that Model.
 
 //You can configure widgets to use non-Annotation or -Attribute variables (Number, Date, Boolean) in the same way. 
 
