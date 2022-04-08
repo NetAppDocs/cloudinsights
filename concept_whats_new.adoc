@@ -16,8 +16,78 @@ keywords: features
 :imagesdir: ./media/
 
 [lead]
-NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights. 
+NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.  
 
+=== April 2022
+
+==== Share your Feedback!
+
+We want your input to help shape Cloud Insights. Earn points and prizes by participating in NetApp's *Insights to Action* program. link:https://netapp.co1.qualtrics.com/jfe/form/SV_2aVWcE58J7oIDs1[*Sign up now*]!
+
+
+==== Updated Dashboard Editor
+
+We’ve overhauled our dashboard creation tools to make it easier for you to visualize your data even more quickly. Navigate to the “Dashboards” page of Cloud Insights to edit an existing dashboard, add one from our dashboard gallery, or create a new dashboard of your own to check it out.
+
+image:DashboardWidgetEditorScreen.png[Widget Editor Improved Layout]
+
+
+A new Count aggregation method has also been introduced.  When grouping data in bar chart, column chart, and pie chart widgets, you can quickly and easily show the number of relevant objects for the selected metric.
+
+image:CountAggregationExample1.png[aggregation drop-down showing Count]
+
+==== Enhanced Monitoring for Your Kubernetes Infrastructure
+
+Cloud Insights keeps you on top of changes in your Kubernetes environment by alerting you when pods, daemonsets, and replicasets are created or removed, as well as when new deployments are created. Kubernetes monitors default to _paused_ state, so you should enable only the specific ones you need.
+
+
+==== New APIs for User Management
+
+Managing and inviting users is a snap with APIs; you can invite users and assign roles based on the Cloud Insights feature sets you like: Monitor and Optimize, Cloud Secure, or Reporting.
+
+
+==== Preview Features
+
+Cloud Insights regularly highlights a number of exciting new preview features. If you are interested in previewing one or more of these features, contact your link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales Team] for more information.
+
+|===
+
+|*Feature* |*Description*
+
+|Internal Volume and Volume Capacity Time-to-Full forecasting	
+|Cloud Insights is able to prognose the number of days until capacity runs out for each Internal Volume and Volume monitored. This value can help to significantly reduce the risk of an outage. 
+
+|Cloud Secure – restrict user access on attack
+|Greater protection for your business-critical data with the ability to restrict user access when an attack is detected. 
+Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
+link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
+
+|Shared Resource Under Stress
+|TThe Shared Resource Under Stress insight uses AI/ML to automatically identify where resource contention is causing performance degradation in your environment, highlights any workloads impacted by it, and provides recommended actions to remediate, letting you solve performance issues more quickly.
+link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html[Read More]
+
+|===
+
+
+==== New Data Collector
+ 
+* *Cohesity Smart Files* - This REST API-based collector will acquire a Cohesity cluster, discovering the “Views” (as CI Internal Volumes), the various nodes, as well as collecting performance metrics. 
+ 
+ 
+==== Other Data Collector Updates
+ 
+Collection and display of performance data has been improved on the following data collectors:
+ 
+•	Brocade CLI
+•	Dell/EMC VPlex, PowerStore, Isilon/PowerScale, VNX Block/Clariion CLI, XtremIO, Unity/VNXe
+•	Pure FlashArray 
+ 
+These performance enhancements are already available in all NetApp data collectors as well as VMware and Cisco, and will be rolled out to all other data collectors over the next few months.
+
+
+
+
+'''
 
 === March 2022
 
@@ -63,30 +133,6 @@ Previous versions of the agent will continue to function with no user action req
 ==== Data Collector Updates
 
 * The Broadcom Fibre Channel Switches data collector has been optimized to reduce the number of CLI commands issued with each inventory poll.
-
-
-
-==== Preview Features
-
-Cloud Insights regularly highlights a number of exciting new preview features. If you are interested in previewing one or more of these features, contact your link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales Team] for more information.
-
-|===
-
-|*Feature* |*Description*
-
-|Restrict User Access automatic response action
-|When an attack is detected, Cloud Secure can stop the attack by restricting user access to the file system (full block, or set to read-only access). 
-Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
-link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
-
-|Shared Resource Under Stress
-|The Shared Resource Under Stress insight allows you to identify:
--	Shared Storage Resources which are under stress due to high demand from one or more individual workloads
--	Demanding and impacted workloads on the shared resource
-link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html[Read More]
-
-|===
-
 
 
 
