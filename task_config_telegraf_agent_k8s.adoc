@@ -21,11 +21,9 @@ Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.19/[Telegraf] a
 
 The current Telegraf version for Cloud Insights is *1.19.3*.
 
-IMPORTANT: This page is currently in progress.  For the most up-to-date instructions for installing an agent on Kubernetes, link:task_config_telegraf_agent.html[*go here*].
-
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
-NOTE: If you want to verify the installation files before instaling the Agent, read about <<Verifying Checksums>>.
+NOTE: If you want to verify the installation files before installing the Agent, read about <<Verifying Kubernetes Checksums>>.
 
 == Installing an Agent
 
@@ -54,18 +52,23 @@ NOTE: If you are using a proxy, read the proxy instructions for your platform be
 Kubernetes offers two ways to collect data:
 
 * NetApp Kubernetes Monitoring Operator configuration. This is the recommended installation method for Kubernetes.
-* Traditional script-based Agent installation
+* Traditional script-based Agent installation (not recommended)
 
 Installation instructions vary based on which you choose.
 
 image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
-NOTE: NetApp Kubernetes Monitoring Operator installation is considered a _Preview_ feature and is therefore subject to change.
-
 
 .Pre-requisites:
 
-* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes 1.17 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI.
+* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes 1.17 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
+
+////
+* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with the following:
+** AWS Elastic Kubernetes Service (EKS) 1.18 - 1.22
+** OpenShift 4.6 - 4.8
+** Rancher 2.4 - 2.6.  
+////
 
 * If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
@@ -459,7 +462,7 @@ To upgrade the telegraf agent, do the following:
 ////
 
 
-== Verifying Checksums
+== Verifying Kubernetes Checksums
 
 The Cloud Insights agent installer performs integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform a download-only operation (as opposed to the default download-and-install), these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
 
@@ -480,17 +483,6 @@ Non-Windows (these examples are for Kubernetes; actual script names may vary):
 * Download-only:
 
  installerName=cloudinsights-kubernetes.sh … && sudo -E -H ./$installerName --download
-
-Windows:
-
-* Download and install (default):
-
- !$($installerName=".\cloudinsights-windows.ps1") … -and $(&$installerName -download -install)
-
-*	Download-only:
-
- !$($installerName=".\cloudinsights-windows.ps1") … -and $(&$installerName -download)
-
 
 
 The download-only command will download all required artifacts from Cloud Insights to the working directory.  The artifacts include, but may not be limited to: 
@@ -549,7 +541,7 @@ Windows:
 
 
 
-== Troubleshooting Agent Installation
+== Troubleshooting Kubernetes Agent Installation
 
 Some things to try if you encounter problems setting up an agent:
 
