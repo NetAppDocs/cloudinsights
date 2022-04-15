@@ -36,6 +36,13 @@ A new Count aggregation method has also been introduced.  When grouping data in 
 
 image:CountAggregationExample1.png[aggregation drop-down showing Count]
 
+
+Additionally, line charts now allow you to select one of three link:concept_dashboard_features.html#line-chart-interpolation[interpolation] methods:
+
+* None - No interpolation is done
+* Linear - Interpolates a data point between the existing points
+* Stair - Uses the previous data point as the interpolated data point
+
 ==== Enhanced Monitoring for Your Kubernetes Infrastructure
 
 Cloud Insights keeps you on top of changes in your Kubernetes environment by alerting you when pods, daemonsets, and replicasets are created or removed, as well as when new deployments are created. Kubernetes monitors default to _paused_ state, so you should enable only the specific ones you need.
