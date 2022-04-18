@@ -29,9 +29,9 @@ NOTE: If you want to verify the installation files before installing the Agent, 
 
 == Operator-based install or script-based install?
 
-Cloud Insights has built a Kubernetes Operator for monitoring customers' Kubernetes clusters.  This "NetApp Kubernetes Monitoring Operator" (NKMO) is an improvement over script-installed monitoring methods because it allows more flexible configuration of monitoring controllable from Cloud Insights, fewer customer-driven configuration interventions, and enhances opportunities for monitoring other software running in the K8s cluster.
+Cloud Insights has built a Kubernetes Operator for monitoring customers' Kubernetes clusters.  The NetApp Kubernetes Monitoring Operator (NKMO) is an improvement over script-installed monitoring methods because it allows more flexible configuration of monitoring controllable from Cloud Insights and fewer customer-driven configuration interventions, as well as enhances opportunities for monitoring other software running in the K8s cluster.
 
-NKMO continues to use underlying telegraf software for data collection, transformation, and delivery to Cloud Insights.  This is enhanced with Custom Resource Definitions and Custom Resources to tailor monitoring for each K8s cluster.
+NKMO continues to use underlying telegraf software for data collection, transformation, and delivery to Cloud Insights. This is enhanced with Custom Resource Definitions and Custom Resources to tailor monitoring for each K8s cluster.
 
 
 
