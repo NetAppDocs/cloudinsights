@@ -514,18 +514,21 @@ Critical @ < 5 %|The Storage capacity for a volume is used to store application 
 === K8s Monitors
 
 |===
-|Monitor Name|Severity|Monitor Description|
-|POD Created|Informational|This alert occurs when a POD is created.|
-|POD Deleted|Informational|This alert occurs when a POD is deleted.|
-|Daemonset Created|Informational|This alert occurs when a Daemonset is created.|
-|Daemonset Deleted|Informational|This alert occurs when a Daemonset is deleted.|
-|Replicaset Created|Informational|This alert occurs when a Replicaset is created.|
-|Replicaset Deleted|Informational|This alert occurs when a Replicaset is deleted.|
-|Deployment Created|Informational|This alert occurs when a Deployment is created.|
-|POD Failed|WARNING|This alert occurs when a POD is failed.|
-|POD Attach Failed|WARNING|This alert occurs when a volume attachment with POD is failed.|
-|Persistent Volume Claim Failed Binding|WARNING|This alert occurs when a binding is failed on a PVC.|
-|POD Failed Mount|WARNING|This alert occurs when a mount is failed on a POD.|
+
+|Monitor Name|Severity|Monitor Description
+
+|POD Created|Informational|This alert occurs when a POD is created.
+|POD Deleted|Informational|This alert occurs when a POD is deleted.
+|Daemonset Created|Informational|This alert occurs when a Daemonset is created.
+|Daemonset Deleted|Informational|This alert occurs when a Daemonset is deleted.
+|Replicaset Created|Informational|This alert occurs when a Replicaset is created.
+|Replicaset Deleted|Informational|This alert occurs when a Replicaset is deleted.
+|Deployment Created|Informational|This alert occurs when a Deployment is created.
+|POD Failed|WARNING|This alert occurs when a POD is failed.
+|POD Attach Failed|WARNING|This alert occurs when a volume attachment with POD is failed.
+|Persistent Volume Claim Failed Binding|WARNING|This alert occurs when a binding is failed on a PVC.
+|POD Failed Mount|WARNING|This alert occurs when a mount is failed on a POD.
+
 |===
 
 
