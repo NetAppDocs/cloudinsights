@@ -5,7 +5,7 @@ keywords: telegraf, installation, install, agent, telegraf agent
 summary: Cloud Insights supports Telegraf as its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
 ---
 
-= Configuring an Agent to Collect Data
+= Configuring an Agent to Collect Data (Windows/Linux/Mac)
 
 :toc: macro
 :hardbreaks:
@@ -421,6 +421,9 @@ To upgrade the telegraf agent, do the following:
 
 === Kubernetes
 
+NOTE: The Kubernetes instructions on this page are moving to a new page. Please link:task_config_telegraf_agent_k8s.html[*go here*] for up-to-date Kubernetes agent instructions.
+
+
 Kubernetes offers two ways to collect data:
 
 * NetApp Kubernetes Monitoring Operator configuration. This is the recommended installation method for Kubernetes.
@@ -430,15 +433,19 @@ Installation instructions vary based on which you choose.
 
 image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
-NOTE: NetApp Kubernetes Monitoring Operator installation is considered a _Preview_ feature and is therefore subject to change.
+//NOTE: NetApp Kubernetes Monitoring Operator installation is considered a _Preview_ feature and is therefore subject to change.
 
 
 .Pre-requisites:
 
+* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes 1.17 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
+
+////
 * NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with the following:
-** AWS EKS 1.18 - 1.21
+** AWS Elastic Kubernetes Service (EKS) 1.18 - 1.22
 ** OpenShift 4.6 - 4.8
 ** Rancher 2.4 - 2.6.  
+////
 
 * If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
@@ -934,6 +941,10 @@ Some things to try if you encounter problems setting up an agent:
 
 |I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
 
+|===
+
+////
+
 |I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.
 |Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent. You must be using Telegraf version 2.0 or later.
 
@@ -1014,5 +1025,9 @@ For example, edit the ReplicaSet...
 ...and add the appropriate tolerations to the spec. Then, restart the ReplicaSet pod.
 
 |===
+
+////
+
+
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].

@@ -83,10 +83,6 @@ You can choose to trigger an alert the moment a threshold is breached, or wait u
 image:Monitor_metric_conditions.png[Define the monitor's conditions]
 
 
-
-
-
-
 === Log Monitor
 
 When creating a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above.
@@ -171,7 +167,6 @@ If a monitor is no longer needed, you can delete it by selecting *Delete* from t
 ////
 
 
-////
 
 ////
 == Monitor Groups
@@ -179,6 +174,9 @@ If a monitor is no longer needed, you can delete it by selecting *Delete* from t
 Grouping allows you to view and manage related monitors. For example, you can have a monitor group dedicated to the storage in your environment, or monitors relevant to a certain recipient list. 
 
 image:Monitors_GroupList.png[Monitor Grouping]
+
+
+////
 
 Two groups are shown by default:
 
@@ -200,26 +198,25 @@ To create a new custom monitor group, click the *"+" Create New Monitor Group* b
 
 To add monitors to the group, go to the _All Monitors_ group (recommended) and do one of the following:
 
-* To add a single monitor, click the menu to the right of the monitor and select _Add to Group_. Choose the group to which to add the monitor.
+* To add a single monitor, click the menu to the right of the monitor and select _Move to Group_. Choose the group to which to add the monitor.
+* To add multiple monitors, select the ones you want to move, and click _Bulk Actions_. Choose _Move to group_. You cannot move system-defined monitors.
 * Click on the monitor name to open the monitor's edit view, and select a group in the _Associate to a monitor group_ section.
 +
 image:Monitors_AssociateToGroup.png[Associate to group]
 
 //* To add multiple monitors to a group, select them by clicking the checkbox next to each monitor, then click the *Bulk Actions* button and select _Move to Group_.
 
-Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group. To delete a monitor from these groups, you must delete the monitor itself.
+Remove monitors by clicking on a group and selecting _Remove from Group_ from the menu. You can not remove monitors from the _All Monitors_ or _Custom Monitors_ group, or from any of the system-defined monitor groups. To delete a monitor from these groups, you must delete the monitor itself.
 
 //To remove a monitor from a group while editing the monitor, in the _Associate with a group_ section, click the *X* next to the group name.
 
-NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from the group to which it belonged and it is no longer available to any user.
+NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from any group to which it belonged and it is no longer available to any user.
 
-You can also move a monitor to a different group in the same manner, selecting _Move to Group_. 
-
-//NOTE: Each monitor can belong to only a single group at any given time (in addition to belonging to "All Monitors" and "Custom Monitors"). 
+You can also move a monitor to a different group in the same manner, selecting _Move to Group_. You cannot move monitors from the system-defined monitor groups; to move a monitor from one of these groups, you must first _Duplicate_ the monitor, and then move the duplicated monitor to the desired group.
 
 To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
 
-Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_.
+Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_. You cannot delete system-defined monitor groups.
 
 image:Monitors_PauseGroup.png[Pause a group]
 ////
