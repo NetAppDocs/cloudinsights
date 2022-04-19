@@ -551,7 +551,7 @@ Some things to try if you encounter problems setting up an agent:
 |For clusters where _etcd_ is not the Kubernetes cluster datastore, You will see the following message in the telegraf RS pod:
 
  [inputs.prometheus] Error in plugin: could not load keypair /etc/kubernetes/pki/etcd/server.crt:/etc/kubernetes/pki/etcd/server.key: open /etc/kubernetes/pki/etcd/server.crt: no such file or directory
-|Cloud Insights only supports monitoring of _etcd_ as the K8s datastore. You can try modifying the agent by running the following:
+|Cloud Insights only supports monitoring of _etcd_ as the K8s datastore. You can modify the agent to avoid collecting etcd data by changing the configuration with the following instructions:  
 
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
 
