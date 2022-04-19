@@ -25,6 +25,7 @@ Email notifications are sent to the alert recipient list for every action on the
 
 To send _Warning_ notifications, enter the recipients' email addresses in the _Send Warning Alerts_ section.
 
+////
 === Agent and Data Collector Health monitoring
 
 You can monitor the health of Agents and Data Sources through notifications.
@@ -38,7 +39,7 @@ Keep the following in mind:
 * In case of an Agent failure, one alert will be sent (not one per collector). The email will include a list of all impacted SVMs.
 * Active directory collection failure is reported as a warning; it does not impact Ransomware detection.
 * The Getting Started setup list now includes a new _Configure email notifications_ phase.
-
+////
 
 [.thumb]
 //image:CS-Alert-Notification-List.png[Alert Email notification recipient list]
