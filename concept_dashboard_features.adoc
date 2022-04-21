@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_dashboard_features.html
 summary: Dashboard features and concepts.
-keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, group by, expressions, timeseries, exact match,
+keywords: dashboard, widget, custom, concepts, queries, variables, rollup, roll up, grouping, aggregate, aggregation, filter, axis, group by, expressions, timeseries, exact match, theme, visibility
 ---
 
 = Dashboard Features
@@ -120,7 +120,27 @@ image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
 Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
 
 
-==== Advanced Filtering
+==== Advanced Text Filtering with Contextual Type-Ahead Suggestions
+
+Filtering in widget queries is _contextual_; when you select a filter value or values for a field, the other filters for that query will show values relevant to that filter.
+For example, when setting a filter for a specific object _Name_, the field to filter for _Model_ will only show values relevant to that object Name.
+
+Contextual filtering also applies to dashboard page variables (text-type attributes or annotations only). When you select a filer value for one variable, any other variables using related objects will only show possible filter values based on the context of those related variables.
+
+Note that  only Text filters will show contextual type-ahead suggestions. Date, Enum (list), etc. will not show type-ahead suggestions. That said, you _can_ set a filter on an Enum (i.e. list) field and have other text fields be filtered in context. For example, selecting a value in an Enum field like Data Center, then other filters will show only the models/names in that data center), but not vice-versa.
+
+The selected time range will also provide context for the data shown in filters.
+
+
+==== Choosing the filter units
+
+As you type a value in a filter field, you can select the units in which to display the values on the chart. For example, you can filter on raw capacity and choose to display in the deafult GiB, or select another format such as TiB. This is useful if you have a number of charts on your dashboard showing values in TiB and you want all your charts to show consistent values.
+
+image:Filter_Unit_Format.png[selecting units in a filter]
+
+
+
+==== Additional Filtering Refinements
 
 The following can be used to further refine your filters.
 
@@ -165,9 +185,9 @@ image:ObjectsReturnedByFilters.png[Objects returned by filters]
 
 Data displayed in a widget is grouped (sometimes called rolled-up) from the underlying data points collected during acquisition. For example, if you have a line chart widget showing Storage IOPS over time, you might want to see a separate line for each of your data centers, for a quick comparison. You can choose to group this data in one of several ways:
 
-* *Avg*: displays each line as the _average_ of the underlying data.
-* *Max*: displays each line as the _maximum_ of the underlying data.
-* *Min*: displays each line as the _minimum_ of the underlying data.
+* *Average*: displays each line as the _average_ of the underlying data.
+* *Maximum*: displays each line as the _maximum_ of the underlying data.
+* *Minimum*: displays each line as the _minimum_ of the underlying data.
 * *Sum*: displays each line as the _sum_ of the underlying data.
 * *Count*: displays a _count_ of objects that have reported data within the specified time frame. You can choose the _Entire Time Window_ as determined by the dashboard time range (or the widget time range, if set to override the dashboard time), or a _Custom Time Window_ that you select.
 
@@ -179,7 +199,7 @@ To set the grouping method, do the following.
 
 . In your widget's query, choose an asset type and metric (for example, _Storage_) and metric (such as _Performance IOPS Total_).
 
-. For *Group*, choose a roll up method (such as _Avg_) and select the attributes or metrics by which to roll up the data (for example, _Data Center_).
+. For *Group*, choose a roll up method (such as _Average_) and select the attributes or metrics by which to roll up the data (for example, _Data Center_).
 +
 The widget updates automatically and shows data for each of your data centers.
 
@@ -193,13 +213,13 @@ Note that when you choose to group a widget by any field (for example, _Model_),
 
 === Aggregating data
 
-You can further align your time-series charts (line, area, etc.) by aggregating data points into minute, hour, or day buckets before that data is subsequently rolled up by attribute (if chosen). You can choose to aggregate data points according to their _Avg, Max, Min, or Sum_, or by the _Last_ data point collected during the chosen interval. To choose an aggregation method, click on *More options* in the widget's query section.
+You can further align your time-series charts (line, area, etc.) by aggregating data points into minute, hour, or day buckets before that data is subsequently rolled up by attribute (if chosen). You can choose to aggregate data points according to their _Average, Maximum, Minimum, Sum_, or _Count_. 
 
 A small interval combined with a long time range may result in an "Aggregation interval resulted in too many data points." warning. You might see this if you have a small interval and increase the dashboard time frame to 7 days. In this case, Insight will temporarily increase the aggregation interval until you select a smaller time frame.
 
 You can also aggregate data in the bar chart widget and single-value widget.
 
-Most asset counters aggregate to _Avg_ by default. Some counters aggregate to _Max, Min_, or _Sum_ by default. For example, port errors aggregate to _Sum_ by default, where storage IOPS aggregate to _Avg_.
+Most asset counters aggregate to _Average_ by default. Some counters aggregate to _Max, Min_, or _Sum_ by default. For example, port errors aggregate to _Sum_ by default, where storage IOPS aggregate to _Average_.
 
 == Showing Top/Bottom Results
 
@@ -245,7 +265,7 @@ The table now shows all VMs with Total IOPS greater than or equal to 1. Notice t
 +
 You can group by any attribute or annotation shown. Choose _All_ to display all VMs in a single group.
 +
-Any column header for a performance metric displays a "three dot" menu containing a *Roll up* option. The default roll up method is _Avg_. This means that the number shown for the group is the average of all the Total IOPS reported for each VM inside the group. You can choose to roll this column up by _Avg, Sum, Min_ or _Max_. Any column that you display that contains performance metrics can be rolled up individually.
+Any column header for a performance metric displays a "three dot" menu containing a *Roll up* option. The default roll up method is _Average_. This means that the number shown for the group is the average of all the Total IOPS reported for each VM inside the group. You can choose to roll this column up by _Average, Sum, Minimum_ or _Maximum_. Any column that you display that contains performance metrics can be rolled up individually.
 +
 image:TableRollUp.png[Roll Up]
 
@@ -319,7 +339,9 @@ image::SecondaryAxisExplained.png[Secondary Axis example]
 
 == Expressions in widgets
 
-In a dashboard, any time series widget (line, spline, area, stacked area) allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
+In a dashboard, any time series widget (line, spline, area, stacked area), Single-Value, or Gauge Widget allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
+
+You can use variables in expressions (for example, _$Var1 * 100_)
 
 === Expressions Example: Read IOPS percentage
 
@@ -408,6 +430,10 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 
 . Click *Save* to save the chart to your dashboard.
 
+To use a variable in an expression, simply type the variable name, for example, _$var1 * 100_. Only numeric variables can be used in expressions.
+
+
+
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -462,21 +488,20 @@ Dashboard variables come in several types, can be used across different fields, 
 
 A variable can be one the following types:
 
-//* *Attribute*: this includes annotations, attributes, and metrics 
-
+* *Attribute*: Use an object's attributes or metrics to filter
 * *Annotation*: Use a pre-defined link:task_defining_annotations.html[Annotation] to filter widget data.
 * *Text*: An alphanumeric string. 
 * *Numerical*: A number value. Use by itself, or as a "from" or "to" value, depending on your widget field.
 * *Boolean*: Use for fields with values of True/False, Yes/No, etc. For the boolean variable, the choices are Yes, No, None, Any.
-* *Date*: A date value. Use by itself, or as a "from" or "to" value, depending on your widget field.
+* *Date*: A date value. Use as a "from" or "to" value, depending on your widget's configuration.
 
 //image:Variables_Drop-Down.png[Variable Types]
 image:Variables_Drop_Down_Showing_Annotations.png[Variable Types]
 
-////
-==== "Attribute" type variables
 
-Selecting an Attribute type variable allows you to filter for widget data containing the specified attribute value or values.  The example below shows a line widget displaying free memory trends for Agent nodes. We have created a variable for Agent Node IPs, currently set to show all IPs:
+==== Attribute  variables
+
+Selecting an Attribute type variable allows you to filter for widget data containing the specified attribute value or values. The example below shows a line widget displaying free memory trends for Agent nodes. We have created a variable for Agent Node IPs, currently set to show all IPs:
 
 image:Variables_Node_Example_Before_Variable_Applied.png[Agent Nodes Before Variable Filter]
 
@@ -484,14 +509,37 @@ But if you temporarily want to see only nodes on individual subnets in your envi
 
 image:Variables_Node_Example_After_Variable_Applied.png[Agent Nodes After Variable Filter]
 
+You can also set a variable to filter on _all_ objects with a particular attribute regardless of object type, for example objects with an attribute of "vendor", by specifying _*.vendor_ in the variable field. You do not need to type the "*."; Cloud Insights will supply this if you select the wildcard option.
+
+image:Variables_Attribute_Vendor_Example.png[Attribute Variable for Vendor]
+
+When you drop-down the list of choices for the variable value, the results are filtered so show only the available vendors based on the objects on your dashboard.
+
+image:Variables_Attribute_Vendor_Filtered_List.png[Attribute Variable showing only available vendors]
+
+//image:Variables_Attribute_Name_List.png[Variable list showing all *.name attributes]
+
+If you edit a widget on your dashboard where the attribute filter is relevant (meaning, the widget's objects contain any _*.vendor attribute_), it shows you that the attribute filter is automatically applied.
+
+image:Variables_Attribute_inWidgetQuery.png[Attribute variable automatically applied]
+
 Applying variables is as easy as changing the attribute data of your choice.
 
-==== Setting a non-attribute variable
+
+==== Annotation variables
+
+Choosing an Annotation variable allows you to filter for objects associated with that annotation, for example, those belonging to the same Data Center.
+
+image:Variables_Annotation_Filtering.png[Annotation Filtering with Variable]
+
+
+
+==== Text, Number, Date, or Boolean variable
 
 You can create generic variables that are not associated with a particular attribute by selecting a variable type of _Text_, _Number_, _Boolean_, or _Date_. Once the variable has been created, you can select it in a widget filter field. When setting a filter in a widget, in addition to specific values that you can select for the filter, any variables that have been created for the dashboard are displayed in the list--these are grouped under the "Variables" section in the drop-down and have names starting with "$". Choosing a variable in this filter will allow you to search for values that you enter in the variable field on the dashboard itself. Any widgets using that variable in a filter will be updated dynamically. 
 
 image:Variables_in_a_Widget_Filter.png[Selecting a variable in a widget]
-////
+
 
 ////
 ==== Variable filter scope
@@ -509,18 +557,25 @@ Read more about link:https://docs.netapp.com/us-en/cloudinsights/task_create_que
 
 ==== Variable Filter Scope
 
-By default, when you add an Annotation variable to your dashboard, the variable is applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard will display results filtered according to the value you set in the variable. 
+When you add an Annotation or Attribute variable to your dashboard, the variable can be applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard will display results filtered according to the value you set in the variable. 
 
 image:Variables_Automatic_Filter_Button.png[Automatic Filter]
 
-Note that only Annotations of type _Text_, _Boolean_, or _List_ can be filtered automatically using variables like this. _Non-text Annotation_ types such as numbers or dates cannot be automatically filtered, nor can _non-Annotation_ variables (Number, Date, Boolean). Individual widgets must each be configured to use variables of these types.
+Note that only Attribute and Annotation variables can be filtered automatically like this. Non-Annotation or -Attribute variables cannot be automatically filtered. Individual widgets must each be configured to use variables of these types.
 
-To disable automatic filtering so that the Annotation variable only applies to the widgets where you have specifically set it, click the "Filter automatically" slider to disable it.
+To disable automatic filtering so that the variable only applies to the widgets where you have specifically set it, click the "Filter automatically" slider to disable it.
 
-To set an Annotation-type variable in an individual widget, open the widget in edit mode and select the specific annotation in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the variable at the dashboard level. Only those widgets for which you set the variable will show the filtered results.
+To set a variable in an individual widget, open the widget in edit mode and select the specific annotation or attribute in the _Filter By_ field. With an Annotation variable, you can select one or more specific values, or select the Variable name (indicated by the leading "$") to allow typing in the variable at the dashboard level. The same applies to Attribute variables. Only those widgets for which you set the variable will show the filtered results.
 
-You can configure widgets to use non-Annotation variables (Number, Date, Boolean) in the same way. 
+Filtering in variables is _contextual_; when you select a filter value or values for a variable, the other variables on your page will show only values relevant to that filter.
+For example, when setting a variable filter to a specific storage _Model_, any variables set to filter for storage _Name_ will only show values relevant to that Model.
 
+//You can configure widgets to use non-Annotation or -Attribute variables (Number, Date, Boolean) in the same way. 
+
+To use a variable in an expression, simply type the variable name as part of the expression, for example, _$var1 * 100_. Only Numeric variables can be used in expressions. You cannot use numeric Annotation or Attribute variables in expressions.
+
+Filtering in variables is _contextual_; when you select a filter value or values for a variable, the other variables on your page will show only values relevant to that filter.
+For example, when setting a variable filter to a specific storage _Model_, any variables set to filter for storage _Name_ will only show values relevant to that Model.
 
 ////
 ==== "Generic" variables
@@ -545,7 +600,7 @@ Note: All variables are treated as "generic" variables, even those you create fo
 Variables names:
 
 //* Must always be prefixed with a "$". This is added automatically when you configure a variable.
-* Cannot contain any special characters; only the letters a-z, the digits 0-9, period (.), and underscore (_) are allowed.
+* Must include only the letters a-z, the digits 0-9, period (.), underscore (_), and space ( ).
 * Cannot be longer than 20 characters.
 * Are case-sensitive: $CityName and $cityname are different variables.
 * Cannot be the same as an existing variable name.
@@ -833,6 +888,49 @@ You can further manage your dashboards by pinning favorite ones to the top of yo
 Dashboard pin/unpin is an individual user preference and independent of the group (or groups) to which the dashboard belongs.
 
 image:DashboardPin.png[Pinned Dashboards]
+
+
+== Dark Theme
+
+You can choose to display Cloud Insights using either a light theme (the default), which displays most screens using a light background with dark text, or a dark theme which displays most screens using a dark background with light text.
+
+To switch between light and dark themes, click the username button in the upper right corner of the screen and choose the desired theme.
+
+image:DarkThemeSwitch.png[Switch between light and dark themes]
+
+Dark Theme Dashboard view:
+image:DarkThemeDashboardExample.png[Dark Theme Dashboard Example]
+
+Light Theme Dashboard view:
+image:LightThemeDashboardExample.png[Light Theme Dashboard Example]
+
+NOTE: Some screen areas, such as certain widget charts, still show light backgrounds even while viewed in dark theme. 
+
+
+== Line Chart interpolation
+
+Different data collectors often poll their data at different intervals. For example, data collector A may poll every 15 minutes while data collector B polls every five minutes. When a line chart widget (also spline, area, and stacked area charts) is aggregating this data from multiple data collectors into a single line (for example, when the widget is grouping by "all"), and refreshing the line every five minutes, data from collector B may be shown accurately while data from collector A may have gaps, thus affecting the aggregate until collector A polls again.
+
+To alleviate this, Cloud Insights interpolates data when aggregating, using the surrounding data points to take a "best guess" at data until data collectors poll again. You can always view each data collector's object data individually by adjusting the widget's grouping.
+
+=== Interpolation Methods
+
+When creating or modifying a line chart (or spline, area, or stacked area chart), you can set the interpolation method to one of three types. In the "Group by" section, choose the desired Interpolation.
+
+image:Interpolation_Methods.png[Grouping section of the widget editor showing the three interpolation methods]
+
+* *None*: Do nothing, i.e. do not generate points in between. 
+
+image:Interpolation_None.png[Simple straight angled line showing no interpolation between data points]
+
+* *Stair*: A point is generated from the value of previous point. In a straight line, this would display as a typical "stair" layout.
+
+image:Interpolation_Stair.png[Simple straight line showing stair interpolation]
+
+* *Linear*: a point is generated as the value in between connecting the two points. Generates a line that looks like the line connecting the two points, but with additional (interpolated) data points.
+
+image:Interpolation_Linear.png[Simple straight line showing linear interpolation with additional data points between each original point]
+
 
 
 

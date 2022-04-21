@@ -16,7 +16,322 @@ keywords: features
 :imagesdir: ./media/
 
 [lead]
-NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights. 
+NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.  
+
+=== April 2022
+
+==== Share your Feedback!
+
+We want your input to help shape Cloud Insights. Earn points and prizes by participating in NetApp's *Insights to Action* program. link:https://netapp.co1.qualtrics.com/jfe/form/SV_2aVWcE58J7oIDs1[*Sign up now*]!
+
+
+==== Updated Dashboard Editor
+
+We’ve overhauled our dashboard creation tools to make it easier for you to visualize your data even more quickly. Navigate to the “Dashboards” page of Cloud Insights to edit an existing dashboard, add one from our dashboard gallery, or create a new dashboard of your own to check it out.
+
+image:DashboardWidgetEditorScreen.png[Widget Editor Improved Layout]
+
+
+A new Count aggregation method has also been introduced.  When grouping data in bar chart, column chart, and pie chart widgets, you can quickly and easily show the number of relevant objects for the selected metric.
+
+image:CountAggregationExample1.png[aggregation drop-down showing Count]
+
+
+Additionally, line charts now allow you to select one of three link:concept_dashboard_features.html#line-chart-interpolation[interpolation] methods:
+
+* None - No interpolation is done
+* Linear - Interpolates a data point between the existing points
+* Stair - Uses the previous data point as the interpolated data point
+
+==== Enhanced Monitoring for Your Kubernetes Infrastructure
+
+Cloud Insights keeps you on top of changes in your Kubernetes environment by alerting you when pods, daemonsets, and replicasets are created or removed, as well as when new deployments are created. Kubernetes monitors default to _paused_ state, so you should enable only the specific ones you need.
+
+
+
+==== Preview Features
+
+Cloud Insights regularly highlights a number of exciting new preview features. If you are interested in previewing one or more of these features, contact your link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales Team] for more information.
+
+|===
+
+|*Feature* |*Description*
+
+|Internal Volume and Volume Capacity Time-to-Full forecasting	
+|Cloud Insights is able to prognose the number of days until capacity runs out for each Internal Volume and Volume monitored. This value can help to significantly reduce the risk of an outage. 
+
+|Cloud Secure – restrict user access on attack
+|Greater protection for your business-critical data with the ability to restrict user access when an attack is detected. 
+Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
+link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
+
+|Shared Resource Under Stress
+|The Shared Resource Under Stress insight uses AI/ML to automatically identify where resource contention is causing performance degradation in your environment, highlights any workloads impacted by it, and provides recommended actions to remediate, letting you solve performance issues more quickly.
+link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html[Read More]
+
+|===
+
+
+==== New Data Collector
+ 
+* *Cohesity Smart Files* - This REST API-based collector will acquire a Cohesity cluster, discovering the “Views” (as CI Internal Volumes), the various nodes, as well as collecting performance metrics. 
+ 
+ 
+==== Other Data Collector Updates
+ 
+Collection and display of performance data has been improved on the following data collectors:
+ 
+•	Brocade CLI
+•	Dell/EMC VPlex, PowerStore, Isilon/PowerScale, VNX Block/Clariion CLI, XtremIO, Unity/VNXe
+•	Pure FlashArray 
+ 
+These performance enhancements are already available in all NetApp data collectors as well as VMware and Cisco, and will be rolled out to all other data collectors over the next few months.
+
+
+
+
+'''
+
+=== March 2022
+
+==== Cloud Connection for ONTAP 9.9+ 
+
+The link:task_dc_na_cloud_connection.html[NetApp Cloud Connection for ONTAP 9.9+] data collector eliminates the need to install an external acquisition unit, thereby simplifying troubleshooting, maintenance, and initial deployment. 
+
+
+==== New FSx for NetApp ONTAP Monitors
+
+Monitoring your FSx for NetApp ONTAP environment is easy with new link:task_system_monitors.html[system-defined monitors] for both infrastructure (metrics) and workloads (logs).
+
+image:FSx_System_Monitors_Metrics.png[FSx monitors for infrastructure] 
+image:FSx_System_Monitors_Workloads.png[FSx monitors for workloads]
+
+
+==== New Cloud Secure features available to all
+
+Your environment is more secure than ever with the following Cloud Secure features now generally available:
+
+|===
+
+|*Feature* |*Description*
+
+
+|Data Destruction – File Deletion attack detection
+|Detect abnormal large-scale file deletion activity, block malicious file access by malicious users, and take automatic snapshots with automatic response policies.
+
+|Separate notifications for Warnings and Alerts
+|Warning and Alert notifications can be sent to separate recipients, ensuring the right team can stay informed
+
+|===
+
+
+==== Updated Telegraf Agent
+
+The agent for ingestion of telegraf integration data has been updated to version *1.21.2*, with performance and security improvements.
+Users wishing to update can refer to the appropriate upgrade section of the link:task_config_telegraf_agent.html[Agent Installation] documentation.
+Previous versions of the agent will continue to function with no user action required.
+
+
+
+==== Data Collector Updates
+
+* The Broadcom Fibre Channel Switches data collector has been optimized to reduce the number of CLI commands issued with each inventory poll.
+
+
+
+'''
+
+=== February 2022
+
+
+==== Cloud Insights addresses Apache Log4j vulnerabilities
+
+Customer security is a top priority at NetApp. Cloud Insights includes updates to its software libraries to address the recent Apache Log4j vulnerabilities.
+
+Please refer to the following on NetApp’s Product Security Advisory website:
+
+link:https://security.netapp.com/advisory/ntap-20211210-0007/[CVE-2021-44228]
+link:https://security.netapp.com/advisory/ntap-20211215-0001/[CVE-2021-45046]
+link:https://security.netapp.com/advisory/ntap-20211218-0001/[CVE-2021-45105]
+
+You can read more about these vulnerabilities and NetApp's response at the link:https://www.netapp.com/newsroom/netapp-apache-log4j-response/[NetApp Newsroom].
+
+
+==== Kubernetes Namespace Detail Page
+ 
+Exploring your Kubernetes environment is now better than ever, with informative detail pages for your cluster’s namespaces. The namespace detail page provides a summary of all the assets used by a namespace, including all the backend storage resources and their capacity utilizations.
+
+image:Kubernetes_Namespace_Detail_Example_2.png[Kubernetes Namespace Detail Page]
+
+
+
+'''
+
+=== December 2021
+
+==== Deeper integration for ONTAP systems
+
+Simplify alerting for ONTAP hardware failures and more with new integration with NetApp Event Management System (EMS).
+link:task_system_monitors.html[Explore and alert] on low-level ONTAP messages in Cloud Insights to inform and improve troubleshooting workflows and further reduce reliance on ONTAP element management tooling.
+
+
+
+==== Querying Logs
+
+For ONTAP systems, Cloud Insights Queries include a powerful link:concept_log_explorer.html[Log Explorer], allowing you to easily investigate and troubleshoot EMS log entries. 
+
+image:LogQueryExplorer.png[Log Queries]
+
+
+
+==== Data Collector-level notifications.
+
+In addition to system-defined and custom-created Monitors for alerting, you can also set alert notifications for ONTAP data collectors, allowing you to specify recipients for collector-level alerts, independent of other monitor alerts.
+
+
+
+==== Greater flexibility of Cloud Secure roles
+
+Users can be granted access to Cloud Secure features based on link:concept_user_roles.html#permission-levels[roles] set by an administrator:
+
+|===
+|Role	|Cloud Secure	Access
+|Administrator	
+|Can perform all Cloud Secure functions, including those for Alerts, Forensics, data collectors, automated response policies, and APIs for Cloud Secure.
+An Administrator can also invite other users but can only assign Cloud Secure roles.
+|User	
+|Can view and manage Alerts and view Forensics. User role can change alert status, add a note, take snapshots manually, and restrict user access.
+|Guest	
+|Can view Alerts and Forensics. Guest role cannot change alert status, add a note, take snapshots manually, or restrict user access.
+
+|===
+
+
+////
+==== Improved Kubernetes installation
+
+The process for installing the Kubernetes link:task_config_telegraf_agent.html#kubernetes[operator-based agent] in your environment has been streamlined to involve fewer user interactions. 
+////
+
+
+////
+==== TBD:
+
+* Contextual Filtering
+* Improved/auto-formatted Units in Widget filters
+* StorageGRID moving to tier 2 (10x less cost than tier 1)</td></tr></tbody></table>
+////
+
+
+
+==== Operating System support
+
+CentOS 8.x support is being replaced with *CentOS 8 Stream* support. CentOS 8.x will reach End-of-Life on December 31, 2021.
+
+
+
+==== Data Collector Updates
+
+A number of Cloud Insights data collector names have been added to reflect vendor changes:
+
+|===
+|Vendor/Model|Previous Name
+|Dell EMC PowerScale|Isilon
+|HPE Alletra 9000 / Primera|3PAR
+|HPE Alletra 6000|Nimble
+|===
+
+
+
+
+
+
+'''
+
+=== November 2021
+
+
+==== Adaptive Dashboards
+
+_New variables for attributes and the ability to use variables in widgets_.
+
+Dashboards are now more powerful and flexible than ever. Build adaptive dashboards with attribute variables to quickly filter dashboards on the fly. Using these and other pre-existing link:concept_dashboard_features.html#variables[variables] you can now create one high level dashboard to see metrics for your entire environment, and seamlessly filter down by resource name, type, location, and more. Use number variables in widgets to associate raw metrics with costs, for example cost per GB for storage as a service. 
+
+image:Variables_Drop_Down_Showing_Annotations.png[]
+image:Variables_Attribute_Filtering.png[]
+
+
+
+==== Access the Reporting Database via API
+
+Enhanced capabilities for integration with third party reporting, ITSM, and automation tools: Cloud Insights' powerful link:API_Overview.html[API] allows users to query the Cloud Insights Reporting database directly, without going through the Cognos Reporting environment.
+
+
+
+
+==== Pod tables on VM Landing Page
+
+Seamless navigation between VMs and the Kubernetes Pods using them: for improved troubleshooting and performance headroom management, a table of associated Kubernetes Pods will now appear on VM landing pages.
+
+image:Kubernetes_Pod_Table_on_VM_Page.png[Kubernetes Pod table on a VM landing page]
+
+
+
+
+==== Data Collector Updates
+
+* ECS now reports firmware for storage and node
+* Isilon has improved prompt detection
+* Azure NetApp Files collects performance data more quickly
+* StorageGRID now supports Single Sign-On (SSO)
+* Brocade CLI properly reports model for X&-4
+
+
+
+
+==== Additional Operating Systems supported
+
+The Cloud Insights Acquisition Unit supports the following operating systems, in addition to those already supported:
+
+* Centos (64-bit) 8.4
+* Oracle Enterprise Linux (64-bit) 8.4
+* Red Hat Enterprise Linux (64-bit) 8.4
+
+
+'''
+
+=== October 2021
+
+
+==== Filters on K8S Explorer pages
+
+link:kubernetes_landing_page.html[Kubernetes Explorer] page filters give you focused control of the data displayed for your Kubernetes cluster, node, and pod exploration. 
+
+image:Filter_Kubernetes_Explorer.png[Kubernetes Explorer filtering example]
+
+
+==== K8s Data for Reporting
+
+Kubernetes data is now available for use in Reporting, allowing you to create chargeback or other reports. In order for Kubernetes chargeback data to be passed to Reporting, you must have an active connection to, and Cloud Insights must be receiving data from, your Kubernetes cluster as well as its back-end storage. If there is no data received from the back-end storage, Cloud Insights can not send Kubernetes object data to Reporting.
+
+image:Kubernetes_ETL_Example.png[Kubernetes data showin in a chargeback report]
+
+
+==== Dark Theme has arrived
+
+Many of you asked for a dark theme, and Cloud Insights has answered. To switch between light and dark theme, click the drop-down next to your user name. 
+image:DarkModeSwitch.png[Switch to Dark Theme is available in the User drop-down]
+image:DarkModeDashboard.png[An image of a typical dashboard shown in dark theme]
+ 
+
+==== Data Collector Support
+
+We’ve made some improvements in Cloud Insights Data Collectors. Here are some highlights:
+
+* New collector for Amazon FSx for ONTAP
+
+
+'''
 
 === September 2021
 
@@ -76,7 +391,7 @@ The following additional improvements are reflected in the documentation
 
 
 
-
+'''
 
 === August 2021
 

@@ -48,16 +48,16 @@ The following is displayed for each alert:
 
 *Potential Attacks:* 
 
-* The _Potential Attack_ type (for example, Ransomware)
+* The _Potential Attack_ type (for example, Ransomware or Sabotage)
 
 * The date and time the potential attack was _Detected_
 
 * The _Status_ of the alert:
 
-** New (this is the default for new alerts)
-** In Progress
-** Resolved
-** Dismissed
+** *New*: This is the default for new alerts.
+** *In Progress*: The alert is under investigation by a team member or members.
+** *Resolved*: The alert has been marked as resolved by a team member.
+** *Dismissed*: The alert has been dismissed as false positive or expected behavior.
 +
 An administrator can change the status of the alert and add a note to assist with investigation.
 +
@@ -76,14 +76,7 @@ image:CloudSecureChangeAlertStatus.png[Change Alert Status]
 
 * The date and time the behavior was _Detected_
 
-* The _Status_ of the alert:
-
-** New (this is the default for new alerts)
-** In Progress
-** Resolved
-** Dismissed
-+ 
-An administrator can change the status of the alert and add a note to assist with investigation.
+* The _Status_ of the alert (New, In progress, etc.)
 
 * The _User_ whose behavior triggered the alert
 
@@ -109,7 +102,7 @@ You can click an alert link on the Alerts list page to open a detail page for th
 
 === Summary section:
 
-* Attack type (in this example, Ransomware) and Alert ID (assigned by Cloud Secure)
+* Attack type (Ransomware, Sabotage) and Alert ID (assigned by Cloud Secure)
 * Date and Time the attack was detected
 * Action Taken (for example, an automatic snapshot was taken. Time of snapshot is shown immediately below the summary section))
 * Status (New, In Progress, etc.)
@@ -124,11 +117,12 @@ You can click an alert link on the Alerts list page to open a detail page for th
 
 This section shows details about the user involved in the potential attack, including a graph of Top Activity for the user.
 
-Alerts page showing potential ransomware attack:
+Alerts page (this example shows a potential ransomware attack):
 image:RansomwareAlertExample.png[Ransomware Alert Example]
 
-Detail page for potential ransomware attack:
+Detail page (this example shows a potential ransomware attack):
 image:RansomwareDetailPageExample.png[Ransomware Detail Page Example]
+
 
 
 == _Take a Snapshot_ Action

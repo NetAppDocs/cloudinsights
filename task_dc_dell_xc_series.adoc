@@ -1,11 +1,13 @@
 ---
 sidebar: sidebar
 permalink: task_dc_dell_xc_series.html
-keywords: data collector, Dell, xc 
-summary: Configuring Dell XC Series data collector.
+
+keywords: data collector, Dell, EMC, xc 
+
+summary: Configuring Dell EMC XC Series data collector.
 ---
 
-= Dell XC Series data collector
+= Dell EMC XC Series data collector
 
 :toc: macro
 :hardbreaks:
@@ -18,16 +20,18 @@ summary: Configuring Dell XC Series data collector.
 
 [.lead] 
 
-Cloud Insights uses this data collector to discover inventory and performance information for the Dell XC Series storage arrays. 
+Cloud Insights uses this data collector to discover inventory and performance information for the Dell EMC XC Series storage arrays. 
 
 ////
 == Terminology
 
-Cloud Insights acquires the following inventory information from the Dell Xc Series data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
-|Field|Description
+
+|Vendor/Model Term|Cloud Insights Term
+
 |Disk|Disk
 |Disk Folder|Disk Group
 |Storage Center|Storage
@@ -41,7 +45,7 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
  
-* Administrator credentials for the Dell XC Enterprise Manager server
+* Administrator credentials for the Dell EMC XC Enterprise Manager server
 * IP address of the XC Enterprise Manager server
 ////
 

@@ -1,3 +1,12 @@
+---
+settings:
+  name: Cloud Insights
+  rss_page: concept_whats_new.html
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: true
 sidebar:
   entries:
     - title: Cloud Insights documentation
@@ -27,8 +36,10 @@ sidebar:
               url: /concept_acquisition_unit_requirements.html
             - title: Configuring an Acquisition Unit
               url: /task_configure_acquisition_unit.html 
-            - title: Configuring an Agent
+            - title: Configuring an Agent (Windows/Linux/Mac)
               url: /task_config_telegraf_agent.html
+            - title: Configuring an Agent (Kubernetes)
+              url: /task_config_telegraf_agent_k8s.html
             - title: Configuring Data Collectors
               url: /task_configure_data_collectors.html
             - title: Determining Data Collector Acquisition Status
@@ -102,6 +113,8 @@ sidebar:
           url: /task_query_assign_multiple_applicationss.html
         - title: Copying table values to the Clipboard
           url: /task_query_copy_table_values.html
+        - title: Querying Logs
+          url: /concept_log_explorer.html
   
     - title: Working with Annotations
       entries:
@@ -131,6 +144,8 @@ sidebar:
   #        url: /task_create_monitor.html
         - title: Configuring Notification Recipients
           url: /concept_notifications_email.html 
+        - title: System-Defined Monitors
+          url: /task_system_monitors.html
   #      - title: Webhooks
   #        entries:
   #          - title: Creating Webhooks 
@@ -203,6 +218,8 @@ sidebar:
           url: /reporting_creating_custom_reports.html
         - title: Data Models
           url: /reporting_creating_custom_reports.html#reporting-data-models
+        - title: Reporting Database API
+          url: /reporting_querying_database.html
         - title: Data Retention
           url: /reporting_data_retention.html
         - title: Schema Diagrams
@@ -254,7 +271,11 @@ sidebar:
             - title: Users
               url: /forensic_user_overview.html
         - title: Automated Response Policies
-          url: /cs_automated_response_policies.html  
+          url: /cs_automated_response_policies.html
+        - title: Restricting User Access
+          url: /cs_restrict_user_access.html
+        - title: Simulating a Ransomware Attack
+          url: /concept_cs_attack_simulator.html
         - title: Notifications
           url: /cs_notifications_email.html
         - title: Cloud Secure API
@@ -305,8 +326,6 @@ sidebar:
                   url: /task_dc_brocade_bna.html 
                 - title: Fibre Channel Switch
                   url: /task_dc_brocade_fc_switch.html
-            - title: Ceph
-              url: /task_dc_ceph_storage.html
             - title: Cisco
               url: /task_dc_cisco_fc_switch.html
             - title: Dell 
@@ -319,7 +338,7 @@ sidebar:
                   url: /task_dc_emc_datadomain.html
                 - title: ECS
                   url: /task_dc_emc_ecs.html
-                - title: Isilon
+                - title: PowerScale
                   url: /task_dc_emc_isilon.html
                 - title: PowerStore
                   url: /task_dc_emc_powerstore.html
@@ -347,11 +366,11 @@ sidebar:
               url: /task_dc_google_cloud.html
             - title: HP Enterprise
               entries:
-                - title: HP 3PAR StoreServ
+                - title: HP Alletra 9000 and Primera
                   url: /task_dc_hp_3par.html
                 - title: HP Command View AE
                   url: /task_dc_hpe_commandview.html
-                - title: HPE Nimble
+                - title: HPE Alletra 6000
                   url: /task_dc_hpe_nimble.html
             - title: Hitachi Data Systems
               entries:
@@ -389,8 +408,10 @@ sidebar:
                   url: /task_dc_ms_hyperv.html
             - title: NetApp
               entries:
+                - title: Astra Data Store
+                  url: /task_dc_na_astra_data_store.html
                 - title: Cloud Connection for ONTAP 9.9+
-                  url: /task_dc_na_cloud_agent.html
+                  url: /task_dc_na_cloud_connection.html
                 - title: Cloud Volumes ONTAP
                   url: /task_dc_na_cloud_volumes_ontap.html
                 - title: Cloud Volumes Services for AWS
