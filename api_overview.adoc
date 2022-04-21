@@ -20,7 +20,24 @@ The Cloud Insights API enables NetApp customers and independent software vendors
 
 //NOTE: This documentation is considered *Preview Documentation* and is therefore subject to change.
 
-NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*. 
+//NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*. 
+
+Note that Cloud Insights APIs are available based on your current Edition: 
+
+[cols="<,^s,^s,^s"]
+|===
+|API Category|Basic|Standard|Premium
+
+|Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+
+|===
+
+Additionally, your Cloud Insights link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html#permission-levels[feature set role] will determine which APIs you can access. User and Guest roles have fewer privileges than Administrator role. For example, if you have Administrator role in Monitor and Optimize, but User role in Reporting, you can manage all API types except Data Warehouse.
+
 
 == Requirements for API Access
 
@@ -33,8 +50,7 @@ NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*.
 
 The latest API information is found by logging in to Cloud Insights and navigating to *Admin > API Acccess*. Click the *API Documentation* link.
 
-//image:API_Documentation.png[API Documentation] 
-image:APICategories.png[API Types]
+image:API_Documentation.png[API Documentation] 
 
 The API Documentation is Swagger-based, which provides a brief description and usage information for the API, and allows you to try it out in your environment.
 
@@ -91,6 +107,8 @@ The Cloud Insights API is category-based, and currently contains the following c
 //* DATA WAREHOUSE category is available for environments with Cloud Insights Reporting, and is used to manage data used with Reporting
 
 Additional categories and/or APIs may become available over time. You can find the latest API information in the link:#api-documentation-swagger[API Swagger documentation]. 
+
+Note that the API categories to which a user has access depend also on the link:concept_user_roles.html[User Role] they have in each Cloud Insights feature set (Monitoring, Cloud Secure, Reporting).
 
 ////
 == API Commands
