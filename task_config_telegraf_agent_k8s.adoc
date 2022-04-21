@@ -17,9 +17,9 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 
 
 [.lead]
-Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.21/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
+Cloud Insights uses link:https://docs.influxdata.com/telegraf/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
-The current Telegraf version for Cloud Insights is *1.21.4*.
+//The current Telegraf version for Cloud Insights is *1.21.4*.
 
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
@@ -183,14 +183,14 @@ Push the operator docker image to your private/local/enterprise docker repositor
 
 Download all open source dependencies to your private docker registry. The following open source images need to be downloaded:
 
- docker.io/telegraf:1.19.3
- gcr.io/kubebuilder/kube-rbac-proxy:v0.8.0
- k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.3.0
- 
+ docker.io/telegraf:<latest>
+ gcr.io/kubebuilder/kube-rbac-proxy:<latest>
+ k8s.gcr.io/kube-state-metrics/kube-state-metrics:<latest>
+
 If fluent-bit is enabled, also download:
 
- docker.io/fluent-bit:1.7.8
- docker.io/kubernetes-event-exporter:0.10
+ docker.io/fluent-bit:<latest>
+ docker.io/kubernetes-event-exporter:<latest>
 
 Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
 
