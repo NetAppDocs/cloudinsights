@@ -449,7 +449,7 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
 * If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
-* The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
+* The following commands must be available: _curl_, _sudo_ (not required for script-based installation), _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
 * kube-state-metrics must be installed. See below for more information. kube-state-metrics is automatically installed with Operator-based installation.
 
