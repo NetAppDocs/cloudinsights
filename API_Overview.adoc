@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: API_Overview.html
-keywords: API, customer API, premium, JSON, Swagger, Access Token, token, key
+keywords: API, customer API, premium, JSON, Swagger, Access Token, token, rotate, expired
 summary: The Cloud Insights API enables integration with other applications, such as monitoring and reporting systems.
 ---
 
@@ -430,5 +430,68 @@ To temporarily disable an API token, on the API token list page, click the "thre
 To permanently remove an API token, from the menu, select "Revoke". You cannot re-enable a revoked token; you must create a new token.
 
 image:API_Disable_Token.png[Disable or Revoke and API token]
+
+
+
+== Rotating Expired API Access Tokens
+
+API access tokens have an expiration date. When an API access token expires, users need to generate a new token (of type _Data Ingestion_ with Read/Write permissions) and reconfigure Telegraf to use the newly-generated token instead of the expired token. The steps below detail how to do this. 
+
+==== Kubernetes 
+
+Note that these commands are using the default namespace "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
+
+* Edit the Telegraf ConfigMaps (CM), and replace all instances of the old API token with the new API token.
++
+ kubectl -n netapp-monitoring edit cm
+ :%s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g
+ :wq!
+ 
+* Edit the Telegraf DaemonSet (DS) and ReplicaSet (RS), and replace all instances of the old API token with the new API token.
++
+ kubectl -n netapp-monitoring edit ds telegraf-ds
+ :%s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g
+ :wq!
+ kubectl -n netapp-monitoring edit rs telegraf-rs
+ :%s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g
+ :wq!
+ 
+* The Kubernetes controller will automatically restart the Telegraf DS pods.
+* Restart the Telegraf RS pod
++
+ kubectl -n netapp-monitoring delete pod <telegraf-rs-pod>
+
+==== RHEL/CentOS and Debian/Ubuntu
+
+* Edit the Telegraf configuration files, and replace all instances of the old API token with the new API token.
++
+ sudo sed -i.bkup ‘s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g’ /etc/telegraf/telegraf.d/*.conf
+ 
+* Restart Telegraf.
+
+ sudo systemctl restart telegraf
+
+==== MacOS
+
+* Edit the Telegraf configuration files, and replace all instances of the old API token with the new API token.
++
+ sudo sed -i.bkup ‘s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g’ /usr/local/etc/telegraf.d/*.conf
+
+* Restart Telegraf.
++
+ sudo launchctl stop telegraf
+ sudo launchctl start telegraf
+
+==== Windows
+
+* For each Telegraf configuration file in _C:\Program Files\telegraf\telegraf.d_, replace all instances of the old API token with the new API token.
++
+ cp <plugin>.conf <plugin>.conf.bkup
+ (Get-Content <plugin>.conf).Replace(‘<OLD_API_TOKEN>’, ‘<NEW_API_TOKEN>’) | Set-Content <plugin>.conf
+
+* Restart Telegraf.
++
+ Stop-Service telegraf
+ Start-Service telegraf
 
 
