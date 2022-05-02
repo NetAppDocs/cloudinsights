@@ -16,7 +16,9 @@ summary: NetApp Config Advisor Data Collector
 :imagesdir: ./media/
 
 [.lead]
-This data collector acquires configuration data from storage systems running ONTAP and connected switches using read-only calls. This data collector also runs configuration validation and health checks on the whole stack of ONTAP cluster configuration to identify cabling, configuration, resiliency, availability and security issues. The report from the rule results will be available in dashboard configuration with netapp_ontap.configuration tag.
+This data collector acquires configuration data from storage systems running ONTAP and connected switches using read-only calls. This data collector also runs configuration validation and health checks on the whole stack of ONTAP cluster configuration to identify cabling, configuration, resiliency, availability and security issues. 
+
+NOTE: Config Advisor is considered a _Preview_ feature and is therefore subject to change. During Preview, no MU cost is incurred.
 
 == Terminology
 
@@ -33,6 +35,10 @@ Cloud Insights acquires configuration data from ONTAP and switches with the Conf
 |Aggregate	|Storage Pool
 |LUN	|Volume
 |Volume	|Internal Volume
+
+In addition, note that Config Advisor metrics will be available in dashboard and other queries with the _netapp_ontap.configadvisor_ tag.
+image:ConfigAdvisorTags.png[drop-down showing the configadvisor metric tag]
+
 
 |===
 
