@@ -16,17 +16,17 @@ summary: Insights can help you predict when Kubernetes spaces are likely to beco
 :imagesdir: ./media/
 
 [.lead]
-Running out of space in your environment is never a good situation. Cloud Insights helps you predict the time you have before Kubernetes spaces become full.
+Running out of space in your environment is never a good situation. Cloud Insights helps you predict the time you have before Kubernetes persistent volumes become full.
 
 NOTE: This is a _Preview_ feature and may change over time as improvements are made. link:/concept_preview_features.html[Learn more] about Cloud Insights Preview features.
 
-The _Kubernetes Namespaces Running Out of Space_ Insight gives you a view into workloads on your Kubernetes namespaces that are at risk of running out of space, with an estimate for the number of days remaining before each space becomes full.
+The _Kubernetes Namespaces Running Out of Space_ Insight gives you a view into workloads on your Kubernetes namespaces that are at risk of running out of space, with an estimate for the number of days remaining before each persistent volume becomes full.
 
 You can view this Insight by navigating to *Dashboards > Insights*.
 
 image:K8sRunningOutOfSpaceWorkloadList.png[List of workloads in K8s namespaces that are at risk of running out of space]
 
-Click on a workload to open a detail page for the Insight.  On this page you will see a graph showing the workload space trends as well as a table showing the following:
+Click on a workload to open a detail page for the Insight.  On this page you will see a graph showing the workload capacity trends as well as a table showing the following:
 
 * Workload Name
 * Persistent Volume affected
@@ -38,7 +38,7 @@ image:K8sRunningOutOfSpaceWorkloadTable.png[Workload table showing details]
 
 === What can I do if I'm running out of space?
 
-On the Insight page, click the *+Show Recommendations* to view possible solutions. The easiest option when running out of space is always to add more space, and Cloud Insights shows you the optimal space to add to increase time-to-full to a target 60-day prediction. Other recommendations are also shown.
+On the Insight page, click the *+Show Recommendations* to view possible solutions. The easiest option when running out of space is always to add more capacity, and Cloud Insights shows you the optimal capacity to add to increase time-to-full to a target 60-day prediction. Other recommendations are also shown.
 
 image:K8sRunningOutOfSpaceRecommendations.png[Capacity to add to return to 60-day TTF]
 
