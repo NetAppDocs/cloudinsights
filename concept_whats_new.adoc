@@ -31,6 +31,31 @@ image:ChatIcon.png[Chat Icon showing the blue NetApp "N" above a smile]
 The link:/task_config_telegraf_agent_k8s.html#operator-based-install-or-script-based-install[NetApp Kubernetes Monitoring Operator] (NKMO) is available for all environments and is the preferred method for installing Kuberbetes for Cloud Insights. NKMO is an improvement over script-installed monitoring methods because it allows more flexible configuration of monitoring controllable from Cloud Insights and fewer customer-driven configuration interventions, as well as enhances opportunities for monitoring other software running in the K8s cluster.
 
 
+==== Preview Features
+
+Cloud Insights regularly highlights a number of exciting new preview features. If you are interested in previewing one or more of these features, contact your link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales Team] for more information.
+
+|===
+
+|*Feature* |*Description*
+
+|Kubernetes Namespaces Running out of Space
+|The _Kubernetes Namespaces Running Out of Space_ Insight gives you a view into workloads on your Kubernetes namespaces that are at risk of running out of space, with an estimate for the number of days remaining before each space becomes full. 
+link:https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running_out_of_space.html[Read More]
+
+|Internal Volume and Volume Capacity Time-to-Full forecasting	
+|Cloud Insights is able to prognose the number of days until capacity runs out for each Internal Volume and Volume monitored. This value can help to significantly reduce the risk of an outage. 
+
+|Cloud Secure – restrict user access on attack
+|Greater protection for your business-critical data with the ability to restrict user access when an attack is detected. 
+Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
+link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
+
+|Shared Resource Under Stress
+|The _Shared Resource Under Stress_ insight uses AI/ML to automatically identify where resource contention is causing performance degradation in your environment, highlights any workloads impacted by it, and provides recommended actions to remediate, letting you solve performance issues more quickly.
+link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html[Read More]
+
+|===
 
 
 '''
