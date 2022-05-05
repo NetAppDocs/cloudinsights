@@ -83,7 +83,7 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
 
 
-==== Monitoring is only installed on Linux nodes
+=== Monitoring is only installed on Linux nodes
 
 Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, by specifying a Kubernetes node selector that looks for the following Kubernetes labels on these platforms:
 
@@ -96,7 +96,8 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 //|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
 
-==== NetApp Kubernetes Monitoring Operator Installation
+
+=== NetApp Kubernetes Monitoring Operator Installation
 
 image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
@@ -109,7 +110,7 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 . The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
 
 
-==== OpenShift Instructions
+=== OpenShift Instructions
 
 If you are running on OpenShift 4.6 - 4.8, you must change the "privileged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace in the command line:
 
@@ -119,7 +120,7 @@ In the file, change _privileged-mode: false_ to  _privileged-mode: true_
 
 
 
-==== Configuring Proxy Support for NetApp Kubernetes Monitoring Operator
+=== Configuring Proxy Support for NetApp Kubernetes Monitoring Operator
 
 To configure a proxy for the monitoring operator, perform the following steps.
 
@@ -142,7 +143,7 @@ In the _spec:_ section of this file, add the following code block:
      noProxy: <comma separated list of IPs or resolvable hostnames that should bypass a proxy>
      
 
-===== Using a custom/private docker repository
+==== Using a custom/private docker repository
 
 If using a custom docker repository, do the following:
 
@@ -214,7 +215,7 @@ In the _spec:_ section, make the following changes:
 
 
 
-==== Script-Based Installation
+=== Script-Based Installation
 
 image:Kubernetes_Install_Agent_screen.png[Script-Based Install]
 
@@ -239,7 +240,7 @@ TIP: _CLUSTER_NAME_ is the name of the Kubernetes cluster from Cloud Insights co
 . When finished, click *Complete Setup*.
 
 
-==== Configuring Proxy Support for Kubernetes - Script-Based
+=== Configuring Proxy Support for Kubernetes - Script-Based
 
 NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
 
@@ -282,7 +283,7 @@ Then, restart Telegraf:
 
 
 
-==== DaemonSet, ReplicaSet, and Stopping/Starting the agent
+=== DaemonSet, ReplicaSet, and Stopping/Starting the agent
 
 A DaemonSet and ReplicaSet will be created on the Kubernetes cluster to run the required Telegraf agents/pods. By default, these Telegraf agents/pods will be scheduled on both master and non-master nodes.
 
@@ -303,7 +304,7 @@ You can then use the following commands to stop and start the Telegraf service:
  
 
  
-==== Configuring the Agent to Collect Data from Kubernetes
+=== Configuring the Agent to Collect Data from Kubernetes
 
 Note: The default namespace for Script-based installation is _ci-monitoring_. For Operator-based installation, the default namespace is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
 
@@ -356,7 +357,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
     groups: []
 ----
 
-==== Installing the kube-state-metrics server
+=== Installing the kube-state-metrics server
 
 NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
 
@@ -374,7 +375,8 @@ Use the following steps to install the kube-state-metrics server (required if yo
  kubectl apply -f /tmp/kube-state-yaml-files/
 
 
-==== kube-state-metrics Counters
+=== kube-state-metrics Counters
+
 Use the following links to access information for the kube state metrics counters:
 
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/configmap-metrics.md[ConfigMap Metrics]
@@ -397,7 +399,7 @@ Use the following links to access information for the kube state metrics counter
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/service-metrics.md[Service metrics]
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/statefulset-metrics.md[StatefulSet metrics]
 
-==== Uninstalling the Agent
+=== Uninstalling the Agent
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
@@ -432,8 +434,7 @@ If a Security Context Constraint was previously-created manually for a script-ba
  
  
  
-==== Upgrading the Agent
-[#upgrading-kubernetes-agent]
+=== Upgrading the Agent
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
