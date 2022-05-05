@@ -26,5 +26,14 @@ You can view this Insight by navigating to *Dashboards > Insights*.
 
 image:K8sRunningOutOfSpaceWorkloadList.png[List of workloads in K8s namespaces that are at risk of running out of space]
 
+Click on a workload to open a detail page for the Insight.  On this page you will see a graph showing the workload space trends as well as a table showing the following:
+
+* Workload Name
+* Persistent Volume affected
+* Predicted Time-to-Full in days
+* Persistent Volume capacity
+* Backend Storage Resource affected, with current capacity used out of total capacity. Clicking this link will opoen the detailed landing page for the backend volume.
+
+image:K8sRunningOutOfSpaceWorkloadTable.png[Workload table showing details]
 
 
