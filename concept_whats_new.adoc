@@ -36,7 +36,21 @@ The link:/task_config_telegraf_agent_k8s.html#operator-based-install-or-script-b
 You can now manage users and invites using Cloud Insights' powerful API. Read more in the link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html[API Swagger Documentation].
 
 
-==== Monitor Change Log
+==== Data Collection Alerts
+
+You can now receive alerts for Data Collection events:
+
+* Acquisition Unit Shutdown
+* Collector Failed
+* Collector Warning
+
+Note that these Monitors are _Paused_ by default and must be enabled (resumed) before they will send alerts. 
+
+Also note that in the case of the Collector Warning, this monitor can sometimes send more alerts than other alert types, so it is recommended to set no alert recipients on this monitor unless you are troubleshooting.
+
+
+
+==== Alert on Change Log Events
 
 Receive informational alerts for ONTAP Change Log events:
 
