@@ -408,14 +408,6 @@ NOTE: The fan is integrated into the power supply module in some disk shelves.�
 
 
 
-=== Collector Monitors
-
-|===
-Monitor Name|Severity|Description|Corrective Action
-|Acquisition Unit Shutdown|Cloud Insights Acquisition Units periodically restart as part of upgrades to introduce new features. This happens once a month or less in a typical environment. A Warning Alert that an Acquisition Unit has shutdown should be followed soon after by a Resolution noting that the newly-restarted Acquisition Unit has completed a registration with Cloud Insights. Typically this shutdown-to-registration cycle takes 5 to 15 minutes. |If the alert occurs frequently or lasts longer than 15 minutes, check on the operation of the system hosting the Acquisition Unit, the network, and any proxy connecting the AU to the Internet.
-|Collector Failed|The poll of a data collector encountered an unexpected failure situation.|Visit the data collector page in Cloud Insights to learn more about the situation.
-|Collector Warning|This Alert typically can arise because of an erroneous configuration of the data collector or of the target system. Revisit the configurations to prevent future Alerts. It can also be due to a retrieval of less-than-complete data where the data collector gathered all the data that it could. This can happen when situations change during data collection (e.g., a virtual machine present at the beginning of data collection is deleted during data collection and before its data is captured).|Check the configuration of the data collector or target system.
-|===
 
 
 === Log Monitors Resolved by Time
@@ -463,6 +455,11 @@ wafl readdir notice show.…Check if directories are indicated as sparse or not:
 |Unauthorized User Access to Admin Share|WARNING|A client has attempted to connect to the privileged ONTAP_ADMIN$ share even though their logged-in user is not an allowed user.|Perform the following corrective actions:…Ensure that the mentioned username and IP address is configured in one of the active Vscan scanner pools.…Check the scanner pool configuration that is currently active by using the "vserver vscan scanner pool show-active" command.
 |Virus Detected|WARNING|A Vscan server has reported an error to the storage system. This typically indicates that a virus has been found. However, other errors on the Vscan server can cause this event.…Client access to the file is denied. The Vscan server might, depending on its settings and configuration, clean the file, quarantine it, or delete it.|Check the log of the Vscan server reported in the "syslog" event to see if it was able to successfully clean, quarantine, or delete the infected file. If it was not able to do so, a system administrator might have to manually delete the file.
 |===
+
+
+
+
+
 
 
 === Anti-Ransomware Log Monitors
@@ -538,6 +535,20 @@ Critical @ < 5 %|The Storage capacity for a volume is used to store application 
 |POD Failed Mount|WARNING|This alert occurs when a mount is failed on a POD.
 
 |===
+
+
+
+=== Collector Monitors
+
+|===
+Monitor Name|Severity|Description|Corrective Action
+|Acquisition Unit Shutdown|Cloud Insights Acquisition Units periodically restart as part of upgrades to introduce new features. This happens once a month or less in a typical environment. A Warning Alert that an Acquisition Unit has shutdown should be followed soon after by a Resolution noting that the newly-restarted Acquisition Unit has completed a registration with Cloud Insights. Typically this shutdown-to-registration cycle takes 5 to 15 minutes. |If the alert occurs frequently or lasts longer than 15 minutes, check on the operation of the system hosting the Acquisition Unit, the network, and any proxy connecting the AU to the Internet.
+|Collector Failed|The poll of a data collector encountered an unexpected failure situation.|Visit the data collector page in Cloud Insights to learn more about the situation.
+|Collector Warning|This Alert typically can arise because of an erroneous configuration of the data collector or of the target system. Revisit the configurations to prevent future Alerts. It can also be due to a retrieval of less-than-complete data where the data collector gathered all the data that it could. This can happen when situations change during data collection (e.g., a virtual machine present at the beginning of data collection is deleted during data collection and before its data is captured).|Check the configuration of the data collector or target system.
+
+Note that this monitor can sometimes send more alerts than other monitors, so it is recommended to set no alert recipients on this monitor unless you are troubleshooting.
+|===
+
 
 
 
