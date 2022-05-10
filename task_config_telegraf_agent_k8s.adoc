@@ -212,13 +212,18 @@ In the _spec:_ section, make the following changes:
            value: <same as "docker-repo" field above>
 
 
+
+
+
 === Upgrading from Script-based K8s monitoring to Operator-based
 
 If you already have installed script-based Kubernetes monitoring, follow these steps to upgrade to operator-based monitoring:
 
 Steps to upgrade
 
-. Preserve the ConfigMap from the script-based monitoring installation: kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
+. Preserve the ConfigMap from the script-based monitoring installation: 
++
+ kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
 
 . Save the K8s cluster name for use during installation of the K8s operator-based monitoring solution to ensure data continuity.
 +
