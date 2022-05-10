@@ -214,7 +214,7 @@ In the _spec:_ section, make the following changes:
 
 
 
-
+////
 === Upgrading from Script-based K8s monitoring to Operator-based
 
 If you already have installed script-based Kubernetes monitoring, follow these steps to upgrade to operator-based monitoring:
@@ -231,7 +231,7 @@ If you do not remember the name of the K8s cluster in CI, it can be extracted fr
 +
  cat /tmp/telegraf-configs.yaml | grep kubernetes_cluster | head -2
  
-. Remove the script-based monitoring (copy&paste or reference in existing docs)
+. Remove the script-based monitoring 
 +
 To uninstall the script-based agent on Kubernetes, do the following:
 +
@@ -245,9 +245,10 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 +
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
  
-.Install the K8s operator-based monitoring (following the instructions in the install tile)
- 
+.Install the K8s operator-based monitoring following the instructions in the install tile.
 
+image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
+////
 
 
 == Script-Based Installation
