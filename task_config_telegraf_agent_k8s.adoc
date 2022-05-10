@@ -97,7 +97,7 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 //|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
 
 
-=== NetApp Kubernetes Monitoring Operator Installation
+== NetApp Kubernetes Monitoring Operator Installation
 
 image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
@@ -212,10 +212,40 @@ In the _spec:_ section, make the following changes:
            value: <same as "docker-repo" field above>
 
 
+=== Upgrading from Script-based K8s monitoring to Operator-based
+
+If you already have installed script-based Kubernetes monitoring, follow these steps to upgrade to operator-based monitoring:
+
+Steps to upgrade
+
+. Preserve the ConfigMap from the script-based monitoring installation: kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
+
+. Save the K8s cluster name for use during installation of the K8s operator-based monitoring solution to ensure data continuity.
++
+If you do not remember the name of the K8s cluster in CI, it can be extracted from your saved configuration with the following command line:
++
+ cat /tmp/telegraf-configs.yaml | grep kubernetes_cluster | head -2
+ 
+. Remove the script-based monitoring (copy&paste or reference in existing docs)
++
+To uninstall the script-based agent on Kubernetes, do the following:
++
+If the monitoring namespace is being used solely for Telegraf:
++
+ kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
++
+ kubectl delete ns ci-monitoring
++
+If the monitoring namespace is being used for other purposes in addition to Telegraf:
++
+ kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
+ 
+.Install the K8s operator-based monitoring (following the instructions in the install tile)
+ 
 
 
 
-=== Script-Based Installation
+== Script-Based Installation
 
 image:Kubernetes_Install_Agent_screen.png[Script-Based Install]
 
