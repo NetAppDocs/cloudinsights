@@ -28,7 +28,7 @@ image:ChatIcon.png[Chat Icon showing the blue NetApp "N" above a smile]
 
 ==== Kubernetes Operator 
 
-The link:/task_config_telegraf_agent_k8s.html#operator-based-install-or-script-based-install[NetApp Kubernetes Monitoring Operator] (NKMO) is available for all environments and is the preferred method for installing Kuberbetes for Cloud Insights. NKMO is an improvement over script-installed monitoring methods because it allows more flexible configuration of monitoring controllable from Cloud Insights and fewer customer-driven configuration interventions, as well as enhances opportunities for monitoring other software running in the K8s cluster.
+The link:/task_config_telegraf_agent_k8s.html#operator-based-install-or-script-based-install[NetApp Kubernetes Monitoring Operator] (NKMO) is available for all environments running Kubernetes 1.17 or greater and is the preferred method for installing Kubernetes for Cloud Insights. NKMO is an improvement over script-installed monitoring methods because it allows more flexible configuration of monitoring controllable from Cloud Insights and fewer customer-driven configuration interventions, as well as enhances opportunities for monitoring other software running in the K8s cluster.
 
 
 ==== Manage Users and Invites with API
@@ -38,7 +38,7 @@ You can now manage users and invites using Cloud Insights' powerful API. Read mo
 
 ==== Data Collection Alerts
 
-You can now receive alerts for Data Collection events:
+You can now receive alerts for Data Collection link:/task_system_monitors.html#collector-monitors[events]:
 
 * Acquisition Unit Shutdown
 * Collector Failed
