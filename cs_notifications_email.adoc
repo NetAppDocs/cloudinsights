@@ -5,7 +5,7 @@ summary: Adding email addresses for notifications of Cloud Secure Alerts.
 keywords: email, notifications, alerts, warnings, attacks
 ---
 
-= Configuring Alert Email Notifications
+= Configuring Email Notifications for Alerts, Warnings, and Agent/Data Source Collector health
 
 :toc: macro
 :hardbreaks:
@@ -16,9 +16,28 @@ keywords: email, notifications, alerts, warnings, attacks
 :imagesdir: ./media/
 
 [.lead]
-Email notifications of alerts are sent to the alert recipient list for every action on the alert. 
+To configure Cloud Secure alert recipients, click on *Admin > Notifications* and enter an email addresses in the appropriate section(s) for each recipient.
 
-To configure alert recipients, click on *Admin > Notifications* and enter an email addresses for each recipient.
+=== Potential Attack Alerts and Warnings
+
+To send _Potential Attack_ alert notifications, enter the recipients' email addresses in the _Send Potential Attack Alerts_ section. 
+Email notifications are sent to the alert recipient list for every action on the alert.
+
+To send _Warning_ notifications, enter the recipients' email addresses in the _Send Warning Alerts_ section.
+
+=== Agent and Data Collector Health monitoring
+
+You can monitor the health of Agents and Data Sources through notifications.
+
+In order to receive notifications in the event that an Agent or Data Source collector is not functioning, enter the email addresses of the recipients in the _Data Collection Health Alerts_ section.
+
+Keep the following in mind:
+
+* Health alerts will be sent only after the agent/collector stops reporting for at least one hour.
+* Only one email notification is sent to the intended recipients in a given 24 hour period, even If the Agent or Data collector is disconnected for a longer duration.
+* In case of an Agent failure, one alert will be sent (not one per collector). The email will include a list of all impacted SVMs.
+* Active directory collection failure is reported as a warning; it does not impact Ransomware detection.
+* The Getting Started setup list now includes a new _Configure email notifications_ phase.
 
 [.thumb]
-image:CS-Alert-Notification-List.png[Alert Email notification recipient list]
+//image:CS-Alert-Notification-List.png[Alert Email notification recipient list]

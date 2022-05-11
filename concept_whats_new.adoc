@@ -22,7 +22,7 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 ==== Share your Feedback!
 
-We want your input to help shape Cloud Insights. Earn points and prizes by participating in NetApp's *Insights to Action* program. link:https://netapp.co1.qualtrics.com/jfe/form/SV_2aVWcE58J7oIDs1[*Sign up now*]!
+We want your input to help shape Cloud Insights. Earn points and prizes by participating in NetApp's *Insights to Action* program. link:https://netapp.co1.qualtrics.com/jfe/form/SV_2aVWcE58J7oIDs1[*Sign up now*]! 
 
 
 ==== Updated Dashboard Editor
@@ -35,6 +35,13 @@ image:DashboardWidgetEditorScreen.png[Widget Editor Improved Layout]
 A new Count aggregation method has also been introduced.  When grouping data in bar chart, column chart, and pie chart widgets, you can quickly and easily show the number of relevant objects for the selected metric.
 
 image:CountAggregationExample1.png[aggregation drop-down showing Count]
+
+
+Additionally, line charts now allow you to select one of three link:concept_dashboard_features.html#line-chart-interpolation[interpolation] methods:
+
+* None - No interpolation is done
+* Linear - Interpolates a data point between the existing points
+* Stair - Uses the previous data point as the interpolated data point
 
 ==== Enhanced Monitoring for Your Kubernetes Infrastructure
 
