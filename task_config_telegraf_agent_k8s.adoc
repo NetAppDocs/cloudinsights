@@ -17,14 +17,24 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 
 
 [.lead]
-Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.19/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
+Cloud Insights uses link:https://docs.influxdata.com/telegraf/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
-The current Telegraf version for Cloud Insights is *1.19.3*.
+//The current Telegraf version for Cloud Insights is *1.19.3*.
 
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
 NOTE: If you want to verify the installation files before installing the Agent, read about <<Verifying Kubernetes Checksums>>.
 
+
+
+== Operator-based install or script-based install?
+
+Cloud Insights has built a Kubernetes Operator for monitoring customers' Kubernetes clusters.  The NetApp Kubernetes Monitoring Operator (NKMO) is an improvement over script-installed monitoring methods because it allows more flexible configuration of monitoring controllable from Cloud Insights and fewer customer-driven configuration interventions, as well as enhances opportunities for monitoring other software running in the K8s cluster.
+
+NKMO continues to use underlying telegraf software for data collection, transformation, and delivery to Cloud Insights. This is enhanced with Custom Resource Definitions and Custom Resources to tailor monitoring for each K8s cluster.
+
+
+== Installing the agent
 
 If you are installing a Service data collector and have not yet configured an Agent, you are prompted to first install an Agent for the appropriate Operating System. This topic provides instructions for installing the Telegraf agent on the following Operating Systems:
 
@@ -251,7 +261,10 @@ image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
 ////
 
 
+
 == Script-Based Installation
+
+NOTE: Script-based installation is deprecated. Please  use Kubernetes Operator-based collection for monitoring your Kubernetes cluster.
 
 image:Kubernetes_Install_Agent_screen.png[Script-Based Install]
 
@@ -316,6 +329,7 @@ Then, restart Telegraf:
 
  kubectl delete pod telegraf-ds-*
  kubectl delete pod telegraf-rs-*
+
 
 
 
@@ -393,6 +407,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
     groups: []
 ----
 
+
 == Installing the kube-state-metrics server
 
 NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
@@ -435,6 +450,7 @@ Use the following links to access information for the kube state metrics counter
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/service-metrics.md[Service metrics]
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/statefulset-metrics.md[StatefulSet metrics]
 
+
 == Uninstalling the Agent
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
@@ -470,6 +486,7 @@ If a Security Context Constraint was previously-created manually for a script-ba
  
  
  
+
 == Upgrading the Agent
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
