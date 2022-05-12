@@ -228,8 +228,8 @@ Steps to upgrade
 +
 If you do not remember the name of the K8s cluster in CI, it can be extracted from your saved configuration with the following command line:
 +
- cat /tmp/telegraf-configs.yaml | grep kubernetes_cluster | head -2
- 
+ kubectl -n ci-monitoring get cm telegraf-conf -o yaml |grep kubernetes_cluster |head -2
+
 . Remove the script-based monitoring 
 +
 To uninstall the script-based agent on Kubernetes, do the following:
