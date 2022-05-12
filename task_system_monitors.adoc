@@ -453,6 +453,11 @@ wafl readdir notice show.…Check if directories are indicated as sparse or not:
 |===
 
 
+
+
+
+
+
 === Anti-Ransomware Log Monitors
 
 |===
@@ -542,6 +547,20 @@ Critical @ < 5 %|The Storage capacity for a volume is used to store application 
 |Storage Virtual Machine Discovered|Informational|This message occurs when an Storage Virtual Machine is discovered.
 |Storage Virtual Machine Modified|Informational|This message occurs when an Storage Virtual Machine is modified.
 |===
+
+////
+=== Collector Monitors
+
+|===
+Monitor Name|Description|Corrective Action
+|Acquisition Unit Shutdown|Cloud Insights Acquisition Units periodically restart as part of upgrades to introduce new features. This happens once a month or less in a typical environment. A Warning Alert that an Acquisition Unit has shutdown should be followed soon after by a Resolution noting that the newly-restarted Acquisition Unit has completed a registration with Cloud Insights. Typically this shutdown-to-registration cycle takes 5 to 15 minutes. |If the alert occurs frequently or lasts longer than 15 minutes, check on the operation of the system hosting the Acquisition Unit, the network, and any proxy connecting the AU to the Internet.
+|Collector Failed|The poll of a data collector encountered an unexpected failure situation.|Visit the data collector page in Cloud Insights to learn more about the situation.
+|Collector Warning|This Alert typically can arise because of an erroneous configuration of the data collector or of the target system. Revisit the configurations to prevent future Alerts. It can also be due to a retrieval of less-than-complete data where the data collector gathered all the data that it could. This can happen when situations change during data collection (e.g., a virtual machine present at the beginning of data collection is deleted during data collection and before its data is captured).|Check the configuration of the data collector or target system.
+
+Note that this monitor can sometimes send more alerts than other monitors, so it is recommended to set no alert recipients on this monitor unless you are troubleshooting.
+|===
+////
+
 
 
 == More Information

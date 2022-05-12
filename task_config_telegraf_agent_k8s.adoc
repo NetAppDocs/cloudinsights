@@ -46,7 +46,7 @@ NOTE: If you are using a proxy, read the proxy instructions for your platform be
 
 
 
-=== Installing an Agent on Kubernetes
+== Installing an Agent on Kubernetes
 
 Kubernetes offers two ways to collect data:
 
@@ -97,7 +97,7 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 //|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
 
 
-=== NetApp Kubernetes Monitoring Operator Installation
+== NetApp Kubernetes Monitoring Operator Installation
 
 image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
@@ -214,8 +214,44 @@ In the _spec:_ section, make the following changes:
 
 
 
+////
+=== Upgrading from Script-based K8s monitoring to Operator-based
 
-=== Script-Based Installation
+If you already have installed script-based Kubernetes monitoring, follow these steps to upgrade to operator-based monitoring:
+
+Steps to upgrade
+
+. Preserve the ConfigMap from the script-based monitoring installation: 
++
+ kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
+
+. Save the K8s cluster name for use during installation of the K8s operator-based monitoring solution to ensure data continuity.
++
+If you do not remember the name of the K8s cluster in CI, it can be extracted from your saved configuration with the following command line:
++
+ cat /tmp/telegraf-configs.yaml | grep kubernetes_cluster | head -2
+ 
+. Remove the script-based monitoring 
++
+To uninstall the script-based agent on Kubernetes, do the following:
++
+If the monitoring namespace is being used solely for Telegraf:
++
+ kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
++
+ kubectl delete ns ci-monitoring
++
+If the monitoring namespace is being used for other purposes in addition to Telegraf:
++
+ kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
+ 
+.Install the K8s operator-based monitoring following the instructions in the install tile.
+
+image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
+////
+
+
+== Script-Based Installation
 
 image:Kubernetes_Install_Agent_screen.png[Script-Based Install]
 
@@ -283,7 +319,7 @@ Then, restart Telegraf:
 
 
 
-=== DaemonSet, ReplicaSet, and Stopping/Starting the agent
+== DaemonSet, ReplicaSet, and Stopping/Starting the agent
 
 A DaemonSet and ReplicaSet will be created on the Kubernetes cluster to run the required Telegraf agents/pods. By default, these Telegraf agents/pods will be scheduled on both master and non-master nodes.
 
@@ -304,7 +340,7 @@ You can then use the following commands to stop and start the Telegraf service:
  
 
  
-=== Configuring the Agent to Collect Data from Kubernetes
+== Configuring the Agent to Collect Data from Kubernetes
 
 Note: The default namespace for Script-based installation is _ci-monitoring_. For Operator-based installation, the default namespace is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
 
@@ -357,7 +393,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
     groups: []
 ----
 
-=== Installing the kube-state-metrics server
+== Installing the kube-state-metrics server
 
 NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
 
@@ -375,7 +411,7 @@ Use the following steps to install the kube-state-metrics server (required if yo
  kubectl apply -f /tmp/kube-state-yaml-files/
 
 
-=== kube-state-metrics Counters
+== kube-state-metrics Counters
 
 Use the following links to access information for the kube state metrics counters:
 
@@ -399,7 +435,7 @@ Use the following links to access information for the kube state metrics counter
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/service-metrics.md[Service metrics]
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/statefulset-metrics.md[StatefulSet metrics]
 
-=== Uninstalling the Agent
+== Uninstalling the Agent
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
@@ -434,7 +470,7 @@ If a Security Context Constraint was previously-created manually for a script-ba
  
  
  
-=== Upgrading the Agent
+== Upgrading the Agent
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
