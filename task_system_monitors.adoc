@@ -528,18 +528,20 @@ Critical @ < 5 %|The Storage capacity for a volume is used to store application 
 |===
 
 
+=== Change Log Monitors
 
-=== 
 |===
 
-|Monitor Name|CI Severity|Monitor Description|Corrective Action|Resolution Time
+|Monitor Name|Severity|Monitor Description
 
-|Volume Offline|INFO|This message indicates that a volume is made offline.|Bring the volume back online.
-|Volume Restricted|INFO|This event indicates that a flexible volume is made restricted.|Bring the volume back online.
-|Storage VM Stop Succeeded|INFO|This message occurs when a 'vserver stop' operation succeeds.|Use 'vserver start' command to start the data access on a storage VM.
-|Node Panic|WARNING|This event is issued when a panic occurs|Contact NetApp customer support.|1 day
+|Internal Volume Discovered|Informational|This message occurs when an Internal Volume is discovered.
+|Internal Volume Modified|Informational|This message occurs when an Internal Volume is modified.
+|Storage Node Discovered|Informational|This message occurs when an Storage Node is discovered.
+|Storage Node Removed|Informational|This message occurs when an Storage Node is removed.
+|Storage Pool Discovered|Informational|This message occurs when an Storage Pool is discovered.
+|Storage Virtual Machine Discovered|Informational|This message occurs when an Storage Virtual Machine is discovered.
+|Storage Virtual Machine Modified|Informational|This message occurs when an Storage Virtual Machine is modified.
 |===
-
 
 
 == More Information
