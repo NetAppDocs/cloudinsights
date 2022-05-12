@@ -61,20 +61,6 @@ To configure global alert recipients, choose the desired recipients in the *Glob
 
 You can always override the global recipients list for an individual monitor when creating or modifying the monitor.
 
+NOTE: ONTAP Data Collector notifications take precedence over any specific Monitor notifications that are relevant to the cluster/data collector. The recipient list you set for the Data Collector itself will receive the data collector alerts. If there are no active data collector alerts, then monitor-generated alerts will be sent to specific monitor recipients.
+
 //image:MonitorTeamNotifications.png[Override Global Notifications]
-
-
-////
-== Global Recipient List for Monitor Notifications
-
-[.thumb]
-//image:GlobalMonitorNotificationSection.png[Monitors Email Notifications]
-
-To add recipients to the global email list for monitor-related notifications, click on *Admin > Notifications*, and go to the "Global Monitor Notification Recipients" section.
-
-You can choose to have email notifications sent for monitor-related events to any or all of the following recipients:
-
-* All Account Owners
-* All Administrators
-* Additional Email Addresses that you specify
-////
