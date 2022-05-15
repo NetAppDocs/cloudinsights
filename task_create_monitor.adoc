@@ -139,6 +139,8 @@ Specify the webhook(s) for alert notifications. If desired, you can choose diffe
 
 image:Webhook_Monitor_Notifications.png[Webhook Alerting]
 
+NOTE: ONTAP Data Collector notifications take precedence over any specific Monitor notifications that are relevant to the cluster/data collector. The recipient list you set for the Data Collector itself will receive the data collector alerts. If there are no active data collector alerts, then monitor-generated alerts will be sent to specific monitor recipients.
+
 
 === Setting Corrective Actions or Additional Information
 
