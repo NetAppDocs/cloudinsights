@@ -31,7 +31,7 @@ Here you will find suggestions for troubleshooting problems with Acquisition Uni
 
 4. Restart the AU service. Click the _Copy Restart Command_ button, and paste the command into a command prompt on the AU.
 
-|Permission denied when starting the Acquisition Unit Server Service|When the AU is installed on SELinux, SE should be set to _permissive_ mode. _Enforcing_ mode is not supported. After setting SELINUX to permissive mode, restart the AU service.  link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/Permission_denied_when_starting_the_Cloud_Insight_Acquisition_Unit_Server_Service[[Learn more].
+|Permission denied when starting the Acquisition Unit Server Service|When the AU is installed on SELINUX, SE should be set to _permissive_ mode. _Enforcing_ mode is not supported. After setting SELINUX to permissive mode, restart the AU service.  link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/Permission_denied_when_starting_the_Cloud_Insight_Acquisition_Unit_Server_Service[[Learn more].
 
 |Server Requirements not met | Ensure that your Acquisition Unit server or VM meets  link:concept_acquisition_unit_requirements.html[requirements]
 
