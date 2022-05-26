@@ -16,7 +16,7 @@ keywords: event, checker, rate, sizing
 :imagesdir: ./media/
 
 [.lead]
-The Event Rate Checker is used to check the NFS/SMB combined event rate in the SVM before installing an ONTAP SVM data collector, to see how many SVMs one Agent machine will be able to monitor.
+The Event Rate Checker is used to check the NFS/SMB combined event rate in the SVM before installing an ONTAP SVM data collector, to see how many SVMs one Agent machine will be able to monitor. An Agent can support up to 50 data collectors.
 
 Requirements:
 
@@ -57,7 +57,7 @@ Steps:
 
 Keep the following in mind:
 
-A) A single Agent machine can handle the following:
+A) Use this table as a general sizing guide:
 
 |===
 
