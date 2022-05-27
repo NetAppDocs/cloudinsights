@@ -39,13 +39,16 @@ Shows the assets that have a high correlation (percentage) with one or more perf
 +
 Shows the assets that contribute (percentage) to the base asset.
 
-* Greedy
+* Workload Contentions
 +
-Shows the assets that take away system resources from the asset through sharing the same resources, such as hosts, networks, and storage.
+Shows the assets that impact or are impacted by other shared resources, such as hosts, networks, and storage. These are sometimes called _greedy_ and _degraded_ resources.
 
+////
 * Degraded
 +
 Shows the assets that are depleted of system resources due to this asset.
+////
+
 
 == Alerts in Expert View
 
