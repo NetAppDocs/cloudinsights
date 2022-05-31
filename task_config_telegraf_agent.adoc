@@ -421,9 +421,9 @@ To upgrade the telegraf agent, do the following:
 
 === Kubernetes
 
-NOTE: The Kubernetes instructions on this page are moving to a new page. Please link:task_config_telegraf_agent_k8s.html[*go here*] for up-to-date Kubernetes agent instructions.
+NOTE: The Kubernetes instructions have moved to a new page. Please link:task_config_telegraf_agent_k8s.html[*go here*] for up-to-date Kubernetes agent instructions.
 
-
+////
 Kubernetes offers two ways to collect data:
 
 * NetApp Kubernetes Monitoring Operator configuration. This is the recommended installation method for Kubernetes.
@@ -838,6 +838,7 @@ To upgrade the telegraf agent, do the following:
  kubectl --namespace ci-monitoring delete pod <Telegraf_pod>
 ////
 
+////
 
 == Verifying Checksums
 
