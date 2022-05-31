@@ -439,6 +439,7 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 .Pre-requisites:
 
 * NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes 1.17 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
+////
 
 ////
 * NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with the following:
@@ -447,6 +448,7 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 ** Rancher 2.4 - 2.6.  
 ////
 
+////
 * If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
 * The following commands must be available: _curl_, _sudo_ (not required for script-based installation), _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
@@ -828,6 +830,8 @@ To upgrade the telegraf agent, do the following:
 . link:#kubernetes[Install the new agent].
 
 ////
+
+////
 . Re-apply the configurations:
 
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-conf.yaml --force
@@ -838,7 +842,7 @@ To upgrade the telegraf agent, do the following:
  kubectl --namespace ci-monitoring delete pod <Telegraf_pod>
 ////
 
-////
+
 
 == Verifying Checksums
 
