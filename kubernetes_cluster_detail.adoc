@@ -31,7 +31,7 @@ image:Kubernetes_Detail_Page_new.png[Cluster detail page]
 
 
 
-=== Namespace, Node, and Pod Counts
+== Namespace, Node, and Pod Counts
 
 The counts at the top of the page show you the total number of namespaces, nodes, and pods in the cluster, as well as the number of popds that are currently alerting and pending.
 
@@ -39,7 +39,9 @@ image:Kubernetes_Pod_Counts.png[Node and Pod Counts]
 
 NOTE:  It is possible that the three pod sub-counts (healthy, alerting, pending) can add up to more than the displayed total number of pods. This can happen because the _pending_ count includes _all_ pending pods, both unscheduled and scheduled (in other words, unattached and attached to nodes).
 
-=== The Cluster "Wheel"
+
+
+== The Cluster "Wheel"
 
 image:Kubernetes_Wheel_Section.png[Cluster Wheel]
 
@@ -64,9 +66,9 @@ You can view Filesystem, Memory, and CPU information by hovering over the Node e
 image:Kubernetes_Capacity_Info.png[Node Capacity and Allocation]
 
 
-=== Saturation
+== Saturation
 
-On the top right of the detail page is  your cluster saturation as a current percentage as well as a graph showing the recent trend over time.  
+On the top right of the detail page is your cluster saturation as a current percentage as well as a graph showing the recent trend over time.  
 
 Below that, the page shows by default *Shared Resources* usage, with tabs for CPU, Memory, and Storage. Each tab shows the saturation percentage and trend over time, with additional usage details.
 
@@ -76,7 +78,7 @@ The devices with the highest usage are shown in a table at the bottom. Click any
 
 
 ////
-=== Detail Section
+== Detail Section
 
 Each page of the Kubernetes Explorer displays a set of usage graphs that may include CPU, Memory, and Storage. Below these graphs are summaries and lists of the top objects in each category, with links to underlying details. For example, _Node_ shows pods and containers, _Pod_ shows PVCs and related objects and containers, etc.  The following illustration shows an example of the detailed information on a _Node_ page:
 
@@ -87,7 +89,7 @@ Resources experiencing alerts will show at the top of the lists. Click on the af
 
 
 
-==== A note about the gauges
+== A note about the gauges
 
 The Memory and CPU gauges show three colors, since they show _used_ in relation to both _allocatable capacity_ and _total capacity_. Storage gauges only show two colors because they only show a single pair of values: _used_ in relation to _total_.
 
