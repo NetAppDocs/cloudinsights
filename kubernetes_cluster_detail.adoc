@@ -35,7 +35,7 @@ image:Kubernetes_Detail_Page_new.png[Cluster detail page]
 
 The counts at the top of the page show you the total number of namespaces, nodes, and pods in the cluster, as well as the number of popds that are currently alerting and pending.
 
-NOTE:  It is possible that the three pod sub-counts (healthy, alerting, pending) can add up to more than the displayed total number of pods. This can happen because the _pending_ count includes _all_ pending pods, both unscheduled and scheduled (in other words, unattached and attached to nodes).
+//NOTE:  It is possible that the three pod sub-counts (healthy, alerting, pending) can add up to more than the displayed total number of pods. This can happen because the _pending_ count includes _all_ pending pods, both unscheduled and scheduled (in other words, unattached and attached to nodes).
 
 
 
