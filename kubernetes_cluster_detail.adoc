@@ -38,6 +38,15 @@ The counts at the top of the page show you the total number of namespaces, nodes
 //NOTE:  It is possible that the three pod sub-counts (healthy, alerting, pending) can add up to more than the displayed total number of pods. This can happen because the _pending_ count includes _all_ pending pods, both unscheduled and scheduled (in other words, unattached and attached to nodes).
 
 
+== Saturation
+
+On the top right of the detail page is your cluster saturation as a current percentage as well as a graph showing the recent trend over time.  
+
+Below that, the page shows by default *Shared Resources* usage, with tabs for CPU, Memory, and Storage. Each tab shows the saturation percentage and trend over time, with additional usage details.
+
+The devices with the highest usage are shown in a table at the bottom. Click any link to explore these devices.
+
+
 
 == The Cluster "Wheel"
 
@@ -62,16 +71,6 @@ image:Kubernetes_Pod_Red.png[Critical Pod Information]
 You can view Filesystem, Memory, and CPU information by hovering over the Node elements.
 
 image:Kubernetes_Capacity_Info.png[Node Capacity and Allocation]
-
-
-== Saturation
-
-On the top right of the detail page is your cluster saturation as a current percentage as well as a graph showing the recent trend over time.  
-
-Below that, the page shows by default *Shared Resources* usage, with tabs for CPU, Memory, and Storage. Each tab shows the saturation percentage and trend over time, with additional usage details.
-
-The devices with the highest usage are shown in a table at the bottom. Click any link to explore these devices.
-
 
 
 
