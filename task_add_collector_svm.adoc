@@ -18,7 +18,7 @@ summary: Adding data collectors
 [.lead]
 Cloud Secure uses data collectors to collect file and user access data from devices. 
 
-=== Before you begin
+== Before you begin
 
 * This data collector is supported with the following:
 ** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
@@ -83,9 +83,9 @@ See link:concept_cs_agent_requirements.html[Agent requirements] for configuratio
 
 * When an Agent is installed in an AWS EC2 instance to monitor a Cloud ONTAP SVM, the Agent and Storage must be in the same VPC. If they are in separate VPCs, there must be a valid route between the VPC’s.
 
-=== A Note About Permissions
+== A Note About Permissions
 
-==== Permissions when adding via *Cluster Management IP*:
+=== Permissions when adding via *Cluster Management IP*:
 
 If you cannot use the Cluster management administrator user to allow Cloud Secure to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Cloud Secure data collector to use Cluster Management IP. 
 
@@ -108,7 +108,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*" 
 
 
-==== Permissions when adding via *Vserver Management IP*:
+=== Permissions when adding via *Vserver Management IP*:
 
 If you cannot use the Cluster management administrator user to allow Cloud Secure to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Cloud Secure data collector to use Vserver Management IP.
 
@@ -152,7 +152,7 @@ Note that if the data collector is added using "causer", link:cs_cs_automated_re
 ////
 
 
-=== Configure the data collector
+== Configure the data collector
 
 .Steps for Configuration 
 
@@ -204,7 +204,7 @@ When adding via SVM IP the options are:
 * In the Installed Data Collectors page, use the options menu on the right of each collector to edit the data collector. You can restart the data collector or edit data collector configuration attributes. 
 
 
-=== Troubleshooting 
+== Troubleshooting 
 
 Known problems and their resolutions are described in the following table. 
 
