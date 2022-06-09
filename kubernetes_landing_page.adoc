@@ -25,7 +25,7 @@ NOTE: Numbers displayed in blue in the various sections of this and subsequent K
 image:Kubernetes_Cluster_Overview_Page.png[Kubernetes Overview]
 
 
-=== Cluster Usage overview
+== Cluster Usage overview
 
 image:Kubernetes_Cluster_List.png[Cluster List Overview]
 
@@ -48,12 +48,12 @@ You can sort the cluster list by any of the following factors:
 Clicking on a Cluster Name will open the link:kubernetes_cluster_detail.html[*detail page*] for that cluster
 
  
-=== Node and Pod Status
+== Node and Pod Status
 
 image:Kubernetes_Node_Pod_Status.png[Node and Pod Status]
 
 
-=== Namespaces
+== Namespaces
 
 To the right of the screen is a list of the top three namespaces utilized in each cluster.  Click the *All* link to see all namespaces for the cluster.
 
@@ -62,7 +62,7 @@ Clicking on a namespace will open the Namespace Detail Page.
 image:Kubernetes_Namespaces.png[Namespaces]
 
 
-=== Refining the Filter
+== Refining the Filter
 
 When you are filtering, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or AND, or you can select the "None" option to filter for null values in the field.
 
