@@ -6,6 +6,7 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 ---
 
 = Alerting with Monitors
+
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -70,7 +71,7 @@ When working with integration data (Kubernetes, ONTAP Advanced Data, etc.), metr
 TIP: To create a multi-condition monitor (e.g., IOPS > X and latency > Y), define the first condition as a threshold and the second condition as a filter.
 
 
-===== Define the Conditions of the Monitor. 
+==== Define the Conditions of the Monitor. 
 
 . After choosing the object and metric to monitor, set the Warning-level and/or Critical-level thresholds.
 . For the _Warning_ level, enter 200 for our example. The dashed line indicating this Warning level displays in the example graph.
@@ -389,12 +390,13 @@ Grouping allows you to view and manage related monitors. For example, you can ha
 image:Monitors_GroupList.png[Monitor Grouping]
 
 ////
+////
 Two groups are shown by default:
 
 * *All Monitors* lists all monitors.
 * *Custom Monitors* lists only user-created monitors.
 * *Suspended Monitors* will be shown only if a monitor has been suspended by the system. 
-
+////
 
 ////
 
