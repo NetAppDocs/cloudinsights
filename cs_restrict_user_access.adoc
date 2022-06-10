@@ -27,7 +27,7 @@ For example, let's say Cloud Secure manages 10 SVMs and the Automatic Response P
 
 If there are four SVMs with one SVM configured for CIFS, one configured for NFS, and the remaining two configured for both NFS and CIFS, all the SVMs will be blocked if the attack originates in any of the four SVMs.
 
-=== Prerequisites for User Access Restriction
+== Prerequisites for User Access Restriction
 
 Customers must configure export policies for SMB and NFS for this feature to work. Follow the steps below if NFS and SMB are configured in the Data Source Collector.
 
@@ -84,12 +84,12 @@ To check if the _exportpolicy_ and _exportpolicy rule_ have been configured corr
  
  export-policy rule show -policyname default -vserver <vserver>
 
-=== How to enable the feature?
+== How to enable the feature?
 
 * In Cloud Secure, navigate to *Admin > Automated Response Policies > Response Policy Settings > Access Limitation*.
 * Set “Enable Restrict User Access” to _enabled_.
 
-=== How to set up Automatic user access restriction?
+== How to set up Automatic user access restriction?
 
 * Create a new Attack Policy or edit an existing Attack policy.
 * Select the SVMs on which the attack policy should be monitored.
@@ -98,21 +98,21 @@ To check if the _exportpolicy_ and _exportpolicy rule_ have been configured corr
 * Under “Time Period” select the time until which the restriction should be applied.
 * To test automatic restriction,, you can simulate an attack via a link:concept_cs_attack_simulator.html[simulated script].
 
-=== How to know if there are restricted users in the system?
+== How to know if there are restricted users in the system?
 
 * In the alert lists page, a banner on the top of screen will be displayed in case any user is restricted.
 * Clicking on the banner will take you to the “Users” page. In that the list of restricted users can be seen.
 * In the “Users” page, there in a column named “IP Access”. In that column, the current state of user restriction will be displayed.
 
-=== Restrict and manage user access manually 
+== Restrict and manage user access manually 
 
 * You can go to the alert details or user details screen and then manually restrict or un-restrict a user from those screens.
 
-=== User Restrict Access History
+== User Restrict Access History
 
 In the alert details and user details page, in the user panel, you can view an audit of the user’s restrict access limitation history: Time, Action (Block, Read-only, restore), duration, action taken by, manual/automatic, and affected IPs. 
 
-=== How to disable the feature?
+== How to disable the feature?
 
 At any time, you can disable the feature. If there are restricted users in the system, you must restore their access first.
 
@@ -122,7 +122,7 @@ At any time, you can disable the feature. If there are restricted users in the s
 The feature will be hidden from all pages.
 
 
-=== Manually Restore IPs
+== Manually Restore IPs
 
 Use the following steps to manually restore any IPs from ONTAP if your Cloud Secure trial expires, or if the agent/collector is down. 
  
