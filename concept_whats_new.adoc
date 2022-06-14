@@ -51,6 +51,20 @@ ONTAP change log entries can be viewed in the log explorer.
 image:ChangeLogEntries.png[image showing change log entry examples]
 
 
+=== Operating System support
+
+The following operating systems are supported with Cloud Insights Acquisition Units, in addition to those link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[already supported]:
+
+* CentOS Stream 9
+* Windows 2022
+
+
+=== Updated Telegraf Agent
+
+The agent for ingestion of telegraf integration data has been updated to version *1.21.3*, with performance and security improvements.
+Users wishing to update can refer to the appropriate upgrade section of the link:task_config_telegraf_agent.html[Agent Installation] documentation.
+Previous versions of the agent will continue to function with no user action required.
+
 
 === Preview Features
 
