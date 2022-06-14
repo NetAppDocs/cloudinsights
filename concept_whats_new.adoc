@@ -33,19 +33,20 @@ Is your cluster just starting in the world, or has it experienced a long digital
 image:KubernetesNodeAge.png[Kubernetes Node list showing age in seconds]
 
 
-=== What's changed in environment?
-
-ONTAP change log entries can be viewed in the log explorer.
-
-image:ChangeLogEntries.png[image showing change log entry examples]
-
-
 === Capacity Time-to-Full forecasting	
 Cloud Insights provides a dashboard to forecast the number of days until capacity runs out for each Storage, Storage Pool, Internal Volume, and Volume monitored. These values can help to significantly reduce the risk of an outage. 
 
 image:Internal Volume - Time to Full dashboard example.png[Internal Volume TTF forecasting dashboard]
 
 Note that Time-to-Full forecasting is moving out of _Preview_ and will be rolled out to all customers.
+
+
+=== What's changed in environment?
+
+ONTAP change log entries can be viewed in the log explorer.
+
+image:ChangeLogEntries.png[image showing change log entry examples]
+
 
 
 === Preview Features
