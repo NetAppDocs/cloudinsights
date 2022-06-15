@@ -121,7 +121,7 @@ agentlogin.cs01-ap-1.cloudinsights.netapp.com
 |Protocol|Port|	Destination	|Direction|	Description
 |TCP|389(LDAP)
 636 (LDAPs / start-tls) |LDAP Server URL|Outbound|Connect to LDAP
-|TCP|443|SVM Management IP Address|Outbound|API communication with ONTAP
+|TCP|443|Cluster or SVM Management IP Address (depending on SVM collector configuration)|Outbound|API communication with ONTAP
 |TCP|35000 - 55000|SVM data LIF IP Addresses|Inbound/Outbound|Communication with ONTAP for Fpolicy events
 |TCP|7|SVM data LIF IP Addresses|Outbound|Bidirectional between ONTAP and Cloud Secure. Agent pings the SVM Lifs.
 |===
