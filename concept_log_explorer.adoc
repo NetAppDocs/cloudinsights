@@ -25,7 +25,7 @@ image:LogExplorerMenu.png[Log queries menu, 480]
 Select an available log from the list. 
 //This list may vary based on your current Cloud Insights environment configuration.
 
-image:LogExplorer_ChooseLog.png[Choose your log]
+image:LogExplorer_2022.png[Choose your log]
 
 NOTE: The types of logs available for querying may vary based on your environment. Additional log types may be added over time.
 
@@ -37,7 +37,7 @@ The results are displayed in a graph showing the number of log instances in each
 
 image:LogExplorer_QueryForFailed.png[Query example showing filter]
 
-==== The Log Graph
+== The Log Graph
 
 The graph shows the number of log entries, grouped into _buckets_, which are based on the selected dashboard time range. The buckets for each time range are as follows:
 
@@ -67,7 +67,7 @@ Note that when zooming the graph or scrolling the table, dashboard auto-refresh 
 At any point, you can click on _Create a Log Monitor_ to create a new Monitor based on the current filter.
 
 
-==== Log Details
+== Log Details
 
 Clicking anywhere in a log entry in the list will open a detail pane for that entry.  Here you can explore more information about the event. 
 

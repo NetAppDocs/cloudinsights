@@ -18,7 +18,7 @@ keywords: AU, acquisition unit, RAU, requirements, sizing
 [.lead]
 You must install an Acquisition Unit (AU) in order to acquire information from your infrastructure data collectors (storage, VM, port, EC2, etc.). Before you install the Acquisition Unit, you should ensure that your environment meets operating system, CPU, memory, and disk space requirements.
 
-=== Requirements
+== Requirements
 
 |===
 |Component | Linux Requirement | Windows Requirement
@@ -99,10 +99,10 @@ OLD STYLE:
 * Ubuntu Server 18.04 LTS
 ////
 
-=== Additional recommendations
+== Additional recommendations
 * For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Acquisition Unit machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
-=== Regarding Sizing
+== Regarding Sizing
 
 You can get started with a Cloud Insights Acquisition Unit with just 8GB memory and 50GB of disk space, however, for larger environments you should ask yourself the following questions: 
 
