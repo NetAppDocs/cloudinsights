@@ -26,6 +26,10 @@ Cloud Insights makes it easier than ever to explore your Kubernetes environment,
 
 image:Kubernetes_Detail_Page_new.png[Cluster detail page]
 
+The Cluster list page also gives you a quick view of saturation, in addition to Node, Pod, Namespace, and Workload counts:
+
+image:Kubernetes_List_Page_new.png[Cluster list page showing saturation numbers]
+
 
 
 === How old is your Kubernetes cluster?
@@ -37,9 +41,11 @@ image:KubernetesNodeAge.png[Kubernetes Node list showing age in seconds]
 
 === Capacity Time-to-Full forecasting	
 
-Cloud Insights provides a dashboard to forecast the number of days until capacity runs out for each Storage, Storage Pool, Internal Volume, and Volume monitored. These values can help to significantly reduce the risk of an outage. 
+Cloud Insights provides a dashboard to forecast the number of days until capacity runs out for each Internal Volume monitored. These values can help to significantly reduce the risk of an outage. 
 
 image:Internal Volume - Time to Full dashboard example.png[Internal Volume TTF forecasting dashboard]
+
+TTF counters are also available for Storage, Storage Pool, and Volume. Keep watching this space for additional dashboards for these objects. 
 
 Note that Time-to-Full forecasting is moving out of _Preview_ and will be rolled out to all customers.
 
