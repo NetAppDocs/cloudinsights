@@ -17,7 +17,8 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 
 
 [.lead]
-Cloud Insights uses link:https://docs.influxdata.com/telegraf/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
+
+Cloud Insights uses link:https://docs.influxdata.com/telegraf[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
 The current Telegraf version for Cloud Insights is *1.22.3*.
 
@@ -421,9 +422,9 @@ To upgrade the telegraf agent, do the following:
 
 === Kubernetes
 
-NOTE: The Kubernetes instructions on this page are moving to a new page. Please link:task_config_telegraf_agent_k8s.html[*go here*] for up-to-date Kubernetes agent instructions.
+Kubernetes Agent instructions have moved to a new page. Please link:task_config_telegraf_agent_k8s.html[*go here*] for up-to-date Kubernetes agent instructions.
 
-
+////
 Kubernetes offers two ways to collect data:
 
 * NetApp Kubernetes Monitoring Operator configuration. This is the recommended installation method for Kubernetes.
@@ -439,6 +440,7 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 .Pre-requisites:
 
 * NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes 1.17 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
+////
 
 ////
 * NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with the following:
@@ -447,6 +449,7 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 ** Rancher 2.4 - 2.6.  
 ////
 
+////
 * If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
 * The following commands must be available: _curl_, _sudo_ (not required for script-based installation), _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
@@ -828,6 +831,8 @@ To upgrade the telegraf agent, do the following:
 . link:#kubernetes[Install the new agent].
 
 ////
+
+////
 . Re-apply the configurations:
 
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-conf.yaml --force
@@ -837,6 +842,7 @@ To upgrade the telegraf agent, do the following:
 
  kubectl --namespace ci-monitoring delete pod <Telegraf_pod>
 ////
+
 
 
 == Verifying Checksums

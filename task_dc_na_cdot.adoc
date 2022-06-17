@@ -143,7 +143,7 @@ To create a local account for Cloud Insights at the cluster level, log in to ONT
 
  security login role create -role ci_readonly -cmddirname DEFAULT -access readonly
  security login role create -role ci_readonly -cmddirname security -access readonly
- security login role create -role ci_readonly -access all -cmddirname “cluster application-record create”
+ security login role create -role ci_readonly -access all -cmddirname {cluster application-record create}
  
 . Create the read-only user using the following command. Once you have executed the create command, you will be prompted to enter a password for this user.
 

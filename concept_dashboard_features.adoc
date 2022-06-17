@@ -435,14 +435,6 @@ To use a variable in an expression, simply type the variable name, for example, 
 
 
 
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 == Variables
 
 Variables allow you to change the data displayed in some or all widgets on a dashboard at once. By setting one or more widgets to use a common variable, changes made in one place cause the data displayed in each widget to update automatically.  
@@ -484,7 +476,7 @@ Be sure to *Save* your dashboard when you have it configured as you want it.
 
 Dashboard variables come in several types, can be used across different fields, and must follow rules for naming. These concepts are explained here.
 
-==== Variable types
+=== Variable types
 
 A variable can be one the following types:
 
@@ -541,20 +533,6 @@ You can create generic variables that are not associated with a particular attri
 image:Variables_in_a_Widget_Filter.png[Selecting a variable in a widget]
 
 
-////
-==== Variable filter scope
-
-Additionally, you can choose the scope to which the variable is applied in your dashboard. For most attributes, you can choose from among the following:
-
-* Filter all widgets by the specified attribute (for example, *agent.node.agent_node_ip*)
-* Filter only those widgets showing data from the parent attribute (for example, *agent.node*)
-* Filter manually (meaning, you choose the variable in a filter on an individual widget)
-
-image:Variables_Choose_Filter_Scope.png[Select variable filter scope]
-
-Read more about link:https://docs.netapp.com/us-en/cloudinsights/task_create_query.html#more-on-filtering[filtering options].
-////
-
 ==== Variable Filter Scope
 
 When you add an Annotation or Attribute variable to your dashboard, the variable can be applied to _all_ widgets on the dashboard, meaning that all widgets on your dashboard will display results filtered according to the value you set in the variable. 
@@ -577,22 +555,6 @@ To use a variable in an expression, simply type the variable name as part of the
 Filtering in variables is _contextual_; when you select a filter value or values for a variable, the other variables on your page will show only values relevant to that filter.
 For example, when setting a variable filter to a specific storage _Model_, any variables set to filter for storage _Name_ will only show values relevant to that Model.
 
-////
-==== "Generic" variables
-
-You can set a generic or universal variable by clicking the *Add Variable* button and selecting 'text',' or 'number' variable type. The variable is assigned a default name, for example "$var1", and is not tied to a specific annotation or attribute. In other words, searching for a number or phrase in this variable applies to _all_ fields in any widget using this variable.
-////
-
-////
-Configuring a generic variable allows you to use that variable in widgets to filter for any field of that type. For example, if you have a table widget showing Name, Alias, and Vendor (which are all text-type attributes), and "$var1" is a text-type variable, you can set filters for each of those fields in the widget to use the $var1 variable. You can set other widgets to use $var1 for those or any text fields.
-
-On your dashboard page, setting $var1 to a value (for example "NetApp") will filter all of those fields in all widgets that are set to use that variable. In this way, you can update multiple widgets at once to highlight dashboard data you choose at will.
-
-Because generic variables can be used for any field of that type, you can change the name of a generic variable without changing its functionality.
-
-Note: All variables are treated as "generic" variables, even those you create for a specific attribute, because all configured variables of a type are shown when you set a filter for any attributes or annotations of that type. However, best practice is to create a generic variable when you will use it to filter for a value across multiple fields, as in the Name/Alias/Vendor example above.
-////
-
 
 
 ==== Variable naming
@@ -606,69 +568,7 @@ Variables names:
 * Cannot be the same as an existing variable name.
 * Cannot be empty.
 
-////
-==== Widgets that use variables
 
-Variables can be used with the following widgets:
-
-* Area Chart
-* Bar Chart
-* Box Plot Chart
-* Line Chart
-* Scatter Plot Chart
-* Single Value Widget
-* Spline Chart
-* Stacked Area Chart
-* Table Widget
-* Pie Chart
-////
-
-////
-=== Understanding "$this" variables
-
-Special variables on an asset's landing page allow you to easily showcase additional information that is directly related to the current asset. These special variables have names beginning with '$this".
-
-. About this task
-To use the "$this" variables in widgets on your asset's landing page, follow the steps below. For this example, we will add a *table widget*.
-
-NOTE: "$this" variables are only valid for an asset's landing page. They are not available for other dashboards. The available "$this" variables varies according to asset type.
-
-.Steps
-. Navigate to the landing page for an asset of your choosing. For this example, let's choose a Virtual Machine (VM) asset page. Query or search for a VM and click on the link to go to that VM's asset page.
-+
-The asset page for the VM opens.
-. Click *Edit* to switch to edit mode, and click the *Add Widget* button. Choose the *Table* widget.
-+
-The Table widget opens for editing. By default, all storages are shown in the table.
-. We want to show all virtual machines. Click on the asset selector and change _Storage_ to _Virtual Machine_.
-+
-All virtual machines are now shown in the table.
-. Click on the gear button and add the _Hypervisor Name_ column to the table.
-+
-The hypervisor name is shown for each VM in the table.
-. We only care about the hypervisor that hosts the current VM. Click on the *Filter by* field's *+* button and select _Hypervisor Name_.
-. Click on _Any_ and select the *$this.host.name* variable. Press Enter or click off the field to apply the filter.
-+
-The table now shows all the VM's hosted by the current VM's hypervisor. 
-. Click *Save* to save the widget. 
-. Click *Save* to save the asset page.
-
-.Result
-
-The table that you created for this VM asset page will be displayed for any VM asset page you display. The use of the _$this.host.name_ variable in the widget means that only the VM's owned by the _current assets's_ hypervisor will be displayed in the table.
-
-You can also apply link:concept_in_context_filters.html[*in-context filters*] to asset page widgets to accomplish a similar result.
-////
-
-////
-== Duplicating a Dashboard
-
-You can easily duplicate an existing dashboard from the dashboard page itself or from the dashboard list page.
-
-* To duplicate a dashboard from the dashboard main page, click the dropdown in the upper right corner and select *Save As...*.  The new dashboard is given the current dashboard name appended with "copy", "copy 2", "copy 3", etc. You can choose to keep or change the default name. 
-
-* To duplicate a dashboard from the list page, click the "three dots" menu to the right of the dashboard and select *Duplicate*. The dashboard is created with the current dashboard name appended with "copy", "copy 2", etc. 
-////
 
 == Formatting Gauge Widgets
 

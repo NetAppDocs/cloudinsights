@@ -18,51 +18,24 @@ summary: The Kubernetes landing page explained
 [.lead]
 The Cloud Insights Kubernetes Explorer is a powerful tool for displaying the overall health and usage of your Kubernetes clusters and allows you to easily drill down into areas of investigation. 
 
-Clicking on *Dashboards > Kubernetes Explorer* opens the Kubernetes Cluster overview page. This overview page contains a wide variety of at-a-glance information. 
+Clicking on *Dashboards > Kubernetes Explorer* opens the Kubernetes Cluster list page. This overview page contains table of the Kubernetes clusters in your environment. 
 
-NOTE: Numbers displayed in blue in the various sections of this and subsequent Kubernetes Explorer pages (for example, node/pod status, namespace counts, etc.) are links to related query pages that show the details behind those numbers.  
-
-image:Kubernetes_Cluster_Overview_Page.png[Kubernetes Overview]
+image:Kubernetes_List_Page_new.png[Kubernetes list page]
 
 
-=== Cluster Usage overview
+=== Cluster list 
 
-image:Kubernetes_Cluster_List.png[Cluster List Overview]
+The cluster list displays the following information for each cluster in your environment:
 
-The cluster list displays the following usage information for each cluster in your environment:
-
-* CPU: percentage of total CPU capacity in use
-* Memory: percentage of total memory used
-* Storage: percentage of total storage in use
-
-You can sort the cluster list by any of the following factors:
-
-* Node & Pod Alert Level (default)
-* Cluster Name
-* Number of Nodes
-* Most Utilized by Compute
-* Least Utilized by Compute
-* Most Utilized by Storage
-* Least Utilized by Storage 
-
-Clicking on a Cluster Name will open the link:kubernetes_cluster_detail.html[*detail page*] for that cluster
-
+* Cluster *Name*. Clicking on a cluster name will open the link:kubernetes_cluster_detail.html[*detail page*] for that cluster.
+* *Saturation* percentages. Overall Saturation is the highest of CPU, Memory, or Storage Saturation.
+* Number of *Nodes* in the cluster. Clicking this number will open the Node list page.
+* Number of *Pods* in the cluster. Clicking this number will open the Pod list page.
+* Number of *Namespaces* in the cluster. Clicking this number will open the Namespace list page.
+* Number of *Workloads* in the cluster. Clicking this number will open the Workload list page.
  
-=== Node and Pod Status
 
-image:Kubernetes_Node_Pod_Status.png[Node and Pod Status]
-
-
-=== Namespaces
-
-To the right of the screen is a list of the top three namespaces utilized in each cluster.  Click the *All* link to see all namespaces for the cluster.
-
-Clicking on a namespace will open the Namespace Detail Page.
-
-image:Kubernetes_Namespaces.png[Namespaces]
-
-
-=== Refining the Filter
+== Refining the Filter
 
 When you are filtering, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or AND, or you can select the "None" option to filter for null values in the field.
 
@@ -77,14 +50,3 @@ Kubernetes filters are contextual, meaning for example that if you are on a spec
 Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
 
 
-
-////
-=== Kubernetes Node Page
-
-image:[]
-
-
-=== Kubernetes Pod Page
-
-image:[]
-////

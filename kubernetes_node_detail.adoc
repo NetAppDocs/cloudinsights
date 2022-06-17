@@ -21,7 +21,7 @@ In the Kubernetes Explorer, you can click on a Node icon to open a detailed info
 //image:Kubernetes_Node_Page.png[Kubernetes Node Page]
 image:KubernetesNodeFiltering.png[Kubernetes Node Detail page showing filtering]
 
-==== Exploring the Node's Pods and Persistent Volumes
+== Exploring the Node's Pods and Persistent Volumes
 
 Cloud Insights provides visibility into the back-end storage for your Kubernetes environments, giving you insight to your Kubernetes Pods and Persistent Volumes (PVs). You can track PV counters such as IOPS, latency, and throughput from a single Pod’s usage through a PV counter to a PV and all the way to the back-end storage device. 
 
@@ -37,7 +37,7 @@ NOTE: If you have customized your Volume or Internal Volume landing page, you ma
 Note that to take advantage of these new tables, it is recommended to uninstall your current Kubernetes agent, and install it fresh. You must also install Kube-State-Metrics version 2.1.0 or later.
 
 
-==== Kubernetes Node to VM links
+== Kubernetes Node to VM links
 
 On a Kubernetes Node page, you can click to open the Node's VM page. The VM page also includes a link back to the Node itself.
 
