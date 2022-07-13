@@ -379,10 +379,16 @@ Edit the ONTAP SVM data collector and un-check CIFs as allowed protocol. Save th
 
 |Data Collector shows the error message:
 “Error: Failed to determine the health of the collector within 2 retries, try restarting the collector again (Error Code: AGENT008)”.
-|On the Data Collectors page, scroll to the right of the data collector giving the error and click on the 3 dots menu. Select _Edit_.
+|1. On the Data Collectors page, scroll to the right of the data collector giving the error and click on the 3 dots menu. Select _Edit_.
 Enter the password of the data collector again.
 Save the data collector by pressing on the _Save_ button.
 Data Collector will restart and the error should be resolved.
+
+2. The Agent machine may not enough CPU or RAM headroom, that is why the DSCs are failing.
+Please check the number of Data Collectors which are added to the Agent in the machine.
+If it is more than 20, please increase the CPU and RAM capacity of the Agent machine.
+Once the CPU and RAM is increased, the DSCs will get into Initializing and then to Running state automatically.
+Look into the sizing guide https://docs.netapp.com/us-en/cloudinsights/concept_cs_event_rate_checker.html in this page.
 
 |===
 
