@@ -1,0 +1,74 @@
+--
+sidebar: sidebar
+permalink: task_dc_cohesity_smartfiles.html
+
+keywords: data collector, cohesity
+
+summary: Configuring the Cohesity SmartFiles data collector.
+---
+
+= Cohesity SmartFiles data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead] 
+
+This REST API-based collector will acquire a Cohesity cluster, discovering the “Views” (as Cloud Insights Internal Volumes), the various nodes, as well as collecting performance metrics.
+
+////
+== Terminology
+
+Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+
+|Vendor/Model Term|Cloud Insights Term
+
+|Disk|Disk
+|Disk Folder|Disk Group
+|Storage Center|Storage
+|Controller|Storage Node
+|Storage Type|Storage Pool
+|Volume|Volume
+|Fiber Channel I/O Port|Port
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector.
+
+== Requirements
+ 
+* Administrator credentials for the Dell EMC XC Enterprise Manager server
+* IP address of the XC Enterprise Manager server
+////
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Cohesity Cluster IP|IP address of the Cohesity cluster
+|User Name|User name for the Cohesity cluster 
+|Password|Password used for the Cohesity cluster
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|TCP Port|Port used for TCP communication with the Cohesity cluster
+|Inventory Poll Interval (min)|Interval between inventory polls. The  default is 60 minutes. 
+|Performance Poll Interval (min)|Interval between performance polls. The default is 900 seconds. 
+|===
+
+== Troubleshooting
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
