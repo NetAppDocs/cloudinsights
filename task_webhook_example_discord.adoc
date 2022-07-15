@@ -20,7 +20,7 @@ Webhooks allow users to send alert notifications to various applications using a
 
 NOTE: This page refers to third-party instructions, which could be subject to change. Refer to the link:https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks[Discord documentation] for the most up-to-date information. 
 
-=== Discord Setup:
+== Discord Setup:
 
 * In Discord, select the Server, under Text Channels, select Edit Channel (gear icon)
 
@@ -29,7 +29,7 @@ NOTE: This page refers to third-party instructions, which could be subject to ch
 * Copy the Webhook URL. You will need to paste this into the Cloud Insights webhook configuration.
 
 
-=== Create Cloud Insights Webhook:
+== Create Cloud Insights Webhook:
 
 . In Cloud Insights, navigate to *Admin > Notifications* and select the *Webhooks* tab. Click *+Webhook* to create a new webhook.
 
@@ -43,7 +43,7 @@ image:Webhooks-Discord_example.png[Discord webhook template]
 
 NOTE: In order to test the webhook, temporarily replace the url value in the message body with any valid URL (such as _https://netapp.com_) then click the _Test Webhook_ button. Be sure to set the message body back once the test completes.
 
-=== Notifications via Webhook
+== Notifications via Webhook
 
 To notify on events via webhook, in Cloud Insights navigate to *Alerts > Monitors* and click *+Monitor* to create a new link:task_create_monitor.html[monitor].
 
