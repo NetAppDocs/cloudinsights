@@ -323,7 +323,7 @@ _sudo useradd user_name -m -d HOME_DIR_
 -m :Create the user's home directory if it does not exist.
 -d : The new user is created using HOME_DIR as the value for the user's login directory.
 
-For instance, _sudo useradd cssys -m -d /cssys_, adds a user cssys and creates its login directory under root
+For instance, _sudo useradd cssys -m -d /cssys_, adds a user _cssys_ and creates its login directory under root.
 
 |===
 
