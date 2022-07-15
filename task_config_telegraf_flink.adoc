@@ -40,24 +40,24 @@ JobManager: The Flink primary system. Coordinates a series of TaskManagers. In a
 TaskManager: This is where Flink operators are executed.
 The Flink plugin is based on the telegraf's Jolokia plugin. As such as a requirement to gather info from all Flink components, JMX needs to be configured and exposed via Jolokia on all components.
 
-==== Compatibility
+=== Compatibility
 Configuration was developed against Flink version 1.7.0.
 
-==== Setting Up
+=== Setting Up
 
-===== Jolokia Agent Jar
+==== Jolokia Agent Jar
 For all individual components, a version the Jolokia agent jar file must be downloaded. The version tested against was link:https://jolokia.org/download.html[Jolokia agent 1.6.0]. 
 
 Instructions below assume that downloaded jar file (jolokia-jvm-1.6.0-agent.jar) is placed under location '/opt/flink/lib/'.
 
-===== JobManager
+==== JobManager
 To configure JobManager to expose the Jolokia API, you can setup the following environment variable on your nodes then restart the JobManager:
 
  export FLINK_ENV_JAVA_OPTS="-javaagent:/opt/flink/lib/jolokia-jvm-1.6.0-agent.jar=port=8778,host=0.0.0.0"
 
 You can choose a different port for Jolokia (8778). If you have an internal IP to lock Jolokia onto you can replace the "catch all" 0.0.0.0 by your own IP. Notice this IP needs to be accessible from the telegraf plugin. 
 
-===== TaskManager
+==== TaskManager
 To configure TaskManager(s) to expose the Jolokia API, you can setup the following environment variable on your nodes then restart the TaskManager:
 
  export FLINK_ENV_JAVA_OPTS="-javaagent:/opt/flink/lib/jolokia-jvm-1.6.0-agent.jar=port=8778,host=0.0.0.0"
