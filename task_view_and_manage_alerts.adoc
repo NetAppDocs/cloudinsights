@@ -20,7 +20,7 @@ Cloud Insights displays alerts when link:task_create_monitor.html[monitored thre
 
 TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
 
-=== Viewing and Managing Alerts
+== Viewing and Managing Alerts
 
 To view and manage alerts, do the following.
 
@@ -49,13 +49,13 @@ You can manage multiple alerts by selecting the checkbox to the left of each Ale
 
 Clicking on an Alert ID opens the Alert Detail Page.
 
-=== Alert Detail Page
+== Alert Detail Page
 
 The Alert Detail Page provides additional detail about the alert, including a _Summary_, an _Expert View_ showing graphs related to the object's data, any _Related Assets_, and _Comments_ entered by alert investigators.
 
 image:alert_detail_page.png[Alert Detail Page] 
 
-=== "Permanently Active" Alerts
+== "Permanently Active" Alerts
 
 It is possible to configure a monitor in such a way for the condition to *always* exist on the monitored object--for example, IOPS > 1 or latency > 0. These are often created as 'test' monitors and then forgotten. Such monitors create alerts that stay permanently open on the constituent objects, which can cause system stress and stability issues over time.  
 
