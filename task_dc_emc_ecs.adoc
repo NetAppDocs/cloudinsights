@@ -20,6 +20,8 @@ summary: Configuring ECS data collector.
 
 This data collector acquires inventory and performance data from EMC ECS storage systems. For configuration, the data collector requires an IP address of the ECS server and an administrative level domain account.
 
+NOTE: Dell EMC ECS is metered at a different Raw TB to Managed Unit rate. Every 40 TB of unformatted ECS capacity is charged as 1 link:concept_subscribing_to_cloud_insights.html#pricing[Managed Unit (MU)].
+
 == Terminology
 
 Cloud Insights acquires the following inventory information from the ECS data collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
