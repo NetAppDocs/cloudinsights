@@ -26,13 +26,13 @@ NOTE: For accurate audit and data reporting, it is strongly recommended to synch
 NOTE: If you want to verify the installation files before installing the Agent, read about <<Verifying Kubernetes Checksums>>.
 
 
-
+////
 == Operator-based install or script-based install?
 
 Cloud Insights has built a Kubernetes Operator for monitoring customers' Kubernetes clusters.  The NetApp Kubernetes Monitoring Operator (NKMO) is an improvement over script-installed monitoring methods because it allows more flexible configuration of monitoring controllable from Cloud Insights and fewer customer-driven configuration interventions, as well as enhances opportunities for monitoring other software running in the K8s cluster.
 
 NKMO continues to use underlying telegraf software for data collection, transformation, and delivery to Cloud Insights. This is enhanced with Custom Resource Definitions and Custom Resources to tailor monitoring for each K8s cluster.
-
+////
 
 == Installing the agent
 
@@ -58,15 +58,15 @@ NOTE: If you are using a proxy, read the proxy instructions for your platform be
 
 == Installing an Agent on Kubernetes
 
-Kubernetes offers two ways to collect data:
+Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
-* NetApp Kubernetes Monitoring Operator configuration. This is the recommended installation method for Kubernetes.
+////This is the recommended installation method for Kubernetes.
 * Traditional script-based Agent installation (not recommended)
 
 Installation instructions vary based on which you choose.
 
 image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
-
+////
 
 .Pre-requisites:
 
@@ -85,7 +85,7 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
 * The following commands must be available: _curl_, _sudo_ (not required for script-based installation), _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
-* kube-state-metrics must be installed. See below for more information. kube-state-metrics is automatically installed with Operator-based installation.
+* kube-state-metrics is essential, and is automatically installed with NetApp Kubernetes Monitoring Operator installation.
 
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
@@ -225,7 +225,7 @@ In the _spec:_ section, make the following changes:
 
 
 
-
+////
 === Upgrading from Script-based K8s monitoring to Operator-based
 
 If you already have installed script-based Kubernetes monitoring, follow these steps to upgrade to operator-based monitoring:
@@ -259,10 +259,10 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 .Install the K8s operator-based monitoring following the instructions in the install tile.
 
 image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
+////
 
 
-
-
+////
 == Script-Based Installation
 
 NOTE: Script-based installation is deprecated. Please  use Kubernetes Operator-based collection for monitoring your Kubernetes cluster.
@@ -330,7 +330,7 @@ Then, restart Telegraf:
 
  kubectl delete pod telegraf-ds-*
  kubectl delete pod telegraf-rs-*
-
+////
 
 
 
