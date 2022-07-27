@@ -197,13 +197,13 @@ Push the operator docker image to your private/local/enterprise docker repositor
 
 Download all open source dependencies to your private docker registry. The following open source images need to be downloaded:
 
- docker.io/telegraf:1.21.4
- gcr.io/kubebuilder/kube-rbac-proxy:v0.8.0
- k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.3.0
+ docker.io/telegraf: 1.22.3
+ gcr.io/kubebuilder/kube-rbac-proxy: v0.11.0
+ k8s.gcr.io/kube-state-metrics/kube-state-metrics: v2.4.2
  
 If fluent-bit is enabled, also download:
 
- docker.io/fluent-bit:1.8.12
+ docker.io/fluent-bit:1.9.3
  docker.io/kubernetes-event-exporter:0.10
 
 Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
