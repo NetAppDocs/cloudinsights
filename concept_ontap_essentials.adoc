@@ -5,7 +5,7 @@ summary: ONTAP Essentials is a set of dashboards and workflows to provide detail
 keywords: dashboard, widget, ontap, overview, insight
 ---
 
-= Dashboards Overview
+= ONTAP Essentials
 
 :toc: macro
 :hardbreaks:
@@ -22,7 +22,25 @@ ONTAP Essentials is a set of dashboards and workflows that provide detailed over
 * Workloads: List view of objects that provide interface to users to read/write data.
 * Data Protection: List view of various objects that can be protected using NetApp data protection technologies
 
+== Overview 
+
 To begin exploring, select *ONTAP Essentials* from the main Cloud Insights menu.
 
 image:ONTAP_Essentials_Overview.png[Overview dashboard for ONTAP Essentials]
+
+The *Overview* dashboard displays useful information like the number of clusters in your environment with their overall capacity and performance percentages. You will also see predictive data regarding the number of expected days until storage capacity or performance capacity runs out of space. And if any controllers in your infrastructure are running at high temperatures, ONTAP Essentials will show you those.
+
+Informative graphs give you a look into performance over time as well as breakdowns of capacity usage.
+
+Each of these graphs or data points can be used as a starting point for exploration or investigation. 
+
+== Infrastructure
+
+The ONTAP Essentials *Infrastructure* page gives you a view of cluster health. Set filters to dive deeper into individual systems.  
+
+image:ONTAP_Essentials_Infrastructure_1.png[Cluster Health in the Infrastructure]
+
+
+== Workloads
+
 
