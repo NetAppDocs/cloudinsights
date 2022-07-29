@@ -516,6 +516,19 @@ To upgrade the telegraf agent, do the following:
 ////
 
 
+== What if I have a PSP environment?
+
+Upgrading the NetApp Kubernetes Monitoring Operator (NKMO) on a Kubernetes cluster with Pod Security Policy (PSP) in place requires slightly different steps than in a non-PSP environment. If your cluster is PSP's in place, do the following to upgrade to the current NKMO which has support for PSPs:
+
+. Uninstall the previous monitoring operator deployment by following the removal steps since there is no upgrade mechanism that we have today. Steps to be followed:
+ kubectl delete agent agent-monitoring-netapp -n netapp-monitoring
+ kubectl delete ns netapp-monitoring
+ kubectl delete crd agents.monitoring.netapp.com
+ kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
+ kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
+. Navigate to the Kubernetes Operator deployment screen and follow the instruction which would deploy the latest version of the monitoring operator
+
+
 == Verifying Kubernetes Checksums
 
 The Cloud Insights agent installer performs integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform a download-only operation (as opposed to the default download-and-install), these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
