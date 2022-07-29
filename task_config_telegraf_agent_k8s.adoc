@@ -474,13 +474,20 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 For Operator-based installation run the following commands:
 
+ kubectl delete agent agent-monitoring-netapp -n <name-space>
+ kubectl delete ns <name-space>
+ kubectl delete clusterrole <name-space>-agent-manager-role <name-space>-agent-proxy-role
+ kubectl delete clusterrolebinding <name-space>-agent-manager-rolebinding <name-space>-agent-proxy-rolebinding
+ kubectl delete crd agents.monitoring.netapp.com
+
+//// Previous commands
  kubectl delete ns netapp-monitoring
  kubectl delete agent agent-monitoring-netapp
  kubectl delete crd agents.monitoring.netapp.com
  kubectl delete role agent-leader-election-role
  kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
-
+////
 
 If a Security Context Constraint was previously-created manually for a script-based Telegraf installation:
 
@@ -515,6 +522,8 @@ To upgrade the telegraf agent, do the following:
 
  kubectl --namespace ci-monitoring delete pod <Telegraf_pod>
 ////
+
+
 
 
 == Verifying Kubernetes Checksums
@@ -700,6 +709,18 @@ For example, edit the ReplicaSet...
  kubectl edit rs telegraf-rs
 
 ...and add the appropriate tolerations to the spec. Then, restart the ReplicaSet pod.
+
+|I have a PSP environment. Does this affect my monitoring operator?
+|If your Kubernetes cluster is running with Pod Security Policy (PSP) in place, you must upgrade to the latest NetApp Kubernetes Monitoring Operator. Follow these steps to upgrade to the current NKMO with support for PSP:
+
+. Uninstall the previous monitoring operator::
+ kubectl delete agent agent-monitoring-netapp -n netapp-monitoring
+ kubectl delete ns netapp-monitoring
+ kubectl delete crd agents.monitoring.netapp.com
+ kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
+ kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
+. Deploy the latest version of the monitoring operator.
+
 
 |===
 
