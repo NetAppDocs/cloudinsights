@@ -9,12 +9,11 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 
 :toc: macro
 :hardbreaks:
-:toclevels: 1
 :nofooter:
+:toclevels: 2
 :icons: font
 :linkattrs:
 :imagesdir: ./media/
-
 
 [.lead]
 Cloud Insights uses link:https://docs.influxdata.com/telegraf/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
@@ -25,6 +24,7 @@ NOTE: For accurate audit and data reporting, it is strongly recommended to synch
 
 NOTE: If you want to verify the installation files before installing the Agent, read about <<Verifying Kubernetes Checksums>>.
 
+toc::[]
 
 ////
 == Operator-based install or script-based install?
@@ -480,7 +480,7 @@ For Operator-based installation run the following commands:
  kubectl delete clusterrolebinding <name-space>-agent-manager-rolebinding <name-space>-agent-proxy-rolebinding
  kubectl delete crd agents.monitoring.netapp.com
 
-//// Previous commands
+////
  kubectl delete ns netapp-monitoring
  kubectl delete agent agent-monitoring-netapp
  kubectl delete crd agents.monitoring.netapp.com
