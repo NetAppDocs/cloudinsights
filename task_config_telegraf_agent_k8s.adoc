@@ -478,7 +478,7 @@ For Operator-based installation run the following commands:
  kubectl delete clusterrolebinding <name-space>-agent-manager-rolebinding <name-space>-agent-proxy-rolebinding
  kubectl delete crd agents.monitoring.netapp.com
 
-//// Previous commands
+////
  kubectl delete ns netapp-monitoring
  kubectl delete agent agent-monitoring-netapp
  kubectl delete crd agents.monitoring.netapp.com
