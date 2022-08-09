@@ -84,7 +84,7 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
 * The NetApp Kubernetes Monitoring Operator and its dependencies (telegraf, kube-state-metrics, fluentbit, etc.) are not supported on nodes that are running with Arm64 architecture.
 
-* The following commands must be available: _curl_, _sudo_ (not required for script-based installation), _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
+* The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
 * kube-state-metrics is essential, and is automatically installed with NetApp Kubernetes Monitoring Operator installation.
 
@@ -226,10 +226,10 @@ In the _spec:_ section, make the following changes:
 
 
 
-////
+
 === Upgrading from Script-based K8s monitoring to Operator-based
 
-If you already have installed script-based Kubernetes monitoring, follow these steps to upgrade to operator-based monitoring:
+If you are upgrading from a previously-installed script-based Kubernetes agent to the NetApp Kubernetes Monitoring Operator, follow these steps:
 
 Steps to upgrade
 
@@ -260,7 +260,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 .Install the K8s operator-based monitoring following the instructions in the install tile.
 
 image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
-////
+
 
 
 ////
@@ -358,7 +358,7 @@ You can then use the following commands to stop and start the Telegraf service:
  
 == Configuring the Agent to Collect Data from Kubernetes
 
-Note: The default namespace for Script-based installation is _ci-monitoring_. For Operator-based installation, the default namespace is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
+Note: The default namespace for NetApp Kubernetes Monitoring Operator-based installation is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
 
 The pods in which the agents run need to have access to the following:
 
@@ -410,6 +410,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
 ----
 
 
+
 == Installing the kube-state-metrics server
 
 NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
@@ -457,7 +458,7 @@ Use the following links to access information for the kube state metrics counter
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
-To uninstall the script-based agent on Kubernetes, do the following:
+To uninstall the script-based agent on Kubernetes (for example, when upgrading to the NetApp Kubernetes Monitoring Operator), do the following:
 
 If the monitoring namespace is being used solely for Telegraf:
 
@@ -695,8 +696,7 @@ Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: 2021-10-11T14:23:41Z I! Starting
 "Error in processing mountstats info: failed to open mountstats file: /hostfs/proc/1/mountstats, error: open /hostfs/proc/1/mountstats: permission denied"
 |If SELinux is enabled and enforcing, it is likely preventing the Telegraf pod(s) from accessing the /proc/1/mountstats file on the Kubernetes nodes.  To relax this restriction, do ONE of the following:
 
-• For script-based installations, edit the telegraf DS (`kubectl edit ds telegraf-ds`), and change "privileged: false" to "privileged: true"
-• For operator-based installation, edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"
+• Edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"
 
 
 |On Kubernetes, my Telegraf ReplicaSet pod is reporting the following error:
