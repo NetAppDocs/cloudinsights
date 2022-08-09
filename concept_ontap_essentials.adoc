@@ -22,7 +22,7 @@ ONTAP Essentials is a set of dashboards and workflows that provide detailed over
 * Workloads: List view of objects that provide interface to users to read/write data.
 * Data Protection: List view of various objects that can be protected using NetApp data protection technologies
 
-ONTAP Essentials requires at least one working ONTAP data collector.
+ONTAP Essentials requires at least one working ONTAP data collector with data collected in the last week. 
 
 == Overview 
 
@@ -36,7 +36,7 @@ Informative graphs give you a look into performance over time as well as breakdo
 
 Each of these graphs or data points can be used as a starting point for exploration or investigation. 
 
-Note: A "days to full" number of "0" (zero) indicates that days to full is estimated at greater than 365 days. In other words, your systems aren't in danger of running out of space any time soon.
+Note: A "days to full" number of "0" (zero) indicates that days to full is estimated at greater than 90 days. In other words, your systems aren't in danger of running out of space any time soon.
 
 == Data Protection
 
@@ -46,7 +46,7 @@ image:ONTAP_Essentials_data_protection.png[SnapMirror Relationships list page]
 
 == Infrastructure
 
-The ONTAP Essentials *Infrastructure* page gives you a view of cluster health and performance. Select the object type you wish to explore (cluster, storage pool, etc.) and choose whether to view health or performance information. Set filters to dive deeper into individual systems.  
+The ONTAP Essentials *Infrastructure* page gives you a view of cluster health and performance, using pre-built (yet further customizable) queries on all the basic ONTAP objects. Select the object type you wish to explore (cluster, storage pool, etc.) and choose whether to view health or performance information. Set filters to dive deeper into individual systems.  
 
 image:ONTAP_Essentials_Health_Performance.png[Infrastructure selections for storage pools]
 
