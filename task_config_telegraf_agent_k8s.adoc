@@ -227,7 +227,7 @@ In the _spec:_ section, make the following changes:
 
 
 
-=== Upgrading from Script-based K8s monitoring to Operator-based
+=== Upgrading from Script-based K8s monitoring to NetApp Kubernetes Monitoring Operator
 
 If you are upgrading from a previously-installed script-based Kubernetes agent to the NetApp Kubernetes Monitoring Operator, follow these steps:
 
@@ -410,8 +410,11 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
 ----
 
 
+== About Kube-state-metrics
 
-== Installing the kube-state-metrics server
+The NetApp Kubernetes Monitoring Operator installs kube-state-metrics automatically; no user interaction is needed and this section of the documentation may be skipped. It is included here to provide reference information for the curious:
+
+=== Installing the kube-state-metrics server
 
 NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
 
@@ -429,7 +432,7 @@ Use the following steps to install the kube-state-metrics server (required if yo
  kubectl apply -f /tmp/kube-state-yaml-files/
 
 
-== kube-state-metrics Counters
+=== kube-state-metrics Counters
 
 Use the following links to access information for the kube state metrics counters:
 
