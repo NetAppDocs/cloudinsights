@@ -62,9 +62,24 @@ link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under
 
 
 
+=== How's my Acquisition Unit?
+
+Cloud Insights provides heartbeat monitors for your Acquisition Units, so you can be alerted to acquisition issues quickly. Additionally, two new monitors have been added to alert you to data collector failures. 
+In all, the following monitors are available:
+
+* Acquisition Unit Heartbeat-Critical
+* Acquisition Unit Heartbeat-Warning
+* Collector Failed
+* Collector Warning
+
+Note that the data collector monitors are in _Paused_ state by default. Be sure to activate them when you want to watch for collector issues.
+
+
+
 === Ready to Learn More?
 
 Check out the *Learning Center* section of the Help > Support page for links to NetApp University Cloud Insights course offerings!
+
 
 
 
