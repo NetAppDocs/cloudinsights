@@ -745,13 +745,15 @@ For example, edit the ReplicaSet...
 |I have a PSP environment. Does this affect my monitoring operator?
 |If your Kubernetes cluster is running with Pod Security Policy (PSP) in place, you must upgrade to the latest NetApp Kubernetes Monitoring Operator. Follow these steps to upgrade to the current NKMO with support for PSP:
 
-. Uninstall the previous monitoring operator::
+1. Uninstall the previous monitoring operator:
+
  kubectl delete agent agent-monitoring-netapp -n netapp-monitoring
  kubectl delete ns netapp-monitoring
  kubectl delete crd agents.monitoring.netapp.com
  kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
-. Deploy the latest version of the monitoring operator.
+
+2. Deploy the latest version of the monitoring operator.
 
 |I ran into issues trying to deploy the NKMO, and I have PSP in use.
 |1. Edit the agent using the following command:
