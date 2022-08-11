@@ -702,7 +702,7 @@ For example, edit the ReplicaSet...
 
 |I'm seeing the following in my logs immediately after installing the NetApp Kubernetes Monitoring Operator:
 
-[inputs.prometheus] Error in plugin: error making HTTP request to /http://kube-state-metrics.netapp-monitoring.svc.cluster.local:8080/metrics: Get /http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: dial tcp: lookup kube-state-metrics.<namespace>.svc.cluster.local: no such host
+[inputs.prometheus] Error in plugin: error making HTTP request to \http://kube-state-metrics.netapp-monitoring.svc.cluster.local:8080/metrics: Get \http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: dial tcp: lookup kube-state-metrics.<namespace>.svc.cluster.local: no such host
 |This message is typically only seen when a new operator is installed and the _telegraf-rs_ pod is up before the _ksm_ pod is up. These messages should stop once all pods are running.
 
 
