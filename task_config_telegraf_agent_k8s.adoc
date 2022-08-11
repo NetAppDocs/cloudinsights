@@ -700,6 +700,10 @@ For example, edit the ReplicaSet...
 
 ...and add the appropriate tolerations to the spec. Then, restart the ReplicaSet pod.
 
+|I'm seeing "Timeout exceeded while awaiting headers" errors in my logs immediately after installing the NetApp Kubernetes Monitoring Operator.
+|This message is typically only seen when a new operator is installed and the _telegraf-rs_ pod is up before the _ksm_ pod is up.
+
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
