@@ -707,6 +707,18 @@ For example, edit the ReplicaSet...
 [inputs.prometheus] Error in plugin: error making HTTP request to \http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: Get \http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: dial tcp: lookup kube-state-metrics.<namespace>.svc.cluster.local: no such host
 |This message is typically only seen when a new operator is installed and the _telegraf-rs_ pod is up before the _ksm_ pod is up. These messages should stop once all pods are running.
 
+|I ran the command to install a CI agent to collect Kubernetes information, but I do not see any of my Kubernetes information in the UI.
+|Run the following commands, collect the outputs, and contact NetApp Support.
+
+Note that these commands are using the default namespace. If you have set your own namespace, substitute that namespace in these and all subsequent commands.
+
+kubectl -n netapp-monitoring describe deploy,agent,rs,ds,pods
+kubectl -n netapp-monitoring describe deploy
+
+kubectl -n netapp-monitoring logs <monitoring-operator pod> -c manager
+kubectl -n netapp-monitoring logs <telegraf-ds pods>
+kubectl -n netapp-monitoring logs <telegraf-rs pod>
+kubectl -n netapp-monitoring logs <kube-state-metrics pod>
 
 |===
 
