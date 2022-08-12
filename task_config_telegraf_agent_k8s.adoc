@@ -222,11 +222,18 @@ In the _spec:_ section, make the following changes:
        substitutions:
          - key: k8s.gcr.io
            value: <same as "docker-repo" field above>
-
+           
 Edit the monitoring-operator deployment to reflect the new docker repo location:
 
  kubectl -n netapp-monitoring edit deploy monitoring-operator
 
+Replace the following line...
+
+ image: gcr.io/kubebuilder/kube-rbac-proxy:<kube-rbac-proxy-version>
+
+...with:
+
+ image: <same as "docker-repo" field above>/kubebuilder/kube-rbac-proxy:<kube-rbac-proxy-version>
 
 === Upgrading from Script-based K8s monitoring to Operator-based
 
