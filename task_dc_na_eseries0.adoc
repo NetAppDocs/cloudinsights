@@ -1,0 +1,119 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_eseries.html
+keywords: data collector, ontap, clustered ontap
+summary: Configuring NetApp E-Series data collector. 
+---
+
+= NetApp E-Series data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead]
+
+The NetApp E-Series data collector gathers inventory and performance data. The collector supports firmware 7.x+ using the same configurations and reporting the same data. 
+
+== Terminology
+
+Cloud insight acquires the following inventory information from the NetApp E-Series data collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Disk|Disk
+|Volume Group|Disk Group
+|Storage Array|Storage
+|Controller|Storage Node
+|Volume Group|Storage Pool
+|Volume|Volume
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== E-Series Terminology (Landing Page)
+
+The following terms apply to objects or references that you might find on NetApp E-Series asset landing pages. Many of these terms apply to other data collectors as well. 
+
+=== Storage
+
+* Model – model name of the device. 
+* Vendor – same Vendor name you would see if you were configuring a new datasource
+* Serial number – The array serial number. On cluster architecture storage systems like NetApp Clustered Data Ontap, this serial number may be less useful than the individual “Storage Nodes” serial numbers
+// EMC Isilon, IBM SVC
+* IP – generally will be the IP(s) or hostname(s) as configured in the data source
+* Microcode version – firmware 
+* Raw Capacity – base 2 summation of all the physical disks in the system, regardless of their role
+* Latency – a representation of what the host facing workloads are experiencing, across both reads and writes. Ideally, Cloud Insights is sourcing this value directly, but this is often not the case. In lieu of the array offering this up, Cloud Insights is generally performing an IOPs-weighted calculation derived from the individual volumes’ statistics. 
+* Throughput – the array’s total host facing throughput. Ideally sourced directly from the array, if unavailable, Cloud Insights is summing the volumes’ throughput to derive this value
+* Management – this may contain a hyperlink for the management interface of the device. Created programmatically by the Cloud Insights datasource as part of inventory reporting
+ 
+
+=== Storage Pool
+
+* Storage – what storage array this pool lives on. Mandatory
+* Type – a descriptive value from a list of an enumerated list of possibilities. Most commonly will be “Thin Provisioning” or “RAID Group”
+* Node – if this storage array’s architecture is such that pools belong to a specific storage node, its name will be seen here as a hyperlink to its own landing page
+* Uses Flash Pool – Yes/No value 
+* Redundancy – RAID level or protection scheme. E-Series reports “RAID 7” for DDP pools
+* Capacity – the values here are the logical used, usable capacity and the logical total capacity, and the percentage used across these. These value both include E-Series “preservation” capacity, resulting both in numbers and the percentage being higher than what the E-Series own user interface may show
+* Over-committed capacity – If via efficiency technologies you have allocated a sum total of volume or internal volume capacities larger than the logical capacity of the storage pool, the percentage value here will be greater than 0%. 
+* Snapshot – snapshot capacities used and total, if your storage pool architecture dedicates part of its capacity to segments areas exclusively for snapshots
+* Utilization – a percentage value showing the highest disk busy percentage of any disk contributing capacity to this storage pool. Disk utilization does not necessarily have a strong correlation with array performance – utilization may be high due to disk rebuilds, deduplication activities, etc in the absence of host driven workloads. Also, many arrays’ replication implementations may drive disk utilization while not showing as volume workload.
+* IOPS – the sum IOPs of all the disks contributing capacity to this storage pool. If disk IOPs is not available on a given platform, this value will be sourced from the sum of volume IOPs for all the volumes sitting on this storage pool
+* Throughput – the sum throughput of all the disks contributing capacity to this storage pool. If disk throughput is not available on a given platform, this value will be sourced from the sum of volume throughout for all the volumes sitting on this storage pool
+
+
+=== Storage Node
+
+* Storage – what storage array this node is part of. Mandatory
+* HA Partner – on platforms where a node will fail over to one and only one other node, it will generally be seen here
+* State – health of the node. Only available when the array is healthy enough to be inventoried by a data source
+* Model – model name of the node
+* Version – version name of the device. 
+* Serial number – The node serial number
+* Memory – base 2 memory if available
+* Utilization – Generally a CPU utilization number, or in the case of NetApp Ontap, a controller stress index. Utilization is not currently available for NetApp E-Series
+* IOPS – a number representing the host driven IOPs on this controller. Ideally sourced directly from the array, if unavailable, it will be calculated by summing all the IOPs for volumes that belong exclusively to this node. 
+// Available for NetApp E-Series with OCI 7.3.10, or by installing Data Source Service Pack 8 or higher for OCI 7.3.1+
+* Latency – a number representing the typical host latency or response time on this controller. Ideally sourced directly from the array, if unavailable, it will be calculated by performing an IOPs weighted calculation from volumes that belong exclusively to this node. 
+// Available for NetApp E-Series with OCI 7.3.10, or by installing Data Source Service Pack 8 or higher for OCI 7.3.1+
+* Throughput – a number representing the host driven throughput on this controller. Ideally sourced directly from the array, if unavailable, it will be calculated by summing all the throughput for volumes that belong exclusively to this node. 
+// Available for NetApp E-Series with OCI 7.3.10, or by installing Data Source Service Pack 8 or higher for OCI 7.3.1+
+* Processors – CPU count
+
+
+== Requirements
+
+* The IP address of each controller on the array
+* Port requirement 2463 
+
+== Configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Comma-separated list of Array SANtricity Controller IPs| IP addresses and/or fully-qualified domain names for the array controllers
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min) |Default is 30 minutes
+|Performance Poll Interval up to 3600 seconds|Default is 300 seconds 
+|===
+
+           
+== Troubleshooting
+
+Additional information on this data collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+

@@ -1,0 +1,171 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_7mode.html
+keywords: data collector, 7-mode, NetApp
+summary: Configuring NetApp 7-mode data collector.
+---
+
+= NetApp Data ONTAP operating in 7-Mode data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead]
+
+For storage systems using Data ONTAP software operating in 7-Mode, you use the 7-mode data collector, which uses the CLI to obtain capacity and performance data. 
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the NetApp 7-mode data collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Disk|Disk
+|Raid Group|Disk Group
+|Filer|Storage
+|Filer|Storage Node
+|Aggregate|Storage Pool
+|LUN|Volume
+|Volume|Internal Volume
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector.
+
+== Requirements 
+
+You need the following to configure and use this data collector:
+
+* IP addresses of the FAS storage controller and partner.
+* Port 443
+* A custom admin level username and password for controller and partner controller with the following role capabilities for 7-Mode:
+** "api-*": Use this to allow OnCommand Insight to execute all NetApp storage API commands. 
+** "login-http-admin": Use this to allow OnCommand Insight to connect to the NetApp storage via HTTP. 
+** "security-api-vfiler": Use this to allow OnCommand Insight to execute NetApp storage API commands to retrieve vFiler unit information. 
+** "cli-options": Use this to read storage system options. 
+** "cli-lun": Access these commands for managing LUNs. Displays the status (LUN path, size, online/offline state, and shared state) of the given LUN or class of LUNs. 
+** "cli-df": Use this to display free disk space. 
+** "cli-ifconfig": Use this to display interfaces and IP addresses. 
+
+== Configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Address of storage system|IP address or fully-qualified domain name for the NetApp storage system
+|User Name|User name for the NetApp storage system
+|Password|Password for the NetApp storage system
+|Address of HA Partner in Cluster|IP address or fully-qualified domain name for the HA Partner
+|User Name of HA Partner in Cluster|User name for the HA partner
+|Password of HA Partner Filer in Cluster|Password for the  HA Partner 
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 20 minutes.
+|Connection Type |HTTPS or HTTP, also displays the default port
+|Override Connection Port |If blank, use the default port in the Connection Type field, otherwise enter the connection port to use
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300 seconds. 
+|===
+
+== Storage systems connection
+
+As an alternative to using the default administrative user for this data collector, you can configure a user with administrative rights directly on the NetApp storage systems so that this data collector can acquire data from NetApp storage systems.
+
+Connecting to NetApp storage systems requires that the user, who is specified when acquiring the main pfiler (on which the storage system exist), meet the following conditions:
+
+* The user must be on vfiler0 (root filer/pfiler).
++ 
+Storage systems are acquired when acquiring the main pfiler.
+
+* The following commands define the user role capabilities:
+** "api-*": Use this to allow Cloud Insights to execute all NetApp storage API commands. 
++
+This command is required to use the ZAPI.
+
+** "login-http-admin": Use this to allow Cloud Insights to connect to the NetApp storage via HTTP. This command is required to use the ZAPI.
+
+** "security-api-vfiler": Use this to allow Cloud Insights to execute NetApp storage API commands to retrieve vFiler unit information.
+
+** "cli-options": For "options" command and used for partner IP and enabled licenses.
+
+** "cli-lun": Access these command for managing LUNs. Displays the status (LUN path, size, online/offline state, and shared state) of the given LUN or class of LUNs.
+** "cli-df": For "df -s", "df -r", "df -A -r" commands and used to display free space.
+** "cli-ifconfig": For "ifconfig -a" command and used for getting filer IP address.
+** "cli-rdfile": For "rdfile /etc/netgroup" command and used for getting netgroups.
+** "cli-date": For "date" command and used to get full date for getting Snapshot copies.
+** "cli-snap": For "snap list" command and used for getting Snapshot copies.
+
+If cli-date or cli-snap permissions are not provided, acquisition can finish, but Snapshot copies are not reported.
+
+To acquire a 7-Mode data source successfully and generate no warnings on the storage system, you should use one of the following command strings to define your user roles. The second string listed here is a streamlined version of the first:
+
+* login-http-admin,api-*,security-api-vfile,cli-rdfile,cli-options,cli-df,cli-lun,cli-ifconfig,cli-date,cli-snap,_
+ 
+* login-http-admin,api-* ,security-api-vfile,cli- 
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Receive 401 HTTP response or 13003 ZAPI error code and ZAPI returns “Insufficient privileges” or “not authorized for this command”| Check username and password, and user privileges/permissions.
+|“Failed to execute command” error|Check whether the user has the following permission on the device:
+•	api-*
+•	cli-date
+•	cli-df
+•	cli-ifconfig
+•	cli-lun
+•	cli-operations
+•	cli-rdfile
+•	cli-snap
+•	login-http-admin
+•	security-api-vfiler
+Also check if the ONTAP version is supported by Cloud Insights and verify if the credentials used match device credentials
+
+|Cluster version is < 8.1| Cluster minimum supported version is 8.1. Upgrade to minimum supported version.
+|ZAPI returns "cluster role is not cluster_mgmt LIF"|AU needs to talk to cluster management IP. Check the IP and change to a different IP if necessary
+|Error: “7 Mode filers are not supported”| This can happen if you use this data collector to discover 7 mode filer. Change IP to point to cdot filer instead. 
+|ZAPI command fails after retry| AU has communication problem with the cluster. Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+|AU failed to connect to ZAPI|Check IP/port connectivity and assert ZAPI configuration.  
+|AU failed to connect to ZAPI via HTTP| Check whether ZAPI port accepts plaintext. If AU tries to send plaintext to an SSL socket, the communication fails.
+|Communication fails with SSLException|AU is attempting to send SSL to a plaintext port on a filer. Check whether the ZAPI port accepts SSL, or use a different port.
+|Additional Connection errors:
+
+ZAPI response has error code 13001, “database  is not open”
+  
+ZAPI error code is 60 and response contains “API did not finish on time”
+  
+ZAPI response contains “initialize_session() returned NULL environment”
+  
+ZAPI error code is 14007 and response contains “Node is not healthy”
+
+|Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+|Socket timeout error with ZAPI|Check filer connectivity and/or increase timeout.
+|“C Mode clusters are not supported by the 7 Mode data source” error|Check IP and change the IP to a 7 Mode cluster.
+|“Failed to connect to vFiler” error| Check that the acquiring user capabilities include the following at a minimum: 
+api-*
+security-api-vfiler
+login-http-admin
+Confirm that filer is running minimum ONTAPI version 1.7.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
+
+
+

@@ -1,0 +1,130 @@
+---
+sidebar: sidebar
+permalink: task_dc_emc_vmax_powermax.html
+keywords: data collector, EMC, DELL, vmax, powermax
+summary: Configuring Dell EMC VMAX and PowerMax Family of Devices data collector.
+---
+
+=  Dell EMC VMAX and PowerMax Family of Devices data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+Cloud Insights discovers EMC VMAX and PowerMax storage arrays by using Solutions Enabler symcli commands in conjunction with an existing Solutions Enabler server in your environment. The existing Solutions Enabler server has connectivity to the VMAX/PowerMax storage array through access to gatekeeper volumes. 
+
+== Requirements
+
+Before configuring this data collector, you should ensure that Cloud Insights has TCP connectivity to port 2707 on the existing Solutions Enabler server. Cloud Insights discovers all the Symmetrix arrays that are "Local" to this server, as seen in "symcfg list" output from that server. 
+
+* The EMC Solutions Enabler (CLI) with SMI-S provider application must be installed on the Acquisition Unit server and the version must match or be earlier than the version running on the Solutions Enabler Server.  
+* A properly configured {installdir}\EMC\SYMAPI\config\netcnfg file is required. This file defines service names for Solutions Enabler servers, as well as the access method (SECURE / NOSECURE /ANY). 
+* If you require read/write latency at the storage node level, the SMI-S Provider must communicate with a running instance of the UNISPHERE for VMAX application.
+* IP address of the managing Solutions Enabler server
+* Administrator permissions on the Solutions Enabler (SE) Server
+* Read-only user name and password to the SE software
+* Solutions Enabler Server 6.5X requirements: 
+** MI-S provider 3.3.1 for SMIS-S V1.2 installed
+** After install, run \Program Files\EMC\SYMCLI\bin>stordaemon start storsrvd
+* The UNISPHERE for VMAX application must be running and collecting statistics for the EMC VMAX and PowerMax sstorage arrays that are managed by the SMI-S Provider installation
+* Access validation: Verify that the SMI-S provider is running: telnet <se_server> 5988
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the EMC VMAX/PowerMax data source. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Disk|Disk
+|Disk Group|Disk Group 
+|Storage|Array 	Storage
+|Director|Storage Node
+|Device Pool, Storage Resource Pool (SRP)|Storage Pool
+|Device TDev|Volume
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Configuration
+
+*Note:* If SMI-S user authentication is not enabled, the default values in the Cloud Insights data collector are ignored. 
+
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Service Name|Service name as specified in _netcnfg_ file 
+|Full path to CLI|Full path to the folder containing the Symmetrix CLI 
+|SMI-S Host IP Address| IP address of the SMI-S host
+|===
+
+== Advanced Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min)|Interval between inventory polls. The default is 40 minutes. 
+|Choose 'Exclude' or 'Include' to specify a list|Specify whether to include or exclude the array list below when collecting data.
+|Inventory Filter Device List|Comma-separated list of device IDs to include or exclude 
+|Connection Caching|Choose connection caching method:
+
+* LOCAL means that the Cloud  Insights Acquisition service is running on the Solutions Enabler server, which has Fibre Channel connectivity to the Symmetrix arrays you seek to discover, and has access to gatekeeper volumes. This might be seen in some Remote Acquisition Unit (RAU) configurations.
+* REMOTE_CACHED is the default and should be used in most cases. This uses the NETCNFG file settings to connect using IP to the Solutions Enabler server, which must have Fibre Channel connectivity to the Symmetrix arrays you seek to discover, and has access to Gatekeeper volumes.
+* In the event that REMOTE_CACHED options make CLI commands fail, use the REMOTE option. Keep in mind that it will slow down the acquisition process (possibly to hours or even days in extreme cases). The NETCNFG file settings are still used for an IP connection to the Solutions Enabler server that has Fibre Channel connectivity to the Symmetrix arrays being discovered.
+
+*Note:* This setting does not change Cloud Insights behavior with respect to the arrays listed as REMOTE by the "symcfg list" output. Cloud Insights gathers data only on devices shown as LOCAL by this command.
+
+|SMI-S Protocol|Protocol used to connect to the SMI-S provider. Also displays the default port used.
+|Override SMIS-Port|If blank, use the default port in the Connection Type field, otherwise enter the connection port to use
+
+//|CLI Timeout (sec)|CLI process timeout (default 7200 seconds)
+//|SMI-S Host IP|IP address of the SMI-S Provider Host
+//|SMI-S Port|Port used by SMI-S Provider Host 
+//|SMI-S Namespace|Interoperability namespace that the SMI-S provider is configured to use 
+|SMI-S User Name|User name for the SMI-S Provider Host
+|SMI-S Password|User name for the SMI-S Provider Host
+|Performance Polling Interval (sec) |Interval between performance polls (default 1000 seconds)
+|hoose 'Exclude' or 'Include' to specify a list| Specify whether to include or exclude the array list below when collecting performance data
+|Performance Filter Device List|Comma-separated list of device IDs to include or exclude
+//|RPO Polling Interval (sec)|Interval between RPO polls (default 300 seconds) 
+|===
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+==== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: The feature being requested is not currently licensed
+|Install the SYMAPI server license.
+|Error: No devices were found
+|Make sure Symmetrix devices are configured to be managed by the the Solutions Enabler server:
+  - Run symcfg list -v to see the list of configured Symmetrix devices.
+|Error: A requested network service was not found in the service file
+|Make sure the Solutions Enabler Service Name is defined the netcnfg file for Solutions Enabler. This file is usually located under SYMAPI\config\ in the Solutions Enabler client installation.
+|Error: The remote client/server handshake failed
+|Check the most recent storsrvd.log* files on the Solutions Enabler host we are trying to discover.
+|Error: Common name in client certificate not valid
+|Edit the _hosts_ file on the Solutions Enabler server so that the Acquisition Unit's hostname resolves to the IP address as reported in the storsrvd.log on the Solutions Enabler server.
+|Error: The function could not obtain memory
+|Make sure there is enough free memory available in the system to execute Solutions Enabler
+|Error: Solutions Enabler was unable to serve all data required.
+|Investigate the health status and load profile of Solutions Enabler
+|Error:
+•	The "symcfg list -tdev" CLI command may return incorrect data when collected with Solutions Enabler 7.x from a Solutions Enabler server 8.x.
+•	The "symcfg list -srp" CLI command may return incorrect data when collected with Solutions Enabler 8.1.0 or earlier from a Solutions Enabler server 8.3 or later.
+|Be sure you are using the same Solutions Enabler major release 
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+

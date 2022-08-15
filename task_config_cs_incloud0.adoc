@@ -1,0 +1,146 @@
+---
+sidebar: sidebar
+permalink: task_config_cs_incloud.html
+keywords:  Cloud, Storage, AWS, Cloud Volumes, Cloud ONTAP, firewall, VPC, Subnet,  
+summary: Cloud Secure uses data collectors to collect file and user access data from devices.
+---
+
+= Configuring the Cloud Volumes ONTAP Data Collector 
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+Cloud Secure uses data collectors to collect file and user access data from devices.
+
+
+
+== Cloud Volumes ONTAP Storage Configuration
+
+See the OnCommand Cloud Manager Documentation to configure a single-node / HA AWS instance to host the Cloud Secure Agent: 
+https://docs.netapp.com/us-en/occm/index.html
+
+After the configuration is complete, follow the steps to setup your SVM: 
+https://docs.netapp.com/us-en/cloudinsights/task_add_collector_svm.html
+
+== Agent Machine Configuration
+
+Use the following steps to configure the machine to be used as a Cloud Secure Agent:
+
+.Steps
+
+. Log in to the AWS console and navigate to EC2-Instances page and select _Launch instance_.
+
+. Select a RHEL or CentOS AMI with the appropriate version as mentioned in this page: 
+https://docs.netapp.com/us-en/cloudinsights/concept_cs_agent_requirements.html
+
+. Select the VPC and Subnet that the Cloud ONTAP instance resides in.
+
+. Select _t2.xlarge_ (4 vcpus and 16 GB RAM) as allocated resources. 
+
+.. Create the EC2 instance.
+
+. Install the required Linux packages using the YUM package manager:  
+
+.. Install _wget_ and _unzip_ native Linux packages.
+
+////
+.. Install _selinux_ (dependency package for the docker-ce):
++
+ wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.68-1.el7.noarch.rpm  
+ yum install -y container-selinux-2.68-1.el7.noarch.rpm
+
+. Install the docker-ce (not the native docker) package. You must use a version higher than 17.03:
+https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
+
+. SSH to the Redhat EC2 VM:
++
+ ssh -i "your_new_pem.pem" <ec2_hostname_or_IP>
+ sudo su -
+
+. Perform a docker login after installing the required AWS CLI package:
++
+ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+ unzip awscli-bundle.zip 
+ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws 
+ /usr/local/bin/aws --version 
+ aws configure --profile collector_readonly 
+ aws ecr get-login --no-include-email --region us-east-1 --profile collector_readonly 
+ docker login -u AWS -p <token_generated_above>  <ECR_hostname> 
+
+. Use the following command to verify the steps completed successfully and the _cs-ontap-dsc_ image can be successfully pulled: 
++
+ docker pull 376015418222.dkr.ecr.us-east-1.amazonaws.com/cs-ontap-dsc:1.25.0 
+////
+
+
+== Install the Cloud Secure Agent
+
+. Log in as Administrator or Account Owner to your Cloud Insights environment. 
+
+. Navigate to Cloud Secure *Admin > Data Collectors* and click the *Agents* tab. 
+
+. Click *+Agent* and specify RHEL as the target platform.
+
+. Copy the Agent Installation command. 
+
+. Paste the Agent Installation command into the RHEL EC2 instance you are logged in to.
+This installs the Cloud Secure agent, providing all of the link:concept_cs_agent_requirements.html[Agent Prerequisites] are met. 
+
+For detailed steps please refer to this link:
+https://docs.netapp.com/us-en/cloudinsights/task_cs_add_agent.html#steps-to-install-agent
+
+////
+== Add a NetApp ONTAP data collector 
+
+. Click *Admin > Data Collectors > Data Collectors > +Data Collector* and specify the NetApp ONTAP Cloud Volumes data collector. Enter the required information in the fields.
+
+[caption=]
+.Configuration
+[cols=2*, cols"50,50"]
+[Options=header]
+|===
+|Field|Description
+|Name |Unique name for the Data Collector
+|Agent|Select a configured agent from the list or click *Add Agent* to configure an Agent. See link:concept_cs_agent_requirements.html[Agent requirements] and link:task_cs_add_agent.html[Agent Installation] for configuration information.
+|SVM Management IP Address|Management IP Address
+|Username|User name to access the SVM
+|Password|SVM Password
+|Enter complete share names to exclude|Comma-separated list of shares to exclude from event collection
+|Enter complete volume names to exclude|Comma-separated list of volumes to exclude from event collection
+|===
+
+.. Click *Add Collector*
+
+. Verify the Agent Server is running using the 
+`docker ps` command and a `docker logs <docker_image_id>` file. 
++
+All of the data collector's service status should be in the 'running' state.
+
+// .. Identify an NFS client (in the same VPC subnet as the Agent and Cloud ONTAP) 
+ 
+//.. Install the nfs-utils package in this VPC Subnet: 
+
+//+
+
+//‘yum install -y nfs-utils’  
+
+//.. NFS mount the volume / qtree container that was created in the SVM. 
+////
+
+
+
+
+
+
+
+
+
+
+

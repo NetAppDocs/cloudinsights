@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: task_dc_infinidat_infinibox.html
+keywords: data collector, infinidat, InfiniBox
+summary: Configuring Infinidat InfiniBox data collector.
+---
+
+= Infinidat InfiniBox data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+The Infinidat InfiniBox (HTTP) data collector is used to collect inventory  information from the Infinidat InfiniBox storage system.
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the Infinidat InfiniBox data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Storage Pool|Storage Pool
+|Node|Controller
+|Filesystem|Internal Volume
+|Filesystem|File Share
+|Filesystem Exports|Share
+|===
+
+== Requirements 
+
+The following are requirements when configuring this data collector. 
+
+* IP address or FQDN of InfiniBox management Node  
+* Admin userid and password
+* Port 443 via REST API 
+
+    
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|InfiniBox Host|IP address or fully-qualified domain name of the InfiniBox Management Node 
+|User Name|User name for InfiniBox Management Node
+|Password|Password for the InfiniBox Management Node
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|TCP Port|TCP Port used to connect to InfiniBox Server. The  default is 443.
+|Inventory Poll Interval|Interval between inventory polls. The default is 60 minutes. 
+//|Connection Timeout|Connection timeout. The default is 60 seconds.
+|===
+
+           
+== Troubleshooting
+
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+

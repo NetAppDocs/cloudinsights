@@ -1,0 +1,128 @@
+---
+sidebar: sidebar
+permalink: task_getting_started_with_cloud_insights.html
+summary: Getting started with Cloud Insights.
+keywords: invite, roles, data collector, acquisition unit, AU
+---
+
+= Getting started gathering data
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+After you have signed up for Cloud Insights and log in to your environment for the first time, you will be guided through the following steps in order to begin collecting and managing data. 
+
+////
+== See How It Works
+
+The first thing you see after logging in the first time is a short video explaining how Cloud Insights collects data. 
+
+When you are finished watching the video, click *Continue* to proceed to the next step.
+
+== Select a Data Collector
+////
+
+Data collectors discover information from your data sources, such as storage devices, network switches, and virtual machines. The information gathered is used for analysis, validation, monitoring and troubleshooting. 
+
+Cloud Insights utilizes three types of data collectors:
+
+* Operating Systems
+* Services
+* Infrastructure
+
+Select your first data collector from the supported vendors and models available. You can easily add additional data collectors later. 
+
+== Install an Acquisition Unit
+
+If you selected an _Infrastructure_ data collector, an Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights. A single Acquisition Unit can be used for multiple data collectors.
+
+image:NewLinuxAUInstall.png[Linux AU Instructions]
+
+* Follow the link:task_configure_acquisition_unit.html[instructions] displayed to install your Acquisition Unit. Once the Acquisition Unit software is installed, the Continue button is displayed and you can proceed to the next step.
+
+image:NewAUDetected.png[New AU Detected]
+
+You may set up additional acquisition units later if needed. For example, you may want different Acquisition Units collecting information from data centers in different regions. 
+
+== Configure the Data Collector - Infrastructure
+
+For _Infrastructure_ data collectors, you will be asked to fill out the data collector fields presented:
+
+* Give the data collector a unique and meaningful name.
+* Enter the user name and password to connect to the device, as appropriate.
+* Fill in any other mandatory fields in _Configuration_ and _Advanced Configuration_ sections.
+* Click *Test Connection* to test the connection to the device.
+* Click *Add Collector* to save the data collector.
+
+You will be able to configure additional data collectors later.
+
+== Configure the Data Collector - Operating Systems and Services
+
+=== Operating System:
+
+For _Operating System_ data collectors, choose a platform (MacOS, Linux, Windows) to install a Cloud Insights Agent.
+You must have at least one agent to collect data from Services.
+The agent also collects data from the host itself, for use in Cloud Insights. This data is categorized as "Node" data in widgets, etc.
+
+//* Choose an link:concept_agent_access_key.html[Agent Access Key]. Data Collectors can be grouped by using different Keys for different groupings (by location or platform, for example).
+
+* Open a terminal or command window on the agent host or VM, and paste the displayed command to install the agent. 
+
+* When installation is complete, click *Complete Setup*.
+
+=== Services:
+
+For _Service_ data collectors, click on a tile to open the instructions page for that service.
+
+* Choose a platform and an Agent Access Key.
+* If you don't have an agent installed on that platform, follow the instructions to install the agent.
+* Click *Continue* to open the data collector instruction page.
+* Follow the instructions to configure the data collector.
+* When configuration is complete, click *Complete Setup*.
+
+== Add Dashboards
+
+Depending on the type of initial data collector you selected to configure (storage, switch, etc.), one or more relevant dashboards will be imported. For example, if you configured a storage data collector, a set of storage-related dashboards will be imported, and one will be set as your Cloud Insights Home Page. You can change the home page from the *Dashboards > Show All Dashboards* list. 
+
+You can import additional dashboards later, or link:concept_dashboards_overview.html[create your own].
+
+////
+== Invite Users
+
+At any point during the onboarding process, you can click on *Admin > User Management > +User* to link:concept_user_roles.html[invite additional users] to your Cloud Insights environment. Only Administrator users can access Cloud Insights until onboarding is complete.
+
+//It is recommended to only add _Administrator_ users until onboarding is complete and data is being acquired. Users with _Guest_ or _User_ roles will see greater benefit once sufficient data has been collected.
+////
+
+== That's all there is to it
+
+After you complete the initial setup process, your environment will begin to collect data. 
+
+//NOTE: Please allow up to 30 minutes for your dashboards to start displaying data. Some data collectors require 2 poll periods (usually 15 minutes each) before any meaningful data can be displayed.
+
+If your initial setup process is interrupted (for example, if you close the browser window), you will need to follow the steps manually:
+
+* Choose a Data Collector
+* Install an Agent or Acquisition Unit if prompted
+* Configure the Data Collector
+
+////
+== Adding data collectors
+
+Data collectors discover information from your data sources, such as storage devices, network switches, and virtual machines. The information gathered is used for analysis, validation, monitoring and troubleshooting. You need to link:task_configure_data_collectors.html[configure your data collectors] before Cloud Insights can gather data from them.
+
+Related topics:
+Data collector link:https://docs.netapp.com/us-en/cloudinsights/task_configure_data_collectors.html[*configuration*]
+Vendor-specific link:concept_data_collector_reference.html[*Data Collector reference*]
+Troubleshooting link:task_research_failed_collector.html[*Data Collector failures*] 
+Data Collector link:reference_data_collector_support_matrix.html[*support matrix*]
+////
+
+
+
+

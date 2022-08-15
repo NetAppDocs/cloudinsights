@@ -1,0 +1,104 @@
+---
+sidebar: sidebar
+permalink: task_config_cs_data_collectors.html
+keywords: acquisition, AU, data collector, collector
+summary: Configure data collectors
+---
+
+= Configuring Data Collectors
+
+
+[.lead]
+You configure Data Collectors in your Cloud Insights environment to collect data from hosts, services, or devices in the data center.
+
+.Before you begin
+
+* You must have Account owner or Admin privileges to configure data collectors. 
+* You must have configured an Acquisition Unit (for Infrastructre) or an Agent (for Services or Hosts) before you can start collecting data.
+* You need credentials for the infrastructure devices from which you are collecting data.
++
+Device network addresses, account information, and passwords are required for all devices from which you wish to collect data.
+
+=== Credential Security
+
+Data collector credentials are encrypted when entered in Cloud Insights, and are sent to the Acquisition Unit (AU) encrypted first by the public key of the AU, and then encrypted over HTTPS. Encrypted values are decrypted when the AU uses them to communicate with devices & software. 
+
+////
+Credentials are encrypted and stored in the database (encrypted) when entered.
+They are sent to the AU encrypted over HTTPS.
+
+On the AU (presumably in the customer environment), encrypted values are decrypted where they are used to communicate with devices & software. Communication with devices is done with a variety of protocols. Some are more secure than others, but we use what is available for any particular device.
+////
+
+=== Configuring the Data Collector
+
+* From the Cloud Insights menu, click *Admin > Data Collectors* and click the *+ Data Collector* button. You can choose to show all data collectors, or filter to show only the data collectors available to you based on your subscription.
+
+//The system displays the data collectors arranged in three categories--Operating Systems, Services, and Infrastructure--alphabetically by vendor.
+
+* Depending on the data collector type you choose, installation steps will vary.
+
+==== Operating Systems:
+
+You must install at least one Cloud Insights Agent to begin collecting Operating System or Service data from your environment. You can install as many agents as you wish. Each agent can collect data from multiple Services.
+
+In addition to collecting data from Services, each agent also acts as a data collector for the VM/host on which it is installed. The data collected is presented as "Node" data in dashboard widgets or queries.
+
+. Click on the platform type or operating system of the VM or host (i.e. the Node) from which you access Cloud Insights.
+. Choose an Agent Access Key. 
+. Copy the displayed command to the clipboard. You can click the clipboard icon to quickly copy the command.
+. Open a terminal/command window on the agent VM/host and paste the command. Press Enter to execute the command.
+. After the agent is installed, click *Finish*. The agent begins collecting data.
++
+It may take up to two poll periods before data for the Node is displayed in dashboards or available for querying.
+
+==== Services:
+
+Services data collectors are those based on the telegraf agent, such as Docker or Kibana.
+
+.Before you begin
+
+* You must have at least one Cloud Insights Agent to collect Service data from your environment. If you do not have an agent installed, you will be prompted to install one when you configure a Service data collector.
+* The Service from which you wish to collect data must be installed and running in your environment.
+
+. Click on a Services data collector.
+. Choose an agent operating system or platform. If you have not installed an agent for the platform, follow the instructions to do so.
+. Choose an Agent Access Key. 
+. Click *Continue*.
+. Follow the instructions for configuring the data collector. You can click the clipboard icon to quickly copy the commands or code snippets displayed.
+. Once the data collector is configured properly, click *Finish*. 
++
+It may take up to two poll periods before data from the service is displayed in dashboards or available for querying.
+
+==== Infrastructure:
+
+Infrastructure data collectors include things like storage or switches.
+
+.Before you begin
+
+* You must have at least one Acquisition Unit configured to begin collecting Infrastructure data.
+
+. Click on an Infrastructure data collector. 
+
+. Enter a name for the data collector. Names can contain the following characters:
+
+* letter (a-z)
+* number (0-9)
+* hyphen (-)
+* underscore (_)
+* period (.)
+* space ( )
++
+Names may not begin or end with a space, period, or hyphen.
+
+. Enter the Acquisition Unit to associate with this data collector.
+. Enter the required fields in the Configuration screen.
+. Click *Advanced Configuration* to enter additional configuration fields. Not all data collectors require advanced configuration.
+. Click *Test Configuration* to verify that the data collector is properly configured.
+. When finished, click *Add Collector*. 
+
+For help adding a new Acquisition Unit, see link:task_configure_acquisition_unit.html[Configuring acquisition units]
++
+It may take up to two poll periods before data from the environment is displayed in dashboards or available for querying.
+
+

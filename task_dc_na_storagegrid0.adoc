@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_storagegrid.html
+summary: Configure NetApp StorageGRID data collector
+keywords: data collector, queries, create, storagegrid
+---
+
+= NetApp StorageGRID data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+The NetApp StorageGRID data collector supports inventory and performance collection from StorageGRID configurations. 
+
+== Requirements
+
+The following are requirements for configuring this data source:
+
+* StorageGRID Host IP Address
+* A username and password for a user that has had the Metric Query and Tenant Access roles assigned
+* Port 443
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|StorageGRID Host IP Address |Management Virtual IP address of the StorageGRID appliance
+|User Name |Name used to log into the StorageGRID appliance
+|Password |Password used to log into the StorageGRID appliance
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min) |Default is 60 minutes
+|performance Poll Interval (sec)|Default is 900 seconds
+|===
+
+           
+== Troubleshooting
+
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
