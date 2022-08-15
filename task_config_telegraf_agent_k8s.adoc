@@ -333,7 +333,7 @@ Then, restart Telegraf:
 ////
 
 
-
+////
 == DaemonSet, ReplicaSet, and Stopping/Starting the agent
 
 A DaemonSet and ReplicaSet will be created on the Kubernetes cluster to run the required Telegraf agents/pods. By default, these Telegraf agents/pods will be scheduled on both master and non-master nodes.
@@ -352,7 +352,18 @@ You can then use the following commands to stop and start the Telegraf service:
  
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-ds.yaml 
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml
+ ////
  
+ == Stopping and Starting the agent
+ 
+To stop Telegraf:
+
+ kubectl -n netapp-monitoring scale deploy monitoring-operator --replicas=0
+
+To start Telegraf:
+
+ kubectl -n netapp-monitoring scale deploy monitoring-operator --replicas=1
+
 
  
 == Configuring the Agent to Collect Data from Kubernetes
