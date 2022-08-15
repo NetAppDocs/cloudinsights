@@ -70,7 +70,7 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
 .Pre-requisites:
 
-* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.19 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must link#upgrading-the-agent[upgrade] to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
+* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.19 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must <<pgrading-the-agent>>[upgrade] to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
 
 ////
 * NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with the following:
