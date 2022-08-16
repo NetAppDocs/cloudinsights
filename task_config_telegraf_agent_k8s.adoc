@@ -354,16 +354,21 @@ You can then use the following commands to stop and start the Telegraf service:
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml
 
 ////
+
+
+
  
-== Stopping and Starting the operator
+== Stopping and Starting the Netapp Kubernetes Monitoring Operator
  
-To stop Telegraf:
+To stop the Netapp Kubernetes Monitoring Operator:
 
  kubectl -n netapp-monitoring scale deploy monitoring-operator --replicas=0
 
-To start Telegraf:
+To start the Netapp Kubernetes Monitoring Operator:
 
  kubectl -n netapp-monitoring scale deploy monitoring-operator --replicas=1
+
+
 
 
  
@@ -529,23 +534,34 @@ If a Security Context Constraint was previously-created manually for a script-ba
 
 == Upgrading the Agent
 
-=== Upgrading from script-based agent to NetApp Kubernetes Monitoring Operator
-
 NOTE: If you have previously installed the script-based agent, you must upgrade to the NetApp Kubernetes Monitoring Operator.
+
+=== Upgrading from script-based agent to NetApp Kubernetes Monitoring Operator
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
 To upgrade the telegraf agent, do the following:
 
-. Back up the existing configurations:
+* Make note of your cluster name.  You can view the cluster name by running one of the following collands:
+
+For operator:
+
+ kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
+
+
+For script-based:
+
+ kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
+
+* Back up the existing configurations:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
  
 // Be sure to specify the appropriate namespace if it is not the default.
 
-. Uninstall the Agent (see above for instructions)
+* <<uninstalling-the-agent, Uninstall>> the existing agent 
 
-. link:#kubernetes[Install the new agent].
+* link:#kubernetes[Install the new agent].
 
 ////
 . Re-apply the configurations:
