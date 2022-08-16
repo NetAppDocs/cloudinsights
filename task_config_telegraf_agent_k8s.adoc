@@ -541,7 +541,7 @@ Note that these commands are using the default namespace "ci-monitoring".  If yo
 
 To upgrade the telegraf agent, do the following:
 
-* Make note of your cluster name.  You can view the cluster name by running one of the following collands:
+* Make note of your cluster name.  You can view the cluster name by running one of the following commands:
 
 For operator:
 
@@ -551,6 +551,8 @@ For operator:
 For script-based:
 
  kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
+ 
+ 
 
 * Back up the existing configurations:
 
