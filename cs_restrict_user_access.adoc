@@ -121,13 +121,47 @@ Use the following steps to manually restore any IPs from ONTAP if your Cloud Sec
               Policy          Rule    Access   Client                RO
  Vserver      Name            Index   Protocol Match                 Rule
  ------------ --------------- ------  -------- --------------------- ---------
- svm_suchitra default         4       cifs,    0.0.0.0/0             any
-                                      nfs
- svm_suchitra test            3       cifs,    0.0.0.0/0             any
-                                      nfs,
-                                      flexcache
+ svm0         default         4       cifs,    0.0.0.0/0             any
+                                     nfs
+ svm2         test            3       cifs,    0.0.0.0/0             any
+                                     nfs,
+                                     flexcache
  2 entries were displayed.
- 
+
+ == Manually Restore Users for SMB
+
+Use the following steps to manually restore any users from ONTAP if your Cloud Secure trial expires, or if the agent/collector is down.
+
+You can get the list of users blocked in Cloud Secure from the users list page.
+
+1.	Login to the ONTAP cluster (where you want to unblock users) with cluster _admin_ credentials. (For Amazon FSx, login with FSx credentials).
+
+2.	Run the following command to list all users blocked by Cloud Secure for SMB in all SVMs:
+
+ vserver name-mapping show -direction win-unix -replacement " "
+
+ Vserver:   <vservername>
+ Direction: win-unix
+ Position Hostname         IP Address/Mask
+ -------- ---------------- ----------------
+ 1       -                 -                   Pattern: CSLAB\\US040
+                                          Replacement:
+ 2       -                 -                   Pattern: CSLAB\\US030
+                                          Replacement:
+ 2 entries were displayed.
+
+In the above output, 2 users were blocked (US030, US040) with domain CSLAB.
+
+3.	Once we identify the position from the above output, run the following command to unblock the user:
+
+ vserver name-mapping delete -direction win-unix -position <position>
+
+4.	Confirm the users are unblocked by running the command:
+
+ vserver name-mapping show -direction win-unix -replacement " "
+
+No entries should be displayed for the users previously blocked.
+
 
 
 
@@ -147,6 +181,17 @@ Restricting happens via IP address of the host through which the user is accessi
 
 |Policy could not be modified. Reason: not authorized for that command.	
 |Check if using csuser, permissions are given to the user as mentioned above.
+
+|I see an error:
+svm1: existing cifs session for user domain\\user01 is not closed.
+
+This error is seen in the Action Taken section on the alert detail page and also under Access Limitation History under Alert & User list pages.
+
+The users current session is not closed when this error is seen, however, user is blocked for any new sessions until the bocking period expires.
+|This is a known issue with Amazon FSx. Cloud Secure will NOT be able to close the existing SMB session. No workaround is currently available to block the existing SMB session for Amazon FSx.
+
+If the collector type is CVO or ONTAP, ensure the correct permissions as mentioned in the <<prerequisites-for-user-access-blocking,Prerequisites>> section.
+
 
 |===
 
