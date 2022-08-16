@@ -34,8 +34,7 @@ Cloud Insights has built a Kubernetes Operator for monitoring customers' Kuberne
 NKMO continues to use underlying telegraf software for data collection, transformation, and delivery to Cloud Insights. This is enhanced with Custom Resource Definitions and Custom Resources to tailor monitoring for each K8s cluster.
 ////
 
-== Installing the Agent:
-
+== Installing the Agent
 
 To install an agent, you must first do the following:
 
@@ -561,7 +560,7 @@ For script-based:
 
 * <<uninstalling-the-agent, Uninstall>> the existing agent 
 
-* link:#kubernetes[Install the new agent].
+* <<installing-the-agent, Install>> the new agent].
 
 ////
 . Re-apply the configurations:
