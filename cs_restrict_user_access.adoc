@@ -33,7 +33,7 @@ NOTE: When using the Amazon FSx data collector, user blocking for SMB cannot kil
 
 If you are using cluster administration credentials, no new permissions are needed.
 
-If you are using a custom user like csuser with permissions given to the user, then follow the steps below to give permissions to CloudSecure to block user.
+If you are using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Cloud Secure to block user.
 
 For csuser with cluster credentials, do the following from the ONTAP command line:
 
