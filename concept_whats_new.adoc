@@ -37,7 +37,7 @@ image:New_Help_Menu_2022.png[Help menu is in upper right corner]
 
 link:concept_ontap_essentials.html[*ONTAP Essentials*] is a set of dashboards and workflows that provide detailed views into your NetApp ONTAP inventories, workloads, and data protection, including days-to-full predictions for storage capacity and performance. You can even see if any controllers are running at high utilization. ONTAP Essentials is your ideal place for all of your NetApp ONTAP monitoring needs! 
 
-ONTAP Essentials--available in all Editions--is designed to be intuitive to existing ONTAP operators and administrators, easing the transition from AIQUM to service-based management tools. 
+ONTAP Essentials--available in all Editions--is designed to be intuitive to existing ONTAP operators and administrators, easing the transition from ActiveIQ Unified Manager to service-based management tools. 
 
 image:ONTAP_Essentials_Menu_and_screen.png[Overview dashboard for ONTAP Essentials]
 
@@ -97,11 +97,16 @@ The following monitors are now available in the _Data Collection_ monitor group:
 Note that these monitors are in _Paused_ state by default. Activate them to be alerted about data collection issues.
 
 
+=== Auto-Renewing API Tokens
+
+API Access Tokens can now be set for auto-renewal. By enabling this feature, new/refreshed API Access Tokens will automatically be generated for expiring tokens. Cloud Insights agents using an expiring token will automatically be updated to use the corresponding new/refreshed API Access Token, allowing them to continue to operate seamlessly. Simply check the “Renew token automatically” box when creating your token. This feature is currently supported on Cloud Insights agents running on the Kubernetes platform with the latest NetApp Kubernetes Monitoring Operator. 
+
+
 
 
 === Basic Edition gives you more than before
 
-Your trial is ending but you're not yet sure whether a subscription is right for you? Basic Edition has always given you a chance to continue using Cloud Insights with your current ONTAP data collector, but now you can continue capturing VMWare version, topology, and IOPS/Throughput/Latency data as well. 
+Your trial is ending but you're not yet sure whether a subscription is right for you? Basic Edition has always given you a chance to continue using Cloud Insights with your current ONTAP data collector, but now you can continue capturing VMWare version, topology, and IOPS/Throughput/Latency data as well. NetApp customers with premium support on their storage systems will also be entitled to support for Cloud Insights.
 
 
 
