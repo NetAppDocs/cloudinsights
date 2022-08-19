@@ -20,7 +20,7 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 == August 2022
 
-=== Cloud Insights has a new look! 
+=== Cloud Insights has a new look!
 
 Starting this month, "Monitor and Optimize" has been renamed *Observability*. You'll find all your favorite features like Dashboards, Queries, Alerts, and Reporting here. In addition, look for Cloud Secure under the new *Security* menu. Note that only the menus have changed; feature functionality remains the same.
 
@@ -31,7 +31,6 @@ Looking for the *Help* menu?
 
 Help now lives in the upper right of the screen.
 
-[.thumb]
 image:New_Help_Menu_2022.png[Help menu is in upper right corner]
 
 
@@ -41,7 +40,6 @@ link:concept_ontap_essentials.html[*ONTAP Essentials*] is a set of dashboards an
 
 ONTAP Essentials--available in all Editions--is designed to be intuitive to existing ONTAP operators and administrators, easing the transition from ActiveIQ Unified Manager to service-based management tools. 
 
-[.thumb]
 image:ONTAP_Essentials_Menu_and_screen.png[Overview dashboard for ONTAP Essentials]
 
 
@@ -49,14 +47,13 @@ image:ONTAP_Essentials_Menu_and_screen.png[Overview dashboard for ONTAP Essentia
 
 You asked for it, and now you've got it. Storage base-2 and base-10 data units are now combined into one family, from bits and bytes to tebibits and terabytes, making it easier to display data your way on your dashboards. Data Rates are also now one big family of their own. 
 
-image:DataFamilyMerged.png[drop-dow showing merge of base-2 and base-10 data families,480]
+image:DataFamilyMerged.png[drop-dow showing merge of base-2 and base-10 data families]
 
 
 === How much power is my storage using?
 
 Display and monitor your ONTAP storage shelf and node power consumption, temperature, and fan speed, using the netapp_ontap.storage_shelf, netapp_ontap.system_node and  netapp_ontap.cluster (power consumption only) metrics.
 
-[.thumb]
 image:ONTAP_Power_Metrics_1.png[Storage Power Consumption metrics]
 
 
@@ -78,9 +75,9 @@ link:https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running
 |The _Shared Resource Under Stress_ insight uses AI/ML to automatically identify where resource contention is causing performance degradation in your environment, highlights any workloads impacted by it, and provides recommended actions to remediate, letting you solve performance issues more quickly.
 link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html[Read More]
 
-|Cloud Secure – restrict user access on attack
-|Greater protection for your business-critical data with the ability to restrict user access when an attack is detected. 
-Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
+|Cloud Secure – Block user access on attack
+|Greater protection for your business-critical data with the ability to block user access when an attack is detected. 
+Access can be blocked automatically, using Automated Response Policies, or manually from the alert or user details pages.
 link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
 
 |===
