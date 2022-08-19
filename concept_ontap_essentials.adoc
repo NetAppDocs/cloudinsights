@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: concept_ontap_essentials.html
+summary: ONTAP Essentials is a set of dashboards and workflows to provide detailed overviews of your environment.
+keywords: dashboard, widget, ontap, overview, insight
+---
+
+= ONTAP Essentials
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+ONTAP Essentials is a set of dashboards and workflows that provide detailed overviews of your ONTAP inventories and workloads. You may see the following terms used when working in ONTAP Essentials: 
+
+* Infrastructure/Inventory: List view of objects that provide storage/networking services to user data
+* Workloads: List view of objects that provide interface to users to read/write data.
+* Data Protection: List view of various objects that can be protected using NetApp data protection technologies
+
+ONTAP Essentials requires at least one working ONTAP data collector with data collected in the last week. 
+
+== Overview 
+
+To begin exploring, select *ONTAP Essentials* from the main Cloud Insights menu.
+
+image:ONTAP_Essentials_Menu_and_screen.png[Overview dashboard for ONTAP Essentials]
+
+The *Overview* dashboard displays useful information like the number of clusters in your environment with their overall capacity and performance percentages. You will also see predictive data regarding the number of expected days until storage capacity or performance capacity runs out of space. And if any controllers in your infrastructure are running at high temperatures, ONTAP Essentials will show you those.
+
+Informative graphs give you a look into performance over time as well as breakdowns of capacity usage.
+
+Each of these graphs or data points can be used as a starting point for exploration or investigation. 
+
+Note: A "days to full" number of "0" (zero) indicates that days to full is estimated at greater than 90 days. In other words, your systems aren't in danger of running out of space any time soon.
+
+== Data Protection
+
+Select the *Data Protection* page to view SnapMirror relationships. Click through to source or destination volume information, or click the gear icon to add columns for the data you wish to view.
+
+image:ONTAP_Essentials_data_protection.png[SnapMirror Relationships list page]
+
+== Infrastructure
+
+The ONTAP Essentials *Infrastructure* page gives you a view of cluster health and performance, using pre-built (yet further customizable) queries on all the basic ONTAP objects. Select the object type you wish to explore (cluster, storage pool, etc.) and choose whether to view health or performance information. Set filters to dive deeper into individual systems.  
+
+image:ONTAP_Essentials_Health_Performance.png[Infrastructure selections for storage pools]
+
+Infrastructure page showing cluster health:
+image:ONTAP_Essentials_Infrastructure_A.png[Infrastructure objects to explore]
+
+
+== Workloads
+
+View and explore workloads on LUNs/Volumes or Qtrees in your environment. 
+
+image:ONTAP_Essentials_Workloads_Menu.png[Workloads Menu]
+
+image:ONTAP_Essentials_Workloads_Page.png[Workloads list page]
+

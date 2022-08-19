@@ -38,7 +38,7 @@ Note that Cloud Insights APIs are available based on your current Edition:
 
 |===
 
-Additionally, your Cloud Insights link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html#permission-levels[feature set role] will determine which APIs you can access. User and Guest roles have fewer privileges than Administrator role. For example, if you have Administrator role in Monitor and Optimize, but User role in Reporting, you can manage all API types except Data Warehouse.
+Additionally, your Cloud Insights link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html#permission-levels[feature set role] will determine which APIs you can access. User and Guest roles have fewer privileges than Administrator role. For example, if you have Administrator role in Observability, but User role in Reporting, you can manage all API types except Data Warehouse.
 
 
 == Requirements for API Access
@@ -110,7 +110,7 @@ The Cloud Insights API is category-based, and currently contains the following c
 
 Additional categories and/or APIs may become available over time. You can find the latest API information in the link:#api-documentation-swagger[API Swagger documentation]. 
 
-Note that the API categories to which a user has access depend also on the link:concept_user_roles.html[User Role] they have in each Cloud Insights feature set (Monitoring, Cloud Secure, Reporting).
+Note that the API categories to which a user has access depend also on the link:concept_user_roles.html[User Role] they have in each Cloud Insights feature set (Observability, Security, Reporting).
 
 ////
 == API Commands

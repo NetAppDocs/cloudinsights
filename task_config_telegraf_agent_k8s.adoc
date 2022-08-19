@@ -193,7 +193,7 @@ Find the <version> field using the following command:
 
 Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies.
 
-Download all open source dependencies to your private docker registry. The following open source images need to be downloaded:
+Download all open source dependencies to your private docker registry. Use the same directory structure as the public repositories. The following open source images need to be downloaded:
 
  docker.io/telegraf: 1.22.3
  gcr.io/kubebuilder/kube-rbac-proxy: v0.11.0
@@ -221,9 +221,18 @@ In the _spec:_ section, make the following changes:
        substitutions:
          - key: k8s.gcr.io
            value: <same as "docker-repo" field above>
+           
+Edit the monitoring-operator deployment to reflect the new docker repo location:
 
+ kubectl -n netapp-monitoring edit deploy monitoring-operator
 
+Replace the following line...
 
+ image: gcr.io/kubebuilder/kube-rbac-proxy:<kube-rbac-proxy-version>
+
+...with:
+
+ image: <same as "docker-repo" field above>/kubebuilder/kube-rbac-proxy:<kube-rbac-proxy-version>
 
 === Upgrading from Script-based K8s monitoring to NetApp Kubernetes Monitoring Operator
 
@@ -769,6 +778,7 @@ For example, edit the ReplicaSet...
 
 ...and add the appropriate tolerations to the spec. Then, restart the ReplicaSet pod.
 
+
 |I have a PSP environment. Does this affect my monitoring operator?
 |If your Kubernetes cluster is running with Pod Security Policy (PSP) in place, you must upgrade to the latest NetApp Kubernetes Monitoring Operator. Follow these steps to upgrade to the current NKMO with support for PSP:
 
@@ -792,6 +802,25 @@ kubectl -n <name-space> edit agent
 kubectl get psp (should show Pod Security Policy removed)
 kubectl get all -n <name-space>
 
+
+
+|I'm seeing the following in my logs immediately after installing the NetApp Kubernetes Monitoring Operator:
+
+[inputs.prometheus] Error in plugin: error making HTTP request to \http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: Get \http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: dial tcp: lookup kube-state-metrics.<namespace>.svc.cluster.local: no such host
+|This message is typically only seen when a new operator is installed and the _telegraf-rs_ pod is up before the _ksm_ pod is up. These messages should stop once all pods are running.
+
+|I ran the command to install a CI agent to collect Kubernetes information, but I do not see any of my Kubernetes information in the UI.
+|Run the following commands, collect the outputs, and contact NetApp Support.
+
+Note that these commands are using the default namespace. If you have set your own namespace, substitute that namespace in these and all subsequent commands.
+
+kubectl -n netapp-monitoring describe deploy,agent,rs,ds,pods
+kubectl -n netapp-monitoring describe deploy
+
+kubectl -n netapp-monitoring logs <monitoring-operator pod> -c manager
+kubectl -n netapp-monitoring logs <telegraf-ds pods>
+kubectl -n netapp-monitoring logs <telegraf-rs pod>
+kubectl -n netapp-monitoring logs <kube-state-metrics pod>
 
 
 |===
