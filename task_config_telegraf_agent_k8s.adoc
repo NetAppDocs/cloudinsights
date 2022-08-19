@@ -9,12 +9,11 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 
 :toc: macro
 :hardbreaks:
-:toclevels: 1
 :nofooter:
+:toclevels: 2
 :icons: font
 :linkattrs:
 :imagesdir: ./media/
-
 
 [.lead]
 Cloud Insights uses link:https://docs.influxdata.com/telegraf/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
@@ -25,18 +24,17 @@ NOTE: For accurate audit and data reporting, it is strongly recommended to synch
 
 NOTE: If you want to verify the installation files before installing the Agent, read about <<Verifying Kubernetes Checksums>>.
 
+toc::[]
 
-
+////
 == Operator-based install or script-based install?
 
 Cloud Insights has built a Kubernetes Operator for monitoring customers' Kubernetes clusters.  The NetApp Kubernetes Monitoring Operator (NKMO) is an improvement over script-installed monitoring methods because it allows more flexible configuration of monitoring controllable from Cloud Insights and fewer customer-driven configuration interventions, as well as enhances opportunities for monitoring other software running in the K8s cluster.
 
 NKMO continues to use underlying telegraf software for data collection, transformation, and delivery to Cloud Insights. This is enhanced with Custom Resource Definitions and Custom Resources to tailor monitoring for each K8s cluster.
+////
 
-
-== Installing the agent
-
-If you are installing a Service data collector and have not yet configured an Agent, you are prompted to first install an Agent for the appropriate Operating System. This topic provides instructions for installing the Telegraf agent on the following Operating Systems:
+== Installing the Agent
 
 To install an agent, you must first do the following:
 
@@ -58,19 +56,20 @@ NOTE: If you are using a proxy, read the proxy instructions for your platform be
 
 == Installing an Agent on Kubernetes
 
-Kubernetes offers two ways to collect data:
+Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
-* NetApp Kubernetes Monitoring Operator configuration. This is the recommended installation method for Kubernetes.
+////
+This is the recommended installation method for Kubernetes.
 * Traditional script-based Agent installation (not recommended)
 
 Installation instructions vary based on which you choose.
 
 image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
-
+////
 
 .Pre-requisites:
 
-* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.19 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
+* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.19 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must <<upgrading-the-agent, upgrade>> to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
 
 ////
 * NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with the following:
@@ -83,13 +82,13 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
 * The NetApp Kubernetes Monitoring Operator and its dependencies (telegraf, kube-state-metrics, fluentbit, etc.) are not supported on nodes that are running with Arm64 architecture.
 
-* The following commands must be available: _curl_, _sudo_ (not required for script-based installation), _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
+* The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
-* kube-state-metrics must be installed. See below for more information. kube-state-metrics is automatically installed with Operator-based installation.
+* kube-state-metrics is essential, and is automatically installed with NetApp Kubernetes Monitoring Operator installation.
 
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
-* If you are running a Kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section. Operator-based installation installs this for you.
+//* If you are running a Kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section. Operator-based installation installs this for you.
 
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
@@ -102,7 +101,7 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 |===
 |Platform|Label
 
-|Kubernetes v1.17 and above |Kubernetes.io/os = linux
+|Kubernetes v1.19 and above |Kubernetes.io/os = linux
 |Rancher + cattle.io as orchestration/Kubernetes platform |cattle.io/os = linux
 |===
 
@@ -196,13 +195,13 @@ Push the operator docker image to your private/local/enterprise docker repositor
 
 Download all open source dependencies to your private docker registry. Use the same directory structure as the public repositories. The following open source images need to be downloaded:
 
- docker.io/telegraf:1.21.4
- gcr.io/kubebuilder/kube-rbac-proxy:v0.8.0
- k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.3.0
+ docker.io/telegraf: 1.22.3
+ gcr.io/kubebuilder/kube-rbac-proxy: v0.11.0
+ k8s.gcr.io/kube-state-metrics/kube-state-metrics: v2.4.2
  
 If fluent-bit is enabled, also download:
 
- docker.io/fluent-bit:1.8.12
+ docker.io/fluent-bit:1.9.3
  docker.io/kubernetes-event-exporter:0.10
 
 Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
@@ -235,9 +234,9 @@ Replace the following line...
 
  image: <same as "docker-repo" field above>/kubebuilder/kube-rbac-proxy:<kube-rbac-proxy-version>
 
-=== Upgrading from Script-based K8s monitoring to Operator-based
+=== Upgrading from Script-based K8s monitoring to NetApp Kubernetes Monitoring Operator
 
-If you already have installed script-based Kubernetes monitoring, follow these steps to upgrade to operator-based monitoring:
+If you are upgrading from a previously-installed script-based Kubernetes agent to the NetApp Kubernetes Monitoring Operator, follow these steps:
 
 Steps to upgrade
 
@@ -271,7 +270,7 @@ image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
 
 
 
-
+////
 == Script-Based Installation
 
 NOTE: Script-based installation is deprecated. Please  use Kubernetes Operator-based collection for monitoring your Kubernetes cluster.
@@ -339,10 +338,10 @@ Then, restart Telegraf:
 
  kubectl delete pod telegraf-ds-*
  kubectl delete pod telegraf-rs-*
+////
 
 
-
-
+////
 == DaemonSet, ReplicaSet, and Stopping/Starting the agent
 
 A DaemonSet and ReplicaSet will be created on the Kubernetes cluster to run the required Telegraf agents/pods. By default, these Telegraf agents/pods will be scheduled on both master and non-master nodes.
@@ -361,12 +360,29 @@ You can then use the following commands to stop and start the Telegraf service:
  
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-ds.yaml 
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml
+
+////
+
+
+
  
+== Stopping and Starting the Netapp Kubernetes Monitoring Operator
+ 
+To stop the Netapp Kubernetes Monitoring Operator:
+
+ kubectl -n netapp-monitoring scale deploy monitoring-operator --replicas=0
+
+To start the Netapp Kubernetes Monitoring Operator:
+
+ kubectl -n netapp-monitoring scale deploy monitoring-operator --replicas=1
+
+
+
 
  
 == Configuring the Agent to Collect Data from Kubernetes
 
-Note: The default namespace for Script-based installation is _ci-monitoring_. For Operator-based installation, the default namespace is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
+Note: The default namespace for NetApp Kubernetes Monitoring Operator-based installation is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
 
 The pods in which the agents run need to have access to the following:
 
@@ -418,12 +434,18 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
 ----
 
 
-== Installing the kube-state-metrics server
+== About Kube-state-metrics
+
+The NetApp Kubernetes Monitoring Operator installs kube-state-metrics automatically; no user interaction is needed and this section of the documentation may be skipped. It is included here to provide reference information for the curious:
+
+=== Installing the kube-state-metrics server
 
 NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
 
-
+////
 NOTE: It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices. Note also that with kube-state-metrics version 2.0 and above, Kubernetes object labels are not exported by default. To configure kube-state-metrics to export Kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
+////
+
 
 Use the following steps to install the kube-state-metrics server (required if you are performing script-based installation):
 
@@ -436,7 +458,7 @@ Use the following steps to install the kube-state-metrics server (required if yo
  kubectl apply -f /tmp/kube-state-yaml-files/
 
 
-== kube-state-metrics Counters
+=== kube-state-metrics Counters
 
 Use the following links to access information for the kube state metrics counters:
 
@@ -463,9 +485,13 @@ Use the following links to access information for the kube state metrics counter
 
 == Uninstalling the Agent
 
+If you are running on a previously-installed script-based Kubernetes agent, you must <<upgrading-the-agent, upgrade>> to the NetApp Kubernetes Monitoring Operator.
+
+=== To remove script-based agent
+
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
-To uninstall the script-based agent on Kubernetes, do the following:
+To uninstall the script-based agent on Kubernetes (for example, when upgrading to the NetApp Kubernetes Monitoring Operator), do the following:
 
 If the monitoring namespace is being used solely for Telegraf:
 
@@ -480,15 +506,32 @@ If the monitoring namespace is being used for other purposes in addition to Tele
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
 
 
-For Operator-based installation run the following commands:
+=== To remove NetApp Kubernetes Monitoring Operator
 
+Note that these commands are using the default namespace "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
+
+ kubectl delete ns netapp-monitoring
+ kubectl delete clusterrole <name-space>-agent-manager-role <name-space>-agent-proxy-role
+ kubectl delete clusterrolebinding <name-space>-agent-manager-rolebinding <name-space>-agent-proxy-rolebinding
+ kubectl delete crd agents.monitoring.netapp.com
+ kubectl delete psp <name-space>-psp-nkmo
+
+////
+ kubectl delete agent agent-monitoring-netapp -n <name-space>
+ kubectl delete ns <name-space>
+ kubectl delete clusterrole <name-space>-agent-manager-role <name-space>-agent-proxy-role
+ kubectl delete clusterrolebinding <name-space>-agent-manager-rolebinding <name-space>-agent-proxy-rolebinding
+ kubectl delete crd agents.monitoring.netapp.com
+////
+
+////
  kubectl delete ns netapp-monitoring
  kubectl delete agent agent-monitoring-netapp
  kubectl delete crd agents.monitoring.netapp.com
  kubectl delete role agent-leader-election-role
  kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
-
+////
 
 If a Security Context Constraint was previously-created manually for a script-based Telegraf installation:
 
@@ -499,19 +542,34 @@ If a Security Context Constraint was previously-created manually for a script-ba
 
 == Upgrading the Agent
 
+NOTE: If you have previously installed the script-based agent, you must upgrade to the NetApp Kubernetes Monitoring Operator.
+
+=== Upgrading from script-based agent to NetApp Kubernetes Monitoring Operator
+
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
 To upgrade the telegraf agent, do the following:
 
-. Back up the existing configurations:
+* Make note of your cluster name.  You can view the cluster name by running one of the following collands:
+
+For operator:
+
+ kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
+
+
+For script-based:
+
+ kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
+
+* Back up the existing configurations:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
  
 // Be sure to specify the appropriate namespace if it is not the default.
 
-. Uninstall the Agent (see above for instructions)
+* <<uninstalling-the-agent, Uninstall>> the existing agent 
 
-. link:#kubernetes[Install the new agent].
+* <<installing-the-agent, Install>> the new agent].
 
 ////
 . Re-apply the configurations:
@@ -523,6 +581,18 @@ To upgrade the telegraf agent, do the following:
 
  kubectl --namespace ci-monitoring delete pod <Telegraf_pod>
 ////
+
+
+=== Upgrading the NetApp Kubernetes Monitoring Operator
+
+For Operator-based installation run the following commands:
+
+ kubectl delete ns netapp-monitoring
+ kubectl delete crd agents.monitoring.netapp.com
+ kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
+ kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
+
+
 
 
 == Verifying Kubernetes Checksums
@@ -694,8 +764,7 @@ Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: 2021-10-11T14:23:41Z I! Starting
 "Error in processing mountstats info: failed to open mountstats file: /hostfs/proc/1/mountstats, error: open /hostfs/proc/1/mountstats: permission denied"
 |If SELinux is enabled and enforcing, it is likely preventing the Telegraf pod(s) from accessing the /proc/1/mountstats file on the Kubernetes nodes.  To relax this restriction, do ONE of the following:
 
-• For script-based installations, edit the telegraf DS (`kubectl edit ds telegraf-ds`), and change "privileged: false" to "privileged: true"
-• For operator-based installation, edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"
+• Edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"
 
 
 |On Kubernetes, my Telegraf ReplicaSet pod is reporting the following error:
@@ -708,6 +777,32 @@ For example, edit the ReplicaSet...
  kubectl edit rs telegraf-rs
 
 ...and add the appropriate tolerations to the spec. Then, restart the ReplicaSet pod.
+
+
+|I have a PSP environment. Does this affect my monitoring operator?
+|If your Kubernetes cluster is running with Pod Security Policy (PSP) in place, you must upgrade to the latest NetApp Kubernetes Monitoring Operator. Follow these steps to upgrade to the current NKMO with support for PSP:
+
+1. Uninstall the previous monitoring operator:
+
+ kubectl delete agent agent-monitoring-netapp -n netapp-monitoring
+ kubectl delete ns netapp-monitoring
+ kubectl delete crd agents.monitoring.netapp.com
+ kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
+ kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
+
+2. Deploy the latest version of the monitoring operator.
+
+|I ran into issues trying to deploy the NKMO, and I have PSP in use.
+|1. Edit the agent using the following command:
+
+kubectl -n <name-space> edit agent
+
+2. Mark 'security-policy-enabled' as 'false'. This will disable Pos Security Policies and allow the NKMO to deploy. Confirm by using the following commands:
+
+kubectl get psp (should show Pod Security Policy removed)
+kubectl get all -n <name-space>
+
+
 
 |I'm seeing the following in my logs immediately after installing the NetApp Kubernetes Monitoring Operator:
 
@@ -726,6 +821,7 @@ kubectl -n netapp-monitoring logs <monitoring-operator pod> -c manager
 kubectl -n netapp-monitoring logs <telegraf-ds pods>
 kubectl -n netapp-monitoring logs <telegraf-rs pod>
 kubectl -n netapp-monitoring logs <kube-state-metrics pod>
+
 
 |===
 
