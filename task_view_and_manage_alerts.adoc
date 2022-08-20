@@ -55,6 +55,18 @@ The Alert Detail Page provides additional detail about the alert, including a _S
 
 image:alert_detail_page.png[Alert Detail Page] 
 
+== Alerts When Data Is Missing
+
+In a realtime system such as Cloud Insights, to trigger the analysis of a Monitor to decide if an Alert should be generated, we rely on one of two things:
+
+* the next datapoint to arrive
+* a timer to fire when there is no datapoint and you have waited long enough
+
+As is the case with slow data arrival--or no data arrival--the timer mechanism needs to take over as the data arrival rate is insufficient to trigger alerts in "real time." So the question typically becomes "How long do I wait before I close the analysis window and look at what I have?" If you wait too long then you are not generating the alerts fast enough to be useful.
+ 
+If you have a Monitor with a 30-minute window that notices that a condition is violated by the last data point before a long-term loss-of-data, an Alert will be generated because the Monitor received no other information to use to confirm a recovery of the metric or notice that the condition persisted.
+
+
 == "Permanently Active" Alerts
 
 It is possible to configure a monitor in such a way for the condition to *always* exist on the monitored object--for example, IOPS > 1 or latency > 0. These are often created as 'test' monitors and then forgotten. Such monitors create alerts that stay permanently open on the constituent objects, which can cause system stress and stability issues over time.  
