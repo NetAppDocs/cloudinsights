@@ -19,6 +19,118 @@ keywords: features
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.  
 
 
+== August 2022
+
+=== Cloud Insights has a new look!
+
+Starting this month, "Monitor and Optimize" has been renamed *Observability*. You'll find all your favorite features like Dashboards, Queries, Alerts, and Reporting here. In addition, look for Cloud Secure under the new *Security* menu. Note that only the menus have changed; feature functionality remains the same.
+
+[.thumb]
+image:New_CI_Menu_2022.png[New CI Menu]
+
+Looking for the *Help* menu?  
+
+Help now lives in the upper right of the screen.
+
+image:New_Help_Menu_2022.png[Help menu is in upper right corner]
+
+
+=== Not sure where to start? Check out ONTAP Essentials!
+
+link:concept_ontap_essentials.html[*ONTAP Essentials*] is a set of dashboards and workflows that provide detailed views into your NetApp ONTAP inventories, workloads, and data protection, including days-to-full predictions for storage capacity and performance. You can even see if any controllers are running at high utilization. ONTAP Essentials is your ideal place for all of your NetApp ONTAP monitoring needs! 
+
+ONTAP Essentials--available in all Editions--is designed to be intuitive to existing ONTAP operators and administrators, easing the transition from ActiveIQ Unified Manager to service-based management tools. 
+
+image:ONTAP_Essentials_Menu_and_screen.png[Overview dashboard for ONTAP Essentials]
+
+
+=== Storage Data families are merged
+
+You asked for it, and now you've got it. Storage base-2 and base-10 data units are now combined into one family, from bits and bytes to tebibits and terabytes, making it easier to display data your way on your dashboards. Data Rates are also now one big family of their own. 
+
+image:DataFamilyMerged.png[drop-dow showing merge of base-2 and base-10 data families]
+
+
+=== How much power is my storage using?
+
+Display and monitor your ONTAP storage shelf and node power consumption, temperature, and fan speed, using the netapp_ontap.storage_shelf, netapp_ontap.system_node and  netapp_ontap.cluster (power consumption only) metrics.
+
+image:ONTAP_Power_Metrics_1.png[Storage Power Consumption metrics]
+
+
+
+
+=== Features graduated from Preview
+
+The following features have moved out of Preview and are now available to all customers:
+
+|===
+
+|*Feature* |*Description*
+
+|Kubernetes Namespaces Running out of Space
+|The _Kubernetes Namespaces Running Out of Space_ Insight gives you a view into workloads on your Kubernetes namespaces that are at risk of running out of space, with an estimate for the number of days remaining before each space becomes full. 
+link:https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running_out_of_space.html[Read More]
+
+|Shared Resource Under Stress
+|The _Shared Resource Under Stress_ insight uses AI/ML to automatically identify where resource contention is causing performance degradation in your environment, highlights any workloads impacted by it, and provides recommended actions to remediate, letting you solve performance issues more quickly.
+link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html[Read More]
+
+|Cloud Secure – Block user access on attack
+|Greater protection for your business-critical data with the ability to block user access when an attack is detected. 
+Access can be blocked automatically, using Automated Response Policies, or manually from the alert or user details pages.
+link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
+
+|===
+
+
+
+=== How's my data collection health?
+
+Cloud Insights provides two new heartbeat monitors for your Acquisition Units, as well as two monitors to alert you to data collector failures. These can be used to alert you quickly to data collection issues.
+
+The following monitors are now available in the _Data Collection_ monitor group:
+
+* Acquisition Unit Heartbeat-Critical
+* Acquisition Unit Heartbeat-Warning
+* Collector Failed
+* Collector Warning
+
+Note that these monitors are in _Paused_ state by default. Activate them to be alerted about data collection issues.
+
+
+=== Auto-Renewing API Tokens
+
+API Access Tokens can now be set for auto-renewal. By enabling this feature, new/refreshed API Access Tokens will automatically be generated for expiring tokens. Cloud Insights agents using an expiring token will automatically be updated to use the corresponding new/refreshed API Access Token, allowing them to continue to operate seamlessly. Simply check the “Renew token automatically” box when creating your token. This feature is currently supported on Cloud Insights agents running on the Kubernetes platform with the latest NetApp Kubernetes Monitoring Operator. 
+
+
+
+
+=== Basic Edition gives you more than before
+
+Your trial is ending but you're not yet sure whether a subscription is right for you? Basic Edition has always given you a chance to continue using Cloud Insights with your current ONTAP data collector, but now you can continue capturing VMWare version, topology, and IOPS/Throughput/Latency data as well. NetApp customers with premium support on their storage systems will also be entitled to support for Cloud Insights.
+
+
+
+
+=== Ready to learn more?
+
+Check out the *Learning Center* section of the Help > Support page for links to NetApp University Cloud Insights course offerings!
+
+
+
+=== Operating System support
+
+The following operating system is supported with Cloud Insights Acquisition Units, in addition to those link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[already supported]:
+
+* Windows 11
+
+
+
+
+
+
+'''
 
 
 == June 2022
@@ -87,9 +199,9 @@ Cloud Insights regularly highlights a number of exciting new preview features. I
 |The _Kubernetes Namespaces Running Out of Space_ Insight gives you a view into workloads on your Kubernetes namespaces that are at risk of running out of space, with an estimate for the number of days remaining before each space becomes full. 
 link:https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running_out_of_space.html[Read More]
 
-|Cloud Secure – restrict user access on attack
-|Greater protection for your business-critical data with the ability to restrict user access when an attack is detected. 
-Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
+|Cloud Secure – block user access on attack
+|Greater protection for your business-critical data with the ability to block user access when an attack is detected. 
+Access can be blocked automatically, using Automated Response Policies or manually from the alert or user details pages.
 link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
 
 |Shared Resource Under Stress
@@ -156,9 +268,9 @@ link:https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running
 |Internal Volume and Volume Capacity Time-to-Full forecasting	
 |Cloud Insights is able to prognose the number of days until capacity runs out for each Internal Volume and Volume monitored. This value can help to significantly reduce the risk of an outage. 
 
-|Cloud Secure – restrict user access on attack
-|Greater protection for your business-critical data with the ability to restrict user access when an attack is detected. 
-Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
+|Cloud Secure – block user access on attack
+|Greater protection for your business-critical data with the ability to block user access when an attack is detected. 
+Access can be blocked automatically, using Automated Response Policies or manually from the alert or user details pages.
 link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
 
 |Shared Resource Under Stress
@@ -212,9 +324,9 @@ Cloud Insights regularly highlights a number of exciting new preview features. I
 |Internal Volume and Volume Capacity Time-to-Full forecasting	
 |Cloud Insights is able to prognose the number of days until capacity runs out for each Internal Volume and Volume monitored. This value can help to significantly reduce the risk of an outage. 
 
-|Cloud Secure – restrict user access on attack
-|Greater protection for your business-critical data with the ability to restrict user access when an attack is detected. 
-Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
+|Cloud Secure – block user access on attack
+|Greater protection for your business-critical data with the ability to block user access when an attack is detected. 
+Access can be blocked automatically, using Automated Response Policies or manually from the alert or user details pages.
 link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
 
 |Shared Resource Under Stress
@@ -352,9 +464,9 @@ Users can be granted access to Cloud Secure features based on link:concept_user_
 |Can perform all Cloud Secure functions, including those for Alerts, Forensics, data collectors, automated response policies, and APIs for Cloud Secure.
 An Administrator can also invite other users but can only assign Cloud Secure roles.
 |User	
-|Can view and manage Alerts and view Forensics. User role can change alert status, add a note, take snapshots manually, and restrict user access.
+|Can view and manage Alerts and view Forensics. User role can change alert status, add a note, take snapshots manually, and block user access.
 |Guest	
-|Can view Alerts and Forensics. Guest role cannot change alert status, add a note, take snapshots manually, or restrict user access.
+|Can view Alerts and Forensics. Guest role cannot change alert status, add a note, take snapshots manually, or block user access.
 
 |===
 
