@@ -21,6 +21,18 @@ The NetApp StorageGRID data collector supports inventory and performance collect
 
 NOTE: StorageGRID is metered at a different Raw TB to Managed Unit rate. Every 40 TB of unformatted StorageGRID capacity is charged as 1 link:concept_subscribing_to_cloud_insights.html#pricing[Managed Unit (MU)].
 
+== Terminology
+
+Cloud Insights acquires the following inventory information from the NetApp StorageGRID collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|StorageGRID|Storage
+|Node|Node
+|Tenant|Storage Pool
+|Bucket|Internal Volume
+|===
 == Requirements
 
 The following are requirements for configuring this data source:

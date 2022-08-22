@@ -21,6 +21,8 @@ summary: Configuring HDS data collector.
 
 This data collector supports the Hitachi Content Platform (HCP) using the HCP Management API. 
 
+NOTE: Hitachi Content Platform is metered at a different Raw TB to Managed Unit rate. Every 40 TB of unformatted HCP capacity is charged as 1 link:concept_subscribing_to_cloud_insights.html#pricing[Managed Unit (MU)].
+
 == Terminology 
 
 Cloud Insights acquires the following inventory information from the Hitachi HCP data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
