@@ -312,6 +312,18 @@ The command fails when the agent installation command is being run by a non-root
     a.	id cssys
     b.	groups cssys
     c.	cat /etc/os-release
+    
+|Agent installation Fails with useradd: cannot create directory /home/cssys
+|This error can occur if user's login directory cannot be created under /home, due to lack of permissions.
+
+The workaround would be to create cssys user and add its login directory manually using the following command:
+
+_sudo useradd user_name -m -d HOME_DIR_
+
+-m :Create the user's home directory if it does not exist.
+-d : The new user is created using HOME_DIR as the value for the user's login directory.
+
+For instance, _sudo useradd cssys -m -d /cssys_, adds a user _cssys_ and creates its login directory under root.
 
 |===
 
