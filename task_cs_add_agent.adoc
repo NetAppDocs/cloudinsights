@@ -313,6 +313,24 @@ The command fails when the agent installation command is being run by a non-root
     b.	groups cssys
     c.	cat /etc/os-release
     
+|The cloudsecure-agent-symptom-collector.sh script fails with the following error.
+
+[root@machine tmp]# /opt/netapp/cloudsecure/agent/bin/cloudsecure-agent-symptom-collector.sh
+Collecting service log
+Collecting application logs
+Collecting agent configurations
+Taking service status snapshot
+Taking agent directory structure snapshot
+………………….
+………………….
+/opt/netapp/cloudsecure/agent/bin/cloudsecure-agent-symptom-collector.sh: line 52: zip: command not found
+ERROR: Failed to create /tmp/cloudsecure-agent-symptoms.zip
+
+|Zip tool is not installed in the machine.
+Install the zip tool by running the command “yum install zip” in the machine to install.
+Then run the cloudsecure-agent-symptom-collector.sh again. 
+
+    
 |Agent installation Fails with useradd: cannot create directory /home/cssys
 |This error can occur if user's login directory cannot be created under /home, due to lack of permissions.
 
