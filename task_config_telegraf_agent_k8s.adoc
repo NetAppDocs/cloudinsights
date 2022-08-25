@@ -55,7 +55,7 @@ NOTE: If you are using a proxy, read the proxy instructions for your platform be
 ////
 
 
-== Installing an Agent on Kubernetes
+== Before installing the NetApp Kubernetes Monitoring Operator on Kubernetes
 
 Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
@@ -79,13 +79,13 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 ** Rancher 2.4 - 2.6.  
 ////
 
-* If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
+* If you are running on OpenShift 4.6 or higher, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
 * The NetApp Kubernetes Monitoring Operator and its dependencies (telegraf, kube-state-metrics, fluentbit, etc.) are not supported on nodes that are running with Arm64 architecture.
 
 * The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
-* The host you will use for NKMO installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
+* The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
 
 * kube-state-metrics is essential, and is automatically installed with NetApp Kubernetes Monitoring Operator installation.
 
@@ -108,8 +108,6 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 |Rancher + cattle.io as orchestration/Kubernetes platform |cattle.io/os = linux
 |===
 
-//|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
-
 
 == NetApp Kubernetes Monitoring Operator Installation
 
@@ -123,8 +121,7 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 . Paste the snippet into a _bash_ window and execute it.
 . The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
 
-NOTE: Your setup is incomplete intil you configure your proxy.
-Link to below
+NOTE: Setup is incomplete intil you <<configuring-proxy-support, configure your proxy>>.
 
 
 
@@ -138,9 +135,9 @@ In the file, change _privileged-mode: false_ to  _privileged-mode: true_
 
 
 
-=== Configuring Proxy Support for NetApp Kubernetes Monitoring Operator
+=== Configuring Proxy Support
 
-To configure a proxy for the monitoring operator, perform the following steps after you install the NKMO.
+To configure a proxy, perform the following steps after you install the NetApp Kubernetes Monitoring Operator.
 
 First, open the _agent-monitoring-netapp_ file for editing:
 
@@ -165,7 +162,7 @@ In the _spec:_ section of this file, add the following code block:
 
 === Using a custom/private docker repository
 
-If using a custom docker repository, do the following after installing the NKMO:
+If using a custom docker repository, do the following after installing the NetApp Kubernetes Monitoring Operator:
 
 Get the docker secret:
 
