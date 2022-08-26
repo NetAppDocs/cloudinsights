@@ -34,11 +34,12 @@ Cloud Insights has built a Kubernetes Operator for monitoring customers' Kuberne
 NKMO continues to use underlying telegraf software for data collection, transformation, and delivery to Cloud Insights. This is enhanced with Custom Resource Definitions and Custom Resources to tailor monitoring for each K8s cluster.
 ////
 
+////
 == Installing the Agent
 
 To install an agent, you must first do the following:
 
-. Log into the host you will use for your agent. 
+. Log into the host use will use for agent installation.  It should have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
 . Log in to your Cloud Insights site and go to *Admin > Data Collectors*.
 . Click on *+Data Collector* and choose a data collector to install. 
 . Choose the Kubernetes platform for your host 
@@ -51,10 +52,10 @@ NOTE: Once you have installed an agent on a host, you do not need to install an 
 TIP: Once you have installed an agent on a server/VM, Cloud Insights collects metrics from that system in addition to collecting from any data collectors you configure. These metrics are gathered as link:task_config_telegraf_node.html["Node" metrics].
 
 NOTE: If you are using a proxy, read the proxy instructions for your platform before installing the Telegraf agent.
+////
 
 
-
-== Installing an Agent on Kubernetes
+== Before installing the NetApp Kubernetes Monitoring Operator on Kubernetes
 
 Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
@@ -78,11 +79,13 @@ image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 ** Rancher 2.4 - 2.6.  
 ////
 
-* If you are running on OpenShift 4.6 - 4.8, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
+* If you are running on OpenShift 4.6 or higher, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
 * The NetApp Kubernetes Monitoring Operator and its dependencies (telegraf, kube-state-metrics, fluentbit, etc.) are not supported on nodes that are running with Arm64 architecture.
 
 * The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
+
+* The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
 
 * kube-state-metrics is essential, and is automatically installed with NetApp Kubernetes Monitoring Operator installation.
 
@@ -105,8 +108,6 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 |Rancher + cattle.io as orchestration/Kubernetes platform |cattle.io/os = linux
 |===
 
-//|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
-
 
 == NetApp Kubernetes Monitoring Operator Installation
 
@@ -120,20 +121,29 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 . Paste the snippet into a _bash_ window and execute it.
 . The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
 
+NOTE: Setup is incomplete until you <<configuring-proxy-support, configure your proxy>>.
+
+NOTE: If you have a custom repository, you must follow the instructions for <<using-a-custom-private-docker-repository, Using a custom/private docker repository>>.
+
+
 
 === OpenShift Instructions
 
-If you are running on OpenShift 4.6 - 4.8, you must change the "privileged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace in the command line:
+If you are running on OpenShift 4.6 or higher, you must change the "privileged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace in the command line:
 
  kubectl edit agent agent-monitoring-netapp -n netapp-monitoring
  
 In the file, change _privileged-mode: false_ to  _privileged-mode: true_
 
+Openshift may implement an added level of security that may block access to some Kubernetes components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. See the <<configuring-the-agent-to-collect-data-from-kubernetes,Configuring the Agent to Collect Data from Kubernetes>> section for more information.
 
 
-=== Configuring Proxy Support for NetApp Kubernetes Monitoring Operator
 
-To configure a proxy for the monitoring operator, perform the following steps.
+
+
+=== Configuring Proxy Support
+
+To configure a proxy, perform the following steps after you install the NetApp Kubernetes Monitoring Operator.
 
 First, open the _agent-monitoring-netapp_ file for editing:
 
@@ -141,6 +151,8 @@ First, open the _agent-monitoring-netapp_ file for editing:
 
 
 In the _spec:_ section of this file, add the following code block:
+
+>> This code block needs to be commented (Pranav?)
 
  spec:
    proxy:
@@ -156,7 +168,7 @@ In the _spec:_ section of this file, add the following code block:
 
 === Using a custom/private docker repository
 
-If using a custom docker repository, do the following:
+If using a custom docker repository, do the following after installing the NetApp Kubernetes Monitoring Operator:
 
 Get the docker secret:
 
@@ -173,8 +185,8 @@ The output of this will be in the following json format:
  { "auths":
    {"docker.<cluster>.cloudinsights.netapp.com" :
      {"username":"<tenant id>",
-      "password":"<password which is the CI API key>",
-      "auth"    :"<encoded username:password basic auth key. This is internal to docker>"}
+      "password":"<password which is the CI API token>",
+      "auth"    :"<encoded username:password basic auth token. This is internal to docker>"}
    }
  }
 
@@ -383,8 +395,6 @@ The pods in which the agents run need to have access to the following:
 
 These Kubernetes objects are automatically created as part of the Kubernetes agent install command provided in the Cloud Insights UI. Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to these components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).
 
-//In such cases, an additional manual step may be required.  As an example, for OpenShift, you may need to create a _SecurityContextConstraint_ to grant the telegraf-user ServiceAccount access to these components.
-
 ----
     apiVersion: v1
     kind: SecurityContextConstraints
@@ -429,6 +439,7 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
 
 The NetApp Kubernetes Monitoring Operator installs kube-state-metrics automatically; no user interaction is needed and this section of the documentation may be skipped. It is included here to provide reference information for the curious:
 
+////
 === Installing the kube-state-metrics server
 
 NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
@@ -447,6 +458,8 @@ Use the following steps to install the kube-state-metrics server (required if yo
 . Run the following command to apply the .yaml files needed for installing kube-state-metrics:
 
  kubectl apply -f /tmp/kube-state-yaml-files/
+////
+
 
 
 === kube-state-metrics Counters
@@ -584,11 +597,12 @@ For Operator-based installation run the following commands:
  kubectl delete crd agents.monitoring.netapp.com
  kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
+ <<installing-the-agent, Install>> the new agent. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
 
 
-
-
+////
 == Verifying Kubernetes Checksums
+
 
 The Cloud Insights agent installer performs integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform a download-only operation (as opposed to the default download-and-install), these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
 
@@ -663,6 +677,7 @@ Non-Windows:
 Windows:
 
  .\cloudinsights-windows.ps1 -install
+ ////
  
 
 
