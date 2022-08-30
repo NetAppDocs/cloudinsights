@@ -197,7 +197,7 @@ NOTE: If you have a previously installed script-based agent, you _must_ upgrade 
 
 To upgrade the telegraf agent, do the following:
 
-* Make note of your cluster name.  You can view the cluster name by running the following command. If your namespace is not the default (_ci-monitoring_), substitute the appropriate namespace:
+* Make note of your cluster name as recognized by Cloud Insights.  You can view the cluster name by running the following command. If your namespace is not the default (_ci-monitoring_), substitute the appropriate namespace:
 
  kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
  
@@ -260,7 +260,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 For Operator-based installation run the following commands:
 
-* Make note of your cluster name.  You can view the cluster name by running the following command. If your namespace is not the default (_netapp-monitoring_), substitute the appropriate namespace:
+* Make note of your cluster name as recognized by Cloud Insights. You can view the cluster name by running the following command. If your namespace is not the default (_netapp-monitoring_), substitute the appropriate namespace:
 
  kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
 
@@ -269,12 +269,6 @@ For Operator-based installation run the following commands:
 
  kubectl --namespace netapp-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
 
-////
- kubectl delete ns netapp-monitoring
- kubectl delete crd agents.monitoring.netapp.com
- kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
- kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
-////
 
 <<to-remove-the-netapp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
 
@@ -445,32 +439,6 @@ Execute each of the following commands in order. Depending on your current insta
   kubectl delete <NAMESPACE>-psp-nkmo
   kubectl delete ns <NAMESPACE>
 
-
-////
- kubectl delete ns netapp-monitoring
- kubectl delete clusterrole <name-space>-agent-manager-role <name-space>-agent-proxy-role
- kubectl delete clusterrolebinding <name-space>-agent-manager-rolebinding <name-space>-agent-proxy-rolebinding
- kubectl delete crd agents.monitoring.netapp.com
- kubectl delete psp <name-space>-psp-nkmo
-////
-
-
-////
- kubectl delete agent agent-monitoring-netapp -n <name-space>
- kubectl delete ns <name-space>
- kubectl delete clusterrole <name-space>-agent-manager-role <name-space>-agent-proxy-role
- kubectl delete clusterrolebinding <name-space>-agent-manager-rolebinding <name-space>-agent-proxy-rolebinding
- kubectl delete crd agents.monitoring.netapp.com
-////
-
-////
- kubectl delete ns netapp-monitoring
- kubectl delete agent agent-monitoring-netapp
- kubectl delete crd agents.monitoring.netapp.com
- kubectl delete role agent-leader-election-role
- kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
- kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
-////
 
 If a Security Context Constraint was previously-created manually for a script-based Telegraf installation:
 
