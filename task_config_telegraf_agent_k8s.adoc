@@ -179,7 +179,60 @@ In the file, change _privileged-mode: false_ to  _privileged-mode: true_
 
 Openshift may implement an added level of security that may block access to some Kubernetes components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. See the <<configuring-the-agent-to-collect-data-from-kubernetes,Configuring the Agent to Collect Data from Kubernetes>> section for more information.
 
+==== SecurityContextConstraint
 
+////
+The pods in which the agents run need to have access to the following:
+
+* hostPath
+* configMap
+* secrets
+
+These Kubernetes objects are automatically created as part of the Kubernetes agent install command provided in the Cloud Insights UI. 
+////
+
+Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to these components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).
+
+Note: The default namespace for NetApp Kubernetes Monitoring Operator-based installation is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
+
+----
+    apiVersion: v1
+    kind: SecurityContextConstraints
+    metadata:
+      name: telegraf-hostaccess
+      creationTimestamp:
+      annotations:
+        kubernetes.io/description: telegraf-hostaccess allows hostpath volume mounts for restricted SAs.
+      labels:
+        app: ci-telegraf
+    priority: 10
+    allowPrivilegedContainer: true
+    defaultAddCapabilities: []
+    requiredDropCapabilities: []
+    allowedCapabilities: []
+    allowedFlexVolumes: []
+    allowHostDirVolumePlugin: true
+    volumes:
+    - hostPath
+    - configMap
+    - secret
+    allowHostNetwork: false
+    allowHostPorts: false
+    allowHostPID: false
+    allowHostIPC: false
+    seLinuxContext:
+      type: MustRunAs
+    runAsUser:
+      type: RunAsAny
+    supplementalGroups:
+      type: RunAsAny
+    fsGroup:
+      type: RunAsAny
+    readOnlyRootFilesystem: false
+    users:
+    - system:serviceaccount:ci-monitoring:monitoring-operator
+    groups: []
+----
 
 
     
@@ -312,56 +365,7 @@ To start the Netapp Kubernetes Monitoring Operator:
 
 
  
-== Configuring the Agent to Collect Data from Kubernetes
 
-Note: The default namespace for NetApp Kubernetes Monitoring Operator-based installation is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
-
-The pods in which the agents run need to have access to the following:
-
-* hostPath
-* configMap
-* secrets
-
-These Kubernetes objects are automatically created as part of the Kubernetes agent install command provided in the Cloud Insights UI. Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to these components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).
-
-----
-    apiVersion: v1
-    kind: SecurityContextConstraints
-    metadata:
-      name: telegraf-hostaccess
-      creationTimestamp:
-      annotations:
-        kubernetes.io/description: telegraf-hostaccess allows hostpath volume mounts for restricted SAs.
-      labels:
-        app: ci-telegraf
-    priority: 10
-    allowPrivilegedContainer: true
-    defaultAddCapabilities: []
-    requiredDropCapabilities: []
-    allowedCapabilities: []
-    allowedFlexVolumes: []
-    allowHostDirVolumePlugin: true
-    volumes:
-    - hostPath
-    - configMap
-    - secret
-    allowHostNetwork: false
-    allowHostPorts: false
-    allowHostPID: false
-    allowHostIPC: false
-    seLinuxContext:
-      type: MustRunAs
-    runAsUser:
-      type: RunAsAny
-    supplementalGroups:
-      type: RunAsAny
-    fsGroup:
-      type: RunAsAny
-    readOnlyRootFilesystem: false
-    users:
-    - system:serviceaccount:ci-monitoring:monitoring-operator
-    groups: []
-----
 
 
 == About Kube-state-metrics
