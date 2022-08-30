@@ -267,7 +267,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 +
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
  
-.<<installing-the-agent, Install>> the current Operator. 
+. <<installing-the-agent, Install>> the current Operator. 
 
 //image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
 
