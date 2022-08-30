@@ -55,7 +55,8 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 * The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
 
-* kube-state-metrics is essential, and is automatically installed with NetApp Kubernetes Monitoring Operator installation.
+* kube-state-metrics is essential, and is automatically installed with the NetApp Kubernetes Monitoring Operator. Note that kube-state-metrics version 2.0 and above does not export Kubernetes object labels by default; you must configure kube-state-metrics to export these. <<about-kube-state-metrics, Read more>>.
+////
 
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
@@ -196,7 +197,7 @@ NOTE: If you have a previously installed script-based agent, you _must_ upgrade 
 
 To upgrade the telegraf agent, do the following:
 
-* Make note of your cluster name.  You can view the cluster name by running the following command. If your namespace is not the default (_ci-monitoring_), substitute the appropriate namespace:
+* Make note of your cluster name as recognized by Cloud Insights.  You can view the cluster name by running the following command. If your namespace is not the default (_ci-monitoring_), substitute the appropriate namespace:
 
  kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
  
@@ -259,7 +260,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 For Operator-based installation run the following commands:
 
-* Make note of your cluster name.  You can view the cluster name by running the following command. If your namespace is not the default (_netapp-monitoring_), substitute the appropriate namespace:
+* Make note of your cluster name as recognized by Cloud Insights. You can view the cluster name by running the following command. If your namespace is not the default (_netapp-monitoring_), substitute the appropriate namespace:
 
  kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
 
@@ -268,12 +269,6 @@ For Operator-based installation run the following commands:
 
  kubectl --namespace netapp-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
 
-////
- kubectl delete ns netapp-monitoring
- kubectl delete crd agents.monitoring.netapp.com
- kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
- kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
-////
 
 <<to-remove-the-netapp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
 
@@ -371,32 +366,14 @@ These Kubernetes objects are automatically created as part of the Kubernetes age
 
 == About Kube-state-metrics
 
-The NetApp Kubernetes Monitoring Operator installs kube-state-metrics automatically; no user interaction is needed and this section of the documentation may be skipped. It is included here to provide reference information for the curious:
+The NetApp Kubernetes Monitoring Operator installs kube-state-metrics automatically; no user interaction is needed unless you wish to export Kubernetes object labels.
 
-////
-=== Installing the kube-state-metrics server
-
-NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
-
-////
-NOTE: It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices. Note also that with kube-state-metrics version 2.0 and above, Kubernetes object labels are not exported by default. To configure kube-state-metrics to export Kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
-////
-
-
-.Steps
-
-. Create a temporary folder (for example, _/tmp/kube-state-yaml-files/_) and copy the .yaml files from https://github.com/kubernetes/kube-state-metrics/tree/master/examples/standard to this folder. 
-
-. Run the following command to apply the .yaml files needed for installing kube-state-metrics:
-
- kubectl apply -f /tmp/kube-state-yaml-files/
-////
-
+NOTE: Note that with kube-state-metrics version 2.0 and above, Kubernetes object labels are not exported by default. To configure kube-state-metrics to export Kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
 
 
 === kube-state-metrics Counters
 
-Use the following links to access information for the kube state metrics counters:
+Use the following links to access information for these kube state metrics counters:
 
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/configmap-metrics.md[ConfigMap Metrics]
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/daemonset-metrics.md[DaemonSet Metrics]
@@ -462,32 +439,6 @@ Execute each of the following commands in order. Depending on your current insta
   kubectl delete <NAMESPACE>-psp-nkmo
   kubectl delete ns <NAMESPACE>
 
-
-////
- kubectl delete ns netapp-monitoring
- kubectl delete clusterrole <name-space>-agent-manager-role <name-space>-agent-proxy-role
- kubectl delete clusterrolebinding <name-space>-agent-manager-rolebinding <name-space>-agent-proxy-rolebinding
- kubectl delete crd agents.monitoring.netapp.com
- kubectl delete psp <name-space>-psp-nkmo
-////
-
-
-////
- kubectl delete agent agent-monitoring-netapp -n <name-space>
- kubectl delete ns <name-space>
- kubectl delete clusterrole <name-space>-agent-manager-role <name-space>-agent-proxy-role
- kubectl delete clusterrolebinding <name-space>-agent-manager-rolebinding <name-space>-agent-proxy-rolebinding
- kubectl delete crd agents.monitoring.netapp.com
-////
-
-////
- kubectl delete ns netapp-monitoring
- kubectl delete agent agent-monitoring-netapp
- kubectl delete crd agents.monitoring.netapp.com
- kubectl delete role agent-leader-election-role
- kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
- kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
-////
 
 If a Security Context Constraint was previously-created manually for a script-based Telegraf installation:
 
