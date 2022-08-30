@@ -476,7 +476,6 @@ NOTE: If you have previously installed the script-based agent, you must upgrade 
 
 === Upgrading from script-based agent to NetApp Kubernetes Monitoring Operator
 
-Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
 To upgrade the telegraf agent, do the following:
 
@@ -519,11 +518,16 @@ For script-based:
 
 For Operator-based installation run the following commands:
 
+////
  kubectl delete ns netapp-monitoring
  kubectl delete crd agents.monitoring.netapp.com
  kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
- <<installing-the-agent, Install>> the new agent. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
+////
+
+<<to-remove-the-netApp-kubernetes-monitoringoOperator, Uninstall>> the current Operator.
+
+<<installing-the-agent, Install>> the new agent. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
 
 
 ////
