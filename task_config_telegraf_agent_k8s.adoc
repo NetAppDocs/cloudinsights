@@ -401,7 +401,7 @@ NOTE: If you are running on a previously-installed script-based Kubernetes agent
 
 
 
-=== To remove script-based agent
+=== To remove the older script-based agent
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
@@ -420,11 +420,12 @@ If the monitoring namespace is being used for other purposes in addition to Tele
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
 
 
-=== To remove NetApp Kubernetes Monitoring Operator
+
+=== To remove the NetApp Kubernetes Monitoring Operator
 
 Note that the default namespace for the NetApp Kubernetes Monitoring Operator is "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
-Execute each of the following commands in order. Depending on your current installation, some of these commands may return ‘object not found’ messages. These messages can be safely ignored.
+Execute each of the following commands in order. Depending on your current installation, some of these commands may return ‘object not found’ messages. These messages may be safely ignored.
 
 
   kubectl -n <NAMESPACE> delete agent agent-monitoring-netapp
