@@ -66,7 +66,7 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 == Note these before you start
 
-If you are running with a <<configuring-proxy-support,proxy>>, have a <<using-a-custom-private-docker-repository,custom repository>>, or are using <<openshift-instructions,OpenShift>>, read the following sections carefully.
+If you are running with a <<configuring-proxy-support,proxy>>, have a <<using-a-custom-or-private-docker-repository,custom repository>>, or are using <<openshift-instructions,OpenShift>>, read the following sections carefully.
 
 If you are upgrading from a previous installation, also read the <<upgrading,Upgrading>> information.
 
@@ -97,7 +97,7 @@ In the _spec:_ section of this file, add the following code block:
      noProxy: <comma separated list of IPs or resolvable hostnames that should bypass a proxy>
 
 
-=== Using a custom/private docker repository
+=== Using a custom or private docker repository
 
 If using a custom docker repository, do the following after installing the NetApp Kubernetes Monitoring Operator:
 
