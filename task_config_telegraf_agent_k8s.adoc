@@ -66,20 +66,10 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 == Note these before you start
 
-If you are running with a proxy, have a custom repository, or are using OpenShift, read the following sections carefully.
+If you are running with a <<configuring-proxy-support,proxy>>, have a <<using-a-custom-private-docker-repository,custom repository>>, or are using <<openshift-instructions,OpenShift>>, read the following sections carefully.
+
 If you are upgrading from a previous installation, also read the <<upgrading,Upgrading>> information.
 
-
-
-=== OpenShift Instructions
-
-If you are running on OpenShift 4.6 or higher, you must change the "privileged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace in the command line:
-
- kubectl edit agent agent-monitoring-netapp -n netapp-monitoring
- 
-In the file, change _privileged-mode: false_ to  _privileged-mode: true_
-
-Openshift may implement an added level of security that may block access to some Kubernetes components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. See the <<configuring-the-agent-to-collect-data-from-kubernetes,Configuring the Agent to Collect Data from Kubernetes>> section for more information.
 
 
 === Configuring Proxy Support
@@ -105,7 +95,7 @@ In the _spec:_ section of this file, add the following code block:
      server: <server for proxy>
      username: <username for proxy, optional>
      noProxy: <comma separated list of IPs or resolvable hostnames that should bypass a proxy>
-     
+
 
 === Using a custom/private docker repository
 
@@ -174,6 +164,25 @@ In the _spec:_ section, make the following changes:
        substitutions:
          - key: k8s.gcr.io
            value: <same as "docker-repo" field above>
+
+
+
+
+=== OpenShift Instructions
+
+If you are running on OpenShift 4.6 or higher, you must change the "privileged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace in the command line:
+
+ kubectl edit agent agent-monitoring-netapp -n netapp-monitoring
+ 
+In the file, change _privileged-mode: false_ to  _privileged-mode: true_
+
+Openshift may implement an added level of security that may block access to some Kubernetes components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. See the <<configuring-the-agent-to-collect-data-from-kubernetes,Configuring the Agent to Collect Data from Kubernetes>> section for more information.
+
+
+
+
+    
+
 
 
 
