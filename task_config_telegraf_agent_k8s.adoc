@@ -209,7 +209,7 @@ To upgrade the telegraf agent, do the following:
  
 // Be sure to specify the appropriate namespace if it is not the default.
 
-* <<uninstalling-the-agent, Uninstall>> the existing agent.
+* <<uninstalling, Uninstall>> the existing agent.
 
 * <<netApp-kubernetes-monitoring-operator-installation, Install>> the new Operator.
 
@@ -275,7 +275,7 @@ For Operator-based installation run the following commands:
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
 ////
 
-<<to-remove-the-netApp-kubernetes-monitoringoOperator, Uninstall>> the current Operator.
+<<to-remove-the-netApp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
 
 <<netApp-kubernetes-monitoring-operator-installation, Install>> the Operator. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
 
@@ -297,12 +297,6 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 NOTE: Setup is incomplete until you <<configuring-proxy-support, configure your proxy>>.
 
 NOTE: If you have a custom repository, you must follow the instructions for <<using-a-custom-private-docker-repository, Using a custom/private docker repository>>.
-
-
-
-
-
-
 
 
 
@@ -427,7 +421,7 @@ Use the following links to access information for the kube state metrics counter
 
 
 
-== Uninstalling the Agent
+== Uninstalling
 
 NOTE: If you are running on a previously-installed script-based Kubernetes agent, you must <<upgrading-the-agent, upgrade>> to the NetApp Kubernetes Monitoring Operator.
 
