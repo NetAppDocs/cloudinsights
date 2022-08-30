@@ -496,11 +496,12 @@ For script-based:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
  
+ 
 // Be sure to specify the appropriate namespace if it is not the default.
 
-* <<uninstalling-the-agent, Uninstall>> the existing agent 
+* <<uninstalling-the-agent, Uninstall>> the existing agent.
 
-* <<netApp-kubernetes-monitoring-operator-installation, Install>> the new agent].
+* <<netApp-kubernetes-monitoring-operator-installation, Install>> the new Operator.
 
 ////
 . Re-apply the configurations:
