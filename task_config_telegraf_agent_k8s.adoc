@@ -211,7 +211,7 @@ To upgrade the telegraf agent, do the following:
 
 * <<uninstalling, Uninstall>> the existing agent.
 
-* <<netApp-kubernetes-monitoring-operator-installation, Install>> the new Operator.
+* <<netapp-kubernetes-monitoring-operator-installation, Install>> the new Operator.
 
 ////
 . Re-apply the configurations:
@@ -250,7 +250,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 +
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
  
-* <<netApp-kubernetes-monitoring-operator-installation, Install>> the current Operator. 
+* <<netapp-kubernetes-monitoring-operator-installation, Install>> the current Operator. 
 
 //image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
 
@@ -275,9 +275,9 @@ For Operator-based installation run the following commands:
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
 ////
 
-<<to-remove-the-netApp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
+<<to-remove-the-netapp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
 
-<<netApp-kubernetes-monitoring-operator-installation, Install>> the Operator. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
+<<netapp-kubernetes-monitoring-operator-installation, Install>> the Operator. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
 
 
 
