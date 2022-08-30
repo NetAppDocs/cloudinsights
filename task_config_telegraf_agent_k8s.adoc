@@ -56,7 +56,7 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 * The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
 
 * kube-state-metrics is essential, and is automatically installed with the NetApp Kubernetes Monitoring Operator. Note that kube-state-metrics version 2.0 and above does not export Kubernetes object labels by default; you must configure kube-state-metrics to export these. <<about-kube-state-metrics, Read more>>.
-////
+
 
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
