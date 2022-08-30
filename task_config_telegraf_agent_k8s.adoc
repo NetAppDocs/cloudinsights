@@ -267,7 +267,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 +
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
  
-.Install the K8s operator-based monitoring following the instructions in the install tile.
+.<<installing-the-agent, Install>> the current Operator. 
 
 //image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
 
@@ -527,7 +527,7 @@ For Operator-based installation run the following commands:
 
 <<to-remove-the-netApp-kubernetes-monitoringoOperator, Uninstall>> the current Operator.
 
-<<installing-the-agent, Install>> the new agent. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
+<<installing-the-agent, Install>> the current Operator. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
 
 
 ////
