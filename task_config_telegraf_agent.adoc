@@ -61,6 +61,12 @@ NOTE: If you are using a proxy, read the proxy instructions for your platform be
 
 === Windows
 
+==== Pre-requisites:
+
+* PowerShell must be installed
+* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Windows* section. 
+
+
 ==== Configuring Proxy Support for Windows
 
 NOTE: If your environment uses a proxy, read this section before you install.
@@ -75,10 +81,6 @@ For systems residing behind a proxy, perform the following to set the _https_pro
 
 image:AgentInstallWindows.png[Windows Agent Install]
 
-.Pre-requisites:
-
-* PowerShell must be installed
-* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Windows* section. 
 
 .Steps to install agent on Windows:
 
@@ -135,6 +137,12 @@ To upgrade the telegraf agent, do the following:
 
 === RHEL and CentOS
 
+==== Pre-requisites:
+
+* The following commands must be available: curl, sudo, ping, sha256sum, openssl, and dmidecode
+* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for RHEL/CentOS* section. 
+
+
 ==== Configuring Proxy Support for RHEL/CentOS
 
 NOTE: If your environment uses a proxy, read this section before you install.
@@ -158,10 +166,6 @@ For systems residing behind a proxy, perform the following steps *PRIOR* to inst
 //image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 image:Agent_Requirements_Rhel.png[Rhel/CentOS Agent Install]
 
-.Pre-requisites:
-
-* The following commands must be available: curl, sudo, ping, sha256sum, openssl, and dmidecode
-* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for RHEL/CentOS* section. 
 
 
 .Steps to install agent on RHEL/CentOS:
@@ -226,6 +230,12 @@ To upgrade the telegraf agent, do the following:
 
 === Ubuntu and Debian
 
+==== Pre-requisites:
+
+* The following commands must be available: curl, sudo, ping, sha256sum, openssl, and dmidecode
+* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Ubuntu/Debian* section. 
+
+
 ==== Configuring Proxy Support for Ubuntu/Debian
 
 NOTE: If your environment uses a proxy, read this section before you install.
@@ -249,10 +259,6 @@ For systems residing behind a proxy, perform the following steps *PRIOR* to inst
 //image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 image:Agent_Requirements_Ubuntu.png[Ubuntu/Debian Agent Install]
 
-.Pre-requisites:
-
-* The following commands must be available: curl, sudo, ping, sha256sum, openssl, and dmidecode
-* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Ubuntu/Debian* section. 
 
 
 .Steps to install agent on Debian or Ubuntu:
@@ -314,7 +320,15 @@ To upgrade the telegraf agent, do the following:
 . link:#ubuntu-and-debian[Install the new agent].
 
 
+
+
 === macOS
+
+==== Pre-requisites:
+
+* The following commands must be available: curl, sudo, openssl, and shasum
+* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for macOS* section. 
+
 
 
 ==== Configuring Proxy Support for macOS
@@ -373,10 +387,6 @@ Then, restart Telegraf after loading the above changes:
 //image:AgentInstallMacOS.png[MacOS Agent Install]
 image:Agent_Requirements_Macos.png[macOS Agent Install]
 
-.Pre-requisites:
-
-* The following commands must be available: curl, sudo, openssl, and shasum
-* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for macOS* section. 
 
 
 .Steps to install agent on macOS:
