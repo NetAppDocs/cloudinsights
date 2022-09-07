@@ -362,7 +362,7 @@ Aug 03 21:12:26 demo systemd[1]: cloudsecure-agent.service failed.
 If /opt/netapp is an NFS mount and if _cssys_ user does not have access to this folder, installation will fail. _cssys_ is a local user created by the Cloud Secure installer that may not have permission to access the mounted share. 
 
 You can check this by attempting to access /opt/netapp/cloudsecure/agent/bin/cloudsecure-agent using _cssys_ user.
-CIf it returns “Permission denied”, installation permission is not present.
+If it returns “Permission denied”, installation permission is not present.
 
 Instead of a mounted folder, install on a directory local to the machine.
 
