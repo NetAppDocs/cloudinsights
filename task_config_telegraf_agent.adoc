@@ -71,7 +71,7 @@ For systems residing behind a proxy, perform the following to set the _https_pro
 
  [System.Environment]::SetEnvironmentVariable(“https_proxy”, “<proxy_server>:<proxy_port>”, [System.EnvironmentVariableTarget]::Machine)
 
-
+==== Installing the agent
 
 image:AgentInstallWindows.png[Windows Agent Install]
 
@@ -150,8 +150,10 @@ For systems residing behind a proxy, perform the following steps *PRIOR* to inst
 . Create _/etc/default/telegraf_, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
 +
  https_proxy=<proxy_server>:<proxy_port>
+ 
+ 
 
-
+==== Installing the agent
 
 //image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 image:Agent_Requirements_Rhel.png[Rhel/CentOS Agent Install]
@@ -241,6 +243,8 @@ For systems residing behind a proxy, perform the following steps *PRIOR* to inst
  https_proxy=<proxy_server>:<proxy_port>
 
 
+
+==== Installing the agent
 
 //image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 image:Agent_Requirements_Ubuntu.png[Ubuntu/Debian Agent Install]
@@ -362,6 +366,8 @@ Then, restart Telegraf after loading the above changes:
  sudo launchctl start telegraf
 
 
+
+==== Installing the agent
 
 
 //image:AgentInstallMacOS.png[MacOS Agent Install]
