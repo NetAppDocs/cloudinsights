@@ -343,6 +343,30 @@ _sudo useradd user_name -m -d HOME_DIR_
 
 For instance, _sudo useradd cssys -m -d /cssys_, adds a user _cssys_ and creates its login directory under root.
 
+|Agent is not running after installation. 
+_Systemctl status cloudsecure-agent.service_ shows the following:
+
+[root@demo ~]# systemctl status cloudsecure-agent.service 
+agent.service – Cloud Secure Agent Daemon Service 
+Loaded: loaded (/usr/lib/systemd/system/cloudsecure-agent.service; enabled; vendor preset: disabled) 
+Active: activating (auto-restart) (Result: exit-code) since Tue 2021-08-03 21:12:26 PDT; 2s ago 
+Process: 25889 ExecStart=/bin/bash /opt/netapp/cloudsecure/agent/bin/cloudsecure-agent (code=exited status=126) 
+Main PID: 25889 (code=exited, status=126), 
+
+Aug 03 21:12:26 demo systemd[1]: cloudsecure-agent.service: main process exited, code=exited, status=126/n/a 
+Aug 03 21:12:26 demo systemd[1]: Unit cloudsecure-agent.service entered failed state. 
+Aug 03 21:12:26 demo systemd[1]: cloudsecure-agent.service failed. 
+
+|This can be failing because _cssys_ user may not have permission to install.
+
+If /opt/netapp is an NFS mount and if _cssys_ user does not have access to this folder, installation will fail. _cssys_ is a local user created by the Cloud Secure installer that may not have permission to access the mounted share. 
+
+You can check this by attempting to access /opt/netapp/cloudsecure/agent/bin/cloudsecure-agent using _cssys_ user.
+If it returns “Permission denied”, installation permission is not present.
+
+Instead of a mounted folder, install on a directory local to the machine.
+
+
 |===
 
 //image:CloudSecureAgentInstallationCommand.png[]
