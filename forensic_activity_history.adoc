@@ -169,7 +169,7 @@ Activity history is retained for 13 months for active Cloud Secure environments.
 
 |Filter	|What it does	|Example	|Applicable in Which Filters?	|Not applicable for which filters	|Result
 
-|\*	(Asterisk)	|enables you to search for everything	|Auto*03172022	|User, PATH, Entity Type, Device Type, Volume, Original Path		||returns all resources that start with “Auto" and end with “03172022”
+|*	(Asterisk)	|enables you to search for everything	|Auto*03172022	|User, PATH, Entity Type, Device Type, Volume, Original Path		||returns all resources that start with “Auto" and end with “03172022”
 |? (question mark)	|enables you to search for a specific number of characters	|AutoSabotageUser1_03172022?	|User, Entity Type, Device, Volume	 |	|returns AutoSabotageUser1_03172022A, AutoSabotageUser1_03172022AB, AutoSabotageUser1_031720225, and so on
 
 |OR	|enables you to specify multiple entities	|AutoSabotageUser1_03172022 OR AutoRansomUser4_03162022
