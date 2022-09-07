@@ -181,16 +181,16 @@ Activity history is retained for 13 months for active Cloud Secure environments.
 
 |===
 
-== Path vs Original path Search
+== Path / Original path Search
 
-Search results  with and  without / will be different 
+Search results with and  without / will be different 
 
 |===
 
 |/AutoDir1/AutoFile	|Works
 |AutoDir1/AutoFile	|Doesn’t work 
-|/AutoDir1/AutoFile (Dir1)	Dir1 Partial substring |Doesn’t work 
-|"/AutoDir1/AutoFile03242022"	Exact search |Works
+|/AutoDir1/AutoFile (Dir1)	|Dir1 Partial substring doesn’t work 
+|"/AutoDir1/AutoFile03242022"	|Exact search works
 |Auto*03242022	|Doesn’t work
 |AutoSabotageUser1_03172022?	|Doesn’t work
 |/AutoDir1/AutoFile03242022 OR /AutoDir1/AutoFile03242022	|Works
