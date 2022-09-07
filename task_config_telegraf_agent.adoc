@@ -60,6 +60,19 @@ TIP: Once you have installed an agent on a server/VM, Cloud Insights collects me
 NOTE: If you are using a proxy, read the proxy instructions for your platform before installing the Telegraf agent.
 
 === Windows
+
+==== Configuring Proxy Support for Windows
+
+NOTE: If your environment uses a proxy, read this section before you install.
+
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
+
+For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) *PRIOR* to installing the Telegraf agent:
+
+ [System.Environment]::SetEnvironmentVariable(“https_proxy”, “<proxy_server>:<proxy_port>”, [System.EnvironmentVariableTarget]::Machine)
+
+
+
 image:AgentInstallWindows.png[Windows Agent Install]
 
 .Pre-requisites:
@@ -83,15 +96,6 @@ After the agent is installed, you can use the following commands to start/stop t
   Start-Service telegraf
   Stop-Service telegraf
   
-[[windows-proxy]]  
-==== Configuring Proxy Support for Windows
-
-NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
-
-For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) *PRIOR* to installing the Telegraf agent:
-
- [System.Environment]::SetEnvironmentVariable(“https_proxy”, “<proxy_server>:<proxy_port>”, [System.EnvironmentVariableTarget]::Machine)
-
 
 ==== Uninstalling the Agent
 
@@ -131,6 +135,24 @@ To upgrade the telegraf agent, do the following:
 
 === RHEL and CentOS
 
+==== Configuring Proxy Support for RHEL/CentOS
+
+NOTE: If your environment uses a proxy, read this section before you install.
+
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
+
+For systems residing behind a proxy, perform the following steps *PRIOR* to installing the Telegraf agent:
+
+. Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
++
+ export https_proxy=<proxy_server>:<proxy_port>
+
+. Create _/etc/default/telegraf_, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
++
+ https_proxy=<proxy_server>:<proxy_port>
+
+
+
 //image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 image:Agent_Requirements_Rhel.png[Rhel/CentOS Agent Install]
 
@@ -162,19 +184,6 @@ If your operating system is not using systemd (CentOS 7+ and RHEL 7+):
  sudo service telegraf start
  sudo service telegraf stop
  
-==== Configuring Proxy Support for RHEL/CentOS
-
-NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
-
-For systems residing behind a proxy, perform the following steps *PRIOR* to installing the Telegraf agent:
-
-. Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
-+
- export https_proxy=<proxy_server>:<proxy_port>
-
-. Create _/etc/default/telegraf_, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
-+
- https_proxy=<proxy_server>:<proxy_port>
 
 
 
@@ -215,6 +224,24 @@ To upgrade the telegraf agent, do the following:
 
 === Ubuntu and Debian
 
+==== Configuring Proxy Support for Ubuntu/Debian
+
+NOTE: If your environment uses a proxy, read this section before you install.
+
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
+
+For systems residing behind a proxy, perform the following steps *PRIOR* to installing the Telegraf agent:
+
+. Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
++
+ export https_proxy=<proxy_server>:<proxy_port>
+
+. Create /etc/default/telegraf, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
++
+ https_proxy=<proxy_server>:<proxy_port>
+
+
+
 //image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 image:Agent_Requirements_Ubuntu.png[Ubuntu/Debian Agent Install]
 
@@ -245,20 +272,6 @@ If your operating system is not using systemd:
 
  sudo service telegraf start
  sudo service telegraf stop
-
-==== Configuring Proxy Support for Ubuntu/Debian
-
-NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
-
-For systems residing behind a proxy, perform the following steps *PRIOR* to installing the Telegraf agent:
-
-. Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
-+
- export https_proxy=<proxy_server>:<proxy_port>
-
-. Create /etc/default/telegraf, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
-+
- https_proxy=<proxy_server>:<proxy_port>
 
 
 
@@ -299,31 +312,11 @@ To upgrade the telegraf agent, do the following:
 
 === macOS
 
-//image:AgentInstallMacOS.png[MacOS Agent Install]
-image:Agent_Requirements_Macos.png[macOS Agent Install]
 
-.Pre-requisites:
-
-* The following commands must be available: curl, sudo, openssl, and shasum
-* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for macOS* section. 
-
-
-.Steps to install agent on macOS:
-
-. Choose an Agent Access Key.
-. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-. Open a Bash window 
-. Paste the command into the Bash window and press Enter.
-. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 5 above.
-. Click *Finish* or *Continue*
-
-After the agent is installed, you can use the following commands to start/stop the service:
-
- sudo launchctl start telegraf
- sudo launchctl stop telegraf
- 
 ==== Configuring Proxy Support for macOS
+
+NOTE: If your environment uses a proxy, read this section before you install.
+
 
 NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
  
@@ -368,6 +361,33 @@ Then, restart Telegraf after loading the above changes:
  sudo launchctl load -w /Library/LaunchDaemons/telegraf.plist
  sudo launchctl start telegraf
 
+
+
+
+//image:AgentInstallMacOS.png[MacOS Agent Install]
+image:Agent_Requirements_Macos.png[macOS Agent Install]
+
+.Pre-requisites:
+
+* The following commands must be available: curl, sudo, openssl, and shasum
+* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for macOS* section. 
+
+
+.Steps to install agent on macOS:
+
+. Choose an Agent Access Key.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a Bash window 
+. Paste the command into the Bash window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 5 above.
+. Click *Finish* or *Continue*
+
+After the agent is installed, you can use the following commands to start/stop the service:
+
+ sudo launchctl start telegraf
+ sudo launchctl stop telegraf
+ 
 
 
 ==== Uninstalling the Agent
