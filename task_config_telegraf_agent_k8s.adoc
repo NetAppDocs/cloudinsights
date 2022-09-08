@@ -121,7 +121,7 @@ Decode the docker secret:
 
  echo <paste from _.dockerconfigjson:_  output above> | base64 -d
  
-The output of this will be in the following json format:
+The output of this will be in the following JSON format:
 
  { "auths":
    {"docker.<cluster>.cloudinsights.netapp.com" :
@@ -200,7 +200,7 @@ The pods in which the agents run need to have access to the following:
 These Kubernetes objects are automatically created as part of the Kubernetes agent install command provided in the Cloud Insights UI. 
 ////
 
-Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to these components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).
+Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to certain components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).
 
 Note: The default namespace for NetApp Kubernetes Monitoring Operator-based installation is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
 
@@ -259,47 +259,30 @@ NOTE: If you have a previously installed script-based agent, you _must_ upgrade 
 
 To upgrade the telegraf agent, do the following:
 
-* Make note of your cluster name as recognized by Cloud Insights.  You can view the cluster name by running the following command. If your namespace is not the default (_ci-monitoring_), substitute the appropriate namespace:
+. Make note of your cluster name as recognized by Cloud Insights.  You can view the cluster name by running the following command. If your namespace is not the default (_ci-monitoring_), substitute the appropriate namespace:
 
  kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
  
  
 
-* Back up the existing configurations:
+. Back up the existing configurations:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
  
  
 // Be sure to specify the appropriate namespace if it is not the default.
 
-* <<uninstalling, Uninstall>> the existing agent.
+. <<uninstalling, Uninstall>> the existing agent.
 
-* <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the new Operator.
+. <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the new Operator.
 
-////
-. Re-apply the configurations:
-
- kubectl --namespace ci-monitoring apply -f /tmp/telegraf-conf.yaml --force
- kubectl --namespace ci-monitoring apply -f /tmp/telegraf-conf-rs.yaml --force
- 
-. Restart all telegraf pods. Run the following command for each telegraf pod:
-
- kubectl --namespace ci-monitoring delete pod <Telegraf_pod>
-////
-
-////
-* Preserve the ConfigMap from the script-based monitoring installation: 
-+
- kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
-////
-
-* Save the K8s cluster name for use during installation of the K8s operator-based monitoring solution to ensure data continuity.
+. Save the K8s cluster name for use during installation of the K8s operator-based monitoring solution to ensure data continuity.
 +
 If you do not remember the name of the K8s cluster in CI, it can be extracted from your saved configuration with the following command line:
 +
  cat /tmp/telegraf-configs.yaml | grep kubernetes_cluster | head -2
  
-* Remove the script-based monitoring 
+.Remove the script-based monitoring 
 +
 To uninstall the script-based agent on Kubernetes, do the following:
 +
@@ -313,7 +296,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 +
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
  
-* <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the current Operator. 
+. <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the current Operator. 
 
 //image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
 
