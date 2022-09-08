@@ -79,13 +79,12 @@ First, open the _agent-monitoring-netapp_ file for editing:
 
 In the _spec:_ section of this file, add the following code block:
 
->> This code block should be commented:
 
  spec:
    proxy:
-     isAuProxyEnabled: <true or false>
-     isTelegrafProxyEnabled: <true or false>
-     isFluentbitProxyEnabled: <true or false>
+     isAuProxyEnabled: <true or false>        # If an AU is enabled on your cluster for monitoring by Cloud Insights, then isAuProxyEnabled should be set to true
+     isTelegrafProxyEnabled: <true or false>  # If your Operator install is behind a corporate proxy, isTelegrafProxyEnabled should be set to true.)
+     isFluentbitProxyEnabled: <true or false> # If LOGS_COLLECTION is enabled on your cluster for monitoring by CI, then isFluentbitProxyEnabled should be set to true
      password: <password for proxy, optional>
      port: <port for proxy>
      server: <server for proxy>
@@ -110,7 +109,7 @@ The second proxy, for K8s cluster communication with your Cloud Insights environ
 
 === Using a custom or private docker repository
 
-If using a custom docker repository, do the following after installing the NetApp Kubernetes Monitoring Operator:
+If using a custom docker repository, do the following in preparation for installing the NetApp Kubernetes Monitoring Operator:
 
 Get the docker secret:
 
@@ -670,7 +669,8 @@ kubectl -n <name-space> edit agent
 kubectl get psp (should show Pod Security Policy removed)
 kubectl get all -n <name-space>
 
-
+|"ImagePullBackoff" errors seen
+|These errors may be seen if you have a custom or private docker repository and have not yet configured the NetApp Kubernetes Monitoring Operator to properly recognize it.  <<using-a-custom-or-private-docker-repository,Read more>> about configuring for custom/private repo.
 
 |===
 
