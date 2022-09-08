@@ -34,8 +34,7 @@ Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* for Kubernetes
 
 .Pre-requisites:
 
-* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.19 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must <<upgrading, upgrade>> to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
-
+* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must <<upgrading, upgrade>> to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
 
 * If you are running on OpenShift 4.6 or higher, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
@@ -55,14 +54,11 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 * The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
 
-* kube-state-metrics is essential, and is automatically installed with the NetApp Kubernetes Monitoring Operator. Note that kube-state-metrics version 2.0 and above does not export Kubernetes object labels by default; you must configure kube-state-metrics to export these. <<about-kube-state-metrics, Read more>>.
-
+* The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances. 
 
 * If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
 
-
 * You must have permissions to create Kubernetes cluster roles and role bindings.
-
 
 == Note these before you start
 
