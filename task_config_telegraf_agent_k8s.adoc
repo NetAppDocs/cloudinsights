@@ -93,6 +93,21 @@ In the _spec:_ section of this file, add the following code block:
      noProxy: <comma separated list of IPs or resolvable hostnames that should bypass a proxy>
 
 
+While installing, there are two places where proxy settings are important:
+
+* Proxy needed during execution of the snippet to connect the system where the snippet is executed to your Cloud Insights environment. the snippet uses "curl" to download what it needs.
+* Proxy needed by the target K8s cluster to communicate with your Cloud Insights environment.
+
+
+The proxies may be the same, but they must be setup and used in two different places during install.
+
+The first proxy, for snippet execution, must be configured on the command line as the snippet is executed. Your proxy settings must be configured to allow execution of the code snippet.
+
+The second proxy, for K8s cluster communication with your Cloud Insights environment, must be configured _after_ the snippet executes and installs the configuration and containers. 
+
+
+
+
 === Using a custom or private docker repository
 
 If using a custom docker repository, do the following after installing the NetApp Kubernetes Monitoring Operator:
