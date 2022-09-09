@@ -96,20 +96,25 @@ First, open the _agent-monitoring-netapp_ file for editing:
 Locate the _*spec:*_ section of this file and add the following code block:
 
  proxy:
+ 
  # If an AU is enabled on your cluster for monitoring 
  # by Cloud Insights, then isAuProxyEnabled should be set to true:
-  isAuProxyEnabled: <true or false>        
+  isAuProxyEnabled: <true or false> 
+  
  # If your Operator install is behind a corporate proxy, 
  # isTelegrafProxyEnabled should be set to true:
-  isTelegrafProxyEnabled: <true or false>  
+  isTelegrafProxyEnabled: <true or false>
+  
  # If LOGS_COLLECTION is enabled on your cluster for monitoring 
  # by CI, then isFluentbitProxyEnabled should be set to true:
-  isFluentbitProxyEnabled: <true or false> 
+  isFluentbitProxyEnabled: <true or false>
+  
  # Set the following values according to your proxy login:
   password: <password for proxy, optional>
   port: <port for proxy>
   server: <server for proxy>
-  username: <username for proxy, optional>
+  username: <username for proxy, optional
+  
  # In the following section, enter a comma-separated list of 
  # IP addresses and/or resolvable hostnames that should bypass
  # the proxy:
