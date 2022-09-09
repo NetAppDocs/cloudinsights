@@ -93,7 +93,7 @@ First, open the _agent-monitoring-netapp_ file for editing:
 
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
 
-Locate the *spec:* section of this file and add the following code block:
+Locate the *spec:* section of this file and add the following code:
 
 ----
  proxy:
