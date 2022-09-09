@@ -60,6 +60,8 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
+
+
 == Note these before you start
 
 If you are running with a <<configuring-proxy-support,proxy>>, have a <<using-a-custom-or-private-docker-repository,custom repository>>, or are using <<openshift-instructions,OpenShift>>, read the following sections carefully.
@@ -70,26 +72,53 @@ If you are upgrading from a previous installation, also read the <<upgrading,Upg
 
 === Configuring Proxy Support
 
-To configure a proxy, perform the following steps after you install the NetApp Kubernetes Monitoring Operator.
+To configure a proxy, first ensure that you have connectivity from the proxy server/VM to your Cloud Insights environment. Simply logging into Cloud Insights from the proxy system means you have a connection.
+
+Before installing the Operator, set the _http_proxy/https_proxy_ environment variables. For some proxy environments, you may also need to set the _no_proxy environment_ variable.
+
+To set the variable(s), perform the following steps *PRIOR* to installing the NetApp Kubernetes Monitoring Operator:
+
+. Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
++
+ export https_proxy=<proxy_server>:<proxy_port>
+
+. Create _/etc/default/telegraf_, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
++
+ https_proxy=<proxy_server>:<proxy_port>
+
+
+Your proxy configuration is nearly ready to work with Cloud Insights. To finish the configuration, perform the following steps after you install the NetApp Kubernetes Monitoring Operator.
 
 First, open the _agent-monitoring-netapp_ file for editing:
 
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
 
+Locate the _*spec:*_ section of this file and add the following code block:
 
-In the _spec:_ section of this file, add the following code block:
-
-
- spec:
-   proxy:
-     isAuProxyEnabled: <true or false>        # If an AU is enabled on your cluster for monitoring by Cloud Insights, then isAuProxyEnabled should be set to true
-     isTelegrafProxyEnabled: <true or false>  # If your Operator install is behind a corporate proxy, isTelegrafProxyEnabled should be set to true.)
-     isFluentbitProxyEnabled: <true or false> # If LOGS_COLLECTION is enabled on your cluster for monitoring by CI, then isFluentbitProxyEnabled should be set to true
-     password: <password for proxy, optional>
-     port: <port for proxy>
-     server: <server for proxy>
-     username: <username for proxy, optional>
-     noProxy: <comma separated list of IPs or resolvable hostnames that should bypass a proxy>
+ proxy:
+ 
+ # If an AU is enabled on your cluster for monitoring 
+ # by Cloud Insights, then isAuProxyEnabled should be set to true:
+  isAuProxyEnabled: <true or false>        
+   
+ # If your Operator install is behind a corporate proxy, 
+ # isTelegrafProxyEnabled should be set to true:
+  isTelegrafProxyEnabled: <true or false>  
+   
+ # If LOGS_COLLECTION is enabled on your cluster for monitoring 
+ # by CI, then isFluentbitProxyEnabled should be set to true:
+  isFluentbitProxyEnabled: <true or false> 
+   
+ # Set the following values according to your proxy login:
+  password: <password for proxy, optional>
+  port: <port for proxy>
+  server: <server for proxy>
+  username: <username for proxy, optional>
+   
+ # In the following section, enter a comma-separated list of 
+ # IP addresses and/or resolvable hostnames that should bypass
+ # the proxy:
+  noProxy: <comma separated list>
 
 
 While installing, there are two places where proxy settings are important:
