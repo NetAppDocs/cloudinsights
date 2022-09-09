@@ -44,6 +44,15 @@ Select the *Data Protection* page to view SnapMirror relationships. Click throug
 
 image:ONTAP_Essentials_data_protection.png[SnapMirror Relationships list page]
 
+
+== Alerts
+
+Here you can view the Active alerts in your environment and quickly drill down into potential problems. Select the _Resolved_ tab to view alerts that have been resolved.
+
+image:ONTAP_Essentials_Alerts_Menu.png[ONTAP Alerts Menu]
+image:ONTAP_Essentials_Alerts_Page.png[ONTAP Alerts page example showing active alerts]
+
+
 == Infrastructure
 
 The ONTAP Essentials *Infrastructure* page gives you a view of cluster health and performance, using pre-built (yet further customizable) queries on all the basic ONTAP objects. Select the object type you wish to explore (cluster, storage pool, etc.) and choose whether to view health or performance information. Set filters to dive deeper into individual systems.  
@@ -52,6 +61,13 @@ image:ONTAP_Essentials_Health_Performance.png[Infrastructure selections for stor
 
 Infrastructure page showing cluster health:
 image:ONTAP_Essentials_Infrastructure_A.png[Infrastructure objects to explore]
+
+== Networking
+
+ONTAP Essentials Networking gives you views into your FC, Ethernet, and iSCSI infrastructure. On these pages you can explore things like ports in your clusters and their nodes.
+
+image:ONTAP_Essentials_Alerts_Menu.png[ONTAP Essentials Networking Menu]
+image:ONTAP_Essentials_Alerts_Page.png[ONTAP Essentials Networking FC page showing ports into cluster nodes]
 
 
 == Workloads
