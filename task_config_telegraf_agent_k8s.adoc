@@ -93,8 +93,9 @@ First, open the _agent-monitoring-netapp_ file for editing:
 
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
 
-Locate the _*spec:*_ section of this file and add the following code block:
+Locate the *spec:* section of this file and add the following code block:
 
+----
  proxy:
  
  # If an AU is enabled on your cluster for monitoring 
@@ -119,6 +120,8 @@ Locate the _*spec:*_ section of this file and add the following code block:
  # IP addresses and/or resolvable hostnames that should bypass
  # the proxy:
   noProxy: <comma separated list>
+----
+
 
 While installing, there are two places where proxy settings are important:
 
