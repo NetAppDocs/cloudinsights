@@ -267,9 +267,9 @@ To upgrade the telegraf agent, do the following:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
 
-. <<uninstalling, Uninstall>> the existing agent.
+//. <<uninstalling, Uninstall>> the existing agent.
 
-. <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the new Operator.
+//. <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the new Operator.
 
 . Save the K8s cluster name for use during installation of the K8s operator-based monitoring solution to ensure data continuity.
 +
