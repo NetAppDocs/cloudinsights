@@ -28,6 +28,10 @@ Monitors and Alerting is now available in all Cloud Insights Editions, including
 
 * You may have up to five custom monitors active at a time. Any monitors beyond five will be created in or moved to _Paused_ state.
 * VMDK, Virtual Machine, Host, and DataStore metrics monitors are not supported. If you have monitors created for these metrics, they will be paused and cannot be resumed when downgrading to Basic Edition.
+* The following performance metrics are collected for VM, VMDK, and Datastore, for use in dashboards and queries:
+** latency
+** throughput
+** IOPS
 
 
 
