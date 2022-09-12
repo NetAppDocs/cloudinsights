@@ -19,6 +19,29 @@ keywords: features
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.  
 
 
+== September 2022
+
+
+=== Monitors available in Basic Edition
+
+Monitors and Alerting is now available in all Cloud Insights Editions, including Basic Edition. Basic Edition is subject to the following:
+
+* You may have up to five custom monitors active at a time. Any monitors beyond five will be created in or moved to _Paused_ state.
+* VMDK, Virtual Machine, Host, and DataStore metrics monitors are not supported. If you have monitors created for these metrics, they will be paused and cannot be resumed when downgrading to Basic Edition.
+
+
+
+
+=== Operating System support
+
+The following operating systems are supported with Cloud Insights Acquisition Units, in addition to those link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[already supported]:
+
+* Red Hat Enterprise Linux 8.5, 8.6
+
+
+'''
+
+
 == August 2022
 
 === Cloud Insights has a new look!
