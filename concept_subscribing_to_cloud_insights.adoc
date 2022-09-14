@@ -156,7 +156,7 @@ Once your subscription is active, you can view your subscription status and Mana
 //image:Subscription_Summary.png[Subscription Status ] 
 image:Subscription_Status_Usage.png[Viewing your subscription ststus]
 
-The Subscription Details tab displays the following:
+The *Summary* tab displays the following:
 
 * Current subscription or active Edition 
 * Details about your subscription
@@ -168,7 +168,7 @@ The Subscription Details tab displays the following:
 
 == View your Usage Management
 
-The Usage Management tab shows an overview of Managed Unit usage, as well as a list of the Data Collectors installed in your environment and the breakdown of Managed Units for each.
+The *Usage Management* tab shows an overview of Managed Unit usage, as well as a list of the Data Collectors installed in your environment and the breakdown of Managed Units for each.
 
 NOTE: The Unformatted Capacity Managed Unit count reflects a sum of the total raw capacity in the environment and is rounded up to the nearest Managed Unit. 
 
@@ -183,6 +183,19 @@ NOTE: The Unformatted Capacity Managed Unit count reflects a sum of the total ra
 NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the summary section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The summary section reflects your actual Managed Unit count for your subscription.
 
 In the event that your usage is nearing or exceeding your subscribed amount, you can delete data collectors in this list by clicking on the "three dots" menu and selecting _Delete_.
+
+
+=== View your API usage
+
+The *API Metering* tab gives you a view into usage of your configured APIs for the current month. 
+
+image:API_Metering_Example_Screen.png[API Metering Screen showing DWH and Log INgestion data]
+
+
+=== Security Monitor
+
+Cloud Insights can alert you when it detects that FIPS mode is disabled on the ONTAP system. Read more about link:task_system_monitors.html#security-monitors[System Monitors], and watch this space for more Security Monitors, coming soon!
+
 
 
 
