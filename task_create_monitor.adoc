@@ -18,7 +18,9 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 [.lead]
 You create monitors to set thresholds that trigger alerts to notify you about issues related to the resources in your network. For example, you can create a monitor to alert for _node write latency_ for any of a multitude of protocols.
 
-TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
+TIP: Monitors and Alerting is available in all Cloud Insights Editions, however, Basic Edition is subject to the following:
+* You may only have up to five custom monitors active at a time. Any monitors beyond five will be created in or moved to _Paused_ state. 
+* VMDK, Virtual Machine, Host, and DataStore metrics monitors are not supported. If you have monitors created for these metrics, they will be paused and cannot be resumed when downgrading to Basic Edition.
 
 toc::[]
 
