@@ -619,9 +619,9 @@ The default resource list is:
 
 |I installed or upgraded Telegraf on Kubernetes, but the Telegraf pods are not starting up.  The Telegraf ReplicaSet or DaemonSet is reporting a failure resembling the following:
 
- Error creating: pods "telegraf-rs-" is forbidden": unable to validate against any security context constraint: [spec.volumes[2]: Invalid value: "hostPath": hostPath volumes are not allowed to be used]
+ Error creating: pods "telegraf-rs-" is forbidden": unable to validate against any security context constraint: To relax this restriction, edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"[spec.volumes[2]: Invalid value: "hostPath": hostPath volumes are not allowed to be used]
 
-|Create a Security Context Constraint (refer to the <<SecurityContextConstraint>> section above) if one does not already exist.
+|Create a Security Context Constraint (refer to the <<securitycontextconstraint,SecurityContextConstraint>> section above) if one does not already exist.
 
 Ensure the namespace and service account specified for the Security Context Constraint matches the namespace and service account for the Telegraf ReplicaSet and DaemonSet.
 
@@ -644,9 +644,7 @@ Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: 2021-10-11T14:23:41Z I! Starting
 
 |On Kubernetes, my Telegraf pod(s) are reporting the following error:
 "Error in processing mountstats info: failed to open mountstats file: /hostfs/proc/1/mountstats, error: open /hostfs/proc/1/mountstats: permission denied"
-|If SELinux is enabled and enforcing, it is likely preventing the Telegraf pod(s) from accessing the /proc/1/mountstats file on the Kubernetes nodes.  To relax this restriction, do ONE of the following:
-
-• Edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"
+|If SELinux is enabled and enforcing, it is likely preventing the Telegraf pod(s) from accessing the /proc/1/mountstats file on the Kubernetes nodes.  To relax this restriction, edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"
 
 
 |On Kubernetes, my Telegraf ReplicaSet pod is reporting the following error:
@@ -663,7 +661,7 @@ For example, edit the ReplicaSet...
 |I have a PSP environment. Does this affect my monitoring operator?
 |If your Kubernetes cluster is running with Pod Security Policy (PSP) in place, you must upgrade to the latest NetApp Kubernetes Monitoring Operator. Follow these steps to upgrade to the current NKMO with support for PSP:
 
-1. Uninstall the previous monitoring operator:
+1. <<uninstalling,Uninstall>> the previous monitoring operator:
 
  kubectl delete agent agent-monitoring-netapp -n netapp-monitoring
  kubectl delete ns netapp-monitoring
@@ -671,14 +669,14 @@ For example, edit the ReplicaSet...
  kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
 
-2. Deploy the latest version of the monitoring operator.
+2. <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the latest version of the monitoring operator.
 
 |I ran into issues trying to deploy the NKMO, and I have PSP in use.
 |1. Edit the agent using the following command:
 
 kubectl -n <name-space> edit agent
 
-2. Mark 'security-policy-enabled' as 'false'. This will disable Pos Security Policies and allow the NKMO to deploy. Confirm by using the following commands:
+2. Mark 'security-policy-enabled' as 'false'. This will disable Pod Security Policies and allow the NKMO to deploy. Confirm by using the following commands:
 
 kubectl get psp (should show Pod Security Policy removed)
 kubectl get all -n <name-space>
