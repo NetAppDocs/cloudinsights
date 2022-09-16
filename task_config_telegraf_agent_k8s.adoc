@@ -18,6 +18,7 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 [.lead]
 Cloud Insights uses link:https://docs.influxdata.com/telegraf/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
+[[nkmoversion]]
 The current Telegraf version for Cloud Insights is *1.22.3*.
 
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
@@ -146,7 +147,9 @@ The second proxy, for K8s cluster communication with your Cloud Insights environ
 
 === Using a custom or private docker repository
 
-If using a custom docker repository, do the following in preparation for installing the NetApp Kubernetes Monitoring Operator:
+By default, the NetApp Kubernetes Monitoring Operator config will pull container images from public registries. If you have a Kubernetes cluster used as the target for monitoring, and that cluster is configured to only pull container images from a custom or private Docker repository or container registry, you must configure access to the containers needed by the NetApp Kubernetes Monitoring Operator so the necessary commands can be executed.
+
+Use the following instructions to pre-position container images in your registry and alter the NetApp Kubernetes Monitoring Operator config to access those images.
 
 . Get the docker secret:
 
@@ -156,7 +159,7 @@ If using a custom docker repository, do the following in preparation for install
 
 . Decode the docker secret:
 
- echo <paste from _.dockerconfigjson:_  output above> | base64 -d
+ echo <paste from _.dockerconfigjson:_ output above> | base64 -d
  
 The output of this will be in the following JSON format:
 
@@ -173,7 +176,7 @@ Log in to the docker repository:
  docker login docker.<cluster>.cloudinsights.netapp.com (from step #2) -u <username from step #2>
  password: <password from docker secret step above>
 
-Pull the operator docker image from Cloud Insights:
+Pull the operator docker image from Cloud Insights. make sure the <<nkmoversion, version number>> is correct:
 
  docker pull docker.<cluster>.cloudinsights.netapp.com/netapp-monitoring:<version>
  
