@@ -32,7 +32,7 @@ A *Demanding Workload* is a workload that is currently identified as impacting o
 
 An *Impacted Workload* is a workload that is affected by a high-consuming workload in the shared Storage Pool. These workloads are experiencing reduced IOPS and/or higher latency, caused by the Demanding Workloads.
 
-Note that if Cloud Insights has not discovered the leading compute workload, the volume or internal volume itself will be treated as the workload. This applies to both demanding and impacted workloads. 
+//Note that if Cloud Insights has not discovered the leading compute workload, the volume or internal volume itself will be treated as the workload. This applies to both demanding and impacted workloads. 
 
 *Shared Resource Saturation* is the ratio of impacting IOPS to _baseline_.
 
