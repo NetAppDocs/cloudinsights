@@ -176,11 +176,11 @@ Log in to the docker repository:
  docker login docker.<cluster>.cloudinsights.netapp.com (from step #2) -u <username from step #2>
  password: <password from docker secret step above>
 
-Pull the operator docker image from Cloud Insights. make sure the <<nkmoversion, version number>> is correct:
+Pull the operator docker image from Cloud Insights. Make sure the _netapp-monitoring_ version number is current:
 
  docker pull docker.<cluster>.cloudinsights.netapp.com/netapp-monitoring:<version>
  
-Find the <version> field using the following command:
+Find the _netapp-monitoring_ <version> field using the following command:
  
  kubectl -n netapp-monitoring get deployment monitoring-operator | grep "image:"
 
