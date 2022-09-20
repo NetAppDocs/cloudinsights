@@ -29,11 +29,9 @@ Before configuring this data collector, you should ensure that Cloud Insights ha
 * IP address of the managing Solutions Enabler server
 * Administrator permissions on the Solutions Enabler (SE) Server
 * Read-only user name and password to the SE software
-* Solutions Enabler Server 6.5X requirements: 
-** MI-S provider 3.3.1 for SMIS-S V1.2 installed
-** After install, run \Program Files\EMC\SYMCLI\bin>stordaemon start storsrvd
+
 * The UNISPHERE for VMAX application must be running and collecting statistics for the EMC VMAX and PowerMax sstorage arrays that are managed by the SMI-S Provider installation
-* Access validation: Verify that the SMI-S provider is running: telnet <se_server> 5988
+* Access validation for performance: In a web browser on your Acquisition Unit, go to https://a.b.c.d:5989/ecomconfig where "a.b.c.d" is the IP address or hostname of your SMI-S server. This URL is for an administrative portal for the EMC SMI-S aka "ECOM" service - you should receive a login popup. The default credentials for EMC's SMI-S implementation are admin / #1Password. 
 
 == Terminology
 
