@@ -232,30 +232,29 @@ If it returns “Permission denied”, installation permission is not present.
 
 Instead of a mounted folder, install on a directory local to the machine.
 
-|Agent was initially connected via a proxy server and the proxy was set during Agent installetion. Now the proxy server has changed. How can the Agent’s proxy configuration be changed?
-|You can edit the Agent.properties, add the proxy details and restart the Agent.
-Follow the steps mentioned below. Let us know if you face any issues.
-Add proxy details:
-[root@scspa2671457001 conf]# pwd
-/opt/netapp/cloudsecure/conf
-[root@scspa2671457001 conf]# ls
-agent.properties
-[root@scspa2671457001 conf]# cat agent.properties
-TOKEN=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJvbmV0aW1lVG9rZW5JZCI6IjNmMjQ5ODNhLTY0Y2YtNDg2OC05MjBmLWM4MGNmNGRkOTcwNyIsInJvbGVzIjpbImFkbWluIl0sInNlcnZlclVybCI6Imh0dHBzOi8vbnM2NTQzLm1haW4tY3MuY2xvdWRpbnNpZ2h0cy1xYS5uZXRhcHAuY29tIiwiaXNzIjoib2NpIiwiZXhwIjoxNjYyNDYzODYyLCJsb2dpbiI6ImFnZW50LmM4OWFmM2I1LTk2ZWEtNDg0MC05MjJhLTZjNzY1ZGFhZGU3MCIsImlhdCI6MTY2MjQ1NjY2MiwidXVpZCI6ImM4OWFmM2I1LTk2ZWEtNDg0MC05MjJhLTZjNzY1ZGFhZGU3MCIsInRlbmFudCI6IjIzOGI0NDdkLTczMzAtNDVmNy1hNzliLTI1NGNkMjY0NTcyZiIsImFnZW50TG9naW5VcmwiOiJodHRwczovL2FnZW50bG9naW4ubWFpbi1jcy5jbG91ZGluc2lnaHRzLXFhLm5ldGFwcC5jb20ifQ.vrqNQEr3Fs-DrLuVaNk37rWdNvHPxW5avjuS5GdzMGDI0raJlcC5f0lBheXeDS6u
-AGENT_ENVIRONMENT=prod
-AGENT_INSTALLATION_DIR=/opt/netapp/cloudsecure/
-AGENT_EXTERNAL_BASE_PATH=/opt/netapp/cloudsecure/agent
-MIN_PORT=35000
-MAX_PORT=55000
-AGENT_LOG_LEVEL=INFO
-AGENT_SSL_ENABLED=true
-AGENT_PROXY_HOST=scspa1950329001.vm.netapp.com
+|Agent was initially connected via a proxy server and the proxy was set during Agent installation. Now the proxy server has changed. How can the Agent’s proxy configuration be changed?
+|You can edit the agent.properties to add the proxy details. Follow these steps:
+
+1.	Change to the folder containing the properties file:
+ 
+cd /opt/netapp/cloudsecure/conf
+ 
+2.	Using your favorite text editor, open the agent.properties file for editing.
+ 
+3.	Add or modify the following lines:
+ 
+AGENT_PROXY_HOST=scspa1950329001.vm.netapp.com  
 AGENT_PROXY_PORT=80
 AGENT_PROXY_USER=pxuser
 AGENT_PROXY_PASSWORD=pass1234
-
-Restart the Agent:
+ 
+4.	Save the file.
+ 
+5.	Restart the agent:
+ 
 sudo systemctl restart cloudsecure-agent.service
+ 
+
 
 
 |===
