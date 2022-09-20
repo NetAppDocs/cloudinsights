@@ -40,7 +40,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 //* You need the SVM management IP address or the cluster IP, and username / password for login.
 
 * You must add an SVM using one of the following two methods:
-** By Using Cluster IP, SVM name, and Cluster Management Username and Password. _This is the recommended method._
+** By Using Cluster IP, SVM name, and Cluster Management Username and Password. *_This is the recommended method._*
 *** SVM name must be exactly as is shown in ONTAP and is case-sensitive.
 ** By Using SVM Vserver Management IP, Username, and Password
 ** If you are not able or not willing to use the full Administrator Cluster/SVM Management Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM or Cluster access.
@@ -106,8 +106,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -role csrole -cmddirname "security certificate" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
  security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
- security login role create -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*" 
-
+ 
 
 === Permissions when adding via *Vserver Management IP*:
 
@@ -125,32 +124,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
- security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*"
-
-////
-If you cannot use the "vsadmin" user, create the following roles for the data collector using the "causer" user: 
-
-`security login show -vserver svmname`
-`security login role create -vserver svmname -role carole -cmddirname DEFAULT -access none`
-`security login role create -vserver svmname -role carole -cmddirname "network interface" -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname version -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname volume -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname vserver -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
-`security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
-
-Note that if the data collector is added using "causer", link:cs_cs_automated_response_policies.html[alert response snapshots] cannot be taken by default. To enable snapshots for causer, the commands above must also include the *"volume snapshot"* line below:
-
-`security login show -vserver svmname`
-`security login role create -vserver svmname -role carole -cmddirname DEFAULT -access none`
-`security login role create -vserver svmname -role carole -cmddirname "network interface" -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname version -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname volume -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname vserver -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
-`security login role create -vserver <vservername> -role carole -cmddirname "volume snapshot" -access all`
-`security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
-////
+ 
 
 
 == Configure the data collector
