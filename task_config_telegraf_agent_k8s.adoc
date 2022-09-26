@@ -18,8 +18,6 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 [.lead]
 Cloud Insights uses a number of components, including Fluentbit and link:https://docs.influxdata.com/telegraf/[Telegraf], for collection of Kubernetes data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
-
-
 toc::[]
 
 Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
@@ -37,7 +35,7 @@ Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kub
 ** fluent-bit: 1.9.3
 ** kubernetes-event-exporter: 0.10
 
-* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must <<upgrading, upgrade>> to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
+* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater. When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must <<upgrading, upgrade>> to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
 
 * If you are running on OpenShift 4.6 or higher, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
