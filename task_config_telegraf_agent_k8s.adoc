@@ -5,7 +5,7 @@ keywords: telegraf, installation, install, agent, telegraf agent, kubernetes, ek
 summary: Cloud Insights supports Telegraf as its agent for collection of integration data on Kubernetes.  
 ---
 
-= Configuring an Agent on Kubernetes 
+= Configuring the NetApp Kubernetes Monitoring Operator
 
 :toc: macro
 :hardbreaks:
@@ -16,10 +16,7 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights uses link:https://docs.influxdata.com/telegraf/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
-
-[[nkmoversion]]
-The current Telegraf version for Cloud Insights is *1.22.3*.
+Cloud Insights uses a number of components, including Fluentbit and link:https://docs.influxdata.com/telegraf/[Telegraf], for collection of Kubernetes data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
@@ -27,13 +24,22 @@ NOTE: If you want to verify the installation files before installing the Agent, 
 
 toc::[]
 
+Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
-== Before installing the NetApp Kubernetes Monitoring Operator on Kubernetes
 
-Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
-
+== Before installing the NetApp Kubernetes Monitoring Operator
 
 .Pre-requisites:
+
+* Please note the following component versions. These are the current versions included with the NetApp Kubernetes Monitoring Operator:
+
+[[nkmoversion]]
+** Telegraf: *1.22.3*.
+** kube-rbac-proxy: v0.11.0
+** kube-state-metrics: v2.4.2
+** fluent-bit: 1.9.3
+** kubernetes-event-exporter: 0.10
+ 
 
 * NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater. When used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must <<upgrading, upgrade>> to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
 
@@ -332,7 +338,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 //image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
 
 
-=== Upgrading to the latest the NetApp Kubernetes Monitoring Operator
+=== Upgrading to the latest NetApp Kubernetes Monitoring Operator
 
 For Operator-based installation run the following commands:
 
