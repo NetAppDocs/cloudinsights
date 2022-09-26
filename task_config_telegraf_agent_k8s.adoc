@@ -18,9 +18,7 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 [.lead]
 Cloud Insights uses a number of components, including Fluentbit and link:https://docs.influxdata.com/telegraf/[Telegraf], for collection of Kubernetes data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
-NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
-NOTE: If you want to verify the installation files before installing the Agent, read about <<verify-ng-kubernetes-checksums, Verifying Kubernetes Checksums>>.
 
 toc::[]
 
@@ -65,6 +63,7 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
+For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
 
 == Note these before you start
@@ -72,6 +71,8 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 If you are running with a <<configuring-proxy-support,proxy>>, have a <<using-a-custom-or-private-docker-repository,custom repository>>, or are using <<openshift-instructions,OpenShift>>, read the following sections carefully.
 
 If you are upgrading from a previous installation, also read the <<upgrading,Upgrading>> information.
+
+If you want to verify the installation files before installing the Agent, read about <<verify-ng-kubernetes-checksums, Verifying Kubernetes Checksums>>.
 
 
 
