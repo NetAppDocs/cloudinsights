@@ -36,7 +36,9 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 ** fluent-bit: 1.9.3
 ** kubernetes-event-exporter: 0.10
 
-* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater. When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must <<upgrading, upgrade>> to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
+* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater. 
+* When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
+* Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must <<upgrading, upgrade>> to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
 
 * If you are running on OpenShift 4.6 or higher, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
 
@@ -403,7 +405,7 @@ NOTE: If you are running on a previously-installed script-based Kubernetes agent
 
 
 
-=== To remove the older script-based agent
+=== To remove the deprecated script-based agent
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
