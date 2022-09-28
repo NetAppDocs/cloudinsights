@@ -56,11 +56,11 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 * The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
-* The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment. If this host requires a proxy to reach Cloud Insights, follow the instructions in the <<configuring-proxy-support,Configuring Proxy Support>> section. 
+* The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment. If this host requires a proxy to reach Cloud Insights, follow the instructions in the <<configuring-proxy-support,Configuring Proxy Support>> section.
 
 * The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances. 
 
-* If you are behind a proxy during installation, or when operating the Kubernetes cluster to be monitored, follow the instructions in the <<configuring-proxy-support,Configuring Proxy Support>> section. 
+* If you are behind a proxy during installation, or when operating the K8s cluster to be monitored, follow the instructions in the <<configuring-proxy-support,Configuring Proxy Support>> section. 
 
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
@@ -79,12 +79,12 @@ If you want to verify the installation files before installing the Agent, read a
 
 === Configuring Proxy Support
 
-There are two places where you may use a proxy in your environment in order to install the NetApp Kubernetes Monitoring Operator. These may be the same or separate systems:
+There are two places where you may use a proxy in your environment in order to install the NetApp Kubernetes Monitoring Operator. These may be the same or separate proxy systems:
 
-* Proxy needed during execution of the installation code snippet (uning "curl") to connect the system where the snippet is executed to your Cloud Insights environment
+* Proxy needed during execution of the installation code snippet (using "curl") to connect the system where the snippet is executed to your Cloud Insights environment
 * Proxy needed by the target Kubernetes cluster to communicate with your Cloud Insights environment
 
-If you use a proxy for either or both of these, in order to install the NetApp Kubernetes Operating Monitor you must first ensure that your proxy is configured to allow good communication to your Cloud Insights environment. If you have a proxy and can access Cloud Insights from the server/VM on which you wish to install the Operator, then your proxy is likely configured properly.
+If you use a proxy for either or both of these, in order to install the NetApp Kubernetes Operating Monitor you must first ensure that your proxy is configured to allow good communication to your Cloud Insights environment. If you have a proxy and can access Cloud Insights from the server/VM from which you wish to install the Operator, then your proxy is likely configured properly.
 
 For the proxy used to install the NetApp Kubernetes Operating Monitor, before installing the Operator, set the _http_proxy/https_proxy_ environment variables. For some proxy environments, you may also need to set the _no_proxy environment_ variable.
 
@@ -98,7 +98,7 @@ To set the variable(s), perform the following steps on your system *before* inst
 +
  https_proxy=<proxy_server>:<proxy_port>
 
-For the proxy used for your Kubernetes cluster to communicate with your Cloud Insights environment, install the NetApp Kubernetes Monitoring Operator. See <<installing-the-netapp-kubernetes-monitoring-operator, instructions>> below when you are ready to install, after reading all of these these instructions.
+For the proxy used for your Kubernetes cluster to communicate with your Cloud Insights environment, install the NetApp Kubernetes Monitoring Operator after reading all of these instructions.
 
 To finish the configuration, perform the following steps on the system *after* you have installed the NetApp Kubernetes Monitoring Operator.
 
@@ -155,7 +155,7 @@ The second proxy, for K8s cluster communication with your Cloud Insights environ
 
 By default, the NetApp Kubernetes Monitoring Operator config will pull container images from public registries. If you have a Kubernetes cluster used as the target for monitoring, and that cluster is configured to only pull container images from a custom or private Docker repository or container registry, you must configure access to the containers needed by the NetApp Kubernetes Monitoring Operator so the necessary commands can be executed.
 
-Use the following instructions to pre-position container images in your registry and alter the NetApp Kubernetes Monitoring Operator config to access those images.
+Use the following instructions to pre-position container images in your registry and alter the NetApp Kubernetes Monitoring Operator config to access those images. Substitute your chosen installation namespace in the following commands if it differs from the default namespace of “netapp-monitoring”.
 
 . Get the docker secret:
 
@@ -340,7 +340,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 === Upgrading to the latest NetApp Kubernetes Monitoring Operator
 
-For Operator-based installation run the following commands:
+For Operator-based installation upgrades, run the following commands:
 
 * Make note of your cluster name as recognized by Cloud Insights. You can view the cluster name by running the following command. If your namespace is not the default (_netapp-monitoring_), substitute the appropriate namespace:
 
@@ -354,7 +354,7 @@ For Operator-based installation run the following commands:
 
 <<to-remove-the-netapp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
 
-<<installing-the-netapp-kubernetes-monitoring-operator, Install>> the Operator. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
+<<installing-the-netapp-kubernetes-monitoring-operator, Install>> the latest Operator. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
 
 
 
@@ -405,7 +405,7 @@ NOTE: If you are running on a previously-installed script-based Kubernetes agent
 
 
 
-=== To remove the older script-based agent
+=== To remove the deprecated script-based agent
 
 Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
@@ -575,7 +575,7 @@ Some things to try if you encounter problems setting up the NetApp Kubernetes Mo
 |===
 |Problem:|Try this:
 
-|For clusters where _etcd_ is not the Kubernetes cluster datastore, You will see the following message in the telegraf RS pod:
+|For clusters where _etcd_ is not the Kubernetes cluster datastore, you will see the following message in the telegraf RS pod:
 
  [inputs.prometheus] Error in plugin: could not load keypair /etc/kubernetes/pki/etcd/server.crt:/etc/kubernetes/pki/etcd/server.key: open /etc/kubernetes/pki/etcd/server.crt: no such file or directory
 |Cloud Insights only supports monitoring of _etcd_ as the K8s datastore. You can modify the agent to avoid collecting etcd data by changing the configuration with the following instructions:  
