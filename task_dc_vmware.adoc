@@ -89,7 +89,9 @@ The following fields can be configured:
 //|Tag Keys and Values on which to Filter VMs|Click *+ Filter Tag* to choose which VMs (and associated disks) to include/exclude by filtering for keys and values that match keys and values of tags on the VM. Tag Key is required, Tag Value is optional. When Tag Value is empty, the VM is filtered as long as it matches the Tag Key.
 //Tag filtering is only available in VSphere 6.0 Beta or later.
 
-|Filter Device List...|This list must consist of exact string matches - if you intend to filter by ESX_HOST, you must build a comma delimited list of the exact "names" of your ESX hosts as reported in both Cloud Insights and vSphere. These "names" may be either IP addresses, simple hostnames, or fully qualified domain names (FQDNs) - this is determined by how these hosts were named when they were originally added to vSphere
+|Filter Device List...|This list must consist of exact string matches - if you intend to filter by ESX_HOST, you must build a comma delimited list of the exact "names" of your ESX hosts as reported in both Cloud Insights and vSphere. These "names" may be either IP addresses, simple hostnames, or fully qualified domain names (FQDNs) - this is determined by how these hosts were named when they were originally added to vSphere.
+
+When filtering by CLUSTER, use the Cloud Insights-style cluster names as reported by CI on hypervisors - Cloud Insights prepends the vSphere cluster name with the vSphere datacenter name and a forward slash - "DC1/clusterA" is the cluster name Cloud Insights would report on a hypervisor in clusterA within data center DC1.
 
 |Performance poll interval (sec)|Default is 300  
 |===
@@ -98,7 +100,7 @@ The following fields can be configured:
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
-==== Inventory
+=== Inventory
 
 [cols=2*, options="header", cols"50,50"]
 |===

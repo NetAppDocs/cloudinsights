@@ -44,6 +44,17 @@ Note: These are common terminology mappings only and might not represent every c
 * Host names for the ZFS Controller-1 and the ZFS Controller-2 
 * Administrator user name and password
 * Port requirement: 215 HTTP/HTTPS
+
+== Required Performance metrics
+
+Oracle ZFS appliances give storage administators large amounts of flexibility to capture performance statistics. Cloud Insights expects you to have _each_ controller in a high availability pair configured to capture the following metrics: 
+
+* smb2.ops[share] 
+* nfs3.ops[share]
+* nfs4.ops[share]
+* nfs4-1.ops[share]
+
+Failure to have the controller capture any or all of these will likely result in Cloud Insights not having, or underreporting, the workload on the "Internal Volumes".
  
 == Configuration
 
@@ -71,7 +82,7 @@ Note: These are common terminology mappings only and might not represent every c
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
-==== Inventory
+=== Inventory
 
 [cols=2*, options="header", cols"50,50"]
 |===
