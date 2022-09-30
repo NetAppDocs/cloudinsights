@@ -26,8 +26,12 @@ You must link:task_cs_add_agent.html[install an Agent] in order to acquire infor
 Red Hat Enterprise Linux 7.x, 8.x 64-bit
 CentOS 7.x 64-bit
 CentOS 8 Stream
+Ubuntu 20 through 22 64-bit
 
 This computer should be running no other application-level software. A dedicated server is recommended.
+
+SE (Security Enhanced) Linux is not supported.
+
 |Commands|The 'sudo su –' command is required for installation, running scripts, and uninstall.
 
 //|Docker | The Docker CE package must be installed on the VM hosting the agent. 
@@ -37,7 +41,10 @@ This computer should be running no other application-level software. A dedicated
 |Memory	|16 GB RAM 
 |Available disk space	|Disk space should be allocated in this manner:
 //50 GB available for the root partition
-/opt/netapp 25-30 GB
+/opt/netapp 35 GB (minimum)
+
+If /opt is a mounted folder from a NAS storage, make sure that local users have access to this folder. Agent or Data collector may fail to install if local users do not have permission to this folder. see the link:task_cs_add_agent.html#troubleshooting-agent-errors[troubleshooting] section for more details. 
+
 |Network|100 Mbps to 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Cloud Secure instance (80 or 443).
 
 |===
@@ -51,7 +58,7 @@ For Linux, disk space should be allocated in this manner:
 /var/log/netapp 25 GB
 |===
 
-=== Additional recommendations
+== Additional recommendations
 * It is strongly recommended to synchronize the time on both the ONTAP system and the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
 //// 
@@ -121,9 +128,9 @@ agentlogin.cs01-ap-1.cloudinsights.netapp.com
 |Protocol|Port|	Destination	|Direction|	Description
 |TCP|389(LDAP)
 636 (LDAPs / start-tls) |LDAP Server URL|Outbound|Connect to LDAP
-|TCP|443|SVM Management IP Address|Outbound|API communication with ONTAP
+|TCP|443|Cluster or SVM Management IP Address (depending on SVM collector configuration)|Outbound|API communication with ONTAP
 |TCP|35000 - 55000|SVM data LIF IP Addresses|Inbound/Outbound|Communication with ONTAP for Fpolicy events
-|TCP|7|SVM data LIF IP Addresses|Outbound|Bidirectional between ONTAP and Cloud Secure. Agent pings the SVM Lifs.
+|TCP|7|SVM data LIF IP Addresses|Bidirectional |Bidirectional between ONTAP and Cloud Secure. Agent pings the SVM Lifs.
 |===
 
 //link:task_cs_add_agent.html[Configure an Agent]

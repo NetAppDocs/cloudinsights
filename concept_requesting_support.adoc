@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_requesting_support.html
 summary: You can view knowledgebase articles, connect with the NetApp community, view videos, or open a ticket to request support.
-keywords: support, knowledgebase, documentation, community, chat, videos, help, contact
+keywords: support, knowledgebase, documentation, community, chat, videos, help, contact, intercom
 ---
 
 = Requesting Support
@@ -22,7 +22,8 @@ toc::[]
 You can access support options in Cloud Insights by clicking on *Help > Support*. The support options available to you depend on whether you are in Trial mode or Subscription mode.
 
 //image:SupportPageExample.png[Support Page]
-image:SupportPageExample-NA.png[Support page]
+//image:SupportPageExample-NA.png[Support page]
+image:SupportPageWithLearningCenter.png[Support page]
 
 == Activating support entitlement
 
@@ -35,7 +36,7 @@ During the initial subscription process, your Cloud Insights instance will gener
 . User with pre-existing NetApp Support Site (NSS) SSO account (e.g. current NetApp customer)
 . New NetApp customer with no pre-existing NetApp Support Site (NSS) SSO account 
 
-==== Option 1: Steps for a user with a pre-existing NetApp Support Site (NSS) SSO account 
+=== Option 1: Steps for a user with a pre-existing NetApp Support Site (NSS) SSO account 
 
 .Steps
 
@@ -53,7 +54,7 @@ image:ExistingCustomerRegExample.png[existing customer form]
 
 . This is a onetime registration for the Cloud Insights NetApp serial number. 
 
-==== Option 2: Steps for a new NetApp customer with no pre-existing NetApp Support Site (NSS) SSO account
+=== Option 2: Steps for a new NetApp customer with no pre-existing NetApp Support Site (NSS) SSO account
 
 .Steps
 
@@ -81,19 +82,25 @@ NetApp provides support for Cloud Insights in a variety of ways. Extensive free 
 
 These support options are available in Trial mode and are available for free 24x7:
 
-* *link:https://kb.netapp.com[Knowledgebase]*
+* *link:https://mysupport.netapp.com/site/search?q=cloud%20insights&offset=0&searchType=Manual&autocorrect=true&origin=CI_Suppport_KB&filter=%28content_type%3D%3D%22knowledgebase%22;product%3D%3D%22Cloud%20Insights%22%29[Knowledgebase]*
 +
-Clicking the links in this section takes you to the NetApp Knowledgebase, where you can search for articles, link:https://kb.netapp.com/app/browse/a_status/published/channelRecordID/HOW_TO/currentSelectedID/RN_PRODUCT_473/isProductSelected/true/isRecommendationAllowed/true/pageSize/10/productRecordID/RN_PRODUCT_473/sortColumn/publishDate/sortDirection/DESC/truncate/200/type/browse[How-to's], link:https://kb.netapp.com/app/browse/a_status/published/channelRecordID/FAQ/currentSelectedID/RN_PRODUCT_473/isProductSelected/true/isRecommendationAllowed/true/pageSize/10/productRecordID/RN_PRODUCT_473/sortColumn/publishDate/sortDirection/DESC/truncate/200/type/browse[FAQ's], or link:https://kb.netapp.com/app/browse/a_status/published/channelRecordID/BREAK_FIX/currentSelectedID/RN_PRODUCT_473/isProductSelected/true/isRecommendationAllowed/true/pageSize/10/productRecordID/RN_PRODUCT_473/sortColumn/publishDate/sortDirection/DESC/truncate/200/type/browse[Break Fix] information related to Cloud Insights.
+Clicking the links in this section takes you to the NetApp Knowledgebase, where you can search through relevant articles, how-to's, and more.
+
+//// 
+link:https://kb.netapp.com/app/browse/a_status/published/channelRecordID/HOW_TO/currentSelectedID/RN_PRODUCT_473/isProductSelected/true/isRecommendationAllowed/true/pageSize/10/productRecordID/RN_PRODUCT_473/sortColumn/publishDate/sortDirection/DESC/truncate/200/type/browse[How-to's], link:https://kb.netapp.com/app/browse/a_status/published/channelRecordID/FAQ/currentSelectedID/RN_PRODUCT_473/isProductSelected/true/isRecommendationAllowed/true/pageSize/10/productRecordID/RN_PRODUCT_473/sortColumn/publishDate/sortDirection/DESC/truncate/200/type/browse[FAQ's], or link:https://kb.netapp.com/app/browse/a_status/published/channelRecordID/BREAK_FIX/currentSelectedID/RN_PRODUCT_473/isProductSelected/true/isRecommendationAllowed/true/pageSize/10/productRecordID/RN_PRODUCT_473/sortColumn/publishDate/sortDirection/DESC/truncate/200/type/browse[Break Fix] information related to Cloud Insights.
+
+////
 
 * *link:https://docs.netapp.com/us-en/cloudinsights/[Documentation]*
 +
 Clicking on the Documentation link takes you to this documentation center.
 
-* *link:https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS[Community]*
+* *link:https://mysupport.netapp.com/site/search?q=cloud%20insights&offset=0&searchType=Manual&autocorrect=true&origin=CI_Support_Community&filter=%28content_type%3D%3D%22community%22;product%3D%3D%22Cloud%20Insights%22%29[Community]*
 +
 Clicking on the community link takes you to the NetApp Cloud Insights community, where you can connect with peers and experts.
 
 There is also a link to provide link:mailto:ng-cloudinsights-customerfeedback@netapp.com[*Feedback*] to help us improve Cloud Insights.
+
 
 === Subscription Support
 
@@ -105,9 +112,9 @@ It is highly recommended that you check the box to allow a NetApp Support Engine
 
 You can request support by any of the following methods. You must have an active Cloud Insights subscription to use these support options:
 
-//* link:https://mysupport.netapp.com/gchat/cloudinsights[*Chat*]
 * link:https://www.netapp.com/us/contact-us/support.aspx[*Phone*]
 * link:https://mysupport.netapp.com/portal?_nfpb=true&_st=initialPage=true&_pageLabel=submitcase[*Support Ticket*]
+* *Chat* - You wll be connected with NetApp support personnel for assistance (weekdays only). Chat is available in the *Help > Live Chat* menu option in the upper right of any Cloud Insights screen.
 
 You can also request sales support by clicking on the link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[*Contact Sales*] link.
 
@@ -121,4 +128,8 @@ image:Support_View_SN.png[View Support SN]
 == Cloud Insights Data Collector Support Matrix
 
 You can view or download information and details about supported Data Collectors in the link:CloudInsightsDataCollectorSupportMatrix.pdf[*Cloud Insights Data Collector Support Matrix*, role="external"].
+
+=== Learning Center
+
+Regardless of your subscription, *Help > Support* links to several NetApp University course offerings to help you get the most out of Cloud Insights. Check them out!
 

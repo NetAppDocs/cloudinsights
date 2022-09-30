@@ -18,6 +18,81 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.  
 
+
+== September 2022 
+
+
+=== Monitors available in Basic Edition
+
+ONTAP link:task_system_monitors.html[Default monitors] now available to use in Cloud Insights Basic Edition. This includes more than 70 infrastructure monitors and 30 workload examples. 
+
+////
+Monitors and Alerting is now available in all Cloud Insights Editions, including Basic Edition. Basic Edition is subject to the following:
+
+* You may have up to five custom monitors active at a time. Any monitors beyond five will be created in or moved to _Paused_ state.
+* VMDK, Virtual Machine, Host, and DataStore metrics monitors are not supported. If you have monitors created for these metrics, they will be paused and cannot be resumed when downgrading to Basic Edition.
+* The following performance metrics are collected for VM, VMDK, and Datastore, for use in dashboards and queries:
+** latency
+** throughput
+** IOPS
+////
+
+
+
+=== ONTAP Power and StorageGRID dashboards
+
+The dashboard gallery includes a new dashboard for ONTAP Power and Temperature as well as four dashboards for StorageGRID. If your environment is collecting ONTAP power metrics and/or StorageGRID data, import these dashboards by selecting *+From Gallery*. 
+
+
+
+=== At-a-glance threshold visibility in tables 
+
+Conditional Formatting allows you to set and highlight Warning-level and Critical-level thresholds in table widgets, bringing instant visibility to outliers and exceptional data points.
+
+image:ConditionalFormattingExample.png[Conditional Formatting Example]
+
+=== Security Monitor
+
+Cloud Insights can alert you when it detects that FIPS mode is disabled on the ONTAP system. Read more about link:task_system_monitors.html#security-monitors[System Monitors], and watch this space for more Security Monitors, coming soon!
+
+
+
+=== Chat from Anywhere
+
+Chat with a NetApp Support specialist from any Cloud Insights screen by selecting the new *Help > Live Chat* link. Help is available from the "?" icon in the upper right of the screen.
+
+image:Help_LiveChat.png[Help Menu with Live Chat highlighted]
+
+
+
+=== More visible Insights
+
+If your environment is experiencing an link:insights_overview.html[Insight] such as _Shared resources Under Stress_ or _Kubernetes Namespaces Running Out of Space_, asset landing pages for resources affected now include links to the Insight itself, providing quicker exploration and troubleshooting. 
+
+
+=== New Data Collectors
+
+* Amazon S3 (available in Preview)
+* Brocade FOS 9.0.x
+* Dell/EMC PowerStore 3.0.0.0 
+
+
+=== Other Data Collector Updates
+
+All data sources are now optimized to resume performance polling after Acquisition Unit updates and/or patches.
+
+
+
+=== Operating System support
+
+The following operating systems are supported with Cloud Insights Acquisition Units, in addition to those link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[already supported]:
+
+* Red Hat Enterprise Linux 8.5, 8.6
+
+
+'''
+
+
 == August 2022
 
 === Cloud Insights has a new look!
@@ -130,6 +205,7 @@ The following operating system is supported with Cloud Insights Acquisition Unit
 
 
 '''
+
 
 == June 2022
 

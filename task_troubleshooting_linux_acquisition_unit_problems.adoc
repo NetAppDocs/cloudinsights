@@ -31,7 +31,7 @@ Here you will find suggestions for troubleshooting problems with Acquisition Uni
 
 4. Restart the AU service. Click the _Copy Restart Command_ button, and paste the command into a command prompt on the AU.
 
-|Installation fails on SELinux|When the AU is installed on SELinux, SE should be either disabled or set to permissive mode. Once the installation is complete, enforcing mode can be enabled.   
+|Permission denied when starting the Acquisition Unit Server Service|When the AU is installed on SELINUX, SE should be set to _permissive_ mode. _Enforcing_ mode is not supported. After setting SELINUX to permissive mode, restart the AU service.  link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/Permission_denied_when_starting_the_Cloud_Insight_Acquisition_Unit_Server_Service[Learn more].
 
 |Server Requirements not met | Ensure that your Acquisition Unit server or VM meets  link:concept_acquisition_unit_requirements.html[requirements]
 
@@ -69,6 +69,10 @@ Check the network connection between the Acquisition Unit sever and CloudInsight
 Check whether the Acquisition Unit service is running. If the service is not running, start the service.
 Check the Acquisition Unit log (/var/log/netapp/cloudinsights/acq/acq.log) to see whether there are any errors.
 
+|I'm seeing a "Heartbeat Error: message
+|This error can occur if there is a network interruption that causes communication between the Acquisition Unit and the Cloud Insights environment to be interrupted for more than one minute. Verify the connection between the AU and Cloud Insights is stable and active.
+
+
 |===
 
 ////
@@ -76,7 +80,7 @@ Moving Data Collectors to Different Acquisition Units:
 •	What is the proper process for a customer to do this?  They have to retype their passwords or go into the security admin tool to transfer the keys?
 ////
 
-=== Considerations about Proxies and Firewalls
+== Considerations about Proxies and Firewalls
 
 If your organization requires proxy usage for internet access, you may need to understand your organization’s proxy behavior and seek certain exceptions for Cloud Insights to work. Keep the following in mind:
 
@@ -97,14 +101,14 @@ The simplest way to do this is to add the Cloud Insights domain itself to the ex
  
 In the case where the proxy is not set up for traffic inspection, an exception list may or may not be required. If you are unsure whether you need to add Cloud Insights to an exception list, or if you experience difficulties installing or running Cloud Insights due to proxy and/or firewall configuration, talk to your proxy administration team to set up the proxy's handling of SSL interception.
 
-==== Viewing Proxy endpoints
+=== Viewing Proxy endpoints
 
 You can view your proxy endpoints by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed. If you have Cloud Secure in your environment, the configured endpoint URLs will also be displayed in this list.
 
 image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
 
 
-=== Resources
+== Resources
 
 Additional troubleshooting tips may be found in the link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights[NetApp Knowledgebase] (support sign-in required).
 

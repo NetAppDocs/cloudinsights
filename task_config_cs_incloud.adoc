@@ -5,7 +5,7 @@ keywords:  Cloud, Storage, AWS, Cloud Volumes, Cloud ONTAP, firewall, VPC, Subne
 summary: Cloud Secure uses data collectors to collect file and user access data from devices.
 ---
 
-= Configuring the Cloud Volumes ONTAP Data Collector 
+= Configuring the Cloud Volumes ONTAP and Amazon FSx for NetApp ONTAP collector 
 
 :toc: macro
 :hardbreaks:
@@ -20,7 +20,6 @@ summary: Cloud Secure uses data collectors to collect file and user access data 
 Cloud Secure uses data collectors to collect file and user access data from devices.
 
 
-
 == Cloud Volumes ONTAP Storage Configuration
 
 See the OnCommand Cloud Manager Documentation to configure a single-node / HA AWS instance to host the Cloud Secure Agent: 
@@ -29,7 +28,20 @@ https://docs.netapp.com/us-en/occm/index.html
 After the configuration is complete, follow the steps to setup your SVM: 
 https://docs.netapp.com/us-en/cloudinsights/task_add_collector_svm.html
 
+== Supported Platforms
+
+*	Cloud Volumes ONTAP, supported in all the available cloud service providers wherever available. For example: Amazon, Azure, Google Cloud.
+*	ONTAP Amazon FSx
+
+
 == Agent Machine Configuration
+
+The agent machine must be configured in the respective subnets of the cloud Service providers. Read more about network access in the [Agent Requirements].
+
+Below are the steps for Agent installation in AWS. Equivalent steps, as applicable to the cloud service provider, can be followed in Azure or Google Cloud for the installation.
+
+In AWS, use the following steps to configure the machine to be used as a Cloud Secure Agent:
+
 
 Use the following steps to configure the machine to be used as a Cloud Secure Agent:
 

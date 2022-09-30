@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_annotation_import.html
 keywords: annotations, import, api
-summary: You can import annotaitons and applications using the Cloud Insights API.
+summary: You can import annotations and applications using the Cloud Insights API.
 ---
 
 = Importing Annotations
@@ -25,13 +25,13 @@ NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*.
 
 //The export and import functions are supported only between servers that are running the same version of OnCommand Insight.
 
-=== Importing
+== Importing
 
 The *Admin > API Access* links contain link:API_Overview.html[documentation] for the *Assets/Import* API. This documentation contains information on the .CSV file format. 
 
 image:api_assets_import.png[Import API]
 
-=== .CSV File Format
+== .CSV File Format
 
 The general format of the CSV file is as follows. The first line of the file defines the import fields and specifies the order of the fields. This is followed by separate lines for each annotation or application. You do not need to define every field. However, the subsequent annotation lines must follow the same order as the definition line.
 
@@ -55,7 +55,7 @@ You can import and assign annotations from a .CSV file from within the API swagg
 
 image:api_assets_import_assign.png[Import and Assign]
 
-=== Import Behavior
+== Import Behavior
 
 During the import operation, data is added, merged, or replaced, depending on the objects and object types that are being imported. While importing, keep in mind the following behaviors.
 

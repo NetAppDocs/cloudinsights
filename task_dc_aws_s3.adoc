@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_dc_amazon_ec2.html
-keywords: data collector, EC2, 
-summary: Configuring Amazon EC2 data collector.
+permalink: task_dc_aws_s3.html
+keywords: data collector, S3, Storage
+summary: Configuring AWS S3 as Storage data collector.
 ---
 
-= Configuring the Amazon EC2 data collector
+= Configuring the AWS S3 as Storage data collector
 
 
 :toc: macro
@@ -19,21 +19,21 @@ summary: Configuring Amazon EC2 data collector.
 
 [.lead]
 
-Cloud Insights uses the Amazon EC2 data collector to acquire inventory and performance data from EC2 instances. 
+Cloud Insights uses the AWS S3 as Storage data collector to acquire inventory and performance data from AWS S3 instances. 
 
 
 == Requirements
 
-In order to collect data from Amazon EC2 devices, you must have the following information: 
+In order to collect data from AWS S3 as Storage devices, you must have the following information: 
 
 * You must have one of the following:
-** The *IAM Role* for your Amazon EC2 cloud account, if using IAM Role Authentication. IAM Role only applies if your acquisition unit is installed on an AWS instance.
-** The *IAM Access Key* ID and Secret Access Key for your Amazon EC2 cloud account, if using IAM Access Key authentication.
+** The *IAM Role* for your AWS cloud account, if using IAM Role Authentication. IAM Role only applies if your acquisition unit is installed on an AWS instance.
+** The *IAM Access Key* ID and Secret Access Key for your AWS cloud account, if using IAM Access Key authentication.
 * You must have the "list organization" privilege
 * Port 443 HTTPS
-* EC2 Instances can be reported as a Virtual Machine, or (less naturally) a Host. EBS Volumes can be reported as both a VirtualDisk used by the VM, as well as a DataStore providing the Capacity for the VirtualDisk.
+* AWS S3 Instances can be reported as a Virtual Machine, or (less naturally) a Host. EBS Volumes can be reported as both a VirtualDisk used by the VM, as well as a DataStore providing the Capacity for the VirtualDisk.
 
-Access keys consist of an access key ID (for example, AKIAIOSFODNN7EXAMPLE) and a secret access key (for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY). You use access keys to sign programmatic requests that you make to EC2 if you use the Amazon EC2 SDKs, REST, or Query API operations. These keys are provided with your contract from Amazon.   
+Access keys consist of an access key ID (for example, AKIAIOSFODNN7EXAMPLE) and a secret access key (for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY). You use access keys to sign programmatic requests that you make to AWS if you use the AWS SDKs, REST, or Query API operations. These keys are provided with your contract from Amazon.   
 
 
 == Configuration
@@ -44,7 +44,7 @@ Enter data into the data collector fields according to the table below:
 |===
 |Field | Description
 |AWS Region|Choose AWS region
-|IAM Role|For use only when acquired on an AU in AWS. See below for more information on link:task_dc_amazon_ec2.html#iam-roles[IAM Roles].
+|IAM Role|For use only when acquired on an AU in AWS. See below for more information on <<iam-roles,IAM Roles>>.
 |AWS IAM Access Key ID|Enter AWS IAM Access Key ID. Required if you do not use IAM Role.
 |AWS IAM Secret Access Key|Enter AWS IAM Secret Access Key. Required if you do not use IAM Role.
 |I understand AWS bills me for API requests|Check this to verify your understanding that AWS bills you for API requests made by Cloud Insights polling.
@@ -55,16 +55,10 @@ Enter data into the data collector fields according to the table below:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|Include Extra Regions| Specify additional regions to include in polling. 
 |Cross Account Role|Role for accessing resources in different AWS accounts.
 |Inventory Poll Interval (min)|The default is 60
 |Choose 'Exclude' or 'Include' to Apply to Filter VMs by Tags|Specify whether to include or exclude VM's by Tags when collecting data. If ‘Include’ is selected, the Tag Key field can not be empty.
-|Tag Keys and Values on which to Filter VMs|Click *+ Filter Tag* to choose which VMs (and associated disks) to include/exclude by filtering for keys and values that match keys and values of tags on the VM. Tag Key is required, Tag Value is optional. When Tag Value is empty, the VM is filtered as long as it matches the Tag Key.
-//|HTTP connection and socket timeout (sec)|The default is 300
-//|Include AWS tags|Check to enable support for AWS tags in Cloud Insights annotations.
 |Performance Poll Interval (sec)|The default is 1800
-|CloudWatch Agent Metrics Namespace
-|Namespace in EC2/EBS from which to collect data. Note that if the names of the default metrics in this namespace are changed, Cloud Insights may not be able to collect that renamed data. It is recommended to leave the default metric names.
 
 |===
 
@@ -79,11 +73,11 @@ Access keys consist of two parts: an access key ID and a secret access key. When
 
 When using _IAM Role_ authentication (as opposed to IAM Access Key authentication), you must ensure that the role you create or specify has the appropriate permissions needed to access your resources. 
 
-For example, if you create an IAM role named _InstanceEc2ReadOnly_, you must set up the policy to grant EC2 read-only list access permission to all EC2 resources for this IAM role. Additionally, you must grant STS (Security Token Service) access so that this role is allowed to assume roles cross accounts.
+For example, if you create an IAM role named _InstanceS3ReadOnly_, you must set up the policy to grant S3 read-only list access permission to all S3 resources for this IAM role. Additionally, you must grant STS (Security Token Service) access so that this role is allowed to assume roles cross accounts.
 
-After you create an IAM role, you can attach it when you create a new EC2 instance or any existing EC2 instance.
+After you create an IAM role, you can attach it when you create a new S3 instance or any existing S3 instance.
 
-After you attach the IAM role _InstanceEc2ReadOnly_ to an EC2 instance, you will be able to retrieve the temporary credential through instance metadata by IAM role name and use it to access AWS resources by any application running on this EC2 instance.
+After you attach the IAM role _InstanceS3ReadOnly_ to an S3 instance, you will be able to retrieve the temporary credential through instance metadata by IAM role name and use it to access AWS resources by any application running on this S3 instance.
 
 For more information see the Amazon documentaiton on link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html[IAM Roles].
 
@@ -91,9 +85,9 @@ Note: IAM role can be used only when the Acquisition Unit is running in an AWS i
 
 == Mapping Amazon tags to Cloud Insights annotations
 
-The Amazon EC2 data collector includes an option that allows you to populate Cloud Insights annotations with tags configured on EC2. The annotations must be named exactly as the EC2 tags. Cloud Insights will always populate same-named text-type annotations, and will make a "best attempt" to populate annotations of other types (number, boolean, etc). If your annotation is of a different type and the data collector fails to populate it, it may be necessary to remove the annotation and re-create it as a text type.
+The AWS S3 as Storage data collector includes an option that allows you to populate Cloud Insights annotations with tags configured on S3. The annotations must be named exactly as the AWS tags. Cloud Insights will always populate same-named text-type annotations, and will make a "best attempt" to populate annotations of other types (number, boolean, etc). If your annotation is of a different type and the data collector fails to populate it, it may be necessary to remove the annotation and re-create it as a text type.
 
-Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if you create an annotation named "OWNER" in Cloud Insights, and tags named "OWNER", "Owner", and "owner" in EC2, all of the EC2 variations of "owner" will map to Cloud Insight's "OWNER" annotation. 
+Note that AWS is case-sensitive, while Cloud Insights is case-insensitive. So if you create an annotation named "OWNER" in Cloud Insights, and tags named "OWNER", "Owner", and "owner" in S3, all of the S3 variations of "owner" will map to Cloud Insight's "OWNER" annotation. 
 
 ////
 .Related Information
@@ -110,11 +104,11 @@ If the *Include extra regions* field is empty, the data collector will collect o
 
 Cloud Insights supports collection of child accounts for AWS within a single AWS data collector. Configuration for this collection is performed in the AWS environment:
 
-* You must configure each child account to have an AWS Role that allows the main account ID to access EC2 details from the children account. 
+* You must configure each child account to have an AWS Role that allows the main account ID to access S3 details from the children account. 
 * Each child account must have the role name configured as the same string. 
 * Enter this role name string into the Cloud Insights AWS Data Collector *Advanced Configuration* section, in the *Cross account role* field.
 
-Best Practice: It is highly recommended to assign the AWS predefined _AmazonEC2ReadOnlyAccess_ policy to the EC2 main account. Also, the user configured in the data source should have at least the predefined _AWSOrganizationsReadOnlyAccess_ policy assigned, in order to query AWS. 
+Best Practice: It is highly recommended to assign the AWS predefined _AmazonS3ReadOnlyAccess_ policy to the S3 main account. Also, the user configured in the data source should have at least the predefined _AWSOrganizationsReadOnlyAccess_ policy assigned, in order to query AWS. 
 
 Please see the following for information on configuring your environment to allow Cloud Insights to collect from AWS child accounts:
 

@@ -1,13 +1,13 @@
 ---
 sidebar: sidebar
-permalink: task_dc_dell_xc_series.html
+permalink: task_dc_cohesity_smartfiles.html
 
-keywords: data collector, Dell, EMC, xc 
+keywords: data collector, cohesity
 
-summary: Configuring Dell EMC XC Series data collector.
+summary: Configuring the Cohesity SmartFiles data collector.
 ---
 
-= Dell EMC XC Series data collector
+= Cohesity SmartFiles data collector
 
 :toc: macro
 :hardbreaks:
@@ -20,7 +20,7 @@ summary: Configuring Dell EMC XC Series data collector.
 
 [.lead] 
 
-Cloud Insights uses this data collector to discover inventory and performance information for the Dell EMC XC Series storage arrays. 
+This REST API-based collector will acquire a Cohesity cluster, discovering the “Views” (as Cloud Insights Internal Volumes), the various nodes, as well as collecting performance metrics.
 
 ////
 == Terminology
@@ -54,9 +54,9 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Prism External IP Address|IP address of the XC server
-|User Name|User name for the XC server 
-|Password|Password used for the XC server
+|Cohesity Cluster IP|IP address of the Cohesity cluster
+|User Name|User name for the Cohesity cluster 
+|Password|Password used for the Cohesity cluster
 |===
 
 == Advanced configuration
@@ -64,9 +64,9 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|TCP Port|Port used for TCP communication with the XC server
+|TCP Port|Port used for TCP communication with the Cohesity cluster
 |Inventory Poll Interval (min)|Interval between inventory polls. The  default is 60 minutes. 
-|Performance Poll Interval (min)|Interval between performance polls. The default is 300 seconds. 
+|Performance Poll Interval (min)|Interval between performance polls. The default is 900 seconds. 
 |===
 
 == Troubleshooting

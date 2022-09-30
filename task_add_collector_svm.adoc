@@ -18,13 +18,14 @@ summary: Adding data collectors
 [.lead]
 Cloud Secure uses data collectors to collect file and user access data from devices. 
 
-=== Before you begin
+== Before you begin
 
 * This data collector is supported with the following:
 ** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
-** SMB protocol version 3.1 and earlier
+** SMB protocol version 3.1 and earlier.  Note that Cloud Secure does not work with SMB configurations that use Flexcache. Starting with ONTAP9.7, Fpolicy is supported only in an NFS environment.
 **	NFS protocol version 4.0 and earlier 
 ** Flexgroup is supported from ONTAP 9.4 and later versions
+** ONTAP Select is supported
 
 * Only data type SVMs are supported. SVMs with infinite volumes are not supported.
 
@@ -39,7 +40,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 //* You need the SVM management IP address or the cluster IP, and username / password for login.
 
 * You must add an SVM using one of the following two methods:
-** By Using Cluster IP, SVM name, and Cluster Management Username and Password. _This is the recommended method._
+** By Using Cluster IP, SVM name, and Cluster Management Username and Password. *_This is the recommended method._*
 *** SVM name must be exactly as is shown in ONTAP and is case-sensitive.
 ** By Using SVM Vserver Management IP, Username, and Password
 ** If you are not able or not willing to use the full Administrator Cluster/SVM Management Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM or Cluster access.
@@ -83,9 +84,9 @@ See link:concept_cs_agent_requirements.html[Agent requirements] for configuratio
 
 * When an Agent is installed in an AWS EC2 instance to monitor a Cloud ONTAP SVM, the Agent and Storage must be in the same VPC. If they are in separate VPCs, there must be a valid route between the VPC’s.
 
-=== A Note About Permissions
+== A Note About Permissions
 
-==== Permissions when adding via *Cluster Management IP*:
+=== Permissions when adding via *Cluster Management IP*:
 
 If you cannot use the Cluster management administrator user to allow Cloud Secure to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Cloud Secure data collector to use Cluster Management IP. 
 
@@ -105,10 +106,9 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -role csrole -cmddirname "security certificate" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
  security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
- security login role create -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*" 
+ 
 
-
-==== Permissions when adding via *Vserver Management IP*:
+=== Permissions when adding via *Vserver Management IP*:
 
 If you cannot use the Cluster management administrator user to allow Cloud Secure to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Cloud Secure data collector to use Vserver Management IP.
 
@@ -124,35 +124,10 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
- security login role create -vserver <vservername> -role csrole -cmddirname "vserver export-policy rule" -access all -query "-policyname cloudsecure_*"
-
-////
-If you cannot use the "vsadmin" user, create the following roles for the data collector using the "causer" user: 
-
-`security login show -vserver svmname`
-`security login role create -vserver svmname -role carole -cmddirname DEFAULT -access none`
-`security login role create -vserver svmname -role carole -cmddirname "network interface" -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname version -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname volume -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname vserver -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
-`security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
-
-Note that if the data collector is added using "causer", link:cs_cs_automated_response_policies.html[alert response snapshots] cannot be taken by default. To enable snapshots for causer, the commands above must also include the *"volume snapshot"* line below:
-
-`security login show -vserver svmname`
-`security login role create -vserver svmname -role carole -cmddirname DEFAULT -access none`
-`security login role create -vserver svmname -role carole -cmddirname "network interface" -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname version -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname volume -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname vserver -access readonly`
-`security login role create -vserver svmname -role carole -cmddirname "vserver fpolicy" -access all` 
-`security login role create -vserver <vservername> -role carole -cmddirname "volume snapshot" -access all`
-`security login create -user-or-group-name causer -application ontapi -authmethod password -role carole -vserver svmname`
-////
+ 
 
 
-=== Configure the data collector
+== Configure the data collector
 
 .Steps for Configuration 
 
@@ -193,8 +168,6 @@ When adding via SVM IP the options are:
 |Enter complete volume names to exclude/include|Comma-separated list of volumes to exclude or include (as appropriate) from event collection
 |Monitor Folder Access|When checked, enables events for folder access monitoring. Note that folder create/rename and delete will be monitored even without this option selected. Enabling this will increase the number of events monitored.
 |Set ONTAP Send Buffer size|Sets the ONTAP Fpolicy send buffer size. If an ONTAP version prior to 9.8p7 is used and performance issue is seen, then the ONTAP send buffer size can be altered to get improved ONTAP performance. Contact NetApp Support if you do not see this option and wish to explore it. 
-|Set ONTAP Send Buffer size
-|Sets the ONTAP Fpolicy send buffer size. If ONTAP versions prior to 9.8p7 is used and ONTAP performance issue is hit, then the ONTAP send buffer size can be altered to get improved ONTAP performance. This is a hidden feature and enabled per customer basis on request.
 
 |===
 
@@ -206,7 +179,7 @@ When adding via SVM IP the options are:
 * In the Installed Data Collectors page, use the options menu on the right of each collector to edit the data collector. You can restart the data collector or edit data collector configuration attributes. 
 
 
-=== Troubleshooting 
+== Troubleshooting 
 
 Known problems and their resolutions are described in the following table. 
 
@@ -295,7 +268,7 @@ _system services firewall policy show_
 
 link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nmg%2FGUID-969851BB-4302-4645-8DAC-1B059D81C5B2.html[Check firewall commands] on the ONTAP side.
 
-4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM management lif (with CIFS, NFS protocols support) and ensure that ping is working:
+4. SSH to the SVM/Cluster which you want to monitor. Ping the Agent box from the SVM data lif (with CIFS, NFS protocols support) and ensure that ping is working:
 
  _network ping -vserver <vserver name> -destination <Agent IP> -lif <Lif Name> -show-detail_
 
@@ -318,7 +291,7 @@ Please ensure that there are no errors related to fpolicy.
 
 3. If no activities are seen, please login to the SVM. Enter the following command 
 _<SVM>fpolicy show_
-Please check if the fpolicy policy named with prefix “metadata_service” has been set and status is “on”. If not set, then most likely the Agent is unable to execute the commands in the SVM. Please ensure all the prerequisites as described in the beginning of the page have been followed.
+Check if the fpolicy policy named with prefix “cloudsecure_” has been set and status is “on”. If not set, then most likely the Agent is unable to execute the commands in the SVM. Please ensure all the prerequisites as described in the beginning of the page have been followed.
 
 |SVM Data Collector is in error state and Errror message is “Agent failed to connect to the collector” 
 |1. Most likely the Agent is overloaded and is unable to connect to the Data Source collectors. 
@@ -381,10 +354,16 @@ Edit the ONTAP SVM data collector and un-check CIFs as allowed protocol. Save th
 
 |Data Collector shows the error message:
 “Error: Failed to determine the health of the collector within 2 retries, try restarting the collector again (Error Code: AGENT008)”.
-|On the Data Collectors page, scroll to the right of the data collector giving the error and click on the 3 dots menu. Select _Edit_.
+|1. On the Data Collectors page, scroll to the right of the data collector giving the error and click on the 3 dots menu. Select _Edit_.
 Enter the password of the data collector again.
 Save the data collector by pressing on the _Save_ button.
 Data Collector will restart and the error should be resolved.
+
+2. The Agent machine may not enough CPU or RAM headroom, that is why the DSCs are failing.
+Please check the number of Data Collectors which are added to the Agent in the machine.
+If it is more than 20, please increase the CPU and RAM capacity of the Agent machine.
+Once the CPU and RAM is increased, the DSCs will get into Initializing and then to Running state automatically.
+Look into the sizing guide on link:https://docs.netapp.com/us-en/cloudinsights/concept_cs_event_rate_checker.html[this page].
 
 |===
 
