@@ -46,10 +46,10 @@ image:QuerySelectColumns.png[Select Columns]
 After you have configured your query to show you the results you want, you can click the *Save* button to save the query for future use. Give it a meaningful and unique name.
 
 
-=== More on Filtering
+== More on Filtering
 
 
-==== Wildcards and Expressions
+=== Wildcards and Expressions
 
 When you are filtering for text or list values in queries or dashboard widgets, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create *expressions* using NOT or OR, or you can select the "None" option to filter for null values in the field.
 
@@ -63,7 +63,7 @@ Note that Wildcard and Expression filtering works with text or lists but not wit
 
 
 
-==== Refining Filters
+=== Refining Filters
 
 You can use the following to refine your filter:
 
@@ -81,7 +81,7 @@ If you enclose a filter string in double quotes, Insight treats everything betwe
 
 //The operator AND is always trated as a literal string.
 
-=== What do I do now that I have query results?
+== What do I do now that I have query results?
 
 Querying provides a simple place to add annotations or assign applications to assets. Note that you can only assign applications or annotations to your inventory assets (Disk, Storage, etc.). Integration metrics cannot take on annotation or application assignments.
 
@@ -89,6 +89,6 @@ To assign an annotation or application to the assets resulting from your query, 
 
 image:QueryVolumeBulkActions.png[Query Bulk Actions Example]
 
-=== Annotation Rules require query
+== Annotation Rules require query
 
 If you are configuring link:task_create_annotation_rules.html[Annotation Rules], each rule must have an underlying query to work with. But as you've seen above, queries can be made as broad or as narrow as you need.
