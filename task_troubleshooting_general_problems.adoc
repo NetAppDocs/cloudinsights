@@ -20,19 +20,26 @@ Here you will find suggestions for troubleshooting Cloud insights.
 
 See also link:task_troubleshooting_linux_acquisition_unit_problems.html[Troubleshooting Linux Acquisition Unit Problems] and link:task_troubleshooting_windows_acquisition_unit_problems.html[Troubleshooting Windows Acquisition Unit Problems].
 
-==== Login issues:
+== Login issues:
 
 |===
 |*Problem:* | *Try this:* 
+
 |Cloud Insights logs out every 5 minutes
-|Enable 3rd party cookie acceptance from _[*.]auth0.com_ in your browser settings. 
-For example in Chrome's incognito mode, the default browser settings block third-party cookies. Try the following:
-Enter "chrome://settings/cookies" in browser URL.
-Select "Allow all cookies" option.
+|Enable third-party acceptance for the necessary NetApp and auth0 cookies. 
+ 
+Example:
+In Chrome, enter "chrome://settings/cookies" in the browser URL.
+ 
+Select the "Allow all cookies" option.
+*OR*
+Select "Block third-party cookies" and add exceptions for [*.]auth0.com and [*.]netapp.com.
+ 
+Note: Make sure to select the "Including third-party cookies on this site" option when creating an exception. 
 
 |I have a Cloud Central account but am unable to login to Cloud Central.
-|Contact saas.support@netapp.com. This is specifically for Cloud Central issues or questions.
-For all other Cloud Insights issues, contact link:concept_requesting_support.html[NetApp support]. 
+|Open a ticket from https://mysupport.netapp.com/site/help. Select category “cloud.netapp.com > Account/Login issues” or “cloud.netapp.com > Federation issues”.  This is specifically for Cloud Central issues or questions.
+For all other Cloud Insights technical support issues, contact link:concept_requesting_support.html[NetApp support]. 
 
 |I got invited to Cloud Insights but I get a "not authorized" message.
 |Verify that you have signed up for a Cloud Central account, or that your organization uses SSO login with Cloud Central.

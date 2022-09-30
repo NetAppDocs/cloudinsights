@@ -39,7 +39,9 @@ Names can contain can contain letters (a-z), numbers (0-9), dashes (-), undersco
 
 image:CollectorNotifications.jpg[Collector Notifications]
 
-When viewing a data collector landing page, you can modify the notifications by clicking the pencil icon in the "Notifications" field of the data collector summary section.
+When viewing an *ONTAP data collector* landing page, you can modify the notifications by clicking the pencil icon in the "Notifications" field of the data collector summary section.
+
+NOTE: ONTAP Data Collector notifications take precedence over any specific Monitor notifications that are relevant to the cluster/data collector. The recipient list you set for the Data Collector itself will receive the data collector alerts. If there are no active data collector alerts, then monitor-generated alerts will be sent to specific monitor recipients.
 
 image:CollectorNotifications_Edit.jpg[Editing Collector Notifications]
 
