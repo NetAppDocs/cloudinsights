@@ -120,9 +120,12 @@ You can filter Forensic Activity data by the following fields:
 
 * *Protocol* to fetch protocol-specific activities.
 
-* *Noise Reduction* to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.
+//* *Noise Reduction* to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.
 
 * *Username* of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
+
+* *Noise Reduction* to filter out newly-created files created by the user (i.e. in the last 2 hours). It is also used to filter temporary files (for example, .tmp files) accessed by the user. 
+
 
 The following fields are subject to special filtering rules:
 
@@ -158,6 +161,50 @@ image:CloudSecure_ActivitySelection.png[Activity Selector, width=30%]
 
 Activity history is retained for 13 months for active Cloud Secure environments.
 
+
+
+== Applicability of Filters in Forensics Page
+
+|===
+
+|Filter	|What it does	|Example	|Applicable in Which Filters?	|Not applicable for which filters	|Result
+
+|*	(Asterisk)	|enables you to search for everything	|Auto*03172022	|User, PATH, Entity Type, Device Type, Volume, Original Path		||returns all resources that start with “Auto" and end with “03172022”
+|? (question mark)	|enables you to search for a specific number of characters	|AutoSabotageUser1_03172022?	|User, Entity Type, Device, Volume	 |	|returns AutoSabotageUser1_03172022A, AutoSabotageUser1_03172022AB, AutoSabotageUser1_031720225, and so on
+
+|OR	|enables you to specify multiple entities	|AutoSabotageUser1_03172022 OR AutoRansomUser4_03162022
+ 	|User, Domain, Username, PATH, Entity Type, Device, Original Path		||returns any of AutoSabotageUser1_03172022 OR AutoRansomUser4_03162022
+ 
+|NOT	|allows you to exclude text from the search results	|NOT AutoRansomUser4_03162022
+ 	|User, Domain, Username, PATH, Entity Type, Original PATH, Volume	|Device	|returns everything that does not start with"AutoRansomUser4_03162022”
+|None	|searches for NULL values in all fields	|None	|Domain	|	|returns results where the target field is empty
+
+|===
+
+== Path / Original path Search
+
+Search results with and  without / will be different 
+
+|===
+
+|/AutoDir1/AutoFile	|Works
+|AutoDir1/AutoFile	|Doesn’t work 
+|/AutoDir1/AutoFile (Dir1)	|Dir1 Partial substring doesn’t work 
+|"/AutoDir1/AutoFile03242022"	|Exact search works
+|Auto*03242022	|Doesn’t work
+|AutoSabotageUser1_03172022?	|Doesn’t work
+|/AutoDir1/AutoFile03242022 OR /AutoDir1/AutoFile03242022	|Works
+|NOT /AutoDir1/AutoFile03242022	|Works
+|NOT /AutoDir1	|Works
+|NOT /AutoFile03242022	|Doesn’t work
+|*	|Shows all the entries 
+
+|===
+
+
+
+
+
 == Troubleshooting
 
 |===
@@ -172,6 +219,15 @@ or
 2. A User Directory Collector has been configured, however it has stopped or is in error state. Please go to *Admin > Data Collectors > User Directory Collectors* and check the status. Refer to the link:http://docs.netapp.com/us-en/cloudinsights/task_config_user_dir_connect.html#troubleshooting-user-directory-collector-configuration-errors[User Directory Collector troubleshooting] section of the documentation for troubleshooting tips.
 After configuring properly, the name will get automatically resolved within 24 hours.
 If it still does not get resolved, check if you have added the correct User Data Collector. Make sure that the user is indeed part of the added Active Directory/LDAP Directory Server.
+
+|Some NFS events are not seen in UI.
+|Check the following:
+1.	A user directory collector for AD server with POSIX attributes set should be running with the unixid attribute enabled from UI.
+2.	Any user doing NFS access should be seen when searched in the user page from UI
+3.	Raw events (Events for whom the user is not yet discovered) are not supported for NFS
+4.	Anonymous access to the NFS export will not be monitored.
+5.	Make sure NFS version used in lesser than NFS4.1.
+
 |===
 
 

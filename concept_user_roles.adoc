@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_user_roles.html
 
-keywords: roles, guest, user, administrator, SSO, Federate, federation, identity, single sign-on, Account Owner, Reporting, Cloud Secure
+keywords: roles, guest, user, administrator, SSO, Federate, federation, identity, single sign-on, Account Owner, Reporting, Cloud Secure, Monitor and Optimize, security, observabilityu
 summary: Cloud Insights provides multiple user accounts with different permission levels.
 
 ---
@@ -11,7 +11,7 @@ summary: Cloud Insights provides multiple user accounts with different permissio
 
 [.lead]
 
-Cloud Insights provides up to four user account roles: Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels as noted in the table below. (Note that _User_ and _Guest_ roles are not available in the Cloud Secure feature.). Users are either link:#creating-accounts-by-inviting-users[invited] to Cloud Insights and assigned a specific role, or can sign in via link:#single-sign-on-sso-accounts[Single Sign-On (SSO) Authorization] with a default role. SSO Authorization is available as a feature in Cloud Insights Premium Edition.
+Cloud Insights provides up to four user account roles: Account Owner, Administrator, User, and Guest. Each account is assigned specific permission levels as noted in the table below. (Note that _User_ and _Guest_ roles are not available in the Security feature set.). Users are either link:#creating-accounts-by-inviting-users[invited] to Cloud Insights and assigned a specific role, or can sign in via link:#single-sign-on-sso-accounts[Single Sign-On (SSO) Authorization] with a default role. SSO Authorization is available as a feature in Cloud Insights Premium Edition.
 
 :toc: macro
 :hardbreaks:
@@ -34,10 +34,10 @@ You use an account that has Administrator privileges to create or modify user ac
 
 
 |===
-|Role	|Monitoring	|Cloud Secure	|Reporting
+|Role	|Observability |Security|Reporting
 
 |Account Owner	
-3+<|Can modify subscriptions, view billing and usage information, and perform all Administrator functions for Monitoring & Optimization, Cloud Secure, and Reporting.
+3+<|Can modify subscriptions, view billing and usage information, and perform all Administrator functions for Observability, Security, and Reporting.
 Owners can also invite and manage users, as well as manage SSO Authentication and Identity Federation settings. 
 
 The first Account Owner is created when you register for Cloud Insights.
@@ -45,13 +45,13 @@ The first Account Owner is created when you register for Cloud Insights.
 It is strongly recommended to have at least two Account Owners for each Cloud Insights environment. 
 
 |Administrator	
-|Can perform all Monitoring & Optimization functions, all user functions, as well as management of data collectors, API keys, and notifications.
-An Administrator can also invite other users but can only assign Monitor and Optimize roles. 
+|Can perform all Observability functions, all user functions, as well as management of data collectors, Observability API tokens, and notifications.
+An Administrator can also invite other users but can only assign Observability roles. 
 
-|Can perform all Cloud Secure functions, including those for Alerts, Forensics, data collectors, automated response policies, and APIs for Cloud Secure.
-An Administrator can also invite other users but can only assign Cloud Secure roles.
+|Can perform all Security functions, including those for Alerts, Forensics, data collectors, automated response policies, and API tokens for Security.
+An Administrator can also invite other users but can only assign Security roles.
 
-|Can perform all User/Author functions, as well as all administrative tasks such as configuration of reports, and the shutdown and restart of reporting tasks.
+|Can perform all User/Author functions including managing Reporting API tokens, as well as all administrative tasks such as configuration of reports, and the shutdown and restart of reporting tasks.
 An Administrator can also invite other users but can only assign Reporting roles.
 
 |User	
@@ -91,7 +91,7 @@ Account Owner|User|Guest
 |Asset Pages: View|Y|Y|Y
 |Audit: View|Y|N|N
 |Cloud Cost|Y|N|N
-|Cloud Secure*|Y|N|N
+|Security|Y|N|N
 |Dashboards: Create/Modify/Delete|Y|Y|N
 |Dashboards: View|Y|Y|Y
 |Data Collectors: Add/Modify/Poll/Delete|Y|N|N
@@ -134,7 +134,7 @@ The *Invite User* screen is displayed.
 
 . Select the user's role for each feature of Cloud Insights. 
 +
-NOTE: The features and roles you can choose from depend on which features you have access to in your particular Administrator role. For example, if you have Admin role only for Reporting, you will be able to assign users to any role in Reporting, but will not be able to assign roles for Monitor and Optimize or Cloud Secure.
+NOTE: The features and roles you can choose from depend on which features you have access to in your particular Administrator role. For example, if you have Admin role only for Reporting, you will be able to assign users to any role in Reporting, but will not be able to assign roles for Observability or Security.
 +
 image:UserRoleChoices.png[User Role Choices]
 
@@ -142,6 +142,29 @@ image:UserRoleChoices.png[User Role Choices]
 . Click *Invite*
 +
 The invitation is sent to the user. Users will have 14 days to accept the invitation. Once a user accepts the invitation, they will be taken to the NetApp Cloud Portal, where they will sign up using the email address in the invitation. If they have an existing account for that email address, they can simply sign in and will then be able to access their Cloud Insights environment.
+
+
+== Modifying an existing user's role
+
+To modify an existing user's role, including adding them as a *secondary account owner*, follow these steps.
+
+. Click *Admin > User Management*. The screen displays a list of all of the accounts on the system.
+. Click the user name of the account you want to change.
+. Modify the user's role in each Cloud Insights feature set as needed.
+. Click _Save Changes_.
+
+=== To assign a Secondary Account Owner
+
+You must be logged in as an account owner for Observability in order to assign the account owner role to another user.
+
+. Click *Admin > User Management*. 
+. Click the user name of the account you want to change.
+. In the User dialog, click on *Assign as Owner*.
+. Save the changes.
+
+image:Assign_Account_Owner.png[user change dialog showing account owner choice]
+
+You can have as many account owners as you wish, but best practice is to limit the owner role to only select people.
 
 
 == Deleting Users

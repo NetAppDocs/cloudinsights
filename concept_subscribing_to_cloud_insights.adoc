@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_subscribing_to_cloud_insights.html
 summary: At any point during your free trial, you can subscribe to Cloud Insights.
-keywords: subscribe, trial, subscription, contract, raw capacity, region
+keywords: subscribe, trial, subscription, contract, raw capacity, region, data retention, retention, 
 ---
 
 = Subscribing to Cloud Insights
@@ -56,15 +56,19 @@ Here are the key features available in Basic, Standard, and Premium Edition:
 |VM Metrics| - |&check;|&check;
 |Cloud Metrics| - |&check;|&check;
 |Service Metrics| - |&check;|&check;
-|Monitors and Alerting| - |&check;|&check;
-|API Access| - | - |&check;
+|Monitors and Alerting| &ast; |&check;|&check;
+|API Access&plus;| &check; | &check; |&check;
 |Single Sign-On (SSO)| - | - |&check;
 |Cloud Secure User Data Access Auditing| - | - |&check;
 |Cloud Secure Insider Threat Detection with AI/ML| - | - |&check;
-|Business Intelligence and Reporting*| - | - |&check;
+|Business Intelligence and Reporting&ast;&ast;| - | - |&check;
 |===
 
-&#42;Available for environments of 500 managed units and larger
+&ast;Limited to 5 active custom monitors at a time
+&plus;API access varies by Edition
+&ast;&ast;Available for environments of 500 managed units and larger
+
+
 
 ////
 [cols=".<,.^,.^,.^"]
@@ -79,7 +83,7 @@ Here are the key features available in Basic, Standard, and Premium Edition:
 While using Cloud Insights, if you see a padlock icon image:padlock.png[Padlock], it means the feature is not available in your current Edition, or is available in a limited form. Upgrade for full access to the feature.
 
 == Trial Version
-When you sign up for Cloud Insights and your environment is active, you enter into a free, 30-day trial of Cloud Insights. During this trial you can explore all the features that Cloud Insights Standard Edition has to offer, in your own environment.   
+When you sign up for Cloud Insights and your environment is active, you enter into a free, 30-day trial of Cloud Insights. During this trial you can explore the features that Cloud Insights has to offer, in your own environment.   
 
 At any time during your trial period, you can subscribe to Cloud Insights. Subscribing to Cloud Insights ensures uninterrupted access to your data as well as extended link:https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[*product support*] options. 
 
@@ -87,7 +91,7 @@ Cloud Insights displays a banner when your free trial is nearing its end. Within
 
 NOTE: If you need additional time to evaluate Cloud Insights and your trial is set to expire in 4 days or less, you can extend your trial for an additional 30 days. You can extend the trial only once. You cannot extend if your trial has expired.
 
-==== What if My Trial has Expired?
+=== What if My Trial has Expired?
 
 If your free trial has expired and you have not yet subscribed to Cloud Insights, you will have limited functionality until you subscribe.  
 
@@ -95,13 +99,20 @@ If your free trial has expired and you have not yet subscribed to Cloud Insights
 
 To subscribe, go to *Admin > Subscription*. In addition to the *Subscribe* buttons, you will be able to see your installed data collectors and calculate your estimated pricing. For a typical environment, you can click the self-serve AWS Marketplace *Subscribe Now* button. If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for Volume Pricing. 
 
-image:SubscriptionCompareTable.png[Subscription Options]
+image:SubscriptionCompareTable-2.png[Subscription Options]
 
 === Pricing
 Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts or virtual machines* and amount of *unformatted capacity* being managed in your infrastructure environment.
 
 * 1 Managed Unit = 2 hosts (any virtual or physical machine)
-* 1 Managed Unit = 4 TB of unformatted capacity of physical or virtual disks
+* 1 Managed Unit = 4 TiB of unformatted capacity of physical or virtual disks
+
+Note that the following data collectors are metered at a different Raw TiB to Managed Unit rate. Every 40TiB of unformatted capacity on these data collectors is charged as 1 Managed Unit (MU): 
+
+* Dell EMC ECS
+* Hitachi Content Platform
+* IBM Cleversafe
+* NetApp StorageGrid
 
 If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for *Volume Pricing* and will be prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
 
@@ -136,20 +147,44 @@ NOTE: After clicking on *Set Up Your account* on the AWS Marketplace page, you m
 
 If there is a problem and the subscription process fails to complete correctly, you will still see the "Trial Version" banner when you log into your environment. In this event, you can go to *Admin > Subscription* and repeat the subscription process.
 
-== Subscription Mode
-Once your subscription is active, you can view your subscription status and Managed Unit usage on the *Admin > Subscription* page.
 
-image:Subscription_Summary.png[Subscription Status ] 
 
-The Subscription status page displays the following:
+== View Your Subscription Status
+
+Once your subscription is active, you can view your subscription status and Managed Unit usage from the *Admin > Subscription* page.
+
+//image:Subscription_Summary.png[Subscription Status ] 
+image:Subscription_Status_Usage.png[Viewing your subscription ststus]
+
+The Subscription Details tab displays the following:
 
 * Current subscription or active Edition 
-* Details about your subscription(s)
+* Details about your subscription
+* Links to modify your subscription or estimate cost changes
 //* Contract term and expiration date
-* Current Managed Unit usage, including breakdown counts for hosts and capacity
+//* Current Managed Unit usage, including breakdown counts for hosts and capacity
 //* Link to modify your subscription 
 
+
+== View your Usage Management
+
+The Usage Management tab shows an overview of Managed Unit usage, as well as a list of the Data Collectors installed in your environment and the breakdown of Managed Units for each.
+
 NOTE: The Unformatted Capacity Managed Unit count reflects a sum of the total raw capacity in the environment and is rounded up to the nearest Managed Unit. 
+
+//=== Installed Data Collectors
+
+//Click on the *View Data Collectors* button to expand the list of installed Data Collectors. 
+
+//image:Subscription_Installed_Data_Collectors.png[Data Collectors]
+
+//The Data Collectors section shows the Data Collectors installed in your environment and the breakdown of Managed Units for each. 
+
+NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the summary section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The summary section reflects your actual Managed Unit count for your subscription.
+
+In the event that your usage is nearing or exceeding your subscribed amount, you can delete data collectors in this list by clicking on the "three dots" menu and selecting _Delete_.
+
+
 
 === What Happens if I Exceed My Subscribed Usage?
 
@@ -164,25 +199,13 @@ Warnings are displayed when your Managed Unit usage exceeds 80%, 90%, and 100% o
 * Remove Data Collectors so that your Managed Unit usage is at or below your subscribed amount
 |===
 
-=== Installed Data Collectors
-
-Click on the *View Data Collectors* button to expand the list of installed Data Collectors. 
-
-image:Subscription_Installed_Data_Collectors.png[Data Collectors]
-
-The Data Collectors section shows the Data Collectors installed in your environment and the breakdown of Managed Units for each. 
-
-NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the status section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The Status section reflects your actual Managed Unit count for your subscription.
-
-In the event that your usage is nearing or exceeding your subscribed amount, you can delete data collectors in this list by clicking on the "three dots" menu and selecting *Delete*.
-
 == Subscribe Directly and Skip the Trial
 
 You can also subscribe to Cloud Insights directly from the link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[AWS Marketplace], without first creating a trial environment. Once your subscription is complete and your environment is set up, you will immediately be subscribed.
 
 == Adding an Entitlement ID
 
-If you own a valid NetApp product that is bundled with Cloud Insights, you can add that product serial number to your existing Cloud Insights subscription. For example, if you have purchased NetApp Astra, and Cloud Insights is bundled with the Astra deal, the Astra license serial number can be used to identify the subscription in Cloud Insights. Cloud Insights refers to this an _Entitlement ID_.
+If you own a valid NetApp product that is bundled with Cloud Insights, you can add that product serial number to your existing Cloud Insights subscription. For example, if you have purchased NetApp Astra Control Center, the Astra Control Center license serial number can be used to identify the subscription in Cloud Insights. Cloud Insights refers to this an _Entitlement ID_.
 
 To add an entitlement ID to your Cloud Insights subscription, on the *Admin > Subscription* page, click _+Entitlement ID_.
 
