@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: reference_data_collector_support_matrix.html
+permalink: data_collector_support_matrix.html
 summary: The Data Collector Support Matrix contains detailed information on supported data collectors.
-keywords: support matrix, vendor, NetApp, IBM, EMC, dell, HP, Hitachi, VMware, Huawei, OpenStack, 
+keywords: support matrix, vendor, NetApp, IBM, EMC, Dell, HP, Hitachi, VMware, Huawei, OpenStack,
 ---
 
-= Cloud Insights Data Collector Support Matrix
+= Cloud Insight Data Source SupportMatrix 
 :toc: macro
 :toc-title: Cloud Insights Data Sources
 :hardbreaks:
@@ -14,15 +14,13 @@ keywords: support matrix, vendor, NetApp, IBM, EMC, dell, HP, Hitachi, VMware, H
 :icons: font
 :linkattrs:
 :imagesdir: ./media/
-
-
 [.lead]
-The Data Collector Support Matrix provides reference for Data Collectors supported by cloud Insights, including vendor and model information.
+
+The Data Collector Support Matrix provides reference for Data Collectors supported by Cloud Insights, including vendor and model information.
 
 [#top]
 
 toc::[]
-
 
 == HP Enterprise 3PAR / Primera 9000 / Primera StoreServ Storage
 :description: Support Matrix Asciidoc for HP Enterprise 3PAR / Primera 9000 / Primera StoreServ Storage
@@ -244,7 +242,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == Amazon AWS EC2 (HTTPS)
@@ -348,7 +345,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == Amazon AWS S3 As Storage
@@ -431,7 +427,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -563,7 +558,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -709,7 +703,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == Brocade Network Advisor HTTP
@@ -824,7 +817,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -949,7 +941,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == EMC Celerra (SSH)
@@ -1072,7 +1063,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -1213,7 +1203,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == EMC Data Domain (SSH)
@@ -1335,7 +1324,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -1465,7 +1453,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -1662,7 +1649,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -1876,7 +1862,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == EMC RecoverPoint (HTTP)
@@ -1947,7 +1932,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -2034,7 +2018,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -2215,7 +2198,6 @@ Management APIs used by this data source:
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -2463,7 +2445,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -2715,7 +2696,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == EMC VPLEX (CLI)
@@ -2854,7 +2834,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -3021,7 +3000,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -3233,7 +3211,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == Fujitsu Eternus
@@ -3344,7 +3321,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -3465,7 +3441,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == HDS HCP (HTTPS)
@@ -3543,7 +3518,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -3834,7 +3808,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == Hitachi Ops Center
@@ -4006,7 +3979,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == HDS HNAS (CLI)
@@ -4131,7 +4103,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -4283,7 +4254,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -4524,7 +4494,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == IBM Cleversafe
@@ -4618,7 +4587,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -4794,7 +4762,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == IBM PowerVM (SSH)
@@ -4885,7 +4852,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -5101,7 +5067,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == IBM XIV (XIVCLI)
@@ -5244,7 +5209,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == Infinidat Infinibox (HTTP)
@@ -5385,7 +5349,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == Microsoft Azure Compute / Azure Government Compute
@@ -5497,7 +5460,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -5726,7 +5688,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == AstraDatastore
@@ -5870,7 +5831,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == CloudVolumesService
@@ -5972,7 +5932,6 @@ Management APIs used by this data source:
 |null
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -6504,7 +6463,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == NetApp SolidFire 8.1+
@@ -6738,7 +6696,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == NetApp StorageGRID (HTTPS) (7.3.3+)
@@ -6845,7 +6802,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -7048,7 +7004,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == OpenStack (REST API / KVM)
@@ -7216,7 +7171,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -7407,7 +7361,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == Pure Storage FlashArray (HTTP)
@@ -7587,7 +7540,6 @@ Management APIs used by this data source:
 
 |===
 
-
 <<top,Back to Top>>
 
 == Red Hat RHEV (REST)
@@ -7702,7 +7654,6 @@ Management APIs used by this data source:
 |true
 
 |===
-
 
 <<top,Back to Top>>
 
@@ -7969,4 +7920,6 @@ Management APIs used by this data source:
 |true
 
 |===
+
+<<top,Back to Top>>
 
