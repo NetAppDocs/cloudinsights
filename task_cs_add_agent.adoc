@@ -22,7 +22,7 @@ Cloud Secure collects user activity data using one or more agents. Agents connec
 == Before You Begin
 
 * The sudo privilege is required for installation, running scripts, and uninstall. 
-
+* While installing the agent, a local user _cssys_ and a local group _cssys_ are created on the machine. If permission settings do not allow creation of a local user, and instead require Active Directory, a user with the username _cssys_ must be created in the Active Directory server.
 
 
 == Steps to Install Agent 
