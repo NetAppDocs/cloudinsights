@@ -367,7 +367,7 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
 .Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
 
-. Enter the cluster name and namespace.
+. Enter the cluster name and namespace. If you are <<upgrading, upgrading>> from the script-based agent or a previous Kubernetes Operator, use the same cluster name and namespace. 
 . Once these are entered, you can copy the Agent Installer snippet
 . Click the button to copy this snippet to the clipboard.
 . Paste the snippet into a _bash_ window and execute it.
@@ -449,9 +449,9 @@ If a Security Context Constraint was previously-created manually for a script-ba
 
 == About Kube-state-metrics
 
-The NetApp Kubernetes Monitoring Operator installs kube-state-metrics automatically; no user interaction is needed unless you wish to export Kubernetes object labels.
+The NetApp Kubernetes Monitoring Operator installs kube-state-metrics automatically; no user interaction is needed.
 
-NOTE: Note that with kube-state-metrics version 2.0 and above, Kubernetes object labels are not exported by default. To configure kube-state-metrics to export Kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
+//NOTE: Note that with kube-state-metrics version 2.0 and above, Kubernetes object labels are not exported by default. To configure kube-state-metrics to export Kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
 
 
 === kube-state-metrics Counters
