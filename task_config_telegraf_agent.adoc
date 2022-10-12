@@ -515,7 +515,7 @@ The download-only command will download all required artifacts from Cloud Insigh
 * an installation script
 * an environment file
 * YAML files
-* a signed checksum file (sha256.signed)
+* a signed checksum file (ending in sha256.signed or sha256.ps1)
 * a PEM file (netapp_cert.pem) for signature verification
 
 
@@ -545,11 +545,16 @@ The signed checksum file can be verified using the PEM file:
 
 *	Non-Windows:
 
- openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
+// openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
+
+ openssl smime -verify -in telegraf*.sha256.signed -CAfile netapp_cert.pem -purpose any
+
 
 *	Windows (after installing the certificate via Import-Certificate above):
 
- Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
+// Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
+
+ Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
 
 
 
