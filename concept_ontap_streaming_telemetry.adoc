@@ -1,0 +1,59 @@
+---
+sidebar: sidebar
+permalink: concept_ontap_streaming_telemetry.html
+summary: Configure Cloud Insights with NetApp ONTAP Streaming Telemetry
+keywords: ONTAP, Telemetry, streaming, 
+---
+
+= NetApp ONTAP Streaming Telemetry
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead]
+
+For up-to-date information, see the link:https://docs.netapp.com/us-en/cloudinsights/task_dc_na_cloud_connection.html[NetApp Cloud Connection for ONTAP 9.9+] data collector page.
+
+////
+Thank you for your interest in Cloud Insights ONTAP Streaming Telemetry. This feature is currently in private preview. Please reach out to ng-ci-preview@netapp.com to request more information or access.
+////
+
+////
+This data collector creates a cloud connection to support data collection from ONTAP 9.9+ systems. 
+
+
+== Configuration
+
+Configuration of the Cloud Connection for ONTAP 9.9+ data collector requires you to copy a Pairing Code to the ONTAP System Manager, which will then establish a connection to your Cloud Insights environment. 
+
+image:Cloud_Agent_DC.png[Cloud Agent Data Collector Configuration]
+
+Follow these steps to configure the connection:
+
+* Generate a unique token which will be used to establish the connection to the ONTAP system.
+
+* Copy the Pairing Code, which includes the token. You can view the pairing code by clicking on _[+] Reveal Code Snippet_.
++
+Once you copy the pairing code, the data collector configuration screen will reveal a step 6, prompting you to wait for the connection to be established. Nothing more needs to be done on this screen until the connection is established.
++
+image:Cloud_Agent_Step_Waiting.png[Waiting for connection]
+
+* In a new browser tab, log into the ONTAP System Manager and navigate to _Cluster > Settings > Cloud Connections_.
+
+* Click _Add Cloud Connection_ and paste the pairing code.
+
+* Return to the Cloud Insights browser tab and wait for the connection to be established. Once it is established, a _Complete_ button is revealed.
+
+* Click _Complete_.
+
+           
+== Troubleshooting
+
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+
