@@ -18,18 +18,21 @@ summary: Insights give you a look into how resources impact other resources in y
 [.lead]
 High-impact workloads can reduce the performance of other workloads in a shared resource. This puts the shared resource under stress. Cloud Insights provides tools to help you investigate resource saturation and impact in your environment.
 
+////
 NOTE: The _Shared Resources Under Stress_ Insight is considered a _Preview_ feature and is therefore subject to change.
+////
 
-
-=== Terminology
+== Terminology
 
 When talking about workload or resource impact, the following definitions are useful.
 
-A *Demanding* or *Impactful* resource is one that causes a negative impact on another resource. For example, a volume experiencing very high IOPS may cause increased latency in other volumes (i.e. _Impacted_ or _Degraded_ resources). Demanding and Impacted resources are “peers” that utilize the same shared resource, for example, a storage pool or Volume.  Demanding resources are sometimes called _greedy_ resources.
+//A *Demanding* or *Impactful* resource is one that causes a negative impact on another resource. For example, a volume experiencing very high IOPS may cause increased latency in other volumes (i.e. _Impacted_ or _Degraded_ resources). Demanding and Impacted resources are “peers” that utilize the same shared resource, for example, a storage pool or Volume.  Demanding resources are sometimes called _greedy_ resources.
 
 A *Demanding Workload* is a workload that is currently identified as impacting other resources in the shared storage pool. These workloads drive higher IOPS (for example), reducing IOPS in the Impacted Workloads. Demanding workloads are sometimes called _high-consuming workloads_.
 
 An *Impacted Workload* is a workload that is affected by a high-consuming workload in the shared Storage Pool. These workloads are experiencing reduced IOPS and/or higher latency, caused by the Demanding Workloads.
+
+Note that if Cloud Insights has not discovered the leading compute workload, the volume or internal volume itself will be recognized as the workload. This applies to both demanding and impacted workloads.
 
 *Shared Resource Saturation* is the ratio of impacting IOPS to _baseline_.
 
@@ -38,7 +41,7 @@ An *Impacted Workload* is a workload that is affected by a high-consuming worklo
 A *Contention* or *Saturation* occurs when IOPS are determined to be affecting other resources or workloads in the shared storage pool. 
 
 
-=== Demanding Workloads
+== Demanding Workloads
 
 To start looking into Demanding and impacted workloads in your shared resources, click on *Dashboards > Shared Resources Under Stress* in the Cloud Insights menu.
 
@@ -60,7 +63,7 @@ image:Insights_Impacted_Workload_Chart.png[Impacted workload chart]
 Below each table is a list of workloads and/or resources affecting or affected by the contention.  Clicking on a resource (for example, a VM) opens a detail page for that resource. Clicking on a workload opens a query page showing the pods involved. Note that if the link opens an empty query, it may be because the affected pod is no longer part of the active contention. You can modify the query's time range to view the pod list in greater or more focused time range.
 
 
-=== What do I do to resolve saturation?
+== What do I do to resolve saturation?
 
 There are a number of steps you can take to reduce or eliminate the chance of saturation in your environment. These are shown by expanding the *+Show Recommendations* link on the page.  Here are a few things you can try.
 

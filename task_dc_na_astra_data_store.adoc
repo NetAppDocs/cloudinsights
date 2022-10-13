@@ -17,7 +17,7 @@ keywords: data collector, queries, create, astra, data, store,
 
 [.lead]
 
-This data collector acquires inventory and performance data for a single Astra Data Store cluster. In addition to the data collector, the Monitoring Operator will configure _Telegraf_ to collect advanced metrics and _Fluent Bit_ to collect logs.
+This data collector acquires inventory and performance data for a single Astra Data Store cluster. In addition to the data collector, the Monitoring Operator will collect advanced metrics as well as configure _Fluent Bit_ to collect logs.
 
 TIP: These installation instructions and additional information can also be found in the Astra Data Store documentation:
 link:https://docs.netapp.com/us-en/astra-data-store/use/monitor-with-cloud-insights.html[Monitor metrics with Cloud Insights]
@@ -100,7 +100,6 @@ The script will walk you through the following steps:
 The installer script will:
 * Verify the Monitoring Operator is installed and configured.
 * Configure Fluent Bit.
-* Configure Telegraf.
 * Install the Acquisition Unit.
 * Install the Astra Data Store collector once the Acquisition Unit is running.
 
@@ -203,7 +202,7 @@ Once the Acquisition Unit is installed, you may add the Astra Data Store collect
 
 Some things to try if you encounter problems with this data collector:
 
-==== Astra Data Store data collector
+=== Astra Data Store data collector
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -215,7 +214,7 @@ Some things to try if you encounter problems with this data collector:
 Verify the astrads-metrics-service  is running the astrads-system  namespace.
 |===
 
-==== Installation Script
+=== Installation Script
 
 [cols=2*, options="header", cols"50,50"]
 |===

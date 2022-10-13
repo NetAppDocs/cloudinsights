@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: task_config_telegraf_agent.html
 keywords: telegraf, installation, install, agent, telegraf agent
-summary: Cloud Insights supports Telegrafas its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
+summary: Cloud Insights supports Telegraf as its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
 ---
 
-= Configuring an Agent to Collect Data
+= Configuring an Agent to Collect Data (Windows/Linux/Mac)
 
 :toc: macro
 :hardbreaks:
@@ -17,9 +17,10 @@ summary: Cloud Insights supports Telegrafas its agent for collection of integrat
 
 
 [.lead]
-Cloud Insights uses link:https://docs.influxdata.com/telegraf/v1.19/[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
-The current Telegraf version for Cloud Insights is *1.19.3*.
+Cloud Insights uses link:https://docs.influxdata.com/telegraf[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
+
+The current Telegraf version for Cloud Insights is *1.22.3*.
 
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
@@ -59,12 +60,27 @@ TIP: Once you have installed an agent on a server/VM, Cloud Insights collects me
 NOTE: If you are using a proxy, read the proxy instructions for your platform before installing the Telegraf agent.
 
 === Windows
-image:AgentInstallWindows.png[Windows Agent Install]
 
-.Pre-requisites:
+==== Pre-requisites:
 
 * PowerShell must be installed
-* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Windows* section. 
+* If you are behind a proxy, you must follow the instructions in the *Configuring Proxy Support for Windows* section. 
+
+
+==== Configuring Proxy Support for Windows
+
+NOTE: If your environment uses a proxy, read this section before you install.
+
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
+
+For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) *PRIOR* to installing the Telegraf agent:
+
+ [System.Environment]::SetEnvironmentVariable(“https_proxy”, “<proxy_server>:<proxy_port>”, [System.EnvironmentVariableTarget]::Machine)
+
+==== Installing the agent
+
+image:AgentInstallWindows.png[Windows Agent Install]
+
 
 .Steps to install agent on Windows:
 
@@ -82,15 +98,6 @@ After the agent is installed, you can use the following commands to start/stop t
   Start-Service telegraf
   Stop-Service telegraf
   
-[[windows-proxy]]  
-==== Configuring Proxy Support for Windows
-
-NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
-
-For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) *PRIOR* to installing the Telegraf agent:
-
- [System.Environment]::SetEnvironmentVariable(“https_proxy”, “<proxy_server>:<proxy_port>”, [System.EnvironmentVariableTarget]::Machine)
-
 
 ==== Uninstalling the Agent
 
@@ -130,13 +137,35 @@ To upgrade the telegraf agent, do the following:
 
 === RHEL and CentOS
 
+==== Pre-requisites:
+
+* The following commands must be available: curl, sudo, ping, sha256sum, openssl, and dmidecode
+* If you are behind a proxy, you must follow the instructions in the *Configuring Proxy Support for RHEL/CentOS* section. 
+
+
+==== Configuring Proxy Support for RHEL/CentOS
+
+NOTE: If your environment uses a proxy, read this section before you install.
+
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
+
+For systems residing behind a proxy, perform the following steps *PRIOR* to installing the Telegraf agent:
+
+. Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
++
+ export https_proxy=<proxy_server>:<proxy_port>
+
+. Create _/etc/default/telegraf_, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
++
+ https_proxy=<proxy_server>:<proxy_port>
+ 
+ 
+
+==== Installing the agent
+
 //image:AgentInstallRHELCentOS.png[RHEL/CentOS Agent Install]
 image:Agent_Requirements_Rhel.png[Rhel/CentOS Agent Install]
 
-.Pre-requisites:
-
-* The following commands must be available: curl, sudo, ping, sha256sum, openssl, and dmidecode
-* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for RHEL/CentOS* section. 
 
 
 .Steps to install agent on RHEL/CentOS:
@@ -161,19 +190,6 @@ If your operating system is not using systemd (CentOS 7+ and RHEL 7+):
  sudo service telegraf start
  sudo service telegraf stop
  
-==== Configuring Proxy Support for RHEL/CentOS
-
-NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
-
-For systems residing behind a proxy, perform the following steps *PRIOR* to installing the Telegraf agent:
-
-. Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
-+
- export https_proxy=<proxy_server>:<proxy_port>
-
-. Create _/etc/default/telegraf_, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
-+
- https_proxy=<proxy_server>:<proxy_port>
 
 
 
@@ -214,13 +230,35 @@ To upgrade the telegraf agent, do the following:
 
 === Ubuntu and Debian
 
+==== Pre-requisites:
+
+* The following commands must be available: curl, sudo, ping, sha256sum, openssl, and dmidecode
+* If you are behind a proxy, you must follow the instructions in the *Configuring Proxy Support for Ubuntu/Debian* section. 
+
+
+==== Configuring Proxy Support for Ubuntu/Debian
+
+NOTE: If your environment uses a proxy, read this section before you install.
+
+NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
+
+For systems residing behind a proxy, perform the following steps *PRIOR* to installing the Telegraf agent:
+
+. Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
++
+ export https_proxy=<proxy_server>:<proxy_port>
+
+. Create /etc/default/telegraf, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
++
+ https_proxy=<proxy_server>:<proxy_port>
+
+
+
+==== Installing the agent
+
 //image:AgentInstallUbuntuDebian.png[Ubuntu/Debian Agent Install]
 image:Agent_Requirements_Ubuntu.png[Ubuntu/Debian Agent Install]
 
-.Pre-requisites:
-
-* The following commands must be available: curl, sudo, ping, sha256sum, openssl, and dmidecode
-* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Ubuntu/Debian* section. 
 
 
 .Steps to install agent on Debian or Ubuntu:
@@ -244,20 +282,6 @@ If your operating system is not using systemd:
 
  sudo service telegraf start
  sudo service telegraf stop
-
-==== Configuring Proxy Support for Ubuntu/Debian
-
-NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
-
-For systems residing behind a proxy, perform the following steps *PRIOR* to installing the Telegraf agent:
-
-. Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
-+
- export https_proxy=<proxy_server>:<proxy_port>
-
-. Create /etc/default/telegraf, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
-+
- https_proxy=<proxy_server>:<proxy_port>
 
 
 
@@ -296,33 +320,21 @@ To upgrade the telegraf agent, do the following:
 . link:#ubuntu-and-debian[Install the new agent].
 
 
+
+
 === macOS
 
-//image:AgentInstallMacOS.png[MacOS Agent Install]
-image:Agent_Requirements_Macos.png[macOS Agent Install]
-
-.Pre-requisites:
+==== Pre-requisites:
 
 * The following commands must be available: curl, sudo, openssl, and shasum
-* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for macOS* section. 
+* If you are behind a proxy, you must follow the instructions in the *Configuring Proxy Support for macOS* section. 
 
 
-.Steps to install agent on macOS:
 
-. Choose an Agent Access Key.
-. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-. Open a Bash window 
-. Paste the command into the Bash window and press Enter.
-. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 5 above.
-. Click *Finish* or *Continue*
-
-After the agent is installed, you can use the following commands to start/stop the service:
-
- sudo launchctl start telegraf
- sudo launchctl stop telegraf
- 
 ==== Configuring Proxy Support for macOS
+
+NOTE: If your environment uses a proxy, read this section before you install.
+
 
 NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
  
@@ -369,6 +381,31 @@ Then, restart Telegraf after loading the above changes:
 
 
 
+==== Installing the agent
+
+
+//image:AgentInstallMacOS.png[MacOS Agent Install]
+image:Agent_Requirements_Macos.png[macOS Agent Install]
+
+
+
+.Steps to install agent on macOS:
+
+. Choose an Agent Access Key.
+. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
+. Open a Bash window 
+. Paste the command into the Bash window and press Enter.
+. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
+. If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 5 above.
+. Click *Finish* or *Continue*
+
+After the agent is installed, you can use the following commands to start/stop the service:
+
+ sudo launchctl start telegraf
+ sudo launchctl stop telegraf
+ 
+
+
 ==== Uninstalling the Agent
 
 To uninstall the agent on macOS, in a Bash terminal, run the following:
@@ -405,420 +442,38 @@ To upgrade the telegraf agent, do the following:
 
 
 
-=== Kubernetes
 
-Kubernetes offers two ways to collect data:
 
-* NetApp Kubernetes Monitoring Operator configuration. This is the recommended installation method for Kubernetes.
-* Traditional script-based Agent installation
 
-Installation instructions vary based on which you choose.
 
-image:Kubernetes_Operator_Tile_Choices.png[Kubernetes Installation Choices]
 
-NOTE: NetApp Kubernetes Monitoring Operator installation is considered a _Preview_ feature and is therefore subject to change.
 
 
-.Pre-requisites:
 
-* The following commands must be available: curl, sudo, openssl, sha256sum, and kubectl
-+
-For best results, add these commands to the PATH.
 
-* kube-state-metrics must be installed. See below for more information. kube-state-metrics is automatically installed with Operator-based installation.
 
-* If you are behind a proxy, follow the instructions in the *Configuring Proxy Support for Kubernetes* section. 
+{empty}
+{empty}
+{empty}
+{empty}
+{empty}
+{empty}
 
-* If you are running a Kubernetes variant that requires security context constraints, follow the instructions in the *Configuring the Agent to Collect Data from Kubernetes* section. Operator-based installation installs this for you.
+[#kubernetes]
+== Kubernetes
 
+The NetApp Kubernetes Monitoring Operator (NKMO) is the preferred method for installing Kubernetes for Cloud Insights Insights, for more flexible configuration of monitoring in fewer steps, as well as enhanced opportunities for monitoring other software running in the K8s cluster.
 
-* You must have permissions to create Kubernetes cluster roles and role bindings.
+Please link:task_config_telegraf_agent_k8s.html[*go here*] for information and installation instructions for the NetApp Kubernetes Monitoring Operator.
 
-* NetApp Kubernetes Monitoring Operator installation has been tested and is expected to work with AWS EKS 1.18, OpenShift 3.11, and Rancher 2.6.
+{empty}
+{empty}
+{empty}
+{empty}
+{empty}
+{empty}
 
 
-
-==== Monitoring is only installed on Linux nodes
-
-Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, by specifying a Kubernetes node selector that looks for the following Kubernetes labels on these platforms:
-
-|===
-|Platform|Label
-
-|Kubernetes v1.17 and above |Kubernetes.io/os = linux
-|Rancher + cattle.io as orchestration/Kubernetes platform |cattle.io/os = linux
-|===
-
-//|Kubernetes v1.13 and below |beta.kubernetes.io/os = linux
-
-==== NetApp Kubernetes Monitoring Operator Installation
-
-image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
-
-.Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
-
-. Enter the cluster name and namespace.
-. Once these are entered, you can copy the Agent Installer snippet
-. Click the button to copy this snippet to the clipboard.
-. Paste the snippet into a _bash_ window and execute it.
-. The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
-
-
-==== Configuring Proxy Support for NetApp Kubernetes Monitoring Operator
-
-To configure a proxy for the monitoring operator, perform the following steps.
-
-First, open the _agent-monitoring-netapp_ file for editing:
-
- kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
-
-
-In the _spec:_ section of this file, add the following code block:
-
- spec:
-   proxy:
-     isAuProxyEnabled: <true or false>
-     isTelegrafProxyEnabled: <true or false>
-     isFluentbitProxyEnabled: <true or false>
-     password: <password for proxy, optional>
-     port: <port for proxy>
-     server: <server for proxy>
-     username: <username for proxy, optional>
-     noProxy: <comma separated list of IPs or resolvable hostnames that should bypass a proxy>
-
-===== Using a custom/private docker repository
-
-If using a custom docker repository, do the following:
-
-Get the docker secret:
-
- kubectl -n netapp-monitoring get secret docker -o yaml
- 
-Copy/paste the value of _.dockerconfigjson:_ from the output of the above command.
-
-Decode the docker secret:
-
- echo <paste from _.dockerconfigjson:_  output above> | base64 -d
- 
-The output of this will be in the following json format:
-
- { "auths":
-   {"docker.<cluster>.cloudinsights.netapp.com" :
-     {"username":"<tenant id>",
-      "password":"<password which is the CI API key>",
-      "auth"    :"<encoded username:password basic auth key. This is internal to docker>"}
-   }
- }
-
-Log in to the docker repository:
-
- docker login docker.<cluster>.cloudinsights.netapp.com (from step #2) -u <username from step #2>
- password: <password from docker secret step above>
-
-Pull the operator docker image from Cloud Insights:
-
- docker pull docker.<cluster>.cloudinsights.netapp.com/netapp-monitoring:<version>
- 
-Find the <version> field using the following command:
- 
- kubectl -n netapp-monitoring get deployment monitoring-operator | grep "image:"
-
-Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies.
-
-Download all open source dependencies to your private docker registry. The following open source images need to be downloaded:
-
- docker.io/telegraf:1.19.3
- gcr.io/kubebuilder/kube-rbac-proxy:v0.5.0
- k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.1.0
- 
-If fluent-bit is enabled, also download:
-
- docker.io/fluent-bit:1.7.8
- docker.io/kubernetes-event-exporter:0.10
-
-Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
-
- kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
- 
- enableAutoUpgrade: false
-
- docker-repo: <docker repo of the enterprise/corp docker repo>
- dockerRepoSecret: <optional: name of the docker secret of enterprise/corp docker repo, this secret should be already created on the k8s cluster in the same namespace>
- 
-In the _spec:_ section, make the following changes:
- 
- spec:
-   telegraf:
-     - name: ksm
-       substitutions:
-         - key: k8s.gcr.io
-           value: <same as "docker-repo" field above>
-
-
-
-
-
-==== Script-Based Installation
-
-image:Kubernetes_Install_Agent_screen.png[Script-Based Install]
-
-.Steps to install Script-based agent on Kubernetes:
-
-. Choose an Agent Access Key.
-. Click the *Copy Agent Installer Snippet* button in the installation dialog. You can optionally click the _+Reveal Agent Installer Snippet_ button if you want to view the command block.
-. Paste the command into a _bash_ window.
-. Optionally, you can override the namespace or provide the cluster name as part of the install command by modifying the command block to add one or both of the following before the final _./$installerName_
-** CLUSTER_NAME=<Cluster Name>
-** NAMESPACE=<Namespace>
-+
-Here it is in place in the command block:
-+
- installerName=cloudinsights-kubernetes.sh ... && CLUSTER_NAME=<cluster_name> NAMESPACE=<new_namespace> && sudo -E -H ./$installerName --download --install
-+
-TIP: _CLUSTER_NAME_ is the name of the Kubernetes cluster from Cloud Insights collects metrics, while _NAMESPACE_ is the namespace to which the Telegraf agent will be deployed. The specified namespace will be created if it does not already exist.
-+
-. When ready, execute the command block.
-. The command will download the appropriate agent installer, install it, and set a default configuration. If you have not explicitly set the _namespace_, you will be prompted to enter it. When finished, the script will restart the agent service. The command has a unique key and is valid for 24 hours. 
-// . If you have already installed an agent on this host, you can skip the previous step.
-. When finished, click *Complete Setup*.
-
-
-==== Configuring Proxy Support for Kubernetes - Script-Based
-
-NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
-
-For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user *PRIOR* to installing the Telegraf agent:
-
- export https_proxy=<proxy_server>:<proxy_port>
-
-*AFTER* installing the Telegraf agent, add and set the appropriate _https_proxy_ and/or _http_proxy_ environment variable(s) to the _telegraf-ds_ daemonset and _telegraf-rs_ replicaset.
-
- kubectl edit ds telegraf-ds
-
- …
-        env:
-        - name: https_proxy
-          value: <proxy_server>:<proxy_port>
-        - name: HOSTIP
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: status.hostIP
- …
-
- kubectl edit rs telegraf-rs
-
- …
-        env:
-        - name: https_proxy
-          value: <proxy_server>:<proxy_port>
-        - name: HOSTIP
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: status.hostIP
- …
-
-Then, restart Telegraf:
-
- kubectl delete pod telegraf-ds-*
- kubectl delete pod telegraf-rs-*
-
-
-
-==== DaemonSet, ReplicaSet, and Stopping/Starting the agent
-
-A DaemonSet and ReplicaSet will be created on the Kubernetes cluster to run the required Telegraf agents/pods. By default, these Telegraf agents/pods will be scheduled on both master and non-master nodes.
-
-To facilitate stopping and restarting of the agent, generate the Telegraf DaemonSet YAML and ReplicaSet YAML using the following commands. Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files:
-
-If you have set your own namespace, substitute that namespace in these and all subsequent commands and files:
-
- kubectl --namespace ci-monitoring get ds telegraf-ds -o yaml > /tmp/telegraf-ds.yaml 
- kubectl --namespace ci-monitoring get rs telegraf-rs -o yaml > /tmp/telegraf-rs.yaml
-
-You can then use the following commands to stop and start the Telegraf service:
-
- kubectl --namespace ci-monitoring delete ds telegraf-ds
- kubectl --namespace ci-monitoring delete rs telegraf-rs
- 
- kubectl --namespace ci-monitoring apply -f /tmp/telegraf-ds.yaml 
- kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml
- 
-
- 
-==== Configuring the Agent to Collect Data from Kubernetes
-
-Note: The default namespace for Script-based installation is _ci-monitoring_. For Operator-based installation, the default namespace is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
-
-The pods in which the agents run need to have access to the following:
-
-* hostPath
-* configMap
-* secrets
-
-These Kubernetes objects are automatically created as part of the Kubernetes agent install command provided in the Cloud Insights UI. Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to these components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).
-
-//In such cases, an additional manual step may be required.  As an example, for OpenShift, you may need to create a _SecurityContextConstraint_ to grant the telegraf-user ServiceAccount access to these components.
-
-----
-    apiVersion: v1
-    kind: SecurityContextConstraints
-    metadata:
-      name: telegraf-hostaccess
-      creationTimestamp:
-      annotations:
-        kubernetes.io/description: telegraf-hostaccess allows hostpath volume mounts for restricted SAs.
-      labels:
-        app: ci-telegraf
-    priority: 10
-    allowPrivilegedContainer: false
-    defaultAddCapabilities: []
-    requiredDropCapabilities: []
-    allowedCapabilities: []
-    allowedFlexVolumes: []
-    allowHostDirVolumePlugin: true
-    volumes:
-    - hostPath
-    - configMap
-    - secret
-    allowHostNetwork: false
-    allowHostPorts: false
-    allowHostPID: false
-    allowHostIPC: false
-    seLinuxContext:
-      type: MustRunAs
-    runAsUser:
-      type: RunAsAny
-    supplementalGroups:
-      type: RunAsAny
-    fsGroup:
-      type: RunAsAny
-    readOnlyRootFilesystem: false
-    users:
-    - system:serviceaccount:ci-monitoring:monitoring-operator
-    groups: []
-----
-
-==== Installing the kube-state-metrics server
-
-NOTE: Operator-based install handles the installation of kube-state-metrics. Skip this section if you are performing Operator-based installation.
-
-
-NOTE: It is strongly recommended to use kube-state-metrics version 2.0 or later in order to take advantage of the full feature set including the ability to link Kubernetes persistent volumes (PVs) to backend storage devices. Note also that with kube-state-metrics version 2.0 and above, Kubernetes object labels are not exported by default. To configure kube-state-metrics to export Kubernetes object labels, you must specify a metric labels "allow" list. Refer to the _--metric-labels-allowlist_ option in the link:https://github.com/kubernetes/kube-state-metrics/blob/master/docs/cli-arguments.md[kube-state-metrics documentation]. 
-
-Use the following steps to install the kube-state-metrics server (required if you are performing script-based installation):
-
-.Steps
-
-. Create a temporary folder (for example, _/tmp/kube-state-yaml-files/_) and copy the .yaml files from https://github.com/kubernetes/kube-state-metrics/tree/master/examples/standard to this folder. 
-
-. Run the following command to apply the .yaml files needed for installing kube-state-metrics:
-
- kubectl apply -f /tmp/kube-state-yaml-files/
-
-
-==== kube-state-metrics Counters
-Use the following links to access information for the kube state metrics counters:
-
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/configmap-metrics.md[ConfigMap Metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/daemonset-metrics.md[DaemonSet Metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/deployment-metrics.md[Deployment Metrics]
-//. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/endpoint-metrics.md[Endpoint Metrics]
-//. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/horizontalpodautoscaler-metrics.md[Horizontal Pod Autoscaler Metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/ingress-metrics.md[Ingress Metrics]
-//. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/ingress-metrics.md[Job Metrics]
-//. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/limitrange-metrics.md[LimitRange Metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/namespace-metrics.md[Namespace Metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/node-metrics.md[Node Metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/persistentvolume-metrics.md[Persistent Volume Metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/persistentvolumeclaim-metrics.md[Persistant Volume Claim Metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/pod-metrics.md[Pod Metrics]
-//. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/poddisruptionbudget-metrics.md[Pod Disruption Budget Metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/replicaset-metrics.md[ReplicaSet metrics]
-//. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/replicationcontroller-metrics.md[ReplicationController Metrics]   
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/secret-metrics.md[Secret metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/service-metrics.md[Service metrics]
-. https://github.com/kubernetes/kube-state-metrics/blob/master/docs/statefulset-metrics.md[StatefulSet metrics]
-
-==== Uninstalling the Agent
-
-Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
-
-To uninstall the script-based agent on Kubernetes, do the following:
-
-If the monitoring namespace is being used solely for Telegraf:
-
- kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
- 
- kubectl delete ns ci-monitoring
-
-//For the commands above, use “_netapp-monitoring_” if you installed using operator-based installation with the default namespace.
- 
-If the monitoring namespace is being used for other purposes in addition to Telegraf:
-
- kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
-
-
-For Operator-based installation run the following commands:
-
- kubectl delete ns netapp-monitoring
- kubectl delete agent agent-monitoring-netapp
- kubectl delete crd agents.monitoring.netapp.com
- kubectl delete role agent-leader-election-role
- kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
- kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
-
-
-////
-. Stop and delete the Telegraf service:
-
- kubectl --namespace ci-monitoring delete ds telegraf-ds 
- kubectl --namespace ci-monitoring delete rs telegraf-rs
- 
-. Delete the Telegraf ConfigMap and ServiceAccount:
-
- kubectl --namespace ci-monitoring delete cm telegraf-conf 
- kubectl --namespace ci-monitoring delete cm telegraf-conf-rs
- kubectl --namespace ci-monitoring delete sa telegraf-user 
- 
-. Delete the Telegraf ClusterRole and ClusterRolebinding:
-
- kubectl --namespace ci-monitoring delete clusterrole endpoint-access 
- kubectl --namespace ci-monitoring delete clusterrolebinding endpoint-access 
-////
-
-If a Security Context Constraint was previously-created for Telegraf:
-
- kubectl delete scc telegraf-hostaccess
- 
-==== Upgrading the Agent
-[#upgrading-kubernetes-agent]
-
-Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
-
-To upgrade the telegraf agent, do the following:
-
-. Back up the existing configurations:
-
- kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
- 
-// Be sure to specify the appropriate namespace if it is not the default.
-
-. Uninstall the Agent (see above for instructions)
-
-. link:#kubernetes[Install the new agent].
-
-////
-. Re-apply the configurations:
-
- kubectl --namespace ci-monitoring apply -f /tmp/telegraf-conf.yaml --force
- kubectl --namespace ci-monitoring apply -f /tmp/telegraf-conf-rs.yaml --force
- 
-. Restart all telegraf pods. Run the following command for each telegraf pod:
-
- kubectl --namespace ci-monitoring delete pod <Telegraf_pod>
-////
 
 
 == Verifying Checksums
@@ -860,7 +515,7 @@ The download-only command will download all required artifacts from Cloud Insigh
 * an installation script
 * an environment file
 * YAML files
-* a signed checksum file (sha256.signed)
+* a signed checksum file (ending in sha256.signed or sha256.ps1)
 * a PEM file (netapp_cert.pem) for signature verification
 
 
@@ -890,11 +545,16 @@ The signed checksum file can be verified using the PEM file:
 
 *	Non-Windows:
 
- openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
+// openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
+
+ openssl smime -verify -in telegraf*.sha256.signed -CAfile netapp_cert.pem -purpose any
+
 
 *	Windows (after installing the certificate via Import-Certificate above):
 
- Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
+// Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
+
+ Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
 
 
 
@@ -922,6 +582,10 @@ Some things to try if you encounter problems setting up an agent:
 |I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. 
 
 |I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
+
+|===
+
+////
 
 |I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.
 |Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent. You must be using Telegraf version 2.0 or later.
@@ -987,11 +651,25 @@ Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: 2021-10-11T14:23:41Z I! Starting
 "Error in processing mountstats info: failed to open mountstats file: /hostfs/proc/1/mountstats, error: open /hostfs/proc/1/mountstats: permission denied"
 |If SELinux is enabled and enforcing, it is likely preventing the Telegraf pod(s) from accessing the /proc/1/mountstats file on the Kubernetes nodes.  To relax this restriction, do ONE of the following:
 
-•	On each Kubernetes node where Telegraf is running, run `chcon -Rt container_runtime_t /proc/1/mountstats`
-•	On each Kubernetes node where Telegraf is running, change the SELinux security policy from "enforcing" to "permissive"
-•	Edit the Telegraf DaemonSet, and set the spec.containers.securityContext.privileged to "true"
+• For script-based installations, edit the telegraf DS (`kubectl edit ds telegraf-ds`), and change "privileged: false" to "privileged: true"
+• For operator-based installation, edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"
 
+
+|On Kubernetes, my Telegraf ReplicaSet pod is reporting the following error:
+
+ [inputs.prometheus] Error in plugin: could not load keypair /etc/kubernetes/pki/etcd/server.crt:/etc/kubernetes/pki/etcd/server.key: open /etc/kubernetes/pki/etcd/server.crt: no such file or directory
+|The Telegraf ReplicaSet pod is intended to run on a node designated as a master or for etcd. If the ReplicaSet pod is not running on one of these nodes, you will get these errors. Check to see if your master/etcd nodes have taints on them. If they do, add the necessary tolerations to the Telegraf ReplicaSet, telegraf-rs.
+
+For example, edit the ReplicaSet...
+
+ kubectl edit rs telegraf-rs
+
+...and add the appropriate tolerations to the spec. Then, restart the ReplicaSet pod.
 
 |===
+
+////
+
+
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].

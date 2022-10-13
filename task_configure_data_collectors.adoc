@@ -19,7 +19,7 @@ You configure Data Collectors in your Cloud Insights environment to collect data
 +
 Device network addresses, account information, and passwords are required for all devices from which you wish to collect data.
 
-=== Credential Security
+== Credential Security
 
 Data collector credentials are encrypted when entered in Cloud Insights, and are sent to the Acquisition Unit (AU) encrypted first by the public key of the AU, and then encrypted over HTTPS. Encrypted values are decrypted when the AU uses them to communicate with devices & software. 
 
@@ -30,7 +30,7 @@ They are sent to the AU encrypted over HTTPS.
 On the AU (presumably in the customer environment), encrypted values are decrypted where they are used to communicate with devices & software. Communication with devices is done with a variety of protocols. Some are more secure than others, but we use what is available for any particular device.
 ////
 
-=== Configuring the Data Collector
+== Configuring the Data Collector
 
 * From the Cloud Insights menu, click *Admin > Data Collectors* and click the *+ Data Collector* button. You can choose to show all data collectors, or filter to show only the data collectors available to you based on your subscription.
 
@@ -38,7 +38,7 @@ On the AU (presumably in the customer environment), encrypted values are decrypt
 
 * Depending on the data collector type you choose, installation steps will vary.
 
-==== Operating Systems:
+=== Operating Systems:
 
 You must install at least one Cloud Insights Agent to begin collecting Operating System or Service data from your environment. You can install as many agents as you wish. Each agent can collect data from multiple Services.
 
@@ -52,7 +52,7 @@ In addition to collecting data from Services, each agent also acts as a data col
 +
 It may take up to two poll periods before data for the Node is displayed in dashboards or available for querying.
 
-==== Services:
+=== Services:
 
 Services data collectors are those based on the telegraf agent, such as Docker or Kibana.
 
@@ -70,7 +70,7 @@ Services data collectors are those based on the telegraf agent, such as Docker o
 +
 It may take up to two poll periods before data from the service is displayed in dashboards or available for querying.
 
-==== Infrastructure:
+=== Infrastructure:
 
 Infrastructure data collectors include things like storage or switches.
 

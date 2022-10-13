@@ -36,10 +36,10 @@ image:KafkaDCConfigWindows.png[Kafka configuration]
 
 The Kafka plugin is based on the telegraf's Jolokia plugin. As such as a requirement to gather info from all Kafka brokers, JMX needs to be configured and exposed via Jolokia on all components.
 
-==== Compatibility
+=== Compatibility
 Configuration was developed against Kafka version 0.11.0.2.
 
-==== Setting up
+=== Setting up
 All the instructions below assume your install location for kafka is '/opt/kafka'. You can adapt instructions below to reflect your install location.
 
 ==== Jolokia Agent Jar
