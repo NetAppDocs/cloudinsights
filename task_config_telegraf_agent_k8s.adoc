@@ -425,11 +425,18 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 
 
-=== To remove the NetApp Kubernetes Monitoring Operator
+=== To remove NetApp Kubernetes Monitoring Operator
 
 Note that the default namespace for the NetApp Kubernetes Monitoring Operator is "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
 Execute each of the following commands in order. Depending on your current installation, some of these commands may return ‘object not found’ messages. These messages may be safely ignored.
+
+Newer versions of the monitoring operator can be uninstalled with the following commands:
+
+ kubectl delete agent <name-space>
+ kubectl delete ns,clusterrole,clusterrolebinding,crd <name-space>
+
+If the first command returns “No resources found”, use the following instructions to uninstall older versions of the monitoring operator:
 
 
   kubectl -n <NAMESPACE> delete agent agent-monitoring-netapp
