@@ -21,14 +21,15 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 == October 2022
 
-=== Cloud Secure now works with ONTAP Autonomous Ransomware Protection
+=== Better and more accurate Ransomware detection with ONTAP ARP integration
 
-Ransomware protection is even better thanks to Cloud Secure integration with ONTAP’s link:concept_cs_integration_with_ontap_arp.html[Autonomous Ransomware Protection] (ARP). ONTAP ARP events are received by Cloud Secure, which takes the following actions:
+Cloud Secure provides better and more accurate ransomeware detection with ONTAP link:concept_cs_integration_with_ontap_arp.html[Autonomous Ransomware Protection] (ARP). 
 
-* Correlates volume encryption events with user activity to identify who is causing the damage
-*	Implements automatic response policies (if defined)
-*	Provides forensics to assist with data breach investigation
+Cloud Secure receives ONTAP ARP events on potential volume file encryption activity, and
 
+•	Correlates volume encryption events with user activity to identify who is causing the damage,
+•	Implements automatic response policies to block the attack, 
+•	Identifies which files were affected, helping to recover faster and conduct data breach investigations.
 
 
 == September 2022 
