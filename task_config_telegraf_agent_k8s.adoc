@@ -319,7 +319,9 @@ If you do not remember the name of the K8s cluster in CI, it can be extracted fr
 +
  cat /tmp/telegraf-configs.yaml | grep kubernetes_cluster | head -2
  
-. Remove the script-based monitoring 
+. Remove the <<uninstalling, script-based>> monitoring 
+
+////
 +
 To uninstall the script-based agent on Kubernetes, do the following:
 +
@@ -332,8 +334,9 @@ If the monitoring namespace is being used solely for Telegraf:
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 +
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
- 
-. <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the current Operator. 
+////
+
+. <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the current Operator. Be sure to use the same cluster name noted in step 1 above.
 
 //image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
 
