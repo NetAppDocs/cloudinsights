@@ -32,9 +32,9 @@ Cloud Secure receives the ARW events from ONTAP and takes the following actions:
 
 == Prerequisites
 . Minimum ONTAP version: 9.11.1
-. ARP enabled volumes. Details on enabling ARP can be found here.  ARP has to be enabled via OnCommand System Manager. CloudSecure cannot enable ARP currently.
-. CS collector should be added via cluster IP.
-. Cluster level credentials are needed for this feature to work. Meaning, when adding an SVM, cluster level credentials should be used to add the SVM.
+. ARP enabled volumes. Details on enabling ARP can be found link:https://docs.netapp.com/us-en/ontap/anti-ransomware/enable-task.html[here].  ARP must be enabled via OnCommand System Manager. Cloud Secure cannot enable ARP.
+. Cloud Secure collector should be added via cluster IP.
+. Cluster level credentials are needed for this feature to work. In other words, cluster level credentials should be used when adding the SVM.
 
 == User permissions required
 
