@@ -370,7 +370,7 @@ image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
 
 .Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
 
-. Enter the cluster name and namespace. If you are <<upgrading, upgrading>> from the script-based agent or a previous Kubernetes Operator, use the same cluster name and namespace. 
+. Enter a unique cluster name and namespace. If you are <<upgrading, upgrading>> from the script-based agent or a previous Kubernetes Operator, use the same cluster name and namespace. 
 . Once these are entered, you can copy the Agent Installer snippet
 . Click the button to copy this snippet to the clipboard.
 . Paste the snippet into a _bash_ window and execute it.
