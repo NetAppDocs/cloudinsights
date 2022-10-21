@@ -60,7 +60,7 @@ Alert Parameters are dynamic values populated per alert. For example, the _%%Tri
 
 In this section you can add any custom parameters and/or secrets you wish. For security reasons, if a secret is defined only the webhook creator can modify this webhook channel. It is read-only for others. You can use secrets in URL/Headers as _%%<secret_name>%%_.
 
-== Choosing Webhook Notification in a Monitor
+== Choosing Webhook Notification in a Monitor 
 
 To choose the webhook notification in a link:task_create_monitor.html#creating-a-monitor[monitor], go to *Alerts > Manage Monitors* and select the desired monitor, or add a new monitor. In the _Set up team notifications_ section, choose _Webhook_ as the delivery method. Select the alert levels (Critical, Warning, Resolved), then choose the desired webhook.
 
