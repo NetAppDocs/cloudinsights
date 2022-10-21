@@ -46,6 +46,10 @@ Cloud Insights webhooks comprise a number of default parameters. Additionally, y
 
 image:Webhook_Default_Parameters.png[Cloud Insights Default Webhook Parameters]
 
+=== Testing the Webhook
+
+Click the "Test Webhook" button to test the connection. Note that this will send the "Message Body" (without substitutions) to the defined "URL" according to the selected "Method". Also note that in the "Parameters: What are they and how do I use them?" section, substitutions are _not_ performed when clicking the "Test Webhook" button.
+
 === Parameters: What are they and how do I use them?
 
 Alert Parameters are dynamic values populated per alert. For example, the _%%TriggeredOn%%_ parameter will be replaced with the object on which the alert was triggered.
