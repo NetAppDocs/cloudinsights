@@ -447,7 +447,7 @@ Note: If you have the latest NetApp Kubernetes Monitoring Operator installed and
 +
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
  
-* Modify the _spec.output-sink.api-key_ value, replacing the old API token with the new API token
+* Modify the _spec.output-sink.api-key_ value, replacing the old API token with the new API token.
 +
  spec:
  …
