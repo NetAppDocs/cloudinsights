@@ -441,25 +441,19 @@ API access tokens have an expiration date. When an API access token expires, use
 
 Note that these commands are using the default namespace "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
-* Edit the Telegraf ConfigMaps (CM), and replace all instances of the old API token with the new API token.
+Note: If you have the latest NetApp Kubernetes Monitoring Operator installed and using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.  There is no need to perform the manual steps listed below.
+
+* Edit the the NetApp Kubernetes Monitoring Operator.
 +
- kubectl -n netapp-monitoring edit cm
- :%s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g
- :wq!
+ kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
  
-* Edit the Telegraf DaemonSet (DS) and ReplicaSet (RS), and replace all instances of the old API token with the new API token.
+* Modify the _spec.output-sink.api-key_ value, replacing the old API token with the new API token
 +
- kubectl -n netapp-monitoring edit ds telegraf-ds
- :%s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g
- :wq!
- kubectl -n netapp-monitoring edit rs telegraf-rs
- :%s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g
- :wq!
- 
-* The Kubernetes controller will automatically restart the Telegraf DS pods.
-* Restart the Telegraf RS pod
-+
- kubectl -n netapp-monitoring delete pod <telegraf-rs-pod>
+ spec:
+ …
+   output-sink:
+   - api-key: <NEW_API_TOKEN>
+
 
 ==== RHEL/CentOS and Debian/Ubuntu
 
