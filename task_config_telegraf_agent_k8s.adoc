@@ -232,7 +232,10 @@ If you are running on OpenShift 4.6 or higher, you must change the "privileged-m
  
 In the file, change _privileged-mode: false_ to  _privileged-mode: true_
 
-Openshift may implement an added level of security that may block access to some Kubernetes components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. See the <<securitycontextconstraint,SecurityContextConstraint>> section for more information.
+Openshift may implement an added level of security that may block access to some Kubernetes components. 
+
+////
+The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. See the <<securitycontextconstraint,SecurityContextConstraint>> section for more information.
 
 ==== SecurityContextConstraint
 
@@ -289,7 +292,7 @@ Note: The default namespace for NetApp Kubernetes Monitoring Operator-based inst
     groups: []
 ----
 
-
+////
     
 
 
