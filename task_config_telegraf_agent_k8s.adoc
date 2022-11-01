@@ -239,16 +239,6 @@ The _SecurityContextConstraint_ is not created as part of the Kubernetes agent i
 
 ==== SecurityContextConstraint
 
-////
-The pods in which the agents run need to have access to the following:
-
-* hostPath
-* configMap
-* secrets
-
-These Kubernetes objects are automatically created as part of the Kubernetes agent install command provided in the Cloud Insights UI. 
-////
-
 Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to certain components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).
 
 Note: The default namespace for NetApp Kubernetes Monitoring Operator-based installation is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
@@ -643,7 +633,7 @@ The default resource list is:
 
  Error creating: pods "telegraf-rs-" is forbidden": unable to validate against any security context constraint: To relax this restriction, edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"[spec.volumes[2]: Invalid value: "hostPath": hostPath volumes are not allowed to be used]
 
-|Create a Security Context Constraint (refer to the <<securitycontextconstraint,SecurityContextConstraint>> section above) if one does not already exist.
+|Create a Security Context Constraint if one does not already exist.
 
 Ensure the namespace and service account specified for the Security Context Constraint matches the namespace and service account for the Telegraf ReplicaSet and DaemonSet.
 
