@@ -554,7 +554,11 @@ The signed checksum file can be verified using the PEM file:
 
 // Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
 
- Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
+ Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 
+ $result = Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 
+ $signer = $result.SignerCertificate 
+ Add-Type -Assembly System.Security 
+ [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
 
 
 
