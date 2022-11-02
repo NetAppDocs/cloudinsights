@@ -566,6 +566,26 @@ security config modify -interface SSL -is-fips-enabled true
 |===
 
 
+=== Data Protection Monitors
+
+|===
+
+|Monitor Name|CI Severity|Monitor Description|Corrective Action
+|Insufficient Space for Lun Snapshot Copy|(Filter contains_luns = Yes)…Warning @ > 95 %…Critical @ > 100 %|Storage capacity of a volume is necessary to store application and customer data. A portion of that space, called snapshot reserved space, is used to store snapshots which allow data to be protected locally. The more new and updated data stored in the ONTAP volume the more snapshot capacity is used and less snapshot storage capacity will be available for future new or updated data. If the snapshot data capacity within a volume reaches the total snapshot reserve space it may lead to the customer being unable to store new snapshot data and reduction in the level of protection for the data in the LUNs in the volume. Monitoring the volume used snapshot capacity ensures data services continuity.| **Immediate Actions**
+If critical threshold is breached, consider immediate actions to minimize service disruption:
+
+1. Configure snapshots to use data space in the volume when the snapshot reserve is full.
+2. Delete some older unwanted snapshots to free up space.
+ 
+**Actions To Do Soon**
+If warning threshold is breached, plan to take the following immediate actions:
+
+1. Increase the snapshot reserve space within the volume to accommodate the growth.
+2. Configure snapshots to use data space in the volume when the snapshot reserve is full.
+|SnapMirror Relationship Lag|Warning @ > 150%…Critical @ >  300%|SnapMirror relationship lag is the difference between the snapshot timestamp and the time on the destination system. The lag_time_percent is the ratio of lag time to the SnapMirror Policy's schedule interval. If the lag time equals the schedule interval, the lag_time_percent will be 100%. If the SnapMirror policy does not have a schedule, lag_time_percent will not be calculated.|Monitor SnapMirror status using the "snapmirror show" command. Check the SnapMirror transfer history using the "snapmirror show-history" command
+|===
+
+
 
 == More Information
 
