@@ -230,15 +230,96 @@ Replace the following line...
 
  image: gcr.io/kubebuilder/kube-rbac-proxy:<kube-rbac-proxy-version>
 
+
+=== OpenShift Instructions
+
+If you are running on OpenShift 4.6 or higher, you must change the "privileged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace in the command line:
+
+ kubectl edit agent agent-monitoring-netapp -n netapp-monitoring
+ 
+In the file, change _privileged-mode: false_ to  _privileged-mode: true_
+
+Openshift may implement an added level of security that may block access to some Kubernetes components. 
+
+////
+The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. See the <<securitycontextconstraint,SecurityContextConstraint>> section for more information.
+
+==== SecurityContextConstraint
+
+Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to certain components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).
+
+Note: The default namespace for NetApp Kubernetes Monitoring Operator-based installation is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
+
+----
+    apiVersion: v1
+    kind: SecurityContextConstraints
+    metadata:
+      name: telegraf-hostaccess
+      creationTimestamp:
+      annotations:
+        kubernetes.io/description: telegraf-hostaccess allows hostpath volume mounts for restricted SAs.
+      labels:
+        app: ci-telegraf
+    priority: 10
+    allowPrivilegedContainer: true
+    defaultAddCapabilities: []
+    requiredDropCapabilities: []
+    allowedCapabilities: []
+    allowedFlexVolumes: []
+    allowHostDirVolumePlugin: true
+    volumes:
+    - hostPath
+    - configMap
+    - secret
+    allowHostNetwork: false
+    allowHostPorts: false
+    allowHostPID: false
+    allowHostIPC: false
+    seLinuxContext:
+      type: MustRunAs
+    runAsUser:
+      type: RunAsAny
+    supplementalGroups:
+      type: RunAsAny
+    fsGroup:
+      type: RunAsAny
+    readOnlyRootFilesystem: false
+    users:
+    - system:serviceaccount:ci-monitoring:monitoring-operator
+    groups: []
+----
+
+////
+    
+
 ...with:
 
  image: <same as "docker-repo" field above>/kubebuilder/kube-rbac-proxy:<kube-rbac-proxy-version>
+
 
 === Upgrading from Script-based K8s monitoring to NetApp Kubernetes Monitoring Operator
 
 If you are upgrading from a previously-installed script-based Kubernetes agent to the NetApp Kubernetes Monitoring Operator, follow these steps:
 
 Steps to upgrade
+
+
+== Upgrading 
+
+NOTE: If you have a previously installed script-based agent, you _must_ upgrade to the NetApp Kubernetes Monitoring Operator.
+
+
+
+=== Upgrading from script-based agent to NetApp Kubernetes Monitoring Operator
+
+To upgrade the telegraf agent, do the following:
+
+. Make note of your cluster name as recognized by Cloud Insights.  You can view the cluster name by running the following command. If your namespace is not the default (_ci-monitoring_), substitute the appropriate namespace:
+
+ kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
+ 
+. Back up the existing configurations:
+
 
 . Preserve the ConfigMap from the script-based monitoring installation: 
 +
@@ -250,7 +331,9 @@ If you do not remember the name of the K8s cluster in CI, it can be extracted fr
 +
  cat /tmp/telegraf-configs.yaml | grep kubernetes_cluster | head -2
  
-. Remove the script-based monitoring 
+. Remove the <<uninstalling, script-based>> monitoring 
+
+////
 +
 To uninstall the script-based agent on Kubernetes, do the following:
 +
@@ -263,6 +346,11 @@ If the monitoring namespace is being used solely for Telegraf:
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 +
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
+
+////
+
+. <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the current Operator. Be sure to use the same cluster name noted in step 1 above.
+
  
 .Install the K8s operator-based monitoring following the instructions in the install tile.
 
@@ -341,8 +429,19 @@ Then, restart Telegraf:
 ////
 
 
+//image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
+image:NKMO_Install_Instructions.png[Operator-Based Install]
+
+
 ////
 == DaemonSet, ReplicaSet, and Stopping/Starting the agent
+
+
+. Enter a unique cluster name and namespace. If you are <<upgrading, upgrading>> from the script-based agent or a previous Kubernetes Operator, use the same cluster name and namespace. 
+. Once these are entered, you can copy the Agent Installer snippet
+. Click the button to copy this snippet to the clipboard.
+. Paste the snippet into a _bash_ window and execute it. Note that the snippet has a unique key and is valid for 24 hours.
+. The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
 
 A DaemonSet and ReplicaSet will be created on the Kubernetes cluster to run the required Telegraf agents/pods. By default, these Telegraf agents/pods will be scheduled on both master and non-master nodes.
 
@@ -355,6 +454,7 @@ If you have set your own namespace, substitute that namespace in these and all s
 
 You can then use the following commands to stop and start the Telegraf service:
 
+
  kubectl --namespace ci-monitoring delete ds telegraf-ds
  kubectl --namespace ci-monitoring delete rs telegraf-rs
  
@@ -362,7 +462,6 @@ You can then use the following commands to stop and start the Telegraf service:
  kubectl --namespace ci-monitoring apply -f /tmp/telegraf-rs.yaml
 
 ////
-
 
 
  
@@ -506,7 +605,19 @@ If the monitoring namespace is being used for other purposes in addition to Tele
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
 
 
+
 === To remove NetApp Kubernetes Monitoring Operator
+
+Note that the default namespace for the NetApp Kubernetes Monitoring Operator is "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
+
+Newer versions of the monitoring operator can be uninstalled with the following commands:
+
+ kubectl delete agent <name-space>
+ kubectl delete ns,clusterrole,clusterrolebinding,crd <name-space>
+
+If the first command returns “No resources found”, use the following instructions to uninstall older versions of the monitoring operator.
+
+Execute each of the following commands in order. Depending on your current installation, some of these commands may return ‘object not found’ messages. These messages may be safely ignored.
 
 Note that these commands are using the default namespace "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
@@ -515,6 +626,7 @@ Note that these commands are using the default namespace "netapp-monitoring".  I
  kubectl delete clusterrolebinding <name-space>-agent-manager-rolebinding <name-space>-agent-proxy-rolebinding
  kubectl delete crd agents.monitoring.netapp.com
  kubectl delete psp <name-space>-psp-nkmo
+
 
 ////
  kubectl delete agent agent-monitoring-netapp -n <name-space>
@@ -541,6 +653,9 @@ If a Security Context Constraint was previously-created manually for a script-ba
  
 
 == Upgrading the Agent
+
+
+The NetApp Kubernetes Monitoring Operator installs kube-state-metrics automatically; no user interaction is needed.
 
 NOTE: If you have previously installed the script-based agent, you must upgrade to the NetApp Kubernetes Monitoring Operator.
 
@@ -739,7 +854,9 @@ The default resource list is:
 
  Error creating: pods "telegraf-rs-" is forbidden": unable to validate against any security context constraint: [spec.volumes[2]: Invalid value: "hostPath": hostPath volumes are not allowed to be used]
 
-|Create a Security Context Constraint (refer to the Configuring the Agent to Collect Data from Kubernetes section above) if one does not already exist.
+
+|Create a Security Context Constraint if one does not already exist.
+
 
 Ensure the namespace and service account specified for the Security Context Constraint matches the namespace and service account for the Telegraf ReplicaSet and DaemonSet.
 
@@ -800,7 +917,7 @@ kubectl -n <name-space> edit agent
 2. Mark 'security-policy-enabled' as 'false'. This will disable Pos Security Policies and allow the NKMO to deploy. Confirm by using the following commands:
 
 kubectl get psp (should show Pod Security Policy removed)
-kubectl get all -n <name-space>
+kubectl get all -n <name-space> (To confirm that Pod Security Policy is disabled)
 
 
 
