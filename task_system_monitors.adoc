@@ -557,12 +557,7 @@ Note that the monitor for Collector Warning can send more alerts than other moni
 
 |===
 
-|Monitor name|Description|Corrective Action
-|FIPS Mode Disabled	|When FIPS 140-2 compliance is enabled, TLSv1 and SSLv3 are disabled, and only TLSv1.1 and TLSv1.2 remain enabled. ONTAP prevents you from enabling TLSv1 and SSLv3 when FIPS 140-2 compliance is enabled.	
-|To enable FIPS 140-2 compliance on a cluster, run the following ONTAP command in advanced privilege mode:
-
-security config modify -interface SSL -is-fips-enabled true
-
+|Monitor Name|Threshold|Monitor Description|Corrective Action
 |AutoSupport HTTPS transport disabled|Warning @ < 1|AutoSupport supports HTTPS, HTTP, and SMTP for transport protocols. Because of the sensitive nature of AutoSupport messages, NetApp strongly recommends using HTTPS as the default transport protocol for sending AutoSupport messages to NetApp support.|To set HTTPS as the transport protocol for AutoSupport messages, run the following ONTAP command:…system node autosupport modify -transport https
 |Cluster Insecure ciphers for SSH|Warning @ < 1|Indicates that SSH is using insecure ciphers, for example ciphers beginning with *cbc.|To remove the CBC ciphers, run the following ONTAP command:…security ssh remove -vserver <admin vserver> -ciphers aes256-cbc,aes192-cbc,aes128-cbc,3des-cbc
 |Cluster Login Banner Disabled|Warning @ < 1|Indicates that the Login banner is disabled for users accessing the ONTAP system. Displaying a login banner is helpful for establishing expectations for access and use of the system.|To configure the login banner for a cluster, run the following ONTAP command:…security login banner modify -vserver <admin svm> -message "Access restricted to authorized users"
@@ -579,6 +574,8 @@ security config modify -interface SSL -is-fips-enabled true
 |Storage VM Login banner disabled|Warning @ < 1|Indicates that the Login banner is disabled for users accessing SVMs on the system. Displaying a login banner is helpful for establishing expectations for access and use of the system.|To configure the login banner for a cluster, run the following ONTAP command:…security login banner modify -vserver <svm> -message "Access restricted to authorized users"
 |Telnet Protocol Enabled|Warning @ > 0|Telnet is not a secure method for establishing command-line access to the ONTAP solution. Telnet should be disabled for secure remote access.|NetApp recommends Secure Shell (SSH) for secure remote access.
 To disable Telnet on a cluster, run the following ONTAP command in advanced privilege mode:…security protocol modify -application telnet -enabled false
+
+
 
 
 |===
