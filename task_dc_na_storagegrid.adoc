@@ -21,6 +21,18 @@ The NetApp StorageGRID data collector supports inventory and performance collect
 
 NOTE: StorageGRID is metered at a different Raw TB to Managed Unit rate. Every 40 TB of unformatted StorageGRID capacity is charged as 1 link:concept_subscribing_to_cloud_insights.html#pricing[Managed Unit (MU)].
 
+== Terminology
+
+Cloud Insights acquires the following inventory information from the NetApp StorageGRID collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|StorageGRID|Storage
+|Node|Node
+|Tenant|Storage Pool
+|Bucket|Internal Volume
+|===
 == Requirements
 
 The following are requirements for configuring this data source:
@@ -48,6 +60,16 @@ The following are requirements for configuring this data source:
 |performance Poll Interval (sec)|Default is 900 seconds
 |===
 
+== Single Sign-On (SSO)
+
+The link:https://docs.netapp.com/sgws-112/index.jsp[StorageGRID] firmware versions have corresponding API versions; 3.0 API and newer versions support single sign-on (SSO) login.
+ 
+|===
+|Firmware version |API version |Support single sign on (SSO)
+|11.1 |2 |No
+|11.2 |3.0 |Yes
+|11.5 |3.3 |Yes
+|===
            
 == Troubleshooting
 

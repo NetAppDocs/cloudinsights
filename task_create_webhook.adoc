@@ -20,7 +20,7 @@ Webhooks allow users to send alert notifications to various applications using a
 
 Many commercial applications support webhooks as a standard input interface, for example: Slack, PagerDuty, Teams, and Discord all support webhooks. By supporting a generic, customizable webhook channel, Cloud Insights can support many of these delivery channels. Information on webhooks can be found on these application websites. For example, Slack provides link:https://api.slack.com/messaging/webhooks[this useful guide].
 
-You can create multiple webhook channels, each channel targeted for a different purpose; separate applications, different recipients, etc. 
+You can create multiple webhook channels, each channel targeted for a different purpose; separate applications, different recipients, etc.  
 
 The webhook channel instance is comprised of the following elements:
 
@@ -34,7 +34,7 @@ The webhook channel instance is comprised of the following elements:
 |Custom Parameters and Secrets|Custom parameters and secrets allow you to add unique parameters and secure elements such as passwords
 |===
 
-=== Creating a Webhook
+== Creating a Webhook
 
 To create a Cloud Insights webhook, go to *Admin > Notifications* and select the *Webhooks* tab.
 
@@ -42,19 +42,33 @@ The following image shows an example webhook configured for Slack:
 
 image:Webhook_Example_Slack.png[Webhook Example]
 
+Enter appropriate information for each of the fields, and click "Save" when complete. 
+
+You can also click the "Test Webhook" button to test the connection. Note that this will send the "Message Body" (without substitutions) to the defined URL according to the selected Method. 
+
 Cloud Insights webhooks comprise a number of default parameters. Additionally, you can create your own custom parameters or secrets. 
 
 image:Webhook_Default_Parameters.png[Cloud Insights Default Webhook Parameters]
 
-==== Parameters: What are they and how do I use them?
+
+
+
+=== Parameters: What are they and how do I use them?
 
 Alert Parameters are dynamic values populated per alert. For example, the _%%TriggeredOn%%_ parameter will be replaced with the object on which the alert was triggered.
 
-==== Custom Parameters and Secrets
+Note that in this section, substitutions are _not_ performed when clicking the "Test Webhook" button; the button sends a payload that shows the _%%_ substitutions but does not replace them with data.
+
+
+
+
+=== Custom Parameters and Secrets
 
 In this section you can add any custom parameters and/or secrets you wish. For security reasons, if a secret is defined only the webhook creator can modify this webhook channel. It is read-only for others. You can use secrets in URL/Headers as _%%<secret_name>%%_.
 
-=== Choosing Webhook Notification in a Monitor
+
+
+== Choosing Webhook Notification in a Monitor
 
 To choose the webhook notification in a link:task_create_monitor.html#creating-a-monitor[monitor], go to *Alerts > Manage Monitors* and select the desired monitor, or add a new monitor. In the _Set up team notifications_ section, choose _Webhook_ as the delivery method. Select the alert levels (Critical, Warning, Resolved), then choose the desired webhook.
 

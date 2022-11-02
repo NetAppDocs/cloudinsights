@@ -35,12 +35,12 @@ image:DockerDCConfigLinux.png[Docker configuration]
 
 The Telegraf input plugin for Docker collects metrics through a specified UNIX socket or a TCP endpoint.
 
-==== Compatibility
+=== Compatibility
 Configuration was developed against Docker version 1.12.6.
 
-==== Setting Up
+=== Setting Up
 
-===== Accessing Docker through a UNIX socket
+=== Accessing Docker through a UNIX socket
 If the Telegraf agent is running on baremetal, add the telegraf Unix user to the docker Unix group by running the following:
 
  sudo usermod -aG docker telegraf
@@ -67,7 +67,7 @@ mountPath: /var/run/docker.sock
 
 Note that the Cloud Insights installer provided for the Kubernetes platform takes care of this mapping automatically.
 
-===== Access Docker through a TCP endpoint
+=== Access Docker through a TCP endpoint
 
 By default, Docker uses port 2375 for unencrypted access and port 2376 for encrypted access. 
 

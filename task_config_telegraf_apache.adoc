@@ -44,17 +44,17 @@ image:ApacheDCConfigLinux.png[Apache configuration]
 
 Telegraf's plugin for Apache's HTTP Server relies on the 'mod_status' module to be enabled. When this is enabled, Apache's HTTP Server will expose an HTML endpoint that can be viewed on your browser or scraped for extraction of status of all Apache's HTTP Server configuration.
 
-==== Compatibility:
+=== Compatibility:
 Configuration was developed against Apache's HTTP Server version 2.4.38.
 
-==== Enabling mod_status:
+=== Enabling mod_status:
 Enabling and exposing the 'mod_status' modules involves two steps:
 
 * Enabling module
 * Exposing stats from module
 
 
-==== Enabling module:
+=== Enabling module:
 The loading of modules is controlled by the config file under '/usr/local/apache/conf/httpd.conf'. Edit the config file and uncomment the following lines:
 
  LoadModule status_module modules/mod_status.so
@@ -62,7 +62,7 @@ The loading of modules is controlled by the config file under '/usr/local/apache
  Include conf/extra/httpd-info.conf
 
 
-==== Exposing stats from module:
+=== Exposing stats from module:
 
 The exposing of 'mod_status' is controlled by the config file under '/usr/local/apache2/conf/extra/httpd-info.conf'. Make sure you have the following in that configuration file (at least, other directives will be there):
 

@@ -18,7 +18,7 @@ summary:
 [.lead]
 If you have selected the regular expression approach as your source naming strategy, you can use the regular expression examples as guides for your own expressions used in the Cloud Insights automatic resolution methods.
 
-=== Formatting regular expressions
+== Formatting regular expressions
 When creating regular expressions for Cloud Insights automatic resolution, you can configure output format by entering values in a field named _FORMAT_.
 
 The default setting is \1, which means that a zone name that matches the regular expression is replaced by the contents of the first variable created by the regular expression. In a regular expression, variable values are created by parenthetical statements. If multiple parenthetical statements occur, the variables are referenced numerically, from left to right. The variables can be used in the output format in any order. Constant text can also be inserted in the output, by adding it to the FORMAT field.
@@ -54,6 +54,8 @@ Your output would be as follows:
  hostname4-Raleigh-solaris
  
 The hyphens between the variables provide an example of constant text that is inserted in the formatted output.
+
+== Examples
 
 === Example 1 showing zone names
 
@@ -202,7 +204,8 @@ Hostname: MyComputerName
 
 RegExp: (.*?)_.*
 
-Example 9
+=== Example 9
+
 This example finds everything after the 1st _ and up to the second _.
 
 *Zone:* Z_MyComputerName_StorageName

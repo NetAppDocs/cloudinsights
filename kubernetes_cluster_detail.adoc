@@ -16,33 +16,58 @@ summary: The Kubernetes detail page provides information and details to assist w
 :imagesdir: ./media/
 
 [.lead]
-The Kubernetes cluster detail page displays detailed information about your Kubernetes cluster. 
+The Kubernetes cluster detail page displays a detailed overview of your Kubernetes cluster. 
 
-The detail page is comprised of three distinct but linked landing pages showing cluster, node, and pod information. The "Resource Usage" section changes to show the details of the selected item (cluster, node, or pod). You can see the current page type and name at the top of the screen. The current page is shown in the following heirarchy: _Site Name / Kubernetes / Cluster / Node / Pod_.  You can click any part of this "breadcrumb" trail to go directly to that specific page.
+//The detail page is comprised of three distinct but linked landing pages showing cluster, node, and pod information. The "Resource Usage" section changes to show the details of the selected item (cluster, node, or pod). You can see the current page type and name at the top of the screen. The current page is shown in the following heirarchy: _Site Name / Kubernetes / Cluster / Node / Pod_.  You can click any part of this "breadcrumb" trail to go directly to that specific page.
 
-image:Kubernetes_Breadcrumb.png[Page Breadcrumb]
+//image:Kubernetes_Breadcrumb.png[Page Breadcrumb]
 
 
-== Cluster Overview
+//== Cluster Overview
 
-The cluster overview page provides useful information at a glance:
+//The cluster overview page provides useful information at a glance:
 
-image:Kubernetes_Cluster_View_Annotated.png[Annotated Cluster View]
+image:Kubernetes_Detail_Page_new.png[Cluster detail page]
 
-=== Node and Pod Counts
 
-The Node/Pod counts at the top of the page show you the total number of nodes and pods in the cluster, as well as a breakdown of how many pods are currently alerting or pending.
 
-image:Kubernetes_Pod_Counts.png[Node and Pod Counts]
+== Namespace, Node, and Pod Counts
 
-NOTE:  It is possible that the three pod sub-counts (healthy, alerting, pending) can add up to more than the displayed total number of pods. This can happen because the _pending_ count includes _all_ pending pods, both unscheduled and scheduled (in other words, unattached and attached to nodes).
+The counts at the top of the page show you the total number of namespaces, nodes, and pods in the cluster, as well as the number of popds that are currently alerting and pending.
 
-=== The Cluster "Wheel"
+//NOTE:  It is possible that the three pod sub-counts (healthy, alerting, pending) can add up to more than the displayed total number of pods. This can happen because the _pending_ count includes _all_ pending pods, both unscheduled and scheduled (in other words, unattached and attached to nodes).
+
+
+== Shared Resources and Saturation
+
+On the top right of the detail page is your cluster saturation as a current percentage as well as a graph showing the recent trend over time. Cluster saturation is the highest of CPU, memory, or storage saturation at each point in time.
+
+Below that, the page shows by default *Shared Resources* usage, with tabs for CPU, Memory, and Storage. Each tab shows the saturation percentage and trend over time, with additional usage details. For storage, the value shown is the greater of backend and filesystem saturation, which are calculated independently.
+
+The devices with the highest usage are shown in a table at the bottom. Click any link to explore these devices.
+
+
+== Namespaces
+
+The Namespaces tab displays a list of all the namespaces in your Kubernetes environment, showing CPU and Memory usage as well as a count of workloads in each namespace. Click the Name links to explore each namespace.
+
+image:Kubernetes_Namespace_tab_new.png[list of current namespaces in your K8s environment]
+
+
+== Workloads
+
+Similarly, the Workloads tab displays a list of the workloads in each namespace, again showing CPU and Memory usage. Clicking the Namespace links drills into each.
+
+image:Kubernetes_Workloads_tab_new.png[list of current namespaces in your K8s environment]
+
+
+
+
+== The Cluster "Wheel"
 
 image:Kubernetes_Wheel_Section.png[Cluster Wheel]
 
 The Cluster "Wheel" section provides node and pod health at a glance, which you can drill into for more information. If your cluster contains more nodes than can be displayed in this area of the page, you will be able to turn the wheel using the buttons available. 
-//image:Kubernetes_Wheel_Scroll_Buttons.png[Wheel Buttons]
 
 Alerting pods or nodes are displayed in red. "Warning" areas are displayed in orange. Pods that are unscheduled (that is, unattached) will display in the lower corner of the Cluster "Wheel".
 
@@ -62,22 +87,26 @@ You can view Filesystem, Memory, and CPU information by hovering over the Node e
 
 image:Kubernetes_Capacity_Info.png[Node Capacity and Allocation]
 
-//To collapse the view back to the "Wheel", simply click any empty area of the Node:
-//image:Kubernetes_Collapse_View.png[Collapse View]
 
 
-=== Detail Section
+////
+== Detail Section
 
 Each page of the Kubernetes Explorer displays a set of usage graphs that may include CPU, Memory, and Storage. Below these graphs are summaries and lists of the top objects in each category, with links to underlying details. For example, _Node_ shows pods and containers, _Pod_ shows PVCs and related objects and containers, etc.  The following illustration shows an example of the detailed information on a _Node_ page:
 
 image:Kubernetes_Node_Resource_Usage.png[Resource Usage Example]
 
 Resources experiencing alerts will show at the top of the lists. Click on the affected resource to drill into it for more detail.
+////
 
-==== A note about the gauges
 
-The Memory and CPU gauges show three colors, since they show _used_ in relation to both _allocatable capacity_ and _total capacity_. Storage gauges only show two colors because they only show a single pair of values: _used_ in relation to _total_.
 
+== A note about the gauges
+
+The Memory and CPU gauges show three colors, since they show _used_ in relation to both _allocatable capacity_ and _total capacity_. 
+
+
+////
 Keep the following in mind when reading the gauges.
 
 The dark blue band shows the amount used. 
@@ -90,6 +119,7 @@ image:Kubernetes_Gauge_Explained.png[Gauge Numbers Explained]
 //The length of the light blue band against the white background shows the total allocatable amount vs the total capacity; that figure itself is not shown, but it's derived using the formula shown in the red text:(capacity / allocatable) * 100.
 
 //Much of the time, our own environments show the same number for the 2 percent values in the gauge, and so you don't often see the white band because the light blue covers it completely (meaning 100% of the total capacity is allocatable). 
+////
 
 
 
