@@ -688,7 +688,7 @@ kubectl -n <name-space> edit agent
 2. Mark 'security-policy-enabled' as 'false'. This will disable Pod Security Policies and allow the NKMO to deploy. Confirm by using the following commands:
 
 kubectl get psp (should show Pod Security Policy removed)
-kubectl get all -n <namespace> | grep -i psp (should show that nothing is found)
+kubectl get all -n <namespace> | grep -i psp (should show that nothing is found) 
 
 |"ImagePullBackoff" errors seen
 |These errors may be seen if you have a custom or private docker repository and have not yet configured the NetApp Kubernetes Monitoring Operator to properly recognize it.  <<using-a-custom-or-private-docker-repository,Read more>> about configuring for custom/private repo.
