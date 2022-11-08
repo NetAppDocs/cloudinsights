@@ -220,7 +220,6 @@ image:Monitors_PauseGroup.png[Pause a group]
 ////
 
 
-
 == Monitor Descriptions
 
 System-defined monitors are comprised of pre-defined metrics and conditions, as well as default descriptions and corrective actions, which can not be modified. You _can_ modify the notification recipient list for system-defined monitors. To view the metrics, conditions, description and corrective actions, or to modify the recipient list, open a system-defined monitor group and click the monitor name in the list.
@@ -232,6 +231,8 @@ The following system-defined monitors are available, in the noted groups.
 * *ONTAP Infrastructure* includes monitors for infrastructure-related issues in ONTAP clusters. 
 * *ONTAP Workload Examples* includes monitors for workload-related issues. 
 * Monitors in both group default to _Paused_ state.
+
+[#top]
 
 Below are the system monitors currently included with Cloud Insights:
 
@@ -377,7 +378,7 @@ When warning threshold is breached, then consider increasing the space of the vo
 
 |===
 
-
+<<top,Back to Top>>
 
 === Log Monitors 
 
@@ -453,10 +454,7 @@ wafl readdir notice show.…Check if directories are indicated as sparse or not:
 |===
 
 
-
-
-
-
+<<top,Back to Top>>
 
 === Anti-Ransomware Log Monitors
 
@@ -480,7 +478,7 @@ Your system generates and transmits an AutoSupport or "call home" message to Net
 
 
 
-
+<<top,Back to Top>>
 
 
 === FSx for NetApp ONTAP Monitors
@@ -503,6 +501,9 @@ Your system generates and transmits an AutoSupport or "call home" message to Net
 
 |===
 
+
+<<top,Back to Top>>
+
 === K8s Monitors
 
 |===
@@ -524,6 +525,8 @@ Your system generates and transmits an AutoSupport or "call home" message to Net
 |===
 
 
+<<top,Back to Top>>
+
 === Change Log Monitors
 
 |===
@@ -540,6 +543,8 @@ Your system generates and transmits an AutoSupport or "call home" message to Net
 |===
 
 
+<<top,Back to Top>>
+
 
 === Data Collection Monitors
 
@@ -552,6 +557,8 @@ Monitor Name|Description|Corrective Action
 Note that the monitor for Collector Warning can send more alerts than other monitor types, so it is recommended to set no alert recipients unless you are troubleshooting.
 |===
 
+
+<<top,Back to Top>>
 
 === Security Monitors
 
@@ -580,6 +587,8 @@ To disable Telnet on a cluster, run the following ONTAP command in advanced priv
 |===
 
 
+<<top,Back to Top>>
+
 === Data Protection Monitors
 
 |===
@@ -600,6 +609,8 @@ If warning threshold is breached, plan to take the following immediate actions:
 |===
 
 
+
+<<top,Back to Top>>
 
 === Cloud Volume (CVO) Monitors 
 
@@ -735,9 +746,10 @@ Client access to the file is denied. The Vscan server might, depending on its se
 |CVO Volume Offline|INFO|This message indicates that a volume is made offline.|Bring the volume back online.
 |CVO Volume Restricted|INFO|This event indicates that a flexible volume is made restricted.|Bring the volume back online.
 
-
 |===
 
+
+<<top,Back to Top>>
 
 
 == More Information
