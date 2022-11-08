@@ -483,8 +483,6 @@ Use the following links to access information for these kube state metrics count
  
  
 
-
-////
 == Verifying Kubernetes Checksums
 
 
@@ -494,11 +492,9 @@ Follow these steps:
 
 . Copy the Agent Installer snippet as directed.
 . Instead of pasting the snippet into a command window, paste it into a text editor.
-. Remove the trailing “--install” (Linux/Mac) or “-install” (Windows) from the command.
+. Remove the trailing “--install” from the command.
 . Copy the entire command from the text editor.
 . Now paste it into your command window (in a working directory) and run it.
-
-Non-Windows (these examples are for Kubernetes; actual script names may vary):
 
 * Download and install (default):
 
@@ -529,39 +525,20 @@ The PEM file can be verified by confirming its fingerprint to be the following:
 
 More specifically,
 
-*	Non-Windows:
 
  openssl x509 -fingerprint -sha1 -noout -inform pem -in netapp_cert.pem
-
-*	Windows:
-
- Import-Certificate -Filepath .\netapp_cert.pem -CertStoreLocation Cert:\CurrentUser\Root
-
 
 
 
 The signed checksum file can be verified using the PEM file:
 
-*	Non-Windows:
-
  openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
-
-*	Windows (after installing the certificate via Import-Certificate above):
-
- Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
-
 
 
 Once all of the artifacts have been satisfactorily verified, the agent installation can be initiated by running:
 
-Non-Windows:
-
  sudo -E -H ./<installation_script_name> --install
 
-Windows:
-
- .\cloudinsights-windows.ps1 -install
-////
  
 
 
