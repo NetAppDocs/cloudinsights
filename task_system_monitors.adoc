@@ -565,8 +565,10 @@ Note that the monitor for Collector Warning can send more alerts than other moni
 |Default Local Admin User Enabled|Warning @ > 0|NetApp recommends locking (disabling) any unneeded Default Admin User (built-in) accounts with the lock command. They are primarily default accounts for which passwords were never updated or changed.|To lock the built-in "admin" account, run the following ONTAP command:…security login lock -username admin
 |FIPS Mode Disabled|Warning @ < 1|When FIPS 140-2 compliance is enabled, TLSv1 and SSLv3 are disabled, and only TLSv1.1 and TLSv1.2 remain enabled. ONTAP prevents you from enabling TLSv1 and SSLv3 when FIPS 140-2 compliance is enabled.|To enable FIPS 140-2 compliance on a cluster, run the following ONTAP command in advanced privilege mode:…security config modify -interface SSL -is-fips-enabled true
 |Log Forwarding Not Encrypted|Warning @ < 1|Offloading of syslog information is necessary for limiting the scope or footprint of a breach to a single system or solution. Therefore, NetApp recommends securely offloading syslog information to a secure storage or retention location.|Once a log forwarding destination is created, its protocol cannot be changed. To change to an encrypted protocol, delete and recreate the log forwarding destination using the following ONTAP command:…cluster log-forwarding create -destination <destination ip> -protocol tcp-encrypted
-|MD5 Hashed password|Warning @ > 0|NetApp strongly recommends to use the more secure SHA-512 hash function for ONTAP user account passwords. Accounts using the less secure MD5 hash function should migrate to the SHA-512 hash function.|NetApp strongly recommends user accounts migrate to the more secure SHA-512 solution by having users change their passwords.…to lock accounts with passwords that use the MD5 hash function,  run the following ONTAP command:…security login lock -vserver * -username * -hash-function md5
-|No NTP servers are configured|Warning @ < 1|Indicates that the cluster has no configured NTP servers. For redundancy and optimum service, NetApp recommends that you associate at least three NTP servers with the cluster.|To associate an NTP server with the cluster, run the following ONTAP command:…cluster time-service ntp server create -server <ntp server host name or ip address>
+|MD5 Hashed password|Warning @ > 0|NetApp strongly recommends to use the more secure SHA-512 hash function for ONTAP user account passwords. Accounts using the less secure MD5 hash function should migrate to the SHA-512 hash function.|NetApp strongly recommends user accounts migrate to the more secure SHA-512 solution by having users change their passwords.…to lock accounts with passwords that use the MD5 hash function, run the following ONTAP command:…security login lock -vserver * -username * -hash-function md5
+|No NTP servers are configured|Warning @ < 1|Indicates that the cluster has no configured NTP servers. For redundancy and optimum service, NetApp recommends that you associate at least three NTP servers with the cluster.|To associate an NTP server with the cluster, run the following ONTAP command:
+
+cluster time-service ntp server create -server <ntp server host name or ip address>
 |NTP server count is low|Warning @ < 3|Indicates that the cluster has less than 3 configured NTP servers. For redundancy and optimum service, NetApp recommends that you associate at least three NTP servers with the cluster.|To associate an NTP server with the cluster, run the following ONTAP command:…cluster time-service ntp server create -server <ntp server host name or ip address>
 |Remote Shell Enabled|Warning @ > 0|Remote Shell is not a secure method for establishing command-line access to the ONTAP solution. Remote Shell should be disabled for secure remote access.|NetApp recommends Secure Shell (SSH) for secure remote access.…To disable Remote shell on a cluster, run the following ONTAP command in advanced privilege mode:…security protocol modify -application rsh- enabled false
 |Storage VM Audit Log Disabled|Warning @ < 1|Indicates that Audit logging is disabled for SVM.|To configure the Audit log for a vserver, run the following ONTAP command:…vserver audit enable -vserver <svm>
@@ -574,9 +576,6 @@ Note that the monitor for Collector Warning can send more alerts than other moni
 |Storage VM Login banner disabled|Warning @ < 1|Indicates that the Login banner is disabled for users accessing SVMs on the system. Displaying a login banner is helpful for establishing expectations for access and use of the system.|To configure the login banner for a cluster, run the following ONTAP command:…security login banner modify -vserver <svm> -message "Access restricted to authorized users"
 |Telnet Protocol Enabled|Warning @ > 0|Telnet is not a secure method for establishing command-line access to the ONTAP solution. Telnet should be disabled for secure remote access.|NetApp recommends Secure Shell (SSH) for secure remote access.
 To disable Telnet on a cluster, run the following ONTAP command in advanced privilege mode:…security protocol modify -application telnet -enabled false
-
-
-
 
 |===
 
@@ -705,7 +704,7 @@ Verify that the configuration of your object store has not changed and that logi
 Alternatively, you can override the error by using the "override-destination-checks" parameter of the relocation command.
 
 Contact NetApp technical support for more information or assistance.
-|CVO Shadow Copy Failed|CRITICAL|A Volume Shadow Copy Service (VSS), a Microsoft Server backup and restore service operation, has failed.|•|Check the following using the information provided in the event message:
+|CVO Shadow Copy Failed|CRITICAL|A Volume Shadow Copy Service (VSS), a Microsoft Server backup and restore service operation, has failed.|Check the following using the information provided in the event message:
 
 Is shadow copy configuration enabled?
 
