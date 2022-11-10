@@ -288,6 +288,28 @@ Note: The default namespace for NetApp Kubernetes Monitoring Operator-based inst
 
 
 
+== Installing the NetApp Kubernetes Monitoring Operator
+
+//image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
+image:NKMO_Install_Instructions.png[Operator-Based Install]
+
+.Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
+
+. Enter a unique cluster name and namespace. If you are <<upgrading, upgrading>> from the script-based agent or a previous Kubernetes Operator, use the same cluster name and namespace. 
+. Once these are entered, you can copy the Agent Installer snippet
+. Click the button to copy this snippet to the clipboard.
+. Paste the snippet into a _bash_ window and execute it. Note that the snippet has a unique key and is valid for 24 hours.
+. The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
+
+NOTE: Setup is incomplete until you <<configuring-proxy-support, configure your proxy>>.
+
+NOTE: If you have a custom repository, you must follow the instructions for <<using-a-custom-or-private-docker-repository, Using a custom/private docker repository>>.
+
+
+
+
+
+
 == Upgrading 
 
 NOTE: If you have a previously installed script-based agent, you _must_ upgrade to the NetApp Kubernetes Monitoring Operator.
@@ -355,22 +377,6 @@ For Operator-based installation upgrades, run the following commands:
 
 
 
-== Installing the NetApp Kubernetes Monitoring Operator
-
-//image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
-image:NKMO_Install_Instructions.png[Operator-Based Install]
-
-.Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
-
-. Enter a unique cluster name and namespace. If you are <<upgrading, upgrading>> from the script-based agent or a previous Kubernetes Operator, use the same cluster name and namespace. 
-. Once these are entered, you can copy the Agent Installer snippet
-. Click the button to copy this snippet to the clipboard.
-. Paste the snippet into a _bash_ window and execute it. Note that the snippet has a unique key and is valid for 24 hours.
-. The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
-
-NOTE: Setup is incomplete until you <<configuring-proxy-support, configure your proxy>>.
-
-NOTE: If you have a custom repository, you must follow the instructions for <<using-a-custom-or-private-docker-repository, Using a custom/private docker repository>>.
 
 
 
@@ -616,8 +622,8 @@ For example, edit the ReplicaSet...
 
 ...and add the appropriate tolerations to the spec. Then, restart the ReplicaSet pod.
 
-|I have a PSP environment. Does this affect my monitoring operator?
-|If your Kubernetes cluster is running with Pod Security Policy (PSP) in place, you must upgrade to the latest NetApp Kubernetes Monitoring Operator. Follow these steps to upgrade to the current NKMO with support for PSP:
+|I have a PSP/PSA environment. Does this affect my monitoring operator?
+|If your Kubernetes cluster is running with Pod Security Policy (PSP) or Pod Security Admission (PSA) in place, you must upgrade to the latest NetApp Kubernetes Monitoring Operator. Follow these steps to upgrade to the current NKMO with support for PSP/PSA:
 
 1. <<uninstalling,Uninstall>> the previous monitoring operator:
 
@@ -629,12 +635,12 @@ For example, edit the ReplicaSet...
 
 2. <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the latest version of the monitoring operator.
 
-|I ran into issues trying to deploy the NKMO, and I have PSP in use.
+|I ran into issues trying to deploy the NKMO, and I have PSP/PSA in use.
 |1. Edit the agent using the following command:
 
 kubectl -n <name-space> edit agent
 
-2. Mark 'security-policy-enabled' as 'false'. This will disable Pod Security Policies and allow the NKMO to deploy. Confirm by using the following commands:
+2. Mark 'security-policy-enabled' as 'false'. This will disable Pod Security Policies and Pod Security Admission and allow the NKMO to deploy. Confirm by using the following commands:
 
 kubectl get psp (should show Pod Security Policy removed)
 kubectl get all -n <namespace> \| grep -i psp (should show that nothing is found) 
