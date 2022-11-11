@@ -544,15 +544,19 @@ More specifically,
 
 To generate the checksum value, perform the following command for your appropriate platform:
 
-RHEL/Ubuntu
+* RHEL/Ubuntu:
 
-sha256sum <package_name>
-macos
+ sha256sum <package_name>
+ 
+ 
+* macOS:
 
-shasum -a 256 telegraf.pkg
-windows
+ shasum -a 256 telegraf.pkg
 
-Get-FileHash telegraf.zip -Algorithm SHA256 | Format-List
+
+* Windows:
+
+ Get-FileHash telegraf.zip -Algorithm SHA256 | Format-List
 
 
 
