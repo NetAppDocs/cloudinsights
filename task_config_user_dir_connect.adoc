@@ -190,7 +190,12 @@ Ensure bind-DN input is always provided as ‘Administrator@<domain_forest_name>
 |If encryption certificate (SSL) is enabled on the Active Directory (AD) Server, the Cloud Secure User Directory Collector can not connect to the AD Server.
 |Disable AD Server encryption before Configuring a User Directory Collector.
 Once the user detail is fetched it will be there for 13 months.
-If the AD server gets disconnected after fetching the user details, the newly added users in AD won’t get fetched. To fetch again the user directory collector needs to be connected to AD.
+If the AD server gets disconnected after fetching the user details, the newly added users in AD won’t get fetched. To fetch again, the user directory collector needs to be connected to AD.
+
+|Data from Active Directory is present in CloudInsights Security.
+Want to delete all the user information from CloudInsights.	
+|It is not possible to ONLY delete Active Directory user information from CloudInsights Security. In order to delete the user the complete tenant needs to be deleted.
+
 
 
 |===
