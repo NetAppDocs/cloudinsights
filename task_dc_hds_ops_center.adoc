@@ -45,8 +45,8 @@ Note: These are common terminology mappings only and might not represent every c
 
 You must have the following in order to collect inventory data:
 
-* IP address of the Ops Center server
-* Read-only user name and password for the Ops Center software and peer privileges
+* IP address or hostname of the Ops Center server hosting the "Common Services" component
+* Root/sysadmin user account and password that exist on all servers hosting Ops Center components. HDS did not implemente REST API support for usage by LDAP/SSO users until Ops Center 10.8+
 
 ////
 == Performance requirements 
