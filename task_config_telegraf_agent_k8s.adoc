@@ -309,7 +309,14 @@ Kubernetes EMS log collection is enabled by default when installing the NetApp K
 
 image:K8s_Modify_Deployment_Screen.png[Modify Deployment screen showing checkbox for "log Collection"]
 
+This screen also shows current Log Collection status. Below are the possible states:
 
+* Disabled
+* Enabled
+* Enabled - Installation in progress
+* Enabled - Offline
+* Enabled - Online
+* Error - API Key has insufficient permissions
 
 
 == Upgrading 
