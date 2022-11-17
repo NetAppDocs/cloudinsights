@@ -305,7 +305,7 @@ NOTE: Setup is incomplete until you <<configuring-proxy-support, configure your 
 
 NOTE: If you have a custom repository, you must follow the instructions for <<using-a-custom-or-private-docker-repository, Using a custom/private docker repository>>.
 
-Kubernetes EMS log collection is enabled by default when installing the NetApp Kubernetes Monitoring Operator. To disable this collection, click the *Modify Deployment* button at the top of the Kubernetes cluster detail page, and un-select "Log collection". 
+Kubernetes EMS log collection is enabled by default when installing the NetApp Kubernetes Monitoring Operator. To disable this collection following installation, click the *Modify Deployment* button at the top of the Kubernetes cluster detail page, and un-select "Log collection". 
 
 image:K8s_Modify_Deployment_Screen.png[Modify Deployment screen showing checkbox for "log Collection"]
 
