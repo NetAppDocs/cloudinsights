@@ -431,8 +431,8 @@ Note that the default namespace for the NetApp Kubernetes Monitoring Operator is
 
 Newer versions of the monitoring operator can be uninstalled with the following commands:
 
- kubectl delete agent <name-space>
- kubectl delete ns,clusterrole,clusterrolebinding,crd <name-space>
+ kubectl delete agent -A -l installed-by=nkmo-<name-space>
+ kubectl delete ns,clusterrole,clusterrolebinding,crd -l installed-by=nkmo-<name-space>
 
 If the first command returns “No resources found”, use the following instructions to uninstall older versions of the monitoring operator.
 
