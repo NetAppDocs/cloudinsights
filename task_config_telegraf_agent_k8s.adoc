@@ -708,14 +708,14 @@ Additional information may be found from the link:concept_requesting_support.htm
 
 == Tuning the NetApp Kubernetes Monitoring Operator
 
-You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for either the Custom Resources or the Telegraf agent.  See the following tables for variables that you can set.
+You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
 
 === Resource related variables. 
 See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/	for information on Kubernetes Resources. 	
 
 |===
 
-|Placeholder	|Plugin Name	|Included in default cr	|Description
+|Placeholder	|Plugin Name	|Included in default CR	|Description
  
 |DS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|k8 CPU limit for telegraf-ds
 |DS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|k8 mem limit for telegraf-ds
@@ -734,7 +734,7 @@ See https://kubernetes.io/docs/concepts/configuration/manage-resources-container
 
 |===
 
-|Placeholder	|Plugin Name	|Included in default cr	|Description
+|Placeholder	|Plugin Name	|Included in default CR	|Description
 
 |CURL_CMD_PLACEHOLDER	|agent	|yes	|The curl command used to download various resources. Ex) "curl" or "curl -k"
 |INSECURE_SKIP_VERIFY_PLACEHOLDER	|(telegraf-plugins)	|no	|disable ssl verification for telegraf output
@@ -745,7 +745,7 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 
 |===
 
-|Placeholder	|Plugin Name	|Included in default cr	|Description
+|Placeholder	|Plugin Name	|Included in default CR	|Description
 
 |COLLECTION_INTERVAL_PLACEHOLDER	|agent|	no	|(sets telegraf interval, type interval): The default time telegraf will wait between inputs for all plugins. Valid time units are ns, us (or µs), ms, s, m, h.
 |ROUND_INTERVAL_PLACEHOLDER	|agent	|no	|(sets telegraf round_interval, type boolean) collect metrics on multiples of interval
