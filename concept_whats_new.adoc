@@ -29,11 +29,19 @@ You asked us to provide you with checksum values during installation of the agen
 image:Agent_Checksum_Instructions.png[Agent Checksum values shown during installation]
 
 
-=== Set Grouping in Log Monitors
+=== Log Alerting Improvements
 
-When creating or editing a Log Monitor, you can now set "Group By" attributes to allow for more focused alerting.  Set the "Group By" attributes in your monitor definitions, below the "filter" settings:
+==== Group By
+When creating or editing a Log Monitor, you can now set "Group By" attributes to allow for more focused alerting. Look for the "Group By" attributes below the "filter" settings in your monitor definition.
 
 image:Monitor_Group_By_Example.png[Group By example in monitor definition]
+
+==== Duplicating
+You can now clone (duplicate) the Change Log, Kubernetes Log, and Data Collector Log monitors.
+
+image:Log_Monitor_Duplicate.png[Duplicating a Log Monitor]
+
+
 
 
 === 
