@@ -36,6 +36,8 @@ When creating or editing a Log Monitor, you can now set "Group By" attributes to
 
 image:Monitor_Group_By_Example.png[Group By example in monitor definition]
 
+This change brings Metric Monitors and Log Monitors into feature parity by normalizing the “Group By” aspect of Monitor Definitions. This parity will allow customers to clone/duplicate *all* system-defined default Monitors for further customization.
+
 ==== Duplicating
 You can now clone (duplicate) the Change Log, Kubernetes Log, and Data Collector Log monitors. This creates a new custom log monitor that you can modify to your specifc definitions.
 
