@@ -605,7 +605,7 @@ See https://kubernetes.io/docs/concepts/configuration/manage-resources-container
 
 
 === Telegraf related variables 
-See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent	 	 	 
+See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent for information on telefraf variables.
 
 |===
 
@@ -621,9 +621,6 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 |FLUSH_JITTER	|agent	|no	|(sets telegraf flush_jitter, type interval): Each output will wait a random amount of time between the scheduled write time and that time + flush_jitter before writing outputs
 
 |===
-
-
-
 
 
 
