@@ -578,34 +578,23 @@ See https://kubernetes.io/docs/concepts/configuration/manage-resources-container
 
 |Placeholder	|Plugin Name	|Included in default CR	|Description
  
-|DS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|k8 CPU limit for telegraf-ds
-|DS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|k8 mem limit for telegraf-ds
-|DS_CPU_REQUEST_PLACEHOLDER	|agent	|yes	|k8 cpu requests for telegraf-ds
-|DS_MEM_REQUEST_PLACEHOLDER	|agent	|yes	|k8 memory requests for telegraf-ds
-|RS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|k8 CPU limit for telegraf-rs.
-|RS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|k8 mem limit for telegraf-rs
-|RS_CPU_REQUEST_PLACEHOLDER	|agent	|yes	|k8 cpu requests for telegraf-rs
-|RS_MEM_REQUEST_PLACEHOLDER	|agent	|yes	|k8 memory requests for telegraf-rs
-|KSM_CPU_REQUEST_PLACEHOLDER:	|ksm	|yes	|k8 cpu requests for kube-state-metrics deploy
-|KSM_MEM_REQUEST_PLACEHOLDER:	|ksm	|yes	|k8 cpu requests for kube-state-metrics deploy
+|DS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes CPU limit for telegraf-ds
+|DS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes mem limit for telegraf-ds
+|DS_CPU_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes cpu requests for telegraf-ds
+|DS_MEM_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes memory requests for telegraf-ds
+|RS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes CPU limit for telegraf-rs.
+|RS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes mem limit for telegraf-rs
+|RS_CPU_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes cpu requests for telegraf-rs
+|RS_MEM_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes memory requests for telegraf-rs
+|KSM_CPU_REQUEST_PLACEHOLDER:	|ksm	|yes	|Kubernetes cpu requests for kube-state-metrics deploy
+|KSM_MEM_REQUEST_PLACEHOLDER:	|ksm	|yes	|Kubernetes cpu requests for kube-state-metrics deploy
 
 |===
 
-
-
-=== Misc/Security variables
-
-|===
-
-|Placeholder	|Plugin Name	|Included in default CR	|Description
-
-|CURL_CMD_PLACEHOLDER	|agent	|yes	|The curl command used to download various resources. Ex) "curl" or "curl -k"
-|INSECURE_SKIP_VERIFY_PLACEHOLDER	|(telegraf-plugins)	|no	|disable ssl verification for telegraf output
-|===
 
 
 === Telegraf related variables 
-See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent for information on telefraf variables.
+See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent for information on telegraf variables.
 
 |===
 
@@ -617,11 +606,20 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 |METRIC_BUFFER_LIMIT_PLACEHOLDER	|agent	|no	|(sets telegraf metric_buffer_limit, type int) maximum number of records for an output telegraf will cache pending a successful write
 |COLLECTION_JITTER_PLACEHOLDER	|agent	|no	|(sets telegraf collection_jitter, type interval): Each plugin will wait a random amount of time between the scheduled collection time and that time + collection_jitter before collecting inputs
 |PRECISION_PLACEHOLDER	|agent	|no	|(sets telegraf precision, type interval): Collected metrics are rounded to the precision specified, when set to "0s" precision will be set by the units specified by interval
-|GLOBAL_FLUSH_INTERVAL	|agent	|no	|(sets telegraf flush_interval, type interval): Default time telegraf will wait between writing outputs.
-|FLUSH_JITTER	|agent	|no	|(sets telegraf flush_jitter, type interval): Each output will wait a random amount of time between the scheduled write time and that time + flush_jitter before writing outputs
+|FLUSH_INTERVAL_PLACEHOLDER	|agent	|no	|(sets telegraf flush_interval, type interval): Default time telegraf will wait between writing outputs.
+|FLUSH_JITTER_PLACEHOLDER	|agent	|no	|(sets telegraf flush_jitter, type interval): Each output will wait a random amount of time between the scheduled write time and that time + flush_jitter before writing outputs
 
 |===
 
+
+=== Miscellaneous variables
+
+|===
+
+|Placeholder	|Plugin Name	|Included in default CR	|Description
+
+|CURL_CMD_PLACEHOLDER	|agent	|yes	|The curl command used to download various resources. Ex) "curl" or "curl -k"
+|===
 
 
 
