@@ -567,6 +567,64 @@ Windows:
 
 
 
+== Tuning the Operator
+
+You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
+
+=== Resource related variables 
+See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/	for information on Kubernetes Resources. 	
+
+|===
+
+|Placeholder	|Plugin Name	|Included in default CR	|Description
+ 
+|DS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes CPU limit for telegraf-ds
+|DS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes mem limit for telegraf-ds
+|DS_CPU_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes cpu requests for telegraf-ds
+|DS_MEM_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes memory requests for telegraf-ds
+|RS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes CPU limit for telegraf-rs.
+|RS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes mem limit for telegraf-rs
+|RS_CPU_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes cpu requests for telegraf-rs
+|RS_MEM_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes memory requests for telegraf-rs
+|KSM_CPU_REQUEST_PLACEHOLDER:	|ksm	|yes	|Kubernetes cpu requests for kube-state-metrics deploy
+|KSM_MEM_REQUEST_PLACEHOLDER:	|ksm	|yes	|Kubernetes cpu requests for kube-state-metrics deploy
+
+|===
+
+
+
+=== Telegraf related variables 
+See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent for information on telegraf variables.
+
+|===
+
+|Placeholder	|Plugin Name	|Included in default CR	|Description
+
+|COLLECTION_INTERVAL_PLACEHOLDER	|agent|	no	|(sets telegraf interval, type interval): The default time telegraf will wait between inputs for all plugins. Valid time units are ns, us (or µs), ms, s, m, h.
+|ROUND_INTERVAL_PLACEHOLDER	|agent	|no	|(sets telegraf round_interval, type boolean) collect metrics on multiples of interval
+|METRIC_BATCH_SIZE_PLACEHOLDER	|agent	|no	|(sets telegraf metric_batch_size, type int) maximum number of records for an output telegraf will write in one batch
+|METRIC_BUFFER_LIMIT_PLACEHOLDER	|agent	|no	|(sets telegraf metric_buffer_limit, type int) maximum number of records for an output telegraf will cache pending a successful write
+|COLLECTION_JITTER_PLACEHOLDER	|agent	|no	|(sets telegraf collection_jitter, type interval): Each plugin will wait a random amount of time between the scheduled collection time and that time + collection_jitter before collecting inputs
+|PRECISION_PLACEHOLDER	|agent	|no	|(sets telegraf precision, type interval): Collected metrics are rounded to the precision specified, when set to "0s" precision will be set by the units specified by interval
+|FLUSH_INTERVAL_PLACEHOLDER	|agent	|no	|(sets telegraf flush_interval, type interval): Default time telegraf will wait between writing outputs.
+|FLUSH_JITTER_PLACEHOLDER	|agent	|no	|(sets telegraf flush_jitter, type interval): Each output will wait a random amount of time between the scheduled write time and that time + flush_jitter before writing outputs
+
+|===
+
+
+=== Miscellaneous variables
+
+|===
+
+|Placeholder	|Plugin Name	|Included in default CR	|Description
+
+|CURL_CMD_PLACEHOLDER	|agent	|yes	|The curl command used to download various resources. Ex) "curl" or "curl -k"
+|===
+
+
+
+
+
 == Troubleshooting
 
 Some things to try if you encounter problems setting up the NetApp Kubernetes Monitoring Operator:
@@ -704,3 +762,5 @@ Additional information may be found from the link:concept_requesting_support.htm
 |I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
 
 ////
+
+
