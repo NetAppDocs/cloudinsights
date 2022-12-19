@@ -32,7 +32,7 @@ This computer should be running no other application-level software. A dedicated
 
 SE (Security Enhanced) Linux is not supported.
 
-|Commands|The 'sudo su –' command is required for installation, running scripts, and uninstall.
+|Commands|'unzip' is required for installation. Additionally, the 'sudo su –' command is required for installation, running scripts, and uninstall.
 
 //|Docker | The Docker CE package must be installed on the VM hosting the agent. 
 //The agent systems should always have the Docker CE package installed. Users should not install the Docker-client-xx or Docker-common-xx native RHEL Docker packages since these do not support the 'docker run' CLI format that Cloud Secure supports. 
@@ -140,6 +140,6 @@ agentlogin.cs01-ap-1.cloudinsights.netapp.com
 // * Firefox ESR 60 
 // * Chrome latest nightly (73.0)6
 
-==== Related:
+== System Sizing
 
 See the link:concept_cs_event_rate_checker.html[Event Rate Checker] documentation for information about sizing.
