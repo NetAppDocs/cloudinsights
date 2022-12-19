@@ -113,8 +113,6 @@ Note: These are common terminology mappings only and might not represent every c
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
-=== Inventory
-
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
@@ -137,6 +135,9 @@ Some things to try if you encounter problems with this data collector:
 •	The "symcfg list -tdev" CLI command may return incorrect data when collected with Solutions Enabler 7.x from a Solutions Enabler server 8.x.
 •	The "symcfg list -srp" CLI command may return incorrect data when collected with Solutions Enabler 8.1.0 or earlier from a Solutions Enabler server 8.3 or later.
 |Be sure you are using the same Solutions Enabler major release 
+|I'm seeing data collection errors with the message: "unknown code"
+|You may see this message if permissions are not declared in the Solutions Enabler server's daemon configuration file (see the <<requirements, Requirements>> above.) This assumes your SE client version matches your SE server version.
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
