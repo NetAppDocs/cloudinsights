@@ -31,7 +31,22 @@ Before configuring this data collector, you should ensure that Cloud Insights ha
 * Read-only user name and password to the SE software
 
 * The UNISPHERE for VMAX application must be running and collecting statistics for the EMC VMAX and PowerMax sstorage arrays that are managed by the SMI-S Provider installation
-* Access validation for performance: In a web browser on your Acquisition Unit, go to _\https://<SMI-S Hostname or IP>:5989/ecomconfig_ where "SMI-S Hostname or IP" is the IP address or hostname of your SMI-S server. This URL is for an administrative portal for the EMC SMI-S (aka "ECOM") service - you will receive a login popup.   
+* Access validation for performance: In a web browser on your Acquisition Unit, go to _\https://<SMI-S Hostname or IP>:5989/ecomconfig_ where "SMI-S Hostname or IP" is the IP address or hostname of your SMI-S server. This URL is for an administrative portal for the EMC SMI-S (aka "ECOM") service - you will receive a login popup. 
+
+* Permissions must be declared in the Solutions Enabler server's daemon configuration file, usually found here: _/var/symapi/config/daemon_users_
++
+Here is an example file with the proper cisys permissions.
+
+ root@cernciaukc101:/root
+ 14:11:25 # tail /var/symapi/config/daemon_users 
+ ###
+ ###     Refer to the storrdfd(3) man page for additional details.
+ ###
+ ###     As noted above, only authorized users can perform stordaemon control
+ ###     operations (e.g., shutdown).
+ ################################################################################
+ # smith         storrdfd
+ cisys storapid <all>
 
 == Terminology
 
