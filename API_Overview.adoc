@@ -441,11 +441,9 @@ API access tokens have an expiration date. When an API access token expires, use
 
 Note that these commands are using the default namespace "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
-<<<<<<< HEAD:API_Overview.adoc~90082a9fd74c6d5a9fd556de399b36ffaac53781
-Note: If you have the latest NetApp Kubernetes Monitoring Operator installed and using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.  There is no need to perform the manual steps listed below.
-=======
+
 Note: If you have the latest NetApp Kubernetes Monitoring Operator installed and using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens. There is no need to perform the manual steps for Kubernetes API token renewal listed here.
->>>>>>> 3df6fa94316c710c5e370709e6c4bd493fa37256:API_Overview.adoc
+
 
 * Edit the the NetApp Kubernetes Monitoring Operator.
 +
