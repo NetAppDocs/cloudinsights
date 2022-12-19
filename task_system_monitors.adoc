@@ -752,6 +752,31 @@ Client access to the file is denied. The Vscan server might, depending on its se
 |===
 
 
+
+<<top,Back to Top>>
+
+=== SnapMirror for Business Continuity (SMBC) Mediator Log Monitors
+
+|===
+
+|Monitor Name|Severity|Monitor Description|Corrective Action
+
+|ONTAP Mediator Added|INFO|This message occurs when ONTAP Mediator is added successfully on a cluster.|None
+|ONTAP Mediator Not Accessible|CRITICAL|This message occurs when either the ONTAP Mediator is repurposed or the Mediator package is no longer installed on the Mediator server. As a result, SnapMirror failover is not possible.|Remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+|ONTAP Mediator Removed|INFO|This message occurs when ONTAP Mediator is removed successfully from a cluster.|None
+|ONTAP Mediator Unreachable|WARNING|This message occurs when the ONTAP Mediator is unreachable on a cluster. As a result, SnapMirror failover is not possible.|Check the network connectivity to the ONTAP Mediator by using the "network ping" and "network traceroute" commands. If the issue persists, remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+|SMBC CA Certificate Expired|CRITICAL|This message occurs when the ONTAP Mediator certificate authority (CA) certificate has expired. As a result, all further communication to the ONTAP Mediator will not be possible.|Remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Update a new CA certificate on the ONTAP Mediator server. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+|SMBC CA Certificate Expiring|WARNING|This message occurs when the ONTAP Mediator certificate authority (CA) certificate is due to expire within the next 30 days.|Before this certificate expires, remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Update a new CA certificate on the ONTAP Mediator server. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+|SMBC Client Certificate Expired|CRITICAL|This message occurs when the ONTAP Mediator client certificate has expired. As a result, all further communication to the ONTAP Mediator will not be possible.|Remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+|SMBC Client Certificate Expiring|WARNING|This message occurs when the ONTAP Mediator client certificate is due to expire within the next 30 days.|Before this certificate expires, remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+|SMBC Relationship Out of Sync
+Note: UM doesn't have this one|CRITICAL|This message occurs when a SnapMirror for Business Continuity (SMBC) relationship changes status from "in-sync" to "out-of-sync". Due to this RPO=0 data protection will be disrupted.|Check the network connection between the source and destination volumes. Monitor the SMBC relationship status by using the "snapmirror show" command on the destination, and by using the "snapmirror list-destinations" command on the source. Auto-resync will attempt to bring the relationship back to "in-sync" status. If the resync fails, verify that all the nodes in the cluster are in quorum and are healthy.
+|SMBC Server Certificate Expired|CRITICAL|This message occurs when the ONTAP Mediator server certificate has expired. As a result, all further communication to the ONTAP Mediator will not be possible.|Remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Update a new server certificate on the ONTAP Mediator server. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+|SMBC Server Certificate Expiring|WARNING|This message occurs when the ONTAP Mediator server certificate is due to expire within the next 30 days.|Before this certificate expires, remove the configuration of the current ONTAP Mediator by using the "snapmirror mediator remove" command. Update a new server certificate on the ONTAP Mediator server. Reconfigure access to the ONTAP Mediator by using the "snapmirror mediator add" command.
+
+|===
+
+
 <<top,Back to Top>>
 
 

@@ -29,7 +29,6 @@ If there are four SVMs with one SVM configured for SMB, one configured for NFS, 
 
 Cluster level credentials are needed for this feature to work.
 
-NOTE: When using the Amazon FSx data collector, user blocking for SMB cannot kill the current user session.  See the <<troubleshooting, Troubleshooting>> section for more information.
 
 If you are using cluster administration credentials, no new permissions are needed.
 
@@ -42,8 +41,7 @@ For csuser with cluster credentials, do the following from the ONTAP command lin
  security login role create -role csrole -cmddirname "vserver cifs session" -access all
  security login role create -role csrole -cmddirname "vserver services access-check authentication translate" -access all
  security login role create -role csrole -cmddirname "vserver name-mapping" -access all
- security login role create -role csrole -cmddirname "cluster show" -access readonly
-
+ 
 
 == How to enable the feature?
 
@@ -183,16 +181,6 @@ Restricting happens via IP address of the host through which the user is accessi
 
 |Policy could not be modified. Reason: not authorized for that command.	
 |Check if using csuser, permissions are given to the user as mentioned above.
-
-|I see an error:
-svm1: existing cifs session for user domain\\user01 is not closed.
-
-This error is seen in the Action Taken section on the alert detail page and also under Access Limitation History under Alert & User list pages.
-
-The users current session is not closed when this error is seen, however, user is blocked for any new sessions until the bocking period expires.
-|This is a known issue with Amazon FSx. Cloud Secure will NOT be able to close the existing SMB session. No workaround is currently available to block the existing SMB session for Amazon FSx.
-
-If the collector type is CVO or ONTAP, ensure the correct permissions as mentioned in the <<prerequisites-for-user-access-blocking,Prerequisites>> section.
 
 
 |===
