@@ -182,7 +182,9 @@ When adding via SVM IP the options are:
 
 
 
-== Recommended Configuration for MCC
+== Recommended Configuration for Metro Cluster
+
+The following is recommended for Metro Cluster:
 
 1.	Connect two data collectors, one to the source SVM and another to the destination SVM.
 2.	The data collectors should be connected by _Cluster IP_. 
@@ -200,6 +202,7 @@ data collector will show as _Error_.
 If using service policy from ONTAP version 9.9.1, in order to connect to the Data Source Collector, the _data-fpolicy-client_ service is required along with the data service _data-nfs_, and/or _data-cifs_.
 
 Example:
+
  Testcluster-1::*> net int service-policy create -policy only_data_fpolicy -allowed-addresses 0.0.0.0/0 -vserver aniket_svm -services data-cifs,data-nfs,data,-core,data-fpolicy-client
  (network interface service-policy create)
  
