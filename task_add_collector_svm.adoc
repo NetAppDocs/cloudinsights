@@ -29,7 +29,7 @@ Cloud Secure uses data collectors to collect file and user access data from devi
 
 * Only data type SVMs are supported. SVMs with infinite volumes are not supported.
 
-* SVM has several sub-types. Of these, only _default_ and _sync_source_ are supported.
+* SVM has several sub-types. Of these, only _default_, _sync_source_, and _sync_destination_ are supported.
 
 * An Agent link:task_cs_add_agent.html[must be configured] before you can configure data collectors. 
 
@@ -177,6 +177,39 @@ When adding via SVM IP the options are:
 //* Click *Test Configuration* to check the status of the collector you configured.
 
 * In the Installed Data Collectors page, use the options menu on the right of each collector to edit the data collector. You can restart the data collector or edit data collector configuration attributes. 
+
+
+
+
+
+== Recommended Configuration for Metro Cluster
+
+The following is recommended for Metro Cluster:
+
+1.	Connect two data collectors, one to the source SVM and another to the destination SVM.
+2.	The data collectors should be connected by _Cluster IP_. 
+3.	At any moment of time, one data collector should be in running, another will be in error.
++
+The current ‘running’ SVM’s data collector will show as _Running_. The current ‘stopped’ SVM’s
+data collector will show as _Error_.
+
+4.	Whenever there is a switchover, the state of the data collector will change from ‘running’ to ‘error’ and vice versa.
+5.	It will take up to two minutes for the data collector to move from Error state to Running state.
+
+
+== Service Policy
+
+If using service policy from ONTAP version 9.9.1, in order to connect to the Data Source Collector, the _data-fpolicy-client_ service is required along with the data service _data-nfs_, and/or _data-cifs_.
+
+Example:
+
+ Testcluster-1::*> net int service-policy create -policy only_data_fpolicy -allowed-addresses 0.0.0.0/0 -vserver aniket_svm 
+ -services data-cifs,data-nfs,data,-core,data-fpolicy-client
+ (network interface service-policy create)
+ 
+In versions of ONTAP prior to 9.9.1, _data-fpolicy-client_ need not be set.
+
+
 
 
 == Troubleshooting 
