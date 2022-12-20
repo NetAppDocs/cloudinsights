@@ -555,7 +555,7 @@ To modify these values, edit the agent CR with the following command (substituti
 
  kubectl edit agent agent-monitoring-netapp -n <namespace>  
 
-The CR specification follows the following format
+The CR specification follows the format:
 
 ----
  - name: <plugin-name> 
