@@ -557,12 +557,14 @@ To modify these values, edit the agent CR with the following command (substituti
 
 The CR specification follows the following format
 
- \- name: <plugin-name> 
+----
+ - name: <plugin-name> 
    ... 
    substitutions: 
-   \- key: <variable-name> 
+   - key: <variable-name> 
      value: <desired-value>  
      ... 
+----
 
 Items marked "yes" for "Included in default CR" will already be present in the agent CR and can be found under their respective plugin. Items marked "no" must be added manually following the examples provided by the included default substitutions.
 
