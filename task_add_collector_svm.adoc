@@ -203,7 +203,8 @@ If using service policy from ONTAP version 9.9.1, in order to connect to the Dat
 
 Example:
 
- Testcluster-1::*> net int service-policy create -policy only_data_fpolicy -allowed-addresses 0.0.0.0/0 -vserver aniket_svm -services data-cifs,data-nfs,data,-core,data-fpolicy-client
+ Testcluster-1::*> net int service-policy create -policy only_data_fpolicy -allowed-addresses 0.0.0.0/0 -vserver aniket_svm 
+ -services data-cifs,data-nfs,data,-core,data-fpolicy-client
  (network interface service-policy create)
  
 In versions of ONTAP prior to 9.9.1, _data-fpolicy-client_ need not be set.
