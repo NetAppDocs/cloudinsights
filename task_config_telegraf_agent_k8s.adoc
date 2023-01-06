@@ -842,12 +842,29 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 
 You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
 
+To modify these values, edit the agent CR with the following command (substituting <namespace> for your namespace): 
+
+ kubectl edit agent agent-monitoring-netapp -n <namespace>  
+
+The CR specification follows the format:
+
+----
+ - name: <plugin-name> 
+   ... 
+   substitutions: 
+   - key: <variable-name> 
+     value: <desired-value>  
+     ... 
+----
+
+Items marked "yes" for "Included in default CR" will already be present in the agent CR and can be found under their respective plugin. Items marked "no" must be added manually following the examples provided by the included default substitutions.
+
 === Resource related variables 
 See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/	for information on Kubernetes Resources. 	
 
 |===
 
-|Placeholder	|Plugin Name	|Included in default CR	|Description
+|Variable Name	|Plugin Name	|Included in default CR	|Description
  
 |DS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes CPU limit for telegraf-ds
 |DS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes mem limit for telegraf-ds
