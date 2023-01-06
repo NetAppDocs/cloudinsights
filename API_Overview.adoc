@@ -443,6 +443,8 @@ Note that these commands are using the default namespace "netapp-monitoring".  I
 
 Note: If you have the latest NetApp Kubernetes Monitoring Operator installed and using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.  There is no need to perform the manual steps listed below.
 
+
+
 * Edit the the NetApp Kubernetes Monitoring Operator.
 +
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
