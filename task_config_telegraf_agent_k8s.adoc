@@ -840,7 +840,9 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 
 == Tuning the Operator
 
-You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
+You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources. See the following tables for variables that you can set.
+
+NOTE: The NetApp Kubernetes Monitoring Operator is not tunable in Cloud Insights Federal Edition.
 
 === Resource related variables 
 See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/	for information on Kubernetes Resources. 	
