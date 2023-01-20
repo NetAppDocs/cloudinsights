@@ -31,7 +31,7 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 * Please note the following component versions. These are the current versions included with the NetApp Kubernetes Monitoring Operator:
 [[nkmoversion]]
 ** Telegraf: 1.24.0
-** kube-rbac-proxy: v0.13.0
+** kube-rbac-proxy: v1.13.0
 ** kube-state-metrics: v2.6.0
 ** fluent-bit: 1.9.8
 ** kubernetes-event-exporter: 0.10
@@ -194,13 +194,13 @@ Push the operator docker image to your private/local/enterprise docker repositor
 
 Download all open source dependencies to your private docker registry. The following open source images need to be downloaded:
 
- docker.io/telegraf: 1.22.3
- gcr.io/kubebuilder/kube-rbac-proxy: v0.11.0
- k8s.gcr.io/kube-state-metrics/kube-state-metrics: v2.4.2
+ docker.io/telegraf: 1.24.0
+ gcr.io/kubebuilder/kube-rbac-proxy: v10.13.0
+ k8s.gcr.io/kube-state-metrics/kube-state-metrics: v2.6.0
  
 If fluent-bit is enabled, also download:
 
- docker.io/fluent-bit:1.9.3
+ docker.io/fluent-bit:1.9.8
  docker.io/kubernetes-event-exporter:0.10
 
 Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
