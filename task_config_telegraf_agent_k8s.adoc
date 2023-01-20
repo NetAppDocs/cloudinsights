@@ -27,10 +27,9 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 == Before installing the NetApp Kubernetes Monitoring Operator
 
 .Pre-requisites:
+[[nkmoversion]]
 
 * Please note the following component versions. These are the current versions included with the NetApp Kubernetes Monitoring Operator. You will particularly need to note these versions if you are <<using-a-custom-or-private-docker-repository,using a custom or private docker repository>>:
-
-[[nkmoversion]]
 
 ** Telegraf: 1.24.0
 ** kube-rbac-proxy: v1.13.0
@@ -38,7 +37,6 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 ** fluent-bit: 1.9.8
 ** kubernetes-event-exporter: 0.10
 
- 
 
 * NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater. 
 * When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
