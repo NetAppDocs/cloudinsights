@@ -551,7 +551,7 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 
 == Tuning the Operator
 
-You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources. For instructions and lists of the variables you can tune, see the README file included with the installation package. Use the following command to view the README:
+You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources. For instructions and lists of the variables you can tune, see the README file included with the installation package. After you have installed the operator, use the following command to view the README:
 
  kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
 
