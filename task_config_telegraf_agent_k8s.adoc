@@ -29,13 +29,13 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 .Pre-requisites:
 [[nkmoversion]]
 
-* Please note the following component versions. These are the current versions included with the NetApp Kubernetes Monitoring Operator. You will particularly need to note these versions if you are <<using-a-custom-or-private-docker-repository,using a custom or private docker repository>>:
+* Please note the following component versions. These are the current _required_ versions included with the NetApp Kubernetes Monitoring Operator. You will particularly need to note these versions if you are <<using-a-custom-or-private-docker-repository,using a custom or private docker repository>>:
 
 ** Telegraf: 1.24.0
-** kube-rbac-proxy: v1.13.0
+** kube-rbac-proxy: v0.13.0
 ** kube-state-metrics: v2.6.0
 ** fluent-bit: 1.9.8
-** kubernetes-event-exporter: 0.10
+** kubernetes-event-exporter: v0.10
 
 
 * NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater. 
