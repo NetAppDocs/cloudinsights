@@ -217,9 +217,7 @@ Edit the monitoring-operator deployment, and modify all image references to use 
 Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled):
 
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
- 
  enableAutoUpgrade: false
-
  docker-repo: <docker repo of the enterprise/corp docker repo>
  dockerRepoSecret: <optional: name of the docker secret of enterprise/corp docker repo, this secret should be already created on the k8s cluster in the same namespace>
  
