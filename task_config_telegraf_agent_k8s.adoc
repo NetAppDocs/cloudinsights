@@ -207,7 +207,7 @@ If fluent-bit is enabled, also download:
  
  
  
-Edit the monitoring-operator deployment, and modify all image references to use the new docker repo location
+Edit the monitoring-operator deployment, and modify all image references to use the new docker repo location:
 
  image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<kube-rbac-proxy version>
 
@@ -215,7 +215,7 @@ Edit the monitoring-operator deployment, and modify all image references to use 
  
  
 
-Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
+Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled):
 
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
  
