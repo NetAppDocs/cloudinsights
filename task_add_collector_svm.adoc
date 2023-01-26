@@ -315,7 +315,7 @@ Basically, in a tenant, 1 SVM should be added only once, via 1 data collector. 1
 To prevent this, configure each SVM on a single environment.
 
 
-7. This error may also occur if service policies are not configured correctly. With ONTAP 9.9.1 or later, in order to connect to the Data Source Collector, the data-fpolicy-client service is required along with the data service data-nfs, and/or data-cifs. Additionally, the data-fpolicy-client service must be associated with the data lif(s) for the monitored SVM.
+7. This error may also occur if service policies are not configured correctly. With ONTAP 9.8 or later, in order to connect to the Data Source Collector, the data-fpolicy-client service is required along with the data service data-nfs, and/or data-cifs. Additionally, the data-fpolicy-client service must be associated with the data lif(s) for the monitored SVM.
 
 |No events seen in activity page.
 |1. Check if ONTAP collector is in “RUNNING” state. If yes, then ensure that some cifs events are being generated on the cifs client VMs by opening some files.
