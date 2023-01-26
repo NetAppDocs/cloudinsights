@@ -607,9 +607,13 @@ Some things to try if you encounter problems setting up an agent:
 
 |After configuring a new plugin and restarting Telegraf, Telegraf fails to start up. The logs indicate that an error resembling the following:
 
-"[telegraf] Error running agent: Error loading config file /etc/telegraf/telegraf.d/cloudinsights-default.conf: plugin outputs.http: line 88: configuration specified the fields ["use_system_proxy"], but they weren't used"
+"[telegraf] Error running agent: Error loading config file /etc/telegraf/telegraf.d/cloudinsights-default.conf: plugin outputs.http: line <linenumber>: configuration specified the fields ["use_system_proxy"], but they weren't used"
 
 |The installed Telegraf version is outdated. Follow the steps on this page to *Upgrade the Agent* for your appropriate platform.
+
+|I ran the installer script on an old installation and now the agent isn’t sending data
+|Uninstall the telegraf agent and then re-run the installation script. Follow the *Upgrade the Agent* steps on this page for your appropriate platform.
+
 
 
 |I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. 
