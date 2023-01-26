@@ -210,7 +210,6 @@ If fluent-bit is enabled, also download:
 Edit the monitoring-operator deployment, and modify all image references to use the new docker repo location:
 
  image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<kube-rbac-proxy version>
-
  image: <docker repo of the enterprise/corp docker repo>/netapp-monitoring:<version>
  
  
