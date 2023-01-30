@@ -61,23 +61,6 @@ Management – this may contain a hyperlink for the management interface of the 
 * IOPS – the sum IOPs of all the disks contributing capacity to this storage pool.
 Throughput – the sum throughput of all the disks contributing capacity to this storage pool.
 
-////
-=== Storage Node
-
-* Storage – what storage array this node is part of. Mandatory.
-* HA Partner – on platforms where a node will fail over to one and only one other node, it will generally be seen here.
-* State – health of the node. Only available when the array is healthy enough to be inventoried by a data source.
-* Model – model name of the node.
-* Version – version name of the device.
-* Serial number – The node serial number.
-* Memory – base 2 memory if available.
-* Utilization – On ONTAP, this is a controller stress index from a proprietary algorithm. With every performance poll, a number between 0 and 100% will be reported that is the higher of either WAFL disk contention, or average CPU utilization. If you observe sustained values > 50%, that is indicative of undersizing – potentially a controller/node not large enough or not enough spinning disks to absorb the write workload.
-* IOPS – Derived directly from ONTAP ZAPI calls on the node object.
-* Latency – Derived directly from ONTAP ZAPI calls on the node object.
-* Throughput – Derived directly from ONTAP ZAPI calls on the node object.
-* Processors – CPU count.
-////
-
 
 == Requirements
 
@@ -98,31 +81,25 @@ The following are requirements to configure and use this data collector:
 |Password |Password for NetApp cluster 
 |===
 
-////
-== Advanced configuration
 
-[cols=2*, options="header", cols"50,50"]
-|===
-|Field|Description
-|Connection type|Choose HTTP (default port 80) or HTTPS (default port 443). The default is HTTPS
-|Override Communication Port|Specify a different port if you do not want to use the default
-|Inventory Poll Interval (min) |Default is 60 minutes.
-//|Inventory concurrent thread count|Thread count for parallel foundation queries
-|For TLS for HTTPS|Only allow TLS as protocol when using HTTPS
-|Automatically Lookup Netgroups|Enable the automatic netgroup lookups for export policy rules
-|Netgroup Expansion|Netgroup Expansion Strategy. Choose _file_ or _shell_. The default is _shell_.
-|HTTP read timeout seconds|Default is 30
-|Force responses as UTF-8|Forces data collector code to interpret responses from the CLI as being in UTF-8
-//|Foundation model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
-|Performance Poll Interval (sec)|Default is 900 seconds.
-//|Performance Concurrent thread count|Thread count for parallel performance queries
-//|Performance model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
+== Advanced Metrics
 
-|Advanced Counter Data Collection|Enable ONTAP integration. Select this to include ONTAP Advanced Counter data in polls. Choose the desired counters from the list.
+This data collector collects the following advanced metrics from the FSx for NetApp ONTAP storage:
 
-//|<TBD: New Micro Poll> | Default is 60 seconds
-|===
-////
+* fpolicy 
+* nfsv3 
+* nfsv3:node 
+* nfsv4
+* nfsv4_1
+* nfsv4_1:node  
+* nfsv4:node  
+* policy_group
+* qtree    
+* volume  
+* workload_volume 
+
+
+
 
 
 == Troubleshooting
