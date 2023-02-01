@@ -29,8 +29,6 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 .Pre-requisites:
 [[nkmoversion]]
 
-<<<<<<< HEAD
-=======
 * Please note the following component versions. These are the current _required_ versions included with the NetApp Kubernetes Monitoring Operator. You will particularly need to note these versions if you are <<using-a-custom-or-private-docker-repository,using a custom or private docker repository>>:
 
 ** Telegraf: 1.24.0
@@ -557,7 +555,6 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
 
 To modify these values, edit the agent CR with the following command (substituting <namespace> for your namespace): 
-<<<<<<< HEAD
 
  kubectl edit agent agent-monitoring-netapp -n <namespace>  
 
@@ -572,22 +569,6 @@ The CR specification follows the format:
      ... 
 ----
 
-=======
-
- kubectl edit agent agent-monitoring-netapp -n <namespace>  
-
-The CR specification follows the format:
-
-----
- - name: <plugin-name> 
-   ... 
-   substitutions: 
-   - key: <variable-name> 
-     value: <desired-value>  
-     ... 
-----
-
->>>>>>> e64b5299cf9e0451417037778f9d37b84b9d9e6b
 Items marked "yes" for "Included in default CR" will already be present in the agent CR and can be found under their respective plugin. Items marked "no" must be added manually following the examples provided by the included default substitutions.
 
 === Resource related variables 
@@ -641,19 +622,11 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 |===
 
 
-<<<<<<< HEAD
 
 
 
 
 
-=======
-
-
-
-
-
->>>>>>> e64b5299cf9e0451417037778f9d37b84b9d9e6b
 == Troubleshooting
 
 Some things to try if you encounter problems setting up the NetApp Kubernetes Monitoring Operator:
