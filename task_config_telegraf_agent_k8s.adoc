@@ -27,14 +27,16 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 == Before installing the NetApp Kubernetes Monitoring Operator
 
 .Pre-requisites:
-
-* Please note the following component versions. These are the current versions included with the NetApp Kubernetes Monitoring Operator:
 [[nkmoversion]]
+
+* Please note the following component versions. These are the current _required_ versions included with the NetApp Kubernetes Monitoring Operator. You will particularly need to note these versions if you are <<using-a-custom-or-private-docker-repository,using a custom or private docker repository>>:
+
 ** Telegraf: 1.24.0
 ** kube-rbac-proxy: v0.13.0
 ** kube-state-metrics: v2.6.0
 ** fluent-bit: 1.9.8
-** kubernetes-event-exporter: 0.10
+** kubernetes-event-exporter: v0.10
+
 
 * NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater. 
 * When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
@@ -192,16 +194,16 @@ Find the _netapp-monitoring_ <version> field using the following command:
 
 Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies.
 
-Download all open source dependencies to your private docker registry. The following open source images need to be downloaded:
+Download all open source dependencies to your private docker registry. The following open source images need to be downloaded. See the <<before-installing-the-netapp-kubernetes-monitoring-operator,Pre-requisites>> section above for the most current versions of these components:
 
- docker.io/telegraf: 1.22.3
- gcr.io/kubebuilder/kube-rbac-proxy: v0.11.0
- k8s.gcr.io/kube-state-metrics/kube-state-metrics: v2.4.2
+ docker.io/telegraf
+ gcr.io/kubebuilder/kube-rbac-proxy
+ k8s.gcr.io/kube-state-metrics/kube-state-metrics
  
 If fluent-bit is enabled, also download:
 
- docker.io/fluent-bit:1.9.3
- docker.io/kubernetes-event-exporter:0.10
+ docker.io/fluent-bit
+ docker.io/kubernetes-event-exporter
 
 Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
 
@@ -551,12 +553,29 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 
 You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
 
+To modify these values, edit the agent CR with the following command (substituting <namespace> for your namespace): 
+
+ kubectl edit agent agent-monitoring-netapp -n <namespace>  
+
+The CR specification follows the format:
+
+----
+ - name: <plugin-name> 
+   ... 
+   substitutions: 
+   - key: <variable-name> 
+     value: <desired-value>  
+     ... 
+----
+
+Items marked "yes" for "Included in default CR" will already be present in the agent CR and can be found under their respective plugin. Items marked "no" must be added manually following the examples provided by the included default substitutions.
+
 === Resource related variables 
 See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/	for information on Kubernetes Resources. 	
 
 |===
 
-|Placeholder	|Plugin Name	|Included in default CR	|Description
+|Variable Name	|Plugin Name	|Included in default CR	|Description
  
 |DS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes CPU limit for telegraf-ds
 |DS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes mem limit for telegraf-ds
