@@ -551,6 +551,12 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 
 == Tuning the Operator
 
+You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources. For instructions and lists of the variables you can tune, see the README file included with the installation package. After you have installed the operator, use the following command to view the README:
+
+ kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
+
+
+//// - start tuning section
 You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
 
 To modify these values, edit the agent CR with the following command (substituting <namespace> for your namespace): 
@@ -619,7 +625,7 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 
 |CURL_CMD_PLACEHOLDER	|agent	|yes	|The curl command used to download various resources. Ex) "curl" or "curl -k"
 |===
-
+//// - end tuning section
 
 
 
