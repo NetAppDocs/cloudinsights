@@ -427,7 +427,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
 
 
-=== To remove NetApp Kubernetes Monitoring Operator
+=== To remove the NetApp Kubernetes Monitoring Operator
 
 Note that the default namespace for the NetApp Kubernetes Monitoring Operator is "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
