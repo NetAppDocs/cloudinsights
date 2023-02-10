@@ -16,11 +16,11 @@ keywords: security, risk, protection
 :imagesdir: ./media/
 
 [.lead]
-CI Includes security features that allow Insight environments to operate with enhanced security. The features include improvements to encryption, password hashing, and the ability to change internal user passwords and key pairs that encrypt and decrypt passwords. 
+Cloud Insights Includes security features that allow your environment to operate with enhanced security. The features include improvements to encryption, password hashing, and the ability to change internal user passwords as well as key pairs that encrypt and decrypt passwords. 
 
-To protect sensitive data, NetApp recommends you change the default keys and the Acquisition user password after an installation or upgrade.
+To protect sensitive data, NetApp recommends you change the default keys and the _Acquisition_ user password after an installation or upgrade.
 
-Data source encrypted passwords are stored in Cloud Insights, which uses a a public key to encrypt passwords when a user enters them in a data collector configuration page. Cloud Insights does not have the private keys required to decrypt the data collector passwords; only Acquisition Units have the data collector private key required to decrypt data collector passwords.  
+Data source encrypted passwords are stored in Cloud Insights, which uses a a public key to encrypt passwords when a user enters them in a data collector configuration page. Cloud Insights does not have the private keys required to decrypt the data collector passwords; only Acquisition Units (AUs) have the data collector private key required to decrypt data collector passwords.  
 
 == Upgrade and installation considerations
 
@@ -33,7 +33,6 @@ The SecurityAdmin tool allows you to manage security options for Cloud Insights,
 == Before you begin
 
 You must have admin privileges on the AU system to perform security configuration tasks.
-
 
 About this task
 The SecurityAdmin tool is found on the acquisition unit system at either of these locations:
