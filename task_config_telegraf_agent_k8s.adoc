@@ -190,30 +190,33 @@ Pull the operator docker image from Cloud Insights. Make sure the _netapp-monito
  
 Find the _netapp-monitoring_ <version> field using the following command:
  
- kubectl -n netapp-monitoring get deployment monitoring-operator | grep "image:"
+ kubectl -n netapp-monitoring describe deployment monitoring-operator | grep -i "image:" |grep netapp-monitoring
 
 Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies.
 
 Download all open source dependencies to your private docker registry. The following open source images need to be downloaded. See the <<before-installing-the-netapp-kubernetes-monitoring-operator,Pre-requisites>> section above for the most current versions of these components:
 
- docker.io/telegraf
- gcr.io/kubebuilder/kube-rbac-proxy
- k8s.gcr.io/kube-state-metrics/kube-state-metrics
+ docker pull docker.<cluster>.cloudinsights.netapp.com/telegraf:<telegraf version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kube-rbac-proxy:<kube-rbac-proxy version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kube-state-metrics:<kube-state-metrics version>
  
 If fluent-bit is enabled, also download:
 
- docker.io/fluent-bit
- docker.io/kubernetes-event-exporter
+ docker pull docker.<cluster>.cloudinsights.netapp.com/fluent-bit:<fluent-bit version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kubernetes-event-exporter:<kubernetes-event-exporter version>
 
-Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
+Edit the monitoring-operator deployment, and modify all image references to use the new docker repo location:
+
+ image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<kube-rbac-proxy version>
+ image: <docker repo of the enterprise/corp docker repo>/netapp-monitoring:<version>
+
+Edit the agent CR to reflect the new docker repo location.
 
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
- 
- enableAutoUpgrade: false
 
  docker-repo: <docker repo of the enterprise/corp docker repo>
- dockerRepoSecret: <optional: name of the docker secret of enterprise/corp docker repo, this secret should be already created on the k8s cluster in the same namespace>
- 
+ dockerRepoSecret: <optional: name of the docker secret of enterprise/corp docker repo, this secret should be already created on the k8s cluster in the same namespace> 
+
 In the _spec:_ section, make the following changes:
  
  spec:
