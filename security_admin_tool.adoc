@@ -1,0 +1,84 @@
+---
+sidebar: sidebar
+permalink: security_admin_tool.html
+summary:  Cloud Insights follows security best practices throughout the release life cycle.
+keywords: security, risk, protection
+---
+
+= SecurityAdmin Tool
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+CI Includes security features that allow Insight environments to operate with enhanced security. The features include improvements to encryption, password hashing, and the ability to change internal user passwords and key pairs that encrypt and decrypt passwords. 
+
+To protect sensitive data, NetApp recommends you change the default keys and the Acquisition user password after an installation or upgrade.
+
+Data source encrypted passwords are stored in Cloud Insights, which uses a a public key to encrypt passwords when a user enters them in a data collector configuration page. Cloud Insights does not have the private keys required to decrypt the data collector passwords; only Acquisition Units have the data collector private key required to decrypt data collector passwords.  
+
+== Upgrade and installation considerations
+
+When your Insight system contains non-default security configurations (i.e. you have rekeyed passwords), you must back up your security configurations. Installing new software, or in some cases upgrading software, reverts your system to a default security configuration. When your system reverts to the default configuration, you must restore the non-default configuration in order for the system to operate correctly.
+
+== Managing security on the acquisition unit
+
+The SecurityAdmin tool allows you to manage security options for Cloud Insights, and is run on the acquisition unit system. Security management includes managing keys and passwords, saving and restoring security configurations you create or restoring configurations to the default settings.
+
+== Before you begin
+
+You must have admin privileges on the AU system to perform security configuration tasks.
+
+
+About this task
+The SecurityAdmin tool is found on the acquisition unit system at either of these locations:
+
+* *Windows - C:\Program Files\SANscreen\securityadmin\bin\securityadmin.bat
+* *Linux - /bin/oci-securityadmin.sh
+
+.Steps 
+
+* *Start the SecurityAdmin tool in interactive mode (-i).
++
+The following options are displayed:
+
+* Backup
++
+Creates a backup zip file of the vault containing all passwords and keys and places the file in a location specified by the user, or in the following default locations:
++
+ Windows - C:\Program Files\SANscreen\backup\vault
+ Linux - /var/log/netapp/oci/backup/vault
+
+* Restore
++
+Restores the zip backup of the vault that was created. Once restored, all passwords and keys are reverted to values existing at the time of the backup creation.
++
+Restore can be used to synchronize passwords and keys on multiple servers, for example: - Change encryption keys on the AU - Create a backup of the vault - Restore the vault backup to each of the AUs
+
+* Change Encryption Keys
++
+Change the AU encryption keys used to encrypt or decrypt device passwords.
++
+When you change encryption keys, you should back up your new security configuration so that you can restore it after an upgrade or installation.
+
+* Update Password
++
+Change password for 'acquisition' user account.
++
+When you change passwords, you should back up your new security configuration so that you can restore it if necessary.
+
+* Reset to Defaults
++
+Resets acquisition user password and acquisition user encryption keys to default values, Default values are those provided during installation.
+
+* Exit
++
+Exit the SecurityAdmin tool.
+
+Chose the option you want to configure and follow the prompts.
+
