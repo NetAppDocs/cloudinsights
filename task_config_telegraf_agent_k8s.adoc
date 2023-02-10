@@ -196,14 +196,14 @@ Push the operator docker image to your private/local/enterprise docker repositor
 
 Download all open source dependencies to your private docker registry. The following open source images need to be downloaded. See the <<before-installing-the-netapp-kubernetes-monitoring-operator,Pre-requisites>> section above for the most current versions of these components:
 
- docker.io/telegraf
- gcr.io/kubebuilder/kube-rbac-proxy
- k8s.gcr.io/kube-state-metrics/kube-state-metrics
+ docker pull docker.<cluster>.cloudinsights.netapp.com/telegraf:<telegraf version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kube-rbac-proxy:<kube-rbac-proxy version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kube-state-metrics:<kube-state-metrics version>
  
 If fluent-bit is enabled, also download:
 
- docker.io/fluent-bit
- docker.io/kubernetes-event-exporter
+ docker pull docker.<cluster>.cloudinsights.netapp.com/fluent-bit:<fluent-bit version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kubernetes-event-exporter:<kubernetes-event-exporter version>
 
 Edit the monitoring-operator deployment, and modify all image references to use the new docker repo location:
 
