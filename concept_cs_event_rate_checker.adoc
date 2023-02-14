@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: concept_cs_event_rate_checker.html
-summary: This script  can be run to check the event rate in the SVM before installing an ONTAP SVM DSC
-keywords: event, checker, rate, sizing
+summary: This script can be run to check the event rate in the SVM before installing an ONTAP SVM DSC
+keywords: event, checker, rate, sizing, cloud secure
 ---
 
 = SVM Event Rate Checker
@@ -143,8 +143,8 @@ An example script run is shown below:
 
 |===
 
-|Question: If I run this script on an SVM that is already configured for Cloud Secure, does it just use the existing fpolicy config on the SVM or does it setup a temporary one and run the process? 
-|Answer: The Event Rate Checker can run fine even for an SVM already configured for Cloud Secure. There should be no impact.
+|Question: If I run this script on an SVM that is already configured for Workload Security, does it just use the existing fpolicy config on the SVM or does it setup a temporary one and run the process? 
+|Answer: The Event Rate Checker can run fine even for an SVM already configured for Workload Security. There should be no impact.
 
 |Question: Can I increase the number of SVMs on which the script can be run?
 |Answer: Yes. Simply edit the script and change the max number of SVMs from 5 to any desirable number.
