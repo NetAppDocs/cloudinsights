@@ -61,26 +61,52 @@ Restores the zip backup of the vault that was created. Once restored, all passwo
 +
 Restore can be used to synchronize passwords and keys on multiple servers, for example: - Change encryption keys on the AU - Create a backup of the vault - Restore the vault backup to each of the AUs
 
-* Change Encryption Keys
+* Register / Update External Key Retrieval Script
 +
-Change the AU encryption keys used to encrypt or decrypt device passwords.
+Use an external script to register or change the AU encryption keys used to encrypt or decrypt device passwords.
 +
 When you change encryption keys, you should back up your new security configuration so that you can restore it after an upgrade or installation.
++
+Note this option is not available on Windows.
 
+* Rotate Encryption Keys
++
+Rotate your encryption keys (un-registers current keys and registers new keys)
+
+////
 * Update Password
 +
 Change password for 'acquisition' user account.
 +
 When you change passwords, you should back up your new security configuration so that you can restore it if necessary.
+////
 
-* Reset to Defaults
+* Reset to Default Keys
 +
 Resets acquisition user password and acquisition user encryption keys to default values, Default values are those provided during installation.
+
+* Change Trustore Password
++
+
+* Change Keystore Password
++
+
+* Encrypt Collector Password
++
+
 
 * Exit
 +
 Exit the SecurityAdmin tool.
 
 Chose the option you want to configure and follow the prompts.
+
+== Using your own key retrieval script
+
+When using your own key retrieval script with the SecurityAdmin too, keep the following in mind:
+
+* The current supported Algorithm is RSA with minimum 2048 bits.  
+* The script must return the private and public keys in plain text. The script must not return encrypted private and public keys. 
+* The sScript should return raw, encoded contents (PEM format only). 
 
 
