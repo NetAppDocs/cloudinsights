@@ -16,8 +16,6 @@ summary: You can set automated response policies for potential attacks (such as 
 [.lead]
 Response Policies trigger actions such as taking a snapshot or restricting user access in the event of an attack or abnormal user behavior. 
 
-NOTE: Cloud Secure is not available in Cloud Insights Federal Edition.
-
 
 You can set policies on specific devices or all devices. To set a response policy, select *Admin > Automated Response Policies* and click the appropriate *+Policy+ button. You can create policies for Attacks or for Warnings.
 
@@ -33,7 +31,7 @@ See the link:cs_restrict_user_access.html[Restrict User Access] page for more de
 
 You can modify or pause an Automated Response Policy by choosing the option in the policy's drop-down menu.
 
-Cloud Secure will automatically delete snapshots once per day based on the Snapshot Purge settings. 
+Workload Security will automatically delete snapshots once per day based on the Snapshot Purge settings. 
 
 //image:AutomatedResponsePolicyList.png[Automated Response Policy Pause]
 //image:CloudSecure_AutomatedResponsePolicies_WithSnapshotPurge.png[Automated Response Policy Settings]
