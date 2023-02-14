@@ -32,10 +32,11 @@ The SecurityAdmin tool allows you to manage security options for Cloud Insights,
 
 == Before you begin
 
-You must have admin privileges on the AU system to perform security configuration tasks.
+* You must have admin privileges on the AU system in order to install the Acquisition Unit software (which includes the SecurityAdmin tool).
+* If you have non-admin users who will subsequently need to access the SecurityAdmin tool, they must have _cisys_ permissions (individual or group).
 
 About this task
-The SecurityAdmin tool is found on the acquisition unit system at either of these locations:
+After AU install, the SecurityAdmin tool is found on the acquisition unit system at either of these locations:
 
 * *Windows - C:\Program Files\SANscreen\securityadmin\bin\securityadmin.bat
 * *Linux - /bin/oci-securityadmin.sh
@@ -80,4 +81,5 @@ Resets acquisition user password and acquisition user encryption keys to default
 Exit the SecurityAdmin tool.
 
 Chose the option you want to configure and follow the prompts.
+
 
