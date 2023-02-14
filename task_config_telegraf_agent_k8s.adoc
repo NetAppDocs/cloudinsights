@@ -329,9 +329,11 @@ To upgrade the telegraf agent, do the following:
 
  kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
  
+////
 . Back up the existing configurations:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
+////
 
 . Save the K8s cluster name for use during installation of the K8s operator-based monitoring solution to ensure data continuity.
 +
@@ -367,11 +369,11 @@ For Operator-based installation upgrades, run the following commands:
 
  kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
 
-
+////
 * Back up the existing configurations:
 
  kubectl --namespace netapp-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
-
+////
 
 <<to-remove-the-netapp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
 
