@@ -31,7 +31,7 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 
 * Please note the following component versions. These are the current _required_ versions included with the NetApp Kubernetes Monitoring Operator. You will particularly need to note these versions if you are <<using-a-custom-or-private-docker-repository,using a custom or private docker repository>>:
 
-** Telegraf: 1.24.0
+** Telegraf: 1.25.0
 ** kube-rbac-proxy: v0.13.0
 ** kube-state-metrics: v2.6.0
 ** fluent-bit: 1.9.8
@@ -191,30 +191,33 @@ Pull the operator docker image from Cloud Insights. Make sure the _netapp-monito
  
 Find the _netapp-monitoring_ <version> field using the following command:
  
- kubectl -n netapp-monitoring get deployment monitoring-operator | grep "image:"
+ kubectl -n netapp-monitoring describe deployment monitoring-operator | grep -i "image:" |grep netapp-monitoring
 
 Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies.
 
 Download all open source dependencies to your private docker registry. The following open source images need to be downloaded. See the <<before-installing-the-netapp-kubernetes-monitoring-operator,Pre-requisites>> section above for the most current versions of these components:
 
- docker.io/telegraf
- gcr.io/kubebuilder/kube-rbac-proxy
- k8s.gcr.io/kube-state-metrics/kube-state-metrics
+ docker pull docker.<cluster>.cloudinsights.netapp.com/telegraf:<telegraf version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kube-rbac-proxy:<kube-rbac-proxy version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kube-state-metrics:<kube-state-metrics version>
  
 If fluent-bit is enabled, also download:
 
- docker.io/fluent-bit
- docker.io/kubernetes-event-exporter
+ docker pull docker.<cluster>.cloudinsights.netapp.com/fluent-bit:<fluent-bit version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kubernetes-event-exporter:<kubernetes-event-exporter version>
 
-Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
+Edit the monitoring-operator deployment, and modify all image references to use the new docker repo location:
+
+ image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<kube-rbac-proxy version>
+ image: <docker repo of the enterprise/corp docker repo>/netapp-monitoring:<version>
+
+Edit the agent CR to reflect the new docker repo location.
 
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
- 
- enableAutoUpgrade: false
 
  docker-repo: <docker repo of the enterprise/corp docker repo>
- dockerRepoSecret: <optional: name of the docker secret of enterprise/corp docker repo, this secret should be already created on the k8s cluster in the same namespace>
- 
+ dockerRepoSecret: <optional: name of the docker secret of enterprise/corp docker repo, this secret should be already created on the k8s cluster in the same namespace> 
+
 In the _spec:_ section, make the following changes:
  
  spec:
@@ -327,9 +330,11 @@ To upgrade the telegraf agent, do the following:
 
  kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
  
+////
 . Back up the existing configurations:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
+////
 
 . Save the K8s cluster name for use during installation of the K8s operator-based monitoring solution to ensure data continuity.
 +
@@ -365,11 +370,11 @@ For Operator-based installation upgrades, run the following commands:
 
  kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
 
-
+////
 * Back up the existing configurations:
 
  kubectl --namespace netapp-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
-
+////
 
 <<to-remove-the-netapp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
 
@@ -428,7 +433,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
 
 
-=== To remove NetApp Kubernetes Monitoring Operator
+=== To remove the NetApp Kubernetes Monitoring Operator
 
 Note that the default namespace for the NetApp Kubernetes Monitoring Operator is "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
@@ -552,6 +557,13 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 
 == Tuning the Operator
 
+You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources. For instructions and lists of the variables you can tune, see the README file included with the installation package. After you have installed the operator, use the following command to view the README:
+
+ kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
+
+
+////
+
 You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
 
 To modify these values, edit the agent CR with the following command (substituting <namespace> for your namespace): 
@@ -621,6 +633,7 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 |CURL_CMD_PLACEHOLDER	|agent	|yes	|The curl command used to download various resources. Ex) "curl" or "curl -k"
 |===
 
+////
 
 
 

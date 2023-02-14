@@ -172,12 +172,20 @@ TIP: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
 
 To uninstall the Acquisition Unit software, do the following:
 
+'''
+
 *Windows:*
+
+If you are uninstalling a *Windows* acquisition unit:
 
 . On the Acquisition Unit server/VM, open Control Panel and choose *Uninstall a Program*. Select the Cloud Insights Acquisition Unit program for removal.
 . Click Uninstall and follow the prompts.
 
+'''
+
 *Linux:*
+
+If you are uninstalling a *Linux* acquisition unit:
 
 . On the Acquisition Unit server/VM, run the following command: 
 
@@ -187,12 +195,18 @@ To uninstall the Acquisition Unit software, do the following:
 
  sudo cloudinsights-uninstall.sh --help
 
-*Both:*
+'''
 
-. After uninstalling the AU software, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
+*Windows and Linux:*
+
+*After* uninstalling the AU:
+
+. In Cloud Insights, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
 . Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
 
 NOTE:You cannot delete the default Acquisition Unit. Select another AU as the default before deleting the old one.
+
+'''
 
 
 == Reinstalling an Acquisition Unit

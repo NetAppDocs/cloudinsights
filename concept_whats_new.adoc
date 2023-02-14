@@ -19,6 +19,22 @@ keywords: features
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.  
 
 
+
+== January 2023
+
+=== New Log Monitors
+
+We've added almost two dozen link:task_system_monitors.html[additional system monitors] to alert for broken interconnect links, heartbeat problems, and more. Additionally, three new Data Protection log monitors have been added, to alert on SnapMirror Auto Resync, MetroCluster Mirroring, and FabricPool Mirror Resync changes.
+
+Note that some of these monitors will be _enabled_ by default; you must _pause_ them if you do not wish to alert on them. Also note that these monitors are not configured to deliver notifications; you must configure notification recipients on these monitors if you want to send alerts via email or webhook.
+
+=== .CSV Export for all Dashboard Table Widgets
+
+Ensuring accessibility to your data is essential, so we've made .CSV export image:csv_export_icon[.csv export icon] available for all metric queries, dashboard table widgets, and object landing pages, regardless of the type of data (asset or integration) you're querying. 
+
+Data customizations like column selection, renaming columns, and unit conversions are also now included in the new export functionality.
+
+
 == December 2022
 
 === Explore Ransomware Protection and other security features during Cloud Insights Trial

@@ -776,6 +776,61 @@ Note: UM doesn't have this one|CRITICAL|This message occurs when a SnapMirror fo
 
 |===
 
+<<top,Back to Top>>
+
+=== Additional Power, Heartbeat, and Miscellaneous System Monitors
+
+|===
+|Monitor Name|Severity|Monitor Description|Corrective Action
+
+|Disk Shelf Power Supply Discovered|INFORMATIONAL|This message occurs when a power supply unit is added to the disk shelf.|NONE
+|Disk Shelves Power Supply Removed|INFORMATIONAL|This message occurs when a power supply unit is removed from the disk shelf.|NONE
+|MetroCluster Automatic Unplanned Switchover Disabled|CRITICAL|This message occurs when automatic unplanned switchover capability is disabled.|Run the "metrocluster modify -node-name <nodename> -automatic-switchover-onfailure true" command for each node in the cluster to enable automatic switchover.
+|MetroCluster Storage Bridge Unreachable|CRITICAL|The storage bridge is not reachable over the management network|1) If the bridge is monitored by SNMP, verify that the node management LIF is up by using the "network interface show" command. Verify that the bridge is alive by using the "network ping" command.
+2) If the bridge is monitored in-band, check the fabric cabling to the bridge, and then verify that the bridge is powered up.
+|MetroCluster Bridge Temperature Abnormal - Below Critical|CRITICAL|The sensor on the Fibre Channel bridge is reporting a temperature that is below the critical threshold.|1) Check the operational status of the fans on the storage bridge.
+2) Verify that the bridge is operating under recommended temperature conditions.
+|MetroCluster Bridge Temperature Abnormal - Above Critical|CRITICAL|The sensor on the Fibre Channel bridge is reporting a temperature that is above the critical threshold.|1) Check the operational status of the chassis temperature sensor on the storage bridge using the command "storage bridge show -cooling".
+2) Verify that the storage bridge is operating under recommended temperature conditions.
+|MetroCluster Aggregate Left Behind|WARNING|The aggregate was left behind during switchback.|1) Check the aggregate state by using the command "aggr show".
+2) If the aggregate is online, return it to its original owner by using the command "metrocluster switchback".
+|All Links Between Metrocluster Partners Down|CRITICAL|RDMA interconnect adapters and intercluster LIFs have broken connections to the peered cluster or the peered cluster is down.|1) Ensure that the intercluster LIFs are up and running. Repair the intercluster LIFs if they are down.
+2) Verify that the peered cluster is up and running by using  the "cluster peer ping" command. See the MetroCluster Disaster Recovery Guide if the peered cluster is down.
+3) For fabric MetroCluster, verify that the back-end fabric ISLs are up and running. Repair the back-end fabric ISLs if they are down.
+4) For non-fabric MetroCluster configurations, verify that the cabling is correct between the RDMA interconnect adapters. Reconfigure the cabling if the links are down.
+|MetroCluster Partners Not Reachable Over Peering Network|CRITICAL|The connectivity to the peer cluster is broken.|1) Ensure that the port is connected to the correct network/switch.
+2) Ensure that the intercluster LIF is connected with the peered cluster.
+3) Ensure that the peered cluster is up and running by using the command "cluster peer ping". Refer to the MetroCluster Disaster Recovery Guide if the peered cluster is down.
+|MetroCluster Inter Switch All Links Down|CRITICAL|All Inter-Switch Links (ISLs) on the storage switch are down.|1) Repair the back-end fabric ISLs on the storage switch.
+2) Ensure that the partner switch is up and its ISLs are operational.
+3) Ensure that intermediate equipment, such as xWDM devices, are operational.
+|MetroCluster Node To Storage Stack SAS Link Down|WARNING|The SAS adapter or its attached cable might be at fault.|1. Verify that the SAS adapter is online and running.
+2. Verify that the physical cable connection is secure and operating, and replace the cable if necessary.
+3. If the SAS adapter is connected to disk shelves, ensure IOMs and disks are properly seated.
+|MetroClusterFC Initiator Links Down|CRITICAL|The FC initiator adapter is at fault.|1. Ensure that the FC initiator link has not been tampered with.
+2. Verify the operational status of the FC initiator adapter by using the command "system node run -node local -command storage show adapter".
+|FC-VI Interconnect Link Down|CRITICAL|The physical link on the FC-VI port is offline.|1. Ensure that the FC-VI link has not been tampered with.
+2. Verify that the physical status of the FC-VI adapter is "Up" by using the command "metrocluster interconnect adapter show".
+3. If the configuration includes fabric switches, ensure that they are properly cabled and configured.
+|MetroCluster Spare Disks Left Behind|WARNING|The spare disk was left behind during switchback.|If the disk is not failed, return it to its original owner by using the command "metrocluster switchback".
+|MetroCluster Storage Bridge Port Down|CRITICAL|The port on the storage bridge is offline.|1) Check the operational status of the ports on the storage bridge by using the command "storage bridge show -ports".
+2) Verify logical and physical connectivity to the port.
+|MetroCluster Storage Switch Fans Failed|CRITICAL|The fan on the storage switch failed.|1) Ensure that the fans in the switch are operating correctly by using the command "storage switch show -cooling".
+2) Ensure that the fan FRUs are properly inserted and operational.
+|MetroCluster Storage Switch Unreachable|CRITICAL|The storage switch is not reachable over the management network.|1) Ensure that the node management LIF is up by using the command "network interface show".
+2) Ensure that the switch is alive by using the command "network ping".
+3) Ensure that the switch is reachable over SNMP by checking its SNMP settings after logging into the switch.
+|MetroCluster Switch Power Supplies Failed|CRITICAL|A power supply unit on the storage switch is not operational.|1) Check the error details by using the command "storage switch show -error -switch-name <swtich name>".
+2) Identify the faulty power supply unit by using the command "storage switch show -power -switch-name <switch name>".
+3) Ensure that the power supply unitis properly inserted into the chassis of the storage switch and fully operational.
+|MetroCluster Switch Temperature Sensors Failed|CRITICAL|The sensor on the Fibre Channel switch failed.|1) Check the operational status of the temperature sensors on the storage switch by using the command "storage switch show -cooling".
+2) Verify that the switch is operating under recommended temperature conditions.
+|MetroCluster Switch Temperature Abnormal|CRITICAL|The temperature sensor on the Fibre Channel switch reported abnormal temperature.|1) Check the operational status of the temperature sensors on the storage switch by using the command "storage switch show -cooling".
+2) Verify that the switch is operating under recommended temperature conditions.
+|Service Processor Heartbeat Missed |INFORMATIONAL|This message occurs when ONTAP does not receive an expected "heartbeat" signal from the Service Processor (SP). Along with this message, log files from SP will be sent out for debugging. ONTAP will reset the SP to attempt to restore communication. The SP will be unavailable for up to two minutes while it reboots.|Contact NetApp technical support.
+|Service Processor Heartbeat Stopped|WARNING|This message occurs when ONTAP is no longer receiving heartbeats from the Service Processor (SP). Depending on the hardware design, the system may continue to serve data or may determine to shut down to prevent data loss or hardware damage. The system continues to serve data, but because the SP might not be working, the system cannot send notifications of down appliances, boot errors, or Open Firmware (OFW) Power-On Self-Test (POST) errors. If your system is configured to do so, it generates and transmits an AutoSupport (or 'call home') message to NetApp technical support and to the configured destinations. Successful delivery of an AutoSupport message significantly improves problem determination and resolution.|If the system has shut down, attempt a hard power cycle: Pull the controller out from the chassis, push it back in then power on the system. Contact NetApp technical support if the problem persists after the power cycle, or for any other condition that may warrant attention.
+
+|===
 
 <<top,Back to Top>>
 
