@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: concept_cs_event_rate_checker.html
-summary: This script  can be run to check the event rate in the SVM before installing an ONTAP SVM DSC
-keywords: event, checker, rate, sizing
+summary: This script can be run to check the event rate in the SVM before installing an ONTAP SVM DSC
+keywords: event, checker, rate, sizing, size, guide,
 ---
 
-= SVM Event Rate Checker
+= SVM Event Rate Checker (Sizing Guide)
 
 :toc: macro
 :hardbreaks:
@@ -16,7 +16,9 @@ keywords: event, checker, rate, sizing
 :imagesdir: ./media/
 
 [.lead]
-The Event Rate Checker is used to check the NFS/SMB combined event rate in the SVM before installing an ONTAP SVM data collector, to see how many SVMs one Agent machine will be able to monitor. An Agent can support up to 50 data collectors.
+The Event Rate Checker is used to check the NFS/SMB combined event rate in the SVM before installing an ONTAP SVM data collector, to see how many SVMs one Agent machine will be able to monitor. Use the Event Rate Checker as a sizing guide to help plan your security environment.
+
+An Agent can support up to 50 data collectors.
 
 == Requirements:
 
