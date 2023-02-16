@@ -16,11 +16,13 @@ keywords: security, risk, protection
 :imagesdir: ./media/
 
 [.lead]
+
 Cloud Insights Includes security features that allow your environment to operate with enhanced security. The features include improvements to encryption, password hashing, and the ability to change internal user passwords as well as key pairs that encrypt and decrypt passwords. 
 
 To protect sensitive data, NetApp recommends you change the default keys and the _Acquisition_ user password after an installation or upgrade.
 
 Data source encrypted passwords are stored in Cloud Insights, which uses a a public key to encrypt passwords when a user enters them in a data collector configuration page. Cloud Insights does not have the private keys required to decrypt the data collector passwords; only Acquisition Units (AUs) have the data collector private key required to decrypt data collector passwords.  
+
 
 == Upgrade and installation considerations
 
@@ -49,6 +51,7 @@ The following options are displayed:
 image:SecurityAdminMenuChoices.png[Options for SecurityAdmin Tool (Linux)]
 
 . *Backup*
+
 +
 Creates a backup zip file of the vault containing all passwords and keys and places the file in a location specified by the user, or in the following default locations:
 +
@@ -81,6 +84,7 @@ Rotate your encryption keys (un-registers current keys and registers new keys). 
 
 
 ////
+
 * Update Password
 +
 Change password for 'acquisition' user account.
@@ -105,11 +109,10 @@ Change the password of the keystore.
 Encrypt data collector password.
 
 . *Exit*
+
 +
 Exit the SecurityAdmin tool.
 
 Chose the option you want to configure and follow the prompts.
-
-
 
 
