@@ -59,7 +59,7 @@ Creates a backup zip file of the vault containing all passwords and keys and pla
 +
 Restores the zip backup of the vault that was created. Once restored, all passwords and keys are reverted to values existing at the time of the backup creation.
 +
-Restore can be used to synchronize passwords and keys on multiple servers, for example: - Change encryption keys on the AU - Create a backup of the vault - Restore the vault backup to each of the AUs
+Restore can be used to synchronize passwords and keys on multiple servers, for example using these steps: 1) Change encryption keys on the AU. 2) Create a backup of the vault. 3) Restore the vault backup to each of the AUs.
 
 . *Register / Update External Key Retrieval Script*
 +
