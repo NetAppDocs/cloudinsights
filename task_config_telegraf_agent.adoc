@@ -416,13 +416,13 @@ To uninstall the agent on macOS, in a Bash terminal, run the following:
 
 . Uninstall the telegraf agent:
 +
- cp /Applications/telegraf.app/scripts/uninstall /tmp
+ sudo cp /Applications/telegraf.app/scripts/uninstall /tmp
  sudo /tmp/uninstall
 
 . Remove any configuration or log files that may be left behind:
 +
- rm -rf /usr/local/etc/telegraf*
- rm -rf /usr/local/var/log/telegraf.*
+ sudo rm -rf /usr/local/etc/telegraf*
+ sudo rm -rf /usr/local/var/log/telegraf.*
 
 
 ==== Upgrading the Agent
@@ -435,7 +435,7 @@ To upgrade the telegraf agent, do the following:
 
 . Uninstall the previous telegraf agent:
 
- cp /Applications/telegraf.app/scripts/uninstall /tmp
+ sudo cp /Applications/telegraf.app/scripts/uninstall /tmp
  sudo /tmp/uninstall
 
 . link:#macos[Install the new agent].
