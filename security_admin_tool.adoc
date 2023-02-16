@@ -68,6 +68,12 @@ Use an external script to register or change the AU encryption keys used to encr
 When you change encryption keys, you should back up your new security configuration so that you can restore it after an upgrade or installation.
 +
 Note this option is only available on Linux.
++
+When using your own key retrieval script with the SecurityAdmin tool, keep the following in mind:
+
+* The current supported Algorithm is RSA with minimum 2048 bits.  
+* The script must return the private and public keys in plain text. The script must not return encrypted private and public keys. 
+* The sScript should return raw, encoded contents (PEM format only). 
 
 . *Rotate Encryption Keys*
 +
@@ -100,12 +106,6 @@ Exit the SecurityAdmin tool.
 
 Chose the option you want to configure and follow the prompts.
 
-== Using your own key retrieval script
 
-When using your own key retrieval script with the SecurityAdmin tool, keep the following in mind:
-
-* The current supported Algorithm is RSA with minimum 2048 bits.  
-* The script must return the private and public keys in plain text. The script must not return encrypted private and public keys. 
-* The sScript should return raw, encoded contents (PEM format only). 
 
 
