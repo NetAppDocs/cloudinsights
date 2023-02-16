@@ -48,20 +48,20 @@ The following options are displayed:
 
 image:SecurityAdminMenuChoices.png[Options for SecurityAdmin Tool (Linux)]
 
-. Backup
+. *Backup*
 +
 Creates a backup zip file of the vault containing all passwords and keys and places the file in a location specified by the user, or in the following default locations:
 +
  Windows - C:\Program Files\SANscreen\backup\vault
  Linux - /var/log/netapp/oci/backup/vault
 
-. Restore
+. *Restore*
 +
 Restores the zip backup of the vault that was created. Once restored, all passwords and keys are reverted to values existing at the time of the backup creation.
 +
 Restore can be used to synchronize passwords and keys on multiple servers, for example: - Change encryption keys on the AU - Create a backup of the vault - Restore the vault backup to each of the AUs
 
-. Register / Update External Key Retrieval Script
+. *Register / Update External Key Retrieval Script*
 +
 Use an external script to register or change the AU encryption keys used to encrypt or decrypt device passwords.
 +
@@ -69,7 +69,7 @@ When you change encryption keys, you should back up your new security configurat
 +
 Note this option is only available on Linux.
 
-. Rotate Encryption Keys
+. *Rotate Encryption Keys*
 +
 Rotate your encryption keys (un-registers current keys and registers new keys)
 
@@ -81,20 +81,20 @@ Change password for 'acquisition' user account.
 When you change passwords, you should back up your new security configuration so that you can restore it if necessary.
 ////
 
-. Reset to Default Keys
+. *Reset to Default Keys*
 +
 Resets acquisition user password and acquisition user encryption keys to default values, Default values are those provided during installation.
 
-. Change Trustore Password
+. *Change Trustore Password*
 +
 
-. Change Keystore Password
+. *Change Keystore Password*
 +
 
-. Encrypt Collector Password
+. *Encrypt Collector Password*
 +
 
-. Exit
+. *Exit*
 +
 Exit the SecurityAdmin tool.
 
