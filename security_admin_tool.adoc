@@ -77,6 +77,7 @@ When using your own key retrieval script with the SecurityAdmin tool, keep the f
 * The current supported Algorithm is RSA with minimum 2048 bits.  
 * The script must return the private and public keys in plain text. The script must not return encrypted private and public keys. 
 * The script should return raw, encoded contents (PEM format only). 
+* The external script must have _execute_ permissions.
 
 . *Rotate Encryption Keys*
 +
