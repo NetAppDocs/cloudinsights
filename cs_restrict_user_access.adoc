@@ -182,6 +182,24 @@ Restricting happens via IP address of the host through which the user is accessi
 |Policy could not be modified. Reason: not authorized for that command.	
 |Check if using csuser, permissions are given to the user as mentioned above.
 
+|User (IP Address) blocking for NFS works, but for SMB / CIFS, I see an error message: “SID to DomainName transformation failed. Reason timeout: socket is not established”
+|This can happen is _csuser_ does not have permission to perform ssh. (Ensure connection at cluster level, then ensure user can perform ssh).  _csuser_ role requires these permissions.
+ 
+ https://docs.netapp.com/us-en/cloudinsights/cs_restrict_user_access.html#prerequisites-for-user-access-blocking
+
+For _csuser_ with cluster credentials, do the following from the ONTAP command line:
+
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all
+ security login role create -role csrole -cmddirname set -access all
+ security login role create -role csrole -cmddirname "vserver cifs session" -access all
+ security login role create -role csrole -cmddirname "vserver services access-check authentication translate" -access all
+ security login role create -role csrole -cmddirname "vserver name-mapping" -access all
+
+If _csuser_ is not used and if admin user at cluster level is used, make sure that the admin user has ssh permission to ONTAP.
+
+
+|
+|
 
 |===
 
