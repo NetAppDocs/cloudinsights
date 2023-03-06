@@ -58,7 +58,6 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 * The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
->>>>>>> e64b5299cf9e0451417037778f9d37b84b9d9e6b
 * The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment. If this host requires a proxy to reach Cloud Insights, follow the instructions in the <<configuring-proxy-support,Configuring Proxy Support>> section.
 
 * The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances. 
@@ -535,7 +534,9 @@ The installation script, environment file, and YAML files can be verified using 
 
 The PEM file can be verified by confirming its fingerprint to be the following:
 
- E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
+// E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
+
+ 1A918038E8E127BB5C87A202DF173B97A05B4996
 
 More specifically,
 
