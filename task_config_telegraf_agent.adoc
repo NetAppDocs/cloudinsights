@@ -111,7 +111,8 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
 . Remove the certificate from the trustore:
 
  cd Cert:\CurrentUser\Root
- rm E5FB7B68C08B1CA902708584C274F8EFC7BE8ABC
+ //rm E5FB7B68C08B1CA902708584C274F8EFC7BE8ABC
+ rm 1A918038E8E127BB5C87A202DF173B97A05B4996
  
 . Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
 
@@ -527,7 +528,9 @@ The installation script, environment file, and YAML files can be verified using 
 
 The PEM file can be verified by confirming its fingerprint to be the following:
 
- E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
+// E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
+
+ 1A918038E8E127BB5C87A202DF173B97A05B4996
 
 More specifically,
 
