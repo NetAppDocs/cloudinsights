@@ -46,6 +46,8 @@ After AU install, the SecurityAdmin tool is found on the acquisition unit system
 
 Start the SecurityAdmin tool in interactive mode (-i).
 
+NOTE: It is strongly recommended to use the SecurityAdmin tool in interactive mode, to avoid passing secrets on the command line, which can be captured in logs. 
+
 The following options are displayed:
 
 image:SecurityAdminMenuChoices.png[Options for SecurityAdmin Tool (Linux)]
@@ -63,6 +65,8 @@ Creates a backup zip file of the vault containing all passwords and keys and pla
 Restores the zip backup of the vault that was created. Once restored, all passwords and keys are reverted to values existing at the time of the backup creation.
 +
 Restore can be used to synchronize passwords and keys on multiple servers, for example using these steps: 1) Change encryption keys on the AU. 2) Create a backup of the vault. 3) Restore the vault backup to each of the AUs.
+
+It is strongly recommended that vault backups be kept secure, as they include sensitive information.
 
 . *Register / Update External Key Retrieval Script*
 +
