@@ -94,11 +94,21 @@ To set the variable(s), perform the following steps on your system *before* inst
 
 . Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
 +
+.. If the proxy being setup does not have Authentication (username/password), run the following command: 
++
  export https_proxy=<proxy_server>:<proxy_port>
++
+.. If the proxy being setup does have Authentication (username/password), run this command:
++
+ export http_proxy= <proxy_username>:<proxy_password>@<proxy_server>:<proxy_port>
 
+// export https_proxy=<proxy_server>:<proxy_port>
+
+////
 . Create _/etc/default/telegraf_, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
 +
  https_proxy=<proxy_server>:<proxy_port>
+////
 
 For the proxy used for your Kubernetes cluster to communicate with your Cloud Insights environment, install the NetApp Kubernetes Monitoring Operator after reading all of these instructions.
 
