@@ -144,15 +144,9 @@ To fix this, edit the /var/symapi/config/daemon_users file and make sure the cis
 
 Example:
 
- \14:11:25 # tail /var/symapi/config/daemon_users
- \###
- \###     Refer to the storrdfd(3) man page for additional details.
- \###
- \###     As noted above, only authorized users can perform stordaemon control
- \###     operations (e.g., shutdown).
- \################################################################################
- \# smith         storrdfd
- \cisys storapid <all>
+ 14:11:25 # tail /var/symapi/config/daemon_users
+ ...
+ cisys storapid <all>
 
 |===
 
