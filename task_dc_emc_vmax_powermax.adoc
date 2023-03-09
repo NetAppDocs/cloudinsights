@@ -143,15 +143,16 @@ This error may also occur if the _cisys_ user (which executes Solutions Enabler 
 To fix this, edit the /var/symapi/config/daemon_users file and make sure the cisys user has <all> permission specified for the storapid daemon.
 
 Example:
-14:11:25 # tail /var/symapi/config/daemon_users
-###
-###     Refer to the storrdfd(3) man page for additional details.
-###
-###     As noted above, only authorized users can perform stordaemon control
-###     operations (e.g., shutdown).
-################################################################################
-# smith         storrdfd
-cisys storapid <all>
+
+ 14:11:25 # tail /var/symapi/config/daemon_users
+ ###
+ ###     Refer to the storrdfd(3) man page for additional details.
+ ###
+ ###     As noted above, only authorized users can perform stordaemon control
+ ###     operations (e.g., shutdown).
+ ################################################################################
+ # smith         storrdfd
+ cisys storapid <all>
 
 |===
 
