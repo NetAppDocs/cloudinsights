@@ -121,3 +121,26 @@ Exit the SecurityAdmin tool.
 Chose the option you want to configure and follow the prompts.
 
 
+== Specifying a user to run the tool
+
+If you are in a controlled, security-conscious environment, you may not have the _cisys_ group but may still want specific users to run the SecurityAdmin tool.
+
+You can achieve this by manually installing the AU software and specifying the user/group for whom you want access.
+
+* Using the API, download the CI Installer to the AU system and unzip it.
+
+** You will need a one-time authorization token. See the API Swagger documentation (_Admin > API Access_ and select the _API Documentation_ link) and find the _GET /au/oneTimeToken_ API section. Copy the resulting token.
+** Once you have the token, use the _GET /au/installers/{platform}/{version}_ API to download the installer file.
+
+* Copy the downloaded installer file to the AU system and unzip it.
+
+* Navigate to the folder containing the files, and run the installer as root:
+
+ ./cloudinsights-install.sh <username> <Group Name> 
+
+If the specified user and/or group do not exist, they will be created. The user will have access to the SecurityAdmin tool.
+
+
+
+
+
