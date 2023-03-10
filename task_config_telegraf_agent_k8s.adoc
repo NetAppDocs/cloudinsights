@@ -197,6 +197,7 @@ Log in to the docker repository:
 Pull the operator docker image from Cloud Insights. Make sure the _netapp-monitoring_ version number is current:
 
  docker pull docker.<cluster>.cloudinsights.netapp.com/netapp-monitoring:<version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/distroless-root-user:<version>
  
 Find the _netapp-monitoring_ <version> field using the following command:
  
