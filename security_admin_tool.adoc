@@ -129,8 +129,8 @@ You can achieve this by manually installing the AU software and specifying the u
 
 * Using the API, download the CI Installer to the AU system and unzip it.
 
-** You will need a one-time authorization token. See the API Swagger documentation (_Admin > API Access_ and select the _API Documentation_ link) and find the _GET /au/oneTimeToken_ API section. Copy the resulting token.
-** Once you have the token, use the _GET /au/installers/{platform}/{version}_ API to download the installer file.
+** You will need a one-time authorization token. See the API Swagger documentation (_Admin > API Access_ and select the _API Documentation_ link) and find the _GET /au/oneTimeToken_ API section.
+** Once you have the token, use the _GET /au/installers/{platform}/{version}_ API to download the installer file. You will need to provide platform (Linux or Windows) as well as installer version.
 
 * Copy the downloaded installer file to the AU system and unzip it.
 
