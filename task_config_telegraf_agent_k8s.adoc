@@ -751,7 +751,7 @@ kubectl get all -n <namespace> \| grep -i psp (should show that nothing is found
 |These errors may be seen if you have a custom or private docker repository and have not yet configured the NetApp Kubernetes Monitoring Operator to properly recognize it.  <<using-a-custom-or-private-docker-repository,Read more>> about configuring for custom/private repo.
 
 |I am having an issue with my monitoring-operator deployment, and the current documentation does not help me resolve it.
-a|capture or otherwise note the output from the following commands, and contact the Technical Support team.
+a|Capture or otherwise note the output from the following commands, and contact the Technical Support team.
 
 ----
  kubectl -n netapp-monitoring get all
