@@ -147,21 +147,24 @@ An example script run is shown below:
 
 |===
 
-|Question: If I run this script on an SVM that is already configured for Workload Security, does it just use the existing fpolicy config on the SVM or does it setup a temporary one and run the process? 
-|Answer: The Event Rate Checker can run fine even for an SVM already configured for Workload Security. There should be no impact.
+|Question|Answer
 
-|Question: Can I increase the number of SVMs on which the script can be run?
-|Answer: Yes. Simply edit the script and change the max number of SVMs from 5 to any desirable number.
+|If I run this script on an SVM that is already configured for Workload Security, does it just use the existing fpolicy config on the SVM or does it setup a temporary one and run the process? 
+|The Event Rate Checker can run fine even for an SVM already configured for Workload Security. There should be no impact.
 
-|Question: If I increase the number of SVMs, will it increase the time of running of the script?
-|Answer: No. The script will run for a max of 5 minutes, even if the number of SVMs is increased.
+|Can I increase the number of SVMs on which the script can be run?
+|Yes. Simply edit the script and change the max number of SVMs from 5 to any desirable number.
 
-|Question: Can I increase the number of SVMs on which the script can be run?
-|Answer: Yes. You need to edit the script and change the max number of SVMs from 5 to any desirable number.
+|If I increase the number of SVMs, will it increase the time of running of the script?
+|No. The script will run for a max of 5 minutes, even if the number of SVMs is increased.
 
-|Question: If I increase the number of SVMs, will it increase the time of running of the script?
-|Answer: No. The script will run for a max of 5mins, even if the number of SVMs are increased.
+|Can I increase the number of SVMs on which the script can be run?
+|Yes. You need to edit the script and change the max number of SVMs from 5 to any desirable number.
 
+|If I increase the number of SVMs, will it increase the time of running of the script?
+|No. The script will run for a max of 5mins, even if the number of SVMs are increased.
 
+|What happens if I run the Event Rate Checker with an existing agent?
+|Running the Event Rate Checker against an already-existing agent may cause an increase in latency on the SVM. This increase will be temporary in nature while the Event rate Checker is running.
 
 |===
