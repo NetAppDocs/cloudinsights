@@ -46,7 +46,7 @@ After AU install, the SecurityAdmin tool is found on the acquisition unit system
 
 Start the SecurityAdmin tool in interactive mode (-i).
 
-NOTE: It is strongly recommended to use the SecurityAdmin tool in interactive mode, to avoid passing secrets on the command line, which can be captured in logs. 
+NOTE: It is recommended to use the SecurityAdmin tool in interactive mode, to avoid passing secrets on the command line, which can be captured in logs. 
 
 The following options are displayed:
 
@@ -60,7 +60,7 @@ Creates a backup zip file of the vault containing all passwords and keys and pla
  Windows - C:\Program Files\SANscreen\backup\vault
  Linux - /var/log/netapp/oci/backup/vault
 +
-It is strongly recommended that vault backups be kept secure, as they include sensitive information.
+It is recommended that vault backups be kept secure, as they include sensitive information.
 
 . *Restore*
 +
