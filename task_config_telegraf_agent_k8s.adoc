@@ -211,7 +211,7 @@ Find the _netapp-monitoring_ <version> field using the following command:
  
  kubectl -n netapp-monitoring describe deployment monitoring-operator | grep -i "image:" |grep netapp-monitoring
 
-Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies.
+Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies. Ensure that the directory paths to these images in your repository are consistent with that in docker.<cluster>.cloudinsights.netapp.com.
 
 Download all open source dependencies to your private docker registry. The following open source images need to be downloaded. See the <<before-installing-the-netapp-kubernetes-monitoring-operator,Pre-requisites>> section above for the most current versions of these components:
 
