@@ -114,10 +114,14 @@ Choose how you want to alert when a log alert is triggered. You can set the moni
 image:Monitor_log_alert_behavior.png[define the log behavior to monitor]
 ////
 
+==== Define the alert Behavior
+
+You can create the monitor to alert with a severity level of _Critical_, _Warning_, or _Informational_, when the conditions you defined above occur once (i.e.  immediately), or wait to alert until the conditions occur 2 times or more.
+
 
 ==== Define the alert resolution behavior
 
-You can choose how an log monitor alert is resolved. You are presented with three choices:
+You can choose how a log monitor alert is resolved. You are presented with three choices:
 
 * *Resolve instantly*: The alert is immediately resolved with no further action needed
 * *Resolve based on time*: The alert is resolved after the specified time has passed
