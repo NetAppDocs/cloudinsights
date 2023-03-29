@@ -64,7 +64,7 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 * The NetApp Kubernetes Monitoring Operator and its dependencies (telegraf, kube-state-metrics, fluentbit, etc.) are not supported on nodes that are running with Arm64 architecture.
 
-* The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
+* The following commands must be available: curl, sudo, openssl, sha256sum, and kubectl. For best results, add these commands to the PATH.  Note that kubectl needs to be configured with access to the following kubernetes objects, at a minimum: _agents, clusterroles, clusterrolebindings, customresourcedefinitions, deployments, namespaces, roles, rolebindings, secrets, serviceaccounts,_ and _services_.  See link:nkmo_clusterrole_yaml.html[here] for an example .yaml file with these minimum privileges.
 
 * The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment. If this host requires a proxy to reach Cloud Insights, follow the instructions in the <<configuring-proxy-support,Configuring Proxy Support>> section.
 
