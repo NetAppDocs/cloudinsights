@@ -18,7 +18,7 @@ summary: An Example YAML file for NKMO Clusterrole
 [.lead]
 The _kubectl_ component of the NetApp Kubernetes Monitoring Operator (NKMO) needs to be configured with access to the following kubernetes objects, at a minimum: agents, clusterroles, clusterrolebindings, customresourcedefinitions, deployments, namespaces, roles, rolebindings, secrets, serviceaccounts, and services.  Below is an example clusterrole with these minimum privileges. 
 
-====
+----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -87,5 +87,4 @@ rules:
   - patch
   - update
   - delete
-
-====
+----
