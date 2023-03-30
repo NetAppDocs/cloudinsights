@@ -18,29 +18,20 @@ summary: Configuring Rubrik CDM data collector.
 
 
 [.lead] 
-
-Cloud Insights uses the Rubrik CDM data collector to gather inventory and performance data.  
-
-NOTE: This is considered a _Preview_ collector and this information is tehrfore subject to change.
-
-This page is coming soon.
+Cloud Insights uses the Rubrik data collector to acquire inventory and performance data from Rubrik storage appliances.
 
 
-////
 == Terminology
 
-Cloud Insights acquires inventory information with the Oracle ZFS data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the Rubrik data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Vendor/Model Term | Cloud Insights Term
-|Disk (SSD)|Disk
-|Cluster|Storage
-|Controller|Storage Node
-|LUN|Volume
-|LUN Map|Volume Map
-|Initiator,Target|Volume Mask
-|Share|Internal Volume
+|Cluster|Storage, Storage Pool
+|Node|Storage Node
+|Disk|Disk
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data source.
@@ -50,41 +41,31 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-* Host names for the ZFS Controller-1 and the ZFS Controller-2 
-* Administrator user name and password
-* Port requirement: 215 HTTP/HTTPS
+The following are required to configure this data collector:
 
-== Required Performance metrics
+* The Cloud Insights Acquisition Unit will initiate connections to TCP port 443 to Rubrik cluster. One collector per cluster.
+* Rubrik cluster IP address.
+* User name and password to the cluster.
+* Port requirement: HTTPS 443
 
-Oracle ZFS appliances give storage administators large amounts of flexibility to capture performance statistics. Cloud Insights expects you to have _each_ controller in a high availability pair configured to capture the following metrics: 
 
-* smb2.ops[share] 
-* nfs3.ops[share]
-* nfs4.ops[share]
-* nfs4-1.ops[share]
-
-Failure to have the controller capture any or all of these will likely result in Cloud Insights not having, or underreporting, the workload on the "Internal Volumes".
- 
 == Configuration
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field | Description
-|ZFS Controller-1 Hostname|Host name for storage controller 1 
-|ZFS Controller-2 Hostname|Host name for storage controller 2 
-|User name|User name for the storage system administrator user account
-|Password|Password for the administrator user account
+
+|IP|IP address of the Rubrik cluster
+|User name|User name for the cluster
+|Password|Password for the cluster
 |===
 
 == Advanced configuration 
 
 [cols=2*, options="header", cols"50,50"]
 |===
-|Field | Description
-|Connection Type |HTTPS or HTTP, also displays the default port
-|Override Connection Port |If blank, use the default port in the Connection Type field, otherwise enter the connection port to use
-|Inventory poll interval|The default is 60 seconds
-|Performance Poll Interval (sec)|The default is 300. 
+|Inventory poll interval (min)|The default is 60
+|Performance Poll Interval (sec)|The default is 300
 |===
 
            
@@ -96,20 +77,10 @@ Some things to try if you encounter problems with this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
-|"Invalid login credentials" 
-|validate Zfs user account and password 
-|"Configuration error" with error message “REST Service is disabled”
-|Verify REST service is enabled on this device.
-|"Configuration error " with error message “User unauthorized for command”
-|Likely due to certain roles (for example, 'advanced_analytics') are not included for the configured user <userName>.
-Possible Solution:
-* Correct the Analytics (statistic) scope for the user ${user} with the read only role:
-- From the Configuration -> Users screen, put your mouse over the role and double click to allow editing
--	Select "Analytics" from the Scope drop down menu. A list of the possible properties appears.
--	Click the top most check box and it will select all three properties.
--	Click the Add button on the right side.
--	Click the Apply button at the top right of the pop-up window. The pop-up window will close.
+|I received a message that more than one storage is created.
+|Check that the cluster is configured correctly, and the collector is pointing to a single cluster.
+|I received a warning that disk API returned more data
+|Check with support to get additional data.
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
-////
