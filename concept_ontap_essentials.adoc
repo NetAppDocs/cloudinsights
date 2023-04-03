@@ -58,7 +58,23 @@ Select any of the encryption or anti-ransomware counts to dive into your environ
 image:OE_SecurityDashboard.png[ONTAP Essentials Security Dashboard]
 
 
-The ONTAP Essentials Security dashboard monitors your environment to determine cluster compliance status. Refer to these link:https://docs.netapp.com/us-en/active-iq-unified-manager/health-checker/reference_cluster_compliance_categories.html[Cluster Compliance Categories] to learn more.
+The ONTAP Essentials Security dashboard monitors your environment to determine cluster compliance status. Refer to these link:https://docs.netapp.com/us-en/active-iq-unified-manager/health-checker/reference_cluster_compliance_categories.html[Cluster Compliance Categories] to learn more.  ONTAP Essentials uses the following monitors to determine compliance:
+
+|Monitor Name	|Attribute Name (Displayed in Cluster Details)	|Attribute Compliant Value
+|FIPS Mode Disabled	|FIPS mode	|Enabled
+|Cluster Insecure ciphers for SSH	|Secure SSH Settings	|Yes
+|Telnet Protocol Enabled	|Telnet	|Disabled
+|Remote Shell Enabled	|Remote Shell	|Disabled
+|Default Local Admin User Enabled|Default Admin User	|Disabled
+|MD5 Hashed password	|MD5 in use	|No
+|Cluster Peer Communication Not Encrypted	|Cluster Peering	|Encrypted/ No Peer
+|AutoSupport HTTPS Transport Disabled	|AutoSupport using HTTPS	|Yes
+|No NTP Servers are Configured	|Network Time Protocol	|Configured
+|NTP Server Count is Low	|Network Time Protocol	|Configured
+|Cluster Login Banner Disabled	|Login Banner	|Enabled
+|Log Forwarding Not Encrypted	|Log Forwarding Encrypted	|Yes
+
+Note that if a monitor above is disabled, the cluster details will show the value as ‘Not checked’ for the corresponding security compliance attribute.
 
 image:OE_Cluster_Compliance_Example.png[Cluster Compliance Status]
 
