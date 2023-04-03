@@ -60,7 +60,9 @@ image:OE_SecurityDashboard.png[ONTAP Essentials Security Dashboard]
 
 The ONTAP Essentials Security dashboard monitors your environment to determine cluster compliance status. Refer to these link:https://docs.netapp.com/us-en/active-iq-unified-manager/health-checker/reference_cluster_compliance_categories.html[Cluster Compliance Categories] to learn more.  ONTAP Essentials uses the following monitors to determine compliance:
 
+|===
 |Monitor Name	|Attribute Name (Displayed in Cluster Details)	|Attribute Compliant Value
+
 |FIPS Mode Disabled	|FIPS mode	|Enabled
 |Cluster Insecure ciphers for SSH	|Secure SSH Settings	|Yes
 |Telnet Protocol Enabled	|Telnet	|Disabled
@@ -73,6 +75,8 @@ The ONTAP Essentials Security dashboard monitors your environment to determine c
 |NTP Server Count is Low	|Network Time Protocol	|Configured
 |Cluster Login Banner Disabled	|Login Banner	|Enabled
 |Log Forwarding Not Encrypted	|Log Forwarding Encrypted	|Yes
+|===
+
 
 Note that if a monitor above is disabled, the cluster details will show the value as ‘Not checked’ for the corresponding security compliance attribute.
 
