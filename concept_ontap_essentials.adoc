@@ -51,14 +51,27 @@ image:OE_DataProtection.png[SnapMirror Relationships list page]
 
 == Security
 
-The Security Dashboard gives you an instant view of your current security situation, showing charts for hardware and software volume encryption, anti-ransomware status, and cluster authentication methods. Select any of the encryption or anti-ransomware counts to dive into your environment.
+The Security Dashboard gives you an instant view of your current security situation, showing charts for hardware and software volume encryption, anti-ransomware status, and cluster authentication methods. Security criteria is evaluated based on recommendations defined in the link:https://www.netapp.com/pdf.html?item=/media/10674-tr4569.pdf[*NetApp Security Hardening Guide for ONTAP 9*].
+
+Select any of the encryption or anti-ransomware counts to dive into your environment.
 
 image:OE_SecurityDashboard.png[ONTAP Essentials Security Dashboard]
 
+
+The ONTAP Essentials Security dashboard monitors your environment to determine cluster compliance status. Refer to these link:https://docs.netapp.com/us-en/active-iq-unified-manager/health-checker/reference_cluster_compliance_categories.html[Cluster Compliance Categories] to learn more.
+
+For SVMs, the Security dashboard looks at the three parameters below
+
 The Security Dashboard also displays a list of the clusters in your environment. Select the _View Details_ link for a cluster to open a "slideout" panel showing you the current settings for the cluster. Select from Cluster, Storage VM, or Anti-Ransomware Settings.
+
 
 image:OE_Cluster_Slideout.png[Cluster Detail Slideout Panel]
 
+
+
+image:OE_Storage_Slideout.png[Storage tab]
+
+image:OE_Anti-Ransomware_Slideout.png[Anti-Ransomware tab]
 
 
 
