@@ -82,7 +82,16 @@ Note that if a monitor above is disabled, the cluster details will show the valu
 
 image:OE_Cluster_Compliance_Example.png[Cluster Compliance Status]
 
-For SVMs, the Security dashboard also looks at the three link:https://docs.netapp.com/us-en/active-iq-unified-manager/health-checker/reference_svm_compliance_categories.html[parameters] below to determine security status.
+For SVMs, the Security dashboard looks at the following monitors:
+
+|===
+|Monitor Name	|Attribute Name (Displayed in Storage VM Settings)	|Attribute Compliant Value
+|Storage VM Insecure ciphers for SSH	|Secure SSH Settings	|Yes
+|Storage VM Login banner disabled	|Login Banner	|Enabled
+|Storage VM Audit Log Disabled	|Audit Log	|Enabled
+|===
+
+The following link:https://docs.netapp.com/us-en/active-iq-unified-manager/health-checker/reference_svm_compliance_categories.html[parameters] also factor in determining SVM security status:
 
 image:OE_SVM_Parameters.png[SVM Parameters for compliance]
 
