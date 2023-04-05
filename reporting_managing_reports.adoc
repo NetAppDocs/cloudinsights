@@ -50,23 +50,32 @@ Use this process to copy a report to the clipboard.
 +
 image:Reporting_Edit_Report.png[Editing a Report]
 +
-. In the upper-right of the screen, open the "three dots" menu.
+. In the upper-right of the screen, open the "three dots" menu next to "Properties".
 . Select *Copy Report to Clipboard*.
 +
 image:Reporting_Copy_To_Clipboard.png[Copying a report to the clipboard]
 
 
-== Opening reports (xml) from the clipboard
+== Opening reports from the clipboard
 You can open a report specification that was previously copied to the clipboard.
 
 About this task
-You enter the Reporting user interface by creating a new report or opening an existing report
+Start by creating a new report or opening an existing report that you wish to replace with the copied report. The steps below are for a new report.
 
-. In the toolbar, click *[+]*
-. Click *Report* 
-. Click the *Pages* icon image:PageIcon.png[Page Icon]. The Report icon image:ReportIcon.png[Report Icon] is displayed
-. Left click the Report icon. Report options are displayed.
-. Click *Open report from clipboard*.
+. Select *Menu > +New > Report* and create a blank report.
+. In the upper-right of the screen, open the "three dots" menu next to "Properties".
+. Select *Open Report from Clipboard*.
+
+image:Reporting_Open_From_Clipboard.png[Opening a report from the clipboard]
+
+. Paste the copied code into the window and select *OK*.
+. Select the disk icon to save the report.
+. Choose where to save the report (_My Content_, _Team Content_, or create a new folder). 
+. Give the new report a meaningful name and select *Save*.
+
+
+
+
 
 == Troubleshooting
 
