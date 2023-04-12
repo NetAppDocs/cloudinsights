@@ -367,7 +367,7 @@ If the monitoring namespace is being used solely for Telegraf:
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 +
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
-////
+
 
 . <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the current Operator. Be sure to use the same cluster name noted in step 1 above.
 
@@ -576,6 +576,7 @@ You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance
 
  kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
 
+NOTE: Operator tuning is not available in Cloud Insights Federal Edition
 
 ////
 
