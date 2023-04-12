@@ -1,0 +1,93 @@
+---
+sidebar: sidebar
+permalink: task_dc_emc_unisphere_rest.html
+keywords: data collector, Unisphere, EMC 
+summary: Configuring Dell EMC Unisphere REST data collector.
+---
+
+= Configuring the Dell EMC Unisphere REST data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+[.lead] 
+
+This data collector acquires inventory and performance data from Dell EMC Unisphere for PowerMax / Vmax 3 management systems.
+
+Please note that Dell/EMC did not introduce per volume statistics until Unisphere 10.0 - this data collector support 9.2.0+, but will not be able to collect volume statistics as they do not exist.
+
+One Unisphere for Vmax/PowerMax instance may be managing one or more Symmetrix 3 or higher storage arrays - this collector will default to attempting to discovering all of them.
+
+For configuration, the data collector requires an IP address/FQDN of the Unisphere server, TCP connectivity to port 8443, and a username and password.
+
+////
+== Terminology
+
+Cloud Insights acquires the following inventory information from the Unisphere data collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Cluster|Storage
+|Port controller|Storage Node
+|Masking View|Volume Map, Volume Mask
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector.
+////
+
+
+== Requirements
+
+* An IP address/Fully Qualified Domain Name of the Unisphere server
+* Username and password
+* Port 8443. 
+
+
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|IP address of Unisphere server|IP address or fully-qualified domain name of the Unisphere server
+|Unisphere Port|The default is 8443
+|User Name|User name for Unisphere server
+|Password|Password used for Unisphere server
+|===
+
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min)|The default is 40 minutes.
+|Performance Poll Interval (sec)|Interval between performance polls. 
+|Choose 'Exclude' or 'Include' to Specify a List|Specify Whether to Include or Exclude VMs
+|Inventory Filter Device List |List of VMs to filter (comma separated, or semicolon separated if comma is used in the value) for Filtering 
+|Unisphere Performance Poll Interval (sec)|The default is 300 seconds
+|===
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+=== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|Error: User authentication failed.
+|Make sure your credentials for this device are correct.
+|===
+
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+

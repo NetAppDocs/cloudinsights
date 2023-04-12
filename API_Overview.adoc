@@ -114,7 +114,7 @@ The Cloud Insights API is category-based, and currently contains the following t
 
 Additional types and/or APIs may become available over time. You can find the latest API information in the link:#api-documentation-swagger[API Swagger documentation]. 
 
-Note that the API types to which a user has access depend also on the link:concept_user_roles.html[User Role] they have in each Cloud Insights feature set (Monitoring, Cloud Secure, Reporting).
+Note that the API types to which a user has access depend also on the link:concept_user_roles.html[User Role] they have in each Cloud Insights feature set (Monitoring, Workload Security, Reporting).
 
 ////
 == API Commands
@@ -441,8 +441,8 @@ API access tokens have an expiration date. When an API access token expires, use
 
 Note that these commands are using the default namespace "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
+Note: If you have the latest NetApp Kubernetes Monitoring Operator installed and using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.  There is no need to perform the manual steps listed below.
 
-Note: If you have the latest NetApp Kubernetes Monitoring Operator installed and using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens. There is no need to perform the manual steps for Kubernetes API token renewal listed here.
 
 
 * Edit the the NetApp Kubernetes Monitoring Operator.

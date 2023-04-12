@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: task_config_user_dir_connect_ldap.html
-keywords: collector, configure, LDAP, Active Directory 
-summary: Configuring Cloud Secure LDAP User Directory Collector 
+keywords: collector, configure, LDAP, Active Directory, cloud secure
+summary: Configuring Workload Security LDAP User Directory Collector 
 ---
 
 = Configuring an LDAP Directory Server Collector 
@@ -17,7 +17,7 @@ summary: Configuring Cloud Secure LDAP User Directory Collector
 
 [.lead]
 
-You configure Cloud Secure to collect user attributes from LDAP Directory servers.     
+You configure Workload Security to collect user attributes from LDAP Directory servers.     
 
 .Before you begin
 
@@ -27,7 +27,7 @@ You configure Cloud Secure to collect user attributes from LDAP Directory server
 
 .Steps to Configure a User Directory Collector
 
-. In the Cloud Secure menu, click: 
+. In the Workload Security menu, click: 
 *Admin > Data Collectors > User Directory Collectors > + User Directory Collector* and select *LDAP Directory Server*
 +
 The system displays the Add User Directory screen.
@@ -128,7 +128,7 @@ Click Include Optional Attributes to add any of the following attributes:
 
 You can validate LDAP User Permissions and Attribute Definitions using the following procedures:
 
-* Use the following command to validate Cloud Secure LDAP user permission:
+* Use the following command to validate Workload Security LDAP user permission:
 +
  ldapsearch -D "uid=john ,cn=users,cn=accounts,dc=dorp,dc=company,dc=com" -W -x -LLL -o ldif-wrap=no -b "cn=accounts,dc=dorp,dc=company,dc=com" -H ldap://vmwipaapp08.dorp.company.com
 
@@ -155,7 +155,7 @@ The following table describes known problems and resolutions that can occur duri
 |Adding an LDAP Directory connector results in the ‘Error’ state. Error says, “Failed to get the object corresponding to DN=DC=hq,DC=domainname,DC=com provided as forest name.”
 |Incorrect Search Base provided. Edit and provide the correct forest name.
 
-|The optional attributes of domain user are not appearing in the Cloud Secure User Profile page.
+|The optional attributes of domain user are not appearing in the Workload Security User Profile page.
 |This is likely due to a mismatch between the names of optional attributes added in CloudSecure and the actual attribute names in Active Directory. Fields are case sensitive. Edit and provide the correct optional attribute name(s). 
 
 |Data collector in error state with "Failed to retrieve LDAP users. Reason for failure: Cannot connect on the server, the connection is null"
@@ -208,7 +208,7 @@ Incorrect value for Port provided. Try using the default port values or the corr
 6. Then Edit the CloudSecure User Directory collector. In optional attribute section, replace ‘telephonenumber’ with ‘phonenumber’.
 7. Save the Active Directory collector, the collector will restart and get the telephone number of the user and display the same in the user profile page.
 
-|If encryption certificate (SSL) is enabled on the Active Directory (AD) Server, the Cloud Secure User Directory Collector can not connect to the AD Server.
+|If encryption certificate (SSL) is enabled on the Active Directory (AD) Server, the Workload Security User Directory Collector can not connect to the AD Server.
 |Disable AD Server encryption before Configuring a User Directory Collector.
 Once the user detail is fetched it will be there for 13 months.
 If the AD server gets disconnected after fetching the user details, the newly added users in AD won’t get fetched. To fetch again the user directory collector needs to be connected to AD.

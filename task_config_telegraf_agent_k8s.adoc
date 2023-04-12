@@ -27,17 +27,20 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 == Before installing the NetApp Kubernetes Monitoring Operator
 
 .Pre-requisites:
-
-* Please note the following component versions. These are the current versions included with the NetApp Kubernetes Monitoring Operator:
 [[nkmoversion]]
-** Telegraf: 1.24.0
+
+* Please note the following component versions. These are the current _required_ versions included with the NetApp Kubernetes Monitoring Operator. You will particularly need to note these versions if you are <<using-a-custom-or-private-docker-repository,using a custom or private docker repository>>:
+
+
+** Telegraf: 1.25.0
 ** kube-rbac-proxy: v0.13.0
 ** kube-state-metrics: v2.6.0
 ** fluent-bit: 1.9.8
-** kubernetes-event-exporter: 0.10
+** kubernetes-event-exporter: v0.10
+
 
 * NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater. 
-* When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings for NFS and iSCSI; other runtimes only show iSCSI. 
+* When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings and metrics for NFS and iSCSI; other runtimes only show NFS. 
 * Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must <<upgrading, upgrade>> to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
 
 * If you are running on OpenShift 4.6 or higher, you must follow the *OpenShift Instructions* below in addition to ensuring these pre-requisites are met.
@@ -57,6 +60,7 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 * The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
 * The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment. If this host requires a proxy to reach Cloud Insights, follow the instructions in the <<configuring-proxy-support,Configuring Proxy Support>> section.
+
 
 * The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances. 
 
@@ -92,11 +96,21 @@ To set the variable(s), perform the following steps on your system *before* inst
 
 . Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
 +
+.. If the proxy being setup does not have Authentication (username/password), run the following command: 
++
  export https_proxy=<proxy_server>:<proxy_port>
++
+.. If the proxy being setup does have Authentication (username/password), run this command:
++
+ export http_proxy= <proxy_username>:<proxy_password>@<proxy_server>:<proxy_port>
 
+// export https_proxy=<proxy_server>:<proxy_port>
+
+////
 . Create _/etc/default/telegraf_, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
 +
  https_proxy=<proxy_server>:<proxy_port>
+////
 
 For the proxy used for your Kubernetes cluster to communicate with your Cloud Insights environment, install the NetApp Kubernetes Monitoring Operator after reading all of these instructions.
 
@@ -185,33 +199,37 @@ Log in to the docker repository:
 Pull the operator docker image from Cloud Insights. Make sure the _netapp-monitoring_ version number is current:
 
  docker pull docker.<cluster>.cloudinsights.netapp.com/netapp-monitoring:<version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/distroless-root-user:<version>
  
 Find the _netapp-monitoring_ <version> field using the following command:
  
- kubectl -n netapp-monitoring get deployment monitoring-operator | grep "image:"
+ kubectl -n netapp-monitoring describe deployment monitoring-operator | grep -i "image:" |grep netapp-monitoring
 
 Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies.
 
-Download all open source dependencies to your private docker registry. The following open source images need to be downloaded:
+Download all open source dependencies to your private docker registry. The following open source images need to be downloaded. See the <<before-installing-the-netapp-kubernetes-monitoring-operator,Pre-requisites>> section above for the most current versions of these components:
 
- docker.io/telegraf: 1.22.3
- gcr.io/kubebuilder/kube-rbac-proxy: v0.11.0
- k8s.gcr.io/kube-state-metrics/kube-state-metrics: v2.4.2
+ docker pull docker.<cluster>.cloudinsights.netapp.com/telegraf:<telegraf version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kube-rbac-proxy:<kube-rbac-proxy version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kube-state-metrics:<kube-state-metrics version>
  
 If fluent-bit is enabled, also download:
 
- docker.io/fluent-bit:1.9.3
- docker.io/kubernetes-event-exporter:0.10
+ docker pull docker.<cluster>.cloudinsights.netapp.com/fluent-bit:<fluent-bit version>
+ docker pull docker.<cluster>.cloudinsights.netapp.com/kubernetes-event-exporter:<kubernetes-event-exporter version>
 
-Edit the agent CR to reflect the new docker repo location, disable auto upgrade (if enabled).
+Edit the monitoring-operator deployment, and modify all image references to use the new docker repo location:
+
+ image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<kube-rbac-proxy version>
+ image: <docker repo of the enterprise/corp docker repo>/netapp-monitoring:<version>
+
+Edit the agent CR to reflect the new docker repo location.
 
  kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
- 
- enableAutoUpgrade: false
 
  docker-repo: <docker repo of the enterprise/corp docker repo>
- dockerRepoSecret: <optional: name of the docker secret of enterprise/corp docker repo, this secret should be already created on the k8s cluster in the same namespace>
- 
+ dockerRepoSecret: <optional: name of the docker secret of enterprise/corp docker repo, this secret should be already created on the k8s cluster in the same namespace> 
+
 In the _spec:_ section, make the following changes:
  
  spec:
@@ -324,9 +342,11 @@ To upgrade the telegraf agent, do the following:
 
  kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
  
+////
 . Back up the existing configurations:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
+////
 
 . Save the K8s cluster name for use during installation of the K8s operator-based monitoring solution to ensure data continuity.
 +
@@ -362,11 +382,11 @@ For Operator-based installation upgrades, run the following commands:
 
  kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
 
-
+////
 * Back up the existing configurations:
 
  kubectl --namespace netapp-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
-
+////
 
 <<to-remove-the-netapp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
 
@@ -425,7 +445,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
 
 
-=== To remove NetApp Kubernetes Monitoring Operator
+=== To remove the NetApp Kubernetes Monitoring Operator
 
 Note that the default namespace for the NetApp Kubernetes Monitoring Operator is "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
@@ -527,7 +547,9 @@ The installation script, environment file, and YAML files can be verified using 
 
 The PEM file can be verified by confirming its fingerprint to be the following:
 
- E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
+// E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
+
+ 1A918038E8E127BB5C87A202DF173B97A05B4996
 
 More specifically,
 
@@ -549,9 +571,15 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 
 == Tuning the Operator
 
-You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
 
-NOTE: NetApp Kubernetes Monitoring Operator fine-tuning is not available in Cloud Insights Federal Edition.
+You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources. For instructions and lists of the variables you can tune, see the README file included with the installation package. After you have installed the operator, use the following command to view the README:
+
+ kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
+
+
+////
+
+You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
 
 To modify these values, edit the agent CR with the following command (substituting <namespace> for your namespace): 
 
@@ -567,6 +595,7 @@ The CR specification follows the format:
      value: <desired-value>  
      ... 
 ----
+
 
 Items marked "yes" for "Included in default CR" will already be present in the agent CR and can be found under their respective plugin. Items marked "no" must be added manually following the examples provided by the included default substitutions.
 
@@ -621,6 +650,8 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 |===
 
 
+////
+
 
 
 
@@ -630,7 +661,7 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 
 Some things to try if you encounter problems setting up the NetApp Kubernetes Monitoring Operator:
 
-[cols=2*, options="header", cols"50,50"]
+[cols="stretch", options="header"]
 |===
 |Problem:|Try this:
 
@@ -723,6 +754,18 @@ kubectl get all -n <namespace> \| grep -i psp (should show that nothing is found
 
 |"ImagePullBackoff" errors seen
 |These errors may be seen if you have a custom or private docker repository and have not yet configured the NetApp Kubernetes Monitoring Operator to properly recognize it.  <<using-a-custom-or-private-docker-repository,Read more>> about configuring for custom/private repo.
+
+|I am having an issue with my monitoring-operator deployment, and the current documentation does not help me resolve it.
+a|Capture or otherwise note the output from the following commands, and contact the Technical Support team.
+
+
+----
+ kubectl -n netapp-monitoring get all
+ kubectl -n netapp-monitoring describe all
+ kubectl -n netapp-monitoring logs <monitoring-operator-pod> --all-containers=true
+ kubectl -n netapp-monitoring logs <telegraf-pod> --all-containers=true
+----
+
 
 |===
 

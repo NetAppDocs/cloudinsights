@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: concept_cs_api.html
 keywords: api, access, token, swagger  
-summary: Cloud Secure includes a powerful API for integration with other applications such as CMDBs.
+summary: Workload Security includes a powerful API for integration with other applications such as CMDBs.
 ---
 
-= Cloud Secure API
+= Workload Security API
 
 :hardbreaks:
 :nofooter:
@@ -14,23 +14,21 @@ summary: Cloud Secure includes a powerful API for integration with other applica
 :imagesdir: ./media/
 
 [.lead]
-The Cloud Secure API enables NetApp customers and independent software vendors (ISVs) to integrate Cloud Secure with other applications, such as CMDB’s or other ticketing systems.
-
-NOTE: Cloud Secure is not available in Cloud Insights Federal Edition.
+The Workload Security API enables NetApp customers and independent software vendors (ISVs) to integrate Workload Security with other applications, such as CMDB’s or other ticketing systems.
 
 
 Requirements for API Access:
 
 *	An API Access Token model is used to grant access.
-*	API Token management is performed by Cloud Secure users with the Administrator role.
+*	API Token management is performed by Workload Security users with the Administrator role.
 
 
 == API Documentation (Swagger)
-The latest API information is found by logging in to Cloud Secure and navigating to *Admin > API Access*. Click the *API Documentation* link.
+The latest API information is found by logging in to Workload Security and navigating to *Admin > API Access*. Click the *API Documentation* link.
 The API Documentation is Swagger-based, which provides a brief description and usage information for the API and allows you to try it out in your environment.
 
 == API Access Tokens
-Before using the Cloud Secure API, you must create one or more *API Access Tokens*. Access tokens grant read permissions. You can also set the expiration for each access token. 
+Before using the Workload Security API, you must create one or more *API Access Tokens*. Access tokens grant read permissions. You can also set the expiration for each access token. 
 
 To create an Access Token:
 

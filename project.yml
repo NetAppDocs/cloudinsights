@@ -1,6 +1,7 @@
 ---
 settings:
   name: Cloud Insights
+  harmony_integration: maestro
   rss_page: concept_whats_new.html
   internal:
     pdf_enabled: true
@@ -52,8 +53,6 @@ sidebar:
           url: /concept_import_from_dashboard_gallery.html
         - title: User Accounts and Roles
           url: /concept_user_roles.html
-        - title: Switching to Other Cloud Central Products
-          url: /concept_other_cloud_products.html
           
     - title: Data Collector List
       url: /data_collector_list.html
@@ -238,19 +237,19 @@ sidebar:
 #    - title: ONTAP Essentials
 #      url: /concept_ontap_essentials.html
    
-    - title: Cloud Secure 
+    - title: Storage Workload Security 
       entries:
-        - title: About Cloud Secure
+        - title: About Workload Security
           url: /cs_intro.html
         - title: Getting Started
           entries: 
-            - title: Getting Started With Cloud Secure
+            - title: Getting Started With Workload Security
               url: /task_cs_getting_started.html
-            - title: Cloud Secure Agent Requirements
+            - title: Workload Security Agent Requirements
               url: /concept_cs_agent_requirements.html
-            - title: Configuring a Cloud Secure Agent
+            - title: Configuring a Workload Security Agent
               url: /task_cs_add_agent.html
-            - title: Deleting a Cloud Secure Agent
+            - title: Deleting a Workload Security Agent
               url: /task_cs_delete_agent.html 
             - title: Configuring an AD Directory Collector 
               url: /task_config_user_dir_connect.html
@@ -264,11 +263,11 @@ sidebar:
               url: /task_add_collector_svm.html
             - title: Configuring the Cloud ONTAP Data Collector
               url: /task_config_cs_incloud.html
-            - title: Cloud Secure User Management
+            - title: Workload Security User Management
               url: /task_cs_user_management.html
-            - title: Event Rate Checker
+            - title: Event Rate Checker (Agent Sizing Guide)
               url: /concept_cs_event_rate_checker.html
-  #      - title: Viewing Cloud Secure Forensic Data 
+  #      - title: Viewing Workload Security Forensic Data 
   #        entries: 
         - title: Alerts 
           url: /cs_alert_data.html  
@@ -290,7 +289,7 @@ sidebar:
           url: /concept_cs_attack_simulator.html
         - title: Notifications
           url: /cs_notifications_email.html
-        - title: Cloud Secure API
+        - title: Workload Security API
           url: /concept_cs_api.html
   
   
@@ -356,6 +355,8 @@ sidebar:
                   url: /task_dc_emc_ecs.html
                 - title: PowerScale
                   url: /task_dc_emc_isilon.html
+                - title: Isilon / PowerScale REST
+                  url: /task_dc_emc_isilon_rest.html 
                 - title: PowerStore
                   url: /task_dc_emc_powerstore.html
                 - title: RecoverPoint

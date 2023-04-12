@@ -1,11 +1,12 @@
 ---
 sidebar: sidebar
 permalink: concept_cs_event_rate_checker.html
-summary: This script  can be run to check the event rate in the SVM before installing an ONTAP SVM DSC
-keywords: event, checker, rate, sizing
+summary: This script can be run to check the event rate in the SVM before installing an ONTAP SVM DSC
+keywords: event, checker, rate, sizing, cloud secure
 ---
 
-= SVM Event Rate Checker
+
+= SVM Event Rate Checker (Agent Sizing Guide)
 
 :toc: macro
 :hardbreaks:
@@ -16,7 +17,10 @@ keywords: event, checker, rate, sizing
 :imagesdir: ./media/
 
 [.lead]
-The Event Rate Checker is used to check the NFS/SMB combined event rate in the SVM before installing an ONTAP SVM data collector, to see how many SVMs one Agent machine will be able to monitor. An Agent can support up to 50 data collectors.
+
+The Event Rate Checker is used to check the NFS/SMB combined event rate in the SVM before installing an ONTAP SVM data collector, to see how many SVMs one Agent machine will be able to monitor. Use the Event Rate Checker as a sizing guide to help plan your security environment.
+
+An Agent can support up to 50 data collectors.
 
 == Requirements:
 
@@ -53,7 +57,7 @@ Steps:
 
 //This will show the rate of generation of Events for a SVM.
 
-9.	Each Ontap SVM Data Collector can be associated with a single SVM, which means each data collector will be able to receive the number of events which a single SVM generates.
+Each Ontap SVM Data Collector can be associated with a single SVM, which means each data collector will be able to receive the number of events which a single SVM generates.
 
 Keep the following in mind:
 
@@ -143,21 +147,24 @@ An example script run is shown below:
 
 |===
 
-|Question: If I run this script on an SVM that is already configured for Cloud Secure, does it just use the existing fpolicy config on the SVM or does it setup a temporary one and run the process? 
-|Answer: The Event Rate Checker can run fine even for an SVM already configured for Cloud Secure. There should be no impact.
+|Question|Answer
 
-|Question: Can I increase the number of SVMs on which the script can be run?
-|Answer: Yes. Simply edit the script and change the max number of SVMs from 5 to any desirable number.
+|If I run this script on an SVM that is already configured for Workload Security, does it just use the existing fpolicy config on the SVM or does it setup a temporary one and run the process? 
+|The Event Rate Checker can run fine even for an SVM already configured for Workload Security. There should be no impact.
 
-|Question: If I increase the number of SVMs, will it increase the time of running of the script?
-|Answer: No. The script will run for a max of 5 minutes, even if the number of SVMs is increased.
+|Can I increase the number of SVMs on which the script can be run?
+|Yes. Simply edit the script and change the max number of SVMs from 5 to any desirable number.
 
-|Question: Can I increase the number of SVMs on which the script can be run?
-|Answer: Yes. You need to edit the script and change the max number of SVMs from 5 to any desirable number.
+|If I increase the number of SVMs, will it increase the time of running of the script?
+|No. The script will run for a max of 5 minutes, even if the number of SVMs is increased.
 
-|Question: If I increase the number of SVMs, will it increase the time of running of the script?
-|Answer: No. The script will run for a max of 5mins, even if the number of SVMs are increased.
+|Can I increase the number of SVMs on which the script can be run?
+|Yes. You need to edit the script and change the max number of SVMs from 5 to any desirable number.
 
+|If I increase the number of SVMs, will it increase the time of running of the script?
+|No. The script will run for a max of 5mins, even if the number of SVMs are increased.
 
+|What happens if I run the Event Rate Checker with an existing agent?
+|Running the Event Rate Checker against an already-existing agent may cause an increase in latency on the SVM. This increase will be temporary in nature while the Event rate Checker is running.
 
 |===
