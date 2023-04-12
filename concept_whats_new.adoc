@@ -75,6 +75,8 @@ ONTAP Essentials filtering and sorting can now be performed on _storageResources
 Setting recipients for Subscription Notifications (Admin > Notifications) now also controls who will see subscription-related in-product banner notifications. 
 
 
+'''
+
 
 == March 2023
 
@@ -83,6 +85,10 @@ Setting recipients for Subscription Notifications (Admin > Notifications) now al
 The Cloud Connection for ONTAP 9.9+ data collector is being deprecated.  Starting April 4, 2023, Cloud Connection data collectors in your environment will no longer collect data, and will instead present an error when polling. The Cloud Connection data collector will be removed altogether from Cloud Insights in a subsequent update.
 
 Prior to April 4, 2023, it is mandatory to configure a new NetApp ONTAP Data Management Software data collector for any ONTAP systems currently collected by Cloud Connection. link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/How_to_transition_from_NetApp_Cloud_Connection_to_AU_based_data_collector[Learn More].
+
+
+'''
+
 
 
 == January 2023
@@ -98,6 +104,10 @@ Note that some of these monitors will be _enabled_ by default; you must _pause_ 
 Ensuring accessibility to your data is essential, so we've made .CSV export image:csv_export_icon[.csv export icon] available for all metric queries, dashboard table widgets, and object landing pages, regardless of the type of data (asset or integration) you're querying. 
 
 Data customizations like column selection, renaming columns, and unit conversions are also now included in the new export functionality.
+
+
+'''
+
 
 
 == December 2022
