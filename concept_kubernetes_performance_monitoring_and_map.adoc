@@ -30,10 +30,15 @@ image:Workload Map Example_withSlideout.png[Workload Map example showing "Slideo
 
 == Pre-Requisites
 
-Before you can use the Kubernetes Network Performance and Map, you must have configured the link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] to enable this option. During deployment of the Operator, select the "Kubernetes Network Performance and Map" checkbox to enable.
+Before you can use the Kubernetes Network Performance and Map, you must have configured the link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] to enable this option. During deployment of the Operator, select the "Network Performance and Map" checkbox to enable. You can also enable this option by navigating to a Kubernetes landing page and selecting "Modify Deployment".
 
 image:ServiceMap_NKMO_Deployment_Options.png[selecting the Map option during NKMO stup]
 
 == The Map
+
+The Map shows workloads and their relationships to each other. Arrows show directions of traffic. Hovering over a workload displays summary information for that workload, as you can see in this simple example:
+
+image:ServiceMap_Simple_Example.png[Example of a Workload Map workload]
+
 
 
