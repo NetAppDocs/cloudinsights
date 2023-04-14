@@ -51,16 +51,17 @@ image:OE_SecurityDashboard.png[ONTAP Essentials Security Dashboard]
 
 === Reclaim ONTAP Cold Storage
 
-The _Reclaim ONTAP Cold Storage_ Insight provides data about cold capacity, potential cost/power savings, and recommended action items for volumes on ONTAP systems. WWith this Insight, you can answer such questions as:
+The _Reclaim ONTAP Cold Storage_ Insight provides data about cold capacity, potential cost/power savings, and recommended action items for volumes on ONTAP systems. 
+
+image:Cold_Data_Example_1.png[Cold Data Insight example recommednations]
+
+With this Insight, you can answer such questions as:
 
 * What amount of cold data on a storage cluster are sitting on (a) high-cost SSD disks, (b) HDD disks, and (c) virtual disks?
 * What workloads are the highest contributors in regards of the non-optimized storage?
 * What is the duration (in days) the data has been cold on a given workload?
 
 _Reclaim ONTAP Cold Storage_ is considered a link:concept_preview_features.html[_Preview_] feature and is therefore subject to change.
-
-image:Cold_Data_Example_1.png[Cold Data Insight example recommednations]
-
 
 
 
