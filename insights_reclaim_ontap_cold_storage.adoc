@@ -34,7 +34,7 @@ On the Insight page, expand the *Recommendations* to explore the following optio
 
 * Move unused workloads (zombies) to a lower cost storage tier (HDD) 
 +
-Utilizing the zombie flag, cold storage and number of days, find the coldest and largest amount of data and move the workload to a lower cost storage tier (such as a storage pool using hard disk storage)
+Utilizing the zombie flag, cold storage and number of days, find the coldest and largest amount of data and move the workload to a lower cost storage tier (such as a storage pool using hard disk storage). A workload is considered a "zombie" when is has not received any significant IO requests for seven days or more.
 
 * Delete unused workloads
 +
@@ -45,6 +45,8 @@ Verify which workloads are not in use and consider archiving them or remove them
 NetApp's Fabric Pool Solution automatically tiers cold data to low cost cloud storage, thus increasing the effiecency of your performance tier as well as providing remote data protection. 
 
 
+The graph and table provide additional trending information as well as allow you to drill into the individual workloads.
 
+image:Cold_Data_Workload_Graph_and_Table.png[Cold_Data_Workload_Graph_and_Table]
 
 
