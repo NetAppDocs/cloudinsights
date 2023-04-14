@@ -47,12 +47,21 @@ The link:concept_ontap_essentials.html#security[Security Dashboard] gives you an
 image:OE_SecurityDashboard.png[ONTAP Essentials Security Dashboard]
 
 
+
+
 === Reclaim ONTAP Cold Storage
 
-The _Reclaim ONTAP Cold Storage_ Insight provides data about cold capacity, potential cost/power savings and recommended action items for volumnes on ONTAP systems.
+The _Reclaim ONTAP Cold Storage_ Insight provides data about cold capacity, potential cost/power savings, and recommended action items for volumes on ONTAP systems. WWith this Insight, you can answer such questions as:
+
+* What amount of cold data on a storage cluster are sitting on (a) high-cost SSD disks, (b) HDD disks, and (c) virtual disks?
+* What workloads are the highest contributors in regards of the non-optimized storage?
+* What is the duration (in days) the data has been cold on a given workload?
+
 _Reclaim ONTAP Cold Storage_ is considered a link:concept_preview_features.html[_Preview_] feature and is therefore subject to change.
 
 image:Cold_Data_Example_1.png[Cold Data Insight example recommednations]
+
+
 
 
 === Subscription Notification also controls banner messages
@@ -60,6 +69,7 @@ image:Cold_Data_Example_1.png[Cold Data Insight example recommednations]
 Setting recipients for Subscription Notifications (Admin > Notifications) now also controls who will see subscription-related in-product banner notifications. 
 
 image:Subscription_Expiring_Banner.png[Subscription Expiring in 2 Days banner example]
+
 
 
 
