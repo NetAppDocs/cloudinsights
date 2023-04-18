@@ -87,6 +87,12 @@ image:Reporting_Menu.png[New Reporting Menu look]
 API Metering has moved from the Subscription page to the *Admin > API Access* page.
 
 
+=== Monitors Paused by Default
+
+For new Cloud Insights environments, be aware that all link:task_system_monitors.html[system-defined monitors] are in _Paused_ state by default. You will want to enable any monitors that you want alerting you. Simply select _Resume_ for each monitor.
+Monitors for existing Cloud Insights environments are not affected by this change; paused monitors remain paused, enabled monitors remain enabled.
+
+
 '''
 
 
