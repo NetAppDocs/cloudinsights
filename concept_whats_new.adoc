@@ -73,7 +73,6 @@ image:Subscription_Expiring_Banner.png[Subscription Expiring in 2 Days banner ex
 
 
 
-
 === Reporting has a new look 
 
 You will notice that Cloud Insights Reporting screens have a new look, and that some of the menu navigation have changed. These screens and navigation changes have been updated in the current link:reporting_overview.html[Reporting Documentation]. 
@@ -82,15 +81,16 @@ image:Reporting_Menu.png[New Reporting Menu look]
 
 
 
+=== Monitors Paused by Default
+
+For new Cloud Insights environments, be aware that link:task_system_monitors.html[system-defined monitors] do not send alert notifications by default. You will need to enable notifications for any monitor that you want alerting you, by adding one or more delivery methods for the monitor.
+For existing Cloud Insights environments, the default _global_ notification recipient list has been removed for any system-defined monitors currently in _Paused_ state. User-defined notifications remain unchanged, as do notification settings for currently active system-defined monitors.
+
+
+
 === Looking for the API Metering tab?
 
 API Metering has moved from the Subscription page to the *Admin > API Access* page.
-
-
-=== Monitors Paused by Default
-
-For new Cloud Insights environments, be aware that all link:task_system_monitors.html[system-defined monitors] are in _Paused_ state by default. You will want to enable any monitors that you want alerting you. Simply select _Resume_ for each monitor.
-Monitors for existing Cloud Insights environments are not affected by this change; paused monitors remain paused, enabled monitors remain enabled.
 
 
 '''
