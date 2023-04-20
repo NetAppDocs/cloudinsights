@@ -70,7 +70,7 @@ Workload labels are necessary if you want the Map to identify the types of workl
 ** Derived from the workload label of the pod
 ** Expected label on the workload: app.kubernetes.io/component
 ** Label name reference: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
-** Recommendations to set as values here:
+** Recommended labels:
 *** frontend
 *** backend
 *** database
@@ -78,7 +78,7 @@ Workload labels are necessary if you want the Map to identify the types of workl
 *** queue
 *** kafka
 
-* If the source external to k8s cluster
+* If the source external to k8s cluster:
 ** Try and parse the DNS resolved name and extract the service type
 +
 example: s3.eu-north-1.amazonaws.com
