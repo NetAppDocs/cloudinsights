@@ -40,7 +40,7 @@ The Map shows services (also called workloads) and their relationships to each o
 
 image:ServiceMap_Simple_Example.png[Example of a Workload Map workload]
 
-Icons within the circles represent different service types. Note that icons are only visible with circles if you have labeled the underlying objects <<workload-labels, see below>>.
+Icons within the circles represent different service types. Note that icons are only visible with circles if the underlying object have <<workload-labels, labels>>.
 
 image:ServiceMap_Icons.png[Service Icons Explained]
 
@@ -50,14 +50,17 @@ Numbers inside the circles are the number of external connections currently bein
 
 image:ServiceMap_Node_and_Connection_Legend.png[legend showing relative circle (node) and connection sizes]
 
+
+////
 == Details
 
 Hovering over a circle displays a summary of information for that service. 
 
 image:Workload_Map_Summary.png[Workload Hover Summary]
+////
 
 
-== Alerts
+== Workload Details and Alerts
 
 Circles displayed in color indicate a warning- or critical-level alert for the workload.  Hover over the circle for a summary of the issue, or click on the circle to open a slideout panel with more detail.
 
