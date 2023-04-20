@@ -34,6 +34,10 @@ Before you can use the Kubernetes Network Performance and Map, you must have con
 
 image:ServiceMap_NKMO_Deployment_Options.png[selecting the Map option during NKMO stup]
 
+== Monitors
+
+The Workload Map uses Cloud Insights link:task_create_monitor.html[monitors] 
+
 == The Map
 
 The Map shows services (also called workloads) and their relationships to each other. Arrows show directions of traffic. Hovering over a workload displays summary information for that workload, as you can see in this example:
@@ -65,6 +69,13 @@ image:Workload_Map_Summary.png[Workload Hover Summary]
 Circles displayed in color indicate a warning- or critical-level alert for the workload.  Hover over the circle for a summary of the issue, or click on the circle to open a slideout panel with more detail.
 
 image:Workload_Map_Slideout_with_Alert.png[Workload Slideout Details With Alerts]
+
+
+== Filtering
+
+As with other Cloud Insights features, you can easily set filters to focus on the specific objects or workload attributes you want.  
+
+image:Workload_Map_Filtering.png[Workload Map filtering]
 
 
 
