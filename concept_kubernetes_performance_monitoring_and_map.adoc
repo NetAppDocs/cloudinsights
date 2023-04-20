@@ -60,6 +60,35 @@ Circles displayed in color indicate a warning- or critical-level alert for the w
 
 Hovering over a circle displays a summary of information for that service. 
 
+== Labeling Workloads
+
+Workload labels are necessary if you want the Map to identify the types of workloads displayed (i.e. the circle icons).  Labels are derived as follows:
+
+* Name of the service/application running in generic terms (if available)
+
+* If the source is a pod:
+** Derived from the workload label of the pod
+** Expected label on the workload: app.kubernetes.io/component
+** Label name reference: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
+** Recommendations to set as values here:
+*** frontend
+*** backend
+*** database
+*** cache
+*** queue
+*** kafka
+
+* If the source external to k8s cluster
+** Try and parse the DNS resolved name and extract the service type
++
+example: s3.eu-north-1.amazonaws.com
++
+resolved name parsed to get s3 
+
+
+
+
+
 
 
 
