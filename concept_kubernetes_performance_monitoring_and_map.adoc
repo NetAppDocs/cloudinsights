@@ -36,7 +36,8 @@ image:ServiceMap_NKMO_Deployment_Options.png[selecting the Map option during NKM
 
 == Monitors
 
-The Workload Map uses Cloud Insights link:task_create_monitor.html[monitors] 
+The Workload Map uses link:task_create_monitor.html[monitors] to derive information. Cloud Insights provides a number of default Kubernetes Monitors (note that these may be _Paused_ by default. You can _Resume_ (i.e. enable) the monitors you want), or you can create custom monitors for kubernetes objects, which the Workload Map will also use. 
+
 
 == The Map
 
