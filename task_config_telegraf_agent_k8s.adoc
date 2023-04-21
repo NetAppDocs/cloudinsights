@@ -31,6 +31,7 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 
 * Please note the following component versions. These are the current _required_ versions included with the NetApp Kubernetes Monitoring Operator. You will particularly need to note these versions if you are <<using-a-custom-or-private-docker-repository,using a custom or private docker repository>>:
 
+
 ** Telegraf: 1.25.0
 ** kube-rbac-proxy: v0.13.0
 ** kube-state-metrics: v2.6.0
@@ -59,6 +60,7 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 * The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
 
 * The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment. If this host requires a proxy to reach Cloud Insights, follow the instructions in the <<configuring-proxy-support,Configuring Proxy Support>> section.
+
 
 * The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances. 
 
@@ -365,7 +367,7 @@ If the monitoring namespace is being used solely for Telegraf:
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 +
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
-////
+
 
 . <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the current Operator. Be sure to use the same cluster name noted in step 1 above.
 
@@ -569,10 +571,12 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 
 == Tuning the Operator
 
+
 You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources. For instructions and lists of the variables you can tune, see the README file included with the installation package. After you have installed the operator, use the following command to view the README:
 
  kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
 
+NOTE: Operator tuning is not available in Cloud Insights Federal Edition
 
 ////
 
@@ -592,6 +596,7 @@ The CR specification follows the format:
      value: <desired-value>  
      ... 
 ----
+
 
 Items marked "yes" for "Included in default CR" will already be present in the agent CR and can be found under their respective plugin. Items marked "no" must be added manually following the examples provided by the included default substitutions.
 
@@ -644,6 +649,7 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 
 |CURL_CMD_PLACEHOLDER	|agent	|yes	|The curl command used to download various resources. Ex) "curl" or "curl -k"
 |===
+
 
 ////
 
@@ -752,6 +758,7 @@ kubectl get all -n <namespace> \| grep -i psp (should show that nothing is found
 
 |I am having an issue with my monitoring-operator deployment, and the current documentation does not help me resolve it.
 a|Capture or otherwise note the output from the following commands, and contact the Technical Support team.
+
 
 ----
  kubectl -n netapp-monitoring get all
