@@ -142,5 +142,53 @@ If the specified user and/or group do not exist, they will be created. The user 
 
 
 
+== Updating or Removing Proxy
+
+The SecurityAdmin tool can be used to set or remove proxy information for the Acquisition Unit by running the tool with the _-pr_ parameter. : 
+
+----
+[root@ci-eng-ljian-linau bin]# ./securityadmin -pr
+usage: securityadmin -pr -ap <arg> | -h | -rp | -upr <arg>
+
+The purpose of this tool is to enable reconfiguration of security aspects
+of the Acquisition Unit such as encryption keys, and proxy configuration,
+etc. For more information about this tool, please check the Cloud Insights
+Documentation.
+
+-ap,--add-proxy <arg>       add a proxy server.  Arguments: ip=ip
+                             port=port user=user password=password
+                             domain=domain
+                             (Note: Always use double quote(") or single
+                             quote(') around user and password to escape
+                             any special characters, e.g., <, >, ~, `, ^,
+                             !
+                             For example: user="test" password="t'!<@1"
+                             Note: domain is required if the proxy auth
+                             scheme is NTLM.)
+-h,--help
+-rp,--remove-proxy          remove proxy server
+-upr,--update-proxy <arg>   update a proxy.  Arguments: ip=ip port=port
+                             user=user password=password domain=domain
+                             (Note: Always use double quote(") or single
+                             quote(') around user and password to escape
+                             any special characters, e.g., <, >, ~, `, ^,
+                             !
+                             For example: user="test" password="t'!<@1"
+                             Note: domain is required if the proxy auth
+                             scheme is NTLM.)
+----
+
+For example, to remove the proxy, just run this command:
+
+ [root@ci-eng-ljian-linau bin]# ./securityadmin -pr -rp
+ proxy command line arg is -rp
+ Please restart Acquisition Unit
+
+To update a proxy, the command is  
+
+ ./securityadmin -pr -upr <arg> 
+ 
+
+
 
 
