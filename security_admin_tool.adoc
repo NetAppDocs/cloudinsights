@@ -144,10 +144,10 @@ If the specified user and/or group do not exist, they will be created. The user 
 
 == Updating or Removing Proxy
 
-The SecurityAdmin tool can be used to set or remove proxy information for the Acquisition Unit by running the tool with the _-pr_ parameter. : 
+The SecurityAdmin tool can be used to set or remove proxy information for the Acquisition Unit by running the tool with the _-pr_ parameter: 
 
 ----
-[root@ci-eng-ljian-linau bin]# ./securityadmin -pr
+[root@ci-eng-linau bin]# ./securityadmin -pr
 usage: securityadmin -pr -ap <arg> | -h | -rp | -upr <arg>
 
 The purpose of this tool is to enable reconfiguration of security aspects
@@ -178,9 +178,9 @@ Documentation.
                              scheme is NTLM.)
 ----
 
-For example, to remove the proxy, just run this command:
+For example, to remove the proxy, run this command:
 
- [root@ci-eng-ljian-linau bin]# ./securityadmin -pr -rp
+ [root@ci-eng-linau bin]# ./securityadmin -pr -rp
  proxy command line arg is -rp
  Please restart Acquisition Unit
 
