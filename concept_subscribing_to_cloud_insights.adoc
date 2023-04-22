@@ -25,6 +25,8 @@ Getting started with Cloud Insights is as easy as three simple steps:
 During the registration process, you can choose the global region to host your Cloud Insights environment. 
 For more information, read about Cloud Insights link:security_information_and_region.html[Information and Region].
 
+NOTE: Unless otherwise noted, the information on this page generally applies to Cloud Insights Commercial Editions (Basic, Standard, Premium). The Federal Edition of Cloud Insights may not contain some of the functionality described on this page.
+
 
 == Editions
 
@@ -38,13 +40,42 @@ NOTE: The features, data retention times, and objects or metrics collected in Cl
 
 * *Standard Edition* is available via subscription and offers all the features of Basic Edition plus more.
 
-* *Premium Edition* offers additional benefits such as Business Intelligence and Reporting, as well as Workload Security Auditing and Threat Detection.
+
+* *Federal Edition* provides a FedRAMP-compliant Cloud Insights Edition for U.S. Government departments. Some functionality that is available in the commercial Editions above may not be available in the Federal Edition, or may be available with reduced functionality. Where possible, these differences are noted in the Cloud Insights documentation.
 
 
 === Key Features
 
 Here are the key features available in Basic, Standard, and Premium Edition:
 
+////
+// Table with Federal as a column:
+[cols=".<,.^,.^,.^", role="green"]
+|===
+|Key Feature |Basic Edition |Standard Edition|Premium Edition|Federal Edition
+|Data Retention|7 Days|90 Days|13 Months|13 Months
+|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor|Multi-Vendor|Multi-Vendor
+|Customizable Dashboards|&check;|&check;|&check;|&check;
+|Forum, Documentation, and Training Videos| &check;|&check;|&check;|&check;
+|Live Chat and Technical Support| - |&check;|&check;|Live chat not available
+|VM Metrics| - |&check;|&check;|&check;
+|Cloud Metrics| - |&check;|&check;|&check;
+|Service Metrics| - |&check;|&check;|&check;
+|Monitors and Alerting| &ast; |&check;|&check;|&check;
+|API Access&plus;| &check; | &check; |&check;|&check;
+|Single Sign-On (SSO)| - | - |&check;||&check;
+|Cloud Secure User Data Access Auditing | - | - |&check;| - 
+|Cloud Secure Insider Threat Detection with AI/ML | - | - |&check;| - 
+|Business Intelligence and Reporting&ast;&ast;| - | - |&check;||&check;
+|===
+
+&ast;Limited to 5 active custom monitors at a time
+&plus;API access varies by Edition
+&ast;&ast;Available for environments of 500 managed units and larger
+////
+
+
+// Table with Federal as a footnote:
 [cols=".<,.^,.^,.^", role="green"]
 |===
 |Key Feature |Basic Edition |Standard Edition|Premium Edition
@@ -52,33 +83,28 @@ Here are the key features available in Basic, Standard, and Premium Edition:
 |Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor|Multi-Vendor
 |Customizable Dashboards|&check;|&check;|&check;
 |Forum, Documentation, and Training Videos| &check;|&check;|&check;
-|Live Chat and Technical Support| - |&check;|&check;
+
+|Live Chat^&plus;&plus;^ and Technical Support| - |&check;|&check;
+
 |VM Metrics| - |&check;|&check;
 |Cloud Metrics| - |&check;|&check;
 |Service Metrics| - |&check;|&check;
 |Monitors and Alerting| &ast; |&check;|&check;
-|API Access&plus;| &check; | &check; |&check;
+|API Access^&plus;^| &check; | &check; |&check;
 |Single Sign-On (SSO)| - | - |&check;
 |Workload Security User Data Access Auditing | - | - |&check;
 |Workload Security Insider Threat Detection with AI/ML | - | - |&check;
+
 |Business Intelligence and Reporting&ast;&ast;| - | - |&check;
 |===
 
 &ast;Limited to 5 active custom monitors at a time
 &plus;API access varies by Edition
 &ast;&ast;Available for environments of 500 managed units and larger
+^&plus;&plus;^ Features not available in Cloud Insights Federal Edition
 
 
 
-////
-[cols=".<,.^,.^,.^"]
-|===
-|Service & Support|Basic Edition |Standard Edition|Premium Edition
-|Community Forums|&check; |&check; |&check; 
-|Online Documentation & Knowledgebase|&check; |&check; |&check; 
-|Live Chat & Technical Support|-|&check; |&check; 
-|===
-////
 
 While using Cloud Insights, if you see a padlock icon image:padlock.png[Padlock], it means the feature is not available in your current Edition, or is available in a limited form. Upgrade for full access to the feature.
 
