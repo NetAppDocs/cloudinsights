@@ -1,0 +1,86 @@
+---
+sidebar: sidebar
+permalink: task_dc_rubrik_cdm.html
+keywords: data collector, Rubrik, 
+summary: Configuring Rubrik CDM data collector.
+---
+
+= Rubrik CDM Data Collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+
+
+[.lead] 
+Cloud Insights uses the Rubrik data collector to acquire inventory and performance data from Rubrik storage appliances.
+
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from the Rubrik data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Cluster|Storage, Storage Pool
+|Node|Storage Node
+|Disk|Disk
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data source.
+
+
+
+
+== Requirements
+
+The following are required to configure this data collector:
+
+* The Cloud Insights Acquisition Unit will initiate connections to TCP port 443 to Rubrik cluster. One collector per cluster.
+* Rubrik cluster IP address.
+* User name and password to the cluster.
+* Port requirement: HTTPS 443
+
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+
+|IP|IP address of the Rubrik cluster
+|User name|User name for the cluster
+|Password|Password for the cluster
+|===
+
+== Advanced configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Inventory poll interval (min)|The default is 60
+|Performance Poll Interval (sec)|The default is 300
+|===
+
+           
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+=== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|I received a message that more than one storage is created.
+|Check that the cluster is configured correctly, and the collector is pointing to a single cluster.
+|I received a warning that disk API returned more data
+|Check with support to get additional data.
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].

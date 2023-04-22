@@ -137,6 +137,7 @@ Note that when adding _link:task_add_collector_svm.html#permissions-when-adding-
 |TCP|443|Cluster or SVM Management IP Address (depending on SVM collector configuration)|Outbound|API communication with ONTAP
 |TCP|35000 - 55000|SVM data LIF IP Addresses|Inbound/Outbound|Communication with ONTAP for Fpolicy events
 |TCP|7|SVM data LIF IP Addresses|Bidirectional |Bidirectional between ONTAP and Workload Security. Agent pings the SVM Lifs.
+|SSH | 22 | Cluster management | Bidirectional | Needed for CIFS/SMB user blocking.
 |===
 
 //link:task_cs_add_agent.html[Configure an Agent]
