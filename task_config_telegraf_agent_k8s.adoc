@@ -775,6 +775,26 @@ a|Capture or otherwise note the output from the following commands, and contact 
  kubectl -n netapp-monitoring logs <telegraf-pod> --all-containers=true
 ----
 
+|net-observer (Workload Map) pods in NKMO namespace are in CrashLoopBackOff
+|These pods correspond to Workload Map data collector for Network Observability. Try these:
+•	Check the logs of one of the pods to confirm minimum kernel version. For example:
+
+----
+{"ci-tenant-id":"your-tenant-id","collector-cluster":"your-k8s-cluster-name","environment":"prod","level":"error","msg":"failed in validation. Reason: kernel version 3.10.0 is less than minimum kernel version of 4.18.0","time":"2022-11-09T08:23:08Z"}
+----
+
+•	Net-observer pods requires the Linux kernel version to be at least 4.18.0. Check the kernel version using the command “uname -r” and ensure they are >= 4.18.0
+
+|net-observer pods in NKMO namespace are in CrashLoopBackOff in OpenShift 4 environment
+|This is currently not supported. Watch for support to be added in a future update.
+
+|Pods are running in NKMO namespace (default: netapp-monitoring), but no data is shown in UI for workload map or Kubernetes metrics in Queries
+|Check the time setting on the nodes of the K8S cluster. For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
+
+|Some of the net-observer pods in NKMO namespace are in Pending state
+|Net-observer is a DaemonSet and runs a pod in each Node of the k8s cluster.
+•	Note the pod which is in Pending state, and check if it is experiencing a resource issue for CPU or memory. Ensure the required memory and CPU is available in the node.
+
 
 |===
 
