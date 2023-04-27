@@ -17,10 +17,9 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 [.lead]
 Cloud Insights includes a number of system-defined monitors for both metrics and logs. The system monitors available are dependent on the data collectors present in your environment. Because of that, the monitors available in Cloud Insights may change as data collectors are added or their configurations changed.
 
-NOTE: Most System Monitors are in _Paused_ state by default. Before resuming the monitor, you must ensure that _Advanced Counter Data Collection_ and _Enable ONTAP EMS log collection_ are enabled in the Data Collector. These options can be found in the ONTAP Data Collector under _Advanced Configuration_: 
+NOTE: Many System Monitors are in _Paused_ state by default. You can enable a system monitor by selecting the _Resume_ option for the monitor. Ensure that _Advanced Counter Data Collection_ and _Enable ONTAP EMS log collection_ are enabled in the Data Collector. These options can be found in the ONTAP Data Collector under _Advanced Configuration_: 
 image:Enable_Log_Monitor_Collection.png[Enabling Advanced Counter and EMS Log collection for ONTAP]
 
-//NOTE: Since System-Defined monitors are a Preview feature, they are subject to change.
 
 [#top]
 
