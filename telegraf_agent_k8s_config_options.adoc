@@ -21,11 +21,11 @@ summary: The NetApp Kubernetes Monitoring Operator has a number of configurable 
 
 |Component|Option|Description
 
-|agent||Configuration options that is common to all components that the operator can install. This can be considered as "global" options
-|dockerRepo|A dockerRepo override to pull images from customers private docker repos as compared to Cloud Insights docker repo. Default is cloud insights docker repo
-|dockerImagePullSecret|Optional: A secret for the customers private repo
-|clusterName|Free text field that uniquely identifies a cluster across all customers clusters. This should be unique across a cloud insights tenant. Default is what the customer enters in the UI for the "Cluster Name" field
-|proxy
+|agent||Configuration options that are common to all components that the operator can install. These can be considered as "global" options.
+||dockerRepo|A dockerRepo override to pull images from customers private docker repos as compared to Cloud Insights docker repo. Default is cloud insights docker repo
+||dockerImagePullSecret|Optional: A secret for the customers private repo
+||clusterName|Free text field that uniquely identifies a cluster across all customers clusters. This should be unique across a cloud insights tenant. Default is what the customer enters in the UI for the "Cluster Name" field
+||proxy
 Format:
 proxy:
   server:
@@ -38,7 +38,7 @@ proxy:
   isFluentbitProxyEnabled:
   isCollectorProxyEnabled:
 |Optional for customer to set proxy. This is usually customers corporate proxy. 
-|agentUUID|A uniquely identified string across all cloud insights operator installations. This is usually automatically set by cloud insights.
+||agentUUID|A uniquely identified string across all cloud insights operator installations. This is usually automatically set by cloud insights.
 telegraf||Configuration options that can customize the telegraf installation of the Operator
 |collectionInterval|Metrics collection interval, in seconds
 |dsCpuLimit|CPU Limit for telegraf ds
