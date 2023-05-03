@@ -386,6 +386,31 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 === Upgrading to the latest NetApp Kubernetes Monitoring Operator
 
+Determine whether an *AgentConfiguration* exists with the existing Operator (if your namespace is not the default _netapp-monitoring_, substitute the appropriate namespace):
+
+ kubectl -n netapp-monitoring get agentconfiguration netapp-monitoring-configuration
+ 
+If an AgentConfiguration exists:
+
+<<installing-the-netapp-kubernetes-monitoring-operator,Install>> the latest Operator over the existing Operator.
+
+Ensure you are <<using-a-custom-or-private-docker-repository,pulling the latest container images>> if you are using a custom repository.
+
+If the AgentConfiguration does not exist:
+
+Make note of your cluster name as recognized by Cloud Insights (if your namespace is not the default netapp-monitoring, substitute the appropriate namespace):
+kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
+Create a backup of the existing Operator (if your namespace is not the default netapp-monitoring, substitute the appropriate namespace):
+  
+kubectl -n netapp-monitoring get agent -o yaml > agent_backup.yaml
+Uninstall the existing Operator.
+Install the latest Operator.
+Use the same cluster name.
+After downloading the latest Operator YAML files, port any customizations found in agent_backup.yaml to the downloaded operator-config.yaml before deploying.
+Ensure you are pulling the latest container images if you are using a custom repository.
+
+
+\\\\
 For Operator-based installation upgrades, run the following commands:
 
 * Make note of your cluster name as recognized by Cloud Insights. You can view the cluster name by running the following command. If your namespace is not the default (_netapp-monitoring_), substitute the appropriate namespace:
@@ -401,7 +426,7 @@ For Operator-based installation upgrades, run the following commands:
 <<to-remove-the-netapp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
 
 <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the latest Operator. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
-
+\\\\
 
 
 
