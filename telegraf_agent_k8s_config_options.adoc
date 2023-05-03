@@ -55,14 +55,14 @@ proxy:
 ||crioSockPath|an override for crioSockPath path. This is for non standard docker installations on k8s platforms like cloud foundry. 
 ||runPrivileged|Run the telegraf container in privileged mode. Set this to true if SELinux is enabled on your k8s nodes
 
-||batchSize|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configruration documentation]
-||bufferLimit|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configruration documentation]
-||roundInterval|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configruration documentation]
-||collectionJitter|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configruration documentation]
-||precision|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configruration documentation]
-||flushInterval|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configruration documentation]
-||flushJitter|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configruration documentation]
-||outputTimeout|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configruration documentation]
+||batchSize|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
+||bufferLimit|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
+||roundInterval|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
+||collectionJitter|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
+||precision|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
+||flushInterval|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
+||flushJitter|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
+||outputTimeout|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 
 |kube-state-metrics||Configuration options that can customize the kube state metrics installation of the Operator
 ||cpuRequest|CPU request for kube state metrics deployment 
