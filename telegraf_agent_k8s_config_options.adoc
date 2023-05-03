@@ -70,12 +70,14 @@ proxy:
 ||cpuRequest|CPU request for kube state metrics deployment 
 ||memRequest|Mem request for kube state metrics deployment 
 ||resources|a comma separated list of resources to capture.
-example: cronjobs,daemonsets,deployments,ingresses,jobs,namespaces,nodes,persistentvolumeclaims,persistentvolumes,pods,replicasets,resourcequotas,services,statefulsets
+example: cronjobs,daemonsets,deployments,ingresses,jobs,namespaces,nodes,persistentvolumeclaims,
+persistentvolumes,pods,replicasets,resourcequotas,services,statefulsets
 
 ||labels|
 a comma separated list of resources that kube-state-metrics should capture
 +++
-example: cronjobs=[*],daemonsets=[*],deployments=[*],ingresses=[*],jobs=[*],namespaces=[*],nodes=[*],persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resourcequotas=[*],services=[*],statefulsets=[*]
+example: cronjobs=[*],daemonsets=[*],deployments=[*],ingresses=[*],jobs=[*],namespaces=[*],nodes=[*],
+persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resourcequotas=[*],services=[*],statefulsets=[*]
 +++
 
 |logs||Configuration options that can customize logs collection and installation of the Operator 
