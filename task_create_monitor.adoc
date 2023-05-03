@@ -98,14 +98,12 @@ image:Monitor_metric_conditions.png[Define the monitor's conditions]
 
 === Log Monitor
 
-When creating a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above.
-
-For example, you might choose to filter for "object.store.unavailable" message type in the logs.netapp.ems source:
+When creating a *Log monitor*, first choose which log to monitor from the available log list. You can then filter based on the available attributes as above. You can also choose one or more "Group By" attributes.
 
 NOTE: The Log Monitor filter cannot be empty. 
 
-image:Monitor_log_monitor_filter.png[choose which log to monitor, and set a filter]
-
+//image:Monitor_log_monitor_filter.png[choose which log to monitor, and set a filter]
+image:Monitor_Group_By_Example.png[Choose log to monitor, set a filter, and select group by method, if desired]
 
 
 ==== Define the alert behavior

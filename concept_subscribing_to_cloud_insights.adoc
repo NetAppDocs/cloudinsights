@@ -38,7 +38,7 @@ NOTE: The features, data retention times, and objects or metrics collected in Cl
 
 * *Standard Edition* is available via subscription and offers all the features of Basic Edition plus more.
 
-* *Premium Edition* offers additional benefits such as Business Intelligence and Reporting, as well as Cloud Secure Auditing and Threat Detection.
+* *Premium Edition* offers additional benefits such as Business Intelligence and Reporting, as well as Workload Security Auditing and Threat Detection.
 
 
 === Key Features
@@ -59,8 +59,8 @@ Here are the key features available in Basic, Standard, and Premium Edition:
 |Monitors and Alerting| &ast; |&check;|&check;
 |API Access&plus;| &check; | &check; |&check;
 |Single Sign-On (SSO)| - | - |&check;
-|Cloud Secure User Data Access Auditing| - | - |&check;
-|Cloud Secure Insider Threat Detection with AI/ML| - | - |&check;
+|Workload Security User Data Access Auditing | - | - |&check;
+|Workload Security Insider Threat Detection with AI/ML | - | - |&check;
 |Business Intelligence and Reporting&ast;&ast;| - | - |&check;
 |===
 
@@ -85,7 +85,7 @@ While using Cloud Insights, if you see a padlock icon image:padlock.png[Padlock]
 
 
 == Trial Version
-When you sign up for Cloud Insights and your environment is active, you enter into a free, 30-day trial of Cloud Insights. During this trial you can explore the features that Cloud Insights has to offer, in your own environment.  All features of CLoud Insights <<editions, Standard Edition>> are available during this trial. 
+When you sign up for Cloud Insights and your environment is active, you enter into a free, 30-day trial of Cloud Insights. During this trial you can explore the features that Cloud Insights has to offer, in your own environment.   
 
 At any time during your trial period, you can subscribe to Cloud Insights. Subscribing to Cloud Insights ensures uninterrupted access to your data as well as extended link:https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[*product support*] options. 
 
@@ -123,10 +123,12 @@ Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calc
 
 Note that the following data collectors are metered at a different Raw TiB to Managed Unit rate. Every 40TiB of unformatted capacity on these data collectors is charged as 1 Managed Unit (MU): 
 
+* AWS S3
 * Dell EMC ECS
 * Hitachi Content Platform
 * IBM Cleversafe
 * NetApp StorageGrid
+
 
 If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for *Volume Pricing* and will be prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
 
@@ -197,7 +199,6 @@ NOTE: The Unformatted Capacity Managed Unit count reflects a sum of the total ra
 NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the summary section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The summary section reflects your actual Managed Unit count for your subscription.
 
 In the event that your usage is nearing or exceeding your subscribed amount, you can delete data collectors in this list by clicking on the "three dots" menu and selecting _Delete_.
-
 
 
 === What Happens if I Exceed My Subscribed Usage?

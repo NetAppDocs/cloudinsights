@@ -1,0 +1,112 @@
+---
+sidebar: sidebar
+permalink: task_dc_emc_isilon_rest.html
+keywords: data collector, isilon, EMC, DELL, PowerScale
+summary: Configuring the Dell EMC Isilon / PowerScale REST data collector.
+---
+
+= Dell EMC Isilon / PowerScale REST data collector
+
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+Cloud Insights uses the Dell EMC Isilon / PowerScale REST data collector to acquire inventory and performance data from Dell EMC Isilon or PowerScale storage. 
+
+== Terminology
+
+Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term|Cloud Insights Term 
+|Drive|Disk
+|Cluster|Storage
+|Node|Storage Node
+|OneFS File System|Internal Volume
+|OneFS File System|Storage Pool
+|Qtree|Qtree
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+== Requirements
+
+You need the following information to configure this data collector:
+
+* A user account and password. This account does NOT need to be admin/root, but you MUST grant a substantial number of read only privileges to your service account - see table below
+* IP address / Fully Qualified Domain Name of the Dell EMC Isilon / PowerScale cluster
+* HTTPS access to port 8080
+
+[cols=3*, options="header", cols"33,33,33"]
+|===
+|Privilege Name|Description|r(read) or rw (read+write)
+|ISI_PRIV_LOGIN_PAPI|Platform API|r
+|ISI_PRIV_SYS_TIME|Time|r
+|ISI_PRIV_AUTH|Auth|r
+|ISI_PRIV_ROLE|Privilege|r
+|ISI_PRIV_DEVICES|Devices|r
+|ISI_PRIV_EVENT|Event|r
+|ISI_PRIV_HDFS|HDFS|r
+|ISI_PRIV_NDMP|NDMP|r
+|ISI_PRIV_NETWORK|Network|r
+|ISI_PRIV_NFS|NFS|r
+|ISI_PRIV_PAPI_CONFIG|Configure Platform API|r
+|ISI_PRIV_QUOTA|Quota|r
+|ISI_PRIV_SMARTPOOLS|SmartPools|r
+|ISI_PRIV_SMB|SMB|r
+|ISI_PRIV_STATISTICS|Statistics|r
+|ISI_PRIV_SWIFT|Swift|r
+|ISI_PRIV_JOB_ENGINE|Job Engine|r
+|===
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description 
+|Isilon IP address|The IP address or fully-qualified domain name of the Isilon storage 
+|User Name|User name for the Isilon
+|Password|Password used for the Isilon
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|HTTPS Port|The default is 8080. 
+|Inventory Poll Interval (min)|	Interval between inventory polls. The default is 20. 
+|Performance Poll Interval (sec)|Interval between performance polls. The default is 300.
+//|SSH Process Wait Timeout|SSH process timeout period. The default is 60.
+
+|===
+
+           
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+=== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|"Invalid login credentials" with error messages “Commands not enabled for role-based administration require root user access”
+|* Verify that the user has permissions to run the following commands on the device:
+  > isi version osrelease
+  > isi status -q
+  > isi status -n
+  > isi devices -d %s
+  > isi license
+* Verify credentials used in the wizard are matching device credentials
+|"Internal Error" with error messages “Command <Your command> run failed with permission: <Your current permission>. Sudo command run permission issue”
+|Verify that the user has sudo permissions to run the following command on the device
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].

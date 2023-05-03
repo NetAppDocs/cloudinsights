@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_configure_acquisition_unit.html
 keywords:  Acquisition Unit, AU, install, configure, Linux, add, remove, uninstall, delete, deleting, move, moving
-summary:
+summary: Acquisition Unit installing, uninstalling, configuring proxy support, and more on Windows and Linux.  
 ---
 
 = Configuring Acquisition Units
@@ -79,13 +79,15 @@ The simplest way to do this is to specify wildcard configuration in your proxy/f
 
 NOTE: The use of an asterisk (*) for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environment.
 
+More information on proxy configuration can be found in the NetApp link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/Where_is_the_proxy_information_saved_to_in_the_Cloud_Insights_Acquisition_Unit[Knowledgbase].
+
 ==== Viewing Proxy URLs
 
 You can view your proxy endpoint URLs by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed.
 
 image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
 
-If you have Cloud Secure in your environment, the configured endpoint URLs will also be displayed in this list.
+If you have Workload Security in your environment, the configured endpoint URLs will also be displayed in this list.
 
 ////
 * Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
@@ -148,13 +150,17 @@ The simplest way to do this is to specify wildcard configuration in your proxy/f
 
 NOTE: The use of an asterisk (*) for wildcard is common, but your proxy/firewall configuration may use a different format. Check with your proxy documentation to ensure correct wildcard specification in your environment.
 
+More information on proxy configuration can be found in the NetApp link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/Where_is_the_proxy_information_saved_to_in_the_Cloud_Insights_Acquisition_Unit[Knowledgbase].
+
+
+
 ==== Viewing Proxy URLs
 
 You can view your proxy endpoint URLs by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed.
 
 image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
 
-If you have Cloud Secure in your environment, the configured endpoint URLs will also be displayed in this list.
+If you have Workload Security in your environment, the configured endpoint URLs will also be displayed in this list.
 
 ////
 * Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
@@ -172,12 +178,20 @@ TIP: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
 
 To uninstall the Acquisition Unit software, do the following:
 
+'''
+
 *Windows:*
+
+If you are uninstalling a *Windows* acquisition unit:
 
 . On the Acquisition Unit server/VM, open Control Panel and choose *Uninstall a Program*. Select the Cloud Insights Acquisition Unit program for removal.
 . Click Uninstall and follow the prompts.
 
+'''
+
 *Linux:*
+
+If you are uninstalling a *Linux* acquisition unit:
 
 . On the Acquisition Unit server/VM, run the following command: 
 
@@ -187,12 +201,18 @@ To uninstall the Acquisition Unit software, do the following:
 
  sudo cloudinsights-uninstall.sh --help
 
-*Both:*
+'''
 
-. After uninstalling the AU software, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
+*Windows and Linux:*
+
+*After* uninstalling the AU:
+
+. In Cloud Insights, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
 . Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
 
 NOTE:You cannot delete the default Acquisition Unit. Select another AU as the default before deleting the old one.
+
+'''
 
 
 == Reinstalling an Acquisition Unit

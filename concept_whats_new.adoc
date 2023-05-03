@@ -5,7 +5,7 @@ summary: New features and functionality available in Cloud Insights.
 keywords: features
 ---
 
-= What's New with Cloud Insights
+= What's New with Cloud Insights 
 
 :toc: macro
 :hardbreaks:
@@ -18,8 +18,87 @@ keywords: features
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.  
 
+== March 2023
 
-////
+=== Cloud Connection for ONTAP 9.9+ deprecated
+
+The Cloud Connection for ONTAP 9.9+ data collector is being deprecated.  Starting April 4, 2023, Cloud Connection data collectors in your environment will no longer collect data, and will instead present an error when polling. The Cloud Connection data collector will be removed altogether from Cloud Insights in a subsequent update.
+
+Prior to April 4, 2023, it is mandatory to configure a new NetApp ONTAP Data Management Software data collector for any ONTAP systems currently collected by Cloud Connection. link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/How_to_transition_from_NetApp_Cloud_Connection_to_AU_based_data_collector[Learn More].
+
+
+== January 2023
+
+=== New Log Monitors
+
+We've added almost two dozen link:task_system_monitors.html[additional system monitors] to alert for broken interconnect links, heartbeat problems, and more. Additionally, three new Data Protection log monitors have been added, to alert on SnapMirror Auto Resync, MetroCluster Mirroring, and FabricPool Mirror Resync changes.
+
+Note that some of these monitors will be _enabled_ by default; you must _pause_ them if you do not wish to alert on them. Also note that these monitors are not configured to deliver notifications; you must configure notification recipients on these monitors if you want to send alerts via email or webhook.
+
+=== .CSV Export for all Dashboard Table Widgets
+
+Ensuring accessibility to your data is essential, so we've made .CSV export image:csv_export_icon[.csv export icon] available for all metric queries, dashboard table widgets, and object landing pages, regardless of the type of data (asset or integration) you're querying. 
+
+Data customizations like column selection, renaming columns, and unit conversions are also now included in the new export functionality.
+
+
+== December 2022
+
+=== Explore Ransomware Protection and other security features during Cloud Insights Trial
+
+Starting today, signing up for a new Trial of Cloud Insights allows you to explore Security features such as Ransomware detection and automated user-blocking response policy. If you haven't signed up for your Trial, do it today!
+
+
+=== Kubernetes Workloads have their own landing page
+
+Workloads are a key part of your Kubernetes environment, so Cloud Insights now provides landing pages for those workloads. From here, you can view, explore, and troubleshoot issues that affect your Kubernetes workloads.
+
+image:Kubernetes_Workload_LP.png[Kubernetes Workload Landing Page Example]
+
+
+=== Check your Checksums
+
+You asked us to provide you with checksum values during installation of the agent for Windows, Linux, and MacOS, and we think that's a great idea. So here they are:
+
+image:Agent_Checksum_Instructions.png[Agent Checksum values shown during installation]
+
+
+=== Log Alerting Improvements
+
+==== Group By
+When creating or editing a Log Monitor, you can now set "Group By" attributes to allow for more focused alerting. Look for the "Group By" attributes below the "filter" settings in your monitor definition.
+
+image:Monitor_Group_By_Example.png[Group By example in monitor definition]
+
+This change brings Metric Monitors and Log Monitors into feature parity by normalizing the “Group By” aspect of Monitor Definitions. This parity will allow customers to clone/duplicate *all* system-defined default Monitors for further customization.
+
+==== Duplicating
+You can now clone (duplicate) the Change Log, Kubernetes Log, and Data Collector Log monitors. This creates a new custom log monitor that you can modify to your specific definitions.
+
+image:Log_Monitor_Duplicate.png[Duplicating a Log Monitor]
+
+
+=== 11 New Default ONTAP Monitors covering SnapMirror for Business Continuity 
+
+
+We've added almost a dozen new link:task_system_monitors.html#snapmirror-for-business-continuity-smbc-mediator-log-monitors[system monitors] for SnapMirror for Business Continuity (SMBC), which alert on changes to SMBC certificates and ONTAP Mediators.
+
+
+
+'''
+
+
+
+== November 2022
+
+=== More than 40 new Security, Data Collection, and CVO monitors!
+
+We've added dozens of new system-defined monitors to alert you to potential issues with Cloud Volumes, Security, and Data Protection. Read more about these monitors link:task_system_monitors.html#security-monitors[here].
+
+
+'''
+
+
 == October 2022
 
 === Better and more accurate Ransomware detection with ONTAP Autonomous Ransomware Protection integration
@@ -34,7 +113,7 @@ Cloud Secure receives ONTAP ARP events on potential volume file encryption activ
 
 
 '''
-////
+
 
 
 == September 2022 

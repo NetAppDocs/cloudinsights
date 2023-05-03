@@ -22,7 +22,10 @@ ONTAP Essentials is a set of dashboards and workflows that provide detailed over
 * Workloads: Objects that provide interface to users to read/write data.
 * Data Protection: Objects that can be protected using NetApp data protection technologies
 
+For additional terms and definitions related to ONTAP, see the link:task_dc_na_cdot.html[ONTAP Data Collector] documentation.
+
 ONTAP Essentials requires at least one working ONTAP data collector with data collected within the last seven days. 
+
 
 == Overview 
 
@@ -30,7 +33,7 @@ To begin exploring, select *ONTAP Essentials* from the main Cloud Insights menu.
 
 image:ONTAP_Essentials_Overview_Sept.png[Overview dashboard for ONTAP Essentials]
 
-The *Overview* dashboard displays useful information like the number of clusters in your environment with their overall capacity and performance percentages. You will also see predictive data regarding the number of expected days until storage capacity or performance capacity runs out of space. And if any controllers in your infrastructure are running at high temperatures, ONTAP Essentials will show you those.
+The *Overview* dashboard displays useful information like the number of clusters in your environment with their overall capacity and performance percentages. You will also see predictive data regarding the number of expected days until storage capacity or performance capacity runs out of space. Additionally, if any controllers in your infrastructure are running with their CPU at more than 65%--potentially putting your cluster at risk in case of failover--ONTAP Essentials shows those as "Hot" controllers.
 
 Informative graphs give you a look into performance over time as well as breakdowns of capacity usage.
 

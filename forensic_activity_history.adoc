@@ -15,7 +15,7 @@ summary: forensic activity history data
 
 [.lead]
 
-The All Activity page helps you understand the actions performed on entities in the Cloud Secure environment. 
+The All Activity page helps you understand the actions performed on entities in the Workload Security environment. 
 
 
 == Examining All Activity Data  
@@ -124,12 +124,9 @@ You can filter Forensic Activity data by the following fields:
 
 * *Username* of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
 
-<<<<<<< HEAD
-* *Noise Reduction* to filter files which are created in the last 2 hours by the user. It is also used to filter temporary files (for example, .tmp files) accessed by the user.
-=======
-* *Noise Reduction* to filter out newly-created files created by the user (i.e. in the last 2 hours). It is also used to filter temporary files (for example, .tmp files) accessed by the user. 
 
->>>>>>> 574e310d1e2d0707d9dba0ce1435f338b16fcaa2
+* *Noise Reduction* to filter files which are created in the last 2 hours by the user. It is also used to filter temporary files (for example, .tmp files) accessed by the user.
+
 
 The following fields are subject to special filtering rules:
 
@@ -163,7 +160,7 @@ image:CloudSecure_ActivitySelection.png[Activity Selector, width=30%]
 
 == Activity History Retention
 
-Activity history is retained for 13 months for active Cloud Secure environments.
+Activity history is retained for 13 months for active Workload Security environments.
 
 
 
