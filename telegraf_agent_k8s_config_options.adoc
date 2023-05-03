@@ -70,9 +70,9 @@ proxy:
 ||resources|a comma separated list of resources to capture.
 example: cronjobs,daemonsets,deployments,ingresses,jobs,namespaces,nodes,persistentvolumeclaims,persistentvolumes,pods,replicasets,resourcequotas,services,statefulsets
 
-||labels
-|+++
+||labels|
 a comma separated list of resources that kube-state-metrics should capture
++++
 example: cronjobs=[*],daemonsets=[*],deployments=[*],ingresses=[*],jobs=[*],namespaces=[*],nodes=[*],persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resourcequotas=[*],services=[*],statefulsets=[*]
 +++
 
