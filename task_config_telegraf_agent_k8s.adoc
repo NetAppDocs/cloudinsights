@@ -427,37 +427,6 @@ kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name
 ** Ensure you are <<using-a-custom-or-private-docker-repository,pulling the latest container images>> if you are using a custom repository.
 
 
-\\\\
-For Operator-based installation upgrades, run the following commands:
-
-* Make note of your cluster name as recognized by Cloud Insights. You can view the cluster name by running the following command. If your namespace is not the default (_netapp-monitoring_), substitute the appropriate namespace:
-
- kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
-
-////
-* Back up the existing configurations:
-
- kubectl --namespace netapp-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
-////
-
-<<to-remove-the-netapp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
-
-<<installing-the-netapp-kubernetes-monitoring-operator, Install>> the latest Operator. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
-\\\\
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  
 == Stopping and Starting the Netapp Kubernetes Monitoring Operator
@@ -470,10 +439,6 @@ To start the Netapp Kubernetes Monitoring Operator:
 
  kubectl -n netapp-monitoring scale deploy monitoring-operator --replicas=1
 
-
-
-
- 
 
 
 
