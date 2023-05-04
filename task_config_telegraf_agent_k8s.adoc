@@ -121,11 +121,11 @@ You can also edit this resource after the operator has been deployed using the f
 
 	kubectl -n netapp-monitoring edit AgentConfiguration
 
-To determine if your deployed version of the operator supports _AgentConfiguration_, run the following command:
+To determine if your deployed version of the operator supports AgentConfiguration, run the following command:
 
 	kubectl get crd agentconfigurations.monitoring.netapp.com
  
-If you see an “Error from server (NotFound)” message, your operator must be upgraded before you can use the _AgentConfiguration_.
+If you see an “Error from server (NotFound)” message, your operator must be upgraded before you can use the AgentConfiguration.
 
 
 
@@ -355,7 +355,7 @@ In the _spec:_ section, make the following changes:
 
 === OpenShift Instructions
 
-If you are running on OpenShift 4.6 or higher, you must edit the _AgentConfiguration_ in _operator-config.yaml_ to enable the _runPrivileged_ setting: 
+If you are running on OpenShift 4.6 or higher, you must edit the AgentConfiguration in _operator-config.yaml_ to enable the _runPrivileged_ setting: 
 
  # Set runPrivileged to true SELinux is enabled on your kubernetes nodes
  runPrivileged: true
@@ -455,7 +455,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 === Upgrading to the latest NetApp Kubernetes Monitoring Operator
 
-Determine whether an *AgentConfiguration* exists with the existing Operator (if your namespace is not the default _netapp-monitoring_, substitute the appropriate namespace):
+Determine whether an AgentConfiguration exists with the existing Operator (if your namespace is not the default _netapp-monitoring_, substitute the appropriate namespace):
 
  kubectl -n netapp-monitoring get agentconfiguration netapp-monitoring-configuration
  
