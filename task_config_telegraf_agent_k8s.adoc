@@ -257,7 +257,7 @@ Network Performance and Map
 
 * ci-net-observer
 
-Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies. Ensure that the image tags and directory paths to these images in your repository are consistent with that in the Cloud Insights repository.
+Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies. Ensure that the image tags and directory paths to these images in your repository are consistent with those in the Cloud Insights repository.
 
 Edit the monitoring-operator deployment in operator-deployment.yaml, and modify all image references to use your private Docker repository.
 
