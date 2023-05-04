@@ -117,7 +117,7 @@ If you are upgrading from a previous installation, also read the <<upgrading,Upg
 
 In newer versions of the operator, most commonly modified settings can be configured in the _AgentConfiguration_ custom resource. You can edit this resource before deploying the operator by editing the _operator-config.yaml_ file. This file includes commented out examples of some settings. See the list of link:telegraf_agent_k8s_config_options.html[available settings] for the most recent version of the operator.
 
-You can also edit this resource after the operator has been deployed using the following command:.
+You can also edit this resource after the operator has been deployed using the following command:
 
 	kubectl -n netapp-monitoring edit AgentConfiguration
 
