@@ -49,7 +49,8 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 * If you are behind a proxy during installation, or when operating the K8s cluster to be monitored, follow the instructions in the Configuring Proxy Support section.
 * The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances.
 For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
-* If you are re-deploying the Operator (i.e. you are updating or replacing it), there is no need to create a _new_ API Key; you can re-use the previous key.
+* If you are re-deploying the Operator (i.e. you are updating or replacing it), there is no need to create a _new_ API token; you can re-use the previous token.
+* Also note that ityou have a recent NetApp Kubernetes Monitoring Operator installed and are using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.
 
 
 
