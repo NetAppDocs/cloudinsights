@@ -24,43 +24,58 @@ NOTE: The Reporting feature is available in Cloud Insights link:concept_subscrib
 
 You can customize the format and delivery method of reports.
 
-. In the Cloud Insights Reporting Portal, mouse over the report you want to customize and click *[...]*.
+. In the Cloud Insights Reporting Portal, Go to *Menu > Content > My Content/Team Content*. Mouse over the report you want to customize and open the "three dots" menu.
 
-image:ReportCustomizationMenu.png[Report Customization Menu]
+//image:ReportCustomizationMenu.png[Report Customization Menu]
+image:Reporting_Output_and_Delivery.png[Report Output and Delivery]
 
 . Click *Properties > Schedule*
 
-image:ReportSchedule.png[Scheduling a Report]
+//image:ReportSchedule.png[Scheduling a Report]
 
 . You can set the following options:
-** Schedule when you want reports to run.
-** Format the report output.
-** Delivery: print, save, or email the report.
-** Languages define the language the report is delivered in.
+** *Schedule* when you want reports to run.
+** Choose *Options* for report format and delivery (Save, Print, Email) and Languages for the report.
 
-. Click *Create* to produce the report using the selections you made.
+. Click *Save* to produce the report using the selections you made.
+
+
 
 == Copying a report to the clipboard
 
 Use this process to copy a report to the clipboard.
 
-. In the toolbar, click *[+]*
-. Click *Report* 
-. Click the *Pages* icon image:PageIcon.png[Page Icon]. The Report icon image:ReportIcon.png[Report Icon] is displayed
-. Left click the Report icon. Report options are displayed.
-. Click *Copy Report to Clipboard*.
+. Select a report to copy from (*Menu > Content > My Content or Team Content*)
+. Choose _Edit report_ from the report's drop-down menu
++
+image:Reporting_Edit_Report.png[Editing a Report]
++
+. In the upper-right of the screen, open the "three dots" menu next to "Properties".
+. Select *Copy Report to Clipboard*.
++
+image:Reporting_Copy_To_Clipboard.png[Copying a report to the clipboard]
 
-== Opening reports (xml) from the clipboard
+
+== Opening reports from the clipboard
 You can open a report specification that was previously copied to the clipboard.
 
 About this task
-You enter the Reporting user interface by creating a new report or opening an existing report
+Start by creating a new report or opening an existing report that you wish to replace with the copied report. The steps below are for a new report.
 
-. In the toolbar, click *[+]*
-. Click *Report* 
-. Click the *Pages* icon image:PageIcon.png[Page Icon]. The Report icon image:ReportIcon.png[Report Icon] is displayed
-. Left click the Report icon. Report options are displayed.
-. Click *Open report from clipboard*.
+. Select *Menu > +New > Report* and create a blank report.
+. In the upper-right of the screen, open the "three dots" menu next to "Properties".
+. Select *Open Report from Clipboard*.
+
+image:Reporting_Open_From_Clipboard.png[Opening a report from the clipboard]
+
+. Paste the copied code into the window and select *OK*.
+. Select the floppy disk icon to save the report.
+. Choose where to save the report (_My Content_, _Team Content_, or create a new folder). 
+. Give the new report a meaningful name and select *Save*.
+
+
+
+
 
 == Troubleshooting
 
