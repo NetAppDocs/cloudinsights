@@ -23,16 +23,36 @@ NOTE: Some of these features may not be available in Cloud Insights Federal Edit
 
 == May 2023
 
+
+=== Improved Operator Installation
+
+Installation and configuration of the link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] is easier than ever with the following improvements:
+
+* Installation workflow provides more concise instructions and includes steps for uploading the operator images to your private repository.
+* Common user configuration settings are held in a new config file which includes inline descriptions/documentation.
+* Means of populating local/private/custom container repository with components necessary for Operator operation.
+* Upgrades are now performed by installing over the previous install, requiring less user interaction.
+
+
+
 === Storage Virtualization
 
 Cloud Insights can differentiate between a storage array having local storage or virtualization of other storage arrays. This gives you the ability to relate cost and distinguish performance from the front-end all the way to the back-end of your infrastructure.
 
 image:StorageVirtualization_StorageSummary.png[Storage Landing Page showing Virtual and backed storage information]
 
+
+
 === Improved Workload Security screen loading
 
 Cloud Insights has improved user experience by displaying Observability and Workload Security screens more efficiently, reducing load time as you navigate across these features. Note that Workload Security page URLs have changed. Previous URLs will automatically redirect to the new URLs.
 
+
+
+
+
+
+'''
 
 == April 2023
 
