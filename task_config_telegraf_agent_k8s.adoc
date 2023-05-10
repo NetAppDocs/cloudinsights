@@ -480,7 +480,7 @@ If the AgentConfiguration does not exist:
 
 * Make note of your cluster name as recognized by Cloud Insights (if your namespace is not the default netapp-monitoring, substitute the appropriate namespace):
 
-kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
+ kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
 
 * Create a backup of the existing Operator (if your namespace is not the default netapp-monitoring, substitute the appropriate namespace):
   
