@@ -39,7 +39,7 @@ sidebar:
               url: /task_configure_acquisition_unit.html 
             - title: Configuring an Agent (Windows/Linux/Mac)
               url: /task_config_telegraf_agent.html
-            - title: Configuring an Agent (Kubernetes)
+            - title: Configuring a Kubernetes Operator
               url: /task_config_telegraf_agent_k8s.html
             - title: Configuring Data Collectors
               url: /task_configure_data_collectors.html
@@ -93,12 +93,17 @@ sidebar:
         - title: Dashboard Best Practices
           url: /concept_dashboard_best_practices.html
        
-    - title: Kubernetes Explorer
+    - title: Kubernetes
       entries:
         - title: Kubernetes Overview Page
           url: /kubernetes_landing_page.html
+        - title: Getting Started with the Monitoring Operator
+          url: /task_config_telegraf_agent_k8s.html
         - title: Kubernetes Cluster Page
           url: /kubernetes_cluster_detail.html
+        - title: Kubernetes Monitoring and Map
+          url: /concept_kubernetes_performance_monitoring_and_map.html
+
 
     - title: ONTAP Essentials
       url: /concept_ontap_essentials.html
