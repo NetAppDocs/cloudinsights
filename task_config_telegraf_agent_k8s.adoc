@@ -50,7 +50,7 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 * The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances.
 For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
 * If you are re-deploying the Operator (i.e. you are updating or replacing it), there is no need to create a _new_ API token; you can re-use the previous token.
-* Also note that ityou have a recent NetApp Kubernetes Monitoring Operator installed and are using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.
+* Also note that if you have a recent NetApp Kubernetes Monitoring Operator installed and are using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.
 
 
 
@@ -128,15 +128,6 @@ To determine if your deployed version of the operator supports AgentConfiguratio
 	kubectl get crd agentconfigurations.monitoring.netapp.com
  
 If you see an “Error from server (NotFound)” message, your operator must be upgraded before you can use the AgentConfiguration.
-
-
-
-=== Configuring Proxy Support
-
-There are two places where you may use a proxy in your environment in order to install the NetApp Kubernetes Monitoring Operator. These may be the same or separate proxy systems:
-
-* Proxy needed during execution of the installation code snippet (using "curl") to connect the system where the snippet is executed to your Cloud Insights environment
-* Proxy needed by the target Kubernetes cluster to communicate with your Cloud Insights environment
 
 
 === Configuring Proxy Support
@@ -364,12 +355,16 @@ If you are running on OpenShift 4.6 or higher, you must edit the AgentConfigurat
 
 Openshift may implement an added level of security that may block access to some Kubernetes components.
 
+
+
+
+////
 === Advanced Tuning
 
 For a small subset of advanced settings which cannot be set in AgentConfiguration or outdated operators which do not support AgentConfiguration they can be set in the Agent custom resource. For instructions and lists of the variables you can tune, see the README file included with the operator image. After you have installed the operator, use the following command to view the README:
 
  kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
-
+////
    
 
 
@@ -387,7 +382,7 @@ image:NKMO-Instructions-2.png[]
 . Once these are entered, you can copy the Download Command snippet to the clipboard.
 . Paste the snippet into a _bash_ window and execute it. The Operator installation files will be downloaded. Note that the snippet has a unique key and is valid for 24 hours.
 
-. If you have a custom or provate repository, copy the optional Image Pull snippet, paste it into a _bash_ shell and execute it. Once the images have been pulled, copy them to your private repository. Be sure to maintain the same tags and folder structure. Update the paths in _operator-deployment.yaml_ as well as the docker repository settings in _operator-config.yaml_.
+. If you have a custom or private repository, copy the optional Image Pull snippet, paste it into a _bash_ shell and execute it. Once the images have been pulled, copy them to your private repository. Be sure to maintain the same tags and folder structure. Update the paths in _operator-deployment.yaml_ as well as the docker repository settings in _operator-config.yaml_.
 
 . If desired, review available configuration options such as proxy or private repository settings. You can read more about link:telegraf_agent_k8s_config_options.html[configuration options].
 
