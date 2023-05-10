@@ -384,15 +384,26 @@ image:NKMO-Instructions-2.png[]
 .Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
 
 . Enter a unique cluster name and namespace. If you are <<upgrading, upgrading>> from the script-based agent or a previous Kubernetes Operator, use the same cluster name and namespace. 
-. Once these are entered, you can copy the Agent Installer snippet
-. Click the button to copy this snippet to the clipboard.
-. Paste the snippet into a _bash_ window and execute it. Note that the snippet has a unique key and is valid for 24 hours.
-. The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
+. Once these are entered, you can copy the Download Command snippet to the clipboard.
+. Paste the snippet into a _bash_ window and execute it. The Operator installation files will be downloaded. Note that the snippet has a unique key and is valid for 24 hours.
+
+. If you have a custom or provate repository, copy the optional Image Pull snippet, paste it into a _bash_ shell and execute it. Once the images have been pulled, copy them to your private repository. Be sure to maintain the same tags and folder structure. Update the paths in _operator-deployment.yaml_ as well as the docker repository settings in _operator-config.yaml_.
+
+. If desired, review available configuration options such as proxy or private repository settings. You can read more about link:telegraf_agent_k8s_config_options.html[configuration options].
+
+. When you are ready, deploy the Operator by copying the kubectl Apply snippet, downloading it, and executing it. 
+
+. The installation proceeds automatically. When it is complete, click the _Next_ button.
+
+. When installation is complete, click the _Next_ button. Be sure to also delete or securely store the _operator-secrets.yaml_ file.
 
 
-NOTE: Setup is incomplete until you <<configuring-proxy-support, configure your proxy>>.
 
-NOTE: If you have a custom repository, you must follow the instructions for <<using-a-custom-or-private-docker-repository, Using a custom/private docker repository>>.
+Read more about <<configuring-proxy-support, configuring proxy>>.
+
+Read more about <<using-a-custom-or-private-docker-repository, using a custom/private docker repository>>.
+
+
 
 Kubernetes EMS log collection is enabled by default when installing the NetApp Kubernetes Monitoring Operator. To disable this collection following installation, click the *Modify Deployment* button at the top of the Kubernetes cluster detail page, and un-select "Log collection". 
 
