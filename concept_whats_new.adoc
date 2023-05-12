@@ -57,9 +57,17 @@ When creating a link:task_create_webhook.html[Webhook] notification, you can now
 
 Kubernetes persistent volume (PV) information collected by Cloud Insights is now available for use in Reporting, enabling chargeback, trending, forecasting, TTF calculations, and other business reporting on metrics for Kubernetes clusters, namespaces, workloads, and more.
 
-
 //Kubernetes persistent volume (PV) information collected by Cloud Insights is now available for use in Reporting, enabling visibility of K8S clusters from the physical host to the backend storage for chargeback/showback and migrations.
 
+
+
+=== Default ONTAP System Monitors Enabled for New Customers
+
+Many ONTAP System Monitors are enabled (i.e. _Resumed_) by default in new Cloud Insights environments. Previously, most monitors defaulted to _Paused_ state. Because business needs vary from company to company, we always recommend taking a look at the link:task_system_monitors.html[system monitors] in your environment and pausing or resuming each based on your alerting needs.
+
+
+
+=== Cold Data Customer Preview
 
 
 ////
