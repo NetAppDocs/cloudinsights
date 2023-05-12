@@ -23,10 +23,62 @@ NOTE: Some of these features may not be available in Cloud Insights Federal Edit
 
 == May 2023
 
-=== Improved Workload Security screen loading
 
-Cloud Insights has improved user experience by displaying Observability and Workload Security screens more efficiently, reducing load time as you navigate across these features. Note that Workload Security page URLs have changed. Previous URLs will automatically redirect to the new URLs.
+=== Improved Kubernetes Monitoring Operator Installation
 
+Installation and configuration of the link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] is easier than ever with the following improvements:
+
+* Environment link:TBD[configuration settings] are held in a single, self-documented config file.
+* Step-by step instructions for uploading Kubernetes Monitoring Operator images to your private repository.
+* Simple to upgrade with a single command to upgrade your Kubernetes Monitoring while keeping custom configurations.
+* More secured: API keys are securely managing secrets.
+* Easy to integrate and deploy with your CI/CD automation tools.
+
+
+=== Storage Virtualization
+
+Cloud Insights can differentiate between a storage array having local storage or virtualization of other storage arrays. This gives you the ability to relate cost and distinguish performance from the front-end all the way to the back-end of your infrastructure.
+
+image:StorageVirtualization_StorageSummary.png[Storage Landing Page showing Virtual and backed storage information]
+
+
+
+
+=== New Webhook Parameters
+
+When creating a link:task_create_webhook.html[Webhook] notification, you can now include these parameters in your webhook definition:
+
+* %%TriggeredOnKeys%%
+* %%TriggeredOnValues%%
+
+
+
+=== Report Kubernetes PV data
+
+Kubernetes persistent volume (PV) information collected by Cloud Insights is now available for use in Reporting, enabling chargeback, trending, forecasting, TTF calculations, and other business reporting on metrics for Kubernetes clusters, namespaces, workloads, and more.
+
+//Kubernetes persistent volume (PV) information collected by Cloud Insights is now available for use in Reporting, enabling visibility of K8S clusters from the physical host to the backend storage for chargeback/showback and migrations.
+
+
+
+=== Default ONTAP System Monitors Enabled for New Customers
+
+Many ONTAP System Monitors are enabled (i.e. _Resumed_) by default in new Cloud Insights environments. Previously, most monitors defaulted to _Paused_ state. Because business needs vary from company to company, we always recommend taking a look at the link:task_system_monitors.html[system monitors] in your environment and pausing or resuming each based on your alerting needs.
+
+
+
+=== Cold Data Customer Preview
+
+
+////
+=== Improved Workload Security navigation
+
+Cloud Insights now has faster navigation between Observability and Workload Security applications. Note that Workload Security page URLs have changed. Previous URLs will automatically redirect to the new URLs.
+////
+
+
+
+'''
 
 == April 2023
 
