@@ -4,9 +4,7 @@ permalink: concept_kubernetes_performance_monitoring_and_map.html
 keywords: service map, workloads, Kubernetes, 
 summary: Presents Kubernetes workload dependencies and flows and highlights network and performance issues
 ---
-
-= Kubernetes Performance Monitoring and Map
-
+= Kubernetes Network Performance Monitoring and Map
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,10 +14,10 @@ summary: Presents Kubernetes workload dependencies and flows and highlights netw
 :imagesdir: ./media/
 
 [.lead]
-The Kubernetes Network Performance and Map feature simplifies troubleshooting by mapping dependencies between Kubernetes workloads. It provides real-time visibility into Kubernetes network performance latencies and anomalies to identify performance issues before they affect users.
+The Kubernetes Network Performance Monitoring and Map feature simplifies troubleshooting by mapping dependencies between Kubernetes workloads. It provides real-time visibility into Kubernetes network performance latencies and anomalies to identify performance issues before they affect users.
 This capability helps organizations reduce overall costs by analyzing and auditing Kubernetes traffic flows.
 
-NOTE: The Kubernetes Network Performance and Map is a link:concept_preview_features.html[Preview] feature and is subject to change.
+NOTE: The Kubernetes Network Performance Monitoring and Map is a link:concept_preview_features.html[Preview] feature and is subject to change.
 
 Key Features:
 • The Workload Map presents Kubernetes workload dependencies and flows and highlights network and performance issues.
@@ -33,7 +31,7 @@ image:workload-map-animated.gif[Workload Map Example]
 
 == Pre-Requisites
 
-Before you can use the Kubernetes Network Performance and Map, you must have configured the link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] to enable this option. During deployment of the Operator, select the "Network Performance and Map" checkbox to enable. You can also enable this option by navigating to a Kubernetes landing page and selecting "Modify Deployment".
+Before you can use the Kubernetes Network Performance Monitoring and Map, you must have configured the link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] to enable this option. During deployment of the Operator, select the "Network Performance and Map" checkbox to enable. You can also enable this option by navigating to a Kubernetes landing page and selecting "Modify Deployment".
 
 image:ServiceMap_NKMO_Deployment_Options.png[selecting the Map option during NKMO stup]
 
