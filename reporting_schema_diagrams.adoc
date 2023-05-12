@@ -31,33 +31,6 @@ NOTE: The Reporting feature is available in Cloud Insights link:concept_subscrib
 
 The following images describe the inventory datamart.
 
-=== Storage
-
-image:storage.png[]
-
-=== Storage Node
-
-image:storage_node.png[]
-
-=== SAN Fabric
-
-image:fabric.png[]
-
-=== Port Connectivity
-
-image:connectivity.png[]
-
-=== VM
-
-image:vm.png[]
-
-=== NAS
-
-image:nas.png[]
-
-=== Paths and Violations
-
-image:logical.png[]
 
 === Annotations
 
@@ -66,6 +39,7 @@ image:annotations.png[]
 === Applications
 
 image:apps_annot.png[]
+
 
 
 === Kubernetes Metrics
@@ -80,12 +54,9 @@ image:k8s_cluster_metrics_fact.jpg[Kubernetes Cluster Metrics Fact]
 
 image:k8s_namespace_metrics_fact.jpg[Kubernetes Namespace Metrics Fact]
 
-
 ==== Kubernetes Node Metrics Fact
 
 image:k8s_node_metrics_fact.jpg[Kubernetes Node Metrics Fact]
-
-
 
 ==== Kubernetes PVC Metrics Fact
 
@@ -97,26 +68,83 @@ image:k8s_workload_metrics_fact.jpg[Kubernetes Workload Metrics Fact]
 
 
 
+=== NAS
+
+image:nas.png[]
+
+=== Paths and Violations
+
+image:logical.png[]
+
+=== Port Connectivity
+
+image:connectivity.png[]
+
+=== SAN Fabric
+
+image:fabric.png[]
+
+=== Storage
+
+image:storage.png[]
+
+=== Storage Node
+
+image:storage_node.png[]
+
+=== VM
+
+image:vm.png[]
+
+
+
+'''
+
 == Capacity Datamart
 
 The following images describe the capacity datamart.
 
 
-=== Volume Capacity 
 
-image:Volume_Capacity.png[]
+=== Chargeback 
 
-=== VM Capacity 
+image:Chargeback_Fact.png[]
 
-image:VM_Capacity_Fact.png[]
+=== Disk Group Capacity 
+
+image:Disk_Group_Capacity.png[]
+
+
+=== File System Utilization
+
+image:fs_util.png[]
+
+
 
 === Internal Volume Capacity 
 
 image:Internal_Volume_Capacity_Fact.png[]
 
+
+
+=== Kubernetes PV Capacity
+
+image:k8s_pvc_capacity_fact.jpg[]
+
+
+
+=== Port Capacity
+
+image:ports.png[]
+
+
+
 === Qtree Capacity 
 
 image:Qtree_Capacity_Fact.png[]
+
+
+
 
 === Storage Capacity Efficiency 
 
@@ -130,31 +158,20 @@ image:Storage_and_Storage_Pool_Capacity_Fact.png[]
 
 image:Storage_Node_Capacity_Fact.jpg[]
 
-=== File System Utilization
-
-image:fs_util.png[]
-
-=== Port Capacity
-
-image:ports.png[]
-
-=== Chargeback 
-
-image:Chargeback_Fact.png[]
-
-=== Disk Group Capacity 
-
-image:Disk_Group_Capacity.png[]
 
 
+=== VM Capacity 
 
-=== Kubernetes PV Capacity
+image:VM_Capacity_Fact.png[]
 
-image:k8s_pvc_capacity_fact.jpg[]
+=== Volume Capacity 
+
+image:Volume_Capacity.png[]
 
 
 
 
+'''
 
 == Performance Datamart
 
@@ -164,6 +181,18 @@ The following images describe the performance datamart.
 === Application Volume Hourly Performance
 
 image:application_performance_fact.jpg[]
+
+
+=== Disk Daily Performance
+
+image:disk_daily_performance_fact.png[]
+
+=== Disk Hourly Performance
+
+image:disk_hourly_performance_fact.png[]
+
+
+
 
 === Host Hourly Performance
 
@@ -178,18 +207,24 @@ image:internal_volume_performance_fact.jpg[]
 image:internal_volume_daily_performance_fact.jpg[]
 
 
-=== Volume Hourly Performance 
 
-image:volume_performance_fact.jpg[]
-
-=== Volume Daily Performance 
-
-image:volume_daily_performance_fact.jpg[]
 
 
 === Qtree Daily Performance 
 
 image:QtreeDailyPerformanceFact.png[]
+
+
+
+=== Storage Node Daily Performance
+
+image:storage_node_daily_performance_fact.jpg[]
+
+=== Storage Node Hourly Performance
+
+image:storage_node_hourly_performance_fact.jpg[]
+
+
 
 
 === Switch Hourly Performance for Host
@@ -208,6 +243,8 @@ image:switch_performance_for_storage_hourly_fact.png[]
 === Switch Hourly Performance for Tape 
 
 image:switch_performance_for_tape_hourly_fact.png[]
+
+
 
 === VM Performance
 
@@ -238,21 +275,18 @@ image:vmdk_daily_performance_fact.png[]
 
 image:vmdk_hourly_performance_fact.png[]
 
-=== Storage Node Daily Performance
 
-image:storage_node_daily_performance_fact.jpg[]
 
-=== Storage Node Hourly Performance
 
-image:storage_node_hourly_performance_fact.jpg[]
+=== Volume Hourly Performance 
 
-=== Disk Daily Performance
+image:volume_performance_fact.jpg[]
 
-image:disk_daily_performance_fact.png[]
+=== Volume Daily Performance 
 
-=== Disk Hourly Performance
+image:volume_daily_performance_fact.jpg[]
 
-image:disk_hourly_performance_fact.png[]
+
 
 
 
