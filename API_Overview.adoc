@@ -467,16 +467,6 @@ Note: If you have the latest NetApp Kubernetes Monitoring Operator installed and
 
  sudo systemctl restart telegraf
 
-==== MacOS
-
-* Edit the Telegraf configuration files, and replace all instances of the old API token with the new API token.
-+
- sudo sed -i.bkup ‘s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g’ /usr/local/etc/telegraf.d/*.conf
-
-* Restart Telegraf.
-+
- sudo launchctl stop telegraf
- sudo launchctl start telegraf
 
 ==== Windows
 

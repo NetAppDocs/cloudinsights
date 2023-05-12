@@ -25,6 +25,14 @@ Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kub
 
 image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 
+Below is a high-level illustration showing where the Operator resides in your environment. Depending on your environment, _Proxy Server_ may or may not be required. 
+
+image:CI_Diagram_with_NKMO.png[A high-level map showing NKMO residing in the Kubernetes Cluster, with arrows showing how data travels to the cluster from the Hosts, proxy server, all rolling up to Cloud Insights]
+
+The Operator (NKMO) and the data collectors are downloaded from the Cloud Insights Docker Registry. Once installed, NKMO then manages any Operator-compatible collectors deployed in the Kubernetes cluster nodes to acquire data, including managing the life cycle of those collectors. Following this chain, data is acquired from the collectors and sent through to Cloud Insights. 
+
+
+
 == Before installing the NetApp Kubernetes Monitoring Operator
 
 .Pre-requisites:
@@ -62,6 +70,7 @@ For accurate audit and data reporting, it is strongly recommended to synchronize
 
 * Please note the following component versions. These are the current _required_ versions included with the NetApp Kubernetes Monitoring Operator. You will particularly need to note these versions if you are <<using-a-custom-or-private-docker-repository,using a custom or private docker repository>>:
 
+
 ** Telegraf: 1.25.0
 ** kube-rbac-proxy: v0.13.0
 ** kube-state-metrics: v2.6.0
@@ -87,9 +96,10 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 
 * The NetApp Kubernetes Monitoring Operator and its dependencies (telegraf, kube-state-metrics, fluentbit, etc.) are not supported on nodes that are running with Arm64 architecture.
 
-* The following commands must be available: _curl_, _sudo_, _openssl_, _sha256sum_, and _kubectl_. For best results, add these commands to the PATH.
+* The following commands must be available: _curl, sudo, openssl, sha256sum,_ and _kubectl_. For best results, add these commands to the PATH.  Note that _kubectl_ needs to be configured with access to the following kubernetes objects at a minimum: _agents, clusterroles, clusterrolebindings, customresourcedefinitions, deployments, namespaces, roles, rolebindings, secrets, serviceaccounts,_ and _services_.  See link:nkmo_clusterrole_yaml.html[here] for an example .yaml file with these minimum clusterrole privileges.
 
 * The host you will use for the NetApp Kubernetes Monitoring Operator installation must have _kubectl_ configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment. If this host requires a proxy to reach Cloud Insights, follow the instructions in the <<configuring-proxy-support,Configuring Proxy Support>> section.
+
 
 * The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances. 
 
@@ -307,8 +317,6 @@ Find the _netapp-monitoring_ <version> field using the following command:
  
  kubectl -n netapp-monitoring describe deployment monitoring-operator | grep -i "image:" |grep netapp-monitoring
 
-Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies.
-
 Download all open source dependencies to your private docker registry. The following open source images need to be downloaded. See the <<before-installing-the-netapp-kubernetes-monitoring-operator,Pre-requisites>> section above for the most current versions of these components:
 
 
@@ -320,6 +328,8 @@ If fluent-bit is enabled, also download:
 
  docker pull docker.<cluster>.cloudinsights.netapp.com/fluent-bit:<fluent-bit version>
  docker pull docker.<cluster>.cloudinsights.netapp.com/kubernetes-event-exporter:<kubernetes-event-exporter version>
+
+Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies. Ensure that the directory paths to these images in your repository are consistent with that in docker.<cluster>.cloudinsights.netapp.com.
 
 Edit the monitoring-operator deployment, and modify all image references to use the new docker repo location:
 
@@ -454,7 +464,7 @@ If the monitoring namespace is being used solely for Telegraf:
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 +
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
-////
+
 
 
 . <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the current Operator. Be sure to use the same cluster name noted in step 1 above.
@@ -658,8 +668,20 @@ The signed checksum file can be verified using the PEM file:
 
 Once all of the artifacts have been satisfactorily verified, the agent installation can be initiated by running:
 
+ sudo -E -H ./<installation_script_name> --install
+
+ 
+
+////
+== Tuning the Operator
+
+
+You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources. For instructions and lists of the variables you can tune, see the README file included with the installation package. After you have installed the operator, use the following command to view the README:
 
  sudo -E -H ./<installation_script_name> --install
+
+NOTE: Operator tuning is not available in Cloud Insights Federal Edition
+////
 
 
 ////
@@ -679,6 +701,7 @@ The CR specification follows the format:
      value: <desired-value>  
      ... 
 ----
+
 
 Items marked "yes" for "Included in default CR" will already be present in the agent CR and can be found under their respective plugin. Items marked "no" must be added manually following the examples provided by the included default substitutions.
 
@@ -732,6 +755,7 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 
 |CURL_CMD_PLACEHOLDER	|agent	|yes	|The curl command used to download various resources. Ex) "curl" or "curl -k"
 |===
+
 
 ////
 
@@ -842,12 +866,33 @@ kubectl get all -n <namespace> \| grep -i psp (should show that nothing is found
 |I am having an issue with my monitoring-operator deployment, and the current documentation does not help me resolve it.
 a|Capture or otherwise note the output from the following commands, and contact the Technical Support team.
 
+
 ----
  kubectl -n netapp-monitoring get all
  kubectl -n netapp-monitoring describe all
  kubectl -n netapp-monitoring logs <monitoring-operator-pod> --all-containers=true
  kubectl -n netapp-monitoring logs <telegraf-pod> --all-containers=true
 ----
+
+|net-observer (Workload Map) pods in NKMO namespace are in CrashLoopBackOff
+|These pods correspond to Workload Map data collector for Network Observability. Try these:
+•	Check the logs of one of the pods to confirm minimum kernel version. For example:
+
+----
+{"ci-tenant-id":"your-tenant-id","collector-cluster":"your-k8s-cluster-name","environment":"prod","level":"error","msg":"failed in validation. Reason: kernel version 3.10.0 is less than minimum kernel version of 4.18.0","time":"2022-11-09T08:23:08Z"}
+----
+
+•	Net-observer pods requires the Linux kernel version to be at least 4.18.0. Check the kernel version using the command “uname -r” and ensure they are >= 4.18.0
+
+|net-observer pods in NKMO namespace are in CrashLoopBackOff in OpenShift 4 environment
+|This is currently not supported. Watch for support to be added in a future update.
+
+|Pods are running in NKMO namespace (default: netapp-monitoring), but no data is shown in UI for workload map or Kubernetes metrics in Queries
+|Check the time setting on the nodes of the K8S cluster. For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
+
+|Some of the net-observer pods in NKMO namespace are in Pending state
+|Net-observer is a DaemonSet and runs a pod in each Node of the k8s cluster.
+•	Note the pod which is in Pending state, and check if it is experiencing a resource issue for CPU or memory. Ensure the required memory and CPU is available in the node.
 
 
 |===

@@ -24,6 +24,8 @@ sidebar:
           url: /security_overview.html
         - title: What We Store, and Where 
           url: /security_information_and_region.html
+        - title: SecurityAdmin Tool
+          url: /security_admin_tool.html
           
     - title: Getting Started
       entries:
@@ -37,7 +39,7 @@ sidebar:
               url: /concept_acquisition_unit_requirements.html
             - title: Configuring an Acquisition Unit
               url: /task_configure_acquisition_unit.html 
-            - title: Configuring an Agent (Windows/Linux/Mac)
+            - title: Configuring an Agent on Windows/Linux
               url: /task_config_telegraf_agent.html
             - title: Configuring a Kubernetes Operator
               url: /task_config_telegraf_agent_k8s.html
@@ -104,6 +106,16 @@ sidebar:
         - title: Kubernetes Monitoring and Map
           url: /concept_kubernetes_performance_monitoring_and_map.html
 
+    - title: Insights
+      entries:
+        - title: Overview
+          url: /insights_overview.html 
+        - title: Shared Resources Under Stress
+          url: /insights_shared_resources_under_stress.html
+        - title: Kubernetes Namespaces Running Out of Space
+          url: /insights_k8s_namespaces_running_out_of_space.html
+        - title: Reclaim ONTAP Cold Storage
+          url: /insights_reclaim_ontap_cold_storage.html         
 
     - title: ONTAP Essentials
       url: /concept_ontap_essentials.html
@@ -460,6 +472,8 @@ sidebar:
               url: /task_dc_pure_flasharray.html
             - title: Red Hat
               url: /task_dc_redhat_virtualization.html
+            - title: Rubrik CDM
+              url: /task_dc_rubrik_cdm.html
             - title: VMWare
               url: /task_dc_vmware.html
               

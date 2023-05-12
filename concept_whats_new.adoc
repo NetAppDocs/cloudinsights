@@ -16,7 +16,146 @@ keywords: features
 :imagesdir: ./media/
 
 [lead]
-NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available with Cloud Insights.  
+NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the commercial Editions of Cloud Insights.  
+
+NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
+
+
+== May 2023
+
+
+=== Improved Kubernetes Monitoring Operator Installation
+
+Installation and configuration of the link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] is easier than ever with the following improvements:
+
+* Environment link:TBD[configuration settings] are held in a single, self-documented config file.
+* Step-by step instructions for uploading Kubernetes Monitoring Operator images to your private repository.
+* Simple to upgrade with a single command to upgrade your Kubernetes Monitoring while keeping custom configurations.
+* More secured: API keys are securely managing secrets.
+* Easy to integrate and deploy with your CI/CD automation tools.
+
+
+=== Storage Virtualization
+
+Cloud Insights can differentiate between a storage array having local storage or virtualization of other storage arrays. This gives you the ability to relate cost and distinguish performance from the front-end all the way to the back-end of your infrastructure.
+
+image:StorageVirtualization_StorageSummary.png[Storage Landing Page showing Virtual and backed storage information]
+
+
+
+
+=== New Webhook Parameters
+
+When creating a link:task_create_webhook.html[Webhook] notification, you can now include these parameters in your webhook definition:
+
+* %%TriggeredOnKeys%%
+* %%TriggeredOnValues%%
+
+
+
+=== Report Kubernetes PV data
+
+Kubernetes persistent volume (PV) information collected by Cloud Insights is now available for use in Reporting, enabling chargeback, trending, forecasting, TTF calculations, and other business reporting on metrics for Kubernetes clusters, namespaces, workloads, and more.
+
+//Kubernetes persistent volume (PV) information collected by Cloud Insights is now available for use in Reporting, enabling visibility of K8S clusters from the physical host to the backend storage for chargeback/showback and migrations.
+
+
+
+=== Default ONTAP System Monitors Enabled for New Customers
+
+Many ONTAP System Monitors are enabled (i.e. _Resumed_) by default in new Cloud Insights environments. Previously, most monitors defaulted to _Paused_ state. Because business needs vary from company to company, we always recommend taking a look at the link:task_system_monitors.html[system monitors] in your environment and pausing or resuming each based on your alerting needs.
+
+
+
+=== Cold Data Customer Preview
+
+
+////
+=== Improved Workload Security navigation
+
+Cloud Insights now has faster navigation between Observability and Workload Security applications. Note that Workload Security page URLs have changed. Previous URLs will automatically redirect to the new URLs.
+////
+
+
+
+'''
+
+== April 2023
+
+
+=== Kubernetes Performance Monitoring and Map
+
+The link:concept_kubernetes_performance_monitoring_and_map.html[_Kubernetes Network Performance and Map_] feature simplifies troubleshooting by mapping dependencies between Kubernetes workloads. It provides real-time visibility into Kubernetes network performance latencies and anomalies to identify performance issues before they affect users.
+This capability helps organizations reduce overall costs by analyzing and auditing Kubernetes traffic flows.
+ 
+Key Features:
+•	The Workload Map presents Kubernetes workload dependencies and flows and highlights network and performance issues.
+•	Monitor network traffic between Kubernetes pods, workloads, and nodes; identifies the source of traffic and latency problems.
+•	Reduce overall costs by analyzing ingress, egress, cross-region, and cross-zone network traffic. 
+
+Workload Map showing "Slideout" details:
+
+image:Workload Map Example_withSlideout.png[Workload Map example showing "Slideout" panel with details]
+
+Kubernetes Performance Monitoring and Map is available as a link:concept_preview_features.html[Preview] feature.
+
+
+
+=== ONTAP Essentials Security Dashboard
+
+The link:concept_ontap_essentials.html#security[Security Dashboard] gives you an instant view of your current security situation, showing charts for hardware and software volume encryption, anti-ransomware status, and cluster authentication methods. The Security Dashboard is available as a link:concept_preview_features.html[Preview] feature.
+
+image:OE_SecurityDashboard.png[ONTAP Essentials Security Dashboard]
+
+
+
+
+=== Reclaim ONTAP Cold Storage
+
+The _Reclaim ONTAP Cold Storage_ Insight provides data about cold capacity, potential cost/power savings, and recommended action items for volumes on ONTAP systems. 
+
+image:Cold_Data_Example_1.png[Cold Data Insight example recommednations]
+
+With this Insight, you can answer such questions as:
+
+* What amount of cold data on a storage cluster are sitting on (a) high-cost SSD disks, (b) HDD disks, and (c) virtual disks?
+* What workloads are the highest contributors in regards of the non-optimized storage?
+* What is the duration (in days) the data has been cold on a given workload?
+
+_Reclaim ONTAP Cold Storage_ is considered a link:concept_preview_features.html[_Preview_] feature and is therefore subject to change.
+
+
+
+=== Subscription Notification also controls banner messages
+
+Setting recipients for Subscription Notifications (Admin > Notifications) now also controls who will see subscription-related in-product banner notifications. 
+
+image:Subscription_Expiring_Banner.png[Subscription Expiring in 2 Days banner example]
+
+
+
+=== Reporting has a new look 
+
+You will notice that Cloud Insights Reporting screens have a new look, and that some of the menu navigation have changed. These screens and navigation changes have been updated in the current link:reporting_overview.html[Reporting Documentation]. 
+
+image:Reporting_Menu.png[New Reporting Menu look]
+
+
+
+=== Monitors Paused by Default
+
+For new Cloud Insights environments, be aware that link:task_system_monitors.html[system-defined monitors] do not send alert notifications by default. You will need to enable notifications for any monitor that you want alerting you, by adding one or more delivery methods for the monitor.
+For existing Cloud Insights environments, the default _global_ notification recipient list has been removed for any system-defined monitors currently in _Paused_ state. User-defined notifications remain unchanged, as do notification settings for currently active system-defined monitors.
+
+
+
+=== Looking for the API Metering tab?
+
+API Metering has moved from the Subscription page to the *Admin > API Access* page.
+
+
+'''
+
 
 == March 2023
 
@@ -25,6 +164,10 @@ NetApp is continually improving and enhancing its products and services. Here ar
 The Cloud Connection for ONTAP 9.9+ data collector is being deprecated.  Starting April 4, 2023, Cloud Connection data collectors in your environment will no longer collect data, and will instead present an error when polling. The Cloud Connection data collector will be removed altogether from Cloud Insights in a subsequent update.
 
 Prior to April 4, 2023, it is mandatory to configure a new NetApp ONTAP Data Management Software data collector for any ONTAP systems currently collected by Cloud Connection. link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/How_to_transition_from_NetApp_Cloud_Connection_to_AU_based_data_collector[Learn More].
+
+
+'''
+
 
 
 == January 2023
@@ -40,6 +183,10 @@ Note that some of these monitors will be _enabled_ by default; you must _pause_ 
 Ensuring accessibility to your data is essential, so we've made .CSV export image:csv_export_icon[.csv export icon] available for all metric queries, dashboard table widgets, and object landing pages, regardless of the type of data (asset or integration) you're querying. 
 
 Data customizations like column selection, renaming columns, and unit conversions are also now included in the new export functionality.
+
+
+'''
+
 
 
 == December 2022
@@ -58,7 +205,7 @@ image:Kubernetes_Workload_LP.png[Kubernetes Workload Landing Page Example]
 
 === Check your Checksums
 
-You asked us to provide you with checksum values during installation of the agent for Windows, Linux, and MacOS, and we think that's a great idea. So here they are:
+You asked us to provide you with checksum values during installation of the agent for Windows and Linux and we think that's a great idea. So here they are:
 
 image:Agent_Checksum_Instructions.png[Agent Checksum values shown during installation]
 
