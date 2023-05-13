@@ -22,39 +22,15 @@ This document provides the schema diagrams for the Reporting Database. You can a
 
 NOTE: The Reporting feature is available in Cloud Insights link:concept_subscribing_to_cloud_insights.html[Premium Edition]. 
 
-//The schema diagrams are organized by
+
+
+
 
 == Inventory Datamart
 
+
 The following images describe the inventory datamart.
 
-=== Storage
-
-image:storage.png[]
-
-=== Storage Node
-
-image:storage_node.png[]
-
-=== SAN Fabric
-
-image:fabric.png[]
-
-=== Port Connectivity
-
-image:connectivity.png[]
-
-=== VM
-
-image:vm.png[]
-
-=== NAS
-
-image:nas.png[]
-
-=== Paths and Violations
-
-image:logical.png[]
 
 === Annotations
 
@@ -64,41 +40,71 @@ image:annotations.png[]
 
 image:apps_annot.png[]
 
-=== Storage and Storage Pool Capacity
 
-image:Storage_and_Storage_Pool_Capacity_Fact.png[]
 
-=== Volume Capacity 
+=== Kubernetes Metrics
 
-image:Volume_Capacity.png[]
+image:k8s_schema.jpg[Kubernetes]
 
-=== VM Capacity 
+==== Kubernetes Cluster Metrics Fact
 
-image:VM_Capacity_Fact.png[]
+image:k8s_cluster_metrics_fact.jpg[Kubernetes Cluster Metrics Fact]
 
-=== Internal Volume Capacity 
+==== Kubernetes Namespace Metrics Fact
 
-image:Internal_Volume_Capacity_Fact.png[]
+image:k8s_namespace_metrics_fact.jpg[Kubernetes Namespace Metrics Fact]
 
-=== Qtree Capacity 
+==== Kubernetes Node Metrics Fact
 
-image:Qtree_Capacity_Fact.png[]
+image:k8s_node_metrics_fact.jpg[Kubernetes Node Metrics Fact]
 
-=== Storage Capacity Efficiency 
+==== Kubernetes PVC Metrics Fact
 
-image:efficiency.png[]
+image:k8s_pvc_metrics_fact.jpg[Kubernetes PVC Metrics Fact]
 
-=== Storage and Storage Pool Capacity 
+==== Kubernetes Workload Metrics Fact
 
-image:Storage_and_Storage_Pool_Capacity_Fact.png[]
+image:k8s_workload_metrics_fact.jpg[Kubernetes Workload Metrics Fact]
 
-=== File System Utilization
 
-image:fs_util.png[]
 
-=== Port Capacity
+=== NAS
 
-image:ports.png[]
+image:nas.png[]
+
+=== Paths and Violations
+
+image:logical.png[]
+
+=== Port Connectivity
+
+image:connectivity.png[]
+
+=== SAN Fabric
+
+image:fabric.png[]
+
+=== Storage
+
+image:storage.png[]
+
+=== Storage Node
+
+image:storage_node.png[]
+
+=== VM
+
+image:vm.png[]
+
+
+
+'''
+
+== Capacity Datamart
+
+The following images describe the capacity datamart.
+
+
 
 === Chargeback 
 
@@ -109,39 +115,116 @@ image:Chargeback_Fact.png[]
 image:Disk_Group_Capacity.png[]
 
 
+=== File System Utilization
+
+image:fs_util.png[]
+
+
+
+=== Internal Volume Capacity 
+
+image:Internal_Volume_Capacity_Fact.png[]
+
+
+
+=== Kubernetes PV Capacity
+
+image:k8s_pvc_capacity_fact.jpg[]
+
+
+
+=== Port Capacity
+
+image:ports.png[]
+
+
+
+=== Qtree Capacity 
+
+image:Qtree_Capacity_Fact.png[]
+
+
+
+
+=== Storage Capacity Efficiency 
+
+image:efficiency.png[]
+
+=== Storage and Storage Pool Capacity 
+
+image:Storage_and_Storage_Pool_Capacity_Fact.png[]
+
+=== Storage Node Capacity
+
+image:Storage_Node_Capacity_Fact.jpg[]
+
+
+
+=== VM Capacity 
+
+image:VM_Capacity_Fact.png[]
+
+=== Volume Capacity 
+
+image:Volume_Capacity.png[]
+
+
+
+
+'''
+
 == Performance Datamart
 
 The following images describe the performance datamart.
 
+
 === Application Volume Hourly Performance
 
-image:application_performance_fact.png[]
+image:application_performance_fact.jpg[]
+
+
+=== Disk Daily Performance
+
+image:disk_daily_performance_fact.png[]
+
+=== Disk Hourly Performance
+
+image:disk_hourly_performance_fact.png[]
+
+
+
+
+=== Host Hourly Performance
+
+image:host_performance_fact.jpg[]
 
 === Internal Volume Hourly Performance
 
-image:host_performance_fact.png[]
-
-=== Internal Volume Hourly Performance
-
-image:internal_volume_performance_fact.png[]
+image:internal_volume_performance_fact.jpg[]
 
 === Internal Volume Daily Performance
 
-image:internal_volume_daily_performance_fact.png[]
+image:internal_volume_daily_performance_fact.jpg[]
 
 
-=== Volume Hourly Performance 
 
-image:vmdk_hourly_performance_fact.png[]
-
-=== Volume Daily Performance 
-
-image:volume_daily_performance_fact.png[]
 
 
 === Qtree Daily Performance 
 
 image:QtreeDailyPerformanceFact.png[]
+
+
+
+=== Storage Node Daily Performance
+
+image:storage_node_daily_performance_fact.jpg[]
+
+=== Storage Node Hourly Performance
+
+image:storage_node_hourly_performance_fact.jpg[]
+
+
 
 
 === Switch Hourly Performance for Host
@@ -160,6 +243,8 @@ image:switch_performance_for_storage_hourly_fact.png[]
 === Switch Hourly Performance for Tape 
 
 image:switch_performance_for_tape_hourly_fact.png[]
+
+
 
 === VM Performance
 
@@ -190,25 +275,58 @@ image:vmdk_daily_performance_fact.png[]
 
 image:vmdk_hourly_performance_fact.png[]
 
-//=== Storage Node Daily Performance
 
-//image:storage_node_daily_performance_fact.jpg[]
 
-=== Storage Node Hourly Performance
 
-image:storage_node_hourly_performance_fact.png[]
+=== Volume Hourly Performance 
 
-=== Disk Daily Performance
+image:volume_performance_fact.jpg[]
 
-image:disk_daily_performance_fact.png[]
+=== Volume Daily Performance 
 
-=== Disk Hourly Performance
+image:volume_daily_performance_fact.jpg[]
 
-image:disk_hourly_performance_fact.png[]
 
-== Kubernetes
+
+
+
+
+// == Kubernetes Capacity
+// Moved to Capacity section above
+
+////
+=== Kubernetes PV Capacity
+
+image:k8s_pvc_capacity_fact.jpg[]
+////
+
+
+// Moved to Inventory section above:
+////
+=== Kubernetes Metrics
 
 image:k8s_schema.jpg[Kubernetes]
 
+==== Kubernetes Cluster Metrics Fact
+
+image:k8s_cluster_metrics_fact.jpg[Kubernetes Cluster Metrics Fact]
+
+==== Kubernetes Namespace Metrics Fact
+
+image:k8s_namespace_metrics_fact.jpg[Kubernetes Namespace Metrics Fact]
 
 
+==== Kubernetes Node Metrics Fact
+
+image:k8s_node_metrics_fact.jpg[Kubernetes Node Metrics Fact]
+
+
+
+==== Kubernetes PVC Metrics Fact
+
+image:k8s_pvc_metrics_fact.jpg[Kubernetes PVC Metrics Fact]
+
+==== Kubernetes Workload Metrics Fact
+
+image:k8s_workload_metrics_fact.jpg[Kubernetes Workload Metrics Fact]
+////
