@@ -55,12 +55,20 @@ Email notifications of alerts are sent to the alert recipient list for every act
 
 To configure global alert recipients, choose the desired recipients in the *Global Monitor Notification Recipients* section.
 
-[.thumb]
-//image:CS-Alert-Notification-List.png[Alert Email notification recipient list]
-//.image:GlobalMonitorRecipients.png[Global Monitor Notification Recipients]
-
 You can always override the global recipients list for an individual monitor when creating or modifying the monitor.
 
 NOTE: ONTAP Data Collector notifications take precedence over any specific Monitor notifications that are relevant to the cluster/data collector. The recipient list you set for the Data Collector itself will receive the data collector alerts. If there are no active data collector alerts, then monitor-generated alerts will be sent to specific monitor recipients.
 
 //image:MonitorTeamNotifications.png[Override Global Notifications]
+
+
+
+== Editing Notifications for ONTAP
+
+You can modify notifications for ONTAP clusters by selecting _Edit Notifications_ from the upper-right drop-down on a Storage landing page.
+
+image:EditONTAPNotifications.png[ONTAP Edit Notifications]
+
+From here, you can set notifications for Critical, Warning, Informational, and/or Resolved alerts. Each scenario can notify the Global Recipient list or other recipients you choose.
+
+image:EditONTAPNotifications_MultipleScenarios.png[ONTAP Notifications for different scenarios]
