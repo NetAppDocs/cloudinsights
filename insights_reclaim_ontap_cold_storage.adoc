@@ -22,10 +22,7 @@ NOTE: The _Reclaim ONTAP Cold Storage_ Insight is considered a link:concept_prev
 
 To view these Insights, navigate to *Dashboards > Insights* and take a look at the _Reclaim ONTAP Cold Storage_ Insight. Note that this Insight will only list affected storages if Cloud Insights has detected cold storage, otherwise you will see an "all clear" message.
 
-Keep in mind that:
-
-* Cold data less than 30 days old is not shown.
-* Constituent volumes in a flexgroup are not included in cold data calculations (because tier policy cannot be set on the constituents).
+Keep in mind that cold data less than 30 days old is not shown.
 
 image:Cold_Data_Insight_List.png[Insight list showing 3 storages with cold data]
 
