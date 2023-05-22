@@ -43,12 +43,36 @@ Note: A "days to full" number of "0" (zero) indicates that days to full is estim
 
 == Data Protection
 
-Select the *Data Protection* page to view SnapMirror relationships. Click through to source or destination volume information, or click the gear icon to add columns for the data you wish to view.
+//Select the *Data Protection* page to view SnapMirror relationships. Click through to source or destination volume information, or click the gear icon to add columns for the data you wish to view.
+
+The *Data Protection* page shows the status of volumes protected by *Snapshot copies* or *SnapMirror policies*. 
+
+In the _Local Protection Overview_ section, the charts provide the following information for volumes protected by Snapshot copies:
+
+* The number of volumes protected by Snapshot copies, as well as those not protected.
+* The number of volumes that are using or exceeding the reserve space for the Snapshot copies.
+* The number of volumes in specific ranges of Snapshot copy count (i.e. less than 10 copies, 10 to 200, etc.).
+
+In the _Remote Protection Overview_ section, the charts provide information related to volumes protected by SnapMirror policies:
+
+* The number of healthy and unhealthy SnapMirror relationships.
+* The number of SnapMirror relationships experiencing recovery point objective (RPO) lag based on the lag status.
+* The number of relationships protected by SnapMirror volume protection types such as Volume SnapMirror, SVMDR relationships, FlexGroup SnapMirror relationships, SnapMirror Business Continuity (SMBC) consistency Group relationships, as well as unprotected volumes.
+* The number of relationships protected by the SnapMirror relationship types such as Asynchronous Mirror, Asynchronous Vault, Asynchronous MirrorVault, StrictSync, and Sync.
+
+image:DataProtectionDashboard_OverviewWidgets.png[Data Protection Dashboard widgets showing Local and Remote overviews]
+
+The _Clusters_ grid at the bottom of the page provides details related to the following:
+* Volumes not protected by Snapshots.
+* Volumes breaching snapshot reserve space.
+* Volumes not protected by snapmirror policies and snapmirror relationships experiencing lag.
+* Unhealthy SnapMirror relationships.
 
 //image:ONTAP_Essentials_data_protection.png[SnapMirror Relationships list page]
 //image:OE_DataProtection.png[SnapMirror Relationships list page]
-image:DataProtectionDashboard_OverviewWidgets.png[Data Protection Dashboard widgets showing Local and Remote overviews]
+
 image:DataProtectionDashboard_ClusterList.png[Data Protection Cluster List]
+
 
 == Security
 
