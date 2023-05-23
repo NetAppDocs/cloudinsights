@@ -175,22 +175,25 @@ For the proxy used for your Kubernetes cluster to communicate with your Cloud In
 Configure the proxy section of AgentConfiguration in operator-config.yaml before deploying the NetApp Kubernetes Monitoring Operator. 
 
 ----
-proxy:
+agent:
+  ...
+  proxy:
+    server: <server for proxy>
+    port: <port for proxy>
+    username: <username for proxy>
+    password: <password for proxy>
+    
+    # In the noproxy section, enter a comma-separated list of
+    # IP addresses and/or resolvable hostnames that should bypass
+    # the proxy
+    noproxy: <comma separated list>
 
-   server: <server for proxy>
-   port: <port for proxy>
-   username: <username for proxy>
-   password: <password for proxy> 
- 
-# In the noproxy section, enter a comma-separated list of
-# IP addresses and/or resolvable hostnames that should bypass
-# the proxy:
-
-   noproxy: <comma separated list>
-   isTelegrafProxyEnabled: true
-   isFluentbitProxyEnabled: <true or false> # true if Events Log enabled
-   isCollectorsProxyEnabled: <true or false> # true if Network Performance and Map enabled
-   isAuProxyEnabled: <true or false> # true if AU enabled 
+    isTelegrafProxyEnabled: true
+    isFluentbitProxyEnabled: <true or false> # true if Events Log enabled
+    isCollectorsProxyEnabled: <true or false> # true if Network Performance and Map enabled 
+    isAuProxyEnabled: <true or false> # true if AU enabled
+  ...
+...
 ----
 
 
@@ -269,12 +272,15 @@ Edit the monitoring-operator deployment in operator-deployment.yaml, and modify 
 
 Edit the AgentConfiguration in operator-config.yaml to reflect the new docker repo location. Create a new imagePullSecret for your private repository, for more details see _https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/_
 
- # An optional docker registry where you want docker images to be pulled from as compared to CI's docker registry
- # Please see documentation link here:
- dockerRepo: your.docker.repo/long/path/to/test
- # Optional: A docker image pull secret that maybe needed for your private docker registry
- dockerImagePullSecret: docker-secret-name
-
+----
+agent:
+  ...
+  # An optional docker registry where you want docker images to be pulled from as compared to CI's docker registry 
+  # Please see documentation link here
+  dockerRepo: your.docker.repo/long/path/to/test
+  # Optional: A docker image pull secret that maybe needed for your private docker registry
+  dockerImagePullSecret: docker-secret-name  
+----
 
 
 ////
