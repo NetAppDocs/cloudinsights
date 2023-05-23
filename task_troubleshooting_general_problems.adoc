@@ -61,6 +61,20 @@ Try with a different browser profile (i.e. Chrome - add Person).
 
 |===
 
+
+
+== Other Issues
+
+|===
+|My Qtree hard quotas are showing correctly in queries, but my soft quotas are showing as the total capacity of the volume. Is that correct?
+|Only hard quotas--either manually set or set through Trident--will show as the set quotas; if no hard quotas are specified, the Qtree capacity will be the internal volume capacity.
+
+|I have both a soft and a hard quota manually set in the same Qtree, but the total capacity showing is the hard quota; is that correct?
+|Yes, if a hard quota is specified, that will be shown as the total capacity.
+
+|===
+
+
 //You can find more troubleshooting and other link:concept_requesting_support.html[support] information on the Cloud Insights *Help > Support* page.
 
 If you have an active Cloud Insights subscription you can use these support options:
