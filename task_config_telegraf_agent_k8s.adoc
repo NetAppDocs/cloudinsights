@@ -276,7 +276,7 @@ Edit the AgentConfiguration in operator-config.yaml to reflect the new docker re
 agent:
   ...
   # An optional docker registry where you want docker images to be pulled from as compared to CI's docker registry 
-  # Please see documentation link here
+  # Please see documentation link here: https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent_k8s.html#using-a-custom-or-private-docker-repository
   dockerRepo: your.docker.repo/long/path/to/test
   # Optional: A docker image pull secret that maybe needed for your private docker registry
   dockerImagePullSecret: docker-secret-name  
