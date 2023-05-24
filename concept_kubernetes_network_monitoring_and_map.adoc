@@ -14,7 +14,7 @@ summary: Presents Kubernetes workload dependencies and flows and highlights netw
 :imagesdir: ./media/
 
 [.lead]
-The Kubernetes Network Performance Monitoring and Map feature simplifies troubleshooting by mapping dependencies between Kubernetes workloads. It provides real-time visibility into Kubernetes network performance latencies and anomalies to identify performance issues before they affect users.
+The Kubernetes Network Performance Monitoring and Map feature simplifies troubleshooting by mapping dependencies between Kubernetes services (also called workloads). It provides real-time visibility into Kubernetes network performance latencies and anomalies to identify performance issues before they affect users.
 This capability helps organizations reduce overall costs by analyzing and auditing Kubernetes traffic flows.
 
 NOTE: The Kubernetes Network Performance Monitoring and Map is a link:concept_preview_features.html[Preview] feature and is subject to change.
@@ -54,7 +54,7 @@ You can create Cloud insights metric alerts on any of the object types below. Ma
 
 == The Map
 
-The Map shows services (also called workloads) and their relationships to each other. Arrows show directions of traffic. Hovering over a workload displays summary information for that workload, as you can see in this example:
+The Map shows services/workloads and their relationships to each other. Arrows show directions of traffic. Hovering over a workload displays summary information for that workload, as you can see in this example:
 
 image:ServiceMap_Simple_Example.png[Example of a Workload Map workload]
 
@@ -104,7 +104,7 @@ Workload labels are necessary if you want the Map to identify the types of workl
 * Name of the service/application running in generic terms
 
 * If the source is a pod:
-** Derived from the workload label of the pod
+** Label is derived from the workload label of the pod
 ** Expected label on the workload: app.kubernetes.io/component
 ** Label name reference: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 ** Recommended labels:
@@ -115,12 +115,12 @@ Workload labels are necessary if you want the Map to identify the types of workl
 *** queue
 *** kafka
 
-* If the source external to k8s cluster:
-** Try and parse the DNS resolved name and extract the service type
+* If the source is external to the kubernetes cluster:
+** Cloud Insights will attempt to parse the DNS resolved name to extract the service type.
 +
-example: s3.eu-north-1.amazonaws.com
-+
-resolved name parsed to get s3 
+For example, with a DNS resolved name of _s3.eu-north-1.amazonaws.com_, the resolved name is parsed to get _s3_ as the service type.
+
+
 
 == Dive Deep
 
@@ -128,9 +128,11 @@ Right-clicking on a workload presents you with additional options to explore fur
 
 image:Workload_Map_Zoom_Into_Connections.png[Workload Map Right-Click Zoom to show the workload's connections]
 
-Or you can open the detail panel to directly open the Detail Slideout to the _Summary_, _Network_, or _Pod & Storage_ tab.
+Or you can open the detail slideout panel to directly view the _Summary_, _Network_, or _Pod & Storage_ tab.
 
 image:Workload_Map_Detail_Network_Slideout.png[Detail Slideout Network Tab Example]
+
+Finally, selecting _Go to Asset Page_ will open the detailed asset landing page for the workload.
 
 
 
