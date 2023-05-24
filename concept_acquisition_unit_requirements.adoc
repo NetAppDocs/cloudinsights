@@ -28,7 +28,8 @@ You must install an Acquisition Unit (AU) in order to acquire information from y
 * Centos (64-bit): 7.2 through 7.9, Stream 8, Stream 9
 * Debian (64-bit): 9 and 10
 * Oracle Enterprise Linux (64-bit): 7.5 through 7.9, 8.1 through 8.4
-* Red Hat Enterprise Linux (64-bit): 7.2 through 7.9, 8.1 through 8.6
+* Red Hat Enterprise Linux (64-bit): 7.2 through 7.9, 8.1 through 9.1
+* Rocky 9.0, 9.1
 * Ubuntu Server: 18.04 and 20.04 LTS
 
 This computer should be running no other application-level software. A dedicated server is recommended. 
@@ -122,17 +123,10 @@ For each "Yes" answer above, it is recommend to add 8 GB of memory and 50 GB of 
 
 For additional sizing questions, contact NetApp Support.
 
+== Additional Federal Edition requirement
 
-//// 
-Previous list:
-* Red Hat Enterprise Linux 7.2 64-bit
-* Red Hat Enterprise Linux 7.2 64-bit KVM
-* Red Hat Enterprise Linux 7.5 64-bit
-* Red Hat Enterprise Linux 7.5 64-bit KVM
-* CentOS 7.2 64-bit
-* CentOS 7.2 64-bit KVM
-* CentOS 7.5 64-bit
-* CentOS 7.5 64-bit KVM
-* Oracle Enterprise Linux 7.5 64 bit
-* Oracle Enterprise Linux 7.5 64 bit KVM
-////
+* For Acquisition Unit installations in Cloud Insights Federal Edition clusters, the underlying operating system must have a good source of entropy. On Linux systems this is typically done by installing _rng-tools_ or by using hardware random number generation (RNG). It is the customer's responsibility to ensure this requirement is met on the Acquisition Unit machine.
+
+
+
+

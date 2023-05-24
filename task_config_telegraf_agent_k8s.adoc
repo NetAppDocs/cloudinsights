@@ -22,6 +22,7 @@ toc::[]
 
 Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
+
 image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 
 Below is a high-level illustration showing where the Operator resides in your environment. Depending on your environment, _Proxy Server_ may or may not be required. 
@@ -34,6 +35,36 @@ The Operator (NKMO) and the data collectors are downloaded from the Cloud Insigh
 
 == Before installing the NetApp Kubernetes Monitoring Operator
 
+.Pre-requisites:
+
+* If you are using a custom or private docker repository, follow the instructions in the Using a custom or private docker repository section
+* NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater.
+* When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings and metrics for NFS and iSCSI; other runtimes only show NFS.
+* Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must upgrade to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
+* If you are running on OpenShift 4.6 or higher, you must follow the OpenShift Instructions below in addition to ensuring these pre-requisites are met.
+* Monitoring is only installed on Linux nodes
+Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, by specifying a Kubernetes node selector that looks for the following Kubernetes labels on these platforms:
+
+|===
+|Platform	|Label
+|Kubernetes v1.20 and above	|Kubernetes.io/os = linux
+|Rancher + cattle.io as orchestration/Kubernetes platform	|cattle.io/os = linux
+|===
+
+* The NetApp Kubernetes Monitoring Operator and its dependencies (telegraf, kube-state-metrics, fluentbit, etc.) are not supported on nodes that are running with Arm64 architecture.
+* The following commands must be available: curl, kubectl. The docker command is required for an optional installation step. For best results, add these commands to the PATH. Note that kubectl needs to be configured with access to the following kubernetes objects at a minimum: agents, clusterroles, clusterrolebindings, customresourcedefinitions, deployments, namespaces, roles, rolebindings, secrets, serviceaccounts, and services. See here for an example .yaml file with these minimum clusterrole privileges.
+* The host you will use for the NetApp Kubernetes Monitoring Operator installation must have kubectl configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
+* If you are behind a proxy during installation, or when operating the K8s cluster to be monitored, follow the instructions in the Configuring Proxy Support section.
+* The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances.
+For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
+* If you are re-deploying the Operator (i.e. you are updating or replacing it), there is no need to create a _new_ API token; you can re-use the previous token.
+* Also note that if you have a recent NetApp Kubernetes Monitoring Operator installed and are using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.
+
+
+
+
+////
+// ----- PreRequisites Start -----
 .Pre-requisites:
 [[nkmoversion]]
 
@@ -77,6 +108,11 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 * You must have permissions to create Kubernetes cluster roles and role bindings.
 
 For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
+// ----- PreRequisites End -----
+////
+
+
+
 
 
 == Note these before you start
@@ -85,8 +121,23 @@ If you are running with a <<configuring-proxy-support,proxy>>, have a <<using-a-
 
 If you are upgrading from a previous installation, also read the <<upgrading,Upgrading>> information.
 
-If you want to verify the installation files before installing the Agent, read about <<verifying-kubernetes-checksums, Verifying Kubernetes Checksums>>.
+// If you want to verify the installation files before installing the Agent, read about <<verifying-kubernetes-checksums, Verifying Kubernetes Checksums>>.
 
+
+
+== Configuring the Operator
+
+In newer versions of the operator, most commonly modified settings can be configured in the _AgentConfiguration_ custom resource. You can edit this resource before deploying the operator by editing the _operator-config.yaml_ file. This file includes commented out examples of some settings. See the list of link:telegraf_agent_k8s_config_options.html[available settings] for the most recent version of the operator.
+
+You can also edit this resource after the operator has been deployed using the following command:
+
+	kubectl -n netapp-monitoring edit AgentConfiguration
+
+To determine if your deployed version of the operator supports AgentConfiguration, run the following command:
+
+	kubectl get crd agentconfigurations.monitoring.netapp.com
+ 
+If you see an “Error from server (NotFound)” message, your operator must be upgraded before you can use the AgentConfiguration.
 
 
 === Configuring Proxy Support
@@ -103,16 +154,14 @@ For the proxy used to install the NetApp Kubernetes Operating Monitor, before in
 To set the variable(s), perform the following steps on your system *before* installing the NetApp Kubernetes Monitoring Operator:
 
 . Set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user:
-+
-.. If the proxy being setup does not have Authentication (username/password), run the following command: 
+.. If the proxy being setup does not have Authentication (username/password), run the following command:
 +
  export https_proxy=<proxy_server>:<proxy_port>
-+
+ 
 .. If the proxy being setup does have Authentication (username/password), run this command:
 +
- export http_proxy= <proxy_username>:<proxy_password>@<proxy_server>:<proxy_port>
+ export http_proxy=<proxy_username>:<proxy_password>@<proxy_server>:<proxy_port>
 
-// export https_proxy=<proxy_server>:<proxy_port>
 
 ////
 . Create _/etc/default/telegraf_, and insert definitions for the _https_proxy_ and/or _http_proxy_ variable(s):
@@ -120,8 +169,34 @@ To set the variable(s), perform the following steps on your system *before* inst
  https_proxy=<proxy_server>:<proxy_port>
 ////
 
+
 For the proxy used for your Kubernetes cluster to communicate with your Cloud Insights environment, install the NetApp Kubernetes Monitoring Operator after reading all of these instructions.
 
+Configure the proxy section of AgentConfiguration in operator-config.yaml before deploying the NetApp Kubernetes Monitoring Operator. 
+
+----
+proxy:
+
+   server: <server for proxy>
+   port: <port for proxy>
+   username: <username for proxy>
+   password: <password for proxy> 
+ 
+# In the noproxy section, enter a comma-separated list of
+# IP addresses and/or resolvable hostnames that should bypass
+# the proxy:
+
+   noproxy: <comma separated list>
+   isTelegrafProxyEnabled: true
+   isFluentbitProxyEnabled: <true or false> # true if Events Log enabled
+   isCollectorsProxyEnabled: <true or false> # true if Network Performance and Map enabled
+   isAuProxyEnabled: <true or false> # true if AU enabled 
+----
+
+
+
+////
+// ----- Previous Proxy Instructions -----
 To finish the configuration, perform the following steps on the system *after* you have installed the NetApp Kubernetes Monitoring Operator.
 
 First, open the _agent-monitoring-netapp_ file for editing:
@@ -157,24 +232,53 @@ Locate the *spec:* section of this file and add the following code:
   noProxy: <comma separated list>
 ----
 
-////
-While installing, there are two places where proxy settings are important:
-
-* Proxy needed during execution of the snippet to connect the system where the snippet is executed to your Cloud Insights environment. the snippet uses "curl" to download what it needs.
-* Proxy needed by the target K8s cluster to communicate with your Cloud Insights environment.
-
-
-The proxies may be the same, but they must be setup and used in two different places during install.
-
-The first proxy, for snippet execution, must be configured on the command line as the snippet is executed. Your proxy settings must be configured to allow execution of the code snippet.
-
-The second proxy, for K8s cluster communication with your Cloud Insights environment, must be configured _after_ the snippet executes and installs the configuration and containers. 
+// ----- Previous Proxy Instructions end -----
 ////
 
 
 
 === Using a custom or private docker repository
 
+By default, the NetApp Kubernetes Monitoring Operator will pull container images from the Cloud Insights repository. If you have a Kubernetes cluster used as the target for monitoring, and that cluster is configured to only pull container images from a custom or private Docker repository or container registry, you must configure access to the containers needed by the NetApp Kubernetes Monitoring Operator.
+
+Run the “Image Pull Snippet” from the NetApp Monitoring Operator install tile. This command will log into the Cloud Insights repository, pull all image dependencies for the operator, and log out of the Cloud Insights repository. When prompted, enter the provided repository temporary password. This command downloads all images used by the operator, including for optional features. See below for which features these images are used for.
+
+Core Operator Functionality and Kubernetes Monitoring
+
+* netapp-monitoring
+* kube-rbac-proxy
+* kube-state-metrics
+* telegraf
+* distroless-root-user
+
+Events Log
+
+* fluent-bit
+* kubernetes-event-exporter
+
+Network Performance and Map
+
+* ci-net-observer
+
+Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies. Ensure that the image tags and directory paths to these images in your repository are consistent with those in the Cloud Insights repository.
+
+Edit the monitoring-operator deployment in operator-deployment.yaml, and modify all image references to use your private Docker repository.
+
+ image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<kube-rbac-proxy version>
+ image: <docker repo of the enterprise/corp docker repo>/netapp-monitoring:<version>
+
+Edit the AgentConfiguration in operator-config.yaml to reflect the new docker repo location. Create a new imagePullSecret for your private repository, for more details see _https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/_
+
+ # An optional docker registry where you want docker images to be pulled from as compared to CI's docker registry
+ # Please see documentation link here:
+ dockerRepo: your.docker.repo/long/path/to/test
+ # Optional: A docker image pull secret that maybe needed for your private docker registry
+ dockerImagePullSecret: docker-secret-name
+
+
+
+////
+// ----- Previous Custom Docker Section -----
 By default, the NetApp Kubernetes Monitoring Operator config will pull container images from public registries. If you have a Kubernetes cluster used as the target for monitoring, and that cluster is configured to only pull container images from a custom or private Docker repository or container registry, you must configure access to the containers needed by the NetApp Kubernetes Monitoring Operator so the necessary commands can be executed.
 
 Use the following instructions to pre-position container images in your registry and alter the NetApp Kubernetes Monitoring Operator config to access those images. Substitute your chosen installation namespace in the following commands if it differs from the default namespace of “netapp-monitoring”.
@@ -215,6 +319,7 @@ Find the _netapp-monitoring_ <version> field using the following command:
 
 Download all open source dependencies to your private docker registry. The following open source images need to be downloaded. See the <<before-installing-the-netapp-kubernetes-monitoring-operator,Pre-requisites>> section above for the most current versions of these components:
 
+
  docker pull docker.<cluster>.cloudinsights.netapp.com/telegraf:<telegraf version>
  docker pull docker.<cluster>.cloudinsights.netapp.com/kube-rbac-proxy:<kube-rbac-proxy version>
  docker pull docker.<cluster>.cloudinsights.netapp.com/kube-state-metrics:<kube-state-metrics version>
@@ -246,101 +351,83 @@ In the _spec:_ section, make the following changes:
        substitutions:
          - key: k8s.gcr.io
            value: <same as "docker-repo" field above>
-
+// ----- Previous custom docker section end -----
+////
 
 
 
 === OpenShift Instructions
 
-If you are running on OpenShift 4.6 or higher, you must change the "privileged-mode" setting. Run the following command to open the agent for editing. If you are using a namespace other than "netapp-monitoring", specify that namespace in the command line:
+If you are running on OpenShift 4.6 or higher, you must edit the AgentConfiguration in _operator-config.yaml_ to enable the _runPrivileged_ setting: 
 
- kubectl edit agent agent-monitoring-netapp -n netapp-monitoring
- 
-In the file, change _privileged-mode: false_ to  _privileged-mode: true_
+ # Set runPrivileged to true SELinux is enabled on your kubernetes nodes
+ runPrivileged: true
 
-Openshift may implement an added level of security that may block access to some Kubernetes components. 
+Openshift may implement an added level of security that may block access to some Kubernetes components.
+
+
+
 
 ////
-The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. See the <<securitycontextconstraint,SecurityContextConstraint>> section for more information.
+=== Advanced Tuning
 
-==== SecurityContextConstraint
+For a small subset of advanced settings which cannot be set in AgentConfiguration or outdated operators which do not support AgentConfiguration they can be set in the Agent custom resource. For instructions and lists of the variables you can tune, see the README file included with the operator image. After you have installed the operator, use the following command to view the README:
 
-Some variants of Kubernetes, such as OpenShift, implement an added level of security that may block access to certain components. The _SecurityContextConstraint_ is not created as part of the Kubernetes agent install command provided in the Cloud Insights UI, and must be created manually. Once created, restart the Telegraf pod(s).
-
-Note: The default namespace for NetApp Kubernetes Monitoring Operator-based installation is _netapp-monitoring_. In commands involving namespace, be sure to specify the correct namespace for your installation.
-
-----
-    apiVersion: v1
-    kind: SecurityContextConstraints
-    metadata:
-      name: telegraf-hostaccess
-      creationTimestamp:
-      annotations:
-        kubernetes.io/description: telegraf-hostaccess allows hostpath volume mounts for restricted SAs.
-      labels:
-        app: ci-telegraf
-    priority: 10
-    allowPrivilegedContainer: true
-    defaultAddCapabilities: []
-    requiredDropCapabilities: []
-    allowedCapabilities: []
-    allowedFlexVolumes: []
-    allowHostDirVolumePlugin: true
-    volumes:
-    - hostPath
-    - configMap
-    - secret
-    allowHostNetwork: false
-    allowHostPorts: false
-    allowHostPID: false
-    allowHostIPC: false
-    seLinuxContext:
-      type: MustRunAs
-    runAsUser:
-      type: RunAsAny
-    supplementalGroups:
-      type: RunAsAny
-    fsGroup:
-      type: RunAsAny
-    readOnlyRootFilesystem: false
-    users:
-    - system:serviceaccount:ci-monitoring:monitoring-operator
-    groups: []
-----
-
+ kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
 ////
-    
-
-
+   
 
 
 == Installing the NetApp Kubernetes Monitoring Operator
 
 //image:Kubernetes_Operator_Agent_Instructions.png[Operator-Based Install]
-image:NKMO_Install_Instructions.png[Operator-Based Install]
+//image:NKMO_Install_Instructions.png[Operator-Based Install]
+image:NKMO-Instructions-1.png[]
+image:NKMO-Instructions-2.png[]
+
 
 .Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
 
 . Enter a unique cluster name and namespace. If you are <<upgrading, upgrading>> from the script-based agent or a previous Kubernetes Operator, use the same cluster name and namespace. 
-. Once these are entered, you can copy the Agent Installer snippet
-. Click the button to copy this snippet to the clipboard.
-. Paste the snippet into a _bash_ window and execute it. Note that the snippet has a unique key and is valid for 24 hours.
-. The installation proceeds automatically. When it is complete, click the _Complete Setup_ button.
+. Once these are entered, you can copy the Download Command snippet to the clipboard.
+. Paste the snippet into a _bash_ window and execute it. The Operator installation files will be downloaded. Note that the snippet has a unique key and is valid for 24 hours.
 
-NOTE: Setup is incomplete until you <<configuring-proxy-support, configure your proxy>>.
+. If you have a custom or private repository, copy the optional Image Pull snippet, paste it into a _bash_ shell and execute it. Once the images have been pulled, copy them to your private repository. Be sure to maintain the same tags and folder structure. Update the paths in _operator-deployment.yaml_ as well as the docker repository settings in _operator-config.yaml_.
 
-NOTE: If you have a custom repository, you must follow the instructions for <<using-a-custom-or-private-docker-repository, Using a custom/private docker repository>>.
+. If desired, review available configuration options such as proxy or private repository settings. You can read more about link:telegraf_agent_k8s_config_options.html[configuration options].
+
+. When you are ready, deploy the Operator by copying the kubectl Apply snippet, downloading it, and executing it. 
+
+. The installation proceeds automatically. When it is complete, click the _Next_ button.
+
+. When installation is complete, click the _Next_ button. Be sure to also delete or securely store the _operator-secrets.yaml_ file.
 
 
 
+Read more about <<configuring-proxy-support, configuring proxy>>.
+
+Read more about <<using-a-custom-or-private-docker-repository, using a custom/private docker repository>>.
+
+
+
+Kubernetes EMS log collection is enabled by default when installing the NetApp Kubernetes Monitoring Operator. To disable this collection following installation, click the *Modify Deployment* button at the top of the Kubernetes cluster detail page, and un-select "Log collection". 
+
+image:K8s_Modify_Deployment_Screen.png[Modify Deployment screen showing checkbox for "log Collection"]
+
+This screen also shows current Log Collection status. Below are the possible states:
+
+* Disabled
+* Enabled
+* Enabled - Installation in progress
+* Enabled - Offline
+* Enabled - Online
+* Error - API Key has insufficient permissions
 
 
 
 == Upgrading 
 
 NOTE: If you have a previously installed script-based agent, you _must_ upgrade to the NetApp Kubernetes Monitoring Operator.
-
-
 
 === Upgrading from script-based agent to NetApp Kubernetes Monitoring Operator
 
@@ -350,11 +437,13 @@ To upgrade the telegraf agent, do the following:
 
  kubectl -n ci-monitoring get cm telegraf-conf -o jsonpath='{.data}' |grep "kubernetes_cluster ="
  
+
 ////
 . Back up the existing configurations:
 
  kubectl --namespace ci-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
 ////
+
 
 . Save the K8s cluster name for use during installation of the K8s operator-based monitoring solution to ensure data continuity.
 +
@@ -377,34 +466,41 @@ If the monitoring namespace is being used for other purposes in addition to Tele
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
 
 
+
 . <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the current Operator. Be sure to use the same cluster name noted in step 1 above.
+
 
 //image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
 
 
+
 === Upgrading to the latest NetApp Kubernetes Monitoring Operator
 
-For Operator-based installation upgrades, run the following commands:
+Determine whether an AgentConfiguration exists with the existing Operator (if your namespace is not the default _netapp-monitoring_, substitute the appropriate namespace):
 
-* Make note of your cluster name as recognized by Cloud Insights. You can view the cluster name by running the following command. If your namespace is not the default (_netapp-monitoring_), substitute the appropriate namespace:
+ kubectl -n netapp-monitoring get agentconfiguration netapp-monitoring-configuration
+ 
+If an AgentConfiguration exists:
+
+* <<installing-the-netapp-kubernetes-monitoring-operator,Install>> the latest Operator over the existing Operator.
+
+** Ensure you are <<using-a-custom-or-private-docker-repository,pulling the latest container images>> if you are using a custom repository.
+
+If the AgentConfiguration does not exist:
+
+* Make note of your cluster name as recognized by Cloud Insights (if your namespace is not the default netapp-monitoring, substitute the appropriate namespace):
 
  kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
 
-////
-* Back up the existing configurations:
+* Create a backup of the existing Operator (if your namespace is not the default netapp-monitoring, substitute the appropriate namespace):
+  
+ kubectl -n netapp-monitoring get agent -o yaml > agent_backup.yaml
 
- kubectl --namespace netapp-monitoring get cm -o yaml > /tmp/telegraf-configs.yaml
-////
-
-<<to-remove-the-netapp-kubernetes-monitoring-operator, Uninstall>> the current Operator.
-
-<<installing-the-netapp-kubernetes-monitoring-operator, Install>> the latest Operator. Use the same cluster name, and ensure you are pulling new container images if you have set up a custom repo.
-
-
-
-
-
-
+* <<to-remove-the-netapp-kubernetes-monitoring-operator,Uninstall>> the existing Operator.
+* <<installing-the-netapp-kubernetes-monitoring-operator,Install>> the latest Operator.
+** Use the same cluster name.
+** After downloading the latest Operator YAML files, port any customizations found in agent_backup.yaml to the downloaded operator-config.yaml before deploying.
+** Ensure you are <<using-a-custom-or-private-docker-repository,pulling the latest container images>> if you are using a custom repository.
 
 
 
@@ -419,10 +515,6 @@ To start the Netapp Kubernetes Monitoring Operator:
 
  kubectl -n netapp-monitoring scale deploy monitoring-operator --replicas=1
 
-
-
-
- 
 
 
 
@@ -453,14 +545,18 @@ If the monitoring namespace is being used for other purposes in addition to Tele
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
 
 
+
 === To remove the NetApp Kubernetes Monitoring Operator
+
 
 Note that the default namespace for the NetApp Kubernetes Monitoring Operator is "netapp-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
 
 Newer versions of the monitoring operator can be uninstalled with the following commands:
 
+
  kubectl delete agent -A -l installed-by=nkmo-<name-space>
  kubectl delete ns,clusterrole,clusterrolebinding,crd -l installed-by=nkmo-<name-space>
+
 
 If the first command returns “No resources found”, use the following instructions to uninstall older versions of the monitoring operator.
 
@@ -490,6 +586,7 @@ The NetApp Kubernetes Monitoring Operator installs kube-state-metrics automatica
 
 === kube-state-metrics Counters
 
+
 Use the following links to access information for these kube state metrics counters:
 
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/configmap-metrics.md[ConfigMap Metrics]
@@ -511,7 +608,6 @@ Use the following links to access information for these kube state metrics count
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/secret-metrics.md[Secret metrics]
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/service-metrics.md[Service metrics]
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/statefulset-metrics.md[StatefulSet metrics]
-
 
 
  
@@ -565,7 +661,6 @@ More specifically,
  openssl x509 -fingerprint -sha1 -noout -inform pem -in netapp_cert.pem
 
 
-
 The signed checksum file can be verified using the PEM file:
 
  openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
@@ -577,17 +672,19 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 
  
 
+////
 == Tuning the Operator
 
 
 You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources. For instructions and lists of the variables you can tune, see the README file included with the installation package. After you have installed the operator, use the following command to view the README:
 
- kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
+ sudo -E -H ./<installation_script_name> --install
 
 NOTE: Operator tuning is not available in Cloud Insights Federal Edition
-
 ////
 
+
+////
 You can adjust the NetApp Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
 
 To modify these values, edit the agent CR with the following command (substituting <namespace> for your namespace): 
@@ -614,6 +711,7 @@ See https://kubernetes.io/docs/concepts/configuration/manage-resources-container
 |===
 
 |Variable Name	|Plugin Name	|Included in default CR	|Description
+
  
 |DS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes CPU limit for telegraf-ds
 |DS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes mem limit for telegraf-ds
@@ -628,12 +726,12 @@ See https://kubernetes.io/docs/concepts/configuration/manage-resources-container
 
 |===
 
-
-
 === Telegraf related variables 
 See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent for information on telegraf variables.
 
+
 |===
+
 
 |Placeholder	|Plugin Name	|Included in default CR	|Description
 
@@ -764,6 +862,7 @@ kubectl get all -n <namespace> \| grep -i psp (should show that nothing is found
 |"ImagePullBackoff" errors seen
 |These errors may be seen if you have a custom or private docker repository and have not yet configured the NetApp Kubernetes Monitoring Operator to properly recognize it.  <<using-a-custom-or-private-docker-repository,Read more>> about configuring for custom/private repo.
 
+
 |I am having an issue with my monitoring-operator deployment, and the current documentation does not help me resolve it.
 a|Capture or otherwise note the output from the following commands, and contact the Technical Support team.
 
@@ -796,47 +895,13 @@ a|Capture or otherwise note the output from the following commands, and contact 
 •	Note the pod which is in Pending state, and check if it is experiencing a resource issue for CPU or memory. Ensure the required memory and CPU is available in the node.
 
 
+|I’m seeing the following in my logs immediately after installing the NetApp Kubernetes Monitoring Operator:
+
+[inputs.prometheus] Error in plugin: error making HTTP request to http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: Get http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: dial tcp: lookup kube-state-metrics.<namespace>.svc.cluster.local: no such host
+|This message is typically only seen when a new operator is installed and the _telegraf-rs_ pod is up before the _ksm_ pod is up. These messages should stop once all pods are running.
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
 
-////
-
-Obsolete Troubleshooting Tips:
-
-|I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. 
-
-|I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
-
-
-|For clusters where _etcd_ is not the Kubernetes cluster datastore, you will see the following message in the telegraf RS pod:
-
- [inputs.prometheus] Error in plugin: could not load keypair /etc/kubernetes/pki/etcd/server.crt:/etc/kubernetes/pki/etcd/server.key: open /etc/kubernetes/pki/etcd/server.crt: no such file or directory
-|Cloud Insights only supports monitoring of _etcd_ as the K8s datastore. You can modify the agent to avoid collecting etcd data by changing the configuration with the following instructions:  
-
- kubectl -n netapp-monitoring edit agent agent-monitoring-netapp
-
-In that file, delete the following section:
-
- - name: prometheus_etcd
-   run-mode:
-   - ReplicaSet
-
-
-|I installed or upgraded Telegraf on Kubernetes, but the Telegraf pods are not starting up.  The Telegraf ReplicaSet or DaemonSet is reporting a failure resembling the following:
-
- Error creating: pods "telegraf-rs-" is forbidden": unable to validate against any security context constraint: To relax this restriction, edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"[spec.volumes[2]: Invalid value: "hostPath": hostPath volumes are not allowed to be used]
-
-|Create a Security Context Constraint if one does not already exist.
-
-Ensure the namespace and service account specified for the Security Context Constraint matches the namespace and service account for the Telegraf ReplicaSet and DaemonSet.
-
- kubectl describe scc telegraf-hostaccess \|grep serviceaccount
- kubectl -n ci-monitoring --describe rs telegraf-rs \| grep -i "Namespace:"
- kubectl -n ci-monitoring describe rs telegraf-rs \| grep -i "Service Account:"
- kubectl -n ci-monitoring --describe ds telegraf-ds \| grep -i "Namespace:"
- kubectl -n ci-monitoring describe ds telegraf-ds \| grep -i "Service Account:"
-
-
-////
 
