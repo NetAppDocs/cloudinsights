@@ -39,6 +39,18 @@ image:ServiceMap_NKMO_Deployment_Options.png[selecting the Map option during NKM
 
 The Workload Map uses link:task_create_monitor.html[monitors] to derive information. Cloud Insights provides a number of default Kubernetes Monitors (note that these may be _Paused_ by default. You can _Resume_ (i.e. enable) the monitors you want), or you can create custom monitors for kubernetes objects, which the Workload Map will also use. 
 
+You can create Cloud insights metric alerts on any of the object types below. Make sure that object is grouped by id. 
+
+* kubernetes.workload
+* kubernetes.daemonset
+* kubernetes.deployment
+* kubernetes.cronjob
+* kubernetes.job
+* kubernetes.replicaset
+* kubernetes.statefulset
+* kubernetes.pod
+* kubernetes.network_traffic_l4
+
 
 == The Map
 
@@ -109,6 +121,18 @@ Workload labels are necessary if you want the Map to identify the types of workl
 example: s3.eu-north-1.amazonaws.com
 +
 resolved name parsed to get s3 
+
+== Dive Deep
+
+Right-clicking on a workload presents you with additional options to explore further. For example, from here you can zoom in to view the connections for that workload.
+
+image:Workload_Map_Zoom_Into_Connections.png[Workload Map Right-Click Zoom to show the workload's connections]
+
+Or you can open the detail panel to directly open the Detail Slideout to the _Summary_, _Network_, or _Pod & Storage_ tab.
+
+image:Workload_Map_Detail_Network_Slideout.png[Detail Slideout Network Tab Example]
+
+
 
 
 
