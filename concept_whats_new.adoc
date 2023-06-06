@@ -23,7 +23,7 @@ NOTE: Some of these features may not be available in Cloud Insights Federal Edit
 
 === Check out your Usage
 
-Beginning in June, 2023, Cloud Insights will give you a breakdown of Managed Unit usage based on Feature Set. Now you can quickly view and monitor managed unit (MU) usage for your Observibility features as well as MU usage tied to Kubernetes. And coming soon, Workload Security MU usage!
+Beginning in June, 2023, Cloud Insights provides a breakdown of Managed Unit usage based on Feature Set. Now you can quickly view and monitor managed unit (MU) usage for your Observibility features as well as MU usage tied to Kubernetes. And coming soon, Workload Security MU usage!
 
 image:Metering_Usage.png[Metering Usage Breakdowns]
 
@@ -32,44 +32,52 @@ image:Metering_Usage.png[Metering Usage Breakdowns]
 
 === Kubernetes Network Monitoring and Map is available for all
 
-The link:concept_kubernetes_network_monitoring_and_map.html[_Kubernetes Network Performance and Map_] simplifies troubleshooting by mapping dependencies between Kubernetes workloads, providing real-time visibility into Kubernetes network performance latencies and anomalies to identify performance issues before they affect users. Many customers fount it helpful during Preview, and now it's available for everyone to enjoy. 
+The link:concept_kubernetes_network_monitoring_and_map.html[_Kubernetes Network Performance and Map_] simplifies troubleshooting by mapping dependencies between Kubernetes workloads, providing real-time visibility into Kubernetes network performance latencies and anomalies to identify performance issues before they affect users. Many customers found it helpful during Preview, and now it's available for everyone to enjoy. 
+
 
 
 == Reporting 
 
-=== The Reporting component of Cloud Insights has been re-named to "Cloud Insights Analytics" 
-
-image:
+=== The Reporting component of Cloud Insights has been re-named to "Cloud Insights Analytics". Don't worry, though; the functionality remains the same.  
 
 
-=== Collector/AU:
 
-Data Domain and Cohesity MUs metered at 40:1 (Expected June deployment)
-RHEL and Rocky 9.0 and 9.1 support
+=== Collector/Acquisition changes:
+
+The following Data Collector/Acquisition Unit changes are in place:
+
+* Data Domain and Cohesity MUs are metered at 40:1
+* Acquisition Units now support RHEL and Rocky 9.0 and 9.1.
+
 
 
 === Manually Install AU
 
 TBD - Wait for UI changes before documenting this?
 
-
-=== ONTAP Essentials dashboards going GA
-
-Security Dashboard moving to GA
-Data Protection Dashboard moving to GA:
-
-Includes UI: Local Protection Overview
-Includes UI: Remote Protection Overview
+Cloud Insights updates Acquisition Unit (AU) software automatically as newer builds are deployed. However, in a secure controlled environments, automatic updating may not be possible or desired. In these cases, Cloud Insights can be configured for AU software to be updated manually, providing more control over the software installed in your environment.
 
 
-=== System Monitors
 
-Storage VM FCP Service Unavailable
-Storage VM iSCSI Service Unavailable
+=== New ONTAP Essentials dashboards 
 
-=== Trident / Qtree
+The following ONTAP Essentials dashboards have been available in Preview environments, and now they are available for everyone:
 
-Qtree full path information added to 'pod-to-storage' when available (either set Manually or via Trident) (details TBD)
+* Security Dashboard
+* Data Protection Dashboard (includes Local and Remote Protection overviews
+
+
+=== Additional System Monitors
+
+The following System Monitors are included with Cloud Insights:
+
+* Storage VM FCP Service Unavailable
+* Storage VM iSCSI Service Unavailable
+
+
+=== Trident / Qtree data
+
+Qtree full path information added to 'pod-to-storage' when available (either set Manually or via Trident).
 
 
 
