@@ -51,14 +51,6 @@ The following Data Collector/Acquisition Unit changes are in place:
 
 
 
-=== Manually Install AU
-
-TBD - Wait for UI changes before documenting this?
-
-Cloud Insights updates Acquisition Unit (AU) software automatically as newer builds are deployed. However, in a secure controlled environments, automatic updating may not be possible or desired. In these cases, Cloud Insights can be configured for AU software to be updated manually, providing more control over the software installed in your environment.
-
-
-
 === New ONTAP Essentials dashboards 
 
 The following ONTAP Essentials dashboards have been available in Preview environments, and now they are available for everyone:
@@ -75,12 +67,11 @@ The following System Monitors are included with Cloud Insights:
 * Storage VM iSCSI Service Unavailable
 
 
+////
 === Qtree full path data for Pod-to-Storage
 
-TBD - Is there a better way to describe this?
-
 Qtree full path information is available for 'pod-to-storage' if it is available, either set manually or via Trident.
-
+////
 
 
 
