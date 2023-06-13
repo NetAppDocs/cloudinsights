@@ -49,6 +49,15 @@ TIP: Once you have installed an agent on a server/VM, Cloud Insights collects me
 
 NOTE: If you are using a proxy, read the proxy instructions for your platform before installing the Telegraf agent.
 
+=== Log Locations
+
+Telegraf log messages are redirected from stdout to specific log files.
+
+* RHEL/CentOS: /var/log/telegraf/telegraf.log
+* Ubuntu/Debian: /var/log/telegraf/telegraf.log
+* Windows: C:\Program Files\telegraf\telegraf.log
+
+
 === Windows
 
 ==== Pre-requisites:
