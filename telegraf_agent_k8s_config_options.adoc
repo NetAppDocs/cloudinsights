@@ -43,7 +43,7 @@ proxy:
 |Optional for customer to set proxy. This is usually customers corporate proxy. 
 ||agentUUID|A uniquely identified string across all cloud insights operator installations. This is usually automatically set by cloud insights.
 |telegraf||Configuration options that can customize the telegraf installation of the Operator
-||collectionInterval|Metrics collection interval, in seconds
+||collectionInterval|Metrics collection interval, in seconds (Max=60s)
 ||dsCpuLimit|CPU Limit for telegraf ds
 ||dsMemLimit|Memory limit for telegraf ds
 ||dsCpuRequest|CPU request for telegraf ds

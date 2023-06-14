@@ -4,9 +4,7 @@ permalink: concept_subscribing_to_cloud_insights.html
 summary: At any point during your free trial, you can subscribe to Cloud Insights.
 keywords: subscribe, trial, subscription, contract, raw capacity, region, data retention, retention, MU, managed unit, managed units, units, managed
 ---
-
 = Subscribing to Cloud Insights
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -16,37 +14,21 @@ keywords: subscribe, trial, subscription, contract, raw capacity, region, data r
 :imagesdir: ./media/
 :keywords: OnCommand, Insight, documentation, help, onboarding, getting started
 
+[lead]
 Getting started with Cloud Insights is as easy as three simple steps:
 
-* Sign up for an account on link:https://cloud.netapp.com/[*NetApp Cloud Central*] to get access to all of NetApp's Cloud offerings.
+* Sign up for an account on link:https://https://bluexp.netapp.com//[*NetApp BlueXP*] to get access to all of NetApp's Cloud offerings.
 * Register for a link:https://cloud.netapp.com/cloud-insights[*free trial*] of Cloud Insights to explore the features available.
-* *Subscribe* to Cloud Insights for on-going, uninterrupted access to your data via link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales] direct or AWS Marketplace (link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[Standard Edition] or link:https://aws.amazon.com/marketplace/pp/prodview-pbc3h2mkgaqxe[Premium Edition]).
+* *Subscribe* to Cloud Insights for on-going, uninterrupted access to your data via link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales] direct or link:https://aws.amazon.com/marketplace/pp/prodview-pbc3h2mkgaqxe[AWS Marketplace].
 
 During the registration process, you can choose the global region to host your Cloud Insights environment. 
 For more information, read about Cloud Insights link:security_information_and_region.html[Information and Region].
 
-NOTE: Unless otherwise noted, the information on this page generally applies to Cloud Insights Commercial Editions (Basic, Standard, Premium). The Federal Edition of Cloud Insights may not contain some of the functionality described on this page.
+NOTE: Unless otherwise noted, the information on this page generally applies to Cloud Insights Commercial Editions. The Federal Edition of Cloud Insights may not contain some of the functionality described on this page.
+
+For a full comparison of the features available in Cloud Insights Basic and Premium Editions, see the link:https://bluexp.netapp.com/cloud-insights-pricing[Cloud Insights Pricing] page.
 
 
-== Editions
-
-The features and functionality available to you in Cloud Insights depend on the Edition to which you subscribe. The Editions available are explained here.
-
-* *Basic Edition* is free and available to existing NetApp customers with an active NetApp support account.
-+
-WARNING: Inactive Cloud Insights Basic Edition environments are deleted and their resources are reclaimed. An environment is considered inactive if there is no user activity for 30 consecutive days, of if there is no data ingested for 7 consecutive days. Cloud Insights will send a notification and provide a grace period of four days before an environment is deleted.
-+
-NOTE: The features, data retention times, and objects or metrics collected in Cloud Insights Basic Edition are subject to change with or without notice.  
-
-* *Standard Edition* is available via subscription and offers all the features of Basic Edition plus more.
-
-
-* *Federal Edition* provides a FedRAMP-compliant Cloud Insights Edition for U.S. Government departments. Some functionality that is available in the commercial Editions above may not be available in the Federal Edition, or may be available with reduced functionality. Where possible, these differences are noted in the Cloud Insights documentation.
-
-
-=== Key Features
-
-Here are the key features available in Basic, Standard, and Premium Edition:
 
 ////
 // Table with Federal as a column:
@@ -74,7 +56,7 @@ Here are the key features available in Basic, Standard, and Premium Edition:
 &ast;&ast;Available for environments of 500 managed units and larger
 ////
 
-
+////
 // Table with Federal as a footnote:
 [cols=".<,.^,.^,.^", role="green"]
 |===
@@ -102,20 +84,45 @@ Here are the key features available in Basic, Standard, and Premium Edition:
 &plus;API access varies by Edition
 &ast;&ast;Available for environments of 500 managed units and larger
 ^&plus;&plus;^ Features not available in Cloud Insights Federal Edition
+////
 
+////
+[cols=".<,.^,.^", role="green"]
+|===
+|Key Feature |Basic Edition |Premium Edition
+|Data Retention|7 Days|13 Months
+|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor
+|Customizable Dashboards|&check;|&check;
+|Forum, Documentation, and Training Videos| &check;|&check;
+|Live Chat^&plus;&plus;^ and Technical Support| - |&check;
+|VM Metrics| - |&check;
+|Cloud Metrics| - |&check;
+|Service Metrics| - |&check;
+|Monitors and Alerting| &ast; |&check;
+|API Access^&plus;^| &check; | &check;
+|Single Sign-On (SSO)| - |&check;
+|Workload Security User Data Access Auditing | - |&check;
+|Workload Security Insider Threat Detection with AI/ML | - |&check;
+|Business Intelligence and Reporting&ast;&ast;| - |&check;
+|===
 
+&ast;Limited to 5 active custom monitors at a time
+&plus;API access varies by Edition
+&ast;&ast;Available for environments of 500 managed units and larger
+^&plus;&plus;^ Features not available in Cloud Insights Federal Edition
+////
 
 
 While using Cloud Insights, if you see a padlock icon image:padlock.png[Padlock], it means the feature is not available in your current Edition, or is available in a limited form. Upgrade for full access to the feature.
 
 
 
-== Trial Version
+== Trial Edition
 When you sign up for Cloud Insights and your environment is active, you enter into a free, 30-day trial of Cloud Insights. During this trial you can explore the features that Cloud Insights has to offer, in your own environment.   
 
 At any time during your trial period, you can subscribe to Cloud Insights. Subscribing to Cloud Insights ensures uninterrupted access to your data as well as extended link:https://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[*product support*] options. 
 
-Cloud Insights displays a banner when your free trial is nearing its end. Within that banner is a _View Subscription_ link, which opens the *Admin > Subscription* page. Non-Admin users will see the banner but will not be able to go to the Subscription page.
+Cloud Insights displays a banner when your free trial is nearing its end. Within that banner is a _View Subscription_ link, which opens the *Admin -> Subscription* page. Non-Admin users will see the banner but will not be able to go to the Subscription page.
 
 NOTE: If you need additional time to evaluate Cloud Insights and your trial is set to expire in 4 days or less, you can extend your trial for an additional 30 days. You can extend the trial only once. You cannot extend if your trial has expired.
 
@@ -123,11 +130,11 @@ NOTE: If you need additional time to evaluate Cloud Insights and your trial is s
 
 == Trial through AWS Marketplace
 
-You may also sign up for a free trial through the AWS Marketplace. The AWS Marketplace free trial gives you access to Cloud Insights <<editions, Premium Edition>> for a trial period of 33 days, and allows up to 499 <<pricing, Managed Units>> (MUs). 
+You may also sign up for a free trial through the AWS Marketplace. The AWS Marketplace free trial gives you access to Cloud Insights for a trial period of 33 days, and allows up to 499 <<pricing, Managed Units>> (MUs). 
 
 Note: If you configure more than 499 MUs, you will enter "breached" state. While your trial is in breached state, you will lose access to some Cloud Insights functionality until the breach is resolved, either by reducing the number of MUs configured, or by subscribing to Cloud Insights.
 
-The AWS Marketplace free trial cannot be extended. At any time during your trial, you can downgrade to a Cloud Insights Basic Edition subscription or change to a paid Cloud Insights Standard or Premium Edition subscription by visiting the *Admin --> Subscription* page.
+The AWS Marketplace free trial cannot be extended. At any time during your trial, you can downgrade to a Cloud Insights Basic Edition subscription or change to a paid Cloud Insights subscription by visiting the *Admin -> Subscription* page.
 
 
 
@@ -137,11 +144,15 @@ If your free trial has expired and you have not yet subscribed to Cloud Insights
 
 == Subscription Options
 
-To subscribe, go to *Admin > Subscription*. In addition to the *Subscribe* buttons, you will be able to see your installed data collectors and calculate your estimated pricing. For a typical environment, you can click the self-serve AWS Marketplace *Subscribe Now* button. If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for Volume Pricing. 
+To subscribe, go to *Admin -> Subscription*. In addition to the *Subscribe* buttons, you will be able to see your installed data collectors and calculate your estimated pricing. For a typical environment, you can click the self-serve AWS Marketplace button. If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for Volume Pricing. 
 
-image:SubscriptionCompareTable-2.png[Subscription Options]
+//image:SubscriptionCompareTable-2.png[Subscription Options]
+//image:Subscription_Edition_Table.png[Subscription Feature table by Edition]
+
+
 
 === Pricing
+
 Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts or virtual machines* and amount of *unformatted capacity* being managed in your infrastructure environment.
 
 * 1 Managed Unit = 2 hosts (any virtual or physical machine)
@@ -157,19 +168,24 @@ Note that the following data collectors are metered at a different Raw TiB to Ma
 * IBM Cleversafe
 * NetApp StorageGrid
 
-
 If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for *Volume Pricing* and will be prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
 
+
 === Estimate Your Subscription Cost
-The Subscription Calculator gives you an estimated list-price monthly Cloud Insights cost based on the number of hosts and amount of unformatted capacity being reported by your data collectors. The current values are pre-populated in the _Hosts_ and _Unformatted Capacity_ fields. You can enter different values to assist you with planning for estimated future growth.
 
-Your estimated list price cost will change based on your subscription term.
+The Subscription Calculators give you an estimated monthly Cloud Insights cost based on the number of Managed Units you estimate you will need. The current values are pre-populated, and you can adjust those values to assist you with planning for estimated future growth. You can adjust values for Infrastructure, Kubernetes, or both.
 
-NOTE: The calculator is for estimation only. Your exact pricing will be set when you subscribe.
+Your estimated list price cost will change based on your subscription term. 
+NOTE: The calculators are for estimation only. Your exact pricing will be set when you subscribe.
+
+image:Subscription_Cost_Calculators.png[Subscription Page showing Infrastructure and Kubernetes cost estimation calculators]
+
+
 
 == How Do I Subscribe?
 
 If your Managed Unit count is less than 1,000, you can subscribe via NetApp Sales, or <<self-subscribe-via-aws-marketplace,self-subscribe>> via AWS Marketplace.
+
 
 === Subscribe through NetApp Sales direct
 
@@ -177,15 +193,16 @@ If your expected Managed Unit count is 1,000 or greater, click on the link:https
 
 You must provide your Cloud Insights *Serial Number* to your NetApp sales representative so that your paid subscription can be applied to your Cloud Insights environment. The Serial Number uniquely identifies your Cloud Insights trial environment and can be found on the *Admin > Subscription* page.
 
+
 === Self-Subscribe through AWS Marketplace
 
 NOTE: You must be an Account Owner or Administrator in order to apply an AWS Marketplace subscription to your existing Cloud Insights trial account. Additionally, you must have an Amazon Web Services (AWS) account.  
 
-Clicking on the *Subscribe Now* button opens the AWS link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[Cloud Insights] subscription page, where you can complete your subscription. Note that values you entered in the calculator are not populated in the AWS subscription page; you will need to enter the total Managed Units count on this page.
+Clicking on the Amazon Marketplace link opens the AWS link:https://aws.amazon.com/marketplace/pp/B07HM8QQGY[Cloud Insights] subscription page, where you can complete your subscription. Note that values you entered in the calculator are not populated in the AWS subscription page; you will need to enter the total Managed Units count on this page.
 
 After you have entered the total Managed Units count and chosen either 12-month or 36-month subscription term, click on *Set Up Your Account* to finish the subscription process.
 
-Once the AWS subscription process is complete, you will be taken back to your Cloud Insights environment. Or, if the environment is no longer active (for example, you have logged out), you will be taken to the Cloud Central sign-in page. When you sign in to Cloud Insights again, your subscription will be active. 
+Once the AWS subscription process is complete, you will be taken back to your Cloud Insights environment. Or, if the environment is no longer active (for example, you have logged out), you will be taken to the NetAPp BlueXP sign-in page. When you sign in to Cloud Insights again, your subscription will be active. 
 
 NOTE: After clicking on *Set Up Your account* on the AWS Marketplace page, you must complete the AWS subscription process within one hour. If you do not complete it within one hour, you will need to click on *Set Up Your Account* again to complete the process.
 
@@ -198,21 +215,19 @@ If there is a problem and the subscription process fails to complete correctly, 
 Once your subscription is active, you can view your subscription status and Managed Unit usage from the *Admin > Subscription* page.
 
 //image:Subscription_Summary.png[Subscription Status ] 
-image:Subscription_Status_Usage.png[Viewing your subscription ststus]
+//image:Subscription_Status_Usage.png[Viewing your subscription ststus]
 
-The Subscription Details tab displays the following:
+The Subscription Summary tab displays the following:
 
-* Current subscription or active Edition 
-* Details about your subscription
-* Links to modify your subscription or estimate cost changes
-//* Contract term and expiration date
-//* Current Managed Unit usage, including breakdown counts for hosts and capacity
-//* Link to modify your subscription 
+* Current Edition 
+* Subscription Serial Number
+* Current MU usage and "what if?" cost estimators
+* Links to modify your subscription
 
 
 == View your Usage Management
 
-The Usage Management tab shows an overview of Managed Unit usage, as well as a list of the Data Collectors installed in your environment and the breakdown of Managed Units for each.
+The Usage Management tab shows an overview of Managed Unit usage, as well as tabs breaking down Managed Unit consumption by collector or Kubernetes Cluster.
 
 NOTE: The Unformatted Capacity Managed Unit count reflects a sum of the total raw capacity in the environment and is rounded up to the nearest Managed Unit. 
 
@@ -226,7 +241,7 @@ NOTE: The Unformatted Capacity Managed Unit count reflects a sum of the total ra
 
 NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the summary section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The summary section reflects your actual Managed Unit count for your subscription.
 
-In the event that your usage is nearing or exceeding your subscribed amount, you can delete data collectors in this list by clicking on the "three dots" menu and selecting _Delete_.
+In the event that your usage is nearing or exceeding your subscribed amount, you can reduce usage by deleting data collectors or stopping monitoring of Kubernetes Clusters. Delete an item in this list by clicking on the "three dots" menu and selecting _Delete_.
 
 
 === What Happens if I Exceed My Subscribed Usage?
@@ -238,8 +253,8 @@ Warnings are displayed when your Managed Unit usage exceeds 80%, 90%, and 100% o
 |*80%* | An informational banner is displayed. No action is necessary.
 | *90%* | A warning banner is displayed. You may want to increase your subscribed Managed Unit count.
 | *100%*| An error banner is displayed and you will have limited functionality until you do one of the following:
-* Modify your subscription to increase the subscribed Managed Unit count
 * Remove Data Collectors so that your Managed Unit usage is at or below your subscribed amount
+* Modify your subscription to increase the subscribed Managed Unit count
 |===
 
 == Subscribe Directly and Skip the Trial
