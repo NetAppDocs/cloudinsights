@@ -6,7 +6,6 @@ summary: Configuring DELL EMC PowerStore data collector.
 ---
 
 = Dell EMC PowerStore data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,7 +15,6 @@ summary: Configuring DELL EMC PowerStore data collector.
 :imagesdir: ./media/
 
 [.lead]
-
 The EMC PowerStore data collector gathers inventory information from EMC PowerStore storage. For configuration, the data collector requires the IP address of the storage processors and a read-only user name and password.
 
 The EMC PowerStore data collector gathers the volume-to-volume replication relationships that PowerStore coordinates across other storage arrays. Cloud Insights shows a storage array for each PowerStore cluster, and collects inventory data for nodes and storage ports on that cluster. No storage pool or volume data is collected. 
