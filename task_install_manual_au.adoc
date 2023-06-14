@@ -1,0 +1,141 @@
+---
+sidebar: sidebar
+permalink: task_install_manual_au.html
+keywords:  Acquisition Unit, AU, install, configure, Linux, add, remove, uninstall, delete, deleting, move, moving
+summary: Cloud Insights can be configured for AU software to be updated manually, providing more control over the software installed in your environment.
+---
+= Manually Installing Acquisition Unit Software
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+By default, Cloud Insights updates Acquisition Unit (AU) software automatically as updates are deployed. However, in a secure controlled environments, automatic updating may not be possible or desired.  In these cases, Cloud Insights can be configured for AU software to be updated manually, providing more control over the software installed in your environment.
+
+To manually download and install the AU software, perform the following steps. Cloud Insights provides a helpful Swagger documentation page that you can use for many of these steps, or you can use your own API script/commands. Go to Admin > API Access and click the “API Documentation” link.
+
+The process is similar for Linux and Windows.
+
+=== Performing a NEW AU install on Linux:
+
+. In Cloud Insights, create an API Token.
+.. Navigate to *Admin > API Access* and select *+API Access Token*. 
+... Set a *Name* and *Description* that are easy to identify
+... Type: *Acquisition Unit*
+... Permissions: *Read/Write*
+... Select desired *Expiry* and *Auto-Renew* values
+.. Click *Save*
+.. Copy the generated API Access token. This step must be performed before you can close the window.
+
+image:Manual_AU_Create_API_Token.png[]
+
+. In Swagger (Admin > API Access > API Documentation), use the token to Authorize Cloud Insights APIs
+.. Click _Authorize_ at the top right of the Swagger screen
+.. Paste the copied token from above to the Customer APIKey field
+.. Click *Authorize*
+.. Close the window
+
+image:Manual_AU_Authorization.png[]
+
+. Download the AU Installer using the _/au/installers/{platform}/{version}_ API:
+.. Platform: *linux*
+.. Version: *Latest version of the AU*
+
+//image:Manual_AU_Version_API.png[]
+//image:Manual_AU_Version_API_2.png[]
+
+image:Manual_AU_API_Retrieve_latest.png[API to retrieve latest AU version]
+
+NOTE: Please confirm with NetApp the AU version to be specified for download. 
+
+. Click *Download File*. If you are performing these steps on a system other than the AU system, copy the downloaded file to the AU system.
+. Alternatively, you can run the resulting CURL Command on the AU system:
++
+ curl -X GET "<tenant>/rest/v1/au/installers/linux/<AU version>" -H "accept: application/octet-stream" -H "X-CloudInsights-ApiKey: <token>"
+
+. At this point, the installer file should be present on the AU system.
+
+IMPORTANT: The next steps require the use of a temporary token. Do not use the API Access token you created above.
+
+. In the Cloud Insights API Swagger, create a one-time token using the _/au/oneTimeToken_ API.
+.. Copy the resulting one-use token.
+
+image:Manual_AU_one_time_token.png[]
+image:Manual_AU_one_time_token_response.png[]
+
+. On the machine where the AU is going to be installed, navigate to the folder containing the downloaded installer file. The commands below require the user to have root permissions.
+.. Unzip the installer file
+.. Change directory to the resulting installer folder
+.. Export the one-time token and the installer version to environment variables by executing the following:
++
+ export TOKEN=<One-Time Token>
+
+.. Run the following to install CI with a custom user and group:
++
+ ./cloudinsights-install.sh <custom user> <custom group>
++
+Note: If you do not wish to use a custom user and group, you can use the default “cisys” user and group.  In this case, run the install command above but do not specify the user and group.
+
+At this point, the AU software is installed on the system and is accessible by the custom user and group. However, you do not have the ability to add data collectors. To do this manually, you must copy the datasources.war file to the proper location.
+
+. Navigate to the source location for datasources.war and verify the zip file there:
++
+ cd /opt/netapp/cloudinsights/acq
+ ls -al
+ …
+ -rw-rw----  1 test-user1 test-group1 282103053 Mar 12 12:27 datasources-war-<version>>.zip
+ …
+
+. Note the permissions on the default datasources.war folder:
+
+ ls -al /var/lib/netapp/cloudinsights/acq/
+ …
+ drwxrwx--- 2 test-user1 test-group-1  4096 Feb 16 10:10 datasources.war
+ …
+
+. You must switch to (or logout root and login with) the custom user for the next steps.
+
+ su <custom user>
+
+.. Note: If you are using the default “cisys” user and group, you do not need to perform this step.
+
+.. Note: Custom user can be any user who is a member of a custom group you have provided to cloudinsights-install.sh during AU install, and can be the same or different from the custom user you provided during AU install. 
+
+. Create a working folder and adjust to the same permissions on it:
+
+ mkdir /var/lib/netapp/cloudinsights/acq/download
+ chmod 770 /var/lib/netapp/cloudinsights/acq/download
+ ls -al /var/lib/netapp/cloudinsights/acq
+ …
+ drwxrwx--- 2 test-user2 test-group-1  4096 Feb 16 10:10 datasources.war
+ …
+
+.. Note: If using the “cisys” user and group, those will be displayed in the output above.
+
+. Copy the _datasources-war-<version>.zip_ to the working folder. For example:
+
+ cp /opt/netapp/cloudinsights/acq/ TBD/var/lib/netapp/cloudinsights/acq/download
+
+. Change to the download folder and unzip the file:
+
+ cd /var/lib/netapp/cloudinsights/acq/download
+
+ unzip datasources-war-<version>.zip -d /var/lib/netapp/cloudinsights/acq/datasources.war/
+ ls -al /var/lib/netapp/cloudinsights/acq/datasources.war 
+
+.. ensure that user, group, and permissions are correct on all files:
+
+ -rw-rw---- 1 test-user2 test-group1  3420067 Mar 10 17:20 netapp_ontap.jar
+
+. Note: If you plan to administer AU using different custom users, ensure group permissions are set to read and write for both owner and group (_chmod 660 …_)
+
+. Restart the AU. 
+
+.. In Cloud Insights, navigate to *Admin > Data Collectors* and select the *Acquisition Units* tab. Choose _Restart_ from the “three dots” menu to the right of the AU.
+
+
+
