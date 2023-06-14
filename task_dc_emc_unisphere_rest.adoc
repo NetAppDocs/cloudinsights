@@ -6,7 +6,6 @@ summary: Configuring Dell EMC Unisphere REST data collector.
 ---
 
 = Configuring the Dell EMC Unisphere REST data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,9 +14,7 @@ summary: Configuring Dell EMC Unisphere REST data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead] 
-
 This data collector acquires inventory and performance data from Dell EMC Unisphere for PowerMax / Vmax 3 management systems.
 
 Please note that Dell/EMC did not introduce per volume statistics until Unisphere 10.0 - this data collector support 9.2.0+, but will not be able to collect volume statistics as they do not exist.
