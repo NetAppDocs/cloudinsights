@@ -6,9 +6,15 @@ keywords: NetApp, root volume, high I/O,
 ---
 
 = Ensuring IO density reports describe only internal data volumes
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
 
 [.lead]
-
 NetApp root volume contains directories and configuration files for managing the storage system. When querying for high I/O density you want to exclude these root volumes.
 
 When monitoring your environment it is more important to determine which internal data volumes are producing high I/O density numbers. In order to accurately identify only the data volumes, you need to isolate the NetApp internal volumes from queries you use to monitor I/O density.

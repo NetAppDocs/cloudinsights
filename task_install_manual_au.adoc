@@ -41,16 +41,15 @@ image:Manual_AU_Create_API_Token.png[]
 
 image:Manual_AU_Authorization.png[]
 
-. Download the AU Installer using the _/au/installers/{platform}/{version}_ API:
+. Download the AU Installer using the _/au/installers/{platform}/latest_ or _/au/installers/{platform}/{version}_ API:
 .. Platform: *linux*
-.. Version: *Latest version of the AU*
-
+.. Version: *<version>* (latest or specified)
 //image:Manual_AU_Version_API.png[]
 //image:Manual_AU_Version_API_2.png[]
 
 image:Manual_AU_API_Retrieve_latest.png[API to retrieve latest AU version]
 
-NOTE: Please confirm with NetApp the AU version to be specified for download. 
+NOTE: If you are not downloading the latest version, confirm with NetApp the AU version to be specified for download. 
 
 . Click *Download File*. If you are performing these steps on a system other than the AU system, copy the downloaded file to the AU system.
 . Alternatively, you can run the resulting CURL Command on the AU system:
