@@ -6,7 +6,6 @@ summary: Configuring NetApp HCI Management server data collector.
 ---
 
 = Configuring the NetApp HCI Management server data collector 
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,9 +14,7 @@ summary: Configuring NetApp HCI Management server data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead]
-
 The NetApp HCI Management server data collector collects NetApp HCI Host information and requires read-only privileges on all objects within the Management server. 
 
 This data collector acquires from the *NetApp HCI Management server only*. To collect data from the storage system, you must also configure the link:task_dc_na_solidfire.html[NetApp SolidFire] data collector.

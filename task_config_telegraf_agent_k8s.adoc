@@ -4,9 +4,7 @@ permalink: task_config_telegraf_agent_k8s.html
 keywords: telegraf, installation, install, agent, telegraf agent, kubernetes, eks, operator, k8s
 summary: Cloud Insights supports Telegraf as its agent for collection of integration data on Kubernetes.  
 ---
-
 = Configuring the NetApp Kubernetes Monitoring Operator
-
 :toc: macro
 :hardbreaks:
 :nofooter:
@@ -828,7 +826,7 @@ Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: 2021-10-11T14:23:41Z I! Starting
 
 |On Kubernetes, my Telegraf pod(s) are reporting the following error:
 "Error in processing mountstats info: failed to open mountstats file: /hostfs/proc/1/mountstats, error: open /hostfs/proc/1/mountstats: permission denied"
-|If SELinux is enabled and enforcing, it is likely preventing the Telegraf pod(s) from accessing the /proc/1/mountstats file on the Kubernetes nodes.  To relax this restriction, edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"
+|If SELinux is enabled and enforcing, it is likely preventing the Telegraf pod(s) from accessing the /proc/1/mountstats file on the Kubernetes node. To overcome this restriction, edit the agentconfiguration, and enable the runPrivileged setting. For more details, refer to: https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent_k8s.html#openshift-instructions.
 
 
 |On Kubernetes, my Telegraf ReplicaSet pod is reporting the following error:

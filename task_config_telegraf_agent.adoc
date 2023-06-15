@@ -6,7 +6,6 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 ---
 
 = Configuring an Agent to Collect Data (Windows/Linux)
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -15,9 +14,7 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead]
-
 Cloud Insights uses link:https://docs.influxdata.com/telegraf[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
 The current Telegraf version for Cloud Insights is *1.24.0*.
@@ -48,6 +45,15 @@ NOTE: Once you have installed an agent on a host, you do not need to install an 
 TIP: Once you have installed an agent on a server/VM, Cloud Insights collects metrics from that system in addition to collecting from any data collectors you configure. These metrics are gathered as link:task_config_telegraf_node.html["Node" metrics].
 
 NOTE: If you are using a proxy, read the proxy instructions for your platform before installing the Telegraf agent.
+
+=== Log Locations
+
+Telegraf log messages are redirected from stdout to the following log files be default:
+
+* RHEL/CentOS: /var/log/telegraf/telegraf.log
+* Ubuntu/Debian: /var/log/telegraf/telegraf.log
+* Windows: C:\Program Files\telegraf\telegraf.log
+
 
 === Windows
 
