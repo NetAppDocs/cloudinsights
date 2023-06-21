@@ -78,6 +78,10 @@ example: cronjobs=[*],daemonsets=[*],deployments=[*],ingresses=[*],jobs=[*],name
 persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resourcequotas=[*],services=[*],statefulsets=[*]
 +++
 
+||cpuLimit |CPU limit for kube-state-metrics deployment
+||memLimit |Mem limit for kube-state-metrics deployment
+
+
 |logs||Configuration options that can customize logs collection and installation of the Operator 
 ||readFromHead|true/false, should fluent bit read the log from head
 ||timeout|timeout, in secs
