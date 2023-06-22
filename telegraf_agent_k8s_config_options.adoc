@@ -138,23 +138,23 @@ spec:
     # runPrivileged: false
  
   telegraf:
-    # use this settings to fine tune data collection
+    # use these settings to fine tune data collection
     collectionInterval: 20s
-    #batchSize:
-    #bufferLimit:
-    #roundInterval:
-    #collectionJitter:
-    #precision:
-    #flushInterval:
-    #flushJitter:
+    # batchSize:
+    # bufferLimit:
+    # roundInterval:
+    # collectionJitter:
+    # precision:
+    # flushInterval:
+    # flushJitter:
  
-    # Deamoset CPU/Mem limits and requests
+    # Deamonset CPU/Mem limits and requests
     # dsCpuLimit:
     # dsMemLimit:
     # dsCpuRequest:
     # dsMemRequest:
  
-    # replicaset CPU/Mem limits and requests
+    # Replicaset CPU/Mem limits and requests
     # rsCpuLimit:
     # rsMemLimit:
     # rsCpuRequest:
