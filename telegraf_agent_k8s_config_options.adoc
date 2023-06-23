@@ -15,7 +15,7 @@ summary: The NetApp Kubernetes Monitoring Operator has a number of configurable 
 :imagesdir: ./media/
 
 [.lead]
-The NetApp Kubernetes Monitoring Operator installation and configuration can be customized. 
+The link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] installation and configuration can be customized. 
 
 The table below lists the possible options for the AgentConfiguration file:
 
@@ -40,7 +40,6 @@ proxy:
   isFluentbitProxyEnabled:
   isCollectorProxyEnabled:
 |Optional for customer to set proxy. This is usually customers corporate proxy. 
-||agentUUID|A uniquely identified string across all cloud insights operator installations. This is usually automatically set by cloud insights.
 |telegraf||Configuration options that can customize the telegraf installation of the Operator
 ||collectionInterval|Metrics collection interval, in seconds (Max=60s)
 ||dsCpuLimit|CPU Limit for telegraf ds
@@ -78,6 +77,10 @@ a comma separated list of resources that kube-state-metrics should capture
 example: cronjobs=[*],daemonsets=[*],deployments=[*],ingresses=[*],jobs=[*],namespaces=[*],nodes=[*],
 persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resourcequotas=[*],services=[*],statefulsets=[*]
 +++
+
+||cpuLimit |CPU limit for kube-state-metrics deployment
+||memLimit |Mem limit for kube-state-metrics deployment
+
 
 |logs||Configuration options that can customize logs collection and installation of the Operator 
 ||readFromHead|true/false, should fluent bit read the log from head
