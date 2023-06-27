@@ -140,6 +140,7 @@ spec:
   telegraf:
     # use these settings to fine tune data collection
     collectionInterval: 20s
+
     # batchSize:
     # bufferLimit:
     # roundInterval:
@@ -147,6 +148,16 @@ spec:
     # precision:
     # flushInterval:
     # flushJitter:
+     
+    # Collect kubernetes.system_container metrics and objects in the kube-system|cattle-system namespaces for managed kubernetes clusters       
+    # (EKS, AKS, GKE, managed Rancher). Set this to true if you want collect these metrics.
+    #managedK8sSystemMetricCollectionEnabled: true|false 
+ 
+    # Collect kubernetes.pod_volume (pod ephemeral storage) metrics. Set this to true if you want to collect these metrics.
+    #podVolumeMetricFilteringEnabled: true|false
+ 
+    # Declare Rancher cluster as managed. Set this to true if your Rancher cluster is managed as opposed to on-premise. 
+    #isManagedRancher: true|false
  
     # Deamonset CPU/Mem limits and requests
     # dsCpuLimit:
