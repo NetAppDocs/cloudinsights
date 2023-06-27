@@ -907,8 +907,6 @@ a|Capture or otherwise note the output from the following commands, and contact 
 |I do see not any metrics being collected for the Kubernetes CronJobs that exist in my cluster.
 |Verify your Kubernetes version (i.e. `kubectl version`).  If it is v1.20.x or below, this is an expected limitation.  The kube-state-metrics release deployed with the Netapp Kubernetes Monitoring Operator only supports v1.CronJob.  With Kubernetes 1.20.x and below, the CronJob resource is at v1beta.CronJob.  As a result, kube-state-metrics cannot find the CronJob resource.
 
-|After installing the operator, the telegraf-ds pods enter CrashLoopBackOff and the pod logs indicate "su: Authentication failure".
-|Edit the netapp-monitoring-configuration agentconfiguration, and set _dockerMetricCollectionEnabled_ to false.  For more details, refer to the operator's link:telegraf_agent_k8s_config_options.html[configuration options]. 
 
 |===
 
