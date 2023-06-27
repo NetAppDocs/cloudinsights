@@ -39,7 +39,8 @@ proxy:
   isAuProxyEnabled:
   isFluentbitProxyEnabled:
   isCollectorProxyEnabled:
-|Optional for customer to set proxy. This is usually customers corporate proxy. 
+|Optional for customer to set proxy. This is usually customers corporate proxy.
+
 |telegraf||Configuration options that can customize the telegraf installation of the Operator
 ||collectionInterval|Metrics collection interval, in seconds (Max=60s)
 ||dsCpuLimit|CPU Limit for telegraf ds
@@ -63,6 +64,7 @@ proxy:
 ||flushInterval|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||flushJitter|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||outputTimeout|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
+||dockerMetricCollectionEnabled|Collect Docker metrics. By default, this is set to true and docker metrics will be collected for on-premise, docker-based k8s deployments. To disable docker metric collection, set this to false.
 
 |kube-state-metrics||Configuration options that can customize the kube state metrics installation of the Operator
 ||cpuRequest|CPU request for kube state metrics deployment 
