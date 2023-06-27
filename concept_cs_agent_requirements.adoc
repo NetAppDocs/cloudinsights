@@ -6,7 +6,6 @@ keywords: agent, Linux, requirements, docker, browsers, permissions, Network, Cl
 ---
 
 = Workload Security Agent Requirements
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -25,11 +24,12 @@ NOTE: Storage Workload Security is not available in Cloud Insights Federal Editi
 |Component|Linux Requirement
 |Operating system|A computer running a licensed version of one of the following:
 
-Red Hat Enterprise Linux 7.x, 8.x 64-bit
-CentOS 7.x 64-bit
-CentOS 8 Stream
+Red Hat Enterprise Linux 7.x, 8.x 64-bit, SELinux 
+CentOS 7.x 64-bit, SELinux 
+CentOS 8 Stream, SELinux 
 Ubuntu 20 through 22 64-bit
-Rocky 8.x 64-bit, Rocky 9.x 64-bit
+Rocky 8.x 64-bit, Rocky 9.x 64-bit, SELinux 
+SUSE Linux Enterprise Server 15 SP3, SUSE Linux Enterprise Server 15 SP4, SELinux on SUSE 15 SP3
 
 This computer should be running no other application-level software. A dedicated server is recommended.
 
