@@ -160,6 +160,7 @@ Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calc
 
 * 1 Managed Unit = 2 hosts (any virtual or physical machine)
 * 1 Managed Unit = 4 TiB of unformatted capacity of physical or virtual disks
+* 1 Managed Unit = 4 vCPUs of Kuberentes  
 
 Note that the following data collectors are metered at a different Raw TiB to Managed Unit rate. Every 40TiB of unformatted capacity on these data collectors is charged as 1 Managed Unit (MU): 
 
@@ -176,7 +177,7 @@ If your environment includes or is expected to include 1,000 or more Managed Uni
 
 === Estimate Your Subscription Cost
 
-The Subscription Calculators give you an estimated monthly Cloud Insights cost based on the number of Managed Units you estimate you will need. The current values are pre-populated, and you can adjust those values to assist you with planning for estimated future growth. You can adjust values for Infrastructure, Kubernetes, or both.
+The Subscription Calculators help you estimate your Cloud Insights subscription cost based on the number of Managed Units needed. The current values are pre-populated, and you can adjust those values to assist you with planning for estimated future growth. You can adjust values for Infrastructure, Kubernetes, or both. 
 
 Your estimated list price cost will change based on your subscription term. 
 NOTE: The calculators are for estimation only. Your exact pricing will be set when you subscribe.
@@ -226,6 +227,7 @@ The Subscription Summary tab displays the following:
 * Subscription Serial Number
 * Current MU usage and "what if?" cost estimators
 * Links to modify your subscription
+* Views of your Managed Unit usage
 
 
 == View your Usage Management
