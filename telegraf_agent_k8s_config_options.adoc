@@ -15,7 +15,7 @@ summary: The NetApp Kubernetes Monitoring Operator has a number of configurable 
 :imagesdir: ./media/
 
 [.lead]
-The NetApp Kubernetes Monitoring Operator installation and configuration can be customized. 
+The link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] installation and configuration can be customized. 
 
 The table below lists the possible options for the AgentConfiguration file:
 
@@ -40,7 +40,6 @@ proxy:
   isFluentbitProxyEnabled:
   isCollectorProxyEnabled:
 |Optional for customer to set proxy. This is usually customers corporate proxy. 
-||agentUUID|A uniquely identified string across all cloud insights operator installations. This is usually automatically set by cloud insights.
 |telegraf||Configuration options that can customize the telegraf installation of the Operator
 ||collectionInterval|Metrics collection interval, in seconds (Max=60s)
 ||dsCpuLimit|CPU Limit for telegraf ds
@@ -66,14 +65,16 @@ proxy:
 ||outputTimeout|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 
 |kube-state-metrics||Configuration options that can customize the kube state metrics installation of the Operator
+
+||cpuLimit |CPU limit for kube-state-metrics deployment
+||memLimit |Mem limit for kube-state-metrics deployment
 ||cpuRequest|CPU request for kube state metrics deployment 
 ||memRequest|Mem request for kube state metrics deployment 
+
 ||resources|a comma separated list of resources to capture.
 example: cronjobs,daemonsets,deployments,ingresses,jobs,namespaces,nodes,persistentvolumeclaims,
 persistentvolumes,pods,replicasets,resourcequotas,services,statefulsets
-
-||labels|
-a comma separated list of resources that kube-state-metrics should capture
+||labels|a comma separated list of resources that kube-state-metrics should capture
 +++
 example: cronjobs=[*],daemonsets=[*],deployments=[*],ingresses=[*],jobs=[*],namespaces=[*],nodes=[*],
 persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resourcequotas=[*],services=[*],statefulsets=[*]
@@ -84,10 +85,12 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 ||timeout|timeout, in secs
 ||dnsMode|TCP/UDP, mode for DNS
 |workload-map||Configuration options that can customize the workload map collection and installation of the Operator
+
 ||cpuLimit|CPU Limit for net observer ds
 ||memLimit|mem Limit for net observer ds
 ||cpuRequest|CPU request for net observer ds
 ||memRequest|mem request for net observer ds
+
 ||metricAgreegationInterval|metric aggregation interval, in seconds
 ||bpfPollInterval|BPF poll interval, in seconds
 ||enableDNSLookup|true/false, enable DNS lookup
@@ -135,29 +138,42 @@ spec:
     # runPrivileged: false
  
   telegraf:
-    # use this settings to fine tune data collection
+    # use these settings to fine tune data collection
     collectionInterval: 20s
-    #batchSize:
-    #bufferLimit:
-    #roundInterval:
-    #collectionJitter:
-    #precision:
-    #flushInterval:
-    #flushJitter:
+
+    # batchSize:
+    # bufferLimit:
+    # roundInterval:
+    # collectionJitter:
+    # precision:
+    # flushInterval:
+    # flushJitter:
+     
+    # Collect kubernetes.system_container metrics and objects in the kube-system|cattle-system namespaces for managed kubernetes clusters       
+    # (EKS, AKS, GKE, managed Rancher). Set this to true if you want collect these metrics.
+    #managedK8sSystemMetricCollectionEnabled: true|false 
  
-    # Deamoset CPU/Mem limits and requests
+    # Collect kubernetes.pod_volume (pod ephemeral storage) metrics. Set this to true if you want to collect these metrics.
+    #podVolumeMetricFilteringEnabled: true|false
+ 
+    # Declare Rancher cluster as managed. Set this to true if your Rancher cluster is managed as opposed to on-premise. 
+    #isManagedRancher: true|false
+ 
+    # Deamonset CPU/Mem limits and requests
     # dsCpuLimit:
     # dsMemLimit:
     # dsCpuRequest:
     # dsMemRequest:
  
-    # replicaset CPU/Mem limits and requests
+    # Replicaset CPU/Mem limits and requests
     # rsCpuLimit:
     # rsMemLimit:
     # rsCpuRequest:
     # rsMemRequest:
  
   kube-state-metrics:
+    # cpuLimit:
+    # memLimit:
     # cpuRequest:
     # memRequest:
  
