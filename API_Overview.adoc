@@ -6,7 +6,6 @@ summary: The Cloud Insights API enables integration with other applications, suc
 ---
 
 = Cloud Insights API 
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -114,7 +113,7 @@ The Cloud Insights API is category-based, and currently contains the following t
 
 Additional types and/or APIs may become available over time. You can find the latest API information in the link:#api-documentation-swagger[API Swagger documentation]. 
 
-Note that the API types to which a user has access depend also on the link:concept_user_roles.html[User Role] they have in each Cloud Insights feature set (Monitoring, Cloud Secure, Reporting).
+Note that the API types to which a user has access depend also on the link:concept_user_roles.html[User Role] they have in each Cloud Insights feature set (Monitoring, Workload Security, Reporting).
 
 ////
 == API Commands
@@ -467,16 +466,6 @@ Note: If you have the latest NetApp Kubernetes Monitoring Operator installed and
 
  sudo systemctl restart telegraf
 
-==== MacOS
-
-* Edit the Telegraf configuration files, and replace all instances of the old API token with the new API token.
-+
- sudo sed -i.bkup ‘s/<OLD_API_TOKEN>/<NEW_API_TOKEN>/g’ /usr/local/etc/telegraf.d/*.conf
-
-* Restart Telegraf.
-+
- sudo launchctl stop telegraf
- sudo launchctl start telegraf
 
 ==== Windows
 

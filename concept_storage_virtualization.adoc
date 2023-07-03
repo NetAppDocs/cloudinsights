@@ -1,0 +1,49 @@
+---
+sidebar: sidebar
+permalink: concept_storage_virtualization.html
+summary: Cloud Insights can provide views into both front-end and back-end virtualized storage.
+keywords: storage, virtual, virtualized, virtualization,  
+---
+= Storage Virtualization 
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Insights can differentiate between a storage array having local storage or virtualization of other storage arrays. This gives you the ability to relate cost and distinguish performance from the front-end all the way to the back-end of your infrastructure.
+
+=== Virtualization in a Table Widget
+
+One of the easiest ways to begin looking at your storage virtualization is to create a dashboard table widget showing Virtualized type. When building the query for the widget, simply add "virtualizedType" to your grouping or filter.
+
+image:StorageVirtualization_TableWidgetSettings.png[Basic query to show storage virtualizedTypes]
+
+The resulting table widget shows you the _Standard_, _Backend_, and _Virtual_ storages in your environment. 
+
+image:StorageVirtualization_TableWidgetShowingVirtualizedTypes.png[Table showing virtualized types]
+
+=== Landing Pages show Virtualized information
+
+On a storage, volume, internal volume, or disk landing page, you can see relevant virtualization information. For example, looking at the storage landing page below, you can see that this is a Virtual storage, and which backend storage system applies. Any relevant tables on landing pages will also show virtualization information as applicable.
+
+image:StorageVirtualization_StorageSummary.png[Storage Landing Page showing Virtual and backed storage information]
+
+//In the _Volumes_ table on that landing page, you can also see virtualization information, and selecting one of those volumes to display its landing page will also display virtualization information in the Summary and relevant tables, including a table showing the Internal Volumes as well as a table listing Virtual Volume Relations, if any.
+
+=== Existing landing pages and dashboards 
+
+Be aware that if you currently have customized landing pages or dashboards in your environment, these will not automatically show all virtualization information by default. However, you can _Revert to Default_ any customized dashboard or landing page (you will have to re-implement your customizations), or modify the relevant widgets to include the desired virtualization attributes or metrics.
+
+_Revert to Default_ is available in the upper-right corner of a custom dashboard or landing page screen.
+
+image:RevertToDefault.png[Revert to Default button]
+
+
+
+
+
+
