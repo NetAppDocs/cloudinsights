@@ -6,7 +6,6 @@ summary: Configuring ECS data collector.
 ---
 
 = Configuring the EMC ECS data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,9 +14,7 @@ summary: Configuring ECS data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead] 
-
 This data collector acquires inventory and performance data from EMC ECS storage systems. For configuration, the data collector requires an IP address of the ECS server and an administrative level domain account.
 
 NOTE: Dell EMC ECS is metered at a different Raw TB to Managed Unit rate. Every 40 TB of unformatted ECS capacity is charged as 1 link:concept_subscribing_to_cloud_insights.html#pricing[Managed Unit (MU)].

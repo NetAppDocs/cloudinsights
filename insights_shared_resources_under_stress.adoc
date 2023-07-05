@@ -6,7 +6,6 @@ summary: Insights give you a look into how resources impact other resources in y
 ---
 
 = Insights: Shared Resources Under Stress
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -43,22 +42,26 @@ A *Contention* or *Saturation* occurs when IOPS are determined to be affecting o
 
 == Demanding Workloads
 
-To start looking into Demanding and impacted workloads in your shared resources, click on *Dashboards > Shared Resources Under Stress* in the Cloud Insights menu.
+To start looking into Demanding and impacted workloads in your shared resources, click on *Dashboards > Insights* and select the *Shared Resources Under Stress* Insight.
 
-image:Shared_resources_Under_Stress_menu.png[Workloads List]
+//image:Shared_resources_Under_Stress_menu.png[Workloads List]
+image:InsightsMenu.png[Insights Menu]
 
-Cloud Insights displays a list of any workloads where a saturation has been detected. Note that Cloud Insights will only show workloads where at least one _demanding resource_ *and* at least one _impacted resource_ has been detected.
+Cloud Insights displays a list of any workloads where a saturation has been detected. Note that Cloud Insights will show workloads where at least one _demanding resource_ *or* _impacted resource_ has been detected.
 
 Click on a workload to view the details page for it. The top chart shows the activity on the shared resource (for example, a storage pool) on which the contention/saturation is occurring.
 
-image:Shared_resources_Under_Stress_SharedResource.png[Shared resource showing contention]
+//image:Shared_resources_Under_Stress_SharedResource.png[Shared resource showing contention]
+image:ResourceInsightShared.png[Shared resource showing contention]
 
 //image:Insights_Shared_Resource_Contention_Chart.png[Chart showing activity on the shared resource]
 
 Below that are two charts showing the _demanding_ workloads and the workloads that are _impacted_ by those demanding workloads.
 
-image:Insights_Demanding_Workload_Chart.png[Demanding workload chart]
-image:Insights_Impacted_Workload_Chart.png[Impacted workload chart]
+//image:Insights_Demanding_Workload_Chart.png[Demanding workload chart]
+//image:Insights_Impacted_Workload_Chart.png[Impacted workload chart]
+image:ResourceInsightDemanding.png[Demanding workload chart]
+image:ResourceInsightImpacted-a.png[Impacted workload chart]
 
 Below each table is a list of workloads and/or resources affecting or affected by the contention.  Clicking on a resource (for example, a VM) opens a detail page for that resource. Clicking on a workload opens a query page showing the pods involved. Note that if the link opens an empty query, it may be because the affected pod is no longer part of the active contention. You can modify the query's time range to view the pod list in greater or more focused time range.
 

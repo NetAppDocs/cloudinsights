@@ -2,11 +2,10 @@
 sidebar: sidebar
 permalink: concept_cs_agent_requirements.html
 summary: The server or VM you use as your Agent must meet minimum requirements
-keywords: agent, Linux, requirements, docker, browsers, permissions, Network
+keywords: agent, Linux, requirements, docker, browsers, permissions, Network, Cloud Secure
 ---
 
-= Agent Requirements
-
+= Workload Security Agent Requirements
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -18,15 +17,19 @@ keywords: agent, Linux, requirements, docker, browsers, permissions, Network
 [.lead]
 You must link:task_cs_add_agent.html[install an Agent] in order to acquire information from your data collectors. Before you install the Agent, you should ensure that your environment meets operating system, CPU, memory, and disk space requirements.
 
+NOTE: Storage Workload Security is not available in Cloud Insights Federal Edition.
+
 [cols=2*,options="header",cols="36,60"]
 |===
 |Component|Linux Requirement
 |Operating system|A computer running a licensed version of one of the following:
 
-Red Hat Enterprise Linux 7.x, 8.x 64-bit
-CentOS 7.x 64-bit
-CentOS 8 Stream
+Red Hat Enterprise Linux 7.x, 8.x 64-bit, SELinux 
+CentOS 7.x 64-bit, SELinux 
+CentOS 8 Stream, SELinux 
 Ubuntu 20 through 22 64-bit
+Rocky 8.x 64-bit, Rocky 9.x 64-bit, SELinux 
+SUSE Linux Enterprise Server 15 SP3, SUSE Linux Enterprise Server 15 SP4, SELinux on SUSE 15 SP3
 
 This computer should be running no other application-level software. A dedicated server is recommended.
 
@@ -35,7 +38,7 @@ SE (Security Enhanced) Linux is not supported.
 |Commands|'unzip' is required for installation. Additionally, the 'sudo su –' command is required for installation, running scripts, and uninstall.
 
 //|Docker | The Docker CE package must be installed on the VM hosting the agent. 
-//The agent systems should always have the Docker CE package installed. Users should not install the Docker-client-xx or Docker-common-xx native RHEL Docker packages since these do not support the 'docker run' CLI format that Cloud Secure supports. 
+//The agent systems should always have the Docker CE package installed. Users should not install the Docker-client-xx or Docker-common-xx native RHEL Docker packages since these do not support the 'docker run' CLI format that Workload Security supports. 
 //|Java |OpenJDK Java is required. 
 |CPU	|4 CPU cores 
 |Memory	|16 GB RAM 
@@ -45,11 +48,11 @@ SE (Security Enhanced) Linux is not supported.
 
 If /opt is a mounted folder from a NAS storage, make sure that local users have access to this folder. Agent or Data collector may fail to install if local users do not have permission to this folder. see the link:task_cs_add_agent.html#troubleshooting-agent-errors[troubleshooting] section for more details. 
 
-|Network|100 Mbps to 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Cloud Secure instance (80 or 443).
+|Network|100 Mbps to 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Workload Security instance (80 or 443).
 
 |===
 
-Please note: The Cloud Secure agent can be installed in the same machine as a Cloud Insights acquisition unit and/or agent. However, it is a best practice to install these in separate machines. In the event that these are installed on the same machine, please allocate disk space as shown below:
+Please note: The Workload Security agent can be installed in the same machine as a Cloud Insights acquisition unit and/or agent. However, it is a best practice to install these in separate machines. In the event that these are installed on the same machine, please allocate disk space as shown below:
 
 |===
 |Available disk space	|50-55 GB
@@ -81,7 +84,7 @@ You can use a broader range to specify the tenant ID: \https://*.cs01.cloudinsig
 
 == Cloud Network Access Rules
 
-For *US-based* Cloud Secure environments:
+For *US-based* Workload Security environments:
 
 [cols=5*,options="header"]
 |===
@@ -93,7 +96,7 @@ For *US-based* Cloud Secure environments:
 agentlogin.cs01.cloudinsights.netapp.com|Outbound|Access to authentication services
 |===
 
-For *Europe-based* Cloud Secure environments:
+For *Europe-based* Workload Security environments:
 
 [cols=5*,options="header"]
 |===
@@ -107,7 +110,7 @@ agentlogin.cs01-eu-1.cloudinsights.netapp.com
 |Outbound|Access to authentication services
 |===
 
-For *APAC-based* Cloud Secure environments:
+For *APAC-based* Workload Security environments:
 
 [cols=5*,options="header"]
 |===
@@ -132,8 +135,9 @@ Note that when adding _link:task_add_collector_svm.html#permissions-when-adding-
 |TCP|389(LDAP)
 636 (LDAPs / start-tls) |LDAP Server URL|Outbound|Connect to LDAP
 |TCP|443|Cluster or SVM Management IP Address (depending on SVM collector configuration)|Outbound|API communication with ONTAP
-|TCP|35000 - 55000|SVM data LIF IP Addresses|Inbound/Outbound|Communication with ONTAP for Fpolicy events
-|TCP|7|SVM data LIF IP Addresses|Bidirectional |Bidirectional between ONTAP and Cloud Secure. Agent pings the SVM Lifs.
+|TCP|35000 - 55000|SVM data LIF IP Addresses|Inbound|Communication with ONTAP for Fpolicy events
+|TCP|7|SVM data LIF IP Addresses|Outbound|Uni-directional between ONTAP and Workload Security. Agent pings the SVM Lifs.
+|SSH | 22 | Cluster management |Outbound| Needed for CIFS/SMB user blocking.
 |===
 
 //link:task_cs_add_agent.html[Configure an Agent]
