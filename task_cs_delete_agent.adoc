@@ -1,12 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_cs_delete_agent.html
-keywords: agent, Cloud Secure, delete agent
-summary: Deleting Cloud Secure agents
+keywords: agent, Workload Security, delete agent, Cloud Secure
+summary: Deleting Workload Security agents
 ---
 
-= Deleting a Cloud Secure Agent
-
+= Deleting a Workload Security Agent
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -15,10 +14,8 @@ summary: Deleting Cloud Secure agents
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead]
-
-When you delete a Cloud Secure Agent, all the data collectors associated with the Agent must be deleted first. 
+When you delete a Workload Security Agent, all the data collectors associated with the Agent must be deleted first. 
 
 == Deleting an Agent
 
@@ -27,7 +24,7 @@ When you delete a Cloud Secure Agent, all the data collectors associated with th
 Deleting an Agent deletes all of the Data Collectors associated with the Agent. If you plan to configure the data collectors with a different agent you should create a backup of the Data Collector configurations before you delete the Agent.
 
 .Before you begin
-. Make sure all the data collectors associated with the agent are deleted from the Cloud Secure portal.
+. Make sure all the data collectors associated with the agent are deleted from the Workload Security portal.
 +
 Note: Ignore this step if all the associated collectors are in STOPPED state.
 

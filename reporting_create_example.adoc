@@ -6,7 +6,6 @@ keywords: reporting, cognos, data warehouse, dwh, create, report
 ---
 
 = Creating a Report (Example)
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -20,31 +19,38 @@ Use the steps in this example to generate a simple report on physical capacity o
 
 .Steps
 
-. In the toolbar, click *[+]*
-. Click *Report*
-. Click *Templates > Blank*
-. Click *Themes > Cool Blue > OK*
+. Navigate to *Menu > Content > Team Content > Reports*
+. In the upper-right of the screen, select *[New +]*
+. Select *Report*
++
+image:Reporting_New_Report.png[Creating a New Report]
++
+. On the *Templates* tab, select _Blank_
 +
 The Source and Data tabs is displayed
-. Click *Source > [+]* 
-. In the *Open file* dialog, click *Team content > Packages*
+. Open *Select a source +* 
+. Under *Team content*, open *Packages*
 +
 A list of available packages is displayed.
-. Click *Storage and Storage Pool Capacity > Open*
-. Click *[+]*
+. Choose *Storage and Storage Pool Capacity*
+image:Reporting_Select_Source_For_Report.png[Selecting a source for the report]
++
+. Select *Open*
 +
 The available styles for your report are displayed.
-. Click *List*
+. Select *List*
 +
 Add appropriate names for List and Query
-. Click *OK*
+. Select *OK*
 . Expand _Physical Capacity_
 . Expand to the lowest level of _Data Center_
 . Drag _Data Center_ to the Reporting palate.
 . Expand _Capacity (MB)_
 . Drag _Capacity (MB)_ to the Reporting palate.
 . Drag _Used Capacity (MB)_ to the Reporting palate.
-. Run the report by clicking image:Reporting-RunButton.png[Run] and selecting an output type.
+. Run the report by selecting an output type from the *Run* menu.
++
+image:Reporting_Running_A_Report.png[Selecting a Report Output]
 
 .Result
 

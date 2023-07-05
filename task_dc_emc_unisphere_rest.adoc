@@ -6,7 +6,6 @@ summary: Configuring Dell EMC Unisphere REST data collector.
 ---
 
 = Configuring the Dell EMC Unisphere REST data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,28 +14,26 @@ summary: Configuring Dell EMC Unisphere REST data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead] 
+This data collector acquires inventory and performance data from Dell EMC Unisphere for PowerMax / Vmax 3 management systems.
 
-This data collector acquires inventory and performance data from Dell EMC Unisphere RESTstorage systems. For configuration, the data collector requires an IP address of the Unisphere server and an administrative level domain account.
+Please note that Dell/EMC did not introduce per volume statistics until Unisphere 10.0 - this data collector support 9.2.0+, but will not be able to collect volume statistics as they do not exist.
+
+One Unisphere for Vmax/PowerMax instance may be managing one or more Symmetrix Vmax 3 or higher storage arrays - this collector will default to attempting to discover all of them which are "local" to that Unisphere instance. If a Unisphere instance sees "remote" arrays (i.e those connected via SRDF replication), they will be ignored, and to discover those you should create an additional Unisphere collector in Cloud Insights pointed at whichever Unisphere instance in that site sees them as local.
+
+For configuration, the data collector requires an IP address/FQDN of the Unisphere server, TCP connectivity to port 8443, and a username and password.
 
 ////
 == Terminology
 
-Cloud Insightst acquires the following inventory information from the VPLEX data collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the Unisphere data collector. For each asset type acquired, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Vendor/Model Term | Cloud Insights Term
 |Cluster|Storage
-|Engine|Storage Node
-|Device, System Extent|Backend Storage Pool
-|Virtual Volume|Volume
-|Front-End Port, Back-End Port|Port
-|Distributed Device|Storage Synchronization
-|Storage View|Volume Map, Volume Mask
-|Storage Volume|Backend LUN
-|ITLs|Backend Path
+|Port controller|Storage Node
+|Masking View|Volume Map, Volume Mask
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collector.
@@ -45,8 +42,8 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-* An IP address of the Unisphere server
-* Administrative level domain account for the Unisphere server
+* An IP address/Fully Qualified Domain Name of the Unisphere server
+* Username and password
 * Port 8443. 
 
 
@@ -69,7 +66,7 @@ Note: These are common terminology mappings only and might not represent every c
 |===
 |Field|Description
 |Inventory Poll Interval (min)|The default is 40 minutes.
-|Performance Poll Interval (sec)|Interval between performance polls. The default is 600 seconds.
+|Performance Poll Interval (sec)|Interval between performance polls. 
 |Choose 'Exclude' or 'Include' to Specify a List|Specify Whether to Include or Exclude VMs
 |Inventory Filter Device List |List of VMs to filter (comma separated, or semicolon separated if comma is used in the value) for Filtering 
 |Unisphere Performance Poll Interval (sec)|The default is 300 seconds

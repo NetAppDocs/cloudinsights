@@ -2,11 +2,10 @@
 sidebar: sidebar
 permalink: task_dc_emc_isilon_rest.html
 keywords: data collector, isilon, EMC, DELL, PowerScale
-summary: Configuring the Dell EMC Isilon REST data collector.
+summary: Configuring the Dell EMC Isilon / PowerScale REST data collector.
 ---
 
-= Dell Dell EMC Isilon REST data collector
-
+= Dell EMC Isilon / PowerScale REST data collector
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,8 +15,7 @@ summary: Configuring the Dell EMC Isilon REST data collector.
 :imagesdir: ./media/
 
 [.lead]
-
-Cloud Insights uses the Dell EMC Isilon REST SSH data collector to acquire inventory and performance data from Dell EMC Isilon storage. 
+Cloud Insights uses the Dell EMC Isilon / PowerScale REST data collector to acquire inventory and performance data from Dell EMC Isilon or PowerScale storage. This collector supports arrays running OneFS 8.0.0+.
 
 == Terminology
 
@@ -29,7 +27,9 @@ Cloud Insights acquires the following inventory information from this data colle
 |Drive|Disk
 |Cluster|Storage
 |Node|Storage Node
-|File System|Internal Volume
+|OneFS File System|Internal Volume
+|OneFS File System|Storage Pool
+|Qtree|Qtree
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collector. 
@@ -38,9 +38,32 @@ Note: These are common terminology mappings only and might not represent every c
 
 You need the following information to configure this data collector:
 
-* Administrator permissions to the Dell EMC Isilon REST storage
-* IP address of the Dell EMC Isilon REST cluster
+* A user account and password. This account does NOT need to be admin/root, but you MUST grant a substantial number of read only privileges to your service account - see table below
+* IP address / Fully Qualified Domain Name of the Dell EMC Isilon / PowerScale cluster
 * HTTPS access to port 8080
+* Isilon / PowerScale cluster running OneFS 8.0.0 or higher
+
+[cols=3*, options="header", cols"33,33,33"]
+|===
+|Privilege Name|Description|r(read) or rw (read+write)
+|ISI_PRIV_LOGIN_PAPI|Platform API|r
+|ISI_PRIV_SYS_TIME|Time|r
+|ISI_PRIV_AUTH|Auth|r
+|ISI_PRIV_ROLE|Privilege|r
+|ISI_PRIV_DEVICES|Devices|r
+|ISI_PRIV_EVENT|Event|r
+|ISI_PRIV_HDFS|HDFS|r
+|ISI_PRIV_NDMP|NDMP|r
+|ISI_PRIV_NETWORK|Network|r
+|ISI_PRIV_NFS|NFS|r
+|ISI_PRIV_PAPI_CONFIG|Configure Platform API|r
+|ISI_PRIV_QUOTA|Quota|r
+|ISI_PRIV_SMARTPOOLS|SmartPools|r
+|ISI_PRIV_SMB|SMB|r
+|ISI_PRIV_STATISTICS|Statistics|r
+|ISI_PRIV_SWIFT|Swift|r
+|ISI_PRIV_JOB_ENGINE|Job Engine|r
+|===
 
 == Configuration
 

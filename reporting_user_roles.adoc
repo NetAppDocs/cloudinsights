@@ -6,7 +6,6 @@ keywords: reporting, cognos, data warehouse, dwh, users, roles, user roles
 ---
 
 = Cloud Insights Reporting User Roles
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -44,7 +43,12 @@ The following table shows the functions available to each Reporting role.
 |Create reports	|No	|Yes	|Yes
 |Create Packages and Data Modules	|No	|Yes|Yes
 |Perform administrative tasks	|No	|No	|Yes
-//|Number of users	Number of OnCommand Insight users	20	2	1	1
+
+|Add/Edit HTML Item	|No	|No	|Yes
+|Run report with HTML Item	|Yes	|Yes	|Yes
+|Add/Edit Custom SQL	|No	|No	|Yes
+|Run reports with Custom SQL	|Yes	|Yes	|Yes
+
 |===
 
 == Setting Reporting (Cognos) email preferences
@@ -62,7 +66,11 @@ If you are a current Premium Edition customer, SSO is not automatically enabled 
 
 To ensure your reports are retained, migrate all reports from _My Content_ to _Team Content_ using the following steps. You must do this prior to enabling SSO in your environment:
 
-. Create a new folder in _Team Content_
+. Navigate to *Menu > Content*
+
+image:Reporting_Menu.png[Cognos upper-left Menu]
+
+. Create a new folder in *_Team Content_*
 
 .. If multiple users have been created, please create a separate folder for each user to avoid overwriting reports with duplicate names
 

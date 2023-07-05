@@ -6,7 +6,6 @@ keywords: data collector, NetApp, Cloud agent, ONTAP
 ---
 
 = NetApp Cloud Connection for ONTAP 9.9+ data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,13 +14,16 @@ keywords: data collector, NetApp, Cloud agent, ONTAP
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead]
-
 This data collector creates a cloud connection to support data collection from ONTAP 9.9+ CVO, AFF, and FAS systems. 
 
-NOTE: This data collector is link:task_getting_started_with_cloud_insights.html#useful-definitions[deprecated] as of January 1, 2023. For information on transitioning to AU-based data collection, see the link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/How_to_transition_from_NetApp_Cloud_Connection_to_AU_based_data_collector[Knowledgebase].
+NOTE: This data collector is no longer available to install in Cloud Insights as of April 4, 2023, and will be removed from all Cloud Insights installations in July 2023. For information on transitioning to AU-based data collection, see the link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/How_to_transition_from_NetApp_Cloud_Connection_to_AU_based_data_collector[Knowledgebase^].
 
+////
+NOTE: This data collector is link:task_getting_started_with_cloud_insights.html#useful-definitions[deprecated] as of January 1, 2023, and is no longer available as of April 2023. For information on transitioning to AU-based data collection, see the link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Insights/How_to_transition_from_NetApp_Cloud_Connection_to_AU_based_data_collector[Knowledgebase^].
+////
+
+////
 == Configuration
 
 Cloud Insights collects data from ONTAP 9.9+ using a *cloud connection*, eliminating the need to install an external acquisition unit, simplifying troubleshooting, maintenance, and initial deployment. Configuration of the cloud connection for the ONTAP 9.9+ data collector requires you to copy a *Pairing Code* to the ONTAP System Manager, which will then establish a connection to your Cloud Insights environment. After the connection is established, the data collected is the same as it would be if it was collected through an acquisition unit.
@@ -67,4 +69,4 @@ Some things to try if you encounter problems with this data collector:
 
 
 Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
-
+////

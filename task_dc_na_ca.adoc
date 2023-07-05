@@ -6,7 +6,6 @@ summary: NetApp Config Advisor Data Collector
 --- 
 
 = NetApp Config Advisor data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -18,7 +17,9 @@ summary: NetApp Config Advisor Data Collector
 [.lead]
 This data collector acquires configuration data from storage systems running ONTAP and connected switches using read-only calls. This data collector also runs configuration validation and health checks on the whole stack of ONTAP cluster configuration to identify cabling, configuration, resiliency, availability and security issues. 
 
-NOTE: Config Advisor is considered a _Preview_ feature and is therefore subject to change. During Preview, no MU cost is incurred.
+//NOTE: Config Advisor is considered a _Preview_ feature and is therefore subject to change. During Preview, no MU cost is incurred.
+
+NOTE: This data collector is link:task_getting_started_with_cloud_insights.html#useful-definitions[deprecated].
 
 == Terminology
 
