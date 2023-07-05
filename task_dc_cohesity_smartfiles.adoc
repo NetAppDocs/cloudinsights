@@ -8,7 +8,6 @@ summary: Configuring the Cohesity SmartFiles data collector.
 ---
 
 = Cohesity SmartFiles data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -17,37 +16,8 @@ summary: Configuring the Cohesity SmartFiles data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead] 
-
 This REST API-based collector will acquire a Cohesity cluster, discovering the “Views” (as Cloud Insights Internal Volumes), the various nodes, as well as collecting performance metrics.
-
-////
-== Terminology
-
-Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
-
-[cols=2*, options="header", cols"50,50"]
-|===
-
-|Vendor/Model Term|Cloud Insights Term
-
-|Disk|Disk
-|Disk Folder|Disk Group
-|Storage Center|Storage
-|Controller|Storage Node
-|Storage Type|Storage Pool
-|Volume|Volume
-|Fiber Channel I/O Port|Port
-|===
-
-Note: These are common terminology mappings only and might not represent every case for this data collector.
-
-== Requirements
- 
-* Administrator credentials for the Dell EMC XC Enterprise Manager server
-* IP address of the XC Enterprise Manager server
-////
 
 == Configuration
 

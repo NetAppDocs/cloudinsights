@@ -2,11 +2,10 @@
 sidebar: sidebar
 permalink: cs_restrict_user_access.html
 keywords: alert, snapshot,  attack
-summary: With Cloud Secure, you can restrict user access in the event of suspected sabotage
+summary: With Workload Security, you can restrict user access in the event of suspected sabotage
 ---
 
 = Blocking User Access
-
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -14,14 +13,16 @@ summary: With Cloud Secure, you can restrict user access in the event of suspect
 :imagesdir: ./media
 
 [.lead]
-Once an attack is detected, Cloud Secure can stop the attack by blocking user access to the file system. Access can be blocked automatically, using Automated Response Policies or manually from the alert or user details pages.
+Once an attack is detected, Workload Security can stop the attack by blocking user access to the file system. Access can be blocked automatically, using Automated Response Policies or manually from the alert or user details pages.
+
+NOTE: Workload Security is not available in Cloud Insights Federal Edition.
 
 When blocking user access, you should define a blocking time period. After the selected time period ends, user access is automatically restored.
 Access blocking is supported for both SMB and NFS protocols.
 
-User is directly blocked for SMB and IP address of the host machines causing the attack will be blocked for NFS. Those machine IP addresses will be blocked from accessing any of the Storage Virtual Machines (SVMs) monitored by Cloud Secure.
+User is directly blocked for SMB and IP address of the host machines causing the attack will be blocked for NFS. Those machine IP addresses will be blocked from accessing any of the Storage Virtual Machines (SVMs) monitored by Workload Security.
 
-For example, let’s say Cloud Secure manages 10 SVMs and the Automatic Response Policy is configured for four of those SVMs. If the attack originates in one of the four SVMs, the user’s access will be blocked in all 10 SVMs. A Snapshot is still taken on the originating SVM.
+For example, let’s say Workload Security manages 10 SVMs and the Automatic Response Policy is configured for four of those SVMs. If the attack originates in one of the four SVMs, the user’s access will be blocked in all 10 SVMs. A Snapshot is still taken on the originating SVM.
 
 If there are four SVMs with one SVM configured for SMB, one configured for NFS, and the remaining two configured for both NFS and SMB, all the SVMs will be blocked if the attack originates in any of the four SVMs.
 
@@ -32,7 +33,7 @@ Cluster level credentials are needed for this feature to work.
 
 If you are using cluster administration credentials, no new permissions are needed.
 
-If you are using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Cloud Secure to block user.
+If you are using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Workload Security to block user.
 
 For csuser with cluster credentials, do the following from the ONTAP command line:
 
@@ -45,7 +46,7 @@ For csuser with cluster credentials, do the following from the ONTAP command lin
 
 == How to enable the feature?
 
-* In Cloud Secure, navigate to *Admin > Automated Response Policies > Response Policy Settings > Block User Access*.
+* In Workload Security, navigate to *Admin > Automated Response Policies > Response Policy Settings > Block User Access*.
 * Set “Enable Block User Access” to _enabled_.
 
 == How to set up Automatic user access blocking?
@@ -53,7 +54,6 @@ For csuser with cluster credentials, do the following from the ONTAP command lin
 * Create a new Attack Policy or edit an existing Attack policy.
 * Select the SVMs on which the attack policy should be monitored.
 * Click on the checkbox “Block User File Access”. The feature will be enabled when this is selected.
-* Under “Limit User Access” select what mode of restriction should be applied.
 * Under “Time Period” select the time until which the blocking should be applied.
 * To test automatic user blocking,, you can simulate an attack via a link:concept_cs_attack_simulator.html[simulated script].
 
@@ -75,7 +75,7 @@ In the alert details and user details page, in the user panel, you can view an a
 
 At any time, you can disable the feature. If there are restricted users in the system, you must restore their access first.
 
-* In Cloud Secure, navigate to *Admin > Automated Response Policies > Response Policy Settings > Block User Access*
+* In Workload Security, navigate to *Admin > Automated Response Policies > Response Policy Settings > Block User Access*
 * De-select “Enable Block User Access” to disable.
 
 The feature will be hidden from all pages.
@@ -83,7 +83,7 @@ The feature will be hidden from all pages.
 
 == Manually Restore IPs for NFS
 
-Use the following steps to manually restore any IPs from ONTAP if your Cloud Secure trial expires, or if the agent/collector is down. 
+Use the following steps to manually restore any IPs from ONTAP if your Workload Security trial expires, or if the agent/collector is down. 
  
 . List all export policies on an SVM.
  
@@ -106,14 +106,14 @@ Use the following steps to manually restore any IPs from ONTAP if your Cloud Sec
 
  
  
-. Delete the rules across all policies on the SVM which have “cloudsecure_rule” as Client Match by specifying its respective RuleIndex. Cloud Secure rule will usually be at 1.
+. Delete the rules across all policies on the SVM which have “cloudsecure_rule” as Client Match by specifying its respective RuleIndex. Workload Security rule will usually be at 1.
  
  contrail-qa-fas8020::*> export-policy rule delete -vserver <svm name> -policyname * -ruleindex 1
  
  
  
  
-.	Ensure Cloud Secure rule is deleted (optional step to confirm).
+.	Ensure Workload Security rule is deleted (optional step to confirm).
  
  contrail-qa-fas8020::*> export-policy rule show -vserver <svm name>
               Policy          Rule    Access   Client                RO
@@ -130,13 +130,13 @@ Use the following steps to manually restore any IPs from ONTAP if your Cloud Sec
 
 == Manually Restore Users for SMB
 
-Use the following steps to manually restore any users from ONTAP if your Cloud Secure trial expires, or if the agent/collector is down.
+Use the following steps to manually restore any users from ONTAP if your Workload Security trial expires, or if the agent/collector is down.
 
-You can get the list of users blocked in Cloud Secure from the users list page.
+You can get the list of users blocked in Workload Security from the users list page.
 
 1.	Login to the ONTAP cluster (where you want to unblock users) with cluster _admin_ credentials. (For Amazon FSx, login with FSx credentials).
 
-2.	Run the following command to list all users blocked by Cloud Secure for SMB in all SVMs:
+2.	Run the following command to list all users blocked by Workload Security for SMB in all SVMs:
 
  vserver name-mapping show -direction win-unix -replacement " "
 
@@ -171,7 +171,7 @@ No entries should be displayed for the users previously blocked.
 |Problem|Try This
 
 |Some of the users are not getting restricted, though there is an attack.	
-|1.	Make sure that the Data Collector and Agent for the SVMs are in _Running_ state. Cloud Secure won’t be able to send commands if the Data Collector and Agent are stopped.
+|1.	Make sure that the Data Collector and Agent for the SVMs are in _Running_ state. Workload Security won’t be able to send commands if the Data Collector and Agent are stopped.
 
 2. This is because the user may have accessed the storage from a machine with a new IP which has not been used before.
 Restricting happens via IP address of the host through which the user is accessing the storage. Check in the UI (Alert Details > Access Limitation History for This User > Affected IPs) for the list of IP addresses which are restricted. If the user is accessing storage from a host which has an IP different from the restricted IPs, then the user will still be able to access the storage through the non-restricted IP. If the user is trying to access from the hosts whose IPs are restricted, then the storage won’t be accessible.
@@ -182,6 +182,24 @@ Restricting happens via IP address of the host through which the user is accessi
 |Policy could not be modified. Reason: not authorized for that command.	
 |Check if using csuser, permissions are given to the user as mentioned above.
 
+|User (IP Address) blocking for NFS works, but for SMB / CIFS, I see an error message: “SID to DomainName transformation failed. Reason timeout: socket is not established”
+|This can happen is _csuser_ does not have permission to perform ssh. (Ensure connection at cluster level, then ensure user can perform ssh).  _csuser_ role requires these permissions.
+ 
+ https://docs.netapp.com/us-en/cloudinsights/cs_restrict_user_access.html#prerequisites-for-user-access-blocking
+
+For _csuser_ with cluster credentials, do the following from the ONTAP command line:
+
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all
+ security login role create -role csrole -cmddirname set -access all
+ security login role create -role csrole -cmddirname "vserver cifs session" -access all
+ security login role create -role csrole -cmddirname "vserver services access-check authentication translate" -access all
+ security login role create -role csrole -cmddirname "vserver name-mapping" -access all
+
+If _csuser_ is not used and if admin user at cluster level is used, make sure that the admin user has ssh permission to ONTAP.
+
+
+|
+|
 
 |===
 

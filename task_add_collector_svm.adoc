@@ -2,11 +2,10 @@
 sidebar: sidebar
 permalink: task_add_collector_svm.html
 keywords:  data collector, ONTAP, NetApp, SVM, cloud ontap, firewall
-summary: Adding data collectors
+summary: Adding Workload Security data collectors 
 ---
 
 = Configuring the ONTAP SVM Data Collector 
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,13 +15,13 @@ summary: Adding data collectors
 :imagesdir: ./media/
 
 [.lead]
-Cloud Secure uses data collectors to collect file and user access data from devices. 
+Workload Security uses data collectors to collect file and user access data from devices. 
 
 == Before you begin
 
 * This data collector is supported with the following:
 ** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
-** SMB protocol version 3.1 and earlier.  Note that Cloud Secure does not work with SMB configurations that use Flexcache. Starting with ONTAP9.7, Fpolicy is supported only in an NFS environment.
+** SMB protocol version 3.1 and earlier.  Note that Workload Security does not work with SMB configurations that use Flexcache. In systems using Flexcache, starting with ONTAP 9.7, Fpolicy is supported only in an NFS environment.
 **	NFS protocol version 4.0 and earlier 
 ** Flexgroup is supported from ONTAP 9.4 and later versions
 ** ONTAP Select is supported
@@ -88,7 +87,7 @@ See link:concept_cs_agent_requirements.html[Agent requirements] for configuratio
 
 === Permissions when adding via *Cluster Management IP*:
 
-If you cannot use the Cluster management administrator user to allow Cloud Secure to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Cloud Secure data collector to use Cluster Management IP. 
+If you cannot use the Cluster management administrator user to allow Workload Security to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Workload Security data collector to use Cluster Management IP. 
 
 To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
 
@@ -110,7 +109,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
 
 === Permissions when adding via *Vserver Management IP*:
 
-If you cannot use the Cluster management administrator user to allow Cloud Secure to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Cloud Secure data collector to use Vserver Management IP.
+If you cannot use the Cluster management administrator user to allow Workload Security to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Workload Security data collector to use Vserver Management IP.
 
 //If you cannot use the "vsadmin" user, since “vsadmin” has all the privileges, create a new user named “csuser” with the following roles as is shown in the command below. Use the username “csuser” and password for “csuser” for adding the Vserver via Vserver Mgmt IP in the ONTAP DataSource Addition UI.
 
@@ -311,7 +310,7 @@ If not pingable, make sure the network settings in ONTAP are correct, so that th
 
 Basically, in a tenant, 1 SVM should be added only once, via 1 data collector. 1 SVM should not added twice via 2 data collectors.
 
-6. In instances where the same SVM was added in two different Cloud Secure environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state.
+6. In instances where the same SVM was added in two different Workload Security environments (tenants), the last one will always succeed. The second collector will configure fpolicy with its own IP address and kick out the first one. So the collector in the first one will stop receiving events and its "audit" service will enter into error state.
 To prevent this, configure each SVM on a single environment.
 
 
@@ -359,8 +358,8 @@ link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-nm
 
 _Include and exclude shares_ is not intended for a long list of share names. Use filtering by volume instead if you have a large number of shares to include or exclude.
 
-|There are existing fpolicies in the Cluster which are unused. What should be done with those prior to installation of Cloud Secure?
-|It is recommended to delete all existing unused fpolicy settings even if they are in disconnected state. Cloud Secure will create fpolicy with the prefix "cloudsecure_". All other unused fpolicy configurations can be deleted.
+|There are existing fpolicies in the Cluster which are unused. What should be done with those prior to installation of Workload Security?
+|It is recommended to delete all existing unused fpolicy settings even if they are in disconnected state. Workload Security will create fpolicy with the prefix "cloudsecure_". All other unused fpolicy configurations can be deleted.
 
 CLI command to show fpolicy list:
 
@@ -374,7 +373,7 @@ _fpolicy policy delete -vserver <svmname> -policy-name <policy_name>_
 _fpolicy policy event delete -vserver <svmname> -event-name <event_list>_
 _fpolicy policy external-engine delete -vserver <svmname> -engine-name <engine_name>_
 
-|After enabling Cloud Secure, ONTAP performance is impacted: Latency becomes sporadically high, IOPs become sporadically low.
+|After enabling Workload Security, ONTAP performance is impacted: Latency becomes sporadically high, IOPs become sporadically low.
 |Ensure that you are using a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1415152[this issue] is fixed. The minimum version of ONTAP recommended is 9.8P7.
 
 If an ONTAP version prior to 9.8p7 is used and this performance issue is seen, then the ONTAP send buffer size can be altered to get improved ONTAP performance. Contact NetApp Support if you wish to explore this option and do not see this setting when adding a new data collector or editing an existing one. 
@@ -382,9 +381,9 @@ If an ONTAP version prior to 9.8p7 is used and this performance issue is seen, t
 |Data collector is in error, shows this error message.
 “Error: Connector is in error state. Service name: audit. Reason for failure: Failed to configure policy on SVM svm_test. Reason: Missing value for zapi field: events. “
 |Start with a new SVM with only NFS service configured.
-Add an ONTAP SVM data collector in Cloud Secure. CIFS is configured as an allowed protocol for the SVM while adding the ONTAP SVM Data Collector in Cloud Secure. 
-Wait until the Data collector in Cloud Secure shows an error.
-Since the CIFS server is NOT configured on the SVM, this error as shown in the left is shown by Cloud Secure.
+Add an ONTAP SVM data collector in Workload Security. CIFS is configured as an allowed protocol for the SVM while adding the ONTAP SVM Data Collector in Workload Security. 
+Wait until the Data collector in Workload Security shows an error.
+Since the CIFS server is NOT configured on the SVM, this error as shown in the left is shown by Workload Security.
 Edit the ONTAP SVM data collector and un-check CIFs as allowed protocol. Save the data collector. It will start running with only NFS protocol enabled.
 
 |Data Collector shows the error message:

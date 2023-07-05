@@ -6,7 +6,6 @@ summary: Configuring Dell EMC VMAX and PowerMax Family of Devices data collector
 ---
 
 =  Dell EMC VMAX and PowerMax Family of Devices data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,7 +15,6 @@ summary: Configuring Dell EMC VMAX and PowerMax Family of Devices data collector
 :imagesdir: ./media/
 
 [.lead]
-
 Cloud Insights discovers EMC VMAX and PowerMax storage arrays by using Solutions Enabler symcli commands in conjunction with an existing Solutions Enabler server in your environment. The existing Solutions Enabler server has connectivity to the VMAX/PowerMax storage array through access to gatekeeper volumes. 
 
 == Requirements
@@ -137,6 +135,16 @@ Some things to try if you encounter problems with this data collector:
 |Be sure you are using the same Solutions Enabler major release 
 |I'm seeing data collection errors with the message: "unknown code"
 |You may see this message if permissions are not declared in the Solutions Enabler server's daemon configuration file (see the <<requirements, Requirements>> above.) This assumes your SE client version matches your SE server version.
+
+This error may also occur if the _cisys_ user (which executes Solutions Enabler commands) has not been configured with the necessary daemon permissions in the /var/symapi/config/daemon_users configuration file.
+
+To fix this, edit the /var/symapi/config/daemon_users file and make sure the cisys user has <all> permission specified for the storapid daemon.
+
+Example:
+
+ 14:11:25 # tail /var/symapi/config/daemon_users
+ ...
+ cisys storapid <all>
 
 |===
 
