@@ -28,7 +28,6 @@ Data Collector landing pages now include a list of recent changes. Simply click 
 image:Recent_Changes_Example.png[Recent Changes Example]
 
 
-
 === Operator Improvements
 
 The following improvements have been made to link:/telegraf_agent_k8s_config_options.html[Kubernetes Operator] deployment:
@@ -65,6 +64,15 @@ These features are available now for integration-type data (Kubernetes, ONTAP Ad
 You can now use an API to query or export Audited events. Go to Admin > API Access and select the _API Documentation_ link for  information.
 
 image:Audit_API_Swagger.png[API Swagger for Audit, width=400]
+
+
+=== Data Collector: Trident Economy
+
+Cloud Insights now supports Trident Economy Driver, realizing these benefits: 
+* Get visibility into pod-to-ONTAP Qtree mapping and performance metrics. 
+* Provide seamless troubleshooting and easy navigation from Kubernetes pods to backend storage
+* Proactively detect backend performance issues with monitors
+
 
 
 
