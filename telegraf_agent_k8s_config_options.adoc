@@ -15,7 +15,7 @@ summary: The NetApp Kubernetes Monitoring Operator has a number of configurable 
 :imagesdir: ./media/
 
 [.lead]
-The NetApp Kubernetes Monitoring Operator installation and configuration can be customized. 
+The link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] installation and configuration can be customized. 
 
 The table below lists the possible options for the AgentConfiguration file:
 
@@ -41,8 +41,7 @@ proxy:
   isFluentbitProxyEnabled:
   isCollectorProxyEnabled:
 
-|Optional for customer to set proxy. This is usually customers corporate proxy. 
-||agentUUID|A uniquely identified string across all cloud insights operator installations. This is usually automatically set by cloud insights.
+|Optional for customer to set proxy. This is usually customers corporate proxy.
 
 |telegraf||Configuration options that can customize the telegraf installation of the Operator
 ||collectionInterval|Metrics collection interval, in seconds (Max=60s)
@@ -66,21 +65,27 @@ proxy:
 ||flushInterval|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||flushJitter|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||outputTimeout|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
+||dockerMetricCollectionEnabled|Collect Docker metrics. By default, this is set to true and docker metrics will be collected for on-premise, docker-based k8s deployments. To disable docker metric collection, set this to false.
 
 ||dsTolerations	|telegraf-ds additional tolerations.
 ||rsTolerations	|telegraf-rs additional tolerations.
 
 |kube-state-metrics||Configuration options that can customize the kube state metrics installation of the Operator
+
+||cpuLimit |CPU limit for kube-state-metrics deployment
+||memLimit |Mem limit for kube-state-metrics deployment
 ||cpuRequest|CPU request for kube state metrics deployment 
 ||memRequest|Mem request for kube state metrics deployment 
+
 ||resources|a comma separated list of resources to capture.
 example: cronjobs,daemonsets,deployments,ingresses,jobs,namespaces,nodes,persistentvolumeclaims,
 persistentvolumes,pods,replicasets,resourcequotas,services,statefulsets
 
 ||tolerations	|kube-state-metrics additional tolerations.
 
-||labels|
-a comma separated list of resources that kube-state-metrics should capture
+
+||labels|a comma separated list of resources that kube-state-metrics should capture
+
 +++
 example: cronjobs=[*],daemonsets=[*],deployments=[*],ingresses=[*],jobs=[*],namespaces=[*],nodes=[*],
 persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resourcequotas=[*],services=[*],statefulsets=[*]
@@ -91,10 +96,12 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 ||timeout|timeout, in secs
 ||dnsMode|TCP/UDP, mode for DNS
 |workload-map||Configuration options that can customize the workload map collection and installation of the Operator
+
 ||cpuLimit|CPU Limit for net observer ds
 ||memLimit|mem Limit for net observer ds
 ||cpuRequest|CPU request for net observer ds
 ||memRequest|mem request for net observer ds
+
 ||metricAgreegationInterval|metric aggregation interval, in seconds
 ||bpfPollInterval|BPF poll interval, in seconds
 ||enableDNSLookup|true/false, enable DNS lookup
@@ -150,14 +157,15 @@ spec:
   telegraf:
     # use these settings to fine tune data collection
     collectionInterval: 20s
-    #batchSize:
-    #bufferLimit:
-    #roundInterval:
-    #collectionJitter:
-    #precision:
-    #flushInterval:
-    #flushJitter:
-    
+
+    # batchSize:
+    # bufferLimit:
+    # roundInterval:
+    # collectionJitter:
+    # precision:
+    # flushInterval:
+    # flushJitter:
+     
     # Collect kubernetes.system_container metrics and objects in the kube-system|cattle-system namespaces for managed kubernetes clusters       
     # (EKS, AKS, GKE, managed Rancher). Set this to true if you want collect these metrics.
     #managedK8sSystemMetricCollectionEnabled: true|false 
@@ -167,7 +175,11 @@ spec:
  
     # Declare Rancher cluster as managed. Set this to true if your Rancher cluster is managed as opposed to on-premise. 
     #isManagedRancher: true|false
- 
+
+    # By default, docker metrics will be collected for on-premise, docker-based k8s deployments. To disable docker metric collection, set this to false.
+    # dockerMetricCollectionEnabled: true|false
+
+
     # Deamonset CPU/Mem limits and requests
     # dsCpuLimit:
     # dsMemLimit:
@@ -181,6 +193,8 @@ spec:
     # rsMemRequest:
  
   kube-state-metrics:
+    # cpuLimit:
+    # memLimit:
     # cpuRequest:
     # memRequest:
  
