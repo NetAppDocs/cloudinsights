@@ -19,6 +19,57 @@ NetApp is continually improving and enhancing its products and services. Here ar
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
 
 
+== July 2023
+
+=== Show Recent Changes
+
+Data Collector landing pages now include a list of recent changes. Simply click the "Recent Changes" button at the bottom of any data collector landing page to display changes occurring with that data collector within that last three weeks.
+
+image:Recent_Changes_Example.png[Recent Changes Example]
+
+
+
+=== Operator Improvements
+
+The following improvements have been made to link:/telegraf_agent_k8s_config_options.html[Kubernetes Operator] deployment:
+
+* Option to bypass docker metric collection
+* Ability to add and customize tolerations to telegraf Daemonsets and Replicasets
+CIS-32027 Eliminate need to generate agent IDs server-side
+
+
+=== Insight: Reclaim Cold Storage 
+
+The link:insights_reclaim_ontap_cold_storage.html[Reclaim ONTAP Cold Storage Insight] now supports FlexGroups, and is now available to all customers.
+
+
+=== Operator Image Signature
+
+For customers who use a private repository for their NetApp Kubernetes Monitoring Operator, you can now copy the Image Signature Public Key during Operator installation, allowing you to confirm authenticity of the downloaded software. Select the _Copy Image Signature Public Key_ button during the optional step to _Upload the operator image to your private repository_.
+
+image:Operator_Public_Image_Key.png[Download the Public Key]
+
+
+=== Aggregation, Conditional Formatting, and more for Queries
+
+Aggregation, Unit Selection, Conditional Formatting, and Column Renaming are among the most useful features of a dashboard table widget, and now those same features are available for link:/task_create_query.html[Queries]. 
+
+image:Query_Page_Aggregation_etc.png[Query Page results showing Aggregation, Conditional Formatting, Unit Display, and Column Renaming]
+
+These features are available now for integration-type data (ONTAP Advanced Metrics, etc.), and will be coming soon for Infrastructure objects (storage, volume, switch, etc.).
+
+
+
+=== API for Audit
+
+You can now use an API to query or export Audited events. Go to Admin > API Access and select the _API Documentation_ link for  information.
+
+image:Audit_API_Swagger.png[API Swagger for Audit, width=400]
+
+
+
+'''
+
 
 == June 2023
 
