@@ -27,6 +27,7 @@ The table below lists the possible options for the AgentConfiguration file:
 ||dockerRepo|A dockerRepo override to pull images from customers private docker repos as compared to Cloud Insights docker repo. Default is cloud insights docker repo
 ||dockerImagePullSecret|Optional: A secret for the customers private repo
 ||clusterName|Free text field that uniquely identifies a cluster across all customers clusters. This should be unique across a cloud insights tenant. Default is what the customer enters in the UI for the "Cluster Name" field
+
 ||proxy
 Format:
 proxy:
@@ -39,7 +40,9 @@ proxy:
   isAuProxyEnabled:
   isFluentbitProxyEnabled:
   isCollectorProxyEnabled:
-|Optional for customer to set proxy. This is usually customers corporate proxy. 
+
+|Optional for customer to set proxy. This is usually customers corporate proxy.
+
 |telegraf||Configuration options that can customize the telegraf installation of the Operator
 ||collectionInterval|Metrics collection interval, in seconds (Max=60s)
 ||dsCpuLimit|CPU Limit for telegraf ds
@@ -54,7 +57,6 @@ proxy:
 ||dockerUnixSocket|an override for dockerUnixSocket path. This is for non standard docker installations on k8s platforms like cloud foundry. 
 ||crioSockPath|an override for crioSockPath path. This is for non standard docker installations on k8s platforms like cloud foundry. 
 ||runPrivileged|Run the telegraf container in privileged mode. Set this to true if SELinux is enabled on your k8s nodes
-
 ||batchSize|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||bufferLimit|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||roundInterval|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
@@ -63,6 +65,10 @@ proxy:
 ||flushInterval|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||flushJitter|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||outputTimeout|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
+||dockerMetricCollectionEnabled|Collect Docker metrics. By default, this is set to true and docker metrics will be collected for on-premise, docker-based k8s deployments. To disable docker metric collection, set this to false.
+
+||dsTolerations	|telegraf-ds additional tolerations.
+||rsTolerations	|telegraf-rs additional tolerations.
 
 |kube-state-metrics||Configuration options that can customize the kube state metrics installation of the Operator
 
@@ -74,7 +80,12 @@ proxy:
 ||resources|a comma separated list of resources to capture.
 example: cronjobs,daemonsets,deployments,ingresses,jobs,namespaces,nodes,persistentvolumeclaims,
 persistentvolumes,pods,replicasets,resourcequotas,services,statefulsets
+
+||tolerations	|kube-state-metrics additional tolerations.
+
+
 ||labels|a comma separated list of resources that kube-state-metrics should capture
+
 +++
 example: cronjobs=[*],daemonsets=[*],deployments=[*],ingresses=[*],jobs=[*],namespaces=[*],nodes=[*],
 persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resourcequotas=[*],services=[*],statefulsets=[*]
@@ -94,6 +105,12 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 ||metricAgreegationInterval|metric aggregation interval, in seconds
 ||bpfPollInterval|BPF poll interval, in seconds
 ||enableDNSLookup|true/false, enable DNS lookup
+
+||fluent-bit-tolerations|fluent-bit-ds additional tolerations.
+||event-exporter-tolerations|event-exporter additional tolerations.
+
+|workload-map
+||l4-tolerations|net-observer-l4-ds additional tolerations.
 
 |===
 
@@ -158,7 +175,11 @@ spec:
  
     # Declare Rancher cluster as managed. Set this to true if your Rancher cluster is managed as opposed to on-premise. 
     #isManagedRancher: true|false
- 
+
+    # By default, docker metrics will be collected for on-premise, docker-based k8s deployments. To disable docker metric collection, set this to false.
+    # dockerMetricCollectionEnabled: true|false
+
+
     # Deamonset CPU/Mem limits and requests
     # dsCpuLimit:
     # dsMemLimit:
