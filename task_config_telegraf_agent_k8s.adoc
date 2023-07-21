@@ -917,6 +917,26 @@ a|Capture or otherwise note the output from the following commands, and contact 
 |After installing the operator, the telegraf-ds pods enter CrashLoopBackOff and the pod logs indicate "su: Authentication failure".
 |Edit the netapp-monitoring-configuration agentconfiguration, and set _dockerMetricCollectionEnabled_ to false.  For more details, refer to the operator's link:telegraf_agent_k8s_config_options.html[configuration options]. 
 
+|I see repeating error messages resembling the following in my Telegraf logs:
+
+ E! [agent] Error writing to outputs.http: Post "https://<tenant_url>/rest/v1/lake/ingest/influxdb": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+|Edit each Telegraf configuration file (i.e. /etc/telegraf/telegraf.d/*.conf), and increase the timeout for the Telegraf output plugins.  For example, in each .conf file, replace all instances of...
+
+[[outputs.http]]
+...
+  timeout = "5s"
+...
+
+
+...with the following:
+
+[[outputs.http]]
+...
+timeout = "10s"
+...
+
+Then, restart Telegraf.
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
