@@ -127,6 +127,48 @@ The following are requirements to configure and use this data collector:
 //|<TBD: New Micro Poll> | Default is 60 seconds
 |===
 
+
+== ONTAP Power Metrics
+
+Several ONTAP models provide power metrics for Cloud Insights that can be used for monitoring or alerting. The lists of supported and unsupported models below are not comprehensive but should provide some guidance; in general, if a model is in the same family as one on the list, the support should be the same. 
+
+Supported Models:
+
+A200
+A220
+A250
+A300
+A320
+A400
+A700
+A700s
+A800
+A900
+C190
+FAS2240-4
+FAS2552
+FAS2650
+FAS2720
+FAS2750
+FAS8200
+FAS8300
+FAS8700
+FAS9000
+
+Unsupported Models:
+
+FAS2620
+FAS3250
+FAS3270
+FAS500f
+FAS6280
+FAS/AFF 8020
+FAS/AFF 8040
+FAS/AFF 8060
+FAS/AFF 8080
+
+
+
 == A Note About Permissions
 
 Since a number of Cloud Insights' ONTAP dashboards rely on advanced ONTAP counters, you must enable *Advanced Counter Data Collection* in the data collector Advanced Configuration section.
