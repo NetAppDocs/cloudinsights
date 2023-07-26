@@ -1,12 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_cs_add_agent.html
-keywords: agent, Cloud Secure, installation
-summary: Adding Cloud Secure agents
+keywords: agent, Workload Security, installation, Cloud Secure
+summary: Adding Workload Security agents
 ---
 
-= Cloud Secure Agent Installation
-
+= Workload Security Agent Installation
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,19 +15,20 @@ summary: Adding Cloud Secure agents
 :imagesdir: ./media/
 
 [.lead]
+Workload Security (formerly Cloud Secure) collects user activity data using one or more agents. Agents connect to devices in your environment and collect data that is sent to the Workload Security SaaS layer for analysis. See link:concept_cs_agent_requirements.html[Agent Requirements] to configure an agent VM.
 
-Cloud Secure collects user activity data using one or more agents. Agents connect to devices in your environment and collect data that is sent to the Cloud Secure SaaS layer for analysis. See link:concept_cs_agent_requirements.html[Agent Requirements] to configure an agent VM.
+NOTE: Workload Security is not available in Cloud Insights Federal Edition.
 
 == Before You Begin
 
 * The sudo privilege is required for installation, running scripts, and uninstall. 
-
+* While installing the agent, a local user _cssys_ and a local group _cssys_ are created on the machine. If permission settings do not allow creation of a local user, and instead require Active Directory, a user with the username _cssys_ must be created in the Active Directory server.
 
 
 == Steps to Install Agent 
 
-. Log in as Administrator or Account Owner to your Cloud Secure environment. 
-. Click *Admin > Data Collectors > Agents > +Agent*
+. Log in as Administrator or Account Owner to your Workload Security environment. 
+. Under the *Security* menu, select *Admin > Data Collectors > Agents > +Agent*
 + 
 The system displays the Add an Agent page:
 +
@@ -79,7 +79,7 @@ image::new-agent-detect.png[]
 * You can use the following command to verify the agent installed correctly: 
 `sudo grep -irn register /opt/netapp/cloudsecure/agent/logs/agent.log`
 
-//* Use the following script to control the Cloud Secure service:
+//* Use the following script to control the Workload Security service:
 //`sudo cloud-secure-agent-service.sh --help`
 
 * Use the following script to uninstall the agent:
@@ -88,7 +88,7 @@ image::new-agent-detect.png[]
 
 == Network Configuration
 
-Run the following commands on the local system to open ports that will be used by Cloud Secure. If there is a security concern regarding the port range, you can use a lesser port range, for example _35000:35100_. Each SVM uses two ports. 
+Run the following commands on the local system to open ports that will be used by Workload Security. If there is a security concern regarding the port range, you can use a lesser port range, for example _35000:35100_. Each SVM uses two ports. 
 
 .Steps
 
@@ -135,7 +135,7 @@ After that, re-copy the command from the Agent installation UI and paste it in t
 
 |Agent was installed and was running. However agent has stopped suddenly.
 |SSH to the Agent machine. Check the status of the agent service via `sudo systemctl status cloudsecure-agent.service`. 
-1. Check if the logs shows a message“Failed to start Cloud Secure daemon service” . 
+1. Check if the logs shows a message“Failed to start Workload Security daemon service” . 
 2. Check if cssys user exists in the Agent machine or not. Execute the following commands one by one with root permission and check if the cssys user and group exists. 
 `sudo id cssys`
 `sudo groups cssys`
@@ -158,8 +158,8 @@ After that, re-copy the command from the Agent installation UI and paste it in t
 3. Check the status of the agent service via `sudo systemctl status cloudsecure-agent.service`.
 4. Agent should go to CONNECTED state.
 
-|Agent VM is behind Zscaler proxy and the agent installation is failing. Because of Zscaler proxy’s SSL inspection, the Cloud Secure certificates are presented as it is signed by Zscaler CA so the agent is not trusting the communication.
-|Disable SSL inspection in the Zscaler proxy for the *.cloudinsights.netapp.com url. If Zscaler does SSL inspection and replaces the certificates, Cloud Secure will not work.
+|Agent VM is behind Zscaler proxy and the agent installation is failing. Because of Zscaler proxy’s SSL inspection, the Workload Security certificates are presented as it is signed by Zscaler CA so the agent is not trusting the communication.
+|Disable SSL inspection in the Zscaler proxy for the *.cloudinsights.netapp.com url. If Zscaler does SSL inspection and replaces the certificates, Workload Security will not work.
 
 |While installing the agent, the installation hangs after unzipping.
 |“chmod 755 -Rf” command is failing. 
@@ -213,7 +213,7 @@ For instance, _sudo useradd cssys -m -d /cssys_, adds a user _cssys_ and creates
 _Systemctl status cloudsecure-agent.service_ shows the following:
 
 [root@demo ~]# systemctl status cloudsecure-agent.service 
-agent.service – Cloud Secure Agent Daemon Service 
+agent.service – Workload Security Agent Daemon Service 
 Loaded: loaded (/usr/lib/systemd/system/cloudsecure-agent.service; enabled; vendor preset: disabled) 
 Active: activating (auto-restart) (Result: exit-code) since Tue 2021-08-03 21:12:26 PDT; 2s ago 
 Process: 25889 ExecStart=/bin/bash /opt/netapp/cloudsecure/agent/bin/cloudsecure-agent (code=exited status=126) 
@@ -225,7 +225,7 @@ Aug 03 21:12:26 demo systemd[1]: cloudsecure-agent.service failed.
 
 |This can be failing because _cssys_ user may not have permission to install.
 
-If /opt/netapp is an NFS mount and if _cssys_ user does not have access to this folder, installation will fail. _cssys_ is a local user created by the Cloud Secure installer that may not have permission to access the mounted share. 
+If /opt/netapp is an NFS mount and if _cssys_ user does not have access to this folder, installation will fail. _cssys_ is a local user created by the Workload Security installer that may not have permission to access the mounted share. 
 
 You can check this by attempting to access /opt/netapp/cloudsecure/agent/bin/cloudsecure-agent using _cssys_ user.
 If it returns “Permission denied”, installation permission is not present.

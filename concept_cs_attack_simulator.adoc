@@ -2,11 +2,10 @@
 sidebar: sidebar
 permalink: concept_cs_attack_simulator.html
 keywords:  ransomware, simulation, simulator, restrict, attack
-summary: Using a script, you can simulate a Ransomware attack for testing or demonstrating Cloud Secure 
+summary: Using a script, you can simulate a Ransomware attack for testing or demonstrating Workload Security 
 ---
 
-= Cloud Secure: Simulating an Attack 
-
+= Workload Security: Simulating an Attack 
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,20 +15,30 @@ summary: Using a script, you can simulate a Ransomware attack for testing or dem
 :imagesdir: ./media/
 
 [.lead]
-You can use the instructions on this page to simulate an attack for testing or demonstrating Cloud Secure using the included Cloud Secure Ransomware Simulation script.
+You can use the instructions on this page to simulate an attack for testing or demonstrating Workload Security using the included Ransomware Simulation script.
+
+NOTE: Workload Security is not available in Cloud Insights Federal Edition.
  
 == Things to note before you begin
 
 * The ransomware simulation script works on Linux only.
-* The script is provided with the Cloud Secure agent installation files. It is available on any machine that has a Cloud Secure agent installed.
-* You can run the script on the Cloud Secure agent machine itself; there is no need to prepare another Linux machine. However, if you prefer to run the script on another system, simply copy the script and run it there. 
+* The script is provided with the Workload Security agent installation files. It is available on any machine that has a Workload Security agent installed.
+* You can run the script on the Workload Security agent machine itself; there is no need to prepare another Linux machine. However, if you prefer to run the script on another system, simply copy the script and run it there. 
 
 == Have at least 1,000 sample files
 
 This script should run on an SVM with a folder that has files to encrypt. We recommend having at least 1,000 files within that folder and any sub-folders. The files must not be empty.
-Do not create the files and encrypt them using the same user. Cloud Secure considers this a low-risk activity and will therefore not generate an alert (i.e. the same user modifies files he/she/they just created).
+Do not create the files and encrypt them using the same user. Workload Security considers this a low-risk activity and will therefore not generate an alert (i.e. the same user modifies files he/she/they just created).
 
 See below for instructions to link:#create-files-programmatically[programmatically create non-empty files].
+
+== Guidelines before you run the simulator:
+
+. Make sure encrypted files are not empty.
+. Make sure you encrypt > 50 files. A small number of files will be ignored.
+. Do not run an attack with the same user multiple times. After a few times, CS will learn this user behavior and assume it is the user's normal behavior.
+. Do not encrypt files the same user has just created. Changing a file that was just created by a user is not considered a risky activity. Instead, use files created by another user OR wait for a few hours between creating the files and encrypting them.
+
 
 == Prepare the system
 
@@ -49,12 +58,12 @@ To mount CIFs in Linux:
 
 Next, set up a Data Collector:
 
-. Configure the Cloud Secure agent if not already done.
+. Configure the Workload Security agent if not already done.
 . Configure SVM data collector if not already done.
 
 == Run the Ransomware Simulator script
 
-. Log in (ssh) to the Cloud Secure agent machine.
+. Log in (ssh) to the Workload Security agent machine.
 . Navigate to: _/opt/netapp/cloudsecure/agent/install_
 . Call the simulator script without parameters to see usage:
  
@@ -98,7 +107,7 @@ To decrypt, run the following command:
 == Run the script multiple times
 
 After generating a ransomware attack for a user, switch to another user in order to generate an additional attack. 
-Cloud Secure learns user behavior and will not alert on repeated ransomware attacks within a short duration for the same user. 
+Workload Security learns user behavior and will not alert on repeated ransomware attacks within a short duration for the same user. 
 
 
 == Create files programmatically

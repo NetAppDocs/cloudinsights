@@ -1,12 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_config_cs_incloud.html
-keywords:  Cloud, Storage, AWS, Cloud Volumes, Cloud ONTAP, firewall, VPC, Subnet,  
-summary: Cloud Secure uses data collectors to collect file and user access data from devices.
+keywords:  Cloud, Storage, AWS, Cloud Volumes, Cloud ONTAP, firewall, VPC, Subnet,  cloud secure
+summary: Workload Security uses data collectors to collect file and user access data from devices.
 ---
 
 = Configuring the Cloud Volumes ONTAP and Amazon FSx for NetApp ONTAP collector 
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,14 +15,13 @@ summary: Cloud Secure uses data collectors to collect file and user access data 
 :imagesdir: ./media/
 
 [.lead]
-
-Cloud Secure uses data collectors to collect file and user access data from devices.
+Workload Security uses data collectors to collect file and user access data from devices.
 
 
 == Cloud Volumes ONTAP Storage Configuration
 
-See the OnCommand Cloud Manager Documentation to configure a single-node / HA AWS instance to host the Cloud Secure Agent: 
-https://docs.netapp.com/us-en/occm/index.html
+See the OnCommand Cloud Volumes ONTAP Documentation to configure a single-node / HA AWS instance to host the Workload Security Agent: 
+https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html
 
 After the configuration is complete, follow the steps to setup your SVM: 
 https://docs.netapp.com/us-en/cloudinsights/task_add_collector_svm.html
@@ -40,10 +38,10 @@ The agent machine must be configured in the respective subnets of the cloud Serv
 
 Below are the steps for Agent installation in AWS. Equivalent steps, as applicable to the cloud service provider, can be followed in Azure or Google Cloud for the installation.
 
-In AWS, use the following steps to configure the machine to be used as a Cloud Secure Agent:
+In AWS, use the following steps to configure the machine to be used as a Workload Security Agent:
 
 
-Use the following steps to configure the machine to be used as a Cloud Secure Agent:
+Use the following steps to configure the machine to be used as a Workload Security Agent:
 
 .Steps
 
@@ -92,18 +90,18 @@ https://download.docker.com/linux/centos/7/x86_64/stable/Packages/
 ////
 
 
-== Install the Cloud Secure Agent
+== Install the Workload Security Agent
 
 . Log in as Administrator or Account Owner to your Cloud Insights environment. 
 
-. Navigate to Cloud Secure *Admin > Data Collectors* and click the *Agents* tab. 
+. Navigate to Workload Security *Admin > Data Collectors* and click the *Agents* tab. 
 
 . Click *+Agent* and specify RHEL as the target platform.
 
 . Copy the Agent Installation command. 
 
 . Paste the Agent Installation command into the RHEL EC2 instance you are logged in to.
-This installs the Cloud Secure agent, providing all of the link:concept_cs_agent_requirements.html[Agent Prerequisites] are met. 
+This installs the Workload Security agent, providing all of the link:concept_cs_agent_requirements.html[Agent Prerequisites] are met. 
 
 For detailed steps please refer to this link:
 https://docs.netapp.com/us-en/cloudinsights/task_cs_add_agent.html#steps-to-install-agent
@@ -148,6 +146,17 @@ All of the data collector's service status should be in the 'running' state.
 
 
 
+== Troubleshooting
+
+Known problems and their resolutions are described in the following table.
+
+|===
+|Problem 	|Resolution
+|“Workload Security: Failed to determine ONTAP type for Amazon FxSN data collector” error is shown by the Data Collector.
+Customer is unable to add new Amazon FSxN data collector into Workload Security.  Connection to FSxN cluster on port 443 from the agent is timing out. Firewall and AWS security groups have the required rules enabled to allow communication. An agent is already deployed and is in the same AWS account as well. This same agent is used to connect and monitor the remaining NetApp devices (and all of them are working).	
+|Solve this issue by adding fsxadmin LIF network segment to agent's security rule.
+Allowed all ports if you are not sure about the ports.
+|===
 
 
 

@@ -5,7 +5,6 @@ summary: You create annotation rules to automatically apply annotations to multi
 ---
 
 = Creating annotation rules
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -64,6 +63,8 @@ Annotation rules are processed from the top of the rules list to the bottom. To 
 .Steps
 . Click on the menu icon for the rule you want to move.
 . Click *Move Up* or *Move Down* as needed until the rule appears in the location you want.
+
+Note that when running multiple rules that update the same annotation on an asset, the first rule (as run from the top down) applies the annotation and updates the asset, then the second rule applies but doesn’t change any annotation that was already set by the previous rule. 
 
 == Deleting annotation rules
 

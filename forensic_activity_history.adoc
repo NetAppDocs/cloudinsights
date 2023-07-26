@@ -6,7 +6,7 @@ summary: forensic activity history data
 ---
 
 = Forensics - All Activity
-
+:toc: macro
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -14,8 +14,7 @@ summary: forensic activity history data
 :imagesdir: ./media/
 
 [.lead]
-
-The All Activity page helps you understand the actions performed on entities in the Cloud Secure environment. 
+The All Activity page helps you understand the actions performed on entities in the Workload Security environment. 
 
 
 == Examining All Activity Data  
@@ -124,7 +123,8 @@ You can filter Forensic Activity data by the following fields:
 
 * *Username* of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
 
-* *Noise Reduction* to filter out newly-created files created by the user (i.e. in the last 2 hours). It is also used to filter temporary files (for example, .tmp files) accessed by the user. 
+
+* *Noise Reduction* to filter files which are created in the last 2 hours by the user. It is also used to filter temporary files (for example, .tmp files) accessed by the user.
 
 
 The following fields are subject to special filtering rules:
@@ -149,7 +149,7 @@ You can sort activity history data by _Time, User,  Source IP, Activity, Path_ a
 
 == Exporting All Activity
 
-You can export the activity history to a .CSV file by clicking the _Export_ button above the Activity History table. Note that only the top 10,000 records are exported.
+You can export the activity history to a .CSV file by clicking the _Export_ button above the Activity History table. Note that only the top 100,000 records are exported. Depending on the amount of data, it may take from a few seconds to several minutes for the export to finish.
 
 == Column Selection for All Activity 
 
@@ -159,7 +159,7 @@ image:CloudSecure_ActivitySelection.png[Activity Selector, width=30%]
 
 == Activity History Retention
 
-Activity history is retained for 13 months for active Cloud Secure environments.
+Activity history is retained for 13 months for active Workload Security environments.
 
 
 
@@ -227,6 +227,16 @@ If it still does not get resolved, check if you have added the correct User Data
 3.	Raw events (Events for whom the user is not yet discovered) are not supported for NFS
 4.	Anonymous access to the NFS export will not be monitored.
 5.	Make sure NFS version used in lesser than NFS4.1.
+
+
+|After typing some letters containing a wildcard character like asterisk (\*) in the filters on the Forensics _All Activity_ or  _Entities_ pages, the pages load very slowly.
+|An asterisk (\*) in the search string searches for everything. However, leading wildcard strings like  _*<searchTerm>_ or _*<searchTerm>*_ will result in a slow query.
+To get better performance, use prefix strings instead, in the format _<searchTerm>*_ (in other words, append the asterisk (*) _after_ a search term).
+Example: use the string _testvolume*_, rather than _*testvolume_ or _*test*volume_.
+
+Use a prefix-based search to see all activities underneath a given folder recursively (Hierarchical search). e.g.   _/path1/path2/path3_ or _“/path1/path2/path3”_ will list all the activities recursively under _/path1/path2/path3_.
+Alternatively use the "Add To Filter" option under the All Activity tab.
+
 
 |===
 

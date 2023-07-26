@@ -6,7 +6,6 @@ keywords: invite, roles, data collector, acquisition unit, AU
 ---
 
 = Getting started gathering data
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,6 +14,7 @@ keywords: invite, roles, data collector, acquisition unit, AU
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
 After you have signed up for Cloud Insights and log in to your environment for the first time, you will be guided through the following steps in order to begin collecting and managing data. 
 
 ////
@@ -29,17 +29,18 @@ When you are finished watching the video, click *Continue* to proceed to the nex
 
 Data collectors discover information from your data sources, such as storage devices, network switches, and virtual machines. The information gathered is used for analysis, validation, monitoring and troubleshooting. 
 
-Cloud Insights utilizes three types of data collectors:
+Cloud Insights has available three types of data collectors:
 
-* Operating Systems
-* Services
-* Infrastructure
+* Infrastructure (storage devices, network switches, compute infrastructure)
+* Operating Systems (such as VMWare or Windows)
+* Services (such as Kafka)
+
 
 Select your first data collector from the supported vendors and models available. You can easily add additional data collectors later. 
 
 == Install an Acquisition Unit
 
-If you selected an _Infrastructure_ data collector, an Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM to collect data for Cloud Insights. A single Acquisition Unit can be used for multiple data collectors.
+If you selected an _Infrastructure_ data collector, an Acquisition Unit is required to inject data into Cloud Insights. You will need to download and install the Acquisition Unit software on a server or VM on the data center from which you will be collecting. A single Acquisition Unit can be used for multiple data collectors.
 
 image:NewLinuxAUInstall.png[Linux AU Instructions]
 
@@ -54,9 +55,8 @@ You may set up additional acquisition units later if needed. For example, you ma
 For _Infrastructure_ data collectors, you will be asked to fill out the data collector fields presented:
 
 * Give the data collector a unique and meaningful name.
-* Enter the user name and password to connect to the device, as appropriate.
+* Enter the credentials (user name and password) to connect to the device, as appropriate.
 * Fill in any other mandatory fields in _Configuration_ and _Advanced Configuration_ sections.
-* Click *Test Connection* to test the connection to the device.
 * Click *Add Collector* to save the data collector.
 
 You will be able to configure additional data collectors later.
@@ -65,7 +65,7 @@ You will be able to configure additional data collectors later.
 
 === Operating System:
 
-For _Operating System_ data collectors, choose a platform (MacOS, Linux, Windows) to install a Cloud Insights Agent.
+For _Operating System_ data collectors, choose a platform (Linux, Windows) to install a Cloud Insights Agent.
 You must have at least one agent to collect data from Services.
 The agent also collects data from the host itself, for use in Cloud Insights. This data is categorized as "Node" data in widgets, etc.
 
@@ -122,6 +122,21 @@ Vendor-specific link:concept_data_collector_reference.html[*Data Collector refer
 Troubleshooting link:task_research_failed_collector.html[*Data Collector failures*] 
 Data Collector link:reference_data_collector_support_matrix.html[*support matrix*]
 ////
+
+
+== Useful definitions
+
+The following definitions may be useful when talking about Cloud Insights data collectors or features:
+
+* Collector life cycle: A collector will belong to one of the following states in its life cycle: 
+
+** *Preview*: Available in a limited capacity or to a limited audience. link:concept_preview_features.html[Preview features] and data collectors are expected to become GA following the preview period. Preview periods vary based on audience or functionality.
+** *GA*: A feature or data collector that is Generally Available to all customers, based on Edition or feature set.
+** *Deprecated*: Applies to data collectors that are, or are expected to become, no longer functionally sustainable. Deprecated data collectors are often replaced with newer, functionally-updated data collectors.
+** *Deleted*: A data collector that has been removed and is no longer available.
+
+* Acquisition Unit: a computer dedicated to hosting data collectors, typically a Virtual Machine. This computer is typically located in the same data center / VPC as the monitored items. 
+* Data Source: a module for communicating with a hardware or software stack. It consists of a configuration and code that runs on the AU computer to communicate with the device.
 
 
 

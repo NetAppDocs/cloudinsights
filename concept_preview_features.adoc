@@ -6,7 +6,6 @@ keywords: coming soon, preview,
 ---
 
 = Preview Features and Functionality
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -21,33 +20,15 @@ Cloud insights highlights new features and functionality in a _Preview_ manner. 
 
 If you are interested in previewing one or more of these features, contact your link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales Team] for more information.
 
-All current Cloud Insights functionality is available. Watch this space for future Previews.
+//All current Cloud Insights functionality is available. Watch this space for future Previews.
 
-////
 |===
 
 |*Feature* |*Description*
 
-|Time-to-Full forecasting	
-|Cloud Insights is able to prognose the number of days until capacity runs out for the following objects:
-
-Internal Volume
-Storage
-Storage Pool
-Volume
-
-These forecast values can help to significantly reduce the risk of an outage. Use the _timeToFull.total_ and _timeToFull.confidenceInterval_ counters in Queries, Monitors, or Dashboards.
-
-|Restrict User Access automatic response action
-|When an attack is detected, Cloud Secure can stop the attack by restricting user access to the file system (full block, or set to read-only access). 
-Access can be restricted automatically, using Automated Response Policies or manually from the alert or user details pages.
-link:https://docs.netapp.com/us-en/cloudinsights/cs_automated_response_policies.html[Read More]
-
-|Shared Resource Under Stress
-|The Shared Resource Under Stress insight allows you to identify:
--	Shared Storage Resources which are under stress due to high demand from one or more individual workloads
--	Demanding and impacted workloads on the shared resource
-link:https://docs.netapp.com/us-en/cloudinsights/insights_shared_resources_under_stress.html[Read More]
+|Reclaim ONTAP Cold Storage
+|Provides visualizations of ONTAP volume workloads with cold capacity as well as other related metrics.
 
 |===
-//
+
+

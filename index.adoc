@@ -5,7 +5,6 @@ summary: Welcome to the documentation portal for Cloud Insights.
 ---
 
 = Cloud Insights documentation
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -22,6 +21,21 @@ NetApp Cloud Insights is a cloud infrastructure monitoring tool that gives you v
 
 //[big]##Cloud Insights provides intelligent operations and business insight across the enterprise, enabling the rationalization and optimization of costs, risk reduction, and advanced troubleshooting and analytics across the multi-vendor infrastructure of systems, networks, and storage.##
 
+== What can Cloud Insights do for me?
+
+Cloud Insights provides hybrid multicloud monitoring, giving you full-stack observability of infrastructure and workloads.
+
+* Data collectors for heterogeneous infrastructure and workloads, including Kubernetes
+* Open Telegraf collector and open APIs for easy integration
+* Comprehensive alerting and notifications
+* Machine learning for intelligent insights
+* Optimize resource utilization
+* Built-in or customizable dashboards with advanced filters to minimize display noise to answer questions
+* Discover the health of your ONTAP storage operations 
+* Protect your most valuable business asset – data - from ransomware or data destruction attack
+
+
+////
 Cloud Insights helps you:
 
 * *Reduce mean time to resolution by as much as 90%*
@@ -35,21 +49,26 @@ Remove inefficiencies by identifying abandoned and unused resources and right-si
 * *Prevent as much as 80% of cloud issues from impacting end users*
 +
 End searching through vast amounts of data to find the relevant piece, by using advanced analytics and machine learning to identify issues before they become critical outages.
+////
 
-//== Latest Features
-//* link:TBD.html[What's New] with Cloud Insights
+'''
 
 == Getting Started
-* I'm a New Customer: link:task_cloud_insights_onboarding_1.html[Onboarding]
-* I'm signed up: Now what do I do? 
+
+* How do I link:task_cloud_insights_onboarding_1.html[*get started*] with Cloud Insights?
+
+* I'm signed up. Now what do I do? 
         link:task_getting_started_with_cloud_insights.html[Acquiring Data]
         link:concept_user_roles.html[Setting up users]
-* How do I get the most out of Cloud Insights?
+        
+* Awesome! What's Next?
         link:task_defining_annotations.html[Preparing Assets: Annotating]
         link:concept_querying_assets.html[Finding the Assets You Want: Querying]
         link:concept_dashboards_overview.html[Seeing the Data You want: Dashboards]
         link:https:task_create_monitor.html[Monitoring and Alerts]
-* I've tried out Cloud Insights and now I'm ready to link:concept_subscribing_to_cloud_insights.html[*subscribe*].
+        link:https://docs.netapp.com/us-en/cloudinsights/task_cs_getting_started.html[Securing Data]
+        
+* This is great stuff! I'm ready to link:concept_subscribing_to_cloud_insights.html[*subscribe*].
         
 
         

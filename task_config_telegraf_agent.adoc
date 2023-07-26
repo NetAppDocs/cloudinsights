@@ -2,11 +2,10 @@
 sidebar: sidebar
 permalink: task_config_telegraf_agent.html
 keywords: telegraf, installation, install, agent, telegraf agent
-summary: Cloud Insights supports Telegraf as its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
+summary: Cloud Insights supports Telegraf as its agent for collection of integration data and can be configured on Windows or Linux. 
 ---
 
-= Configuring an Agent to Collect Data (Windows/Linux/Mac)
-
+= Configuring an Agent to Collect Data (Windows/Linux)
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -15,12 +14,10 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead]
-
 Cloud Insights uses link:https://docs.influxdata.com/telegraf[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
-The current Telegraf version for Cloud Insights is *1.22.3*.
+The current Telegraf version for Cloud Insights is *1.24.0*.
 
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
@@ -33,24 +30,14 @@ If you are installing a Service data collector and have not yet configured an Ag
 * <<Windows>>
 * <<RHEL and CentOS>>
 * <<Ubuntu and Debian>>
-* <<macOS>>
-* <<Kubernetes>>
 
 To install an agent, regardless of the platform you are using, you must first do the following:
 
 . Log into the host you will use for your agent. 
 . Log in to your Cloud Insights site and go to *Admin > Data Collectors*.
 . Click on *+Data Collector* and choose a data collector to install. 
-////
-There are several types of data collectors:
-+
-* *Host* (Windows, Linux, macOS, etc.)
-+
-* *Service* (integration with a wide variety of agent-collected plugins). Agents are configured and run as a service for RHEL/CentOS, Ubuntu/Debian, macOS, and Windows. For Kubernetes platforms, the agent in configured as a DaemonSet.
-+
-* *Infrastructure* (collects from storage, switch, cloud platform, etc.). Infrastructure collection is done with an link:task_configure_acquisition_unit.html[Acquisition Unit] instead of an Agent.
-////
-. Choose the appropriate platform for your host (Windows, Linux, macOS, etc.)
+
+. Choose the appropriate platform for your host (Windows, Linux)
 . Follow the remaining steps for each platform.
 
 NOTE: Once you have installed an agent on a host, you do not need to install an agent again on that host. 
@@ -58,6 +45,15 @@ NOTE: Once you have installed an agent on a host, you do not need to install an 
 TIP: Once you have installed an agent on a server/VM, Cloud Insights collects metrics from that system in addition to collecting from any data collectors you configure. These metrics are gathered as link:task_config_telegraf_node.html["Node" metrics].
 
 NOTE: If you are using a proxy, read the proxy instructions for your platform before installing the Telegraf agent.
+
+=== Log Locations
+
+Telegraf log messages are redirected from stdout to the following log files be default:
+
+* RHEL/CentOS: /var/log/telegraf/telegraf.log
+* Ubuntu/Debian: /var/log/telegraf/telegraf.log
+* Windows: C:\Program Files\telegraf\telegraf.log
+
 
 === Windows
 
@@ -111,7 +107,8 @@ To uninstall the agent on Windows, do the following in a PowerShell window:
 . Remove the certificate from the trustore:
 
  cd Cert:\CurrentUser\Root
- rm E5FB7B68C08B1CA902708584C274F8EFC7BE8ABC
+ //rm E5FB7B68C08B1CA902708584C274F8EFC7BE8ABC
+ rm 1A918038E8E127BB5C87A202DF173B97A05B4996
  
 . Delete the _C:\Program Files\telegraf_ folder to remove the binary, logs, and configuration files
 
@@ -320,171 +317,21 @@ To upgrade the telegraf agent, do the following:
 . link:#ubuntu-and-debian[Install the new agent].
 
 
-
-
-=== macOS
-
-==== Pre-requisites:
-
-* The following commands must be available: curl, sudo, openssl, and shasum
-* If you are behind a proxy, you must follow the instructions in the *Configuring Proxy Support for macOS* section. 
-
-
-
-==== Configuring Proxy Support for macOS
-
-NOTE: If your environment uses a proxy, read this section before you install.
-
-
-NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
- 
-For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user *PRIOR* to installing the Telegraf agent:
-
- export https_proxy=<proxy_server>:<proxy_port>
-
-*AFTER* installing the Telegraf agent, add and set the appropriate _https_proxy_ and/or _http_proxy_ variable(s) in _/Applications/telegraf.app/Contents/telegraf.plist_:
-
- …
- <?xml version="1.0" encoding="UTF-8"?>
- <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
- <plist version="1.0">
- <dict>
-    <key>EnvironmentVariables</key>
-    <dict>
-           <key>https_proxy</key>
-           <string><proxy_server>:<proxy_port></string>
-    </dict>
-    <key>Program</key>
-    <string>/Applications/telegraf.app/Contents/MacOS/telegraf</string>
-    <key>Label</key>
-    <string>telegraf</string>
-    <key>ProgramArguments</key>
-    <array>
-      <string>/Applications/telegraf.app/Contents/MacOS/telegraf</string>
-      <string>--config</string>
-      <string>/usr/local/etc/telegraf.conf</string>
-      <string>--config-directory</string>
-      <string>/usr/local/etc/telegraf.d</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
- </dict>
- </plist>
- …
-
-Then, restart Telegraf after loading the above changes:
-
- sudo launchctl stop telegraf
- sudo launchctl unload -w /Library/LaunchDaemons/telegraf.plist
- sudo launchctl load -w /Library/LaunchDaemons/telegraf.plist
- sudo launchctl start telegraf
-
-
-
-==== Installing the agent
-
-
-//image:AgentInstallMacOS.png[MacOS Agent Install]
-image:Agent_Requirements_Macos.png[macOS Agent Install]
-
-
-
-.Steps to install agent on macOS:
-
-. Choose an Agent Access Key.
-. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-. Open a Bash window 
-. Paste the command into the Bash window and press Enter.
-. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 5 above.
-. Click *Finish* or *Continue*
-
-After the agent is installed, you can use the following commands to start/stop the service:
-
- sudo launchctl start telegraf
- sudo launchctl stop telegraf
- 
-
-
-==== Uninstalling the Agent
-
-To uninstall the agent on macOS, in a Bash terminal, run the following:
-
-. Stop the Telegraf service:
-+
- sudo launchctl stop telegraf
-
-. Uninstall the telegraf agent:
-+
- cp /Applications/telegraf.app/scripts/uninstall /tmp
- sudo /tmp/uninstall
-
-. Remove any configuration or log files that may be left behind:
-+
- rm -rf /usr/local/etc/telegraf*
- rm -rf /usr/local/var/log/telegraf.*
-
-
-==== Upgrading the Agent
-
-To upgrade the telegraf agent, do the following:
-
-. Stop the telegraf service:
-
- sudo launchctl stop telegraf
-
-. Uninstall the previous telegraf agent:
-
- cp /Applications/telegraf.app/scripts/uninstall /tmp
- sudo /tmp/uninstall
-
-. link:#macos[Install the new agent].
-
-
-
-
-
-
-
-
-
-
-
-
-
-{empty}
-{empty}
-{empty}
-{empty}
-{empty}
-{empty}
-
-[#kubernetes]
-== Kubernetes
-
-The NetApp Kubernetes Monitoring Operator (NKMO) is the preferred method for installing Kubernetes for Cloud Insights Insights, for more flexible configuration of monitoring in fewer steps, as well as enhanced opportunities for monitoring other software running in the K8s cluster.
-
-Please link:task_config_telegraf_agent_k8s.html[*go here*] for information and installation instructions for the NetApp Kubernetes Monitoring Operator.
-
-{empty}
-{empty}
-{empty}
-{empty}
-{empty}
-{empty}
-
-
-
-
 == Verifying Checksums
 
-The Cloud Insights agent installer performs integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform a download-only operation (as opposed to the default download-and-install), these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
+The Cloud Insights agent installer performs integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. This can be done by downloading the installer and generating a checksum for the downloaded package, then comparing the checksum to the value shown in the install instructions.
+
+
+
+=== Download the installer package without installing
+
+To perform a download-only operation (as opposed to the default download-and-install), users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
 
 Follow these steps:
 
 . Copy the Agent Installer snippet as directed.
 . Instead of pasting the snippet into a command window, paste it into a text editor.
-. Remove the trailing “--install” (Linux/Mac) or “-install” (Windows) from the command.
+. Remove the trailing “--install” (Linux) or “-install” (Windows) from the command.
 . Copy the entire command from the text editor.
 . Now paste it into your command window (in a working directory) and run it.
 
@@ -509,24 +356,21 @@ Windows:
  !$($installerName=".\cloudinsights-windows.ps1") … -and $(&$installerName -download)
 
 
-
-The download-only command will download all required artifacts from Cloud Insights to the working directory.  The artifacts include, but may not be limited to: 
+The download-only command will download all required artifacts from Cloud Insights to the working directory. The artifacts include, but may not be limited to: 
 
 * an installation script
 * an environment file
 * YAML files
-* a signed checksum file (sha256.signed)
+* a signed checksum file (ending in sha256.signed or sha256.ps1)
 * a PEM file (netapp_cert.pem) for signature verification
-
-
 
 The installation script, environment file, and YAML files can be verified using visual inspection. 
 
-
-
 The PEM file can be verified by confirming its fingerprint to be the following:
 
- E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
+// E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
+
+ 1A918038E8E127BB5C87A202DF173B97A05B4996
 
 More specifically,
 
@@ -539,19 +383,44 @@ More specifically,
  Import-Certificate -Filepath .\netapp_cert.pem -CertStoreLocation Cert:\CurrentUser\Root
 
 
+=== Generate checksum value
 
+To generate the checksum value, perform the following command for your appropriate platform:
+
+* RHEL/Ubuntu:
+
+ sha256sum <package_name>
+ 
+ 
+* Windows:
+
+ Get-FileHash telegraf.zip -Algorithm SHA256 | Format-List
+
+
+
+=== Verify checksum using PEM file
 
 The signed checksum file can be verified using the PEM file:
 
 *	Non-Windows:
 
- openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
+// openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
+
+ openssl smime -verify -in telegraf*.sha256.signed -CAfile netapp_cert.pem -purpose any
+
 
 *	Windows (after installing the certificate via Import-Certificate above):
 
- Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
+// Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
+
+ Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 
+ $result = Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 
+ $signer = $result.SignerCertificate 
+ Add-Type -Assembly System.Security 
+ [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
 
 
+=== Install the downloaded package
 
 Once all of the artifacts have been satisfactorily verified, the agent installation can be initiated by running:
 
@@ -566,7 +435,7 @@ Windows:
 
 
 
-== Troubleshooting Agent Installation
+== Troubleshooting
 
 Some things to try if you encounter problems setting up an agent:
 
@@ -574,96 +443,22 @@ Some things to try if you encounter problems setting up an agent:
 |===
 |Problem:|Try this:
 
+|After configuring a new plugin and restarting Telegraf, Telegraf fails to start up. The logs indicate that an error resembling the following:
+
+"[telegraf] Error running agent: Error loading config file /etc/telegraf/telegraf.d/cloudinsights-default.conf: plugin outputs.http: line <linenumber>: configuration specified the fields ["use_system_proxy"], but they weren't used"
+
+|The installed Telegraf version is outdated. Follow the steps on this page to *Upgrade the Agent* for your appropriate platform.
+
+|I ran the installer script on an old installation and now the agent isn’t sending data
+|Uninstall the telegraf agent and then re-run the installation script. Follow the *Upgrade the Agent* steps on this page for your appropriate platform.
+
+
+
 |I already installed an agent using Cloud Insights| If you have already installed an agent on your host/VM, you do not need to install the agent again. In this case, simply choose the appropriate Platform and Key in the Agent Installation screen, and click on *Continue* or *Finish*. 
 
 |I already have an agent installed but not by using the Cloud Insights installer|Remove the previous agent and run the Cloud Insights Agent installation, to ensure proper default configuration file settings. When complete, click on *Continue* or *Finish*.
 
 |===
-
-////
-
-|I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.
-|Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent. You must be using Telegraf version 2.0 or later.
-
-|I'm seeing messages in the logs resembling the following:
-
-E0901 15:21:39.962145 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.MutatingWebhookConfiguration: the server could not find the requested resource
-E0901 15:21:43.168161 1 reflector.go:178] k8s.io/kube-state-metrics/internal/store/builder.go:352: Failed to list *v1.Lease: the server could not find the requested resource (get leases.coordination.k8s.io)
-etc.
-
-
-|These messages may occur if you are running kube-state-metrics version 2.0.0 or above with Kubernetes version 1.17 or below.
-
-
-To get the Kubernetes version:
-
- _kubectl version_
-
-To get the kube-state-metrics version:
-
- _kubectl get deploy/kube-state-metrics -o jsonpath='{..image}'_
-
-To prevent these messages from happening, users can modify their kube-state-metrics deployment to disable the following Leases:
-
-_mutatingwebhookconfigurations_
-_validatingwebhookconfigurations_
-_volumeattachments resources_
-
-More specifically, they can use the following CLI argument:
-
-resources=certificatesigningrequests,configmaps,cronjobs,daemonsets, deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,limitranges, namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes, poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas, secrets,services,statefulsets,storageclasses
-
-The default resource list is:
-
-"certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments, endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges, mutatingwebhookconfigurations,namespaces,networkpolicies,nodes, persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets, replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses, validatingwebhookconfigurations,volumeattachments"
-
-|I installed or upgraded Telegraf on Kubernetes, but the Telegraf pods are not starting up.  The Telegraf ReplicaSet or DaemonSet is reporting a failure resembling the following:
-
- Error creating: pods "telegraf-rs-" is forbidden": unable to validate against any security context constraint: [spec.volumes[2]: Invalid value: "hostPath": hostPath volumes are not allowed to be used]
-
-|Create a Security Context Constraint (refer to the Configuring the Agent to Collect Data from Kubernetes section above) if one does not already exist.
-
-Ensure the namespace and service account specified for the Security Context Constraint matches the namespace and service account for the Telegraf ReplicaSet and DaemonSet.
-
- kubectl describe scc telegraf-hostaccess \|grep serviceaccount
- kubectl -n ci-monitoring --describe rs telegraf-rs \| grep -i "Namespace:"
- kubectl -n ci-monitoring describe rs telegraf-rs \| grep -i "Service Account:"
- kubectl -n ci-monitoring --describe ds telegraf-ds \| grep -i "Namespace:"
- kubectl -n ci-monitoring describe ds telegraf-ds \| grep -i "Service Account:"
-
-|I see error messages from Telegraf resembling the following, but Telegraf does start up and run:
-
-Oct 11 14:23:41 ip-172-31-39-47 systemd[1]: Started The plugin-driven server agent for reporting metrics into InfluxDB.
-Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: time="2021-10-11T14:23:41Z" level=error msg="failed to create cache directory. /etc/telegraf/.cache/snowflake, err: mkdir /etc/telegraf/.ca
-che: permission denied. ignored\n" func="gosnowflake.(*defaultLogger).Errorf" file="log.go:120"
-Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: time="2021-10-11T14:23:41Z" level=error msg="failed to open. Ignored. open /etc/telegraf/.cache/snowflake/ocsp_response_cache.json: no such
-file or directory\n" func="gosnowflake.(*defaultLogger).Errorf" file="log.go:120"
-Oct 11 14:23:41 ip-172-31-39-47 telegraf[1827]: 2021-10-11T14:23:41Z I! Starting Telegraf 1.19.3
-
-|This is a known issue.  Refer to link:https://github.com/influxdata/telegraf/issues/9407[This GitHub article] for more details. As long as Telegraf is up and running, users can ignore these error messages.
-
-|On Kubernetes, my Telegraf pod(s) are reporting the following error:
-"Error in processing mountstats info: failed to open mountstats file: /hostfs/proc/1/mountstats, error: open /hostfs/proc/1/mountstats: permission denied"
-|If SELinux is enabled and enforcing, it is likely preventing the Telegraf pod(s) from accessing the /proc/1/mountstats file on the Kubernetes nodes.  To relax this restriction, do ONE of the following:
-
-• For script-based installations, edit the telegraf DS (`kubectl edit ds telegraf-ds`), and change "privileged: false" to "privileged: true"
-• For operator-based installation, edit the agent (`kubectl edit agent agent-monitoring-netapp`), and change "privileged-mode: false" to "privileged-mode: true"
-
-
-|On Kubernetes, my Telegraf ReplicaSet pod is reporting the following error:
-
- [inputs.prometheus] Error in plugin: could not load keypair /etc/kubernetes/pki/etcd/server.crt:/etc/kubernetes/pki/etcd/server.key: open /etc/kubernetes/pki/etcd/server.crt: no such file or directory
-|The Telegraf ReplicaSet pod is intended to run on a node designated as a master or for etcd. If the ReplicaSet pod is not running on one of these nodes, you will get these errors. Check to see if your master/etcd nodes have taints on them. If they do, add the necessary tolerations to the Telegraf ReplicaSet, telegraf-rs.
-
-For example, edit the ReplicaSet...
-
- kubectl edit rs telegraf-rs
-
-...and add the appropriate tolerations to the spec. Then, restart the ReplicaSet pod.
-
-|===
-
-////
 
 
 

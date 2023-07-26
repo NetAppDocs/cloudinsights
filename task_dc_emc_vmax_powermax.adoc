@@ -6,7 +6,6 @@ summary: Configuring Dell EMC VMAX and PowerMax Family of Devices data collector
 ---
 
 =  Dell EMC VMAX and PowerMax Family of Devices data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,7 +15,6 @@ summary: Configuring Dell EMC VMAX and PowerMax Family of Devices data collector
 :imagesdir: ./media/
 
 [.lead]
-
 Cloud Insights discovers EMC VMAX and PowerMax storage arrays by using Solutions Enabler symcli commands in conjunction with an existing Solutions Enabler server in your environment. The existing Solutions Enabler server has connectivity to the VMAX/PowerMax storage array through access to gatekeeper volumes. 
 
 == Requirements
@@ -31,7 +29,22 @@ Before configuring this data collector, you should ensure that Cloud Insights ha
 * Read-only user name and password to the SE software
 
 * The UNISPHERE for VMAX application must be running and collecting statistics for the EMC VMAX and PowerMax sstorage arrays that are managed by the SMI-S Provider installation
-* Access validation for performance: In a web browser on your Acquisition Unit, go to \https://<SMI-S Hostname or IP>:5989/ecomconfig where "SMI-S Hostname or IP" is the IP address or hostname of your SMI-S server. This URL is for an administrative portal for the EMC SMI-S (aka "ECOM") service - you will receive a login popup.   
+* Access validation for performance: In a web browser on your Acquisition Unit, go to _\https://<SMI-S Hostname or IP>:5989/ecomconfig_ where "SMI-S Hostname or IP" is the IP address or hostname of your SMI-S server. This URL is for an administrative portal for the EMC SMI-S (aka "ECOM") service - you will receive a login popup. 
+
+* Permissions must be declared in the Solutions Enabler server's daemon configuration file, usually found here: _/var/symapi/config/daemon_users_
++
+Here is an example file with the proper cisys permissions.
+
+ root@cernciaukc101:/root
+ 14:11:25 # tail /var/symapi/config/daemon_users 
+ ###
+ ###     Refer to the storrdfd(3) man page for additional details.
+ ###
+ ###     As noted above, only authorized users can perform stordaemon control
+ ###     operations (e.g., shutdown).
+ ################################################################################
+ # smith         storrdfd
+ cisys storapid <all>
 
 == Terminology
 
@@ -98,8 +111,6 @@ Note: These are common terminology mappings only and might not represent every c
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
-=== Inventory
-
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
@@ -122,6 +133,19 @@ Some things to try if you encounter problems with this data collector:
 •	The "symcfg list -tdev" CLI command may return incorrect data when collected with Solutions Enabler 7.x from a Solutions Enabler server 8.x.
 •	The "symcfg list -srp" CLI command may return incorrect data when collected with Solutions Enabler 8.1.0 or earlier from a Solutions Enabler server 8.3 or later.
 |Be sure you are using the same Solutions Enabler major release 
+|I'm seeing data collection errors with the message: "unknown code"
+|You may see this message if permissions are not declared in the Solutions Enabler server's daemon configuration file (see the <<requirements, Requirements>> above.) This assumes your SE client version matches your SE server version.
+
+This error may also occur if the _cisys_ user (which executes Solutions Enabler commands) has not been configured with the necessary daemon permissions in the /var/symapi/config/daemon_users configuration file.
+
+To fix this, edit the /var/symapi/config/daemon_users file and make sure the cisys user has <all> permission specified for the storapid daemon.
+
+Example:
+
+ 14:11:25 # tail /var/symapi/config/daemon_users
+ ...
+ cisys storapid <all>
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
