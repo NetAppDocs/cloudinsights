@@ -153,8 +153,8 @@ If the Workload Security environment is deleted, all data associated with the en
 |===
 |Problem:|Try This:
 
-|There is a situation where, ONTAP takes hourly snapshots per day. Will Workload Security (CS) snapshots affect it? Will CS snapshot take the hourly snapshot place? Will the default hourly snapshot get stopped?
-|Workload Security snapshots will not affect the hourly snapshots. CS snapshots will not take the hourly snapshot space and that should continue as before. The default hourly snapshot will not get stopped.
+|There is a situation where, ONTAP takes hourly snapshots per day. Will Workload Security (WS) snapshots affect it? Will WS snapshot take the hourly snapshot place? Will the default hourly snapshot get stopped?
+|Workload Security snapshots will not affect the hourly snapshots. WS snapshots will not take the hourly snapshot space and that should continue as before. The default hourly snapshot will not get stopped.
 
 |What will happen if the maximum snapshot count is reached in ONTAP?
 |If the maximum Snapshot count is reached, subsequent Snapshot taking will fail and Workload Security will show an error message noting that Snapshot is full.
