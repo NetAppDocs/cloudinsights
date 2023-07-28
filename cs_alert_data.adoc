@@ -153,9 +153,6 @@ If the Workload Security environment is deleted, all data associated with the en
 |===
 |Problem:|Try This:
 
-|For snapshots taken by Workload Security (CS), is there a purging/archiving period for CS snapshots?
-|No. There is no purging/archiving period set for CS snapshots. The user needs to define purging policy for CS snapshots. Please refer to the link:https://library.netapp.com/ecmdocs/ECMP1196819/html/GUID-27D0E37F-5AF1-4AF9-BDEB-9A4B7AF3B4A9.html[ONTAP documentation] on how to setup the policies.
-
 |There is a situation where, ONTAP takes hourly snapshots per day. Will Workload Security (CS) snapshots affect it? Will CS snapshot take the hourly snapshot place? Will the default hourly snapshot get stopped?
 |Workload Security snapshots will not affect the hourly snapshots. CS snapshots will not take the hourly snapshot space and that should continue as before. The default hourly snapshot will not get stopped.
 
@@ -182,4 +179,5 @@ Hovering over the error displays “Invoke API command has timed out for the dat
 Enable the particular LIF in ONTAP and trigger _Take Snapshot manually_ from Workload Security. The Snapshot action will then succeed.
 
 |===
+
 
