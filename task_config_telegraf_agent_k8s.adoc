@@ -145,7 +145,7 @@ There are two places where you may use a proxy in your environment in order to i
 * Proxy needed during execution of the installation code snippet (using "curl") to connect the system where the snippet is executed to your Cloud Insights environment
 * Proxy needed by the target Kubernetes cluster to communicate with your Cloud Insights environment
 
-If you use a proxy for either or both of these, in order to install the NetApp Kubernetes Operating Monitor you must first ensure that your proxy is configured to allow good communication to your Cloud Insights environment. If you have a proxy and can access Cloud Insights from the server/VM from which you wish to install the Operator, then your proxy is likely configured properly.
+If you use a proxy for either or both of these, to install the NetApp Kubernetes Operating Monitor you must first ensure that your proxy is configured to allow good communication to your Cloud Insights environment. For example, from the servers/VMs from which you wish to install the Operator, you need to be able to access Cloud Insights and be able to download binaries from Cloud Insights.
 
 For the proxy used to install the NetApp Kubernetes Operating Monitor, before installing the Operator, set the _http_proxy/https_proxy_ environment variables. For some proxy environments, you may also need to set the _no_proxy environment_ variable.
 
@@ -369,6 +369,13 @@ If you are running on OpenShift 4.6 or higher, you must edit the AgentConfigurat
 
 Openshift may implement an added level of security that may block access to some Kubernetes components.
 
+
+
+=== Tolerations and Taints
+
+The _telegraf_, _fluent-bit_, and _net-observer_ DaemonSets must schedule a pod on every node in your cluster in order to correctly collect data on all nodes. The operator has been configured to tolerate some well known *taints*. If you have configured any custom taints on your nodes, thus preventing pods from running on every node, you can create a *toleration* for those taints link:telegraf_agent_k8s_config_options.html[in the _AgentConfiguration_]. If you have applied custom taints to all nodes in your cluster, you must also add the necessary tolerations to the operator deployment to allow the operator pod to be scheduled and executed.
+
+Learn More about Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/[Taints and Tolerations].
 
 
 
@@ -903,6 +910,32 @@ a|Capture or otherwise note the output from the following commands, and contact 
 
 [inputs.prometheus] Error in plugin: error making HTTP request to http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: Get http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: dial tcp: lookup kube-state-metrics.<namespace>.svc.cluster.local: no such host
 |This message is typically only seen when a new operator is installed and the _telegraf-rs_ pod is up before the _ksm_ pod is up. These messages should stop once all pods are running.
+
+|I do see not any metrics being collected for the Kubernetes CronJobs that exist in my cluster.
+|Verify your Kubernetes version (i.e. `kubectl version`).  If it is v1.20.x or below, this is an expected limitation.  The kube-state-metrics release deployed with the Netapp Kubernetes Monitoring Operator only supports v1.CronJob.  With Kubernetes 1.20.x and below, the CronJob resource is at v1beta.CronJob.  As a result, kube-state-metrics cannot find the CronJob resource.
+
+|After installing the operator, the telegraf-ds pods enter CrashLoopBackOff and the pod logs indicate "su: Authentication failure".
+|Edit the netapp-monitoring-configuration agentconfiguration, and set _dockerMetricCollectionEnabled_ to false.  For more details, refer to the operator's link:telegraf_agent_k8s_config_options.html[configuration options]. 
+
+|I see repeating error messages resembling the following in my Telegraf logs:
+
+ E! [agent] Error writing to outputs.http: Post "https://<tenant_url>/rest/v1/lake/ingest/influxdb": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+|Edit each Telegraf configuration file (i.e. /etc/telegraf/telegraf.d/*.conf), and increase the timeout for the Telegraf output plugins.  For example, in each .conf file, replace all instances of...
+
+[[outputs.http]]
+...
+  timeout = "5s"
+...
+
+
+...with the following:
+
+[[outputs.http]]
+...
+timeout = "10s"
+...
+
+Then, restart Telegraf.
 
 |===
 

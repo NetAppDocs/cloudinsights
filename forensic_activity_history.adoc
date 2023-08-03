@@ -229,7 +229,7 @@ If it still does not get resolved, check if you have added the correct User Data
 5.	Make sure NFS version used in lesser than NFS4.1.
 
 
-|After typing some letters containing a wildcard character like asterisk (\*) in the filters on the Forensics _All Activity_ or  _Entities_ pages, the pages load very slowly.
+|After typing some letters containing a wildcard character like asterisk (*) in the filters on the Forensics _All Activity_ or  _Entities_ pages, the pages load very slowly.
 |An asterisk (\*) in the search string searches for everything. However, leading wildcard strings like  _*<searchTerm>_ or _*<searchTerm>*_ will result in a slow query.
 To get better performance, use prefix strings instead, in the format _<searchTerm>*_ (in other words, append the asterisk (*) _after_ a search term).
 Example: use the string _testvolume*_, rather than _*testvolume_ or _*test*volume_.

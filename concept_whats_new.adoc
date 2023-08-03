@@ -19,6 +19,66 @@ NetApp is continually improving and enhancing its products and services. Here ar
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
 
 
+== July 2023
+
+=== Show Recent Changes
+
+Data Collector landing pages now include a list of recent changes. Simply click the "Recent Changes" button at the bottom of any data collector landing page to display recent data collector changes.
+
+image:Recent_Changes_Example.png[Recent Changes Example]
+
+
+=== Operator Improvements
+
+The following improvements have been made to link:telegraf_agent_k8s_config_options.html[Kubernetes Operator] deployment:
+
+* Option to bypass docker metric collection
+* Ability to add and customize tolerations to telegraf Daemonsets and Replicasets
+//Eliminate need to generate agent IDs server-side
+
+
+=== Insight: Reclaim Cold Storage 
+
+The link:insights_reclaim_ontap_cold_storage.html[Reclaim ONTAP Cold Storage Insight] now supports FlexGroups, and is now available to all customers.
+
+
+=== Operator Image Signature
+
+For customers who use a private repository for their NetApp Kubernetes Monitoring Operator, you can now copy the Image Signature Public Key during Operator installation, allowing you to confirm authenticity of the downloaded software. Select the _Copy Image Signature Public Key_ button during the optional step to _Upload the operator image to your private repository_.
+
+image:Operator_Public_Image_Key.png[Download the Public Key]
+
+
+=== Aggregation, Conditional Formatting, and more for Queries
+
+Aggregation, Unit Selection, Conditional Formatting, and Column Renaming are among the most useful features of a dashboard table widget, and now those same features are available for link:task_create_query.html[Queries]. 
+
+image:Query_Page_Aggregation_etc.png[Query Page results showing Aggregation, Conditional Formatting, Unit Display, and Column Renaming]
+
+These features are available now for integration-type data (Kubernetes, ONTAP Advanced Metrics, etc.), and will be coming soon for Infrastructure objects (storage, volume, switch, etc.).
+
+
+
+=== API for Audit
+
+You can now use an API to query or export Audited events. Go to Admin > API Access and select the _API Documentation_ link for  information.
+
+image:Audit_API_Swagger.png[API Swagger for Audit, width=400]
+
+
+=== Data Collector: Trident Economy
+
+Cloud Insights now supports the Trident Economy Driver, realizing these benefits: 
+
+* Get visibility into pod-to-ONTAP Qtree mapping and performance metrics. 
+* Provide seamless troubleshooting and easy navigation from Kubernetes pods to backend storage
+* Proactively detect backend performance issues with monitors
+
+
+
+
+'''
+
 
 == June 2023
 
@@ -35,12 +95,6 @@ image:Metering_Usage.png[Metering Usage Breakdowns]
 === Kubernetes Network Monitoring and Map is available for all
 
 The link:concept_kubernetes_network_monitoring_and_map.html[_Kubernetes Network Performance and Map_] simplifies troubleshooting by mapping dependencies between Kubernetes workloads, providing real-time visibility into Kubernetes network performance latencies and anomalies to identify performance issues before they affect users. Many customers found it helpful during Preview, and now it's available for everyone to enjoy. 
-
-
-
-=== Reporting 
-
-The Reporting component of Cloud Insights has been re-named to "Cloud Insights Analytics". Don't worry, though; the functionality remains the same.  
 
 
 
