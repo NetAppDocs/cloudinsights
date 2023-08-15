@@ -919,7 +919,6 @@ a|Capture or otherwise note the output from the following commands, and contact 
 
 NOTE: If you are using Cloud Insights Federal Edition, users with restrictions on the use of _su_ will not be able to collect docker metrics because access to the docker socket requires either running the telegraf container as root or using _su_ to add the telegraf user to the docker group. Docker metric collection and the use of _su_ is enabled by default; to disable both, remove the _telegraf.docker_ entry in the _AgentConfiguration_ file:
 
-----
 ...
 spec:
 ...
@@ -933,7 +932,7 @@ spec:
                 value: unix:///run/docker.sock 
     ...
 ...
-----
+
 
 |I see repeating error messages resembling the following in my Telegraf logs:
 
