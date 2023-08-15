@@ -917,6 +917,24 @@ a|Capture or otherwise note the output from the following commands, and contact 
 |After installing the operator, the telegraf-ds pods enter CrashLoopBackOff and the pod logs indicate "su: Authentication failure".
 |Edit the netapp-monitoring-configuration agentconfiguration, and set _dockerMetricCollectionEnabled_ to false.  For more details, refer to the operator's link:telegraf_agent_k8s_config_options.html[configuration options]. 
 
+NOTE: If you are using Cloud Insights Federal Edition, users with restrictions on the use of _su_ will not be able to collect docker metrics because access to the docker socket requires either running the telegraf container as root or using _su_ to add the telegraf user to the docker group. Docker metric collection and the use of _su_ is enabled by default; to disable both, remove the _telegraf.docker_ entry in the _AgentConfiguration_ file:
+
+----
+...
+spec:
+...
+    telegraf:
+    ...
+          - name: docker
+            run-mode:
+              - DaemonSet
+            substitutions:
+              - key: DOCKER_UNIX_SOCK_PLACEHOLDER
+                value: unix:///run/docker.sock 
+    ...
+...
+----
+
 |I see repeating error messages resembling the following in my Telegraf logs:
 
  E! [agent] Error writing to outputs.http: Post "https://<tenant_url>/rest/v1/lake/ingest/influxdb": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
