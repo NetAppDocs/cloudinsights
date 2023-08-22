@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_asset_page_overview.html
 summary: Asset pages can be displayed for most object types.
-keywords: asset page, objects, landing page, Virtual machine, VM, Storage Virtual Machine, SVM, Volume, Internal volume, Host, Hypervisor, pool, Storage, Datastore, Application, node, Qtree, Disk, VMDK, Port, Switch, Fabric
+keywords: asset page, objects, landing page, Virtual machine, VM, Storage Virtual Machine, SVM, Volume, Internal volume, Host, Hypervisor, pool, Storage, Datastore, Application, node, Qtree, Disk, VMDK, Port, Switch, Fabric, refresh
 ---
 
 = Asset Page Overview
@@ -65,6 +65,8 @@ You can change the time segment of displayed data by using an option that is loc
 * Custom time range
 
 The Custom time range allows you to select up to 31 consecutive days. You can also set the Start Time and End Time of day for this range. The default Start Time is 12:00 AM on the first day selected and the default End Time is 11:59 PM on the last day selected. Clicking Apply will apply the custom time range to the asset page.
+
+The information in an asset page summary section, as well as in any tables or custom widgets on the page, refreshes automatically based on the selected time range. The current refresh rate is displayed in the upper-right corner of the Summary section and any relevant tables or widgets on the page. 
 
 == Add Custom Widgets
 
