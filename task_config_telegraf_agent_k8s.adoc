@@ -379,6 +379,16 @@ Learn More about Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-
 
 
 
+=== Permissions
+
+If the cluster you are monitoring contains Custom Resources which do not have a ClusterRole which aggregates to view _\https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles_, you will need to manually grant the operator access to these resources to monitor them with Change Management or Event Logs.
+
+1. Edit _operator-additional-permissions.yaml_ before installing, or after installing edit the resource _ClusterRole/<namespace>-additional-permissions _
+2. Create a new rule for the desired apiGroups and resources with the verbs ["get", "watch", "list"]. See _\https://kubernetes.io/docs/reference/access-authn-authz/rbac/ 
+3. Apply your changes to the cluster 
+
+
+
 ////
 === Advanced Tuning
 
@@ -953,6 +963,10 @@ timeout = "10s"
 ...
 
 Then, restart Telegraf.
+
+|I'm missing _involvedobject_ data for some Event Logs.
+|Be sure you have followed the steps in the <<permissions,Permissions>> section above.
+
 
 |===
 
