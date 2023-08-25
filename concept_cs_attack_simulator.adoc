@@ -36,7 +36,7 @@ See below for instructions to link:#create-files-programmatically[programmatical
 
 . Make sure encrypted files are not empty.
 . Make sure you encrypt > 50 files. A small number of files will be ignored.
-. Do not run an attack with the same user multiple times. After a few times, CS will learn this user behavior and assume it is the user's normal behavior.
+. Do not run an attack with the same user multiple times. After a few times, Workload Security will learn this user behavior and assume it is the user's normal behavior.
 . Do not encrypt files the same user has just created. Changing a file that was just created by a user is not considered a risky activity. Instead, use files created by another user OR wait for a few hours between creating the files and encrypting them.
 
 
