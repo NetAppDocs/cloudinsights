@@ -64,13 +64,13 @@ Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display i
 You can use the following to refine your filter:
 
 |===
-|Filter|What it does | Example | Result
-| * (Asterisk) |enables you to search for everything | vol*rhel |returns all resources that start with "vol" and end with "rhel"
-| ? (question mark) |enables you to search for a specific number of characters|  BOS-PRD??-S12 |returns BOS-PRD**__12__**-S12, BOS-PRD**__23__**-S12, and so on
-| OR |enables you to specify multiple entities | FAS2240 OR CX600 OR FAS3270 |returns any of FAS2440, CX600, or FAS3270
-| NOT |allows you to exclude text from the search results |  NOT EMC* |returns everything that does not start with "EMC"
-| _None_ |searches for NULL values in all fields | _None_ |returns results where the target field is empty
-| Not * |searches for NULL values in _text-only_ fields | Not * |returns results where the target field is empty
+|Filter|What it does 
+| * (Asterisk) |enables you to search for everything 
+| ? (question mark) |enables you to search for a specific number of characters
+| OR |enables you to specify multiple entities 
+| NOT |allows you to exclude text from the search results 
+| _None_ |searches for NULL values in all fields 
+| Not * |searches for NULL values in _text-only_ fields 
 |===
 
 If you enclose a filter string in double quotes, Insight treats everything between the first and last quote as an exact match. Any special characters or operators inside the quotes will be treated as literals. For example, filtering for "*" will return results that are a literal asterisk; the asterisk will not be treated as a wildcard in this case. The operators OR and NOT will also be treated as literal strings when enclosed in double quotes.
