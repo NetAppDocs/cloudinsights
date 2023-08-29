@@ -37,7 +37,7 @@ The Operator (NKMO) and the data collectors are downloaded from the Cloud Insigh
 
 * If you are using a custom or private docker repository, follow the instructions in the Using a custom or private docker repository section
 * NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater.
-* When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings and metrics for NFS and iSCSI; other runtimes only show NFS.
+* When Cloud Insights is monitoring the backend storage and Kubernetes, Cloud Insights can display pod-to-PV-to-storage mappings and metrics for NFS.  For iSCSI, Cloud Insights can display display pod-to-PV-to-storage mappings, but not metrics.
 * Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must upgrade to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
 * If you are running on OpenShift 4.6 or higher, you must follow the OpenShift Instructions below in addition to ensuring these pre-requisites are met.
 * Monitoring is only installed on Linux nodes
