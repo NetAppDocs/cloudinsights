@@ -4,7 +4,7 @@ permalink: concept_whats_new.html
 summary: New features and functionality available in Cloud Insights. 
 keywords: features
 ---
-= What's New with Cloud Insights 
+= What\'s New with Cloud Insights
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -21,6 +21,54 @@ NOTE: Some of these features may not be available in Cloud Insights Federal Edit
 
 
 == August 2023
+
+
+=== Collecting Isilon/PowerScale Logs and Advanced Analytics Data
+
+The Isilon REST and PowerScale REST collectors contain the following improvements:
+
+* Isilon log events are available for use in queries and alerts
+
+* Isilon Advanced Analytic attributes are available for use in queries, dashboards, and alerts:
+** emc_isilon.cluster
+** emc_isilon.node
+** emc_isilon.node_disk
+** emc_isilon.net_iface
+
+These are enabled by default for users of the Isilon REST and/or PowerScale REST collectors. NetApp strongly encourages users of the Isilon CLI-based collector to migrate to the new REST API-based collector to receive enhancements such as the above.
+
+
+
+=== Improved Workload Map
+
+The workload map is more usable and less noisy; it groups all similar external services into one node if they communicate with the same workloads, reducing the complexity of the graph and making it easier to understand how services are interconnected.
+
+Choosing a grouped node will display a detailed table with the network traffic metrics for each external service relevant to that node.
+
+
+
+
+=== Kubernetes Managed Unit usage adjustment
+
+In the event of a compute resource in your Kubernetes cluster environment being counted by both the NetApp Kubernetes Monitoring Operator and an underlying infrastructure data collector (for example, VMware), your usage of these resources will be adjusted to ensure the most efficient counting of managed units. You can view the Kubernetes MU adjustments on the Admin > Subscription page, in both the Summary and Usage tabs.
+
+Summary tab:
+image:MU_Adjustments_K8s.png[k8s MU Adjustment shown on the estimation calculator]
+
+Usage tab:
+image:MU_Adjustments_K8s_Usage_Tab.png[k8s MU Adjustment shown on the Usage tab]
+
+
+
+
+=== Collector/Acquisition changes:
+
+The following Data Collector/Acquisition Unit changes are in place:
+
+* Acquisition Units now support RHEL 8.7.
+
+
+
 
 === Improved Menus
 
