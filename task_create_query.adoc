@@ -42,6 +42,41 @@ The query results list shows a number of default columns, depending on the objec
 
 image:QuerySelectColumns.png[Select Columns]
 
+
+== Choosing Aggregation, Units, Conditional Formatting
+
+=== Aggregation and Units
+
+For "value" columns, you can further refine your query results by choosing how the displayed values are aggregated as well as selecting the units in which those values are displayed. These options are found by selecting the "three dots" menu at the top corner of a column.
+
+image:Query_Page_Aggregation_etc.png[Query Page results showing Aggregation, Conditional Formatting, Unit Display, and Column Renaming]
+
+==== Units
+
+You can select the units in which to display the values. For example, if the selected column shows raw capacity and the values are shown in GiB, but you prefer to display them as TiB,  simply select TiB from the Unit Display drop-down. 
+
+==== Aggregation
+
+By the same token, if the values shown are aggregated from the underlying data as "Average", but you prefer to show the sum of all values, select "Sum" from either the _Group by_ drop-down (if you want any grouped values to show the sums) or from the _Time Aggregate By_ drop-down (if you want the row values to show sums of underlying data).
+
+You can choose to aggregate grouped data points by _Avg, Max, Min, or Sum_.
+
+You can aggregate individual row data by _Average, Last data point acquired, Maximum, Minimum, or Sum_.
+
+==== Conditional Formatting
+
+Conditional Formatting allows you to highlight Warning-level and Critical-level thresholds in the query results list, bringing instant visibility to outliers and exceptional data points. 
+
+image:Query_Page_Conditional_Formatting.png[Conditional Formatting on Query Page]
+
+Conditional formatting is set separately for each column. For example, you can choose one set of thresholds for a capacity column, and another set for a throughput column. 
+
+==== Rename Column
+
+Renaming a column changes the displayed name on the Query results list. The new column name is also shown in the resulting file if you export the query list to .CSV.
+
+=== Save
+
 After you have configured your query to show you the results you want, you can click the *Save* button to save the query for future use. Give it a meaningful and unique name.
 
 

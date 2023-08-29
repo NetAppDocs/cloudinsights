@@ -21,7 +21,7 @@ Workload Security uses data collectors to collect file and user access data from
 
 * This data collector is supported with the following:
 ** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
-** SMB protocol version 3.1 and earlier.  Note that Workload Security does not work with SMB configurations that use Flexcache. Starting with ONTAP9.7, Fpolicy is supported only in an NFS environment.
+** SMB protocol version 3.1 and earlier.  Note that Workload Security does not work with SMB configurations that use Flexcache. In systems using Flexcache, starting with ONTAP 9.7, Fpolicy is supported only in an NFS environment.
 **	NFS protocol version 4.0 and earlier 
 ** Flexgroup is supported from ONTAP 9.4 and later versions
 ** ONTAP Select is supported
@@ -274,7 +274,9 @@ g)	Open the firewall in ONTAP, so that ONTAP is able to connect the agent box.
 
 7. If it is still not working, please consult the networking team to make sure that no external firewall is blocking the connection from ONTAP to the Agent box.
 
-8. If none of the above solves the issue, open a case with link:http://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[Netapp Support] for further assistance.
+8. Verify that port 7 is open.
+
+9. If none of the above solves the issue, open a case with link:http://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[Netapp Support] for further assistance.
 
 
 
