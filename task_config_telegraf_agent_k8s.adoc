@@ -75,8 +75,6 @@ If you are upgrading from a previous installation, read the <<upgrading,Upgradin
 
 
 
-<<<<<<< HEAD
-=======
 == Configuring the Operator
 
 In newer versions of the operator, most commonly modified settings can be configured in the _AgentConfiguration_ custom resource. You can edit this resource before deploying the operator by editing the _operator-config.yaml_ file. This file includes commented out examples of some settings. See the list of link:telegraf_agent_k8s_config_options.html[available settings] for the most recent version of the operator.
@@ -91,6 +89,9 @@ To determine if your deployed version of the operator supports AgentConfiguratio
  
 If you see an “Error from server (NotFound)” message, your operator must be upgraded before you can use the AgentConfiguration.
 
+
+'''
+== Proxy, Custom Repo, Openshift, Permissions
 
 === Configuring Proxy Support
 
