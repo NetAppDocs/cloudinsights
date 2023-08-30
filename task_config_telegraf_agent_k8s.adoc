@@ -389,7 +389,7 @@ If the cluster you are monitoring contains Custom Resources which do not have a 
 2. Create a new rule for the desired apiGroups and resources with the verbs ["get", "watch", "list"]. See \https://kubernetes.io/docs/reference/access-authn-authz/rbac/ 
 3. Apply your changes to the cluster 
 
-
+Note: if you want to remove previously added permissions, the changes will not take effect until the _event-exporter_ pod is restarted.
 
 ////
 === Advanced Tuning
