@@ -379,6 +379,7 @@ Learn More about Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-
 
 
 
+
 === Permissions
 
 If the cluster you are monitoring contains Custom Resources which do not have a ClusterRole which link:https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles[aggregates to view], you will need to manually grant the operator access to these resources to monitor them with Event Logs.
@@ -391,13 +392,7 @@ If the cluster you are monitoring contains Custom Resources which do not have a 
 
 Note: if you want to remove previously added permissions, the changes will not take effect until the _event-exporter_ pod is restarted.
 
-////
-=== Advanced Tuning
 
-For a small subset of advanced settings which cannot be set in AgentConfiguration or outdated operators which do not support AgentConfiguration they can be set in the Agent custom resource. For instructions and lists of the variables you can tune, see the README file included with the operator image. After you have installed the operator, use the following command to view the README:
-
- kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
-////
    
 
 
@@ -965,10 +960,6 @@ timeout = "10s"
 ...
 
 Then, restart Telegraf.
-
-|I'm missing _involvedobject_ data for some Event Logs.
-|Be sure you have followed the steps in the <<permissions,Permissions>> section above.
-
 
 |===
 
