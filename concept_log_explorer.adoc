@@ -63,11 +63,17 @@ Note that in the case above, since both "cm-monitoring" and "eg-monitoring" cont
 
 2. The results of the current filter, including any "Filter By" values AND the Advanced Query filter. The list can be sorted by any displayed columns. To display additional columns, select the "gear" icon.
 
-3. We have zoomed in on the graph to show only log results that occurred within a specific time frame. The time range shown here reflects the current zoom level. Select the _Reset Zoom_ button to set the zoom level back to the current Cloud Insights time range.
+3. The graph has been zoomed in to show only log results that occurred within a specific time frame. The time range shown here reflects the current zoom level. Select the _Reset Zoom_ button to set the zoom level back to the current Cloud Insights time range.
 
-4. We have chosen to display the chart Groued By the "source" field. The chart shows results grouped by color. Hovering over a column in the chart will display some details about the specific entries.
+4. The chart results have been Grouped By the _source_ field. The chart shows results each column grouped into colors. Hovering over a column in the chart will display some details about the specific entries.
 +
 image:Log_Advanced_Query_Group_Detail.png[Grouped Hover Details]
+
+=== The Chart Legend
+
+The _Legend_ below the chart has a few surprises as well. For each result (based on the current filter) shown in the Legend, you have an option to display only results for that line (Add Filter), or to display any results NOT for that line (Add Exclude Filter). The chart and the Log Entries list update to show results based on your selection.  To remove this filtering, open the Legend again and select the [X] to clear the Legend-based filter.
+
+image:Log_Advanced_Query_Legend.png[Advanced Query Legen showing "Add Filter" for the first result]
 
 
 
