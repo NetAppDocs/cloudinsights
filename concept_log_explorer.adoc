@@ -46,9 +46,14 @@ image:Log_Advanced_Query_Filter_Exclude.png[Log Filter Showing Exclude option]
 
 Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
 
+NOTE: At any point, you can click on _Create a Log Monitor_ to create a new Monitor based on the current filter.
+
+
 === Advanced Filtering
 
 When you are filtering for text or list values in queries or dashboard widgets, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create expressions using NOT, AND, or OR, or you can select the "None" option to filter for null values.
+
+NOTE: Be sure to Save your query early and often as you build your filtering. Advanced Querying is "free-form" string entry, and parsing mistakes may occur as you build.
 
 Take a look at this screen image showing filtered results for an advanced query of the _logs.kubernetes.event_ log. There is a lot going on in this page, which is explained below the image:
 
@@ -125,7 +130,6 @@ Note that when zooming the graph or scrolling the table, dashboard auto-refresh 
 ////
 
 
-At any point, you can click on _Create a Log Monitor_ to create a new Monitor based on the current filter.
 
 
 
