@@ -69,14 +69,6 @@ Note that in the case above, since both "cm-monitoring" and "eg-monitoring" cont
 +
 image:Log_Advanced_Query_Group_Detail.png[Grouped Hover Details]
 
-=== The Chart Legend
-
-The _Legend_ below the chart has a few surprises as well. For each result (based on the current filter) shown in the Legend, you have an option to display only results for that line (Add Filter), or to display any results NOT for that line (Add Exclude Filter). The chart and the Log Entries list update to show results based on your selection.  To remove this filtering, open the Legend again and select the [X] to clear the Legend-based filter.
-
-image:Log_Advanced_Query_Legend.png[Advanced Query Legen showing "Add Filter" for the first result]
-
-
-
 ==== Refining Filters
 
 You can use the following to refine your filter:
@@ -95,14 +87,15 @@ If you enclose a filter string in double quotes, Insight treats everything betwe
 
 You can combine a simple filter with an advanced query filter; the resulting filter is an "AND" of the two. 
 
+=== The Chart Legend
+
+The _Legend_ below the chart has a few surprises as well. For each result (based on the current filter) shown in the Legend, you have an option to display only results for that line (Add Filter), or to display any results NOT for that line (Add Exclude Filter). The chart and the Log Entries list update to show results based on your selection.  To remove this filtering, open the Legend again and select the [X] to clear the Legend-based filter.
+
+image:Log_Advanced_Query_Legend.png[Advanced Query Legen showing "Add Filter" for the first result]
 
 
-//=== Graph Grouping
 
-
-
-
-
+////
 == The Log Graph
 
 The graph shows the number of log entries, grouped into _buckets_, which are based on the selected dashboard time range. The buckets for each time range are as follows:
@@ -123,14 +116,17 @@ The graph shows the number of log entries, grouped into _buckets_, which are bas
 |Last 30 Days|1 Day
 |===
 
-To zoom in the graph, simply drag the sliders from either side. To pan the zoomed area, click and hold in the white area and move left or right. Click _Reset Zoom_ to reset the zoom level.
+//To zoom in the graph, simply drag the sliders from either side. To pan the zoomed area, click and hold in the white area and move left or right. Click _Reset Zoom_ to reset the zoom level.
 
 //image:LogExplorer_Zoom.png[Zoom in by dragging in the sides of the graph]
-image:LogExplorer_Zoom_2.png[Zoom in by dragging in the sides of the graph]
+//image:LogExplorer_Zoom_2.png[Zoom in by dragging in the sides of the graph]
 
 Note that when zooming the graph or scrolling the table, dashboard auto-refresh will pause and the time range will show the frozen time. To resume refresh, click the _Resume_ button image:ResumeButton.png[]. This will also reset the zoom level.
+////
+
 
 At any point, you can click on _Create a Log Monitor_ to create a new Monitor based on the current filter.
+
 
 
 == Log Details
@@ -140,6 +136,8 @@ Clicking anywhere in a log entry in the list will open a detail pane for that en
 Click on "Add Filter" to add the selected field to the current filter. The log entry list will update based on the new filter.
 
 image:LogExplorer_DetailPane.png[Log Entry Detail Pane]
+
+
 
 == Troubleshooting
 
