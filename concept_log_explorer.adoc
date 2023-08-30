@@ -40,22 +40,35 @@ image:LogExplorer_QueryForFailed.png[Query example showing filter]
 == Filtering
 
 === Include / Exclude
-When filtering the logs, you can choose to *include* or *exclude* the strings you type. Excluded strings are displayed in the completed filter as "NOT <string>".
+When filtering the logs, you can choose to *include* (i.e. "Filter to") or *exclude* the strings you type. Excluded strings are displayed in the completed filter as "NOT <string>".
 
 image:Log_Advanced_Query_Filter_Exclude.png[Log Filter Showing Exclude option]
 
+Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
 
 === Advanced Filtering
 
 When you are filtering for text or list values in queries or dashboard widgets, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create expressions using NOT, AND, or OR, or you can select the "None" option to filter for null values.
 
-//image:Type-Ahead-Example-ingest.png[Wildcard Filter]
+Take a look at this screen image showing filtered results for an advanced query of the _logs.kubernetes.event_ log. There is a lot going on in this page, which is explained below the image:
 
-Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
+image:Log_Advanced_Query_ScreenExplained.png[The Advanced Query Screen Explained]
 
-//image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
+1. This advanced query string filters for the following:
++
+* Filter for log entries with a _reason_ that includes the word "failed", but not anything with the specific reason of "FailedMount".
+* Include any of those entries that also include a _metadata.namespace_ including the word "monitoring", but exclude the specific namespaces of "cm-monitoring" or "eg-monitoring".
++
+Note that in the case above, since both "cm-monitoring" and "eg-monitoring" contain a dash ("-"), the strings must be included in double-quotes or a parsing error will be displayed. Strings that do not include dashes, spaces, etc. do not need to be enclosed in quotes. If in doubt, try putting the string in quotes.
 
-//Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
+2. The results of the current filter, including any "Filter By" values AND the Advanced Query filter. The list can be sorted by any displayed columns. To display additional columns, select the "gear" icon.
+
+3. We have zoomed in on the graph to show only log results that occurred within a specific time frame. The time range shown here reflects the current zoom level. Select the _Reset Zoom_ button to set the zoom level back to the current Cloud Insights time range.
+
+4. We have chosen to display the chart Groued By the "source" field. The chart shows results grouped by color. Hovering over a column in the chart will display some details about the specific entries.
++
+image:Log_Advanced_Query_Group_Detail.png[Grouped Hover Details]
+
 
 
 ==== Refining Filters
