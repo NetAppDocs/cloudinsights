@@ -14,11 +14,13 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 :imagesdir: ./media/
 
 [.lead]
+Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
+
+////
 Cloud Insights uses a number of components, including link:https://docs.fluentbit.io/manual[Fluent Bit] and link:https://docs.influxdata.com/telegraf/[Telegraf], for collection of Kubernetes data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
+////
 
 toc::[]
-
-Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
 
 image:kubernetes_tile.png[Kubernetes Data Collector Tile]
