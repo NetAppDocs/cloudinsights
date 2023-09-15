@@ -381,13 +381,20 @@ Learn More about Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-
 
 
 
-////
-=== Advanced Tuning
 
-For a small subset of advanced settings which cannot be set in AgentConfiguration or outdated operators which do not support AgentConfiguration they can be set in the Agent custom resource. For instructions and lists of the variables you can tune, see the README file included with the operator image. After you have installed the operator, use the following command to view the README:
+=== Permissions
 
- kubectl exec -c manager -it <operator-pod-name> -n <namespace> -- cat configs/substitution-vars/README.txt
-////
+If the cluster you are monitoring contains Custom Resources which do not have a ClusterRole which link:https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles[aggregates to view], you will need to manually grant the operator access to these resources to monitor them with Event Logs.
+
+//or Change Management.
+
+1. Edit _operator-additional-permissions.yaml_ before installing, or after installing edit the resource _ClusterRole/<namespace>-additional-permissions_
+2. Create a new rule for the desired apiGroups and resources with the verbs ["get", "watch", "list"]. See \https://kubernetes.io/docs/reference/access-authn-authz/rbac/ 
+3. Apply your changes to the cluster 
+
+Note: if you want to remove previously added permissions, the changes will not take effect until the _event-exporter_ pod is restarted.
+
+
    
 
 
