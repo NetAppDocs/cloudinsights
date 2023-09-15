@@ -25,16 +25,63 @@ toc::[]
 == HP Enterprise 3PAR / Alletra 9000 / Primera StoreServ Storage
 :description: Support Matrix Asciidoc for HP Enterprise 3PAR / Alletra 9000 / Primera StoreServ Storage
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
-<.<|API versions <.<|Models <.<|Firmware versions 
+<.<|Models <.<|Firmware versions 
 
-|3.1.1 (MU1),3.1.1 (MU1) P10,P13,3.1.2 (MU3) P16,P48,P49,3.1.3 (MU1) P07,P09,3.1.3 (MU2),3.1.3 (MU3),3.2.1 (MU3) P17,P18,3.2.1 (MU3) P17,P18,P19,P23,P25,3.2.1 (MU3) P17,P18,P19,P23,P30,P50,P52,P56,P57,P73,P75,3.2.1 (MU5) P49,P53,P70,P71,P72,3.2.2 (MU2) P14,P15,P18,P19,P22,P27,P29,3.2.2 (MU4) P56,P59,P85,P94,P98,P106,P113,P118,P133,P148,P153,P161,P164,3.2.2 (MU6) P96,P99,3.2.2 (MU6) P99,P107,P119,P131,P135,P139,P146,P149,P160,P162,3.2.2 (MU6) P99,P107,P119,P131,P135,P139,P149,P154,P160,P162,P165,P166,P167,3.2.2 (MU6) P99,P107,P119,P131,P135,P139,P149,P154,P160,P162,P165,P166,P168,3.2.2 (MU6) P99,P107,P119,P131,P135,P139,P149,P154,P160,P162,P165,P166,P172,3.2.2 (MU6) P99,P119,P131,P135,P138,3.2.2 (MU6) P99,P119,P131,P135,P139,P149,P154,P160,P162,P165,P166,P167,3.2.2 (MU6) P99,P119,P131,P135,P139,P149,P154,P160,P162,P165,P166,P168,3.2.2 P03,P04,P05,3.3.1 (MU1) P09,P11,P18,3.3.1 (MU2) P30,P32,3.3.1 (MU2) P32,P34,P36,P37,P39,P40,P42,P45,P51,P76,P90,P96,P111,P113,3.3.1 (MU2) P32,P34,P36,P39,P40,P45,P51,P52,P60,P76,P78,P90,P96,P103,3.3.1 (MU2) P32,P34,P37,P40,3.3.1 (MU2) P32,P34,P37,P40,P42,P45,P51,P76,P90,P96,P111,P113,3.3.1 (MU2) P32,P34,P40,P41,P45,P51,P52,P76,P90,P93,P96,P113,P115,P127,P142,P157,3.3.1 (MU2) P32,P34,P40,P45,P51,P52,P60,P76,P80,P90,P96,P113,3.3.1 (MU2) P32,P34,P40,P45,P51,P52,P76,P78,P90,P93,P96,P113,P115,P127,P142,P157,3.3.1 (MU2) P32,P34,P40,P45,P51,P52,P76,P90,P93,P96,P113,P115,3.3.1 (MU2) P32,P34,P40,P45,P51,P52,P76,P90,P93,P96,P113,P115,P127,P142,P157,3.3.1 (MU2) P32,P34,P40,P45,P51,P52,P76,P90,P96,P111,P113,P127,P142,P157,P165,3.3.1 (MU2) P32,P40,P45,P51,P52,P60,P76,P78,P90,P96,P103,3.3.1 (MU2) P32,P40,P45,P51,P52,P76,P80,P90,P93,P96,P111,P113,P115,P127,3.3.1 (MU2) P32,P40,P45,P51,P52,P76,P90,P93,P96,P111,P113,P115,P127,3.3.1 (MU2) P32,P40,P45,P51,P52,P76,P90,P93,P96,P111,P113,P115,P127,P142,P157,3.3.1 (MU5) P126,P132,P135,P140,P141,P146,P150,P151,P155,P156,P164,3.3.1 (MU5) P126,P132,P135,P140,P141,P146,P150,P151,P155,P156,P170,P172,P173,P175,P177,P180,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P152,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P164,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P164,P170,P172,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P164,P170,P173,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P170,P172,P173,P175,P177,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P170,P172,P173,P175,P177,P180,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P170,P173,P175,P177,P180,3.3.1 (MU5) P132,P135,P140,P141,P146,P150,P151,P155,P156,3.3.1 (MU5) P132,P135,P140,P141,P146,P150,P151,P155,P156,P164,P170,P173,3.3.1 (MU5) P132,P135,P140,P141,P146,P150,P151,P155,P156,P170,P172,P173,P175,P177,3.3.1 (MU5) P132,P135,P140,P141,P146,P150,P151,P155,P156,P170,P172,P173,P175,P177,P180,3.3.2 (MU1),3.3.2 (MU1) P04,3.3.2 (MU1) P04,P08,3.3.2 P01,P02,4.4.1 Release Type: Standard Support Release,4.5.11 Release Type: Extended Support Release,4.5.3 Release Type: Extended Support Release,4.5.7 Release Type: Extended Support Release,9.5.8 Release Type: Extended Support Release
-|HPE Alletra 9080,HPE_3PAR 20450,HPE_3PAR 20800,HPE_3PAR 20850,HPE_3PAR 20850_R2,HPE_3PAR 7200c,HPE_3PAR 7400,HPE_3PAR 7440c,HPE_3PAR 7450c,HPE_3PAR 8200,HPE_3PAR 8400,HPE_3PAR 8440,HPE_3PAR 8450,HPE_3PAR 9450,HPE_3PAR A630,HPE_3PAR A650,HPE_3PAR A670,HP_3PAR 20800,HP_3PAR 7200,HP_3PAR 7200c,HP_3PAR 7400,HP_3PAR 7400c,HP_3PAR 7450c,HP_3PAR 8200,HP_3PAR 8400,InServ F400,InServ T400,InServ T800,InServ V400
-|3.1.1 (MU1),3.1.1 (MU1) P10,P13,3.1.2 (MU3) P16,P48,P49,3.1.3 (MU1) P07,P09,3.1.3 (MU2),3.1.3 (MU3),3.2.1 (MU3) P17,P18,3.2.1 (MU3) P17,P18,P19,P23,P25,3.2.1 (MU3) P17,P18,P19,P23,P30,P50,P52,P56,P57,P73,P75,3.2.1 (MU5) P49,P53,P70,P71,P72,3.2.2 (MU2) P14,P15,P18,P19,P22,P27,P29,3.2.2 (MU4) P56,P59,P85,P94,P98,P106,P113,P118,P133,P148,P153,P161,P164,3.2.2 (MU6) P96,P99,3.2.2 (MU6) P99,P107,P119,P131,P135,P139,P146,P149,P160,P162,3.2.2 (MU6) P99,P107,P119,P131,P135,P139,P149,P154,P160,P162,P165,P166,P167,3.2.2 (MU6) P99,P107,P119,P131,P135,P139,P149,P154,P160,P162,P165,P166,P168,3.2.2 (MU6) P99,P107,P119,P131,P135,P139,P149,P154,P160,P162,P165,P166,P172,3.2.2 (MU6) P99,P119,P131,P135,P138,3.2.2 (MU6) P99,P119,P131,P135,P139,P149,P154,P160,P162,P165,P166,P167,3.2.2 (MU6) P99,P119,P131,P135,P139,P149,P154,P160,P162,P165,P166,P168,3.2.2 P03,P04,P05,3.3.1 (MU1) P09,P11,P18,3.3.1 (MU2) P30,P32,3.3.1 (MU2) P32,P34,P36,P37,P39,P40,P42,P45,P51,P76,P90,P96,P111,P113,3.3.1 (MU2) P32,P34,P36,P39,P40,P45,P51,P52,P60,P76,P78,P90,P96,P103,3.3.1 (MU2) P32,P34,P37,P40,3.3.1 (MU2) P32,P34,P37,P40,P42,P45,P51,P76,P90,P96,P111,P113,3.3.1 (MU2) P32,P34,P40,P41,P45,P51,P52,P76,P90,P93,P96,P113,P115,P127,P142,P157,3.3.1 (MU2) P32,P34,P40,P45,P51,P52,P60,P76,P80,P90,P96,P113,3.3.1 (MU2) P32,P34,P40,P45,P51,P52,P76,P78,P90,P93,P96,P113,P115,P127,P142,P157,3.3.1 (MU2) P32,P34,P40,P45,P51,P52,P76,P90,P93,P96,P113,P115,3.3.1 (MU2) P32,P34,P40,P45,P51,P52,P76,P90,P93,P96,P113,P115,P127,P142,P157,3.3.1 (MU2) P32,P34,P40,P45,P51,P52,P76,P90,P96,P111,P113,P127,P142,P157,P165,3.3.1 (MU2) P32,P40,P45,P51,P52,P60,P76,P78,P90,P96,P103,3.3.1 (MU2) P32,P40,P45,P51,P52,P76,P80,P90,P93,P96,P111,P113,P115,P127,3.3.1 (MU2) P32,P40,P45,P51,P52,P76,P90,P93,P96,P111,P113,P115,P127,3.3.1 (MU2) P32,P40,P45,P51,P52,P76,P90,P93,P96,P111,P113,P115,P127,P142,P157,3.3.1 (MU5) P126,P132,P135,P140,P141,P146,P150,P151,P155,P156,P164,3.3.1 (MU5) P126,P132,P135,P140,P141,P146,P150,P151,P155,P156,P170,P172,P173,P175,P177,P180,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P152,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P164,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P164,P170,P172,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P164,P170,P173,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P170,P172,P173,P175,P177,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P170,P172,P173,P175,P177,P180,3.3.1 (MU5) P126,P132,P135,P140,P146,P150,P151,P155,P156,P170,P173,P175,P177,P180,3.3.1 (MU5) P132,P135,P140,P141,P146,P150,P151,P155,P156,3.3.1 (MU5) P132,P135,P140,P141,P146,P150,P151,P155,P156,P164,P170,P173,3.3.1 (MU5) P132,P135,P140,P141,P146,P150,P151,P155,P156,P170,P172,P173,P175,P177,3.3.1 (MU5) P132,P135,P140,P141,P146,P150,P151,P155,P156,P170,P172,P173,P175,P177,P180,3.3.2 (MU1),3.3.2 (MU1) P04,3.3.2 (MU1) P04,P08,3.3.2 P01,P02,4.4.1 Release Type: Standard Support Release,4.5.11 Release Type: Extended Support Release,4.5.3 Release Type: Extended Support Release,4.5.7 Release Type: Extended Support Release,9.5.8 Release Type: Extended Support Release
+|HPE Alletra 9080
+HPE_3PAR 20450
+HPE_3PAR 20800
+HPE_3PAR 20850
+HPE_3PAR 20850_R2
+HPE_3PAR 7200c
+HPE_3PAR 7400
+HPE_3PAR 7440c
+HPE_3PAR 7450c
+HPE_3PAR 8200
+HPE_3PAR 8400
+HPE_3PAR 8440
+HPE_3PAR 8450
+HPE_3PAR 9450
+HPE_3PAR A630
+HPE_3PAR A650
+HPE_3PAR A670
+HP_3PAR 20800
+HP_3PAR 7200
+HP_3PAR 7200c
+HP_3PAR 7400
+HP_3PAR 7400c
+HP_3PAR 7450c
+HP_3PAR 8200
+HP_3PAR 8400
+InServ F400
+InServ T400
+InServ T800
+InServ V400
+|3.1.1 (MU1)
+3.1.2 (MU3)
+3.1.3 (MU1)
+3.1.3 (MU2)
+3.1.3 (MU3)
+3.2.1 (MU3)
+3.2.1 (MU5)
+3.2.2
+3.2.2 (MU2)
+3.2.2 (MU4)
+3.2.2 (MU6)
+3.3.1 (MU1)
+3.3.1 (MU2)
+3.3.1 (MU5)
+3.3.2
+3.3.2 (MU1)
+4.4.1 Release Type: Standard Support Release
+4.5.11 Release Type: Extended Support Release
+4.5.3 Release Type: Extended Support Release
+4.5.7 Release Type: Extended Support Release
+9.5.8 Release Type: Extended Support Release
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -232,7 +279,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -263,14 +310,14 @@ Management APIs used by this data source:
 == Amazon AWS EC2
 :description: Support Matrix Asciidoc for Amazon AWS EC2
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions 
 
 |2014-10-01
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -363,7 +410,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -384,16 +431,15 @@ Management APIs used by this data source:
 == Amazon AWS S3
 :description: Support Matrix Asciidoc for Amazon AWS S3
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
-<.<|API versions <.<|Models <.<|Firmware versions 
+<.<|Models <.<|Firmware versions 
 
-|2010-08-01
 |S3
 |2010-08-01
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -444,7 +490,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -465,7 +511,7 @@ Management APIs used by this data source:
 == Microsoft Azure NetApp Files
 :description: Support Matrix Asciidoc for Microsoft Azure NetApp Files
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Models 
 
@@ -473,7 +519,7 @@ Models and versions supported by this data source:
 |Azure NetApp Files
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -572,11 +618,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Azure Netapp Files
+|Azure Netapp Files REST API
 |HTTPS
 |HTTPS
 |443
@@ -593,15 +639,96 @@ Management APIs used by this data source:
 == Brocade Fibre Channel Switches
 :description: Support Matrix Asciidoc for Brocade Fibre Channel Switches
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|178.0,183.0,Brocade 200E,Brocade 300E,Brocade 3900,Brocade 4024 Embedded,Brocade 48000,Brocade 5000,Brocade 5100,Brocade 5300,Brocade 5480 Embedded,Brocade 6505,Brocade 6510,Brocade 6520,Brocade 6548,Brocade 7800,Brocade 7840,Brocade DCX,Brocade DCX-4S Backbone,Brocade DCX8510-4,Brocade DCX8510-8,Brocade G610,Brocade G620,Brocade G630,Brocade G720,Brocade M5424 Embedded,Brocade X6-4,Brocade X6-8,Brocade X7-4,Brocade X7-8
-|v5.3.2c,v6.2.1b,v6.2.2g,v6.3.2,v6.4.1a,v6.4.2,v6.4.2a,v7.0.0,v7.0.1b,v7.1.0c,v7.3.0c,v7.3.1d,v7.4.1d,v7.4.1f,v7.4.2a,v7.4.2c,v7.4.2d,v7.4.2g,v7.4.2g_cvr_824494_01,v7.4.2h,v7.4.2j1,v8.0.2a,v8.0.2c,v8.0.2d,v8.1.2g,v8.1.2j,v8.1.2k,v8.2.0,v8.2.0b,v8.2.1c,v8.2.1d,v8.2.2a,v8.2.2b,v8.2.2c,v8.2.2d,v8.2.2d4,v8.2.3,v8.2.3a,v8.2.3a1,v8.2.3b,v8.2.3c,v8.2.3c1,v9.0.0b,v9.0.1a,v9.0.1b4,v9.0.1c,v9.0.1d,v9.0.1e,v9.0.1e1,v9.1.0b,v9.1.1,v9.1.1_01,v9.1.1b
+|178.0
+183.0
+Brocade 200E
+Brocade 300E
+Brocade 3900
+Brocade 4024 Embedded
+Brocade 48000
+Brocade 5000
+Brocade 5100
+Brocade 5300
+Brocade 5480 Embedded
+Brocade 6505
+Brocade 6510
+Brocade 6520
+Brocade 6548
+Brocade 7800
+Brocade 7840
+Brocade DCX
+Brocade DCX-4S Backbone
+Brocade DCX8510-4
+Brocade DCX8510-8
+Brocade G610
+Brocade G620
+Brocade G630
+Brocade G720
+Brocade M5424 Embedded
+Brocade X6-4
+Brocade X6-8
+Brocade X7-4
+Brocade X7-8
+|v5.3.2c
+v6.2.1b
+v6.2.2g
+v6.3.2
+v6.4.1a
+v6.4.2
+v6.4.2a
+v7.0.0
+v7.0.1b
+v7.1.0c
+v7.3.0c
+v7.3.1d
+v7.4.1d
+v7.4.1f
+v7.4.2a
+v7.4.2c
+v7.4.2d
+v7.4.2g
+v7.4.2g_cvr_824494_01
+v7.4.2h
+v7.4.2j1
+v8.0.2a
+v8.0.2c
+v8.0.2d
+v8.1.2g
+v8.1.2j
+v8.1.2k
+v8.2.0
+v8.2.0b
+v8.2.1c
+v8.2.1d
+v8.2.2a
+v8.2.2b
+v8.2.2c
+v8.2.2d
+v8.2.2d4
+v8.2.3
+v8.2.3a
+v8.2.3a1
+v8.2.3b
+v8.2.3c
+v8.2.3c1
+v9.0.0b
+v9.0.1a
+v9.0.1b4
+v9.0.1c
+v9.0.1d
+v9.0.1e
+v9.0.1e1
+v9.1.0b
+v9.1.1
+v9.1.1_01
+v9.1.1b
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -711,7 +838,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -752,16 +879,34 @@ Management APIs used by this data source:
 == Brocade Network Advisor HTTP
 :description: Support Matrix Asciidoc for Brocade Network Advisor HTTP
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Models <.<|Firmware versions 
 
-|14.4.1,14.4.3,14.4.4,14.4.5
-|Brocade 5300,Brocade 6510,Brocade 6520,Brocade 6548,Brocade DCX 8510-8,Brocade G620,DS-6620B,EMC Connectrix ED-DCX8510-8B
-|v7.2.1a,v7.3.1a,v7.4.1b,v7.4.2d,v8.2.3b,v8.2.3c,v9.0.1a,v9.0.1b,v9.0.1e1
+|14.4.1
+14.4.3
+14.4.4
+14.4.5
+|Brocade 5300
+Brocade 6510
+Brocade 6520
+Brocade 6548
+Brocade DCX 8510-8
+Brocade G620
+DS-6620B
+EMC Connectrix ED-DCX8510-8B
+|v7.2.1a
+v7.3.1a
+v7.4.1b
+v7.4.2d
+v8.2.3b
+v8.2.3c
+v9.0.1a
+v9.0.1b
+v9.0.1e1
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -844,14 +989,14 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
 |Brocade Network Advisor REST API
 |HTTP/HTTPS
 |HTTP/HTTPS
-|443
+|80/443
 |
 |true
 |true
@@ -865,16 +1010,20 @@ Management APIs used by this data source:
 == Brocade FOS REST
 :description: Support Matrix Asciidoc for Brocade FOS REST
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
-<.<|API versions <.<|Models <.<|Firmware versions 
+<.<|Models <.<|Firmware versions 
 
-|v9.1.x
-|Brocade 6505,Brocade G720,Brocade X6-8
-|v8.2.3c,v8.2.3c1,v9.0.1e1,v9.1.1b
+|Brocade 6505
+Brocade G720
+Brocade X6-8
+|v8.2.3c
+v8.2.3c1
+v9.0.1e1
+v9.1.1b
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -980,11 +1129,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Google Compute Platform API
+|Brocade FOS REST API
 |HTTPS
 |
 |443
@@ -1001,15 +1150,124 @@ Management APIs used by this data source:
 == Cisco MDS & Nexus Fabric Switches
 :description: Support Matrix Asciidoc for Cisco MDS & Nexus Fabric Switches
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|8978-E04,CN1610,DS-C9124-2-K9,DS-C9124-K9,DS-C9132T-K9,DS-C9134-K9,DS-C9148-16P-K9,DS-C9148-32P-K9,DS-C9148-48P-K9,DS-C9148S-K9,DS-C9148T-K9,DS-C9222I-K9,DS-C9250I-K9,DS-C9396S-K9,DS-C9396T-K9,DS-C9506,DS-C9509,DS-C9513,DS-C9706,DS-C9710,DS-C9718,DS-HP-8GFC-K9,DS-HP-FC-K9,N5K-C5548UP,N5K-C5596UP,N5K-C56128P,N5K-C5696Q,UCS-FI-6248UP,UCS-FI-6296UP,UCS-FI-6332,UCS-FI-6332-16UP,UCS-FI-6454
-|3.3(1c),4.1(3a),5.0(1a),5.0(3)N2(3.11e),5.0(3)N2(3.23o),5.0(3)N2(4.01d),5.0(3)N2(4.04e),5.0(3)N2(4.13e),5.0(3)N2(4.13i),5.0(3)N2(4.21e),5.0(3)N2(4.21j),5.0(3)N2(4.21k),5.0(3)N2(4.22c),5.0(8),5.2(2d),5.2(3)N2(2.28g),5.2(6a),5.2(8),5.2(8b),5.2(8c),5.2(8d),5.2(8f),5.2(8g),5.2(8h),5.2(8i),6.2(1),6.2(11),6.2(11b),6.2(11c),6.2(11e),6.2(13),6.2(13a),6.2(15),6.2(17),6.2(19),6.2(21),6.2(23),6.2(25),6.2(27),6.2(29),6.2(31),6.2(33),6.2(5),6.2(5a),6.2(7),6.2(9),6.2(9a),6.2(9c),7.3(0)D1(1),7.3(0)DY(1),7.3(1)DY(1),7.3(1)N1(1),7.3(13)N1(1),7.3(6)N1(1),7.3(8)N1(1),8.1(1),8.1(1a),8.1(1b),8.2(1),8.2(2),8.3(1),8.3(2),8.4(1),8.4(1a),8.4(2),8.4(2a),8.4(2b),8.4(2c),8.4(2d),8.4(2e),8.4(2f),8.5(1),9.2(1),9.2(1a),9.2(2),9.3(2),9.3(2a),9.3(5)I42(2a),9.3(5)I42(2c)
+|8978-E04
+CN1610
+DS-C9124-2-K9
+DS-C9124-K9
+DS-C9132T-K9
+DS-C9134-K9
+DS-C9148-16P-K9
+DS-C9148-32P-K9
+DS-C9148-48P-K9
+DS-C9148S-K9
+DS-C9148T-K9
+DS-C9222I-K9
+DS-C9250I-K9
+DS-C9396S-K9
+DS-C9396T-K9
+DS-C9506
+DS-C9509
+DS-C9513
+DS-C9706
+DS-C9710
+DS-C9718
+DS-HP-8GFC-K9
+DS-HP-FC-K9
+N5K-C5548UP
+N5K-C5596UP
+N5K-C56128P
+N5K-C5696Q
+UCS-FI-6248UP
+UCS-FI-6296UP
+UCS-FI-6332
+UCS-FI-6332-16UP
+UCS-FI-6454
+|3.3(1c)
+4.1(3a)
+5.0(1a)
+5.0(3)N2(3.11e)
+5.0(3)N2(3.23o)
+5.0(3)N2(4.01d)
+5.0(3)N2(4.04e)
+5.0(3)N2(4.13e)
+5.0(3)N2(4.13i)
+5.0(3)N2(4.21e)
+5.0(3)N2(4.21j)
+5.0(3)N2(4.21k)
+5.0(3)N2(4.22c)
+5.0(8)
+5.2(2d)
+5.2(3)N2(2.28g)
+5.2(6a)
+5.2(8)
+5.2(8b)
+5.2(8c)
+5.2(8d)
+5.2(8f)
+5.2(8g)
+5.2(8h)
+5.2(8i)
+6.2(1)
+6.2(11)
+6.2(11b)
+6.2(11c)
+6.2(11e)
+6.2(13)
+6.2(13a)
+6.2(15)
+6.2(17)
+6.2(19)
+6.2(21)
+6.2(23)
+6.2(25)
+6.2(27)
+6.2(29)
+6.2(31)
+6.2(33)
+6.2(5)
+6.2(5a)
+6.2(7)
+6.2(9)
+6.2(9a)
+6.2(9c)
+7.3(0)D1(1)
+7.3(0)DY(1)
+7.3(1)DY(1)
+7.3(1)N1(1)
+7.3(13)N1(1)
+7.3(6)N1(1)
+7.3(8)N1(1)
+8.1(1)
+8.1(1a)
+8.1(1b)
+8.2(1)
+8.2(2)
+8.3(1)
+8.3(2)
+8.4(1)
+8.4(1a)
+8.4(2)
+8.4(2a)
+8.4(2b)
+8.4(2c)
+8.4(2d)
+8.4(2e)
+8.4(2f)
+8.5(1)
+9.2(1)
+9.2(1a)
+9.2(2)
+9.3(2)
+9.3(2a)
+9.3(5)I42(2a)
+9.3(5)I42(2c)
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -1111,7 +1369,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -1132,15 +1390,32 @@ Management APIs used by this data source:
 == Cohesity
 :description: Support Matrix Asciidoc for Cohesity
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|C2500,C2500,C2505,C2505,C4600,C4600,C4600,C4000 Compute Node,C5036,C5066,C6025,C6035,C6035,C6025,C6055,C4000 Compute Node,PXG1,UCS-C240M5H10,UCS-C240M5H10,C6035
-|6.5.1f_release-20210913_13f6a4bf,6.5.1f_u1_release-20211027_9e4e40cb,6.6.0d_u6_release-20221204_c03629f0,6.8.1_release-20220807_6c9115ef,6.8.1_u1_release-20221022_6f58ed2a,6.8.1_u2_release-20230412_5ced2ed3,6.8.1_u3_release-20230509_1e641b74,7.0_u1_release-20230222_8995f044
+|C2500
+C2505
+C4000 Compute Node
+C4600
+C5036
+C5066
+C6025
+C6035
+C6055
+PXG1
+UCS-C240M5H10
+|6.5.1f_release-20210913_13f6a4bf
+6.5.1f_u1_release-20211027_9e4e40cb
+6.6.0d_u6_release-20221204_c03629f0
+6.8.1_release-20220807_6c9115ef
+6.8.1_u1_release-20221022_6f58ed2a
+6.8.1_u2_release-20230412_5ced2ed3
+6.8.1_u3_release-20230509_1e641b74
+7.0_u1_release-20230222_8995f044
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -1239,19 +1514,19 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|mgmt_api_name
+|Cohesity REST API
+|HTTPS
+|HTTPS
+|443
 |
-|
-|
-|
-|null
-|null
-|null
-|null
+|true
+|true
+|true
+|true
 
 |===
 
@@ -1260,16 +1535,29 @@ Management APIs used by this data source:
 == EMC Celerra (SSH)
 :description: Support Matrix Asciidoc for EMC Celerra (SSH)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
-<.<|API versions <.<|Models <.<|Firmware versions 
+<.<|Models <.<|Firmware versions 
 
-|5.5.38-1,6.0.65-2,7.1.76-4,7.1.79-8,7.1.83-2,8.1.21-266,8.1.21-303,8.1.9-155
-|NS-480FC,NSX,VG8,VNX5200,VNX5300,VNX5400,VNX5600,VNX7600
-|5.5.38-1,6.0.65-2,7.1.76-4,7.1.79-8,7.1.83-2,8.1.21-266,8.1.21-303,8.1.9-155
+|NS-480FC
+NSX
+VG8
+VNX5200
+VNX5300
+VNX5400
+VNX5600
+VNX7600
+|5.5.38-1
+6.0.65-2
+7.1.76-4
+7.1.79-8
+7.1.83-2
+8.1.21-266
+8.1.21-303
+8.1.9-155
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -1361,7 +1649,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -1382,16 +1670,54 @@ Management APIs used by this data source:
 == EMC CLARiiON (NaviCLI)
 :description: Support Matrix Asciidoc for EMC CLARiiON (NaviCLI)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Models <.<|Firmware versions 
 
-|6.23,6.26,6.28,7.30,7.32,7.33
-|AX4-5F8,CX3-20f,CX3-40f,CX4-480,VNX5100,VNX5200,VNX5300,VNX5400,VNX5500,VNX5600,VNX5700,VNX5800,VNX7600,VNX8000
-|04.28.000.5.710,04.30.000.5.525,05.32.000.5.218,05.32.000.5.219,05.32.000.5.221,05.32.000.5.225,05.32.000.5.249,05.33.000.5.074,05.33.009.5.155,05.33.009.5.184,05.33.009.5.186,05.33.009.5.218,05.33.009.5.231,05.33.009.5.236,05.33.009.5.238,05.33.009.6.305,05.33.021.5.256,05.33.021.5.266,2.23.50.5.710,3.26.20.5.011,3.26.40.5.029
+|6.23
+6.26
+6.28
+7.30
+7.32
+7.33
+|AX4-5F8
+CX3-20f
+CX3-40f
+CX4-480
+VNX5100
+VNX5200
+VNX5300
+VNX5400
+VNX5500
+VNX5600
+VNX5700
+VNX5800
+VNX7600
+VNX8000
+|04.28.000.5.710
+04.30.000.5.525
+05.32.000.5.218
+05.32.000.5.219
+05.32.000.5.221
+05.32.000.5.225
+05.32.000.5.249
+05.33.000.5.074
+05.33.009.5.155
+05.33.009.5.184
+05.33.009.5.186
+05.33.009.5.218
+05.33.009.5.231
+05.33.009.5.236
+05.33.009.5.238
+05.33.009.6.305
+05.33.021.5.256
+05.33.021.5.266
+2.23.50.5.710
+3.26.20.5.011
+3.26.40.5.029
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -1565,7 +1891,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -1586,15 +1912,54 @@ Management APIs used by this data source:
 == EMC Data Domain (SSH)
 :description: Support Matrix Asciidoc for EMC Data Domain (SSH)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|DD VE,DD2200,DD2500,DD3300,DD4200,DD6300,DD6800,DD6900,DD7200,DD9300,DD9400,DD9500,DD9800,DD990,DD9900
-|6.1.2.051-633576,6.1.2.20-606786,6.1.2.50-632120,6.2.0.30-629757,6.2.0.35-635767,6.2.1.30-663869,6.2.1.40-671977,6.2.1.60-686365,7.10.0.0-1017741,7.10.1.0-1042928,7.2.0.30-663847,7.2.0.50-671975,7.2.0.60-682124,7.2.0.70-686759,7.2.0.90-692270,7.6.0.20-689174,7.6.0.30-690691,7.7.0.7-1007134,7.7.1.10-1011247,7.7.2.011-1011427,7.7.2.10-1011249,7.7.3.0-1011963,7.7.4.0-1017976,7.7.5.1-1040473,7.7.5.11-1046187,7.8.0.0-1008134
+|DD VE
+DD2200
+DD2500
+DD3300
+DD4200
+DD6300
+DD6800
+DD6900
+DD7200
+DD9300
+DD9400
+DD9500
+DD9800
+DD990
+DD9900
+|6.1.2.051-633576
+6.1.2.20-606786
+6.1.2.50-632120
+6.2.0.30-629757
+6.2.0.35-635767
+6.2.1.30-663869
+6.2.1.40-671977
+6.2.1.60-686365
+7.10.0.0-1017741
+7.10.1.0-1042928
+7.2.0.30-663847
+7.2.0.50-671975
+7.2.0.60-682124
+7.2.0.70-686759
+7.2.0.90-692270
+7.6.0.20-689174
+7.6.0.30-690691
+7.7.0.7-1007134
+7.7.1.10-1011247
+7.7.2.011-1011427
+7.7.2.10-1011249
+7.7.3.0-1011963
+7.7.4.0-1017976
+7.7.5.1-1040473
+7.7.5.11-1046187
+7.8.0.0-1008134
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -1686,7 +2051,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -1707,15 +2072,24 @@ Management APIs used by this data source:
 == EMC ECS
 :description: Support Matrix Asciidoc for EMC ECS
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
 |ECS
-|3.6.1.1,3.6.1.3,3.6.2.1,3.6.2.4,3.7.0.0,3.7.0.3,3.7.0.4,3.7.0.5,3.8.0.1,3.8.0.2
+|3.6.1.1
+3.6.1.3
+3.6.2.1
+3.6.2.4
+3.7.0.0
+3.7.0.3
+3.7.0.4
+3.7.0.5
+3.8.0.1
+3.8.0.2
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -1805,11 +2179,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|EMC ECS Rest API
+|EMC ECS REST API
 |HTTPS
 |HTTPS
 |443
@@ -1826,15 +2200,51 @@ Management APIs used by this data source:
 == Dell EMC Isilon & PowerScale Rest
 :description: Support Matrix Asciidoc for Dell EMC Isilon & PowerScale Rest
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|A200,A200,F200,A300,F200,F200,A3000,F600,F800,H500,F900,H400,H400,H500,H500,H500,A200,H500,A2000,H500,F800,NL410,A200,A300,F200,NL410,A300,F200,NL410,X410,S210,X210,X210,A200,X400,X410,X410,NL410,X410,NL410,H500
-|9.1.0.11,9.1.0.6,9.2.1.10,9.2.1.11,9.2.1.12,9.2.1.16,9.2.1.19,9.2.1.21,9.2.1.6,9.2.1.7,9.2.1.9,9.4.0.11,9.4.0.12,9.4.0.13,9.4.0.14,9.4.0.5,9.4.0.7,9.5.0.3,v8.0.0.4,v8.0.0.6,v8.0.0.7,v8.1.2.0,v8.2.2.0
+|A200
+A2000
+A300
+A3000
+F200
+F600
+F800
+F900
+H400
+H500
+NL410
+S210
+X210
+X400
+X410
+|9.1.0.11
+9.1.0.6
+9.2.1.10
+9.2.1.11
+9.2.1.12
+9.2.1.16
+9.2.1.19
+9.2.1.21
+9.2.1.6
+9.2.1.7
+9.2.1.9
+9.4.0.11
+9.4.0.12
+9.4.0.13
+9.4.0.14
+9.4.0.5
+9.4.0.7
+9.5.0.3
+v8.0.0.4
+v8.0.0.6
+v8.0.0.7
+v8.1.2.0
+v8.2.2.0
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -2022,11 +2432,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Google Compute Platform API
+|EMC Isilon & PowerScale REST API
 |HTTPS
 |
 |443
@@ -2043,15 +2453,61 @@ Management APIs used by this data source:
 == Dell EMC Isilon / PowerScale (CLI)
 :description: Support Matrix Asciidoc for Dell EMC Isilon / PowerScale (CLI)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|A200,A200,A300,A200,F800,A200,F800,X210,A200,H500,A200,NL410,A200,X210,A2000,A2000,F800,A2000,F800,F900,A2000,H500,A300,A300,F200,NL410,A300,H400,F200,F800,F900,H500,H400,H400,H500,H400,H500,infinity_hba_bay_to_unit: no da device pass7,H400,H600,H400,NL410,H500,H500,H600,H500,Message from syslogd@ersk,S210,H500,S210,H700,NL400,NL400,NL410,X200,NL410,S210,S210,X410,SIMULATOR,X200,X210,X400,X400,X410,X410
-|9.1.0.10,9.1.0.12,9.1.0.16,9.1.0.18,9.1.0.19,9.1.0.7,9.2.1.11,9.2.1.13,9.2.1.15,9.2.1.22,9.2.1.7,9.2.1.9,9.3.0.3,9.4.0.0,9.4.0.10,9.4.0.12,9.4.0.13,9.4.0.14,9.4.0.6,9.4.0.7,v7.1.1.8,v7.2.0.5,v7.2.1.3,v7.2.1.6,v8.0.0.4,v8.0.0.6,v8.0.0.7,v8.0.1.1,v8.1.2.0,v8.2.2.0
+|
+A200
+A2000
+A300
+F200
+F800
+F900
+H400
+H500
+H600
+H700
+NL400
+NL410
+S210
+X200
+X210
+X400
+X410
+|9.1.0.10
+9.1.0.12
+9.1.0.16
+9.1.0.18
+9.1.0.19
+9.1.0.7
+9.2.1.11
+9.2.1.13
+9.2.1.15
+9.2.1.22
+9.2.1.7
+9.2.1.9
+9.3.0.3
+9.4.0.0
+9.4.0.10
+9.4.0.12
+9.4.0.13
+9.4.0.14
+9.4.0.6
+9.4.0.7
+v7.1.1.8
+v7.2.0.5
+v7.2.1.3
+v7.2.1.6
+v8.0.0.4
+v8.0.0.6
+v8.0.0.7
+v8.0.1.1
+v8.1.2.0
+v8.2.2.0
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -2209,7 +2665,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -2230,15 +2686,28 @@ Management APIs used by this data source:
 == EMC PowerStore REST
 :description: Support Matrix Asciidoc for EMC PowerStore REST
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|PowerStore 1000T,PowerStore 1200T,PowerStore 3000T,PowerStore 3200T,PowerStore 5000T,PowerStore 5000X,PowerStore 9000T,PowerStore 9200T
-|2.0.1.3,2.1.1.0,2.1.1.1,3.0.0.1,3.2.0.0,3.2.0.1,3.2.1.0
+|PowerStore 1000T
+PowerStore 1200T
+PowerStore 3000T
+PowerStore 3200T
+PowerStore 5000T
+PowerStore 5000X
+PowerStore 9000T
+PowerStore 9200T
+|2.0.1.3
+2.1.1.0
+2.1.1.1
+3.0.0.1
+3.2.0.0
+3.2.0.1
+3.2.1.0
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -2409,9 +2878,19 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
+
+|EMC PowerStore REST API
+|HTTPS
+|HTTPS
+|443
+|
+|true
+|true
+|true
+|true
 
 |===
 
@@ -2420,15 +2899,19 @@ Management APIs used by this data source:
 == EMC RecoverPoint (HTTP)
 :description: Support Matrix Asciidoc for EMC RecoverPoint (HTTP)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
 |RecoverPoint
-|5.1.P1(c.175),5.1.SP4.P1(h.89),5.1.SP4.P2(h.101),5.1.SP4.P3(h.109),5.1.SP4.P4(h.97)
+|5.1.P1(c.175)
+5.1.SP4.P1(h.89)
+5.1.SP4.P2(h.101)
+5.1.SP4.P3(h.109)
+5.1.SP4.P4(h.97)
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -2469,11 +2952,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|RecoverPoint API
+|RecoverPoint REST API
 |HTTPS
 |HTTPS
 |443
@@ -2490,16 +2973,20 @@ Management APIs used by this data source:
 == EMC ScaleIO & PowerFlex REST
 :description: Support Matrix Asciidoc for EMC ScaleIO & PowerFlex REST
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
-<.<|API versions <.<|Models <.<|Firmware versions 
+<.<|Models <.<|Firmware versions 
 
-|2.5,3.5
 |ScaleIO
-|R2_6.11000.113,R2_6.11000.115,R3_0.1400.101,R3_5.1200.104,R3_6.500.113,R3_6.700.103
+|R2_6.11000.113
+R2_6.11000.115
+R3_0.1400.101
+R3_5.1200.104
+R3_6.500.113
+R3_6.700.103
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -2596,11 +3083,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|ScaleIO REST API
+|EMC ScaleIO & PowerFlex REST API
 |HTTPS
 |HTTPS
 |443
@@ -2617,16 +3104,86 @@ Management APIs used by this data source:
 == EMC Symmetrix CLI
 :description: Support Matrix Asciidoc for EMC Symmetrix CLI
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Models <.<|Firmware versions 
 
-|V10.0.0.0,V10.0.1.0,V7.6.2.67,V8.3.0.22,V8.3.0.6,V8.4.0.7,V8.4.0.9,V9.1.0.18,V9.1.0.5,V9.1.0.6,V9.2.0.0,V9.2.1.0,V9.2.1.1,V9.2.1.2,V9.2.2.0,V9.2.3.0,V9.2.3.1,V9.2.3.4,V9.2.3.5,V9.2.3.6,V9.2.4.1,V9.2.4.2,unavailable
-|DMX3-24,DMX4-24,PMax2000,PowerMax_2000,PowerMax_8000,VMAX-1,VMAX100K,VMAX10K,VMAX200K,VMAX250F,VMAX400K,VMAX40K,VMAX450F,VMAX850F,VMAX950F
-|5773.198.142(168D0000) build 5,5876.272.177(16F40000) build 39,5876.286.194(16F40000) build 115,5876.309.196(16F40000) build 162,5977.1131.1131(17590000) build 551,5977.1151.1151(17590000) build 45,5977.1151.1151(17590000) build 59,5977.1151.1151(17590000) build 60,5977.1151.1151(17590000) build 9,5978.479.479(175A0000) build 195,5978.711.711(175A0000) build 113,5978.711.711(175A0000) build 139,5978.711.711(175A0000) build 149,5978.711.711(175A0000) build 194,5978.711.711(175A0000) build 196,5978.711.711(175A0000) build 220,5978.711.711(175A0000) build 239,5978.711.711(175A0000) build 252,5978.711.711(175A0000) build 267,5978.711.711(175A0000) build 278,5978.711.711(175A0000) build 287,5978.711.711(175A0000) build 335,5978.711.711(175A0000) build 365,5978.711.711(175A0000) build 366,5978.711.711(175A0000) build 388,5978.711.711(175A0000) build 416,5978.711.711(175A0000) build 436,5978.711.711(175A0000) build 438,5978.711.711(175A0000) build 448,5978.711.711(175A0000) build 461,5978.711.711(175A0000) build 480,5978.711.711(175A0000) build 484,5978.711.711(175A0000) build 502,5978.711.711(175A0000) build 529,5978.711.711(175A0000) build 8
+|
+V10.0.0.0
+V10.0.1.0
+V7.6.2.67
+V8.3.0.22
+V8.3.0.6
+V8.4.0.7
+V8.4.0.9
+V9.1.0.18
+V9.1.0.5
+V9.1.0.6
+V9.2.0.0
+V9.2.1.0
+V9.2.1.1
+V9.2.1.2
+V9.2.2.0
+V9.2.3.0
+V9.2.3.1
+V9.2.3.4
+V9.2.3.5
+V9.2.3.6
+V9.2.4.1
+V9.2.4.2
+|DMX3-24
+DMX4-24
+PMax2000
+PowerMax_2000
+PowerMax_8000
+VMAX-1
+VMAX100K
+VMAX10K
+VMAX200K
+VMAX250F
+VMAX400K
+VMAX40K
+VMAX450F
+VMAX850F
+VMAX950F
+|5773.198.142(168D0000) build 5
+5876.272.177(16F40000) build 39
+5876.286.194(16F40000) build 115
+5876.309.196(16F40000) build 162
+5977.1131.1131(17590000) build 551
+5977.1151.1151(17590000) build 45
+5977.1151.1151(17590000) build 59
+5977.1151.1151(17590000) build 60
+5977.1151.1151(17590000) build 9
+5978.479.479(175A0000) build 195
+5978.711.711(175A0000) build 113
+5978.711.711(175A0000) build 139
+5978.711.711(175A0000) build 149
+5978.711.711(175A0000) build 194
+5978.711.711(175A0000) build 196
+5978.711.711(175A0000) build 220
+5978.711.711(175A0000) build 239
+5978.711.711(175A0000) build 252
+5978.711.711(175A0000) build 267
+5978.711.711(175A0000) build 278
+5978.711.711(175A0000) build 287
+5978.711.711(175A0000) build 335
+5978.711.711(175A0000) build 365
+5978.711.711(175A0000) build 366
+5978.711.711(175A0000) build 388
+5978.711.711(175A0000) build 416
+5978.711.711(175A0000) build 436
+5978.711.711(175A0000) build 438
+5978.711.711(175A0000) build 448
+5978.711.711(175A0000) build 461
+5978.711.711(175A0000) build 480
+5978.711.711(175A0000) build 484
+5978.711.711(175A0000) build 502
+5978.711.711(175A0000) build 529
+5978.711.711(175A0000) build 8
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -2855,9 +3412,29 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
+
+|symcli
+|CLI
+|
+|2707
+|
+|true
+|true
+|true
+|true
+
+|Symmetrix SMI-S
+|SMI-S
+|HTTP/HTTPS
+|5988/5989
+|
+|true
+|false
+|false
+|true
 
 |===
 
@@ -2866,16 +3443,44 @@ Management APIs used by this data source:
 == Dell Unisphere REST
 :description: Support Matrix Asciidoc for Dell Unisphere REST
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Models <.<|Firmware versions 
 
-|V10.0.0.5,V10.0.1.3,V9.2.1.6,V9.2.3.20,V9.2.3.22,V9.2.3.4,V9.2.4.1
-|PowerMax_2000,PowerMax_2500,PowerMax_8000,VMAX250F,VMAX950F
-|5978.479.479 build 350,5978.711.711 build 252,5978.711.711 build 278 build 278,5978.711.711 build 287,5978.711.711 build 329 build 329,5978.711.711 build 365,5978.711.711 build 365 build 365,5978.711.711 build 376,5978.711.711 build 388 build 388,5978.711.711 build 416,5978.711.711 build 435,5978.711.711 build 448,5978.711.711 build 461 build 461,5978.711.711 build 481 build 481,5978.711.711 build 484,5978.711.711 build 484 build 484,5978.711.711 build 502,6079.125.0 build 53 build 53,6079.175.0 build 0 build 0
+|V10.0.0.5
+V10.0.1.3
+V9.2.1.6
+V9.2.3.20
+V9.2.3.22
+V9.2.3.4
+V9.2.4.1
+|PowerMax_2000
+PowerMax_2500
+PowerMax_8000
+VMAX250F
+VMAX950F
+|5978.479.479 build 350
+5978.711.711 build 252
+5978.711.711 build 278 build 278
+5978.711.711 build 287
+5978.711.711 build 329 build 329
+5978.711.711 build 365
+5978.711.711 build 365 build 365
+5978.711.711 build 376
+5978.711.711 build 388 build 388
+5978.711.711 build 416
+5978.711.711 build 435
+5978.711.711 build 448
+5978.711.711 build 461 build 461
+5978.711.711 build 481 build 481
+5978.711.711 build 484
+5978.711.711 build 484 build 484
+5978.711.711 build 502
+6079.125.0 build 53 build 53
+6079.175.0 build 0 build 0
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -3010,13 +3615,13 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Google Compute Platform API
+|Dell Unisphere API
 |HTTPS
-|
+|HTTPS
 |443
 |
 |true
@@ -3031,16 +3636,21 @@ Management APIs used by this data source:
 == EMC VNX (SSH)
 :description: Support Matrix Asciidoc for EMC VNX (SSH)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
-<.<|API versions <.<|Models <.<|Firmware versions 
+<.<|Models <.<|Firmware versions 
 
-|7.1.76-4,7.1.80-3,7.33,8.1.9-232
-|VNX5300,VNX5400,VNX5700,VNX5800
-|05.33.009.5.231,7.1.76-4,7.1.80-3,8.1.9-232
+|VNX5300
+VNX5400
+VNX5700
+VNX5800
+|05.33.009.5.231
+7.1.76-4
+7.1.80-3
+8.1.9-232
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -3209,11 +3819,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|VNX - SSH and CLI
+|VNX SSH and CLI
 |SSH
 |SSH
 |22
@@ -3230,15 +3840,45 @@ Management APIs used by this data source:
 == EMC VNXe & Unity Unisphere (CLI)
 :description: Support Matrix Asciidoc for EMC VNXe & Unity Unisphere (CLI)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|Unity 300,Unity 300F,Unity 350F,Unity 380,Unity 380F,Unity 400,Unity 400F,Unity 450F,Unity 480F,Unity 500,Unity 550F,Unity 600,Unity 600F,Unity 650F,Unity 680F,Unity 880,VNXe3200
-|3.1.17.10223906,3.1.17.10229825,4.1.2.9257522,4.2.1.9535982,4.2.3.9670635,4.5.1.0.5.001,5.0.2.0.5.009,5.0.6.0.5.008,5.0.8.0.5.007,5.1.2.0.5.007,5.1.3.0.5.003,5.2.1.0.5.013,5.2.2.0.5.004,5.2.2.0.6.201,5.3.0.0.5.120
+|Unity 300
+Unity 300F
+Unity 350F
+Unity 380
+Unity 380F
+Unity 400
+Unity 400F
+Unity 450F
+Unity 480F
+Unity 500
+Unity 550F
+Unity 600
+Unity 600F
+Unity 650F
+Unity 680F
+Unity 880
+VNXe3200
+|3.1.17.10223906
+3.1.17.10229825
+4.1.2.9257522
+4.2.1.9535982
+4.2.3.9670635
+4.5.1.0.5.001
+5.0.2.0.5.009
+5.0.6.0.5.008
+5.0.8.0.5.007
+5.1.2.0.5.007
+5.1.3.0.5.003
+5.2.1.0.5.013
+5.2.2.0.5.004
+5.2.2.0.6.201
+5.3.0.0.5.120
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -3414,11 +4054,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|VNXe (UnisphereCLI)
+|VNXe & Unisphere CLI
 |HTTPS
 |HTTPS
 |443
@@ -3435,15 +4075,20 @@ Management APIs used by this data source:
 == EMC VPLEX
 :description: Support Matrix Asciidoc for EMC VPLEX
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
 |VPLEX
-|5.4.1.00.00.07,5.4.1.01.00.05,6.2.0.03.00.02,6.2.0.04.00.07,6.2.0.05.00.11,6.2.0.07.00.02
+|5.4.1.00.00.07
+5.4.1.01.00.05
+6.2.0.03.00.02
+6.2.0.04.00.07
+6.2.0.05.00.11
+6.2.0.07.00.02
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -3545,14 +4190,24 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|VPLEX CLI
-|HTTP/HTTPS/SSH
-|HTTP/HTTPS/SSH
-|80/443/22
+|EMC VPLEX CLI
+|SSH
+|SSH
+|22
+|
+|true
+|true
+|true
+|true
+
+|EMC VPLEX API
+|HTTP/HTTPS
+|HTTP/HTTPS
+|80/443
 |
 |true
 |true
@@ -3566,16 +4221,50 @@ Management APIs used by this data source:
 == EMC XtremIO (HTTP)
 :description: Support Matrix Asciidoc for EMC XtremIO (HTTP)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Models <.<|Firmware versions 
 
-|6.2.1,6.2.2,6.3.1,6.3.2,6.3.3,6.4.0
-|1 Bricks & 125TB,1 Bricks & 24TB,1 Bricks & 26TB,1 Bricks & 31TB,1 Bricks & 62TB,1 Bricks & 8TB,1X10TB,1X20TB,1X40TB,2 Bricks & 52TB,2 Bricks & 62TB,2 Bricks & 76TB,2 Bricks & 83TB,2X10TB,2X20TB,2X40TB,3 Bricks & 251TB,3 Bricks & 283TB,4 Bricks & 125TB,4 Bricks & 503TB,4 Bricks & 628TB,4 Bricks & 754TB,4X20TB,4X40TB,6X20TB
-|4.0.27-1,4.0.31-11,6.1.0-99_X2,6.3.3-8_X2,6.4.0-22_X2,6.4.0-36_hotfix_2_X2
+|6.2.1
+6.2.2
+6.3.1
+6.3.2
+6.3.3
+6.4.0
+|1 Bricks & 125TB
+1 Bricks & 24TB
+1 Bricks & 26TB
+1 Bricks & 31TB
+1 Bricks & 62TB
+1 Bricks & 8TB
+1X10TB
+1X20TB
+1X40TB
+2 Bricks & 52TB
+2 Bricks & 62TB
+2 Bricks & 76TB
+2 Bricks & 83TB
+2X10TB
+2X20TB
+2X40TB
+3 Bricks & 251TB
+3 Bricks & 283TB
+4 Bricks & 125TB
+4 Bricks & 503TB
+4 Bricks & 628TB
+4 Bricks & 754TB
+4X20TB
+4X40TB
+6X20TB
+|4.0.27-1
+4.0.31-11
+6.1.0-99_X2
+6.3.3-8_X2
+6.4.0-22_X2
+6.4.0-36_hotfix_2_X2
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -3715,11 +4404,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|XtremIO API
+|EMC XtremIO REST API
 |HTTPS
 |HTTPS
 |443
@@ -3736,15 +4425,73 @@ Management APIs used by this data source:
 == NetApp E-Series
 :description: Support Matrix Asciidoc for NetApp E-Series
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|2600,2660,2680,2702,2704,2800B,2804,2806,3000,5480,5486,5488,5504,5564,5600,5700,5700B,6000
-|08.40.60.01,8.10.14.0,8.20.11.0,8.20.27.0,8.20.30.0,8.20.5.0,8.20.8.0,8.25.14.0,8.25.6.0,8.30.1.0,8.40.0.1,8.40.0.3,8.40.20.0,8.40.30.3,8.40.40.0,8.40.50.0,8.40.60.1,8.40.60.2,8.40.60.3,8.42.20.0,8.50.0.3,8.50.0.4,8.51.0.0,8.52.0.0,8.52.0.1,8.53.0.1,8.53.0.4,8.62.0.0,8.62.0.2,8.63.0.2,8.70.0.3,8.71.2.0,8.71.3.0,8.72.0.0,8.72.1.0,8.72.2.0,8.73.0.0,8.74.0.0,8.74.1.0,8.74.2.0,8.74.3.0,8.75.0.0
+|2600
+2660
+2680
+2702
+2704
+2800B
+2804
+2806
+3000
+5480
+5486
+5488
+5504
+5564
+5600
+5700
+5700B
+6000
+|08.40.60.01
+8.10.14.0
+8.20.11.0
+8.20.27.0
+8.20.30.0
+8.20.5.0
+8.20.8.0
+8.25.14.0
+8.25.6.0
+8.30.1.0
+8.40.0.1
+8.40.0.3
+8.40.20.0
+8.40.30.3
+8.40.40.0
+8.40.50.0
+8.40.60.1
+8.40.60.2
+8.40.60.3
+8.42.20.0
+8.50.0.3
+8.50.0.4
+8.51.0.0
+8.52.0.0
+8.52.0.1
+8.53.0.1
+8.53.0.4
+8.62.0.0
+8.62.0.2
+8.63.0.2
+8.70.0.3
+8.71.2.0
+8.71.3.0
+8.72.0.0
+8.72.1.0
+8.72.2.0
+8.73.0.0
+8.74.0.0
+8.74.1.0
+8.74.2.0
+8.74.3.0
+8.75.0.0
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -3918,7 +4665,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -3939,14 +4686,14 @@ Management APIs used by this data source:
 == Google Cloud Compute
 :description: Support Matrix Asciidoc for Google Cloud Compute
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions 
 
 |v1
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -4028,11 +4775,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Google Compute Platform API
+|Google Compute Platform REST API
 |HTTPS
 |
 |443
@@ -4049,15 +4796,16 @@ Management APIs used by this data source:
 == HDS HCP (HTTPS)
 :description: Support Matrix Asciidoc for HDS HCP (HTTPS)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
 |Hitachi Content Platform
-|9.3.7.2,9.5.0.121
+|9.3.7.2
+9.5.0.121
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -4124,11 +4872,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|HCP REST API
+|HDS HCP REST API
 |HTTPS
 |HTTPS
 |9090
@@ -4145,16 +4893,73 @@ Management APIs used by this data source:
 == HiCommand Device Manager
 :description: Support Matrix Asciidoc for HiCommand Device Manager
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Models <.<|Firmware versions 
 
-|7.6.1,8.7.7,8.8.1,8.8.3,8.8.5
-|DF850MH,DF850S,HM800,HM850,P9500,RAID700,RAID800,VSP5000,XP24000,XP7
-|0983/A-H,0988/H-S,DKC:60-08-22,SVP:60-08-21/00,DKC:60-08-65,SVP:60-08-54/00,DKC:70-06-46,SVP:70-06-32/00,DKC:70-06-67-00/00,SVP:70-06-51/00,DKC:80-06-80,SVP:80-06-76/02,DKC:80-06-82-00/00,SVP:80-06-78/00,DKC:80-06-86-00/00,SVP:80-06-81/00,DKC:80-06-87,SVP:80-06-82/00,DKC:80-06-88-00/00,SVP:80-06-83/00,DKC:80-06-91,SVP:80-06-86/00,DKC:80-06-91-00/00,SVP:80-06-86/00,DKC:80-06-93-00/00,SVP:80-06-88/00,DKC:83-05-45-40/00,SVP:83-05-49-40/00,DKC:83-05-45-60/00,SVP:83-05-49-60/00,DKC:83-05-46-60/00,SVP:83-05-50-60/00,DKC:83-05-47-60/00,SVP:83-05-51-60/00,DKC:83-05-48-40/00,SVP:83-05-52-40/00,DKC:83-05-48-60/00,SVP:83-05-52-60/00,DKC:88-08-08-60/00,SVP:88-08-10-60/00,DKC:88-08-09-60/00,SVP:88-08-11-60/00,DKC:90-08-81-00/00,SVP:90-08-81/00,DKC:90-08-83-00/01,SVP:90-08-83/00
+|7.6.1
+8.7.7
+8.8.1
+8.8.3
+8.8.5
+|DF850MH
+DF850S
+HM800
+HM850
+P9500
+RAID700
+RAID800
+VSP5000
+XP24000
+XP7
+|0983/A-H
+0988/H-S
+DKC:60-08-22
+DKC:60-08-65
+DKC:70-06-46
+DKC:70-06-67-00/00
+DKC:80-06-80
+DKC:80-06-82-00/00
+DKC:80-06-86-00/00
+DKC:80-06-87
+DKC:80-06-88-00/00
+DKC:80-06-91
+DKC:80-06-91-00/00
+DKC:80-06-93-00/00
+DKC:83-05-45-40/00
+DKC:83-05-45-60/00
+DKC:83-05-46-60/00
+DKC:83-05-47-60/00
+DKC:83-05-48-40/00
+DKC:83-05-48-60/00
+DKC:88-08-08-60/00
+DKC:88-08-09-60/00
+DKC:90-08-81-00/00
+DKC:90-08-83-00/01
+SVP:60-08-21/00
+SVP:60-08-54/00
+SVP:70-06-32/00
+SVP:70-06-51/00
+SVP:80-06-76/02
+SVP:80-06-78/00
+SVP:80-06-81/00
+SVP:80-06-82/00
+SVP:80-06-83/00
+SVP:80-06-86/00
+SVP:80-06-88/00
+SVP:83-05-49-40/00
+SVP:83-05-49-60/00
+SVP:83-05-50-60/00
+SVP:83-05-51-60/00
+SVP:83-05-52-40/00
+SVP:83-05-52-60/00
+SVP:88-08-10-60/00
+SVP:88-08-11-60/00
+SVP:90-08-81/00
+SVP:90-08-83/00
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -4321,7 +5126,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -4352,15 +5157,24 @@ Management APIs used by this data source:
 == Hitachi Ops Center
 :description: Support Matrix Asciidoc for Hitachi Ops Center
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|VSP 5100,VSP 5500,VSP F1500,VSP F600,VSP G800
-|80-06-92-00/00:01-65-03/05,83-05-46-60/00:01-65-03/05,83-05-47-40/00:01-65-03/05,83-05-48-40/00:01-65-03/05,90-08-81-00/00:01-65-03/05,90-08-82-00/00:01-65-03/05
+|VSP 5100
+VSP 5500
+VSP F1500
+VSP F600
+VSP G800
+|80-06-92-00/00:01-65-03/05
+83-05-46-60/00:01-65-03/05
+83-05-47-40/00:01-65-03/05
+83-05-48-40/00:01-65-03/05
+90-08-81-00/00:01-65-03/05
+90-08-82-00/00:01-65-03/05
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -4503,9 +5317,19 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
+
+|Hitachi Ops Center REST API
+|HTTPS
+|HTTPS
+|443
+|
+|true
+|true
+|true
+|true
 
 |===
 
@@ -4514,15 +5338,21 @@ Management APIs used by this data source:
 == HDS HNAS (CLI)
 :description: Support Matrix Asciidoc for HDS HNAS (CLI)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|G600,N800,HNAS 4080,G800,HNAS 4100
-|14.5.7413.01,13.9.6918.05,14.6.7520.04
+|G600
+G800
+HNAS 4080
+HNAS 4100
+N800
+|13.9.6918.05
+14.5.7413.01
+14.6.7520.04
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -4616,11 +5446,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|HNAS CLI
+|HDS HNAS CLI
 |SSH
 |SSH
 |22
@@ -4637,16 +5467,42 @@ Management APIs used by this data source:
 == HPE Nimble / Alletra 6000 Storage
 :description: Support Matrix Asciidoc for HPE Nimble / Alletra 6000 Storage
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Models <.<|Firmware versions 
 
 |v1
-|6030,AF1000,AF20Q,AF3000,AF40,AF5000,CS1000,CS300,CS3000,CS500,CS5000,HF20,HF20H,HF40,HF60
-|5.0.10.0-742719-opt,5.0.7.0-604814-opt,5.0.8.0-677726-opt,5.2.1.1000-1017822-opt,5.2.1.400-796142-opt,5.2.1.600-841103-opt,5.2.1.700-882343-opt,5.2.1.800-930936-opt,5.2.1.900-1003439-opt,6.0.0.300-956221-opt,6.0.0.400-991061-opt,6.1.1.200-1020304-opt,6.1.1.300-1028597-opt
+|6030
+AF1000
+AF20Q
+AF3000
+AF40
+AF5000
+CS1000
+CS300
+CS3000
+CS500
+CS5000
+HF20
+HF20H
+HF40
+HF60
+|5.0.10.0-742719-opt
+5.0.7.0-604814-opt
+5.0.8.0-677726-opt
+5.2.1.1000-1017822-opt
+5.2.1.400-796142-opt
+5.2.1.600-841103-opt
+5.2.1.700-882343-opt
+5.2.1.800-930936-opt
+5.2.1.900-1003439-opt
+6.0.0.300-956221-opt
+6.0.0.400-991061-opt
+6.1.1.200-1020304-opt
+6.1.1.300-1028597-opt
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -4792,7 +5648,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -4813,15 +5669,28 @@ Management APIs used by this data source:
 == Huawei OceanStor (REST/HTTPS)
 :description: Support Matrix Asciidoc for Huawei OceanStor (REST/HTTPS)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|5300 V5,5500 V3,5500 V5,5800 V3,Dorado 5000 V6 SAS,Dorado 6000 V3,Dorado 6000 V6 NVMe
-|V300R001C01,V300R002C10,V300R006C20,V300R006C50,V500R007C10,V500R007C30,V600R003C00,V600R005C03
+|5300 V5
+5500 V3
+5500 V5
+5800 V3
+Dorado 5000 V6 SAS
+Dorado 6000 V3
+Dorado 6000 V6 NVMe
+|V300R001C01
+V300R002C10
+V300R006C20
+V300R006C50
+V500R007C10
+V500R007C30
+V600R003C00
+V600R005C03
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -4987,11 +5856,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|OceanStor API
+|Huawei OceanStor REST API
 |HTTPS
 |HTTPS
 |8088
@@ -5001,7 +5870,7 @@ Management APIs used by this data source:
 |true
 |true
 
-|OceanStor Performance API
+|Huawei OceanStor Performance REST API
 |HTTPS
 |HTTPS
 |8088
@@ -5018,13 +5887,13 @@ Management APIs used by this data source:
 == IBM Cleversafe
 :description: Support Matrix Asciidoc for IBM Cleversafe
 
-Models and versions supported by this data source:
-|===
-
-
 
 |===
-Products supported by this data source:
+
+
+
+|===
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -5088,11 +5957,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|IBM Cleversafe Rest API
+|IBM Cleversafe REST API
 |HTTPS
 |HTTPS
 |443
@@ -5109,15 +5978,22 @@ Management APIs used by this data source:
 == IBM DS 8K (DSCLI)
 :description: Support Matrix Asciidoc for IBM DS 8K (DSCLI)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|2107-951,2107-961,2107-985,2107-996
-|7.6.31.4250,7.7.51.1400,7.8.57.18,7.9.21.91,7.9.32.126
+|2107-951
+2107-961
+2107-985
+2107-996
+|7.6.31.4250
+7.7.51.1400
+7.8.57.18
+7.9.21.91
+7.9.32.126
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -5244,7 +6120,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -5258,7 +6134,7 @@ Management APIs used by this data source:
 |true
 |true
 
-|DS CLI
+|IBM DS CLI
 |DSNI
 |DSNI
 |
@@ -5275,13 +6151,13 @@ Management APIs used by this data source:
 == IBM PowerVM (SSH)
 :description: Support Matrix Asciidoc for IBM PowerVM (SSH)
 
-Models and versions supported by this data source:
-|===
-
-
 
 |===
-Products supported by this data source:
+
+
+
+|===
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -5342,11 +6218,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Hardware Management Console SSH access
+|IBM Hardware Management Console SSH access
 |SSH
 |SSH
 |22
@@ -5363,15 +6239,86 @@ Management APIs used by this data source:
 == IBM SVC (CLI)
 :description: Support Matrix Asciidoc for IBM SVC (CLI)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|2072-12F,2072-12G,2072-324,2072-2N4,2072-3H4,2072-3N4,2076-124,2076-224,2076-12F,2076-24F,2076-624,2076-12F,2076-624,2076-24F,2076-724,2076-24G,2076-824,2076-AFF,2076-24G,2076-AF6,2076-AFF,2076-724,2076-824,2076-AF6,2076-AFF,2077-24F,2077-424,2078-12F,2078-324,2078-224,2078-24C,2078-24F,2078-324,2078-324,2078-424,2078-92G,2078-4H4,2078-4H4,2078-92G,2078-AF3,4657-924,4662-12G,4662-6H2,4662-6H2,4666-AH8,9843-AE2,9843-AE3,9846-AG8,9848-AE2,9848-AF7,9848-AF8,9848-AG8,SVC
-|1.5.2.7,1.6.1.2,1.6.1.4,1.6.1.5,7.5.0.11,7.5.0.12,7.7.1.8,7.8.1.14,7.8.1.6,7.8.1.8,8.2.1.10,8.2.1.11,8.2.1.14,8.2.1.9,8.3.1.1,8.3.1.2,8.3.1.5,8.3.1.6,8.3.1.7,8.3.1.9,8.4.0.10,8.4.0.11,8.4.0.6,8.4.0.7,8.4.0.8,8.4.0.9,8.5.0.5,8.5.0.6,8.5.0.7,8.5.0.8,8.5.0.9,8.5.2.2,8.5.3.1,8.5.4.0
+|2072-12F
+2072-12G
+2072-2N4
+2072-324
+2072-3H4
+2072-3N4
+2076-124
+2076-12F
+2076-224
+2076-24F
+2076-24G
+2076-624
+2076-724
+2076-824
+2076-AF6
+2076-AFF
+2077-24F
+2077-424
+2078-12F
+2078-224
+2078-24C
+2078-24F
+2078-324
+2078-424
+2078-4H4
+2078-92G
+2078-AF3
+4657-924
+4662-12G
+4662-6H2
+4666-AH8
+9843-AE2
+9843-AE3
+9846-AG8
+9848-AE2
+9848-AF7
+9848-AF8
+9848-AG8
+SVC
+|1.5.2.7
+1.6.1.2
+1.6.1.4
+1.6.1.5
+7.5.0.11
+7.5.0.12
+7.7.1.8
+7.8.1.14
+7.8.1.6
+7.8.1.8
+8.2.1.10
+8.2.1.11
+8.2.1.14
+8.2.1.9
+8.3.1.1
+8.3.1.2
+8.3.1.5
+8.3.1.6
+8.3.1.7
+8.3.1.9
+8.4.0.10
+8.4.0.11
+8.4.0.6
+8.4.0.7
+8.4.0.8
+8.4.0.9
+8.5.0.5
+8.5.0.6
+8.5.0.7
+8.5.0.8
+8.5.0.9
+8.5.2.2
+8.5.3.1
+8.5.4.0
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -5542,11 +6489,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|SVC CLI
+|IBM SVC CLI
 |SSH
 |SSH
 |22
@@ -5563,15 +6510,17 @@ Management APIs used by this data source:
 == IBM XIV & A9000 (XIVCLI)
 :description: Support Matrix Asciidoc for IBM XIV & A9000 (XIVCLI)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|415,A14
-|10.2.4.e,12.3.2.c
+|415
+A14
+|10.2.4.e
+12.3.2.c
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -5705,11 +6654,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|DS CLI
+|IBM DS CLI
 |DSNI
 |DSNI
 |
@@ -5736,15 +6685,19 @@ Management APIs used by this data source:
 == Infinidat Infinibox (HTTP)
 :description: Support Matrix Asciidoc for Infinidat Infinibox (HTTP)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|F6230,F6240,F6303,F6304
-|6.0.31.0,7.0.14.20
+|F6230
+F6240
+F6303
+F6304
+|6.0.31.0
+7.0.14.20
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -5850,11 +6803,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Infinidat API
+|Infinidat REST API
 |HTTPS
 |HTTPS
 |443
@@ -5871,14 +6824,14 @@ Management APIs used by this data source:
 == Microsoft Azure Compute
 :description: Support Matrix Asciidoc for Microsoft Azure Compute
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions 
 
 |2018-06-01
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -5959,11 +6912,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Azure Compute API
+|Microsoft Azure Compute REST API
 |HTTPS
 |HTTPS
 |443
@@ -5980,13 +6933,13 @@ Management APIs used by this data source:
 == Microsoft Hyper-V
 :description: Support Matrix Asciidoc for Microsoft Hyper-V
 
-Models and versions supported by this data source:
-|===
-
-
 
 |===
-Products supported by this data source:
+
+
+
+|===
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -6118,7 +7071,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -6149,16 +7102,68 @@ Management APIs used by this data source:
 == NetApp 7 Mode
 :description: Support Matrix Asciidoc for NetApp 7 Mode
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Models <.<|Firmware versions 
 
-|ONTAPI version=1.12,ONTAPI version=1.14,ONTAPI version=1.17,ONTAPI version=1.19,ONTAPI version=1.20,ONTAPI version=1.21
-|FAS2040,FAS2050,FAS2220,FAS2240-2,FAS2240-4,FAS2520,FAS2554,FAS3140,FAS3160,FAS3210,FAS3220,FAS3240,FAS3250,FAS3270,FAS6240,FAS6290,FAS8020,FAS8040,FAS8060,FAS8080,N6070,N6240,V3240
-|7.3.6,8.1.1 7-Mode,8.1.3P2 7-Mode,8.1.4P1 7-Mode,8.1.4P10 7-Mode,8.1.4P9D18 7-Mode,8.2.1 7-Mode,8.2.2 7-Mode,8.2.3 7-Mode,8.2.3P2 7-Mode,8.2.3P3 7-Mode,8.2.4 7-Mode,8.2.4P2 7-Mode,8.2.4P4 7-Mode,8.2.4P5 7-Mode,8.2.4P6 7-Mode,8.2.5 7-Mode,8.2.5P1 7-Mode,8.2.5P2 7-Mode,8.2.5P4 7-Mode,8.2.5P5 7-Mode,8.2P3 7-Mode,8.2P4 7-Mode,Data ONTAP Release 7.3.3,Data ONTAP Release 7.3.4,Data ONTAP Release 8.2.5 7-Mode
+|1.12
+1.14
+1.17
+1.19
+1.20
+1.21
+|FAS2040
+FAS2050
+FAS2220
+FAS2240-2
+FAS2240-4
+FAS2520
+FAS2554
+FAS3140
+FAS3160
+FAS3210
+FAS3220
+FAS3240
+FAS3250
+FAS3270
+FAS6240
+FAS6290
+FAS8020
+FAS8040
+FAS8060
+FAS8080
+N6070
+N6240
+V3240
+|7.3.6
+8.1.1 7-Mode
+8.1.3P2 7-Mode
+8.1.4P1 7-Mode
+8.1.4P10 7-Mode
+8.1.4P9D18 7-Mode
+8.2.1 7-Mode
+8.2.2 7-Mode
+8.2.3 7-Mode
+8.2.3P2 7-Mode
+8.2.3P3 7-Mode
+8.2.4 7-Mode
+8.2.4P2 7-Mode
+8.2.4P4 7-Mode
+8.2.4P5 7-Mode
+8.2.4P6 7-Mode
+8.2.5 7-Mode
+8.2.5P1 7-Mode
+8.2.5P2 7-Mode
+8.2.5P4 7-Mode
+8.2.5P5 7-Mode
+8.2P3 7-Mode
+8.2P4 7-Mode
+Data ONTAP Release 7.3.3
+Data ONTAP Release 7.3.4
+Data ONTAP Release 8.2.5 7-Mode
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -6439,19 +7444,19 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Api name
+|NetApp 7 Mode ZAPI
+|ZAPI
+|ZAPI
 |
 |
-|
-|
-|null
-|null
-|null
-|null
+|true
+|true
+|true
+|true
 
 |===
 
@@ -6460,7 +7465,7 @@ Management APIs used by this data source:
 == NetApp Cloud Volumes Service
 :description: Support Matrix Asciidoc for NetApp Cloud Volumes Service
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
@@ -6468,7 +7473,7 @@ Models and versions supported by this data source:
 |v1
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -6529,19 +7534,19 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Api name
+|Cloud Volumes Service REST API
+|HTTPS
+|HTTPS
+|443
 |
-|
-|
-|
-|null
-|null
-|null
-|null
+|true
+|true
+|true
+|true
 
 |===
 
@@ -6550,16 +7555,15 @@ Management APIs used by this data source:
 == Amazon FSx for NetApp ONTAP
 :description: Support Matrix Asciidoc for Amazon FSx for NetApp ONTAP
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
-<.<|API versions <.<|Models <.<|Firmware versions 
+<.<|Models <.<|Firmware versions 
 
-|NetApp Release 9.11.0P1: Tue Mar 22 17:41:04 UTC 2022,NetApp Release 9.11.1P3: Thu Sep 29 16:06:51 UTC 2022,NetApp Release 9.11.1P5: Sat Dec 10 23:54:17 UTC 2022,NetApp Release 9.11.1P6: Fri Jan 27 03:16:05 UTC 2023,NetApp Release 9.11.1P7: Thu Mar 09 11:22:24 UTC 2023,NetApp Release 9.11.1P9: Fri Apr 28 03:24:07 UTC 2023,NetApp Release 9.12.1P4: Tue Jun 06 20:41:34 UTC 2023
 |FSx for ONTAP
 |Data ONTAP
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -6770,11 +7774,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|ONTAPI
+|NetApp ONTAP API
 |HTTP/HTTPS
 |HTTP/HTTPS
 |80/443
@@ -6791,16 +7795,242 @@ Management APIs used by this data source:
 == NetApp Clustered Data ONTAP 8.1.1+
 :description: Support Matrix Asciidoc for NetApp Clustered Data ONTAP 8.1.1+
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
-<.<|API versions <.<|Models <.<|Firmware versions 
+<.<|Models <.<|Firmware versions 
 
-|Data ONTAP Release 9.12.1P2: Wed Apr 05 19:57:43 UTC 2023 (Lenovo),NetApp Release 8.2.3P5 Cluster-Mode: Thu Jul 16 21:51:07 PDT 2015,NetApp Release 8.3.1: Mon Aug 31 12:42:08 UTC 2015,NetApp Release 8.3.1P2: Wed Dec 09 03:10:24 UTC 2015,NetApp Release 8.3.2: Wed Feb 24 03:29:11 UTC 2016,NetApp Release 8.3.2P12: Mon Aug 14 02:57:01 UTC 2017,NetApp Release 8.3.2P2: Mon May 23 13:45:25 UTC 2016,NetApp Release 8.3.2P5: Tue Aug 23 12:36:56 UTC 2016,NetApp Release 8.3: Mon Mar 09 23:01:28 PDT 2015,NetApp Release 9.10.0: Thu Aug 19 01:19:53 UTC 2021,NetApp Release 9.10.1: Sat Jan 15 10:49:44 UTC 2022,NetApp Release 9.10.1: Sat Jan 15 15:04:44 UTC 2022,NetApp Release 9.10.1P10: Sun Dec 18 16:24:34 UTC 2022,NetApp Release 9.10.1P11: Thu Feb 23 06:55:33 UTC 2023,NetApp Release 9.10.1P12: Thu Apr 13 00:30:59 UTC 2023,NetApp Release 9.10.1P13: Mon Jun 19 06:30:54 UTC 2023,NetApp Release 9.10.1P1: Sun Feb 20 04:09:09 UTC 2022,NetApp Release 9.10.1P2: Sun Mar 13 07:13:58 UTC 2022,NetApp Release 9.10.1P3: Tue Apr 19 17:44:44 UTC 2022,NetApp Release 9.10.1P4: Mon May 09 22:11:44 UTC 2022,NetApp Release 9.10.1P5: Sun Jun 19 14:49:57 UTC 2022,NetApp Release 9.10.1P6: Fri Jul 01 12:06:33 UTC 2022,NetApp Release 9.10.1P7: Tue Aug 02 08:59:50 UTC 2022,NetApp Release 9.10.1P8: Tue Sep 13 14:10:13 UTC 2022,NetApp Release 9.10.1P9: Thu Nov 03 23:29:00 UTC 2022,NetApp Release 9.10.1RC1: Wed Oct 27 02:46:19 UTC 2021,NetApp Release 9.11.0P1: Tue Mar 22 17:41:04 UTC 2022,NetApp Release 9.11.1: Tue Jul 12 04:38:28 UTC 2022,NetApp Release 9.11.1: Tue Jul 12 10:21:46 UTC 2022,NetApp Release 9.11.1P10: Thu May 25 12:28:26 UTC 2023,NetApp Release 9.11.1P1: Tue Aug 09 13:13:19 UTC 2022,NetApp Release 9.11.1P2: Mon Sep 05 03:40:01 UTC 2022,NetApp Release 9.11.1P3: Thu Sep 29 16:06:51 UTC 2022,NetApp Release 9.11.1P4: Thu Oct 27 11:37:48 UTC 2022,NetApp Release 9.11.1P5: Sat Dec 10 23:54:17 UTC 2022,NetApp Release 9.11.1P6: Fri Jan 27 03:16:05 UTC 2023,NetApp Release 9.11.1P7: Thu Mar 09 11:22:24 UTC 2023,NetApp Release 9.11.1P8: Fri Apr 07 00:02:50 UTC 2023,NetApp Release 9.11.1P9: Fri Apr 28 03:24:07 UTC 2023,NetApp Release 9.11.1RC1: Wed Apr 27 06:57:10 UTC 2022,NetApp Release 9.11.1X12: Thu Mar 24 16:38:36 UTC 2022,NetApp Release 9.11.1X26: Thu Jun 02 09:48:39 UTC 2022,NetApp Release 9.12.1: Wed Feb 01 01:10:18 UTC 2023,NetApp Release 9.12.1P1: Wed Feb 22 18:22:20 UTC 2023,NetApp Release 9.12.1P2: Wed Apr 05 14:58:46 UTC 2023,NetApp Release 9.12.1P2: Wed Apr 05 19:57:43 UTC 2023,NetApp Release 9.12.1P3: Tue May 02 13:02:11 UTC 2023,NetApp Release 9.12.1P4: Tue Jun 06 20:41:34 UTC 2023,NetApp Release 9.12.1RC1: Fri Nov 04 11:45:36 UTC 2022,NetApp Release 9.12.1RC1: Wed Nov 09 01:14:48 UTC 2022,NetApp Release 9.13.0: Tue Feb 07 21:20:29 UTC 2023,NetApp Release 9.13.0P1: Mon Mar 27 03:33:38 UTC 2023,NetApp Release 9.13.0P2: Tue Apr 11 15:05:31 UTC 2023,NetApp Release 9.13.0P3: Wed May 17 16:31:25 UTC 2023,NetApp Release 9.13.1: Mon Jun 19 13:36:41 UTC 2023,NetApp Release 9.13.1RC1: Wed Apr 26 15:07:24 UTC 2023,NetApp Release 9.13.1X19: Mon Apr 03 20:51:32 UTC 2023,NetApp Release 9.13.1X25: Wed Apr 26 15:07:24 UTC 2023,NetApp Release 9.13.1X33: Mon May 29 12:34:33 UTC 2023,NetApp Release 9.13.1X34: Thu Jun 08 10:20:00 UTC 2023,NetApp Release 9.13.1X35: Mon Jun 12 12:12:13 UTC 2023,NetApp Release 9.13.1X36: Thu Jun 15 13:39:29 UTC 2023,NetApp Release 9.1: Fri Dec 23 04:09:51 UTC 2016,NetApp Release 9.1P10: Tue Nov 14 18:03:02 UTC 2017,NetApp Release 9.1P11: Thu Dec 21 15:05:39 UTC 2017,NetApp Release 9.1P12: Mon Mar 05 17:39:31 UTC 2018,NetApp Release 9.1P14: Wed Jun 27 09:15:16 UTC 2018,NetApp Release 9.1P15: Thu Aug 30 08:19:59 UTC 2018,NetApp Release 9.1P17: Thu Feb 28 08:05:25 UTC 2019,NetApp Release 9.1P19: Mon May 27 09:09:01 UTC 2019,NetApp Release 9.1P1: Tue Feb 14 13:14:46 UTC 2017,NetApp Release 9.1P20: Mon Oct 28 14:37:28 UTC 2019,NetApp Release 9.1P5: Sun Jun 11 02:26:58 UTC 2017,NetApp Release 9.1P7: Mon Aug 14 10:27:14 UTC 2017,NetApp Release 9.1P8: Wed Aug 30 13:33:41 UTC 2017,NetApp Release 9.3P10: Sat Dec 15 04:24:49 UTC 2018,NetApp Release 9.3P12: Mon Apr 01 23:33:10 UTC 2019,NetApp Release 9.3P13: Mon May 27 19:26:00 UTC 2019,NetApp Release 9.3P14: Wed Jul 10 14:38:46 UTC 2019,NetApp Release 9.3P15: Tue Jul 16 19:40:35 UTC 2019,NetApp Release 9.3P18: Mon Dec 30 10:39:53 UTC 2019,NetApp Release 9.3P19: Fri Jul 10 12:47:52 UTC 2020,NetApp Release 9.3P1: Mon Jan 22 18:01:29 UTC 2018,NetApp Release 9.3P20: Wed Sep 23 21:44:43 UTC 2020,NetApp Release 9.3P21: Mon Jan 11 17:25:42 UTC 2021,NetApp Release 9.3P2: Fri Mar 02 01:02:58 UTC 2018,NetApp Release 9.3P2: Thu Mar 01 16:53:13 UTC 2018,NetApp Release 9.3P4: Fri Apr 27 19:34:03 UTC 2018,NetApp Release 9.3P6: Thu Jun 14 20:21:25 UTC 2018,NetApp Release 9.3P7: Wed Jul 25 10:11:10 UTC 2018,NetApp Release 9.3P8: Mon Sep 03 20:01:35 UTC 2018,NetApp Release 9.3P9: Thu Oct 25 07:42:13 UTC 2018,NetApp Release 9.4P2: Tue Aug 21 00:00:08 UTC 2018,NetApp Release 9.4P3: Thu Oct 11 22:23:50 UTC 2018,NetApp Release 9.4P4: Thu Nov 01 15:18:22 UTC 2018,NetApp Release 9.4P6: Fri Feb 22 09:43:14 UTC 2019,NetApp Release 9.4RC1: Thu Apr 26 09:13:57 UTC 2018,NetApp Release 9.5: Thu Dec 13 20:41:33 UTC 2018,NetApp Release 9.5P10: Fri Dec 13 16:01:45 UTC 2019,NetApp Release 9.5P12: Fri Apr 10 18:20:31 UTC 2020,NetApp Release 9.5P13: Tue May 19 02:45:36 UTC 2020,NetApp Release 9.5P14: Mon Aug 17 05:32:42 UTC 2020,NetApp Release 9.5P15: Tue Nov 17 07:31:22 UTC 2020,NetApp Release 9.5P16: Tue Jan 12 10:52:07 UTC 2021,NetApp Release 9.5P17: Wed May 12 20:42:52 UTC 2021,NetApp Release 9.5P18: Wed Aug 11 19:17:30 UTC 2021,NetApp Release 9.5P19: Sat Nov 27 06:39:07 UTC 2021,NetApp Release 9.5P1: Tue Feb 19 21:38:50 UTC 2019,NetApp Release 9.5P2: Thu Mar 14 13:59:39 UTC 2019,NetApp Release 9.5P3: Tue Apr 16 18:33:13 UTC 2019,NetApp Release 9.5P3: Tue Apr 16 22:44:27 UTC 2019,NetApp Release 9.5P4: Tue May 07 03:16:26 UTC 2019,NetApp Release 9.5P5: Fri Jun 14 15:33:34 UTC 2019,NetApp Release 9.5P6: Wed Jul 10 18:43:50 UTC 2019,NetApp Release 9.5P6: Wed Jul 10 22:58:11 UTC 2019,NetApp Release 9.5P7: Tue Aug 06 00:37:41 UTC 2019,NetApp Release 9.5P8: Fri Sep 20 19:03:08 UTC 2019,NetApp Release 9.5P9: Mon Oct 28 09:18:10 UTC 2019,NetApp Release 9.6: Wed Jul 10 10:10:43 UTC 2019,NetApp Release 9.6: Wed Jul 10 16:25:33 UTC 2019,NetApp Release 9.6P11: Fri Oct 16 23:13:09 UTC 2020,NetApp Release 9.6P14: Mon Apr 05 15:34:55 UTC 2021,NetApp Release 9.6P15: Mon May 31 02:25:27 UTC 2021,NetApp Release 9.6P18: Tue Apr 05 11:08:11 UTC 2022,NetApp Release 9.6P2: Fri Jul 19 06:06:59 UTC 2019,NetApp Release 9.6P3: Sun Sep 22 08:26:36 UTC 2019,NetApp Release 9.6P4: Thu Nov 07 01:50:36 UTC 2019,NetApp Release 9.6P5: Fri Dec 13 18:21:56 UTC 2019,NetApp Release 9.6RC1: Sat May 11 05:58:14 UTC 2019,NetApp Release 9.6X11: Sun Mar 10 12:15:04 UTC 2019,NetApp Release 9.7: Thu Jan 09 17:11:21 UTC 2020,NetApp Release 9.7P10: Thu Dec 10 00:55:43 UTC 2020,NetApp Release 9.7P11: Tue Jan 12 18:41:08 UTC 2021,NetApp Release 9.7P11: Tue Jan 12 23:00:49 UTC 2021,NetApp Release 9.7P12: Tue Mar 02 23:38:44 UTC 2021,NetApp Release 9.7P13: Thu Apr 15 02:06:46 UTC 2021,NetApp Release 9.7P14: Thu Jun 10 22:54:31 UTC 2021,NetApp Release 9.7P15: Fri Aug 06 19:56:41 UTC 2021,NetApp Release 9.7P16: Fri Sep 10 22:33:12 UTC 2021,NetApp Release 9.7P17: Sat Nov 27 13:49:53 UTC 2021,NetApp Release 9.7P18: Thu Mar 10 09:57:16 UTC 2022,NetApp Release 9.7P19: Mon May 23 20:55:08 UTC 2022,NetApp Release 9.7P1: Thu Feb 27 01:25:24 UTC 2020,NetApp Release 9.7P20: Thu Aug 11 13:20:52 UTC 2022,NetApp Release 9.7P21: Fri Dec 23 11:52:44 UTC 2022,NetApp Release 9.7P22: Mon Mar 27 14:06:51 UTC 2023,NetApp Release 9.7P2: Sun Mar 22 21:50:44 UTC 2020,NetApp Release 9.7P3: Fri Apr 17 14:37:51 UTC 2020,NetApp Release 9.7P4: Sat May 23 00:43:42 UTC 2020,NetApp Release 9.7P5: Tue Jun 23 04:02:30 UTC 2020,NetApp Release 9.7P6: Tue Jul 28 04:06:27 UTC 2020,NetApp Release 9.7P7: Thu Aug 27 20:57:05 UTC 2020,NetApp Release 9.7P8: Thu Oct 15 04:11:57 UTC 2020,NetApp Release 9.7P9: Fri Nov 06 01:13:45 UTC 2020,NetApp Release 9.7RC1: Fri Nov 22 07:39:07 UTC 2019,NetApp Release 9.7X17: Sat Nov 16 22:06:11 UTC 2019,NetApp Release 9.8: Wed Dec 09 06:17:24 UTC 2020,NetApp Release 9.8P10: Fri Feb 04 19:51:21 UTC 2022,NetApp Release 9.8P11: Sat Mar 12 10:19:15 UTC 2022,NetApp Release 9.8P11D2: Thu Apr 14 12:50:07 UTC 2022,NetApp Release 9.8P12: Fri May 13 00:04:00 UTC 2022,NetApp Release 9.8P13: Fri Jul 15 22:40:56 UTC 2022,NetApp Release 9.8P14: Tue Aug 23 15:29:48 UTC 2022,NetApp Release 9.8P15: Wed Nov 23 09:29:16 UTC 2022,NetApp Release 9.8P16: Fri Dec 02 02:05:05 UTC 2022,NetApp Release 9.8P16: Thu Dec 01 20:42:37 UTC 2022,NetApp Release 9.8P17: Fri Feb 24 15:11:05 UTC 2023,NetApp Release 9.8P18: Wed Mar 29 13:19:30 UTC 2023,NetApp Release 9.8P19: Thu May 11 12:52:01 UTC 2023,NetApp Release 9.8P19: Thu May 11 17:26:53 UTC 2023,NetApp Release 9.8P1: Thu Jan 21 01:11:31 UTC 2021,NetApp Release 9.8P2: Tue Feb 16 03:49:46 UTC 2021,NetApp Release 9.8P3: Sat Mar 27 08:43:48 UTC 2021,NetApp Release 9.8P4: Mon May 03 09:22:00 UTC 2021,NetApp Release 9.8P5: Thu Jun 10 21:52:01 UTC 2021,NetApp Release 9.8P6: Tue Aug 03 16:21:11 UTC 2021,NetApp Release 9.8P7: Tue Sep 14 18:38:58 UTC 2021,NetApp Release 9.8P8: Thu Oct 21 19:21:56 UTC 2021,NetApp Release 9.8P9: Wed Dec 22 09:39:04 UTC 2021,NetApp Release 9.8RC1: Sat Oct 31 11:13:09 UTC 2020,NetApp Release 9.9.0: Fri Feb 05 11:29:21 UTC 2021,NetApp Release 9.9.1: Sun Jun 13 06:06:29 UTC 2021,NetApp Release 9.9.1: Sun Jun 13 11:45:05 UTC 2021,NetApp Release 9.9.1P10: Fri May 27 16:22:46 UTC 2022,NetApp Release 9.9.1P11: Tue Aug 02 19:12:28 UTC 2022,NetApp Release 9.9.1P12: Fri Sep 16 20:50:11 UTC 2022,NetApp Release 9.9.1P13: Fri Nov 18 17:29:45 UTC 2022,NetApp Release 9.9.1P14: Fri Jan 27 21:45:51 UTC 2023,NetApp Release 9.9.1P15: Mon Mar 27 12:31:36 UTC 2023,NetApp Release 9.9.1P16: Thu May 25 01:06:07 UTC 2023,NetApp Release 9.9.1P1: Fri Jul 02 20:21:27 UTC 2021,NetApp Release 9.9.1P2: Thu Aug 19 13:53:06 UTC 2021,NetApp Release 9.9.1P3: Sat Sep 25 13:10:46 UTC 2021,NetApp Release 9.9.1P3: Wed Sep 29 12:55:55 UTC 2021,NetApp Release 9.9.1P4: Mon Oct 11 09:20:31 UTC 2021,NetApp Release 9.9.1P5: Sat Nov 20 12:17:23 UTC 2021,NetApp Release 9.9.1P6: Tue Dec 21 13:38:22 UTC 2021,NetApp Release 9.9.1P7: Sat Jan 29 01:25:00 UTC 2022,NetApp Release 9.9.1P8: Tue Mar 15 22:46:53 UTC 2022,NetApp Release 9.9.1P9: Wed Apr 20 00:42:19 UTC 2022,NetApp Release Bluepaddle__9.7.0: Fri Nov 22 07:39:07 UTC 2019,NetApp Release Dirtwolf__9.8.0: Tue Jan 18 07:07:03 UTC 2022,NetApp Release Lighthouse__9.13.1: Mon Jun 19 07:42:08 UTC 2023,NetApp Release Lighthouse__9.13.1: Sun Jun 18 05:17:33 UTC 2023,NetApp Release Longboard__9.0.1: Sat Jun 04 09:45:33 UTC 2016,NetApp Release Metropolitan__9.11.1: Tue Jul 12 04:38:28 UTC 2022,NetApp Release Metropolitan__9.11.1: Wed Apr 27 01:48:31 UTC 2022,NetApp Release Stormking__9.10.1: Sun Mar 13 02:23:34 UTC 2022,NetApp Release Yellowdog__9.12.1: Mon Nov 28 22:02:55 UTC 2022,NetApp Release Yellowdog__9.12.1: Tue Jan 31 19:19:43 UTC 2023,NetApp Release Yellowdog__9.12.1: Tue Nov 08 20:32:25 UTC 2022,NetApp Release Yellowdog__9.12.1: Wed Oct 05 05:47:17 UTC 2022
-|AFF-A150,AFF-A200,AFF-A200,AFF-A220,AFF-A200,AFF-A220,AFF-A300,AFF-C190,AFF-A200,AFF-A250,AFF-A200,AFF-A250,FAS2620,FAS2720,AFF-A200,AFF-A300,AFF-A200,AFF-A300,AFF-A800,FAS8700,AFF-A200,AFF-A300,AFF-C190,FAS8200,AFF-A200,AFF-A400,AFF-A200,AFF-A400,FAS8200,AFF-A200,FAS8200,AFF-A220,AFF-A220,AFF-A250,AFF-A220,AFF-A250,AFF-A400,AFF-A220,AFF-A300,AFF-A220,AFF-A300,AFF-A700,AFF-A800,AFF-A220,AFF-A300,AFF8040,AFF-A220,AFF-A300,FAS8200,AFF-A220,AFF-A400,AFF-A220,AFF-A400,FAS2720,FAS8300,AFF-A220,AFF-A700,AFF-A800,AFF-A220,AFF-A700s,FAS2720,FAS8200,AFF-A220,FAS2620,FAS2720,FAS8200,AFF-A220,FAS2650,AFF-A220,FAS2720,AFF-A220,FAS2750,AFF-A220,FAS8200,AFF-A220,FAS8200,FAS8300,AFF-A220,FAS8200,FAS8700,AFF-A250,AFF-A250,AFF-A300,AFF-A250,AFF-A300,FAS2720,AFF-A250,AFF-A300,FAS9000,AFF-A250,AFF-A400,AFF-A250,AFF8080,AFF-A250,FAS2650,AFF-A250,FAS2720,AFF-A250,FAS8040,AFF-A250,FAS8200,AFF-A250,FAS8200,FAS8300,AFF-A250,FAS8300,AFF-A250,FAS8700,AFF-A300,AFF-A300,AFF-A400,AFF-A300,AFF-A400,AFF-A700,AFF-A300,AFF-A400,AFF-A700,FAS500f,FAS9000,AFF-A300,AFF-A400,AFF-A700,FAS8080,FAS9000,AFF-A300,AFF-A400,AFF-A700s,FAS8200,FAS8300,AFF-A300,AFF-A400,AFF-A800,AFF-A300,AFF-A400,AFF8080,FAS8040,FAS8300,AFF-A300,AFF-A400,FAS2720,AFF-A300,AFF-A400,FAS500f,FAS8700,FAS9000,AFF-A300,AFF-A400,FAS8040,FAS8200,AFF-A300,AFF-A400,FAS8040,FAS8300,AFF-A300,AFF-A400,FAS8200,AFF-A300,AFF-A400,FAS8200,FAS8700,AFF-A300,AFF-A400,FAS8300,AFF-A300,AFF-A400,FAS8700,FAS9000,AFF-A300,AFF-A400,FAS9000,AFF-A300,AFF-A700,AFF-A300,AFF-A700,AFF-A800,AFF-A300,AFF-A700,FAS2720,AFF-A300,AFF-A700,FAS8200,AFF-A300,AFF-A700,FAS8200,FAS9000,AFF-A300,AFF-A700s,AFF-A300,AFF-A700s,AFF8040,AFF8060,AFF8080,AFF-A300,AFF-A700s,FAS8200,AFF-A300,AFF-A800,AFF-A300,AFF-A800,AFF8080,FAS8060,AFF-A300,AFF-A800,FAS8200,AFF-A300,AFF-A800,FAS8200,FAS8300,AFF-A300,AFF-A800,FAS8300,AFF-A300,AFF-A900,AFF-A300,AFF8040,AFF-A300,AFF8040,FAS8040,FAS8200,AFF-A300,AFF8040,FAS8060,AFF-A300,AFF8080,AFF-A300,FAS2720,AFF-A300,FAS2750,FAS8060,AFF-A300,FAS500f,AFF-A300,FAS500f,FAS8040,AFF-A300,FAS500f,FAS8200,FAS8700,AFF-A300,FAS500f,FAS8200,FAS9000,AFF-A300,FAS8040,AFF-A300,FAS8040,FAS8300,AFF-A300,FAS8040,FAS9000,AFF-A300,FAS8060,AFF-A300,FAS8080,FAS8200,AFF-A300,FAS8200,AFF-A300,FAS8200,FAS8300,AFF-A300,FAS8300,AFF-A300,FAS8700,AFF-A300,FAS9000,AFF-A320,AFF-A320,AFF-A400,AFF-A800,FAS8200,AFF-A320,AFF-A800,AFF-A320,FAS8200,FAS8300,AFF-A320,FAS8300,AFF-A400,AFF-A400,AFF-A700,AFF-A400,AFF-A700,AFF-A900,FAS9000,AFF-A400,AFF-A700,FAS500f,FAS8700,FAS9000,AFF-A400,AFF-A700,FAS500f,FAS9000,AFF-A400,AFF-A700,FAS8200,AFF-A400,AFF-A700,FAS8200,FAS8700,AFF-A400,AFF-A700,FAS8300,AFF-A400,AFF-A700s,AFF-A400,AFF-A800,AFF-A400,AFF-A800,FAS8060,FAS8080,AFF-A400,AFF-A800,FAS8300,AFF-A400,AFF-A800,FAS8700,AFF-A400,AFF8040,AFF8080,AFF-A400,AFF8060,AFF8080,AFF-A400,AFF8080,AFF-A400,AFF8080,FAS8040,FAS8060,AFF-A400,AFF8080,FAS8060,FAS8080,FAS9000,AFF-A400,FAS2620,AFF-A400,FAS2650,AFF-A400,FAS2720,AFF-A400,FAS500f,AFF-A400,FAS500f,FAS8200,AFF-A400,FAS500f,FAS8700,FAS9000,AFF-A400,FAS500f,FAS9000,AFF-A400,FAS8020,AFF-A400,FAS8040,AFF-A400,FAS8040,FAS8200,AFF-A400,FAS8060,AFF-A400,FAS8060,FAS8300,AFF-A400,FAS8080,AFF-A400,FAS8080,FAS9000,AFF-A400,FAS8200,AFF-A400,FAS8200,FAS8300,AFF-A400,FAS8300,AFF-A400,FAS8700,AFF-A400,FAS9000,AFF-A700,AFF-A700,AFF-A700s,AFF-A700,AFF-A700s,AFF-A800,AFF-A700,AFF-A700s,FAS8200,AFF-A700,AFF-A800,AFF-A700,AFF-A800,AFF-A900,FAS8700,FAS9000,AFF-A700,AFF-A800,AFF-C800,FAS8200,AFF-A700,AFF-A800,AFF8080,AFF-A700,AFF-A800,FAS8060,FAS8300,AFF-A700,AFF-A800,FAS8200,AFF-A700,AFF-A800,FAS8700,AFF-A700,AFF-A800,FAS9000,AFF-A700,AFF-A900,AFF-A700,AFF-A900,FAS9000,AFF-A700,AFF-C400,AFF-A700,AFF8040,AFF-A700,AFF8080,AFF-A700,AFF8080,FAS500f,AFF-A700,AFF8080,FAS8060,AFF-A700,AFF8080,FAS8080,AFF-A700,AFF8080,FAS8080,FAS9000,AFF-A700,FAS2720,AFF-A700,FAS2750,FAS500f,AFF-A700,FAS500f,AFF-A700,FAS8040,AFF-A700,FAS8040,FAS8060,FAS9000,AFF-A700,FAS8040,FAS9000,AFF-A700,FAS8060,AFF-A700,FAS8080,FAS9000,AFF-A700,FAS8200,AFF-A700,FAS8200,FAS8300,AFF-A700,FAS8300,AFF-A700,FAS8300,FAS9000,AFF-A700,FAS8700,AFF-A700,FAS9000,AFF-A700,FAS9000,FAS9500,AFF-A700,FAS9500,AFF-A700s,AFF-A700s,AFF-A800,AFF-A700s,AFF-A800,FAS8200,AFF-A700s,AFF-A800,FAS8300,AFF-A700s,AFF-A800,FAS8700,FAS9000,AFF-A700s,AFF8080,AFF-A700s,AFF8080,FAS2650,AFF-A700s,FAS2720,AFF-A700s,FAS8040,AFF-A700s,FAS8060,FAS8080,AFF-A700s,FAS8080,FAS9000,AFF-A700s,FAS8200,AFF-A700s,FAS8300,AFF-A700s,FAS8700,FAS9000,AFF-A700s,FAS9000,AFF-A800,AFF-A800,AFF-A900,AFF-A800,AFF-A900,FAS9000,AFF-A800,AFF8080,AFF-A800,FAS500f,AFF-A800,FAS8040,FAS8200,FAS8300,AFF-A800,FAS8060,AFF-A800,FAS8200,AFF-A800,FAS8300,AFF-A800,FAS8700,AFF-A800,FAS9000,AFF-A900,AFF-A900,FAS2750,AFF-A900,FAS8300,AFF-A900,FAS9500,AFF-C190,AFF-C190,FAS2720,AFF-C190,FAS8200,AFF-C250,AFF-C250,FAS8200,AFF-C400,AFF8020,AFF8040,AFF8040,AFF8080,AFF8040,AFF8080,FAS8040,AFF8040,FAS2554,AFF8040,FAS500f,AFF8040,FAS8040,AFF8040,FAS8040,FAS8700,AFF8040,FAS8060,AFF8040,FAS8200,AFF8060,AFF8060,AFF8080,AFF8060,FAS8060,AFF8080,AFF8080,FAS8020,AFF8080,FAS8040,AFF8080,FAS8040,FAS8080,AFF8080,FAS8060,AFF8080,FAS8060,FAS8080,AFF8080,FAS8060,FAS8200,AFF8080,FAS8080,AFF8080,FAS8200,AFF8080,FAS8700,FAS9000,CDvM100,CDvM200,DM5000H,FAS2240-2,FAS2240-4,FAS2520,FAS2552,FAS2552,FAS2750,FAS2554,FAS2620,FAS2620,FAS8200,FAS2650,FAS2650,FAS2720,FAS2650,FAS2750,FAS2720,FAS2720,FAS2750,FAS2720,FAS8200,FAS2720,FAS8300,FAS2750,FAS2750,FAS8300,FAS2750,FAS8700,FAS3220,FAS3250,FAS3250,FAS8040,FAS3250,FAS8200,FAS3270,FAS500f,FAS500f,FAS8080,FAS8700,FAS500f,FAS8200,FAS6210,FAS6220,FAS8020,FAS8020,FAS8040,FAS8300,FAS8020,FAS8060,FAS8020,FAS8200,FAS8020,FAS8300,FAS8040,FAS8040,FAS8060,FAS8040,FAS8080,FAS8040,FAS8080,FAS9000,FAS8040,FAS8200,FAS8040,FAS8200,FAS8300,FAS8040,FAS8700,FAS8060,FAS8060,FAS8080,FAS8060,FAS8200,FAS8060,FAS8300,FAS8080,FAS8080,FAS9000,FAS8200,FAS8200,FAS8300,FAS8200,FAS8700,FAS8200,FAS9000,FAS8200,FAS9000,FAS9500,FAS8300,FAS8300,FAS9000,FAS8700,FAS9000,FAS9000,FAS9500,FAS9500,FASDvM300,SIMBOX,V6240
-|8.2.3P5 clustered Data ONTAP,8.3.0 clustered Data ONTAP,8.3.1 clustered Data ONTAP,8.3.1P2 clustered Data ONTAP,8.3.2 clustered Data ONTAP,8.3.2P12 clustered Data ONTAP,8.3.2P2 clustered Data ONTAP,8.3.2P5 clustered Data ONTAP,9.0.1 clustered Data ONTAP,9.1.0 clustered Data ONTAP,9.1.0P1 clustered Data ONTAP,9.1.0P10 clustered Data ONTAP,9.1.0P11 clustered Data ONTAP,9.1.0P12 clustered Data ONTAP,9.1.0P14 clustered Data ONTAP,9.1.0P15 clustered Data ONTAP,9.1.0P17 clustered Data ONTAP,9.1.0P19 clustered Data ONTAP,9.1.0P20 clustered Data ONTAP,9.1.0P5 clustered Data ONTAP,9.1.0P7 clustered Data ONTAP,9.1.0P8 clustered Data ONTAP,9.10.0 clustered Data ONTAP,9.10.1 clustered Data ONTAP,9.10.1P1 clustered Data ONTAP,9.10.1P10 clustered Data ONTAP,9.10.1P11 clustered Data ONTAP,9.10.1P12 clustered Data ONTAP,9.10.1P13 clustered Data ONTAP,9.10.1P2 clustered Data ONTAP,9.10.1P3 clustered Data ONTAP,9.10.1P4 clustered Data ONTAP,9.10.1P5 clustered Data ONTAP,9.10.1P6 clustered Data ONTAP,9.10.1P7 clustered Data ONTAP,9.10.1P8 clustered Data ONTAP,9.10.1P9 clustered Data ONTAP,9.11.0P1 clustered Data ONTAP,9.11.1 clustered Data ONTAP,9.11.1P1 clustered Data ONTAP,9.11.1P10 clustered Data ONTAP,9.11.1P2 clustered Data ONTAP,9.11.1P3 clustered Data ONTAP,9.11.1P4 clustered Data ONTAP,9.11.1P5 clustered Data ONTAP,9.11.1P6 clustered Data ONTAP,9.11.1P7 clustered Data ONTAP,9.11.1P8 clustered Data ONTAP,9.11.1P9 clustered Data ONTAP,9.11.1X12 clustered Data ONTAP,9.11.1X26 clustered Data ONTAP,9.12.1 clustered Data ONTAP,9.12.1P1 clustered Data ONTAP,9.12.1P2 clustered Data ONTAP,9.12.1P3 clustered Data ONTAP,9.12.1P4 clustered Data ONTAP,9.13.0 clustered Data ONTAP,9.13.0P1 clustered Data ONTAP,9.13.0P2 clustered Data ONTAP,9.13.0P3 clustered Data ONTAP,9.13.1 clustered Data ONTAP,9.13.1X19 clustered Data ONTAP,9.13.1X25 clustered Data ONTAP,9.13.1X33 clustered Data ONTAP,9.13.1X34 clustered Data ONTAP,9.13.1X35 clustered Data ONTAP,9.13.1X36 clustered Data ONTAP,9.3.0P1 clustered Data ONTAP,9.3.0P10 clustered Data ONTAP,9.3.0P12 clustered Data ONTAP,9.3.0P13 clustered Data ONTAP,9.3.0P14 clustered Data ONTAP,9.3.0P15 clustered Data ONTAP,9.3.0P18 clustered Data ONTAP,9.3.0P19 clustered Data ONTAP,9.3.0P2 clustered Data ONTAP,9.3.0P20 clustered Data ONTAP,9.3.0P21 clustered Data ONTAP,9.3.0P4 clustered Data ONTAP,9.3.0P6 clustered Data ONTAP,9.3.0P7 clustered Data ONTAP,9.3.0P8 clustered Data ONTAP,9.3.0P9 clustered Data ONTAP,9.4.0 clustered Data ONTAP,9.4.0P2 clustered Data ONTAP,9.4.0P3 clustered Data ONTAP,9.4.0P4 clustered Data ONTAP,9.4.0P6 clustered Data ONTAP,9.5.0 clustered Data ONTAP,9.5.0P1 clustered Data ONTAP,9.5.0P10 clustered Data ONTAP,9.5.0P12 clustered Data ONTAP,9.5.0P13 clustered Data ONTAP,9.5.0P14 clustered Data ONTAP,9.5.0P15 clustered Data ONTAP,9.5.0P16 clustered Data ONTAP,9.5.0P17 clustered Data ONTAP,9.5.0P18 clustered Data ONTAP,9.5.0P19 clustered Data ONTAP,9.5.0P2 clustered Data ONTAP,9.5.0P3 clustered Data ONTAP,9.5.0P4 clustered Data ONTAP,9.5.0P5 clustered Data ONTAP,9.5.0P6 clustered Data ONTAP,9.5.0P7 clustered Data ONTAP,9.5.0P8 clustered Data ONTAP,9.5.0P9 clustered Data ONTAP,9.6.0 clustered Data ONTAP,9.6.0P11 clustered Data ONTAP,9.6.0P14 clustered Data ONTAP,9.6.0P15 clustered Data ONTAP,9.6.0P18 clustered Data ONTAP,9.6.0P2 clustered Data ONTAP,9.6.0P3 clustered Data ONTAP,9.6.0P4 clustered Data ONTAP,9.6.0P5 clustered Data ONTAP,9.6.0X11 clustered Data ONTAP,9.7.0 clustered Data ONTAP,9.7.0P1 clustered Data ONTAP,9.7.0P10 clustered Data ONTAP,9.7.0P11 clustered Data ONTAP,9.7.0P12 clustered Data ONTAP,9.7.0P13 clustered Data ONTAP,9.7.0P14 clustered Data ONTAP,9.7.0P15 clustered Data ONTAP,9.7.0P16 clustered Data ONTAP,9.7.0P17 clustered Data ONTAP,9.7.0P18 clustered Data ONTAP,9.7.0P19 clustered Data ONTAP,9.7.0P2 clustered Data ONTAP,9.7.0P20 clustered Data ONTAP,9.7.0P21 clustered Data ONTAP,9.7.0P22 clustered Data ONTAP,9.7.0P3 clustered Data ONTAP,9.7.0P4 clustered Data ONTAP,9.7.0P5 clustered Data ONTAP,9.7.0P6 clustered Data ONTAP,9.7.0P7 clustered Data ONTAP,9.7.0P8 clustered Data ONTAP,9.7.0P9 clustered Data ONTAP,9.7.0X17 clustered Data ONTAP,9.8.0 clustered Data ONTAP,9.8.0P1 clustered Data ONTAP,9.8.0P10 clustered Data ONTAP,9.8.0P11 clustered Data ONTAP,9.8.0P11D2 clustered Data ONTAP,9.8.0P12 clustered Data ONTAP,9.8.0P13 clustered Data ONTAP,9.8.0P14 clustered Data ONTAP,9.8.0P15 clustered Data ONTAP,9.8.0P16 clustered Data ONTAP,9.8.0P17 clustered Data ONTAP,9.8.0P18 clustered Data ONTAP,9.8.0P19 clustered Data ONTAP,9.8.0P2 clustered Data ONTAP,9.8.0P3 clustered Data ONTAP,9.8.0P4 clustered Data ONTAP,9.8.0P5 clustered Data ONTAP,9.8.0P6 clustered Data ONTAP,9.8.0P7 clustered Data ONTAP,9.8.0P8 clustered Data ONTAP,9.8.0P9 clustered Data ONTAP,9.9.0 clustered Data ONTAP,9.9.1 clustered Data ONTAP,9.9.1P1 clustered Data ONTAP,9.9.1P10 clustered Data ONTAP,9.9.1P11 clustered Data ONTAP,9.9.1P12 clustered Data ONTAP,9.9.1P13 clustered Data ONTAP,9.9.1P14 clustered Data ONTAP,9.9.1P15 clustered Data ONTAP,9.9.1P16 clustered Data ONTAP,9.9.1P2 clustered Data ONTAP,9.9.1P3 clustered Data ONTAP,9.9.1P4 clustered Data ONTAP,9.9.1P5 clustered Data ONTAP,9.9.1P6 clustered Data ONTAP,9.9.1P7 clustered Data ONTAP,9.9.1P8 clustered Data ONTAP,9.9.1P9 clustered Data ONTAP
+|AFF-A150
+AFF-A200
+AFF-A220
+AFF-A250
+AFF-A300
+AFF-A320
+AFF-A400
+AFF-A700
+AFF-A700s
+AFF-A800
+AFF-A900
+AFF-C190
+AFF-C250
+AFF-C400
+AFF-C800
+AFF8020
+AFF8040
+AFF8060
+AFF8080
+CDvM100
+CDvM200
+DM5000H
+FAS2240-2
+FAS2240-4
+FAS2520
+FAS2552
+FAS2554
+FAS2620
+FAS2650
+FAS2720
+FAS2750
+FAS3220
+FAS3250
+FAS3270
+FAS500f
+FAS6210
+FAS6220
+FAS8020
+FAS8040
+FAS8060
+FAS8080
+FAS8200
+FAS8300
+FAS8700
+FAS9000
+FAS9500
+FASDvM300
+SIMBOX
+V6240
+|8.2.3P5
+8.3.0
+8.3.1
+8.3.1P2
+8.3.2
+8.3.2P12
+8.3.2P2
+8.3.2P5
+9.0.1
+9.1.0
+9.1.0P1
+9.1.0P10
+9.1.0P11
+9.1.0P12
+9.1.0P14
+9.1.0P15
+9.1.0P17
+9.1.0P19
+9.1.0P20
+9.1.0P5
+9.1.0P7
+9.1.0P8
+9.10.0
+9.10.1
+9.10.1P1
+9.10.1P10
+9.10.1P11
+9.10.1P12
+9.10.1P13
+9.10.1P2
+9.10.1P3
+9.10.1P4
+9.10.1P5
+9.10.1P6
+9.10.1P7
+9.10.1P8
+9.10.1P9
+9.11.0P1
+9.11.1
+9.11.1P1
+9.11.1P10
+9.11.1P2
+9.11.1P3
+9.11.1P4
+9.11.1P5
+9.11.1P6
+9.11.1P7
+9.11.1P8
+9.11.1P9
+9.11.1X12
+9.11.1X26
+9.12.1
+9.12.1P1
+9.12.1P2
+9.12.1P3
+9.12.1P4
+9.13.0
+9.13.0P1
+9.13.0P2
+9.13.0P3
+9.13.1
+9.13.1X19
+9.13.1X25
+9.13.1X33
+9.13.1X34
+9.13.1X35
+9.13.1X36
+9.3.0P1
+9.3.0P10
+9.3.0P12
+9.3.0P13
+9.3.0P14
+9.3.0P15
+9.3.0P18
+9.3.0P19
+9.3.0P2
+9.3.0P20
+9.3.0P21
+9.3.0P4
+9.3.0P6
+9.3.0P7
+9.3.0P8
+9.3.0P9
+9.4.0
+9.4.0P2
+9.4.0P3
+9.4.0P4
+9.4.0P6
+9.5.0
+9.5.0P1
+9.5.0P10
+9.5.0P12
+9.5.0P13
+9.5.0P14
+9.5.0P15
+9.5.0P16
+9.5.0P17
+9.5.0P18
+9.5.0P19
+9.5.0P2
+9.5.0P3
+9.5.0P4
+9.5.0P5
+9.5.0P6
+9.5.0P7
+9.5.0P8
+9.5.0P9
+9.6.0
+9.6.0P11
+9.6.0P14
+9.6.0P15
+9.6.0P18
+9.6.0P2
+9.6.0P3
+9.6.0P4
+9.6.0P5
+9.6.0X11
+9.7.0
+9.7.0P1
+9.7.0P10
+9.7.0P11
+9.7.0P12
+9.7.0P13
+9.7.0P14
+9.7.0P15
+9.7.0P16
+9.7.0P17
+9.7.0P18
+9.7.0P19
+9.7.0P2
+9.7.0P20
+9.7.0P21
+9.7.0P22
+9.7.0P3
+9.7.0P4
+9.7.0P5
+9.7.0P6
+9.7.0P7
+9.7.0P8
+9.7.0P9
+9.7.0X17
+9.8.0
+9.8.0P1
+9.8.0P10
+9.8.0P11
+9.8.0P11D2
+9.8.0P12
+9.8.0P13
+9.8.0P14
+9.8.0P15
+9.8.0P16
+9.8.0P17
+9.8.0P18
+9.8.0P19
+9.8.0P2
+9.8.0P3
+9.8.0P4
+9.8.0P5
+9.8.0P6
+9.8.0P7
+9.8.0P8
+9.8.0P9
+9.9.0
+9.9.1
+9.9.1P1
+9.9.1P10
+9.9.1P11
+9.9.1P12
+9.9.1P13
+9.9.1P14
+9.9.1P15
+9.9.1P16
+9.9.1P2
+9.9.1P3
+9.9.1P4
+9.9.1P5
+9.9.1P6
+9.9.1P7
+9.9.1P8
+9.9.1P9
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -7207,11 +8437,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|ONTAPI
+|NetApp ONTAP API
 |HTTP/HTTPS
 |HTTP/HTTPS
 |80/443
@@ -7228,15 +8458,48 @@ Management APIs used by this data source:
 == NetApp SolidFire 8.1+
 :description: Support Matrix Asciidoc for NetApp SolidFire 8.1+
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|FCN001, H610S-2,FCN001, H610S-2, SF19210,FCN001, SF19210, SF38410,H300S,H410S-0,H410S-0, H410S-2,H410S-0, H410S-2, H610S-2,H410S-0, SF2405, SF4805,H410S-1,H410S-2,H500S,H610S-1,H610S-1, H610S-2, SF4805,H610S-1, H610S-2, SF9605,H610S-1, SF4805,H610S-1, SF9605,H610S-2,H610S-2, H610S-4,H610S-2, H610S-4, SF19210,H610S-2, H610S-4, SF19210, SF4805,H610S-2, H610S-4, SF19210, SF9605,H610S-2, SF19210,H610S-2, SF19210, SF4805, SF9605,H610S-2, SF4805,H610S-2, SF9608,H610S-4,H610S-4, SF19210,H610S2,SF19210,SF19210, SF9605,SF38410,SF4805,SF4805, SF9605,SF9605
-|11.1.0.72,11.5.0.63,11.7.0.76,11.8.0.23,12.0.0.333,12.2.0.777,12.3.0.958,12.3.1.103,12.3.1.165,12.3.2.3,12.5.0.897,12.7.0.380
+| H410S-2
+ H610S-2
+ H610S-4
+ SF19210
+ SF2405
+ SF38410
+ SF4805
+ SF9605
+ SF9608
+FCN001
+H300S
+H410S-0
+H410S-1
+H410S-2
+H500S
+H610S-1
+H610S-2
+H610S-4
+H610S2
+SF19210
+SF38410
+SF4805
+SF9605
+|11.1.0.72
+11.5.0.63
+11.7.0.76
+11.8.0.23
+12.0.0.333
+12.2.0.777
+12.3.0.958
+12.3.1.103
+12.3.1.165
+12.3.2.3
+12.5.0.897
+12.7.0.380
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -7422,11 +8685,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|SolidFire API
+|SolidFire REST API
 |HTTPS
 |HTTPS
 |443
@@ -7443,16 +8706,41 @@ Management APIs used by this data source:
 == NetApp StorageGRID (HTTPS)
 :description: Support Matrix Asciidoc for NetApp StorageGRID (HTTPS)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Models <.<|Firmware versions 
 
-|3.0,3.2,3.3,3.4,3.5
+|3.0
+3.2
+3.3
+3.4
+3.5
 |Webscale
-|11.2.0,11.4.0,11.4.0.3,11.4.0.4,11.5.0.1,11.5.0.11,11.5.0.2,11.5.0.3,11.5.0.6,11.5.0.7,11.5.0.8,11.5.0.9,11.6.0,11.6.0.1,11.6.0.10,11.6.0.2,11.6.0.4,11.6.0.5,11.6.0.7,11.6.0.8,11.6.0.9,11.7.0
+|11.2.0
+11.4.0
+11.4.0.3
+11.4.0.4
+11.5.0.1
+11.5.0.11
+11.5.0.2
+11.5.0.3
+11.5.0.6
+11.5.0.7
+11.5.0.8
+11.5.0.9
+11.6.0
+11.6.0.1
+11.6.0.10
+11.6.0.2
+11.6.0.4
+11.6.0.5
+11.6.0.7
+11.6.0.8
+11.6.0.9
+11.7.0
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -7541,7 +8829,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -7562,15 +8850,34 @@ Management APIs used by this data source:
 == Nutanix Storage (REST)
 :description: Support Matrix Asciidoc for Nutanix Storage (REST)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|HPE DL360-8 G10,HPE DL380-12 G10,HPE DL380-12 G10, HPE DL360-8 G10,NX-3060-G5, NX-3060-G6, NX-3170-G6,NX-3170-G7,NX-5155-G6,NX-8035-G6,NX-8035-G7,NX-8035-G7, NX-8035-G6,NX-8150-G7,NX-8150-G8,NX-8150-G8, NX-8150-G7
-|6.5.1.6,6.5.2,6.5.2.5,6.5.2.6,6.5.2.7,6.5.3,6.5.3.1
+| HPE DL360-8 G10
+ NX-3060-G6
+ NX-3170-G6
+ NX-8035-G6
+ NX-8150-G7
+HPE DL360-8 G10
+HPE DL380-12 G10
+NX-3060-G5
+NX-3170-G7
+NX-5155-G6
+NX-8035-G6
+NX-8035-G7
+NX-8150-G7
+NX-8150-G8
+|6.5.1.6
+6.5.2
+6.5.2.5
+6.5.2.6
+6.5.2.7
+6.5.3
+6.5.3.1
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -7752,7 +9059,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -7773,13 +9080,13 @@ Management APIs used by this data source:
 == OpenStack (REST API / SSH)
 :description: Support Matrix Asciidoc for OpenStack (REST API / SSH)
 
-Models and versions supported by this data source:
-|===
-
-
 
 |===
-Products supported by this data source:
+
+
+
+|===
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -7872,7 +9179,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -7903,15 +9210,41 @@ Management APIs used by this data source:
 == Oracle ZFS (HTTPS)
 :description: Support Matrix Asciidoc for Oracle ZFS (HTTPS)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|Sun ZFS Storage 7330,Sun ZFS Storage 7335,Sun ZFS Storage 7350,Sun ZFS Storage 7370,Sun ZFS Storage 7420,Sun ZFS Storage 7430,Sun ZFS Storage 7450
-|2013.06.05.6.12,1-1.3,2013.06.05.6.15,1-1.2,2013.06.05.7.21,1-1.3,2013.06.05.7.24,1-1.1,2013.06.05.7.25,1-1.1,2013.06.05.7.26,1-1.1,2013.06.05.8.0,1-1.34,2013.06.05.8.26,1-1.4,2013.06.05.8.29,1-1.3,2013.06.05.8.35,1-1.4,2013.06.05.8.37,1-1.1,2013.06.05.8.47,1-1.2,2013.06.05.8.50,1-1.3,2013.06.05.8.53,1-1.2,2013.06.05.8.6,1-1.4,2013.06.05.8.7,1-1.4
+|Sun ZFS Storage 7330
+Sun ZFS Storage 7335
+Sun ZFS Storage 7350
+Sun ZFS Storage 7370
+Sun ZFS Storage 7420
+Sun ZFS Storage 7430
+Sun ZFS Storage 7450
+|1-1.1
+1-1.2
+1-1.3
+1-1.34
+1-1.4
+2013.06.05.6.12
+2013.06.05.6.15
+2013.06.05.7.21
+2013.06.05.7.24
+2013.06.05.7.25
+2013.06.05.7.26
+2013.06.05.8.0
+2013.06.05.8.26
+2013.06.05.8.29
+2013.06.05.8.35
+2013.06.05.8.37
+2013.06.05.8.47
+2013.06.05.8.50
+2013.06.05.8.53
+2013.06.05.8.6
+2013.06.05.8.7
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -8073,7 +9406,7 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
@@ -8094,15 +9427,74 @@ Management APIs used by this data source:
 == Pure Storage FlashArray (HTTP)
 :description: Support Matrix Asciidoc for Pure Storage FlashArray (HTTP)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|Models <.<|Firmware versions 
 
-|DFSC1,FA-X20R3,DFSC1,FA-X50R2,DFSC1,FA-X50R3,DFSC1,FA-X70R2,DFSC1,FA-X70R3,DFSC1,FA-X90R2,DFSC1,FA-X90R3,DFSC1,FA-XL130,FA-420,FA-450,FA-C40R3,FA-C60,FA-C60R3,FA-X10R2,FA-X10R3,FA-X20R2,FA-X20R3,FA-X50R2,FA-X50R3,FA-X70R2,FA-X70R3,FA-X90R2,FA-X90R3,FA-XL130,FA-XL170,FA-m10r2,FA-m20,FA-m20r2,FA-m50,FA-m50r2,FA-m70,FA-m70r2,FA-x70
-|4.8.8,5.3.14,5.3.15,5.3.17,5.3.18,5.3.20,5.3.21,5.3.6,5.3.8,6.1.10,6.1.11,6.1.13,6.1.14,6.1.15,6.1.17,6.1.18,6.1.19,6.1.21,6.1.22,6.1.23,6.1.5,6.2.13,6.2.7,6.2.9,6.3.10,6.3.11,6.3.12,6.3.2,6.3.5,6.3.6,6.3.7,6.3.9,6.4.3,6.4.4,6.4.5
+|DFSC1
+FA-420
+FA-450
+FA-C40R3
+FA-C60
+FA-C60R3
+FA-X10R2
+FA-X10R3
+FA-X20R2
+FA-X20R3
+FA-X50R2
+FA-X50R3
+FA-X70R2
+FA-X70R3
+FA-X90R2
+FA-X90R3
+FA-XL130
+FA-XL170
+FA-m10r2
+FA-m20
+FA-m20r2
+FA-m50
+FA-m50r2
+FA-m70
+FA-m70r2
+FA-x70
+|4.8.8
+5.3.14
+5.3.15
+5.3.17
+5.3.18
+5.3.20
+5.3.21
+5.3.6
+5.3.8
+6.1.10
+6.1.11
+6.1.13
+6.1.14
+6.1.15
+6.1.17
+6.1.18
+6.1.19
+6.1.21
+6.1.22
+6.1.23
+6.1.5
+6.2.13
+6.2.7
+6.2.9
+6.3.10
+6.3.11
+6.3.12
+6.3.2
+6.3.5
+6.3.6
+6.3.7
+6.3.9
+6.4.3
+6.4.4
+6.4.5
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -8245,11 +9637,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Pure API
+|Pure Storage REST API
 |HTTP/HTTPS
 |HTTP/HTTPS
 |80/443
@@ -8266,13 +9658,13 @@ Management APIs used by this data source:
 == Red Hat RHV (REST)
 :description: Support Matrix Asciidoc for Red Hat RHV (REST)
 
-Models and versions supported by this data source:
-|===
-
-
 
 |===
-Products supported by this data source:
+
+
+
+|===
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -8353,11 +9745,11 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|RHEV REST API
+|Red Hat RHEV REST API
 |HTTPS
 |HTTPS
 |443
@@ -8374,15 +9766,19 @@ Management APIs used by this data source:
 == Rubrik Storage
 :description: Support Matrix Asciidoc for Rubrik Storage
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions <.<|Firmware versions 
 
 |v5.3
-|5.3.3-p1-19391,6.0.3-p3-13584,7.0.2-p4-15876,7.0.3-p1-15949,8.0.3-p2-22743
+|5.3.3-p1-19391
+6.0.3-p3-13584
+7.0.2-p4-15876
+7.0.3-p1-15949
+8.0.3-p2-22743
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -8476,13 +9872,13 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|Google Compute Platform API
+|Rubrik Storage REST API
 |HTTPS
-|
+|HTTPS
 |443
 |
 |true
@@ -8497,14 +9893,22 @@ Management APIs used by this data source:
 == NetApp HCI Virtual Center
 :description: Support Matrix Asciidoc for NetApp HCI Virtual Center
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions 
 
-|VMware vCenter Server 6.7.0 build-10244857,VMware vCenter Server 6.7.0 build-14368073,VMware vCenter Server 7.0.3 build-19234570,VMware vCenter Server 7.0.3 build-20150588,VMware vCenter Server 7.0.3 build-20395099,VMware vCenter Server 7.0.3 build-20990077,VMware vCenter Server 7.0.3 build-21477706,VMware vCenter Server 7.0.3 build-21784236,VMware vCenter Server 8.0.1 build-21815093
+|VMware vCenter Server 6.7.0 build-10244857
+VMware vCenter Server 6.7.0 build-14368073
+VMware vCenter Server 7.0.3 build-19234570
+VMware vCenter Server 7.0.3 build-20150588
+VMware vCenter Server 7.0.3 build-20395099
+VMware vCenter Server 7.0.3 build-20990077
+VMware vCenter Server 7.0.3 build-21477706
+VMware vCenter Server 7.0.3 build-21784236
+VMware vCenter Server 8.0.1 build-21815093
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -8655,14 +10059,14 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|VMware API
+|VMware REST API
 |Web Services
 |HTTP/HTTPS
-|
+|80/443
 |
 |true
 |true
@@ -8676,14 +10080,16 @@ Management APIs used by this data source:
 == VMware Cloud on AWS
 :description: Support Matrix Asciidoc for VMware Cloud on AWS
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions 
 
-|VMware vCenter Server 8.0.0 build-21709157,VMware vCenter Server 7.0.3 build-20870699,VMware vCenter Server 7.0.3 build-20532039
+|VMware vCenter Server 7.0.3 build-20532039
+VMware vCenter Server 7.0.3 build-20870699
+VMware vCenter Server 8.0.0 build-21709157
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -8811,14 +10217,14 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|VMware API
+|VMware REST API
 |Web Services
 |HTTP/HTTPS
-|
+|80/443
 |
 |true
 |true
@@ -8832,14 +10238,98 @@ Management APIs used by this data source:
 == VMware vSphere (Web Services)
 :description: Support Matrix Asciidoc for VMware vSphere (Web Services)
 
-Models and versions supported by this data source:
+Models and versions supported by this data collector:
 |===
 <.<|API versions 
 
-|VMware ESXi 6.0.0 build-10719132,VMware ESXi 6.0.0 build-2494585,VMware ESXi 6.0.0 build-5572656,VMware ESXi 6.0.0 build-9313334,VMware ESXi 6.5.0 build-14990892,VMware ESXi 6.5.0 build-5969303,VMware ESXi 7.0.0 build-15843807,VMware ESXi 7.0.3 build-20036589,VMware ESXi 7.0.3 build-20328353,VMware ESXi 7.0.3 build-20842708,VMware vCenter Server 5.0.0 build-3073236,VMware vCenter Server 5.0.0 build-455964,VMware vCenter Server 5.0.0 build-623373,VMware vCenter Server 5.1.0 build-3814779,VMware vCenter Server 5.5.0 build-1750787,VMware vCenter Server 5.5.0 build-2442329,VMware vCenter Server 5.5.0 build-3000241,VMware vCenter Server 5.5.0 build-3252642,VMware vCenter Server 5.5.0 build-3721164,VMware vCenter Server 5.5.0 build-4180647,VMware vCenter Server 5.5.0 build-6516310,VMware vCenter Server 5.5.0 build-9911218,VMware vCenter Server 6.0.0 build-13638472,VMware vCenter Server 6.0.0 build-14510545,VMware vCenter Server 6.0.0 build-2776511,VMware vCenter Server 6.0.0 build-3634793,VMware vCenter Server 6.0.0 build-3634794,VMware vCenter Server 6.0.0 build-5960847,VMware vCenter Server 6.0.0 build-7924803,VMware vCenter Server 6.0.0 build-8803875,VMware vCenter Server 6.0.0 build-9313458,VMware vCenter Server 6.5.0 build-10964411,VMware vCenter Server 6.5.0 build-15679215,VMware vCenter Server 6.5.0 build-17590285,VMware vCenter Server 6.5.0 build-17994927,VMware vCenter Server 6.5.0 build-18499837,VMware vCenter Server 6.5.0 build-18711281,VMware vCenter Server 6.5.0 build-19261680,VMware vCenter Server 6.5.0 build-20510539,VMware vCenter Server 6.5.0 build-7119157,VMware vCenter Server 6.7.0 build-10244857,VMware vCenter Server 6.7.0 build-11727113,VMware vCenter Server 6.7.0 build-13007421,VMware vCenter Server 6.7.0 build-13639324,VMware vCenter Server 6.7.0 build-14368073,VMware vCenter Server 6.7.0 build-15129973,VMware vCenter Server 6.7.0 build-15679289,VMware vCenter Server 6.7.0 build-17137327,VMware vCenter Server 6.7.0 build-18010599,VMware vCenter Server 6.7.0 build-18485185,VMware vCenter Server 6.7.0 build-18831049,VMware vCenter Server 6.7.0 build-19299595,VMware vCenter Server 6.7.0 build-19832247,VMware vCenter Server 6.7.0 build-19832280,VMware vCenter Server 6.7.0 build-20504301,VMware vCenter Server 6.7.0 build-20504362,VMware vCenter Server 6.7.0 build-8170161,VMware vCenter Server 6.7.0 build-9433931,VMware vCenter Server 7.0.0 build-16620013,VMware vCenter Server 7.0.0 build-16749670,VMware vCenter Server 7.0.1 build-17491160,VMware vCenter Server 7.0.2 build-17694817,VMware vCenter Server 7.0.2 build-17958471,VMware vCenter Server 7.0.2 build-18356314,VMware vCenter Server 7.0.2 build-18455184,VMware vCenter Server 7.0.3 build-18700403,VMware vCenter Server 7.0.3 build-18778458,VMware vCenter Server 7.0.3 build-19234570,VMware vCenter Server 7.0.3 build-19480866,VMware vCenter Server 7.0.3 build-19717403,VMware vCenter Server 7.0.3 build-20051473,VMware vCenter Server 7.0.3 build-20150588,VMware vCenter Server 7.0.3 build-20395099,VMware vCenter Server 7.0.3 build-20845200,VMware vCenter Server 7.0.3 build-20990077,VMware vCenter Server 7.0.3 build-21290409,VMware vCenter Server 7.0.3 build-21477706,VMware vCenter Server 7.0.3 build-21784236,VMware vCenter Server 7.0.3 build-21958406,VMware vCenter Server 8.0.0 build-20920323,VMware vCenter Server 8.0.0 build-21216066,VMware vCenter Server 8.0.0 build-21457384,VMware vCenter Server 8.0.1 build-21560480,VMware vCenter Server 8.0.1 build-21815093,VMware vCenter Server 8.0.1 build-21860503
+|VMware ESXi 6.0.0 build-10719132
+VMware ESXi 6.0.0 build-2494585
+VMware ESXi 6.0.0 build-5572656
+VMware ESXi 6.0.0 build-9313334
+VMware ESXi 6.5.0 build-14990892
+VMware ESXi 6.5.0 build-5969303
+VMware ESXi 7.0.0 build-15843807
+VMware ESXi 7.0.3 build-20036589
+VMware ESXi 7.0.3 build-20328353
+VMware ESXi 7.0.3 build-20842708
+VMware vCenter Server 5.0.0 build-3073236
+VMware vCenter Server 5.0.0 build-455964
+VMware vCenter Server 5.0.0 build-623373
+VMware vCenter Server 5.1.0 build-3814779
+VMware vCenter Server 5.5.0 build-1750787
+VMware vCenter Server 5.5.0 build-2442329
+VMware vCenter Server 5.5.0 build-3000241
+VMware vCenter Server 5.5.0 build-3252642
+VMware vCenter Server 5.5.0 build-3721164
+VMware vCenter Server 5.5.0 build-4180647
+VMware vCenter Server 5.5.0 build-6516310
+VMware vCenter Server 5.5.0 build-9911218
+VMware vCenter Server 6.0.0 build-13638472
+VMware vCenter Server 6.0.0 build-14510545
+VMware vCenter Server 6.0.0 build-2776511
+VMware vCenter Server 6.0.0 build-3634793
+VMware vCenter Server 6.0.0 build-3634794
+VMware vCenter Server 6.0.0 build-5960847
+VMware vCenter Server 6.0.0 build-7924803
+VMware vCenter Server 6.0.0 build-8803875
+VMware vCenter Server 6.0.0 build-9313458
+VMware vCenter Server 6.5.0 build-10964411
+VMware vCenter Server 6.5.0 build-15679215
+VMware vCenter Server 6.5.0 build-17590285
+VMware vCenter Server 6.5.0 build-17994927
+VMware vCenter Server 6.5.0 build-18499837
+VMware vCenter Server 6.5.0 build-18711281
+VMware vCenter Server 6.5.0 build-19261680
+VMware vCenter Server 6.5.0 build-20510539
+VMware vCenter Server 6.5.0 build-7119157
+VMware vCenter Server 6.7.0 build-10244857
+VMware vCenter Server 6.7.0 build-11727113
+VMware vCenter Server 6.7.0 build-13007421
+VMware vCenter Server 6.7.0 build-13639324
+VMware vCenter Server 6.7.0 build-14368073
+VMware vCenter Server 6.7.0 build-15129973
+VMware vCenter Server 6.7.0 build-15679289
+VMware vCenter Server 6.7.0 build-17137327
+VMware vCenter Server 6.7.0 build-18010599
+VMware vCenter Server 6.7.0 build-18485185
+VMware vCenter Server 6.7.0 build-18831049
+VMware vCenter Server 6.7.0 build-19299595
+VMware vCenter Server 6.7.0 build-19832247
+VMware vCenter Server 6.7.0 build-19832280
+VMware vCenter Server 6.7.0 build-20504301
+VMware vCenter Server 6.7.0 build-20504362
+VMware vCenter Server 6.7.0 build-8170161
+VMware vCenter Server 6.7.0 build-9433931
+VMware vCenter Server 7.0.0 build-16620013
+VMware vCenter Server 7.0.0 build-16749670
+VMware vCenter Server 7.0.1 build-17491160
+VMware vCenter Server 7.0.2 build-17694817
+VMware vCenter Server 7.0.2 build-17958471
+VMware vCenter Server 7.0.2 build-18356314
+VMware vCenter Server 7.0.2 build-18455184
+VMware vCenter Server 7.0.3 build-18700403
+VMware vCenter Server 7.0.3 build-18778458
+VMware vCenter Server 7.0.3 build-19234570
+VMware vCenter Server 7.0.3 build-19480866
+VMware vCenter Server 7.0.3 build-19717403
+VMware vCenter Server 7.0.3 build-20051473
+VMware vCenter Server 7.0.3 build-20150588
+VMware vCenter Server 7.0.3 build-20395099
+VMware vCenter Server 7.0.3 build-20845200
+VMware vCenter Server 7.0.3 build-20990077
+VMware vCenter Server 7.0.3 build-21290409
+VMware vCenter Server 7.0.3 build-21477706
+VMware vCenter Server 7.0.3 build-21784236
+VMware vCenter Server 7.0.3 build-21958406
+VMware vCenter Server 8.0.0 build-20920323
+VMware vCenter Server 8.0.0 build-21216066
+VMware vCenter Server 8.0.0 build-21457384
+VMware vCenter Server 8.0.1 build-21560480
+VMware vCenter Server 8.0.1 build-21815093
+VMware vCenter Server 8.0.1 build-21860503
 
 |===
-Products supported by this data source:
+Products supported by this data collector:
 |===
 ^|Product ^|Category ^|Feature/Attribute ^|Status ^|Protocol Used ^|Additional Information 
 
@@ -9005,14 +10495,14 @@ Products supported by this data source:
 
 |===
 
-Management APIs used by this data source:
+Management APIs used by this data collector:
 |===
 ^|API ^|Protocol Used ^|Transport layer protocol used ^|Incoming ports used ^|Outgoing ports used ^|Supports authentication ^|Requires only 'Read-only' credentials ^|Supports Encryption ^|Firewall friendly (static ports) 
 
-|VMware API
+|VMware REST API
 |Web Services
 |HTTP/HTTPS
-|
+|80/443
 |
 |true
 |true
