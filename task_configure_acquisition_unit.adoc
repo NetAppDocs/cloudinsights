@@ -208,7 +208,12 @@ If you are uninstalling a *Linux* acquisition unit:
 . In Cloud Insights, go to *Admin > Data Collectors* and select the *Acquisition Units* tab.
 . Click the Options button to the right of the Acquisition Unit you wish to uninstall, and select _Delete_. You can delete an Acquisition Unit only if there are no data collectors assigned to it.
 
-NOTE: You cannot delete an Acquisition Unit (AU) that has data collectors connected to it. Move all of the AU's data collectors to another AU (edit the collector and simply select a different AU) before deleting the original AU.
+NOTE: You cannot delete an Acquisition Unit (AU) that has data collectors connected to it. Move all of the AU's data collectors to another AU (edit the collector and simply select a different AU) before deleting the original AU.  
+
+An Acquisition unit with a star next to it is being used for device resolution. Before removing this AU, you must select another AU to use for Device Resolution. Hover over a different AU and open the "three dots" menu to select "Use for Device Resolution".
+
+image:AU_for_Device_Resolution.png[AU used for device resolution]
+
 
 
 
