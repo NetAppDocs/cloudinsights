@@ -14,18 +14,20 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 :imagesdir: ./media/
 
 [.lead]
+Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
+
+////
 Cloud Insights uses a number of components, including link:https://docs.fluentbit.io/manual[Fluent Bit] and link:https://docs.influxdata.com/telegraf/[Telegraf], for collection of Kubernetes data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
+////
 
 toc::[]
 
-Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
+//image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 
-image:kubernetes_tile.png[Kubernetes Data Collector Tile]
+//Below is a high-level illustration showing where the Operator resides in your environment. Depending on your environment, _Proxy Server_ may or may not be required. 
 
-Below is a high-level illustration showing where the Operator resides in your environment. Depending on your environment, _Proxy Server_ may or may not be required. 
-
-image:CI_Diagram_with_NKMO.png[A high-level map showing NKMO residing in the Kubernetes Cluster, with arrows showing how data travels to the cluster from the Hosts, proxy server, all rolling up to Cloud Insights]
+//image:CI_Diagram_with_NKMO.png[A high-level map showing NKMO residing in the Kubernetes Cluster, with arrows showing how data travels to the cluster from the Hosts, proxy server, all rolling up to Cloud Insights]
 
 The Operator (NKMO) and the data collectors are downloaded from the Cloud Insights Docker Registry. Once installed, NKMO then manages any Operator-compatible collectors deployed in the Kubernetes cluster nodes to acquire data, including managing the life cycle of those collectors. Following this chain, data is acquired from the collectors and sent through to Cloud Insights. 
 
@@ -406,7 +408,7 @@ image:NKMO-Instructions-2.png[]
 
 .Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
 
-. Enter a unique cluster name and namespace. If you are <<upgrading, upgrading>> from the script-based agent or a previous Kubernetes Operator, use the same cluster name and namespace. 
+. Enter a unique cluster name and namespace. If you are <<upgrading, upgrading>> from a previous Kubernetes Operator, use the same cluster name and namespace. 
 . Once these are entered, you can copy the Download Command snippet to the clipboard.
 . Paste the snippet into a _bash_ window and execute it. The Operator installation files will be downloaded. Note that the snippet has a unique key and is valid for 24 hours.
 
@@ -445,6 +447,7 @@ This screen also shows current Log Collection status. Below are the possible sta
 
 == Upgrading 
 
+////
 NOTE: If you have a previously installed script-based agent, you _must_ upgrade to the NetApp Kubernetes Monitoring Operator.
 
 === Upgrading from script-based agent to NetApp Kubernetes Monitoring Operator
@@ -489,7 +492,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 
 //image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
-
+////
 
 
 === Upgrading to the latest NetApp Kubernetes Monitoring Operator
@@ -540,6 +543,7 @@ To start the Netapp Kubernetes Monitoring Operator:
 
 == Uninstalling
 
+////
 NOTE: If you are running on a previously-installed script-based Kubernetes agent, you must <<upgrading, upgrade>> to the NetApp Kubernetes Monitoring Operator.
 
 
@@ -561,7 +565,7 @@ If the monitoring namespace is being used solely for Telegraf:
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
-
+////
 
 
 === To remove the NetApp Kubernetes Monitoring Operator
@@ -589,7 +593,7 @@ Execute each of the following commands in order. Depending on your current insta
   kubectl delete ns <NAMESPACE>
 
 
-If a Security Context Constraint was previously-created manually for a script-based Telegraf installation:
+If a Security Context Constraint was previously-created:
 
  kubectl delete scc telegraf-hostaccess
  
