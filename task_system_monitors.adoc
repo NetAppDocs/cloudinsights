@@ -509,9 +509,9 @@ Your system generates and transmits an AutoSupport or "call home" message to Net
 === K8s Monitors
 
 |===
-|Monitor Name|Description|Corrective Actions|Severity
+|Monitor Name|Description|Corrective Actions|Thresholds
 |Persistent Volume Latency High
-|High persistent volume latencies means that the applications themselves may suffer and be unable to accomplish their tasks. Monitoring persistent volume latencies is critical to maintain application 	consistent performance. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds.
+|High persistent volume latencies means that the applications themselves may suffer and be unable to accomplish their tasks. Monitoring persistent volume latencies is critical to maintain application consistent performance. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds.
 |**Immediate Actions**
 	If critical threshold is breached, consider immediate actions to minimize service disruption:
 		If the volume has a QoS policy assigned to it, evaluate its limit thresholds in case they are causing the volume workload to get throttled.
@@ -539,7 +539,7 @@ Your system generates and transmits an AutoSupport or "call home" message to Net
 
 |High Retransmit Rate 
 |High TCP Retransmit Rate
-|Check for Network congestion ▒ Identify workloads that consume a lot of network bandwidth.
+|Check for Network congestion - Identify workloads that consume a lot of network bandwidth.
 	Check for high Pod CPU utilization.
 	Check hardware network performance.
 |Warning @ > 10 %
