@@ -99,7 +99,9 @@ sidebar:
       entries:
         - title: Kubernetes Overview Page
           url: /kubernetes_landing_page.html
-        - title: Getting Started with the Monitoring Operator
+        - title: Before Installing or Upgrading the Operator
+          url: /pre-requisites_for_k8s_operator.html
+        - title: Installing the Monitoring Operator
           url: /task_config_telegraf_agent_k8s.html
         - title: Monitoring Operator Options
           url: /telegraf_agent_k8s_config_options.html
@@ -337,12 +339,15 @@ sidebar:
         - title: Researching Data Collector Errors
           url: /task_research_failed_collector.html
           
+    - title: Data Collector Support Matrix
+      url: /reference_data_collector_support_matrix.html
+
     - title: Reference & Support
       entries:
         - title: Requesting Support
           url: /concept_requesting_support.html
-        - title: Data Collector Support Matrix
-          url: /reference_data_collector_support_matrix.html
+#        - title: Data Collector Support Matrix
+#          url: /reference_data_collector_support_matrix.html
           
         - title: Data Collector Reference - Infrastructure
           entries:
