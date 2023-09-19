@@ -95,8 +95,11 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 ||readFromHead|true/false, should fluent bit read the log from head
 ||timeout|timeout, in secs
 ||dnsMode|TCP/UDP, mode for DNS
-|workload-map||Configuration options that can customize the workload map collection and installation of the Operator
+||fluent-bit-tolerations|fluent-bit-ds additional tolerations.
+||event-exporter-tolerations|event-exporter additional tolerations.
 
+
+|workload-map||Configuration options that can customize the workload map collection and installation of the Operator
 ||cpuLimit|CPU Limit for net observer ds
 ||memLimit|mem Limit for net observer ds
 ||cpuRequest|CPU request for net observer ds
@@ -106,11 +109,8 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 ||bpfPollInterval|BPF poll interval, in seconds
 ||enableDNSLookup|true/false, enable DNS lookup
 
-||fluent-bit-tolerations|fluent-bit-ds additional tolerations.
-||event-exporter-tolerations|event-exporter additional tolerations.
-
 |workload-map
-||l4-tolerations|net-observer-l4-ds additional tolerations.
+|l4-tolerations|net-observer-l4-ds additional tolerations.
 
 |===
 
