@@ -40,23 +40,39 @@ image:LogExplorer_QueryForFailed.png[Query example showing filter]
 == Filtering
 
 === Include / Exclude
-When filtering the logs, you can choose to *include* or *exclude* the strings you type. Excluded strings are displayed in the completed filter as "NOT <string>".
+When filtering the logs, you can choose to *include* (i.e. "Filter to") or *exclude* the strings you type. Excluded strings are displayed in the completed filter as "NOT <string>".
 
 image:Log_Advanced_Query_Filter_Exclude.png[Log Filter Showing Exclude option]
+
+Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
+
+NOTE: At any point, you can click on _Create a Log Monitor_ to create a new Monitor based on the current filter.
 
 
 === Advanced Filtering
 
 When you are filtering for text or list values in queries or dashboard widgets, as you begin typing you are presented with the option to create a *wildcard filter* based on the current text. Selecting this option will return all results that match the wildcard expression. You can also create expressions using NOT, AND, or OR, or you can select the "None" option to filter for null values.
 
-//image:Type-Ahead-Example-ingest.png[Wildcard Filter]
+NOTE: Be sure to Save your query early and often as you build your filtering. Advanced Querying is "free-form" string entry, and parsing mistakes may occur as you build.
 
-Filters based on wildcards or expressions (e.g. NOT, OR, "None", etc.) display in dark blue in the filter field. Items that you select directly from the list are displayed in light blue.
+Take a look at this screen image showing filtered results for an advanced query of the _logs.kubernetes.event_ log. There is a lot going on in this page, which is explained below the image:
 
-//image:Type-Ahead-Example-Wildcard-DirectSelect.png[Wildcard Filter Results]
+image:Log_Advanced_Query_ScreenExplained.png[The Advanced Query Screen Explained]
 
-//Note that Wildcard and Expression filtering works with text or lists but not with numerics, dates or booleans.
+1. This advanced query string filters for the following:
++
+* Filter for log entries with a _reason_ that includes the word "failed", but not anything with the specific reason of "FailedMount".
+* Include any of those entries that also include a _metadata.namespace_ including the word "monitoring", but exclude the specific namespaces of "cm-monitoring" or "eg-monitoring".
++
+Note that in the case above, since both "cm-monitoring" and "eg-monitoring" contain a dash ("-"), the strings must be included in double-quotes or a parsing error will be displayed. Strings that do not include dashes, spaces, etc. do not need to be enclosed in quotes. If in doubt, try putting the string in quotes.
 
+2. The results of the current filter, including any "Filter By" values AND the Advanced Query filter, are displayed in the results list. The list can be sorted by any displayed columns. To display additional columns, select the "gear" icon.
+
+3. The graph has been zoomed in to show only log results that occurred within a specific time frame. The time range shown here reflects the current zoom level. Select the _Reset Zoom_ button to set the zoom level back to the current Cloud Insights time range.
+
+4. The chart results have been Grouped By the _source_ field. The chart shows results in each column grouped into colors. Hovering over a column in the chart will display some details about the specific entries.
++
+image:Log_Advanced_Query_Group_Detail.png[Grouped Hover Details]
 
 ==== Refining Filters
 
@@ -76,14 +92,15 @@ If you enclose a filter string in double quotes, Insight treats everything betwe
 
 You can combine a simple filter with an advanced query filter; the resulting filter is an "AND" of the two. 
 
+=== The Chart Legend
+
+The _Legend_ below the chart has a few surprises as well. For each result (based on the current filter) shown in the Legend, you have an option to display only results for that line (Add Filter), or to display any results NOT for that line (Add Exclude Filter). The chart and the Log Entries list update to show results based on your selection.  To remove this filtering, open the Legend again and select the [X] to clear the Legend-based filter.
+
+image:Log_Advanced_Query_Legend.png[Advanced Query Legen showing "Add Filter" for the first result]
 
 
-//=== Graph Grouping
 
-
-
-
-
+////
 == The Log Graph
 
 The graph shows the number of log entries, grouped into _buckets_, which are based on the selected dashboard time range. The buckets for each time range are as follows:
@@ -104,14 +121,16 @@ The graph shows the number of log entries, grouped into _buckets_, which are bas
 |Last 30 Days|1 Day
 |===
 
-To zoom in the graph, simply drag the sliders from either side. To pan the zoomed area, click and hold in the white area and move left or right. Click _Reset Zoom_ to reset the zoom level.
+//To zoom in the graph, simply drag the sliders from either side. To pan the zoomed area, click and hold in the white area and move left or right. Click _Reset Zoom_ to reset the zoom level.
 
 //image:LogExplorer_Zoom.png[Zoom in by dragging in the sides of the graph]
-image:LogExplorer_Zoom_2.png[Zoom in by dragging in the sides of the graph]
+//image:LogExplorer_Zoom_2.png[Zoom in by dragging in the sides of the graph]
 
 Note that when zooming the graph or scrolling the table, dashboard auto-refresh will pause and the time range will show the frozen time. To resume refresh, click the _Resume_ button image:ResumeButton.png[]. This will also reset the zoom level.
+////
 
-At any point, you can click on _Create a Log Monitor_ to create a new Monitor based on the current filter.
+
+
 
 
 == Log Details
@@ -121,6 +140,8 @@ Clicking anywhere in a log entry in the list will open a detail pane for that en
 Click on "Add Filter" to add the selected field to the current filter. The log entry list will update based on the new filter.
 
 image:LogExplorer_DetailPane.png[Log Entry Detail Pane]
+
+
 
 == Troubleshooting
 
