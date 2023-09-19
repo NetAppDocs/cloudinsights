@@ -16,6 +16,7 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 [.lead]
 Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
+
 image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 
 toc::[]
@@ -33,7 +34,9 @@ The Operator and the data collectors are downloaded from the Cloud Insights Dock
 
 == Before installing the NetApp Kubernetes Monitoring Operator
 
+
 IMPORTANT: Read the link:/pre-requisites_for_k8s_operator.html[*Before Installing or Upgrading*] documentation before installing or upgrading the NetApp Kubernetes Monitoring Operator.
+
 
 
 == Installing the NetApp Kubernetes Monitoring Operator
@@ -46,7 +49,7 @@ image:NKMO-Instructions-2.png[]
 
 .Steps to install NetApp Kubernetes Monitoring Operator agent on Kubernetes:
 
-. Enter a unique cluster name and namespace. If you are <<upgrading, upgrading>> from the script-based agent or a previous Kubernetes Operator, use the same cluster name and namespace. 
+. Enter a unique cluster name and namespace. If you are <<upgrading, upgrading>> from a previous Kubernetes Operator, use the same cluster name and namespace. 
 . Once these are entered, you can copy the Download Command snippet to the clipboard.
 . Paste the snippet into a _bash_ window and execute it. The Operator installation files will be downloaded. Note that the snippet has a unique key and is valid for 24 hours.
 
@@ -85,6 +88,7 @@ This screen also shows current Log Collection status. Below are the possible sta
 
 == Upgrading 
 
+////
 NOTE: If you have a previously installed script-based agent, you _must_ upgrade to the NetApp Kubernetes Monitoring Operator.
 
 === Upgrading from script-based agent to NetApp Kubernetes Monitoring Operator
@@ -123,7 +127,7 @@ If the monitoring namespace is being used for other purposes in addition to Tele
 
 
 //image:KubernetesOperatorTile.png[Tile for Kubernetes Operator]
-
+////
 
 
 === Upgrading to the latest NetApp Kubernetes Monitoring Operator
@@ -174,6 +178,7 @@ To start the Netapp Kubernetes Monitoring Operator:
 
 == Uninstalling
 
+////
 NOTE: If you are running on a previously-installed script-based Kubernetes agent, you must <<upgrading, upgrade>> to the NetApp Kubernetes Monitoring Operator.
 
 
@@ -195,7 +200,7 @@ If the monitoring namespace is being used solely for Telegraf:
 If the monitoring namespace is being used for other purposes in addition to Telegraf:
 
  kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
-
+////
 
 
 === To remove the NetApp Kubernetes Monitoring Operator
@@ -223,7 +228,7 @@ Execute each of the following commands in order. Depending on your current insta
   kubectl delete ns <NAMESPACE>
 
 
-If a Security Context Constraint was previously-created manually for a script-based Telegraf installation:
+If a Security Context Constraint was previously-created:
 
  kubectl delete scc telegraf-hostaccess
  

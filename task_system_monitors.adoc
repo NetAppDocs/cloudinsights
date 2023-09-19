@@ -509,6 +509,276 @@ Your system generates and transmits an AutoSupport or "call home" message to Net
 === K8s Monitors
 
 |===
+|Monitor Name|Description|Corrective Actions|Severity/Threshold
+|Persistent Volume Latency High
+|High persistent volume latencies means that the applications themselves may suffer and be unable to accomplish their tasks. Monitoring persistent volume latencies is critical to maintain application consistent performance. The following are expected latencies based on media type - SSD up to 1-2 milliseconds; SAS up to 8-10 milliseconds and SATA HDD 17-20 milliseconds.
+|**Immediate Actions**
+	If critical threshold is breached, consider immediate actions to minimize service disruption:
+		If the volume has a QoS policy assigned to it, evaluate its limit thresholds in case they are causing the volume workload to get throttled.
+		**Actions To Do Soon**
+	If warning threshold is breached, plan the following immediate actions:
+		1. If storage pool is also experiencing high utilization, move the volume to another storage pool.
+	2. If the volume has a QoS policy assigned to it, evaluate its limit thresholds in case they are causing the volume workload to get throttled.
+	3. If the controller is also experiencing high utilization, move the volume to another controller or reduce the total workload of the controller.
+|Warning @ > 6,000 μs
+	Critical @ > 12,000 μs
+
+|Cluster Memory Saturation High
+|Cluster allocatable memory saturation is high.
+	Cluster CPU saturation is calculated as the sum of memory usage divided by the sum of allocatable memory across all K8s nodes.
+|Add nodes.
+	Fix any unscheduled nodes.
+	Right-size pods to free up memory on nodes.
+|Warning @ > 80 %
+	Critical @ > 90 %
+
+|POD Attach Failed
+|This alert occurs when a volume attachment with POD is failed.
+|
+|Warning
+
+|High Retransmit Rate 
+|High TCP Retransmit Rate
+|Check for Network congestion - Identify workloads that consume a lot of network bandwidth.
+	Check for high Pod CPU utilization.
+	Check hardware network performance.
+|Warning @ > 10 %
+	Critical @ > 25 %
+
+|Node File System Capacity High
+|Node File System Capacity High
+|- Increase the size of the node disks to ensure that there is sufficient room for the application files.
+- Decrease application file usage.
+|Warning @ > 80 %
+ Critical @ > 90 %
+
+|Workload Network Jitter High
+|High TCP Jitter (high latency/response time variations)
+|Check for Network congestion. Identify workloads that consume a lot of network bandwidth.
+Check for high Pod CPU utilization.
+Check hardware network performance
+|Warning @ > 30 ms
+ Critical @ > 50 ms
+
+|Persistent Volume Throughput
+|MBPS thresholds on persistent volumes can be used to alert an administrator when persistent volumes exceed predefined performance expectations, potentially impacting other persistent volumes. Activating this monitor will generate alerts appropriate for the typical throughput profile of persistent volumes on SSDs. This monitor will cover all persistent volumes in your environment. The warning and critical threshold values can be adjusted based on your monitoring goals by duplicating this monitor and setting thresholds appropriate for your storage class. A duplicated monitor can be further targeted to a subset of the persistent volumes in your environment.
+|**Immediate Actions**
+If critical threshold is breached, plan immediate actions to minimize service disruption:
+1. Introduce QoS MBPS limits for the volume.
+2. Review the application driving the workload on the volume for anomalies.
+**Actions To Do Soon**
+If warning threshold is breached, plan to take the following immediate actions:
+1. Introduce QoS MBPS limits for the volume.
+2. Review the application driving the workload on the volume for anomalies.
+|Warning @ > 10,000 MB/s
+ Critical @ > 15,000 MB/s
+
+|Container at Risk of Going OOM Killed
+|The container's memory limits are set too low. The container is at risk of eviction (Out of Memory Kill).
+|Increase container memory limits.
+|
+ Warning @ > 95 %
+
+|Workload Down
+|Workload has no healthy pods.
+|
+|Critical @ < 1
+
+|Persistent Volume Claim Failed Binding
+|This alert occurs when a binding is failed on a PVC.
+|
+|Warning
+
+|ResourceQuota Mem Limits About to Exceed
+|Memory limits for Namespace are about to exceed ResourceQuota
+|
+|Warning @ > 80 %
+ Critical @ > 90 %
+
+|ResourceQuota Mem Requests About to Exceed
+|Memory requests for Namespace are about to exceed ResourceQuota
+|
+|Warning @ > 80 %
+ Critical @ > 90 %
+
+|Node Creation Failed
+|The node could not be scheduled because of a configuration error.
+|Check the Kubernetes event log for the cause of the configuration failure.
+|Critical
+
+|Persistent Volume Reclamation Failed
+|The volume has failed its automatic reclamation.
+|
+|Warning @ > 0 B
+
+|Container CPU Throttling
+|The container's CPU Limits are set too low. Container processes are slowed.
+|Increase container CPU limits.
+|Warning @ > 95 %
+ Critical @ > 98 %
+
+|Service Load Balancer Failed to Delete
+|
+|
+|Warning
+
+|Persistent Volume IOPS
+|IOPS thresholds on persistent volumes can be used to alert an administrator when persistent volumes exceed predefined performance expectations. Activating this monitor will generate alerts appropriate for the typical IOPS profile of persistence volumes. This monitor will cover all persistent volumes in your environment. The warning and critical threshold values can be adjusted based on your monitoring goals by duplicating this monitor and setting thresholds appropriate for your workload.
+|**Immediate Actions**
+If critical threshold is breached, plan Immediate actions to minimize service disruption :
+1. Introduce QoS IOPS limits for the volume.
+2. Review the application driving the workload on the volume for anomalies.
+**Actions To Do Soon**
+If warning threshold is breached, plan the following immediate actions:
+1. Introduce QoS IOPS limits for the volume.
+2. Review the application driving the workload on the volume for anomalies.
+|Warning @ > 20,000 IO/s
+ Critical @ > 25,000 IO/s
+
+|Service Load Balancer Failed to Update
+|
+|
+|Warning
+
+
+|POD Failed Mount
+|This alert occurs when a mount is failed on a POD.
+|
+|Warning
+
+|Node PID Pressure
+|Available process identifiers on the (Linux) node has fallen below an eviction threshold.
+|Find and fix pods that generate many processes and starve the node of available process IDs.
+Set up PodPidsLimit to protect your node against pods or containers that spawn too many processes.
+|Critical @ > 0
+
+|Pod Image Pull Failure
+|Kubernetes failed to pull the pod container image.
+|- Make sure the pod's image is spelled correctly in the pod configuration.
+- Check image tag exists in your registry.
+- Verify the credentials for the image registry.
+- Check for registry connectivity issues.
+- Verify you are not hitting the rate limits imposed by public registry providers.
+|Warning
+
+|Job Running Too Long
+|Job is running for too long
+|
+|Warning @ > 1 hr
+ Critical @ > 5 hr
+
+|Node Memory High
+|Node memory usage is high
+|Add nodes.
+Fix any unscheduled nodes.
+Right-size pods to free up memory on nodes.
+|Warning @ > 85 %
+ Critical @ > 90 %
+
+|ResourceQuota CPU Limits About to Exceed
+|CPU limits for Namespace are about to exceed ResourceQuota
+|
+|Warning @ > 80 %
+ Critical @ > 90 %
+
+|Pod Crash Loop Backoff
+|Pod has crashed and attempted to restart multiple times.
+|
+|Critical @ > 3
+
+|Node CPU High
+|Node CPU usage is high.
+|Add nodes.
+Fix any unscheduled nodes.
+Right-size pods to free up CPU on nodes.
+|Warning @ > 80 %
+ Critical @ > 90 %
+
+|Workload Network Latency RTT High
+|High TCP RTT (Round Trip Time) latency
+|Check for Network congestion ▒ Identify workloads that consume a lot of network bandwidth.
+Check for high Pod CPU utilization.
+Check hardware network performance.
+|Warning @ > 150 ms
+ Critical @ > 300 ms
+
+|Job Failed
+|Job did not complete successfully due to a node crash or reboot, resource exhaustion, job timeout, or pod scheduling failure.
+|Check the Kubernetes event logs for failure causes.
+|Warning @ > 1
+
+|Persistent Volume Full in a Few Days
+|Persistent Volume will run out of space in a few days
+|-Increase the volume size to ensure that there is sufficient room for the application files.
+-Reduce the amount of data stored in applications.
+|Warning @ < 8 day
+ Critical @ < 3 day
+
+|Node Memory Pressure
+|Node is running out of memory. Available memory has met eviction threshold.
+|Add nodes.
+Fix any unscheduled nodes.
+Right-size pods to free up memory on nodes.
+|Critical @ > 0
+
+|Node Unready
+|Node has been unready for 5 minutes
+|Verify the node have enough CPU, memory, and disk resources.
+Check node network connectivity.
+Check the Kubernetes event logs for failure causes.
+|Critical @ < 1
+
+|Persistent Volume Capacity High
+|Persistent Volume backend used capacity is high.
+|- Increase the volume size to ensure that there is sufficient room for the application files.
+- Reduce the amount of data stored in applications.
+|Warning @ > 80 %
+ Critical @ > 90 %
+
+|Service Load Balancer Failed to Create
+|Service Load Balancer Create Failed
+|
+|Critical
+
+|Workload Replica Mismatch
+|Some pods are currently not available for a Deployment or DaemonSet.
+|
+|Warning @ > 1
+
+|ResourceQuota CPU Requests About to Exceed
+|CPU requests for Namespace are about to exceed ResourceQuota
+|
+|Warning @ > 80 %
+ Critical @ > 90 %
+
+|High Retransmit Rate
+|High TCP Retransmit Rate
+|Check for Network congestion - Identify workloads that consume a lot of network bandwidth.
+Check for high Pod CPU utilization.
+Check hardware network performance.
+|Warning @ > 10 %
+ Critical @ > 25 %
+
+|Node Disk Pressure
+|Available disk space and inodes on either the node's root filesystem or image filesystem has satisfied an eviction threshold.
+|- Increase the size of the node disks to ensure that there is sufficient room for the application files.
+- Decrease application file usage.
+|Critical @ > 0
+
+|Cluster CPU Saturation High
+|Cluster allocatable CPU saturation is high.
+Cluster CPU saturation is calculated as the sum of CPU usage divided by the sum allocatable CPU across all K8s nodes.
+|Add nodes.
+Fix any unscheduled nodes.
+Right-size pods to free up CPU on nodes.
+|Warning @ > 80 %
+ Critical @ > 90 %
+|===
+
+
+////
+//Original:
+|===
 
 |Monitor Name|Severity|Monitor Description
 
@@ -525,6 +795,7 @@ Your system generates and transmits an AutoSupport or "call home" message to Net
 |POD Failed Mount|WARNING|This alert occurs when a mount is failed on a POD.
 
 |===
+////
 
 
 <<top,Back to Top>>
