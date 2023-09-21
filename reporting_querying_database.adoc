@@ -158,7 +158,7 @@ Your API key will be specific to your Cloud Insights environment.
 
 == Synchronous or Asynchronous?
 
-By default, an API command will operate in _synchronous_ mode, meaning that you send the request and the respoonse is returned immediately. However, at times a query may take a long time to execute, which could lead to timing out. To get ariund this, you can execute a request _asynchronously_. In asynchronous mode, the request will return a URL through which the execution can be monitored. The URL will retrun the result when it is ready.
+By default, an API command will operate in _synchronous_ mode, meaning that you send the request and the respoonse is returned immediately. However, at times a query may take a long time to execute, which could lead to timing out. To get around this, you can execute a request _asynchronously_. In asynchronous mode, the request will return a URL through which the execution can be monitored. The URL will return the result when it is ready.
 
 To execute a query in async mode, add the header "_Prefer: respond-async_" to the request. Upon successful execution, the response will contain the following headers:
 
