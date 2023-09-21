@@ -158,9 +158,9 @@ Your API key will be specific to your Cloud Insights environment.
 
 == Synchronous or Asynchronous?
 
-By default, an API command will operate in _synchronous_ mode, meaning that you send the request and the respoonse is returned immediately. However, at times a query may take a long time to execute, which could lead to timing out. To get around this, you can execute a request _asynchronously_. In asynchronous mode, the request will return a URL through which the execution can be monitored. The URL will return the result when it is ready.
+By default, an API command will operate in _synchronous_ mode, meaning that you send the request and the response is returned immediately. However, at times a query may take a long time to execute, which could lead to thw request timing out. To get around this, you can execute a request _asynchronously_. In asynchronous mode, the request will return a URL through which the execution can be monitored. The URL will return the result when it is ready.
 
-To execute a query in async mode, add the header "_Prefer: respond-async_" to the request. Upon successful execution, the response will contain the following headers:
+To execute a query in async mode, add the header _*Prefer: respond-async*_ to the request. Upon successful execution, the response will contain the following headers:
 
  Status Code: 202 (which means ACCEPTED)
 
@@ -168,7 +168,7 @@ To execute a query in async mode, add the header "_Prefer: respond-async_" to th
 
  location: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/asyncStatus/<token>
 
-Querying the location URL will return the same headers if the response is not ready yet, or will return the response with status 200 if the response is ready, along with additional header information as noted below. The status in the header indicates the status of the original query.
+Querying the location URL will return the same headers if the response is not ready yet, or will return with status 200 if the response is ready, along with additional header information as noted below. The status in the header indicates the status of the original query.
 
  HTTP/1.1 200 OK
  OData-Version: 4.0
@@ -177,7 +177,9 @@ Querying the location URL will return the same headers if the response is not re
 
  { <JSON_RESPONSE> }
 
-To see a list of all async queries and which of them are ready, use the command _GET https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/asyncList
+To see a list of all async queries and which of them are ready, use the following command:
+
+ GET https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/asyncList
 
 The response has the following format:
 
