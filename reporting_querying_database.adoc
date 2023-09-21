@@ -166,7 +166,7 @@ To execute a query in async mode, add the header "_Prefer: respond-async_" to th
 
  preference-applied: respond-async
 
- location: https://<domain>/rest/v1/dwh-management/odata/dwh_custom/asyncStatus/<token>
+ location: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/asyncStatus/<token>
 
 Querying the location URL will return the same headers if the response is not ready yet, or will return the response with status 200 if the response is ready, along with additional header information as noted below. The status in the header indicates the status of the original query.
 
@@ -177,15 +177,15 @@ Querying the location URL will return the same headers if the response is not re
 
  { <JSON_RESPONSE> }
 
-To see a list of all async queries and which of them are ready, use the command _GET https://<ci_environment>/rest/v1/dwh-management/odata/dwh_custom/asyncList
+To see a list of all async queries and which of them are ready, use the command _GET https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/asyncList
 
 The response has the following format:
 
  {
     "queries" : [
         {
-            "Query": "https://<ci_environment>/rest/v1/dwh-management/odata/dwh_custom/heavy_left_join3?$count=true",
-            "Location": "https://<ci_environment>/rest/v1/dwh-management/odata/dwh_custom/asyncStatus/<token>",
+            "Query": "https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/heavy_left_join3?$count=true",
+            "Location": "https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/asyncStatus/<token>",
             "Finished": false
         }
     ]
