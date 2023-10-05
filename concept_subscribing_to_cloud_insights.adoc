@@ -34,88 +34,7 @@ WARNING: Inactive Cloud Insights Basic Edition environments are deleted and thei
 
 
 
-////
-// Table with Federal as a column:
-[cols=".<,.^,.^,.^", role="green"]
-|===
-|Key Feature |Basic Edition |Standard Edition|Premium Edition|Federal Edition
-|Data Retention|7 Days|90 Days|13 Months|13 Months
-|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor|Multi-Vendor|Multi-Vendor
-|Customizable Dashboards|&check;|&check;|&check;|&check;
-|Forum, Documentation, and Training Videos| &check;|&check;|&check;|&check;
-|Live Chat and Technical Support| - |&check;|&check;|Live chat not available
-|VM Metrics| - |&check;|&check;|&check;
-|Cloud Metrics| - |&check;|&check;|&check;
-|Service Metrics| - |&check;|&check;|&check;
-|Monitors and Alerting| &ast; |&check;|&check;|&check;
-|API Access&plus;| &check; | &check; |&check;|&check;
-|Single Sign-On (SSO)| - | - |&check;||&check;
-|Cloud Secure User Data Access Auditing | - | - |&check;| - 
-|Cloud Secure Insider Threat Detection with AI/ML | - | - |&check;| - 
-|Business Intelligence and Reporting&ast;&ast;| - | - |&check;||&check;
-|===
 
-&ast;Limited to 5 active custom monitors at a time
-&plus;API access varies by Edition
-&ast;&ast;Available for environments of 500 managed units and larger
-////
-
-////
-// Table with Federal as a footnote:
-[cols=".<,.^,.^,.^", role="green"]
-|===
-|Key Feature |Basic Edition |Standard Edition|Premium Edition
-|Data Retention|7 Days|90 Days|13 Months
-|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor|Multi-Vendor
-|Customizable Dashboards|&check;|&check;|&check;
-|Forum, Documentation, and Training Videos| &check;|&check;|&check;
-
-|Live Chat^&plus;&plus;^ and Technical Support| - |&check;|&check;
-
-|VM Metrics| - |&check;|&check;
-|Cloud Metrics| - |&check;|&check;
-|Service Metrics| - |&check;|&check;
-|Monitors and Alerting| &ast; |&check;|&check;
-|API Access^&plus;^| &check; | &check; |&check;
-|Single Sign-On (SSO)| - | - |&check;
-|Workload Security User Data Access Auditing | - | - |&check;
-|Workload Security Insider Threat Detection with AI/ML | - | - |&check;
-
-|Business Intelligence and Reporting&ast;&ast;| - | - |&check;
-|===
-
-&ast;Limited to 5 active custom monitors at a time
-&plus;API access varies by Edition
-&ast;&ast;Available for environments of 500 managed units and larger
-^&plus;&plus;^ Features not available in Cloud Insights Federal Edition
-////
-
-////
-[cols=".<,.^,.^", role="green"]
-|===
-|Key Feature |Basic Edition |Premium Edition
-|Data Retention|7 Days|13 Months
-|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor
-|Customizable Dashboards|&check;|&check;
-|Forum, Documentation, and Training Videos| &check;|&check;
-|Live Chat^&plus;&plus;^ and Technical Support| - |&check;
-|VM Metrics| - |&check;
-|Cloud Metrics| - |&check;
-|Service Metrics| - |&check;
-|Monitors and Alerting| &ast; |&check;
-|API Access^&plus;^| &check; | &check;
-|Single Sign-On (SSO)| - |&check;
-|Workload Security User Data Access Auditing | - |&check;
-|Workload Security Insider Threat Detection with AI/ML | - |&check;
-|Business Intelligence and Reporting&ast;&ast;| - |&check;
-|===
-
-
-&ast;Limited to 5 active custom monitors at a time
-&plus;API access varies by Edition
-&ast;&ast;Available for environments of 500 managed units and larger
-^&plus;&plus;^ Features not available in Cloud Insights Federal Edition
-////
 
 
 While using Cloud Insights, if you see a padlock icon image:padlock.png[Padlock], it means the feature is not available in your current Edition, or is available in a limited form. Upgrade for full access to the feature.
@@ -130,8 +49,6 @@ At any time during your trial period, you can subscribe to Cloud Insights. Subsc
 Cloud Insights displays a banner when your free trial is nearing its end. Within that banner is a _View Subscription_ link, which opens the *Admin -> Subscription* page. Non-Admin users will see the banner but will not be able to go to the Subscription page.
 
 NOTE: If you need additional time to evaluate Cloud Insights and your trial is set to expire in 4 days or less, you can extend your trial for an additional 30 days. You can extend the trial only once. You cannot extend if your trial has expired.
-
-
 
 
 
@@ -162,6 +79,10 @@ You can monitor your managed unit usage on the *Admin > Subscription* page in th
 
 image:[MU Usage Screen]
 
+
+=== Estimator
+
+TBD
 
 
 == Subscription Options
