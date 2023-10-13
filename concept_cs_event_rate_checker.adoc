@@ -19,7 +19,7 @@ keywords: event, checker, rate, sizing, cloud secure
 
 The Event Rate Checker is used to check the NFS/SMB combined event rate in the SVM before installing an ONTAP SVM data collector, to see how many SVMs one Agent machine will be able to monitor. Use the Event Rate Checker as a sizing guide to help plan your security environment.
 
-An Agent can support up to 50 data collectors.
+An Agent can support a maximum of 50 data collectors.
 
 == Requirements:
 
@@ -37,7 +37,7 @@ Steps:
  
 . This script requires _sshpass_ to be installed in the linux machine. There are two ways to install it: 
 
-.. Run the fiollowing command:
+.. Run the following command:
 +
  linux_prompt> yum install sshpass
 
@@ -60,7 +60,7 @@ Each Ontap SVM Data Collector can be associated with a single SVM, which means e
 
 Keep the following in mind:
 
-A) Use this table as a general sizing guide:
+A) Use this table as a general sizing guide. An agent can support up to a maximum of 50 data collectors:
 
 |===
 
