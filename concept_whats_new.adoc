@@ -19,6 +19,35 @@ NetApp is continually improving and enhancing its products and services. Here ar
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
 
 
+
+== October 2023
+
+=== Module Trials
+
+In addition to your initial trial of Cloud Insights, you may also take advantage of link:/concept_subscribing_to_cloud_insights.html#module-trials[Module Trials]. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. You will only be charged for your Kubernetes Observability managed unit usage at the end of the trial period.
+
+
+=== Restrict access to specified domains
+
+Admins and Account Owners now have the ability to link:/concept_user_roles.html#restricting-access-by-domain[restrict Cloud Insights access] to email domains they specify. Go to *Admin > User Management* and select the _Restrict Domains_ button.  
+
+image:Restrict_Domains_Modal.png[Restrict Domains Modal]
+
+
+
+=== Data Collector Updates
+
+The following Data Collector/Acquisition Unit changes are in place:
+
+* *Isilon / PowerScale REST*: Various new attributes and metrics have been added to Cloud Insights enhanced analytics capabilities under the _emc_isilon.node_pool.*_ name. These counters and attributes will empower users to build dashboards and monitors for _node_pool_ capacity consumption; users with Isilon clusters built from dissimilar hardware node models will have multiple node pools, and understanding your HDD/SSD/total capacity consumption at a node pool level is useful for both monitoring and planning.
+
+* *Rubrik* “Service account” authentication support: Cloud Insights' Rubrik collector now supports both traditional HTTP Basic Authentication (username and password), and Rubrik’s Service Account approach, which requires a username + secret + Organization ID. 
+
+
+
+
+'''
+
 == September 2023
 
 
