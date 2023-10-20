@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: concept_ttl_and_downsampling.html
-summary: Time-to-Live (TTL) - i.e. Data Retention, and downsampling explained
+summary: Data Retention times and downsampling explained
 keywords: time-to-live, TTL, downsampling, downsample, retention
 ---
 
-= Data Retention and downsampled data
+= Data Retention and Downsampled Data
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -17,18 +17,20 @@ keywords: time-to-live, TTL, downsampling, downsample, retention
 [.lead]
 Because Cloud Insights retains data for a set period (per Edition), there is potential for processing of thousands of data points. Data may therefore be downsampled before being displayed in charts and tables. 
 
-== Data Retention (aka Time-to-Live)
+== Data Retention 
 
-Cloud Insights retains data for an amount of time determined by the active subscribed Edition. Data retention is also known as Time-To-Live or TTL.
+Cloud Insights retains data for an amount of time determined by the active subscribed Edition. 
 
 |===
 |Edition|Data Retention
 
 |Basic |7 Days
-|Premium |90 days
+|Premium |13 Months
 |===
 
-Premium Edition subscriptions with at least 500 Managed Units (MUs) retain Business Intelligence and Reporting data for 13 months.
+A full list of features available in each Edition is available on the Cloud Insights link:https://bluexp.netapp.com/cloud-insights-pricing[Editions and Pricing] page.
+
+//Premium Edition subscriptions with at least 500 Managed Units (MUs) retain Business Intelligence and Reporting data for 13 months.
 
 
 == Downsampling of Data
