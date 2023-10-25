@@ -177,6 +177,18 @@ Openshift may implement an added level of security that may block access to some
 
 
 
+=== Permissions
+
+If the cluster you are monitoring contains Custom Resources which do not have a ClusterRole which link:https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles[aggregates to view], you will need to manually grant the operator access to these resources to monitor them with Event Logs.
+
+//or Change Management.
+
+1. Edit _operator-additional-permissions.yaml_ before installing, or after installing edit the resource _ClusterRole/<namespace>-additional-permissions_
+2. Create a new rule for the desired apiGroups and resources with the verbs ["get", "watch", "list"]. See \https://kubernetes.io/docs/reference/access-authn-authz/rbac/ 
+3. Apply your changes to the cluster 
+
+
+
 === Tolerations and Taints
 
 The _telegraf_, _fluent-bit_, and _net-observer_ DaemonSets must schedule a pod on every node in your cluster in order to correctly collect data on all nodes. The operator has been configured to tolerate some well known *taints*. If you have configured any custom taints on your nodes, thus preventing pods from running on every node, you can create a *toleration* for those taints link:telegraf_agent_k8s_config_options.html[in the _AgentConfiguration_]. If you have applied custom taints to all nodes in your cluster, you must also add the necessary tolerations to the operator deployment to allow the operator pod to be scheduled and executed.

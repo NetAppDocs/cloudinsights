@@ -4,7 +4,7 @@ permalink: concept_whats_new.html
 summary: New features and functionality available in Cloud Insights. 
 keywords: features
 ---
-= What\'s New with Cloud Insights
+= What\'s New with Cloud Insights 
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -17,6 +17,104 @@ keywords: features
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the commercial Editions of Cloud Insights.  
 
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
+
+
+
+== October 2023
+
+=== Module Trials
+
+In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-trials[Module Trials]. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. You will only be charged for your Kubernetes Observability managed unit usage at the end of the trial period.
+
+
+=== Restrict access to specified domains
+
+Admins and Account Owners now have the ability to link:concept_user_roles.html#restricting-access-by-domain[restrict Cloud Insights access] to email domains they specify. Go to *Admin > User Management* and select the _Restrict Domains_ button.  
+
+image:Restrict_Domains_Modal.png[Restrict Domains Modal]
+
+
+
+=== Data Collector Updates
+
+The following Data Collector/Acquisition Unit changes are in place:
+
+* *Isilon / PowerScale REST*: Various new attributes and metrics have been added to Cloud Insights enhanced analytics capabilities under the _emc_isilon.node_pool.*_ name. These counters and attributes will empower users to build dashboards and monitors for _node_pool_ capacity consumption; users with Isilon clusters built from dissimilar hardware node models will have multiple node pools, and understanding your HDD/SSD/total capacity consumption at a node pool level is useful for both monitoring and planning.
+
+* *Rubrik* “Service account” authentication support: Cloud Insights' Rubrik collector now supports both traditional HTTP Basic Authentication (username and password), and Rubrik’s Service Account approach, which requires a username + secret + Organization ID. 
+
+
+
+
+'''
+
+== September 2023
+
+
+
+=== Easily Find What You Want in the Logs
+
+Log Query (*Observability > Log Queries > +New Log Query*) includes a number of link:concept_log_explorer.html#advanced-filtering[enhancements] to make log exploration easier and more informative. 
+
+
+
+==== Include/Exclude
+
+When filtering for a value, you can easily choose whether to *Include* or *Exclude* results matching the filter. Selecting "Exclude" creates a "NOT <value>" filter. You can combine Include and Exclude values in a single filter.
+
+image:Log_Query_Exclude_Filter.png[Filter showing Exclude radio button]
+
+
+
+
+==== Advanced Query
+
+*Advanced Querying* gives you the opportunity to create "free form" filters, combining or excluding values using AND, NOT, OR, wildcards, etc.
+
+image:Log_Advanced_Query_Example.png[Example Log Query illustrating AND, NOT and OR functions]
+
+The "Filter By" and Advanced Query are "AND"ed together to form a single query. The results are displayed in the results list and the chart.
+
+
+
+==== Grouping in the Chart
+
+When you select a log attribute to *Group By*, the list and chart show the results of the current filter. In the chart, columns grouped into colors. Hovering over a column in the chart will display details about the specific entries, similar to the overall information shown when you expand the chart Legend.  In the legend, you can also choose to set an Include or Exclude filter for a specific grouping.
+
+image:Log_Query_Group_By_Chart.png[Log Query Group By example showing stacked columns in the chart] 
+
+
+
+=== "Floating" Log Detail Panel
+
+When exploring logs using the Log Query, selecting an entry in the list opens a detail panel for that entry. You can now choose to display that slideout panel "Floating" (i.e. displayed over the rest of the screen) or 'In Page" (i.e. displayed as its own frame within the page). To switch between these views, select the "In Page / Floating" button in the upper-right corner of the panel.
+
+image:Log_Query_Floating_Detail_Panel.png["In-Page" slideout panel with button highlighted]
+
+
+=== Collapse the Menu
+
+You can collapse the left-side Cloud Insights navigation menu by selecting the "Minimize" button below the menu. While the menu is minimized, hover over an icon to see which section it opens; selecting the icon opens the menu and takes you directly to that section.
+
+image:CI_Menu_Minimize_Button.png[Minimize the menu]
+
+
+=== Data Collector Improvements
+
+Cloud Insights has made it easier to show and find data collector information:
+
+* *Processing of data collector lists* is more efficient, which means the time it takes to display and navigate these lists is greatly reduced. If you have a large environment with many data collectors, you will see a significant improvement when listing your data collectors.
+
+//=== .HTML-based Data Collector Support Matrix
+
+* The *Data Collector Support Matrix* has moved from a .PDF file to an .HTML-based page, quicker to navigate and easier to maintain. Check out the new Matrix here: https://docs.netapp.com/us-en/cloudinsights/reference_data_collector_support_matrix.html 
+
+
+
+
+
+
+'''
 
 
 
@@ -2437,7 +2535,7 @@ When configuring the following data collectors, you can filter to include or exc
 
 === Bulk Edit Data Collectors
 
-* You can edit information for multiple data collectors at the same time. On the *Admin > Data Collectors* page, select the data collectors to modify by checking the box to the left of each and click the *Bulk Actions* button. Choose *Edit* and modify the necessary fields.
+* You can edit information for multiple data collectors at the same time. On the *Observability > Collectors* page, select the data collectors to modify by checking the box to the left of each and click the *Bulk Actions* button. Choose *Edit* and modify the necessary fields.
 +
 The data collectors selected must be the same vendor and model, and reside on the same Acquisition Unit.
 
