@@ -15,6 +15,11 @@ summary: The Kubernetes collectors page provides information and details on the 
 :imagesdir: ./media/
 
 [.lead]
-The Kubernetes collector list page displays a list of collectors in your Kubernetes environment. 
+The Kubernetes collector list page displays a list of collectors in your Kubernetes environment. You can navigate to the collectors page from *Kubernetes > Collectors".
 
 image:Kubernetes_Collector_List.png[list of kubernetes collectors]
+
+The page lists the Cluster name and the status of the operator on that cluster (Latest, Outdated, etc.).  If the operator version is outdated (i.e. Cloud Insights detects that a newer version is available), it will show an indicator with "Outdated". You cn see which version is present and, if a newer version is available, an dinformation tooltip showing the version available.
+
+image:Kubernetes_Versions_Listed.png[Operator versions]
+
