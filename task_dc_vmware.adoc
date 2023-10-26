@@ -94,6 +94,14 @@ When filtering by CLUSTER, use the Cloud Insights-style cluster names as reporte
 |===
 
 
+== Mapping VMWare tags to Cloud Insights annotations
+
+The VMWare data collector includes an option that allows you to populate Cloud Insights annotations with tags configured on VMWare. The annotations must be named exactly as the VMWare tags. Cloud Insights will always populate same-named text-type annotations, and will make a "best attempt" to populate annotations of other types (number, boolean, etc). If your annotation is of a different type and the data collector fails to populate it, it may be necessary to remove the annotation and re-create it as a text type.
+
+Note that VMWare tags may be case-sensitive, while Cloud Insights tags are case-insensitive. So if you create an annotation named "OWNER" in Cloud Insights, and tags named "OWNER", "Owner", and "owner" in VMWare, all of those variations of "owner" would map to Cloud Insight’s "OWNER" annotation.
+
+
+
 == Troubleshooting
 Some things to try if you encounter problems with this data collector:
 
