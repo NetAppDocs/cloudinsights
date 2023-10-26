@@ -19,9 +19,9 @@ The Kubernetes collector list page displays a list of collectors in your Kuberne
 
 image:Kubernetes_Collector_List.png[list of kubernetes collectors]
 
-The page lists the Cluster name and the status of the operator on that cluster (Latest, Outdated, etc.).  If the operator version is outdated (i.e. Cloud Insights detects that a newer version is available), it will show an indicator with "Outdated". You can see which version is present and, if a newer version is available, an information tooltip showing the version available.
+The page lists the Cluster name and the status of the operator on that cluster (Latest, Outdated, etc.).  If the operator version is outdated (i.e. Cloud Insights detects that a newer version is available), it will show an indicator with "Outdated". You can see which version is present and, if a newer version is available, an information tooltip showing the version available. 
 
-This information is also available for Network Performance and Map and Change Analysis.
+This information is also available for _Network Performance and Map_ and _Change Analysis_.  To upgrade to the latest versions of these, link:/task_config_telegraf_agent_k8s.html#upgrading[upgrade the operator].
 
 image:Kubernetes_Versions_Listed.png[Operator versions]
 
