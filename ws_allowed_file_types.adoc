@@ -22,6 +22,6 @@ image:WS_Allowed_File_Type_Policies.png[Allowed File Types Policies]
 
 Once whitelisted, no ransomware attack alert will be generated for that allowed file type. Note that the _Allowed File Types_ policy is only applicable for ransomware detection.
 
-For example, if a file named _test.txt_ is renamed to _test.txt.abc_ and Workload Security is detecting a ransomware attack because of the _.abc_ extension, the _.abc_ extension can be whitelisted. After whitelisting, ransomware attacks won’t be generated any more against files with the _.abc_ extension.
+For example, if a file named _test.txt_ is renamed to _test.txt.abc_ and Workload Security is detecting a ransomware attack because of the _.abc_ extension, the _.abc_ extension can be whitelisted. After whitelisting, ransomware attacks will no longer be generated against files with the _.abc_ extension.
 
 Allowed File Types can be exact matches (e.g., ".abc") or expressions (e.g., ".*type", ".type*", or "*type*"). Expressions of types “.a*c”, “.p*f” are not supported.
