@@ -22,6 +22,16 @@ NOTE: Some of these features may not be available in Cloud Insights Federal Edit
 
 == October 2023
 
+
+=== Enhanced Workload Security 
+
+Workload Security has been improved with the following enhancements:
+
+* *Access Denied*: Workload Security integrates with ONTAP to receive "Access Denied" events and provide an additional analytics and automatic responses layer.
+* Whitelisting *Allowed File Types*: If a ransomware attack is detected for a known file extension, that file extension can be whitelisted to prevent unnecessary alerting. - link:/ws_allowed_file_types.html[Learn More]
+
+
+
 === Module Trials
 
 In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-trials[Module Trials]. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. You will only be charged for your Kubernetes Observability managed unit usage at the end of the trial period.
