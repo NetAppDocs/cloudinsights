@@ -74,6 +74,11 @@ Try with a different browser profile (i.e. Chrome - add Person).
 |I have both a soft and a hard quota manually set in the same Qtree, but the total capacity showing is the hard quota; is that correct?
 |Yes, if a hard quota is specified, that will be shown as the total capacity.
 
+|When entering a Cognos report schedule time, sometimes I end up with an extra "m" in the schedule time. For example, if I enter the time as "02:15 PM", it may add an extra character: "02:15 PMM" (or PMm). When I click outside, it changes it to "2:15 AM".
+
+I am able to save the report, but when I re-open the saved report, the schedule time appears as AM (i.e. morning), regardless of whether I entered AM or PM in the schedule time.
+|Re-enter the schedule time, being careful not to enter the full "AM" or "PM" characters; it is enough to type "A" for "AM or "P" for "PM". If you are not shown the extra character, the schedule time will be set correctly.
+
 |===
 
 
