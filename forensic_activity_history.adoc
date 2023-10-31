@@ -215,8 +215,8 @@ or
 "ldap:default:80038003”
 
 |Possible reasons could be:
-1. No User Directory Collectors have been configured yet. To add one, go to *Admin > Data Collectors > User Directory Collectors* and click on *+User Directory Collector*. Choose _Active Directory_ or _LDAP Directory Server_.
-2. A User Directory Collector has been configured, however it has stopped or is in error state. Please go to *Admin > Data Collectors > User Directory Collectors* and check the status. Refer to the link:http://docs.netapp.com/us-en/cloudinsights/task_config_user_dir_connect.html#troubleshooting-user-directory-collector-configuration-errors[User Directory Collector troubleshooting] section of the documentation for troubleshooting tips.
+1. No User Directory Collectors have been configured yet. To add one, go to *Workload Security > Collectors > User Directory Collectors* and click on *+User Directory Collector*. Choose _Active Directory_ or _LDAP Directory Server_.
+2. A User Directory Collector has been configured, however it has stopped or is in error state. Please go to *Collectors > User Directory Collectors* and check the status. Refer to the link:http://docs.netapp.com/us-en/cloudinsights/task_config_user_dir_connect.html#troubleshooting-user-directory-collector-configuration-errors[User Directory Collector troubleshooting] section of the documentation for troubleshooting tips.
 After configuring properly, the name will get automatically resolved within 24 hours.
 If it still does not get resolved, check if you have added the correct User Data Collector. Make sure that the user is indeed part of the added Active Directory/LDAP Directory Server.
 

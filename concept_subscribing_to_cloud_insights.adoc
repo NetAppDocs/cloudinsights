@@ -30,90 +30,11 @@ NOTE: Unless otherwise noted, the information on this page generally applies to 
 For a full comparison of the features available in Cloud Insights Basic and Premium Editions, see the link:https://bluexp.netapp.com/cloud-insights-pricing[Cloud Insights Pricing] page.
 
 
+WARNING: Inactive Cloud Insights Basic Edition environments are deleted and their resources are reclaimed. An environment is considered inactive if there is no user activity for 30 consecutive days, of if there is no data ingested for 7 consecutive days. Cloud Insights will send a notification and provide a grace period of four days before an environment is deleted.
 
 
-////
-// Table with Federal as a column:
-[cols=".<,.^,.^,.^", role="green"]
-|===
-|Key Feature |Basic Edition |Standard Edition|Premium Edition|Federal Edition
-|Data Retention|7 Days|90 Days|13 Months|13 Months
-|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor|Multi-Vendor|Multi-Vendor
-|Customizable Dashboards|&check;|&check;|&check;|&check;
-|Forum, Documentation, and Training Videos| &check;|&check;|&check;|&check;
-|Live Chat and Technical Support| - |&check;|&check;|Live chat not available
-|VM Metrics| - |&check;|&check;|&check;
-|Cloud Metrics| - |&check;|&check;|&check;
-|Service Metrics| - |&check;|&check;|&check;
-|Monitors and Alerting| &ast; |&check;|&check;|&check;
-|API Access&plus;| &check; | &check; |&check;|&check;
-|Single Sign-On (SSO)| - | - |&check;||&check;
-|Cloud Secure User Data Access Auditing | - | - |&check;| - 
-|Cloud Secure Insider Threat Detection with AI/ML | - | - |&check;| - 
-|Business Intelligence and Reporting&ast;&ast;| - | - |&check;||&check;
-|===
-
-&ast;Limited to 5 active custom monitors at a time
-&plus;API access varies by Edition
-&ast;&ast;Available for environments of 500 managed units and larger
-////
-
-////
-// Table with Federal as a footnote:
-[cols=".<,.^,.^,.^", role="green"]
-|===
-|Key Feature |Basic Edition |Standard Edition|Premium Edition
-|Data Retention|7 Days|90 Days|13 Months
-|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor|Multi-Vendor
-|Customizable Dashboards|&check;|&check;|&check;
-|Forum, Documentation, and Training Videos| &check;|&check;|&check;
-
-|Live Chat^&plus;&plus;^ and Technical Support| - |&check;|&check;
-
-|VM Metrics| - |&check;|&check;
-|Cloud Metrics| - |&check;|&check;
-|Service Metrics| - |&check;|&check;
-|Monitors and Alerting| &ast; |&check;|&check;
-|API Access^&plus;^| &check; | &check; |&check;
-|Single Sign-On (SSO)| - | - |&check;
-|Workload Security User Data Access Auditing | - | - |&check;
-|Workload Security Insider Threat Detection with AI/ML | - | - |&check;
-
-|Business Intelligence and Reporting&ast;&ast;| - | - |&check;
-|===
-
-&ast;Limited to 5 active custom monitors at a time
-&plus;API access varies by Edition
-&ast;&ast;Available for environments of 500 managed units and larger
-^&plus;&plus;^ Features not available in Cloud Insights Federal Edition
-////
-
-////
-[cols=".<,.^,.^", role="green"]
-|===
-|Key Feature |Basic Edition |Premium Edition
-|Data Retention|7 Days|13 Months
-|Infrastructure & Storage Metrics|NetApp Only|Multi-Vendor
-|Customizable Dashboards|&check;|&check;
-|Forum, Documentation, and Training Videos| &check;|&check;
-|Live Chat^&plus;&plus;^ and Technical Support| - |&check;
-|VM Metrics| - |&check;
-|Cloud Metrics| - |&check;
-|Service Metrics| - |&check;
-|Monitors and Alerting| &ast; |&check;
-|API Access^&plus;^| &check; | &check;
-|Single Sign-On (SSO)| - |&check;
-|Workload Security User Data Access Auditing | - |&check;
-|Workload Security Insider Threat Detection with AI/ML | - |&check;
-|Business Intelligence and Reporting&ast;&ast;| - |&check;
-|===
 
 
-&ast;Limited to 5 active custom monitors at a time
-&plus;API access varies by Edition
-&ast;&ast;Available for environments of 500 managed units and larger
-^&plus;&plus;^ Features not available in Cloud Insights Federal Edition
-////
 
 
 While using Cloud Insights, if you see a padlock icon image:padlock.png[Padlock], it means the feature is not available in your current Edition, or is available in a limited form. Upgrade for full access to the feature.
@@ -131,7 +52,8 @@ NOTE: If you need additional time to evaluate Cloud Insights and your trial is s
 
 
 
-== Trial through AWS Marketplace
+
+=== Trial through AWS Marketplace
 
 You may also sign up for a free trial through the AWS Marketplace. The AWS Marketplace free trial gives you access to Cloud Insights for a trial period of 33 days, and allows up to 499 <<pricing, Managed Units>> (MUs). 
 
@@ -141,9 +63,41 @@ The AWS Marketplace free trial cannot be extended. At any time during your trial
 
 
 
-=== What if My Trial has Expired?
+==== What if My Trial has Expired?
 
 If your free trial has expired and you have not yet subscribed to Cloud Insights, you will have limited functionality until you subscribe.  
+
+
+
+== Module Trials
+
+Coming Soon!
+
+NOTE: Module Trial is considered Preview functionality and is therefore subject to change.
+
+In addition to your initial trial of Cloud Insights, you may also take advantage of *Module Trials*. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability, starting from when you install the NetApp Kubernetes Monitoring Operator. You will only be charged for your Kubernetes Observability managed unit usage at the end of the trial period.
+
+NOTE: Keep in mind that you will be charged for new managed unit (MU) usage following the trial period, so be sure to plan accordingly. When your module trial is ending, you will be notified if you will need to add more MUs to avoid service interruption.
+
+You can monitor your managed unit usage on the *Admin > Subscription* page in the *Usage* tab.
+
+image:Module_Trials_UsageTab.png[MU Usage Screen]
+
+
+
+
+=== Estimator
+
+During a module trial, you are not changed MU usage for resources consumed for the module, but you can open the *Estimator* (on the _Summary_ tab) to see how MUs will be charged following the trial, as well as play with "What if" scenarios with the number of MUs you may need in the future. Reset the numbers by exiting the Estimator.
+
+image:Module_Trials_Estimator.png[Estimator]
+
+Select the checkbox next to a module to add or remove the entire module's MU's from the estimated cost.
+
+The Estimator also allow you to see how the numbers stack up for either an Add On - where you keep your current subscription term and increase the number of managed units licensed - or a Renew option for a the renewal subscription you would purchase when your current subscription term ends.
+
+Note that customers are only eligible for a module trial once per subscription. 
+
 
 == Subscription Options
 
@@ -160,17 +114,8 @@ Cloud Insights is priced per *Managed Unit*. Usage of your Managed Units is calc
 
 * 1 Managed Unit = 2 hosts (any virtual or physical machine)
 * 1 Managed Unit = 4 TiB of unformatted capacity of physical or virtual disks
+* 1 Managed Unit = 40 TiB of unformatted capacity of select secondary storage: AWS S3, Cohesity SmartFiles, Dell EMC Data Domain, Dell EMC ECS, Hitachi Content Platform, IBM Cleversafe, NetApp StorageGRID.
 * 1 Managed Unit = 4 vCPUs of Kuberentes  
-
-Note that the following data collectors are metered at a different Raw TiB to Managed Unit rate. Every 40TiB of unformatted capacity on these data collectors is charged as 1 Managed Unit (MU): 
-
-* AWS S3
-* Cohesity SmartFiles
-* Dell EMC data Domain
-* Dell EMC ECS
-* Hitachi Content Platform
-* IBM Cleversafe
-* NetApp StorageGrid
 
 If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for *Volume Pricing* and will be prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
 
