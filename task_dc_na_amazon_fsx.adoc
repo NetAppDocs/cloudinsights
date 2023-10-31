@@ -93,7 +93,7 @@ This data collector collects the following advanced metrics from the FSx for Net
 * workload_volume 
 
 
-
+Note that FSx CLI commands retrieve some capacity values that FSx prohibits via API. Since Cloud Insights attempts to retrieve FSx data via API, certain capacity values (such as those for storage pools) may be different in Cloud Insights than they are on the FSx itself. Contact your Amazon representative for more information.
 
 
 == Troubleshooting
