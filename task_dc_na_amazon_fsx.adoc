@@ -17,7 +17,7 @@ summary: Amazon FSx for NetApp ONTAP Data Collector
 [.lead]
 This data collector acquires inventory and performance data from Amazon FSx for NetApp ONTAP. This data collector will be made available incrementally throughout the Cloud Insights service regions. Contact your sales person if you do not see the Icon for this collector in your Cloud Insights Environment.
 
-NOTE: This Cloud Insights collector requires an ONTAP user with a _Filesystem-Scoped_ role. Please review the AWS link:https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/roles-and-users.html[Roles and Rules] documentation for available options. At this time AWS supports only one kind of user role with Filesystem Scope, which is _fsxadmin_. This is the appropriate role to be used for the Cloud Insights collector.
+NOTE: This Cloud Insights collector requires an ONTAP user with a _Filesystem-Scoped_ role. Please review the AWS link:https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/roles-and-users.html[Roles and Rules] documentation for available options. At this time AWS supports only one kind of user role with Filesystem Scope, which is _fsxadmin_. This is the appropriate role to be used for the Cloud Insights collector. The user should also have all 3 of these applications assigned to it : http, ontapi, ssh
 
 == Terminology
 
@@ -60,9 +60,9 @@ Management – this may contain a hyperlink for the management interface of the 
 
 The following are requirements to configure and use this data collector:
 
-* You must have access to an Administrator account configured for read-only API calls.
+* You must have access to an account with the "fsxadmin" role, and three applications assigned to it - ssh,ontapi,http
 * Account details include username and password.
-* Port requirements: 80 or 443
+* Port requirements: 443
 
 
 == Configuration 
