@@ -166,14 +166,16 @@ To execute a query in async mode, add the header `*Prefer: respond-async*` to th
  preference-applied: respond-async
  location: https://<Cloud Insights URL>/rest/v1/dwh-management/odata/dwh_custom/asyncStatus/<token>
 
-Querying the location URL will return the same headers if the response is not ready yet, or will return with status 200 if the response is ready, along with additional header information as noted below. The status in the header indicates the status of the original query.
+Querying the location URL will return the same headers if the response is not ready yet, or will return with status 200 if the response is ready. The response content will be of type text and contains the http status of the original query, some metadata, followed by the results of the original query.
 
- HTTP/1.1 200 OK
+....
+HTTP/1.1 200 OK
  OData-Version: 4.0
  Content-Type: application/json;odata.metadata=minimal
  oDataResponseSizeCounted: true
 
  { <JSON_RESPONSE> }
+....
 
 To see a list of all async queries and which of them are ready, use the following command:
 
