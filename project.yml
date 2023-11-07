@@ -97,16 +97,16 @@ sidebar:
           - title: Querying Logs
             url: /concept_log_explorer.html
 
-        - title: Insights
-          entries:
-            - title: Overview
-              url: /insights_overview.html 
-            - title: Shared Resources Under Stress
-              url: /insights_shared_resources_under_stress.html
-            - title: Kubernetes Namespaces Running Out of Space
-              url: /insights_k8s_namespaces_running_out_of_space.html
-            - title: Reclaim ONTAP Cold Storage
-              url: /insights_reclaim_ontap_cold_storage.html         
+      - title: Insights
+        entries:
+          - title: Overview
+            url: /insights_overview.html 
+          - title: Shared Resources Under Stress
+            url: /insights_shared_resources_under_stress.html
+          - title: Kubernetes Namespaces Running Out of Space
+            url: /insights_k8s_namespaces_running_out_of_space.html
+          - title: Reclaim ONTAP Cold Storage
+            url: /insights_reclaim_ontap_cold_storage.html         
 
       - title: Monitors and Alerts
         entries:
@@ -170,8 +170,6 @@ sidebar:
             url: /concept_asset_alerts_section.html
           - title: Storage Virtualization
             url: /concept_storage_virtualization.html
-  #        - title: Violations Section
-  #          url: /concept_asset_violation_section.html
           - title: Hints and Tips to Search for Assets
             url: /concept_searching_assets.html
   
@@ -235,9 +233,8 @@ sidebar:
             url: /concept_audit.html
           - title: TTL and Downsampling
             url: concept_ttl_and_downsampling.html
-      
-        - title: Active IQ
-          url: /concept_activeiq.html
+          - title: Active IQ
+            url: /concept_activeiq.html
    
     - title: Workload Security 
       entries:
@@ -257,10 +254,6 @@ sidebar:
               url: /task_config_user_dir_connect.html
             - title: Configuring an LDAP Directory Collector 
               url: /task_config_user_dir_connect_ldap.html
-  #          - title: Configuring NetApp Data Collectors
-  #            entries: 
-  #          - title: Configuring the Amazon FsX for NetApp ONTAP Collector
-  #            url: /task_config_cs_amazon_fsx.html
             - title: Configuring the ONTAP SVM Data Collector
               url: /task_add_collector_svm.html
             - title: Configuring the Cloud ONTAP Data Collector
@@ -269,8 +262,7 @@ sidebar:
               url: /task_cs_user_management.html
             - title: Event Rate Checker (Agent Sizing Guide)
               url: /concept_cs_event_rate_checker.html
-  #      - title: Viewing Workload Security Forensic Data 
-  #        entries: 
+
         - title: Alerts 
           url: /cs_alert_data.html  
         - title: Forensics
@@ -298,8 +290,7 @@ sidebar:
       entries:
         - title: General Troubleshooting
           url: /task_troubleshooting_general_problems.html
-  #      - title: Troubleshooting Overview
-  #        url: /concept_troubleshooting_overview.html
+
         - title: Troubleshooting Linux Acquisition Unit Problems
           url: /task_troubleshooting_linux_acquisition_unit_problems.html
         - title: Troubleshooting Windows Acquisition Unit Problems
@@ -314,9 +305,7 @@ sidebar:
       entries:
         - title: Requesting Support
           url: /concept_requesting_support.html
-#        - title: Data Collector Support Matrix
-#          url: /reference_data_collector_support_matrix.html
-          
+
         - title: Data Collector Reference - Infrastructure
           entries:
             - title: Vendor Reference Overview
@@ -456,8 +445,7 @@ sidebar:
               
         - title: Data Collector Reference - Services
           entries:
-  #          - title: Display Options
-  #            url: /concept_telegraf_display_options.html
+
             - title: Host/Node
               url: /task_config_telegraf_node.html
             - title: ActiveMQ
