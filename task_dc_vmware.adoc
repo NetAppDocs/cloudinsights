@@ -100,6 +100,12 @@ The VMWare data collector allows you to populate Cloud Insights annotations with
 
 Note that VMWare tags may be case-sensitive, while Cloud Insights tags are case-insensitive. So if you create an annotation named "OWNER" in Cloud Insights, and tags named "OWNER", "Owner", and "owner" in VMWare, all of those variations of "owner" would map to Cloud Insight’s "OWNER" annotation.
 
+Keep the following in mind:
+
+* Cloud Insights currently only auto-publishes support information for NetApp devices.
+* Since this support information is held in annotation form, you can query it or use it in ddashboards. 
+* If a user overwrites or empties the annotation value, the value is autofilled again 
+
 
 
 == Troubleshooting
