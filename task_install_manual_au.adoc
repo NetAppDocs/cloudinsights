@@ -25,7 +25,7 @@ The process is similar for Linux and Windows.
 . In Cloud Insights, create an API Token.
 .. Navigate to *Admin > API Access* and select *+API Access Token*. 
 ... Set a *Name* and *Description* that are easy to identify
-... Type: *Acquisition Unit*
+... Type: Choose *Acquisition Unit* and *Data Collection*
 ... Permissions: *Read/Write*
 ... Select desired *Expiry* and *Auto-Renew* values
 .. Click *Save*
@@ -79,8 +79,9 @@ image:Manual_AU_one_time_token_response.png[]
 +
 Note: If you do not wish to use a custom user and group, you can use the default “cisys” user and group.  In this case, run the install command above but do not specify the user and group.
 
-At this point, the AU software is installed on the system and is accessible by the custom user and group. However, you do not have the ability to add data collectors. To do this manually, you must copy the datasources.war file to the proper location.
+At this point, the AU software is installed on the system and is accessible by the custom user and group. However, you do not have the ability to add data collectors. To do this manually, read the following instructions.
 
+////
 . Navigate to the source location for datasources.war and verify the zip file there:
 +
  cd /opt/netapp/cloudinsights/acq
@@ -135,6 +136,9 @@ At this point, the AU software is installed on the system and is accessible by t
 . Restart the AU. 
 
 .. In Cloud Insights, navigate to *Observability > Collectors* and select the *Acquisition Units* tab. Choose _Restart_ from the “three dots” menu to the right of the AU.
+////
+
+
 
 
 == Manually Installing Data Collectors
