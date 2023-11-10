@@ -159,6 +159,8 @@ Note: If you are using the default “cisys” user and group, you do not need t
 +
 Note: Custom user can be any user who is a member of a custom group you have provided to cloudinsights-install.sh during AU install, and can be the same or different from the custom user you provided during AU install. 
 
+. Perform the following:
++
  chmod 770 /var/lib/netapp/cloudinsights/acq/download 
  ls -al /var/lib/netapp/cloudinsights/acq/download 
  … 
@@ -169,8 +171,47 @@ Note: If using the “cisys” user and group, those will be displayed in the ou
 +
 Note: If you plan to install using different custom users, ensure group permissions are set to read and write for both owner and group (chmod 660 …) 
 
-. Restart the AU. 
+. Restart the AU. In Cloud Insights, navigate to Observability > Collectors and select the Acquisition Units tab. Choose Restart from the “three dots” menu to the right of the AU. 
 
-In Cloud Insights, navigate to Observability > Collectors and select the Acquisition Units tab. Choose Restart from the “three dots” menu to the right of the AU. 
+
+
+
+
+== Downloading a Patch
+
+Download the patch using the /collector/patch/file/{version} API:
+
+image:API_Manual_Download_patch.png[API to retrieve patch]
+
+Note	confirm with NetApp the version to be specified for download.
+
+Click Download File. If you are performing these steps on a system other than the AU system, copy the downloaded patch zip bundle to the AU system. 
+
+Make sure patch zip bundle is copied to the following directory : /var/lib/netapp/cloudinsights/acq/download 
+
+Navigate to /var/lib/netapp/cloudinsights/acq/download directory for datasources.war and verify the zip file there: 
+
+. You must switch to (or logout root and login with) the custom user for the next steps. 
++
+ su <custom user> 
++
+Note: If you are using the default “cisys” user and group, you do not need to perform this step. 
++
+Note: Custom user can be any user who is a member of a custom group you have provided to cloudinsights-install.sh during AU install, and can be the same or different from the custom user you provided during AU install. 
+
+. Perform the following:
++
+ chmod 770 /var/lib/netapp/cloudinsights/acq/download 
+ ls -al /var/lib/netapp/cloudinsights/acq/download 
+ … 
+ drwxrwx--- 2 test-user2 test-group-1  4096 Feb 16 10:10 <patch_file_name>.zip 
+ … 
++
+Note: If using the “cisys” user and group, those will be displayed in the output above. 
++
+Note: If you plan to install using different custom users, ensure group permissions are set to read and write for both owner and group (chmod 660 …) 
+
+. Restart the AU. In Cloud Insights, navigate to Observability > Collectors and select the Acquisition Units tab. Choose Restart from the “three dots” menu to the right of the AU. 
+
 
 
