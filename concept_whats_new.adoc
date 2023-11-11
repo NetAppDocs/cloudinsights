@@ -19,6 +19,30 @@ NetApp is continually improving and enhancing its products and services. Here ar
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
 
 
+== November 2023
+
+=== Storage Node Support Information
+
+On a storage node landing page, the _User Data_ section provides at-a-glance information about your support offering, current status, support status, and warranty end date. Note that Cloud Insights currently only auto-publishes this information for NetApp devices. Note also that these support fields are annotations, so they can be used in queries and dashboards.
+
+
+image:StorageNodeSupportData.png[Storage Node Support Information]
+
+
+=== Map VMWare tags to Cloud Insights annotations
+
+The link:task_dc_vmware.html#mapping-vmware-tags-to-cloud-insights-annotations[VMWare] data collector allows you to populate Cloud Insights text annotations with same-name tags that are configured on VMWare. 
+
+=== Brocade CLI collector reliability enhancements for FOS 9.1.1c and higher firmware
+
+On some Brocade Fibre Channel switches running 9.1.1c firmware, certain CLI commands’ output may be prepended with the “motd” login banner text, or warnings for users to change default passwords. The Brocade CLI collector has been enhanced to ignore these two types of extraneous text.
+
+Prior to this enhancement, only FOS 9.1.1c switches without Virtual Fabrics present were likely discoverable with this collector type.
+
+
+
+'''
+
 
 == October 2023
 
