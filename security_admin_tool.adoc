@@ -185,7 +185,43 @@ You must restart the Acquisition Unit after running the command.
 To update a proxy, the command is  
 
  ./securityadmin -pr -upr <arg> 
- 
+
+
+
+
+== External Key Retrieval 
+
+If you provide a UNIX shell script, it can be executed by the acquisition unit to retrieve the *private key* and the *public key* from your key management system. 
+
+To retrieve the key, Cloud Insights will execute the script, passing in two parameters: _key id_ and _key type_. _Key id_ can be used to identify the key in your key management system. _Key type_ is either "public" or "private". When the key type is "public", the script must return the public key. When the key type is "private", the private key must be returned. 
+
+To send the key back to the acquisition unit, the script must print the key to standard output. The script must print _only_ the key to standard output; no other text must be printed to standard output. Once the requested key is printed to the standard output, the script must exit with an exit code of 0; any other return code is considered an error. 
+
+The script must be registered with the acquisition unit using the SecurityAdmin tool, which will execute the script along with the acquisition unit. The script must have _read_ and _execute_ permission for the root and "cisys" user. If the shell script is modified after registering, the modified shell script must be re-registered with the acquisition unit.
+
+|===
+|input parameter: key id	|Key identifier used to identify the key in the customers key management system.
+|input parameter: key type	|public or private.
+|output	
+|The requested key must be printed to the standard output. 2048 bit RSA key is currently supported. Keys must be encoded and printed in the following format - 
+
+private key format - PEM, DER-encoded PKCS8 PrivateKeyInfo RFC 5958
+
+public key format - PEM, DER-encoded X.509 SubjectPublicKeyInfo RFC 5280
+
+|exit code	|Exit code of zero for success. All other exit values are considered failure.
+|script permissions	|Script must have read and execute permission for the root and "cisys" user.
+|logs	
+|Script executions are logged. Logs can be found in - 
+
+/var/log/netapp/cloudinsights/securityadmin/securityadmin.log
+
+/var/log/netapp/cloudinsights/acq/acq.log
+
+|===
+
+
+
 
 
 == Encrypting a Password for use in API
