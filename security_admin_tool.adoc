@@ -200,11 +200,11 @@ You are prompted to enter the password you want to encrypt. Note that the charac
 
 The encrypted password is displayed on screen. Copy the entire string including any leading or trailing symbols.
 
-image:SecurityAdmin_Encrypt_Key_1.png[Interactive Mode Encrypt Password, width=600]
+image:SecurityAdmin_Encrypt_Key_1.png[Interactive Mode Encrypt Password, width=640]
 
 To send the encrypted password to a data collector, you can use the Data Collection API. The swagger for this API can be found at *Admin > API Access* and click the "API Documentation" link. Select the "Data Collection" API type.  Under the _data_collection.data_collector_ heading, choose the _/collector/datasources_ POST API for this example.
 
-image:SecurityAdmin_Encrypt_Key_Swagger_API.png[API for data collection, width=600]
+image:SecurityAdmin_Encrypt_Key_Swagger_API.png[API for data collection]
 
 If you set the _preEncrypted_ option to _True_, any password you pass through the API command will be treated as *already encrypted*; the API will not re-encrypt the password(s). When building your API, simply paste the previously-encrypted password in the appropriate location. 
 
