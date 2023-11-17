@@ -198,6 +198,12 @@ Start the SecurityAdmin tool in interactive mode and select option 8: _Encrypt P
 
 You are prompted to enter the password you want to encrypt. Note that the characters you type are not shown on screen.  Re-enter the password when prompted.
 
+Alternatively, if you will use the command in a script, use the command line with the "-enc" parameter passing in your unencrypted password:
+
+ securityadmin -enc mypassword
+
+image:SecurityAdmin_Encrypt_Key_API_CLI_Example.png[CLI Example]
+
 The encrypted password is displayed on screen. Copy the entire string including any leading or trailing symbols.
 
 image:SecurityAdmin_Encrypt_Key_1.png[Interactive Mode Encrypt Password, width=640]
