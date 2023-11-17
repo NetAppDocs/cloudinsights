@@ -21,6 +21,10 @@ NOTE: Some of these features may not be available in Cloud Insights Federal Edit
 
 == November 2023
 
+=== Workload Security: Pause/Resume a Collector
+
+In Workload Security, you can Pause a Data Collector if the collector is in _Running_ or _Error_ state. Open the "three dots" menu for the collector and select PAUSE. While the collector is paused, no data is gathered from ONTAP, and no data is sent from the collector to ONTAP. Select Resume to begin collecting again.
+
 === Storage Node Support Information
 
 On a storage node landing page, the _User Data_ section provides at-a-glance information about your support offering, current status, support status, and warranty end date. Note that Cloud Insights currently only auto-publishes this information for NetApp devices. Note also that these support fields are annotations, so they can be used in queries and dashboards.
