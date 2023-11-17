@@ -188,5 +188,37 @@ To update a proxy, the command is
  
 
 
+== Encrypting a Password for use in API
+
+Option 8 allows you to encrypt a password, which you can then pass to a data collector via API.
+
+Start the SecurityAdmin tool in interactive mode and select option 8: _Encrypt Password_.
+
+ securityadmin.sh -i
+
+You are prompted to enter the password you want to encrypt. Note that the characters you type are not shown on screen.  Re-enter the password when prompted.
+
+Alternatively, if you will use the command in a script, on a command line use _securityadmin.sh_ with the "-enc" parameter, passing in your unencrypted password:
+
+ securityadmin -enc mypassword
+
+image:SecurityAdmin_Encrypt_Key_API_CLI_Example.png[CLI Example]
+
+The encrypted password is displayed on screen. Copy the entire string including any leading or trailing symbols.
+
+image:SecurityAdmin_Encrypt_Key_1.png[Interactive Mode Encrypt Password, width=640]
+
+To send the encrypted password to a data collector, you can use the Data Collection API. The swagger for this API can be found at *Admin > API Access* and click the "API Documentation" link. Select the "Data Collection" API type.  Under the _data_collection.data_collector_ heading, choose the _/collector/datasources_ POST API for this example.
+
+image:SecurityAdmin_Encrypt_Key_Swagger_API.png[API for data collection]
+
+If you set the _preEncrypted_ option to _True_, any password you pass through the API command will be treated as *already encrypted*; the API will not re-encrypt the password(s). When building your API, simply paste the previously-encrypted password in the appropriate location. 
+
+image:SecurityAdmin_Encrypt_Key_API_Example.png[API Example, width=600]
+
+
+
+
+
 
 
