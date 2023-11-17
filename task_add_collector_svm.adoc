@@ -210,6 +210,30 @@ In versions of ONTAP prior to 9.9.1, _data-fpolicy-client_ need not be set.
 
 
 
+== Play-Pause Data  Collector
+
+2 new operations are now shown on kebab menu of collector (PAUSE and RESUME). 
+
+If the Data Collector is in _Running_ or _Error_ state, you can Pause collection. Open the "three dots" menu for the collector and select PAUSE. While the collector is paused, no data is gathered from ONTAP, and no data is sent from the collector to ONTAP. This means no Fpolicy events will flow from ONTAP to the data collector, and from there to Cloud Insights. 
+
+Note that if any new volumes, etc. are created on ONTAP while the collector is Paused, Workload Security won’t gather the data and those volumes, etc. will not be reflected in dashboards or tables.
+
+Keep the following in mind:
+
+|===
+|#	|Collector Paused Behaviour
+
+|1	|Snapshot purge won’t happen as per the settings configured on a paused collector. 
+|2	|EMS events (like ONTAP ARP) won’t be processed on a paused collector. This means if ONTAP identifies a ransomware attack, Cloud Insights Workload Security won’t be able to acquire that event.
+|3	|Health notifications emails will NOT be sent for a paused collector.
+|4	|Manual or Automatic actions (such as Snapshot or User Blocking) will not be supported on a paused collector.
+|5	|On agent or collector upgrades, agent VM restarts/reboots, or agent service restart, a paused collector will remain in _Paused_ state.
+|6	|If the data collector is in _Error_ state, the collector cannot be changed to _Paused_ state. The Pause button will be enabled only if the state of the collector is _Running_.
+|7 |If the agent is disconnected, the collector cannot be changed to _Paused_ state. The collector will go into _Stopped_ state and the Pause button will be disabled.
+
+
+
+
 
 == Troubleshooting 
 
