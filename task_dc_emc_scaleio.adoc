@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_dc_emc_scaleio.html
-keywords: data collector, scaleIO, EMC, DELL
-summary: Configuring DELL EMC ScaleIO data collector.
+keywords: data collector, scaleIO, PowerFlex EMC, DELL
+summary: Configuring DELL EMC ScaleIO/PowerFlex data collector.
 ---
 
-= DELL EMC ScaleIO data collector
+= DELL EMC ScaleIO / PowerFlex data collector
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -15,17 +15,17 @@ summary: Configuring DELL EMC ScaleIO data collector.
 :imagesdir: ./media/
 
 [.lead]
-The ScaleIO data collector collects inventory information from ScaleIO storage. For configuration, this data collector requires the ScaleIO gateway address and an admin user name and password.
+The ScaleIO/PowerFlex data collector collects inventory information from ScaleIO & PowerFlex storage. For configuration, this data collector requires the ScaleIO/PowerFlex gateway address and an admin user name and password.
 
 == Terminology 
 
-Cloud Insights acquires the following inventory information from the ScaleIO data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires the following inventory information from the ScaleIO/PowerFlex data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Vendor/Model Term|Cloud Insights Term 
 |MDM (Meta Data Manager) Cluster|Storage
-|SDS (ScaleIO Data Server)|Storage Node
+|SDS (ScaleIO/PowerFlex Data Server)|Storage Node
 |Storage Pool|Storage Pool
 |Volume|Volume
 |Device|Disk
@@ -44,9 +44,9 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description 
-|ScaleIO Gateway(s)|IP addresses or FQDNs of ScaleIO gateways, separated by comma (,) or semicolon (;)
-|User Name|Admin user name used to log in to the ScaleIO device
-|Password|Password used to log in to the ScaleIO device
+|ScaleIO/PowerFlex  Gateway(s)|IP addresses or FQDNs of ScaleIO/PowerFlex gateways, separated by comma (,) or semicolon (;)
+|User Name|Admin user name used to log in to the ScaleIO/PowerFlex device
+|Password|Password used to log in to the ScaleIO/PowerFlex device
 |===
 
 == Advanced configuration
