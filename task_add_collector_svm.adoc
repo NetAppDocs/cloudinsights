@@ -212,20 +212,13 @@ Note that if any new volumes, etc. are created on ONTAP while the collector is P
 
 Keep the following in mind:
 
-|===
-|#	|Collector Paused Behaviour
-
-|1	|Snapshot purge won’t happen as per the settings configured on a paused collector. 
-|2	|EMS events (like ONTAP ARP) won’t be processed on a paused collector. This means if ONTAP identifies a ransomware attack, Cloud Insights Workload Security won’t be able to acquire that event.
-|3	|Health notifications emails will NOT be sent for a paused collector.
-|4	|Manual or Automatic actions (such as Snapshot or User Blocking) will not be supported on a paused collector.
-|5	|On agent or collector upgrades, agent VM restarts/reboots, or agent service restart, a paused collector will remain in _Paused_ state.
-|6	|If the data collector is in _Error_ state, the collector cannot be changed to _Paused_ state. The Pause button will be enabled only if the state of the collector is _Running_.
-|7 |If the agent is disconnected, the collector cannot be changed to _Paused_ state. The collector will go into _Stopped_ state and the Pause button will be disabled.
-
-|===
-
-
+* Snapshot purge won’t happen as per the settings configured on a paused collector. 
+* EMS events (like ONTAP ARP) won’t be processed on a paused collector. This means if ONTAP identifies a ransomware attack, Cloud Insights Workload Security won’t be able to acquire that event.
+* Health notifications emails will NOT be sent for a paused collector.
+* Manual or Automatic actions (such as Snapshot or User Blocking) will not be supported on a paused collector.
+* On agent or collector upgrades, agent VM restarts/reboots, or agent service restart, a paused collector will remain in _Paused_ state.
+* If the data collector is in _Error_ state, the collector cannot be changed to _Paused_ state. The Pause button will be enabled only if the state of the collector is _Running_.
+* If the agent is disconnected, the collector cannot be changed to _Paused_ state. The collector will go into _Stopped_ state and the Pause button will be disabled.
 
 
 == Troubleshooting 
