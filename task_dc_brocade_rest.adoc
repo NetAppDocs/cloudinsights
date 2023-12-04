@@ -60,12 +60,12 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Excluded Devices|Comma-separated list of device IDs to exclude from polling
-|Inventory Poll Interval (min)| Interval between inventory polls. The default is 15.
-|Discover all switches in the fabric|Select to discover all switches in the fabric
-|Choose Favoring HBA vs. Zone Aliases|Choose whether to favor HBA or zone aliases 
-|Connection type| HTTP or HTTPS
-|Override TCP Port|Specify a port if not using the default
+|Excluded Devices|Comma-separated list of device IDs to exclude from polling.
+|Inventory Poll Interval (min)| Interval between inventory polls. The default is 60.
+|Discover all switches in the fabric|Select to discover all switches in the fabric.
+|Choose Favoring HBA vs. Zone Aliases|Choose whether to favor HBA or zone aliases .
+|Connection type| HTTP or HTTPS.
+|Override TCP Port|Specify a port if not using the default.
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300.
 
 |===
