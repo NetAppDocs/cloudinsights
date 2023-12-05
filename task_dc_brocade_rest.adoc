@@ -41,15 +41,15 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-* There must be IP connectivity to all switches in the fabric. If you select the _Discover all switches in the fabric_ check box, Cloud Insights identifies all the switches in the fabric; however, it needs IP connectivity to these additional switches to discover them.
-* The same account is needed globally across all switches in the fabric. You can use PuTTY (open source terminal emulator) to confirm access.
+* There must be TCP connectivity to all switches in the fabric. This data collector type will seamlessly try both HTTP and HTTPS for each device in the fabric. If you select the _Discover all switches in the fabric_ check box, Cloud Insights identifies all the switches in the fabric; however, it needs TCP connectivity to these additional switches to discover them.
+* The same account is needed globally across all switches in the fabric. You can use the device's Web interface to confirm access.
 
 == Configuration
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Switch IP|IP address or fully-qualified domain name of the EFC Server
+|Switch IP|IP address or fully-qualified domain name of the FOS switch
 |User Name|User name for the switch
 |Password|Password for the switch
 |===
@@ -59,11 +59,11 @@ Note: These are common terminology mappings only and might not represent every c
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Excluded Devices|Comma-separated list of device IDs to exclude from polling.
+|Excluded Devices|Comma-separated list of device IPv4 addresses to exclude from polling.
 |Inventory Poll Interval (min)| Interval between inventory polls. The default is 60.
 |Discover all switches in the fabric|Select to discover all switches in the fabric.
 |Choose Favoring HBA vs. Zone Aliases|Choose whether to favor HBA or zone aliases.
-|Connection type| HTTP or HTTPS.
+|Connection type| HTTP or HTTPS.|Note that this setting only changes which protocol CI attempts to use per device first - CI will attempt the opposite protocol automatically if the default fails
 |Override TCP Port|Specify a port if not using the default.
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300.
 
@@ -80,11 +80,9 @@ Some things to try if you encounter problems with this data collector:
 
 |Problem:|Try this:
 
-|The inventory acquisition of the Brocade datasource fails with the error:
+|The Test feature warns me that a protocol is inaccessible
 
-<date> <time> ERROR [com.onaro.sanscreen.acquisition.framework.datasource.BaseDataSource]   Error 2 out of 2: <datasource name> [Internal error] - Unable to generate the model for device <IP>. Error detecting prompt ([Device name <name>]: Unable to generate the model for device <IP>. Error detecting prompt)
-|The issue may be caused when the Brocade switch takes too long to return with a prompt, exceeding the default timeout of 5 seconds.
-In the data collector's Advanced Configuration settings in Cloud Insights, try increasing the  _SSH Banner Wait Timeout (sec)_ to a higher value.
+|A given Brocade FOS 8.2+ device will only want to speak on HTTP or HTTPS - if a switch has a digital certificate installed, the switch will throw HTTP errors if one attempts to communicate to it with unencrypted HTTP versus HTTPS. The test feature attempts communication with both HTTP and HTTPS - if the Test tells you that one protocol passes, you can safely save the collector and not worry that the other protocol was unsuccessful - the collector will attempt both protocols during collection, and only fail if neither works.
 
 |Error: “Cloud Insights received Invalid Chassis Role” |Check that the user configured in this data source has been granted the chassis role permission.
 |Error: "Mismatched Chassis IP Address" |Change the data source configuration to use chassis IP address.
