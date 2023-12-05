@@ -15,7 +15,9 @@ summary: Configuring Brocade FOS REST data collector.
 :imagesdir: ./media/
 
 [.lead] 
-Cloud Insights uses the Brocade FOS REST collector to discover inventory for Brocade or rebranded switch devices running Factored Operating System (FOS) firmware 4.2 and later. Devices in both FC switch and Access Gateway modes are supported.  
+Cloud Insights uses the Brocade FOS REST collector to discover inventory and performance for Brocade switch devices running FabricOS (FOS) firmware 8.2 and later. 
+
+By default, this collector will attempt to discover all the FOS devices that are a part of all the fabrics the switch is part of.
 
 == Terminology 
 
@@ -39,11 +41,8 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-* The Cloud Insights Acquisition Unit (AU) will initiate connections to TCP Port 22 on Brocade switches to collect inventory data. The AU will also initiate connections to UDP port 161 for collection of performance data.
 * There must be IP connectivity to all switches in the fabric. If you select the Discover all switches in the fabric check box, Cloud Insights identifies all the switches in the fabric; however, it needs IP connectivity to these additional switches to discover them.
 * The same account is needed globally across all switches in the fabric. You can use PuTTY (open source terminal emulator) to confirm access.
-* Ports 161 and 162 must be open to all switches in the fabric for SNMP performance polling.
-* SNMP read-only Community String 
 
 == Configuration
 
