@@ -84,12 +84,7 @@ Some things to try if you encounter problems with this data collector:
 
 |A given Brocade FOS 8.2+ device will only want to speak on HTTP or HTTPS - if a switch has a digital certificate installed, the switch will throw HTTP errors if one attempts to communicate to it with unencrypted HTTP versus HTTPS. The test feature attempts communication with both HTTP and HTTPS - if the Test tells you that one protocol passes, you can safely save the collector and not worry that the other protocol was unsuccessful - the collector will attempt both protocols during collection, and only fail if neither works.
 
-|Error: “Cloud Insights received Invalid Chassis Role” |Check that the user configured in this data source has been granted the chassis role permission.
-|Error: "Mismatched Chassis IP Address" |Change the data source configuration to use chassis IP address.
-|Receive a message that more than 1 node is logged into the Access Gateway port| Check that the NPV device is operating correctly and that all connected WWNs are expected. Do not directly acquire the NPV device. Instead, acquisition of the core fabric switch will collect the NPV device data.
-
-|Performance collection fails with "Timed out during sending SNMP request".
-|Depending on query variables and switch configuration, some queries may exceed the default timeout.  link:https://kb.netapp.com/Cloud/BlueXP/Cloud_Insights/Cloud_Insight_Brocade_data_source_fails_performance_collection_with_a_timeout_due_to_default_SNMP_configuration[Learn More]. 
+|The Test feature or poll failed with ...Unable to parse JSON response body | CI received a HTTP(S) response, but it is not JSON formatted as we would expect via Brocade FOS REST API. If this is a new collector, are you certain the collector is actually pointed at a FOS device running 8.2 or higher?
 
 
 |===
