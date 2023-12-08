@@ -181,30 +181,6 @@ To start the Netapp Kubernetes Monitoring Operator:
 
 == Uninstalling
 
-////
-NOTE: If you are running on a previously-installed script-based Kubernetes agent, you must <<upgrading, upgrade>> to the NetApp Kubernetes Monitoring Operator.
-
-
-
-=== To remove the deprecated script-based agent
-
-Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
-
-To uninstall the script-based agent on Kubernetes (for example, when upgrading to the NetApp Kubernetes Monitoring Operator), do the following:
-
-If the monitoring namespace is being used solely for Telegraf:
-
- kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
- 
- kubectl delete ns ci-monitoring
-
-//For the commands above, use “_netapp-monitoring_” if you installed using operator-based installation with the default namespace.
- 
-If the monitoring namespace is being used for other purposes in addition to Telegraf:
-
- kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
-////
-
 
 === To remove the NetApp Kubernetes Monitoring Operator
 
@@ -213,10 +189,12 @@ Note that the default namespace for the NetApp Kubernetes Monitoring Operator is
 
 Newer versions of the monitoring operator can be uninstalled with the following commands:
 
+ kubectl -n <NAMESPACE> delete agent -l installed-by=nkmo-<NAMESPACE>
+ kubectl -n <NAMESPACE> delete clusterrole,clusterrolebinding,crd,svc,deploy,role,rolebinding,secret,sa -l installed-by=nkmo-<NAMESPACE>
 
- kubectl delete agent -A -l installed-by=nkmo-<name-space>
- kubectl delete ns,clusterrole,clusterrolebinding,crd -l installed-by=nkmo-<name-space>
+If the monitoring operator was deployed in its own dedicated namespace, delete the namespace:
 
+ kubectl delete ns <NAMESPACE> 
 
 If the first command returns “No resources found”, use the following instructions to uninstall older versions of the monitoring operator.
 
@@ -416,11 +394,11 @@ Follow these steps:
 
 * Download and install (default):
 
- installerName=cloudinsights-kubernetes.sh … && sudo -E -H ./$installerName --download –-install
+ installerName=cloudinsights-rhel_centos.sh … && sudo -E -H ./$installerName --download –-install
 
 * Download-only:
 
- installerName=cloudinsights-kubernetes.sh … && sudo -E -H ./$installerName --download
+ installerName=cloudinsights-rhel_centos.sh … && sudo -E -H ./$installerName --download
 
 
 The download-only command will download all required artifacts from Cloud Insights to the working directory.  The artifacts include, but may not be limited to: 
