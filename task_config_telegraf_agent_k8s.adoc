@@ -729,6 +729,8 @@ It should be either "netapp-ci-event-exporter" or "event-exporter".  Next, edit 
 
 Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-netapp-kubernetes-monitoring-operator,reinstall>> the agent.
 
+|I'm seeing pod(s) deployed by the Netapp Kubernetes Monitoring Operator crash because of insufficient resources.
+|Refer to the Netapp Kubernetes Monitoring Operator link:telegraf_agent_k8s_config_options.html[configuration options] to increase the CPU and/or memory limits as needed.
 
 |===
 
