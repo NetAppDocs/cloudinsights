@@ -16,6 +16,8 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 [.lead]
 Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
+NOTE: If you have Cloud Insights Federal Edition, your installation and configuration instructions may be different than the instructions on this page. Follow the instructions in Cloud Insights to install the NetApp Kubernetes Monitoring Operator.
+
 
 image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 
@@ -28,6 +30,7 @@ Below is a high-level illustration showing where the Operator resides in your en
 image:CI_Diagram_with_NKMO.png[A high-level map showing NKMO residing in the Kubernetes Cluster, with arrows showing how data travels to the cluster from the Hosts, proxy server, all rolling up to Cloud Insights]
 ////
 
+
 The Operator and the data collectors are downloaded from the Cloud Insights Docker Registry. Once installed, NKMO then manages any Operator-compatible collectors deployed in the Kubernetes cluster nodes to acquire data, including managing the life cycle of those collectors. Following this chain, data is acquired from the collectors and sent through to Cloud Insights. 
 
 
@@ -35,7 +38,7 @@ The Operator and the data collectors are downloaded from the Cloud Insights Dock
 == Before installing the NetApp Kubernetes Monitoring Operator
 
 
-IMPORTANT: Read the link:/pre-requisites_for_k8s_operator.html[*Before Installing or Upgrading*] documentation before installing or upgrading the NetApp Kubernetes Monitoring Operator.
+IMPORTANT: Read the link:pre-requisites_for_k8s_operator.html[*Before Installing or Upgrading*] documentation before installing or upgrading the NetApp Kubernetes Monitoring Operator.
 
 
 
@@ -178,30 +181,6 @@ To start the Netapp Kubernetes Monitoring Operator:
 
 == Uninstalling
 
-////
-NOTE: If you are running on a previously-installed script-based Kubernetes agent, you must <<upgrading, upgrade>> to the NetApp Kubernetes Monitoring Operator.
-
-
-
-=== To remove the deprecated script-based agent
-
-Note that these commands are using the default namespace "ci-monitoring".  If you have set your own namespace, substitute that namespace in these and all subsequent commands and files.
-
-To uninstall the script-based agent on Kubernetes (for example, when upgrading to the NetApp Kubernetes Monitoring Operator), do the following:
-
-If the monitoring namespace is being used solely for Telegraf:
-
- kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
- 
- kubectl delete ns ci-monitoring
-
-//For the commands above, use “_netapp-monitoring_” if you installed using operator-based installation with the default namespace.
- 
-If the monitoring namespace is being used for other purposes in addition to Telegraf:
-
- kubectl --namespace ci-monitoring delete ds,rs,cm,sa,clusterrole,clusterrolebinding -l app=ci-telegraf
-////
-
 
 === To remove the NetApp Kubernetes Monitoring Operator
 
@@ -210,10 +189,12 @@ Note that the default namespace for the NetApp Kubernetes Monitoring Operator is
 
 Newer versions of the monitoring operator can be uninstalled with the following commands:
 
+ kubectl -n <NAMESPACE> delete agent -l installed-by=nkmo-<NAMESPACE>
+ kubectl -n <NAMESPACE> delete clusterrole,clusterrolebinding,crd,svc,deploy,role,rolebinding,secret,sa -l installed-by=nkmo-<NAMESPACE>
 
- kubectl delete agent -A -l installed-by=nkmo-<name-space>
- kubectl delete ns,clusterrole,clusterrolebinding,crd -l installed-by=nkmo-<name-space>
+If the monitoring operator was deployed in its own dedicated namespace, delete the namespace:
 
+ kubectl delete ns <NAMESPACE> 
 
 If the first command returns “No resources found”, use the following instructions to uninstall older versions of the monitoring operator.
 
@@ -413,11 +394,11 @@ Follow these steps:
 
 * Download and install (default):
 
- installerName=cloudinsights-kubernetes.sh … && sudo -E -H ./$installerName --download –-install
+ installerName=cloudinsights-rhel_centos.sh … && sudo -E -H ./$installerName --download –-install
 
 * Download-only:
 
- installerName=cloudinsights-kubernetes.sh … && sudo -E -H ./$installerName --download
+ installerName=cloudinsights-rhel_centos.sh … && sudo -E -H ./$installerName --download
 
 
 The download-only command will download all required artifacts from Cloud Insights to the working directory.  The artifacts include, but may not be limited to: 
@@ -669,8 +650,6 @@ a|Capture or otherwise note the output from the following commands, and contact 
 
 •	Net-observer pods requires the Linux kernel version to be at least 4.18.0. Check the kernel version using the command “uname -r” and ensure they are >= 4.18.0
 
-|net-observer pods in NKMO namespace are in CrashLoopBackOff in OpenShift 4 environment
-|This is currently not supported. Watch for support to be added in a future update.
 
 |Pods are running in NKMO namespace (default: netapp-monitoring), but no data is shown in UI for workload map or Kubernetes metrics in Queries
 |Check the time setting on the nodes of the K8S cluster. For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
@@ -727,6 +706,29 @@ timeout = "10s"
 ...
 
 Then, restart Telegraf.
+
+|I'm missing _involvedobject_ data for some Event Logs.
+|Be sure you have followed the steps in the link:pre-requisites_for_k8s_operator.html[Permissions] section above.
+
+|Why am I seeing two monitoring operator pods running, one named netapp-ci-monitoring-operator-<pod> and the other named monitoring-operator-<pod>?
+
+|As of October 12, 2023, Cloud Insights has refactored the operator to better serve our users; for those changes to be fully adopted, you must <<uninstalling,remove the old operator>> and <<installing-the-netapp-kubernetes-monitoring-operator,install the new one>>.
+
+|My kubernetes events unexpectedly stopped reporting to Cloud Insights.
+|Retrieve the name of the event-exporter pod:
+
+ `kubectl -n netapp-monitoring get pods \|grep event-exporter \|awk '{print $1}' \|sed 's/event-exporter./event-exporter/`
+
+It should be either "netapp-ci-event-exporter" or "event-exporter".  Next, edit the monitoring agent `kubectl -n netapp-monitoring edit agent`, and set the value for LOG_FILE to reflect the appropriate event-exporter pod name found in the previous step.  More specifically, LOG_FILE should be set to either "/var/log/containers/netapp-ci-event-exporter.log" or "/var/log/containers/event-exporter*.log"
+
+....
+ - key: LOG_FILE
+   values:
+   - /var/log/containers/netapp-ci-event-exporter*.log
+....
+
+Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-netapp-kubernetes-monitoring-operator,reinstall>> the agent.
+
 
 |===
 

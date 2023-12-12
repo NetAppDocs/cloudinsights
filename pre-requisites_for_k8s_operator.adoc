@@ -41,6 +41,10 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
 * If you are re-deploying the Operator (i.e. you are updating or replacing it), there is no need to create a _new_ API token; you can re-use the previous token.
 * Also note that if you have a recent NetApp Kubernetes Monitoring Operator installed and are using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.
+* Network monitoring:  
+** Requires Linux kernel version 4.18.0 and above 
+** Photon OS is not supported.
+
 
 
 === Configuring the Operator
@@ -174,6 +178,18 @@ If you are running on OpenShift 4.6 or higher, you must edit the AgentConfigurat
  runPrivileged: true
 
 Openshift may implement an added level of security that may block access to some Kubernetes components.
+
+
+
+=== Permissions
+
+If the cluster you are monitoring contains Custom Resources which do not have a ClusterRole which link:https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles[aggregates to view], you will need to manually grant the operator access to these resources to monitor them with Event Logs.
+
+//or Change Management.
+
+1. Edit _operator-additional-permissions.yaml_ before installing, or after installing edit the resource _ClusterRole/<namespace>-additional-permissions_
+2. Create a new rule for the desired apiGroups and resources with the verbs ["get", "watch", "list"]. See \https://kubernetes.io/docs/reference/access-authn-authz/rbac/ 
+3. Apply your changes to the cluster 
 
 
 

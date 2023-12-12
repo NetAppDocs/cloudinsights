@@ -19,6 +19,8 @@ Cloud Insights uses link:https://docs.influxdata.com/telegraf[Telegraf] as its a
 
 The current Telegraf version for Cloud Insights is *1.24.0*.
 
+For information on installing on Kubernetes, see link:task_config_telegraf_agent_k8s.html[this page].
+
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
 NOTE: If you want to verify the installation files before instaling the Agent, see the section below on <<Verifying Checksums>>.
@@ -34,7 +36,7 @@ If you are installing a Service data collector and have not yet configured an Ag
 To install an agent, regardless of the platform you are using, you must first do the following:
 
 . Log into the host you will use for your agent. 
-. Log in to your Cloud Insights site and go to *Admin > Data Collectors*.
+. Log in to your Cloud Insights environment and navigate to *Observability > Collectors*.
 . Click on *+Data Collector* and choose a data collector to install. 
 
 . Choose the appropriate platform for your host (Windows, Linux)
@@ -361,26 +363,11 @@ The download-only command will download all required artifacts from Cloud Insigh
 * an installation script
 * an environment file
 * YAML files
-* a signed checksum file (ending in sha256.signed or sha256.ps1)
-* a PEM file (netapp_cert.pem) for signature verification
+* a checksum file (ending in sha256.signed or sha256.ps1)
 
 The installation script, environment file, and YAML files can be verified using visual inspection. 
 
-The PEM file can be verified by confirming its fingerprint to be the following:
-
-// E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
-
- 1A918038E8E127BB5C87A202DF173B97A05B4996
-
-More specifically,
-
-*	Non-Windows:
-
- openssl x509 -fingerprint -sha1 -noout -inform pem -in netapp_cert.pem
-
-*	Windows:
-
- Import-Certificate -Filepath .\netapp_cert.pem -CertStoreLocation Cert:\CurrentUser\Root
+//The PEM file can be verified by confirming its fingerprint to be the following:
 
 
 === Generate checksum value
@@ -398,26 +385,18 @@ To generate the checksum value, perform the following command for your appropria
 
 
 
-=== Verify checksum using PEM file
+=== Verify checksum
 
-The signed checksum file can be verified using the PEM file:
+Extract the expected checksum from the checksum file
 
 *	Non-Windows:
 
-// openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
-
- openssl smime -verify -in telegraf*.sha256.signed -CAfile netapp_cert.pem -purpose any
+ openssl smime -verify -in telegraf*.sha256.signed -CAfile netapp_cert.pem -purpose any -nosigs -noverify 
 
 
-*	Windows (after installing the certificate via Import-Certificate above):
+*	Windows:
 
-// Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
-
- Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 
- $result = Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 
- $signer = $result.SignerCertificate 
- Add-Type -Assembly System.Security 
- [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
+ (Get-Content telegraf.zip.sha256.ps1 -First 1).toUpper() 
 
 
 === Install the downloaded package

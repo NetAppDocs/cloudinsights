@@ -103,7 +103,8 @@ Account Owner|User|Guest
 |Dashboards: Create/Modify/Delete|Y|Y|N
 |Dashboards: View|Y|Y|Y
 |Data Collectors: Add/Modify/Poll/Delete|Y|N|N
-|Notifications: View/Modify|Y|N|N
+|Notifications: View|Y|Y|Y
+|Notifications: Modify|Y|N|N
 |Queries: Create/Modify/Delete|Y|Y|N
 |Queries: View/Run|Y|Y|Y
 |Device Resolution|Y|Y|N
@@ -233,3 +234,21 @@ However, do not enable _SSO User Auto-Provisioning_ if either of these are true:
 
 * Your organization has more than one Cloud Insights tenant 
 * Your organization does not want any/every user in the federated domain to have some level of automatic access to the Cloud Insights tenant. _At this point in time, we do not have the ability to use groups to control role access with this option_. 
+
+
+
+== Restricting Access by Domain
+
+Cloud Insights can restrict user access to only the domains you specify. On the *Admin > User Management* page, select "Restrict Domains".  
+
+image:Restrict_Domains_Modal.png[Restricting domains to only default domains, defaults plus additional domains you specify, or no restrictions]
+
+You are presented with these choices:
+
+* No restrictions: Cloud Insights remains accessible to users regardless of their domain.
+* Limit access to default domains: default domains are those used by your Cloud Insights environment account owners. These domains are always accessible.
+* Limit access to defaults plus domains you specify. List any domains you want to have access to your Cloud Insights environment, in addition to the default domains.
+
+
+
+image:Restrict_Domains_Tooltip.png[] 

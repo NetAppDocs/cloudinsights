@@ -91,11 +91,7 @@ If you cannot use the Cluster management administrator user to allow Workload Se
 
 To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
 
- security login role create -role csrole -cmddirname DEFAULT -access none
- security login role create -role csrole -cmddirname "network interface" -access readonly
- security login role create -role csrole -cmddirname version -access readonly
- security login role create -role csrole -cmddirname volume -access readonly
- security login role create -role csrole -cmddirname vserver -access readonly
+ security login role create -role csrole -cmddirname DEFAULT -access readonly
  security login role create -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -role csrole -cmddirname "volume snapshot" -access all -query "-snapshot cloudsecure_*"
  security login role create -role csrole -cmddirname "event catalog" -access all
@@ -115,11 +111,7 @@ If you cannot use the Cluster management administrator user to allow Workload Se
 
 To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server. For ease, copy these commands to a text editor and replace the <vservername> with your Vserver name before and executing these commands on ONTAP:
 
- security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access none
- security login role create -vserver <vservername> -role csrole -cmddirname "network interface" -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname version -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname volume -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname vserver -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access readonly
  security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
@@ -132,7 +124,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
 
 . Log in as Administrator or Account Owner to your Cloud Insights environment. 
 
-. Click *Admin > Data Collectors > +Data Collectors* 
+. Click *Observability > Collectors > +Data Collectors* 
 +
 The system displays the available Data Collectors. 
 
@@ -209,6 +201,24 @@ Example:
 In versions of ONTAP prior to 9.9.1, _data-fpolicy-client_ need not be set.
 
 
+
+== Play-Pause Data  Collector
+
+2 new operations are now shown on kebab menu of collector (PAUSE and RESUME). 
+
+If the Data Collector is in _Running_ state, you can Pause collection. Open the "three dots" menu for the collector and select PAUSE. While the collector is paused, no data is gathered from ONTAP, and no data is sent from the collector to ONTAP. This means no Fpolicy events will flow from ONTAP to the data collector, and from there to Cloud Insights. 
+
+Note that if any new volumes, etc. are created on ONTAP while the collector is Paused, Workload Security won’t gather the data and those volumes, etc. will not be reflected in dashboards or tables.
+
+Keep the following in mind:
+
+* Snapshot purge won’t happen as per the settings configured on a paused collector. 
+* EMS events (like ONTAP ARP) won’t be processed on a paused collector. This means if ONTAP identifies a ransomware attack, Cloud Insights Workload Security won’t be able to acquire that event.
+* Health notifications emails will NOT be sent for a paused collector.
+* Manual or Automatic actions (such as Snapshot or User Blocking) will not be supported on a paused collector.
+* On agent or collector upgrades, agent VM restarts/reboots, or agent service restart, a paused collector will remain in _Paused_ state.
+* If the data collector is in _Error_ state, the collector cannot be changed to _Paused_ state. The Pause button will be enabled only if the state of the collector is _Running_.
+* If the agent is disconnected, the collector cannot be changed to _Paused_ state. The collector will go into _Stopped_ state and the Pause button will be disabled.
 
 
 == Troubleshooting 
@@ -376,9 +386,7 @@ _fpolicy policy event delete -vserver <svmname> -event-name <event_list>_
 _fpolicy policy external-engine delete -vserver <svmname> -engine-name <engine_name>_
 
 |After enabling Workload Security, ONTAP performance is impacted: Latency becomes sporadically high, IOPs become sporadically low.
-|Ensure that you are using a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1415152[this issue] is fixed. The minimum version of ONTAP recommended is 9.8P7.
-
-If an ONTAP version prior to 9.8p7 is used and this performance issue is seen, then the ONTAP send buffer size can be altered to get improved ONTAP performance. Contact NetApp Support if you wish to explore this option and do not see this setting when adding a new data collector or editing an existing one. 
+|While using ONTAP with Workload Security sometimes latency issues can be seen in ONTAP. There are a number of possible reasons for this as noted in the following: link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[1372994], https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1415152[1415152], https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1438207[1438207], https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1479704[1479704], https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1354659[1354659]. All of these issues are fixed in ONTAP 9.13.1 and later; it is strongly recommended to use one of these later versions.
 
 |Data collector is in error, shows this error message.
 “Error: Connector is in error state. Service name: audit. Reason for failure: Failed to configure policy on SVM svm_test. Reason: Missing value for zapi field: events. “
