@@ -252,7 +252,7 @@ Use the following links to access information for these kube state metrics count
 
 
 
- == Configuring the Operator
+== Configuring the Operator
 
 In newer versions of the operator, most commonly modified settings can be configured in the _AgentConfiguration_ custom resource. You can edit this resource before deploying the operator by editing the _operator-config.yaml_ file. This file includes commented out examples of some settings. See the list of link:telegraf_agent_k8s_config_options.html[available settings] for the most recent version of the operator.
 
@@ -365,6 +365,14 @@ agent:
 
 
 
+=== Configuring Additional Permissions 
+
+If the cluster you are monitoring contains Custom Resources which do not have a ClusterRole which link:https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles[aggregates to view], you will need to manually grant the operator access to these resources to monitor them with Change Analytics or Event Logs.  
+
+. Edit _operator-additional-permissions.yaml_ before installing or after installing edit the resource ClusterRole/netapp-ci-<namespace>-additional-permissions 
+. Create a new rule for the desired apiGroups and resources with the verbs ["get", "watch", "list"]. See link:https://kubernetes.io/docs/reference/access-authn-authz/rbac[the Kubernetes documentation] for more information
+. Apply your changes to the cluster 
+
 
 === OpenShift Instructions
 
@@ -377,7 +385,8 @@ Openshift may implement an added level of security that may block access to some
 
 
 
- '''
+
+
 
 == Verifying Kubernetes Checksums
 
