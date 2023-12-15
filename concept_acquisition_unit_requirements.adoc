@@ -30,8 +30,14 @@ You must install an Acquisition Unit (AU) in order to acquire information from y
 * Red Hat Enterprise Linux (64-bit): 7.2 through 7.9, 8.1 through 8.7, 9.1
 * Rocky 9.0, 9.1
 * Ubuntu Server: 18.04 and 20.04 LTS
+* SELinux on the above platforms
 
 This computer should be running no other application-level software. A dedicated server is recommended. 
+
+If you are running with SELinux, it is recommended to execute the following commands on the acquisition usit system:
+
+ sudo semanage fcontext -a -t usr_t "/opt/netapp/cloudinsights(/.*)?"
+ sudo restorecon -R /opt/netapp/cloudinsights
 
 |A computer running a licensed version of one of the following:
 
@@ -73,39 +79,8 @@ For more information, ready about Proxies link:task_troubleshooting_linux_acquis
 |Virus Scan |  | During installation, you must completely disable all virus scanners. Following installation, the paths used by the Acquisition Unit software must be excluded from virus scanning.
 |===
 
-////  
-OLD STYLE:
-* CentOS 7.2 64-bit
-* CentOS 7.3 64-bit
-* CentOS 7.4 64-bit
-* CentOS 7.5 64-bit
-* CentOS 7.6 64-bit
-* CentOS 7.7 64-bit
-* CentOS 7.8 64-bit
-* CentOS 7.9 64-bit
-* CentOS 8.1 64-bit
 
-* Debian 9 64-bit
 
-* Oracle Enterprise Linux 7.5 64 bit
-* Oracle Enterprise Linux 7.6 64 bit
-* Oracle Enterprise Linux 7.7 64 bit
-* Oracle Enterprise Linux 7.8 64 bit
-* Oracle Enterprise Linux 7.9 64 bit
-* Oracle Enterprise Linux 8.1 64 bit
-
-* Red Hat Enterprise Linux 7.2 64-bit
-* Red Hat Enterprise Linux 7.3 64-bit
-* Red Hat Enterprise Linux 7.4 64-bit
-* Red Hat Enterprise Linux 7.5 64-bit
-* Red Hat Enterprise Linux 7.6 64-bit
-* Red Hat Enterprise Linux 7.7 64-bit
-* Red Hat Enterprise Linux 7.8 64-bit
-* Red Hat Enterprise Linux 7.9 64-bit
-* Red Hat Enterprise Linux 8.1 64-bit
-
-* Ubuntu Server 18.04 LTS
-////
 
 == Additional recommendations
 * For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Acquisition Unit machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
