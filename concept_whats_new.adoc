@@ -19,6 +19,45 @@ NetApp is continually improving and enhancing its products and services. Here ar
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
 
 
+
+== December 2023
+
+=== Change Analytics at a glance
+
+Kubernetes link:kubernetes_change_analytics.html[Change Analytics] provide you with an all-in-one view of recent changes to your Kubernetes environment. Alerts and deployment status are at your fingertips. With Change Analytics, you can track every deployment and configuration change, and correlate it with the health and performance of K8s services, infrastructure, and clusters.
+
+image:ChangeAnalytitcs_Main_Screen.png[Change Analytics Dashboard]
+
+
+=== Kubernetes Workload Performance Dashboard
+
+Workload performance is available at a glance in the comprehensive Kubernetes Workload Performance dashboard. Quickly view graphs of Volume, Throughput, Latency, and Retransmission trends, as well as a table of workload traffic for each namespace in your environment. Filters allow easy focus into areas of interest.
+
+image:K8s_Workload_performance.png[Workload Performance Menu, width=400]
+
+image:K8s_Workload_performance_dashboard.png[Workload Performance Dashboard]
+
+
+=== Query Details on one screen
+
+In a query, selecting a row opens a side panel showing attribute, annotation, and metric details for the selected row, providing helpful information without needing to drill into the object's landing page. Links in the row or side panel allow for easy navigation.
+
+image:MetricQuerySlideoutPanel.png[Slideout Panel for Metric Query]
+
+
+
+=== Data Collector updates:
+
+* *Brocade FOS REST*:  This collector is moved out of "Preview" and is now generally available. Some things to note:
+** FOS introduced their REST API with FOS 8.2. But some features like routing only received REST API capabilities with 9.0.
+** If you have a fabric consisting of mixed FOS assets 8.2 higher, as well as some < 8.2, the Cloud Insights FOS REST collector will fail to discover those older assets. You can edit the FOS REST collector and build a comma-delimited list of the IPv4 address of those devices for exclusion from that collector.
+
+* *SELinux*:  Cloud Insights includes enhancements to the Linux Acquisition Unit initial installation to ensure robustness of operation within Linux environments with SELinux enforcement enabled. These enhancements only impact _new_ AU deployments; if you have any SELinux issues relating to AU upgrades, contact NetApp Support to remediate your SELinux configuration.
+
+
+'''
+
+
 == November 2023
 
 === Workload Security: Pause/Resume a Collector
