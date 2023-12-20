@@ -33,13 +33,10 @@ You must install an Acquisition Unit (AU) in order to acquire information from y
 
 This computer should be running no other application-level software. A dedicated server is recommended. 
 
-<<<<<<< SELinux
 If you are running with SELinux, it is recommended to execute the following commands on the acquisition unit system:
 
- _sudo semanage fcontext -a -t usr_t "/opt/netapp/cloudinsights(/.*)?"_
- _sudo restorecon -R /opt/netapp/cloudinsights_
-=======
->>>>>>> main
+ sudo semanage fcontext -a -t usr_t "/opt/netapp/cloudinsights(/.*)?"
+ sudo restorecon -R /opt/netapp/cloudinsights
 
 |A computer running a licensed version of one of the following:
 
