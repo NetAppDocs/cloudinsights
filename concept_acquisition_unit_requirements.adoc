@@ -35,7 +35,7 @@ This computer should be running no other application-level software. A dedicated
 
 If you are running with SELinux, it is recommended to execute the following commands on the acquisition unit system:
 
- sudo semanage fcontext -a -t usr_t "/opt/netapp/cloudinsights(/.*)?"_
+ sudo semanage fcontext -a -t usr_t "/opt/netapp/cloudinsights(/.*)?"
  sudo restorecon -R /opt/netapp/cloudinsights
 
 |A computer running a licensed version of one of the following:
