@@ -21,7 +21,8 @@ Workload Security uses data collectors to collect file and user access data from
 
 * This data collector is supported with the following:
 ** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
-** SMB protocol version 3.1 and earlier.  Note that Workload Security does not work with SMB configurations that use Flexcache. In systems using Flexcache, starting with ONTAP 9.7, Fpolicy is supported only in an NFS environment.
+** SMB protocol version 3.1 and earlier.  
+//Note that Workload Security does not work with SMB configurations that use Flexcache. In systems using Flexcache, starting with ONTAP 9.7, Fpolicy is supported only in an NFS environment.
 **	NFS protocol version 4.0 and earlier 
 ** Flexgroup is supported from ONTAP 9.4 and later versions
 ** ONTAP Select is supported
