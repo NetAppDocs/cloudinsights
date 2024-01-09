@@ -139,6 +139,23 @@ Finally, selecting _Go to Asset Page_ will open the detailed asset landing page 
 image:Workload_Map_Asset_Page.png[Workload Asset Page]
 
 
+== Map Metrics
+
+The following metrics are shown for workload maps. Note that these metrics may change over time.
+
+|===
+|Metric Name|Description
+|bytes_total|Sum total of transmitted bytes and received bytes
+|connections_total|
+|Average number of  active connections within aggregation interval between a source and destination.
+|latency_rtt|Average RTT across all TCP calls between the given pair of source and destination
+|rx_bytes_per_sec|Received bytes per second
+|tcp_jitter|Average variation of rtt between a given source and destination
+|tcp_retransmit_bytes|Total number of bytes retransmitted
+|tcp_retransmits_percent|Percentage of retransmitted bytes
+|throughput|bytes_total per second
+|tx_bytes_per_sec|Transmitted bytes per second
+|===
 
 
 
