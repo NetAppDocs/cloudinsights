@@ -93,8 +93,8 @@ If you cannot use the Cluster management administrator user to allow Workload Se
 To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
 
  security login role create -role csrole -cmddirname DEFAULT -access readonly
-
-security login role create -role csrole -cmddirname "vserver fpolicy" -access all
+ 
+ security login role create -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -role csrole -cmddirname "volume snapshot" -access all -query "-snapshot cloudsecure_*"
  security login role create -role csrole -cmddirname "event catalog" -access all
  security login role create -role csrole -cmddirname "event filter" -access all
