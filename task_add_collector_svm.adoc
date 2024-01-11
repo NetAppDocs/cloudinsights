@@ -92,7 +92,22 @@ If you cannot use the Cluster management administrator user to allow Workload Se
 
 To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
 
- security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access none
+ security login role create -role csrole -cmddirname DEFAULT -access readonly
+ 
+ security login role create -role csrole -cmddirname "vserver fpolicy" -access all
+ security login role create -role csrole -cmddirname "volume snapshot" -access all -query "-snapshot cloudsecure_*"
+ security login role create -role csrole -cmddirname "event catalog" -access all
+ security login role create -role csrole -cmddirname "event filter" -access all
+ security login role create -role csrole -cmddirname "event notification destination" -access all
+ security login role create -role csrole -cmddirname "event notification" -access all
+ security login role create -role csrole -cmddirname "security certificate" -access all
+ 
+ security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
+ security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
+
+
+////
+security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access none
  security login role create -vserver <vservername> -role csrole -cmddirname "network interface" -access readonly
  security login role create -vserver <vservername> -role csrole -cmddirname version -access readonly
  security login role create -vserver <vservername> -role csrole -cmddirname volume -access readonly
@@ -106,7 +121,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -role csrole -cmddirname "security certificate" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
  security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
- 
+////
 
 === Permissions when adding via *Vserver Management IP*:
 
@@ -116,11 +131,25 @@ If you cannot use the Cluster management administrator user to allow Workload Se
 
 To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server. For ease, copy these commands to a text editor and replace the <vservername> with your Vserver name before and executing these commands on ONTAP:
 
+ security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access none
+ 
+ security login role create -vserver <vservername> -role csrole -cmddirname "network interface" -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname version -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname volume -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname vserver -access readonly
+ 
+ security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
+ security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
+
+security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
+
+
+////
  security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access readonly
  security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
- 
+//// 
 
 
 == Configure the data collector
