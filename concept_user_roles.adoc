@@ -182,6 +182,11 @@ A user with the Administrator role can delete a user (for example, someone no lo
 
 Note that any dashboards, queries, etc. that were created by the user will remain available in the Cloud Insights environment even after the user is removed. 
 
+
+
+
+
+
 == Single Sign-On (SSO) and Identity Federation
 
 === What is Identity Federation?  
@@ -193,15 +198,16 @@ With Identity Federation:
 
 User accounts are managed in NetApp BlueXP for all Cloud Services. By default, authentication is done using a BlueXP local user profile. Below is a simplified overview of that process: 
 
-//Image to be updated
-image:CloudCentralAuthentication.png[BlueXP Authentication]
+//image:CloudCentralAuthentication.png[BlueXP Authentication]
+image:BlueXP_Authentication_Local.png[BlueXP Authentication using Local]
 
 However, some customers would like to use their own identity provider to authenticate their users for Cloud Insights and their other NetApp BlueXP Services. With Identity Federation, NetApp BlueXP accounts are authenticated using credentials from your corporate directory.  
 
 The following is a simplified example of that process: 
 
-//Image to be updated
-image:IdentityFederationDiagram-2.png[Identity Federation Illustrated]
+
+//image:IdentityFederationDiagram-2.png[Identity Federation Illustrated]
+image:BlueXP_Authentication_Federated.png[BlueXP Authentication using Federation]
 
 In the above diagram, when a user accesses Cloud Insights, that user is directed to the customer’s identity management system for authentication. Once the account is authenticated, the user is directed to the Cloud Insights tenant URL.  
 
