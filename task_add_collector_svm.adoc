@@ -21,7 +21,8 @@ Workload Security uses data collectors to collect file and user access data from
 
 * This data collector is supported with the following:
 ** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
-** SMB protocol version 3.1 and earlier.  Note that Workload Security does not work with SMB configurations that use Flexcache. In systems using Flexcache, starting with ONTAP 9.7, Fpolicy is supported only in an NFS environment.
+** SMB protocol version 3.1 and earlier.  
+//Note that Workload Security does not work with SMB configurations that use Flexcache. In systems using Flexcache, starting with ONTAP 9.7, Fpolicy is supported only in an NFS environment.
 **	NFS protocol version 4.0 and earlier 
 ** Flexgroup is supported from ONTAP 9.4 and later versions
 ** ONTAP Select is supported
@@ -92,6 +93,25 @@ If you cannot use the Cluster management administrator user to allow Workload Se
 To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
 
  security login role create -role csrole -cmddirname DEFAULT -access readonly
+ 
+ security login role create -role csrole -cmddirname "vserver fpolicy" -access all
+ security login role create -role csrole -cmddirname "volume snapshot" -access all -query "-snapshot cloudsecure_*"
+ security login role create -role csrole -cmddirname "event catalog" -access all
+ security login role create -role csrole -cmddirname "event filter" -access all
+ security login role create -role csrole -cmddirname "event notification destination" -access all
+ security login role create -role csrole -cmddirname "event notification" -access all
+ security login role create -role csrole -cmddirname "security certificate" -access all
+ 
+ security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
+ security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
+
+
+////
+security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access none
+ security login role create -vserver <vservername> -role csrole -cmddirname "network interface" -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname version -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname volume -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname vserver -access readonly
  security login role create -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -role csrole -cmddirname "volume snapshot" -access all -query "-snapshot cloudsecure_*"
  security login role create -role csrole -cmddirname "event catalog" -access all
@@ -101,7 +121,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -role csrole -cmddirname "security certificate" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
  security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
- 
+////
 
 === Permissions when adding via *Vserver Management IP*:
 
@@ -111,11 +131,25 @@ If you cannot use the Cluster management administrator user to allow Workload Se
 
 To create the new user, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server. For ease, copy these commands to a text editor and replace the <vservername> with your Vserver name before and executing these commands on ONTAP:
 
+ security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access none
+ 
+ security login role create -vserver <vservername> -role csrole -cmddirname "network interface" -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname version -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname volume -access readonly
+ security login role create -vserver <vservername> -role csrole -cmddirname vserver -access readonly
+ 
+ security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
+ security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
+ 
+ security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
+
+
+////
  security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access readonly
  security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
  security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
- 
+//// 
 
 
 == Configure the data collector
