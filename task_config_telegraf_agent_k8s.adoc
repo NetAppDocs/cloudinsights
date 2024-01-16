@@ -536,7 +536,7 @@ Some things to try if you encounter problems setting up the NetApp Kubernetes Mo
 
 [cols="stretch", options="header"]
 |===
-|Problem:|Try this:
+|Problem: |Try this:
 
 
 |I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.
@@ -715,20 +715,25 @@ Then, restart Telegraf.
 |As of October 12, 2023, Cloud Insights has refactored the operator to better serve our users; for those changes to be fully adopted, you must <<uninstalling,remove the old operator>> and <<installing-the-netapp-kubernetes-monitoring-operator,install the new one>>.
 
 |My kubernetes events unexpectedly stopped reporting to Cloud Insights.
-|Retrieve the name of the event-exporter pod:
+a|Retrieve the name of the event-exporter pod:
 
  `kubectl -n netapp-monitoring get pods \|grep event-exporter \|awk '{print $1}' \|sed 's/event-exporter./event-exporter/`
 
 It should be either "netapp-ci-event-exporter" or "event-exporter".  Next, edit the monitoring agent `kubectl -n netapp-monitoring edit agent`, and set the value for LOG_FILE to reflect the appropriate event-exporter pod name found in the previous step.  More specifically, LOG_FILE should be set to either "/var/log/containers/netapp-ci-event-exporter.log" or "/var/log/containers/event-exporter*.log"
 
-....
- - key: LOG_FILE
-   values:
-   - /var/log/containers/netapp-ci-event-exporter*.log
-....
+ fluent-bit:
+ ...
+ - name: event-exporter-ci
+   substitutions:
+   - key: LOG_FILE
+     values:
+     - /var/log/containers/netapp-ci-event-exporter*.log
+ ...
 
 Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-netapp-kubernetes-monitoring-operator,reinstall>> the agent.
 
+|I'm seeing pod(s) deployed by the Netapp Kubernetes Monitoring Operator crash because of insufficient resources.
+|Refer to the Netapp Kubernetes Monitoring Operator link:telegraf_agent_k8s_config_options.html[configuration options] to increase the CPU and/or memory limits as needed.
 
 |===
 
