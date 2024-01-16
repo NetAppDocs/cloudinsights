@@ -715,7 +715,7 @@ Then, restart Telegraf.
 |As of October 12, 2023, Cloud Insights has refactored the operator to better serve our users; for those changes to be fully adopted, you must <<uninstalling,remove the old operator>> and <<installing-the-netapp-kubernetes-monitoring-operator,install the new one>>.
 
 |My kubernetes events unexpectedly stopped reporting to Cloud Insights.
-|Retrieve the name of the event-exporter pod:
+/a|Retrieve the name of the event-exporter pod:
 
  `kubectl -n netapp-monitoring get pods \|grep event-exporter \|awk '{print $1}' \|sed 's/event-exporter./event-exporter/`
 
