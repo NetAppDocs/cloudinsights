@@ -382,9 +382,11 @@ To remove permission for the NetApp Kubernetes Monitoring Operator to view secre
 ----
  - ClusterRole/netapp-ci-<namespace>-agent-secret-clusterrole
  - ClusterRoleBinding/netapp-ci-<namespace>-agent-secret-clusterrolebinding 
- 
+----
+
 If this is an upgrade, also delete the resources from your cluster:
 
+----
  - kubectl delete ClusterRole/netapp-ci-<namespace>-agent-secret-clusterrole
  - kubectl delete ClusterRoleBinding/netapp-ci-<namespace>-agent-secret-clusterrolebinding
 ----
