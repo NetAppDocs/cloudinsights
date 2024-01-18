@@ -399,7 +399,7 @@ If Change Analysis is enabled, modify the _AgentConfiguration_ or _operator-conf
     # # Each kind will have to be prefixed by its apigroup
     # # Example: '"networking.k8s.io.networkpolicies,batch.jobs", "authorization.k8s.io.subjectaccessreviews"'
     kindsToIgnoreFromWatch: '"secrets"'
-    '''
+    ...
 
 == Verifying Kubernetes Checksums
 
