@@ -224,9 +224,9 @@ Note: If you plan to install using different custom users, ensure group permissi
 
 To back up current  artifacts, follow these steps:
 
-.steps
-1. Unzip the patch bundle to identify which .jar and .xml files to restore. For example:
 
+. Unzip the patch bundle to identify which .jar and .xml files to restore. For example:
++
 ----
 unzip xp_patch-FSx_for_NetApp_ONTAP_NetApp_ONTAP_netapp_ontap_fail_performance_2023_Apr_12_10_12_38.zip -d temp
 
@@ -244,8 +244,8 @@ unzip xp_patch-FSx_for_NetApp_ONTAP_NetApp_ONTAP_netapp_ontap_fail_performance_2
   inflating: temp/readme.txt
 ----
 
-2. Unzip the DS.war bundle to restore and copy the jar and xml file to folder "/var/lib/netapp/cloudinsights/acq/datasources.war/". Ensure file permissions are correct. For example:
-
+. Unzip the DS.war bundle to restore and copy the jar and xml file to folder "/var/lib/netapp/cloudinsights/acq/datasources.war/". Ensure file permissions are correct. For example:
++
 ----
 unzip datasources-war-1.1676.0.zip -d restore
 cd restore
@@ -253,6 +253,8 @@ cp netapp_ontap.jar /var/lib/netapp/cloudinsights/acq/datasources.war/
 cp netapp_aws_fsx.xml /var/lib/netapp/cloudinsights/acq/datasources.war/
 ----
 
-3. Restart the Acquisition Unit service and make sure polling is successful. 
+. Restart the Acquisition Unit service and make sure polling is successful. 
+
+
 
 
