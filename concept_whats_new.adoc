@@ -20,6 +20,37 @@ NetApp is continually improving and enhancing its products and services. Here ar
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
 
 
+== January 2024
+
+=== Try Cloud Insights Features you haven’t used yet
+
+In addition to your initial trial of Cloud Insights, you may also take advantage of link:/concept_subscribing_to_cloud_insights.html#module-trials[Module Trials]. For example, if you are subscribed to Cloud Insights and have been monitoring storage and virtual machines, when you add Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. Kubernetes Observability managed unit usage will not count against your subscribed entitlement until after the trial period ends.
+
+=== How healthy are my workloads?
+
+Workload health is available at a glance on the *Kubernetes > Explore > Workloads* page, so you can quickly see which workloads are performing well and which may need some help.
+
+image:WorkloadHealth.png[Workload Health at a glance]
+
+
+=== Data Collector Updates
+
+==== Data Domain Identification
+
+The Data Domain collector has been improved to better identify HA systems for durability across failover events This change will cause a *one time* re-identification of Data Domain appliances in HA systems, which will subsequently cause any annotations on those assets to be removed (because these arrays will be re-identified). You will need to re-attach annotations to your Data Domain objects.
+
+
+=== Improved Workload Security
+
+Workload Security includes the following improvements:
+
+* Detection algorithms have been enhanced to reduce the number of false positive warnings.
+* User Interface performance has been improved while loading, displaying, and scrolling Forensics pages.
+
+
+
+'''
+
 
 == January 2024
 
