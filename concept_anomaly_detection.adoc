@@ -16,7 +16,7 @@ summary: Monitor metrics for anomalies
 [.lead]
 Anomaly Detection provides insight into anomalies in the patterns of data in your environment. An anomaly is a variation in a metric value for an object or group of objects, compared to historical information week over week. For example, if a pod's CPU utilization was at 50% on Tuesday at 12:05 PM in the previous week, but is at 100% this Tuesday at 12:05 PM, that would be considered an anomaly.
 
-== A brief explanation of how Cloud Insights does this
+== What is Anomaly Detection?
 
 An anomaly occurs when the mean value of a metric is a number of standard deviations away from the mean of that metric for the previous week. Cloud Insights provides the ability to monitor data and alert when anomalies are detected. You have a choice of whether to alert on detected patterns that are more likely (i.e. when the mean is fewer standard deviations away from normal), or less likely (more standard deviations away) to be determined to be an anomaly. 
 
