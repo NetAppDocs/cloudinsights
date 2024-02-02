@@ -14,10 +14,24 @@ summary: Cloud Insights collects Risk data from NetApp Active IQ
 :imagesdir: ./media/
 
 [.lead]
-Anomaly Detection provides insight into variations to the "usual" patterns of data in your environment. An anomaly is a variation in a metric value for an object or group of objects, compared to historical information week over week. For example, if a pod's CPU utilization was at ~50% on Tuesday at 12:05 PM in previous weeks, but is at 100% this Tuesday at 12:05 PM, that would be considered an anomaly.
+Anomaly Detection provides insight into anomalies in the patterns of data in your environment. An anomaly is a variation in a metric value for an object or group of objects, compared to historical information week over week. For example, if a pod's CPU utilization was at 50% on Tuesday at 12:05 PM in the previous week, but is at 100% this Tuesday at 12:05 PM, that would be considered an anomaly.
 
 == A brief explanation of how Cloud Insights does this
 
-It is not necessary to understand the "gears and pulleys" behind how Cloud Insights determines whether a data set is an anomaly or within "normal" range", but at a very high level: an anomaly occurs when a mean value of a metric is a number of standard deviations away from the mean of that metric for the previous week. Cloud Insights provides the ability to monitor data and gives you a choice of whether to alert on detected patterns that are more likely (i.e. fewer standard deviations away from normal), or less likely (more standard deviations away) to be determined to be an anomaly. 
+An anomaly occurs when the mean value of a metric is a number of standard deviations away from the mean of that metric for the previous week. Cloud Insights provides the ability to monitor data and alert when anomalies are detected. You have a choice of whether to alert on detected patterns that are more likely (i.e. when the mean is fewer standard deviations away from normal), or less likely (more standard deviations away) to be determined to be an anomaly. 
 
-Because Anomaly Detection works by comparing a metric's data on a particular day and time to the same date and time from the previous week, once you create an Anomaly Detection monitor, Cloud Insights needs to collect data for seven days before it can alert on anomalies.
+Because Anomaly Detection works by comparing a metric's data on a particular day and time to the same day and time from the previous week, once you create an Anomaly Detection monitor, Cloud Insights needs to collect data for seven days before it can alert on anomalies.
+
+== Alerting on anomalies
+
+To alert on anomalies, create a monitor by navigating to *Observability > Alerts > +Monitor*. Select Anomaly Detection Monitor as the monitor type. 
+
+image:Anomaly Detection Monitor Choice.png[Selecting Anomaly Detection when creating a monitor]
+
+Choose the object and metric you want to monitor. You can set filters and grouping as with other types of monitors. 
+
+Once the object is selected, set the conditions for the monitor.  
+
+image:Anomaly Detection Monitor Conditions.png[Setting conditions for Anomaly Detection monitor]
+
+
