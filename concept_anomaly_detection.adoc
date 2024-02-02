@@ -30,8 +30,15 @@ image:Anomaly Detection Monitor Choice.png[Selecting Anomaly Detection when crea
 
 Choose the object and metric you want to monitor. You can set filters and grouping as with other types of monitors. 
 
-Once the object is selected, set the conditions for the monitor.  
+Next, set the conditions for the monitor.  
+
+* Trigger an alert when the selected metric either _Spikes above_ the predicted bounds, _Drops below_ those bounds, or both.
+* Set sensitivity to _Medium_, _Low_ (fewer anomalies are detected), or _High_ (more anomalies are detected).
+* Determine whether the alert labeled as _Critical_ or _Warning_.
+* Optionally, set a value below which anomalies are _ignored_. This can help reduce noise.
 
 image:Anomaly Detection Monitor Conditions.png[Setting conditions for Anomaly Detection monitor]
+
+
 
 
