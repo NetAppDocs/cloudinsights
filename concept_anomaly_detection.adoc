@@ -20,3 +20,4 @@ Anomaly Detection provides insight into variations to the "usual" patterns of da
 
 It is not necessary to understand the "gears and pulleys" behind how Cloud Insights determines whether a data set is an anomaly or within "normal" range", but at a very high level: an anomaly occurs when a mean value of a metric is a number of standard deviations away from the mean of that metric for the previous week. Cloud Insights provides the ability to monitor data and gives you a choice of whether to alert on detected patterns that are more likely (i.e. fewer standard deviations away from normal), or less likely (more standard deviations away) to be determined to be an anomaly. 
 
+Because Anomaly Detection works by comparing a metric's data on a particular day and time to the same date and time from the previous week, once you create an Anomaly Detection monitor, Cloud Insights needs to collect data for seven days before it can alert on anomalies.
