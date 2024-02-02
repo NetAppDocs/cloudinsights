@@ -34,11 +34,16 @@ Next, set the conditions for the monitor.
 
 * Trigger an alert when the selected metric either _Spikes above_ the predicted bounds, _Drops below_ those bounds, or both.
 * Set sensitivity to _Medium_, _Low_ (fewer anomalies are detected), or _High_ (more anomalies are detected).
-* Determine whether the alert labeled as _Critical_ or _Warning_.
+* Determine whether the alert level is _Critical_ or _Warning_.
 * Optionally, set a value below which anomalies are _ignored_. This can help reduce noise. This value is shown as a dashed line on the sample graph.
 
 image:Anomaly Detection Monitor Conditions.png[Setting conditions for Anomaly Detection monitor]
 
+Finally, you can configure a delivery method for the alerts (email, webhook, or both), give the monitor an optional description or corrective actions, and add the monitor to a custom group, if desired.
+
+Save the monitor with a meaningful name, and you're done. 
+
+NOTE: remember that once the monitor is created or modified, it will take seven days before you will see any alerts.
 
 
 
