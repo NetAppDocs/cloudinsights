@@ -158,6 +158,14 @@ image:Webhook_Monitor_Notifications.png[Webhook Alerting]
 
 NOTE: ONTAP Data Collector notifications take precedence over any specific Monitor notifications that are relevant to the cluster/data collector. The recipient list you set for the Data Collector itself will receive the data collector alerts. If there are no active data collector alerts, then monitor-generated alerts will be sent to specific monitor recipients.
 
+==== Modifying notifications for multiple monitors
+
+To change the notification settings for several monitors at once, go to *Observability > Alerts > manage Monitors* and select the monitors in the list whose notification settings you want to change. In the _Bulk Actions_ drop-down, choose _Edit Notifiations_. After you configure the settings you want, select Save.
+
+Note that the changes you make will apply to all of the monitors selected. Previous settings will be over-written.
+
+You can _Remove Notifications_ for multiple monitors in the same way.
+
 
 === Setting Corrective Actions or Additional Information
 
