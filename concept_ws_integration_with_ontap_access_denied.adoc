@@ -50,13 +50,13 @@ security login create -user-or-group-name csuser -application http -authmethod p
 
 == How to enable the Access Denied
 
-Customer can enable the Access Denied feature by checking the box under Advanced Configuration as shown in image below.
+Enable the Access Denied feature when creating or modifying the data collector by checking the box in the collector's Advanced Configuration section.
 
 image:WS_Access_Denied_Enable_in_Collector.png[Enable Access Denied in the ONTAP collector Advanced Configuration]
 
 == Example Access Denied Event
 
-A sample Access Denied event will appear as shown in the images below. Customer can also see the list of desired permissions that the user was missing for a particular operation under Desired Activity column which is hidden by default.
+The Workload Security Forensics page will show Access Denied events from the ONTAP system. You can also view the missing user permissions for a particular operation by adding the _Desired Activity_ column to the table from the gear icon.
 
 image:WS_Access_Denied_Example_Event_1.png[Example Access Denied Event]
 
