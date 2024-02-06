@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: concept_cs_integration_with_ontap_access_denied.html
+summary: Workload Security integrates with ONTAP to receive Access Denied events and provide an additional analytics and automatic responses layer.
+keywords:  ransomware, ARP, Protection, Security, access
+---
+
+= Integration with ONTAP Access Denied
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+The ONTAP Access Denied feature uses workload analysis in NAS environments (NFS and SMB) to proactively detect and warn about failed file operations (i.e., The user trying to perform an operation for which they do not have permission). These failed file operation notifications--especially in cases of security related failures--will further help in blocking insider attacks at early stages.
+
+Cloud Insights Workload Security integrates with ONTAP to receive Access Denied events and provide an additional analytics and automatic responses layer.
+
+Prerequisites
+
+1.	Minimum ONTAP version: 9.13.0.
+2.	Access Denied feature is disabled by default. A Workload Security administrator can enable this feature while adding a new collector or editing existing collector by selecting the _Monitor Access Denied Events_ checkbox under Advanced Configuration.
+
+== User permissions required
+
+If the Data Collector is added using cluster administration credentials, no new permissions are needed.
+
+If the Collector is added using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Workload Security to register for Access Denied events with ONTAP.
+
+For csuser with _cluster_ credentials, execute the following commands from ONTAP command line. Note that _csrole_ is custom role and _csuser_ is ontap custom user
+
+----
+security login create -user-or-group-name csuser -application http -authmethod password -role csrole
+
+security login rest-role create -role csrole -api /api/protocols/fpolicy -access all -vserver <cluster_name>
+----
+
+For csuser with _SVM_ credentials, execute the below commands from ONTAP command line:
+
+----
+security login rest-role create -role csrole -api /api/protocols/fpolicy -access all -vserver <svm_name>
+
+security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
+security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
+security login create -user-or-group-name csuser -application http -authmethod password -role csrole
+----
+
+== How to enable the Access Denied
+
+Customer can enable the Access Denied feature by checking the box under Advanced Configuration as shown in image below.
