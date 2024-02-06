@@ -15,9 +15,9 @@ keywords:  ransomware, ARP, Protection, Security, access
 :imagesdir: ./media/
 
 [.lead]
-The ONTAP Access Denied feature uses workload analysis in NAS environments (NFS and SMB) to proactively detect and warn about failed file operations (i.e., The user trying to perform an operation for which they do not have permission). These failed file operation notifications--especially in cases of security related failures--will further help in blocking insider attacks at early stages.
+The ONTAP Access Denied feature uses workload analysis in NAS environments (NFS and SMB) to proactively detect and warn about failed file operations (i.e., a user trying to perform an operation for which they do not have permission). These failed file operation notifications--especially in cases of security-related failures--will further help in blocking insider attacks at early stages.
 
-Cloud Insights Workload Security integrates with ONTAP to receive Access Denied events and provide an additional analytics and automatic responses layer.
+Cloud Insights Workload Security integrates with ONTAP to receive Access Denied events and provide an additional analytic and automatic response layer.
 
 Prerequisites
 
@@ -31,9 +31,9 @@ image:WS_Access_Denied_Enable_in_Collector.png[Enable Access Denied in the ONTAP
 
 If the Data Collector is added using cluster administration credentials, no new permissions are needed.
 
-If the Collector is added using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Workload Security to register for Access Denied events with ONTAP.
+If the Collector is added using a custom user (for example, _csuser_) with permissions given to the user, follow the steps below to give Workload Security the necessary permission to register for Access Denied events with ONTAP.
 
-For csuser with _cluster_ credentials, execute the following commands from ONTAP command line. Note that _csrole_ is custom role and _csuser_ is ontap custom user
+For csuser with _cluster_ credentials, execute the following commands from the ONTAP command line. Note that _csrole_ is custom role and _csuser_ is ontap custom user.
 
 ----
 security login create -user-or-group-name csuser -application http -authmethod password -role csrole
@@ -41,7 +41,7 @@ security login create -user-or-group-name csuser -application http -authmethod p
 security login rest-role create -role csrole -api /api/protocols/fpolicy -access all -vserver <cluster_name>
 ----
 
-For csuser with _SVM_ credentials, execute the below commands from ONTAP command line:
+For csuser with _SVM_ credentials, execute the following commands from the ONTAP command line:
 
 ----
 security login rest-role create -role csrole -api /api/protocols/fpolicy -access all -vserver <svm_name>
@@ -53,7 +53,7 @@ security login create -user-or-group-name csuser -application http -authmethod p
 
 == Access Denied events
 
-The Workload Security Forensics page will show Access Denied events from the ONTAP system. You can also view the missing user permissions for a particular operation by adding the _Desired Activity_ column to the table from the gear icon.
+Once events have been acquired from the ONTAP system, the Workload Security Forensics page will show Access Denied events. In addition to the information displayed, you can view the missing user permissions for a particular operation by adding the _Desired Activity_ column to the table from the gear icon.
 
 image:WS_Access_Denied_Example_Event_1.png[Example Access Denied Event]
 
