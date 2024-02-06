@@ -21,8 +21,11 @@ Cloud Insights Workload Security integrates with ONTAP to receive Access Denied 
 
 Prerequisites
 
-1.	Minimum ONTAP version: 9.13.0.
-2.	Access Denied feature is disabled by default. A Workload Security administrator can enable this feature while adding a new collector or editing existing collector by selecting the _Monitor Access Denied Events_ checkbox under Advanced Configuration.
+* Minimum ONTAP version: 9.13.0.
+* A Workload Security administrator must enable the Access Denied feature while adding a new collector or editing existing collector, by selecting the _Monitor Access Denied Events_ checkbox under Advanced Configuration.
+
+image:WS_Access_Denied_Enable_in_Collector.png[Enable Access Denied in the ONTAP collector Advanced Configuration]
+
 
 == User permissions required
 
@@ -48,13 +51,7 @@ security login create -user-or-group-name csuser -application ssh -authmethod pa
 security login create -user-or-group-name csuser -application http -authmethod password -role csrole
 ----
 
-== How to enable the Access Denied
-
-Enable the Access Denied feature when creating or modifying the data collector by checking the box in the collector's Advanced Configuration section.
-
-image:WS_Access_Denied_Enable_in_Collector.png[Enable Access Denied in the ONTAP collector Advanced Configuration]
-
-== Example Access Denied Event
+== Access Denied events
 
 The Workload Security Forensics page will show Access Denied events from the ONTAP system. You can also view the missing user permissions for a particular operation by adding the _Desired Activity_ column to the table from the gear icon.
 
