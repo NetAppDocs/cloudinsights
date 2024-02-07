@@ -229,7 +229,7 @@ In addition to inviting users, administrators can enable *Single Sign-On (SSO) U
 
 NOTE: _SSO User Auto-Provisioning_ is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO User Auto-Provisioning configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp BlueXP as described in the section above. Federation allows single sign-on users to access your NetApp BlueXP accounts using credentials from your corporate directory, using open standards such as Security Assertion Markup Language 2.0 (SAML) and OpenID Connect (OIDC). 
 
-To configure _SSO User Auto-Provisioning_, on the *Admin > User Management* page, You must first have set up BlueXP Identity Federation. Select the *Request Federation* button to proceed to BlueXP Federation. Once that is configured, Cloud Insights administrators can then enable SSO user login. When an administrator enables _SSO User Auto-Provisioning_, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
+To configure _SSO User Auto-Provisioning_, on the *Admin > User Management* page, You must first have set up BlueXP Identity Federation. Select the *Set Up Federation* link in the banner to proceed to BlueXP Federation. Once that is configured, Cloud Insights administrators can then enable SSO user login. When an administrator enables _SSO User Auto-Provisioning_, they choose a default role for all SSO users (such as Guest or User). Users who log in through SSO will have that default role.
 
 //image:SSOBanner.jpg[User Management with SSO]
 image:Roles_federation_Banner.png[User management with Federation]
