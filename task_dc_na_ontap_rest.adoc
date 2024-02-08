@@ -1,0 +1,259 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_ontap_rest.html
+keywords: data collector, ontap, ontap, CDOT, REST
+summary: ONTAP REST Data Collector
+--- 
+
+= NetApp ONTAP  REST data collector
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+This data collector acquires inventory and performance data from storage systems running ONTAP using read-only REST API calls from an ONTAP account. This data collector also creates a record in the cluster application registry to accelerate support.
+
+== Terminology
+
+Cloud Insights acquires inventory and performance data from the ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Disk|Disk
+|Raid Group|Disk Group
+|Cluster|Storage
+|Node|Storage Node
+|Aggregate|Storage Pool
+|LUN|Volume
+|Volume|Internal Volume
+|===
+
+== ONTAP Data Management Terminology
+
+The following terms apply to objects or references that you might find on ONTAP Data Management storage asset landing pages. Many of these terms apply to other data collectors as well.
+
+=== Storage
+
+* Model – A comma-delimited list of the unique, discrete node model names within this cluster. If all the nodes in the clusters are the same model type, just one model name will appear.
+* Vendor – same Vendor name you would see if you were configuring a new data source.
+* Serial number – The array serial number. On cluster architecture storage systems like ONTAP Data Management, this serial number may be less useful than the individual “Storage Nodes” serial numbers.
+* IP – generally will be the IP(s) or hostname(s) as configured in the data source.
+* Microcode version – firmware.
+* Raw Capacity – base 2 summation of all the physical disks in the system, regardless of their role.
+* Latency – a representation of what the host facing workloads are experiencing, across both reads and writes. Ideally, Cloud Insights is sourcing this value directly, but this is often not the case. In lieu of the array offering this up, Cloud Insights is generally performing an IOPs-weighted calculation derived from the individual internal volumes’ statistics.
+* Throughput – aggregated from internal volumes.
+Management – this may contain a hyperlink for the management interface of the device. Created programmatically by the Cloud Insights data source as part of inventory reporting.
+
+=== Storage Pool
+
+* Storage – what storage array this pool lives on. Mandatory.
+* Type – a descriptive value from a list of an enumerated list of possibilities. Most commonly will be “Aggregate” or “RAID Group””.
+* Node – if this storage array’s architecture is such that pools belong to a specific storage node, its name will be seen here as a hyperlink to its own landing page.
+* Uses Flash Pool – Yes/No value – does this SATA/SAS based pool have SSDs used for caching acceleration?
+* Redundancy – RAID level or protection scheme. RAID_DP is dual parity, RAID_TP is triple parity.
+* Capacity – the values here are the logical used, usable capacity and the logical total capacity, and the percentage used across these.
+* Over-committed capacity – If by using efficiency technologies you have allocated a sum total of volume or internal volume capacities larger than the logical capacity of the storage pool, the percentage value here will be greater than 0%.
+* Snapshot – snapshot capacities used and total, if your storage pool architecture dedicates part of its capacity to segments areas exclusively for snapshots. ONTAP in MetroCluster configurations are likely to exhibit this, while other ONTAP configurations are less so.
+* Utilization – a percentage value showing the highest disk busy percentage of any disk contributing capacity to this storage pool. Disk utilization does not necessarily have a strong correlation with array performance – utilization may be high due to disk rebuilds, deduplication activities, etc in the absence of host driven workloads. Also, many arrays’ replication implementations may drive disk utilization while not showing as internal volume or volume workload.
+* IOPS – the sum IOPs of all the disks contributing capacity to this storage pool.
+Throughput – the sum throughput of all the disks contributing capacity to this storage pool.
+
+=== Storage Node
+
+* Storage – what storage array this node is part of. Mandatory.
+* HA Partner – on platforms where a node will fail over to one and only one other node, it will generally be seen here.
+* State – health of the node. Only available when the array is healthy enough to be inventoried by a data source.
+* Model – model name of the node.
+* Version – version name of the device.
+* Serial number – The node serial number.
+* Memory – base 2 memory if available.
+* Utilization – On ONTAP, this is a controller stress index from a proprietary algorithm. With every performance poll, a number between 0 and 100% will be reported that is the higher of either WAFL disk contention, or average CPU utilization. If you observe sustained values > 50%, that is indicative of undersizing – potentially a controller/node not large enough or not enough spinning disks to absorb the write workload.
+* IOPS – Derived directly from ONTAP ZAPI calls on the node object.
+* Latency – Derived directly from ONTAP ZAPI calls on the node object.
+* Throughput – Derived directly from ONTAP ZAPI calls on the node object.
+* Processors – CPU count.
+
+
+== Requirements
+
+The following are requirements to configure and use this data collector:
+
+* You must have access to an Administrator account configured for read-only API calls.
+* Account details include username and password.
+* Port requirements: 80 or 443
+
+* Account permissions:
+** Read only role name to ontapi application to the default Vserver 
+** You may require additional optional write permissions. See the Note About Permissions below.
+* ONTAP License requirements:
+** FCP license and mapped/masked volumes required for fibre-channel discovery 
+
+== Configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|NetApp Management IP |IP address or fully-qualified domain name of the NetApp cluster
+|User Name |User name for NetApp cluster
+|Password |Password for NetApp cluster 
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Connection type|Choose HTTP (default port 80) or HTTPS (default port 443). The default is HTTPS
+|Override Communication Port|Specify a different port if you do not want to use the default
+|Inventory Poll Interval (min) |Default is 60 minutes.
+//|Inventory concurrent thread count|Thread count for parallel foundation queries
+|For TLS for HTTPS|Only allow TLS as protocol when using HTTPS
+|Automatically Lookup Netgroups|Enable the automatic netgroup lookups for export policy rules
+|Netgroup Expansion|Netgroup Expansion Strategy. Choose _file_ or _shell_. The default is _shell_.
+|HTTP read timeout seconds|Default is 30
+|Force responses as UTF-8|Forces data collector code to interpret responses from the CLI as being in UTF-8
+//|Foundation model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
+|Performance Poll Interval (sec)|Default is 900 seconds.
+//|Performance Concurrent thread count|Thread count for parallel performance queries
+//|Performance model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
+
+|Advanced Counter Data Collection|Enable ONTAP integration. Select this to include ONTAP Advanced Counter data in polls. Choose the desired counters from the list.
+
+//|<TBD: New Micro Poll> | Default is 60 seconds
+|===
+
+
+== ONTAP Power Metrics
+
+Several ONTAP models provide power metrics for Cloud Insights that can be used for monitoring or alerting. The lists of supported and unsupported models below are not comprehensive but should provide some guidance; in general, if a model is in the same family as one on the list, the support should be the same. 
+
+Supported Models:
+
+A200
+A220
+A250
+A300
+A320
+A400
+A700
+A700s
+A800
+A900
+C190
+FAS2240-4
+FAS2552
+FAS2650
+FAS2720
+FAS2750
+FAS8200
+FAS8300
+FAS8700
+FAS9000
+
+Unsupported Models:
+
+FAS2620
+FAS3250
+FAS3270
+FAS500f
+FAS6280
+FAS/AFF 8020
+FAS/AFF 8040
+FAS/AFF 8060
+FAS/AFF 8080
+
+
+
+== A Note About Permissions
+
+Since a number of Cloud Insights' ONTAP dashboards rely on advanced ONTAP counters, you must enable *Advanced Counter Data Collection* in the data collector Advanced Configuration section.
+
+You should also ensure that write permission to the ONTAP API is enabled. This typically requires an account at the cluster level with the necessary permissions.
+
+To create a local account for Cloud Insights at the cluster level, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
+
+. Before you begin, you must be signed in to ONTAP with an _Administrator_ account, and _diagnostic-level commands_ must be enabled.
+
+. Create a read-only role using the following commands.
+
+ security login role create -role ci_readonly -cmddirname DEFAULT -access readonly
+ security login role create -role ci_readonly -cmddirname security -access readonly
+ security login role create -role ci_readonly -access all -cmddirname {cluster application-record create}
+ 
+. Create the read-only user using the following command. Once you have executed the create command, you will be prompted to enter a password for this user.
+
+ security login create -username ci_user -application ontapi -authentication-method password -role ci_readonly
+ 
+If AD/LDAP account is used, the command should be 
+
+ security login create -user-or-group-name DOMAIN\aduser/adgroup -application ontapi -authentication-method domain -role ci_readonly
+ 
+The resulting role and user login will look something like the following. Your actual output may vary:
+
+ Role Command/ Access
+ Vserver Name Directory Query Level
+ ---------- ------------- --------- ------------------ --------
+ cluster1 ci_readonly DEFAULT read only
+ cluster1 ci_readonly security readonly
+ 
+ cluster1::security login> show
+ Vserver: cluster1
+ Authentication Acct
+ UserName    Application   Method      Role Name      Locked
+ ---------   -------      ----------- -------------- --------
+ ci_user     ontapi      password    ci_readonly   no
+
+
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+=== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+
+|Receive 401 HTTP response or 13003 ZAPI error code and ZAPI returns “Insufficient privileges” or “not authorized for this command”| Check username and password, and user privileges/permissions.
+
+|Cluster version is < 8.1| Cluster minimum supported version is 8.1. Upgrade to minimum supported version.
+
+|ZAPI returns "cluster role is not cluster_mgmt LIF"|AU needs to talk to cluster management IP. Check the IP and change to a different IP if necessary
+
+|Error: “7 Mode filers are not supported”| This can happen if you use this data collector to discover 7 mode filer. Change IP to point to cdot cluster instead. 
+
+|ZAPI command fails after retry| AU has communication problem with the cluster. Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+
+|AU failed to connect to ZAPI via HTTP| Check whether ZAPI port accepts plaintext. If AU tries to send plaintext to an SSL socket, the communication fails.
+
+|Communication fails with SSLException|AU is attempting to send SSL to a plaintext port on a filer. Check whether the ZAPI port accepts SSL, or use a different port.
+
+|Additional Connection errors:
+
+ZAPI response has error code 13001, “database  is not open”
+  
+ZAPI error code is 60 and response contains “API did not finish on time”
+  
+ZAPI response contains “initialize_session() returned NULL environment”
+  
+ZAPI error code is 14007 and response contains “Node is not healthy”
+
+|Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+|===
+
+=== Performance
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|“Failed to collect performance from ZAPI” error|This is usually due to perf stat not running. Try the following command on each node:
+
+> _system node systemshell -node * -command “spmctl -h cmd –stop; spmctl -h cmd –exec”_
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
+
+
