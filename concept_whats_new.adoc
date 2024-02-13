@@ -22,10 +22,9 @@ NOTE: Some of these features may not be available in Cloud Insights Federal Edit
 
 == February 2024
 
-=== Workload Security API
+=== Workload Security Data Collector API
 
-In environments with multiple agents, data collectors can be added in bulk instead of being added manually one-by-one, thanks to new Workload Security APIs to manage Data Collectors and Agents.  Navigate to *Admin > API Access > API Documentation* and select the _Workload Security_ API type to learn more.
-
+In large environments, you can automate Workload Security collector creation using the new Data Collectors API. Navigate to *Admin > API Access > API Documentation* and select the _Workload Security_ API type to learn more.
 
 '''
 
@@ -49,13 +48,13 @@ image:WorkloadHealth.png[Workload Health at a glance]
 The Data Domain collector has been improved to better identify HA systems for durability across failover events This change will cause a *one time* re-identification of Data Domain appliances in HA systems, which will subsequently cause any annotations on those assets to be removed (because these arrays will be re-identified). You will need to re-attach annotations to your Data Domain objects.
 
 
-=== Improved Workload Security
+=== Enhanced Ransomware Detection ML Algorithm
 
-Workload Security includes the following improvements:
+Workload Security includes a new 2nd-generation ransomware detection ML algorithm to detect the most sophisticated attacks faster and more accurately.
 
-* A new 2-generation Ransomware detection ML algorithm. We evolved our Ransomware detection ML algorithm to detect the most sophisticated attacks faster and more accurately.
-* "Seasonality" of behaviors: weekend behavior may follow different patterns from weekday, or morning behavior from afternoon. Workload Security algorithms take this seasonality into account.
-* Faster analytics: The forensics user interface has been improved to analyze more data more quickly.
+"Seasonality" of behaviors: weekend behavior may follow different patterns from weekday, or morning behavior from afternoon. Workload Security algorithms take this seasonality into account.
+
+// * Faster analytics: The forensics user interface has been improved to analyze more data more quickly.
 
 
 
