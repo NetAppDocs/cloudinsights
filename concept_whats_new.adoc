@@ -24,7 +24,7 @@ NOTE: Some of these features may not be available in Cloud Insights Federal Edit
 
 === Workload Security API
 
-New Workload Security APIs are available to manage Data Collectors (add/update/delete) and Agents. Navigate to *Admin > API Access > API Documentation* and select the _Workload Security_ API type to learn more.
+In environments with multiple agents, data collectors can be added in bulk instead of being added manually one-by-one, thanks to new Workload Security APIs to manage Data Collectors and Agents.  Navigate to *Admin > API Access > API Documentation* and select the _Workload Security_ API type to learn more.
 
 
 '''
@@ -53,9 +53,10 @@ The Data Domain collector has been improved to better identify HA systems for du
 
 Workload Security includes the following improvements:
 
-* A new 2-generation Ransomware detection ML algorithm. We evolved our Ransomware detection ML algorithm to detect the most sophisticated attacks faster and more accurately. 
-
+* A new 2-generation Ransomware detection ML algorithm. We evolved our Ransomware detection ML algorithm to detect the most sophisticated attacks faster and more accurately.
+* "Seasonality" of behaviors: your weekend environment data may follow different patterns from your weekday, or your morning from your afternoon. Workload Security algorithms take this seasonality into acount.
 * Faster data breach analytics: The forensics user interface has been improved to analyze more data more quickly.
+
 
 
 
