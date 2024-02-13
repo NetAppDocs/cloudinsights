@@ -13,10 +13,90 @@ keywords: features
 :linkattrs:
 :imagesdir: ./media/
 
+[#whats-new]
 [lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the commercial Editions of Cloud Insights.  
 
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
+
+
+== February 2024
+
+=== Workload Security API
+
+New Workload Security APIs are available to manage Data Collectors (add/update/delete) and Agents. Navigate to *Admin > API Access > API Documentation* and select the _Workload Security_ API type to learn more.
+
+
+'''
+
+== January 2024
+
+=== Try Cloud Insights Features you haven’t used yet
+
+In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-trials[Module Trials]. For example, if you are subscribed to Cloud Insights and have been monitoring storage and virtual machines, when you add Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. Kubernetes Observability managed unit usage will not count against your subscribed entitlement until after the trial period ends.
+
+=== How healthy are my workloads?
+
+Workload health is available at a glance on the *Kubernetes > Explore > Workloads* page, so you can quickly see which workloads are performing well and which may need some help.
+
+image:WorkloadHealth.png[Workload Health at a glance]
+
+
+=== Data Collector Updates
+
+==== Data Domain Identification
+
+The Data Domain collector has been improved to better identify HA systems for durability across failover events This change will cause a *one time* re-identification of Data Domain appliances in HA systems, which will subsequently cause any annotations on those assets to be removed (because these arrays will be re-identified). You will need to re-attach annotations to your Data Domain objects.
+
+
+=== Improved Workload Security
+
+Workload Security includes the following improvements:
+
+* Detection algorithms have been enhanced to reduce the number of false positive warnings.
+* User Interface performance has been improved while loading, displaying, and scrolling Forensics pages.
+
+
+
+'''
+
+
+== December 2023
+
+=== Change Analytics at a glance
+
+Kubernetes link:kubernetes_change_analytics.html[Change Analytics] provide you with an all-in-one view of recent changes to your Kubernetes environment. Alerts and deployment status are at your fingertips. With Change Analytics, you can track every deployment and configuration change, and correlate it with the health and performance of K8s services, infrastructure, and clusters.
+
+image:ChangeAnalytitcs_Main_Screen.png[Change Analytics Dashboard]
+
+
+=== Kubernetes Workload Performance Dashboard
+
+Workload performance is available at a glance in the comprehensive Kubernetes Workload Performance dashboard. Quickly view graphs of Volume, Throughput, Latency, and Retransmission trends, as well as a table of workload traffic for each namespace in your environment. Filters allow easy focus into areas of interest.
+
+image:K8s_Workload_performance.png[Workload Performance Menu, width=400]
+
+image:K8s_Workload_performance_dashboard.png[Workload Performance Dashboard]
+
+
+=== Query Details on one screen
+
+In a query, selecting a row opens a side panel showing attribute, annotation, and metric details for the selected row, providing helpful information without needing to drill into the object's landing page. Links in the row or side panel allow for easy navigation.
+
+image:MetricQuerySlideoutPanel.png[Slideout Panel for Metric Query]
+
+
+
+=== Data Collector updates:
+
+* *Brocade FOS REST*:  This collector is moved out of "Preview" and is now generally available. Some things to note:
+** FOS introduced their REST API with FOS 8.2. But some features like routing only received REST API capabilities with 9.0.
+** If you have a fabric consisting of mixed FOS assets 8.2 higher, as well as some < 8.2, the Cloud Insights FOS REST collector will fail to discover those older assets. You can edit the FOS REST collector and build a comma-delimited list of the IPv4 address of those devices for exclusion from that collector.
+
+* *SELinux*:  Cloud Insights includes enhancements to the Linux Acquisition Unit initial installation to ensure robustness of operation within Linux environments with SELinux enforcement enabled. These enhancements only impact _new_ AU deployments; if you have any SELinux issues relating to AU upgrades, contact NetApp Support to remediate your SELinux configuration.
+
+
+'''
 
 
 == November 2023
@@ -55,7 +135,7 @@ Prior to this enhancement, only FOS 9.1.1c switches without Virtual Fabrics pres
 
 Workload Security has been improved with the following:
 
-* *Access Denied*: Workload Security integrates with ONTAP to receive "Access Denied" events and provide an additional analytics and automatic responses layer.
+* *Access Denied*: Workload Security integrates with ONTAP to receive link:concept_ws_integration_with_ontap_access_denied.html["Access Denied" events] and provide an additional analytics and automatic responses layer.
 * *Allowed File Types*: If a ransomware attack is detected for a known file extension, that file extension can be added to an link:ws_allowed_file_types.html[allowed file types] list to prevent unnecessary alerting. 
 
 
