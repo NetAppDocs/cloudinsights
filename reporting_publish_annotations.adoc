@@ -14,3 +14,14 @@ keywords: reporting, cognos, data warehouse, dwh, annotations
 :imagesdir: ./media/
 
 [lead]
+If your Cloud Insights environment has Reporting, you may also want to publish some of your custom annotations to make them available for Reporting.  
+
+To make annotations available for use in Reporting, on the *Observability > Enrich > Annotations* page, select the _Annotations for Reporting_ tab. Annotations that are applied to assets are listed, along with the object types to which any are attached. 
+
+image:Annotations_for_Reporting.png[Publish Annotation for Reporting]
+
+For each annotation/object that you want to publish to make available for Reporting, select the object's _Publish To Reports_ checkbox.  You can also choose to apply the annotation publishing to historical data by selecting the _Apply To Historical Data_ checkbox.
+
+To make an annotation unavailable to Reporting, uncheck the appropriate boxes.
+
+The annotation changes you made will publish to Reporting at the next ETL.
