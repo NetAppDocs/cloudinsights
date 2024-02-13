@@ -22,4 +22,6 @@ image:Annotations_for_Reporting.png[Publish Annotation for Reporting]
 
 For each annotation/object that you want to publish to make available for Reporting, select the object's _Publish To Reports_ checkbox.  You can also choose to apply the annotation publishing to historical data by selecting the _Apply To Historical Data_ checkbox.
 
+Note that un-checking an annotation will remove that annotation from being available to Reporting, which can cause loss of data. Use caution when removing annotations.
+
 The annotation changes you made will publish to Reporting at the next ETL.
