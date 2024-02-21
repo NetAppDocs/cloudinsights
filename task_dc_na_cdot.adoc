@@ -125,6 +125,9 @@ The following are requirements to configure and use this data collector:
 |Advanced Counter Data Collection|Enable ONTAP integration. Select this to include ONTAP Advanced Counter data in polls. Choose the desired counters from the list.
 
 //|<TBD: New Micro Poll> | Default is 60 seconds
+
+|Cluster Switch Metrics|Allow Cloud Insights to collect cluster switch data. Note that in addition to enabling this on the Cloud Insights side, you must also configure the ONTAP system to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information], and ensure the correct <<a-note-about-permissions, permissions>> are set, in order to allow the switch data to be sent to Cloud Insights. 
+
 |===
 
 
@@ -208,6 +211,7 @@ The resulting role and user login will look something like the following. Your a
  ---------   -------      ----------- -------------- --------
  ci_user     ontapi      password    ci_readonly   no
 
+NOTE: If ONTAP access control is not set correctly, then Cloud Insights REST calls may fail, resulting in gaps in data for the device.
 
 
 == Troubleshooting
