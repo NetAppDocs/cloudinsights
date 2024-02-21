@@ -211,7 +211,7 @@ The resulting role and user login will look something like the following. Your a
  ---------   -------      ----------- -------------- --------
  ci_user     ontapi      password    ci_readonly   no
 
-NOTE: If ONTAP access control is not set correctly, then Cloud Insights REST calls may fail, resulting in gaps in data for the device.
+NOTE: If ONTAP access control is not set correctly, then Cloud Insights REST calls may fail, resulting in gaps in data for the device.  For example, if you have enabled it on the Cloud Insights collector but have not configured the permissions on the ONTAP, acquisition will fail.  Additionally, if the role is previously defined on the ONTAP and admins want to add the Rest API abilities, ensure that _http_ is added to the role.
 
 
 == Troubleshooting
