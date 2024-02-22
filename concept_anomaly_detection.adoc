@@ -20,7 +20,7 @@ Anomaly Detection provides insight into anomalies in the patterns of data in you
 
 An anomaly occurs when the mean value of a metric is a number of standard deviations away from the mean of that metric for the previous week. Cloud Insights provides the ability to monitor data and alert when anomalies are detected. You have a choice of whether to alert on detected patterns that are more likely (i.e. when the mean is fewer standard deviations away from normal), or less likely (more standard deviations away) to be determined to be an anomaly. 
 
-Because Anomaly Detection works by comparing a metric's data on a particular day and time to the same day and time from the previous week, once you create an Anomaly Detection monitor, Cloud Insights needs to collect data for seven days before it can alert on anomalies.
+// Because Anomaly Detection works by comparing a metric's data on a particular day and time to the same day and time from the previous week, once you create an Anomaly Detection monitor, Cloud Insights needs to collect data for seven days before it can alert on anomalies.
 
 == Alerting on anomalies
 
@@ -43,7 +43,7 @@ Finally, you can configure a delivery method for the alerts (email, webhook, or 
 
 Save the monitor with a meaningful name, and you're done. 
 
-NOTE: Remember that once the monitor is created or modified, it will take seven days before you will see any alerts.
+// NOTE: Remember that once the monitor is created or modified, it will take seven days before you will see any alerts.
 
 
 
