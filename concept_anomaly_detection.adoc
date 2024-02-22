@@ -18,7 +18,9 @@ Anomaly Detection provides insight into anomalies in the patterns of data in you
 
 == What is Anomaly Detection?
 
-An anomaly occurs when the mean value of a metric is a number of standard deviations away from the mean of that metric for the previous week. Cloud Insights provides the ability to monitor data and alert when anomalies are detected. You have a choice of whether to alert on detected patterns that are more likely (i.e. when the mean is fewer standard deviations away from normal), or less likely (more standard deviations away) to be determined to be an anomaly. 
+An anomaly occurs when the mean value of a metric is a number of standard deviations away from the weighted mean of that metric for the previous few weeks, with recent weeks having more weight than previous weeks. Cloud Insights provides the ability to monitor data and alert when anomalies are detected. You have a choice to set the "sensitivity" levels of detection. For example, a higher sensitivity would be when the mean value is fewer standard deviations from the mean, thus causing more alerts to be generated. Conversely, lower sensitivity = more standard deviations from mean = fewer alerts.
+
+
 
 // Because Anomaly Detection works by comparing a metric's data on a particular day and time to the same day and time from the previous week, once you create an Anomaly Detection monitor, Cloud Insights needs to collect data for seven days before it can alert on anomalies.
 
