@@ -5,7 +5,6 @@ summary: New features and functionality available in Cloud Insights.
 keywords: features
 ---
 = What\'s New with Cloud Insights 
-:toc: macro
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -21,6 +20,61 @@ NOTE: Some of these features may not be available in Cloud Insights Federal Edit
 
 
 == February 2024
+
+
+=== Usability Improvements
+
+Save a *snapshot* of your current dashboard by selecting _Export as Image_ from the right-corner drop-down. Cloud Insights creates a .PNG of the current widget states.
+
+image:ExportAsImage.png[Export as Image Dropdown]
+
+
+*Object and Metric selection* is easier than ever for Widgets, Monitors, etc.  Choose the object type you want, and then select a metric relevant to that object in the separate drop-down.
+
+image:ObjectAndMetricSelection.png[Object and Metric Selectors separate]
+
+
+*Export Data Collector and Acquisition Unit* lists to .CSV by selecting the icon at the top of those pages. 
+
+image:ExportDCList.png[Export DC and AU Lists to .csv]
+
+
+We’ve *re-organized the Help > Support* page so it’s easier to find what you’re looking for, and because you asked for them, we added direct links on this page to *API Swagger* and user documentation.
+
+image:Support_APIAccess.png[API Links on the Help > Support Page]
+
+
+*Links* in the “triggeredOn” column on the Alerts list page will navigate to the appropriate Landing Page, if a Landing Page is available for that object.
+
+image:TriggeredOnLink.png[Links in TriggeredOn alert field]
+
+
+
+
+=== See all changes in your namespace
+
+Kubernetes Change Analysis now allows you to see a timeline of changes when selecting Cluster and Namespace. Previously, Workload must also have been selected.  When filtering on Cluster and Namespace, the timeline of all workload changes in that namespace are shown on one line.
+
+image:NamespaceTimeline.png[Namespace Timeline]
+ 
+
+
+=== Related Logs for Alerts
+
+When viewing a log alert, related log entries are shown in a new table.  A log entry is related if it occurs in the same source and timeframe as the alert, and is subject to the same conditions. Select “Analyze Logs” to explore further.
+
+image:RelatedLogsTable.png[Related Logs on a log alert landing page]
+
+
+=== Collect ONTAP Switch Data
+
+Cloud Insights can collect data from the ONTAP system’s back-end switches; simply enable the collection in the data collector’s _Advanced Configuration_ section, and ensure the ONTAP system is configured to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information] and has the appropriate link:[permissions] set.
+
+
+
+
+
+
 
 === Workload Security Data Collector API
 
