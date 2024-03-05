@@ -86,6 +86,8 @@ persistentvolumes,pods,replicasets,resourcequotas,services,statefulsets
 
 ||labels|a comma separated list of resources that kube-state-metrics should capture
 
+||shards |increase the number of shards for larger clusters if the telegraf RS pod(s) experience collection timeouts
+
 +++
 example: cronjobs=[*],daemonsets=[*],deployments=[*],ingresses=[*],jobs=[*],namespaces=[*],nodes=[*],
 persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resourcequotas=[*],services=[*],statefulsets=[*]
