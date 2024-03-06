@@ -97,33 +97,22 @@ The following are requirements to configure and use this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|NetApp Management IP |IP address or fully-qualified domain name of the NetApp cluster
-|User Name |User name for NetApp cluster
-|Password |Password for NetApp cluster 
+|ONTAP management IP Address	|IP address or fully-qualified domain name of the NetApp cluster
+|ONTAP REST User Name	|User name for NetApp cluster
+|ONTAP REST Password	|Password for NetApp cluster
 |===
+
 
 == Advanced configuration
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|Connection type|Choose HTTP (default port 80) or HTTPS (default port 443). The default is HTTPS
-|Override Communication Port|Specify a different port if you do not want to use the default
-|Inventory Poll Interval (min) |Default is 60 minutes.
-//|Inventory concurrent thread count|Thread count for parallel foundation queries
-|For TLS for HTTPS|Only allow TLS as protocol when using HTTPS
-|Automatically Lookup Netgroups|Enable the automatic netgroup lookups for export policy rules
-|Netgroup Expansion|Netgroup Expansion Strategy. Choose _file_ or _shell_. The default is _shell_.
-|HTTP read timeout seconds|Default is 30
-|Force responses as UTF-8|Forces data collector code to interpret responses from the CLI as being in UTF-8
-//|Foundation model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
-|Performance Poll Interval (sec)|Default is 900 seconds.
-//|Performance Concurrent thread count|Thread count for parallel performance queries
-//|Performance model writing timeout|Max time before aborting when writing the model to disk. -1 Disables the feature. 0 is for testing only.
-
-|Advanced Counter Data Collection|Enable ONTAP integration. Select this to include ONTAP Advanced Counter data in polls. Choose the desired counters from the list.
-
-//|<TBD: New Micro Poll> | Default is 60 seconds
+|Inventory Poll Interval (min)	|Default is 60 minutes.
+|Performance Poll Interval (sec)	|Default is 60 seconds.
+|Advanced Counter Data Collection	|Select this to include ONTAP Advanced Counter data in polls. 
+|Enable EMS Event Collection	|Select this to include ONTAP EMS log event data.
+|EMS Poll Interval (sec)	|Default is 60 seconds.
 |===
 
 
