@@ -243,6 +243,11 @@ ZAPI response contains “initialize_session() returned NULL environment”
 ZAPI error code is 14007 and response contains “Node is not healthy”
 
 |Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+
+| When attempting to create an ONTAP REST data collector, an error like the following is seen:
+Configuration: 10.193.70.14: ONTAP rest API at 10.193.70.14 is not available: 10.193.70.14 failed to GET /api/cluster: 400 Bad Request
+|This is an ONTAP 9.6 array and has no REST API capabilities whatsoever. ONTAP 9.14.1 is the minimum ONTAP version supported by the Ontap REST collector. "400 Bad Request" responses should be expected on pre-REST ONTAP releases.
+.
 |===
 
 === Performance
