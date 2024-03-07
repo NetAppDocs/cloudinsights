@@ -215,10 +215,12 @@ Some things to try if you encounter problems with this data collector:
 |===
 |Problem:|Try this:
 
-| When attempting to create an ONTAP REST data collector, an error like the following is seen:
+|When attempting to create an ONTAP REST data collector, an error like the following is seen:
 Configuration: 10.193.70.14: ONTAP rest API at 10.193.70.14 is not available: 10.193.70.14 failed to GET /api/cluster: 400 Bad Request
-|This is an ONTAP 9.6 array and has no REST API capabilities whatsoever. ONTAP 9.14.1 is the minimum ONTAP version supported by the Ontap REST collector. "400 Bad Request" responses should be expected on pre-REST ONTAP releases.
-.
+|This is likely due to an oldeer ONTAP array) for example, ONTAP 9.6) which has no REST API capabilities. ONTAP 9.14.1 is the minimum ONTAP version supported by the ONTAP REST collector. "400 Bad Request" responses should be expected on pre-REST ONTAP releases.
+
+For ONTAP versions that do support REST but are not 9.14.1 or later, you may see the following simillar message: 
+Configuration: 10.193.98.84: ONTAP rest API at 10.193.98.84 is not available: 10.193.98.84: ONTAP rest API at 10.193.98.84 is available: cheryl5-cluster-2 9.10.1 a3cb3247-3d3c-11ee-8ff3-005056b364a7 but is not of minimum version 9.14.1.
 |===
 
 
