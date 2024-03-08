@@ -19,6 +19,28 @@ NetApp is continually improving and enhancing its products and services. Here ar
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
 
 
+
+== March 2024
+
+=== Workload Security Agent Details
+
+Each of your Workload Security Agents has its own landing page, where you can easily see summary information about the Agent as well as the installed Data and User Directory Collectors associated with that Agent. 
+
+image:Agent_Detail_Page.png[Agent Detail Landing Page example]
+
+=== Chart more data more quickly
+
+When analyzing data on an asset's landing page, adding additional data to the Expert View charts is a snap. For each table on the landing page, if an object type has relevant data, hover over that object to display the "Add to Expert View" icon. Selecting this icon adds that object to the Additional Resources and displays it in the Expert View charts.
+
+image:AddToChartIcon.png[Add table data to expert view]
+
+Or maybe you want to see a landing page table's data in its own chart. Simply select the _Show Chart_ icon to open the chart below the table:
+
+image:LPTableShowChartIcon.png[Show Chart icon]
+
+
+'''
+
 == February 2024
 
 
@@ -68,7 +90,7 @@ image:RelatedLogsTable.png[Related Logs on a log alert landing page]
 
 === Collect ONTAP Switch Data
 
-Cloud Insights can collect data from the ONTAP system’s back-end switches; simply enable the collection in the data collector’s _Advanced Configuration_ section, and ensure the ONTAP system is configured to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information] and has the appropriate link:[permissions] set.
+Cloud Insights can collect data from the ONTAP system’s back-end switches; simply enable the collection in the data collector’s _Advanced Configuration_ section, and ensure the ONTAP system is configured to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information] and has the appropriate <<a-note-about-permissions, permissions>> set.
 
 
 
