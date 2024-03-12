@@ -47,6 +47,10 @@ For csuser with _SVM_ credentials, execute the following commands from the ONTAP
  security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole -vserver <svm_name>
 ----
 
+Read more about configuring other <<task_add_collector_svm.html, ONTAP permissions>>.
+
+
+
 == Access Denied events
 
 Once events have been acquired from the ONTAP system, the Workload Security Forensics page will show Access Denied events. In addition to the information displayed, you can view the missing user permissions for a particular operation by adding the _Desired Activity_ column to the table from the gear icon.

@@ -152,6 +152,47 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
 //// 
 
 
+=== Permissions for ONTAP Autonomous Ransomware Protection
+
+If you are using cluster administration credentials, no new permissions are needed.
+
+If you are using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Workload Security to collect ARP related information from ONTAP.
+
+For _csuser_ with cluster credentials, do the following from the ONTAP command line:
+
+ security login rest-role create -role arwrole -api /api/storage/volumes -access readonly -vserver <cluster_name>
+ security login rest-role create -api /api/security/anti-ransomware -access readonly  -role arwrole -vserver <cluster_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role arwrole
+
+For more information, read about <<concept_cs_integration_with_ontap_arp.html, Integration with ONTAP Autonomous Ransomware Protection>>
+
+
+=== Permissions for ONTAP Access Denied
+
+If the Data Collector is added using cluster administration credentials, no new permissions are needed.
+
+If the Collector is added using a custom user (for example, _csuser_) with permissions given to the user, follow the steps below to give Workload Security the necessary permission to register for Access Denied events with ONTAP.
+
+For csuser with _cluster_ credentials, execute the following commands from the ONTAP command line. Note that _csrestrole_ is custom role and _csuser_ is ontap custom user.
+
+----
+ security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <cluster_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole
+----
+
+For csuser with _SVM_ credentials, execute the following commands from the ONTAP command line:
+
+----
+ security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <svm_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole -vserver <svm_name>
+----
+
+For more information, read about <<concept_ws_integration_with_ontap_access_denied.html, Integration with ONTAP Access Denied>>
+
+
+
+
+
 == Configure the data collector
 
 .Steps for Configuration 
