@@ -164,7 +164,7 @@ For _csuser_ with cluster credentials, do the following from the ONTAP command l
  security login rest-role create -api /api/security/anti-ransomware -access readonly  -role arwrole -vserver <cluster_name>
  security login create -user-or-group-name csuser -application http -authmethod password -role arwrole
 
-For more information, read about <<concept_cs_integration_with_ontap_arp.html, Integration with ONTAP Autonomous Ransomware Protection>>
+For more information, read about link:concept_cs_integration_with_ontap_arp.html[Integration with ONTAP Autonomous Ransomware Protection]
 
 
 === Permissions for ONTAP Access Denied
@@ -187,7 +187,7 @@ For csuser with _SVM_ credentials, execute the following commands from the ONTAP
  security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole -vserver <svm_name>
 ----
 
-For more information, read about link:\concept_ws_integration_with_ontap_access_denied.html[Integration with ONTAP Access Denied]
+For more information, read about link:concept_ws_integration_with_ontap_access_denied.html[Integration with ONTAP Access Denied]
 
 
 
