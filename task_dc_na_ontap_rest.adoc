@@ -14,11 +14,11 @@ summary: ONTAP REST Data Collector
 :imagesdir: ./media/
 
 [.lead]
-This data collector acquires inventory and performance data from storage systems running ONTAP using read-only REST API calls from an ONTAP account. This data collector also creates a record in the cluster application registry to accelerate support.
+This data collector acquires inventory, EMS logs, and performance data from storage systems running ONTAP 9.14.1 and higher using REST API calls. For Ontap systems on earlier releases, use the ZAPI-based "NetApp ONTAP Data Management Software" collector type. 
 
 == Terminology
 
-Cloud Insights acquires inventory and performance data from the ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Cloud Insights acquires inventory, logs and performance data from the ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -40,7 +40,7 @@ The following terms apply to objects or references that you might find on ONTAP 
 
 * Model – A comma-delimited list of the unique, discrete node model names within this cluster. If all the nodes in the clusters are the same model type, just one model name will appear.
 * Vendor – same Vendor name you would see if you were configuring a new data source.
-* Serial number – The array serial number. On cluster architecture storage systems like ONTAP Data Management, this serial number may be less useful than the individual “Storage Nodes” serial numbers.
+* Serial number – The array UUID
 * IP – generally will be the IP(s) or hostname(s) as configured in the data source.
 * Microcode version – firmware.
 * Raw Capacity – base 2 summation of all the physical disks in the system, regardless of their role.
@@ -82,15 +82,13 @@ Throughput – the sum throughput of all the disks contributing capacity to this
 
 The following are requirements to configure and use this data collector:
 
-* You must have access to an Administrator account configured for read-only REST API calls.
+* You must have access to an user account with the require level of access
 * Account details include username and password.
-* Port requirements: 80 or 443
+* Port requirements: 443
 
 * Account permissions:
-** Read only role name to ontapi application to the default Vserver 
-** You may require additional optional write permissions. See the Note About Permissions below.
-* ONTAP License requirements:
-** FCP license and mapped/masked volumes required for fibre-channel discovery 
+** Functionally, Cloud Insights is making read requests, but some write permissions are required for CI to register with the Ontap array. See the Note About Permissions below.
+
 
 == Configuration 
 
@@ -159,9 +157,7 @@ FAS/AFF 8080
 
 == A Note About Permissions
 
-Since a number of Cloud Insights' ONTAP dashboards rely on advanced ONTAP counters, you must enable *Advanced Counter Data Collection* in the data collector Advanced Configuration section.
-
-You should also ensure that write permission to the ONTAP REST API is enabled. This typically requires an account at the cluster level with the necessary permissions.
+Since a number of Cloud Insights' ONTAP dashboards rely on advanced ONTAP counters, you should keep *Enable Advanced Counter Data Collection* enabled in the data collector Advanced Configuration section.
 
 To create a local account for Cloud Insights at the cluster level, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
 
