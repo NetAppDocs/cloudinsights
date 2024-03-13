@@ -5,7 +5,6 @@ summary: New features and functionality available in Cloud Insights.
 keywords: features
 ---
 = What\'s New with Cloud Insights 
-:toc: macro
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -20,12 +19,88 @@ NetApp is continually improving and enhancing its products and services. Here ar
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
 
 
+
+== March 2024
+
+=== Workload Security Agent Details
+
+Each of your Workload Security Agents has its own landing page, where you can easily see summary information about the Agent as well as the installed Data and User Directory Collectors associated with that Agent. 
+
+image:Agent_Detail_Page.png[Agent Detail Landing Page example]
+
+=== Chart more data more quickly
+
+When analyzing data on an asset's landing page, adding additional data to the Expert View charts is a snap. For each table on the landing page, if an object type has relevant data, hover over that object to display the "Add to Expert View" icon. Selecting this icon adds that object to the Additional Resources and displays it in the Expert View charts.
+
+image:AddToChartIcon.png[Add table data to expert view]
+
+Or maybe you want to see a landing page table's data in its own chart. Simply select the _Show Chart_ icon to open the chart below the table:
+
+image:LPTableShowChartIcon.png[Show Chart icon]
+
+
+'''
+
 == February 2024
 
-=== Workload Security API
 
-New Workload Security APIs are available to manage Data Collectors (add/update/delete) and Agents. Navigate to *Admin > API Access > API Documentation* and select the _Workload Security_ API type to learn more.
+=== Usability Improvements
 
+Save a *snapshot* of your current dashboard by selecting _Export as Image_ from the right-corner drop-down. Cloud Insights creates a .PNG of the current widget states.
+
+image:ExportAsImage.png[Export as Image Dropdown]
+
+
+*Object and Metric selection* is easier than ever for Widgets, Monitors, etc.  Choose the object type you want, and then select a metric relevant to that object in the separate drop-down.
+
+image:ObjectAndMetricSelection.png[Object and Metric Selectors separate]
+
+
+*Export Data Collector and Acquisition Unit* lists to .CSV by selecting the icon at the top of those pages. 
+
+image:ExportDCList.png[Export DC and AU Lists to .csv]
+
+
+We’ve *re-organized the Help > Support* page so it’s easier to find what you’re looking for, and because you asked for them, we added direct links on this page to *API Swagger* and user documentation.
+
+image:Support_APIAccess.png[API Links on the Help > Support Page]
+
+
+*Links* in the “triggeredOn” column on the Alerts list page will navigate to the appropriate Landing Page, if a Landing Page is available for that object.
+
+image:TriggeredOnLink.png[Links in TriggeredOn alert field]
+
+
+
+
+=== See all changes in your namespace
+
+Kubernetes Change Analysis now allows you to see a timeline of changes when selecting Cluster and Namespace. Previously, Workload must also have been selected.  When filtering on Cluster and Namespace, the timeline of all workload changes in that namespace are shown on one line.
+
+image:NamespaceTimeline.png[Namespace Timeline]
+ 
+
+
+=== Related Logs for Alerts
+
+When viewing a log alert, related log entries are shown in a new table.  A log entry is related if it occurs in the same source and timeframe as the alert, and is subject to the same conditions. Select “Analyze Logs” to explore further.
+
+image:RelatedLogsTable.png[Related Logs on a log alert landing page]
+
+
+=== Collect ONTAP Switch Data
+
+Cloud Insights can collect data from the ONTAP system’s back-end switches; simply enable the collection in the data collector’s _Advanced Configuration_ section, and ensure the ONTAP system is configured to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information] and has the appropriate <<a-note-about-permissions, permissions>> set.
+
+
+
+
+
+
+
+=== Workload Security Data Collector API
+
+In large environments, you can automate Workload Security collector creation using the new Data Collectors API. Navigate to *Admin > API Access > API Documentation* and select the _Workload Security_ API type to learn more.
 
 '''
 
@@ -49,26 +124,13 @@ image:WorkloadHealth.png[Workload Health at a glance]
 The Data Domain collector has been improved to better identify HA systems for durability across failover events This change will cause a *one time* re-identification of Data Domain appliances in HA systems, which will subsequently cause any annotations on those assets to be removed (because these arrays will be re-identified). You will need to re-attach annotations to your Data Domain objects.
 
 
-=== Improved Workload Security
+=== Enhanced Ransomware Detection ML Algorithm
 
-Workload Security includes the following improvements:
+Workload Security includes a new 2nd-generation ransomware detection ML algorithm to detect the most sophisticated attacks faster and more accurately.
 
-* Detection algorithms have been enhanced to reduce the number of false positive warnings.
-* User Interface performance has been improved while loading, displaying, and scrolling Forensics pages.
+"Seasonality" of behaviors: weekend behavior may follow different patterns from weekday, or morning behavior from afternoon. Workload Security algorithms take this seasonality into account.
 
-
-
-'''
-
-
-== January 2024
-
-=== Improved Workload Security
-
-Workload Security includes the following improvements:
-
-* Detection algorithms have been enhanced to reduce the number of false positive warnings.
-* User Interface performance has been improved while loading, displaying, and scrolling Forensics pages.
+// * Faster analytics: The forensics user interface has been improved to analyze more data more quickly.
 
 
 
@@ -149,7 +211,7 @@ Prior to this enhancement, only FOS 9.1.1c switches without Virtual Fabrics pres
 
 Workload Security has been improved with the following:
 
-* *Access Denied*: Workload Security integrates with ONTAP to receive "Access Denied" events and provide an additional analytics and automatic responses layer.
+* *Access Denied*: Workload Security integrates with ONTAP to receive link:concept_ws_integration_with_ontap_access_denied.html["Access Denied" events] and provide an additional analytics and automatic responses layer.
 * *Allowed File Types*: If a ransomware attack is detected for a known file extension, that file extension can be added to an link:ws_allowed_file_types.html[allowed file types] list to prevent unnecessary alerting. 
 
 
