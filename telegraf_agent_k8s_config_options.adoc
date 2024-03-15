@@ -112,6 +112,8 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 |workload-map
 ||l4-tolerations|net-observer-l4-ds additional tolerations.
 
+||runPrivileged|true/false - Set runPrivileged to true if SELinux is enabled on your Kubernetes nodes.
+
 |===
 
 == Sample AgentConfiguration file
@@ -276,6 +278,10 @@ spec:
     # # Inspect net-observer-l4-ds to view tolerations which are always present.
     # # Example: '{key: taint1, operator: Exists, effect: NoSchedule},{key: taint2, operator: Exists, effect: NoExecute}'
     # l4-tolerations: ''
+
+    # # Set runPrivileged to true if SELinux is enabled on your Kubernetes nodes.
+    # # Note: In OpenShift environments, this is set to true automatically.
+    # runPrivileged: 'false'
 
   # change-management:
     # # change-observer-watch-rs CPU/Mem limits and requests.
