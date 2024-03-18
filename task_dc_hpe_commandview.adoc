@@ -6,7 +6,6 @@ summary: Configuring HP Enterprise Command View data collector.
 ---
 
 = HP Enterprise Command View data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,9 +14,7 @@ summary: Configuring HP Enterprise Command View data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead] 
-
 The HP Enterprise Command View Advanced Edition data collector supports discovering XP and P9500 arrays via Command View Advanced Edition (CVAE) server. Cloud Insights communicates with CVAE using the standard Command View API to collect inventory and performance data. 
 
 == Terminology 
@@ -186,4 +183,4 @@ Some things to try if you encounter problems with this data collector:
     - Run command “auunitaddauto -ip ${ip}”. Replace ${ip} with real IP
 |===
 
-Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].

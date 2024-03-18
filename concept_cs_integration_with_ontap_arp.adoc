@@ -6,7 +6,6 @@ keywords:  ransomware, ARP, Protection, Security
 ---
 
 = Integration with ONTAP Autonomous Ransomware Protection
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -49,11 +48,19 @@ For _csuser_ with cluster credentials, do the following from the ONTAP command l
  security login rest-role create -api /api/security/anti-ransomware -access readonly  -role arwrole -vserver <cluster_name>
  security login create -user-or-group-name csuser -application http -authmethod password -role arwrole
 
+Read more about configuring other link:task_add_collector_svm.html[ONTAP permissions].
+
+
 == Sample Alert
 
 A sample alert generated due to ARP event is shown below:
 
-image:CS_ONTAP_ARP_EXAMPLE.png[ONTAP ARP Example Screen]
+//image:CS_ONTAP_ARP_EXAMPLE.png[ONTAP ARP Example Screen]
+image:CS_Ransomware_Example_1.png[Ransomware Alert top section]
+image:CS_Ransomware_Example_2.png[Ransomware Alert top section]
+image:CS_Ransomware_Example_3.png[Ransomware Alert top section]
+
+
 
 A high confidence banner indicates the attack has shown ransomware behavior along with file encryption activities.
 The encrypted files graph indicates the timestamp at which the volume encryption activity was detected by the ARP solution.

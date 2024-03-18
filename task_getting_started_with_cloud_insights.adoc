@@ -6,7 +6,6 @@ keywords: invite, roles, data collector, acquisition unit, AU
 ---
 
 = Getting started gathering data
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,6 +14,7 @@ keywords: invite, roles, data collector, acquisition unit, AU
 :linkattrs:
 :imagesdir: ./media/
 
+[.lead]
 After you have signed up for Cloud Insights and log in to your environment for the first time, you will be guided through the following steps in order to begin collecting and managing data. 
 
 ////
@@ -32,7 +32,7 @@ Data collectors discover information from your data sources, such as storage dev
 Cloud Insights has available three types of data collectors:
 
 * Infrastructure (storage devices, network switches, compute infrastructure)
-* Operating Systems (such as VMWare or Windows)
+* Operating Systems (such as VMware or Windows)
 * Services (such as Kafka)
 
 
@@ -65,7 +65,7 @@ You will be able to configure additional data collectors later.
 
 === Operating System:
 
-For _Operating System_ data collectors, choose a platform (MacOS, Linux, Windows) to install a Cloud Insights Agent.
+For _Operating System_ data collectors, choose a platform (Linux, Windows) to install a Cloud Insights Agent.
 You must have at least one agent to collect data from Services.
 The agent also collects data from the host itself, for use in Cloud Insights. This data is categorized as "Node" data in widgets, etc.
 

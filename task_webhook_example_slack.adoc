@@ -6,7 +6,6 @@ summary: Create a webhook to alert on performance or inventory thresholds for Sl
 ---
 
 = Webhook Example for Slack
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -29,8 +28,6 @@ image:Webhooks_Slack_Create_Webhook.png[Create Slack Webhook]
 * Go to Incoming Webhooks, click on _Activate Incoming Webhooks_, Request to _Add New Webhook_, and select the Channel on which to Post.
 
 * Copy the Webhook URL. You will need to paste this into the Cloud Insights webhook configuration.
-+
-image:Webhook_Slack_Config.jpg[Slack Webhook URL]
 
 
 == Create Cloud Insights Webhook:

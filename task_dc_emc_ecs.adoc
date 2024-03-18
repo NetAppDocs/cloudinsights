@@ -6,7 +6,6 @@ summary: Configuring ECS data collector.
 ---
 
 = Configuring the EMC ECS data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,10 +14,8 @@ summary: Configuring ECS data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead] 
-
-This data collector acquires inventory and performance data from EMC ECS storage systems. For configuration, the data collector requires an IP address of the ECS server and an administrative level domain account.
+This data collector acquires inventory and performance data from EMC ECS storage systems. For configuration, the data collector requires an IP address or hostname of the ECS cluster and a username and password.
 
 NOTE: Dell EMC ECS is metered at a different Raw TB to Managed Unit rate. Every 40 TB of unformatted ECS capacity is charged as 1 link:concept_subscribing_to_cloud_insights.html#pricing[Managed Unit (MU)].
 
@@ -39,11 +36,9 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-* An IP address of the ECS Management Console
-* Administrative level domain account for the ECS system
-* Port 443 (HTTPS).  Requires outbound connectivity to TCP port 443 on the ECS system. 
-* For performance, read-only username and password for ssh/scp access.
-* For performance, port 22 is required.   
+* An IP address or hostname of the ECS cluster
+* A username and password for the ECS system
+* Port 4443 (HTTPS).  Requires outbound connectivity to TCP port 4443 on the ECS system. 
 
 
 == Configuration
@@ -53,7 +48,7 @@ Note: These are common terminology mappings only and might not represent every c
 |Field|Description
 |ECS Host|IP address or fully-qualified domain name of the ECS system
 |ECS Host Port| Port used for communication with ECS Host
-|ECS Vendor ID|Vendor ID for ECS
+|ECS User ID|User ID for ECS
 |Password|Password used for ECS
 |===
 
@@ -69,7 +64,7 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Troubleshooting
 
-////
+
 Some things to try if you encounter problems with this data collector:
 
 ==== Inventory
@@ -86,28 +81,17 @@ Some things to try if you encounter problems with this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
-|Error: VPLEX performance for version below 5.3 is not supported.
-|Upgrade VPLEX to 5.3 or above
 
 |Error: No enough data collected.
 |•	Check collection timestamp in log file and modify polling interval accordingly
 •	Wait for longer time
 
-|Error: Perpetual Log files not being updated.
-|Please contact EMC support to enable updating the perpetual log files
 
 |Error: Performance polling interval is too big.
 |Check collection timestamp in log file ${logfile} and modify polling interval accordingly
 
-|Error: Performance Remote IP address of VPLEX Management Console is not configured.
-|Edit the data source to set Performance Remote IP address of VPLEX Management Console.
-
-|Error: No performance data reported from director
-|•	Check that the system performance monitors are running correctly
-•	Please contact EMC support to enable updating the system performance monitor log files
 
 |===
-////
 
-Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
 

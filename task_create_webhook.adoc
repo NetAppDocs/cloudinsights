@@ -6,7 +6,6 @@ summary: Create monitors to alert on performance or inventory thresholds
 ---
 
 = Notification using Webhooks
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -65,6 +64,16 @@ Note that in this section, substitutions are _not_ performed when clicking the "
 === Custom Parameters and Secrets
 
 In this section you can add any custom parameters and/or secrets you wish. For security reasons, if a secret is defined only the webhook creator can modify this webhook channel. It is read-only for others. You can use secrets in URL/Headers as _%%<secret_name>%%_.
+
+
+
+
+
+
+=== Webhooks List Page
+
+On the Webhooks list page, displayed are the Name, Created By, Created On, Status, Secure, and Last Reported fields.
+
 
 
 

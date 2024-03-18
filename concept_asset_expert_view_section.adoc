@@ -2,11 +2,10 @@
 sidebar: sidebar
 permalink: concept_asset_expert_view_section.html
 summary: The Expert View section of an asset page is a powerful tool for troubleshooting or monitoring.
-keywords: asset page, expert view, metrics, greedy, degraded, correlated, contributors, chart,
+keywords: asset page, expert view, metrics, greedy, degraded, correlated, contributors, chart, refresh
 ---
 
 = Expert View
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,7 +15,7 @@ keywords: asset page, expert view, metrics, greedy, degraded, correlated, contri
 :imagesdir: ./media/
 
 [.lead]
-The Expert View section of an asset page enables you to view a performance sample for the base asset based on any number of applicable metrics in context with a chosen time period in the performance chart and any assets related to it.
+The Expert View section of an asset page enables you to view a performance sample for the base asset based on any number of applicable metrics in context with a chosen time period in the performance chart and any assets related to it.  The data in the charts refreshes automatically as data collectors poll and updated data is acquired.
 
 == Using the Expert View section
 

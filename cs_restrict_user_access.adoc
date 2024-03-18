@@ -6,7 +6,6 @@ summary: With Workload Security, you can restrict user access in the event of su
 ---
 
 = Blocking User Access
-
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -16,6 +15,7 @@ summary: With Workload Security, you can restrict user access in the event of su
 [.lead]
 Once an attack is detected, Workload Security can stop the attack by blocking user access to the file system. Access can be blocked automatically, using Automated Response Policies or manually from the alert or user details pages.
 
+NOTE: Workload Security is not available in Cloud Insights Federal Edition.
 
 When blocking user access, you should define a blocking time period. After the selected time period ends, user access is automatically restored.
 Access blocking is supported for both SMB and NFS protocols.
@@ -46,8 +46,8 @@ For csuser with cluster credentials, do the following from the ONTAP command lin
 
 == How to enable the feature?
 
-* In Workload Security, navigate to *Admin > Automated Response Policies > Response Policy Settings > Block User Access*.
-* Set “Enable Block User Access” to _enabled_.
+* In Workload Security, navigate to *Workload Security > Policies > Automated Response Policies*.  Choose *+Attack Policy*.
+* Select (check) _Block User File Access_.
 
 == How to set up Automatic user access blocking?
 
@@ -75,8 +75,8 @@ In the alert details and user details page, in the user panel, you can view an a
 
 At any time, you can disable the feature. If there are restricted users in the system, you must restore their access first.
 
-* In Workload Security, navigate to *Admin > Automated Response Policies > Response Policy Settings > Block User Access*
-* De-select “Enable Block User Access” to disable.
+* In Workload Security, navigate to *Workload Security > Policies > Automated Response Policies*.  Choose *+Attack Policy*.
+* De-select (uncheck) _Block User File Access_.
 
 The feature will be hidden from all pages.
 

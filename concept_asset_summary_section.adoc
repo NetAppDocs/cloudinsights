@@ -2,11 +2,10 @@
 sidebar: sidebar
 permalink: concept_asset_summary_section.html
 summary: Overview of the asset page Summary section in Cloud Insights.
-keywords: asset, summary, landing page, topology
+keywords: asset, summary, landing page, topology, auto, refresh
 ---
 
 = Asset Page Summary section
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -17,7 +16,9 @@ keywords: asset, summary, landing page, topology
 
 [.lead]
 
-The Summary section of an asset page displays general information about an asset, including whether any metrics or performance policies are cause for concern. Potential problem areas are indicated by a red circle.
+The Summary section of an asset page displays general information about an asset, including whether any metrics or performance policies are cause for concern. Potential problem areas are indicated by a red circle. 
+
+The information in the summary section, as well as in any tables or custom widgets on the asset page, refreshes automatically based on the selected time range. You can see the current refresh rate in the upper-right corner of the Summary section, the tables, and any custom widgets. 
 
 image:Summary_Section_Example.png[]
 

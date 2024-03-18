@@ -6,7 +6,6 @@ summary: ONTAP Data Collector
 --- 
 
 = NetApp ONTAP Data Management Software data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -16,7 +15,6 @@ summary: ONTAP Data Collector
 :imagesdir: ./media/
 
 [.lead]
-
 This data collector acquires inventory and performance data from storage systems running ONTAP using read-only API calls from an ONTAP account. This data collector also creates a record in the cluster application registry to accelerate support.
 
 == Terminology
@@ -127,7 +125,52 @@ The following are requirements to configure and use this data collector:
 |Advanced Counter Data Collection|Enable ONTAP integration. Select this to include ONTAP Advanced Counter data in polls. Choose the desired counters from the list.
 
 //|<TBD: New Micro Poll> | Default is 60 seconds
+
+|Cluster Switch Metrics|Allow Cloud Insights to collect cluster switch data. Note that in addition to enabling this on the Cloud Insights side, you must also configure the ONTAP system to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information], and ensure the correct <<a-note-about-permissions, permissions>> are set, in order to allow the switch data to be sent to Cloud Insights. See "A Note About Permissions" below.
+
 |===
+
+
+== ONTAP Power Metrics
+
+Several ONTAP models provide power metrics for Cloud Insights that can be used for monitoring or alerting. The lists of supported and unsupported models below are not comprehensive but should provide some guidance; in general, if a model is in the same family as one on the list, the support should be the same. 
+
+Supported Models:
+
+A200
+A220
+A250
+A300
+A320
+A400
+A700
+A700s
+A800
+A900
+C190
+FAS2240-4
+FAS2552
+FAS2650
+FAS2720
+FAS2750
+FAS8200
+FAS8300
+FAS8700
+FAS9000
+
+Unsupported Models:
+
+FAS2620
+FAS3250
+FAS3270
+FAS500f
+FAS6280
+FAS/AFF 8020
+FAS/AFF 8040
+FAS/AFF 8060
+FAS/AFF 8080
+
+
 
 == A Note About Permissions
 
@@ -152,6 +195,11 @@ To create a local account for Cloud Insights at the cluster level, log in to ONT
 If AD/LDAP account is used, the command should be 
 
  security login create -user-or-group-name DOMAIN\aduser/adgroup -application ontapi -authentication-method domain -role ci_readonly
+
+If you are collecting cluster switch data:
+ 
+ security login rest-role create -role ci_readonly -api /api/network/ethernet -access readonly
+
  
 The resulting role and user login will look something like the following. Your actual output may vary:
 
@@ -168,6 +216,7 @@ The resulting role and user login will look something like the following. Your a
  ---------   -------      ----------- -------------- --------
  ci_user     ontapi      password    ci_readonly   no
 
+NOTE: If ONTAP access control is not set correctly, then Cloud Insights REST calls may fail, resulting in gaps in data for the device.  For example, if you have enabled it on the Cloud Insights collector but have not configured the permissions on the ONTAP, acquisition will fail.  Additionally, if the role is previously defined on the ONTAP and you are adding the Rest API abilities, ensure that _http_ is added to the role.
 
 
 == Troubleshooting
@@ -215,6 +264,6 @@ ZAPI error code is 14007 and response contains “Node is not healthy”
 > _system node systemshell -node * -command “spmctl -h cmd –stop; spmctl -h cmd –exec”_
 |===
 
-Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
 
 

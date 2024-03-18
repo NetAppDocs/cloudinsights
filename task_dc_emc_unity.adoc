@@ -6,7 +6,6 @@ summary: Configuring VNXe data collector.
 ---
 
 = Configuring the EMC Unity data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -16,7 +15,6 @@ summary: Configuring VNXe data collector.
 :imagesdir: ./media/
 
 [.lead] 
-
 The DELL EMC Unity (formerly VNXe) data collector provides inventory support for VNXe unified storage arrays. Cloud Insights currently supports iSCSI and NAS protocols. 
 
 == Requirements
@@ -41,7 +39,7 @@ Cloud Insights acquires the following inventory information from the Unity data 
 |Storage Array|Storage
 |Processor|Storage Node
 |Storage Pool|Storage Pool
-|General iSCSI Block info, VMWare VMFS|Share
+|General iSCSI Block info, VMware VMFS|Share
 |Replication Remote System|Synchronization
 |iSCSI Node|iSCSI Target Node
 |iSCSI Initiator|iSCSI Target Initiator
@@ -85,5 +83,5 @@ Some things to try if you encounter problems with this data collector:
 * Confirm that the IP of the VNXe is correct in the configuration of the datasource. From the Cloud Insights Acquisition Unit, open a CMD and change to to the configured installation directory: ${INSTALLDIR. Try to make a connection with the VNXe device by typing: uemcli -d <Your IP> -u <Your ID> /sys/general show
 |===
 
-Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
 

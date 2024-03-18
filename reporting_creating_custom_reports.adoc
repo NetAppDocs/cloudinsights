@@ -6,7 +6,6 @@ keywords: reporting, cognos, data warehouse, dwh, ad-hoc, custom
 ---
 
 = Creating Custom Reports
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -88,11 +87,11 @@ Each data model contains a simple data mart and an advanced data mart:
 
 * The advanced data mart provides all values and details available from the simple data mart and includes access to historical data values.
 
-=== Capacity data model
+=== Capacity data models
 
 Enables you to answer questions about storage capacity, file system utilization, internal volume capacity, port capacity, qtree capacity, and virtual machine (VM) capacity. The Capacity data model is a container for several capacity data models. You can create reports answering various types of questions using this data model:
 
-=== Storage and Storage Pool Capacity data model
+==== Storage and Storage Pool Capacity data model
 
 Enables you to answer questions about storage capacity resource planning, including storage and storage pools, and includes both physical and virtual storage pool data. This simple data model can help you answer questions related to capacity on the floor and the capacity usage of storage pools by tier and data center over time.
 If you are new to capacity reporting, you should start with this data model because it is a simpler, targeted data model. You can answer questions similar to the following using this data model:
@@ -106,7 +105,7 @@ If you are new to capacity reporting, you should start with this data model beca
 * How much capacity is already allocated?
 * What capacity is available for allocation?
 
-=== File System Utilization data model
+==== File System Utilization data model
 
 This data model provides visibility about capacity utilization by hosts at the file system level. Administrators can determine allocated and used capacity per file system, determine the type of file system, and identify trending statistics by file system type. You can answer the following questions using this data model:
 
@@ -114,7 +113,7 @@ This data model provides visibility about capacity utilization by hosts at the f
 * Where is the data kept and how is it accessed, for example, local or SAN?
 * What are the historical trends for the file system capacity? Then, based on this, what can we anticipate for future needs?
 
-=== Internal Volume Capacity data model
+==== Internal Volume Capacity data model
 
 Enables you to answer questions about internal volume used capacity, allocated capacity, and capacity usage over time:
 
@@ -122,7 +121,7 @@ Enables you to answer questions about internal volume used capacity, allocated c
 * Which internal volumes are in danger of running out of capacity based on a trend?
 8 What is the used capacity versus the allocated capacity on our internal volumes?
 
-=== Port Capacity data model
+==== Port Capacity data model
 
 Enables you to answer questions about switch port connectivity, port status, and port speed over time. You can answer questions similar the following to help you plan for purchases of new switches:
 How can I create a port consumption forecast that predicts resource (port) availability (according to data center, switch vendor and port speed)?
@@ -133,7 +132,7 @@ How can I create a port consumption forecast that predicts resource (port) avail
 * What type of port capacity is needed and which organization is about to run out of a certain port type or vendor?
 * What is the optimal time to purchase that capacity and make it available?
 
-=== Qtree Capacity data model
+==== Qtree Capacity data model
 
 Enables you to trend qtree utilization (with data such as used versus allocated capacity) over time. You can view the information by different dimensions—for example, by business entity, application, tier, and service level. You can answer the following questions using this data model:
 
@@ -142,7 +141,7 @@ Enables you to trend qtree utilization (with data such as used versus allocated 
 * Which business entities are using the most capacity?
 * Which applications consume the most capacity?
 
-=== VM Capacity data model
+==== VM Capacity data model
 
 Enables you to report your virtual environment and its capacity usage. This data model lets you report on changes in capacity usage over time for VMs and data stores. The data model also provides thin provisioning and virtual machine chargeback data.
 
@@ -153,7 +152,7 @@ Enables you to report your virtual environment and its capacity usage. This data
 
 Capacities in the VM Capacity data model are taken from virtual disks (VMDKs). This means that the provisioned size of a VM using the VM Capacity data model is the size of its virtual disks. This is different from the provisioned capacity in the Virtual Machines view in Cloud Insights, which shows the provisioned size for the VM itself.
 
-=== Volume Capacity data model
+==== Volume Capacity data model
 
 Enables you to analyze all aspects of the volumes in your environment and organize data by vendor, model, tier, service level, and data center. 
 
@@ -208,7 +207,7 @@ Enables you to answer questions about inventory resources including hosts, stora
 
 === Performance data model
 
-Enables you to answer questions about performance for volumes, application volumes, internal volumes, switches, applications, VMs, VMDKs, ESX versus VM, hosts, and application nodes. Using this data model, you can create reports that answer several types of performance management questions:
+Enables you to answer questions about performance for volumes, application volumes, internal volumes, switches, applications, VMs, VMDKs, ESX versus VM, hosts, and application nodes. Many of these report _Hourly_ data, _Daily_ data, or both. Using this data model, you can create reports that answer several types of performance management questions:
 
 * What volumes or internal volumes have not been used or accessed during a specific period?
 * Can we pinpoint any potential misconfiguration for storage for an application (unused)?

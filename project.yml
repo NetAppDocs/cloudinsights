@@ -24,6 +24,8 @@ sidebar:
           url: /security_overview.html
         - title: What We Store, and Where 
           url: /security_information_and_region.html
+        - title: SecurityAdmin Tool
+          url: /security_admin_tool.html
           
     - title: Getting Started
       entries:
@@ -37,10 +39,10 @@ sidebar:
               url: /concept_acquisition_unit_requirements.html
             - title: Configuring an Acquisition Unit
               url: /task_configure_acquisition_unit.html 
-            - title: Configuring an Agent (Windows/Linux/Mac)
+            - title: Configuring an Agent on Windows/Linux
               url: /task_config_telegraf_agent.html
-            - title: Configuring an Agent (Kubernetes)
-              url: /task_config_telegraf_agent_k8s.html
+#            - title: Configuring a Kubernetes Operator
+#              url: /task_config_telegraf_agent_k8s.html
             - title: Configuring Data Collectors
               url: /task_configure_data_collectors.html
             - title: Determining Data Collector Acquisition Status
@@ -93,12 +95,33 @@ sidebar:
         - title: Dashboard Best Practices
           url: /concept_dashboard_best_practices.html
        
-    - title: Kubernetes Explorer
+    - title: Kubernetes
       entries:
         - title: Kubernetes Overview Page
           url: /kubernetes_landing_page.html
+        - title: Before Installing or Upgrading the Operator
+          url: /pre-requisites_for_k8s_operator.html
+        - title: Installing the Monitoring Operator
+          url: /task_config_telegraf_agent_k8s.html
+        - title: Monitoring Operator Options
+          url: /telegraf_agent_k8s_config_options.html
         - title: Kubernetes Cluster Page
           url: /kubernetes_cluster_detail.html
+        - title: Network Monitoring and Map
+          url: /concept_kubernetes_network_monitoring_and_map.html
+        - title: Change Analytics
+          url: /kubernetes_change_analytics.html
+
+    - title: Insights
+      entries:
+        - title: Overview
+          url: /insights_overview.html 
+        - title: Shared Resources Under Stress
+          url: /insights_shared_resources_under_stress.html
+        - title: Kubernetes Namespaces Running Out of Space
+          url: /insights_k8s_namespaces_running_out_of_space.html
+        - title: Reclaim ONTAP Cold Storage
+          url: /insights_reclaim_ontap_cold_storage.html         
 
     - title: ONTAP Essentials
       url: /concept_ontap_essentials.html
@@ -201,6 +224,8 @@ sidebar:
           url: /concept_asset_user_data_section.html
         - title: Related Alerts Section
           url: /concept_asset_alerts_section.html
+        - title: Storage Virtualization
+          url: /concept_storage_virtualization.html
   #      - title: Violations Section
   #        url: /concept_asset_violation_section.html
         - title: Hints and Tips to Search for Assets
@@ -237,7 +262,7 @@ sidebar:
 #    - title: ONTAP Essentials
 #      url: /concept_ontap_essentials.html
    
-    - title: Storage Workload Security 
+    - title: Workload Security 
       entries:
         - title: About Workload Security
           url: /cs_intro.html
@@ -281,8 +306,12 @@ sidebar:
               url: /forensic_user_overview.html
         - title: Automated Response Policies
           url: /cs_automated_response_policies.html
+        - title: Allowed File Types Policies
+          url: /ws_allowed_file_types.html
         - title: ONTAP Autonomous Ransomware Protection Integration
           url: /concept_cs_integration_with_ontap_arp.html
+        - title: ONTAP Access Denied Integration
+          url: /concept_ws_integration_with_ontap_access_denied.html
         - title: Blocking User Access
           url: /cs_restrict_user_access.html
         - title: Simulating a Ransomware Attack
@@ -316,12 +345,15 @@ sidebar:
         - title: Researching Data Collector Errors
           url: /task_research_failed_collector.html
           
+    - title: Data Collector Support Matrix
+      url: /reference_data_collector_support_matrix.html
+
     - title: Reference & Support
       entries:
         - title: Requesting Support
           url: /concept_requesting_support.html
-        - title: Data Collector Support Matrix
-          url: /reference_data_collector_support_matrix.html
+#        - title: Data Collector Support Matrix
+#          url: /reference_data_collector_support_matrix.html
           
         - title: Data Collector Reference - Infrastructure
           entries:
@@ -431,8 +463,6 @@ sidebar:
                   url: /task_dc_na_cloud_volumes_ontap.html
                 - title: Cloud Volumes Services for AWS
                   url: /task_dc_na_cloud_volumes.html
-                - title: Config Advisor
-                  url: /task_dc_na_ca.html
                 - title: ONTAP Data Management Software 
                   url: /task_dc_na_cdot.html
                 - title: Data ONTAP 7-mode
@@ -455,7 +485,9 @@ sidebar:
               url: /task_dc_pure_flasharray.html
             - title: Red Hat
               url: /task_dc_redhat_virtualization.html
-            - title: VMWare
+            - title: Rubrik CDM
+              url: /task_dc_rubrik_cdm.html
+            - title: VMware
               url: /task_dc_vmware.html
               
         - title: Data Collector Reference - Services

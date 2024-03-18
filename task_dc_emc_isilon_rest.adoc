@@ -6,7 +6,6 @@ summary: Configuring the Dell EMC Isilon / PowerScale REST data collector.
 ---
 
 = Dell EMC Isilon / PowerScale REST data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -16,8 +15,7 @@ summary: Configuring the Dell EMC Isilon / PowerScale REST data collector.
 :imagesdir: ./media/
 
 [.lead]
-
-Cloud Insights uses the Dell EMC Isilon / PowerScale REST data collector to acquire inventory and performance data from Dell EMC Isilon or PowerScale storage. 
+Cloud Insights uses the Dell EMC Isilon / PowerScale REST data collector to acquire inventory and performance data from Dell EMC Isilon or PowerScale storage. This collector supports arrays running OneFS 8.0.0+.
 
 == Terminology
 
@@ -43,6 +41,7 @@ You need the following information to configure this data collector:
 * A user account and password. This account does NOT need to be admin/root, but you MUST grant a substantial number of read only privileges to your service account - see table below
 * IP address / Fully Qualified Domain Name of the Dell EMC Isilon / PowerScale cluster
 * HTTPS access to port 8080
+* Isilon / PowerScale cluster running OneFS 8.0.0 or higher
 
 [cols=3*, options="header", cols"33,33,33"]
 |===
@@ -109,4 +108,4 @@ Some things to try if you encounter problems with this data collector:
 |Verify that the user has sudo permissions to run the following command on the device
 |===
 
-Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].

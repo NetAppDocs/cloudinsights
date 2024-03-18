@@ -6,7 +6,6 @@ summary: OpenStack data collector.
 ---
 
 = OpenStack data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,16 +14,14 @@ summary: OpenStack data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead] 
-
 The OpenStack (REST API / KVM) data collector acquires inventory data for all OpenStack instances, and optionally, VM performance data. 
 
 == Requirements
 
 * IP address of the OpenStack controller 
 * OpenStack admin role credential and sudo access to the Linux KVM hypervisor. If you are not using the admin account or admin equivalent privileges, you will need to use trial and error to identify the default policies to relax for your data collector userid.  
-* The OpenStack Ceilometer module must be installed and configured for performance collection. Configuring the Ceilometer is done by editing the nova.conf file for each hypervisor and then restarting the Nova Compute service on each hypervisor. The option name changes for different releases of OpenStack:
+* The OpenStack Gnocchi module must be installed and configured for performance collection. Configuring Gnocchi is done by editing the nova.conf file for each hypervisor and then restarting the Nova Compute service on each hypervisor. The option name changes for different releases of OpenStack:
 ** Icehouse
 ** Juno
 ** Kilo
@@ -38,7 +35,7 @@ The OpenStack (REST API / KVM) data collector acquires inventory data for all Op
 ** 22 for KVM SSH 
 ** 8774 for Nova Compute Service 
 ** 8776 for Cinder Block Service 
-** 8777 for Ceilometer Performance Service 
+** 8777 for Gnocchi Performance Service 
 ** 9292 for Glance Image Service 
 *Note* The port binds to the specific service, and the service may run on the controller or another host in larger environments. 
 
@@ -85,5 +82,5 @@ Some things to try if you encounter problems with this data collector:
 * Check User name and password
 |===
 
-Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
 

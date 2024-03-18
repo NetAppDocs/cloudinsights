@@ -6,7 +6,6 @@ summary: Deleting Workload Security agents
 ---
 
 = Deleting a Workload Security Agent
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -15,9 +14,7 @@ summary: Deleting Workload Security agents
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead]
-
 When you delete a Workload Security Agent, all the data collectors associated with the Agent must be deleted first. 
 
 == Deleting an Agent
@@ -39,7 +36,7 @@ Note: Ignore this step if all the associated collectors are in STOPPED state.
  sudo /opt/netapp/cloudsecure/agent/install/cloudsecure-agent-uninstall.sh 
  Uninstall CloudSecure Agent? [y|N]: 
 
-. Click *Admin > Data Collectors > Agents*
+. Click *Workload Security > Collectors > Agents*
 +
 The system displays the list of configured Agents.
 

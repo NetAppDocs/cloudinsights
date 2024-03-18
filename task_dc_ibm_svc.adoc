@@ -6,7 +6,6 @@ summary: Configuring IBM SAN Volume Controller data collector.
 ---
 
 = Configuring the IBM SAN Volume Controller data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,9 +14,7 @@ summary: Configuring IBM SAN Volume Controller data collector.
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead]
-
 The IBM SAN Volume Controller (SVC) data collector collects inventory and performance data using SSH, supporting a variety of devices that run the SVC operating system.
 
 The list of supported devices includes models such as the SVC, the v7000, the v5000, and the v3700. Refer to the Cloud Insights support matrix for supported models and firmware versions.
@@ -129,5 +126,5 @@ Some things to try if you encounter problems with this data collector:
 |The command must be executed on the configuration node.
 |===
 
-Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
 

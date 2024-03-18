@@ -6,7 +6,6 @@ summary: Configuring Workload Security Active Directory User Directory Collector
 ---
 
 = Configuring an Active Directory (AD) User Directory Collector 
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -27,7 +26,7 @@ Workload Security can be configured to collect user attributes from Active Direc
 .Steps to Configure a User Directory Collector
 
 . In the Workload Security menu, click: 
-*Admin > Data Collectors > User Directory Collectors > + User Directory Collector* and select *Active Directory*
+*Collectors > User Directory Collectors > + User Directory Collector* and select *Active Directory*
 +
 The system displays the Add User Directory screen.
 
@@ -58,6 +57,8 @@ _CN=Acrobat Users,CN=Users,DC=hq,DC=companyname,DC=com,O= companyname,L=Boston,S
 Trusted Active Directory domains are also supported.
 
 |Bind DN|User permitted to search the directory. For example: _username@companyname.com_ or _username@domainname.com_
+In addition, Domain Read Only permission is required. 
+User must be a member of the Security group _Read-only Domain Controllers_.
 |BIND password|Directory server password (i.e. password for username used in Bind DN)
 |Protocol|ldap, ldaps, ldap-start-tls
 |Ports|Select port

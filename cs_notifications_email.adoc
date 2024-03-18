@@ -6,7 +6,6 @@ keywords: email, notifications, alerts, warnings, attacks
 ---
 
 = Configuring Email Notifications for Alerts, Warnings, and Agent/Data Source Collector health
-
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -18,7 +17,7 @@ keywords: email, notifications, alerts, warnings, attacks
 [.lead]
 To configure Workload Security alert recipients, click on *Admin > Notifications* and enter an email addresses in the appropriate section(s) for each recipient.
 
-
+NOTE: Workload Security is not available in Cloud Insights Federal Edition.
 
 == Potential Attack Alerts and Warnings
 
@@ -41,5 +40,18 @@ Keep the following in mind:
 * Active directory collection failure is reported as a warning; it does not impact Ransomware detection.
 * The Getting Started setup list now includes a new _Configure email notifications_ phase.
 
-[.thumb]
-//image:CS-Alert-Notification-List.png[Alert Email notification recipient list]
+== Receiving Agent And Data Collector Upgrade Notifications
+
+* Enter the email ID(s) in the “Data Collection Health Alerts”.
+* The “Enable upgrade notifications” check box becomes enabled.
+* Agent and Data Collector upgrade email notifications are sent to the email IDs one day in advance of the planned upgrade.
+
+== Troubleshooting
+
+|===
+|*Problem:* | *Try this:* 
+
+|Email IDs are present in the “Data Collector Health Alerts”, however I am not receiving notifications.
+|Notification emails are sent from the NetApp Cloud Insights domain, i.e from _accounts@service.cloudinsights.netapp.com_. Some companies block incoming emails if they are from an external domain. Ensure that external notifications from NetApp Cloud Insights domains are whitelisted.
+|===
+

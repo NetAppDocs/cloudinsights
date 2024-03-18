@@ -6,7 +6,6 @@ keywords: data collector, queries, create
 ---
 
 = NetApp SolidFire All-Flash Array data collector
-
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,10 +14,7 @@ keywords: data collector, queries, create
 :linkattrs:
 :imagesdir: ./media/
 
-
-
 [.lead]
-
 The NetApp SolidFire All-Flash Array data collector supports inventory and performance collection from both iSCSI and Fibre Channel SolidFire configurations. 
 
 The SolidFire data collector utilizes the SolidFire REST API. The acquisition unit where the data collector resides needs to be able to initiate HTTPS connections to TCP port 443 on the SolidFire cluster management IP address. The data collector needs credentials capable of making REST API queries on the SolidFire cluster.
@@ -82,5 +78,5 @@ Where:
 •	The <parameterString> is a comma separated list of parameters that were included in the REST call.
 •	The <message> is whatever the device returned as the error message.
 
-Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
 

@@ -2,11 +2,10 @@
 sidebar: sidebar
 permalink: task_config_telegraf_agent.html
 keywords: telegraf, installation, install, agent, telegraf agent
-summary: Cloud Insights supports Telegraf as its agent for collection of integration data and can be configured on Windows, Linux, macOS, and Kubernetes. 
+summary: Cloud Insights supports Telegraf as its agent for collection of integration data and can be configured on Windows or Linux. 
 ---
 
-= Configuring an Agent to Collect Data (Windows/Linux/Mac)
-
+= Configuring an Agent to Collect Data (Windows/Linux)
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -15,12 +14,12 @@ summary: Cloud Insights supports Telegraf as its agent for collection of integra
 :linkattrs:
 :imagesdir: ./media/
 
-
 [.lead]
-
 Cloud Insights uses link:https://docs.influxdata.com/telegraf[Telegraf] as its agent for collection of integration data. Telegraf is a plugin-driven server agent that can be used to collect and report metrics, events, and logs. Input plugins are used to collect the desired information into the agent by accessing the system/OS directly, by calling third-party APIs, or by listening to configured streams (i.e. Kafka, statsD, etc). Output plugins are used to send the collected metrics, events, and logs from the agent to Cloud Insights. 
 
 The current Telegraf version for Cloud Insights is *1.24.0*.
+
+For information on installing on Kubernetes, see link:task_config_telegraf_agent_k8s.html[this page].
 
 NOTE: For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
@@ -33,24 +32,14 @@ If you are installing a Service data collector and have not yet configured an Ag
 * <<Windows>>
 * <<RHEL and CentOS>>
 * <<Ubuntu and Debian>>
-* <<macOS>>
-* <<Kubernetes>>
 
 To install an agent, regardless of the platform you are using, you must first do the following:
 
 . Log into the host you will use for your agent. 
-. Log in to your Cloud Insights site and go to *Admin > Data Collectors*.
+. Log in to your Cloud Insights environment and navigate to *Observability > Collectors*.
 . Click on *+Data Collector* and choose a data collector to install. 
-////
-There are several types of data collectors:
-+
-* *Host* (Windows, Linux, macOS, etc.)
-+
-* *Service* (integration with a wide variety of agent-collected plugins). Agents are configured and run as a service for RHEL/CentOS, Ubuntu/Debian, macOS, and Windows. For Kubernetes platforms, the agent in configured as a DaemonSet.
-+
-* *Infrastructure* (collects from storage, switch, cloud platform, etc.). Infrastructure collection is done with an link:task_configure_acquisition_unit.html[Acquisition Unit] instead of an Agent.
-////
-. Choose the appropriate platform for your host (Windows, Linux, macOS, etc.)
+
+. Choose the appropriate platform for your host (Windows, Linux)
 . Follow the remaining steps for each platform.
 
 NOTE: Once you have installed an agent on a host, you do not need to install an agent again on that host. 
@@ -58,6 +47,15 @@ NOTE: Once you have installed an agent on a host, you do not need to install an 
 TIP: Once you have installed an agent on a server/VM, Cloud Insights collects metrics from that system in addition to collecting from any data collectors you configure. These metrics are gathered as link:task_config_telegraf_node.html["Node" metrics].
 
 NOTE: If you are using a proxy, read the proxy instructions for your platform before installing the Telegraf agent.
+
+=== Log Locations
+
+Telegraf log messages are redirected from stdout to the following log files be default:
+
+* RHEL/CentOS: /var/log/telegraf/telegraf.log
+* Ubuntu/Debian: /var/log/telegraf/telegraf.log
+* Windows: C:\Program Files\telegraf\telegraf.log
+
 
 === Windows
 
@@ -321,162 +319,6 @@ To upgrade the telegraf agent, do the following:
 . link:#ubuntu-and-debian[Install the new agent].
 
 
-
-
-=== macOS
-
-==== Pre-requisites:
-
-* The following commands must be available: curl, sudo, openssl, and shasum
-* If you are behind a proxy, you must follow the instructions in the *Configuring Proxy Support for macOS* section. 
-
-
-
-==== Configuring Proxy Support for macOS
-
-NOTE: If your environment uses a proxy, read this section before you install.
-
-
-NOTE: The steps below outline the actions needed to set the _http_proxy/https_proxy_ environment variables. For some proxy environments, users may also need to set the _no_proxy environment_ variable.
- 
-For systems residing behind a proxy, perform the following to set the _https_proxy_ and/or _http_proxy_ environment variable(s) for the current user *PRIOR* to installing the Telegraf agent:
-
- export https_proxy=<proxy_server>:<proxy_port>
-
-*AFTER* installing the Telegraf agent, add and set the appropriate _https_proxy_ and/or _http_proxy_ variable(s) in _/Applications/telegraf.app/Contents/telegraf.plist_:
-
- …
- <?xml version="1.0" encoding="UTF-8"?>
- <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
- <plist version="1.0">
- <dict>
-    <key>EnvironmentVariables</key>
-    <dict>
-           <key>https_proxy</key>
-           <string><proxy_server>:<proxy_port></string>
-    </dict>
-    <key>Program</key>
-    <string>/Applications/telegraf.app/Contents/MacOS/telegraf</string>
-    <key>Label</key>
-    <string>telegraf</string>
-    <key>ProgramArguments</key>
-    <array>
-      <string>/Applications/telegraf.app/Contents/MacOS/telegraf</string>
-      <string>--config</string>
-      <string>/usr/local/etc/telegraf.conf</string>
-      <string>--config-directory</string>
-      <string>/usr/local/etc/telegraf.d</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
- </dict>
- </plist>
- …
-
-Then, restart Telegraf after loading the above changes:
-
- sudo launchctl stop telegraf
- sudo launchctl unload -w /Library/LaunchDaemons/telegraf.plist
- sudo launchctl load -w /Library/LaunchDaemons/telegraf.plist
- sudo launchctl start telegraf
-
-
-
-==== Installing the agent
-
-
-//image:AgentInstallMacOS.png[MacOS Agent Install]
-image:Agent_Requirements_Macos.png[macOS Agent Install]
-
-
-
-.Steps to install agent on macOS:
-
-. Choose an Agent Access Key.
-. Copy the command block from the agent installation dialog. You can click the clipboard icon to quickly copy the command to the clipboard.
-. Open a Bash window 
-. Paste the command into the Bash window and press Enter.
-. The command will download the appropriate agent installer, install it, and set a default configuration. When finished, it will restart the agent service. The command has a unique key and is valid for 24 hours. 
-. If you previously installed a Telegraf agent using Homebrew, you will be prompted to uninstall it. Once the previously installed Telegraf agent is uninstalled, re-run the command in step 5 above.
-. Click *Finish* or *Continue*
-
-After the agent is installed, you can use the following commands to start/stop the service:
-
- sudo launchctl start telegraf
- sudo launchctl stop telegraf
- 
-
-
-==== Uninstalling the Agent
-
-To uninstall the agent on macOS, in a Bash terminal, run the following:
-
-. Stop the Telegraf service:
-+
- sudo launchctl stop telegraf
-
-. Uninstall the telegraf agent:
-+
- sudo cp /Applications/telegraf.app/scripts/uninstall /tmp
- sudo /tmp/uninstall
-
-. Remove any configuration or log files that may be left behind:
-+
- sudo rm -rf /usr/local/etc/telegraf*
- sudo rm -rf /usr/local/var/log/telegraf.*
-
-
-==== Upgrading the Agent
-
-To upgrade the telegraf agent, do the following:
-
-. Stop the telegraf service:
-
- sudo launchctl stop telegraf
-
-. Uninstall the previous telegraf agent:
-
- sudo cp /Applications/telegraf.app/scripts/uninstall /tmp
- sudo /tmp/uninstall
-
-. link:#macos[Install the new agent].
-
-
-
-
-
-
-
-
-
-
-
-
-
-{empty}
-{empty}
-{empty}
-{empty}
-{empty}
-{empty}
-
-[#kubernetes]
-== Kubernetes
-
-The NetApp Kubernetes Monitoring Operator (NKMO) is the preferred method for installing Kubernetes for Cloud Insights Insights, for more flexible configuration of monitoring in fewer steps, as well as enhanced opportunities for monitoring other software running in the K8s cluster.
-
-Please link:task_config_telegraf_agent_k8s.html[*go here*] for information and installation instructions for the NetApp Kubernetes Monitoring Operator.
-
-{empty}
-{empty}
-{empty}
-{empty}
-{empty}
-{empty}
-
-
-
-
 == Verifying Checksums
 
 The Cloud Insights agent installer performs integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. This can be done by downloading the installer and generating a checksum for the downloaded package, then comparing the checksum to the value shown in the install instructions.
@@ -491,7 +333,7 @@ Follow these steps:
 
 . Copy the Agent Installer snippet as directed.
 . Instead of pasting the snippet into a command window, paste it into a text editor.
-. Remove the trailing “--install” (Linux/Mac) or “-install” (Windows) from the command.
+. Remove the trailing “--install” (Linux) or “-install” (Windows) from the command.
 . Copy the entire command from the text editor.
 . Now paste it into your command window (in a working directory) and run it.
 
@@ -521,26 +363,11 @@ The download-only command will download all required artifacts from Cloud Insigh
 * an installation script
 * an environment file
 * YAML files
-* a signed checksum file (ending in sha256.signed or sha256.ps1)
-* a PEM file (netapp_cert.pem) for signature verification
+* a checksum file (ending in sha256.signed or sha256.ps1)
 
 The installation script, environment file, and YAML files can be verified using visual inspection. 
 
-The PEM file can be verified by confirming its fingerprint to be the following:
-
-// E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
-
- 1A918038E8E127BB5C87A202DF173B97A05B4996
-
-More specifically,
-
-*	Non-Windows:
-
- openssl x509 -fingerprint -sha1 -noout -inform pem -in netapp_cert.pem
-
-*	Windows:
-
- Import-Certificate -Filepath .\netapp_cert.pem -CertStoreLocation Cert:\CurrentUser\Root
+//The PEM file can be verified by confirming its fingerprint to be the following:
 
 
 === Generate checksum value
@@ -552,37 +379,24 @@ To generate the checksum value, perform the following command for your appropria
  sha256sum <package_name>
  
  
-* macOS:
-
- shasum -a 256 telegraf.pkg
-
-
 * Windows:
 
  Get-FileHash telegraf.zip -Algorithm SHA256 | Format-List
 
 
 
-=== Verify checksum using PEM file
+=== Verify checksum
 
-The signed checksum file can be verified using the PEM file:
+Extract the expected checksum from the checksum file
 
 *	Non-Windows:
 
-// openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
-
- openssl smime -verify -in telegraf*.sha256.signed -CAfile netapp_cert.pem -purpose any
+ openssl smime -verify -in telegraf*.sha256.signed -CAfile netapp_cert.pem -purpose any -nosigs -noverify 
 
 
-*	Windows (after installing the certificate via Import-Certificate above):
+*	Windows:
 
-// Get-AuthenticodeSignature -FilePath .\sha256.ps1 $result = Get-AuthenticodeSignature -FilePath .\sha256.ps1 $signer = $result.SignerCertificate Add-Type -Assembly System.Security [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
-
- Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 
- $result = Get-AuthenticodeSignature -FilePath .\telegraf.zip.sha256.ps1 
- $signer = $result.SignerCertificate 
- Add-Type -Assembly System.Security 
- [Security.Cryptography.x509Certificates.X509Certificate2UI]::DisplayCertificate($signer)
+ (Get-Content telegraf.zip.sha256.ps1 -First 1).toUpper() 
 
 
 === Install the downloaded package
@@ -627,4 +441,4 @@ Some things to try if you encounter problems setting up an agent:
 
 
 
-Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:https://docs.netapp.com/us-en/cloudinsights/CloudInsightsDataCollectorSupportMatrix.pdf[Data Collector Support Matrix].
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
