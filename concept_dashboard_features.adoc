@@ -340,7 +340,7 @@ image::SecondaryAxisExplained.png[Secondary Axis example]
 
 == Expressions in widgets
 
-In a dashboard, any time series widget (line, spline, area, stacked area), Single-Value, or Gauge Widget allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
+In a dashboard, any time series widget (line, spline, area, stacked area) bar chart, column chart, pie chart, or table widget allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph (or column in the case of the <<expressions-in-a-table-widget,table widget>>). The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
 
 You can use variables in expressions (for example, _$Var1 * 100_)
 
@@ -381,8 +381,7 @@ You can add up to a total of five alphabetic variables for your expression by cl
 The chart displays the IOPS Read percentage over time for the chosen storage devices. If desired, you can set a filter, or choose a different rollup method. Be aware that if you select Sum as the rollup method, all percentage values are added together, which potentially may go higher than 100%.
 
 . Click *Save* to save the chart to your dashboard.
-+
-You can also use expressions in Line chart, Spline chart, or Stacked Area chart widgets.
+
 
 === Expressions example: "System" I/O
 
@@ -432,6 +431,14 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 . Click *Save* to save the chart to your dashboard.
 
 To use a variable in an expression, simply type the variable name, for example, _$var1 * 100_. Only numeric variables can be used in expressions.
+
+
+
+=== Expressions in a Table Widget
+
+Table widgets handle expressions a little differently. You can have up to five expressions in a single table widget, each of which is added as a new column to the table. Each expression can include up to five values on which to perform its calculation. You can easily name the column something meaningful.
+
+image:Expression Example.png[Expression in a Table Widget]
 
 
 
