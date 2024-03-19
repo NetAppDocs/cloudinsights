@@ -13,13 +13,19 @@ summary: Generic DB Host Resolver collector
 :imagesdir: ./media/
 
 [.lead]
-This data collector acquires inventory 
+The Generic DB Host Resolver collector is a database querying tool that can either directly identify FC hosts, or aid in that identification. For customers who have a relational database with this data in it, they can build Automatic Host Resolution (AHR) rules off the “SRM Data” that this collector can report, or possibly avoid using AHR altogether. 
 
+For example, think of a hypervisor collector that implicitly identifies ESX hosts as _Cloud Insights_ hosts with successful inventory – that is one option this collector can do. Alternatively, this collector just reports “SRM Data” into the database, which becomes visible in the AHR screens, and you can choose to build rules to identify hosts via AHR with that data.
+
+This collector supports Oracle, MySQL, and MS SQL Server as options.
+
+Because of the potentially complex nature of database host resolution, this collector is only recommended for advanced users.
+
+////
 == Terminology
 
 Cloud Insights acquires inventory from this collector. 
 
-////
 For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
