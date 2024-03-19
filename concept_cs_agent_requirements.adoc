@@ -131,11 +131,11 @@ Note that when adding _link:task_add_collector_svm.html#permissions-when-adding-
 |===
 |Protocol|Port|Source	|Destination |Description
 |TCP|389(LDAP)
-636 (LDAPs / start-tls) |Workload Security Agent|LDAP Server URL|Outbound|Connect to LDAP
-|TCP|443|Workload Security Agent|Cluster or SVM Management IP Address (depending on SVM collector configuration)|Outbound|API communication with ONTAP
+636 (LDAPs / start-tls) |Workload Security Agent|LDAP Server URL|Connect to LDAP
+|TCP|443|Workload Security Agent|Cluster or SVM Management IP Address (depending on SVM collector configuration)|API communication with ONTAP
 |TCP|35000 - 55000|SVM data LIF IP Addresses|Workload Security Agent|Communication with ONTAP for Fpolicy events
 |TCP|7|Workload Security Agent|SVM data LIF IP Addresses|Outbound|Uni-directional between ONTAP and Workload Security. Agent pings the SVM Lifs.
-|SSH |22|Workload Security Agent| Cluster management |Outbound| Needed for CIFS/SMB user blocking.
+|SSH |22|Workload Security Agent| Cluster management |Needed for CIFS/SMB user blocking.
 |===
 
 //link:task_cs_add_agent.html[Configure an Agent]
