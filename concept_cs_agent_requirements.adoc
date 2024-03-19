@@ -99,12 +99,13 @@ For *Europe-based* Workload Security environments:
 [cols=5*,options="header"]
 |===
 |Protocol|Port|Source	|Destination |Description
-|TCP|443|Workload Security Agent<site_name>.cs01-eu-1.cloudinsights.netapp.com
+|TCP|443|Workload Security Agent|<site_name>.cs01-eu-1.cloudinsights.netapp.com
 <site_name>.c01-eu-1.cloudinsights.netapp.com
 <site_name>.c02-eu-1.cloudinsights.netapp.com
 |Access to Cloud Insights
 |TCP|443|Workload Security Agent|gateway.c01.cloudinsights.netapp.com
-agentlogin.cs01-eu-1.cloudinsights.netapp.com
+agent
+login.cs01-eu-1.cloudinsights.netapp.com
 |Access to authentication services
 |===
 
