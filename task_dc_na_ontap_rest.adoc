@@ -16,6 +16,8 @@ summary: ONTAP REST Data Collector
 [.lead]
 This data collector acquires inventory, EMS logs, and performance data from storage systems running ONTAP 9.14.1 and higher using REST API calls. For Ontap systems on earlier releases, use the ZAPI-based "NetApp ONTAP Data Management Software" collector type. 
 
+NOTE: The ONTAP REST collector may be used as a replacement for the previous ONTAPI-based collector. As such, there may be differences in the metrics that are collected or reported. For more information about the differences between ONTAPI and REST, see the link:https://docs.netapp.com/us-en/ontap-restmap-9141/index.html[ONTAP 9.14.1 ONTAPI-to-REST mapping] documentation. 
+
 == Terminology
 
 Cloud Insights acquires inventory, logs and performance data from the ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
