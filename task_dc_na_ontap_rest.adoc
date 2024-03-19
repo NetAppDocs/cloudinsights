@@ -169,7 +169,6 @@ To create a local account for Cloud Insights at the cluster level, log in to ONT
 
  security login rest-role create -role {role name} -api /api -access readonly
  security login rest-role create -role {role name} -api /api/cluster/agents -access all
-
  vserver services web access create -name spi -role {role name} -vserver {name from above command}
  security login create -user-or-group-name {username} -application http -authentication-method password -role {role name}
 
