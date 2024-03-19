@@ -1,0 +1,89 @@
+---
+sidebar: sidebar
+permalink: task_dc_na_db_host.html
+keywords: data collector, generic db
+summary: Generic DB Host Resolver collector
+--- 
+= NetApp Generic DB Host resolver
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+This data collector acquires inventory 
+
+== Terminology
+
+Cloud Insights acquires inventory from this collector. 
+
+////
+For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Cloud Insights Term
+|Disk|Disk
+|Raid Group|Disk Group
+|Cluster|Storage
+|Node|Storage Node
+|Aggregate|Storage Pool
+|LUN|Volume
+|Volume|Internal Volume
+|===
+////
+
+////
+== Requirements
+
+The following are requirements to configure and use this data collector:
+
+* You must have access to an Administrator account configured for read-only API calls.
+* Account details include username and password.
+* Port requirements: 80 or 443
+
+* Account permissions:
+** Read only role name to ontapi application to the default Vserver 
+** You may require additional optional write permissions. See the Note About Permissions below.
+* ONTAP License requirements:
+** FCP license and mapped/masked volumes required for fibre-channel discovery 
+////
+
+== Configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|DB Server IP Address|IP address of the DB server
+|DB Server Port|default is 3306
+|Qualified Driver Class Name|Class name for the driver.
+|JDBC Driver URL|URL for the driver
+|SQL Query|The query used to return data from the table
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (Min)|Default is 60 minutes
+|Enable SSL Connection|Select to enable connection via SSL
+|Report WWN Alias|Select to report the WWN alias
+|===
+
+////
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+
+|===
+////
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
+
+
