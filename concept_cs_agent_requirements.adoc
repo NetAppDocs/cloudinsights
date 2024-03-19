@@ -44,6 +44,9 @@ This computer should be running no other application-level software. A dedicated
 //50 GB available for the root partition
 /opt/netapp 35 GB (minimum)
 
+Note: It is recommended to allocate a little extra disk space to allow for the creation of the filesystem. Ensure that there is at least 35 GB free space in the filesystem.
+
+
 If /opt is a mounted folder from a NAS storage, make sure that local users have access to this folder. Agent or Data collector may fail to install if local users do not have permission to this folder. see the link:task_cs_add_agent.html#troubleshooting-agent-errors[troubleshooting] section for more details. 
 
 |Network|100 Mbps to 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Workload Security instance (80 or 443).
@@ -57,6 +60,8 @@ Please note: The Workload Security agent can be installed in the same machine as
 For Linux, disk space should be allocated in this manner:
 /opt/netapp 25-30 GB
 /var/log/netapp 25 GB
+
+
 |===
 
 == Additional recommendations
