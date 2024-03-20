@@ -84,6 +84,26 @@ See link:concept_cs_agent_requirements.html[Agent requirements] for configuratio
 
 * When an Agent is installed in an AWS EC2 instance to monitor a Cloud ONTAP SVM, the Agent and Storage must be in the same VPC. If they are in separate VPCs, there must be a valid route between the VPC’s.
 
+
+== Prerequisites for User Access Blocking
+
+Keep the following in mind if for link:https://docs.netapp.com/us-en/cloudinsights/cs_restrict_user_access.html[User Access Blocking]:
+
+Cluster level credentials are needed for this feature to work.
+
+If you are using cluster administration credentials, no new permissions are needed.
+
+If you are using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Workload Security to block user.
+
+For csuser with cluster credentials, do the following from the ONTAP command line:
+
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all
+ security login role create -role csrole -cmddirname set -access all
+ security login role create -role csrole -cmddirname "vserver cifs session" -access all
+ security login role create -role csrole -cmddirname "vserver services access-check authentication translate" -access all
+ security login role create -role csrole -cmddirname "vserver name-mapping" -access all
+
+
 == A Note About Permissions
 
 === Permissions when adding via *Cluster Management IP*:
