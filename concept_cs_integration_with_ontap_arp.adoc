@@ -48,7 +48,7 @@ For _csuser_ with cluster credentials, do the following from the ONTAP command l
  security login rest-role create -api /api/security/anti-ransomware -access readonly  -role arwrole -vserver <cluster_name>
  security login create -user-or-group-name csuser -application http -authmethod password -role arwrole
 
-Read more about configuring other link:\task_add_collector_svm.html[ONTAP permissions].
+Read more about configuring other link:task_add_collector_svm.html[ONTAP permissions].
 
 
 == Sample Alert

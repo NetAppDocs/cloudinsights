@@ -20,7 +20,7 @@ Workload Security uses data collectors to collect file and user access data from
 == Before you begin
 
 * This data collector is supported with the following:
-** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
+** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version greater than 9.13.1. 
 ** SMB protocol version 3.1 and earlier.  
 //Note that Workload Security does not work with SMB configurations that use Flexcache. In systems using Flexcache, starting with ONTAP 9.7, Fpolicy is supported only in an NFS environment.
 **	NFS protocol version 4.0 and earlier 
@@ -164,7 +164,7 @@ For _csuser_ with cluster credentials, do the following from the ONTAP command l
  security login rest-role create -api /api/security/anti-ransomware -access readonly  -role arwrole -vserver <cluster_name>
  security login create -user-or-group-name csuser -application http -authmethod password -role arwrole
 
-For more information, read about <<concept_cs_integration_with_ontap_arp.html, Integration with ONTAP Autonomous Ransomware Protection>>
+For more information, read about link:concept_cs_integration_with_ontap_arp.html[Integration with ONTAP Autonomous Ransomware Protection]
 
 
 === Permissions for ONTAP Access Denied
@@ -187,7 +187,7 @@ For csuser with _SVM_ credentials, execute the following commands from the ONTAP
  security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole -vserver <svm_name>
 ----
 
-For more information, read about link:\concept_ws_integration_with_ontap_access_denied.html[Integration with ONTAP Access Denied]
+For more information, read about link:concept_ws_integration_with_ontap_access_denied.html[Integration with ONTAP Access Denied]
 
 
 
@@ -199,7 +199,7 @@ For more information, read about link:\concept_ws_integration_with_ontap_access_
 
 . Log in as Administrator or Account Owner to your Cloud Insights environment. 
 
-. Click *Observability > Collectors > +Data Collectors* 
+. Click *Workload Security > Collectors > +Data Collectors* 
 +
 The system displays the available Data Collectors. 
 
