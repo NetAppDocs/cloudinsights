@@ -30,7 +30,6 @@ If there are four SVMs with one SVM configured for SMB, one configured for NFS, 
 
 Cluster level credentials are needed for this feature to work.
 
-
 If you are using cluster administration credentials, no new permissions are needed.
 
 If you are using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Workload Security to block user.
@@ -42,7 +41,8 @@ For csuser with cluster credentials, do the following from the ONTAP command lin
  security login role create -role csrole -cmddirname "vserver cifs session" -access all
  security login role create -role csrole -cmddirname "vserver services access-check authentication translate" -access all
  security login role create -role csrole -cmddirname "vserver name-mapping" -access all
- 
+
+Be sure to review the Permissions section of the link:/cloudinsights/task_add_collector_svm.html[Configuring the ONTAP SVM Data Collector] page as well. 
 
 == How to enable the feature?
 
