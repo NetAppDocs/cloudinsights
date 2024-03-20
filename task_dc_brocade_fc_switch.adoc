@@ -70,9 +70,7 @@ Note: These are common terminology mappings only and might not represent every c
 //|Timeout (sec)|Connection timeout. The default is 30. 
 //|Banner Wait Timeout (sec)|SSHAdmin Domains Active 	Select if using Admin Domainsbanner wait timeout. The default is 5 seconds.
 |Admin Domains Active|Select if using Admin Domains
-|Retrieve MPR Data|Select to acquire routing data from your multiprotocol router. 
-|Enable Trapping|Select to enable acquisition upon receiving an SNMP trap from the device. If you select enable trapping, you must also activate SNMP.
-|Minimum Time Between Traps (sec)|Minimum time between acquisition attempts triggered by traps. The default is 10.
+|Retrieve MPR Data|Select to acquire SAN routing data
 |Discover all switches in the fabric|Select to discover all switches in the fabric
 |Choose Favoring HBA vs. Zone Aliases|Choose whether to favor HBA or zone aliases 
 |Performance Poll Interval (sec)|Interval between performance polls. The default is 300.
@@ -96,7 +94,7 @@ Some things to try if you encounter problems with this data collector:
 |The inventory acquisition of the Brocade datasource fails with the error:
 
 <date> <time> ERROR [com.onaro.sanscreen.acquisition.framework.datasource.BaseDataSource]   Error 2 out of 2: <datasource name> [Internal error] - Unable to generate the model for device <IP>. Error detecting prompt ([Device name <name>]: Unable to generate the model for device <IP>. Error detecting prompt)
-|The issue may be caused when the Brocade switch takes too long to return with a prompt, exceeding the default timeout of 5 seconds.
+|The issue may be caused when the Brocade switch takes too long to return with a prompt, after successful authentication, exceeding the default timeout of 20 seconds.
 In the data collector's Advanced Configuration settings in Cloud Insights, try increasing the  _SSH Banner Wait Timeout (sec)_ to a higher value.
 
 |Error: “Cloud Insights received Invalid Chassis Role” |Check that the user configured in this data source has been granted the chassis role permission.
