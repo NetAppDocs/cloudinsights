@@ -20,6 +20,17 @@ Anomaly Detection provides insight into anomalies in the patterns of data in you
 
 An anomaly occurs when the mean value of a metric is a number of standard deviations away from the weighted mean of that metric for the previous few weeks, with recent weeks having more weight than previous weeks. Cloud Insights provides the ability to monitor data and alert when anomalies are detected. You have a choice to set the "sensitivity" levels of detection. For example, a higher sensitivity would be when the mean value is fewer standard deviations from the mean, thus causing more alerts to be generated. Conversely, lower sensitivity = more standard deviations from mean = fewer alerts.
 
+=== Anomaly Detection monitoring differs from Threshold Monitoring.
+
+* *Threshold-based monitoring* works when you have pre-defined thresholds for specific metrics. In other words, when you have a clear understanding of what is expected and a normal range.
+
+image:MetricMonitor_blurb.png" "ADMonitor_blurb.png" [Metric Monitors are for when you know the operating range]
+
+* *Anomaly Detection monitoring* uses machine learning algorithms to identify outliers that deviate from the norm, for when the definition of normal is not clear.
+
+image:ADMonitor_blurb.png[Anomaly Detection monitors are for when you want to know spikes or drops]
+
+
 == When would I need Anomaly Detection?
 
 Anomaly Detection monitoring can provide helpful alerts for many situations, including the following:
