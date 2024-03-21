@@ -36,7 +36,7 @@ image:ADMonitor_blurb.png[Anomaly Detection monitors are for when you want to kn
 Anomaly Detection monitoring can provide helpful alerts for many situations, including the following:
 
 * When the definition of _normal_ is unclear.  For example, SAN error rates may be expected in varying amounts depending on port. Alerting on one error is noisy and unnecessary, but a sudden or significant increase could indicate a widespread issue.
-* Where there are changes over time. Workloads that exhibit seasonality (i.e. they are busyor quiet at certain times). This could include unexpected quiet periods that may Indicate a batch stall.
+* Where there are changes over time. Workloads that exhibit seasonality (i.e. they are busy or quiet at certain times). This could include unexpected quiet periods that may Indicate a batch stall.
 * Working with large amounts of data where manually defining and adjusting thresholds is impractical. For example, an environment with a large numbers of hosts and/or volumes with varying workloads. Each may have different SLAs, so understanding the ones that exceed the norm is important.
 
 
