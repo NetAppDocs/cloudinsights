@@ -20,6 +20,13 @@ Anomaly Detection provides insight into anomalies in the patterns of data in you
 
 An anomaly occurs when the mean value of a metric is a number of standard deviations away from the weighted mean of that metric for the previous few weeks, with recent weeks having more weight than previous weeks. Cloud Insights provides the ability to monitor data and alert when anomalies are detected. You have a choice to set the "sensitivity" levels of detection. For example, a higher sensitivity would be when the mean value is fewer standard deviations from the mean, thus causing more alerts to be generated. Conversely, lower sensitivity = more standard deviations from mean = fewer alerts.
 
+== Wen would I need Anomaly Detection?
+
+Anomaly Detection Monitors can help in many scenarios, including the following:
+
+* When the definition of _normal_ is unclear.  For example, SAN error rates may be expected in varying amounts depending on port. Alerting on one error is noisy and unnecessary, but a sudden or significant increase could indicate a widespread issue.
+* Where there are changes over time. Workloads that exhibit seasonality (i.e. they are busyor quiet at certain times). This could include unexpected quiet periods that may Indicate a batch stall.
+* Working with large amounts of data where manually defining and adjusting thresholds is impractical. For example, an environment with a large numbers of hosts and/or volumes with varying workloads. Each may have different SLAs, so understanding the ones that exceed the norm is important.
 
 
 // Because Anomaly Detection works by comparing a metric's data on a particular day and time to the same day and time from the previous week, once you create an Anomaly Detection monitor, Cloud Insights needs to collect data for seven days before it can alert on anomalies.
