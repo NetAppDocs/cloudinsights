@@ -742,6 +742,9 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-neta
 |I'm seeing pod(s) deployed by the Netapp Kubernetes Monitoring Operator crash because of insufficient resources.
 |Refer to the Netapp Kubernetes Monitoring Operator link:telegraf_agent_k8s_config_options.html[configuration options] to increase the CPU and/or memory limits as needed.
 
+|I see my NFS latency values but not iSCSI. 
+|Workload Map must be turned on to collect iSCSI latency. Turn Workload Map on through _Modify Deployment_ for the Kubernetes Cluster. 
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
