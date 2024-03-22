@@ -5,7 +5,7 @@ keywords: data collector, ontap, ontap, CDOT, REST
 summary: ONTAP REST Data Collector
 --- 
 
-= NetApp ONTAP  REST data collector
+= NetApp ONTAP REST data collector
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -17,6 +17,12 @@ summary: ONTAP REST Data Collector
 This data collector acquires inventory, EMS logs, and performance data from storage systems running ONTAP 9.14.1 and higher using REST API calls. For Ontap systems on earlier releases, use the ZAPI-based "NetApp ONTAP Data Management Software" collector type. 
 
 NOTE: The ONTAP REST collector may be used as a replacement for the previous ONTAPI-based collector. As such, there may be differences in the metrics that are collected or reported. For more information about the differences between ONTAPI and REST, see the link:https://docs.netapp.com/us-en/ontap-restmap-9141/index.html[ONTAP 9.14.1 ONTAPI-to-REST mapping] documentation. 
+
+
+
+== Migration
+TBD - See story
+
 
 == Terminology
 
@@ -85,7 +91,8 @@ Throughput – the sum throughput of all the disks contributing capacity to this
 
 The following are requirements to configure and use this data collector:
 
-* You must have access to a user account with the required level of access. Note that Admin permissions are required if creating a new REST user/role.
+* You must have access to a user account with the required level of access. Note that Admin permissions are required if creating a new REST user/role. 
+* 9.14.1
 * Account details include username and password.
 * Port requirements: 443
 
@@ -98,7 +105,7 @@ The following are requirements to configure and use this data collector:
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
-|ONTAP management IP Address	|IP address or fully-qualified domain name of the NetApp cluster
+|ONTAP management IP Address	|IP address or fully-qualified domain name of the NetApp cluster. Must be Cluster Management IP/FQDN.
 |ONTAP REST User Name	|User name for NetApp cluster
 |ONTAP REST Password	|Password for NetApp cluster
 |===
@@ -166,6 +173,10 @@ To create a local account for Cloud Insights at the cluster level, log in to ONT
 
 . Before you begin, you must be signed in to ONTAP with an _Administrator_ account, and _diagnostic-level commands_ must be enabled.
 
+. Retrieve the name of the vserver that is of type _admin_. You will using this name in subsequent commands.
+
+ vserver show -type admin
+
 . Create a role using the following commands:
 
  security login rest-role create -role {role name} -api /api -access readonly
@@ -173,24 +184,20 @@ To create a local account for Cloud Insights at the cluster level, log in to ONT
  vserver services web access create -name spi -role {role name} -vserver {name from above command}
  security login create -user-or-group-name {username} -application http -authentication-method password -role {role name}
 
-
-////
- security login role create -role ci_readonly -cmddirname DEFAULT -access readonly
- security login role create -role ci_readonly -cmddirname security -access readonly
- security login role create -role ci_readonly -access all -cmddirname {cluster application-record create}
-////
-
 . Create the read-only user using the following command. Once you have executed the create command, you will be prompted to enter a password for this user.
 
- security login create -username ci_user -application ontapi -authentication-method password -role ci_readonly
+ security login create -username ci_user -application http -authentication-method password -role ci_readonly
  
 If AD/LDAP account is used, the command should be 
 
- security login create -user-or-group-name DOMAIN\aduser/adgroup -application ontapi -authentication-method domain -role ci_readonly
+ security login create -user-or-group-name DOMAIN\aduser/adgroup -application http -authentication-method domain -role ci_readonly
  
 The resulting role and user login will look something like the following. Your actual output may vary:
 
- Role Command/ Access
+////
+Get from Cheryl's doc comment
+
+Role Command/ Access
  Vserver Name Directory Query Level
  ---------- ------------- --------- ------------------ --------
  cluster1   ci_readonly   DEFAULT   read only
@@ -202,7 +209,7 @@ The resulting role and user login will look something like the following. Your a
  UserName    Application   Method      Role Name      Locked
  ---------   -------      ----------- -------------- --------
  ci_user     ontapi       password    ci_readonly    no
-
+////
 
 
 == Troubleshooting
@@ -218,6 +225,11 @@ Configuration: 10.193.70.14: ONTAP rest API at 10.193.70.14 is not available: 10
 
 For ONTAP versions that do support REST but are not 9.14.1 or later, you may see the following simillar message: 
 Configuration: 10.193.98.84: ONTAP rest API at 10.193.98.84 is not available: 10.193.98.84: ONTAP rest API at 10.193.98.84 is available: cheryl5-cluster-2 9.10.1 a3cb3247-3d3c-11ee-8ff3-005056b364a7 but is not of minimum version 9.14.1.
+
+
+|I see empty or "0" metrics where ONTAP ontapi collector shows data.
+|ONTAP REST does not report metrics that are used internally on the ONTAP system only. For example, system aggregates will not be collected by ONTAP REST, only SVM's of type "data" will be collected.
+
 |===
 
 
