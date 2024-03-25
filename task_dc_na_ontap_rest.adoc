@@ -218,34 +218,19 @@ Role Command/ Access
 ////
 
 
-----
-security login rest-role show -vserver {vserver name} -role restRole
 
-Role                        Access
-Vserver      Name           API                   Level
-----------   -------------  -------------------   ------
-{vserver name}   restRole    /api   readonly
-                /api/cluster/agents   all
-
-security login show -vserver {vserver name} -user-or-group-name restUser
-
-Vserver: C1_sti241-vsim-osr003g_1709829808
-                                 Second
-User/Group         Authentication         Acct  Authentication
-Name      Application Method    Role Name    Locked Method
--------------- ----------- ------------- ---------------- ------ --------------
-----
 
 ----
-security login rest-role show -vserver <vserver> -role restRole
+security login rest-role show -vserver <vserver name> -role restRole
+
                Role                                    Access
 Vserver        Name            API                     Level
 ----------     -------------   -------------------     ------
-<vserver>      restRole        /api                    readonly
+<vserver name> restRole        /api                    readonly
                                /api/cluster/agents     all
 2 entries were displayed.
 
-security login show -vserver <vserver> -user-or-group-name restUser
+security login show -vserver <vserver name> -user-or-group-name restUser
 
 Vserver: <vserver name>
                                                                  Second
