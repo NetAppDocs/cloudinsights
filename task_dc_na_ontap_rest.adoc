@@ -238,25 +238,22 @@ Name      Application Method    Role Name    Locked Method
 
 ----
 Last login time: 3/22/2024 11:46:23
-C1_sti241-vsim-osr003g_1709829808::> security login rest-role show -vserver C1_sti241-vsim-osr003g_1709829808 -role restRole
+security login rest-role show -vserver <vserver> -role restRole
                Role                                    Access
 Vserver        Name            API                     Level
 ----------     -------------   -------------------     ------
-C1_sti241-vsim-osr003g_1709829808
-               restRole        /api                    readonly
+<vserver>      restRole        /api                    readonly
                                /api/cluster/agents     all
 2 entries were displayed.
 
-C1_sti241-vsim-osr003g_1709829808::> security login show -vserver C1_sti241-vsim-osr003g_1709829808 -user-or-group-name restUser
+security login show -vserver <vserver> -user-or-group-name restUser
 
-Vserver: C1_sti241-vsim-osr003g_1709829808
+Vserver: <vserver name>
                                                                  Second
 User/Group                 Authentication                 Acct   Authentication
 Name           Application Method        Role Name        Locked Method
 -------------- ----------- ------------- ---------------- ------ --------------
 restUser       http        password      restRole         no     none
-
-C1_sti241-vsim-osr003g_1709829808::>
 ----
 
 
