@@ -20,16 +20,6 @@ NOTE: The ONTAP REST collector may be used as a replacement for the previous ONT
 
 
 
-== Migration
-
-To migrate from a previous ONTAP (ontapi) data collector to the newer ONTAP REST collector, do the following:
-
-. Add the REST Collector, entering all the same user/permission/etc. you had for the previous collector.
-. Pause the previous collector.
-. Let the system collect data for ~30 minutes. Ignore any data oddities during this time.
-. After the rest period, you will see stable continuation of data on the REST collector.
-
-
 == Terminology
 
 Cloud Insights acquires inventory, logs and performance data from the ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
@@ -239,6 +229,20 @@ Name           Application Method        Role Name        Locked Method
 -------------- ----------- ------------- ---------------- ------ --------------
 restUser       http        password      restRole         no     none
 ----
+
+
+== Migration
+
+To migrate from a previous ONTAP (ontapi) data collector to the newer ONTAP REST collector, do the following:
+
+. Add the REST Collector, entering all the same user/permission/etc. you had for the previous collector.
+.. or, enter information for a different user, if needed. For example, the user noted in the Permissions section above.
+. Pause the previous collector.
+. Let the system collect data for ~30 minutes. Ignore any data oddities during this time.
+. After the rest period, you will see stable continuation of data on the REST collector.
+
+You can use this same process to return to the previous collector, should you wish.
+
 
 
 == Troubleshooting
