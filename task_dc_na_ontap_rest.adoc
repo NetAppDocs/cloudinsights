@@ -23,11 +23,9 @@ NOTE: The ONTAP REST collector may be used as a replacement for the previous ONT
 The following are requirements to configure and use this data collector:
 
 * You must have access to a user account with the required level of access. Note that Admin permissions are required if creating a new REST user/role. 
+** Functionally, Cloud Insights primarily makes read requests, but some write permissions are required for Cloud Insights to register with the ONTAP array. See the _Note About Permissions_ immediately below.
 * ONTAP version 9.14.1 or higher.
 * Port requirements: 443
-* Account permissions:
-** Functionally, Cloud Insights primarily makes read requests, but some write permissions are required for Cloud Insights to register with the ONTAP array. See the _Note About Permissions_ immediately below.
-
 
 == A Note About Permissions
 
