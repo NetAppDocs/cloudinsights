@@ -66,4 +66,8 @@ You need the following information to configure this data collector:
 == Troubleshooting
 
 Additional information on this Data Collector may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
-
+[cols=2*, options="header", cols"50,50"]
+|===
+|Symptom|Explanation
+|Inventory failure with "If this system was upgraded to DD OS 7.10+..."|NetApp has seen some number of DD appliances that when upgraded, the DD OS CLI command "system show ports" returns an error. SSH to your DD appliance and run that command to reproduce. Not all systems seem to exhibit this, and NetApp has seen some come out of this state without a firmware upgrade, which may indicate that Dell/EMC has a workaround to remediate.
+|===
