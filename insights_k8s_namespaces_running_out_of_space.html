@@ -1,0 +1,4180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Insights: Kubernetes Namespaces Running out of Space</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Insights: Kubernetes Namespaces Running out of Space" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+	<meta property="og:description" content="Insights can help you predict when Kubernetes spaces are likely to become full." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/cloudinsights/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Insights can help you predict when Kubernetes spaces are likely to become full.">
+  <meta name="keywords" content=" insight, pv, persistent volume, backend"><!-- Icons -->
+  <link rel="icon" href="/us-en/cloudinsights/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloudinsights/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/us-en/cloudinsights/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/us-en/cloudinsights/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/cloudinsights/insights_k8s_namespaces_running_out_of_space.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/us-en/cloudinsights/js/na-search.js'></script><script src='/us-en/cloudinsights/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/us-en/cloudinsights/js/custom-dropdown.js'></script>
+  <script src='/us-en/cloudinsights/js/FileSaver.min.js'></script>
+  <script src='/us-en/cloudinsights/js/jszip-utils.min.js'></script>
+  <script src='/us-en/cloudinsights/js/jszip.min.js'></script><script src='/us-en/cloudinsights/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/us-en/cloudinsights/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/">
+                <image id="ie-header-logo" src="/us-en/cloudinsights/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/support-and-training/documentation/">Docs</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/us-en/cloudinsights/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">English</span>
+                    <img src="/us-en/cloudinsights/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/us-en/cloudinsights/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running_out_of_space.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/cloudinsights/insights_k8s_namespaces_running_out_of_space.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/cloudinsights/insights_k8s_namespaces_running_out_of_space.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/cloudinsights/insights_k8s_namespaces_running_out_of_space.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/cloudinsights/insights_k8s_namespaces_running_out_of_space.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/cloudinsights/insights_k8s_namespaces_running_out_of_space.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/cloudinsights/insights_k8s_namespaces_running_out_of_space.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/cloudinsights/insights_k8s_namespaces_running_out_of_space.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/cloudinsights/insights_k8s_namespaces_running_out_of_space.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/us-en/cloudinsights/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">All NetApp</span>
+                    <img src="/us-en/cloudinsights/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/us-en/cloudinsights/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">Support</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">Knowledge Base</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">Training</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/us-en/cloudinsights/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/us-en/cloudinsights/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">All docs</a>
+    </li>
+    
+    
+
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/us-en/cloudinsights/">-->
+      Cloud Insights
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/us-en/cloudinsights/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/us-en/cloudinsights/search.html" 
+        data-type="widget"
+        data-placeholder="Search documentation"
+        data-no-results-found="No results were found for {query}"
+        data-did-you-mean="Search for {suggestion}."
+        data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?"
+        data-results-found="{hitCount} results found"
+        data-error-message="An error occurred. Please try again."
+        data-error-reset="Reset search"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Insights documentation"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/index.html">
+        Cloud Insights documentation
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="What's New"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_whats_new.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/concept_whats_new.html">
+        What's New
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Signing Up for Cloud Insights"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_cloud_insights_onboarding_1.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/task_cloud_insights_onboarding_1.html">
+        Signing Up for Cloud Insights
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Security"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Security</div>-->
+         Security
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Security Practices"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/security_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/security_overview.html">
+        Security Practices
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="What We Store, and Where"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/security_information_and_region.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/security_information_and_region.html">
+        What We Store, and Where
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SecurityAdmin Tool"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/security_admin_tool.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/security_admin_tool.html">
+        SecurityAdmin Tool
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Getting Started"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Getting Started</div>-->
+         Getting Started
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Feature Tutorials"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_feature_tutorials.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_feature_tutorials.html">
+        Feature Tutorials
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Collecting Data"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Collecting Data</div>-->
+         Collecting Data
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Overview"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_getting_started_with_cloud_insights.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_getting_started_with_cloud_insights.html">
+        Overview
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Acquisition Unit Requirements"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_acquisition_unit_requirements.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/concept_acquisition_unit_requirements.html">
+        Acquisition Unit Requirements
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring an Acquisition Unit"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_configure_acquisition_unit.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_configure_acquisition_unit.html">
+        Configuring an Acquisition Unit
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring an Agent on Windows/Linux"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_agent.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_agent.html">
+        Configuring an Agent on Windows/Linux
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring Data Collectors"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_configure_data_collectors.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_configure_data_collectors.html">
+        Configuring Data Collectors
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Determining Data Collector Acquisition Status"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_determining_data_collector_acq_status.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/concept_determining_data_collector_acq_status.html">
+        Determining Data Collector Acquisition Status
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Manage Configured Data Collectors"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_view_configured_data_collectors.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_view_configured_data_collectors.html">
+        Manage Configured Data Collectors
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Research data collector errors"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_research_failed_collector.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_research_failed_collector.html">
+        Research data collector errors
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Importing Recommended Dashboards"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_import_from_dashboard_gallery.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_import_from_dashboard_gallery.html">
+        Importing Recommended Dashboards
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="User Accounts and Roles"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_user_roles.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_user_roles.html">
+        User Accounts and Roles
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Data Collector List"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/data_collector_list.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/data_collector_list.html">
+        Data Collector List
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Subscribing to Cloud Insights"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_subscribing_to_cloud_insights.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/concept_subscribing_to_cloud_insights.html">
+        Subscribing to Cloud Insights
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Automatic Device Resolution"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Automatic Device Resolution</div>-->
+         Automatic Device Resolution
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Device Resolution Overview"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_device_resolution_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_device_resolution_overview.html">
+        Device Resolution Overview
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Device Resolution Rules"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_device_resolution_rules.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_device_resolution_rules.html">
+        Device Resolution Rules
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fibre Channel Device Resolution"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_device_resolution_fibre_channel.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_device_resolution_fibre_channel.html">
+        Fibre Channel Device Resolution
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="IP Device Resolution"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_device_resolution_ip.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_device_resolution_ip.html">
+        IP Device Resolution
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Setting Device Resolution Preferences"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_device_resolution_preferences.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_device_resolution_preferences.html">
+        Setting Device Resolution Preferences
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Regular expression examples"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_device_resolution_regex_examples.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_device_resolution_regex_examples.html">
+        Regular expression examples
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating Dashboards"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Creating Dashboards</div>-->
+         Creating Dashboards
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Dashboard Overview"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_dashboards_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_dashboards_overview.html">
+        Dashboard Overview
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Features of Dashboards"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_dashboard_features.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_dashboard_features.html">
+        Features of Dashboards
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Sample Dashboards"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Sample Dashboards</div>-->
+         Sample Dashboards
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Virtual Machine Performance"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dashboard_example_VM_performance.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dashboard_example_VM_performance.html">
+        Virtual Machine Performance
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Dashboard Best Practices"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_dashboard_best_practices.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_dashboard_best_practices.html">
+        Dashboard Best Practices
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Kubernetes"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Kubernetes</div>-->
+         Kubernetes
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Kubernetes Overview Page"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/kubernetes_landing_page.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/kubernetes_landing_page.html">
+        Kubernetes Overview Page
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Before Installing or Upgrading the Operator"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/pre-requisites_for_k8s_operator.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/pre-requisites_for_k8s_operator.html">
+        Before Installing or Upgrading the Operator
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Installing the Monitoring Operator"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_agent_k8s.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_config_telegraf_agent_k8s.html">
+        Installing the Monitoring Operator
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Monitoring Operator Options"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/telegraf_agent_k8s_config_options.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/telegraf_agent_k8s_config_options.html">
+        Monitoring Operator Options
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Kubernetes Cluster Page"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/kubernetes_cluster_detail.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/kubernetes_cluster_detail.html">
+        Kubernetes Cluster Page
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Network Monitoring and Map"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_kubernetes_network_monitoring_and_map.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_kubernetes_network_monitoring_and_map.html">
+        Network Monitoring and Map
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Change Analytics"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/kubernetes_change_analytics.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/kubernetes_change_analytics.html">
+        Change Analytics
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Insights"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Insights</div>-->
+         Insights
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Overview"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/insights_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/insights_overview.html">
+        Overview
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Shared Resources Under Stress"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/insights_shared_resources_under_stress.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/insights_shared_resources_under_stress.html">
+        Shared Resources Under Stress
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Kubernetes Namespaces Running Out of Space"
+      data-li-level="2#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/insights_k8s_namespaces_running_out_of_space.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/insights_k8s_namespaces_running_out_of_space.html">
+        Kubernetes Namespaces Running Out of Space
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reclaim ONTAP Cold Storage"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/insights_reclaim_ontap_cold_storage.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/insights_reclaim_ontap_cold_storage.html">
+        Reclaim ONTAP Cold Storage
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP Essentials"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_ontap_essentials.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/concept_ontap_essentials.html">
+        ONTAP Essentials
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Working with Queries"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Working with Queries</div>-->
+         Working with Queries
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Querying Assets"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_querying_assets.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_querying_assets.html">
+        Querying Assets
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating a Query"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_create_query.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_create_query.html">
+        Creating a Query
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Viewing Available Queries"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_view_queries.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_view_queries.html">
+        Viewing Available Queries
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Exporting Query Results to .CSV"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_export_query_results.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_export_query_results.html">
+        Exporting Query Results to .CSV
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Modifying or Deleting a Query"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_modify_delete_query.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_modify_delete_query.html">
+        Modifying or Deleting a Query
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Assigning Multiple Applications/annotations to Objects"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_query_assign_multiple_applicationss.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_query_assign_multiple_applicationss.html">
+        Assigning Multiple Applications/annotations to Objects
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Copying table values to the Clipboard"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_query_copy_table_values.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_query_copy_table_values.html">
+        Copying table values to the Clipboard
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Querying Logs"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_log_explorer.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_log_explorer.html">
+        Querying Logs
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Working with Annotations"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Working with Annotations</div>-->
+         Working with Annotations
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Defining Annotations"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_defining_annotations.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_defining_annotations.html">
+        Defining Annotations
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Using Annotations"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_create_annotation.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_create_annotation.html">
+        Using Annotations
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Using Annotation Rules"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_create_annotation_rules.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_create_annotation_rules.html">
+        Using Annotation Rules
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Importing Annotations with API"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_annotation_import.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_annotation_import.html">
+        Importing Annotations with API
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Working with Applications"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Working with Applications</div>-->
+         Working with Applications
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Application Concepts"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_about_applications.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_about_applications.html">
+        Application Concepts
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring Applications"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_create_application.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_create_application.html">
+        Configuring Applications
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Monitors and Alerts"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Monitors and Alerts</div>-->
+         Monitors and Alerts
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating Monitors"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_create_monitor.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_create_monitor.html">
+        Creating Monitors
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Viewing and Managing Alerts"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_view_and_manage_alerts.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_view_and_manage_alerts.html">
+        Viewing and Managing Alerts
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring Notification Recipients"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_notifications_email.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_notifications_email.html">
+        Configuring Notification Recipients
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="System-Defined Monitors"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_system_monitors.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_system_monitors.html">
+        System-Defined Monitors
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Working with APIs"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/API_Overview.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/API_Overview.html">
+        Working with APIs
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Webhook Notification"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_create_webhook.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/task_create_webhook.html">
+        Webhook Notification
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Monitoring your Environment"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Monitoring your Environment</div>-->
+         Monitoring your Environment
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Auditing Events"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_audit.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_audit.html">
+        Auditing Events
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="TTL and Downsampling"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="concept_ttl_and_downsampling.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_ttl_and_downsampling.html">
+        TTL and Downsampling
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Asset Page Information"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Asset Page Information</div>-->
+         Asset Page Information
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Asset Page Overview"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_asset_page_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_asset_page_overview.html">
+        Asset Page Overview
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="In-Context Filtering for Objects"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_in_context_filters.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_in_context_filters.html">
+        In-Context Filtering for Objects
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Summary & Topology Sections"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_asset_summary_section.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_asset_summary_section.html">
+        Summary & Topology Sections
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Expert View Section"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_asset_expert_view_section.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_asset_expert_view_section.html">
+        Expert View Section
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="User Data Section"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_asset_user_data_section.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_asset_user_data_section.html">
+        User Data Section
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Related Alerts Section"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_asset_alerts_section.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_asset_alerts_section.html">
+        Related Alerts Section
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Storage Virtualization"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_storage_virtualization.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_storage_virtualization.html">
+        Storage Virtualization
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hints and Tips to Search for Assets"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_searching_assets.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_searching_assets.html">
+        Hints and Tips to Search for Assets
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reporting"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Reporting</div>-->
+         Reporting
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reporting Overview"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_overview.html">
+        Reporting Overview
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reporting User Roles"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_user_roles.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_user_roles.html">
+        Reporting User Roles
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Using Pre-Defined Reports"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_predefined_reports.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_predefined_reports.html">
+        Using Pre-Defined Reports
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Storage Manager Dashboard"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_storage_manager_dashboard.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_storage_manager_dashboard.html">
+        Storage Manager Dashboard
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating an Example Report"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_create_example.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_create_example.html">
+        Creating an Example Report
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Managing Reports"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_managing_reports.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_managing_reports.html">
+        Managing Reports
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Custom Reports"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_creating_custom_reports.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_creating_custom_reports.html">
+        Custom Reports
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Data Models"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_creating_custom_reports.html#reporting-data-models" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_creating_custom_reports.html#reporting-data-models">
+        Data Models
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reporting Database API"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_querying_database.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_querying_database.html">
+        Reporting Database API
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Data Retention"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_data_retention.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_data_retention.html">
+        Data Retention
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Schema Diagrams"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reporting_schema_diagrams.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reporting_schema_diagrams.html">
+        Schema Diagrams
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Schema Tables"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reference_schemas.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reference_schemas.html">
+        Schema Tables
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Workload Security"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Workload Security</div>-->
+         Workload Security
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="About Workload Security"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/cs_intro.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/cs_intro.html">
+        About Workload Security
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Getting Started"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Getting Started</div>-->
+         Getting Started
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Getting Started With Workload Security"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_cs_getting_started.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_cs_getting_started.html">
+        Getting Started With Workload Security
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Workload Security Agent Requirements"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_cs_agent_requirements.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/concept_cs_agent_requirements.html">
+        Workload Security Agent Requirements
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring a Workload Security Agent"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_cs_add_agent.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_cs_add_agent.html">
+        Configuring a Workload Security Agent
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deleting a Workload Security Agent"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_cs_delete_agent.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_cs_delete_agent.html">
+        Deleting a Workload Security Agent
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring an AD Directory Collector"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_user_dir_connect.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_user_dir_connect.html">
+        Configuring an AD Directory Collector
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring an LDAP Directory Collector"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_user_dir_connect_ldap.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_user_dir_connect_ldap.html">
+        Configuring an LDAP Directory Collector
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring the ONTAP SVM Data Collector"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_add_collector_svm.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_add_collector_svm.html">
+        Configuring the ONTAP SVM Data Collector
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring the Cloud ONTAP Data Collector"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_cs_incloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_cs_incloud.html">
+        Configuring the Cloud ONTAP Data Collector
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Workload Security User Management"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_cs_user_management.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_cs_user_management.html">
+        Workload Security User Management
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Event Rate Checker (Agent Sizing Guide)"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_cs_event_rate_checker.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/concept_cs_event_rate_checker.html">
+        Event Rate Checker (Agent Sizing Guide)
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Alerts"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/cs_alert_data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/cs_alert_data.html">
+        Alerts
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Forensics"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Forensics</div>-->
+         Forensics
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Activity Forensics - All Activity"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/forensic_activity_history.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/forensic_activity_history.html">
+        Activity Forensics - All Activity
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Activity Forensics - Entities"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/forensic_entity_detail.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/forensic_entity_detail.html">
+        Activity Forensics - Entities
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Users"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/forensic_user_overview.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/forensic_user_overview.html">
+        Users
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Automated Response Policies"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/cs_automated_response_policies.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/cs_automated_response_policies.html">
+        Automated Response Policies
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Allowed File Types Policies"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/ws_allowed_file_types.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/ws_allowed_file_types.html">
+        Allowed File Types Policies
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP Autonomous Ransomware Protection Integration"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_cs_integration_with_ontap_arp.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_cs_integration_with_ontap_arp.html">
+        ONTAP Autonomous Ransomware Protection Integration
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP Access Denied Integration"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_ws_integration_with_ontap_access_denied.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_ws_integration_with_ontap_access_denied.html">
+        ONTAP Access Denied Integration
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Blocking User Access"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/cs_restrict_user_access.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/cs_restrict_user_access.html">
+        Blocking User Access
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Simulating a Ransomware Attack"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_cs_attack_simulator.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_cs_attack_simulator.html">
+        Simulating a Ransomware Attack
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Notifications"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/cs_notifications_email.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/cs_notifications_email.html">
+        Notifications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Workload Security API"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_cs_api.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_cs_api.html">
+        Workload Security API
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Active IQ"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_activeiq.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/concept_activeiq.html">
+        Active IQ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Troubleshooting"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Troubleshooting</div>-->
+         Troubleshooting
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="General Troubleshooting"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_troubleshooting_general_problems.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_troubleshooting_general_problems.html">
+        General Troubleshooting
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Troubleshooting Linux Acquisition Unit Problems"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_troubleshooting_linux_acquisition_unit_problems.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_troubleshooting_linux_acquisition_unit_problems.html">
+        Troubleshooting Linux Acquisition Unit Problems
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Troubleshooting Windows Acquisition Unit Problems"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_troubleshooting_windows_acquisition_unit_problems.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_troubleshooting_windows_acquisition_unit_problems.html">
+        Troubleshooting Windows Acquisition Unit Problems
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Researching Data Collector Errors"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_research_failed_collector.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/task_research_failed_collector.html">
+        Researching Data Collector Errors
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Data Collector Support Matrix"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reference_data_collector_support_matrix.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/reference_data_collector_support_matrix.html">
+        Data Collector Support Matrix
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reference & Support"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Reference & Support</div>-->
+         Reference & Support
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Requesting Support"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_requesting_support.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/concept_requesting_support.html">
+        Requesting Support
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Data Collector Reference - Infrastructure"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Data Collector Reference - Infrastructure</div>-->
+         Data Collector Reference - Infrastructure
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Vendor Reference Overview"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/concept_data_collector_reference.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/concept_data_collector_reference.html">
+        Vendor Reference Overview
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="AWS"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_amazon_ec2.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_amazon_ec2.html">
+        AWS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Amazon FSx for NetApp ONTAP"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_na_amazon_fsx.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_na_amazon_fsx.html">
+        Amazon FSx for NetApp ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_ms_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_ms_azure.html">
+        Azure
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Broadcom"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Broadcom</div>-->
+         Broadcom
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Brocade Network Advisor"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_brocade_bna.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_brocade_bna.html">
+        Brocade Network Advisor
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fibre Channel Switch"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_brocade_fc_switch.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_brocade_fc_switch.html">
+        Fibre Channel Switch
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cisco"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_cisco_fc_switch.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_cisco_fc_switch.html">
+        Cisco
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cohesity SmartfFiles"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_cohesity_smartfiles.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_cohesity_smartfiles.html">
+        Cohesity SmartfFiles
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Dell"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Dell</div>-->
+         Dell
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="XC series"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_dell_xc_series.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_dell_xc_series.html">
+        XC series
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Dell EMC"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Dell EMC</div>-->
+         Dell EMC
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Data Domain"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_datadomain.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_datadomain.html">
+        Data Domain
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ECS"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_ecs.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_ecs.html">
+        ECS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="PowerScale"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_isilon.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_isilon.html">
+        PowerScale
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Isilon / PowerScale REST"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_isilon_rest.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_isilon_rest.html">
+        Isilon / PowerScale REST
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="PowerStore"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_powerstore.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_powerstore.html">
+        PowerStore
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="RecoverPoint"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_recoverpoint.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_recoverpoint.html">
+        RecoverPoint
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ScaleIO"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_scaleio.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_scaleio.html">
+        ScaleIO
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Unity (VNXe)"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_unity.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_unity.html">
+        Unity (VNXe)
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMAX/PowerMax"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_vmax_powermax.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_vmax_powermax.html">
+        VMAX/PowerMax
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VNX Block (Clariion)"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_vnx_block.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_vnx_block.html">
+        VNX Block (Clariion)
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VNX File (Celerra)"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_vnx_file.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_vnx_file.html">
+        VNX File (Celerra)
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VNX Unified"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_vnx_unified.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_vnx_unified.html">
+        VNX Unified
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VPLEX"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_vplex.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_vplex.html">
+        VPLEX
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="XtremIO"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_emc_xio.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_emc_xio.html">
+        XtremIO
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fujitsu"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_fujitsu_eternus.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_fujitsu_eternus.html">
+        Fujitsu
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Google"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_google_cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_google_cloud.html">
+        Google
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HP Enterprise"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> HP Enterprise</div>-->
+         HP Enterprise
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HP Alletra 9000 and Primera"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_hp_3par.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_hp_3par.html">
+        HP Alletra 9000 and Primera
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HP Command View AE"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_hpe_commandview.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_hpe_commandview.html">
+        HP Command View AE
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HPE Alletra 6000"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_hpe_nimble.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_hpe_nimble.html">
+        HPE Alletra 6000
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hitachi Data Systems"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Hitachi Data Systems</div>-->
+         Hitachi Data Systems
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HDS Command Suite"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_hds_commandsuite.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_hds_commandsuite.html">
+        HDS Command Suite
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HDS HNAS"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_hds_nas.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_hds_nas.html">
+        HDS HNAS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HDS Ops Center"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_hds_ops_center.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_hds_ops_center.html">
+        HDS Ops Center
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Infinidat"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_infinidat_infinibox.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_infinidat_infinibox.html">
+        Infinidat
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Huawei"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_huawei_oceanstor.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_huawei_oceanstor.html">
+        Huawei
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="IBM"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> IBM</div>-->
+         IBM
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cleversafe"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_ibm_cleversafe.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_ibm_cleversafe.html">
+        Cleversafe
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="CS Series"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_ibm_cs.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_ibm_cs.html">
+        CS Series
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="System Storage DS8000 Series"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_ibm_ds.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_ibm_ds.html">
+        System Storage DS8000 Series
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="PowerVM"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_ibm_powervm.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_ibm_powervm.html">
+        PowerVM
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="San Volume Controller (SVC)"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_ibm_svc.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_ibm_svc.html">
+        San Volume Controller (SVC)
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="XIV/A9000"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_ibm_xiv.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_ibm_xiv.html">
+        XIV/A9000
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Lenovo"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_lenovo.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_lenovo.html">
+        Lenovo
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Microsoft"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Microsoft</div>-->
+         Microsoft
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Azure NetApp Files"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_ms_anf.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_ms_anf.html">
+        Azure NetApp Files
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hyper-V"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_ms_hyperv.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_ms_hyperv.html">
+        Hyper-V
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NetApp"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> NetApp</div>-->
+         NetApp
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Connection for ONTAP 9.9+"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_na_cloud_connection.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_na_cloud_connection.html">
+        Cloud Connection for ONTAP 9.9+
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_na_cloud_volumes_ontap.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_na_cloud_volumes_ontap.html">
+        Cloud Volumes ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes Services for AWS"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_na_cloud_volumes.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_na_cloud_volumes.html">
+        Cloud Volumes Services for AWS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ONTAP Data Management Software"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_na_cdot.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_na_cdot.html">
+        ONTAP Data Management Software
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Data ONTAP 7-mode"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_na_7mode.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_na_7mode.html">
+        Data ONTAP 7-mode
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="E-Series"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_na_eseries.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_na_eseries.html">
+        E-Series
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NetApp HCI Management Server"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_na_hci.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_na_hci.html">
+        NetApp HCI Management Server
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SolidFire"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_na_solidfire.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_na_solidfire.html">
+        SolidFire
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="StorageGRID"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_na_storagegrid.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/us-en/cloudinsights/task_dc_na_storagegrid.html">
+        StorageGRID
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Nutanix"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_nutanix.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_nutanix.html">
+        Nutanix
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="OpenStack"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_openstack.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_openstack.html">
+        OpenStack
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Oracle"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_oracle_zfs.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_oracle_zfs.html">
+        Oracle
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Pure"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_pure_flasharray.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_pure_flasharray.html">
+        Pure
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Red Hat"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_redhat_virtualization.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_redhat_virtualization.html">
+        Red Hat
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Rubrik CDM"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_rubrik_cdm.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_rubrik_cdm.html">
+        Rubrik CDM
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_dc_vmware.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_dc_vmware.html">
+        VMware
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Data Collector Reference - Services"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/cloudinsights/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/cloudinsights/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Data Collector Reference - Services</div>-->
+         Data Collector Reference - Services
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Host/Node"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_node.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_node.html">
+        Host/Node
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ActiveMQ"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_activemq.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_activemq.html">
+        ActiveMQ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Apache"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_apache.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_apache.html">
+        Apache
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Consul"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_consul.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_consul.html">
+        Consul
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Couchbase"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_couchbase.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_couchbase.html">
+        Couchbase
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="CouchDB"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_couchdb.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_couchdb.html">
+        CouchDB
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Docker"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_docker.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_docker.html">
+        Docker
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Elasticsearch"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_elasticsearch.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_elasticsearch.html">
+        Elasticsearch
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Flink"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_flink.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_flink.html">
+        Flink
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Hadoop"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_hadoop.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_hadoop.html">
+        Hadoop
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HAProxy"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_haproxy.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_haproxy.html">
+        HAProxy
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Java"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_jvm.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_jvm.html">
+        Java
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Kafka"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_kafka.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_kafka.html">
+        Kafka
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Kapacitor"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="task_config_telegraf_kapacitor.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_kapacitor.html">
+        Kapacitor
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Kibana"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_kibana.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_kibana.html">
+        Kibana
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Kubernetes"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_agent.html#kubernetes" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_agent.html#kubernetes">
+        Kubernetes
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Memcached"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_memcached.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_memcached.html">
+        Memcached
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="MongoDB"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_mongodb.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_mongodb.html">
+        MongoDB
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="MySQL"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_mysql.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_mysql.html">
+        MySQL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Netstat"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_netstat.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_netstat.html">
+        Netstat
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Nginx"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_nginx.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_nginx.html">
+        Nginx
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="OpenZFS"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="task_config_telegraf_openzfs.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_openzfs.html">
+        OpenZFS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="PostgreSQL"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_postgresql.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_postgresql.html">
+        PostgreSQL
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Puppet"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_puppetagent.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_puppetagent.html">
+        Puppet
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Redis"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/task_config_telegraf_redis.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_redis.html">
+        Redis
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="RethinkDB"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="task_config_telegraf_rethinkdb.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_rethinkdb.html">
+        RethinkDB
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Zookeeper"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="task_config_telegraf_zookeeper.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/cloudinsights/task_config_telegraf_zookeeper.html">
+        Zookeeper
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Object Icon Reference"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reference_object_icons.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/cloudinsights/reference_object_icons.html">
+        Object Icon Reference
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Legal notices"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/insights_k8s_namespaces_running_out_of_space.html" 
+      dale-entry-url="/reference_legal_notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/cloudinsights/reference_legal_notices.html">
+        Legal notices
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/us-en/cloudinsights"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/us-en/cloudinsights"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">Insights: Kubernetes Namespaces Running out of Space</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2023-06-14 14:32:36 +0000">06/14/2023</time>
+        
+    
+    
+        <span>Contributors
+            <a target="_blank" class="ext-link-indicator" href="https://github.com/netapp-alavoie"><img  class="avatar avatar-small" alt="netapp-alavoie" width="20" height="20" src="https://avatars.githubusercontent.com/u/39956590?v=4" style="border-radius: 50%;"/></a>
+        
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/us-en/cloudinsights/images/discuss-sm.svg" alt="" class="github-icon" />Suggest changes</span>
+        <img src="/us-en/cloudinsights/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/us-en/cloudinsights/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/cloudinsights/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/us-en/cloudinsights/insights_k8s_namespaces_running_out_of_space.html&page-title=Insights: Kubernetes Namespaces Running out of Space" class="page-nav-contribute-link" role="button">Request doc changes</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/cloudinsights/blob/main/insights_k8s_namespaces_running_out_of_space.adoc" class="page-nav-contribute-link" role="button">Edit this page</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >Learn how to contribute</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>PDFs<img src="/us-en/cloudinsights/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/us-en/cloudinsights/pdfs/fullsite-sidebar/Cloud_Insights_documentation.pdf" >
+                    <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>PDF of this doc site</a>
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Security.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Security
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Getting_Started.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Getting Started
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Collecting_Data.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Collecting Data
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Automatic_Device_Resolution.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Automatic Device Resolution
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Creating_Dashboards.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Creating Dashboards
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Sample_Dashboards.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Sample Dashboards
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Kubernetes.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Kubernetes
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Insights.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Insights
+          </a>
+          
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Working_with_Queries.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Working with Queries
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Working_with_Annotations.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Working with Annotations
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Working_with_Applications.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Working with Applications
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Monitors_and_Alerts.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Monitors and Alerts
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Monitoring_your_Environment.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Monitoring your Environment
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Asset_Page_Information.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Asset Page Information
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Reporting.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Reporting
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Workload_Security.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Workload Security
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Getting_Started.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Getting Started
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Forensics.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Forensics
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Troubleshooting.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Troubleshooting
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Reference___Support.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Reference & Support
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Data_Collector_Reference___Infrastructure.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Data Collector Reference - Infrastructure
+          </a>
+          
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Broadcom.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Broadcom
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Dell.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Dell
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Dell_EMC.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Dell EMC
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/HP_Enterprise.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            HP Enterprise
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Hitachi_Data_Systems.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Hitachi Data Systems
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/IBM.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            IBM
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Microsoft.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Microsoft
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/NetApp.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            NetApp
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/cloudinsights/pdfs/sidebar/Data_Collector_Reference___Services.pdf" 
+            
+          >
+            <img src="/us-en/cloudinsights/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Data Collector Reference - Services
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/us-en/cloudinsights/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>Collection of separate PDF docs<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Running out of space in your environment is never a good situation. Cloud Insights helps you predict the time you have before Kubernetes persistent volumes become full.</p>
+</div>
+<div class="paragraph">
+<p>The <em>Kubernetes Namespaces Running Out of Space</em> Insight gives you a view into workloads on your Kubernetes namespaces that are at risk of running out of space, with an estimate for the number of days remaining before each persistent volume becomes full.</p>
+</div>
+<div class="paragraph">
+<p>You can view this Insight by navigating to <strong>Dashboards &gt; Insights</strong>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/K8sRunningOutOfSpaceWorkloadList.png" alt="List of workloads in K8s namespaces that are at risk of running out of space"></span></p>
+</div>
+<div class="paragraph">
+<p>Click on a workload to open a detail page for the Insight.  On this page you will see a graph showing the workload capacity trends as well as a table showing the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Workload Name</p>
+</li>
+<li>
+<p>Persistent Volume affected</p>
+</li>
+<li>
+<p>Predicted Time-to-Full in days</p>
+</li>
+<li>
+<p>Persistent Volume capacity</p>
+</li>
+<li>
+<p>Backend Storage Resource affected, with current capacity used out of total capacity. Clicking this link will opoen the detailed landing page for the backend volume.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/K8sRunningOutOfSpaceWorkloadTable.png" alt="Workload table showing details"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="what-can-i-do-if-im-running-out-of-space">What can I do if I'm running out of space?</h3>
+<div class="paragraph">
+<p>On the Insight page, click the <strong>+Show Recommendations</strong> to view possible solutions. The easiest option when running out of space is always to add more capacity, and Cloud Insights shows you the optimal capacity to add to increase time-to-full to a target 60-day prediction. Other recommendations are also shown.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/K8sRunningOutOfSpaceRecommendations.png" alt="Capacity to add to return to 60-day TTF"></span></p>
+</div>
+<div class="paragraph">
+<p>It is here also that you can copy a convenient link to this Insight, to bookmark the page or to easily share with your team.</p>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/us-en/cloudinsights/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/us-en/cloudinsights/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">On this page</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Terms of use</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie settings</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">Send feedback about this page</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/cloudinsights/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/cloudinsights/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/cloudinsights/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/cloudinsights/js/ie-tabbed-blocks.js'></script>
+    <script src='/us-en/cloudinsights/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
