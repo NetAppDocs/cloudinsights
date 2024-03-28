@@ -29,7 +29,7 @@ NOTE: Information about *kube-state-metrics* has been moved to the link:task_con
 ////
 TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet and a ReplicaSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.
 
-. From *Admin > Data Collectors*, click *+Data Collector*. Under *Services*, choose Kubernetes.
+. From *Observability > Collectors*, click *+Data Collector*. Under *Services*, choose Kubernetes.
 +
 If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
 +

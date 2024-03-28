@@ -23,12 +23,13 @@ NOTE: Workload Security is not available in Cloud Insights Federal Edition.
 
 * The sudo privilege is required for installation, running scripts, and uninstall. 
 * While installing the agent, a local user _cssys_ and a local group _cssys_ are created on the machine. If permission settings do not allow creation of a local user, and instead require Active Directory, a user with the username _cssys_ must be created in the Active Directory server.
+* You can read about Cloud Insights security link:security_overview.html[here].
 
 
 == Steps to Install Agent 
 
 . Log in as Administrator or Account Owner to your Workload Security environment. 
-. Under the *Security* menu, select *Admin > Data Collectors > Agents > +Agent*
+. Select *Collectors > Agents > +Agent*
 + 
 The system displays the Add an Agent page:
 +
