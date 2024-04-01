@@ -330,15 +330,15 @@ Run the “Image Pull Snippet” from the NetApp Monitoring Operator install til
 Core Operator Functionality and Kubernetes Monitoring
 
 * netapp-monitoring
-* kube-rbac-proxy
-* kube-state-metrics
-* telegraf
+* ci-kube-rbac-proxy
+* ci-ksm
+* ci-telegraf
 * distroless-root-user
 
 Events Log
 
-* fluent-bit
-* kubernetes-event-exporter
+* ci-fluent-bit
+* ci-kubernetes-event-exporter
 
 Network Performance and Map
 
@@ -348,7 +348,7 @@ Push the operator docker image to your private/local/enterprise docker repositor
 
 Edit the monitoring-operator deployment in operator-deployment.yaml, and modify all image references to use your private Docker repository.
 
- image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<kube-rbac-proxy version>
+ image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<ci-kube-rbac-proxy version>
  image: <docker repo of the enterprise/corp docker repo>/netapp-monitoring:<version>
 
 Edit the AgentConfiguration in operator-config.yaml to reflect the new docker repo location. Create a new imagePullSecret for your private repository, for more details see _https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/_
@@ -375,9 +375,31 @@ If you are running on OpenShift 4.6 or higher, you must edit the AgentConfigurat
 
 Openshift may implement an added level of security that may block access to some Kubernetes components.
 
+== A Note About Secrets
 
+To remove permission for the NetApp Kubernetes Monitoring Operator to view secrets cluster-wide, delete the following resources from the _operator-setup.yaml_ file before installing:
 
- '''
+----
+ ClusterRole/netapp-ci-<namespace>-agent-secret-clusterrole
+ ClusterRoleBinding/netapp-ci-<namespace>-agent-secret-clusterrolebinding 
+----
+
+If this is an upgrade, also delete the resources from your cluster:
+
+----
+ kubectl delete ClusterRole/netapp-ci-<namespace>-agent-secret-clusterrole
+ kubectl delete ClusterRoleBinding/netapp-ci-<namespace>-agent-secret-clusterrolebinding
+----
+
+If Change Analysis is enabled, modify the _AgentConfiguration_ or _operator-config.yaml_ to uncomment the change-management section and include _kindsToIgnoreFromWatch: '"secrets"'_ under the change-management section. Note the presence and position of single and double quotes in this line.
+
+  # change-management:
+    ...
+    # # A comma separated list of kinds to ignore from watching from the default set of kinds watched by the collector
+    # # Each kind will have to be prefixed by its apigroup
+    # # Example: '"networking.k8s.io.networkpolicies,batch.jobs", "authorization.k8s.io.subjectaccessreviews"'
+    kindsToIgnoreFromWatch: '"secrets"'
+    ...
 
 == Verifying Kubernetes Checksums
 
@@ -536,7 +558,7 @@ Some things to try if you encounter problems setting up the NetApp Kubernetes Mo
 
 [cols="stretch", options="header"]
 |===
-|Problem:|Try this:
+|Problem: |Try this:
 
 
 |I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.
@@ -668,7 +690,7 @@ a|Capture or otherwise note the output from the following commands, and contact 
 |Verify your Kubernetes version (i.e. `kubectl version`).  If it is v1.20.x or below, this is an expected limitation.  The kube-state-metrics release deployed with the Netapp Kubernetes Monitoring Operator only supports v1.CronJob.  With Kubernetes 1.20.x and below, the CronJob resource is at v1beta.CronJob.  As a result, kube-state-metrics cannot find the CronJob resource.
 
 |After installing the operator, the telegraf-ds pods enter CrashLoopBackOff and the pod logs indicate "su: Authentication failure".
-|Edit the netapp-monitoring-configuration section in _AgentConfiguration_, and set _dockerMetricCollectionEnabled_ to false. For more details, refer to the operator's link:telegraf_agent_k8s_config_options.html[configuration options]. 
+|Edit the telegraf section in _AgentConfiguration_, and set _dockerMetricCollectionEnabled_ to false. For more details, refer to the operator's  link:telegraf_agent_k8s_config_options.html[configuration options]. 
 
 NOTE: If you are using Cloud Insights Federal Edition, users with restrictions on the use of _su_ will not be able to collect docker metrics because access to the docker socket requires either running the telegraf container as root or using _su_ to add the telegraf user to the docker group. Docker metric collection and the use of _su_ is enabled by default; to disable both, remove the _telegraf.docker_ entry in the _AgentConfiguration_ file:
 
@@ -690,22 +712,7 @@ spec:
 |I see repeating error messages resembling the following in my Telegraf logs:
 
  E! [agent] Error writing to outputs.http: Post "https://<tenant_url>/rest/v1/lake/ingest/influxdb": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
-|Edit each Telegraf configuration file (i.e. /etc/telegraf/telegraf.d/*.conf), and increase the timeout for the Telegraf output plugins.  For example, in each .conf file, replace all instances of...
-
-[[outputs.http]]
-...
-  timeout = "5s"
-...
-
-
-...with the following:
-
-[[outputs.http]]
-...
-timeout = "10s"
-...
-
-Then, restart Telegraf.
+|Edit the telegraf section in _AgentConfiguration_, and set _dockerMetricCollectionEnabled_ to false. For more details, refer to the operator's  link:telegraf_agent_k8s_config_options.html[configuration options].
 
 |I'm missing _involvedobject_ data for some Event Logs.
 |Be sure you have followed the steps in the link:pre-requisites_for_k8s_operator.html[Permissions] section above.
@@ -715,20 +722,25 @@ Then, restart Telegraf.
 |As of October 12, 2023, Cloud Insights has refactored the operator to better serve our users; for those changes to be fully adopted, you must <<uninstalling,remove the old operator>> and <<installing-the-netapp-kubernetes-monitoring-operator,install the new one>>.
 
 |My kubernetes events unexpectedly stopped reporting to Cloud Insights.
-|Retrieve the name of the event-exporter pod:
+a|Retrieve the name of the event-exporter pod:
 
- `kubectl -n netapp-monitoring get pods \|grep event-exporter \|awk '{print $1}' \|sed 's/event-exporter./event-exporter/`
+ `kubectl -n netapp-monitoring get pods \|grep event-exporter \|awk '{print $1}' \|sed 's/event-exporter./event-exporter/'`
 
 It should be either "netapp-ci-event-exporter" or "event-exporter".  Next, edit the monitoring agent `kubectl -n netapp-monitoring edit agent`, and set the value for LOG_FILE to reflect the appropriate event-exporter pod name found in the previous step.  More specifically, LOG_FILE should be set to either "/var/log/containers/netapp-ci-event-exporter.log" or "/var/log/containers/event-exporter*.log"
 
-....
- - key: LOG_FILE
-   values:
-   - /var/log/containers/netapp-ci-event-exporter*.log
-....
+ fluent-bit:
+ ...
+ - name: event-exporter-ci
+   substitutions:
+   - key: LOG_FILE
+     values:
+     - /var/log/containers/netapp-ci-event-exporter*.log
+ ...
 
 Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-netapp-kubernetes-monitoring-operator,reinstall>> the agent.
 
+|I'm seeing pod(s) deployed by the Netapp Kubernetes Monitoring Operator crash because of insufficient resources.
+|Refer to the Netapp Kubernetes Monitoring Operator link:telegraf_agent_k8s_config_options.html[configuration options] to increase the CPU and/or memory limits as needed.
 
 |===
 
