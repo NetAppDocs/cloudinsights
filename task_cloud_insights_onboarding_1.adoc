@@ -15,11 +15,11 @@ summary: Signing up for Cloud Insights and creating your environment.
 :keywords: Cloud Insights, documentation, help, onboarding, getting started, 
 
 [.lead]
-Before you can start working with Cloud Insights, you must sign up on the *NetApp BlueXP* (formerly Cloud Central) portal. If you already have a NetApp Cloud Central login, you can start a free trial of Cloud Insights with a few quick steps.
+Before you can start working with Cloud Insights, you must sign up on the *NetApp BlueXP* portal. If you already have a BlueXP login, you can start a free trial of Cloud Insights with a few quick steps.
 
 toc::[]
 
-== Creating your NetApp Cloud Central account
+== Creating your NetApp BlueXP account
 
 To get started with NetApp's cloud services, go to https://cloud.netapp.com[*NetApp BlueXP*^] and click *Get Started*.
 
@@ -43,27 +43,32 @@ image:BlueXP_CloudInsights.png[Cloud Insights free trial on BlueXP]
 
 If this is your first time logging in to Cloud Insights, under the Cloud Insights offering, click on *Start Free Trial*. Cloud Insights will walk you through creating your company's environment.
 
-Once the creation of your environment is complete, you can use your Cloud Central credentials to log in and start your free, 30-day trial of Cloud Insights. During this trial you can explore the features that Cloud Insights has to offer. 
+Once the creation of your environment is complete, you can use your BlueXP credentials to log in and start your free, 30-day trial of Cloud Insights. During this trial you can explore the features that Cloud Insights has to offer. 
 
 During the free trial, you can link:concept_subscribing_to_cloud_insights.html[start your subscription] to Cloud Insights at any time. When you are subscribed, You can use the Cloud Insights features based on your current subscription.
 
 
 == Sign in and go
 
-Once your environment has been created, at any time you can simply log in to the NetApp Cloud Portal and click *Go to Cloud Insights*. You will be taken directly to your Cloud Insights environment.
+Once your environment has been created, at any time you can simply log in to the NetApp BlueXP Portal and click *Go to Cloud Insights*. You will be taken directly to your Cloud Insights environment.
 
 You can also open a browser directly to your Cloud Insights environment URL, for example:
 
  https://<environment-prefix>.c01.cloudinsights.netapp.com/
 
-The URL will also be included in each user's invitation email for simple access and bookmarking. If the user is not already logged in to Cloud Central, they will be prompted to log in.
+The URL will also be included in each user's invitation email for simple access and bookmarking. If the user is not already logged in to BlueXP, they will be prompted to log in.
 
-NOTE: New users must still sign up for access to Cloud Central before they can access their environment URL.
+NOTE: New users must still sign up for access to BlueXP before they can access their environment URL.
 
 The first time you log in to a new environment, you will be guided through setting up to link:task_getting_started_with_cloud_insights.html[*begin gathering data*].
 
 == Logging Out
 
-To log out of Cloud Insights, click your *User Name* and select *Log Out*. You will be taken back to the Cloud Central sign in screen.
+To log out of Cloud Insights, click your *User Name* and select *Log Out*. You will be taken back to the BlueXP sign in screen.
 
-NOTE: Logging out of Cloud Insights logs you out of Cloud Central. You will also be logged out of other NetApp Cloud services that use the Cloud Central sign-in.
+NOTE: Logging out of Cloud Insights logs you out of BlueXP. You will also be logged out of other NetApp Cloud services that use the BlueXP sign-in.
+
+=== Inactivity Timeout
+
+By default, BlueXP will log a user out if there is no activity for six hours (360 minutes). Regardless of activity, users will be logged out after seven days. 
+
