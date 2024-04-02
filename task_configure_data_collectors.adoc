@@ -29,20 +29,45 @@ Device network addresses, account information, and passwords are required for al
 
 Data collector credentials are encrypted when entered in Cloud Insights, and are sent to the Acquisition Unit (AU) encrypted first by the public key of the AU, and then encrypted over HTTPS. Encrypted values are decrypted when the AU uses them to communicate with devices & software. 
 
-////
-Credentials are encrypted and stored in the database (encrypted) when entered.
-They are sent to the AU encrypted over HTTPS.
-
-On the AU (presumably in the customer environment), encrypted values are decrypted where they are used to communicate with devices & software. Communication with devices is done with a variety of protocols. Some are more secure than others, but we use what is available for any particular device.
-////
-
 == Configuring the Data Collector
 
-* From the Cloud Insights menu, click *Observability > Collectors* and click the *+ Data Collector* button. You can choose to show all data collectors, or filter to show only the data collectors available to you based on your subscription.
-
-//The system displays the data collectors arranged in three categories--Operating Systems, Services, and Infrastructure--alphabetically by vendor.
+* From the Cloud Insights menu, click *Observability > Collectors* and click the *+ Data Collector* button. 
 
 * Depending on the data collector type you choose, installation steps will vary.
+
+
+=== Infrastructure:
+
+Infrastructure data collectors include things like storage or switches.
+
+.Before you begin
+
+* You must have at least one Acquisition Unit configured to begin collecting Infrastructure data.
+
+. Click on an Infrastructure data collector. 
+
+. Enter a name for the data collector. Names can contain the following characters:
+
+* letter (a-z)
+* number (0-9)
+* hyphen (-)
+* underscore (_)
+* period (.)
+* space ( )
++
+Names may not begin or end with a space, period, or hyphen.
+
+. Enter the Acquisition Unit to associate with this data collector.
+. Enter the required fields in the Configuration screen.
+. Click *Advanced Configuration* to enter additional configuration fields. Not all data collectors require advanced configuration.
+. Click *Test Configuration* to verify that the data collector is properly configured.
+. When finished, click *Add Collector*. 
+
+For help adding a new Acquisition Unit, see link:task_configure_acquisition_unit.html[Configuring acquisition units]
++
+It may take up to two poll periods before data from the environment is displayed in dashboards or available for querying.
+
+
 
 === Operating Systems:
 
@@ -76,35 +101,5 @@ Services data collectors are those based on the telegraf agent, such as Docker o
 +
 It may take up to two poll periods before data from the service is displayed in dashboards or available for querying.
 
-=== Infrastructure:
-
-Infrastructure data collectors include things like storage or switches.
-
-.Before you begin
-
-* You must have at least one Acquisition Unit configured to begin collecting Infrastructure data.
-
-. Click on an Infrastructure data collector. 
-
-. Enter a name for the data collector. Names can contain the following characters:
-
-* letter (a-z)
-* number (0-9)
-* hyphen (-)
-* underscore (_)
-* period (.)
-* space ( )
-+
-Names may not begin or end with a space, period, or hyphen.
-
-. Enter the Acquisition Unit to associate with this data collector.
-. Enter the required fields in the Configuration screen.
-. Click *Advanced Configuration* to enter additional configuration fields. Not all data collectors require advanced configuration.
-. Click *Test Configuration* to verify that the data collector is properly configured.
-. When finished, click *Add Collector*. 
-
-For help adding a new Acquisition Unit, see link:task_configure_acquisition_unit.html[Configuring acquisition units]
-+
-It may take up to two poll periods before data from the environment is displayed in dashboards or available for querying.
 
 
