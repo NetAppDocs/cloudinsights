@@ -29,8 +29,11 @@ The table below lists the possible options for the AgentConfiguration file:
 ||clusterName|Free text field that uniquely identifies a cluster across all customers clusters. This should be unique across a cloud insights tenant. Default is what the customer enters in the UI for the "Cluster Name" field
 
 ||proxy
+
 Format:
+
 proxy:
+
   server:
   port:
   username:
@@ -41,7 +44,7 @@ proxy:
   isFluentbitProxyEnabled:
   isCollectorProxyEnabled:
 
-|Optional for customer to set proxy. This is usually customers corporate proxy.
+|Optional to set proxy. This is usually the customer's corporate proxy.
 
 |telegraf||Configuration options that can customize the telegraf installation of the Operator
 ||collectionInterval|Metrics collection interval, in seconds (Max=60s)
@@ -100,8 +103,8 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 
 
 |workload-map||Configuration options that can customize the workload map collection and installation of the Operator
-||cpuLimit|CPU Limit for net observer ds
-||memLimit|mem Limit for net observer ds
+||cpuLimit|CPU limit for net observer ds
+||memLimit|mem limit for net observer ds
 ||cpuRequest|CPU request for net observer ds
 ||memRequest|mem request for net observer ds
 
@@ -112,6 +115,24 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 ||l4-tolerations|net-observer-l4-ds additional tolerations.
 
 ||runPrivileged|true/false - Set runPrivileged to true if SELinux is enabled on your Kubernetes nodes.
+
+
+|change-management||Configuration options for Kubernetes Change Management and Analysis
+||cpuLimit|CPU limit for change-observer-watch-rs 
+||memLimit|Mem limit for change-observer-watch-rs 
+||cpuRequest|CPU request for change-observer-watch-rs 
+||memRequest|mem request for change-observer-watch-rs 
+
+||failureDeclarationIntervalMins|Interval in minutes after which a non-successful deployment of a workload will be marked as failed
+||deployAggrIntervalSeconds|Frequency at which workload deployment in-progress events are sent
+||nonWorkloadAggrIntervalSeconds|Frequency at which non-workload deployments are combined and sent
+||termsToRedact|A set of regular expressions used in env names and data maps whose value will be redacted
+example terms:"pwd", "password", "token", "apikey", "api-key", "jwt"
+||additionalKindsToWatch|A comma separated list of additional kinds to watch from the default set of kinds watched by the collector
+||kindsToIgnoreFromWatch| A comma separated list of kinds to ignore from watching from the default set of kinds watched by the collector
+||logRecordAggrIntervalSeconds|Frequency with which log records are sent to CI from the collector
+||watch-tolerations|change-observer-watch-ds additional tolerations. Abbreviated single line format only.
+Example: '{key: taint1, operator: Exists, effect: NoSchedule},{key: taint2, operator: Exists, effect: NoExecute}'
 
 |===
 
