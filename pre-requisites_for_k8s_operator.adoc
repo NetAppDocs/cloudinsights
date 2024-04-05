@@ -195,7 +195,7 @@ If the cluster you are monitoring contains Custom Resources which do not have a 
 
 === Tolerations and Taints
 
-The _telegraf_, _fluent-bit_, and _net-observer_ DaemonSets must schedule a pod on every node in your cluster in order to correctly collect data on all nodes. The operator has been configured to tolerate some well known *taints*. If you have configured any custom taints on your nodes, thus preventing pods from running on every node, you can create a *toleration* for those taints link:telegraf_agent_k8s_config_options.html[in the _AgentConfiguration_]. If you have applied custom taints to all nodes in your cluster, you must also add the necessary tolerations to the operator deployment to allow the operator pod to be scheduled and executed.
+The _netapp-ci-telegraf-ds_, _netapp-ci-fluent-bit-ds_, and _netapp-ci-net-observer-l4-ds_ DaemonSets must schedule a pod on every node in your cluster in order to correctly collect data on all nodes. The operator has been configured to tolerate some well known *taints*. If you have configured any custom taints on your nodes, thus preventing pods from running on every node, you can create a *toleration* for those taints link:telegraf_agent_k8s_config_options.html[in the _AgentConfiguration_]. If you have applied custom taints to all nodes in your cluster, you must also add the necessary tolerations to the operator deployment to allow the operator pod to be scheduled and executed.
 
 Learn More about Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/[Taints and Tolerations].
 
