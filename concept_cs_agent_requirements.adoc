@@ -138,8 +138,8 @@ Note that when adding _link:task_add_collector_svm.html#permissions-when-adding-
 |TCP|389(LDAP)
 636 (LDAPs / start-tls) |Workload Security Agent|LDAP Server URL|Connect to LDAP
 |TCP|443|Workload Security Agent|Cluster or SVM Management IP Address (depending on SVM collector configuration)|API communication with ONTAP
-|TCP|35000 - 55000|SVM data LIF IP Addresses|Workload Security Agent|Communication with ONTAP for Fpolicy events. These ports must be opened towards the Workload Security Agent in order for ONTAP to send events to it, including any firewall on the Workload Security Agent itself (if present).
-|TCP|7|Workload Security Agent|SVM data LIF IP Addresses|Uni-directional between ONTAP and Workload Security. Agent pings the SVM Lifs.
+|TCP|35000 - 55000|SVM data LIF IP Addresses|Workload Security Agent|Communication from ONTAP to the Workload Security Agent for Fpolicy events.  These ports must be opened towards the Workload Security Agent in order for ONTAP to send events to it, including any firewall on the Workload Security Agent itself (if present).
+|TCP|7|Workload Security Agent|SVM data LIF IP Addresses|Echo from Agent to SVM Data LIFs
 |SSH |22|Workload Security Agent| Cluster management |Needed for CIFS/SMB user blocking.
 |===
 
