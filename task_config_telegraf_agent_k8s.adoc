@@ -1,11 +1,10 @@
 ---
 sidebar: sidebar
 permalink: task_config_telegraf_agent_k8s.html
-keywords: telegraf, installation, install, agent, telegraf agent, kubernetes, eks, operator, k8s
+keywords: kubernetes, k8s, telegraf, installation, install, agent, telegraf agent, eks, operator
 summary: The NetApp Kubernetes Monitoring Operator collects Kubernetes data for use in Cloud Insights.  
 ---
-= Configuring the NetApp Kubernetes Monitoring Operator
-:toc: macro
+= Kubernetes Monitoring Operator Installation and Configuration
 :hardbreaks:
 :nofooter:
 :toclevels: 2
@@ -24,23 +23,11 @@ image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 toc::[]
 
 
-////
-Below is a high-level illustration showing where the Operator resides in your environment. Depending on your environment, _Proxy Server_ may or may not be required. 
-
-image:CI_Diagram_with_NKMO.png[A high-level map showing NKMO residing in the Kubernetes Cluster, with arrows showing how data travels to the cluster from the Hosts, proxy server, all rolling up to Cloud Insights]
-////
-
-
 The Operator and the data collectors are downloaded from the Cloud Insights Docker Registry. Once installed, NKMO then manages any Operator-compatible collectors deployed in the Kubernetes cluster nodes to acquire data, including managing the life cycle of those collectors. Following this chain, data is acquired from the collectors and sent through to Cloud Insights. 
-
-
 
 == Before installing the NetApp Kubernetes Monitoring Operator
 
-
-IMPORTANT: Read the link:pre-requisites_for_k8s_operator.html[*Before Installing or Upgrading*] documentation before installing or upgrading the NetApp Kubernetes Monitoring Operator.
-
-
+IMPORTANT: Read the link:pre-requisites_for_k8s_operator.html[*Before Installing or Upgrading*] pre-requisites documentation before installing or upgrading the NetApp Kubernetes Monitoring Operator.
 
 == Installing the NetApp Kubernetes Monitoring Operator
 
