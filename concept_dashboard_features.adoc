@@ -303,6 +303,20 @@ You can select the time range for your dashboard data. Only data relevant to the
 The Custom time range allows you to select up to 31 consecutive days. You can also set the Start Time and End Time of day for this range. The default Start Time is 12:00 AM on the first day selected and the default End Time is 11:59 PM on the last day selected. Clicking *Apply* will apply the custom time range to the dashboard.
 
 
+== Overriding Dashboard Time in Individual widgets
+
+You can override the main dashboard time range setting in individual widgets. These widgets will display data based on their set time frame, not the dashboard time frame.
+
+To override the dashboard time and force a widget to use its own time frame, in the widget's edit mode choose the deisired time range, and Save the widget to the dashboard.
+
+The widget will display its data according to the time frame set for it, regardless of the time frame you select on the dashboard itself.
+
+The time frame you set for one widget will not affect any other widgets on the dashboard.
+
+image:OverrideTimeOnWidget.png[overriding the dashboard time range for a widget]
+
+
+
 == Primary and Secondary Axis
 
 Different metrics use different units of measurements for the data they report in a chart. For example, when looking at IOPS, the unit of measurement is the number of I/O operations per second of time (IO/s), while Latency is purely a measure of time (milliseconds, microseconds, seconds, etc.). When charting both metrics on a single line chart using a single set a values for the Y-Axis, the latency numbers (typically a handful of milliseconds) are charted on the same scale with the IOPS (typically numbering in the thousands), and the latency line gets lost at that scale.
