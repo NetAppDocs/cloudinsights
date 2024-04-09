@@ -24,7 +24,7 @@ toc::[]
 
 Widgets are automatically named based on the object, metric, or attribute selected for the first widget query. If you also choose a grouping for the widget, the "Group by" attributes are included in the automatic naming (aggregation method and metric).
 
-image:WidgetNameExample.png[Widget Naming Example]
+image:WidgetNameExample-A.png[Widget Naming Example]
 
 Selecting a new object or grouping attribute updates the automatic name.
 
@@ -190,7 +190,7 @@ Data displayed in a widget is grouped (sometimes called rolled-up) from the unde
 * *Maximum*: displays each line as the _maximum_ of the underlying data.
 * *Minimum*: displays each line as the _minimum_ of the underlying data.
 * *Sum*: displays each line as the _sum_ of the underlying data.
-* *Count*: displays a _count_ of objects that have reported data within the specified time frame. You can choose the _Entire Time Window_ as determined by the dashboard time range (or the widget time range, if set to override the dashboard time), or a _Custom Time Window_ that you select.
+* *Count*: displays a _count_ of objects that have reported data within the specified time frame. You can choose the _Entire Time Window_ as determined by the dashboard time range.
 
 // You can choose to include _all_ objects that have reported data, or only those objects whose data is reported as _Not Null_. 
 
@@ -302,15 +302,6 @@ You can select the time range for your dashboard data. Only data relevant to the
 +
 The Custom time range allows you to select up to 31 consecutive days. You can also set the Start Time and End Time of day for this range. The default Start Time is 12:00 AM on the first day selected and the default End Time is 11:59 PM on the last day selected. Clicking *Apply* will apply the custom time range to the dashboard.
 
-== Overriding Dashboard Time in Individual widgets
-
-You can override the main dashboard time range setting in individual widgets. These widgets will display data based on their set time frame, not the dashboard time frame.
-
-To override the dashboard time and force a widget to use its own time frame, in the widget's edit mode set the *Override dashboard time* to *On* (check the box), and select a time range for the widget. *Save* the widget to the dashboard.
-
-The widget will display its data according to the time frame set for it, regardless of the time frame you select on the dashboard itself.
-
-The time frame you set for one widget will not affect any other widgets on the dashboard.
 
 == Primary and Secondary Axis
 
@@ -750,7 +741,7 @@ writes/min
 
 == TV Mode and Auto-Refresh
 
-Data in widgets on Dashboards and Asset Landing Pages auto-refresh according a refresh interval determined by the Dashboard Time Range selected (or widget time range, if set to override the dashboard time). The refresh interval is based on whether the widget is time-series (line, spline, area, stacked area chart) or non-time-series (all other charts).
+Data in widgets on Dashboards and Asset Landing Pages auto-refresh according a refresh interval determined by the Dashboard Time Range selected. The refresh interval is based on whether the widget is time-series (line, spline, area, stacked area chart) or non-time-series (all other charts).
 
 |===
 |Dashboard Time Range|Time-Series Refresh Interval|Non-Time-Series Refresh Interval
