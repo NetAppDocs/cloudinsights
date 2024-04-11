@@ -53,20 +53,19 @@ Read more about <<configuring-proxy-support, configuring proxy>>.
 Read more about <<using-a-custom-or-private-docker-repository, using a custom/private docker repository>>.
 
 
+== Kubernetes Monitoring Components
 
-Kubernetes EMS log collection is enabled by default when installing the Kubernetes Monitoring Operator. To disable this collection following installation, click the *Modify Deployment* button at the top of the Kubernetes cluster detail page, and un-select "Log collection". 
+Cloud Insights Kubernetes Monitoring is comprised of three monitoring components:
 
-image:K8s_Modify_Deployment_Screen.png[Modify Deployment screen showing checkbox for "log Collection"]
+* Network Performance and Map
+* Event Logs
+* Change Analysis
 
-This screen also shows current Log Collection status. Below are the possible states:
+These components are enabled by default; if you decide you don't need a component, you can disable it by navigating to *Kubernetes > Collectors* and selecting _Modify Deployment_ from a collector's "three dots" menu on the right of the screen.
 
-* Disabled
-* Enabled
-* Enabled - Installation in progress
-* Enabled - Offline
-* Enabled - Online
-* Error - API Key has insufficient permissions
+image:KubernetesModifyDeploymentMenu.png[Modify deployment Menu on Kubernetes Collector list page]
 
+image:KubernetesModifyDeploymentScreen.png[Mody deployment options]
 
 
 == Upgrading 
