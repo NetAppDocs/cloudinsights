@@ -160,6 +160,8 @@ If a Security Context Constraint was previously-created:
 
 == About Kube-state-metrics
 
+The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances.
+
 For information about Kube-State-Metrics, see link:task_config_telegraf_kubernetes.html[this page].
 
 
