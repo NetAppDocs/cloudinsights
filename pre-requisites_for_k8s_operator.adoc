@@ -19,10 +19,10 @@ Read this information before installing ot upgrading your NetApp Kubernetes Moni
 
 === Pre-requisites:
 
-* If you are using a custom or private docker repository, follow the instructions in the Using a custom or private docker repository section
+//* If you are using a custom or private docker repository, follow the instructions in the Using a custom or private docker repository section
 * NetApp Kubernetes Monitoring Operator installation is supported with Kubernetes version 1.20 or greater.
-* When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings and metrics for NFS and iSCSI; other runtimes only show NFS.
-* Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must upgrade to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
+//* When Cloud Insights is monitoring the backend storage and Kubernetes is used with the Docker container runtime, Cloud Insights can display pod-to-PV-to-storage mappings and metrics for NFS and iSCSI; other runtimes only show NFS.
+//* Beginning August 2022, the NetApp Kubernetes Monitoring Operator includes support for Pod Security Policy (PSP). You must upgrade to the latest NetApp Kubernetes Monitoring Operator if your environment uses PSP.
 * If you are running on OpenShift 4.6 or higher, you must follow the OpenShift Instructions below in addition to ensuring these pre-requisites are met.
 * Monitoring is only installed on Linux nodes
 Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, by specifying a Kubernetes node selector that looks for the following Kubernetes labels on these platforms:
@@ -33,7 +33,6 @@ Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, b
 |Rancher + cattle.io as orchestration/Kubernetes platform	|cattle.io/os = linux
 |===
 
-* The NetApp Kubernetes Monitoring Operator and its dependencies (telegraf, kube-state-metrics, fluentbit, etc.) are not supported on nodes that are running with Arm64 architecture.
 * The following commands must be available: curl, kubectl. The docker command is required for an optional installation step. For best results, add these commands to the PATH. Note that kubectl needs to be configured with access to the following kubernetes objects at a minimum: agents, clusterroles, clusterrolebindings, customresourcedefinitions, deployments, namespaces, roles, rolebindings, secrets, serviceaccounts, and services. See here for an example .yaml file with these minimum clusterrole privileges.
 * The host you will use for the NetApp Kubernetes Monitoring Operator installation must have kubectl configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
 * If you are behind a proxy during installation, or when operating the K8s cluster to be monitored, follow the instructions in the Configuring Proxy Support section.
@@ -42,9 +41,26 @@ For accurate audit and data reporting, it is strongly recommended to synchronize
 * If you are re-deploying the Operator (i.e. you are updating or replacing it), there is no need to create a _new_ API token; you can re-use the previous token.
 * Also note that if you have a recent NetApp Kubernetes Monitoring Operator installed and are using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.
 * Network monitoring:  
-** Requires Linux kernel version 4.18.0 and above 
-** Photon OS is not supported.
 
+
+|===
+|Component|Requirement
+|Supported Platforms
+|AWS Elastic Kubernetes Service (EKS)
+Azure Kubernetes Service (AKS)
+Google Kubernetes Engine (GKE)
+Red Hat OpenShift
+Rancher Kubernetes Engine (RKE)
+VMware Tanzu
+
+Must be running Linux kernel version 4.18.0 or above 
+Photon OS is not supported
+The Operator and its dependencies (telegraf, kube-state-metrics, fluentbit, etc.) are not supported on nodes that are running with Arm64 architecture.
+
+|Other
+|If you are running on OpenShift 4.6 or higher, you must follow the OpenShift Instructions below in addition to ensuring these pre-requisites are met.
+
+|===
 
 
 === Configuring the Operator
@@ -63,6 +79,7 @@ If you see an “Error from server (NotFound)” message, your operator must be 
 
 
 
+////
 == Important Things to Note Before You Start
 
 If you are running with a <<configuring-proxy-support,proxy>>, have a <<using-a-custom-or-private-docker-repository,custom repository>>, or are using <<openshift-instructions,OpenShift>>, read the following sections carefully.
@@ -190,7 +207,7 @@ If the cluster you are monitoring contains Custom Resources which do not have a 
 1. Edit _operator-additional-permissions.yaml_ before installing, or after installing edit the resource _ClusterRole/<namespace>-additional-permissions_
 2. Create a new rule for the desired apiGroups and resources with the verbs ["get", "watch", "list"]. See \https://kubernetes.io/docs/reference/access-authn-authz/rbac/ 
 3. Apply your changes to the cluster 
-
+////
 
 
 === Tolerations and Taints
