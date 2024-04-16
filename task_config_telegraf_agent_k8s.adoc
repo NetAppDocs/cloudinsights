@@ -48,9 +48,9 @@ image:NKMO-Instructions-2.png[]
 
 
 
-Read more about <<configuring-proxy-support, configuring proxy>>.
+If you are using a proxy, read about <<configuring-proxy-support, configuring proxy>>.
 
-Read more about <<using-a-custom-or-private-docker-repository, using a custom/private docker repository>>.
+If you are have a custom repository, read about <<using-a-custom-or-private-docker-repository, using a custom/private docker repository>>.
 
 
 == Kubernetes Monitoring Components
@@ -61,7 +61,9 @@ Cloud Insights Kubernetes Monitoring is comprised of three monitoring components
 * Event Logs
 * Change Analysis
 
-These components are enabled by default; if you decide you don't need a component, you can disable it by navigating to *Kubernetes > Collectors* and selecting _Modify Deployment_ from a collector's "three dots" menu on the right of the screen.
+=== Managing your Kubernetes Collectors
+
+The components above are enabled by default for each Kubernetes collector; if you decide you don't need a component for a particular collector, you can disable it by navigating to *Kubernetes > Collectors* and selecting _Modify Deployment_ from the collector's "three dots" menu on the right of the screen.
 
 image:KubernetesModifyDeploymentMenu.png[Modify deployment Menu on Kubernetes Collector list page]
 
@@ -70,9 +72,9 @@ The screen shows the current state of each component and allows you to disable o
 image:KubernetesModifyDeploymentScreen.png[Mody deployment options]
 
 
+
+
 == Upgrading 
-
-
 
 === Upgrading to the latest Kubernetes Monitoring Operator
 
@@ -158,10 +160,10 @@ If a Security Context Constraint was previously-created:
 
 == About Kube-state-metrics
 
-The Kubernetes Monitoring Operator installs kube-state-metrics automatically; no user interaction is needed.
+For information about Kube-State-Metrics, see link:task_config_telegraf_kubernetes.html[this page].
 
 
-
+////
 === kube-state-metrics Counters
 
 
@@ -181,16 +183,17 @@ Use the following links to access information for these kube state metrics count
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/service-metrics.md[Service metrics]
 . https://github.com/kubernetes/kube-state-metrics/blob/master/docs/statefulset-metrics.md[StatefulSet metrics]
 
-
 '''
+////
 
 
+ == Configuring/Customizing the Operator
 
- == Configuring the Operator
+These sections contain information on customizing your operator configuration, working with proxy, using a custom or private docker repository, or working with OpenShift.
 
-In newer versions of the operator, most commonly modified settings can be configured in the _AgentConfiguration_ custom resource. You can edit this resource before deploying the operator by editing the _operator-config.yaml_ file. This file includes commented out examples of some settings. See the list of link:telegraf_agent_k8s_config_options.html[available settings] for the most recent version of the operator.
+In newer versions of the operator, most commonly modified settings can be configured in the _AgentConfiguration_ custom resource. You can edit this resource before deploying the operator by editing the _operator-config.yaml_ file. This file includes commented-out examples of settings. See the list of link:telegraf_agent_k8s_config_options.html[available settings] for the most recent version of the operator.
 
-You can also edit this resource after the operator has been deployed using the following command:
+You can also edit this resource after the operator has been deployed by using the following command:
 
 	kubectl -n netapp-monitoring edit AgentConfiguration
 
