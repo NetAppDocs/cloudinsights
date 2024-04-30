@@ -68,11 +68,11 @@ Check the network connection between the Acquisition Unit sever and CloudInsight
 Check whether the Acquisition Unit service is running. If the service is not running, start the service.
 Check the Acquisition Unit log (/var/log/netapp/cloudinsights/acq/acq.log) to see whether there are any errors.
 
-|I'm seeing a "Heartbeat Error: message
+|I'm seeing a "Heartbeat Error:" message
 |This error can occur if there is a network interruption that causes communication between the Acquisition Unit and the Cloud Insights environment to be interrupted for more than one minute. Verify the connection between the AU and Cloud Insights is stable and active.
 
-|During Re-Installing the AU I'm seeing "ValueError: File context for /opt/netapp/cloudinsights(/.*)? already defined"
-|This error message appears after `cloudinsights-uninstall.sh -p` has been executed and the Acquisition Unit is to be reinstalled. With `semanage fcontext -d -t usr_t "/opt/netapp/cloudinsights(/.*)?"` this problem can be fixed.
+|When Re-Installing the Acquisition Unit, I'm seeing "ValueError: File context for /opt/netapp/cloudinsights(/.*)? already defined".
+|On a system with SELinux, This error message may appear after `cloudinsights-uninstall.sh -p` has been executed and the Acquisition Unit is to be reinstalled. Running the command `semanage fcontext -d -t usr_t "/opt/netapp/cloudinsights(/.*)?"` should correct the issue and remove the message.
 
 |===
 
