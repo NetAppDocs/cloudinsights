@@ -177,12 +177,13 @@ Workload Security includes a new 2nd-generation ransomware detection ML algorith
 
 Occasionally functionality is deprecated as features evolve. Here are some of the features and functionalities which have been deprecated in Cloud Insights:
 
-=== Workload Secure REST cloudsecure_forensics.activities.v1 API is deprecated. This API returns information on activities associated with entities in the Storage Workload Security environment. 
+=== Workload Secure REST cloudsecure_forensics.activities.v1 API is deprecated
 
-cloudsecure_forensics.activities.*v2* is the new API.  
+The _cloudsecure_forensics.activities.v1_ API is deprecated. This API returns information on activities associated with entities in the Storage Workload Security environment. This API has been replaced with cloudsecure_forensics.activities.*v2*_.  
 
 GET for this API previously returned the following: 
 
+----
 { 
   "count": 24594, 
   "limit": 1000, 
@@ -190,10 +191,11 @@ GET for this API previously returned the following:
   "results": [ 
     { 
       "accessLocation": 
-….. 
+----
 
 This API now returns:
 
+----
 { 
   "limit": 1000, 
   "meta": { 
@@ -206,10 +208,9 @@ This API now returns:
   "results": [ 
     { 
       "accessLocation": "10.249.6.220", 
-……. 
- 
+----
 
-..There was a change in the backend for performance optimization. Hence in order to accommodate the change the response body had to be changed as maintaining the previous response would have affected the performance. Count & limit are replaced with meta. 
+//There was a change in the backend for performance optimization. Hence in order to accommodate the change the response body had to be changed as maintaining the previous response would have affected the performance. Count & limit are replaced with meta. 
 
 For more details see the Swagger documentation for “Admin->API Accessà API DocumentationàWorkload Security”. 
 
