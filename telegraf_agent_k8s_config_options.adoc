@@ -100,7 +100,7 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 ||dnsMode|TCP/UDP, mode for DNS
 ||fluent-bit-tolerations|fluent-bit-ds additional tolerations.
 ||event-exporter-tolerations|event-exporter additional tolerations.
-||event-exporter-maxEventAgeSeconds|event-exporter max event age.  see https://github.com/jkroepke/resmoio-kubernetes-event-exporter
+||event-exporter-maxEventAgeSeconds|event-exporter max event age.  See https://github.com/jkroepke/resmoio-kubernetes-event-exporter
 
 
 |workload-map||Configuration options that can customize the workload map collection and installation of the Operator
