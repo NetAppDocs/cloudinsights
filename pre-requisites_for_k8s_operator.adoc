@@ -30,14 +30,14 @@ Red Hat OpenShift
 Rancher Kubernetes Engine (RKE)
 VMware Tanzu
 |Linux OS|CI does not support nodes that are running with Arm64 architecture.
-|Network monitoring: must be running Linux kernel version 4.18.0 or above. Photon OS is not supported.
+Network monitoring: must be running Linux kernel version 4.18.0 or above. Photon OS is not supported.
 |Labels|Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, by specifying a Kubernetes node selector that looks for the following Kubernetes labels on these platforms:
-|Kubernetes v1.20 and above: Kubernetes.io/os = linux
+Kubernetes v1.20 and above: Kubernetes.io/os = linux
 Rancher + cattle.io as orchestration/Kubernetes platform: cattle.io/os = linux
 |Commands|The curl and kubectl commands must be available.; for best results, add these commands to the PATH.
 |Connectivity|kubectl cli is configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
-|If you are behind a proxy during installation, follow the instructions in the Configuring Proxy Support section of the Operator installation.
-|For accurate audit and data reporting, synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
+If you are behind a proxy during installation, follow the instructions in the Configuring Proxy Support section of the Operator installation.
+For accurate audit and data reporting, synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
 |Other|If you are running on OpenShift 4.6 or higher, you must follow the link:task_config_telegraf_agent_k8s.html#openshift-instructions[OpenShift Instructions in addition to ensuring these pre-requisites are met.
 |API Token|If you are re-deploying the Operator (i.e. you are updating or replacing it), there is no need to create a new API token; you can re-use the previous token.
 |===
