@@ -13,16 +13,15 @@ summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in 
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights offers the *Kubernetes Monitoring Operator* for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
+Cloud Insights offers the *Kubernetes Monitoring Operator* for Kubernetes collection. Navigate to *Kubernetes > Collectors > +Kubernetes Collector* to deploy a new operator.
 
-image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 
 toc::[]
 
 
 == Before installing the Kubernetes Monitoring Operator
 
-IMPORTANT: Read the link:pre-requisites_for_k8s_operator.html[*Before Installing or Upgrading*] pre-requisites documentation before installing or upgrading the Kubernetes Monitoring Operator.
+See the link:pre-requisites_for_k8s_operator.html[*Before Installing or Upgrading*] pre-requisites documentation before installing or upgrading the Kubernetes Monitoring Operator.
 
 == Installing the Kubernetes Monitoring Operator
 
@@ -55,15 +54,14 @@ If you are have a custom repository, read about <<using-a-custom-or-private-dock
 
 == Kubernetes Monitoring Components
 
-Cloud Insights Kubernetes Monitoring is comprised of three monitoring components:
+Cloud Insights Kubernetes Monitoring is comprised of four monitoring components:
 
-* Network Performance and Map
-* Event Logs
-* Change Analysis
+* Cluster Metrics
+* Network Performance and Map (optional)
+* Event Logs (optional)
+* Change Analysis (optional)
 
-=== Managing your Kubernetes Collectors
-
-The components above are enabled by default for each Kubernetes collector; if you decide you don't need a component for a particular collector, you can disable it by navigating to *Kubernetes > Collectors* and selecting _Modify Deployment_ from the collector's "three dots" menu on the right of the screen.
+The optional components above are enabled by default for each Kubernetes collector; if you decide you don't need a component for a particular collector, you can disable it by navigating to *Kubernetes > Collectors* and selecting _Modify Deployment_ from the collector's "three dots" menu on the right of the screen.
 
 image:KubernetesModifyDeploymentMenu.png[Modify deployment Menu on Kubernetes Collector list page]
 
@@ -487,7 +485,13 @@ See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#age
 ////
 
 
+=== Tolerations and Taints
 
+The _netapp-ci-telegraf-ds_, _netapp-ci-fluent-bit-ds_, and _netapp-ci-net-observer-l4-ds_ DaemonSets must schedule a pod on every node in your cluster in order to correctly collect data on all nodes. The operator has been configured to tolerate some well known *taints*. If you have configured any custom taints on your nodes, thus preventing pods from running on every node, you can create a *toleration* for those taints link:telegraf_agent_k8s_config_options.html[in the _AgentConfiguration_]. If you have applied custom taints to all nodes in your cluster, you must also add the necessary tolerations to the operator deployment to allow the operator pod to be scheduled and executed.
+
+Learn More about Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/[Taints and Tolerations].
+
+Return to the link:task_config_telegraf_agent_k8s.html[*NetApp Kubernetes Monitoring Operator Installation* page]
 
 
 
