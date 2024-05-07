@@ -56,9 +56,6 @@ proxy:
 ||rsMemLimit|Memory limit for telegraf rs
 ||rsCpuRequest|CPU request for telegraf rs
 ||rsMemRequest|Memory request for telegraf rs
-||dockerMountPoint|an override for dockerMountPoint path. This is for non standard docker installations on k8s platforms like cloud foundry
-||dockerUnixSocket|an override for dockerUnixSocket path. This is for non standard docker installations on k8s platforms like cloud foundry. 
-||crioSockPath|an override for crioSockPath path. This is for non standard docker installations on k8s platforms like cloud foundry. 
 ||runPrivileged|Run the telegraf container in privileged mode. Set this to true if SELinux is enabled on your k8s nodes
 ||batchSize|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||bufferLimit|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
@@ -68,7 +65,6 @@ proxy:
 ||flushInterval|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||flushJitter|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||outputTimeout|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
-||dockerMetricCollectionEnabled|Collect Docker metrics. By default, this is set to true and docker metrics will be collected for on-premise, docker-based k8s deployments. To disable docker metric collection, set this to false.
 
 ||dsTolerations	|telegraf-ds additional tolerations.
 ||rsTolerations	|telegraf-rs additional tolerations.
@@ -100,6 +96,7 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 ||dnsMode|TCP/UDP, mode for DNS
 ||fluent-bit-tolerations|fluent-bit-ds additional tolerations.
 ||event-exporter-tolerations|event-exporter additional tolerations.
+||event-exporter-maxEventAgeSeconds|event-exporter max event age.  See https://github.com/jkroepke/resmoio-kubernetes-event-exporter
 
 
 |workload-map||Configuration options that can customize the workload map collection and installation of the Operator
@@ -275,6 +272,10 @@ spec:
     # # Example: '{key: taint1, operator: Exists, effect: NoSchedule},{key: taint2, operator: Exists, effect: NoExecute}'
     # fluent-bit-tolerations: ''
     # event-exporter-tolerations: ''
+
+    # # event-exporter max event age.
+    # # See https://github.com/jkroepke/resmoio-kubernetes-event-exporter
+    # event-exporter-maxEventAgeSeconds: '10' 
 
   # # Settings for the Network Performance and Map feature.
   # workload-map:
