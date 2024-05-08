@@ -24,8 +24,8 @@ See also link:task_troubleshooting_linux_acquisition_unit_problems.html[Troubles
 |===
 |*Problem:* | *Try this:* 
 
-|Cloud Insights logs out every 5 minutes
-|Enable third-party acceptance for the necessary NetApp and auth0 cookies. 
+|Cloud Insights automatically logs out every 6 hours
+|This is due to disabled browser third-party cookies. Users can configure their browser to enable all 3rd party cookies, or use a narrower exception list to just enable those for Cloud Insights.
  
 Example:
 In Chrome, enter "chrome://settings/cookies" in the browser URL.
