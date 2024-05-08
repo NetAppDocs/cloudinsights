@@ -28,13 +28,18 @@ See also link:task_troubleshooting_linux_acquisition_unit_problems.html[Troubles
 |This is due to disabled browser third-party cookies. Users can configure their browser to enable all 3rd party cookies, or use a narrower exception list to just enable those for Cloud Insights.
  
 Example:
-In Chrome, enter "chrome://settings/cookies" in the browser URL.
+Open your browser's settings
  
 Select the "Allow all cookies" option.
 *OR*
-Select "Block third-party cookies" and add exceptions for [\*.]auth0.com and [*.]netapp.com.
+Select "Block third-party cookies" and add exceptions for _[\*.]auth0.com_ and _[*.]netapp.com_.
+
+Microsoft Edge folows the same format for exceptions as Chrome.
+
+In Firefox, cookie exceptions are designated as simply _auth0.com_ and _netapp.com_.
+
  
-Note: Make sure to select the "Including third-party cookies on this site" option when creating an exception. 
+//Note: Make sure to select the "Including third-party cookies on this site" option when creating an exception. 
 
 |I have a Cloud Central account but am unable to login to Cloud Central.
 |Open a ticket from https://mysupport.netapp.com/site/help. Select category “cloud.netapp.com > Account/Login issues” or “cloud.netapp.com > Federation issues”.  This is specifically for Cloud Central issues or questions.
