@@ -15,18 +15,18 @@ keywords: AU, acquisition unit, trioubleshooting
 :imagesdir: ./media/
 
 [.lead]
-Here you will find suggestions for troubleshooting problems with Acquisition Units on a Linux server. 
+Here you will find suggestions for troubleshooting problems with Acquisition Units on a Linux server.
 
 |===
-|*Problem:* | *Try this:* 
+|*Problem:* | *Try this:*
 |AU status on the *Observability > Collectors* page in the *Acquisition Units* tab displays "Certificate Expired” or “Certificate Revoked” .
 |Click on the menu to the right of the AU and select *Restore Connection*. Follow the instructions to restore your Acquisition Unit:
 
 1. Stop the Acquisition Unit (AU) service. You can click the _Copy Stop Command_ button to quickly copy the command to the clipboard, then paste this command into a command prompt on the acquisition unit machine.
 
-2. Create a file named "token" in the _/var/lib/netapp/cloudinsights/acq/conf_ folder on the AU. 
+2. Create a file named "token" in the _/var/lib/netapp/cloudinsights/acq/conf_ folder on the AU.
 
-3. Click the _Copy Token_ button, and paste this token into the file you created. 
+3. Click the _Copy Token_ button, and paste this token into the file you created.
 
 4. Restart the AU service. Click the _Copy Restart Command_ button, and paste the command into a command prompt on the AU.
 
@@ -41,7 +41,7 @@ _traceroute <environment-name>.c01.cloudinsights.netapp.com_
 _curl \https://<environment-name>.c01.cloudinsights.netapp.com_
 _wget \https://<environment-name>.c01.cloudinsights.netapp.com_
 
-|Proxy Server not configured properly | Verify your proxy settings, and uninstall/re-install the Acquisition Unit software if necessary to enter the correct proxy settings. 
+|Proxy Server not configured properly | Verify your proxy settings, and uninstall/re-install the Acquisition Unit software if necessary to enter the correct proxy settings.
 
 1. Try "curl".  Refer to "man curl" information/documentation regarding proxies: --preproxy, --proxy-* (that's a wildcard "*" because curl supports many proxy settings).
 2. Try "wget".  Check documentation for proxy options.
@@ -68,9 +68,11 @@ Check the network connection between the Acquisition Unit sever and CloudInsight
 Check whether the Acquisition Unit service is running. If the service is not running, start the service.
 Check the Acquisition Unit log (/var/log/netapp/cloudinsights/acq/acq.log) to see whether there are any errors.
 
-|I'm seeing a "Heartbeat Error: message
+|I'm seeing a "Heartbeat Error:" message
 |This error can occur if there is a network interruption that causes communication between the Acquisition Unit and the Cloud Insights environment to be interrupted for more than one minute. Verify the connection between the AU and Cloud Insights is stable and active.
 
+|When Re-Installing the Acquisition Unit, I'm seeing "ValueError: File context for /opt/netapp/cloudinsights(/.*)? already defined".
+|On a system with SELinux, This error message may appear after `cloudinsights-uninstall.sh -p` has been executed and the Acquisition Unit is to be reinstalled. Running the command `semanage fcontext -d -t usr_t "/opt/netapp/cloudinsights(/.*)?"` should correct the issue and remove the message.
 
 |===
 

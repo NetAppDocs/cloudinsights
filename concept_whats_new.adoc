@@ -5,7 +5,6 @@ summary: New features and functionality available in Cloud Insights.
 keywords: features
 ---
 = What\'s New with Cloud Insights 
-:toc: macro
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -20,7 +19,122 @@ NetApp is continually improving and enhancing its products and services. Here ar
 NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
 
 
+
+== April 2024
+
+////
+=== iSCSI Volume Latency 
+
+Metrics for iSCSI Volume Latency are available for use in dashboards, alerts, and more. To collect iSCSI Latency metrics, turn on _Network Performance and Map_ from the Kubernetes Collector "Modify Deployment" menu item.
+////
+
+
+=== iSCSI SAN Support for Kubernetes Network Map
+
+Identify Kubernetes underlying storage dependencies for NFS and now iSCSI.
+Accelerate issue resolution by gaining insight into the Kubernetes application’s storage network activity and undelineated storage metrics. Understand how the Kubernetes application uses the storage infrastructure for chargeback and showback reporting.
+
+image:pod-to-storage.png[Pod-to-storage example]
+
+
+
+
+
+
+
+
+
+
+=== Operating System support
+
+The following operating systems are supported with Cloud Insights Acquisition Units, in addition to those link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[already supported]:
+
+* Oracle Enterprise Linux 8.8
+* Red Hat Enterprise Linux 8.8
+* Rocky 9.3
+* OpenSUSE Leap 15.1 through 15.5
+* SUSE Enterprise Linux Server 15, 15 SP2 through 15 SP5
+
+
+
+'''
+== March 2024
+
+=== Workload Security Agent Details
+
+Each of your Workload Security Agents has its own landing page, where you can easily see summary information about the Agent as well as the installed Data and User Directory Collectors associated with that Agent. 
+
+image:Agent_Detail_Page.png[Agent Detail Landing Page example]
+
+=== Chart more data more quickly
+
+When analyzing data on an asset's landing page, adding additional data to the Expert View charts is a snap. For each table on the landing page, if an object type has relevant data, hover over that object to display the "Add to Expert View" icon. Selecting this icon adds that object to the Additional Resources and displays it in the Expert View charts.
+
+image:AddToChartIcon.png[Add table data to expert view]
+
+Or maybe you want to see a landing page table's data in its own chart. Simply select the _Show Chart_ icon to open the chart below the table:
+
+image:LPTableShowChartIcon.png[Show Chart icon]
+
+
+'''
+
 == February 2024
+
+
+=== Usability Improvements
+
+Save a *snapshot* of your current dashboard by selecting _Export as Image_ from the right-corner drop-down. Cloud Insights creates a .PNG of the current widget states.
+
+image:ExportAsImage.png[Export as Image Dropdown]
+
+
+*Object and Metric selection* is easier than ever for Widgets, Monitors, etc.  Choose the object type you want, and then select a metric relevant to that object in the separate drop-down.
+
+image:ObjectAndMetricSelection.png[Object and Metric Selectors separate]
+
+
+*Export Data Collector and Acquisition Unit* lists to .CSV by selecting the icon at the top of those pages. 
+
+image:ExportDCList.png[Export DC and AU Lists to .csv]
+
+
+We’ve *re-organized the Help > Support* page so it’s easier to find what you’re looking for, and because you asked for them, we added direct links on this page to *API Swagger* and user documentation.
+
+image:Support_APIAccess.png[API Links on the Help > Support Page]
+
+
+*Links* in the “triggeredOn” column on the Alerts list page will navigate to the appropriate Landing Page, if a Landing Page is available for that object.
+
+image:TriggeredOnLink.png[Links in TriggeredOn alert field]
+
+
+
+
+=== See all changes in your namespace
+
+Kubernetes Change Analysis now allows you to see a timeline of changes when selecting Cluster and Namespace. Previously, Workload must also have been selected.  When filtering on Cluster and Namespace, the timeline of all workload changes in that namespace are shown on one line.
+
+image:NamespaceTimeline.png[Namespace Timeline]
+ 
+
+
+=== Related Logs for Alerts
+
+When viewing a log alert, related log entries are shown in a new table.  A log entry is related if it occurs in the same source and timeframe as the alert, and is subject to the same conditions. Select “Analyze Logs” to explore further.
+
+image:RelatedLogsTable.png[Related Logs on a log alert landing page]
+
+
+=== Collect ONTAP Switch Data
+
+Cloud Insights can collect data from the ONTAP system’s back-end switches; simply enable the collection in the data collector’s _Advanced Configuration_ section, and ensure the ONTAP system is configured to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information] and has the appropriate link:task_dc_na_cdot.html#a-note-about-permissions[permissions] set.
+
+
+
+
+
+
 
 === Workload Security Data Collector API
 
@@ -36,7 +150,7 @@ In addition to your initial trial of Cloud Insights, you may also take advantage
 
 === How healthy are my workloads?
 
-Workload health is available at a glance on the *Kubernetes > Explore > Workloads* page, so you can quickly see which workloads are performing well and which may need some help.
+Workload health is available at a glance on the *Kubernetes > Explore > Workloads* page, so you can quickly see which workloads are performing well and which may need some help. Easily identify if the health issue is related to infrastructure, network, or configuration changes, and drill down to analyze the root cause.
 
 image:WorkloadHealth.png[Workload Health at a glance]
 
@@ -55,6 +169,52 @@ Workload Security includes a new 2nd-generation ransomware detection ML algorith
 "Seasonality" of behaviors: weekend behavior may follow different patterns from weekday, or morning behavior from afternoon. Workload Security algorithms take this seasonality into account.
 
 // * Faster analytics: The forensics user interface has been improved to analyze more data more quickly.
+
+
+
+
+=== Deprecated Functionality
+
+Occasionally functionality is deprecated as features evolve. Here are some of the features and functionalities which have been deprecated in Cloud Insights:
+
+==== Workload Secure REST cloudsecure_forensics.activities.v1 API is deprecated
+
+The _cloudsecure_forensics.activities.v1_ API is deprecated. This API returns information on activities associated with entities in the Storage Workload Security environment. This API has been replaced with cloudsecure_forensics.activities.*v2*_.  
+
+GET for this API previously returned the following: 
+
+----
+{ 
+  "count": 24594, 
+  "limit": 1000, 
+  "offset": 0, 
+  "results": [ 
+    { 
+      "accessLocation": 
+----
+
+This API now returns:
+
+----
+{ 
+  "limit": 1000, 
+  "meta": { 
+    "page": { 
+      "after": "lvlvk3pp.4cpzcg4kpybl", 
+      "before": "lvlxy3dz.4cq5ajdnl9fk", 
+      "size": 1000 
+    } 
+  }, 
+  "results": [ 
+    { 
+      "accessLocation": "10.249.6.220", 
+----
+
+//There was a change in the backend for performance optimization. Hence in order to accommodate the change the response body had to be changed as maintaining the previous response would have affected the performance. Count & limit are replaced with meta. 
+
+For more details see the Swagger documentation at “Admin > API Access > API Documentation > Workload Security”. 
+
+//This API is no longer supported from Jan 2024 in all regions. 
 
 
 

@@ -310,6 +310,8 @@ sidebar:
           url: /ws_allowed_file_types.html
         - title: ONTAP Autonomous Ransomware Protection Integration
           url: /concept_cs_integration_with_ontap_arp.html
+        - title: ONTAP Access Denied Integration
+          url: /concept_ws_integration_with_ontap_access_denied.html
         - title: Blocking User Access
           url: /cs_restrict_user_access.html
         - title: Simulating a Ransomware Attack
@@ -369,6 +371,8 @@ sidebar:
                   url: /task_dc_brocade_bna.html 
                 - title: Fibre Channel Switch
                   url: /task_dc_brocade_fc_switch.html
+                - title: Brocade FOS REST
+                  url: /task_dc_brocade_rest.html
             - title: Cisco
               url: /task_dc_cisco_fc_switch.html
             - title: Cohesity SmartfFiles
@@ -455,14 +459,16 @@ sidebar:
                   url: /task_dc_ms_hyperv.html
             - title: NetApp
               entries:
-                - title: Cloud Connection for ONTAP 9.9+
-                  url: /task_dc_na_cloud_connection.html
+#                - title: Cloud Connection for ONTAP 9.9+
+#                  url: /task_dc_na_cloud_connection.html
                 - title: Cloud Volumes ONTAP
                   url: /task_dc_na_cloud_volumes_ontap.html
                 - title: Cloud Volumes Services for AWS
                   url: /task_dc_na_cloud_volumes.html
                 - title: ONTAP Data Management Software 
                   url: /task_dc_na_cdot.html
+                - title: ONTAP REST collector
+                  url: /task_dc_na_ontap_rest.html
                 - title: Data ONTAP 7-mode
                   url: /task_dc_na_7mode.html
                 - title: E-Series
@@ -485,7 +491,7 @@ sidebar:
               url: /task_dc_redhat_virtualization.html
             - title: Rubrik CDM
               url: /task_dc_rubrik_cdm.html
-            - title: VMWare
+            - title: VMware
               url: /task_dc_vmware.html
               
         - title: Data Collector Reference - Services

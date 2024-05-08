@@ -1,12 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_config_telegraf_kubernetes.html
-keywords: telegraf, installation, install, kubernetes
-summary: Kubernetes data collector configuration
+keywords: telegraf
+summary: Data collector for Kubernetes
 ---
 
-= Kubernetes Data Collector
-:toc: macro
+= Data Collector: Kubernetes
 :hardbreaks:
 :toclevels: 1
 :nofooter:
@@ -22,14 +21,14 @@ Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Cont
 
 == Installation
 
-For Kubernetes Installation instructions, please see the link:task_config_telegraf_agent.html#kubernetes[Agent Installation] page.
+For Kubernetes Installation instructions, please see the link:task_config_telegraf_agent_k8s.html[NetApp Kubernetes Monitoring Operator] page.
 
-NOTE: Information about *kube-state-metrics* has been moved to the link:task_config_telegraf_agent.html#kubernetes[Agent Installation] page.
+//NOTE: Information about *kube-state-metrics* has been moved to the link:task_config_telegraf_agent.html#kubernetes[Agent Installation] page.
 
 ////
 TIP: It is strongly recommended to deploy the Telegraf agent as a DaemonSet and a ReplicaSet within the Kubernetes environment itself, by selecting _Kubernetes_ as the platform during agent installation.
 
-. From *Observability > Collectors*, click *+Data Collector*. Under *Services*, choose Kubernetes.
+. From *Observability > Collectors*, click *+Data Collector*. Choose Kubernetes.
 +
 If you haven't configured an Agent for collection, you are prompted to link:task_config_telegraf_agent.html[install an agent] in your environment.
 +

@@ -1,11 +1,10 @@
 ---
 sidebar: sidebar
 permalink: task_config_telegraf_agent_k8s.html
-keywords: telegraf, installation, install, agent, telegraf agent, kubernetes, eks, operator, k8s
-summary: Cloud Insights supports Telegraf as its agent for collection of integration data on Kubernetes.  
+keywords: kubernetes, Kubernetes, k8s, telegraf, installation, install, agent, telegraf agent, eks, operator
+summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in Cloud Insights.  
 ---
-= Configuring the NetApp Kubernetes Monitoring Operator
-:toc: macro
+= Kubernetes Monitoring Operator Installation and Configuration
 :hardbreaks:
 :nofooter:
 :toclevels: 2
@@ -18,29 +17,15 @@ Cloud Insights offers the *NetApp Kubernetes Monitoring Operator* (NKMO) for Kub
 
 NOTE: If you have Cloud Insights Federal Edition, your installation and configuration instructions may be different than the instructions on this page. Follow the instructions in Cloud Insights to install the NetApp Kubernetes Monitoring Operator.
 
-
 image:kubernetes_tile.png[Kubernetes Data Collector Tile]
 
 toc::[]
 
-
-////
-Below is a high-level illustration showing where the Operator resides in your environment. Depending on your environment, _Proxy Server_ may or may not be required. 
-
-image:CI_Diagram_with_NKMO.png[A high-level map showing NKMO residing in the Kubernetes Cluster, with arrows showing how data travels to the cluster from the Hosts, proxy server, all rolling up to Cloud Insights]
-////
-
-
-The Operator and the data collectors are downloaded from the Cloud Insights Docker Registry. Once installed, NKMO then manages any Operator-compatible collectors deployed in the Kubernetes cluster nodes to acquire data, including managing the life cycle of those collectors. Following this chain, data is acquired from the collectors and sent through to Cloud Insights. 
-
-
+The Kubernetes Operator and the data collectors are downloaded from the Cloud Insights Docker Registry. Once installed, the Operator then manages any Operator-compatible collectors deployed in the Kubernetes cluster nodes to acquire data, including managing the life cycle of those collectors. Following this chain, data is acquired from the collectors and sent through to Cloud Insights. 
 
 == Before installing the NetApp Kubernetes Monitoring Operator
 
-
-IMPORTANT: Read the link:pre-requisites_for_k8s_operator.html[*Before Installing or Upgrading*] documentation before installing or upgrading the NetApp Kubernetes Monitoring Operator.
-
-
+IMPORTANT: Read the link:pre-requisites_for_k8s_operator.html[*Before Installing or Upgrading*] pre-requisites documentation before installing or upgrading the NetApp Kubernetes Monitoring Operator.
 
 == Installing the NetApp Kubernetes Monitoring Operator
 
@@ -330,15 +315,15 @@ Run the “Image Pull Snippet” from the NetApp Monitoring Operator install til
 Core Operator Functionality and Kubernetes Monitoring
 
 * netapp-monitoring
-* kube-rbac-proxy
-* kube-state-metrics
-* telegraf
+* ci-kube-rbac-proxy
+* ci-ksm
+* ci-telegraf
 * distroless-root-user
 
 Events Log
 
-* fluent-bit
-* kubernetes-event-exporter
+* ci-fluent-bit
+* ci-kubernetes-event-exporter
 
 Network Performance and Map
 
@@ -348,7 +333,7 @@ Push the operator docker image to your private/local/enterprise docker repositor
 
 Edit the monitoring-operator deployment in operator-deployment.yaml, and modify all image references to use your private Docker repository.
 
- image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<kube-rbac-proxy version>
+ image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<ci-kube-rbac-proxy version>
  image: <docker repo of the enterprise/corp docker repo>/netapp-monitoring:<version>
 
 Edit the AgentConfiguration in operator-config.yaml to reflect the new docker repo location. Create a new imagePullSecret for your private repository, for more details see _https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/_

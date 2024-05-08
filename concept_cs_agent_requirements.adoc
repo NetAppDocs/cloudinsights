@@ -44,6 +44,9 @@ This computer should be running no other application-level software. A dedicated
 //50 GB available for the root partition
 /opt/netapp 35 GB (minimum)
 
+Note: It is recommended to allocate a little extra disk space to allow for the creation of the filesystem. Ensure that there is at least 35 GB free space in the filesystem.
+
+
 If /opt is a mounted folder from a NAS storage, make sure that local users have access to this folder. Agent or Data collector may fail to install if local users do not have permission to this folder. see the link:task_cs_add_agent.html#troubleshooting-agent-errors[troubleshooting] section for more details. 
 
 |Network|100 Mbps to 1 Gbps Ethernet connection, static IP address, IP connectivity to all devices, and a required port to the Workload Security instance (80 or 443).
@@ -57,6 +60,8 @@ Please note: The Workload Security agent can be installed in the same machine as
 For Linux, disk space should be allocated in this manner:
 /opt/netapp 25-30 GB
 /var/log/netapp 25 GB
+
+
 |===
 
 == Additional recommendations
@@ -86,56 +91,56 @@ For *US-based* Workload Security environments:
 
 [cols=5*,options="header"]
 |===
-|Protocol|Port|	Destination	|Direction|	Description
-|TCP|443|<site_name>.cs01.cloudinsights.netapp.com 
+|Protocol|Port|Source	|Destination |Description
+|TCP|443|Workload Security Agent|<site_name>.cs01.cloudinsights.netapp.com 
 <site_name>.c01.cloudinsights.netapp.com 
-<site_name>.c02.cloudinsights.netapp.com|Outbound|Access to Cloud Insights
-|TCP|443|gateway.c01.cloudinsights.netapp.com
-agentlogin.cs01.cloudinsights.netapp.com|Outbound|Access to authentication services
+<site_name>.c02.cloudinsights.netapp.com|Access to Cloud Insights
+|TCP|443|Workload Security Agent|gateway.c01.cloudinsights.netapp.com
+agentlogin.cs01.cloudinsights.netapp.com|Access to authentication services
 |===
 
 For *Europe-based* Workload Security environments:
 
 [cols=5*,options="header"]
 |===
-|Protocol|Port|	Destination	|Direction|	Description
-|TCP|443|<site_name>.cs01-eu-1.cloudinsights.netapp.com
+|Protocol|Port|Source	|Destination |Description
+|TCP|443|Workload Security Agent|<site_name>.cs01-eu-1.cloudinsights.netapp.com
 <site_name>.c01-eu-1.cloudinsights.netapp.com
 <site_name>.c02-eu-1.cloudinsights.netapp.com
-|Outbound|Access to Cloud Insights
-|TCP|443|gateway.c01.cloudinsights.netapp.com
+|Access to Cloud Insights
+|TCP|443|Workload Security Agent|gateway.c01.cloudinsights.netapp.com
 agentlogin.cs01-eu-1.cloudinsights.netapp.com
-|Outbound|Access to authentication services
+|Access to authentication services
 |===
 
 For *APAC-based* Workload Security environments:
 
 [cols=5*,options="header"]
 |===
-|Protocol|Port|	Destination	|Direction|	Description
-|TCP|443|<site_name>.cs01-ap-1.cloudinsights.netapp.com
+|Protocol|Port|Source	|Destination |Description
+|TCP|443|Workload Security Agent|<site_name>.cs01-ap-1.cloudinsights.netapp.com
 <site_name>.c01-ap-1.cloudinsights.netapp.com
 <site_name>.c02-ap-1.cloudinsights.netapp.com
-|Outbound|Access to Cloud Insights
-|TCP|443|gateway.c01.cloudinsights.netapp.com
+|Access to Cloud Insights
+|TCP|443|Workload Security Agent|gateway.c01.cloudinsights.netapp.com
 agentlogin.cs01-ap-1.cloudinsights.netapp.com
-|Outbound|Access to authentication services
+|Access to authentication services
 |===
 
 == In-network rules
 
-Note that when adding _link:task_add_collector_svm.html#permissions-when-adding-via-cluster-management-ip[csuser]_, that user requires SSH access to the ONTAP management LIF.
+//Note that when adding _link:task_add_collector_svm.html#permissions-when-adding-via-cluster-management-ip[csuser]_, that user requires SSH access to the ONTAP management LIF.
 
 
 [cols=5*,options="header"]
 |===
-|Protocol|Port|	Destination	|Direction|	Description
+|Protocol|Port|Source	|Destination |Description
 |TCP|389(LDAP)
-636 (LDAPs / start-tls) |LDAP Server URL|Outbound|Connect to LDAP
-|TCP|443|Cluster or SVM Management IP Address (depending on SVM collector configuration)|Outbound|API communication with ONTAP
-|TCP|35000 - 55000|SVM data LIF IP Addresses|Inbound|Communication with ONTAP for Fpolicy events
-|TCP|7|SVM data LIF IP Addresses|Outbound|Uni-directional between ONTAP and Workload Security. Agent pings the SVM Lifs.
-|SSH | 22 | Cluster management |Outbound| Needed for CIFS/SMB user blocking.
+636 (LDAPs / start-tls) |Workload Security Agent|LDAP Server URL|Connect to LDAP
+|TCP|443|Workload Security Agent|Cluster or SVM Management IP Address (depending on SVM collector configuration)|API communication with ONTAP
+|TCP|35000 - 55000|SVM data LIF IP Addresses|Workload Security Agent|Communication from ONTAP to the Workload Security Agent for Fpolicy events.  These ports must be opened towards the Workload Security Agent in order for ONTAP to send events to it, including any firewall on the Workload Security Agent itself (if present).
+|TCP|7|Workload Security Agent|SVM data LIF IP Addresses|Echo from Agent to SVM Data LIFs
+|SSH |22|Workload Security Agent| Cluster management |Needed for CIFS/SMB user blocking.
 |===
 
 //link:task_cs_add_agent.html[Configure an Agent]
