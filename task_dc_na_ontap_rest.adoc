@@ -244,7 +244,7 @@ Other examples of ONTAP REST metrics that may report zero or empty data:
 InternalVolumes: REST no longer reports vol0.
 Aggregates: REST no longer reports aggr0.
 Storage: most metrics are a rollup of the Internal Volume metrics, and will be impacted by the above.
-Storage Virtual Machines: REST no longer reports SVM's not of type 'data' (like 'cluster' or 'mgmt' or 'node').
+Storage Virtual Machines: REST no longer reports SVM's of type other than 'data' (e.g. 'cluster', 'mgmt', 'node').
 
 You may also notice a change in the appearance of graphs that do have data, due to the change in default performance polling period from 15 minutes to 5 minutes.  More frequent polling means more data points to plot.
 
