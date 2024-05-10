@@ -95,7 +95,7 @@ The following are requirements to configure and use this data collector:
 
 === Permission Requirements for Collecting ONTAP Switch Metrics
 
-Cloud Insights hads the ability to collect cluster switch data as an option in the collector's <<Advanced Configuration,Advanced Configuration>>. In addition to enabling this on the Cloud Insights collector, you must also configure the ONTAP system itself to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information], and ensure the correct <<a-note-about-permissions, permissions>> are set, in order to allow the switch data to be sent to Cloud Insights. 
+Cloud Insights has the ability to collect ONTAP cluster switch data as an option in the collector's <<advanced-configuration,Advanced Configuration>> settings. In addition to enabling this on the Cloud Insights collector, you must also *configure the ONTAP system* itself to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information], and ensure the correct <<a-note-about-permissions, permissions>> are set, in order to allow the switch data to be sent to Cloud Insights. 
 
 
 == Configuration 
