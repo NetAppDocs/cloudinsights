@@ -20,6 +20,44 @@ NOTE: Some of these features may not be available in Cloud Insights Federal Edit
 
 
 
+== April 2024
+
+////
+=== iSCSI Volume Latency 
+
+Metrics for iSCSI Volume Latency are available for use in dashboards, alerts, and more. To collect iSCSI Latency metrics, turn on _Network Performance and Map_ from the Kubernetes Collector "Modify Deployment" menu item.
+////
+
+
+=== iSCSI SAN Support for Kubernetes Network Map
+
+Identify Kubernetes underlying storage dependencies for NFS and now iSCSI.
+Accelerate issue resolution by gaining insight into the Kubernetes application’s storage network activity and undelineated storage metrics. Understand how the Kubernetes application uses the storage infrastructure for chargeback and showback reporting.
+
+image:pod-to-storage.png[Pod-to-storage example]
+
+
+
+
+
+
+
+
+
+
+=== Operating System support
+
+The following operating systems are supported with Cloud Insights Acquisition Units, in addition to those link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[already supported]:
+
+* Oracle Enterprise Linux 8.8
+* Red Hat Enterprise Linux 8.8
+* Rocky 9.3
+* OpenSUSE Leap 15.1 through 15.5
+* SUSE Enterprise Linux Server 15, 15 SP2 through 15 SP5
+
+
+
+'''
 == March 2024
 
 === Workload Security Agent Details
@@ -90,7 +128,7 @@ image:RelatedLogsTable.png[Related Logs on a log alert landing page]
 
 === Collect ONTAP Switch Data
 
-Cloud Insights can collect data from the ONTAP system’s back-end switches; simply enable the collection in the data collector’s _Advanced Configuration_ section, and ensure the ONTAP system is configured to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information] and has the appropriate <<a-note-about-permissions, permissions>> set.
+Cloud Insights can collect data from the ONTAP system’s back-end switches; simply enable the collection in the data collector’s _Advanced Configuration_ section, and ensure the ONTAP system is configured to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information] and has the appropriate link:task_dc_na_cdot.html#a-note-about-permissions[permissions] set.
 
 
 
@@ -112,7 +150,7 @@ In addition to your initial trial of Cloud Insights, you may also take advantage
 
 === How healthy are my workloads?
 
-Workload health is available at a glance on the *Kubernetes > Explore > Workloads* page, so you can quickly see which workloads are performing well and which may need some help.
+Workload health is available at a glance on the *Kubernetes > Explore > Workloads* page, so you can quickly see which workloads are performing well and which may need some help. Easily identify if the health issue is related to infrastructure, network, or configuration changes, and drill down to analyze the root cause.
 
 image:WorkloadHealth.png[Workload Health at a glance]
 
@@ -131,6 +169,52 @@ Workload Security includes a new 2nd-generation ransomware detection ML algorith
 "Seasonality" of behaviors: weekend behavior may follow different patterns from weekday, or morning behavior from afternoon. Workload Security algorithms take this seasonality into account.
 
 // * Faster analytics: The forensics user interface has been improved to analyze more data more quickly.
+
+
+
+
+=== Deprecated Functionality
+
+Occasionally functionality is deprecated as features evolve. Here are some of the features and functionalities which have been deprecated in Cloud Insights:
+
+==== Workload Secure REST cloudsecure_forensics.activities.v1 API is deprecated
+
+The _cloudsecure_forensics.activities.v1_ API is deprecated. This API returns information on activities associated with entities in the Storage Workload Security environment. This API has been replaced with cloudsecure_forensics.activities.*v2*_.  
+
+GET for this API previously returned the following: 
+
+----
+{ 
+  "count": 24594, 
+  "limit": 1000, 
+  "offset": 0, 
+  "results": [ 
+    { 
+      "accessLocation": 
+----
+
+This API now returns:
+
+----
+{ 
+  "limit": 1000, 
+  "meta": { 
+    "page": { 
+      "after": "lvlvk3pp.4cpzcg4kpybl", 
+      "before": "lvlxy3dz.4cq5ajdnl9fk", 
+      "size": 1000 
+    } 
+  }, 
+  "results": [ 
+    { 
+      "accessLocation": "10.249.6.220", 
+----
+
+//There was a change in the backend for performance optimization. Hence in order to accommodate the change the response body had to be changed as maintaining the previous response would have affected the performance. Count & limit are replaced with meta. 
+
+For more details see the Swagger documentation at “Admin > API Access > API Documentation > Workload Security”. 
+
+//This API is no longer supported from Jan 2024 in all regions. 
 
 
 

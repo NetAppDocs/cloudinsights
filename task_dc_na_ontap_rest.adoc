@@ -239,6 +239,16 @@ Configuration: 10.193.98.84: ONTAP rest API at 10.193.98.84 is not available: 10
 |I see empty or "0" metrics where the ONTAP ontapi collector shows data.
 |ONTAP REST does not report metrics that are used internally on the ONTAP system only. For example, system aggregates will not be collected by ONTAP REST, only SVM's of type "data" will be collected.
 
+Other examples of ONTAP REST metrics that may report zero or empty data:
+
+InternalVolumes: REST no longer reports vol0.
+Aggregates: REST no longer reports aggr0.
+Storage: most metrics are a rollup of the Internal Volume metrics, and will be impacted by the above.
+Storage Virtual Machines: REST no longer reports SVM's of type other than 'data' (e.g. 'cluster', 'mgmt', 'node').
+
+You may also notice a change in the appearance of graphs that do have data, due to the change in default performance polling period from 15 minutes to 5 minutes.  More frequent polling means more data points to plot.
+
+
 |===
 
 
