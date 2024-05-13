@@ -601,6 +601,9 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-neta
 |I'm seeing pod(s) deployed by the Kubernetes Monitoring Operator crash because of insufficient resources.
 |Refer to the Kubernetes Monitoring Operator link:telegraf_agent_k8s_config_options.html[configuration options] to increase the CPU and/or memory limits as needed.
 
+|A missing image or invalid configuration caused the netapp-ci-kube-state-metrics pods to fail to startup or become ready. Now the StatefulSet is stuck and configuration changes are not being applied to the netapp-ci-kube-state-metrics pods. 
+|The StatefulSet is in a link:https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#forced-rollback[broken] state. After fixing any configuration problems bounce the netapp-ci-kube-state-metrics pods.
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
