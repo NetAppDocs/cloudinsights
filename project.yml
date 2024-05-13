@@ -459,14 +459,16 @@ sidebar:
                   url: /task_dc_ms_hyperv.html
             - title: NetApp
               entries:
-                - title: Cloud Connection for ONTAP 9.9+
-                  url: /task_dc_na_cloud_connection.html
+#                - title: Cloud Connection for ONTAP 9.9+
+#                  url: /task_dc_na_cloud_connection.html
                 - title: Cloud Volumes ONTAP
                   url: /task_dc_na_cloud_volumes_ontap.html
                 - title: Cloud Volumes Services for AWS
                   url: /task_dc_na_cloud_volumes.html
                 - title: ONTAP Data Management Software 
                   url: /task_dc_na_cdot.html
+                - title: ONTAP REST collector
+                  url: /task_dc_na_ontap_rest.html
                 - title: Data ONTAP 7-mode
                   url: /task_dc_na_7mode.html
                 - title: E-Series
@@ -527,7 +529,7 @@ sidebar:
             - title: Kibana
               url: /task_config_telegraf_kibana.html
             - title: Kubernetes
-              url: /task_config_telegraf_agent.html#kubernetes
+              url: /task_config_telegraf_agent_k8s.html
             - title: Memcached
               url: /task_config_telegraf_memcached.html
             - title: MongoDB
