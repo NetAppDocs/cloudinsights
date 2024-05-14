@@ -126,22 +126,25 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
 
 
-////
-security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access none
- security login role create -vserver <vservername> -role csrole -cmddirname "network interface" -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname version -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname volume -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname vserver -access readonly
- security login role create -role csrole -cmddirname "vserver fpolicy" -access all
- security login role create -role csrole -cmddirname "volume snapshot" -access all -query "-snapshot cloudsecure_*"
- security login role create -role csrole -cmddirname "event catalog" -access all
- security login role create -role csrole -cmddirname "event filter" -access all
- security login role create -role csrole -cmddirname "event notification destination" -access all
- security login role create -role csrole -cmddirname "event notification" -access all
- security login role create -role csrole -cmddirname "security certificate" -access all
- security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
- security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
-////
+Permissions for ONTAP ARP Integration:
+
+ security login rest-role create -role arwrole -api /api/storage/volumes -access readonly -vserver <cluster_name>
+ security login rest-role create -api /api/security/anti-ransomware -access readonly  -role arwrole -vserver <cluster_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role arwrole
+
+
+Permissions for ONTAP Access Denied:
+
+ security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <cluster_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole
+
+Note: If one rest-role is already added--either _arwrole_ or _csrestrole_--there is no need to add a second rest-role. You can simply add the API permissions as in the example below.
+
+Example: _csrestrole_ is already present, so we only have to enable anti-ransomware protection and give API permissions to the existing _csrestrole_:
+
+ security login rest-role create -role csrestrole -api /api/storage/volumes -access readonly -vserver <cluster_name>
+ security login rest-role create -api /api/security/anti-ransomware -access readonly  -role arwrole -vserver <cluster_name>
+
 
 === Permissions when adding via *Vserver Management IP*:
 
@@ -164,12 +167,10 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
 
 
-////
- security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
- security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
- security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
-//// 
+Permissions for ONTAP Access Denied:
+
+ security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <svm_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole -vserver <svm_name>
 
 
 === Permissions for ONTAP Autonomous Ransomware Protection
