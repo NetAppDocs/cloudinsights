@@ -1,56 +1,38 @@
 ---
 sidebar: sidebar
 permalink: forensic_entity_detail.html
-keywords:  Forensic, entity, entity overview, entity behavior, detail
-summary: Forensic entity detail
+keywords:  Forensic, entity, entity overview, entity behavior, entities
+summary: Forensic entities page
 ---
 
-= Forensic Entity Detail
+= Forensic Entities Page
 :toc: macro
 :hardbreaks:
-:toclevels: 1
 :nofooter:
 :icons: font
 :linkattrs:
 :imagesdir: ./media/
 
 [Lead]
-
-Use the Entity Detail page to access detailed information about an entity.
+The Forensics Entities page provides detailed information about entity activity in your environment.
 
 
 == Examining Entity Information 
 
-You access the 
+Click *Forensics > Activity Forensics* and click the _Entities_ tab to access the Entities page.
 
-Entity Profile::
+This page provides an overview of entity activity in your environment, highlighting the following information:
+* A graph showing _Unique Entities_ accessed per minute
+* A chart of _Entity Types Accessed_
+* A breakdown of the _Common Paths_
+* A list of the _Top 50 Entities_ out of the total number of entities
 
-Describes details including:
+image:CS-Entities-Page.png[Entities Page]
 
-* Name
-** Click to access the [Entity Overview]
-* Type
-* Communities
-* Path
-* Last accessed
-** Click user to access the [User Overview]
-* Size
+Clicking on an entity in the list opens an overview page for the entity, showing a profile of the entity with details like name, type, device name, most accessed location IP, and path, as well as the entity behavior such as the user, IP, and time the entity was last accessed.
 
-
-User and Community::
-
-* The number of times the entity was accessed by users
-* The number of times the entity was accessed by Communities. 
+image:CS-entity-detail-page.png[Entity Overview Page]
 
 
-Entity Bahavior::
-* Recent Activity: 
-** Last accessed date
-** User that last accessed the entity
-** Location the entity was accessed from
-* Operations
-** Number of write operations
-** Number of read operations
-** Number of accesses to Meta data
 
 
