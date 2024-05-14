@@ -13,6 +13,7 @@ summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in 
 :imagesdir: ./media/
 
 [.lead]
+
 Cloud Insights offers the *Kubernetes Monitoring Operator* for Kubernetes collection. Navigate to *Kubernetes > Collectors > +Kubernetes Collector* to deploy a new operator.
 
 
@@ -20,6 +21,7 @@ toc::[]
 
 
 == Before installing the Kubernetes Monitoring Operator
+
 
 See the link:pre-requisites_for_k8s_operator.html[Pre-requisites] documentation before installing or upgrading the Kubernetes Monitoring Operator.
 
@@ -75,6 +77,7 @@ image:KubernetesModifyDeploymentScreen.png[Mody deployment options, 700]
 == Upgrading 
 
 [#upgrading-to-the-latest-netapp-kubernetes-monitoring-operator]
+
 === Upgrading to the latest Kubernetes Monitoring Operator
 
 Determine whether an AgentConfiguration exists with the existing Operator (if your namespace is not the default _netapp-monitoring_, substitute the appropriate namespace):
@@ -195,6 +198,7 @@ These sections contain information on customizing your operator configuration, w
 === Configuration Options
 
 Most commonly modified settings can be configured in the _AgentConfiguration_ custom resource. You can edit this resource before deploying the operator by editing the _operator-config.yaml_ file. This file includes commented-out examples of settings. See the list of link:telegraf_agent_k8s_config_options.html[available settings] for the most recent version of the operator.
+
 
 You can also edit this resource after the operator has been deployed by using the following command:
 
@@ -399,8 +403,6 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
  sudo -E -H ./<installation_script_name> --install
 
 
-
-
 === Tolerations and Taints
 
 The _netapp-ci-telegraf-ds_, _netapp-ci-fluent-bit-ds_, and _netapp-ci-net-observer-l4-ds_ DaemonSets must schedule a pod on every node in your cluster in order to correctly collect data on all nodes. The operator has been configured to tolerate some well known *taints*. If you have configured any custom taints on your nodes, thus preventing pods from running on every node, you can create a *toleration* for those taints link:telegraf_agent_k8s_config_options.html[in the _AgentConfiguration_]. If you have applied custom taints to all nodes in your cluster, you must also add the necessary tolerations to the operator deployment to allow the operator pod to be scheduled and executed.
@@ -542,7 +544,7 @@ a|Capture or otherwise note the output from the following commands, and contact 
 
 |I’m seeing the following in my logs immediately after installing the Kubernetes Monitoring Operator:
 
-[inputs.prometheus] Error in plugin: error making HTTP request to http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: Get http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: dial tcp: lookup kube-state-metrics.<namespace>.svc.cluster.local: no such host
+[inputs.prometheus] Error in plugin: error making HTTP request to \http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: Get \http://kube-state-metrics.<namespace>.svc.cluster.local:8080/metrics: dial tcp: lookup kube-state-metrics.<namespace>.svc.cluster.local: no such host
 |This message is typically only seen when a new operator is installed and the _telegraf-rs_ pod is up before the _ksm_ pod is up. These messages should stop once all pods are running.
 
 |I do see not any metrics being collected for the Kubernetes CronJobs that exist in my cluster.
@@ -601,8 +603,10 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-neta
 |I'm seeing pod(s) deployed by the Kubernetes Monitoring Operator crash because of insufficient resources.
 |Refer to the Kubernetes Monitoring Operator link:telegraf_agent_k8s_config_options.html[configuration options] to increase the CPU and/or memory limits as needed.
 
+
 |A missing image or invalid configuration caused the netapp-ci-kube-state-metrics pods to fail to startup or become ready. Now the StatefulSet is stuck and configuration changes are not being applied to the netapp-ci-kube-state-metrics pods. 
 |The StatefulSet is in a link:https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#forced-rollback[broken] state. After fixing any configuration problems bounce the netapp-ci-kube-state-metrics pods.
+
 
 |===
 
