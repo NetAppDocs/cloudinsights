@@ -6,7 +6,6 @@ keywords: onboarding, new user
 ---
 
 = Cloud Insights Onboarding
-:toc: macro
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -16,7 +15,9 @@ keywords: onboarding, new user
 :keywords: Cloud Insights, documentation, help, onboarding, getting started, 
 
 [.lead]
+
 Before you can start working with Cloud Insights, you must sign up on the *NetApp BlueXP* portal. If you already have a NetApp BlueXP login, you can start a free trial of Cloud Insights with a few quick steps.
+
 
 toc::[]
 
@@ -30,7 +31,7 @@ To get started with NetApp's cloud services, go to link:https://cloud.netapp.com
 * Accept the terms and conditions and select *Continue*.
 * BlueXP will walk you through getting started.
 
-=== What if I already have a NetApp Cloud login?
+=== What if I already have a NetApp BlueXP login?
 
 Once you have a NetApp BlueXP account, simply choose *Log In* on the link:https://cloud.netapp.com[*NetApp BlueXP*^] portal page.
 
@@ -53,7 +54,7 @@ During the free trial, you can link:concept_subscribing_to_cloud_insights.html[s
 
 == Sign in and go
 
-Once your environment has been created, at any time you can simply log in to the NetApp Cloud Portal and click *Go to Cloud Insights*. You will be taken directly to your Cloud Insights environment.
+Once your environment has been created, at any time you can simply log in to the NetApp BlueXP Portal and click *Go to Cloud Insights*. You will be taken directly to your Cloud Insights environment.
 
 You can also open a browser directly to your Cloud Insights environment URL, for example:
 
@@ -67,6 +68,14 @@ The first time you log in to a new environment, you will be guided through setti
 
 == Logging Out
 
+
 To log out of Cloud Insights, click your *User Name* and select *Log Out*. You will be taken back to the BlueXP sign in screen.
 
 NOTE: Logging out of Cloud Insights logs you out of BlueXP. You will also be logged out of other NetApp Cloud services that use the BlueXP sign-in.
+
+
+=== Inactivity Timeout
+
+By default, BlueXP will log a user out if there is no activity for six hours (360 minutes). Regardless of activity, users will be logged out after seven days. 
+
+

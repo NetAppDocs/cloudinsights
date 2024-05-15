@@ -221,7 +221,6 @@ For example, to retrieve all storages from a tenant named _mysite.c01.cloudinsig
 
 Top level objects, such as  Storage, can be used to traverse to other children and related objects. For example, to retrieve all disks for a specific storage, concatenate the storage “self” URL with “/disks”, for example:
 
-// https://<tenant> + “/rest/v1/assets/storages/4537” + “/disks”
 
  https://<tenant>/rest/v1/assets/storages/4537/disks
 
@@ -237,12 +236,6 @@ For example, when you request the following:
  https://<tenant>/rest/v1/assets/storages/2782?expand=_expands
 
 The API returns all available expands for the object as follows:
-
-//comment here 
-
-// https://<tenant>/rest/v1/assets/storages/4537/disks
-
-//lots of text here in the original as a picture.
 
 image:expands.gif[expands example]
 

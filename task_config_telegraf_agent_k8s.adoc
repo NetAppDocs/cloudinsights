@@ -13,16 +13,17 @@ summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in 
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights offers the *Kubernetes Monitoring Operator* for Kubernetes collection. When adding a data collector, simply choose the "Kubernetes" tile.
 
-image:kubernetes_tile.png[Kubernetes Data Collector Tile]
+Cloud Insights offers the *Kubernetes Monitoring Operator* for Kubernetes collection. Navigate to *Kubernetes > Collectors > +Kubernetes Collector* to deploy a new operator.
+
 
 toc::[]
 
 
 == Before installing the Kubernetes Monitoring Operator
 
-IMPORTANT: Read the link:pre-requisites_for_k8s_operator.html[*Before Installing or Upgrading*] pre-requisites documentation before installing or upgrading the Kubernetes Monitoring Operator.
+
+See the link:pre-requisites_for_k8s_operator.html[Pre-requisites] documentation before installing or upgrading the Kubernetes Monitoring Operator.
 
 == Installing the Kubernetes Monitoring Operator
 
@@ -55,15 +56,14 @@ If you are have a custom repository, read about <<using-a-custom-or-private-dock
 
 == Kubernetes Monitoring Components
 
-Cloud Insights Kubernetes Monitoring is comprised of three monitoring components:
+Cloud Insights Kubernetes Monitoring is comprised of four monitoring components:
 
-* Network Performance and Map
-* Event Logs
-* Change Analysis
+* Cluster Metrics
+* Network Performance and Map (optional)
+* Event Logs (optional)
+* Change Analysis (optional)
 
-=== Managing your Kubernetes Collectors
-
-The components above are enabled by default for each Kubernetes collector; if you decide you don't need a component for a particular collector, you can disable it by navigating to *Kubernetes > Collectors* and selecting _Modify Deployment_ from the collector's "three dots" menu on the right of the screen.
+The optional components above are enabled by default for each Kubernetes collector; if you decide you don't need a component for a particular collector, you can disable it by navigating to *Kubernetes > Collectors* and selecting _Modify Deployment_ from the collector's "three dots" menu on the right of the screen.
 
 image:KubernetesModifyDeploymentMenu.png[Modify deployment Menu on Kubernetes Collector list page]
 
@@ -75,6 +75,8 @@ image:KubernetesModifyDeploymentScreen.png[Mody deployment options, 700]
 
 
 == Upgrading 
+
+[#upgrading-to-the-latest-netapp-kubernetes-monitoring-operator]
 
 === Upgrading to the latest Kubernetes Monitoring Operator
 
@@ -193,7 +195,10 @@ Use the following links to access information for these kube state metrics count
 
 These sections contain information on customizing your operator configuration, working with proxy, using a custom or private docker repository, or working with OpenShift.
 
-In newer versions of the operator, most commonly modified settings can be configured in the _AgentConfiguration_ custom resource. You can edit this resource before deploying the operator by editing the _operator-config.yaml_ file. This file includes commented-out examples of settings. See the list of link:telegraf_agent_k8s_config_options.html[available settings] for the most recent version of the operator.
+=== Configuration Options
+
+Most commonly modified settings can be configured in the _AgentConfiguration_ custom resource. You can edit this resource before deploying the operator by editing the _operator-config.yaml_ file. This file includes commented-out examples of settings. See the list of link:telegraf_agent_k8s_config_options.html[available settings] for the most recent version of the operator.
+
 
 You can also edit this resource after the operator has been deployed by using the following command:
 
@@ -397,97 +402,14 @@ Once all of the artifacts have been satisfactorily verified, the agent installat
 
  sudo -E -H ./<installation_script_name> --install
 
- 
 
-////
-== Tuning the Operator
+=== Tolerations and Taints
 
+The _netapp-ci-telegraf-ds_, _netapp-ci-fluent-bit-ds_, and _netapp-ci-net-observer-l4-ds_ DaemonSets must schedule a pod on every node in your cluster in order to correctly collect data on all nodes. The operator has been configured to tolerate some well known *taints*. If you have configured any custom taints on your nodes, thus preventing pods from running on every node, you can create a *toleration* for those taints link:telegraf_agent_k8s_config_options.html[in the _AgentConfiguration_]. If you have applied custom taints to all nodes in your cluster, you must also add the necessary tolerations to the operator deployment to allow the operator pod to be scheduled and executed.
 
-You can adjust the Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources. For instructions and lists of the variables you can tune, see the README file included with the installation package. After you have installed the operator, use the following command to view the README:
+Learn More about Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/[Taints and Tolerations].
 
- sudo -E -H ./<installation_script_name> --install
-
-NOTE: Operator tuning is not available in Cloud Insights Federal Edition
-////
-
-
-////
-You can adjust the Kubernetes Monitoring Operator for optimal performance by fine-tuning certain variables for Custom Resources.  See the following tables for variables that you can set.
-
-To modify these values, edit the agent CR with the following command (substituting <namespace> for your namespace): 
-
- kubectl edit agent agent-monitoring-netapp -n <namespace>  
-
-The CR specification follows the format:
-
-----
- - name: <plugin-name> 
-   ... 
-   substitutions: 
-   - key: <variable-name> 
-     value: <desired-value>  
-     ... 
-----
-
-
-Items marked "yes" for "Included in default CR" will already be present in the agent CR and can be found under their respective plugin. Items marked "no" must be added manually following the examples provided by the included default substitutions.
-
-=== Resource related variables 
-See https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/	for information on Kubernetes Resources. 	
-
-|===
-
-|Variable Name	|Plugin Name	|Included in default CR	|Description
-
- 
-|DS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes CPU limit for telegraf-ds
-|DS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes mem limit for telegraf-ds
-|DS_CPU_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes cpu requests for telegraf-ds
-|DS_MEM_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes memory requests for telegraf-ds
-|RS_CPU_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes CPU limit for telegraf-rs.
-|RS_MEM_LIMITS_PLACEHOLDER	|agent	|yes	|Kubernetes mem limit for telegraf-rs
-|RS_CPU_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes cpu requests for telegraf-rs
-|RS_MEM_REQUEST_PLACEHOLDER	|agent	|yes	|Kubernetes memory requests for telegraf-rs
-|KSM_CPU_REQUEST_PLACEHOLDER:	|ksm	|yes	|Kubernetes cpu requests for kube-state-metrics deploy
-|KSM_MEM_REQUEST_PLACEHOLDER:	|ksm	|yes	|Kubernetes cpu requests for kube-state-metrics deploy
-
-|===
-
-=== Telegraf related variables 
-See https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent for information on telegraf variables.
-
-
-|===
-
-
-|Placeholder	|Plugin Name	|Included in default CR	|Description
-
-|COLLECTION_INTERVAL_PLACEHOLDER	|agent|	no	|(sets telegraf interval, type interval): The default time telegraf will wait between inputs for all plugins. Valid time units are ns, us (or µs), ms, s, m, h.
-|ROUND_INTERVAL_PLACEHOLDER	|agent	|no	|(sets telegraf round_interval, type boolean) collect metrics on multiples of interval
-|METRIC_BATCH_SIZE_PLACEHOLDER	|agent	|no	|(sets telegraf metric_batch_size, type int) maximum number of records for an output telegraf will write in one batch
-|METRIC_BUFFER_LIMIT_PLACEHOLDER	|agent	|no	|(sets telegraf metric_buffer_limit, type int) maximum number of records for an output telegraf will cache pending a successful write
-|COLLECTION_JITTER_PLACEHOLDER	|agent	|no	|(sets telegraf collection_jitter, type interval): Each plugin will wait a random amount of time between the scheduled collection time and that time + collection_jitter before collecting inputs
-|PRECISION_PLACEHOLDER	|agent	|no	|(sets telegraf precision, type interval): Collected metrics are rounded to the precision specified, when set to "0s" precision will be set by the units specified by interval
-|FLUSH_INTERVAL_PLACEHOLDER	|agent	|no	|(sets telegraf flush_interval, type interval): Default time telegraf will wait between writing outputs.
-|FLUSH_JITTER_PLACEHOLDER	|agent	|no	|(sets telegraf flush_jitter, type interval): Each output will wait a random amount of time between the scheduled write time and that time + flush_jitter before writing outputs
-
-|===
-
-
-=== Miscellaneous variables
-
-|===
-
-|Placeholder	|Plugin Name	|Included in default CR	|Description
-
-|CURL_CMD_PLACEHOLDER	|agent	|yes	|The curl command used to download various resources. Ex) "curl" or "curl -k"
-|===
-
-
-////
-
-
-
+Return to the link:task_config_telegraf_agent_k8s.html[*NetApp Kubernetes Monitoring Operator Installation* page]
 
 
 
@@ -680,6 +602,11 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-neta
 
 |I'm seeing pod(s) deployed by the Kubernetes Monitoring Operator crash because of insufficient resources.
 |Refer to the Kubernetes Monitoring Operator link:telegraf_agent_k8s_config_options.html[configuration options] to increase the CPU and/or memory limits as needed.
+
+
+|A missing image or invalid configuration caused the netapp-ci-kube-state-metrics pods to fail to startup or become ready. Now the StatefulSet is stuck and configuration changes are not being applied to the netapp-ci-kube-state-metrics pods. 
+|The StatefulSet is in a link:https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#forced-rollback[broken] state. After fixing any configuration problems bounce the netapp-ci-kube-state-metrics pods.
+
 
 |===
 
