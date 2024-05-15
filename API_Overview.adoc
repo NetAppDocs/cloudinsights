@@ -27,12 +27,12 @@ Note that Cloud Insights APIs are available based on your current Edition:
 |===
 |API Type|Basic|Standard|Premium
 
-|Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Log Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Acquisition Unit|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Data Collection|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Alerts| |image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Assets| |image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Data Ingestion| |image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Log Ingestion| |image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
 
 |===
 
@@ -221,7 +221,6 @@ For example, to retrieve all storages from a tenant named _mysite.c01.cloudinsig
 
 Top level objects, such as  Storage, can be used to traverse to other children and related objects. For example, to retrieve all disks for a specific storage, concatenate the storage “self” URL with “/disks”, for example:
 
-// https://<tenant> + “/rest/v1/assets/storages/4537” + “/disks”
 
  https://<tenant>/rest/v1/assets/storages/4537/disks
 
@@ -237,12 +236,6 @@ For example, when you request the following:
  https://<tenant>/rest/v1/assets/storages/2782?expand=_expands
 
 The API returns all available expands for the object as follows:
-
-//comment here 
-
-// https://<tenant>/rest/v1/assets/storages/4537/disks
-
-//lots of text here in the original as a picture.
 
 image:expands.gif[expands example]
 

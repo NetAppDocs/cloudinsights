@@ -53,16 +53,6 @@ Workload Security uses data collectors to collect file and user access data from
 Example output:
  image:cs_svm_sample_output.png[SVM Command Output Example]
 
-////
-security login show -vserver svmname 
-    Vserver: svmname
-    Authentication Acct Is-Nsswitch
-    User/Group Name Application Method Role Name Locked Group
-    vsadmin http password vsadmin yes no
-    vsadmin ontapi password vsadmin yes no
-    vsadmin ssh password vsadmin yes no
-    3 entries were displayed.
-////
  
 * Ensure that the SVM has a CIFS server configured:
  clustershell::> `vserver cifs show`
@@ -126,6 +116,8 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
 
 
+<<<<<<< HEAD
+=======
 Permissions for ONTAP ARP Integration:
 
  security login rest-role create -role arwrole -api /api/storage/volumes -access readonly -vserver <cluster_name>
@@ -146,6 +138,7 @@ Example: _csrestrole_ is already present, so we only have to enable anti-ransomw
  security login rest-role create -api /api/security/anti-ransomware -access readonly  -role arwrole -vserver <cluster_name>
 
 
+>>>>>>> b8087143154c7dd9f5d1d3f33ee1bbdf97a7c9d1
 === Permissions when adding via *Vserver Management IP*:
 
 If you cannot use the Cluster management administrator user to allow Workload Security to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Workload Security data collector to use Vserver Management IP.
@@ -167,12 +160,15 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
 
 
+<<<<<<< HEAD
+=======
 Permissions for ONTAP Access Denied:
 
  security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <svm_name>
  security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole -vserver <svm_name>
 
 
+>>>>>>> b8087143154c7dd9f5d1d3f33ee1bbdf97a7c9d1
 === Permissions for ONTAP Autonomous Ransomware Protection
 
 If you are using cluster administration credentials, no new permissions are needed.
@@ -209,9 +205,6 @@ For csuser with _SVM_ credentials, execute the following commands from the ONTAP
 ----
 
 For more information, read about link:concept_ws_integration_with_ontap_access_denied.html[Integration with ONTAP Access Denied]
-
-
-
 
 
 == Configure the data collector
@@ -260,8 +253,6 @@ When adding via SVM IP the options are:
 
 
 .After you finish
-
-//* Click *Test Configuration* to check the status of the collector you configured.
 
 * In the Installed Data Collectors page, use the options menu on the right of each collector to edit the data collector. You can restart the data collector or edit data collector configuration attributes. 
 
@@ -323,7 +314,7 @@ Known problems and their resolutions are described in the following table.
 
 In the case of an error, click on _more detail_ in the _Status_ column for detail about the error.
 
-image:CS_Data_Collector_Error.png[]
+image:CS_Data_Collector_Error.png[Workload Security Collector Error More Detail Link]
 
 [cols=2*, options="header", cols"30,70"]
 

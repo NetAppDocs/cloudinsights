@@ -1,17 +1,21 @@
 ---
+permalink: legal-notices.html
 sidebar: sidebar
-permalink: reference_legal_notices.html
-keywords: copyrights, notice, trademarks, patents, privacy, open source
-summary: Legal notices provide access to copyright statements, trademarks, patents, and more.
+keywords:
+summary:
 ---
 
 = Legal notices
-:toc: macro
-:hardbreaks:
-:nofooter:
 :icons: font
-:linkattrs:
-:imagesdir: ./media/
+:imagesdir: ../media/
+
+// Include the common notices
+include::https://raw.githubusercontent.com/NetAppDocs/common/main/_include/common-legal-notices.adoc[]
+
+// Include the open source notice intro
+include::https://raw.githubusercontent.com/NetAppDocs/common/main/_include/open-source-notice-intro.adoc[]
+
+// Add required link(s)
 
 [.lead]
 Legal notices provide access to copyright statements, trademarks, patents, and more.
