@@ -43,6 +43,8 @@ The following are required to configure this data collector:
 * The Cloud Insights Acquisition Unit will initiate connections to TCP port 443 to Rubrik cluster. One collector per cluster.
 * Rubrik cluster IP address.
 * User name and password to the cluster.
+* Rubrik cluster IP address or hostname.
+* For Basic Authentication, a user name and password to the cluster. If you prefer to use Service Account based authentication, you need a Service Account, Secret, and an Organization ID
 * Port requirement: HTTPS 443
 
 
