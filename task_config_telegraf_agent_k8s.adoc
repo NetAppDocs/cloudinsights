@@ -651,7 +651,7 @@ spec:
 |I see repeating error messages resembling the following in my Telegraf logs:
 
  E! [agent] Error writing to outputs.http: Post "\https://<tenant_url>/rest/v1/lake/ingest/influxdb": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
-|Edit the telegraf section in _AgentConfiguration_, and set _dockerMetricCollectionEnabled_ to false. For more details, refer to the operator's  link:telegraf_agent_k8s_config_options.html[configuration options].
+|Edit the telegraf section in _AgentConfiguration_, and increase _outputTimeout_ to 10s. For more details, refer to the operator's link:telegraf_agent_k8s_config_options.html[configuration options].
 
 |I'm missing _involvedobject_ data for some Event Logs.
 |Be sure you have followed the steps in the link:pre-requisites_for_k8s_operator.html[Permissions] section above.
