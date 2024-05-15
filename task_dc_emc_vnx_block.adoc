@@ -110,7 +110,7 @@ Some things to try if you encounter problems with this data collector:
 •	Verify that the device and the host are both running identical versions of the software:
     -	From the Cloud Insights Acquisition Unit, open a command line window
     -	Change the directory to the configured installation directory
-    -	Make a connection with the CLARiiON device by typing “navicli -h ${ip} getagent”
+    -	Make a connection with the CLARiiON device by typing “navicli -h <ip> getagent”
     -	Look for the version number on the first couple of lines. Example: “Agent Rev:           6.16.2 (0.1)”
     -	Look for and compare the version on the first line. Example: “Navisphere CLI Revision 6.07.00.04.07”
 |Error: Unsupported Configuration - No Fibre Channel Ports
