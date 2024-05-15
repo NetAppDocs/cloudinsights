@@ -48,7 +48,7 @@ The *New dashboard* page opens.
 +
 The Edit Widget dialog opens. The default data displayed is for all storages in your environment.
 
-image:VMDashboard-TableWidget1.png[]
+image:VMDashboard-TableWidget1.png[Edit Table Widget dialog]
 
 . We can customize this widget. In the Name field at the top, delete "Widget 1" and enter "Virtual Machine Performance table".
 
@@ -68,7 +68,7 @@ The table now shows only VMs with 10 or more total IOPS.
 +
 The table rows are now grouped according to your setting. You can expand and collapse the groups as needed. Grouped rows show rolled up data for each of the columns. Some columns allow you to choose the roll up method for that column.
 
-image:VMDashboard-TableWidgetGroup.png[]
+image:VMDashboard-TableWidgetGroup.png[Table Widget Grouping example]
 
 . When you have customized the table widget to your satisfaction, click the *[Save]* button.
 +
@@ -90,7 +90,7 @@ Next we will add some charts to show our VM Performance. Let's create a line cha
 
 . Click *[Save]* to add this widget to the dashboard.
 
-image:VMDashboard-LineChartVMLatency.png[]
+image:VMDashboard-LineChartVMLatency.png[Line Chart showing latency data]
 
 Next we will add a chart showing VM Read, Write and Total IOPS in a single chart.
 
@@ -106,7 +106,7 @@ Next we will add a chart showing VM Read, Write and Total IOPS in a single chart
 
 . Click *Show legend* to display a legend for this widget on the dashboard.
 
-image:VMDashboard-AreaChartVMIOPS.png[]
+image:VMDashboard-AreaChartVMIOPS.png[Area chart showing VM IOPS]
 
 . Click *[Save]* to add this widget to the dashboard.
 
@@ -128,5 +128,5 @@ Be sure to *[Save]* the dashboard after you make your changes.
 
 Your final VM Performance Dashboard will look something like this:
 
-image:VMDashExample1.png[]
+image:VMDashExample1.png[VM Dashboard Complete example showing all the widgets in place]
 

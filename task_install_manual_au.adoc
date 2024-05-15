@@ -31,7 +31,7 @@ The process is similar for Linux and Windows.
 .. Click *Save*
 .. Copy the generated API Access token. This step must be performed before you can close the window.
 
-image:Manual_AU_Create_API_Token.png[]
+image:Manual_AU_Create_API_Token.png[Create API Token]
 
 . In Swagger (Admin > API Access > API Documentation), use the token to Authorize Cloud Insights APIs
 .. Click _Authorize_ at the top right of the Swagger screen
@@ -39,13 +39,12 @@ image:Manual_AU_Create_API_Token.png[]
 .. Click *Authorize*
 .. Close the window
 
-image:Manual_AU_Authorization.png[]
+image:Manual_AU_Authorization.png[Authorize the API token]
 
 . Download the AU Installer using the _/au/installers/{platform}/latest_ or _/au/installers/{platform}/{version}_ API:
 .. Platform: *linux*
 .. Version: *<version>* (latest or specified)
-//image:Manual_AU_Version_API.png[]
-//image:Manual_AU_Version_API_2.png[]
+
 
 image:Manual_AU_API_Retrieve_latest.png[API to retrieve latest AU version]
 
@@ -63,8 +62,8 @@ IMPORTANT: The next steps require the use of a temporary token. Do not use the A
 . In the Cloud Insights API Swagger, create a one-time token using the _/au/oneTimeToken_ API.
 .. Copy the resulting one-use token.
 
-image:Manual_AU_one_time_token.png[]
-image:Manual_AU_one_time_token_response.png[]
+image:Manual_AU_one_time_token.png[Create one-time-use API token]
+image:Manual_AU_one_time_token_response.png[Response for one-time-use API token example]
 
 . On the machine where the AU is going to be installed, navigate to the folder containing the downloaded installer file. The commands below require the user to have root permissions.
 .. Unzip the installer file
