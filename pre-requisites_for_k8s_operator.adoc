@@ -36,101 +36,15 @@ Rancher + cattle.io as orchestration/Kubernetes platform: cattle.io/os = linux
 |Commands|The curl and kubectl commands must be available.; for best results, add these commands to the PATH.
 |Connectivity|kubectl cli is configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
 
-If you are behind a proxy during installation, follow the instructions in the link:/task_config_telegraf_agent_k8s.html#configuring-proxy-support[Configuring Proxy Support] section of the Operator installation.
+If you are behind a proxy during installation, follow the instructions in the link:task_config_telegraf_agent_k8s.html#configuring-proxy-support[Configuring Proxy Support] section of the Operator installation.
 
 For accurate audit and data reporting, synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
-|Other|If you are running on OpenShift 4.6 or higher, you must follow the link:task_config_telegraf_agent_k8s.html#openshift-instructions[OpenShift Instructions in addition to ensuring these pre-requisites are met.
+|Other|If you are running on OpenShift 4.6 or higher, you must follow the link:task_config_telegraf_agent_k8s.html#openshift-instructions[OpenShift Instructions] in addition to ensuring these pre-requisites are met.
 |API Token|If you are re-deploying the Operator (i.e. you are updating or replacing it), there is no need to create a new API token; you can re-use the previous token.
 |===
-////
-
-//* The following commands must be available: curl, kubectl. The docker command is required for an optional installation step. For best results, add these commands to the PATH. Note that kubectl needs to be configured with access to the following kubernetes objects at a minimum: agents, clusterroles, clusterrolebindings, customresourcedefinitions, deployments, namespaces, roles, rolebindings, secrets, serviceaccounts, and services. See here for an example .yaml file with these minimum clusterrole privileges.
-//* The host you will use for Operator installation must have kubectl configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
-//* If you are behind a proxy during installation, or when operating the K8s cluster to be monitored, follow the instructions in the link:task_config_telegraf_agent_k8s.html#configuring-proxy-support[Configuring Proxy Support] section of the Operator installation.
-//* The NetApp Kubernetes Monitoring Operator installs its own kube-state-metrics to avoid conflict with any other instances.
-// For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
-//* If you are re-deploying the Operator (i.e. you are updating or replacing it), there is no need to create a _new_ API token; you can re-use the previous token.
-//* Also note that if you have a recent NetApp Kubernetes Monitoring Operator installed and are using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.
-//* Network monitoring:  
-
-
-|===
-|Component|Requirement
-
-|Platform
-|The following platforms are supported:
-
-   AWS Elastic Kubernetes Service (EKS)
-   Azure Kubernetes Service (AKS)
-   Google Kubernetes Engine (GKE)
-   Red Hat OpenShift
-   Rancher Kubernetes Engine (RKE)
-   VMware Tanzu
-
-Network monitoring must be running Linux kernel version 4.18.0 or above. Photon OS is not supported.
-
-The Operator and its dependencies (telegraf, kube-state-metrics, fluentbit, etc.) are not supported on nodes that are running with Arm64 architecture.
-
-|Labels
-|Cloud Insights supports monitoring of Kubernetes nodes that are running Linux, by specifying a Kubernetes node selector that looks for the following Kubernetes labels on these platforms:
-
-Kubernetes v1.20 and above: Kubernetes.io/os = linux
-Rancher + cattle.io as orchestration/Kubernetes platform: cattle.io/os = linux
-
-
-|Commands
-|The _curl_, _kubectl_ commands must be available; for best results, add these commands to the PATH. 
-
-Note that _kubectl_ needs to be configured with access to these kubernetes objects: 
-agents
-clusterroles
-clusterrolebindings
-customresourcedefinitions
-deployments
-namespaces
-roles
-rolebindings
-secrets
-serviceaccounts
-services
-
-|Connectivity
-|The host you will use for Operator installation must have kubectl configured to communicate with the target K8s cluster, and have Internet connectivity to your Cloud Insights environment.
-
-If you are behind a proxy during installation, or when operating the K8s cluster to be monitored, follow the instructions in the link:task_config_telegraf_agent_k8s.html#configuring-proxy-support[Configuring Proxy Support] section of the Operator installation.
-
-For accurate audit and data reporting, it is strongly recommended to synchronize the time on the Agent machine using Network Time Protocol (NTP) or Simple Network Time Protocol (SNTP).
-
-
-|Other
-|If you are running on OpenShift 4.6 or higher, you must follow the link:task_config_telegraf_agent_k8s.html#openshift-instructions[OpenShift Instructions] in addition to ensuring these pre-requisites are met.
-
-|API Token
-|If you are re-deploying the Operator (i.e. you are updating or replacing it), there is no need to create a _new_ API token; you can re-use the previous token.
-
-Also note that if you have a recent NetApp Kubernetes Monitoring Operator installed and are using an API access token that is renewable, expiring tokens will automatically be replaced by new/refreshed API access tokens.
-
-|===
 
 
 
-=== Configuring the Operator
-
-In newer versions of the operator, most commonly modified settings can be configured in the _AgentConfiguration_ custom resource. You can edit this resource before deploying the operator by editing the _operator-config.yaml_ file. This file includes commented out examples of some settings. See the list of link:telegraf_agent_k8s_config_options.html[available settings] for the most recent version of the operator.
-
-You can also edit this resource after the operator has been deployed using the following command:
-
-	kubectl -n netapp-monitoring edit AgentConfiguration
-
-To determine if your deployed version of the operator supports AgentConfiguration, run the following command:
-
-	kubectl get crd agentconfigurations.monitoring.netapp.com
- 
-If you see an “Error from server (NotFound)” message, your operator must be upgraded before you can use the AgentConfiguration.
-
-
-
-////
 == Important Things to Note Before You Start
 
 If you are running with a <<configuring-proxy-support,proxy>>, have a <<using-a-custom-or-private-docker-repository,custom repository>>, or are using <<openshift-instructions,OpenShift>>, read the following sections carefully.
@@ -229,7 +143,7 @@ Edit the AgentConfiguration in operator-config.yaml to reflect the new docker re
 agent:
   ...
   # An optional docker registry where you want docker images to be pulled from as compared to CI's docker registry 
-  # Please see documentation link here: https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent_k8s.html#using-a-custom-or-private-docker-repository
+  # Please see documentation for link:task_config_telegraf_agent_k8s.html#using-a-custom-or-private-docker-repository[using a custom or private docker repository].
   dockerRepo: your.docker.repo/long/path/to/test
   # Optional: A docker image pull secret that maybe needed for your private docker registry
   dockerImagePullSecret: docker-secret-name  
