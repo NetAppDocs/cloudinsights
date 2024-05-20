@@ -86,7 +86,7 @@ Determine whether an AgentConfiguration exists with the existing Operator (if yo
  
 If an AgentConfiguration exists:
 
-* <<installing-the-netapp-kubernetes-monitoring-operator,Install>> the latest Operator over the existing Operator.
+* <<installing-the-kubernetes-monitoring-operator,Install>> the latest Operator over the existing Operator.
 
 ** Ensure you are <<using-a-custom-or-private-docker-repository,pulling the latest container images>> if you are using a custom repository.
 
@@ -100,8 +100,8 @@ If the AgentConfiguration does not exist:
   
  kubectl -n netapp-monitoring get agent -o yaml > agent_backup.yaml
 
-* <<to-remove-the-netapp-kubernetes-monitoring-operator,Uninstall>> the existing Operator.
-* <<installing-the-netapp-kubernetes-monitoring-operator,Install>> the latest Operator.
+* <<to-remove-the-kubernetes-monitoring-operator,Uninstall>> the existing Operator.
+* <<installing-the-kubernetes-monitoring-operator,Install>> the latest Operator.
 ** Use the same cluster name.
 ** After downloading the latest Operator YAML files, port any customizations found in agent_backup.yaml to the downloaded operator-config.yaml before deploying.
 ** Ensure you are <<using-a-custom-or-private-docker-repository,pulling the latest container images>> if you are using a custom repository.
@@ -496,7 +496,7 @@ For example, edit the ReplicaSet...
  kubectl delete clusterrole agent-manager-role agent-proxy-role agent-metrics-reader
  kubectl delete clusterrolebinding agent-manager-rolebinding agent-proxy-rolebinding agent-cluster-admin-rolebinding
 
-2. <<installing-the-netapp-kubernetes-monitoring-operator, Install>> the latest version of the monitoring operator.
+2. <<installing-the-kubernetes-monitoring-operator, Install>> the latest version of the monitoring operator.
 
 |I ran into issues trying to deploy the Operator, and I have PSP/PSA in use.
 |1. Edit the agent using the following command:
@@ -580,7 +580,7 @@ spec:
 
 |Why am I seeing two monitoring operator pods running, one named netapp-ci-monitoring-operator-<pod> and the other named monitoring-operator-<pod>?
 
-|As of October 12, 2023, Cloud Insights has refactored the operator to better serve our users; for those changes to be fully adopted, you must <<uninstalling,remove the old operator>> and <<installing-the-netapp-kubernetes-monitoring-operator,install the new one>>.
+|As of October 12, 2023, Cloud Insights has refactored the operator to better serve our users; for those changes to be fully adopted, you must <<uninstalling,remove the old operator>> and <<installing-the-kubernetes-monitoring-operator,install the new one>>.
 
 |My kubernetes events unexpectedly stopped reporting to Cloud Insights.
 a|Retrieve the name of the event-exporter pod:
@@ -598,7 +598,7 @@ It should be either "netapp-ci-event-exporter" or "event-exporter".  Next, edit 
      - /var/log/containers/netapp-ci-event-exporter*.log
  ...
 
-Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-netapp-kubernetes-monitoring-operator,reinstall>> the agent.
+Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-kubernetes-monitoring-operator,reinstall>> the agent.
 
 |I'm seeing pod(s) deployed by the Kubernetes Monitoring Operator crash because of insufficient resources.
 |Refer to the Kubernetes Monitoring Operator link:telegraf_agent_k8s_config_options.html[configuration options] to increase the CPU and/or memory limits as needed.
