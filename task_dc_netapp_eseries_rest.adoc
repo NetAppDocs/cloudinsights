@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_dc_na_eseries.html
-keywords: data collector, ontap, clustered ontap, e-series, santricity
+keywords: data collector, ontap, clustered ontap
 summary: Configuring NetApp E-Series data collector. 
 ---
 
-= NetApp E-Series Legacy Santricity API data collector
+= NetApp E-Series data collector
 :toc: macro
 :hardbreaks:
 :toclevels: 2
@@ -15,7 +15,7 @@ summary: Configuring NetApp E-Series data collector.
 :imagesdir: ./media/
 
 [.lead]
-The NetApp E-Series Legacy Santricity API data collector gathers inventory and performance data. The collector supports firmware 7.x+ using the same configurations and reporting the same data. 
+The NetApp E-Series data collector gathers inventory and performance data. The collector supports firmware 7.x+ using the same configurations and reporting the same data. 
 
 == Terminology
 
@@ -33,6 +33,35 @@ Cloud insight acquires the following inventory information from the NetApp E-Ser
 |===
 
 Note: These are common terminology mappings only and might not represent every case for this data collector. 
+
+
+== Requirements
+
+* The IP address of each controller on the array
+
+* This collector supports only E-Series model arrays with *native REST API capabilities*. The E-Series org ships an off-array, installable REST API distribution for older E-Series arrays: this collector does not support that scenario. Users with older arrays should continue to use Cloud Insights' link:task_dc_na_eseries.html[E-Series SANtricity API] collector.
+
+* The "E-Series Controller IP Addresses" field supports a comma delimited string of 2 IP/hostnames; the collector will intelligently try the second IP/hostname if the first is inaccessible.
+
+* HTTPS port: default is 8443. 
+
+== Configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Comma-separated list of Array SANtricity Controller IPs| IP addresses and/or fully-qualified domain names for the array controllers
+|===
+
+== Advanced configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field|Description
+|Inventory Poll Interval (min) |Default is 30 minutes
+|Performance Poll Interval up to 3600 seconds|Default is 300 seconds 
+|===
+
 
 == E-Series Terminology (Landing Page)
 
@@ -84,30 +113,6 @@ The following terms apply to objects or references that you might find on NetApp
 * Throughput – a number representing the host driven throughput on this controller. Ideally sourced directly from the array, if unavailable, it will be calculated by summing all the throughput for volumes that belong exclusively to this node. 
 // Available for NetApp E-Series with OCI 7.3.10, or by installing Data Source Service Pack 8 or higher for OCI 7.3.1+
 * Processors – CPU count
-
-
-== Requirements
-
-* The IP address of each controller on the array
-* Port requirement 2463 
-
-== Configuration 
-
-[cols=2*, options="header", cols"50,50"]
-|===
-|Field|Description
-|Comma-separated list of Array SANtricity Controller IPs| IP addresses and/or fully-qualified domain names for the array controllers
-|===
-
-== Advanced configuration
-
-[cols=2*, options="header", cols"50,50"]
-|===
-|Field|Description
-|Inventory Poll Interval (min) |Default is 30 minutes
-|Performance Poll Interval up to 3600 seconds|Default is 300 seconds 
-|===
-
            
 == Troubleshooting
 
