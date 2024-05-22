@@ -17,18 +17,6 @@ keywords: features
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the commercial Editions of Cloud Insights.  
 
 
-== May 2024
-
-=== No more stale alerts
-
-Log alerts are often resolved based on criteria such as follow-up log events. But sometimes the subsequent event never happens, for example if an EMS event (such as "Antivirus Server Busy") does not have a follow-up event indicating that the issue has been resolved, or because evicted pods no longer exist. In those cases, triggered alerts might remain in "active" state indefinitely.
-
-Log alerts can now be resolved based on time; if the alert condition stops occurring, Cloud Insights can resolve the alert automatically after a specified time has passed. You can choose to resolve the alert in minutes, hours, or days.
-
-image:alerts_resolve_based_on_time.png[Drop-down showing the option to resolve an alert automatically choosing the number 7 and the time period of Days]
-
-'''
-
 
 == April 2024
 
