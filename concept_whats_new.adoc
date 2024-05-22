@@ -20,19 +20,12 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 == April 2024
 
+=== iSCSI support for Kubernetes
 
-=== iSCSI SAN Support for Kubernetes Network Map
+CI now has support to map the iSCSI storage associated with Kubernetes, allowing faster troubleshooting using the Kubernetes network map and the ability to provide chargeback or showback reports via the DWH.
 
-Identify Kubernetes underlying storage dependencies for NFS and now iSCSI.
-Accelerate issue resolution by gaining insight into the Kubernetes application’s storage network activity and undelineated storage metrics. Understand how the Kubernetes application uses the storage infrastructure for chargeback and showback reporting.
 
 image:pod-to-storage.png[Pod-to-storage example]
-
-
-
-
-
-
 
 
 
