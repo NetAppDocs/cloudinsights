@@ -42,7 +42,7 @@ For csuser with cluster credentials, do the following from the ONTAP command lin
  security login role create -role csrole -cmddirname "vserver services access-check authentication translate" -access all
  security login role create -role csrole -cmddirname "vserver name-mapping" -access all
 
-Be sure to review the Permissions section of the link:/cloudinsights/task_add_collector_svm.html[Configuring the ONTAP SVM Data Collector] page as well. 
+Be sure to review the Permissions section of the link:task_add_collector_svm.html[Configuring the ONTAP SVM Data Collector] page as well. 
 
 == How to enable the feature?
 
