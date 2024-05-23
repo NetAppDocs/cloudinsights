@@ -19,13 +19,12 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 == May 2024
 
-=== No more stale alerts
-
-Log alerts are often resolved based on criteria such as follow-up log events. But sometimes the subsequent event never happens, for example if an EMS event (such as "Antivirus Server Busy") does not have a follow-up event indicating that the issue has been resolved, or because evicted pods no longer exist. In those cases, triggered alerts might remain in "active" state indefinitely.
+=== Automatically resolve alerts based on time
 
 Log alerts can now be resolved based on time; if the alert condition stops occurring, Cloud Insights can resolve the alert automatically after a specified time has passed. You can choose to resolve the alert in minutes, hours, or days.
 
-image:alerts_resolve_based_on_time.png[Drop-down showing the option to resolve an alert automatically choosing the number 7 and the time period of Days]
+image:alerts_resolve_based_on_time.png[Resolve an alert based on time passed]
+
 
 '''
 
@@ -33,19 +32,11 @@ image:alerts_resolve_based_on_time.png[Drop-down showing the option to resolve a
 == April 2024
 
 
-=== iSCSI SAN Support for Kubernetes Network Map
+=== iSCSI support for Kubernetes
 
-Identify Kubernetes underlying storage dependencies for NFS and now iSCSI.
-Accelerate issue resolution by gaining insight into the Kubernetes application’s storage network activity and undelineated storage metrics. Understand how the Kubernetes application uses the storage infrastructure for chargeback and showback reporting.
+Cloud Insights now has support to map the iSCSI storage associated with Kubernetes, allowing faster troubleshooting using the Kubernetes network map and the ability to provide chargeback or showback reports via Reporting.
 
 image:pod-to-storage.png[Pod-to-storage example]
-
-
-
-
-
-
-
 
 
 
@@ -306,7 +297,7 @@ Workload Security has been improved with the following:
 
 === Module Trials
 
-In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-evaluation[Module Evaluations]. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. You will only be charged for your Kubernetes Observability managed unit usage at the end of the trial period.
+In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-evaluation[Module Evaluations]. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. You will only be charged for your Kubernetes Observability managed unit usage at the end of the evaluation period.
 
 
 === Restrict access to specified domains
@@ -788,7 +779,7 @@ Note that some of these monitors will be _enabled_ by default; you must _pause_ 
 
 === .CSV Export for all Dashboard Table Widgets
 
-Ensuring accessibility to your data is essential, so we've made .CSV export image:csv_export_icon[.csv export icon] available for all metric queries, dashboard table widgets, and object landing pages, regardless of the type of data (asset or integration) you're querying. 
+Ensuring accessibility to your data is essential, so we've made .CSV export available for all metric queries, dashboard table widgets, and object landing pages, regardless of the type of data (asset or integration) you're querying. 
 
 Data customizations like column selection, renaming columns, and unit conversions are also now included in the new export functionality.
 
@@ -1720,7 +1711,7 @@ For details on API usage, please refer to the link:API_Overview.html#api-documen
 
 === Easier Management of Monitors
 
-link:task_create_monitor.html#monitor-grouping[Monitor Grouping] simplifies the management of monitors in your environment. Multiple monitors can now be grouped together and paused as one. For example, if you have an update occurring on a stack of infrastructure, you can pause alerts from all those devices via one click.
+link:task_create_monitor.html#monitor-groups[Monitor Grouping] simplifies the management of monitors in your environment. Multiple monitors can now be grouped together and paused as one. For example, if you have an update occurring on a stack of infrastructure, you can pause alerts from all those devices via one click.
 
 Monitor groups is the first part of an exciting new feature bringing improved management of ONTAP devices to Cloud Insights.
 
@@ -1784,7 +1775,7 @@ The agent for ingestion of telegraf integration data has been updated to version
 
 === Cloud Cost Analyzer
 
-Experience the power of Spot by NetApp with Cloud Cost, which provides a detailed link:http://docs.netapp.com/us-en/cloudinsights/task_getting_started_with_cloud_cost.html[cost analysis] of past, present, and estimated spending, providing visibility into cloud usage in your environment. The Cloud Cost dashboard delivers a clear view of cloud expenses and a drill down into individual workloads, accounts, and services.
+Experience the power of Spot by NetApp with Cloud Cost, which provides a detailed cost analysis of past, present, and estimated spending, providing visibility into cloud usage in your environment. The Cloud Cost dashboard delivers a clear view of cloud expenses and a drill down into individual workloads, accounts, and services.
 
 Cloud Cost can help with these major challenges:
 
@@ -1906,7 +1897,7 @@ image:Kubernetes_Cluster_Detail_Example.png[The Kubernetes Explorer]
 
 === Simpler Kubernetes Installation
 
-Kubernetes Agent installation has been streamlined to require fewer user interactions. link:task_config_telegraf_agent.html#kubernetes[Installing the Kubernetes Agent] now includes Kubernetes data collection.
+Kubernetes Agent installation has been streamlined to require fewer user interactions. link:task_config_telegraf_agent_k8s.html[Installing the Kubernetes Agent] now includes Kubernetes data collection.
 
 
 '''
@@ -2621,7 +2612,7 @@ When configuring the following data collectors, you can filter to include or exc
 
 * link:task_dc_amazon_ec2.html#advanced-configuration[Amazon EC2]
 * link:task_dc_ms_azure.html#advanced-configuration[Azure]
-* link:task_dc_google_cloud.html#advanced_configuration[Google Cloud Platform]
+* link:task_dc_google_cloud.html#advanced-configuration[Google Cloud Platform]
 
 '''
 
@@ -2647,7 +2638,7 @@ When configuring the following data collectors, you can filter to include or exc
 
 === Collecting from AWS Child Accounts
 
-* Cloud Insights supports link:task_dc_amazon_ec2.html#collecting_from_aws_child_accounts[collection from AWS child accounts] within a single data collector. Your AWS environment must be configured to allow Cloud Insights to collect from child accounts.
+* Cloud Insights supports link:task_dc_amazon_ec2.html#collecting-from-aws-child-accounts[collection from AWS child accounts] within a single data collector. Your AWS environment must be configured to allow Cloud Insights to collect from child accounts.
 
 === Data Collector Naming 
 
