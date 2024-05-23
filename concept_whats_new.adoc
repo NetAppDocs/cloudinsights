@@ -19,13 +19,12 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 == May 2024
 
-=== No more stale alerts
-
-Log alerts are often resolved based on criteria such as follow-up log events. But sometimes the subsequent event never happens, for example if an EMS event (such as "Antivirus Server Busy") does not have a follow-up event indicating that the issue has been resolved, or because evicted pods no longer exist. In those cases, triggered alerts might remain in "active" state indefinitely.
+=== Automatically resolve alerts based on time
 
 Log alerts can now be resolved based on time; if the alert condition stops occurring, Cloud Insights can resolve the alert automatically after a specified time has passed. You can choose to resolve the alert in minutes, hours, or days.
 
-image:alerts_resolve_based_on_time.png[Drop-down showing the option to resolve an alert automatically choosing the number 7 and the time period of Days]
+image:alerts_resolve_based_on_time.png[Resolve an alert based on time passed]
+
 
 '''
 
@@ -33,19 +32,11 @@ image:alerts_resolve_based_on_time.png[Drop-down showing the option to resolve a
 == April 2024
 
 
-=== iSCSI SAN Support for Kubernetes Network Map
+=== iSCSI support for Kubernetes
 
-Identify Kubernetes underlying storage dependencies for NFS and now iSCSI.
-Accelerate issue resolution by gaining insight into the Kubernetes application’s storage network activity and undelineated storage metrics. Understand how the Kubernetes application uses the storage infrastructure for chargeback and showback reporting.
+Cloud Insights now has support to map the iSCSI storage associated with Kubernetes, allowing faster troubleshooting using the Kubernetes network map and the ability to provide chargeback or showback reports via Reporting.
 
 image:pod-to-storage.png[Pod-to-storage example]
-
-
-
-
-
-
-
 
 
 
@@ -150,7 +141,9 @@ In large environments, you can automate Workload Security collector creation usi
 
 === Try Cloud Insights Features you haven’t used yet
 
+
 In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-evaluation[Module Evaluations]. For example, if you are subscribed to Cloud Insights and have been monitoring storage and virtual machines, when you add Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. Kubernetes Observability managed unit usage will not count against your subscribed entitlement until after the trial period ends.
+
 
 === How healthy are my workloads?
 
@@ -306,7 +299,9 @@ Workload Security has been improved with the following:
 
 === Module Trials
 
+
 In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-evaluation[Module Evaluations]. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. You will only be charged for your Kubernetes Observability managed unit usage at the end of the trial period.
+
 
 
 === Restrict access to specified domains
