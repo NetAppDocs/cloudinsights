@@ -16,32 +16,27 @@ keywords: features
 [.lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the commercial Editions of Cloud Insights.  
 
-NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
 
+== May 2024
+
+=== Automatically resolve alerts based on time
+
+Log alerts can now be resolved based on time; if the alert condition stops occurring, Cloud Insights can resolve the alert automatically after a specified time has passed. You can choose to resolve the alert in minutes, hours, or days.
+
+image:alerts_resolve_based_on_time.png[Resolve an alert based on time passed]
+
+
+'''
 
 
 == April 2024
 
-////
-=== iSCSI Volume Latency 
 
-Metrics for iSCSI Volume Latency are available for use in dashboards, alerts, and more. To collect iSCSI Latency metrics, turn on _Network Performance and Map_ from the Kubernetes Collector "Modify Deployment" menu item.
-////
+=== iSCSI support for Kubernetes
 
-
-=== iSCSI SAN Support for Kubernetes Network Map
-
-Identify Kubernetes underlying storage dependencies for NFS and now iSCSI.
-Accelerate issue resolution by gaining insight into the Kubernetes application’s storage network activity and undelineated storage metrics. Understand how the Kubernetes application uses the storage infrastructure for chargeback and showback reporting.
+Cloud Insights now has support to map the iSCSI storage associated with Kubernetes, allowing faster troubleshooting using the Kubernetes network map and the ability to provide chargeback or showback reports via Reporting.
 
 image:pod-to-storage.png[Pod-to-storage example]
-
-
-
-
-
-
-
 
 
 
@@ -146,7 +141,7 @@ In large environments, you can automate Workload Security collector creation usi
 
 === Try Cloud Insights Features you haven’t used yet
 
-In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-evaluation[Module Evaluation]. For example, if you are subscribed to Cloud Insights and have been monitoring storage and virtual machines, when you add Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. Kubernetes Observability managed unit usage will not count against your subscribed entitlement until after the trial period ends.
+In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-evaluation[Module Evaluations]. For example, if you are subscribed to Cloud Insights and have been monitoring storage and virtual machines, when you add Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. Kubernetes Observability managed unit usage will not count against your subscribed entitlement until after the trial period ends.
 
 === How healthy are my workloads?
 
@@ -302,7 +297,7 @@ Workload Security has been improved with the following:
 
 === Module Trials
 
-In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-evaluation[Module Evaluation]. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. You will only be charged for your Kubernetes Observability managed unit usage at the end of the trial period.
+In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-evaluation[Module Evaluations]. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. You will only be charged for your Kubernetes Observability managed unit usage at the end of the evaluation period.
 
 
 === Restrict access to specified domains
@@ -784,7 +779,7 @@ Note that some of these monitors will be _enabled_ by default; you must _pause_ 
 
 === .CSV Export for all Dashboard Table Widgets
 
-Ensuring accessibility to your data is essential, so we've made .CSV export image:csv_export_icon.png[.csv export icon] available for all metric queries, dashboard table widgets, and object landing pages, regardless of the type of data (asset or integration) you're querying. 
+Ensuring accessibility to your data is essential, so we've made .CSV export available for all metric queries, dashboard table widgets, and object landing pages, regardless of the type of data (asset or integration) you're querying. 
 
 Data customizations like column selection, renaming columns, and unit conversions are also now included in the new export functionality.
 
@@ -1148,7 +1143,7 @@ image:ChatIcon.png[Chat Icon showing the blue NetApp "N" above a smile]
 
 We’ve made it easier to get you up and running with Cloud Insights’ advanced Kubernetes monitoring and cluster explorer.
 
-The link:https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent_k8s.html#operator-based-install-or-script-based-install[NetApp Kubernetes Monitoring Operator] (NKMO) is the preferred method for installing Kubernetes for Cloud Insights Insights, for more flexible configuration of monitoring in fewer steps, as well as enhanced opportunities for monitoring other software running in the K8s cluster.
+The link:task_config_telegraf_agent_k8s.html[Kubernetes Monitoring Operator] (NKMO) is the preferred method for installing Kubernetes for Cloud Insights Insights, for more flexible configuration of monitoring in fewer steps, as well as enhanced opportunities for monitoring other software running in the K8s cluster.
 
 Click the link above for more information and pre-requisites
 
@@ -1162,7 +1157,7 @@ You can now manage users and invites using Cloud Insights' powerful API. Read mo
 
 Don’t miss out on critical metrics due to a failed collector!
 
-It’s easier than ever to keep track of your data collectors with new link:https://docs.netapp.com/us-en/cloudinsights/task_system_monitors.html#data-collection-monitors[alerts] for data collector and acquisition unit failures.
+It’s easier than ever to keep track of your data collectors with new link:task_system_monitors.html#data-collection-monitors[alerts] for data collector and acquisition unit failures.
 Note that these Monitors are _Paused_ by default. To enable, navigate to your monitors page and locate and resume “Acquisition Unit Shutdown” and “Collector Failed” 
 
 
@@ -1394,6 +1389,7 @@ An Administrator can also invite other users but can only assign Cloud Secure ro
 
 
 
+
 === Operating System support
 
 CentOS 8.x support is being replaced with *CentOS 8 Stream* support. CentOS 8.x will reach End-of-Life on December 31, 2021.
@@ -1577,123 +1573,6 @@ This means you can allow more users administrative access to monitoring, optimiz
 
 link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html[Find out more] about the different levels of access in the Cloud Insights documentation. 
 
-////
-=== Improved User Role Management
-
-Cloud Insights now allows greater freedom for assigning link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html[user roles] in each of its three distinct Feature Sets: _Monitoring and Optimization_, _Cloud Secure_, and _Reporting_. A user may be assigned a different role in each Feature Set, with accompanying permission levels specific to that Feature Set:
-
-|===
-|Role	|Monitoring	|Cloud Secure	|Reporting
-
-|Account Owner	
-3+>|Can modify subscriptions, view billing and usage information, and perform all Administrator functions for Monitoring & Optimization, Cloud Secure, and Reporting.
-Owners can also invite and manage users, as well as manage SSO Authentication and Identity Federation settings. 
-
-The Account Owner is created when you register for Cloud Insights.
-
-It is strongly recommended to have at least two Account Owners for each Cloud Insights environment. 
-
-|Administrator	
-|Can perform all Monitoring & Optimization functions, all user functions, as well as management of data collectors, API keys, and notifications.
-An Administrator can also invite other users but can only assign Monitor and Optimize roles. 
-
-|Can perform all Cloud Secure functions, including those for Alerts, Forensics, data collectors, automated response policies, and APIs for Cloud Secure.
-An Administrator can also invite other users but can only assign Cloud Secure roles.
-
-|Can perform all User/Author functions, as well as all administrative tasks such as configuration of reports, and the shutdown and restart of reporting tasks.
-An Administrator can also invite other users but can only assign Reporting roles.
-
-|User	
-|Can view and modify dashboards, queries, alerts, annotations, annotation rules, and applications, and manage device resolution.
-|n/a	
-|Can perform all Guest/Consumer functions as well as create and manage reports and dashboards.
-
-|Guest	
-|Has read-only access to asset pages, dashboards, alerts, and can view and run queries.
-|n/a	
-|Can view, schedule, and run reports and set personal preferences such as those for languages and time zones. Guests/Consumers cannot create reports or perform administrative tasks.
-
-|===
-
-It is recommended to verify your user's roles, including SSO roles if appropriate, following this update.
-////
-
-////
-=== More powerful Variables
-
-Dashboards are better than ever with the ability to define link:https://docs.netapp.com/us-en/cloudinsights/concept_dashboard_features.html#variables[variables based on attributes], which can be universally applied to all widgets on your dashboard, or widgets of your choosing. Powerful filtering options allow you to set wildcards in your variables as well as select multiple individual attributes or counters.
-
-image:Variables_Choose_Filter_Scope.png[Variable Filter and Scope]
-////
-
-////
-=== Automatic Widget Naming
-
-Widgets are automatically named based on the first widget query. The name is created from fields such as the metric name (or object name, for tables) and "Group by" attributes (metric as well as aggregation method). Different widget types may use some or all of these when creating an automatic name.
-
-image:WidgetNameExample.png[Widget Naming Example]
-
-Selecting a new object or grouping attribute updates the automatic name. And of course you can always give the widget your own name if desired.
-////
-
-////
-=== Alerts and Monitors available in top search
-
-You can now search for alerts in Cloud Insights' top search box. 
-
-image:Search_Alert.png[Top Search for Alerts]
-////
-
-////
-=== Alerts on asset landing pages
-
-Alerts are now shown in the Expert View section of an asset landing page. 
-
-image:Alerts_In_Expert_View.png[Alerts in Expert View]
-
-
-The *Related Alerts* table on an asset's landing page enables you to quickly and easily investigate alerts that occur related to the asset.
-
-image:Alerts_on_Landing_Page.png[Related Alerts Table]
-////
-
-////
-=== Excluded devices shown in FC Resolution Status
-
-FC Resolution now shows devices that are specifically excluded from identification with a status of _Excluded_. 
-////
-
-////
-=== Viewing Proxy URLs
-
-You can view your proxy endpoint URLs by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed.
-
-image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
-////
-
-////
-=== Improved auditing
-
-The Audit page includes improvements in viewing and filtering audit events, as well as clearer audit messages.  Read more about Audit features link:https://docs.netapp.com/us-en/cloudinsights/concept_audit.html[here].
-////
-
-////
-=== AHR Onboarding
-An Automatic Device Resolution tutorial video is available during user onboarding as well as in the link:https://docs.netapp.com/us-en/cloudinsights/concept_feature_tutorials.html[Feature Tutorials] documentation.
-////
-
-////
-=== Additional Operating Systems supported
-
-The Cloud Insights Acquisition Unit supports the following operating systems, in addition to those already supported:
-
-* Centos (64-bit) 7.9 and 8.3
-* Debian (64-bit) 10
-* Oracle Enterprise Linux (64-bit) 7.9 and 8.3
-* Red Hat Enterprise Linux (64-bit) 7.9 and 8.3
-* Ubuntu Server 20.04 LTS
-////
-
 
 '''
 
@@ -1823,7 +1702,7 @@ Premium edition continues to allow full use of all API categories.
 
 |===
 
-For details on API usage, please refer to the link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-documentation-swagger[API documentation]. 
+For details on API usage, please refer to the link:API_Overview.html#api-documentation-swagger[API documentation]. 
 
 
 '''
@@ -1832,7 +1711,7 @@ For details on API usage, please refer to the link:https://docs.netapp.com/us-en
 
 === Easier Management of Monitors
 
-link:https://docs.netapp.com/us-en/cloudinsights/task_create_monitor.html#monitor-grouping[Monitor Grouping] simplifies the management of monitors in your environment. Multiple monitors can now be grouped together and paused as one. For example, if you have an update occurring on a stack of infrastructure, you can pause alerts from all those devices via one click.
+link:task_create_monitor.html#monitor-groups[Monitor Grouping] simplifies the management of monitors in your environment. Multiple monitors can now be grouped together and paused as one. For example, if you have an update occurring on a stack of infrastructure, you can pause alerts from all those devices via one click.
 
 Monitor groups is the first part of an exciting new feature bringing improved management of ONTAP devices to Cloud Insights.
 
@@ -2467,7 +2346,7 @@ image:DuplicateWidget.png[Duplicate a widget]
 
 === Single Sign-On (SSO)
 
-With Cloud Insights Premium Edition, administrators can enable *link:concept_user_roles.html[Single Sign-On]* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights using their corporate credentials.
+With Cloud Insights Premium Edition, administrators can enable *link:concept_user_roles.html#what-is-identity-federation[Single Sign-On]* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights using their corporate credentials.
 
 NOTE: SSO is only available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory.
 
@@ -2542,19 +2421,14 @@ This change effectively doubles the environment capacity that you can monitor us
 
 == November 2019
 
+
 ////
-=== Single Sign-On (SSO)
-
-In addition to inviting users, administrators can enable link:#single-sign-on-(sso)-accounts[Single Sign-On (SSO)] access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights.
-
-SSO is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory.  
-////
-
-=== Editions Feature Comparison Table
+ ////=== Editions Feature Comparison Table
 
 The *Admin > Subscription* page link:concept_subscribing_to_cloud_insights.html[comparison table] has been updated to list the feature sets available in Basic, Standard, and Premium Editions of Cloud Insights. NetApp is constantly improving its Cloud Services, so check this page often to find the Edition that's right for your evolving business needs.
 
 '''
+////
 
 == October 2019
 
