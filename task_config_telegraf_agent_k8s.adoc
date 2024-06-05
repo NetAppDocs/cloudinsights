@@ -607,6 +607,9 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-kube
 |A missing image or invalid configuration caused the netapp-ci-kube-state-metrics pods to fail to startup or become ready. Now the StatefulSet is stuck and configuration changes are not being applied to the netapp-ci-kube-state-metrics pods. 
 |The StatefulSet is in a link:https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#forced-rollback[broken] state. After fixing any configuration problems bounce the netapp-ci-kube-state-metrics pods.
 
+|netapp-ci-kube-state-metrics pods fail to start after running a Kubernetes Operator upgrade, throwing ErrImagePull (failing to pull the image).
+|Try resetting the pods manually.
+
 
 |===
 
