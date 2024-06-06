@@ -322,7 +322,7 @@ spec:
     # nonWorkloadAggrIntervalSeconds: '15'
 
     # # A set of regular expressions used in env names and data maps whose value will be redacted
-    # termsToRedact: '"pwd", "password", "token", "apikey", "api-key", "jwt"'
+    # termsToRedact: '"pwd", "password", "token", "apikey", "api-key", "api_key", "jwt", "accesskey", "access_key", "access-key", "ca-file", "key-file", "cert", "cafile", "keyfile", "tls", "crt", "salt", ".dockerconfigjson", "auth", "secret"'
 
     # # A comma separated list of additional kinds to watch from the default set of kinds watched by the collector
     # # Each kind will have to be prefixed by its apigroup
@@ -340,5 +340,6 @@ spec:
     # # change-observer-watch-ds additional tolerations. Use the following abbreviated single line format only.
     # # Inspect change-observer-watch-ds to view tolerations which are always present.
     # # Example: '{key: taint1, operator: Exists, effect: NoSchedule},{key: taint2, operator: Exists, effect: NoExecute}'
-    # watch-tolerations: ''----
+    # watch-tolerations: ''
+    
 ----

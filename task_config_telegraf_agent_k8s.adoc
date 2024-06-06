@@ -610,6 +610,8 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-kube
 |netapp-ci-kube-state-metrics pods fail to start after running a Kubernetes Operator upgrade, throwing ErrImagePull (failing to pull the image).
 |Try resetting the pods manually.
 
+|"Event discarded as being older then maxEventAgeSeconds" messages are being observed for my Kubernetes cluster under Log Analysis.
+|Modify the Operator _agentconfiguration_ and increase the _event-exporter-maxEventAgeSeconds_ (i.e. to 60s), _event-exporter-kubeQPS_ (i.e. to 100), and _event-exporter-kubeBurst_ (i.e. to 500). For more details on these configuration options, see the link:telegraf_agent_k8s_config_options.html[configuration options] page.
 
 |===
 
