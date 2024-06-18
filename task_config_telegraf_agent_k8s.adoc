@@ -613,6 +613,9 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-kube
 |"Event discarded as being older then maxEventAgeSeconds" messages are being observed for my Kubernetes cluster under Log Analysis.
 |Modify the Operator _agentconfiguration_ and increase the _event-exporter-maxEventAgeSeconds_ (i.e. to 60s), _event-exporter-kubeQPS_ (i.e. to 100), and _event-exporter-kubeBurst_ (i.e. to 500). For more details on these configuration options, see the link:telegraf_agent_k8s_config_options.html[configuration options] page.
 
+|Telegraf wants (or crashes because) of insufficient lockable memory.
+|Try increasing the limit of lockable memory for Telegraf in the underlying operating system/node. If increasing the limit is not an option, modify the NKMO agentconfiguration and set _skipLockedMemory_ to _true_.  This will instruct Telegraf to no attempt to reserve locked memory pages. While this can pose a security risk as decrypted secrets might be swapped out to disk, it allows for execution in environments where reserving locked memory is not possible. For more details on the _skipLockedMemory_ configuration options, refer to the link:telegraf_agent_k8s_config_options.html[configuration options] page.
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
