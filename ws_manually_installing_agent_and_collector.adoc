@@ -1,4 +1,4 @@
---
+---
 sidebar: sidebar
 permalink: ws_manually_installing_agent_and_collector.html
 keywords:  install, configure, agent, collector, workload, security, cloud secure
@@ -7,7 +7,7 @@ summary: Workload Security agents can be installed or updated manually, providin
 
 = Manually Installing Workload Security Agent and Collector
 :hardbreaks:
-:toclevels: 1
+:toclevels: 2
 :nofooter:
 :icons: font
 :linkattrs:
@@ -121,7 +121,7 @@ total 153344
 
 . Generate a one-time token for new agent installation. 
 +
-NOTE: The one-time token generated in this step is different from the API access token generated at step 1c. 
+Note: The one-time token generated in this step is different from the API access token generated at step 1c. 
 +
 .. In Swagger, execute _cloudsecure_installers.agent > /v1/cloudsecure/agent/oneTimeToken_ API and copy the token from the response.  
 
@@ -155,7 +155,7 @@ Note: If installed in a custom path, data collectors and all other artifacts lik
 ----
 //image:ws_installCommand.png[]
 +
-NOTE: If user is not running in a “bash” shell, the export command might not work. In that case steps 8 through 11 can be combined and run as below. HTTPS_PROXY and AGENT_INSTALL_PATH are optional and can be ignored if not required. 
+Note: If user is not running in a “bash” shell, the export command might not work. In that case steps 8 through 11 can be combined and run as below. HTTPS_PROXY and AGENT_INSTALL_PATH are optional and can be ignored if not required. 
 +
 ----
 sudo /bin/bash -c "TOKEN=<<one time token generated in step 7>> HTTPS_PROXY=<<proxy details in the format mentioned in step 9>> AGENT_INSTALL_PATH=<<custom_path_to_install_agent>> ./cloudsecure-agent-install.sh"
