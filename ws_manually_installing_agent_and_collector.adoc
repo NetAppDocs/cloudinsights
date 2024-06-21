@@ -146,7 +146,7 @@ Note: The one-time token generated in this step is different from the API access
 ----
 //image:ws_optionalExportInstallPath.png[]
 +
-Note: If installed in a custom path, data collectors and all other artifacts like agent logs will be created inside the custom path only. 
+Note: If installed in a custom path, data collectors and all other artifacts like agent logs will be created inside the custom path only. Installation logs will still be present in - _/var/log/netapp/cloudsecure/install_.
 
 . Go back to the directory where agent installer was downloaded and run “cloudsecure-agent-install.sh” 
 +
@@ -210,7 +210,7 @@ drwx------ 2 cssys         cssys 4096 Apr 26 15:56 collectors
 
 . Now we need to fetch collector version and UUID of collector. Navigate to “cloudsecure_config.collector-types” API. 
 
-.. Go to swagger, “cloudsecure_config.collector-types > /v1/cloudsecure/collector-types” (GET) API. In “collectorCategory” dropdown, select collector type as “DATA”. Select “ALL” to fetch all collector type details.
+. Go to swagger, “cloudsecure_config.collector-types > /v1/cloudsecure/collector-types” (GET) API. In “collectorCategory” dropdown, select collector type as “DATA”. Select “ALL” to fetch all collector type details.
 
 . Copy the UUID of the required collector type. 
 +
@@ -225,6 +225,127 @@ image:ws_downloadCollectorByUUID.png[]
 .. If the installer file is downloaded externally in a different machine, copy the installer file to the system where agent is running and place in the directory “/tmp/collectors”.
 
 .. Alternatively, you can copy the curl command from the same API and run it directly on the system where the collector is to be installed.
++
+Note that the file name should be the same as present in the response headers of the  download collector API. see the screenshot below.
++
+image:ws_curl_command.png[]
++
+----
+[root@demo-agent collectors]# pwd
+/tmp/collectors
+[root@demo-agent collectors]# curl -X GET "https://netapp-demo.dev.cloudsecure.netapp.com/rest/v1/cloudsecure/collector-types/installers/1829df8a-c16d-45b1-b72a-ed5707129870" -H "accept: application/octet-stream" -H "X-CloudInsights-ApiKey: <<API Access Token>>" -o cs-ontap-dsc_1.286.0.zip
+
+-rw------- 1 root root 50906252 Apr 26 16:11 cs-ontap-dsc_1.286.0.zip
+[root@demo-agent collectors]# chown cssys:cssys cs-ontap-dsc_1.286.0.zip 
+[root@demo-agent collectors]# ll
+total 49716
+-rw------- 1 cssys cssys 50906252 Apr 26 16:11 cs-ontap-dsc_1.286.0.zip
+----
+
+. Navigate to *Workload Securoty > Collectors* and select *+Collector*. Choose the _ONTAP SVM_ collector.
+
+. Configure the collector details and _Save_ the collector.
+
+.	Upon clicking “Save”, agent process will locate the collector installer in the “/tmp/collectors/” directory and install the collector.
+
+.	As an alternative option, instead of adding the collector via UI, it can be added via API also.
+.. Navigate to “cloudsecure_config.collectors” > “/v1/cloudsecure/collectors” (POST) API.
+.. In example dropdown, select “ONTAP SVM data collector json sample”, update collector config details and Execute.
++
+image:ws_API_add_collector.png[]
+
+. Collector should be now visible under ‘Data Collectors’ section.
++
+image:ws_collectorPageList.png[]         
+
+.	Post installation cleanup.
+a.	If collector installation is successful, all files in the directory “/tmp/collectors” can be deleted.
+
+== Installing a new User Directory Collector
+
+Note: In this document we have mentioned the steps for installing a LDAP collector. The same steps apply for installing an AD collector.
+
+.	Go to the system in which collector needs to be installed and create a directory named “collectors” under “/tmp” directory.
++
+----
+[root@demo-agent ~]# mkdir -p /tmp/collectors
+[root@demo-agent /]# chown cssys:cssys /tmp/collectors
+[root@demo-agent /]# cd /tmp/
+[root@demo-agent tmp]# ll | grep collectors
+drwx------ 2 cssys         cssys 4096 Apr 26 15:56 collectors
+----
+
+. Now we need to fetch collector version and UUID of collector. Navigate to “cloudsecure_config.collector-types” API. In collectorCategory dropdown, select collector type as “USER”. Select “ALL” to fetch all collector type details in single request.
++
+image:ws_API_collector_all.png[]
+
+. Copy the UUID of the LDAP collector.
++
+image:ws_LDAP_collector_UUID.png[]
+
+. Download the collector installer.
+
+.. Navigate to “cloudsecure_installers.collector” > “/v1/cloudsecure/collector-types/installers/{collectorTypeUUID}” (GET) API. Enter UUID copied from previous step and download the installer file.
++
+image:ws_LDAP_collector_UUID_download.png[]
+
+.. If the installer file is downloaded externally in a different machine, copy the installer file to the system where agent is running and in the directory – “/tmp/collectors”.
+
+.. Alternatively, you can copy the curl command from same API and run it directly in the system where collector should be installed.
+
++
+Note that the file name should be the same as present in the response headers of the  download collector API. see the screenshot below.
++
+image:ws_curl_command.png[]
++
+----
+[root@demo-agent collectors]# pwd
+/tmp/collectors
+[root@demo-agent collectors]# curl -X GET "https://netapp-demo.dev.cloudsecure.netapp.com/rest/v1/cloudsecure/collector-types/installers/37fb37bd-6078-4c75-a64f-2b14cb1a1eb1" -H "accept: application/octet-stream" -H "X-CloudInsights-ApiKey: <<API Access Token>>" -o cs-ldap-dsc_1.322.0.zip
+----
+
+.	Change ownership of collector installer zip file to cssys:cssys.
++
+----
+[root@demo-agent collectors]# ll
+total 37156
+-rw------- 1 root root 38045966 Apr 29 10:02 cs-ldap-dsc_1.322.0.zip
+[root@demo-agent collectors]# chown cssys:cssys cs-ldap-dsc_1.322.0.zip
+[root@demo-agent collectors]# ll
+total 37156
+-rw------- 1 cssys cssys 38045966 Apr 29 10:02 cs-ldap-dsc_1.322.0.zip
+
+----
+
+. Navigate to ‘User Directory Collectors’ page and click ‘+ User Directory Collector’. 
++
+image:ws_user_directory_collector.png[]
+
+.  Select ‘LDAP Directory Server’.
++
+image:ws_LDAP_user_select.png[]
+
+.	Enter LDAP Directory Server details and click ‘Save’
++
+image:ws_LDAP_user_Details.png[]
+
+.	Upon clicking “Save”, agent service will locate the collector installer in the  “/tmp/collectors/” directory and install the collector.
+
+.	As an alternative option, instead of adding collector via UI, it can be added via API also.
+
+.. Navigate to “cloudsecure_config.collectors”  “/v1/cloudsecure/collectors” (POST) API.
+
+.. In example dropdown, select “LDAP Directory Server user collector json sample’”, update collector config details and click “Execute”.
++
+image:ws_API_LDAP_Collector.png[]
+
+. The collector should be now visible under “User Directory Collectors” section.
++
+image:ws_LDAP_collector_list.png[]
+
+.	Post installation cleanup.
+
+.. If collector installation is successful, all files in the directory “/tmp/collectors” can be deleted.
 
 
 
