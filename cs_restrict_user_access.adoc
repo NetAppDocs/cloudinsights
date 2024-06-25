@@ -30,7 +30,6 @@ If there are four SVMs with one SVM configured for SMB, one configured for NFS, 
 
 Cluster level credentials are needed for this feature to work.
 
-
 If you are using cluster administration credentials, no new permissions are needed.
 
 If you are using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Workload Security to block user.
@@ -42,12 +41,13 @@ For csuser with cluster credentials, do the following from the ONTAP command lin
  security login role create -role csrole -cmddirname "vserver cifs session" -access all
  security login role create -role csrole -cmddirname "vserver services access-check authentication translate" -access all
  security login role create -role csrole -cmddirname "vserver name-mapping" -access all
- 
+
+Be sure to review the Permissions section of the link:task_add_collector_svm.html[Configuring the ONTAP SVM Data Collector] page as well. 
 
 == How to enable the feature?
 
-* In Workload Security, navigate to *Admin > Automated Response Policies > Response Policy Settings > Block User Access*.
-* Set “Enable Block User Access” to _enabled_.
+* In Workload Security, navigate to *Workload Security > Policies > Automated Response Policies*.  Choose *+Attack Policy*.
+* Select (check) _Block User File Access_.
 
 == How to set up Automatic user access blocking?
 
@@ -75,8 +75,8 @@ In the alert details and user details page, in the user panel, you can view an a
 
 At any time, you can disable the feature. If there are restricted users in the system, you must restore their access first.
 
-* In Workload Security, navigate to *Admin > Automated Response Policies > Response Policy Settings > Block User Access*
-* De-select “Enable Block User Access” to disable.
+* In Workload Security, navigate to *Workload Security > Policies > Automated Response Policies*.  Choose *+Attack Policy*.
+* De-select (uncheck) _Block User File Access_.
 
 The feature will be hidden from all pages.
 

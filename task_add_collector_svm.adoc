@@ -20,7 +20,7 @@ Workload Security uses data collectors to collect file and user access data from
 == Before you begin
 
 * This data collector is supported with the following:
-** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version where link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1372994[this issue] is fixed. 
+** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version greater than 9.13.1. 
 ** SMB protocol version 3.1 and earlier.  
 //Note that Workload Security does not work with SMB configurations that use Flexcache. In systems using Flexcache, starting with ONTAP 9.7, Fpolicy is supported only in an NFS environment.
 **	NFS protocol version 4.0 and earlier 
@@ -35,6 +35,8 @@ Workload Security uses data collectors to collect file and user access data from
 
 * Make sure that you have a properly configured User Directory Connector, otherwise events will show encoded user names and not the actual name of the user (as stored in Active Directory) in the “Activity Forensics” page.
 
+* •	ONTAP Persistent Store is supported from 9.15.1.
+
 * For optimal performance, you should configure the FPolicy server to be on the same subnet as the storage system.
 
 //* You need the SVM management IP address or the cluster IP, and username / password for login.
@@ -43,7 +45,7 @@ Workload Security uses data collectors to collect file and user access data from
 ** By Using Cluster IP, SVM name, and Cluster Management Username and Password. *_This is the recommended method._*
 *** SVM name must be exactly as is shown in ONTAP and is case-sensitive.
 ** By Using SVM Vserver Management IP, Username, and Password
-** If you are not able or not willing to use the full Administrator Cluster/SVM Management Username and Password, you can create a custom user with lesser privileges as mentioned in the link:#a-note-about-permissions[“A note about permissions”] section below. This custom user can be created for either SVM or Cluster access.
+** If you are not able or not willing to use the full Administrator Cluster/SVM Management Username and Password, you can create a custom user with lesser privileges as mentioned in the <<a-note-about-permissions,“A note about permissions”>> section below. This custom user can be created for either SVM or Cluster access.
 *** o	You can also use an AD user with a role that has at least the permissions of csrole as mentioned in “A note about permissions” section below. Also refer to the link:https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.pow-adm-auth-rbac%2FGUID-0DB65B04-71DB-43F4-9A0F-850C93C4896C.html[ONTAP documentation].
 
 * Ensure the correct applications are set for the SVM by executing the following command:
@@ -53,16 +55,6 @@ Workload Security uses data collectors to collect file and user access data from
 Example output:
  image:cs_svm_sample_output.png[SVM Command Output Example]
 
-////
-security login show -vserver svmname 
-    Vserver: svmname
-    Authentication Acct Is-Nsswitch
-    User/Group Name Application Method Role Name Locked Group
-    vsadmin http password vsadmin yes no
-    vsadmin ontapi password vsadmin yes no
-    vsadmin ssh password vsadmin yes no
-    3 entries were displayed.
-////
  
 * Ensure that the SVM has a CIFS server configured:
  clustershell::> `vserver cifs show`
@@ -83,6 +75,26 @@ The system returns the Vserver name, CIFS server name and additional fields.
 See link:concept_cs_agent_requirements.html[Agent requirements] for configuration information. This applies to on-premise Agents and Agents installed in the Cloud.  
 
 * When an Agent is installed in an AWS EC2 instance to monitor a Cloud ONTAP SVM, the Agent and Storage must be in the same VPC. If they are in separate VPCs, there must be a valid route between the VPC’s.
+
+
+== Prerequisites for User Access Blocking
+
+Keep the following in mind for link:cs_restrict_user_access.html[User Access Blocking]:
+
+Cluster level credentials are needed for this feature to work.
+
+If you are using cluster administration credentials, no new permissions are needed.
+
+If you are using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Workload Security to block user.
+
+For csuser with cluster credentials, do the following from the ONTAP command line:
+
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all
+ security login role create -role csrole -cmddirname set -access all
+ security login role create -role csrole -cmddirname "vserver cifs session" -access all
+ security login role create -role csrole -cmddirname "vserver services access-check authentication translate" -access all
+ security login role create -role csrole -cmddirname "vserver name-mapping" -access all
+
 
 == A Note About Permissions
 
@@ -106,23 +118,6 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
 
 
-////
-security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access none
- security login role create -vserver <vservername> -role csrole -cmddirname "network interface" -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname version -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname volume -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname vserver -access readonly
- security login role create -role csrole -cmddirname "vserver fpolicy" -access all
- security login role create -role csrole -cmddirname "volume snapshot" -access all -query "-snapshot cloudsecure_*"
- security login role create -role csrole -cmddirname "event catalog" -access all
- security login role create -role csrole -cmddirname "event filter" -access all
- security login role create -role csrole -cmddirname "event notification destination" -access all
- security login role create -role csrole -cmddirname "event notification" -access all
- security login role create -role csrole -cmddirname "security certificate" -access all
- security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
- security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
-////
-
 === Permissions when adding via *Vserver Management IP*:
 
 If you cannot use the Cluster management administrator user to allow Workload Security to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Workload Security data collector to use Vserver Management IP.
@@ -144,12 +139,42 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
 
 
-////
- security login role create -vserver <vservername> -role csrole -cmddirname DEFAULT -access readonly
- security login role create -vserver <vservername> -role csrole -cmddirname "vserver fpolicy" -access all
- security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
- security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
-//// 
+=== Permissions for ONTAP Autonomous Ransomware Protection
+
+If you are using cluster administration credentials, no new permissions are needed.
+
+If you are using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Workload Security to collect ARP related information from ONTAP.
+
+For _csuser_ with cluster credentials, do the following from the ONTAP command line:
+
+ security login rest-role create -role arwrole -api /api/storage/volumes -access readonly -vserver <cluster_name>
+ security login rest-role create -api /api/security/anti-ransomware -access readonly  -role arwrole -vserver <cluster_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role arwrole
+
+For more information, read about link:concept_cs_integration_with_ontap_arp.html[Integration with ONTAP Autonomous Ransomware Protection]
+
+
+=== Permissions for ONTAP Access Denied
+
+If the Data Collector is added using cluster administration credentials, no new permissions are needed.
+
+If the Collector is added using a custom user (for example, _csuser_) with permissions given to the user, follow the steps below to give Workload Security the necessary permission to register for Access Denied events with ONTAP.
+
+For csuser with _cluster_ credentials, execute the following commands from the ONTAP command line. Note that _csrestrole_ is custom role and _csuser_ is ontap custom user.
+
+----
+ security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <cluster_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole
+----
+
+For csuser with _SVM_ credentials, execute the following commands from the ONTAP command line:
+
+----
+ security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <svm_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole -vserver <svm_name>
+----
+
+For more information, read about link:concept_ws_integration_with_ontap_access_denied.html[Integration with ONTAP Access Denied]
 
 
 == Configure the data collector
@@ -158,7 +183,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
 
 . Log in as Administrator or Account Owner to your Cloud Insights environment. 
 
-. Click *Observability > Collectors > +Data Collectors* 
+. Click *Workload Security > Collectors > +Data Collectors* 
 +
 The system displays the available Data Collectors. 
 
@@ -198,8 +223,6 @@ When adding via SVM IP the options are:
 
 
 .After you finish
-
-//* Click *Test Configuration* to check the status of the collector you configured.
 
 * In the Installed Data Collectors page, use the options menu on the right of each collector to edit the data collector. You can restart the data collector or edit data collector configuration attributes. 
 
@@ -253,6 +276,8 @@ Keep the following in mind:
 * On agent or collector upgrades, agent VM restarts/reboots, or agent service restart, a paused collector will remain in _Paused_ state.
 * If the data collector is in _Error_ state, the collector cannot be changed to _Paused_ state. The Pause button will be enabled only if the state of the collector is _Running_.
 * If the agent is disconnected, the collector cannot be changed to _Paused_ state. The collector will go into _Stopped_ state and the Pause button will be disabled.
+* A paused Data Collector can not be deleted. 
+* While paused, the fpolicy settings in ONTAP are disabled but are not deleted. On resume, the fpolicy settings in ONTAP are enabled again.
 
 
 == Troubleshooting 
@@ -261,7 +286,7 @@ Known problems and their resolutions are described in the following table.
 
 In the case of an error, click on _more detail_ in the _Status_ column for detail about the error.
 
-image:CS_Data_Collector_Error.png[]
+image:CS_Data_Collector_Error.png[Workload Security Collector Error More Detail Link]
 
 [cols=2*, options="header", cols"30,70"]
 
@@ -320,7 +345,7 @@ g)	Open the firewall in ONTAP, so that ONTAP is able to connect the agent box.
 
 8. Verify that port 7 is open.
 
-9. If none of the above solves the issue, open a case with link:http://docs.netapp.com/us-en/cloudinsights/concept_requesting_support.html[Netapp Support] for further assistance.
+9. If none of the above solves the issue, open a case with link:concept_requesting_support.html[Netapp Support] for further assistance.
 
 
 
@@ -441,7 +466,10 @@ Data Collector will restart and the error should be resolved.
 Please check the number of Data Collectors which are added to the Agent in the machine.
 If it is more than 20, please increase the CPU and RAM capacity of the Agent machine.
 Once the CPU and RAM is increased, the DSCs will get into Initializing and then to Running state automatically.
-Look into the sizing guide on link:https://docs.netapp.com/us-en/cloudinsights/concept_cs_event_rate_checker.html[this page].
+Look into the sizing guide on link:concept_cs_event_rate_checker.html[this page].
+
+|The Data Collector is erroring out when SVM mode is selected.
+|While connecting in SVM mode, If cluster management IP is used to connect instead of SVM management IP, then the connection will error out. Make sure that the correct SVM IP is used.
 
 |===
 

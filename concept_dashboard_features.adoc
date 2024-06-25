@@ -24,7 +24,7 @@ toc::[]
 
 Widgets are automatically named based on the object, metric, or attribute selected for the first widget query. If you also choose a grouping for the widget, the "Group by" attributes are included in the automatic naming (aggregation method and metric).
 
-image:WidgetNameExample.png[Widget Naming Example]
+image:WidgetNamingExample-C.png[Widget Naming Example]
 
 Selecting a new object or grouping attribute updates the automatic name.
 
@@ -190,7 +190,7 @@ Data displayed in a widget is grouped (sometimes called rolled-up) from the unde
 * *Maximum*: displays each line as the _maximum_ of the underlying data.
 * *Minimum*: displays each line as the _minimum_ of the underlying data.
 * *Sum*: displays each line as the _sum_ of the underlying data.
-* *Count*: displays a _count_ of objects that have reported data within the specified time frame. You can choose the _Entire Time Window_ as determined by the dashboard time range (or the widget time range, if set to override the dashboard time), or a _Custom Time Window_ that you select.
+* *Count*: displays a _count_ of objects that have reported data within the specified time frame. You can choose the _Entire Time Window_ as determined by the dashboard time range.
 
 // You can choose to include _all_ objects that have reported data, or only those objects whose data is reported as _Not Null_. 
 
@@ -302,15 +302,20 @@ You can select the time range for your dashboard data. Only data relevant to the
 +
 The Custom time range allows you to select up to 31 consecutive days. You can also set the Start Time and End Time of day for this range. The default Start Time is 12:00 AM on the first day selected and the default End Time is 11:59 PM on the last day selected. Clicking *Apply* will apply the custom time range to the dashboard.
 
+
 == Overriding Dashboard Time in Individual widgets
 
 You can override the main dashboard time range setting in individual widgets. These widgets will display data based on their set time frame, not the dashboard time frame.
 
-To override the dashboard time and force a widget to use its own time frame, in the widget's edit mode set the *Override dashboard time* to *On* (check the box), and select a time range for the widget. *Save* the widget to the dashboard.
+To override the dashboard time and force a widget to use its own time frame, in the widget's edit mode choose the deisired time range, and Save the widget to the dashboard.
 
 The widget will display its data according to the time frame set for it, regardless of the time frame you select on the dashboard itself.
 
 The time frame you set for one widget will not affect any other widgets on the dashboard.
+
+image:OverrideTimeOnWidget.png[overriding the dashboard time range for a widget]
+
+
 
 == Primary and Secondary Axis
 
@@ -340,7 +345,7 @@ image::SecondaryAxisExplained.png[Secondary Axis example]
 
 == Expressions in widgets
 
-In a dashboard, any time series widget (line, spline, area, stacked area), Single-Value, or Gauge Widget allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph. The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
+In a dashboard, any time series widget (line, spline, area, stacked area) bar chart, column chart, pie chart, or table widget allows you to build expressions from metrics you choose, and show the result of those expressions in a single graph (or column in the case of the <<expressions-in-a-table-widget,table widget>>). The following examples use expressions to solve specific problems. In the first example, we want to show Read IOPS as a percentage of Total IOPS for all storage assets in our environment. The second example gives visibility into the "system" or "overhead" IOPS that occur in your environment--those IOPS that are not directly from reading or writing data.
 
 You can use variables in expressions (for example, _$Var1 * 100_)
 
@@ -381,8 +386,7 @@ You can add up to a total of five alphabetic variables for your expression by cl
 The chart displays the IOPS Read percentage over time for the chosen storage devices. If desired, you can set a filter, or choose a different rollup method. Be aware that if you select Sum as the rollup method, all percentage values are added together, which potentially may go higher than 100%.
 
 . Click *Save* to save the chart to your dashboard.
-+
-You can also use expressions in Line chart, Spline chart, or Stacked Area chart widgets.
+
 
 === Expressions example: "System" I/O
 
@@ -432,6 +436,14 @@ The chart displays the total IOPS as a line chart, with an area chart showing th
 . Click *Save* to save the chart to your dashboard.
 
 To use a variable in an expression, simply type the variable name, for example, _$var1 * 100_. Only numeric variables can be used in expressions.
+
+
+
+=== Expressions in a Table Widget
+
+Table widgets handle expressions a little differently. You can have up to five expressions in a single table widget, each of which is added as a new column to the table. Each expression can include up to five values on which to perform its calculation. You can easily name the column something meaningful.
+
+image:Expression Example.png[Expression in a Table Widget]
 
 
 
@@ -743,7 +755,7 @@ writes/min
 
 == TV Mode and Auto-Refresh
 
-Data in widgets on Dashboards and Asset Landing Pages auto-refresh according a refresh interval determined by the Dashboard Time Range selected (or widget time range, if set to override the dashboard time). The refresh interval is based on whether the widget is time-series (line, spline, area, stacked area chart) or non-time-series (all other charts).
+Data in widgets on Dashboards and Asset Landing Pages auto-refresh according a refresh interval determined by the Dashboard Time Range selected. The refresh interval is based on whether the widget is time-series (line, spline, area, stacked area chart) or non-time-series (all other charts).
 
 |===
 |Dashboard Time Range|Time-Series Refresh Interval|Non-Time-Series Refresh Interval

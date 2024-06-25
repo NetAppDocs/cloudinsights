@@ -4,8 +4,8 @@ permalink: concept_whats_new.html
 summary: New features and functionality available in Cloud Insights. 
 keywords: features
 ---
+
 = What\'s New with Cloud Insights 
-:toc: macro
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -14,21 +14,159 @@ keywords: features
 :imagesdir: ./media/
 
 [#whats-new]
-[lead]
+[.lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the commercial Editions of Cloud Insights.  
 
-NOTE: Some of these features may not be available in Cloud Insights Federal Edition, or may be available with reduced functionality. Wherever possible, these differences are noted in the documentation.
+== June 2024
 
+////
+ ////=== Your Data, Your Way: Expressions in Table Widgets
+
+Dashboard Table Widgets allow you to add columns for custom expressions that you define. Up to five expression columns can be added, each having up to five terms, giving you more freedom to express your data in the ways you need it.
+
+image:ExpressionExampleScreen.png[Example of Expressions in Table Widget]
+////
+
+
+=== Operating System support
+
+The following operating systems are supported with Cloud Insights Acquisition Units, in addition to those link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[already supported]:
+
+* Red Hat Enterprise Linux 8.9, 8.10, 9.4
+* Rocky 9.4
+* AlmaLinux 9.3 and 9.4
+
+
+
+== May 2024
+
+=== Automatically resolve alerts based on time
+
+Log alerts can now be resolved based on time; if the alert condition stops occurring, Cloud Insights can resolve the alert automatically after a specified time has passed. You can choose to resolve the alert in minutes, hours, or days.
+
+image:alerts_resolve_based_on_time.png[Resolve an alert based on time passed]
+
+
+'''
+
+
+== April 2024
+
+
+=== iSCSI support for Kubernetes
+
+Cloud Insights now has support to map the iSCSI storage associated with Kubernetes, allowing faster troubleshooting using the Kubernetes network map and the ability to provide chargeback or showback reports via Reporting.
+
+image:pod-to-storage.png[Pod-to-storage example]
+
+
+
+=== Operating System support
+
+The following operating systems are supported with Cloud Insights Acquisition Units, in addition to those link:https://docs.netapp.com/us-en/cloudinsights/concept_acquisition_unit_requirements.html[already supported]:
+
+* Oracle Enterprise Linux 8.8
+* Red Hat Enterprise Linux 8.8
+* Rocky 9.3
+* OpenSUSE Leap 15.1 through 15.5
+* SUSE Enterprise Linux Server 15, 15 SP2 through 15 SP5
+
+
+
+'''
+== March 2024
+
+=== Workload Security Agent Details
+
+Each of your Workload Security Agents has its own landing page, where you can easily see summary information about the Agent as well as the installed Data and User Directory Collectors associated with that Agent. 
+
+image:Agent_Detail_Page.png[Agent Detail Landing Page example]
+
+=== Chart more data more quickly
+
+When analyzing data on an asset's landing page, adding additional data to the Expert View charts is a snap. For each table on the landing page, if an object type has relevant data, hover over that object to display the "Add to Expert View" icon. Selecting this icon adds that object to the Additional Resources and displays it in the Expert View charts.
+
+image:AddToChartIcon.png[Add table data to expert view]
+
+Or maybe you want to see a landing page table's data in its own chart. Simply select the _Show Chart_ icon to open the chart below the table:
+
+image:LPTableShowChartIcon.png[Show Chart icon]
+
+
+'''
+
+== February 2024
+
+
+=== Usability Improvements
+
+Save a *snapshot* of your current dashboard by selecting _Export as Image_ from the right-corner drop-down. Cloud Insights creates a .PNG of the current widget states.
+
+image:ExportAsImage.png[Export as Image Dropdown]
+
+
+*Object and Metric selection* is easier than ever for Widgets, Monitors, etc.  Choose the object type you want, and then select a metric relevant to that object in the separate drop-down.
+
+image:ObjectAndMetricSelection.png[Object and Metric Selectors separate]
+
+
+*Export Data Collector and Acquisition Unit* lists to .CSV by selecting the icon at the top of those pages. 
+
+image:ExportDCList.png[Export DC and AU Lists to .csv]
+
+
+We’ve *re-organized the Help > Support* page so it’s easier to find what you’re looking for, and because you asked for them, we added direct links on this page to *API Swagger* and user documentation.
+
+image:Support_APIAccess.png[API Links on the Help > Support Page]
+
+
+*Links* in the “triggeredOn” column on the Alerts list page will navigate to the appropriate Landing Page, if a Landing Page is available for that object.
+
+image:TriggeredOnLink.png[Links in TriggeredOn alert field]
+
+
+
+
+=== See all changes in your namespace
+
+Kubernetes Change Analysis now allows you to see a timeline of changes when selecting Cluster and Namespace. Previously, Workload must also have been selected.  When filtering on Cluster and Namespace, the timeline of all workload changes in that namespace are shown on one line.
+
+image:NamespaceTimeline.png[Namespace Timeline]
+ 
+
+
+=== Related Logs for Alerts
+
+When viewing a log alert, related log entries are shown in a new table.  A log entry is related if it occurs in the same source and timeframe as the alert, and is subject to the same conditions. Select “Analyze Logs” to explore further.
+
+image:RelatedLogsTable.png[Related Logs on a log alert landing page]
+
+
+=== Collect ONTAP Switch Data
+
+Cloud Insights can collect data from the ONTAP system’s back-end switches; simply enable the collection in the data collector’s _Advanced Configuration_ section, and ensure the ONTAP system is configured to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information] and has the appropriate link:task_dc_na_cdot.html#a-note-about-permissions[permissions] set.
+
+
+
+
+
+
+
+=== Workload Security Data Collector API
+
+In large environments, you can automate Workload Security collector creation using the new Data Collectors API. Navigate to *Admin > API Access > API Documentation* and select the _Workload Security_ API type to learn more.
+
+'''
 
 == January 2024
 
 === Try Cloud Insights Features you haven’t used yet
 
-In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-trials[Module Trials]. For example, if you are subscribed to Cloud Insights and have been monitoring storage and virtual machines, when you add Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. Kubernetes Observability managed unit usage will not count against your subscribed entitlement until after the trial period ends.
+In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-evaluation[Module Evaluations]. For example, if you are subscribed to Cloud Insights and have been monitoring storage and virtual machines, when you add Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. Kubernetes Observability managed unit usage will not count against your subscribed entitlement until after the trial period ends.
 
 === How healthy are my workloads?
 
-Workload health is available at a glance on the *Kubernetes > Explore > Workloads* page, so you can quickly see which workloads are performing well and which may need some help.
+Workload health is available at a glance on the *Kubernetes > Explore > Workloads* page, so you can quickly see which workloads are performing well and which may need some help. Easily identify if the health issue is related to infrastructure, network, or configuration changes, and drill down to analyze the root cause.
 
 image:WorkloadHealth.png[Workload Health at a glance]
 
@@ -40,26 +178,59 @@ image:WorkloadHealth.png[Workload Health at a glance]
 The Data Domain collector has been improved to better identify HA systems for durability across failover events This change will cause a *one time* re-identification of Data Domain appliances in HA systems, which will subsequently cause any annotations on those assets to be removed (because these arrays will be re-identified). You will need to re-attach annotations to your Data Domain objects.
 
 
-=== Improved Workload Security
+=== Enhanced Ransomware Detection ML Algorithm
 
-Workload Security includes the following improvements:
+Workload Security includes a new 2nd-generation ransomware detection ML algorithm to detect the most sophisticated attacks faster and more accurately.
 
-* Detection algorithms have been enhanced to reduce the number of false positive warnings.
-* User Interface performance has been improved while loading, displaying, and scrolling Forensics pages.
+"Seasonality" of behaviors: weekend behavior may follow different patterns from weekday, or morning behavior from afternoon. Workload Security algorithms take this seasonality into account.
 
-
-
-'''
+// * Faster analytics: The forensics user interface has been improved to analyze more data more quickly.
 
 
-== January 2024
 
-=== Improved Workload Security
 
-Workload Security includes the following improvements:
+=== Deprecated Functionality
 
-* Detection algorithms have been enhanced to reduce the number of false positive warnings.
-* User Interface performance has been improved while loading, displaying, and scrolling Forensics pages.
+Occasionally functionality is deprecated as features evolve. Here are some of the features and functionalities which have been deprecated in Cloud Insights:
+
+==== Workload Secure REST cloudsecure_forensics.activities.v1 API is deprecated
+
+The _cloudsecure_forensics.activities.v1_ API is deprecated. This API returns information on activities associated with entities in the Storage Workload Security environment. This API has been replaced with cloudsecure_forensics.activities.*v2*_.  
+
+GET for this API previously returned the following: 
+
+----
+{ 
+  "count": 24594, 
+  "limit": 1000, 
+  "offset": 0, 
+  "results": [ 
+    { 
+      "accessLocation": 
+----
+
+This API now returns:
+
+----
+{ 
+  "limit": 1000, 
+  "meta": { 
+    "page": { 
+      "after": "lvlvk3pp.4cpzcg4kpybl", 
+      "before": "lvlxy3dz.4cq5ajdnl9fk", 
+      "size": 1000 
+    } 
+  }, 
+  "results": [ 
+    { 
+      "accessLocation": "10.249.6.220", 
+----
+
+//There was a change in the backend for performance optimization. Hence in order to accommodate the change the response body had to be changed as maintaining the previous response would have affected the performance. Count & limit are replaced with meta. 
+
+For more details see the Swagger documentation at “Admin > API Access > API Documentation > Workload Security”. 
+
+//This API is no longer supported from Jan 2024 in all regions. 
 
 
 
@@ -140,14 +311,14 @@ Prior to this enhancement, only FOS 9.1.1c switches without Virtual Fabrics pres
 
 Workload Security has been improved with the following:
 
-* *Access Denied*: Workload Security integrates with ONTAP to receive "Access Denied" events and provide an additional analytics and automatic responses layer.
+* *Access Denied*: Workload Security integrates with ONTAP to receive link:concept_ws_integration_with_ontap_access_denied.html["Access Denied" events] and provide an additional analytics and automatic responses layer.
 * *Allowed File Types*: If a ransomware attack is detected for a known file extension, that file extension can be added to an link:ws_allowed_file_types.html[allowed file types] list to prevent unnecessary alerting. 
 
 
 
 === Module Trials
 
-In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-trials[Module Trials]. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. You will only be charged for your Kubernetes Observability managed unit usage at the end of the trial period.
+In addition to your initial trial of Cloud Insights, you may also take advantage of link:concept_subscribing_to_cloud_insights.html#module-evaluation[Module Evaluations]. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability. You will only be charged for your Kubernetes Observability managed unit usage at the end of the evaluation period.
 
 
 === Restrict access to specified domains
@@ -629,7 +800,7 @@ Note that some of these monitors will be _enabled_ by default; you must _pause_ 
 
 === .CSV Export for all Dashboard Table Widgets
 
-Ensuring accessibility to your data is essential, so we've made .CSV export image:csv_export_icon[.csv export icon] available for all metric queries, dashboard table widgets, and object landing pages, regardless of the type of data (asset or integration) you're querying. 
+Ensuring accessibility to your data is essential, so we've made .CSV export available for all metric queries, dashboard table widgets, and object landing pages, regardless of the type of data (asset or integration) you're querying. 
 
 Data customizations like column selection, renaming columns, and unit conversions are also now included in the new export functionality.
 
@@ -993,7 +1164,7 @@ image:ChatIcon.png[Chat Icon showing the blue NetApp "N" above a smile]
 
 We’ve made it easier to get you up and running with Cloud Insights’ advanced Kubernetes monitoring and cluster explorer.
 
-The link:https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent_k8s.html#operator-based-install-or-script-based-install[NetApp Kubernetes Monitoring Operator] (NKMO) is the preferred method for installing Kubernetes for Cloud Insights Insights, for more flexible configuration of monitoring in fewer steps, as well as enhanced opportunities for monitoring other software running in the K8s cluster.
+The link:task_config_telegraf_agent_k8s.html[Kubernetes Monitoring Operator] (NKMO) is the preferred method for installing Kubernetes for Cloud Insights Insights, for more flexible configuration of monitoring in fewer steps, as well as enhanced opportunities for monitoring other software running in the K8s cluster.
 
 Click the link above for more information and pre-requisites
 
@@ -1007,7 +1178,7 @@ You can now manage users and invites using Cloud Insights' powerful API. Read mo
 
 Don’t miss out on critical metrics due to a failed collector!
 
-It’s easier than ever to keep track of your data collectors with new link:https://docs.netapp.com/us-en/cloudinsights/task_system_monitors.html#data-collection-monitors[alerts] for data collector and acquisition unit failures.
+It’s easier than ever to keep track of your data collectors with new link:task_system_monitors.html#data-collection-monitors[alerts] for data collector and acquisition unit failures.
 Note that these Monitors are _Paused_ by default. To enable, navigate to your monitors page and locate and resume “Acquisition Unit Shutdown” and “Collector Failed” 
 
 
@@ -1238,21 +1409,6 @@ An Administrator can also invite other users but can only assign Cloud Secure ro
 |===
 
 
-////
-=== Improved Kubernetes installation
-
-The process for installing the Kubernetes link:task_config_telegraf_agent.html#kubernetes[operator-based agent] in your environment has been streamlined to involve fewer user interactions. 
-////
-
-
-////
-=== TBD:
-
-* Contextual Filtering
-* Improved/auto-formatted Units in Widget filters
-* StorageGRID moving to tier 2 (10x less cost than tier 1)</td></tr></tbody></table>
-////
-
 
 
 === Operating System support
@@ -1288,8 +1444,8 @@ _New variables for attributes and the ability to use variables in widgets_.
 
 Dashboards are now more powerful and flexible than ever. Build adaptive dashboards with attribute variables to quickly filter dashboards on the fly. Using these and other pre-existing link:concept_dashboard_features.html#variables[variables] you can now create one high level dashboard to see metrics for your entire environment, and seamlessly filter down by resource name, type, location, and more. Use number variables in widgets to associate raw metrics with costs, for example cost per GB for storage as a service. 
 
-image:Variables_Drop_Down_Showing_Annotations.png[]
-image:Variables_Attribute_Filtering.png[]
+image:Variables_Drop_Down_Showing_Annotations.png[Drop-Down annotations in a variable]
+image:Variables_Attribute_Filtering.png[attribute filtering in a variable]
 
 
 
@@ -1438,123 +1594,6 @@ This means you can allow more users administrative access to monitoring, optimiz
 
 link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html[Find out more] about the different levels of access in the Cloud Insights documentation. 
 
-////
-=== Improved User Role Management
-
-Cloud Insights now allows greater freedom for assigning link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html[user roles] in each of its three distinct Feature Sets: _Monitoring and Optimization_, _Cloud Secure_, and _Reporting_. A user may be assigned a different role in each Feature Set, with accompanying permission levels specific to that Feature Set:
-
-|===
-|Role	|Monitoring	|Cloud Secure	|Reporting
-
-|Account Owner	
-3+>|Can modify subscriptions, view billing and usage information, and perform all Administrator functions for Monitoring & Optimization, Cloud Secure, and Reporting.
-Owners can also invite and manage users, as well as manage SSO Authentication and Identity Federation settings. 
-
-The Account Owner is created when you register for Cloud Insights.
-
-It is strongly recommended to have at least two Account Owners for each Cloud Insights environment. 
-
-|Administrator	
-|Can perform all Monitoring & Optimization functions, all user functions, as well as management of data collectors, API keys, and notifications.
-An Administrator can also invite other users but can only assign Monitor and Optimize roles. 
-
-|Can perform all Cloud Secure functions, including those for Alerts, Forensics, data collectors, automated response policies, and APIs for Cloud Secure.
-An Administrator can also invite other users but can only assign Cloud Secure roles.
-
-|Can perform all User/Author functions, as well as all administrative tasks such as configuration of reports, and the shutdown and restart of reporting tasks.
-An Administrator can also invite other users but can only assign Reporting roles.
-
-|User	
-|Can view and modify dashboards, queries, alerts, annotations, annotation rules, and applications, and manage device resolution.
-|n/a	
-|Can perform all Guest/Consumer functions as well as create and manage reports and dashboards.
-
-|Guest	
-|Has read-only access to asset pages, dashboards, alerts, and can view and run queries.
-|n/a	
-|Can view, schedule, and run reports and set personal preferences such as those for languages and time zones. Guests/Consumers cannot create reports or perform administrative tasks.
-
-|===
-
-It is recommended to verify your user's roles, including SSO roles if appropriate, following this update.
-////
-
-////
-=== More powerful Variables
-
-Dashboards are better than ever with the ability to define link:https://docs.netapp.com/us-en/cloudinsights/concept_dashboard_features.html#variables[variables based on attributes], which can be universally applied to all widgets on your dashboard, or widgets of your choosing. Powerful filtering options allow you to set wildcards in your variables as well as select multiple individual attributes or counters.
-
-image:Variables_Choose_Filter_Scope.png[Variable Filter and Scope]
-////
-
-////
-=== Automatic Widget Naming
-
-Widgets are automatically named based on the first widget query. The name is created from fields such as the metric name (or object name, for tables) and "Group by" attributes (metric as well as aggregation method). Different widget types may use some or all of these when creating an automatic name.
-
-image:WidgetNameExample.png[Widget Naming Example]
-
-Selecting a new object or grouping attribute updates the automatic name. And of course you can always give the widget your own name if desired.
-////
-
-////
-=== Alerts and Monitors available in top search
-
-You can now search for alerts in Cloud Insights' top search box. 
-
-image:Search_Alert.png[Top Search for Alerts]
-////
-
-////
-=== Alerts on asset landing pages
-
-Alerts are now shown in the Expert View section of an asset landing page. 
-
-image:Alerts_In_Expert_View.png[Alerts in Expert View]
-
-
-The *Related Alerts* table on an asset's landing page enables you to quickly and easily investigate alerts that occur related to the asset.
-
-image:Alerts_on_Landing_Page.png[Related Alerts Table]
-////
-
-////
-=== Excluded devices shown in FC Resolution Status
-
-FC Resolution now shows devices that are specifically excluded from identification with a status of _Excluded_. 
-////
-
-////
-=== Viewing Proxy URLs
-
-You can view your proxy endpoint URLs by clicking the *Proxy Settings* link when choosing a data collector during onboarding, or the link under _Proxy Settings_ on the *Help > Support* page. A table like the following is displayed.
-
-image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
-////
-
-////
-=== Improved auditing
-
-The Audit page includes improvements in viewing and filtering audit events, as well as clearer audit messages.  Read more about Audit features link:https://docs.netapp.com/us-en/cloudinsights/concept_audit.html[here].
-////
-
-////
-=== AHR Onboarding
-An Automatic Device Resolution tutorial video is available during user onboarding as well as in the link:https://docs.netapp.com/us-en/cloudinsights/concept_feature_tutorials.html[Feature Tutorials] documentation.
-////
-
-////
-=== Additional Operating Systems supported
-
-The Cloud Insights Acquisition Unit supports the following operating systems, in addition to those already supported:
-
-* Centos (64-bit) 7.9 and 8.3
-* Debian (64-bit) 10
-* Oracle Enterprise Linux (64-bit) 7.9 and 8.3
-* Red Hat Enterprise Linux (64-bit) 7.9 and 8.3
-* Ubuntu Server 20.04 LTS
-////
-
 
 '''
 
@@ -1581,14 +1620,14 @@ The following APIs are available for each Edition:
 |===
 |API Category|Basic|Standard|Premium
 
-|Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
+|Acquisition Unit|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Data Collection|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Alerts| |image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Assets| |image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Data Ingestion| |image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
 |===
 
-//|Data Warehouse| | |image:SmallCheckMark.png[]
+//|Data Warehouse| | |image:SmallCheckMark.png[check mark]
 
 
 
@@ -1675,16 +1714,16 @@ Premium edition continues to allow full use of all API categories.
 |===
 |API Category|Basic|Standard|Premium
 
-|Acquisition Unit|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Data Collection|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-//|Alerts| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Assets| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Data Ingestion| |image:SmallCheckMark.png[]|image:SmallCheckMark.png[]
-|Data Warehouse| | |image:SmallCheckMark.png[]
+|Acquisition Unit|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Data Collection|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+//|Alerts| |image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Assets| |image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Data Ingestion| |image:SmallCheckMark.png[check mark]|image:SmallCheckMark.png[check mark]
+|Data Warehouse| | |image:SmallCheckMark.png[check mark]
 
 |===
 
-For details on API usage, please refer to the link:https://docs.netapp.com/us-en/cloudinsights/API_Overview.html#api-documentation-swagger[API documentation]. 
+For details on API usage, please refer to the link:API_Overview.html#api-documentation-swagger[API documentation]. 
 
 
 '''
@@ -1693,7 +1732,7 @@ For details on API usage, please refer to the link:https://docs.netapp.com/us-en
 
 === Easier Management of Monitors
 
-link:https://docs.netapp.com/us-en/cloudinsights/task_create_monitor.html#monitor-grouping[Monitor Grouping] simplifies the management of monitors in your environment. Multiple monitors can now be grouped together and paused as one. For example, if you have an update occurring on a stack of infrastructure, you can pause alerts from all those devices via one click.
+link:task_create_monitor.html#monitor-groups[Monitor Grouping] simplifies the management of monitors in your environment. Multiple monitors can now be grouped together and paused as one. For example, if you have an update occurring on a stack of infrastructure, you can pause alerts from all those devices via one click.
 
 Monitor groups is the first part of an exciting new feature bringing improved management of ONTAP devices to Cloud Insights.
 
@@ -1757,7 +1796,7 @@ The agent for ingestion of telegraf integration data has been updated to version
 
 === Cloud Cost Analyzer
 
-Experience the power of Spot by NetApp with Cloud Cost, which provides a detailed link:http://docs.netapp.com/us-en/cloudinsights/task_getting_started_with_cloud_cost.html[cost analysis] of past, present, and estimated spending, providing visibility into cloud usage in your environment. The Cloud Cost dashboard delivers a clear view of cloud expenses and a drill down into individual workloads, accounts, and services.
+Experience the power of Spot by NetApp with Cloud Cost, which provides a detailed cost analysis of past, present, and estimated spending, providing visibility into cloud usage in your environment. The Cloud Cost dashboard delivers a clear view of cloud expenses and a drill down into individual workloads, accounts, and services.
 
 Cloud Cost can help with these major challenges:
 
@@ -1879,7 +1918,7 @@ image:Kubernetes_Cluster_Detail_Example.png[The Kubernetes Explorer]
 
 === Simpler Kubernetes Installation
 
-Kubernetes Agent installation has been streamlined to require fewer user interactions. link:task_config_telegraf_agent.html#kubernetes[Installing the Kubernetes Agent] now includes Kubernetes data collection.
+Kubernetes Agent installation has been streamlined to require fewer user interactions. link:task_config_telegraf_agent_k8s.html[Installing the Kubernetes Agent] now includes Kubernetes data collection.
 
 
 '''
@@ -2328,7 +2367,7 @@ image:DuplicateWidget.png[Duplicate a widget]
 
 === Single Sign-On (SSO)
 
-With Cloud Insights Premium Edition, administrators can enable *link:concept_user_roles.html#single-sign-on-sso-accounts[Single Sign-On]* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights using their corporate credentials.
+With Cloud Insights Premium Edition, administrators can enable *link:concept_user_roles.html#what-is-identity-federation[Single Sign-On]* (SSO) access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights using their corporate credentials.
 
 NOTE: SSO is only available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory.
 
@@ -2403,19 +2442,14 @@ This change effectively doubles the environment capacity that you can monitor us
 
 == November 2019
 
+
 ////
-=== Single Sign-On (SSO)
+ ////=== Editions Feature Comparison Table
 
-In addition to inviting users, administrators can enable link:#single-sign-on-(sso)-accounts[Single Sign-On (SSO)] access to Cloud Insights for all users in their corporate domain, without having to invite them individually. With SSO enabled, any user with the same domain email address can log into Cloud Insights.
-
-SSO is available in Cloud Insights Premium Edition, and must be configured before it can be enabled for Cloud Insights. SSO configuration includes link:https://services.cloud.netapp.com/misc/federation-support[Identity Federation] through NetApp Cloud Central. Federation allows single sign-on users to access your NetApp Cloud Central accounts using credentials from your corporate directory.  
-////
-
-=== Editions Feature Comparison Table
-
-The *Admin > Subscription* page link:concept_subscribing_to_cloud_insights.html#key-features[comparison table] has been updated to list the feature sets available in Basic, Standard, and Premium Editions of Cloud Insights. NetApp is constantly improving its Cloud Services, so check this page often to find the Edition that's right for your evolving business needs.
+The *Admin > Subscription* page link:concept_subscribing_to_cloud_insights.html[comparison table] has been updated to list the feature sets available in Basic, Standard, and Premium Editions of Cloud Insights. NetApp is constantly improving its Cloud Services, so check this page often to find the Edition that's right for your evolving business needs.
 
 '''
+////
 
 == October 2019
 
@@ -2599,7 +2633,7 @@ When configuring the following data collectors, you can filter to include or exc
 
 * link:task_dc_amazon_ec2.html#advanced-configuration[Amazon EC2]
 * link:task_dc_ms_azure.html#advanced-configuration[Azure]
-* link:task_dc_google_cloud.html#advanced_configuration[Google Cloud Platform]
+* link:task_dc_google_cloud.html#advanced-configuration[Google Cloud Platform]
 
 '''
 
@@ -2625,7 +2659,7 @@ When configuring the following data collectors, you can filter to include or exc
 
 === Collecting from AWS Child Accounts
 
-* Cloud Insights supports link:task_dc_amazon_ec2.html#collecting_from_aws_child_accounts[collection from AWS child accounts] within a single data collector. Your AWS environment must be configured to allow Cloud Insights to collect from child accounts.
+* Cloud Insights supports link:task_dc_amazon_ec2.html#collecting-from-aws-child-accounts[collection from AWS child accounts] within a single data collector. Your AWS environment must be configured to allow Cloud Insights to collect from child accounts.
 
 === Data Collector Naming 
 

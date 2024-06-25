@@ -33,7 +33,7 @@ NOTE: Workload Security is not available in Cloud Insights Federal Edition.
 + 
 The system displays the Add an Agent page:
 +
-image::Add-agent-1.png[]
+image::Add-agent-1.png[Adding a workload security agent]
 
 . Verify that the agent server meets the minimum system requirements. 
 
@@ -42,7 +42,6 @@ image::Add-agent-1.png[]
 . If your network is using proxy server, please set the proxy server details by following the instructions in the Proxy section.
 +
 image:CloudSecureAgentWithProxy_Instructions.png[Agent Install with Proxy Note]
-//image::add-agent-2.png[] 
 
 
 . Click the Copy to Clipboard icon to copy the installation command. 
@@ -50,7 +49,7 @@ image:CloudSecureAgentWithProxy_Instructions.png[Agent Install with Proxy Note]
 
 . The system displays the following message when the installation completes successfully:
 + 
-image::new-agent-detect.png[]
+image::new-agent-detect.png[Message for successful agent installation]
 
 //cd /var NEW
 //Grep /var/
@@ -256,11 +255,6 @@ AGENT_PROXY_PASSWORD=pass1234
 sudo systemctl restart cloudsecure-agent.service
  
 
-
-
 |===
-
-//image:CloudSecureAgentInstallationCommand.png[]
-
 
 

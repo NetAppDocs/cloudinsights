@@ -102,7 +102,7 @@ Some things to try if you encounter problems with this data collector:
 |•	Modify the data collector configuration to use the secure client (recommended)
 •	Install navicli.jar in the CLI path to navicli.exe OR naviseccli.exe
 •	Note: navicli.jar is deprecated as of EMC Navisphere version 6.26
-•	The navicli.jar may be available on http://powerlink.emc.com
+•	The navicli.jar may be available on \http://powerlink.emc.com
 |Error: Storage Pools not reporting disks on Service Processor at configured IP address
 |Configure the data collector with both Service Processor IPs, separated by a comma
 |Error: Revision mismatch error
@@ -110,7 +110,7 @@ Some things to try if you encounter problems with this data collector:
 •	Verify that the device and the host are both running identical versions of the software:
     -	From the Cloud Insights Acquisition Unit, open a command line window
     -	Change the directory to the configured installation directory
-    -	Make a connection with the CLARiiON device by typing “navicli -h ${ip} getagent”
+    -	Make a connection with the CLARiiON device by typing “navicli -h <ip> getagent”
     -	Look for the version number on the first couple of lines. Example: “Agent Rev:           6.16.2 (0.1)”
     -	Look for and compare the version on the first line. Example: “Navisphere CLI Revision 6.07.00.04.07”
 |Error: Unsupported Configuration - No Fibre Channel Ports

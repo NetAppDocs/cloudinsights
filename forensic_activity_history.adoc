@@ -151,6 +151,9 @@ You can sort activity history data by _Time, User,  Source IP, Activity, Path_ a
 
 You can export the activity history to a .CSV file by clicking the _Export_ button above the Activity History table. Note that only the top 100,000 records are exported. Depending on the amount of data, it may take from a few seconds to several minutes for the export to finish.
 
+A sample script to extract forensic data via API is present at _/opt/netapp/cloudsecure/agent/export-script/_. Please see the readme at this location for more details about the script.
+
+
 == Column Selection for All Activity 
 
 The _All activity_ table shows select columns by default. To add, remove, or change the columns, click the gear icon on the right of the table and select from the list of available columns.
@@ -236,6 +239,24 @@ Example: use the string _testvolume*_, rather than _*testvolume_ or _*test*volum
 
 Use a prefix-based search to see all activities underneath a given folder recursively (Hierarchical search). e.g.   _/path1/path2/path3_ or _“/path1/path2/path3”_ will list all the activities recursively under _/path1/path2/path3_.
 Alternatively use the "Add To Filter" option under the All Activity tab.
+
+|I am encountering a "Request failed with status code 500/503" error when using a Path filter.
+|Try using a smaller date range for filtering records.
+
+|Forensic UI is loading data slowly when using the _path_ filter.
+|If the path is _/Aaa/Bbb/Ccc/Ddd_, then instead of searching for:
+
+Aaa/Bbb/Ccc*
+
+OR
+
+Aaa/Bbb/C*
+
+Try searching for:
+
+Aaa/Bbb/Ccc/* 
+
+This search should allow the data to load faster.
 
 
 |===

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_subscribing_to_cloud_insights.html
 summary: At any point during your free trial, you can subscribe to Cloud Insights.
-keywords: subscribe, trial, subscription, contract, raw capacity, region, data retention, retention, MU, managed unit, managed units, units, managed
+keywords: subscribe, trial, subscription, contract, raw capacity, region, data retention, retention, MU, managed unit, managed units, units, managed, module, evaluation
 ---
 = Subscribing to Cloud Insights
 :toc: macro
@@ -14,10 +14,10 @@ keywords: subscribe, trial, subscription, contract, raw capacity, region, data r
 :imagesdir: ./media/
 :keywords: OnCommand, Insight, documentation, help, onboarding, getting started
 
-[lead]
+[.lead]
 Getting started with Cloud Insights is as easy as three simple steps:
 
-* Sign up for an account on link:https://https://bluexp.netapp.com//[*NetApp BlueXP*] to get access to all of NetApp's Cloud offerings.
+* Sign up for an account on link:https://bluexp.netapp.com//[*NetApp BlueXP*] to get access to all of NetApp's Cloud offerings.
 * Register for a link:https://cloud.netapp.com/cloud-insights[*free trial*] of Cloud Insights to explore the features available.
 * *Subscribe* to Cloud Insights for on-going, uninterrupted access to your data via link:https://www.netapp.com/us/forms/sales-inquiry/cloud-insights-sales-inquiries.aspx[NetApp Sales] direct or link:https://aws.amazon.com/marketplace/pp/prodview-pbc3h2mkgaqxe[AWS Marketplace].
 
@@ -69,26 +69,25 @@ If your free trial has expired and you have not yet subscribed to Cloud Insights
 
 
 
-== Module Trials
+== Module Evaluation
 
-Coming Soon!
 
-NOTE: Module Trial is considered Preview functionality and is therefore subject to change.
+You may also take advantage of *Module Evaluations*. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day evaluation of Kubernetes Observability, starting from when you install the NetApp Kubernetes Monitoring Operator. You will only be charged for your Kubernetes Observability managed unit usage at the end of the evaluation period.
 
-In addition to your initial trial of Cloud Insights, you may also take advantage of *Module Trials*. For example, if you are already subscribed to Infrastructure Observability but are adding Kubernetes to your environment, you will automatically enter into a 30-day trial of Kubernetes Observability, starting from when you install the NetApp Kubernetes Monitoring Operator. You will only be charged for your Kubernetes Observability managed unit usage at the end of the trial period.
-
-NOTE: Keep in mind that you will be charged for new managed unit (MU) usage following the trial period, so be sure to plan accordingly. When your module trial is ending, you will be notified if you will need to add more MUs to avoid service interruption.
+NOTE: Keep in mind that you will be charged for new managed unit (MU) usage following the evaluation, so be sure to plan accordingly. When your module evaluation is ending, you will be notified if you will need to add more MUs to avoid service interruption.
 
 You can monitor your managed unit usage on the *Admin > Subscription* page in the *Usage* tab.
 
 image:Module_Trials_UsageTab.png[MU Usage Screen]
+
+NOTE: A _Module Evaluation_ is not a _Trial_ - we use the term trial when we provide customers a free trial period of using the CI service to confirm fit and enable purchase. A module evaluation is different - this is when we allow a paid customer to try out a module of Cloud Insights that they have not used in recent months of their paid subscription. When evaluation is active, charges for just the newly configured module are waived. The customers working environment is still under subscription and has not reverted to free trial. The subscription has not changed. 
 
 
 
 
 === Estimator
 
-During a module trial, you are not changed MU usage for resources consumed for the module, but you can open the *Estimator* (on the _Summary_ tab) to see how MUs will be charged following the trial, as well as play with "What if" scenarios with the number of MUs you may need in the future. Reset the numbers by exiting the Estimator.
+During a module evaluation, you are not changed MU usage for resources consumed for the module, but you can open the *Estimator* (on the _Summary_ tab) to see how MUs will be charged following the evaluation, as well as play with "What if" scenarios with the number of MUs you may need in the future. Reset the numbers by exiting the Estimator.
 
 image:Module_Trials_Estimator.png[Estimator]
 
@@ -96,7 +95,7 @@ Select the checkbox next to a module to add or remove the entire module's MU's f
 
 The Estimator also allow you to see how the numbers stack up for either an Add On - where you keep your current subscription term and increase the number of managed units licensed - or a Renew option for a the renewal subscription you would purchase when your current subscription term ends.
 
-Note that customers are only eligible for a module trial once per subscription. 
+Note that customers are only eligible for a module evaluation once per subscription. 
 
 
 == Subscription Options
@@ -133,7 +132,7 @@ image:Subscription_Cost_Calculators.png[Subscription Page showing Infrastructure
 
 == How Do I Subscribe?
 
-If your Managed Unit count is less than 1,000, you can subscribe via NetApp Sales, or <<self-subscribe-via-aws-marketplace,self-subscribe>> via AWS Marketplace.
+If your Managed Unit count is less than 1,000, you can subscribe via NetApp Sales, or <<self-subscribe-through-aws-marketplace,self-subscribe>> via AWS Marketplace.
 
 
 === Subscribe through NetApp Sales direct
@@ -166,13 +165,20 @@ Once your subscription is active, you can view your subscription status and Mana
 //image:Subscription_Summary.png[Subscription Status ] 
 //image:Subscription_Status_Usage.png[Viewing your subscription ststus]
 
-The Subscription Summary tab displays the following:
+The Subscription *Summary* tab displays things like the following:
 
 * Current Edition 
 * Subscription Serial Number
-* Current MU usage and "what if?" cost estimators
-* Links to modify your subscription
-* Views of your Managed Unit usage
+* Current MU entitlement
+
+The *Usage* tab shows you your current MU usage and how that usage breaks down by data collector.
+
+image:SubscriptionUsageByModule.png[MU usage by module]
+
+
+The *History* tab gives you insight into your MU usage over the past 7 to 90 days. Hovering over a column in the chart gives you a breakdown by module (i.e. Observability, Kubernetes).
+
+image:Subscription_Usage_History.png[MU Usage History]
 
 
 == View your Usage Management

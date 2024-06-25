@@ -80,7 +80,7 @@ You must have the following in order to collect inventory data:
 * Read-only user name and password for the HiCommand Device Manager software and peer privileges
 * Port requirements: 2001 (http) or 2443 (https)
 * Log into HiCommand Device Manager software using username and password 
-* Verify access to HiCommand Device Manager http://<HiCommand_Device_Manager_IP>:2001/service/StorageManager 
+* Verify access to HiCommand Device Manager \http://<HiCommand_Device_Manager_IP>:2001/service/StorageManager 
 
 == Performance requirements 
 
@@ -220,7 +220,7 @@ Some things to try if you encounter problems with this data collector:
 * If the output does not contain the array details then register the array with Storage Navigator CLI:
     - Open Command prompt and change directory to the configured path
     - Run the command “set=STONAVM_HOME=.”
-    - Run command “auunitaddauto -ip ${ip}”. Replace ${ip} with real IP
+    - Run command “auunitaddauto -ip <ip>”. Replace <ip> with the correct IP.
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
