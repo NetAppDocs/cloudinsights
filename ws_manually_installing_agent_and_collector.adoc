@@ -20,7 +20,7 @@ By default, when a new version of a Workload Security agent or collector is avai
 
 . Verify in swagger that the API categories named “cloudsecure_installers.agent” and “cloudsecure_installers.collector” are available. If not, support for manual agent installation is not enabled. Please reach out to NetApp support to have the feature enabled. 
 +
-image:ws_manual_install_APIs.png[]
+image:ws_manual_install_APIs.png[Manual Install APIs]
 
 . Execute all the commands mentioned in this document as ‘root’ user, or, if running with a different user, execute the commands with ‘sudo’. 
 
@@ -40,13 +40,13 @@ image:ws_manual_install_APIs.png[]
 
 .. Copy the generated API access token. Please note that once the window is closed the token can no longer be retrieved. In that event you would need to generate a new token. 
 +
-image:ws_create_and_save_token.png[]
+image:ws_create_and_save_token.png[Create and Save API token]
 +
-image:ws_create_and_save_token_confirm.png[]
+image:ws_create_and_save_token_confirm.png[Confirm the token creation]
 
 . Navigate to *Admin > API Access > API Documentation* (top right of the page) and select the _Workload Security_ icon. This opens the Swagger documentation for Workload Security APIs.
 +
-image:ws_swagger_documentation_link.png[]
+image:ws_swagger_documentation_link.png[Swagger documentation for Workload Security]
 
 . Authorize to access _Workload Security_ APIs. 
 
@@ -56,7 +56,7 @@ image:ws_swagger_documentation_link.png[]
 
 .. Click _Authorize_ and close the window. 
 +
-image:ws_API_authorization.png[]
+image:ws_API_authorization.png[Authorize the API]
 
 . Download the Agent installer. 
 
@@ -64,8 +64,8 @@ image:ws_API_authorization.png[]
 
 .. In the _platform_ field, enter _linux_. Click _Execute_. 
 +
-image:ws_installers_agent_api_swagger.png[]
-image:ws_installers_agent_api_swagger-2.png[]
+image:ws_installers_agent_api_swagger.png[Swagger for agent installer API - top]
+image:ws_installers_agent_api_swagger-2.png[Swagger for agent installer API - response]
 
 .. Click ‘Download file’ to download the installer. 
 
@@ -75,7 +75,7 @@ image:ws_installers_agent_api_swagger-2.png[]
 +
 * Append the “-o {{file_name}}” argument to the curl command to save the installer file with the desired name. The actual name of the installer file can be found in the swagger response headers section. That name may also be used.  
 +
-image:ws_installers_agent_api_swagger_installer_file.png[]
+image:ws_installers_agent_api_swagger_installer_file.png[Choosing the latest agent via API - Swagger]
 +
 * Although the file can be downloaded to any location, it is recommended to download it to an empty folder in which the installer .zip can be extracted.
 
@@ -182,7 +182,7 @@ At this point, agent should be successfully installed.
 +
 .. The agent should be visible in the “Agents” page and should be in ‘connected’ state. 
 +
-image:ws_agentsPageShowingConnected.png[]
+image:ws_agentsPageShowingConnected.png[UI showing Connected Agents]
 
 . Post installation cleanup.
 .. If agent installation is successful, the downloaded agent installer files can be deleted.
@@ -213,13 +213,13 @@ drwx------ 2 cssys         cssys 4096 Apr 26 15:56 collectors
 
 . Copy the UUID of the required collector type. 
 +
-image:ws_collectorAPIShowingUUID.png[]
+image:ws_collectorAPIShowingUUID.png[Collector API response showing UUID]
 
 . Download collector installer.
 
 .. Navigate to “cloudsecure_installers.collector > /v1/cloudsecure/collector-types/installers/{collectorTypeUUID}” (GET) API. Enter UUID copied from previous step and download the installer file.
 +
-image:ws_downloadCollectorByUUID.png[]
+image:ws_downloadCollectorByUUID.png[API to download collector by UUID]
 
 .. If the installer file is downloaded externally in a different machine, copy the installer file to the system where agent is running and place in the directory “/tmp/collectors”.
 
@@ -227,7 +227,7 @@ image:ws_downloadCollectorByUUID.png[]
 +
 Note that the file name should be the same as present in the response headers of the  download collector API. see the screenshot below.
 +
-image:ws_curl_command.png[]
+image:ws_curl_command.png[Example Curl command showing obfuscated token]
 +
 ----
 [root@demo-agent collectors]# pwd
@@ -251,11 +251,11 @@ total 49716
 .. Navigate to “cloudsecure_config.collectors” > “/v1/cloudsecure/collectors” (POST) API.
 .. In example dropdown, select “ONTAP SVM data collector json sample”, update collector config details and Execute.
 +
-image:ws_API_add_collector.png[]
+image:ws_API_add_collector.png[API to add collector]
 
 . Collector should be now visible under ‘Data Collectors’ section.
 +
-image:ws_collectorPageList.png[]         
+image:ws_collectorPageList.png[UI list page showing collectors]         
 
 .	Post installation cleanup.
 a.	If collector installation is successful, all files in the directory “/tmp/collectors” can be deleted.
@@ -276,17 +276,17 @@ drwx------ 2 cssys         cssys 4096 Apr 26 15:56 collectors
 
 . Now we need to fetch collector version and UUID of collector. Navigate to “cloudsecure_config.collector-types” API. In collectorCategory dropdown, select collector type as “USER”. Select “ALL” to fetch all collector type details in single request.
 +
-image:ws_API_collector_all.png[]
+image:ws_API_collector_all.png[API to get all collectors]
 
 . Copy the UUID of the LDAP collector.
 +
-image:ws_LDAP_collector_UUID.png[]
+image:ws_LDAP_collector_UUID.png[API response showing the LDAP collector UUID]
 
 . Download the collector installer.
 
 .. Navigate to “cloudsecure_installers.collector” > “/v1/cloudsecure/collector-types/installers/{collectorTypeUUID}” (GET) API. Enter UUID copied from previous step and download the installer file.
 +
-image:ws_LDAP_collector_UUID_download.png[]
+image:ws_LDAP_collector_UUID_download.png[API and reponse to download collector]
 
 .. If the installer file is downloaded externally in a different machine, copy the installer file to the system where agent is running and in the directory – “/tmp/collectors”.
 
@@ -295,7 +295,7 @@ image:ws_LDAP_collector_UUID_download.png[]
 +
 Note that the file name should be the same as present in the response headers of the  download collector API. see the screenshot below.
 +
-image:ws_curl_command.png[]
+image:ws_curl_command.png[Curl command API]
 +
 ----
 [root@demo-agent collectors]# pwd
@@ -318,15 +318,15 @@ total 37156
 
 . Navigate to ‘User Directory Collectors’ page and click ‘+ User Directory Collector’. 
 +
-image:ws_user_directory_collector.png[]
+image:ws_user_directory_collector.png[Adding user directory collector]
 
 .  Select ‘LDAP Directory Server’.
 +
-image:ws_LDAP_user_select.png[]
+image:ws_LDAP_user_select.png[UI window for Selecting an LDAP user]
 
 .	Enter LDAP Directory Server details and click ‘Save’
 +
-image:ws_LDAP_user_Details.png[]
+image:ws_LDAP_user_Details.png[UI showing LDAP user details]
 
 .	Upon clicking “Save”, agent service will locate the collector installer in the  “/tmp/collectors/” directory and install the collector.
 
@@ -336,11 +336,11 @@ image:ws_LDAP_user_Details.png[]
 
 .. In example dropdown, select “LDAP Directory Server user collector json sample’”, update collector config details and click “Execute”.
 +
-image:ws_API_LDAP_Collector.png[]
+image:ws_API_LDAP_Collector.png[API for LDAP collector]
 
 . The collector should be now visible under “User Directory Collectors” section.
 +
-image:ws_LDAP_collector_list.png[]
+image:ws_LDAP_collector_list.png[LDAP collector list in the UI]
 
 .	Post installation cleanup.
 
@@ -422,7 +422,7 @@ drwx------  2 root  root  4096 Apr 26 17:38 tmp
 
 .. The agent should be visible in the “Agents” page and should be in ‘connected’ state. 
 +
-image:ws_agentsPageShowingConnected.png[]
+image:ws_agentsPageShowingConnected.png[UI showing connected agents]
 
 . Post installation cleanup.
 .. If agent installation is successful, the downloaded agent installer files can be deleted.
@@ -450,14 +450,14 @@ drwx------ 2 cssys         cssys 4096 Apr 26 15:56 collectors
 +
 Copy UUID and version from response body.
 
-image:ws_collector_UUID_and_version.png[]
+image:ws_collector_uuid_and_version.png[API response showing collector UUID and version highlighted]
 
 . Download latest collector installer file.
 .. Navigate to “cloudsecure_installers.collector” > “/v1/cloudsecure/collector-types/installers/{collectorTypeUUID}” API. Enter “collectorTypeUUID” copied from previous step. Download the installer to “/tmp/collectors” directory.
 
 .. Alternatively, the curl command of the same API can also be used.
 +
-image:ws_curl_command_only.png[]
+image:ws_curl_command_only.png[Curl command example]
 
 Note: the file name should be same as present in the response headers of the download collector API. 
 
@@ -480,7 +480,7 @@ total 55024
 .. In “Examples” dropdown, select “ONTAP SVM data collector upgrade json sample” to populate sample payload.
 .. Replace version with version copied from step 3 and click ‘Execute’.
 +
-image:ws_svm_ontap_collector_upgrade_example_json.png[]
+image:ws_svm_ontap_collector_upgrade_example_json.png[SVM upgrade example in the Swagger UI]
 
 Wait for few seconds, collectors will be automatically upgraded.
 
@@ -500,7 +500,7 @@ Repeat the steps above for upgrading other types of collectors as well.
 +
 This error will come if the collector installer file is not present in “/tmp/collectors” directory or it is not accessible. Make sure the installer file is downloaded and the directory “collectors” and installer zip file is owned by cssys:cssys and restart agent service – “systemctl restart cloudsecure-agent.service”
 +
-image:ws_agent014_error.png[]
+image:ws_agent014_error.png[UI screen showing the "agent 014" error hover tip]
 
 . 2.	Unauthorized error
 +
