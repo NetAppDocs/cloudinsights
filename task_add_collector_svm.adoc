@@ -35,6 +35,8 @@ Workload Security uses data collectors to collect file and user access data from
 
 * Make sure that you have a properly configured User Directory Connector, otherwise events will show encoded user names and not the actual name of the user (as stored in Active Directory) in the “Activity Forensics” page.
 
+* •	ONTAP Persistent Store is supported from 9.15.1.
+
 * For optimal performance, you should configure the FPolicy server to be on the same subnet as the storage system.
 
 //* You need the SVM management IP address or the cluster IP, and username / password for login.
@@ -274,6 +276,8 @@ Keep the following in mind:
 * On agent or collector upgrades, agent VM restarts/reboots, or agent service restart, a paused collector will remain in _Paused_ state.
 * If the data collector is in _Error_ state, the collector cannot be changed to _Paused_ state. The Pause button will be enabled only if the state of the collector is _Running_.
 * If the agent is disconnected, the collector cannot be changed to _Paused_ state. The collector will go into _Stopped_ state and the Pause button will be disabled.
+* A paused Data Collector can not be deleted. 
+* While paused, the fpolicy settings in ONTAP are disabled but are not deleted. On resume, the fpolicy settings in ONTAP are enabled again.
 
 
 == Troubleshooting 
@@ -463,6 +467,9 @@ Please check the number of Data Collectors which are added to the Agent in the m
 If it is more than 20, please increase the CPU and RAM capacity of the Agent machine.
 Once the CPU and RAM is increased, the DSCs will get into Initializing and then to Running state automatically.
 Look into the sizing guide on link:concept_cs_event_rate_checker.html[this page].
+
+|The Data Collector is erroring out when SVM mode is selected.
+|While connecting in SVM mode, If cluster management IP is used to connect instead of SVM management IP, then the connection will error out. Make sure that the correct SVM IP is used.
 
 |===
 
