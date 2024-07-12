@@ -68,11 +68,12 @@ As an alternative to manually applying annotations to individual assets, you can
 
 .Before you begin
 You must have created and saved a query that identifies the NetApp root aggregates you identified in your environment.
-. Steps
-. In the Cloud Insights toolbar, Click *Manage > Annotation rules*
-. Click *Add*
-+
-The Add Rule dialog displays:
+
+.Steps
+
+. In the Cloud Insights toolbar, Click *Manage > Annotation rules*.
+. Click *Add*. The Add Rule dialog displays.
+
 .. In the Name box, enter a unique name that describes the rule: *"RootAggrExclude"*
 .. Click Query and select the Query that Insight should use to apply the annotation rule to: *"Aggregate0"*
 .. Click Annotation and select: *"Root agg exclude"*

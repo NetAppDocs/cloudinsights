@@ -71,3 +71,23 @@ If you have a Monitor with a 30-minute window that notices that a condition is v
 It is possible to configure a monitor in such a way for the condition to *always* exist on the monitored object--for example, IOPS > 1 or latency > 0. These are often created as 'test' monitors and then forgotten. Such monitors create alerts that stay permanently open on the constituent objects, which can cause system stress and stability issues over time.  
 
 To prevent this, Cloud Insights will automatically close any "permanently active" alert after 7 days. Note that the underlying monitor conditions may (probably will) continue to exist, causing a new alert to be issued almost immediately, but this closing of "always active" alerts alleviates some of the system stress that can otherwise occur.
+
+
+== Pausing Notifications During Maintenance Windows
+
+To temporarily suppress notifications during a maintenance window (for example, when replacing a data collector or an acquisition unit), navigate to *Observability > Alerts > Maintenance Windows* and select *+ Maintenance Window*. 
+
+image:maintenance_window_add_new.png['screen showing options for suppressing notifications during a maintenance window, including selecting the monitor/group and the time window]
+
+Use the filters to select the monitor(s) or monitor group(s) whose notifications you want to temporarily suppress. If you select a monitor group, _all_ monitors within that group will suppress notifications.  Based on the filters you set, you will be shown a list of any recent alerts relative to the filtered monitors.
+
+Select whether to suppress notifications only or both alerts and notifications (coming soon). If you choose to suppress notifications only (the default), then during a maintenance window, only alert _notifications_ are suppressed. Alerts will still be triggered and can be viewed on the Observability > Alerts list page.
+
+Set a start date and time, and optionally an end date and time, for the suppression window.
+
+
+On the *Observability > Alerts > Maintenance Windows* page you will see a list of current maintenance windows. Using the "three dot" menu for a window, you can _pause_ a maintenance window (meaning, notifications will once again occur), _resume_ a maintenance window (causeing notifications to be suppressed again), or _delete_ a maintenance window.
+
+image:maintenance_window_list.png[List of all current maintenance windows]
+
+
