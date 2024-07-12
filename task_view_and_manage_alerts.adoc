@@ -71,3 +71,7 @@ If you have a Monitor with a 30-minute window that notices that a condition is v
 It is possible to configure a monitor in such a way for the condition to *always* exist on the monitored object--for example, IOPS > 1 or latency > 0. These are often created as 'test' monitors and then forgotten. Such monitors create alerts that stay permanently open on the constituent objects, which can cause system stress and stability issues over time.  
 
 To prevent this, Cloud Insights will automatically close any "permanently active" alert after 7 days. Note that the underlying monitor conditions may (probably will) continue to exist, causing a new alert to be issued almost immediately, but this closing of "always active" alerts alleviates some of the system stress that can otherwise occur.
+
+
+
+

@@ -88,14 +88,20 @@ Some things to try if you encounter problems with this data collector:
 |"Configuration error" with error message “REST Service is disabled”
 |Verify REST service is enabled on this device.
 |"Configuration error " with error message “User unauthorized for command”
-|Likely due to certain roles (for example, 'advanced_analytics') are not included for the configured user <userName>.
-Possible Solution:
-* Correct the Analytics (statistic) scope for the user ${user} with the read only role:
-- From the Configuration -> Users screen, put your mouse over the role and double click to allow editing
--	Select "Analytics" from the Scope drop down menu. A list of the possible properties appears.
--	Click the top most check box and it will select all three properties.
--	Click the Add button on the right side.
--	Click the Apply button at the top right of the pop-up window. The pop-up window will close.
+|This error is likely due to certain roles (for example, 'advanced_analytics') not being included for the configured user.
+
+Applying the Analytics scope for the user with read-only role may remove the error. Follow these steps:
+
+1. On the ZFs system, from the Configuration -> Users screen, move your mouse over the role and double click to allow editing
+
+2. Select "Analytics" from the Scope drop down menu. A list of the possible properties appears.
+
+3. Click the top most check box and it will select all three properties.
+
+4. Click the Add button on the right side.
+
+5. Click the Apply button at the top right of the pop-up window. The pop-up window will close.
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
