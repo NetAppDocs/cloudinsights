@@ -4,7 +4,6 @@ permalink: task_dc_oracle_zfs.html
 keywords: data collector, Oracle, ZFS, storage applicance 
 summary: Configuring Oracle ZFS data collector.
 ---
-
 = Oracle ZFS Storage Appliance data collector
 :toc: macro
 :hardbreaks:
@@ -80,7 +79,7 @@ Some things to try if you encounter problems with this data collector:
 
 === Inventory
 
-[cols=2*, options="header", cols"50,50"]
+[cols="2a, 2a", options="header", cols"50,50"]
 |===
 |Problem:|Try this:
 |"Invalid login credentials" 
@@ -92,15 +91,15 @@ Some things to try if you encounter problems with this data collector:
 
 Applying the Analytics scope for the user with read-only role may remove the error. Follow these steps:
 
-1. On the ZFs system, from the Configuration -> Users screen, move your mouse over the role and double click to allow editing
+. On the ZFs system, from the Configuration -> Users screen, move your mouse over the role and double click to allow editing
 
-2. Select "Analytics" from the Scope drop down menu. A list of the possible properties appears.
+. Select "Analytics" from the Scope drop down menu. A list of the possible properties appears.
 
-3. Click the top most check box and it will select all three properties.
+. Click the top most check box and it will select all three properties.
 
-4. Click the Add button on the right side.
+. Click the Add button on the right side.
 
-5. Click the Apply button at the top right of the pop-up window. The pop-up window will close.
+. Click the Apply button at the top right of the pop-up window. The pop-up window will close.
 
 |===
 

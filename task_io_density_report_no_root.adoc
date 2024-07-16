@@ -31,12 +31,14 @@ The steps in this guide can also be applied to other vendor's storage systems. Y
 
 Queries provide search at a granular level, based on user-selected criteria. Using a query allows you to search for Internal volumes in your environment that contain the NetApp root aggregate.
 
-. Steps
+.Steps
+
 . Create a query to identify NetApp root aggregates in your environment: Click *Queries > New Query > Select Resource Type* (?)
 . Click *storage Pool*
 . Enter the name for the root aggregate
 +
 This example uses "aggr0" for the name. When creating an aggregate, only the following requirements for the name must be followed:
+
 .. It must begin with either a letter or an underscore (_).
 .. It can contain only letters, digits, and underscores.
 .. It can be 250 characters or less.
