@@ -69,7 +69,7 @@ For Linux, disk space should be allocated in this manner:
 == Additional recommendations
 * It is strongly recommended to synchronize the time on both the ONTAP system and the Agent machine using *Network Time Protocol (NTP)* or *Simple Network Time Protocol (SNTP)*.
 
-//// 
+////
 
 Removed from Table:
 
@@ -141,6 +141,9 @@ agentlogin.cs01-ap-1.cloudinsights.netapp.com
 636 (LDAPs / start-tls) |Workload Security Agent|LDAP Server URL|Connect to LDAP
 |TCP|443|Workload Security Agent|Cluster or SVM Management IP Address (depending on SVM collector configuration)|API communication with ONTAP
 |TCP|35000 - 55000|SVM data LIF IP Addresses|Workload Security Agent|Communication from ONTAP to the Workload Security Agent for Fpolicy events.  These ports must be opened towards the Workload Security Agent in order for ONTAP to send events to it, including any firewall on the Workload Security Agent itself (if present).
+
+NOTE that you do not need to reserve *all* of these ports, but the ports you reserve for this must be within this range. It is recommended to start by reserving ~100 ports, and increasing if necessary.
+
 |TCP|7|Workload Security Agent|SVM data LIF IP Addresses|Echo from Agent to SVM Data LIFs
 |SSH |22|Workload Security Agent| Cluster management |Needed for CIFS/SMB user blocking.
 |===
