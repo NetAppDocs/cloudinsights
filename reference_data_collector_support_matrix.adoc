@@ -8765,6 +8765,8 @@ Products supported by this data collector:
 |Total Used Capacity|Implemented|HTTPS|Total capacity in MB
 |Total Used Capacity (MB)|Implemented|HTTPS|place holder for the used capacity as read from the device
 |Type|Gap|HTTPS|
+
+
 .5+|QTree|GuidKey 1|Implemented|HTTPS|GuidKey1 is implicit for all objects whose GUID key has not changed since OCI version 7.3.5.
 |GuidKey 2|Implemented|HTTPS|GuidKey2 is implicit for all objects whose GUID key has not changed since OCI version 7.3.5.
 |Name|Implemented|HTTPS|
@@ -8809,10 +8811,20 @@ Products supported by this data collector:
 |Used Capacity|Implemented||
 |Capacity Used Ratio|Implemented||
 |Total Objects|Implemented||
-.0+|Qtree.4+|Storage|Failed Raw Capacity|Implemented||
+
+//.0+|Qtree ||||
+
+.5+|QTree|Used Capacity|Implemented||
+|Total IOPS|Implemented||
+|Capacity Quota Hard Limit|Implemented||
+|Capacity Quota Soft Limit|Implemented||
+|File Count|Implemented||
+
+.4+|Storage|Failed Raw Capacity|Implemented||
 |Spare Raw Capacity|Implemented||Raw capapcity of spare disks (sum of all disks that are spare)
 |StoragePools Capacity|Implemented||
 |Raw Capacity|Implemented||
+
 .8+|Storage Node|Node Capacity Utilization Allowed Meta Data|Implemented||
 |Node Capacity Utilization Total|Implemented||
 |Node Capacity Utilization Usable|Implemented||
