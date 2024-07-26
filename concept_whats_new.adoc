@@ -20,14 +20,27 @@ NetApp is continually improving and enhancing its products and services. Here ar
 == July 2024
 
 
-=== Easier Dashboard Navigation
+=== Workload Security Improvements
 
-This feature is all about streamlining your operational workflows and making it easier to collaborate between teams.
+*NFS 4.1 support*
+
+The SVM Data Collector now supports NFS versions up to and including *NFS 4.1*.
+
+*New Forensics Activity API*
+
+The Forensics Activity link:concept_cs_api.html[API] has a new version. When calling the API for Forensics Activity, use the *cloudsecure_forensics.activities._v2_* API. 
+
+Note that if you are making multiple calls to this API, for best results ensure that the calls occur sequentially, instead of in parallel. Multiple parallel calls may cause the API to time out.
+
+
+=== Easier Dashboard Navigation 
+
+This feature is all about streamlining your operational workflows and making it easier to collaborate between teams. 
 
 Grouping your dashboards makes it easier to quickly get the visibility you need, and now with the new navigation menu, you can jump between different dashboards without losing your place, making it a breeze to explore and manage your infrastructure. 
-Align dashboard groups with your operational runbooks to further enhance your experience.
+Align dashboard groups with your operational runbooks to further enhance your experience. 
 
-image:Dashboard_Nav_Group_Dropdown.png[Drop-down to select another dashboard in the same group(s) as the current dashboard]
+image:Dashboard_Nav_Group_Dropdown.png[Drop-down to select another dashboard in the same group(s) as the current dashboard] 
 
 
 
