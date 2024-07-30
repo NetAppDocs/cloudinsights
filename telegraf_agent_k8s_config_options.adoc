@@ -74,7 +74,6 @@ proxy:
 
 ||unprotected | See this link:https://community.influxdata.com/t/updating-telegraf-to-version-1-29-5-crashes-kubernetes-pod/33376[known Telegraf issue]. Setting _unprotected_ will instruct the Kubernetes Monitoring Operator to run Telegraf with the `--unprotected` flag.
 
-
 |kube-state-metrics||Configuration options that can customize the kube state metrics installation of the Operator
 
 ||cpuLimit |CPU limit for kube-state-metrics deployment

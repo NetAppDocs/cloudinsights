@@ -22,7 +22,9 @@ Workload Security uses data collectors to collect file and user access data from
 * This data collector is supported with the following:
 ** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version greater than 9.13.1. 
 ** SMB protocol version 3.1 and earlier.  
+
 ** NFS versions up to and including NFS 4.1 with ONTAP 9.15.1 or later.
+
 ** Flexgroup is supported from ONTAP 9.4 and later versions
 ** ONTAP Select is supported
 
@@ -138,12 +140,13 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
 
 
-=== Permissions for ONTAP Autonomous Ransomware Protection
+=== Permissions for ONTAP Autonomous Ransomware Protection and ONTAP Access Denied
 
 If you are using cluster administration credentials, no new permissions are needed.
 
 If you are using a custom user (for example, _csuser_) with permissions given to the user, then follow the steps below to give permissions to Workload Security to collect ARP related information from ONTAP.
 
+////
 For _csuser_ with cluster credentials, do the following from the ONTAP command line:
 
  security login rest-role create -role arwrole -api /api/storage/volumes -access readonly -vserver <cluster_name>
@@ -173,7 +176,11 @@ For csuser with _SVM_ credentials, execute the following commands from the ONTAP
  security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole -vserver <svm_name>
 ----
 
+////
+
 For more information, read about link:concept_ws_integration_with_ontap_access_denied.html[Integration with ONTAP Access Denied]
+
+and link:concept_cs_integration_with_ontap_arp.html[Integration with ONTAP Autonomous Ransomware Protection]
 
 
 == Configure the data collector
