@@ -276,8 +276,6 @@ Keep the following in mind:
 * On agent or collector upgrades, agent VM restarts/reboots, or agent service restart, a paused collector will remain in _Paused_ state.
 * If the data collector is in _Error_ state, the collector cannot be changed to _Paused_ state. The Pause button will be enabled only if the state of the collector is _Running_.
 * If the agent is disconnected, the collector cannot be changed to _Paused_ state. The collector will go into _Stopped_ state and the Pause button will be disabled.
-* A paused Data Collector can not be deleted. 
-* While paused, the fpolicy settings in ONTAP are disabled but are not deleted. On resume, the fpolicy settings in ONTAP are enabled again.
 
 
 == Troubleshooting 
