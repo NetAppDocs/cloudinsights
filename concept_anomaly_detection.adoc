@@ -4,7 +4,8 @@ permalink: concept_anomaly_detection.html
 keywords: Anomalies, anomaly, patterns, monitor, alert
 summary: Monitor metrics for anomalies
 ---
-= Anomaly Detection
+
+= Anomaly Detection Monitors
 :toc: macro
 :hardbreaks:
 :nofooter:
@@ -14,7 +15,13 @@ summary: Monitor metrics for anomalies
 :imagesdir: ./media/
 
 [.lead]
-Anomaly Detection provides insight into anomalies in the patterns of data in your environment. An anomaly is a variation in a metric value for an object or group of objects, compared to historical information week over week. For example, if a pod's CPU utilization was at ~50% on Tuesday at 12:05 PM in the previous weeks, but is at 100% this Tuesday at 12:05 PM, that would be considered an anomaly.
+Anomaly Detection provides insight into unexpected changes in the patterns of data in your environment. An anomaly occurs when the pattern of an object's behavior changes in your environment, for example, if an object experiences a certain level of latency at a certain time on Wednesdays, but latency spikes above that level at that time on the subsequent Wednesday, that spike would be considered an anomaly.  Cloud Insights allows the creation of monitors to alert when anomalies such as this occur.
+
+Anomaly detection is suitable for object metrics that exhibit a recurring, predictable pattern. When these object metrics spike above or drop below their expected levels, Cloud Insights can generate an alert to prompt investigation.
+
+image:anomaly_detection_expert_view.png[graph showing detected anomaly]
+
+//is a variation in a metric value for an object or group of objects, compared to historical information week over week. For example, if a a storage's latency was at 5 on Tuesday at 12:05 PM in the previous weeks, but is at 10 this Tuesday at 12:05 PM, that would be considered an anomaly.
 
 == What is Anomaly Detection?
 
@@ -26,7 +33,7 @@ An anomaly occurs when the mean value of a metric is a number of standard deviat
 
 image:MetricMonitor_blurb.png[Metric Monitors are for when you know the operating range]
 
-* *Anomaly Detection monitoring* uses machine learning algorithms to identify outliers that deviate from the norm, for when the definition of normal is not clear.
+* *Anomaly Detection monitoring* uses machine learning algorithms to identify outliers that deviate from the norm, for when the definition of "normal" is not clear.
 
 image:ADMonitor_blurb.png[Anomaly Detection monitors are for when you want to know spikes or drops]
 
@@ -42,7 +49,7 @@ Anomaly Detection monitoring can provide helpful alerts for many situations, inc
 
 // Because Anomaly Detection works by comparing a metric's data on a particular day and time to the same day and time from the previous week, once you create an Anomaly Detection monitor, Cloud Insights needs to collect data for seven days before it can alert on anomalies.
 
-== Alerting on anomalies
+== Creating an Anomaly Detection Monitor
 
 To alert on anomalies, create a monitor by navigating to *Observability > Alerts > +Monitor*. Select _Anomaly Detection Monitor_ as the monitor type. 
 
@@ -55,13 +62,17 @@ Next, set the conditions for the monitor.
 * Trigger an alert when the selected metric either _Spikes above_ the predicted bounds, _Drops below_ those bounds, or both.
 * Set sensitivity to _Medium_, _Low_ (fewer anomalies are detected), or _High_ (more anomalies are detected).
 * Determine whether the alert level is _Critical_ or _Warning_.
-* Optionally, set a value below which anomalies are _ignored_. This can help reduce noise. This value is shown as a dashed line on the sample graph.
+* Optionally, set a value below which anomalies are _ignored_. This can help reduce noise. This value is shown as a dashed line on the sample graph. 
 
 image:Anomaly Detection Monitor Conditions.png[Setting conditions for Anomaly Detection monitor]
+
 
 Finally, you can configure a delivery method for the alerts (email, webhook, or both), give the monitor an optional description or corrective actions, and add the monitor to a custom group, if desired.
 
 Save the monitor with a meaningful name, and you're done. 
+
+Upon creation, the monitor analyzes data from the previous week to establish an initial baseline. Anomaly detection becomes more accurate as time passes and more history occurs. 
+
 
 // NOTE: Remember that once the monitor is created or modified, it will take seven days before you will see any alerts.
 
@@ -70,6 +81,15 @@ Save the monitor with a meaningful name, and you're done.
 
 On an alert landing page, alerts triggered when anomalies are detected will show a highlighted band in the chart, from the time when the metric spiked outside the predicted bounds to when it moved back inside those bounds. 
 
-image:Anomaly_Detection_Chart_Example.png[Chart showing the time when an anomaly occurred]
+image:Anomaly_Detection_Chart_Example_Expert_View.png[Chart showing the time when an anomaly occurred]
+//image:Anomaly_Detection_Chart_Example.png[Chart showing the time when an anomaly occurred]
 
+While viewing an anomaly chart on an alert landing page, you can choose the following options:
+
+* Weekly Trend: compare values to the same time, same day on previous weeks, for up to 5 previous weeks.
+* Full Anomaly Bounds: by default, the graph focuses on the metric value so you can better analyze the metric behavior. Select to show full anomaly bounds (maximum value, etc.)
+
+You can also view objects that contributed to the anomaly by selecting those in the landing page's expert view. The chart will show the behavior of the selected objects.
+
+image:Anomaly_Detection_Contributing_Objects.png[charting objects contributing to the anomaly]
 

@@ -20,6 +20,15 @@ NetApp is continually improving and enhancing its products and services. Here ar
 == July 2024
 
 
+=== Alert on Data Anomalies
+
+Anomaly Detection provides insight into unexpected changes in the patterns of data in your environment. An anomaly occurs when the pattern of an object's behavior changes in your environment, for example, if an object experiences a certain level of latency at a certain time on Wednesdays, but latency spikes above that level at that time on the subsequent Wednesday, that spike would be considered an anomaly. Cloud Insights allows the creation of link:concept_anomaly_detection.html[Anomaly Detection Monitors] to alert when anomalies such as this occur.
+
+Anomaly detection is suitable for object metrics that exhibit a recurring, predictable pattern. When these object metrics spike above or drop below their expected levels, Cloud Insights can generate an alert to prompt investigation.
+
+image:anomaly_detection_expert_view.png[graph showing detected anomaly]
+
+
 === Workload Security Improvements
 
 *NFS 4.1 support*
