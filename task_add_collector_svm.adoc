@@ -22,8 +22,9 @@ Workload Security uses data collectors to collect file and user access data from
 * This data collector is supported with the following:
 ** Data ONTAP 9.2 and later versions. For best performance, use a Data ONTAP version greater than 9.13.1. 
 ** SMB protocol version 3.1 and earlier.  
-//Note that Workload Security does not work with SMB configurations that use Flexcache. In systems using Flexcache, starting with ONTAP 9.7, Fpolicy is supported only in an NFS environment.
-**	NFS protocol version 4.1 and earlier 
+
+** NFS versions up to and including NFS 4.1 with ONTAP 9.15.1 or later.
+
 ** Flexgroup is supported from ONTAP 9.4 and later versions
 ** ONTAP Select is supported
 
@@ -35,7 +36,7 @@ Workload Security uses data collectors to collect file and user access data from
 
 * Make sure that you have a properly configured User Directory Connector, otherwise events will show encoded user names and not the actual name of the user (as stored in Active Directory) in the “Activity Forensics” page.
 
-* •	ONTAP Persistent Store is supported from 9.15.1.
+* •	ONTAP Persistent Store is supported from 9.14.1.
 
 * For optimal performance, you should configure the FPolicy server to be on the same subnet as the storage system.
 
@@ -281,8 +282,30 @@ Keep the following in mind:
 * On agent or collector upgrades, agent VM restarts/reboots, or agent service restart, a paused collector will remain in _Paused_ state.
 * If the data collector is in _Error_ state, the collector cannot be changed to _Paused_ state. The Pause button will be enabled only if the state of the collector is _Running_.
 * If the agent is disconnected, the collector cannot be changed to _Paused_ state. The collector will go into _Stopped_ state and the Pause button will be disabled.
-* A paused Data Collector can not be deleted. 
-* While paused, the fpolicy settings in ONTAP are disabled but are not deleted. On resume, the fpolicy settings in ONTAP are re-enabled.
+
+
+== Persistent Store 
+
+Persistent store is supported with ONTAP 9.14.1 and later. Note that volume name instructions vary from ONTAP 9.14 to 9.15. 
+
+Persistent Store can be enabled by selecting the checkbox in the collector edit/add page. After selecting the checkbox, a text field is displayed for accepting volume name. Volume name is a mandatory field for enabling Persistent Store. 
+
+* For ONTAP 9.14.1, you must create the volume prior to enabling the feature, and provide the same name in the _Volume Name_ field. The recommended volume size is 16GB.
+
+ * For ONTAP 9.15.1, the volume will be created automatically with 16GB size by the collector, using the name provided in in the _Volume Name_ field.
+
+Specific permissions are required for Persistent Store (some or all of these may already exist):
+
+Cluster mode:
+
+ security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <cluster-name> 
+ security login rest-role create -role csrestrole -api /api/cluster/jobs/ -access readonly -vserver <cluster-name> 
+
+Vserver mode:
+
+ security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <vserver-name> 
+ security login rest-role create -role csrestrole -api /api/cluster/jobs/ -access readonly -vserver <vserver-name>  
+
 
 
 == Troubleshooting 
