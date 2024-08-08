@@ -15,9 +15,28 @@ keywords: features
 
 [#whats-new]
 [.lead]
-NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the commercial Editions of Cloud Insights.  
+NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the commercial Editions of Cloud Insights.   
 
 == July 2024
+
+
+=== AIOps: Anomaly Detection
+
+
+Cloud Insights uses machine learning to detect unexpected changes in the patterns of data in your environment, and provide proactive alerts to help you identify problems early. 
+
+A data center behaves in different ways at different times of the day, and on different days of the week. Cloud Insights uses weekly seasonality to compare historical behavior for each day and time.
+
+
+Anomaly Detection Monitoring can provide alerts for situations such as when the definition of "normal" is unclear, where behavior changes over time, or when working with large amounts of data where manually defining thresholds is impractical. 
+
+New link:concept_anomaly_detection.html[Anomaly Detection Monitors] alert when anomalies such as this occur on object metrics you choose.
+
+//Cloud Insights allows the creation of link:concept_anomaly_detection.html[Anomaly Detection Monitors] to alert when anomalies such as this occur on object metrics you choose.
+
+
+
+image:anomaly_detection_expert_view.png[graph showing detected anomaly]
 
 
 === Workload Security Improvements
