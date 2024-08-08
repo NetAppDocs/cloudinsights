@@ -19,6 +19,11 @@ Cloud Insights uses the Brocade FOS REST collector to discover inventory and per
 
 By default, this collector will attempt to discover all the FOS devices that are a part of all the fabrics the switch is part of.
 
+Please note: FOS' default read only user "user" does NOT have view permissions on all Virtual Fabrics nor does it has "chassis role" permissions. This means you will have an exceedingly low likelihood of success using "user" with Cloud Insights, which needs to understand both the physical and logical configuration of the FOS device. 
+
+
+
+
 == Terminology 
 
 Cloud Insights acquires the following inventory information from the Brocade FOS REST data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
