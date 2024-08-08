@@ -19,7 +19,7 @@ Cloud Insights uses the Brocade FOS REST collector to discover inventory and per
 
 Please note: FOS' default "user" level is insufficiently powerful for Cloud Insights to view all the logical aspects of a device - we need a user account with the "Chassis Role" enabled, as well as permissions on all the Virtual Fabrics configured on a switch. 
 
-Here is an example of how you can create a "least privilege" user account for CI usage in a SSH session to a FOS device:
+Here is an example of how you can create a "least privilege" user account for Cloud Insights usage in a SSH session to a FOS device:
 
 userConfig --add NetAppCIUser -r user -l 1-128 -c user -p Qwerty!
  
