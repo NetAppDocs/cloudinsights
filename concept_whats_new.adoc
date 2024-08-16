@@ -32,6 +32,7 @@ In addition to last/avg/min/max/sum, you can now aggregate data in charts using:
 
 
 image:change_and_change_ratio_drop_down.png[Drop-down showing change and ca=hange ration aggregation choices]
+
 image:change_and_change_ratio_bar_chart.png[bar chart example showing change and change ration aggregation choices]
 
 
@@ -54,10 +55,11 @@ image:csv_export_button.png[Export to CSV button on a log query page]
 
 
 
-=== Resolve Monitors by time
+=== Resolve Alerts by time
 
 Cloud Insights now gives you options to resolve alerts with greater accuracy and reliability. Far from alerting on a brief dip or spike values, you can choose to resolve an alert only when the metric stays within the acceptable range for a specified duration. This prevents "flickering" of alerts caused by metric value fluctuations around thresholds, providing peace of mind by reducing unnecessary noise.
 
+image:resolve_alert_by_time_dropdown.png[resolving an alert base don time]
 
 
 == July 2024
