@@ -21,35 +21,27 @@ NetApp is continually improving and enhancing its products and services. Here ar
 == August 2024 
 
 
+=== View Data Specific to Your Time Range
+
+Investigating an alert? Zoomed in on a chart? These actions change the time range for those pages. Now you can lock that time range, navigate to other Cloud Insights pages, and see data specific to that locked time range. Investigating and troubleshooting just got a whole lot easier!
+
+image:timerange_lock.png[tooltip stating to click the icon to lock the time range for use on other pages]
+
 === Change and Change Ratio (%) Analysis
 
-The new Change and Change-Ratio time aggregations enable you to view changes in metric values over time, making it easier to identify compelling shifts and trends, such as significant capacity growth.
+Change-ratio time aggregations aid you in identifying significant changes and trends in metric values over time.
+Those insights are key to understanding what changed, such as considerable capacity growth for a specific time or a change in single port performance.
 
-In addition to last/avg/min/max/sum, you can now aggregate data in charts using:
-
-* *Change* - observe the change in a metric between two points within a selected period
+* *Change* - observe the change in a metric between two points within a selected period.
 * *Change Ratio* - observe the proportional change in a metric between two points, with respect to the initial point, within a selected period.
-
-
-image:change_and_change_ratio_drop_down.png[Drop-down showing change and ca=hange ration aggregation choices]
 
 image:change_and_change_ratio_bar_chart.png[bar chart example showing change and change ration aggregation choices]
 
 
-////
-=== Aggregate by Change or Change Ratio
-
-New rollup aggregation functions give you more flexibility in visualizing your data. In addition to last/avg/min/max/sum, you can now aggregate data in charts using the following:
-
-* *Change* - observe the change in a metric between two points within a selected period
-* *Change Ratio* - observe the proportional change in a metric between two points, with respect to the initial point, within a selected period.
-
-image:change_and_change_ratio.png[aggregation drop-down showing change and change ratio]
-////
 
 === Export Log Query Results to .CSV
 
-When viewing log query results, easily export the list to .CSV by clicking the new "Export" button.
+When viewing log query results, easily export up to 10,000 rows to .CSV by clicking the new "Export" button. This enhances data accessibility, eases data analysis and reporting, and facilitates seamless integration with other data processing tools.
 
 image:csv_export_button.png[Export to CSV button on a log query page]
 
@@ -57,11 +49,15 @@ image:csv_export_button.png[Export to CSV button on a log query page]
 
 === Resolve Alerts by time
 
-Cloud Insights now gives you options to resolve alerts with greater accuracy and reliability. Far from alerting on a brief dip or spike values, you can choose to resolve an alert only when the metric stays within the acceptable range for a specified duration. This prevents "flickering" of alerts caused by metric value fluctuations around thresholds, providing peace of mind by reducing unnecessary noise.
+Cloud Insights now gives you the option to resolve an alert when the monitored metric stays within the acceptable range for a specified duration. This lets you focus on genuine issues, reducing the noise associated with metrics repeatedly crossing defined thresholds by consolidating multiple alerts to one.
 
 image:resolve_alert_by_time_dropdown.png[resolving an alert base don time]
 
 
+
+
+
+'''
 == July 2024
 
 
