@@ -198,8 +198,20 @@ For _csuser_ with cluster credentials, do the following from the ONTAP command l
 If _csuser_ is not used and if admin user at cluster level is used, make sure that the admin user has ssh permission to ONTAP.
 
 
-|
-|
+|I'm getting the Error Message _SID translate failed._
+_Reason:255:Error: command failed: not authorized for that commandError: "access-check" is not a recognized command_, when a user should have been blocked.
+|This can happen when _csuser_ does not have correct permissions. See link:cs_restrict_user_access.html#prerequisites-for-user-access-blocking[Prerequisites for User Access Blocking] for more information.
+
+After applying the permissions, it is recommended to restart the ONTAP data collector and User Directory data collector. The required permission commands are listed below.
+
+----
+ security login role create -role csrole -cmddirname "vserver export-policy rule" -access all
+ security login role create -role csrole -cmddirname set -access all
+ security login role create -role csrole -cmddirname "vserver cifs session" -access all
+ security login role create -role csrole -cmddirname "vserver services access-check authentication translate" -access all
+ security login role create -role csrole -cmddirname "vserver name-mapping" -access all
+----
+
 
 |===
 
