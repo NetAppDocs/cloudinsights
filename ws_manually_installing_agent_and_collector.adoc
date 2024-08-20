@@ -38,6 +38,7 @@ image:ws_manual_install_APIs.png[Manual Install APIs]
 
 .. Click _Save_. 
 
+[#copy-access-token]
 .. Copy the generated API access token. Please note that once the window is closed the token can no longer be retrieved. In that event you would need to generate a new token. 
 +
 image:ws_create_and_save_token.png[Create and Save API token]
@@ -52,7 +53,7 @@ image:ws_swagger_documentation_link.png[Swagger documentation for Workload Secur
 
 .. Click the _Authorize_ button at the top right of the page. 
 
-.. In the _Customer ApiKey (apiKey)_ text field, paste the API token previously copied from Step 1c. 
+.. In the _Customer ApiKey (apiKey)_ text field, paste the API token previously copied from <<copy-access-token, Step 1c>>. 
 
 .. Click _Authorize_ and close the window. 
 +
@@ -121,7 +122,7 @@ total 153344
 
 . Generate a one-time token for new agent installation. 
 +
-Note: The one-time token generated in this step is different from the API access token generated at step 1c. 
+Note: The one-time token generated in this step is different from the API access token generated at <<copy-access-token, Step 1c>> . 
 +
 .. In Swagger, execute _cloudsecure_installers.agent > /v1/cloudsecure/agent/oneTimeToken_ API and copy the token from the response.  
 
@@ -480,7 +481,7 @@ total 55024
 .. In swagger, navigate to “cloudsecure_installers.collector” > “/v1/cloudsecure/collector-types/upgrade” (PUT) API.
 
 .. In “Examples” dropdown, select “ONTAP SVM data collector upgrade json sample” to populate sample payload.
-.. Replace version with version copied from step 3 and click ‘Execute’.
+.. Replace version with version copied from <<copy-access-token, Step 3>> and click ‘Execute’.
 +
 image:ws_svm_ontap_collector_upgrade_example_json.png[SVM upgrade example in the Swagger UI]
 +
