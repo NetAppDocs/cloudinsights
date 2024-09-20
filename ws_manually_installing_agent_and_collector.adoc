@@ -95,7 +95,6 @@ total 0
 total 76012
 -rw------- 1 root root 77834705 Apr 26 14:34 cloudsecure-linux-agent-installer-1.617.0.zip
 ----
-//image:ws_createFolderAndCopyInstaller.png[]
 +
 ----
 [root@demo-agent agent_installers]# unzip cloudsecure-linux-agent-installer-1.617.0.zip
@@ -104,7 +103,6 @@ Archive:  cloudsecure-linux-agent-installer-1.617.0.zip
   inflating: cloudsecure-agent-install.sh  
   inflating: cloudsecure-agent-upgrade.sh
 ----
-//image:ws_unzipInstaller.png[]
 
 . Set _execute_ permission for “cloudsecure-agent-install.sh” file. 
 +
@@ -118,7 +116,6 @@ total 153344
 -rw------- 1 root root 77834705 Apr 26 14:34 cloudsecure-linux-agent-installer-1.617.0.zip
 
 ----
-//image:ws_setExecutePermission.png[]
 
 . Generate a one-time token for new agent installation. 
 +
@@ -131,21 +128,18 @@ Note: The one-time token generated in this step is different from the API access
 ----
 [root@demo-agent ~]# export TOKEN=<<one time token generated in step 7>>
 ----
-//image:ws_exportToken.png[]
 
 . If a proxy server is used, export https_proxy as an environment variable in the format mentioned below. 
 +
 ----
 [root@demo-agent ~]# export HTTPS_PROXY='USER:PASSWORD@PROXY_SERVER:PORT'
 ----
-//image:ws_exportProxy.png[]
 
 . Optional: By default, agent & collectors will be installed in the path “/opt/netapp”. To install in a different path, set the following environment variable"
 +
 ----
 [root@demo-agent ~]# export AGENT_INSTALL_PATH=/test_user/apps
 ----
-//image:ws_optionalExportInstallPath.png[]
 +
 Note: If installed in a custom path, data collectors and all other artifacts like agent logs will be created inside the custom path only. Installation logs will still be present in - _/var/log/netapp/cloudsecure/install_.
 
@@ -154,14 +148,12 @@ Note: If installed in a custom path, data collectors and all other artifacts lik
 ----
 [root@demo-agent agent_installers]# ./ cloudsecure-agent-install.sh
 ----
-//image:ws_installCommand.png[]
 +
 Note: If user is not running in a “bash” shell, the export command might not work. In that case steps 8 through 11 can be combined and run as below. HTTPS_PROXY and AGENT_INSTALL_PATH are optional and can be ignored if not required. 
 +
 ----
 sudo /bin/bash -c "TOKEN=<<one time token generated in step 7>> HTTPS_PROXY=<<proxy details in the format mentioned in step 9>> AGENT_INSTALL_PATH=<<custom_path_to_install_agent>> ./cloudsecure-agent-install.sh"
 ----
-//image:ws_combinedSteps.png[]
 +
 At this point, agent should be successfully installed. 
 
