@@ -208,6 +208,21 @@ Search results with and  without / will be different
 
 
 
+== Local root SVM  user activity changes 
+ 
+If a local root SVM user is performing any activity, the IP of the client on which the NFS share is mounted is considered in the username, which is shown as _root@<ip-address-of-the-client>_ in forensic activity and user activity pages.
+ 
+For example: 
+
+* If SVM-1 is monitored by Workload Security, and the root user of that SVM mounts the share on a client with IP address 10.197.12.40, the username shown in the forensic activity page will be _root@10.197.12.40_.
+ 
+* If the same SVM-1 is mounted into another client with IP address 10.197.12.41, the username shown in the forensic activity page will be _root@10.197.12.41_.
+ 
+* This is done to segregate NFS root user activity by IP address. Previously, all the activity was considered to be done by _root_ user only, with no IP distinction.
+
+
+
+
 == Troubleshooting
 
 |===
