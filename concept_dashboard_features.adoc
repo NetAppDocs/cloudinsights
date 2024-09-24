@@ -50,7 +50,7 @@ When legends are displayed, if the landing page of the asset indicated by the le
 
 == Transforming Metrics 
 
-Cloud Insights provides different *transform* options for certain metrics in widgets (specifically, those metrics called "Custom" or Integration Metrics, such as from Kubernetes, ONTAP Advanced Data, Telegraf plugins, etc.), allowing you to display the data in a number of ways. When adding transformable metrics to a widget, you are presented with a drop-down giving the following transform choices:
+Data Infrastructure Insights provides different *transform* options for certain metrics in widgets (specifically, those metrics called "Custom" or Integration Metrics, such as from Kubernetes, ONTAP Advanced Data, Telegraf plugins, etc.), allowing you to display the data in a number of ways. When adding transformable metrics to a widget, you are presented with a drop-down giving the following transform choices:
 
 None::
 Data is displayed as is, with no manipulation.
@@ -513,7 +513,7 @@ But if you temporarily want to see only nodes on individual subnets in your envi
 
 image:Variables_Node_Example_After_Variable_Applied.png[Agent Nodes After Variable Filter]
 
-You can also set a variable to filter on _all_ objects with a particular attribute regardless of object type, for example objects with an attribute of "vendor", by specifying _*.vendor_ in the variable field. You do not need to type the "*."; Cloud Insights will supply this if you select the wildcard option.
+You can also set a variable to filter on _all_ objects with a particular attribute regardless of object type, for example objects with an attribute of "vendor", by specifying _*.vendor_ in the variable field. You do not need to type the "*."; Data Infrastructure Insights will supply this if you select the wildcard option.
 
 image:Variables_Attribute_Vendor_Example.png[Attribute Variable for Vendor]
 
@@ -614,7 +614,7 @@ Clicking the link in either a single-value widget or a gauge widget will display
 
 Like single-value and gauge widgets, you can set conditional formatting in table widgets, allowing you to highlight data with colors and/or special icons.
 
-NOTE: Conditional Formatting is not currently available in Cloud Insights Federal Edition.
+NOTE: Conditional Formatting is not currently available in Data Infrastructure Insights Federal Edition.
 
 Conditional Formatting allows you to set and highlight Warning-level and Critical-level thresholds in table widgets, bringing instant visibility to outliers and exceptional data points.
 
@@ -633,9 +633,9 @@ You can choose whether to display condition formatting as color, icons, or both.
 
 == Choosing the Unit for Displaying Data
 
-Most widgets on a dashboard allow you to specify the Units in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc. In many cases, Cloud Insights knows the best format for the data being acquired. In cases where the best format is not known, you can set the format you want.
+Most widgets on a dashboard allow you to specify the Units in which to display values, for example _Megabytes_, _Thousands_, _Percentage_, _Milliseconds (ms)_, etc. In many cases, Data Infrastructure Insights knows the best format for the data being acquired. In cases where the best format is not known, you can set the format you want.
 
-In the line chart example below, the data selected for the widget is known to be in _bytes_ (the base IEC Data unit: see the table below), so the Base Unit is automatically selected as 'byte (B)'. However, the data values are large enough to be presented as gibibytes (GiB), so Cloud Insights by default auto-formats the values as GiB. The Y-axis on the graph shows 'GiB' as the display unit, and all values are displayed in terms of that unit.
+In the line chart example below, the data selected for the widget is known to be in _bytes_ (the base IEC Data unit: see the table below), so the Base Unit is automatically selected as 'byte (B)'. However, the data values are large enough to be presented as gibibytes (GiB), so Data Infrastructure Insights by default auto-formats the values as GiB. The Y-axis on the graph shows 'GiB' as the display unit, and all values are displayed in terms of that unit.
 
 //image:WidgetBaseUnitKnown.png[Widget with known base unit]
 image:used_memory_in_bytes.png[Base Unit Byte shown in Gigabytes,width=640]
@@ -654,12 +654,12 @@ To clear out your settings and start again, click on *Reset Defaults*.
 
 === A word about Auto-Format
 
-Most metrics are reported by data collectors in the smallest unit, for example as a whole number such as 1,234,567,890 bytes. By default, Cloud Insights will automatically format the value for the most readable display. For example a data value of 1,234,567,890 bytes would be auto formatted to 1.23 _Gibibytes_. You can choose to display it in another format, such as _Mebibytes_. The value will display accordingly.
+Most metrics are reported by data collectors in the smallest unit, for example as a whole number such as 1,234,567,890 bytes. By default, Data Infrastructure Insights will automatically format the value for the most readable display. For example a data value of 1,234,567,890 bytes would be auto formatted to 1.23 _Gibibytes_. You can choose to display it in another format, such as _Mebibytes_. The value will display accordingly.
 
-NOTE: Cloud Insights uses American English number naming standards. American "billion" is equivalent to "thousand million".
+NOTE: Data Infrastructure Insights uses American English number naming standards. American "billion" is equivalent to "thousand million".
 
 ////
-Depending on the widget and the range of values displayed, Cloud Insights will typically use the highest value as the basis for auto-formatting the units. So if your range goes from one million (1,000,000) to one billion (1,000,000,000), your chart might auto-format to the billion (bn) level, which means lower values might display as .001bn.
+Depending on the widget and the range of values displayed, Data Infrastructure Insights will typically use the highest value as the basis for auto-formatting the units. So if your range goes from one million (1,000,000) to one billion (1,000,000,000), your chart might auto-format to the billion (bn) level, which means lower values might display as .001bn.
 ////
 
 === Widgets with multiple queries
@@ -776,9 +776,9 @@ Each widget displays its auto-refresh interval in the upper-right corner of the 
 
 Auto-refresh is not available for Custom dashboard time range.
 
-When combined with *TV Mode*, auto-refresh allows for near-real-time display of data on a dashboard or asset page. TV Mode provides an uncluttered display; the navigation menu is hidden, providing more screen real estate for your data display, as is the Edit button. TV Mode ignores typical Cloud Insights timeouts, leaving the display live until logged out manually or automatically by authorization security protocols.
+When combined with *TV Mode*, auto-refresh allows for near-real-time display of data on a dashboard or asset page. TV Mode provides an uncluttered display; the navigation menu is hidden, providing more screen real estate for your data display, as is the Edit button. TV Mode ignores typical Data Infrastructure Insights timeouts, leaving the display live until logged out manually or automatically by authorization security protocols.
 
-NOTE: Because NetApp BlueXP has its own user login timeout of 7 days, Cloud Insights must log out with that event as well. You can simply log in again and your dashboard will continue to display.
+NOTE: Because NetApp BlueXP has its own user login timeout of 7 days, Data Infrastructure Insights must log out with that event as well. You can simply log in again and your dashboard will continue to display.
 
 * To activate TV Mode, click the TV Mode button.
 * To disable TV Mode, click the *Exit* button in the upper left of the screen. 
@@ -810,7 +810,7 @@ To add dashboards to the group, click the _All Dashboards_ group to show all das
 
 Remove dashboards from the current group in the same manner by selecting _Remove From Group_. You can not remove dashboards from the _All Dashboards_ or _My Dashboards_ group. 
 
-NOTE: Removing a dashboard from a group does not delete the dashboard from Cloud Insights. To completely remove a dashboard, select the dashboard and click _Delete_. This removes it from any groups to which it belonged and it is no longer available to any user.
+NOTE: Removing a dashboard from a group does not delete the dashboard from Data Infrastructure Insights. To completely remove a dashboard, select the dashboard and click _Delete_. This removes it from any groups to which it belonged and it is no longer available to any user.
 
 == Pin your Favorite Dashboards
 
@@ -825,7 +825,7 @@ image:DashboardPin.png[Pinned Dashboards]
 
 == Dark Theme
 
-You can choose to display Cloud Insights using either a light theme (the default), which displays most screens using a light background with dark text, or a dark theme which displays most screens using a dark background with light text.
+You can choose to display Data Infrastructure Insights using either a light theme (the default), which displays most screens using a light background with dark text, or a dark theme which displays most screens using a dark background with light text.
 
 To switch between light and dark themes, click the username button in the upper right corner of the screen and choose the desired theme.
 
@@ -844,7 +844,7 @@ NOTE: Some screen areas, such as certain widget charts, still show light backgro
 
 Different data collectors often poll their data at different intervals. For example, data collector A may poll every 15 minutes while data collector B polls every five minutes. When a line chart widget (also spline, area, and stacked area charts) is aggregating this data from multiple data collectors into a single line (for example, when the widget is grouping by "all"), and refreshing the line every five minutes, data from collector B may be shown accurately while data from collector A may have gaps, thus affecting the aggregate until collector A polls again.
 
-To alleviate this, Cloud Insights interpolates data when aggregating, using the surrounding data points to take a "best guess" at data until data collectors poll again. You can always view each data collector's object data individually by adjusting the widget's grouping.
+To alleviate this, Data Infrastructure Insights interpolates data when aggregating, using the surrounding data points to take a "best guess" at data until data collectors poll again. You can always view each data collector's object data individually by adjusting the widget's grouping.
 
 === Interpolation Methods
 
