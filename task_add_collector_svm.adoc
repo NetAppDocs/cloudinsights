@@ -187,7 +187,7 @@ and link:concept_cs_integration_with_ontap_arp.html[Integration with ONTAP Auton
 
 .Steps for Configuration 
 
-. Log in as Administrator or Account Owner to your Cloud Insights environment. 
+. Log in as Administrator or Account Owner to your Data Infrastructure Insights environment. 
 
 . Click *Workload Security > Collectors > +Data Collectors* 
 +
@@ -269,14 +269,14 @@ In versions of ONTAP prior to 9.9.1, _data-fpolicy-client_ need not be set.
 
 2 new operations are now shown on kebab menu of collector (PAUSE and RESUME). 
 
-If the Data Collector is in _Running_ state, you can Pause collection. Open the "three dots" menu for the collector and select PAUSE. While the collector is paused, no data is gathered from ONTAP, and no data is sent from the collector to ONTAP. This means no Fpolicy events will flow from ONTAP to the data collector, and from there to Cloud Insights. 
+If the Data Collector is in _Running_ state, you can Pause collection. Open the "three dots" menu for the collector and select PAUSE. While the collector is paused, no data is gathered from ONTAP, and no data is sent from the collector to ONTAP. This means no Fpolicy events will flow from ONTAP to the data collector, and from there to Data Infrastructure Insights. 
 
 Note that if any new volumes, etc. are created on ONTAP while the collector is Paused, Workload Security won’t gather the data and those volumes, etc. will not be reflected in dashboards or tables.
 
 Keep the following in mind:
 
 * Snapshot purge won’t happen as per the settings configured on a paused collector. 
-* EMS events (like ONTAP ARP) won’t be processed on a paused collector. This means if ONTAP identifies a ransomware attack, Cloud Insights Workload Security won’t be able to acquire that event.
+* EMS events (like ONTAP ARP) won’t be processed on a paused collector. This means if ONTAP identifies a ransomware attack, Data Infrastructure Insights Workload Security won’t be able to acquire that event.
 * Health notifications emails will NOT be sent for a paused collector.
 * Manual or Automatic actions (such as Snapshot or User Blocking) will not be supported on a paused collector.
 * On agent or collector upgrades, agent VM restarts/reboots, or agent service restart, a paused collector will remain in _Paused_ state.
