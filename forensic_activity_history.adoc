@@ -99,40 +99,26 @@ You can filter Forensic Activity data by the following fields:
 
 * The *Activity* type.
 
-////
-** Change Group Ownership
-**	Change Owner
-**	Change Permission
-**	Copy
-**	Create
-**	Delete
-**	Move
-**	Read
-**	Read Metadata
-**	Rename
-**	Write
-**	Write Metadata
-**	Other Change 
-////
 
 * *Source IP* from which the entity was accessed. You must provide a valid source IP address in double quotes, for example “10.1.1.1.”.  Incomplete IPs such as “10.1.1.*”, “10.1.*.*”, etc. will not work.
 
 * *Protocol* to fetch protocol-specific activities.
 
-//* *Noise Reduction* to filter activities on temporary files which are generated as part of the normal operating process. If noise reduction is enabled, temporary files of extension .tmp, .ldb, .laccdb, .$db etc. are filtered.
 
 * *Username* of the user performing the activity. You need to provide the exact Username to filter. Search with partial username, or partial username prefixed or suffixed with ‘*’ will not work.
 
-
 * *Noise Reduction* to filter files which are created in the last 2 hours by the user. It is also used to filter temporary files (for example, .tmp files) accessed by the user.
 
-* *Domain* of the user performing the activity. You need to provide the *exact domain* to filter. Searching for partial domain, or partial domain prefixed or suffixed with wildcard ()'*'), will not work. _None_ can be specified to search for missing domain.
+* *Domain* of the user performing the activity. You need to provide the *exact domain* to filter. Searching for partial domain, or partial domain prefixed or suffixed with wildcard ('*'), will not work. _None_ can be specified to search for missing domain.
+
 
 The following fields are subject to special filtering rules:
 
 * *Entity Type*, using entity (file) extension - it is preferable to specify exact entity type within quotes. For example _“txt”_.
 * *Path* of the entity - Directory Path filters (path string ending with /) up to 4 directories deep are recommended for faster results. For example, _/home/userX/nested1/nested2/_ OR  _"/home/userX/nested1/nested2/"_. See the table below for more details.
-* *User* performing the activity - it is preferable to specify the exact user within quotes. For eample, _"Administrator"_.
+
+* *User* performing the activity - it is preferable to specify the exact user within quotes. For example, _"Administrator"_.
+
 * *Device* (SVM) where entities reside
 * *Volume* where entities reside
 * The *Original Path* used for rename events when the original file was renamed. 
@@ -173,16 +159,18 @@ NOTE:
 
 == Sorting Forensic Activity History Data
 
-You can sort activity history data by _Time, User,  Source IP, Activity, Path_ and _Entity Type_. By default, the table is sorted by descending _Time_ order, meaning the latest data will be displayed first. Sorting is disabled for _Device_ and _Protocol_ fields.
+You can sort activity history data by _Time, User,  Source IP, Activity,_ and _Entity Type_. By default, the table is sorted by descending _Time_ order, meaning the latest data will be displayed first. Sorting is disabled for _Device_ and _Protocol_ fields.
 
 
 == User Guide for Asynchronous Exports
 
 === Overview
 
+
 The Asynchronous Exports feature in Storage Workload Security is designed to handle large data exports. 
 
 === Step-by-Step Guide: Exporting Data with Asynchronous Exports
+
 
 . *Initiate Export*: Select the desired time duration and filters for the export and click on the export button.
 . *Wait for Export to Complete*: The processing time can range from a few minutes to a few hours. You may need to refresh the forensics page a few times. Once the export job is complete, the "Download last export CSV file" button will be enabled.
@@ -193,7 +181,7 @@ The Asynchronous Exports feature in Storage Workload Security is designed to han
 
 
 
-A sample script to extract forensic data via API is present at _/opt/netapp/cloudsecure/agent/export-script/_. See the readme at this location for more details about the script.
+A sample script to extract forensic data via API is present at _/opt/netapp/cloudsecure/agent/export-script/_ on the agent. See the readme at this location for more details about the script.
 
 
 == Column Selection for All Activity 
