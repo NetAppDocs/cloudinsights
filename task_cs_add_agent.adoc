@@ -23,7 +23,7 @@ Workload Security (formerly Cloud Secure) collects user activity data using one 
 
 * The sudo privilege is required for installation, running scripts, and uninstall. 
 * While installing the agent, a local user _cssys_ and a local group _cssys_ are created on the machine. If permission settings do not allow creation of a local user, and instead require Active Directory, a user with the username _cssys_ must be created in the Active Directory server.
-* You can read about Cloud Insights security link:security_overview.html[here].
+* You can read about Data Infrastructure Insights security link:security_overview.html[here].
 
 
 == Steps to Install Agent 
@@ -116,7 +116,7 @@ Sample output:
 
 == "Pinning" an Agent at the current version
 
-By default, Cloud Insights Workload Security updates agents automatically. Some customers may wish to pause automatic updating, which leaves an Agent at its current version until one of the following occurs:
+By default, Data Infrastructure Insights Workload Security updates agents automatically. Some customers may wish to pause automatic updating, which leaves an Agent at its current version until one of the following occurs:
 
 
 * The customer resumes automatic Agent updates. 
@@ -192,7 +192,7 @@ The command fails when the agent installation command is being run by a non-root
 3.	Copy and paste the full “token=…… … ./cloudsecure-agent-install.sh" installation command and press enter.
 4.	Installation should be able to proceed.
 
-|If the Agent is still not able to connect to Saas, please open a case with NetApp Support. Provide the Cloud Insights serial number to open a case, and attach logs to the case as noted.
+|If the Agent is still not able to connect to Saas, please open a case with NetApp Support. Provide the Data Infrastructure Insights serial number to open a case, and attach logs to the case as noted.
 |To attach logs to the case:
  1.	Execute the following script with root permission and share the output file (cloudsecure-agent-symptoms.zip).
     a.	/opt/netapp/cloudsecure/agent/bin/cloudsecure-agent-symptom-collector.sh
