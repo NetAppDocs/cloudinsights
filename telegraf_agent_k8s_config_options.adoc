@@ -24,9 +24,9 @@ The table below lists the possible options for the _AgentConfiguration_ file:
 |Component|Option|Description
 
 |agent||Configuration options that are common to all components that the operator can install. These can be considered as "global" options.
-||dockerRepo|A dockerRepo override to pull images from customers private docker repos as compared to Cloud Insights docker repo. Default is cloud insights docker repo
+||dockerRepo|A dockerRepo override to pull images from customers private docker repos as compared to Data Infrastructure Insights docker repo. Default is Data Infrastructure Insights docker repo
 ||dockerImagePullSecret|Optional: A secret for the customers private repo
-||clusterName|Free text field that uniquely identifies a cluster across all customers clusters. This should be unique across a cloud insights tenant. Default is what the customer enters in the UI for the "Cluster Name" field
+||clusterName|Free text field that uniquely identifies a cluster across all customers clusters. This should be unique across a Data Infrastructure Insights tenant. Default is what the customer enters in the UI for the "Cluster Name" field
 
 ||proxy
 
@@ -157,10 +157,10 @@ spec:
   # #   To update them, uncomment the line, change the value, and apply the updated AgentConfiguration.
   agent:
     # # [Required Field] A uniquely identifiable user-friendly clustername.
-    # # clusterName must be unique across all clusters in your Cloud Insights environment.
+    # # clusterName must be unique across all clusters in your Data Infrastructure Insights environment.
     clusterName: "my_cluster"
 
-    # # Proxy settings. The proxy that the operator should use to send metrics to Cloud Insights.
+    # # Proxy settings. The proxy that the operator should use to send metrics to Data Infrastructure Insights.
     # # Please see documentation here: https://docs.netapp.com/us-en/cloudinsights/task_config_telegraf_agent_k8s.html#configuring-proxy-support
     # proxy:
     #   server:
