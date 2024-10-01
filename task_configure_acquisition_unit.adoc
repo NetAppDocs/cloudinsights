@@ -125,9 +125,6 @@ image::NewWindowsAUInstall.png[Windows AU Install]
 +
  cloudinsights-service.sh 
  
-//* Use the following script to uninstall the Acquisition Unit:
-
-//** cloudinsights-uninstall.sh
 
 === Proxy Configuration
 
@@ -151,17 +148,6 @@ image:ProxyEndpoints_NewTable.png[Proxy Endpoints Table]
 
 If you have Workload Security in your environment, the configured endpoint URLs will also be displayed in this list.
 
-////
-* Acquisition unit login endpoint: _aulogin.<Cloud Insights Domain>_
-* Cloud Insights site: _<Site Name>.<Cloud Insights Domain>_
- 
-For example:
- 
- https://aulogin.c01.cloudinsights.netapp.com
- https://nane1234.c01.cloudinsights.netapp.com
-
-TIP: The Cloud Insights _Site Name_ is also sometimes called the _Tenant_.
-////
 
 == Uninstalling an Acquisition Unit
 
