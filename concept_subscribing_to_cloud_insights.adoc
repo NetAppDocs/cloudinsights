@@ -121,16 +121,6 @@ Cloud Insights Infrastructure Observability and Kubernetes Observability are met
 
 If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for *Volume Pricing* and will be prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
 
-////
-=== Estimate Your Subscription Cost
-
-The Subscription Calculators help you estimate your Cloud Insights subscription cost based on the number of Managed Units needed. The current values are pre-populated, and you can adjust those values to assist you with planning for estimated future growth. You can adjust values for Infrastructure, Kubernetes, or both. 
-
-Your estimated list price cost will change based on your subscription term. 
-NOTE: The calculators are for estimation only. Your exact pricing will be set when you subscribe.
-
-image:Subscription_Cost_Calculators.png[Subscription Page showing Infrastructure and Kubernetes cost estimation calculators]
-////
 
 
 === Workload Security Metering
@@ -189,8 +179,6 @@ If there is a problem and the subscription process fails to complete correctly, 
 
 Once your subscription is active, you can view your subscription status and Managed Unit usage from the *Admin > Subscription* page.
 
-//image:Subscription_Summary.png[Subscription Status ] 
-//image:Subscription_Status_Usage.png[Viewing your subscription ststus]
 
 The Subscription *Summary* tab displays things like the following:
 
@@ -214,17 +202,24 @@ The Usage Management tab shows an overview of Managed Unit usage, as well as tab
 
 NOTE: The Unformatted Capacity Managed Unit count reflects a sum of the total raw capacity in the environment and is rounded up to the nearest Managed Unit. 
 
-//=== Installed Data Collectors
-
-//Click on the *View Data Collectors* button to expand the list of installed Data Collectors. 
-
-//image:Subscription_Installed_Data_Collectors.png[Data Collectors]
-
-//The Data Collectors section shows the Data Collectors installed in your environment and the breakdown of Managed Units for each. 
 
 NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the summary section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The summary section reflects your actual Managed Unit count for your subscription.
 
 In the event that your usage is nearing or exceeding your subscribed amount, you can reduce usage by deleting data collectors or stopping monitoring of Kubernetes Clusters. Delete an item in this list by clicking on the "three dots" menu and selecting _Delete_.
+
+
+=== Effective Entitlement
+
+In your environment it is possible to purchase multiple tiers of storage. Data Infrastructure Insights (DII) allows you to utilize your resources to their maximum potential before violating license compliance.
+
+To facilitate this, DII calculates a single *effective entitlement* number based on _subscribed_ quantities; it then calculates that same number based on _discovered_ storage and only declares breach if the effective discovered capacity is greater than the effective entitlement. This gives you flexibility to monitor quantities that vary from the subscribed amounts for each tier, which DII allows as long as total discovered storage is within the subscribed effective entitlement. 
+
+Here is the formula for calculating effective usage:
+
+ Effective usage = Performance Tier Raw TiB + Capacity Tier Raw TiB + Archive Tier Raw TiB + (0.1 x Object Tier Raw TiB) + (0.25 x Cloud Tier Provisioning TiB)
+
+image:TBD[Table showing discovered capacity and effective entitlement]
+
 
 
 === What Happens if I Exceed My Subscribed Usage?
