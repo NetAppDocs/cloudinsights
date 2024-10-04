@@ -67,9 +67,10 @@ For Linux, disk space should be allocated in this manner:
 /tmp at least 1 GB available during installation
 
 |50 GB
-|Network |100 Mbps/1 Gbps Ethernet connection, static IP address, and port 80 or 443 (bi-directional) connectivity from Acquisition Unit to *.cloudinsights.netapp.com or your Cloud Insights environment (i.e. \https://<environment_id>.c01.cloudinsights.netapp.com) is required. For requirements between Acquisition Unit and each Data Collector, please refer to instructions for the link:data_collector_list.html[Data Collector].
 
-If your organization requires proxy usage for internet access, you may need to understand your organization’s proxy behavior and seek certain exceptions for Cloud Insights to work. For example, does your organization block access by default, and only allow access to specific web sites/domains by exception? If so, you will need to get the following domain added to the exception list:
+|Network	|100 Mbps/1 Gbps Ethernet connection, static IP address, and port 80 or 443 (bi-directional) connectivity from Acquisition Unit to *.cloudinsights.netapp.com or your Data Infrastructure Insights environment (i.e. \https://<environment_id>.c01.cloudinsights.netapp.com) is required. For requirements between Acquisition Unit and each Data Collector, please refer to instructions for the link:data_collector_list.html[Data Collector].
+
+If your organization requires proxy usage for internet access, you may need to understand your organization’s proxy behavior and seek certain exceptions for Data Infrastructure Insights to work. For example, does your organization block access by default, and only allow access to specific web sites/domains by exception? If so, you will need to get the following domain added to the exception list:
 
 *.cloudinsights.netapp.com
 
@@ -90,7 +91,7 @@ For more information, read about Proxies link:task_troubleshooting_linux_acquisi
 
 == Regarding Sizing
 
-You can get started with a Cloud Insights Acquisition Unit with just 8GB memory and 50GB of disk space, however, for larger environments you should ask yourself the following questions: 
+You can get started with a Data Infrastructure Insights Acquisition Unit with just 8GB memory and 50GB of disk space, however, for larger environments you should ask yourself the following questions: 
 
 Do you expect to:
 
@@ -103,7 +104,7 @@ For additional sizing questions, contact NetApp Support.
 
 == Additional Federal Edition requirement
 
-* For Acquisition Unit installations in Cloud Insights Federal Edition clusters, the underlying operating system must have a good source of entropy. On Linux systems this is typically done by installing _rng-tools_ or by using hardware random number generation (RNG). It is the customer's responsibility to ensure this requirement is met on the Acquisition Unit machine.
+* For Acquisition Unit installations in Data Infrastructure Insights Federal Edition clusters, the underlying operating system must have a good source of entropy. On Linux systems this is typically done by installing _rng-tools_ or by using hardware random number generation (RNG). It is the customer's responsibility to ensure this requirement is met on the Acquisition Unit machine.
 
 
 
