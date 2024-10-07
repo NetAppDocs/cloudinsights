@@ -34,12 +34,14 @@ Here you will find suggestions for troubleshooting problems with Acquisition Uni
 
 |Server Requirements not met | Ensure that your Acquisition Unit server or VM meets  link:concept_acquisition_unit_requirements.html[requirements]
 
-|Network Requirements not met |Ensure that your Acquisition Unit server/VM can access your Data Infrastructure Insights environment (<environment-name>.c01.cloudinsights.netapp.com) through SSL connection over port 443 (opened bi-directional). Try the following commands:
+|Network Requirements not met |Ensure that your Acquisition Unit server/VM can access your Data Infrastructure Insights environment (<environment-name>.c01.cloudinsights.netapp.com) through SSL connection over port 443. Try the following commands:
 
  _ping <environment-name>.c01.cloudinsights.netapp.com_
 _traceroute <environment-name>.c01.cloudinsights.netapp.com_
 _curl \https://<environment-name>.c01.cloudinsights.netapp.com_
 _wget \https://<environment-name>.c01.cloudinsights.netapp.com_
+
+Note that port 443 needs to be opened "outbound" from the AU to Data Infrastructure Insights. 
 
 |Proxy Server not configured properly | Verify your proxy settings, and uninstall/re-install the Acquisition Unit software if necessary to enter the correct proxy settings.
 
