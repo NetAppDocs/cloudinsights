@@ -111,11 +111,14 @@ You can filter Forensic Activity data by the following fields:
 
 * *Domain* of the user performing the activity. You need to provide the *exact domain* to filter. Searching for partial domain, or partial domain prefixed or suffixed with wildcard ('*'), will not work. _None_ can be specified to search for missing domain.
 
+
 The following fields are subject to special filtering rules:
 
 * *Entity Type*, using entity (file) extension - it is preferable to specify exact entity type within quotes. For example _“txt”_.
 * *Path* of the entity - Directory Path filters (path string ending with /) up to 4 directories deep are recommended for faster results. For example, _/home/userX/nested1/nested2/_ OR  _"/home/userX/nested1/nested2/"_. See the table below for more details.
+
 * *User* performing the activity - it is preferable to specify the exact user within quotes. For example, _"Administrator"_.
+
 * *Device* (SVM) where entities reside
 * *Volume* where entities reside
 * The *Original Path* used for rename events when the original file was renamed. 
@@ -163,9 +166,11 @@ You can sort activity history data by _Time, User,  Source IP, Activity,_ and _E
 
 === Overview
 
+
 The Asynchronous Exports feature in Storage Workload Security is designed to handle large data exports. 
 
 === Step-by-Step Guide: Exporting Data with Asynchronous Exports
+
 
 . *Initiate Export*: Select the desired time duration and filters for the export and click on the export button.
 . *Wait for Export to Complete*: The processing time can range from a few minutes to a few hours. You may need to refresh the forensics page a few times. Once the export job is complete, the "Download last export CSV file" button will be enabled.

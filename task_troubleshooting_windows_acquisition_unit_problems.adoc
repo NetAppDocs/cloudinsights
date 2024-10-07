@@ -39,6 +39,8 @@ _traceroute <environment-name>.c01.cloudinsights.netapp.com_
 _curl \https://<environment-name>.c01.cloudinsights.netapp.com_
 _wget \https://<environment-name>.c01.cloudinsights.netapp.com_
 
+Note that port 443 needs to be opened "outbound" from the AU to Data Infrastructure Insights.
+
 |Proxy Server not configured properly | Verify your proxy settings, and uninstall/re-install the Acquisition Unit software if necessary to enter the correct proxy settings. 
 
 1. Try "curl".  Refer to "man curl" information/documentation regarding proxies: --preproxy, --proxy-* (that's a wildcard "*" because curl supports many proxy settings).
