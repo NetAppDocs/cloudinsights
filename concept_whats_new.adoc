@@ -18,6 +18,56 @@ keywords: features
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in Data Infrastructure Insights (formerly Cloud Insights).   
 
 
+== October 2024
+
+
+=== Configuration Changes
+
+Track every configuration change and correlate it with your infrastructure's health and performance. Surface potential configuration changes that may be causing health issues. Simplify and reduce troubleshooting time from hours to minutes.
+
+image:Change_Analysis_Example_showing_alert-change_correlation.png[Infrastructure Change Analytics example]
+
+
+=== Arithmetic Expressions in Monitors
+
+Expressions enable you to perform arithmetic operations on metrics, such as dividing one metric by another to determine percentages or ratios. Metric and Anomaly Detection Monitors now allow you to add a custom expression to the monitor query, giving you more freedom to alert on the data and situations you need.
+
+image:Expressions_In_Monitors.png[Creating an expression in a metric monitor]
+
+=== Minimize Alert Disruptions During Maintenance Period 
+
+Maintenance Windows allow you to suppress alert notifications during scheduled maintenance periods, helping you avoid unnecessary disruptions.
+
+With Maintenance Windows, you can schedule specific maintenance periods during which alert notifications are suppressed, for the objects and metrics you choose. For example, you can suppress alert notifications triggered by specific storage systems, when those storage systems are in a planned upgrade period.
+
+Note that only alert notifications are suppressed (email, webhook); the alerts themselves are still shown on the Observability > Alerts > All Alerts page.
+
+image:Maintenance_Windows_example.png[Maintenance Windows Example]
+
+
+
+
+=== Log Analytics in dashboards
+You can now include log events in your dashboards, to visualize event data and have more comprehensive and contextual understanding of your environment. Investigate logs and view related metrics without leaving the dashboard!
+
+=== Better VMware Observability with VMware Events
+
+Proactively manage and troubleshoot your VMware environment with real-time events. VMware events provide insights on VM migrations, resource allocations, and host health. Now available for use in Queries, Dashboards, and Monitors. Requires VMware version 8 or higher. Simply select the _logs.vmware.events_ source.
+
+image:vmware_log_events.png[vmware log selection in the drop-down]
+
+
+
+=== Dashboard Access Control
+Data Infrastructure Insights now gives you greater control over access to the dashboards you create. You choose who can modify your graphs. You control exposure to potentially sensitive information. Still working on a dashboard that isn't ready for general visibility? You can keep it private until you are ready to show it.
+
+image:Dashboard_Sharing_Options.png[Dashboard Sharing options,300]
+
+//image:Dashboard_Grouping_My_Dashboards.png[Dashboard groups showing My Dashboards,300]
+
+
+'''
+
 == September 2024
 
 === Introducing Data Infrastructure Insights, formerly Cloud Insights
