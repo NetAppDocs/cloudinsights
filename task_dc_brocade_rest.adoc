@@ -15,25 +15,33 @@ summary: Configuring Brocade FOS REST data collector.
 :imagesdir: ./media/
 
 [.lead] 
-Cloud Insights uses the Brocade FOS REST collector to discover inventory and performance for Brocade switch devices running FabricOS (FOS) firmware 8.2 and later. 
+Data Infrastructure Insights uses the Brocade FOS REST collector to discover inventory and performance for Brocade switch devices running FabricOS (FOS) firmware 8.2 and later. 
+
+Please note: FOS' default "user" level is insufficiently powerful for Data Infrastructure Insights to view all the logical aspects of a device - we need a user account with the "Chassis Role" enabled, as well as permissions on all the Virtual Fabrics configured on a switch. 
+
+Here is an example of how you can create a "least privilege" user account for Data Infrastructure Insights usage in a SSH session to a FOS device:
+
+userConfig --add NetAppCIUser -r user -l 1-128 -c user -p Qwerty!
+ 
+This will create a user “NetAppCIUser” with a password of “Qwerty!”. This user has the “user” role (-r) across all 128 possible virtual fabrics ( -l ). This user additionally has the required “Chassis” role ( -c) with user level access assigned. 
+
 
 By default, this collector will attempt to discover all the FOS devices that are a part of all the fabrics the switch is part of.
 
 == Terminology 
 
-Cloud Insights acquires the following inventory information from the Brocade FOS REST data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Data Infrastructure Insights acquires the following inventory information from the Brocade FOS REST data collector. For each asset type acquired by Data Infrastructure Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
 
-|Vendor/Model Term|Cloud Insights Term
+|Vendor/Model Term|Data Infrastructure Insights Term
 
 |Switch|Switch
 |Port|Port
 |Virtual Fabric, Physical Fabric|Fabric
 |Zone|Zone
 |Logical Switch|Logical Switch
-|Virtual Volume|Volume
 |LSAN Zone|IVR Zone
 |===
 
@@ -41,7 +49,7 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-* There must be TCP connectivity to all switches in the fabric. This data collector type will seamlessly try both HTTP and HTTPS for each device in the fabric. If you select the _Discover all switches in the fabric_ check box, Cloud Insights identifies all the switches in the fabric; however, it needs TCP connectivity to these additional switches to discover them.
+* There must be TCP connectivity to all switches in the fabric. This data collector type will seamlessly try both HTTP and HTTPS for each device in the fabric. If you select the _Discover all switches in the fabric_ check box, Data Infrastructure Insights identifies all the switches in the fabric; however, it needs TCP connectivity to these additional switches to discover them.
 * The same account is needed globally across all switches in the fabric. You can use the device's Web interface to confirm access.
 
 == Configuration
@@ -84,12 +92,10 @@ Some things to try if you encounter problems with this data collector:
 
 |A given Brocade FOS 8.2+ device will only want to speak on HTTP or HTTPS - if a switch has a digital certificate installed, the switch will throw HTTP errors if one attempts to communicate to it with unencrypted HTTP versus HTTPS. The test feature attempts communication with both HTTP and HTTPS - if the Test tells you that one protocol passes, you can safely save the collector and not worry that the other protocol was unsuccessful - the collector will attempt both protocols during collection, and only fail if neither works.
 
-|Error: “Cloud Insights received Invalid Chassis Role” |Check that the user configured in this data source has been granted the chassis role permission.
+|Error: “Data Infrastructure Insights received Invalid Chassis Role” |Check that the user configured in this data source has been granted the chassis role permission.
 |Error: "Mismatched Chassis IP Address" |Change the data source configuration to use chassis IP address.
-|Receive a message that more than 1 node is logged into the Access Gateway port| Check that the NPV device is operating correctly and that all connected WWNs are expected. Do not directly acquire the NPV device. Instead, acquisition of the core fabric switch will collect the NPV device data.
-
-|Performance collection fails with "Timed out during sending SNMP request".
-|Depending on query variables and switch configuration, some queries may exceed the default timeout.  link:https://kb.netapp.com/Cloud/BlueXP/Cloud_Insights/Cloud_Insight_Brocade_data_source_fails_performance_collection_with_a_timeout_due_to_default_SNMP_configuration[Learn More]. 
+|Inventory fails with a 403 Forbidden
+|This may simply be bad credentials, or it may be indicative that you are attempting to use an insufficiently powerful role - remember that "user" level users do NOT have the required "Chassis Role" right, or view access to non default Virtual Fabrics. 
 
 
 |===
