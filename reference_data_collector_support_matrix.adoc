@@ -5,9 +5,9 @@ summary: The Data Collector Support Matrix contains detailed information on supp
 keywords: support matrix, vendor, NetApp, IBM, EMC, Dell, HP, Hitachi, VMware, Huawei, OpenStack,
 ---
 
-= Cloud Insights Data Collector Support Matrix 
+= Data Infrastructure Insights Data Collector Support Matrix 
 :toc: macro
-:toc-title: Cloud Insights Data Collectors
+:toc-title: Data Infrastructure Insights Data Collectors
 :hardbreaks:
 :toclevels: 1
 :nofooter:
@@ -16,7 +16,7 @@ keywords: support matrix, vendor, NetApp, IBM, EMC, Dell, HP, Hitachi, VMware, H
 :imagesdir: ./media/
 [.lead]
 
-The Data Collector Support Matrix provides reference for Data Collectors supported by Cloud Insights, including vendor and model information.
+The Data Collector Support Matrix provides reference for Data Collectors supported by Data Infrastructure Insights, including vendor and model information.
 
 [#top]
 
@@ -7768,10 +7768,14 @@ Products supported by this data collector:
 |Storage Port|Implemented|HTTPS|
 |Type|Gap|HTTPS|
 
-.4+|Performance .0+|Qtree .1+|Storage|Failed Disks|Implemented|HTTPS|
+
+
+.5+|Performance .1+|Storage|Failed Disks|Implemented|HTTPS|
 .3+|Storage Node|Cache Hit Ratio Total|Implemented|HTTPS|
 |Total Disk Read Replaced|Implemented|HTTPS|
 |Utilization Total|Implemented|HTTPS|
+.1+|QTree||Implemented|HTTPS|
+
 
 |===
 

@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: concept_whats_new.html
-summary: New features and functionality available in Cloud Insights. 
+summary: New features and functionality available in Data Infrastructure Insights. 
 keywords: features
 ---
 
-= What\'s New with Cloud Insights 
+= What\'s New with Data Infrastructure Insights 
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -15,7 +15,115 @@ keywords: features
 
 [#whats-new]
 [.lead]
-NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the commercial Editions of Cloud Insights.   
+NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in Data Infrastructure Insights (formerly Cloud Insights).   
+
+
+== October 2024
+
+
+=== Configuration Changes
+
+Track every configuration change and correlate it with your infrastructure's health and performance. Surface potential configuration changes that may be causing health issues. Simplify and reduce troubleshooting time from hours to minutes.
+
+image:Change_Analysis_Example_showing_alert-change_correlation.png[Infrastructure Change Analytics example,900]
+
+
+=== Arithmetic Expressions in Monitors
+
+Expressions enable you to perform arithmetic operations on metrics, such as dividing one metric by another to determine percentages or ratios. Metric and Anomaly Detection Monitors now allow you to add a custom expression to the monitor query, giving you more freedom to alert on the data and situations you need.
+
+image:Expressions_In_Monitors.png[Creating an expression in a metric monitor,500]
+
+=== Minimize Alert Disruptions During Maintenance Period 
+
+Maintenance Windows allow you to suppress alert notifications during scheduled maintenance periods, helping you avoid unnecessary disruptions.
+
+With Maintenance Windows, you can schedule specific maintenance periods during which alert notifications are suppressed, for the objects and metrics you choose. For example, you can suppress alert notifications triggered by specific storage systems, when those storage systems are in a planned upgrade period.
+
+Note that only alert notifications are suppressed (email, webhook); the alerts themselves are still shown on the Observability > Alerts > All Alerts page.
+
+image:Maintenance_Windows_example.png[Maintenance Windows Example,500]
+
+
+
+
+=== Log Analytics in dashboards
+You can now include log events in your dashboards, to visualize event data and have more comprehensive and contextual understanding of your environment. Investigate logs and view related metrics without leaving the dashboard!
+
+=== Better VMware Observability with VMware Events
+
+Proactively manage and troubleshoot your VMware environment with real-time events. VMware events provide insights on VM migrations, resource allocations, and host health. Now available for use in Queries, Dashboards, and Monitors. Requires VMware version 8 or higher. Simply select the _logs.vmware.events_ source.
+
+image:vmware_log_events.png[vmware log selection in the drop-down,500]
+
+
+
+=== Dashboard Access Control
+Data Infrastructure Insights now gives you greater control over access to the dashboards you create. You choose who can modify your graphs. You control exposure to potentially sensitive information. Still working on a dashboard that isn't ready for general visibility? You can keep it private until you are ready to show it.
+
+image:Dashboard_Sharing_Options.png[Dashboard Sharing options,300]
+
+
+=== Data Collector updates:
+
+* *Pure FlashBlade*: This collector gathers inventory and performance data from FlashBlade clusters that expose version 2 of their REST API.
+
+
+
+'''
+
+== September 2024
+
+=== Introducing Data Infrastructure Insights, formerly Cloud Insights
+ 
+On Tuesday, September 24, 2024, NetApp has officially changed the name of Cloud Insights to *Data Infrastructure Insights* (DII). This has been announced during the Insight user conference by Haiyan Song in her main stage keynote presentation and in an Insight conference product press release.
+
+The DII service remains the same; there are no feature changes or modifications. This is a name change to better align the service name with its capabilities for all IT infrastructure.
+
+
+
+
+
+== August 2024 
+
+
+=== View Data Specific to Your Time Range
+
+Investigating an alert? Zoomed in on a chart? These actions change the time range for those pages. Now you can lock that time range, navigate to other Cloud Insights pages, and see data specific to that locked time range. Investigating and troubleshooting just got a whole lot easier!
+
+image:timerange_lock.png[tooltip stating to click the icon to lock the time range for use on other pages]
+
+=== Change and Change Ratio (%) Analysis
+
+Change-ratio time aggregations aid you in identifying significant changes and trends in metric values over time.
+Those insights are key to understanding what changed, such as considerable capacity growth for a specific time or a change in single port performance.
+
+* *Change* - observe the change in a metric between two points within a selected period.
+* *Change Ratio* - observe the proportional change in a metric between two points, with respect to the initial point, within a selected period.
+
+image:change_and_change_ratio_bar_chart.png[bar chart example showing change and change ration aggregation choices]
+
+
+
+=== Export Log Query Results to .CSV
+
+When viewing log query results, easily export up to 10,000 rows to .CSV by clicking the new "Export" button. This enhances data accessibility, eases data analysis and reporting, and facilitates seamless integration with other data processing tools.
+
+image:csv_export_button.png[Export to CSV button on a log query page]
+
+
+
+=== Resolve Alerts by time
+
+Cloud Insights now gives you the option to resolve an alert when the monitored metric stays within the acceptable range for a specified duration. This lets you focus on genuine issues, reducing the noise associated with metrics repeatedly crossing defined thresholds by consolidating multiple alerts to one.
+
+image:resolve_alert_by_time_dropdown.png[resolving an alert based on time]
+
+
+
+
+
+'''
 
 == July 2024
 
