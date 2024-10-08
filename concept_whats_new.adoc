@@ -25,14 +25,14 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 Track every configuration change and correlate it with your infrastructure's health and performance. Surface potential configuration changes that may be causing health issues. Simplify and reduce troubleshooting time from hours to minutes.
 
-image:Change_Analysis_Example_showing_alert-change_correlation.png[Infrastructure Change Analytics example]
+image:Change_Analysis_Example_showing_alert-change_correlation.png[Infrastructure Change Analytics example,900]
 
 
 === Arithmetic Expressions in Monitors
 
 Expressions enable you to perform arithmetic operations on metrics, such as dividing one metric by another to determine percentages or ratios. Metric and Anomaly Detection Monitors now allow you to add a custom expression to the monitor query, giving you more freedom to alert on the data and situations you need.
 
-image:Expressions_In_Monitors.png[Creating an expression in a metric monitor]
+image:Expressions_In_Monitors.png[Creating an expression in a metric monitor,500]
 
 === Minimize Alert Disruptions During Maintenance Period 
 
@@ -42,7 +42,7 @@ With Maintenance Windows, you can schedule specific maintenance periods during w
 
 Note that only alert notifications are suppressed (email, webhook); the alerts themselves are still shown on the Observability > Alerts > All Alerts page.
 
-image:Maintenance_Windows_example.png[Maintenance Windows Example]
+image:Maintenance_Windows_example.png[Maintenance Windows Example,500]
 
 
 
@@ -54,7 +54,7 @@ You can now include log events in your dashboards, to visualize event data and h
 
 Proactively manage and troubleshoot your VMware environment with real-time events. VMware events provide insights on VM migrations, resource allocations, and host health. Now available for use in Queries, Dashboards, and Monitors. Requires VMware version 8 or higher. Simply select the _logs.vmware.events_ source.
 
-image:vmware_log_events.png[vmware log selection in the drop-down]
+image:vmware_log_events.png[vmware log selection in the drop-down,500]
 
 
 
