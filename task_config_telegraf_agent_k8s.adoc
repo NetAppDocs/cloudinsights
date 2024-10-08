@@ -617,6 +617,11 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-kube
 |Telegraf warns of, or crashes because of, insufficient lockable memory.
 |Try increasing the limit of lockable memory for Telegraf in the underlying operating system/node. If increasing the limit is not an option, modify the NKMO agentconfiguration and set _unprotected_ to _true_.  This will instruct Telegraf to no attempt to reserve locked memory pages. While this can pose a security risk as decrypted secrets might be swapped out to disk, it allows for execution in environments where reserving locked memory is not possible. For more details on the _unprotected_ configuration options, refer to the link:telegraf_agent_k8s_config_options.html[configuration options] page.
 
+|I see warning messages from Telegraf resembling the following:
+
+_W! [inputs.diskio] Unable to gather disk name for "vdc": error reading /dev/vdc: no such file or directory_
+|For the Kubernetes Monitoring Operator, these warning message are benign and can be safely ignored.  Alternatively, edit the telegraf section in AgentConfiguration, and set runPrivileged to true. For more details, refer to the link:telegraf_agent_k8s_config_options.html [operator's configuration options].
+
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
