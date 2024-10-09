@@ -15,7 +15,7 @@ summary: Docker data collector configuration
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights uses this data collector to gather metrics from Docker.
+Data Infrastructure Insights uses this data collector to gather metrics from Docker.
 
 == Installation
 
@@ -64,7 +64,7 @@ volumeMounts:
 mountPath: /var/run/docker.sock
 -----
 
-Note that the Cloud Insights installer provided for the Kubernetes platform takes care of this mapping automatically.
+Note that the Data Infrastructure Insights installer provided for the Kubernetes platform takes care of this mapping automatically.
 
 === Access Docker through a TCP endpoint
 
@@ -412,7 +412,7 @@ Usage Total
 [cols=2*, options="header", cols"50,50"]
 |===
 |Problem:|Try this:
-|I do not see my Docker metrics in Cloud Insights after following the instructions on the configuration page.
+|I do not see my Docker metrics in Data Infrastructure Insights after following the instructions on the configuration page.
 |Check the Telegraf agent logs to see if it reports the following error:
 
  E! Error in plugin [inputs.docker]: Got permission denied while trying to connect to the Docker daemon socket

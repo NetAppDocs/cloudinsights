@@ -19,11 +19,11 @@ This data collector acquires inventory and performance data from storage systems
 
 == Terminology
 
-Cloud Insights acquires inventory and performance data from the ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Data Infrastructure Insights acquires inventory and performance data from the ONTAP data collector. For each asset type acquired, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
-|Vendor/Model Term | Cloud Insights Term
+|Vendor/Model Term | Data Infrastructure Insights Term
 |Disk|Disk
 |Raid Group|Disk Group
 |Cluster|Storage
@@ -45,9 +45,9 @@ The following terms apply to objects or references that you might find on ONTAP 
 * IP – generally will be the IP(s) or hostname(s) as configured in the data source.
 * Microcode version – firmware.
 * Raw Capacity – base 2 summation of all the physical disks in the system, regardless of their role.
-* Latency – a representation of what the host facing workloads are experiencing, across both reads and writes. Ideally, Cloud Insights is sourcing this value directly, but this is often not the case. In lieu of the array offering this up, Cloud Insights is generally performing an IOPs-weighted calculation derived from the individual internal volumes’ statistics.
+* Latency – a representation of what the host facing workloads are experiencing, across both reads and writes. Ideally, Data Infrastructure Insights is sourcing this value directly, but this is often not the case. In lieu of the array offering this up, Data Infrastructure Insights is generally performing an IOPs-weighted calculation derived from the individual internal volumes’ statistics.
 * Throughput – aggregated from internal volumes.
-Management – this may contain a hyperlink for the management interface of the device. Created programmatically by the Cloud Insights data source as part of inventory reporting.
+Management – this may contain a hyperlink for the management interface of the device. Created programmatically by the Data Infrastructure Insights data source as part of inventory reporting.
 
 === Storage Pool
 
@@ -95,7 +95,7 @@ The following are requirements to configure and use this data collector:
 
 === Permission Requirements for Collecting ONTAP Switch Metrics
 
-Cloud Insights has the ability to collect ONTAP cluster switch data as an option in the collector's <<advanced-configuration,Advanced Configuration>> settings. In addition to enabling this on the Cloud Insights collector, you must also *configure the ONTAP system* itself to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information], and ensure the correct <<a-note-about-permissions, permissions>> are set, in order to allow the switch data to be sent to Cloud Insights. 
+Data Infrastructure Insights has the ability to collect ONTAP cluster switch data as an option in the collector's <<advanced-configuration,Advanced Configuration>> settings. In addition to enabling this on the Data Infrastructure Insights collector, you must also *configure the ONTAP system* itself to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information], and ensure the correct <<a-note-about-permissions, permissions>> are set, in order to allow the switch data to be sent to Data Infrastructure Insights. 
 
 
 == Configuration 
@@ -131,14 +131,14 @@ Cloud Insights has the ability to collect ONTAP cluster switch data as an option
 
 //|<TBD: New Micro Poll> | Default is 60 seconds
 
-|Cluster Switch Metrics|Allow Cloud Insights to collect cluster switch data. Note that in addition to enabling this on the Cloud Insights side, you must also configure the ONTAP system to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information], and ensure the correct <<a-note-about-permissions, permissions>> are set, in order to allow the switch data to be sent to Cloud Insights. See "A Note About Permissions" below.
+|Cluster Switch Metrics|Allow Data Infrastructure Insights to collect cluster switch data. Note that in addition to enabling this on the Data Infrastructure Insights side, you must also configure the ONTAP system to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information], and ensure the correct <<a-note-about-permissions, permissions>> are set, in order to allow the switch data to be sent to Data Infrastructure Insights. See "A Note About Permissions" below.
 
 |===
 
 
 == ONTAP Power Metrics
 
-Several ONTAP models provide power metrics for Cloud Insights that can be used for monitoring or alerting. The lists of supported and unsupported models below are not comprehensive but should provide some guidance; in general, if a model is in the same family as one on the list, the support should be the same. 
+Several ONTAP models provide power metrics for Data Infrastructure Insights that can be used for monitoring or alerting. The lists of supported and unsupported models below are not comprehensive but should provide some guidance; in general, if a model is in the same family as one on the list, the support should be the same. 
 
 Supported Models:
 
@@ -179,11 +179,11 @@ FAS/AFF 8080
 
 == A Note About Permissions
 
-Since a number of Cloud Insights' ONTAP dashboards rely on advanced ONTAP counters, you must enable *Advanced Counter Data Collection* in the data collector Advanced Configuration section.
+Since a number of Data Infrastructure Insights' ONTAP dashboards rely on advanced ONTAP counters, you must enable *Advanced Counter Data Collection* in the data collector Advanced Configuration section.
 
 You should also ensure that write permission to the ONTAP API is enabled. This typically requires an account at the cluster level with the necessary permissions.
 
-To create a local account for Cloud Insights at the cluster level, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
+To create a local account for Data Infrastructure Insights at the cluster level, log in to ONTAP with the Cluster management Administrator username/password, and execute the following commands on the ONTAP server:
 
 . Before you begin, you must be signed in to ONTAP with an _Administrator_ account, and _diagnostic-level commands_ must be enabled.
 
@@ -221,7 +221,7 @@ The resulting role and user login will look something like the following. Your a
  ---------   -------      ----------- -------------- --------
  ci_user     ontapi      password    ci_readonly   no
 
-NOTE: If ONTAP access control is not set correctly, then Cloud Insights REST calls may fail, resulting in gaps in data for the device.  For example, if you have enabled it on the Cloud Insights collector but have not configured the permissions on the ONTAP, acquisition will fail.  Additionally, if the role is previously defined on the ONTAP and you are adding the Rest API abilities, ensure that _http_ is added to the role.
+NOTE: If ONTAP access control is not set correctly, then Data Infrastructure Insights REST calls may fail, resulting in gaps in data for the device.  For example, if you have enabled it on the Data Infrastructure Insights collector but have not configured the permissions on the ONTAP, acquisition will fail.  Additionally, if the role is previously defined on the ONTAP and you are adding the Rest API abilities, ensure that _http_ is added to the role.
 
 
 == Troubleshooting
