@@ -15,6 +15,8 @@ keywords: features
 
 [#whats-new]
 [.lead]
+NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the Data Infrastructure Insights.  
+=======
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in Data Infrastructure Insights (formerly Cloud Insights).   
 
 
@@ -123,51 +125,26 @@ image:resolve_alert_by_time_dropdown.png[resolving an alert based on time]
 
 
 
+
 '''
 
 == July 2024
 
 
-=== AIOps: Anomaly Detection
+=== Easier Dashboard Navigation
+
+Navigation between dashboards is smoother than ever, with the introduction of the dashboard navigation drop-down. Simply open the drop-down in the top "breadcrumb" trail and select another dashboard in the same group as the current dashboard, or--if the dashboard belongs to multiple groups--select a dashboard in any other  group to which the current dashboard belongs. You'll take fewer trips to the "All Dashboards" page to find what you're looking for.
+
+image:Dashboard_Nav_Group_Dropdown.png[Drop-down to select another dashboard in the same group(s) as the current dashboard]
 
 
-Cloud Insights uses machine learning to detect unexpected changes in the patterns of data in your environment, and provide proactive alerts to help you identify problems early. 
+=== Fresh Object Icons
 
-A data center behaves in different ways at different times of the day, and on different days of the week. Cloud Insights uses weekly seasonality to compare historical behavior for each day and time.
+Cloud Insights now has an updated object iconography, reducing overall variance of  icons used on the various Cloud Insights pages as well as grouping similar objects together (for example, Volume-related objects). Previous 'letter-based' icons are replaced with clear and concise graphics, making Cloud Insights screens more user-friendly and accessible.
 
+Unsure of what an icon means? The table below (also available on the link:reference_object_icons.html[Object Icon Reference] page) explains them all.
 
-Anomaly Detection Monitoring can provide alerts for situations such as when the definition of "normal" is unclear, where behavior changes over time, or when working with large amounts of data where manually defining thresholds is impractical. 
-
-New link:concept_anomaly_detection.html[Anomaly Detection Monitors] alert when anomalies such as this occur on object metrics you choose.
-
-//Cloud Insights allows the creation of link:concept_anomaly_detection.html[Anomaly Detection Monitors] to alert when anomalies such as this occur on object metrics you choose.
-
-
-
-image:anomaly_detection_expert_view.png[graph showing detected anomaly]
-
-
-=== Workload Security Improvements
-
-*NFS 4.1 support*
-
-The SVM Data Collector now supports NFS versions up to and including *NFS 4.1* with ONTAP 9.15.1 or later..
-
-*New Forensics Activity API*
-
-The Forensics Activity link:concept_cs_api.html[API] has a new version. When calling the API for Forensics Activity, use the *cloudsecure_forensics.activities._v2_* API. 
-
-Note that if you are making multiple calls to this API, for best results ensure that the calls occur sequentially, instead of in parallel. Multiple parallel calls may cause the API to time out.
-
-
-=== Easier Dashboard Navigation 
-
-This feature is all about streamlining your operational workflows and making it easier to collaborate between teams. 
-
-Grouping your dashboards makes it easier to quickly get the visibility you need, and now with the new navigation menu, you can jump between different dashboards without losing your place, making it a breeze to explore and manage your infrastructure. 
-Align dashboard groups with your operational runbooks to further enhance your experience. 
-
-image:Dashboard_Nav_Group_Dropdown.png[Drop-down to select another dashboard in the same group(s) as the current dashboard] 
+image:Icons_2024.png['Image showing all the object icons used in Cloud Insights grouped under Storage, Networking, Compute, and Integrations (including Kubernetes), and Additional']
 
 
 
@@ -175,13 +152,7 @@ image:Dashboard_Nav_Group_Dropdown.png[Drop-down to select another dashboard in 
 
 == June 2024
 
-////
- ////=== Your Data, Your Way: Expressions in Table Widgets
 
-Dashboard Table Widgets allow you to add columns for custom expressions that you define. Up to five expression columns can be added, each having up to five terms, giving you more freedom to express your data in the ways you need it.
-
-image:ExpressionExampleScreen.png[Example of Expressions in Table Widget]
-////
 
 
 === Operating System support
