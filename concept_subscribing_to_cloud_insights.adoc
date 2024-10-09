@@ -88,7 +88,7 @@ NOTE: A _Module Evaluation_ is not a _Trial_ - we use the term trial when we pro
 
 === Estimator
 
-During a module evaluation, you are not changed MU usage for resources consumed for the module, but you can open the *Estimator* (on the _Summary_ tab) to see how MUs will be charged following the evaluation, as well as play with "What if" scenarios with the number of MUs you may need in the future. Reset the numbers by exiting the Estimator.
+During a module evaluation, you are not charged MU usage for resources consumed for the module, but you can open the *Estimator* (on the _Summary_ tab) to see how MUs will be charged following the evaluation, as well as play with "What if" scenarios with the number of MUs you may need in the future. Reset the numbers by exiting the Estimator.
 
 image:Module_Trials_Estimator.png[Estimator]
 
@@ -111,7 +111,35 @@ To subscribe, go to *Admin -> Subscription*. In addition to the *Subscribe* butt
 === Observability Metering
 [#pricing]
 
-Cloud Insights Infrastructure Observability and Kubernetes Observability are metered per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts or virtual machines* and amount of *unformatted capacity* being managed in your infrastructure environment. 
+Data Infrastructure Insights Observability is metered in one of two ways:
+
+* Capacity Metering
+* Managed Unit Metering (Legacy)
+
+Your subscription will be metered by one of these methods, depending on whether you have an existing subscription, or are launching a new subscription.
+
+
+==== Capacity Metering
+
+Data Infrastructure Insights Observability and Kubernetes Observability meter usage according to the tier of storages in your environment. You may have storages that fall into one or more of these categories:
+
+* Primary Raw 
+* Object Raw
+* Cloud Consumed
+
+Each tier is metered at a different rate, with the whole calculated together to give you an _effective entitlement_. The formula for calculating effective usage is as follows:
+
+ Effective usage = Performance Tier Raw TiB + Capacity Tier Raw TiB + Archive Tier Raw TiB + (0.1 x Object Tier Raw TiB) + (0.25 x Cloud Tier Provisioning TiB)
+
+NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the summary section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The summary section reflects your actual Managed Unit count for your subscription.
+To facilitate this, DII calculates a single *effective entitlement* number based on _subscribed_ quantities; it then calculates that same number based on _discovered_ storage and only declares breach if the effective discovered capacity is greater than the effective entitlement. This gives you flexibility to monitor quantities that vary from the subscribed amounts for each tier, which DII allows as long as total discovered storage is within the subscribed effective entitlement. 
+
+image:TBD[Table showing discovered capacity and effective entitlement]
+
+
+==== Managed Unit Metering (Legacy)
+
+Data Infrastructure Insights Infrastructure Observability and Kubernetes Observability meter usage per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts or virtual machines* and amount of *unformatted capacity* being managed in your infrastructure environment. 
 
 * 1 Managed Unit = 2 hosts (any virtual or physical machine)
 * 1 Managed Unit = 4 TiB of unformatted capacity of physical or virtual disks
@@ -120,6 +148,7 @@ Cloud Insights Infrastructure Observability and Kubernetes Observability are met
 ** 1 Managed Unit K8s Adjustment = 2 Nodes or Hosts also monitored by infrastructure.
 
 If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for *Volume Pricing* and will be prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
+
 
 
 
@@ -179,6 +208,8 @@ If there is a problem and the subscription process fails to complete correctly, 
 
 Once your subscription is active, you can view your subscription status and Managed Unit usage from the *Admin > Subscription* page.
 
+//image:Subscription_Summary.png[Subscription Status ] 
+//image:Subscription_Status_Usage.png[Viewing your subscription ststus]
 
 The Subscription *Summary* tab displays things like the following:
 
@@ -202,24 +233,17 @@ The Usage Management tab shows an overview of Managed Unit usage, as well as tab
 
 NOTE: The Unformatted Capacity Managed Unit count reflects a sum of the total raw capacity in the environment and is rounded up to the nearest Managed Unit. 
 
+//=== Installed Data Collectors
+
+//Click on the *View Data Collectors* button to expand the list of installed Data Collectors. 
+
+//image:Subscription_Installed_Data_Collectors.png[Data Collectors]
+
+//The Data Collectors section shows the Data Collectors installed in your environment and the breakdown of Managed Units for each. 
 
 NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the summary section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The summary section reflects your actual Managed Unit count for your subscription.
 
 In the event that your usage is nearing or exceeding your subscribed amount, you can reduce usage by deleting data collectors or stopping monitoring of Kubernetes Clusters. Delete an item in this list by clicking on the "three dots" menu and selecting _Delete_.
-
-
-=== Effective Entitlement
-
-In your environment it is possible to purchase multiple tiers of storage. Data Infrastructure Insights (DII) allows you to utilize your resources to their maximum potential before violating license compliance.
-
-To facilitate this, DII calculates a single *effective entitlement* number based on _subscribed_ quantities; it then calculates that same number based on _discovered_ storage and only declares breach if the effective discovered capacity is greater than the effective entitlement. This gives you flexibility to monitor quantities that vary from the subscribed amounts for each tier, which DII allows as long as total discovered storage is within the subscribed effective entitlement. 
-
-Here is the formula for calculating effective usage:
-
- Effective usage = Performance Tier Raw TiB + Capacity Tier Raw TiB + Archive Tier Raw TiB + (0.1 x Object Tier Raw TiB) + (0.25 x Cloud Tier Provisioning TiB)
-
-image:TBD[Table showing discovered capacity and effective entitlement]
-
 
 
 === What Happens if I Exceed My Subscribed Usage?
