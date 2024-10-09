@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: concept_whats_new.html
-summary: New features and functionality available in Cloud Insights. 
+summary: New features and functionality available in Data Infrastructure Insights. 
 keywords: features
 ---
 
@@ -16,17 +16,27 @@ keywords: features
 [#whats-new]
 [.lead]
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in the Data Infrastructure Insights.  
+=======
+NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in Data Infrastructure Insights (formerly Cloud Insights).   
+
 
 == October 2024
 
 
-=== Your Alerts, Your Way: Expressions in Monitors
+=== Configuration Changes
 
-Metric and Anomaly Detection Monitors now allow you to add a custom expression to the monitor query, giving you more freedom to alert on the data and situations you need.
+Track every configuration change and correlate it with your infrastructure's health and performance. Surface potential configuration changes that may be causing health issues. Simplify and reduce troubleshooting time from hours to minutes.
 
-image:Expressions_In_Monitors.png[Creating an expression in a metric monitor]
+image:Change_Analysis_Example_showing_alert-change_correlation.png[Infrastructure Change Analytics example,900]
 
-=== Focus on the alerts that truly matter with Maintenance Windows
+
+=== Arithmetic Expressions in Monitors
+
+Expressions enable you to perform arithmetic operations on metrics, such as dividing one metric by another to determine percentages or ratios. Metric and Anomaly Detection Monitors now allow you to add a custom expression to the monitor query, giving you more freedom to alert on the data and situations you need.
+
+image:Expressions_In_Monitors.png[Creating an expression in a metric monitor,500]
+
+=== Minimize Alert Disruptions During Maintenance Period 
 
 Maintenance Windows allow you to suppress alert notifications during scheduled maintenance periods, helping you avoid unnecessary disruptions.
 
@@ -34,70 +44,48 @@ With Maintenance Windows, you can schedule specific maintenance periods during w
 
 Note that only alert notifications are suppressed (email, webhook); the alerts themselves are still shown on the Observability > Alerts > All Alerts page.
 
-image:Maintenance_Windows_example.png[Maintenance Windows Example]
+image:Maintenance_Windows_example.png[Maintenance Windows Example,500]
 
 
-=== Analyze Infrastructure Changes
-
-Change Analytics provide you with an all-in-one view of recent changes to your infrastructure. Alerts and configuration changes are at your fingertips. Easily  track and correlate changes with the health and performance of objects in your environment.
-
-image:Change_Analysis_Example.png[Infrastructure Change Analytics example]
 
 
 === Log Analytics in dashboards
 You can now include log events in your dashboards, to visualize event data and have more comprehensive and contextual understanding of your environment. Investigate logs and view related metrics without leaving the dashboard!
 
-=== Query or Monitor VMware Events
+=== Better VMware Observability with VMware Events
 
-Speaking of logs,, did you know that VMware events are now ingested into Data Infrastructure Insights for use in Queries, Dashboards, and Monitors? You'll need VMware version 8 and higher. Simply choose the _logs.vmware.events_ source. 
+Proactively manage and troubleshoot your VMware environment with real-time events. VMware events provide insights on VM migrations, resource allocations, and host health. Now available for use in Queries, Dashboards, and Monitors. Requires VMware version 8 or higher. Simply select the _logs.vmware.events_ source.
 
-If you don't see this log source right away, don't worry; VMware ingestion will be rolled out to all environments over time.
+image:vmware_log_events.png[vmware log selection in the drop-down,500]
 
-image:vmware_log_events.png[vmware log selection in the drop-down]
+
 
 === Dashboard Access Control
 Data Infrastructure Insights now gives you greater control over access to the dashboards you create. You choose who can modify your graphs. You control exposure to potentially sensitive information. Still working on a dashboard that isn't ready for general visibility? You can keep it private until you are ready to show it.
 
 image:Dashboard_Sharing_Options.png[Dashboard Sharing options,300]
 
-image:Dashboard_Grouping_My_Dashboards.png[Dashboard groups showing My Dashboards,300]
 
+=== Data Collector updates:
 
+* *Pure FlashBlade*: This collector gathers inventory and performance data from FlashBlade clusters that expose version 2 of their REST API.
 
-
-
-////
-=== Alert Notification Rules (Preview)
-
-
-=== KubeVirt
-
-KubeVirt is an open-source project that extends Kubernetes to enable management of virtual machines (VMs) alongside container workloads, leveraging Kubernetes' orchestration capabilities for both. The Data Infrastructure Insights Kubernetes Operator captures this information for use in Kubernetes observability and monitoring.
-
-=== Push-Button Kubernetes Operator Upgrade
-TBD
-
-
-
-=== Pure FlashBlade  Collector
-TBD
-
-////
 
 
 '''
+
 == September 2024
 
 === Introducing Data Infrastructure Insights, formerly Cloud Insights
  
 On Tuesday, September 24, 2024, NetApp has officially changed the name of Cloud Insights to *Data Infrastructure Insights* (DII). This has been announced during the Insight user conference by Haiyan Song in her main stage keynote presentation and in an Insight conference product press release.
 
-The DII service remains the same; there are no feature changes or modifications. This is a name change to better align the service name with its capabilities for all IT infrastructure.'
+The DII service remains the same; there are no feature changes or modifications. This is a name change to better align the service name with its capabilities for all IT infrastructure.
 
 
 
 
-'''
+
 == August 2024 
 
 
@@ -132,6 +120,7 @@ image:csv_export_button.png[Export to CSV button on a log query page]
 Cloud Insights now gives you the option to resolve an alert when the monitored metric stays within the acceptable range for a specified duration. This lets you focus on genuine issues, reducing the noise associated with metrics repeatedly crossing defined thresholds by consolidating multiple alerts to one.
 
 image:resolve_alert_by_time_dropdown.png[resolving an alert based on time]
+
 
 
 
