@@ -111,6 +111,7 @@ To subscribe, go to *Admin -> Subscription*. In addition to the *Subscribe* butt
 === Observability Metering
 [#pricing]
 
+
 Data Infrastructure Insights Observability is metered in one of two ways:
 
 * Capacity Metering
@@ -120,8 +121,9 @@ Your subscription will be metered by one of these methods, depending on whether 
 
 
 ==== Capacity Metering
+[#effective-entitlement]
 
-Data Infrastructure Insights Observability and Kubernetes Observability meter usage according to the tier of storages in your environment. You may have storages that fall into one or more of these categories:
+Data Infrastructure Insights Observability meters usage according to the tier of storages in your environment. You may have storages that fall into one or more of these categories:
 
 * Primary Raw 
 * Object Raw
@@ -129,12 +131,12 @@ Data Infrastructure Insights Observability and Kubernetes Observability meter us
 
 Each tier is metered at a different rate, with the whole calculated together to give you an _effective entitlement_. The formula for calculating effective usage is as follows:
 
- Effective usage = Performance Tier Raw TiB + Capacity Tier Raw TiB + Archive Tier Raw TiB + (0.1 x Object Tier Raw TiB) + (0.25 x Cloud Tier Provisioning TiB)
+ Effective usage = Raw TiB + (0.1 x Object Tier Raw TiB) + (0.25 x Cloud Tier Provisioning TiB)
 
 NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the summary section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The summary section reflects your actual Managed Unit count for your subscription.
 To facilitate this, DII calculates a single *effective entitlement* number based on _subscribed_ quantities; it then calculates that same number based on _discovered_ storage and only declares breach if the effective discovered capacity is greater than the effective entitlement. This gives you flexibility to monitor quantities that vary from the subscribed amounts for each tier, which DII allows as long as total discovered storage is within the subscribed effective entitlement. 
 
-image:TBD[Table showing discovered capacity and effective entitlement]
+//image:TBD[Table showing discovered capacity and effective entitlement]
 
 
 ==== Managed Unit Metering (Legacy)
