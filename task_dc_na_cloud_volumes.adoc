@@ -46,7 +46,7 @@ Some things to try if you encounter problems with this data collector:
 |Problem:|Try this:
 |I received an error similar to this one: 
 'Failed to execute request: Connect to <AWS region endpoint>:8080 [<AWS region endpoint>/AWS region endpoint IP>] failed: connect timed out: GET \https://<AWS Region Endpoint FQDN>:8080/v1/Storage/IPRanges HTTP/1.1'
-|The link:task_configure_acquisition_unit.html#proxy-configuration-2[proxy] used by Cloud Insights to communicate with the Acquisition Unit does not communicate between Cloud Insights and the Data Collector itself. Here are a few things you can try:
+|The link:task_configure_acquisition_unit.html#proxy-configuration-2[proxy] used by Data Infrastructure Insights to communicate with the Acquisition Unit does not communicate between Data Infrastructure Insights and the Data Collector itself. Here are a few things you can try:
 
 Ensure that the acquisition unit is able to resolve the fqdn and reach the required port.
 Confirm that a proxy is not required to reach the specified endpoint in the error message.
