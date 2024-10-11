@@ -5,7 +5,7 @@ summary: List of supported data collectors.
 keywords: data collector, vendor, infrastructure, integration, service
 ---
 
-= Cloud Insights Data Collector List
+= Data Infrastructure Insights Data Collector List
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -15,14 +15,14 @@ keywords: data collector, vendor, infrastructure, integration, service
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights supports a variety of Data Collectors from many vendors and services. 
+Data Infrastructure Insights supports a variety of Data Collectors from many vendors and services. 
 
 Data Collectors are categorized by these types:
 
 * Infrastructure: Acquired from vendor devices such as storage arrays, switches, hypervisors, or backup devices.
 * Service: Acquired from services such as Kubernetes or Docker. Also called _Integration_.
 
-Alphabetical list of Data Collectors supported by Cloud Insights:
+Alphabetical list of Data Collectors supported by Data Infrastructure Insights:
 
 [cols="<,<", options="header"]
 |===
@@ -116,6 +116,7 @@ Alphabetical list of Data Collectors supported by Cloud Insights:
 | link:task_config_telegraf_postgresql.html[PostgreSQL ] |Service 
 | link:task_config_telegraf_puppetagent.html[Puppet Agent ] |Service 
 | link:task_dc_pure_flasharray.html[Pure Storage FlashArray ] |Infrastructure 
+//| link:task_dc_pure_flashblade.html[Pure Storage FlashBlade ] |Infrastructure 
 | link:task_dc_redhat_virtualization.html[Red Hat Virtualization ] |Infrastructure 
 | link:task_config_telegraf_redis.html[Redis ] |Service 
 | link:task_config_telegraf_rethinkdb.html[RethinkDB ] |Service 

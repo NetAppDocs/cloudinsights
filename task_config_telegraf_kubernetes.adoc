@@ -14,7 +14,7 @@ summary: Data collector for Kubernetes
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights uses this data collector to gather Kubernetes Pod, Node, and Container metrics. 
+Data Infrastructure Insights uses this data collector to gather Kubernetes Pod, Node, and Container metrics. 
 
 
 == Installation
@@ -31,17 +31,14 @@ The Kubernetes Monitoring Operator installs kube-state-metrics automatically; no
 
 The NetApp Kubernetes Monitoring Operator extracts the kube-state-metrics counters listed below. More details about each counter can be found at: https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics.
 
-. ConfigMap Metrics
 . DaemonSet Metrics
 . Deployment Metrics
-. Ingress Metrics
 . Namespace Metrics
 . Node Metrics
 . Persistent Volume Metrics
 . Persistent Volume Claim Metrics
 . Pod Metrics
 . ReplicaSet metrics
-. Secret metrics
 . Service metrics
 . StatefulSet metrics
 
