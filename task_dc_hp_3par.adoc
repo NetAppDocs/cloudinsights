@@ -15,11 +15,11 @@ summary: Configuring the HP Enterprise Alletra 9000 / Primera (formerly 3PAR) da
 :imagesdir: ./media/
 
 [.lead] 
-Cloud Insights uses the HP Enterprise Alletra 9000 / HP Enterprise Primera (previously 3PAR)  data collector to discover inventory and performance.
+Data Infrastructure Insights uses the HP Enterprise Alletra 9000 / HP Enterprise Primera (previously 3PAR)  data collector to discover inventory and performance.
 
 == Terminology 
 
-Cloud Insights acquires the following inventory information from this data collector. For each asset type acquired by Cloud Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+Data Infrastructure Insights acquires the following inventory information from this data collector. For each asset type acquired by Data Infrastructure Insights, the most common terminology used for this asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
 
 [cols=2*, options="header", cols"50,50"]
 |===
@@ -35,7 +35,7 @@ Note: These are common terminology mappings only and might not represent every c
 
 == Requirements
 
-The following are required to configure this data colletor: 
+The following are required to configure this data collector: 
 
 * IP address or FQDN of the InServ cluster
 * For inventory, read-only user name and password to the StoreServ Server
@@ -102,7 +102,7 @@ Customer can take action.  What can customer do about this scenario?
 |SMI-S user configured does not have any domain
 |Grant appropriate domain privileges to the configured SMI-S user
 
-|Cloud Insights states that it cannot connect/login to SMI-S service.
+|Data Infrastructure Insights states that it cannot connect/login to SMI-S service.
 |Confirm there is no firewall between the CI AU and the array that would block the CI AU from making TCP connections to 5988 or 5989.
 Once that is done, and if you have confirmed there is no firewall, you should SSH to the array, and use the “showcim” command to confirm.
 

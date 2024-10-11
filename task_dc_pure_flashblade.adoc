@@ -1,0 +1,77 @@
+---
+sidebar: sidebar
+permalink: task_dc_pure_flashblade.html
+keywords: data collector, Pure Storage, pure, FlashBlade
+summary: Configuring Pure Storage data collector.
+---
+
+= Pure Storage FlashBlade data collector
+:toc: macro
+:hardbreaks:
+:toclevels: 2
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead] 
+Data Infrastructure Insights uses the Pure Storage FlashBlade data collector to gather inventory and performance data from FlashBlade clusters that expose version 2 of their REST API
+
+== Terminology
+
+For each asset type acquired by Data Infrastructure Insights, the most common terminology used for the asset is shown. When viewing or troubleshooting this data collector, keep the following terminology in mind:
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Vendor/Model Term | Data Infrastructure Insights Term
+|Drive (SSD)|Disk
+|Array|Storage
+|Blade|Storage Node
+|File System|Internal Volume
+|Object storage bucket|Qtree
+|Initiator,Target|Volume Mask
+|===
+
+Note: These are common terminology mappings only and might not represent every case for this data collector.
+
+== Requirements
+
+* Storage system IP address or Fully Qualified Domain Name 
+* API token, ideally with an infinite lifespan. A readonly level user should suffice. 
+* Port requirement: HTTPS 443
+
+== Configuration
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|FlashBlade Host IP Address|IP address of the storage system 
+|User name |User name to help Data Infrastructure Insights admins remember for which user their API token belongs to
+|API token|API token
+|===
+
+== Advanced configuration 
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Field | Description
+|Connection type|Choose HTTP or HTTPS. Also displays the default port.
+|Override TCP port|If blank, use the default port in the Connection Type field, otherwise enter the connection port to use
+|Inventory poll interval (min)|The default is 60 minutes
+//|Connection Timeout (sec)|The default is 60
+|Performance Poll Interval (sec)|The default is 300 
+|===
+
+== Troubleshooting
+Some things to try if you encounter problems with this data collector:
+
+=== Inventory
+
+[cols=2*, options="header", cols"50,50"]
+|===
+|Problem:|Try this:
+|"Invalid login credentials" with error messages “Policy doesn't allow” or “You are not authorized”
+|Validate Pure user account and password via Pure http interface
+|===
+
+Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].

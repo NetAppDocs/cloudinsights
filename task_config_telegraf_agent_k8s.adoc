@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_config_telegraf_agent_k8s.html
 keywords: kubernetes, Kubernetes, k8s, telegraf, installation, install, agent, telegraf agent, eks, operator
-summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in Cloud Insights.  
+summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in Data Infrastructure Insights.  
 ---
 = Kubernetes Monitoring Operator Installation and Configuration
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in 
 
 [.lead]
 
-Cloud Insights offers the *Kubernetes Monitoring Operator* for Kubernetes collection. Navigate to *Kubernetes > Collectors > +Kubernetes Collector* to deploy a new operator.
+Data Infrastructure Insights offers the *Kubernetes Monitoring Operator* for Kubernetes collection. Navigate to *Kubernetes > Collectors > +Kubernetes Collector* to deploy a new operator.
 
 
 toc::[]
@@ -56,7 +56,7 @@ If you are have a custom repository, read about <<using-a-custom-or-private-dock
 
 == Kubernetes Monitoring Components
 
-Cloud Insights Kubernetes Monitoring is comprised of four monitoring components:
+Data Infrastructure Insights Kubernetes Monitoring is comprised of four monitoring components:
 
 * Cluster Metrics
 * Network Performance and Map (optional)
@@ -92,7 +92,7 @@ If an AgentConfiguration exists:
 
 If the AgentConfiguration does not exist:
 
-* Make note of your cluster name as recognized by Cloud Insights (if your namespace is not the default netapp-monitoring, substitute the appropriate namespace):
+* Make note of your cluster name as recognized by Data Infrastructure Insights (if your namespace is not the default netapp-monitoring, substitute the appropriate namespace):
 
  kubectl -n netapp-monitoring get agent -o jsonpath='{.items[0].spec.cluster-name}'
 
@@ -215,10 +215,10 @@ If you see an “Error from server (NotFound)” message, your operator must be 
 
 There are two places where you may use a proxy in your environment in order to install the Kubernetes Monitoring Operator. These may be the same or separate proxy systems:
 
-* Proxy needed during execution of the installation code snippet (using "curl") to connect the system where the snippet is executed to your Cloud Insights environment
-* Proxy needed by the target Kubernetes cluster to communicate with your Cloud Insights environment
+* Proxy needed during execution of the installation code snippet (using "curl") to connect the system where the snippet is executed to your Data Infrastructure Insights environment
+* Proxy needed by the target Kubernetes cluster to communicate with your Data Infrastructure Insights environment
 
-If you use a proxy for either or both of these, in order to install the Kubernetes Operating Monitor you must first ensure that your proxy is configured to allow good communication to your Cloud Insights environment. If you have a proxy and can access Cloud Insights from the server/VM from which you wish to install the Operator, then your proxy is likely configured properly.
+If you use a proxy for either or both of these, in order to install the Kubernetes Operating Monitor you must first ensure that your proxy is configured to allow good communication to your Data Infrastructure Insights environment. If you have a proxy and can access Data Infrastructure Insights from the server/VM from which you wish to install the Operator, then your proxy is likely configured properly.
 
 For the proxy used to install the Kubernetes Operating Monitor, before installing the Operator, set the _http_proxy/https_proxy_ environment variables. For some proxy environments, you may also need to set the _no_proxy environment_ variable.
 
@@ -236,7 +236,7 @@ To set the variable(s), perform the following steps on your system *before* inst
 
 
 
-For the proxy used for your Kubernetes cluster to communicate with your Cloud Insights environment, install the Kubernetes Monitoring Operator after reading all of these instructions.
+For the proxy used for your Kubernetes cluster to communicate with your Data Infrastructure Insights environment, install the Kubernetes Monitoring Operator after reading all of these instructions.
 
 Configure the proxy section of AgentConfiguration in operator-config.yaml before deploying the Kubernetes Monitoring Operator. 
 
@@ -267,9 +267,9 @@ agent:
 
 === Using a custom or private docker repository
 
-By default, the Kubernetes Monitoring Operator will pull container images from the Cloud Insights repository. If you have a Kubernetes cluster used as the target for monitoring, and that cluster is configured to only pull container images from a custom or private Docker repository or container registry, you must configure access to the containers needed by the Kubernetes Monitoring Operator.
+By default, the Kubernetes Monitoring Operator will pull container images from the Data Infrastructure Insights repository. If you have a Kubernetes cluster used as the target for monitoring, and that cluster is configured to only pull container images from a custom or private Docker repository or container registry, you must configure access to the containers needed by the Kubernetes Monitoring Operator.
 
-Run the “Image Pull Snippet” from the NetApp Monitoring Operator install tile. This command will log into the Cloud Insights repository, pull all image dependencies for the operator, and log out of the Cloud Insights repository. When prompted, enter the provided repository temporary password. This command downloads all images used by the operator, including for optional features. See below for which features these images are used for.
+Run the “Image Pull Snippet” from the NetApp Monitoring Operator install tile. This command will log into the Data Infrastructure Insights repository, pull all image dependencies for the operator, and log out of the Data Infrastructure Insights repository. When prompted, enter the provided repository temporary password. This command downloads all images used by the operator, including for optional features. See below for which features these images are used for.
 
 Core Operator Functionality and Kubernetes Monitoring
 
@@ -288,11 +288,12 @@ Network Performance and Map
 
 * ci-net-observer
 
+
 Change Analysis 
 
 * ci-k8s-change-observer
 
-Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies. Ensure that the image tags and directory paths to these images in your repository are consistent with those in the Cloud Insights repository.
+Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies. Ensure that the image tags and directory paths to these images in your repository are consistent with those in the Data Infrastructure Insights repository.
 
 Edit the monitoring-operator deployment in operator-deployment.yaml, and modify all image references to use your private Docker repository.
 
@@ -352,7 +353,7 @@ If Change Analysis is enabled, modify the _AgentConfiguration_ or _operator-conf
 == Verifying Kubernetes Checksums
 
 
-The Cloud Insights agent installer performs integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform a download-only operation (as opposed to the default download-and-install), these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
+The Data Infrastructure Insights agent installer performs integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform a download-only operation (as opposed to the default download-and-install), these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
 
 Follow these steps:
 
@@ -371,7 +372,7 @@ Follow these steps:
  installerName=cloudinsights-rhel_centos.sh … && sudo -E -H ./$installerName --download
 
 
-The download-only command will download all required artifacts from Cloud Insights to the working directory.  The artifacts include, but may not be limited to: 
+The download-only command will download all required artifacts from Data Infrastructure Insights to the working directory.  The artifacts include, but may not be limited to: 
 
 * an installation script
 * an environment file
@@ -427,7 +428,7 @@ Some things to try if you encounter problems setting up the Kubernetes Monitorin
 
 
 |I do not see a hyperlink/connection between my Kubernetes Persistent Volume and the corresponding back-end storage device. My Kubernetes Persistent Volume is configured using the hostname of the storage server.
-|Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent. You must be using Telegraf version 2.0 or later, and your Kubernetes cluster storage must be actively monitored by Cloud Insights.
+|Follow the steps to uninstall the existing Telegraf agent, then re-install the latest Telegraf agent. You must be using Telegraf version 2.0 or later, and your Kubernetes cluster storage must be actively monitored by Data Infrastructure Insights.
 
 |I'm seeing messages in the logs resembling the following:
 
@@ -557,7 +558,7 @@ a|Capture or otherwise note the output from the following commands, and contact 
 |After installing the operator, the telegraf-ds pods enter CrashLoopBackOff and the pod logs indicate "su: Authentication failure".
 |Edit the telegraf section in _AgentConfiguration_, and set _dockerMetricCollectionEnabled_ to false. For more details, refer to the operator's  link:telegraf_agent_k8s_config_options.html[configuration options]. 
 
-NOTE: If you are using Cloud Insights Federal Edition, users with restrictions on the use of _su_ will not be able to collect docker metrics because access to the docker socket requires either running the telegraf container as root or using _su_ to add the telegraf user to the docker group. Docker metric collection and the use of _su_ is enabled by default; to disable both, remove the _telegraf.docker_ entry in the _AgentConfiguration_ file:
+NOTE: If you are using Data Infrastructure Insights Federal Edition, users with restrictions on the use of _su_ will not be able to collect docker metrics because access to the docker socket requires either running the telegraf container as root or using _su_ to add the telegraf user to the docker group. Docker metric collection and the use of _su_ is enabled by default; to disable both, remove the _telegraf.docker_ entry in the _AgentConfiguration_ file:
 
 ...
 spec:
@@ -584,9 +585,9 @@ spec:
 
 |Why am I seeing two monitoring operator pods running, one named netapp-ci-monitoring-operator-<pod> and the other named monitoring-operator-<pod>?
 
-|As of October 12, 2023, Cloud Insights has refactored the operator to better serve our users; for those changes to be fully adopted, you must <<uninstalling,remove the old operator>> and <<installing-the-kubernetes-monitoring-operator,install the new one>>.
+|As of October 12, 2023, Data Infrastructure Insights has refactored the operator to better serve our users; for those changes to be fully adopted, you must <<uninstalling,remove the old operator>> and <<installing-the-kubernetes-monitoring-operator,install the new one>>.
 
-|My kubernetes events unexpectedly stopped reporting to Cloud Insights.
+|My kubernetes events unexpectedly stopped reporting to Data Infrastructure Insights.
 a|Retrieve the name of the event-exporter pod:
 
  `kubectl -n netapp-monitoring get pods \|grep event-exporter \|awk '{print $1}' \|sed 's/event-exporter./event-exporter/'`
@@ -620,6 +621,11 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-kube
 
 |Telegraf warns of, or crashes because of, insufficient lockable memory.
 |Try increasing the limit of lockable memory for Telegraf in the underlying operating system/node. If increasing the limit is not an option, modify the NKMO agentconfiguration and set _unprotected_ to _true_.  This will instruct Telegraf to no attempt to reserve locked memory pages. While this can pose a security risk as decrypted secrets might be swapped out to disk, it allows for execution in environments where reserving locked memory is not possible. For more details on the _unprotected_ configuration options, refer to the link:telegraf_agent_k8s_config_options.html[configuration options] page.
+
+|I see warning messages from Telegraf resembling the following:
+
+_W! [inputs.diskio] Unable to gather disk name for "vdc": error reading /dev/vdc: no such file or directory_
+|For the Kubernetes Monitoring Operator, these warning message are benign and can be safely ignored.  Alternatively, edit the telegraf section in AgentConfiguration, and set runPrivileged to true. For more details, refer to the link:telegraf_agent_k8s_config_options.html[operator's configuration options].
 
 |===
 
