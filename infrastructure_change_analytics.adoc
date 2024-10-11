@@ -18,9 +18,9 @@ Infrastructure Change Analytics provide you with an all-in-one view of recent ch
 
 == How does Infrastructure Change Analysis help?
 
-In any environment, changes to your storage or devices may happen because of mis-configured changes, power loss, etc. Change Analytics help with this by providing a single pane to view and correlate the health of your devices with outages or planned changes. 
+In any environment, changes to your storage or devices may happen because of mis-configured changes, power loss, etc. Change Analytics help with this by providing a single pane to view and correlate the health of your devices with outages or planned changes. Changes are calculated with each inventory poll (following the first poll on a new collector).
 
-To analyze Infrastructure Changes, navigate to *Observability > Change Analysis*. Alerts and Configuration changes for the current time range are listed. Alert lines show the current alert status (active or resolved). Configuration changes also show current status.
+To analyze Infrastructure Changes, navigate to *Observability > Change Analysis*. Alerts and Configuration changes for the current time range are listed. Alert rows show the current alert status (active or resolved). Similarly, configuration changes show the current status of the change.
 
 image:infraChange_list_example.png[Infrastructure Change Analytics main screen].
 
@@ -28,13 +28,25 @@ Selecting an item in the list will open a slideout pane giving more detail about
 
 image:infraChange_config_detail.png[Example of config change details pane]
 
+
 == Filtering
 
 As with all features of Cloud Insights, filtering the change list is intuitive: at the top of the page, enter or select values for trigger type or name, or add your own filters by selecting the {+] button.
 
 image:infraChange_filter_dropdown.png[Infrastructure Change Filtering Drop-Down]
 
+You can also go directly to key Alerts or Changes from the status section below the filter settings, including the current top three resources with the most alerts.
+
+image:Change_Analysis_filters_and_status.png[status and quick links to alerts and changes]
+
 == Which Objects are analyzed for changes?
+
+The following logs are monitored for changes:
+
+* logs.infrastructure.changes
+* logs.netapp.ems
+
+Metric monitors are also watched for objects and attributes in the list below. In the monitor, these must be selected in the _Group by_ option in order for Change Analytics to track them.
 
 The following table lists the objects and attributes included in infrastructure change analysis. 
 
