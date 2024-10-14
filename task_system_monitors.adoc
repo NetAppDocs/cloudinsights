@@ -14,7 +14,7 @@ summary: Create monitors to alert on performance or inventory thresholds, as wel
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights includes a number of system-defined monitors for both metrics and logs. The system monitors available are dependent on the data collectors present in your environment. Because of that, the monitors available in Cloud Insights may change as data collectors are added or their configurations changed.
+Data Infrastructure Insights includes a number of system-defined monitors for both metrics and logs. The system monitors available are dependent on the data collectors present in your environment. Because of that, the monitors available in Data Infrastructure Insights may change as data collectors are added or their configurations changed.
 
 NOTE: Many System Monitors are in _Paused_ state by default. You can enable a system monitor by selecting the _Resume_ option for the monitor. Ensure that _Advanced Counter Data Collection_ and _Enable ONTAP EMS log collection_ are enabled in the Data Collector. These options can be found in the ONTAP Data Collector under _Advanced Configuration_: 
 image:Enable_Log_Monitor_Collection.png[Enabling Advanced Counter and EMS Log collection for ONTAP]
@@ -30,7 +30,7 @@ toc::[]
 ////
 == Create the Monitor 
 
-. From the Cloud Insights menu, click *Alerts > Manage Monitors*
+. From the Data Infrastructure Insights menu, click *Alerts > Manage Monitors*
 +
 The Monitors list page is displayed, showing currently configured monitors. 
 
@@ -209,13 +209,13 @@ Remove monitors by clicking on a group and selecting _Remove from Group_ from th
 
 //To remove a monitor from a group while editing the monitor, in the _Associate with a group_ section, click the *X* next to the group name.
 
-NOTE: Removing a monitor from a group does not delete the monitor from Cloud Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from any group to which it belonged and it is no longer available to any user.
+NOTE: Removing a monitor from a group does not delete the monitor from Data Infrastructure Insights. To completely remove a monitor, select the monitor and click _Delete_. This also removes it from any group to which it belonged and it is no longer available to any user.
 
 You can also move a monitor to a different group in the same manner, selecting _Move to Group_. You cannot move monitors from the system-defined monitor groups; to move a monitor from one of these groups, you must first _Duplicate_ the monitor, and then move the duplicated monitor to the desired group.
 
 To pause or resume all monitors in a group at once, select the menu for the group and click _Pause_ or _Resume_. 
 
-Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Cloud Insights; they are still available in _All Monitors_. You cannot delete system-defined monitor groups.
+Use the same menu to rename or delete a group. Deleting a group does not delete the monitors from Data Infrastructure Insights; they are still available in _All Monitors_. You cannot delete system-defined monitor groups.
 
 image:Monitors_PauseGroup.png[Pause a group]
 ////
@@ -235,7 +235,7 @@ The following system-defined monitors are available, in the noted groups.
 
 
 
-Below are the system monitors currently included with Cloud Insights:
+Below are the system monitors currently included with Data Infrastructure Insights:
 
 === Metric Monitors
 
@@ -822,8 +822,8 @@ Right-size pods to free up CPU on nodes.
 
 |===
 Monitor Name|Description|Corrective Action
-|Acquisition Unit Shutdown|Cloud Insights Acquisition Units periodically restart as part of upgrades to introduce new features. This happens once a month or less in a typical environment. A Warning Alert that an Acquisition Unit has shutdown should be followed soon after by a Resolution noting that the newly-restarted Acquisition Unit has completed a registration with Cloud Insights. Typically this shutdown-to-registration cycle takes 5 to 15 minutes. |If the alert occurs frequently or lasts longer than 15 minutes, check on the operation of the system hosting the Acquisition Unit, the network, and any proxy connecting the AU to the Internet.
-|Collector Failed|The poll of a data collector encountered an unexpected failure situation.|Visit the data collector page in Cloud Insights to learn more about the situation.
+|Acquisition Unit Shutdown|Data Infrastructure Insights Acquisition Units periodically restart as part of upgrades to introduce new features. This happens once a month or less in a typical environment. A Warning Alert that an Acquisition Unit has shutdown should be followed soon after by a Resolution noting that the newly-restarted Acquisition Unit has completed a registration with Data Infrastructure Insights. Typically this shutdown-to-registration cycle takes 5 to 15 minutes. |If the alert occurs frequently or lasts longer than 15 minutes, check on the operation of the system hosting the Acquisition Unit, the network, and any proxy connecting the AU to the Internet.
+|Collector Failed|The poll of a data collector encountered an unexpected failure situation.|Visit the data collector page in Data Infrastructure Insights to learn more about the situation.
 |Collector Warning|This Alert typically can arise because of an erroneous configuration of the data collector or of the target system. Revisit the configurations to prevent future Alerts. It can also be due to a retrieval of less-than-complete data where the data collector gathered all the data that it could. This can happen when situations change during data collection (e.g., a virtual machine present at the beginning of data collection is deleted during data collection and before its data is captured).|Check the configuration of the data collector or target system.
 
 Note that the monitor for Collector Warning can send more alerts than other monitor types, so it is recommended to set no alert recipients unless you are troubleshooting.

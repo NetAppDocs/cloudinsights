@@ -14,16 +14,16 @@ keywords: monitor, alert, viewing
 :imagesdir: ./media/
 
 [.lead]
-Cloud Insights displays alerts when link:task_create_monitor.html[monitored thresholds] are exceeded. 
+Data Infrastructure Insights displays alerts when link:task_create_monitor.html[monitored thresholds] are exceeded. 
 
-TIP: Monitors and Alerting is available in Cloud Insights Standard Edition and higher.
+TIP: Monitors and Alerting is available in Data Infrastructure Insights Standard Edition and higher.
 
 == Viewing and Managing Alerts
 
 To view and manage alerts, do the following.
 
 . Navigate to the *Alerts > All Alerts* page.
-. A list of up to the most recent 1,000 alerts is displayed. You can sort this list on any field by clicking the column header for the field. The list displays the following information. Note that not all of these columns are displayed by default. You can select columns to display by clicking on the "gear" icon image:gear.png[gear icon]:
+. A list of up to the most recent 1,000 alerts is displayed. You can sort this list on any field by clicking the column header for the field. The list displays the following information. Note that not all of these columns are displayed by default. You can select columns to display by clicking on the "gear" icon:
 
 ** *Alert ID*: System-generated unique alert ID
 ** *Triggered Time*: The time at which the relevant Monitor triggered the alert
@@ -55,7 +55,7 @@ image:alert_detail_page.png[Alert Detail Page]
 
 == Alerts When Data Is Missing
 
-In a realtime system such as Cloud Insights, to trigger the analysis of a Monitor to decide if an Alert should be generated, we rely on one of two things:
+In a realtime system such as Data Infrastructure Insights, to trigger the analysis of a Monitor to decide if an Alert should be generated, we rely on one of two things:
 
 * the next datapoint to arrive
 * a timer to fire when there is no datapoint and you have waited long enough
@@ -69,7 +69,7 @@ If you have a Monitor with a 30-minute window that notices that a condition is v
 
 It is possible to configure a monitor in such a way for the condition to *always* exist on the monitored object--for example, IOPS > 1 or latency > 0. These are often created as 'test' monitors and then forgotten. Such monitors create alerts that stay permanently open on the constituent objects, which can cause system stress and stability issues over time.  
 
-To prevent this, Cloud Insights will automatically close any "permanently active" alert after 7 days. Note that the underlying monitor conditions may (probably will) continue to exist, causing a new alert to be issued almost immediately, but this closing of "always active" alerts alleviates some of the system stress that can otherwise occur.
+To prevent this, Data Infrastructure Insights will automatically close any "permanently active" alert after 7 days. Note that the underlying monitor conditions may (probably will) continue to exist, causing a new alert to be issued almost immediately, but this closing of "always active" alerts alleviates some of the system stress that can otherwise occur.
 
 
 
