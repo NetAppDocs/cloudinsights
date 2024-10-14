@@ -20,7 +20,7 @@ Infrastructure Change Analytics provide you with an all-in-one view of recent ch
 
 In any environment, changes to your storage or devices may happen because of mis-configured changes, power loss, etc. Change Analytics help with this by providing a single pane to view and correlate the health of your devices with outages or planned changes. Changes are calculated with each inventory poll (following the first poll on a new collector).
 
-To analyze Infrastructure Changes, navigate to *Observability > Change Analysis*. Alerts and Configuration changes for the current time range are listed. Alert rows show the current alert status (active or resolved). Similarly, configuration changes show the current status of the change.
+To analyze Infrastructure Changes, navigate to *Observability > Change Analysis*. Alerts and Configuration changes for the current time range are listed. Alert rows show the current alert status (active or resolved). 
 
 image:infraChange_list_example.png[Infrastructure Change Analytics main screen].
 
@@ -31,7 +31,7 @@ image:infraChange_config_detail.png[Example of config change details pane]
 
 == Filtering
 
-As with all features of Cloud Insights, filtering the change list is intuitive: at the top of the page, enter or select values for trigger type or name, or add your own filters by selecting the {+] button.
+As with all features of Cloud Insights, filtering the change list is intuitive: at the top of the page, you can filter for specific asset types (_Triggered On:type_), and/or filter for only assets with specific names if desired (_Triggered On:name_), or add your own filters by selecting the {+] button.
 
 image:infraChange_filter_dropdown.png[Infrastructure Change Filtering Drop-Down]
 
@@ -41,12 +41,7 @@ image:Change_Analysis_filters_and_status.png[status and quick links to alerts an
 
 == Which Objects are analyzed for changes?
 
-The following logs are monitored for changes:
 
-* logs.infrastructure.changes
-* logs.netapp.ems
-
-Metric monitors are also watched for objects and attributes in the list below. In the monitor, these must be selected in the _Group by_ option in order for Change Analytics to track them.
 
 The following table lists the objects and attributes included in infrastructure change analysis. 
 
@@ -260,10 +255,12 @@ device.type
 fabrics.name
 fabrics.vsanId
 nodeWwn|description
-|2.1.3.4. Handling of conditional exclusion of attributes
-
-
-|
-
 
 |===
+
+Data Infrastructure Insights list alerts and changes created for the following logs: 
+
+* logs.vmware.events
+* logs.netapp.ems
+
+Metric monitors are also watched for objects and attributes in the list above. In the monitor, these must be selected in the _Group by_ option in order for Change Analytics to track them.
