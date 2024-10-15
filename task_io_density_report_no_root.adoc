@@ -6,7 +6,6 @@ keywords: NetApp, root volume, high I/O,
 ---
 
 = Ensuring IO density reports describe only internal data volumes
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :nofooter:
@@ -57,7 +56,7 @@ You must have identified all of the root aggregates you want to exclude from the
 
 .Steps
 
-. In the Cloud Insights menu, click *Manage > Annotations*
+. In the Data Infrastructure Insights menu, click *Manage > Annotations*
 . Click *Add*
 .. Enter the name for the annotation: *RootAggr*
 .. Enter a description of the annotation: *Remove root aggregate from "High I/O Density" report*
@@ -73,7 +72,7 @@ You must have created and saved a query that identifies the NetApp root aggregat
 
 .Steps
 
-. In the Cloud Insights toolbar, Click *Manage > Annotation rules*.
+. In the Data Infrastructure Insights toolbar, Click *Manage > Annotation rules*.
 . Click *Add*. The Add Rule dialog displays.
 
 .. In the Name box, enter a unique name that describes the rule: *"RootAggrExclude"*

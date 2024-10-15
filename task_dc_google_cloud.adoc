@@ -6,7 +6,6 @@ keywords: data collector, queries, create
 ---
 
 = NetApp Google Compute data collector
-:toc: macro
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -15,7 +14,7 @@ keywords: data collector, queries, create
 :imagesdir: ./media/
 
 [.lead]
-This data collector supports inventory and performance collection from Google Compute cloud platform configurations. This collector will seek to discover all the Compute resources within all the Projects within one Google organization. If you have multiple Google organizations you want to discover with Cloud Insights, you will want to deploy one Cloud Insights collector per organization. 
+This data collector supports inventory and performance collection from Google Compute cloud platform configurations. This collector will seek to discover all the Compute resources within all the Projects within one Google organization. If you have multiple Google organizations you want to discover with Data Infrastructure Insights, you will want to deploy one Data Infrastructure Insights collector per organization. 
 
 == Configuration
 
@@ -23,7 +22,7 @@ This data collector supports inventory and performance collection from Google Co
 |===
 |Field|Description
 |Organization ID|The organization ID you want to discover with this collector. This field is required if your service account is able to see more than one organization
-|Choose 'Exclude' or 'Include' to filter GCP Projects by IDs| If you want to limit what projects' resources are brought into Cloud Insights. 
+|Choose 'Exclude' or 'Include' to filter GCP Projects by IDs| If you want to limit what projects' resources are brought into Data Infrastructure Insights. 
 |Project IDs |The list of Project IDs that you want to filter in, or out from discovery, depending on the value of the "Choose 'Exclude"...." value. The default list is empty
 |Client ID |Client ID for the Google Cloud Platform configuration
 |Copy and paste the contents of your Google Credential File here|Copy your Google credentials for the Cloud Platform account to this field

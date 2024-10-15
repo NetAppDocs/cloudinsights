@@ -2,11 +2,11 @@
 sidebar: sidebar 
 permalink: API_Overview.html
 keywords: API, customer API, premium, JSON, Swagger, Access Token, token, rotate, expired
-summary: The Cloud Insights API enables integration with other applications, such as monitoring and reporting systems.
+summary: The Data Infrastructure Insights API enables integration with other applications, such as monitoring and reporting systems.
 ---
 
-= Cloud Insights API 
-:toc: macro
+
+= Data Infrastructure Insights API 
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -15,13 +15,10 @@ summary: The Cloud Insights API enables integration with other applications, suc
 :imagesdir: ./media/
 
 [.lead]
-The Cloud Insights API enables NetApp customers and independent software vendors (ISVs) to integrate Cloud Insights with other applications, such as CMDB's or other ticketing systems.
+The Data Infrastructure Insights API enables NetApp customers and independent software vendors (ISVs) to integrate Data Infrastructure Insights with other applications, such as CMDB's or other ticketing systems.
 
-//NOTE: This documentation is considered *Preview Documentation* and is therefore subject to change.
 
-//NOTE: The Cloud Insights API is available in *Cloud Insights Premium Edition*. 
-
-Note that Cloud Insights APIs are available based on your current Edition: 
+Note that Data Infrastructure Insights APIs are available based on your current Edition: 
 
 [cols="<,^s,^s,^s"]
 |===
@@ -37,31 +34,31 @@ Note that Cloud Insights APIs are available based on your current Edition:
 |===
 
 
-Additionally, your Cloud Insights link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html#permission-levels[feature set role] will determine which APIs you can access. User and Guest roles have fewer privileges than Administrator role. For example, if you have Administrator role in Monitor and Optimize, but User role in Reporting, you can manage all API types except Data Warehouse.
+Additionally, your Data Infrastructure Insights link:https://docs.netapp.com/us-en/cloudinsights/concept_user_roles.html#permission-levels[feature set role] will determine which APIs you can access. User and Guest roles have fewer privileges than Administrator role. For example, if you have Administrator role in Monitor and Optimize, but User role in Reporting, you can manage all API types except Data Warehouse.
 
 
 == Requirements for API Access
 
 * An API Access Token model is used to grant access. 
 
-* API Token management is performed by Cloud Insights users with the Administrator role. 
+* API Token management is performed by Data Infrastructure Insights users with the Administrator role. 
 
 
 == API Documentation (Swagger)
 
-The latest API information is found by logging in to Cloud Insights and navigating to *Admin > API Acccess*. Click the *API Documentation* link.
+The latest API information is found by logging in to Data Infrastructure Insights and navigating to *Admin > API Acccess*. Click the *API Documentation* link.
 
 //image:API_Types_Example.png[API Types]
 //image:API_Documentation.png[API Documentation]
 image:API_Swagger_Types.png[API types]
 
-The API Documentation is Swagger-based, which provides a brief description and usage information for the API, and allows you to try it out in your environment. Depending on your user role and/or Cloud Insights edition, the API types available to you may vary.
+The API Documentation is Swagger-based, which provides a brief description and usage information for the API, and allows you to try it out in your environment. Depending on your user role and/or Data Infrastructure Insights edition, the API types available to you may vary.
 
 image:API_Swagger_Example.png[API Swagger Example]
 
 == API Access Tokens
 
-Before using the Cloud Insights API, you must create one or more *API Access Tokens*. Access tokens are used for specified API types, and can grant read and/or write permissions. You can also set the expiration for each access token. All APIs under the specified types are valid for the access token. Each token is void of a username or password. 
+Before using the Data Infrastructure Insights API, you must create one or more *API Access Tokens*. Access tokens are used for specified API types, and can grant read and/or write permissions. You can also set the expiration for each access token. All APIs under the specified types are valid for the access token. Each token is void of a username or password. 
 
 To create an Access Token:
 
@@ -81,7 +78,7 @@ NOTE: Your token will only be available for copying to the clipboard and saving 
 
 You can disable, enable, and revoke tokens. Tokens that are disabled can be enabled. 
       
-Tokens grant general purpose access to APIs from a customer perspective;  managing access to APIs in the scope of their own tenant. Customer administrators may grant and revoke these tokens without direct involvement from Cloud Insights back end personnel.
+Tokens grant general purpose access to APIs from a customer perspective;  managing access to APIs in the scope of their own tenant. Customer administrators may grant and revoke these tokens without direct involvement from Data Infrastructure Insights back end personnel.
 
 The application receives an Access Token after a user successfully authenticates and authorizes access, then passes the Access Token as a credential when it calls the target API. The passed token informs the API that the bearer of the token has been authorized to access the API and perform specific actions specified by the scope that was granted during authorization.
 
@@ -97,11 +94,11 @@ See the swagger pages for examples specific to the API you wish to use.
 
 == API Type
 
-The Cloud Insights API is category-based, and currently contains the following types:
+The Data Infrastructure Insights API is category-based, and currently contains the following types:
 
 * ASSETS type contains asset, query, and search APIs. 
 ** Assets: Enumerate top-level objects and retrieve a specific object or an object hierarchy.
-** Query: Retrieve and manage Cloud Insights queries.
+** Query: Retrieve and manage Data Infrastructure Insights queries.
 ** Import: Import annotations or applications and assign them to objects
 ** Search: Locate a specific object without knowing the object’s unique ID or full name.
 
@@ -111,23 +108,23 @@ The Cloud Insights API is category-based, and currently contains the following t
 
 * LOG INGESTION is used to retrieve and manage log data
 
-//* DATA WAREHOUSE type is available for environments with Cloud Insights Reporting, and is used to manage data used with Reporting
+//* DATA WAREHOUSE type is available for environments with Data Infrastructure Insights Reporting, and is used to manage data used with Reporting
 
 Additional types and/or APIs may become available over time. You can find the latest API information in the link:#api-documentation-swagger[API Swagger documentation]. 
 
-Note that the API types to which a user has access depend also on the link:concept_user_roles.html[User Role] they have in each Cloud Insights feature set (Monitoring, Workload Security, Reporting).
+Note that the API types to which a user has access depend also on the link:concept_user_roles.html[User Role] they have in each Data Infrastructure Insights feature set (Monitoring, Workload Security, Reporting).
 
 ////
 == API Commands
 
 Each of the REST API commands comprises the API’s URL, an HTTP action, URL parameters, and an expected API responses.
 
-The Cloud Insights APIs can be generally separated into the following sections: 
+The Data Infrastructure Insights APIs can be generally separated into the following sections: 
 ////
 
 ////
 admin::
-Provides an entry point to the system for administrative operations in Cloud Insights. Allowed roles are Any, User, and  Administrator and includes the following:
+Provides an entry point to the system for administrative operations in Data Infrastructure Insights. Allowed roles are Any, User, and  Administrator and includes the following:
 
 ** admin/acquisitionUnits
 ** admin/certificates
@@ -203,7 +200,7 @@ Retrieve and manage data collectors
 
 == Inventory Traversal
 
-This section describes how to traverse a hierarchy of Cloud Insights objects.
+This section describes how to traverse a hierarchy of Data Infrastructure Insights objects.
 
 === Top Level Objects 
 
@@ -250,7 +247,7 @@ To discourage this, requests for top-level collections cannot be expanded. For e
 
 == Performance Data
 
-Performance data is gathered across many devices as separate samples. Every hour (the default), Cloud Insights aggregates and summarizes performance samples.
+Performance data is gathered across many devices as separate samples. Every hour (the default), Data Infrastructure Insights aggregates and summarizes performance samples.
 
 The API allows access to both the samples and the summarized data. For an object with performance data, a performance summary is available as _expand=performance_. Performance history time series are available through nested _expand=performance.history_.
 
@@ -277,7 +274,7 @@ The resulting Performance Data dictionary has the following keys:
 * “history” is the list of pairs of timestamp and map of counters values
 * Every other dictionary key (“diskThroughput” and so on) is the name of a performance metric.
 
-Each performance data object type has a unique set of performance metrics. For example, the Virtual Machine performance object supports “diskThroughput” as a performance metric. Each supported performance metric is of a certain “performanceCategory” presented in the metric dictionary. Cloud Insights supports several performance metric type listed later in this document. Each performance metric dictionary will also have the “description” field that is a human-readable description of this performance metric and a set of performance summary counter entries.
+Each performance data object type has a unique set of performance metrics. For example, the Virtual Machine performance object supports “diskThroughput” as a performance metric. Each supported performance metric is of a certain “performanceCategory” presented in the metric dictionary. Data Infrastructure Insights supports several performance metric type listed later in this document. Each performance metric dictionary will also have the “description” field that is a human-readable description of this performance metric and a set of performance summary counter entries.
 
 The Performance Summary counter is the summarization of performance counters. It presents typical aggregated values like min, max, and avg for a counter and also the latest observed value, time range for summarized data, unit type for counter and thresholds for data. Only thresholds are optional; the rest of attributes are mandatory.
 
@@ -413,7 +410,7 @@ image:StoragePoolCapacity.png[Storage Pool Capacity Example]
 
 The search API is a simple entry point to the system. The only input parameter to the API is a free-form string and the resulting JSON contains a categorized list of results. Types are different asset types from the Inventory, such as storages, hosts, dataStores, and so on. Each type would contain a list of objects of the type that match the search criteria.
 
-Cloud Insights is an extensible (wide open) solution that allows integrations with third party orchestration, business management, change control and ticketing systems as well as custom CMDB integrations. 
+Data Infrastructure Insights is an extensible (wide open) solution that allows integrations with third party orchestration, business management, change control and ticketing systems as well as custom CMDB integrations. 
 
 Cloud Insight’s RESTful API is a primary point of integration that allows simple and effective movement of data as well as allows users to gain seamless access to their data. 
 
