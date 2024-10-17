@@ -4,7 +4,8 @@ permalink: task_config_telegraf_agent_k8s.html
 keywords: kubernetes, Kubernetes, k8s, telegraf, installation, install, agent, telegraf agent, eks, operator
 summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in Data Infrastructure Insights.  
 ---
-= Kubernetes Monitoring Operator Installation and Configuration:hardbreaks:
+= Kubernetes Monitoring Operator Installation and Configuration
+:hardbreaks:
 :nofooter:
 :toclevels: 2
 :icons: font
@@ -624,7 +625,7 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-kube
 |I see warning messages from Telegraf resembling the following:
 
 _W! [inputs.diskio] Unable to gather disk name for "vdc": error reading /dev/vdc: no such file or directory_
-|For the Kubernetes Monitoring Operator, these warning message are benign and can be safely ignored.  Alternatively, edit the telegraf section in AgentConfiguration, and set runPrivileged to true. For more details, refer to the link:telegraf_agent_k8s_config_options.html[operator's configuration options].
+|For the Kubernetes Monitoring Operator, these warning message are benign and can be safely ignored.  Alternatively, edit the telegraf section in AgentConfiguration, and set _runDsPrivileged_ to true. For more details, refer to the  link:telegraf_agent_k8s_config_options.html[operator's configuration options].
 
 |===
 
