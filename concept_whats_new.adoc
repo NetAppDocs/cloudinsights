@@ -21,16 +21,23 @@ NetApp is continually improving and enhancing its products and services. Here ar
 == October 2024
 
 
-=== Configuration Changes
+=== Configuration Change Analysis 
+ 
+Infrastructure and configuration changes are one of the most common causes of issues in modern IT. Data Infrastructure Insights' (DII’s) new link:infrastructure_change_analytics.html[change analysis] capability lets you clearly understand cause & effect in your environment, to see where a changes have led to issues. This advanced new feature can accelerate troubleshooting time dramatically by showing all related infrastructure components and any recent configuration or topology changes that may have led to an issue. And when you or your teammates carry out work for a planned change, you can validate the changes made and quickly determine that there is no unexpected effects, before any impacts to service levels.
 
-Track every configuration change and correlate it with your infrastructure's health and performance. Surface potential configuration changes that may be causing health issues. Simplify and reduce troubleshooting time from hours to minutes.
 
 image:Change_Analysis_Example_showing_alert-change_correlation.png[Infrastructure Change Analytics example,900]
 
 
-=== Arithmetic Expressions in Monitors
+=== Unlock New Insights with Custom Expressions in Monitors
 
-Expressions enable you to perform arithmetic operations on metrics, such as dividing one metric by another to determine percentages or ratios. Metric and Anomaly Detection Monitors now allow you to add a custom expression to the monitor query, giving you more freedom to alert on the data and situations you need.
+Expressions enable you to perform arithmetic operations in Metric and Anomaly Detection Monitors. Here are some examples:
+
+* Ratio: IOPS/TB to detect where service level limits are being reached on cloud storage providers.
+* Percentage: Used/Available to calculate utilization
+* Aggregation: Combine multiple types of traffic or errors into one monitor
+* Comparison: Compare current FC port speed to maximum port speed to detect where FC ports are not running at their full capacity
+
 
 image:Expressions_In_Monitors.png[Creating an expression in a metric monitor,500]
 
@@ -53,6 +60,8 @@ You can now include log events in your dashboards, to visualize event data and h
 === Better VMware Observability with VMware Events
 
 Proactively manage and troubleshoot your VMware environment with real-time events. VMware events provide insights on VM migrations, resource allocations, and host health. Now available for use in Queries, Dashboards, and Monitors. Requires VMware version 8 or higher. Simply select the _logs.vmware.events_ source.
+
+VMware Events are also used for DII's new Configuration Change Analysis noted above.
 
 image:vmware_log_events.png[vmware log selection in the drop-down,500]
 
