@@ -288,11 +288,6 @@ Network Performance and Map
 
 * ci-net-observer
 
-
-Change Analysis 
-
-* ci-k8s-change-observer
-
 Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies. Ensure that the image tags and directory paths to these images in your repository are consistent with those in the Data Infrastructure Insights repository.
 
 Edit the monitoring-operator deployment in operator-deployment.yaml, and modify all image references to use your private Docker repository.
@@ -625,7 +620,7 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-kube
 |I see warning messages from Telegraf resembling the following:
 
 _W! [inputs.diskio] Unable to gather disk name for "vdc": error reading /dev/vdc: no such file or directory_
-|For the Kubernetes Monitoring Operator, these warning message are benign and can be safely ignored.  Alternatively, edit the telegraf section in AgentConfiguration, and set runPrivileged to true. For more details, refer to the link:telegraf_agent_k8s_config_options.html[operator's configuration options].
+|For the Kubernetes Monitoring Operator, these warning message are benign and can be safely ignored.  Alternatively, edit the telegraf section in AgentConfiguration, and set _runDsPrivileged_ to true. For more details, refer to the  link:telegraf_agent_k8s_config_options.html[operator's configuration options].
 
 |===
 
