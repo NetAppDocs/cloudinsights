@@ -6,7 +6,6 @@ keywords: subscribe, trial, subscription, contract, raw capacity, region, data r
 ---
 
 = Subscribing to Data Infrastructure Insights
-:toc: macro
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -103,7 +102,7 @@ NOTE: A _Module Evaluation_ is not a _Trial_ - we use the term trial when we pro
 
 === Estimator
 
-During a module evaluation, you are not changed MU usage for resources consumed for the module, but you can open the *Estimator* (on the _Summary_ tab) to see how MUs will be charged following the evaluation, as well as play with "What if" scenarios with the number of MUs you may need in the future. Reset the numbers by exiting the Estimator.
+During a module evaluation, you are not charged MU usage for resources consumed for the module, but you can open the *Estimator* (on the _Summary_ tab) to see how MUs will be charged following the evaluation, as well as play with "What if" scenarios with the number of MUs you may need in the future. Reset the numbers by exiting the Estimator.
 
 image:Module_Trials_Estimator.png[Estimator]
 
@@ -126,7 +125,38 @@ To subscribe, go to *Admin -> Subscription*. In addition to the *Subscribe* butt
 === Observability Metering
 [#pricing]
 
-Data Infrastructure Insights Infrastructure Observability and Kubernetes Observability are metered per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts or virtual machines* and amount of *unformatted capacity* being managed in your infrastructure environment. 
+
+Data Infrastructure Insights Observability is metered in one of two ways:
+
+* Capacity Metering
+* Managed Unit Metering (Legacy)
+
+Your subscription will be metered by one of these methods, depending on whether you have an existing subscription, or are launching a new subscription.
+
+
+==== Capacity Metering
+[#effective-entitlement]
+
+Data Infrastructure Insights Observability meters usage according to the tier of storages in your environment. You may have storages that fall into one or more of these categories:
+
+* Primary Raw 
+* Object Raw
+* Cloud Consumed
+
+Each tier is metered at a different rate, with the whole calculated together to give you an _effective entitlement_. The formula for calculating effective usage is as follows:
+
+ Effective usage = Raw TiB + (0.1 x Object Tier Raw TiB) + (0.25 x Cloud Tier Provisioning TiB)
+
+NOTE: The sum of Managed Units may differ slightly from the Data Collectors count in the summary section. This is because Managed Unit counts are rounded up to the nearest Managed Unit. The sum of these numbers in the Data Collectors list may be slightly higher than the total Managed Units in the status section. The summary section reflects your actual Managed Unit count for your subscription.
+To facilitate this, DII calculates a single *effective entitlement* number based on _subscribed_ quantities; it then calculates that same number based on _discovered_ storage and only declares breach if the effective discovered capacity is greater than the effective entitlement. This gives you flexibility to monitor quantities that vary from the subscribed amounts for each tier, which DII allows as long as total discovered storage is within the subscribed effective entitlement. 
+
+//image:TBD[Table showing discovered capacity and effective entitlement]
+
+
+==== Managed Unit Metering (Legacy)
+
+Data Infrastructure Insights Infrastructure Observability and Kubernetes Observability meter usage per *Managed Unit*. Usage of your Managed Units is calculated based on the number of *hosts or virtual machines* and amount of *unformatted capacity* being managed in your infrastructure environment. 
+
 
 * 1 Managed Unit = 2 hosts (any virtual or physical machine)
 * 1 Managed Unit = 4 TiB of unformatted capacity of physical or virtual disks
@@ -136,16 +166,6 @@ Data Infrastructure Insights Infrastructure Observability and Kubernetes Observa
 
 If your environment includes or is expected to include 1,000 or more Managed Units, you are eligible for *Volume Pricing* and will be prompted to Contact NetApp Sales to subscribe. See <<how-do-i-subscribe,below>> for more details.
 
-////
-=== Estimate Your Subscription Cost
-
-The Subscription Calculators help you estimate your Data Infrastructure Insights subscription cost based on the number of Managed Units needed. The current values are pre-populated, and you can adjust those values to assist you with planning for estimated future growth. You can adjust values for Infrastructure, Kubernetes, or both. 
-
-Your estimated list price cost will change based on your subscription term. 
-NOTE: The calculators are for estimation only. Your exact pricing will be set when you subscribe.
-
-image:Subscription_Cost_Calculators.png[Subscription Page showing Infrastructure and Kubernetes cost estimation calculators]
-////
 
 
 === Workload Security Metering
