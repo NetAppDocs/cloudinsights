@@ -311,6 +311,26 @@ agent:
   dockerImagePullSecret: docker-secret-name  
 ----
 
+==== Repository Syncing
+
+Users looking to sync their local docker image repositories with NetApp's docker image repository will need the following information:
+
+* Repository URL
+* Repository Username
+* Repository Password
+
+The repository URL and username can be found and extracted from the “Image Pull Snippet” in the NetApp Monitoring Operator install tile.
+
+ docker login <NetApp repository URL> -u <NetApp repository username> && …
+
+The NetApp repository password provided in the NetApp Monitoring Operator install tile is a temporary password that is valid for only 24 hours. When configuring repository syncing, users will want to use a more permanent password. To generate this password, navigate to *Admin > API Access* and select *+ API Access Token* to create a new API Access Token with the desired expiration date. 
+
+. Provide the desired Name and Token expiration
+. Select Read/Write permissions
+. Select Data Ingestion type, and unselect Acquisition Unit
+. Click Save
+
+This will generate a new API Access Token. Copy that API Access Token, and use it as the Repository password.
 
 
 
