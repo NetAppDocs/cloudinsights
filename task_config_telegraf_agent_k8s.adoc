@@ -311,6 +311,26 @@ agent:
   dockerImagePullSecret: docker-secret-name  
 ----
 
+==== Repository Syncing
+
+Users looking to sync their local docker image repositories with NetApp's docker image repository will need the following information:
+
+* Repository URL
+* Repository Username
+* Repository Password
+
+The repository URL and username can be found and extracted from the “Image Pull Snippet” in the NetApp Monitoring Operator install tile.
+
+ docker login <NetApp repository URL> -u <NetApp repository username> && …
+
+The NetApp repository password provided in the NetApp Monitoring Operator install tile is a temporary password that is valid for only 24 hours. When configuring repository syncing, users will want to use a more permanent password. To generate this password, navigate to *Admin > API Access* and select *+ API Access Token* to create a new API Access Token with the desired expiration date. 
+
+. Provide the desired Name and Token expiration
+. Select Read/Write permissions
+. Select Data Ingestion type, and unselect Acquisition Unit
+. Click Save
+
+This will generate a new API Access Token. Copy that API Access Token, and use it as the Repository password.
 
 
 
@@ -625,6 +645,33 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-kube
 
 _W! [inputs.diskio] Unable to gather disk name for "vdc": error reading /dev/vdc: no such file or directory_
 |For the Kubernetes Monitoring Operator, these warning message are benign and can be safely ignored.  Alternatively, edit the telegraf section in AgentConfiguration, and set runPrivileged to true. For more details, refer to the link:telegraf_agent_k8s_config_options.html[operator's configuration options].
+
+|My fluent-bit pod is failing with the following errors:
+
+[2024/10/16 14:16:23] [error] [/src/fluent-bit/plugins/in_tail/tail_fs_inotify.c:360 errno=24] Too many open files
+[2024/10/16 14:16:23] [error] failed initialize input tail.0
+[2024/10/16 14:16:23] [error] [engine] input initialization failed 
+
+a|Try to change your _fsnotify_ settings in your cluster:
+
+----
+ sudo sysctl fs.inotify.max_user_instances (take note of setting)
+
+ sudo sysctl fs.inotify.max_user_instances=<something larger than current setting>
+
+ sudo sysctl fs.inotify.max_user_watches (take note of setting)
+
+ sudo sysctl fs.inotify.max_user_watches=<something larger than current setting>
+----
+
+Restart Fluent-bit.
+
+Note: to make these settings persistent across node restarts, you need to put the following lines in _/etc/sysctl.conf_
+
+----
+ fs.inotify.max_user_instances=<something larger than current setting>
+ fs.inotify.max_user_watches=<something larger than current setting>
+----
 
 |===
 
