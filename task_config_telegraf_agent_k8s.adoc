@@ -292,7 +292,7 @@ Push the operator docker image to your private/local/enterprise docker repositor
 
 Edit the monitoring-operator deployment in operator-deployment.yaml, and modify all image references to use your private Docker repository.
 
- image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<ci-kube-rbac-proxy version>
+ image: <docker repo of the enterprise/corp docker repo>/ci-kube-rbac-proxy:<ci-kube-rbac-proxy version>
  image: <docker repo of the enterprise/corp docker repo>/netapp-monitoring:<version>
 
 Edit the AgentConfiguration in operator-config.yaml to reflect the new docker repo location. Create a new imagePullSecret for your private repository, for more details see _https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/_
