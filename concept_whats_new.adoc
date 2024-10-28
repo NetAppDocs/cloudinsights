@@ -18,6 +18,74 @@ keywords: features
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in Data Infrastructure Insights (formerly Cloud Insights).   
 
 
+== October 2024
+
+
+=== Configuration Change Analysis 
+ 
+Infrastructure and configuration changes are one of the most common causes of issues in modern IT. Data Infrastructure Insights' (DII’s) new link:infrastructure_change_analytics.html[change analysis] capability lets you clearly understand cause & effect in your environment, to see where a changes have led to issues. This advanced new feature can accelerate troubleshooting time dramatically by showing all related infrastructure components and any recent configuration or topology changes that may have led to an issue. And when you or your teammates carry out work for a planned change, you can validate the changes made and quickly determine that there is no unexpected effects, before any impacts to service levels.
+
+
+image:Change_Analysis_Example_showing_alert-change_correlation.png[Infrastructure Change Analytics example,900]
+
+
+=== Unlock New Insights with Custom Expressions in Monitors
+
+Expressions enable you to perform arithmetic operations in Metric and Anomaly Detection Monitors. Here are some examples:
+
+* Ratio: IOPS/TB to detect where service level limits are being reached on cloud storage providers.
+* Percentage: Used/Available to calculate utilization
+* Aggregation: Combine multiple types of traffic or errors into one monitor
+* Comparison: Compare current FC port speed to maximum port speed to detect where FC ports are not running at their full capacity
+
+
+image:Expressions_In_Monitors.png[Creating an expression in a metric monitor,500]
+
+=== Minimize Alert Disruptions During Maintenance Period 
+
+Maintenance Windows allow you to suppress alert notifications during scheduled maintenance periods, helping you avoid unnecessary disruptions.
+
+With Maintenance Windows, you can schedule specific maintenance periods during which alert notifications are suppressed, for the objects and metrics you choose. For example, you can suppress alert notifications triggered by specific storage systems, when those storage systems are in a planned upgrade period.
+
+Note that only alert notifications are suppressed (email, webhook); the alerts themselves are still shown on the Observability > Alerts > All Alerts page.
+
+image:Maintenance_Windows_example.png[Maintenance Windows Example,500]
+
+
+
+
+=== Log Analytics in dashboards
+You can now include log events in your dashboards, to visualize event data and have more comprehensive and contextual understanding of your environment. Investigate logs and view related metrics without leaving the dashboard!
+
+=== Better VMware Observability with VMware Events
+
+Proactively manage and troubleshoot your VMware environment with real-time events. VMware events provide insights on VM migrations, resource allocations, and host health. Now available for use in Queries, Dashboards, and Monitors. Requires VMware version 8 or higher. Simply select the _logs.vmware.events_ source.
+
+VMware Events are also used for DII's new Configuration Change Analysis noted above.
+
+image:vmware_log_events.png[vmware log selection in the drop-down,500]
+
+
+
+=== Dashboard Access Control
+Data Infrastructure Insights now gives you greater control over access to the dashboards you create. You choose who can modify your graphs. You control exposure to potentially sensitive information. Still working on a dashboard that isn't ready for general visibility? You can keep it private until you are ready to show it.
+
+image:Dashboard_Sharing_Options.png[Dashboard Sharing options,300]
+
+
+=== KubeVirt Support: Monitor Virtual Machine workloads running within your Kubernetes Cluster 
+
+DII now fully supports KubeVirt, the Kubernetes-native virtualization solution used by platforms like OpenShift Virtualization and Harvester. Gain full visibility into the metrics, events, configuration changes, and network traffic of both Virtual Machines and Container workloads within your Kubernetes clusters. 
+
+
+=== Data Collector updates:
+
+* *Pure FlashBlade*: This collector gathers inventory and performance data from FlashBlade clusters that expose version 2 of their REST API.
+
+
+
+'''
+
 == September 2024
 
 === Introducing Data Infrastructure Insights, formerly Cloud Insights
