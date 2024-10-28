@@ -23,7 +23,7 @@ NetApp is continually improving and enhancing its products and services. Here ar
 
 === Configuration Change Analysis 
  
-Infrastructure and configuration changes are one of the most common causes of issues in modern IT. Data Infrastructure Insights' (DII’s) new link:infrastructure_change_analytics.html[change analysis] capability lets you clearly understand cause & effect in your environment, to see where a changes have led to issues. This advanced new feature can accelerate troubleshooting time dramatically by showing all related infrastructure components and any recent configuration or topology changes that may have led to an issue. And when you or your teammates carry out work for a planned change, you can validate the changes made and quickly determine that there is no unexpected effects, before any impacts to service levels.
+Infrastructure and configuration changes are one of the most common causes of issues in modern IT. Data Infrastructure Insights' (DII’s) new link:infrastructure_change_analytics.html[change analysis] capability lets you clearly understand cause & effect in your environment, to see where changes lead to issues. This advanced new feature can accelerate troubleshooting time dramatically by showing all related infrastructure components and any recent configuration or topology changes that may have led to an issue. And when you or your teammates carry out work for a planned change, you can validate the changes made and quickly determine that there are no unexpected effects, before service levels are impacted.
 
 
 image:Change_Analysis_Example_showing_alert-change_correlation.png[Infrastructure Change Analytics example,900]
@@ -51,11 +51,20 @@ Note that only alert notifications are suppressed (email, webhook); the alerts t
 
 image:Maintenance_Windows_example.png[Maintenance Windows Example,500]
 
+=== Streamline Alert Management with New Alert Notification Rules
 
+Alert Notification Rules simplify notification management across monitors and teams.
+
+Control alert delivery across your organization's channels, ensuring the right information reaches the right team. No need to manage separate monitors for different teams; route alerts based on related object attributes (storage name, data center, application name) or monitor attributes (group, severity).
+
+image:notification_rule_configure.png[setting filters for notification rule]
 
 
 === Log Analytics in dashboards
 You can now include log events in your dashboards, to visualize event data and have more comprehensive and contextual understanding of your environment. Investigate logs and view related metrics without leaving the dashboard!
+
+image:log_analytics_bar_graph_example.png[Log Analysis example]
+
 
 === Better VMware Observability with VMware Events
 
@@ -69,6 +78,7 @@ image:vmware_log_events.png[vmware log selection in the drop-down,500]
 === KubeVirt Support: Monitor Virtual Machine workloads running within your Kubernetes Cluster 
 
 DII now fully supports KubeVirt, the Kubernetes-native virtualization solution used by platforms like OpenShift Virtualization and Harvester. Gain full visibility into the metrics, events, configuration changes, and network traffic of both Virtual Machines and Container workloads within your Kubernetes clusters. 
+
 
 
 === Data Collector updates:
