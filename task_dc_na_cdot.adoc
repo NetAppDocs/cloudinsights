@@ -3,9 +3,10 @@ sidebar: sidebar
 permalink: task_dc_na_cdot.html
 keywords: data collector, ontap, ontap, CDOT
 summary: ONTAP Data Collector
---- 
+---
 
 = NetApp ONTAP Data Management Software data collector
+:toc: macro
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -87,24 +88,24 @@ The following are requirements to configure and use this data collector:
 * Port requirements: 80 or 443
 
 * Account permissions:
-** Read only role name to ontapi application to the default Vserver 
+** Read only role name to ontapi application to the default Vserver
 ** You may require additional optional write permissions. See the Note About Permissions below.
 * ONTAP License requirements:
-** FCP license and mapped/masked volumes required for fibre-channel discovery 
+** FCP license and mapped/masked volumes required for fibre-channel discovery
 
 === Permission Requirements for Collecting ONTAP Switch Metrics
 
-Data Infrastructure Insights has the ability to collect ONTAP cluster switch data as an option in the collector's <<advanced-configuration,Advanced Configuration>> settings. In addition to enabling this on the Data Infrastructure Insights collector, you must also *configure the ONTAP system* itself to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information], and ensure the correct <<a-note-about-permissions, permissions>> are set, in order to allow the switch data to be sent to Data Infrastructure Insights. 
+Data Infrastructure Insights has the ability to collect ONTAP cluster switch data as an option in the collector's <<advanced-configuration,Advanced Configuration>> settings. In addition to enabling this on the Data Infrastructure Insights collector, you must also *configure the ONTAP system* itself to provide link:https://docs.netapp.com/us-en/ontap-cli-98/system-switch-ethernet-create.html[switch information], and ensure the correct <<a-note-about-permissions, permissions>> are set, in order to allow the switch data to be sent to Data Infrastructure Insights.
 
 
-== Configuration 
+== Configuration
 
 [cols=2*, options="header", cols"50,50"]
 |===
 |Field|Description
 |NetApp Management IP |IP address or fully-qualified domain name of the NetApp cluster
 |User Name |User name for NetApp cluster
-|Password |Password for NetApp cluster 
+|Password |Password for NetApp cluster
 |===
 
 == Advanced configuration
@@ -137,7 +138,7 @@ Data Infrastructure Insights has the ability to collect ONTAP cluster switch dat
 
 == ONTAP Power Metrics
 
-Several ONTAP models provide power metrics for Data Infrastructure Insights that can be used for monitoring or alerting. The lists of supported and unsupported models below are not comprehensive but should provide some guidance; in general, if a model is in the same family as one on the list, the support should be the same. 
+Several ONTAP models provide power metrics for Data Infrastructure Insights that can be used for monitoring or alerting. The lists of supported and unsupported models below are not comprehensive but should provide some guidance; in general, if a model is in the same family as one on the list, the support should be the same.
 
 Supported Models:
 
@@ -191,20 +192,21 @@ To create a local account for Data Infrastructure Insights at the cluster level,
  security login role create -role ci_readonly -cmddirname DEFAULT -access readonly
  security login role create -role ci_readonly -cmddirname security -access readonly
  security login role create -role ci_readonly -access all -cmddirname {cluster application-record create}
- 
+
 . Create the read-only user using the following command. Once you have executed the create command, you will be prompted to enter a password for this user.
 
  security login create -username ci_user -application ontapi -authentication-method password -role ci_readonly
- 
-If AD/LDAP account is used, the command should be 
+
+If AD/LDAP account is used, the command should be
 
  security login create -user-or-group-name DOMAIN\aduser/adgroup -application ontapi -authentication-method domain -role ci_readonly
 
 If you are collecting cluster switch data:
- 
- security login rest-role create -role ci_readonly -api /api/network/ethernet -access readonly
 
- 
+ security login rest-role create -role ci_readonly_rest -api /api/network/ethernet -access readonly
+ security login create -user-or-group-name ci_user -application http -authmethod password -role ci_readonly_rest
+
+
 The resulting role and user login will look something like the following. Your actual output may vary:
 
  Role Command/ Access
@@ -212,7 +214,7 @@ The resulting role and user login will look something like the following. Your a
  ---------- ------------- --------- ------------------ --------
  cluster1 ci_readonly DEFAULT read only
  cluster1 ci_readonly security readonly
- 
+
  cluster1::security login> show
  Vserver: cluster1
  Authentication Acct
@@ -238,9 +240,9 @@ Some things to try if you encounter problems with this data collector:
 
 |ZAPI returns "cluster role is not cluster_mgmt LIF"|AU needs to talk to cluster management IP. Check the IP and change to a different IP if necessary
 
-|Error: “7 Mode filers are not supported”| This can happen if you use this data collector to discover 7 mode filer. Change IP to point to cdot cluster instead. 
+|Error: “7 Mode filers are not supported”| This can happen if you use this data collector to discover 7 mode filer. Change IP to point to cdot cluster instead.
 
-|ZAPI command fails after retry| AU has communication problem with the cluster. Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+|ZAPI command fails after retry| AU has communication problem with the cluster. Check network, port number, and IP address. User should also try to run a command from command line from the AU machine.
 
 |AU failed to connect to ZAPI via HTTP| Check whether ZAPI port accepts plaintext. If AU tries to send plaintext to an SSL socket, the communication fails.
 
@@ -249,14 +251,14 @@ Some things to try if you encounter problems with this data collector:
 |Additional Connection errors:
 
 ZAPI response has error code 13001, “database  is not open”
-  
+
 ZAPI error code is 60 and response contains “API did not finish on time”
-  
+
 ZAPI response contains “initialize_session() returned NULL environment”
-  
+
 ZAPI error code is 14007 and response contains “Node is not healthy”
 
-|Check network, port number, and IP address. User should also try to run a command from command line from the AU machine. 
+|Check network, port number, and IP address. User should also try to run a command from command line from the AU machine.
 |===
 
 === Performance
@@ -269,5 +271,3 @@ ZAPI error code is 14007 and response contains “Node is not healthy”
 |===
 
 Additional information may be found from the link:concept_requesting_support.html[Support] page or in the link:reference_data_collector_support_matrix.html[Data Collector Support Matrix].
-
-

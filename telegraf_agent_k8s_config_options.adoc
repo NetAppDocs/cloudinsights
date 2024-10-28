@@ -6,6 +6,7 @@ summary: The NetApp Kubernetes Monitoring Operator has a number of configurable 
 ---
 
 = Kubernetes Monitoring Operator Configuration Options
+:toc: macro
 :hardbreaks:
 :nofooter:
 :toclevels: 2
@@ -55,7 +56,7 @@ proxy:
 ||rsMemLimit|Memory limit for telegraf rs
 ||rsCpuRequest|CPU request for telegraf rs
 ||rsMemRequest|Memory request for telegraf rs
-||runPrivileged|Run the telegraf container in privileged mode. Set this to true if SELinux is enabled on your k8s nodes
+||runPrivileged|Run the telegraf DaemonSet's _telegraf-mountstats-poller_ container in privileged mode. Set this to true if SELinux is enabled on your Kubernetes nodes.
 ||batchSize|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||bufferLimit|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
 ||roundInterval|See link:https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#agent[Telegraf configuration documentation]
@@ -102,8 +103,9 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 ||event-exporter-tolerations|event-exporter additional tolerations.
 ||event-exporter-maxEventAgeSeconds|event-exporter max event age.  See https://github.com/jkroepke/resmoio-kubernetes-event-exporter
 ||runPrivileged|Set runPrivileged to true if Fluent Bit fails to start, trying to open/create its database.
+||runDsPrivileged|Set runDsPrivileged to true to run the telegraf DaemonSet's telegraf container in privileged mode.
 
-|workload-map||Configuration options that can customize the workload map collection and installation of the Operator
+|workload-map||Configuration options that can customize the workload map collection and installation of the Operator.
 ||cpuLimit|CPU limit for net observer ds
 ||memLimit|mem limit for net observer ds
 ||cpuRequest|CPU request for net observer ds
