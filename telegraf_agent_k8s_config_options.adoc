@@ -105,6 +105,7 @@ persistentvolumeclaims=[*],persistentvolumes=[*],pods=[*],replicasets=[*],resour
 ||event-exporter-tolerations|event-exporter additional tolerations.
 ||event-exporter-maxEventAgeSeconds|event-exporter max event age.  See https://github.com/jkroepke/resmoio-kubernetes-event-exporter
 ||runPrivileged|Set runPrivileged to true if Fluent Bit fails to start, trying to open/create its database.
+||runDsPrivileged|Set runDsPrivileged to true to run the telegraf DaemonSet's telegraf container in privileged mode.
 
 
 |workload-map||Configuration options that can customize the workload map collection and installation of the Operator.
