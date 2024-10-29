@@ -35,8 +35,8 @@ Expressions enable you to perform arithmetic operations in Metric and Anomaly De
 
 * Ratio: IOPS/TB to detect where service level limits are being reached on cloud storage providers.
 * Percentage: Used/Available to calculate utilization
-* Aggregation: Combine multiple types of traffic or errors into one monitor
-* Comparison: Compare current FC port speed to maximum port speed to detect where FC ports are not running at their full capacity
+* Aggregation: Combine multiple types of physical port errors into one monitor
+* Comparison: Compare current resource headroom utilization with the optimal headroom point to identify resources that are not running at full capacity.
 
 
 image:Expressions_In_Monitors.png[Creating an expression in a metric monitor,500]
