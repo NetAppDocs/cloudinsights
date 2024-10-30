@@ -4,7 +4,8 @@ permalink: task_config_telegraf_agent_k8s.html
 keywords: kubernetes, Kubernetes, k8s, telegraf, installation, install, agent, telegraf agent, eks, operator
 summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in Data Infrastructure Insights.  
 ---
-= Kubernetes Monitoring Operator Installation and Configuration:hardbreaks:
+= Kubernetes Monitoring Operator Installation and Configuration
+:hardbreaks:
 :nofooter:
 :toclevels: 2
 :icons: font
@@ -287,16 +288,11 @@ Network Performance and Map
 
 * ci-net-observer
 
-
-Change Analysis 
-
-* ci-k8s-change-observer
-
 Push the operator docker image to your private/local/enterprise docker repository according to your corporate policies. Ensure that the image tags and directory paths to these images in your repository are consistent with those in the Data Infrastructure Insights repository.
 
 Edit the monitoring-operator deployment in operator-deployment.yaml, and modify all image references to use your private Docker repository.
 
- image: <docker repo of the enterprise/corp docker repo>/kube-rbac-proxy:<ci-kube-rbac-proxy version>
+ image: <docker repo of the enterprise/corp docker repo>/ci-kube-rbac-proxy:<ci-kube-rbac-proxy version>
  image: <docker repo of the enterprise/corp docker repo>/netapp-monitoring:<version>
 
 Edit the AgentConfiguration in operator-config.yaml to reflect the new docker repo location. Create a new imagePullSecret for your private repository, for more details see _https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/_
@@ -311,26 +307,6 @@ agent:
   dockerImagePullSecret: docker-secret-name  
 ----
 
-==== Repository Syncing
-
-Users looking to sync their local docker image repositories with NetApp's docker image repository will need the following information:
-
-* Repository URL
-* Repository Username
-* Repository Password
-
-The repository URL and username can be found and extracted from the “Image Pull Snippet” in the NetApp Monitoring Operator install tile.
-
- docker login <NetApp repository URL> -u <NetApp repository username> && …
-
-The NetApp repository password provided in the NetApp Monitoring Operator install tile is a temporary password that is valid for only 24 hours. When configuring repository syncing, users will want to use a more permanent password. To generate this password, navigate to *Admin > API Access* and select *+ API Access Token* to create a new API Access Token with the desired expiration date. 
-
-. Provide the desired Name and Token expiration
-. Select Read/Write permissions
-. Select Data Ingestion type, and unselect Acquisition Unit
-. Click Save
-
-This will generate a new API Access Token. Copy that API Access Token, and use it as the Repository password.
 
 
 
@@ -644,7 +620,8 @@ Alternatively, one can also <<uninstalling,uninstall>> and <<installing-the-kube
 |I see warning messages from Telegraf resembling the following:
 
 _W! [inputs.diskio] Unable to gather disk name for "vdc": error reading /dev/vdc: no such file or directory_
-|For the Kubernetes Monitoring Operator, these warning message are benign and can be safely ignored.  Alternatively, edit the telegraf section in AgentConfiguration, and set runPrivileged to true. For more details, refer to the link:telegraf_agent_k8s_config_options.html[operator's configuration options].
+|For the Kubernetes Monitoring Operator, these warning message are benign and can be safely ignored.  Alternatively, edit the telegraf section in AgentConfiguration, and set _runDsPrivileged_ to true. For more details, refer to the  link:telegraf_agent_k8s_config_options.html[operator's configuration options].
+
 
 |My fluent-bit pod is failing with the following errors:
 
@@ -672,6 +649,7 @@ Note: to make these settings persistent across node restarts, you need to put th
  fs.inotify.max_user_instances=<something larger than current setting>
  fs.inotify.max_user_watches=<something larger than current setting>
 ----
+
 
 |===
 
