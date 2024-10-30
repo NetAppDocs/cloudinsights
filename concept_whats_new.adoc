@@ -18,6 +18,67 @@ keywords: features
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in Data Infrastructure Insights (formerly Cloud Insights).   
 
 
+== October 2024
+
+
+
+=== Unlock New Insights with Custom Expressions in Monitors
+
+Expressions enable you to perform arithmetic operations in Metric and Anomaly Detection Monitors. Here are some examples:
+
+* Ratio: IOPS/TB to detect where service level limits are being reached on cloud storage providers.
+* Percentage: Used/Available to calculate utilization
+* Aggregation: Combine multiple types of physical port errors into one monitor
+* Comparison: Compare current resource headroom utilization with the optimal headroom point to identify resources that are not running at full capacity.
+
+
+image:Expressions_In_Monitors.png[Creating an expression in a metric monitor,500]
+
+=== Minimize Alert Disruptions During Maintenance Period 
+
+Maintenance Windows allow you to suppress alert notifications during scheduled maintenance periods, helping you avoid unnecessary disruptions.
+
+With Maintenance Windows, you can schedule specific maintenance periods during which alert notifications are suppressed, for the objects and metrics you choose. For example, you can suppress alert notifications triggered by specific storage systems, when those storage systems are in a planned upgrade period.
+
+Note that only alert notifications are suppressed (email, webhook); the alerts themselves are still shown on the Observability > Alerts > All Alerts page.
+
+image:Maintenance_Windows_example.png[Maintenance Windows Example,500]
+
+=== Streamline Alert Management with New Alert Notification Rules
+
+Alert Notification Rules simplify notification management across monitors and teams.
+
+Control alert delivery across your organization's channels, ensuring the right information reaches the right team. No need to manage separate monitors for different teams; route alerts based on related object attributes (storage name, data center, application name) or monitor attributes (group, severity).
+
+image:notification_rule_configure.png[setting filters for notification rule]
+
+
+=== Log Analytics in dashboards
+You can now include log events in your dashboards, to visualize event data and have more comprehensive and contextual understanding of your environment. Investigate logs and view related metrics without leaving the dashboard!
+
+image:log_analytics_bar_graph_example.png[Log Analysis example]
+
+
+=== Better VMware Observability with VMware Events
+
+Proactively manage and troubleshoot your VMware environment with real-time events. VMware events provide insights on VM migrations, resource allocations, and host health. Now available for use in Queries, Dashboards, and Monitors. Requires VMware version 8 or higher. Simply select the _logs.vmware.events_ source.
+
+VMware Events are also used for DII's new Configuration Change Analysis noted above.
+
+image:vmware_log_events.png[vmware log selection in the drop-down,500]
+
+
+
+
+
+=== Data Collector updates:
+
+* *Pure FlashBlade*: This collector gathers inventory and performance data from FlashBlade clusters that expose version 2 of their REST API.
+
+
+
+'''
+
 == September 2024
 
 === Introducing Data Infrastructure Insights, formerly Cloud Insights
