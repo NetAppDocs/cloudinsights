@@ -5,7 +5,7 @@ keywords: changes, management, analysis, infra, infrastructure
 summary: Cloud Insights tracks changes in infrastructure for ease of analysis and troubleshooting..
 ---
 
-= Infrastructure Change Analytics
+= Infrastructure Change Analysis
 :hardbreaks:
 :toclevels: 1
 :nofooter:
@@ -14,19 +14,23 @@ summary: Cloud Insights tracks changes in infrastructure for ease of analysis an
 :imagesdir: ./media/
 
 [.lead]
-Infrastructure Change Analytics provide you with an all-in-one view of recent changes to the infrastructure (storage, switch, etc.) in your environment. With Change Analytics, you can track configuration changes and drill into issues both expected and unexpected.
+Infrastructure Change Analysis provide you with an all-in-one view of recent changes to the infrastructure (storage, switch, etc.) in your environment. With Change Analysis, you can track configuration changes and drill into issues both expected and unexpected.
 
 == How does Infrastructure Change Analysis help?
 
-In any environment, changes to your storage or devices may happen because of mis-configured changes, power loss, etc. Change Analytics help with this by providing a single pane to view and correlate the health of your devices with outages or planned changes. Changes are calculated with each inventory poll (following the first poll on a new collector).
+In any environment, changes to your resources may happen because of mis-configured changes, power loss, etc. Change Analysis helps by providing a single pane to view and correlate the health of your resources with outages or planned changes. Changes are calculated with each inventory poll (following the first poll on a new collector).
 
 To analyze Infrastructure Changes, navigate to *Observability > Change Analysis*. Alerts and Configuration changes for the current time range are listed. Alert rows show the current alert status (active or resolved). 
 
-image:infraChange_list_example.png[Infrastructure Change Analytics main screen].
+You can also navigate to a landing page for a resource. If changes have occurred to that recource or related resources, these will be shown in the Expert View section of the page. Zoom in to investigate individual changes, or leave the view wide to see all changes within the selected time range. Hovering over a change will give you a summary of the change. Clicking on that change will focus the expert view on the time of that change.
+
+image:change_analysis_on_a_landing_page.png[Change Analysis on a landing page]
+
+//image:infraChange_list_example.png[Infrastructure Change Analysis main screen].
 
 Selecting an item in the list will open a slideout pane giving more detail about the alert or change.
 
-image:infraChange_config_detail.png[Example of config change details pane]
+//image:infraChange_config_detail.png[Example of config change details pane]
 
 
 == Filtering
@@ -259,7 +263,7 @@ description
 
 |===
 
-“Change Analytics” tracks alerts for the following cases:
+“Change Analysis” tracks alerts for the following cases:
 
 * Alerts from log monitors on the log types of _logs.vmware.events_ and _logs.netapp.ems_.
-* Alerts from metric monitors on the above object types; these must be selected in the _Group By_ field in order for Change Analytics to track them.
+* Alerts from metric monitors on the above object types; these must be selected in the _Group By_ field in order for Change Analysis to track them.
