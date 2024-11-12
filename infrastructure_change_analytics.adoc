@@ -47,7 +47,7 @@ The following table lists the objects and attributes included in infrastructure 
 
 |===
 
-|Object Type|Attributes|Extended Attributes
+|Object Type|Attributes
 
 |Disk|diskSize.total
 isVirtual
@@ -63,8 +63,9 @@ model
 storage.name
 storagePools.name
 name
-|isEncrypted
-|Storage|datasources.name
+isEncrypted
+
+|Storage|
 family
 ip
 isActive
@@ -73,7 +74,8 @@ model
 name
 protocols
 serialNumber
-vendor|
+vendor
+
 |StorageNode|name
 storage.name
 nodeVersion
@@ -83,9 +85,11 @@ numberOfProcessors
 state
 partner.name
 cache
-memory|managementIpAddresses
+memory
+managementIpAddresses
 parentSerialNumber
 siteName
+
 |StoragePool|name
 type
 isAutoTiering
@@ -100,7 +104,7 @@ storage.family
 storage.name
 storageNodes.name
 capacity.total (dynamic attribute)
-|isCompactionSavingsEnabled
+isCompactionSavingsEnabled
 isEncrypted
 objectStoreName
 objectStoreProviderType
@@ -108,19 +112,18 @@ objectStoreSizeLimit
 objectStoreTieringFullnessThreshold
 objectStoreS3Name
 objectStoreServer
+
 |Qtree|type
-datasources.name
 securityStyle
 isOplocksEnabled
 shares.name
 storage.name
-internalVolume.storagePool.name
 internalVolume.name
 storageVirtualMachine.name
-internalVolume.virtualStorage
 simpleName
 statusText
-name|
+name
+
 |StorageVirtualMachine|name
 storage.name
 state
@@ -128,7 +131,7 @@ type
 ipSpace
 protocols
 internalVolumeLimit
-comment|
+
 |Volume|name
 simpleName
 label
@@ -151,15 +154,9 @@ internalVolume.name
 internalVolume.virtualStorage
 storageNodes.name
 storageNodes.partner.name
-storagePools.minDiskSize.total
-storagePools.minDiskSpeed
-storagePools.minDiskType
 storagePools.name
-storagePools.redundancy
-storagePools.usesFlashPools
-storagePools.vendorTier
 storageVirtualMachine.name
-|storageGroups
+storageGroups
 isEncrypted
 isCompressionEnabled
 qosBurstIOPS
@@ -168,6 +165,7 @@ qosLimitMBPS
 qosMinIOPS
 qosPolicy
 qosLimitRaw
+
 |InternalVolume|flashPoolEligibility
 name
 simpleName
@@ -178,28 +176,24 @@ virtualStorage
 replicaSources.name
 storageNodes.name
 storageNodes.partner.name
-storagePool.disks.diskSize.total
 storage.name
 storage.vendor
 storage.ip
 storage.model
 storage.family
-storagePool.disks.speed
 storageVirtualMachine.name
-storagePool.redundancy
 storagePool.name
-storagePool.disks.type
-storagePool.usesFlashPools
-capacity.isThinProvisioned|qosPolicy
+capacity.isThinProvisioned
+qosPolicy
 qosLimitRaw
 qosLimitIOPS
 qosLimitMBPS
-comment
 isEncrypted
 adaptiveQosPolicy
 junctionPath
 objectStoreTieringPolicy
 tieringMinimumCoolingDays
+
 |VirtualMachine|name
 dnsName
 ip
@@ -212,13 +206,16 @@ host.name
 host.clusterName
 host.ip
 host.os
-dataStore.name|instanceType
+dataStore.name
+instanceType
 publicIps
 securityGroups
 virtualCenterIp
+
 |DataStore|name
 virtualCenterIp
-|type
+type
+
 |Host|name
 model
 ip
@@ -228,14 +225,17 @@ manufacturer
 cpuCount
 memory
 isHypervisor
-clusterName|virtualCenterIp
+clusterName
+virtualCenterIp
+
 |vmdk(VirtualMachineDisk)|name
 type
 dataStore.name
 isRdm
 virtualMachine.host.name
 virtualMachine.name
-|isSnapshot
+isSnapshot
+
 |Port|name
 isActive
 wwn
@@ -254,13 +254,12 @@ device.name
 device.type
 fabrics.name
 fabrics.vsanId
-nodeWwn|description
+nodeWwn
+description
 
 |===
 
-Data Infrastructure Insights list alerts and changes created for the following logs: 
+“Change Analytics” tracks alerts for the following cases:
 
-* logs.vmware.events
-* logs.netapp.ems
-
-Metric monitors are also watched for objects and attributes in the list above. In the monitor, these must be selected in the _Group by_ option in order for Change Analytics to track them.
+* Alerts from log monitors on the log types of _logs.vmware.events_ and _logs.netapp.ems_.
+* Alerts from metric monitors on the above object types; these must be selected in the _Group By_ field in order for Change Analytics to track them.
