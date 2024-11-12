@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: concept_whats_new.html
-summary: New features and functionality available in Data Infrastructure Insights. 
+summary: New features and functionality available in Data Infrastructure Insights.
 keywords: features
 ---
 
-= What\'s New with Data Infrastructure Insights 
+= What\'s New with Data Infrastructure Insights
 :hardbreaks:
 :toclevels: 2
 :nofooter:
@@ -15,8 +15,26 @@ keywords: features
 
 [#whats-new]
 [.lead]
-NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in Data Infrastructure Insights (formerly Cloud Insights).   
+NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in Data Infrastructure Insights (formerly Cloud Insights).
 
+
+== November 2024
+
+
+=== Analyze Configuration Changes in your Environment
+ 
+Configuration changes are one of the most common causes of issues in modern IT. Data Infrastructure Insights' (DII’s) new link:infrastructure_change_analytics.html[change analysis] capability lets you clearly understand changes that cause issues in your environment. Accelerate troubleshooting time by showing all changes in devices and  related infrastructure components that may have led to an issue. Additionally, when you or your team perform planned changes, you can validate those changes quickly and ensure there are no unexpected effects before service levels are impacted.
+
+
+image:Change_Analysis_Example_showing_alert-change_correlation.png[Infrastructure Change Analytics example]
+
+
+
+=== KubeVirt Support: Monitor Virtual Machine workloads running within your Kubernetes Cluster 
+
+DII now fully supports KubeVirt, the Kubernetes-native virtualization solution used by platforms like OpenShift Virtualization and Harvester. Gain full visibility into the metrics, events, configuration changes, and network traffic of both Virtual Machines and Container workloads within your Kubernetes clusters. 
+
+'''
 
 == October 2024
 
@@ -34,7 +52,7 @@ Expressions enable you to perform arithmetic operations in Metric and Anomaly De
 
 image:Expressions_In_Monitors.png[Creating an expression in a metric monitor]
 
-=== Minimize Alert Disruptions During Maintenance Period 
+=== Minimize Alert Disruptions During Maintenance Period
 
 Maintenance Windows allow you to suppress alert notifications during scheduled maintenance periods, helping you avoid unnecessary disruptions.
 
