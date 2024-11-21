@@ -117,7 +117,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
 
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole
  security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
-
+ security login create -user-or-group-name csuser -application http -authmethod password -role csrole
 
 === Permissions when adding via *Vserver Management IP*:
 
@@ -137,7 +137,7 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login role create -vserver <vservername> -role csrole -cmddirname "volume snapshot" -access all
 
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
-
+ security login create -user-or-group-name csuser -application http -authmethod password -role csrole -vserver <vservername>
 
 === Permissions for ONTAP Autonomous Ransomware Protection and ONTAP Access Denied
 
