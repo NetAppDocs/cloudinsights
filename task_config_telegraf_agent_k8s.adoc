@@ -213,7 +213,7 @@ If you see an “Error from server (NotFound)” message, your operator must be 
 
 === Configuring Proxy Support
 
-There are two places where you may use a proxy in your environment in order to install the Kubernetes Monitoring Operator. These may be the same or separate proxy systems:
+There are two places where you may use a proxy on your tenant in order to install the Kubernetes Monitoring Operator. These may be the same or separate proxy systems:
 
 * Proxy needed during execution of the installation code snippet (using "curl") to connect the system where the snippet is executed to your Data Infrastructure Insights environment
 * Proxy needed by the target Kubernetes cluster to communicate with your Data Infrastructure Insights environment
@@ -553,7 +553,6 @@ a|Capture or otherwise note the output from the following commands, and contact 
 |After installing the operator, the telegraf-ds pods enter CrashLoopBackOff and the pod logs indicate "su: Authentication failure".
 |Edit the telegraf section in _AgentConfiguration_, and set _dockerMetricCollectionEnabled_ to false. For more details, refer to the operator's  link:telegraf_agent_k8s_config_options.html[configuration options]. 
 
-NOTE: If you are using Data Infrastructure Insights Federal Edition, users with restrictions on the use of _su_ will not be able to collect docker metrics because access to the docker socket requires either running the telegraf container as root or using _su_ to add the telegraf user to the docker group. Docker metric collection and the use of _su_ is enabled by default; to disable both, remove the _telegraf.docker_ entry in the _AgentConfiguration_ file:
 
 ...
 spec:
