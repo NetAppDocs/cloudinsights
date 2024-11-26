@@ -119,6 +119,9 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
  security login create -user-or-group-name csuser -application ssh -authmethod password -role csrole
  security login create -user-or-group-name csuser -application http -authmethod password -role csrole
 
+
+
+
 === Permissions when adding via *Vserver Management IP*:
 
 If you cannot use the Cluster management administrator user to allow Workload Security to access the ONTAP SVM data collector, you can create a new user named “csuser” with the roles as shown in the commands below. Use the username “csuser” and password for “csuser” when configuring the Workload Security data collector to use Vserver Management IP.
@@ -138,6 +141,27 @@ To create the new user, log in to ONTAP with the Cluster management Administrato
 
  security login create -user-or-group-name csuser -application ontapi -authmethod password -role csrole -vserver <vservername>
  security login create -user-or-group-name csuser -application http -authmethod password -role csrole -vserver <vservername>
+
+
+=== Protobuf Mode
+
+Workload Security will configure the FPolicy engine in protobuf mode when this option is enabled in the collector's _Advanced Configuration_ settings. Protobuf mode is supported in ONTAP version 9.15 and later.
+
+More details on this feature can be found in the link:https://docs.netapp.com/us-en/ontap/nas-audit/steps-setup-fpolicy-config-concept.html[ONTAP documentation].
+
+Specific permissions are required for protobuf (some or all of these may already exist):
+
+Cluster mode:
+ 
+ security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <cluster_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole
+ 
+Vserver mode:
+ 
+ security login rest-role create -role csrestrole -api /api/protocols/fpolicy -access all -vserver <svm_name>
+ security login create -user-or-group-name csuser -application http -authmethod password -role csrestrole -vserver <svm_name>
+
+
 
 === Permissions for ONTAP Autonomous Ransomware Protection and ONTAP Access Denied
 
