@@ -17,8 +17,6 @@ summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in 
 Data Infrastructure Insights offers the *Kubernetes Monitoring Operator* for Kubernetes collection. Navigate to *Kubernetes > Collectors > +Kubernetes Collector* to deploy a new operator.
 
 
-toc::[]
-
 
 == Before installing the Kubernetes Monitoring Operator
 
@@ -69,16 +67,16 @@ image:KubernetesModifyDeploymentMenu.png[Modify deployment Menu on Kubernetes Co
 
 The screen shows the current state of each component and allows you to disable or enable components for that collector as needed. 
 
-image:KubernetesModifyDeploymentScreen.png[Mody deployment options, 700]
+image:KubernetesModifyDeploymentScreen.png[Modify deployment options,  width=700]
 
 
 
-
-== Upgrading 
+ 
 
 [#upgrading-to-the-latest-netapp-kubernetes-monitoring-operator]
+[#upgrading]
+== Upgrading to the latest Kubernetes Monitoring Operator
 
-=== Upgrading to the latest Kubernetes Monitoring Operator
 
 Determine whether an AgentConfiguration exists with the existing Operator (if your namespace is not the default _netapp-monitoring_, substitute the appropriate namespace):
 
@@ -105,7 +103,6 @@ If the AgentConfiguration does not exist:
 ** Use the same cluster name.
 ** After downloading the latest Operator YAML files, port any customizations found in agent_backup.yaml to the downloaded operator-config.yaml before deploying.
 ** Ensure you are <<using-a-custom-or-private-docker-repository,pulling the latest container images>> if you are using a custom repository.
-
 
 
  
