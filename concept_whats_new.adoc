@@ -21,9 +21,28 @@ NetApp is continually improving and enhancing its products and services. Here ar
 == November 2024
 
 
+=== VM Optimization Feature
+
+Save VM licensing costs by decommissioning hosts in underutilized clusters and reclaiming unused VMs. By analyzing the historical behavior of the environment and establishing short- and long-term predictions, Data Infrastructure Insights generates detailed recommendations for host decommissioning. These recommendations ensure performance stability while reducing infrastructure and licensing costs. 
+
+Additionally, VM Optimization provides reclamation recommendations for powered-off and idle VMs, frees up unused capacity, and reduces memory and CPU allocation.
+
+image:vm_optimization_summary.png[VM Optimization Summary Screen]
+
+=== Dashboard Access Control
+
+Data Infrastructure Insights now gives you greater control over access to the dashboards you create. You choose who can modify your graphs. You control exposure to potentially sensitive information. Still working on a dashboard that isn't ready for general visibility? You can keep it private until you are ready to share it.
+
+image:Dashboard_Sharing_Options.png[Dashboard Sharing options,width=300]
+
+
+
 === New Workload Security Alerts API
 
 Retrieve forensics alert details with the new Workload Security link:concept_cs_api.html[*cloudsecure_forensics.alerts* API].  
+
+image:ws_forensics_alerts_api.png[Workload Security Forensics Alerts API]
+
 
 
 === Analyze Configuration Changes in your Environment
