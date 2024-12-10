@@ -17,8 +17,6 @@ summary: The Kubernetes Monitoring Operator collects Kubernetes data for use in 
 Data Infrastructure Insights offers the *Kubernetes Monitoring Operator* for Kubernetes collection. Navigate to *Kubernetes > Collectors > +Kubernetes Collector* to deploy a new operator.
 
 
-toc::[]
-
 
 == Before installing the Kubernetes Monitoring Operator
 
@@ -69,16 +67,36 @@ image:KubernetesModifyDeploymentMenu.png[Modify deployment Menu on Kubernetes Co
 
 The screen shows the current state of each component and allows you to disable or enable components for that collector as needed. 
 
-image:KubernetesModifyDeploymentScreen.png[Mody deployment options, 700]
+image:KubernetesModifyDeploymentScreen.png[Modify deployment options,  width=700]
 
 
 
-
-== Upgrading 
+ 
 
 [#upgrading-to-the-latest-netapp-kubernetes-monitoring-operator]
+[#upgrading]
+== Upgrading to the latest Kubernetes Monitoring Operator
 
-=== Upgrading to the latest Kubernetes Monitoring Operator
+
+=== DII push button upgrades
+
+You can upgrade the Kubernetes Monitoring Operator through the DII Kubernetes Collectors page. From the menu next to the cluster you would like to upgrade, select _Upgrade_. The operator will verify the image signatures, perform a snapshot of your current installation and perform the upgrade. Over a few minutes you should see the operator Status progress through _Upgrade In Progress_ to _Latest_. If you encounter an error you can select the Error status for more details and refer to the Push Button Upgrades Troubleshooting table below.
+
+==== Push button upgrades with private repositories
+
+If your operator is configured to use a private repository please ensure all images required to run the operator and their signatures are available in your repository. If you encounter an error during the upgrade process for missing images simply add them to your repository and retry the upgrade. To upload the image signatures to your repository please use the cosign tool as follows, making sure to upload signatures for all images specified under _3 Optional: Upload the operator images to your private repository > Image Pull Snippet_
+
+----
+cosign copy example.com/src:v1 example.com/dest:v1
+#Example
+cosign copy <DII container registry>/netapp-monitoring:<image version> <private repository>/netapp-monitoring:<image version>
+----
+
+==== Rolling back to a previously running version
+
+If you upgraded using the push button upgrade feature and encounter any difficulties with the current version of the operator within seven days, you can downgrade to the previously running version using the snapshot created during the upgrade process. From the menu next to the cluster you would like to roll back, select _Roll back_. 
+
+=== Manual Upgrades
 
 Determine whether an AgentConfiguration exists with the existing Operator (if your namespace is not the default _netapp-monitoring_, substitute the appropriate namespace):
 
@@ -105,7 +123,6 @@ If the AgentConfiguration does not exist:
 ** Use the same cluster name.
 ** After downloading the latest Operator YAML files, port any customizations found in agent_backup.yaml to the downloaded operator-config.yaml before deploying.
 ** Ensure you are <<using-a-custom-or-private-docker-repository,pulling the latest container images>> if you are using a custom repository.
-
 
 
  
@@ -319,6 +336,19 @@ If you are running on OpenShift 4.6 or higher, you must edit the AgentConfigurat
 
 Openshift may implement an added level of security that may block access to some Kubernetes components.
 
+
+=== Tolerations and Taints
+
+The _netapp-ci-telegraf-ds_, _netapp-ci-fluent-bit-ds_, and _netapp-ci-net-observer-l4-ds_ DaemonSets must schedule a pod on every node in your cluster in order to correctly collect data on all nodes. The operator has been configured to tolerate some well known *taints*. If you have configured any custom taints on your nodes, thus preventing pods from running on every node, you can create a *toleration* for those taints link:telegraf_agent_k8s_config_options.html[in the _AgentConfiguration_]. If you have applied custom taints to all nodes in your cluster, you must also add the necessary tolerations to the operator deployment to allow the operator pod to be scheduled and executed.
+
+Learn More about Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/[Taints and Tolerations].
+
+Return to the link:task_config_telegraf_agent_k8s.html[*NetApp Kubernetes Monitoring Operator Installation* page]
+
+
+
+
+
 == A Note About Secrets
 
 To remove permission for the Kubernetes Monitoring Operator to view secrets cluster-wide, delete the following resources from the _operator-setup.yaml_ file before installing:
@@ -345,71 +375,30 @@ If Change Analysis is enabled, modify the _AgentConfiguration_ or _operator-conf
     kindsToIgnoreFromWatch: '"secrets"'
     ...
 
-== Verifying Kubernetes Checksums
+
+== Verifying Kubernetes Monitoring Operator Image Signatures
+
+The image for the operator and all related images it deploys are signed by NetApp. You can manually verify the images before installation using the cosign tool, or configure a Kubernetes admission controller. For more details please see the link:https://kubernetes.io/docs/tasks/administer-cluster/verify-signed-artifacts/#verifying-image-signatures[Kubernetes documentation].
+
+The public key used to verify the image signatures is available in the Monitoring Operator install tile under _Optional: Upload the operator images to your private repository > Image Signature Public Key_
+
+To manually verify an image signature, perform the following steps:
+
+. Copy and run the Image Pull Snippet
+. Copy and enter the Repository Password when prompted
+. Store the Image Signature Public Key (dii-image-signing.pub in the example)
+. Verify the images using cosign. Refer to the following example of cosign usage
+ 
+----
+$ cosign verify --key dii-image-signing.pub --insecure-ignore-sct --insecure-ignore-tlog <repository>/<image>:<tag>
+Verification for <repository>/<image>:<tag> --
+The following checks were performed on each of these signatures:
+  - The cosign claims were validated
+  - The signatures were verified against the specified public key
+[{"critical":{"identity":{"docker-reference":"<repository>/<image>"},"image":{"docker-manifest-digest":"sha256:<hash>"},"type":"cosign container image signature"},"optional":null}]
+----
 
 
-The Data Infrastructure Insights agent installer performs integrity checks, but some users may want to perform their own verifications before installing or applying downloaded artifacts. To perform a download-only operation (as opposed to the default download-and-install), these users can edit the agent installation command obtained from the UI and remove the trailing “install” option.
-
-Follow these steps:
-
-. Copy the Agent Installer snippet as directed.
-. Instead of pasting the snippet into a command window, paste it into a text editor.
-. Remove the trailing “--install” from the command.
-. Copy the entire command from the text editor.
-. Now paste it into your command window (in a working directory) and run it.
-
-* Download and install (default):
-
- installerName=cloudinsights-rhel_centos.sh … && sudo -E -H ./$installerName --download –-install
-
-* Download-only:
-
- installerName=cloudinsights-rhel_centos.sh … && sudo -E -H ./$installerName --download
-
-
-The download-only command will download all required artifacts from Data Infrastructure Insights to the working directory.  The artifacts include, but may not be limited to: 
-
-* an installation script
-* an environment file
-* YAML files
-* a signed checksum file (sha256.signed)
-* a PEM file (netapp_cert.pem) for signature verification
-
-
-
-The installation script, environment file, and YAML files can be verified using visual inspection. 
-
-
-
-The PEM file can be verified by confirming its fingerprint to be the following:
-
-// E5:FB:7B:68:C0:8B:1C:A9:02:70:85:84:C2:74:F8:EF:C7:BE:8A:BC
-
- 1A918038E8E127BB5C87A202DF173B97A05B4996
-
-More specifically,
-
-
- openssl x509 -fingerprint -sha1 -noout -inform pem -in netapp_cert.pem
-
-
-The signed checksum file can be verified using the PEM file:
-
- openssl smime -verify -in sha256.signed -CAfile netapp_cert.pem -purpose any
-
-
-Once all of the artifacts have been satisfactorily verified, the agent installation can be initiated by running:
-
- sudo -E -H ./<installation_script_name> --install
-
-
-=== Tolerations and Taints
-
-The _netapp-ci-telegraf-ds_, _netapp-ci-fluent-bit-ds_, and _netapp-ci-net-observer-l4-ds_ DaemonSets must schedule a pod on every node in your cluster in order to correctly collect data on all nodes. The operator has been configured to tolerate some well known *taints*. If you have configured any custom taints on your nodes, thus preventing pods from running on every node, you can create a *toleration* for those taints link:telegraf_agent_k8s_config_options.html[in the _AgentConfiguration_]. If you have applied custom taints to all nodes in your cluster, you must also add the necessary tolerations to the operator deployment to allow the operator pod to be scheduled and executed.
-
-Learn More about Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/[Taints and Tolerations].
-
-Return to the link:task_config_telegraf_agent_k8s.html[*NetApp Kubernetes Monitoring Operator Installation* page]
 
 
 
