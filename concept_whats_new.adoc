@@ -18,7 +18,40 @@ keywords: features
 NetApp is continually improving and enhancing its products and services. Here are some of the latest features and functionalities available in Data Infrastructure Insights (formerly Cloud Insights).
 
 
+== December 2024
+
+
+=== Introducing SAN Analyzer: Enhanced Visibility for Block Workloads
+
+SAN plays a crucial role in handling vital workloads, but its complexity can result in significant outages and customer disruptions. With DII's *SAN Analyzer*, managing SAN becomes simpler and more efficient. This powerful tool offers end-to-end visibility, mapping dependencies from VM/Host to network to LUN and storage.
+By providing an interactive topology map, SAN Analyzer enables you to pinpoint issues, understand changes, and enhance comprehension of data flow. Streamline SAN management in complex IT environments with SAN Analyzer and increase your visibility into block workloads.
+
+image:san_analyzer_example_with_panel.png[SAN Analyzer topology map of a storage system]
+
+
+=== Optimize VM Costs with Intelligent Host Decommissioning and VM Reclamation
+
+Data Infrastructure Insights helps you manage infrastructure and licensing costs by analyzing the historical behavior of the environment and establishing short- and long-term predictions, generating detailed recommendations for host decommissioning and reclamation of powered-off and idle VMs. These recommendations help you ensure performance stability, free up unused capacity, and reduce memory and CPU allocation.
+
+
+image:vm_optimization_summary.png[VM Optimization Summary Screen]
+
+
+
+=== Uncover Log Insights with Time Charts and Table Widget Support
+
+Now you can leverage time charts (bar, line, area) to identify trends and patterns in log data, such as recurring errors or spikes in activity, providing valuable insights into system behavior over time. Additionally, with tables, you can now include log messages directly in the dashboard, enabling a more comprehensive view of log details.
+
+image:log_insights_dashboard_example.png[log insights on a dashboard]
+
 == November 2024
+
+=== New Workload Security Alerts API
+
+Retrieve forensics alert details with the new Workload Security link:concept_cs_api.html[*cloudsecure_forensics.alerts* API].  
+
+image:ws_forensics_alerts_api.png[Workload Security Forensics Alerts API]
+
 
 
 === Analyze Configuration Changes in your Environment

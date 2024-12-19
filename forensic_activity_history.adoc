@@ -22,19 +22,20 @@ The All Activity page helps you understand the actions performed on entities in 
 Click *Forensics > Activity Forensics* and click the *All Activity* tab to access the All Activity page.
 This page provides an overview of activities on your tenant, highlighting the following information:
 
-* A graph showing _Activity History_ (accessed per minute/per 5 minutes/per 10 minutes based on selected global time range)
+* A graph showing _Activity History_ (based on selected global time range)
 +
 You can zoom the graph by dragging out a rectangle in the graph. The entire page will be loaded to display the zoomed time range. When zoomed in, a button is displayed that lets the user zoom out. 
 
-* A chart of _Activity Types_. To obtain activity history data by activity type, click on corresponding x-axis label link.
-* A chart of Activity on _Entity Types_. To obtain activity history data by entity type, click on corresponding x-axis label link.
-* A list of the _All Activity_ data
+* A list of the _All Activity_ data.
+* A group by dropdown will provide the option to group the activity by users, path, entity type etc.
+* A common path button will be available above the table on click of which we can get slide out panel with entity path details.
+
 
 The _*All Activity*_ table shows the following information. Note that not all of these columns are displayed by default. You can select columns to display by clicking on the "gear" icon.
 
 * The *time* an entity was accessed including the year, month, day, and time of the last access. 
 
-* The *user* that accessed the entity with a link to the link:forensic_user_overview.html[User information].
+* The *user* that accessed the entity with a link to the link:forensic_user_overview.html[User information] as a slide-out panel.
 
 //Above should be new user profile?
 
@@ -62,29 +63,44 @@ The _*All Activity*_ table shows the following information. Note that not all of
 
 **	*Other Change* - Any other event which are not described above. All unmapped events are mapped to “Other Change” activity type. Applicable to files and folders.
 
-* The *Path* to the entity with a link to the link:forensic_entity_detail.html[Entity Detail Data]
- 
-* The *Entity Type*, including entity (i.e. file) extension (.doc, .docx, .tmp, etc.)
+* The *Path* is _entity_ path.
 
-* The *Device* where the entities reside
+* The *1st Level Folder (Root)* is the root directory of entity path in lower case.
+* The *2nd Level Folder* is the second level directory of entity path in lower case.
+* The *3rd Level Folder* is the third level directory of entity path in lower case.
+* The *4th Level Folder* is the forth level directory of entity path in lower case.
 
-* The *Protocol* used to fetch events. 
+* The *Entity Type*, including entity (i.e. file) extension (.doc, .docx, .tmp, etc.).
+
+* The *Device* where the entities reside.
+
+* The *Protocol* used to fetch events.
 
 * The *Original Path* used for rename events when the original file was renamed. This column is not visible in the table by default. Use the column selector to add this column to the table.
 
 * The *Volume* where the entities reside. This column is not visible in the table by default. Use the column selector to add this column to the table.
 
+Selecting a table row opens a slide-out panel with the user profile in one tab, and the activity and entity overview in another tab.
 
-//* The *Source IP* address from which the activity was performed. 
+image:ws_forensics_slideout.png[forensics page showing slideout displaying user activity]
+
+The default _Group by_ method is _Activity forensics_.  If you select a different _Group By_ method--for example, Entity Type--the entity _Group By_ table will be displayed. If no selection is made then _Group By_ *all* is displayed. 
+
+* Activity count is displayed as a hyperlink; selecting this will add the selected grouping as a filter. The table of activity will update based on that filter.
+
+* Note that if you change the filter, alter the time range, or refresh the screen, you will not be able to return to the filtered results without setting the filter again.
+
+//* There will be a return to result option in table header of all activities after doing step 1. On click of which user can move back to group by table. If we change any filters, time range or do refresh we will lose the option to return.
+
 
 
 == Filtering Forensic Activity History Data
 
 There are two methods you can use to filter data.
 
-.	Hover over the field in the table and click the filter icon that appears. The value is added to the appropriate filters in the top _Filter By_ list.
+* The Filter can be added from the slide-out panel. The value is added to the appropriate filters in the top _Filter By_ list.
 
-.	Filter data by typing in the _Filter By_ field:
+* Filter data by typing in the _Filter By_ field:
 +
 Select the appropriate filter from the top ‘Filter By’ widget by clicking the *[+]* button:
 +
@@ -115,7 +131,20 @@ You can filter Forensic Activity data by the following fields:
 The following fields are subject to special filtering rules:
 
 * *Entity Type*, using entity (file) extension - it is preferable to specify exact entity type within quotes. For example _“txt”_.
-* *Path* of the entity - Directory Path filters (path string ending with /) up to 4 directories deep are recommended for faster results. For example, _/home/userX/nested1/nested2/_ OR  _"/home/userX/nested1/nested2/"_. See the table below for more details.
+* *Path* of the entity - Directory Path filters (path string ending with /) up to 4 directories deep are recommended for faster results. For example, _"/home/userX/nested1/nested2/"_. See the table below for more details.
+
+* 1st Level Folder (Root) - root directory of entity Path as filters.
+For example, if entity path is /home/userX/nested1/nested2/, then home OR "home” can be used.
+
+* 2nd Level Folder - 2nd level directory of entity Path filters.
+For example, if entity path is /home/userX/nested1/nested2/, then userX OR "userX” can be used.
+
+* 3rd Level Folder – 3rd level directory of entity Path filters.
+* For example, if entity path is /home/userX/nested1/nested2/, then nested1 OR “nested1” can be used.
+
+* 4th Level Folder - Directory 4th level directory of entity Path filters.
+For example, if entity path is /home/userX/nested1/nested2/, then nested2 OR “nested2” can be used.
+
 
 * *User* performing the activity - it is preferable to specify the exact user within quotes. For example, _"Administrator"_.
 
@@ -134,12 +163,10 @@ The preceding fields are subject to the following when filtering:
 |===
 |User applied Filter expression|Expected Outcome|Performance assessment|Comment
 
-|Path = /home/userX/nested1/nested2/ or /home/userX/nested1/nested2/* or  "/home/userX/nested1/nested2/"|Recursive lookup of all files and folders under given directory |Fast|Directory searches up to 4 directories will be fast. 
-|Path = /home/userX/nested1/ or /home/userX/nested1/* or "/home/userX/nested1/"|Recursive lookup of all files and folders under given directory |Fast|Directory searches up to 4 directories will be fast. 
-|Path = /home/userX/nested1/test* or /home/userX/nested1/test|Recursive lookup of all files and folders under given path regex(test* could mean file OR directory OR Both)|Slower|Directory+File regex search will be slower to search on compared to Directory searches.
-|Path =
-/home/userX/nested1/nested2/nested3/ or /home/userX/nested1/nested2/nested3/* or  "/home/userX/nested1/nested2/nested3/"|Recursive lookup of all files and folders under given directory |Slower|More than 4 directories searches are slower to search on.
-|Path=\*userX/nested1/test*|Recursive lookup of all files and folders under given wildcard path string(test* could mean file OR directory OR Both)|Slowest|Leading wildcard search are slowest searches.
+|Path = "/home/userX/nested1/nested2/"|Recursive lookup of all files and folders under given directory |Fast|Directory searches up to 4 directories will be fast. 
+|Path = "/home/userX/nested1/"|Recursive lookup of all files and folders under given directory |Fast|Directory searches up to 4 directories will be fast. 
+|Path = “/home/userX/nested1/test”|Recursive lookup of all files and folders under given path regex(test* could mean file OR directory OR Both)|Slower|Directory+File regex search will be slower to search on compared to Directory searches.
+|Path = "/home/userX/nested1/nested2/nested3/"|Recursive lookup of all files and folders under given directory |Slower|More than 4 directories searches are slower to search on.
 |Any other Non path based filters. User and Entity Type filters recommended to be in quotes
 e.g., User="Administrator"
 Entity Type="txt"||Fast|
@@ -149,17 +176,12 @@ Entity Type="txt"||Fast|
 NOTE:
 
 . The Activity count displayed alongside the All Activity icon is rounded off to 30 mins when the selected time range spans more than 3 days. e.g., a time range of _Sept 1st 10:15 am to Sept 7th 10:15 am_ will show Activity counts from Sept 1st 10:00 am to Sept 7th 10:30 am.
-. Likewise the count metrics shown in Activity Types, Activity on Entity Types, and Activity History graph are rounded off to 30 mins when the selected time range spans more than 3 days.
-
-
-
-
-
+. Likewise the count metrics shown in Activity History graph are rounded off to 30 mins when the selected time range spans more than 3 days.
 
 
 == Sorting Forensic Activity History Data
 
-You can sort activity history data by _Time, User,  Source IP, Activity,_ and _Entity Type_. By default, the table is sorted by descending _Time_ order, meaning the latest data will be displayed first. Sorting is disabled for _Device_ and _Protocol_ fields.
+You can sort activity history data by _Time, User,  Source IP, Activity,_,  _Entity Type_, 1st Level Folder (Root), 2nd Level Folder, 3rd Level Folder and 4th Level Folder. By default, the table is sorted by descending _Time_ order, meaning the latest data will be displayed first. Sorting is disabled for _Device_ and _Protocol_ fields.
 
 
 == User Guide for Asynchronous Exports
@@ -205,10 +227,10 @@ Activity history is retained for 13 months for active Workload Security environm
 
 |* (Asterisk)|enables you to search for everything|Auto*03172022
 
-If search text contains hyphen or underscore, give expression in brackets. e.g., (svm*) for searching svm-123|User, PATH, Entity Type, Device, Volume, Original Path||returns all resources that start with “Auto" and end with “03172022”
-|? (question mark)|enables you to search for a specific number of characters|AutoSabotageUser1_03172022?|User, Entity Type, Device, Volume||returns AutoSabotageUser1_03172022A, AutoSabotageUser1_03172022B, AutoSabotageUser1_031720225, and so on
-|OR|enables you to specify multiple entities|AutoSabotageUser1_03172022 OR AutoRansomUser4_03162022|User, Domain, PATH, Entity Type, Original Path||returns any of AutoSabotageUser1_03172022 OR AutoRansomUser4_03162022
-|NOT|allows you to exclude text from the search results|NOT AutoRansomUser4_03162022|User,Domain,  PATH, Entity Type, Original PATH|Device|returns everything that does not start with"AutoRansomUser4_03162022”
+If search text contains hyphen or underscore, give expression in brackets. e.g., (svm*) for searching svm-123|User, Entity Type, Device, Volume, Original Path, 1stLevel Folder, 2ndLevel Folder, 3rdLevel Folder, 4thLevel Folder||Returns all resources that start with “Auto" and end with “03172022”
+|? (question mark)|enables you to search for a specific number of characters|AutoSabotageUser1_03172022?|User, Entity Type, Device, Volume, 1stLevel Folder, 2ndLevel Folder, 3rdLevel Folder, 4thLevel Folder||returns AutoSabotageUser1_03172022A, AutoSabotageUser1_03172022B, AutoSabotageUser1_031720225, and so on
+|OR|enables you to specify multiple entities|AutoSabotageUser1_03172022 OR AutoRansomUser4_03162022|User, Domain, Entity Type, Original Path||returns any of AutoSabotageUser1_03172022 OR AutoRansomUser4_03162022
+|NOT|allows you to exclude text from the search results|NOT AutoRansomUser4_03162022|User,Domain, Entity Type, Original Path, 1stLevel Folder, 2ndLevel Folder, 3rdLevel Folder, 4thLevel Folder|Device|returns everything that does not start with"AutoRansomUser4_03162022”
 |None|searches for NULL values in all fields|None|Domain||returns results where the target field is empty
 
 |===
@@ -220,17 +242,14 @@ Search results with and  without / will be different
 
 |===
 
-|/AutoDir1/AutoFile	|Works
-|AutoDir1/AutoFile	|Doesn’t work 
-|/AutoDir1/AutoFile (Dir1)	|Dir1 Partial substring doesn’t work 
-|"/AutoDir1/AutoFile03242022"	|Exact search works
-|Auto*03242022	|Doesn’t work
-|AutoSabotageUser1_03172022?	|Doesn’t work
-|/AutoDir1/AutoFile03242022 OR /AutoDir1/AutoFile03242022	|Works
-|NOT /AutoDir1/AutoFile03242022	|Works
-|NOT /AutoDir1	|Works
+|"/AutoDir1/AutoFile03242022"	|Only Exact search works; returns all activities with exact path as /AutoDir1/AutoFile03242022 (case insensitively)
+|"/AutoDir1/ "	|Works; returns all activities with 1st level directory matching with AutoDir1 (case insensitively)
+|"/AutoDir1/AutoFile03242022/"	|Works; returns all activities with 1st level directory matching with AutoDir1 and 2nd level directory matching with AutoFile03242022 (case insensitively)
+|/AutoDir1/AutoFile03242022 OR /AutoDir1/AutoFile03242022	|Doesn’t work
+|NOT /AutoDir1/AutoFile03242022	|Doesn’t work
+|NOT /AutoDir1	|Doesn’t work
 |NOT /AutoFile03242022	|Doesn’t work
-|*	|Shows all the entries 
+|*	|Doesn’t work
 
 |===
 
@@ -284,7 +303,7 @@ If it still does not get resolved, check if you have added the correct User Data
 To get better performance, use prefix strings instead, in the format _<searchTerm>*_ (in other words, append the asterisk (*) _after_ a search term).
 Example: use the string _testvolume*_, rather than _*testvolume_ or _*test*volume_.
 
-Use a directory search to see all activities underneath a given folder recursively (Hierarchical search). e.g., /path1/path2/path3/ or “/path1/path2/path3/” will list all the activities recursively under /path1/path2/path3.
+Use a directory search to see all activities underneath a given folder recursively (Hierarchical search). e.g., “/path1/path2/path3/” will list all the activities recursively under /path1/path2/path3.
 Alternatively use the "Add To Filter" option under the All Activity tab.”
 
 
@@ -293,7 +312,7 @@ Alternatively use the "Add To Filter" option under the All Activity tab.”
 |Try using a smaller date range for filtering records.
 
 |Forensic UI is loading data slowly when using the _path_ filter.
-|Directory Path filters (path string ending with /) up to 4 directories deep are recommended for faster results. e.g., If the directory path is /Aaa/Bbb/Ccc/Ddd, try searching for /Aaa/Bbb/Ccc/Ddd/ or “/Aaa/Bbb/Ccc/Ddd/”  to load data faster.
+|Directory Path filters (path string ending with /) up to 4 directories deep are recommended for faster results. e.g., If the directory path is /Aaa/Bbb/Ccc/Ddd, try searching for “/Aaa/Bbb/Ccc/Ddd/”  to load data faster.
 
 
 |===
